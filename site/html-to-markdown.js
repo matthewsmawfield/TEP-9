@@ -117,7 +117,7 @@ class HTMLToMarkdownConverter {
     }
 
     async convertSiteToMarkdown() {
-        console.log('🔄 Converting HTML site to markdown (TEP-JWST)...');
+        console.log('🔄 Converting HTML site to markdown (TEP-EFA)...');
         try {
             const manifestPath = path.join(__dirname, 'manifest.json');
             if (!fs.existsSync(manifestPath)) throw new Error('manifest.json not found.');
@@ -137,9 +137,9 @@ class HTMLToMarkdownConverter {
             }
 
             console.log(`  Total HTML: ${(allHtml.length / 1024).toFixed(1)} KB`);
-            const markdownTitle = manifest.title || 'The Temporal Equivalence Principle: A Unified Resolution to the JWST High-Redshift Anomalies';
+            const markdownTitle = manifest.title || 'The Earth Flyby Anomaly: A Test of the Temporal Equivalence Principle with Chameleon Screening';
             const markdown = `# ${markdownTitle}\n\n` + this.htmlToMarkdown(allHtml);
-            const outputPath = path.join(__dirname, '..', '13manuscript-tep-jwst.md');
+            const outputPath = path.join(__dirname, '..', '16manuscript-tep-efa.md');
             fs.writeFileSync(outputPath, markdown, 'utf8');
             console.log(`✅ Markdown saved to: ${outputPath} (${(markdown.length / 1024).toFixed(1)} KB)`);
         } catch (error) {

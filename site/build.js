@@ -149,104 +149,86 @@ function safeGet(obj, pathParts) {
 }
 
 function createInjectionContext() {
-    const outputsDir = path.join(__dirname, '..', 'results', 'outputs');
+    const processedDir = path.join(__dirname, '..', 'data', 'processed');
 
-    const step102 = readJsonIfExists(path.join(outputsDir, 'step_081_survey_cross_correlation.json'));
-    const step109 = readJsonIfExists(path.join(outputsDir, 'step_085_time_lens_map.json'));
-    const step114 = readJsonIfExists(path.join(outputsDir, 'step_093_teff_threshold_holdout.json'));
+    const step003 = readJsonIfExists(path.join(processedDir, 'step003_fitting_results.json'));
 
-    if (!step102) {
-        console.warn('⚠️  Missing step_081_survey_cross_correlation.json; placeholders may remain unresolved.');
-    }
-    if (!step109) {
-        console.warn('⚠️  Missing step_085_time_lens_map.json; placeholders may remain unresolved.');
-    }
-    if (!step114) {
-        console.warn('⚠️  Missing step_093_teff_threshold_holdout.json; placeholders may remain unresolved.');
+    if (!step003) {
+        console.warn('⚠️  Missing step003_fitting_results.json; placeholders may remain unresolved.');
     }
 
     const ctx = {
-        tep: {
-            table12: {},
-            table12c: {},
-            table12d: {},
-            meta: {}
+        flyby: {
+            beta: {},
+            statistics: {},
+            heterogeneity: {},
+            bootstrap: {},
+            loo: {}
         }
     };
 
-    if (step102) {
-        const surveys = ['UNCOVER', 'CEERS', 'COSMOS-Web'];
-        for (const survey of surveys) {
-            const key = survey.toLowerCase().replace(/[^a-z0-9]+/g, '_');
-            const s = step102.survey_correlations?.[survey];
-            if (s) {
-                ctx.tep.table12[key] = {
-                    n: formatIntegerWithCommas(s.n),
-                    rho: formatSignedNumber(s.rho, 3),
-                    ci: formatCI(s.ci_lower, s.ci_upper, 3),
-                    p: formatPValueLatex(s.p)
-                };
-            }
-
-            const tt = step102.time_tests?.[survey]?.dust_positive_only;
-            if (tt) {
-                ctx.tep.table12c[key] = {
-                    delta_rho: formatSignedNumber(tt.delta_rho, 3),
-                    dust_ratio: `${formatFixedNumber(tt.threshold_test?.ratio, 2)}×`,
-                    p_threshold: formatPValueLatex(tt.threshold_test?.p_value)
+    if (step003) {
+        // Individual fits
+        const fits = step003.individual_fits || {};
+        for (const [key, fit] of Object.entries(fits)) {
+            if (fit.fit && fit.fit.beta_fitted) {
+                ctx.flyby.beta[key] = {
+                    fitted: formatFixedNumber(fit.fit.beta_fitted, 10),
+                    uncertainty: formatFixedNumber(fit.fit.beta_uncertainty, 10),
+                    ppn_gamma: formatFixedNumber(fit.fit.ppn_gamma_deviation, 15),
+                    ppn_valid: fit.fit.ppn_valid ? '✓' : '✗'
                 };
             }
         }
 
-        const meta = step102.meta_analysis;
-        const hetero = step102.heterogeneity;
-        if (meta) {
-            ctx.tep.meta = {
-                n_total: formatIntegerWithCommas(meta.n_total),
-                n_total_latex: formatIntegerLatex(meta.n_total),
-                rho: formatFixedNumber(meta.rho_combined, 3),
-                rho_signed: formatSignedNumber(meta.rho_combined, 3),
-                ci: formatCI(meta.ci_lower, meta.ci_upper, 3),
-                p: formatPValueLatex(meta.p_combined),
-                Q: hetero ? formatFixedNumber(hetero.Q, 2) : '',
-                p_Q: hetero ? formatFixedNumber(hetero.p_Q, 3) : '',
-                I2_percent: hetero ? `${formatFixedNumber(hetero.I2, 1)}\\%` : ''
-            };
-        }
-    }
+        // Summary statistics
+        const stats = step003.summary_statistics || {};
+        const betaStats = stats.beta_statistics || {};
+        ctx.flyby.statistics = {
+            weighted_mean: formatFixedNumber(betaStats.weighted_mean, 10),
+            weighted_uncertainty: formatFixedNumber(betaStats.weighted_uncertainty, 10),
+            inflated_uncertainty: formatFixedNumber(betaStats.inflated_uncertainty, 10),
+            mean: formatFixedNumber(betaStats.mean, 10),
+            std: formatFixedNumber(betaStats.std, 10),
+            recommended_beta: formatFixedNumber(stats.recommended_beta, 10),
+            recommended_uncertainty: formatFixedNumber(stats.recommended_uncertainty, 10)
+        };
 
-    if (step109) {
-        const surveys = ['UNCOVER', 'CEERS', 'COSMOS-Web'];
-        for (const survey of surveys) {
-            const key = survey.toLowerCase().replace(/[^a-z0-9]+/g, '_');
-            const s = step109.per_survey?.[survey]?.dust_positive_only;
-            if (!s) {
-                continue;
-            }
-            const zObs = s.correlations?.dust_vs_z_obs;
-            const zEff = s.correlations?.dust_vs_z_eff;
-            ctx.tep.table12d[key] = {
-                n: formatIntegerWithCommas(s.n),
-                rho_z_obs: formatSignedNumber(zObs?.rho, 3),
-                p_z_obs: formatPValueHtmlCell(zObs?.p_value),
-                rho_z_eff: formatSignedNumber(zEff?.rho, 3),
-                p_z_eff: formatPValueHtmlCell(zEff?.p_value)
-            };
-        }
-    }
+        // Heterogeneity tests
+        const hetero = stats.heterogeneity_tests || {};
+        ctx.flyby.heterogeneity = {
+            chi_squared: formatFixedNumber(hetero.chi_squared, 2),
+            reduced_chi_squared: formatFixedNumber(hetero.reduced_chi_squared, 2),
+            I_squared: formatFixedNumber(hetero.I_squared_percent, 3),
+            cochran_Q: formatFixedNumber(hetero.cochran_Q, 2),
+            interpretation: hetero.heterogeneity_interpretation || ''
+        };
 
-    if (step114) {
-        const summary = step114.summary;
-        if (summary) {
-            ctx.tep.step114 = {
-                selected_threshold_median_gyr: formatFixedNumber(summary.selected_threshold_median_gyr, 2),
-                selected_threshold_min_gyr: formatFixedNumber(summary.selected_threshold_min_gyr, 2),
-                selected_threshold_max_gyr: formatFixedNumber(summary.selected_threshold_max_gyr, 2),
-                fixed_threshold_gyr: formatFixedNumber(summary.fixed_threshold_gyr, 2),
-                heldout_p_combined: formatPValueLatex(summary.heldout_p_fisher_fisher_combined?.p),
-                fixed_p_combined: formatPValueLatex(summary.fixed_p_fisher_fisher_combined?.p)
+        // Bootstrap results
+        const bootstrap = step003.robustness_analysis?.bootstrap || {};
+        ctx.flyby.bootstrap = {
+            n_bootstrap: formatIntegerWithCommas(bootstrap.n_bootstrap),
+            mean: formatFixedNumber(bootstrap.bootstrap_mean, 10),
+            median: formatFixedNumber(bootstrap.bootstrap_median, 10),
+            std: formatFixedNumber(bootstrap.bootstrap_std, 10),
+            ci_95_lower: formatFixedNumber(bootstrap.ci_95_lower, 10),
+            ci_95_upper: formatFixedNumber(bootstrap.ci_95_upper, 10),
+            ci_68_lower: formatFixedNumber(bootstrap.ci_68_lower, 10),
+            ci_68_upper: formatFixedNumber(bootstrap.ci_68_upper, 10)
+        };
+
+        // Leave-one-out results
+        const loo = step003.robustness_analysis?.leave_one_out || {};
+        const looResults = loo.leave_one_out_results || {};
+        for (const [key, result] of Object.entries(looResults)) {
+            ctx.flyby.loo[key] = {
+                beta_without: formatFixedNumber(result.beta_without_this, 10),
+                remaining_n: formatIntegerWithCommas(result.remaining_n)
             };
         }
+        ctx.flyby.loo.stability_coefficient = formatFixedNumber(loo.stability_coefficient, 2);
+        ctx.flyby.loo.robust = loo.conclusion_robust ? 'Yes' : 'No';
+        ctx.flyby.loo.interpretation = loo.interpretation || '';
     }
 
     return ctx;

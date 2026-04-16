@@ -1,0 +1,53 @@
+NASA PDS RADIO SCIENCE DATA REQUEST
+======================================
+
+Request Date: 2026-04-11
+Requester: TEP Research Project
+Affiliation: Independent Research
+
+MISSION: NEAR_1998
+PDS DATASET ID: NEAR-A-ES-5-EDR-TRACKING-V1.0
+FLYBY DATE: 1998-01-23
+
+DATA REQUEST DETAILS:
+--------------------
+Date Range: 1998-01-20 to 1998-01-26
+Tracking Stations: DSS-15, DSS-45, DSS-63
+Data Type: TRK-2-34 Doppler tracking files (raw)
+Processing Level: EDR (Engineering Data Record)
+
+SCIENTIFIC JUSTIFICATION:
+-------------------------
+This request is for fundamental physics research investigating the Earth 
+flyby anomaly and testing the Temporal Equivalence Principle (TEP) 
+framework. Raw DSN tracking data is required for:
+
+1. Independent verification of published flyby anomaly measurements
+2. Testing orbit determination filtering hypotheses
+3. Minimal OD re-analysis to recover potential TEP signals
+
+The TEP framework predicts that modern orbit determination pipelines may 
+inadvertently filter TEP-induced velocity shifts through:
+- Outlier rejection algorithms
+- Empirical acceleration estimation
+- Smoothing/averaging procedures
+
+This analysis aims to test this hypothesis using minimal OD techniques
+with raw, unaveraged Doppler measurements.
+
+DATA DELIVERY:
+--------------
+Preferred Format: Original TRK-2-34 binary files
+Alternative: ASCII tabular format (if binary unavailable)
+Delivery Method: FTP download or physical media
+
+CONTACT INFORMATION:
+-------------------
+NASA PDS Radio Science Node
+https://pds-rn.jpl.nasa.gov/
+Email: pds-rn@jpl.nasa.gov
+
+REFERENCES:
+----------
+- Anderson et al. (2008) Phys. Rev. Lett. 100, 091102
+- TEP Research Project: https://github.com/matthewsmawfield/TEP-EFA

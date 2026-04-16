@@ -1,0 +1,178 @@
+{
+  "leave_one_out": {
+    "n_folds": 5,
+    "beta_mean": 7.801065087993063e-05,
+    "beta_std": 7.3871009634526105e-06,
+    "stability_coefficient": 0.09469349223636651,
+    "stability_assessment": "stable",
+    "fold_results": [
+      {
+        "left_out": "Galileo_1990",
+        "metrics": {
+          "beta_fitted": 7.041505824429751e-05,
+          "beta_std": 2.7988635003560632e-05,
+          "n_train": 4,
+          "n_test": 1,
+          "MAE_mm_s": 2.3867676183123816,
+          "RMSE_mm_s": 2.3867676183123816,
+          "MAPE_percent": 60.88692903858116,
+          "R_squared": 0.0,
+          "sign_accuracy": 1.0,
+          "chi2": 6329.621848693955,
+          "reduced_chi2": Infinity,
+          "predictions": [
+            {
+              "name": "Galileo_1990",
+              "dv_obs": 3.92,
+              "dv_pred": 1.533232381687618,
+              "dv_unc": 0.03
+            }
+          ]
+        }
+      },
+      {
+        "left_out": "NEAR_1998",
+        "metrics": {
+          "beta_fitted": 7.041505824429751e-05,
+          "beta_std": 5.9276625151263146e-05,
+          "n_train": 4,
+          "n_test": 1,
+          "MAE_mm_s": 3.1658033431952948,
+          "RMSE_mm_s": 3.1658033431952948,
+          "MAPE_percent": 23.52008427336772,
+          "R_squared": 0.0,
+          "sign_accuracy": 1.0,
+          "chi2": 100223.10807786505,
+          "reduced_chi2": Infinity,
+          "predictions": [
+            {
+              "name": "NEAR_1998",
+              "dv_obs": 13.46,
+              "dv_pred": 10.294196656804706,
+              "dv_unc": 0.01
+            }
+          ]
+        }
+      },
+      {
+        "left_out": "Cassini_1999",
+        "metrics": {
+          "beta_fitted": 8.673807988278178e-05,
+          "beta_std": 5.7416736561112755e-05,
+          "n_train": 4,
+          "n_test": 1,
+          "MAE_mm_s": 0.05056131816097463,
+          "RMSE_mm_s": 0.05056131816097463,
+          "MAPE_percent": 45.96483469179512,
+          "R_squared": 0.0,
+          "sign_accuracy": 1.0,
+          "chi2": 1.0225787576701209,
+          "reduced_chi2": Infinity,
+          "predictions": [
+            {
+              "name": "Cassini_1999",
+              "dv_obs": 0.11,
+              "dv_pred": 0.16056131816097463,
+              "dv_unc": 0.05
+            }
+          ]
+        }
+      },
+      {
+        "left_out": "Rosetta_2005",
+        "metrics": {
+          "beta_fitted": 7.574697814549454e-05,
+          "beta_std": 5.9296524304841414e-05,
+          "n_train": 4,
+          "n_test": 1,
+          "MAE_mm_s": 0.12652250080355287,
+          "RMSE_mm_s": 0.12652250080355287,
+          "MAPE_percent": 6.951785758436971,
+          "R_squared": 0.0,
+          "sign_accuracy": 1.0,
+          "chi2": 6.403177283834015,
+          "reduced_chi2": Infinity,
+          "predictions": [
+            {
+              "name": "Rosetta_2005",
+              "dv_obs": 1.82,
+              "dv_pred": 1.6934774991964472,
+              "dv_unc": 0.05
+            }
+          ]
+        }
+      },
+      {
+        "left_out": "Rosetta_2007",
+        "metrics": {
+          "beta_fitted": 8.673807988278178e-05,
+          "beta_std": 4.587470747057056e-05,
+          "n_train": 4,
+          "n_test": 1,
+          "MAE_mm_s": 0.07134792987411281,
+          "RMSE_mm_s": 0.07134792987411281,
+          "MAPE_percent": 356.7396493705641,
+          "R_squared": 0.0,
+          "sign_accuracy": 1.0,
+          "chi2": 2.036210838928528,
+          "reduced_chi2": Infinity,
+          "predictions": [
+            {
+              "name": "Rosetta_2007",
+              "dv_obs": 0.02,
+              "dv_pred": 0.09134792987411282,
+              "dv_unc": 0.05
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "bootstrap": {
+    "n_bootstrap": 1000,
+    "beta_mean": 7.997331251717151e-05,
+    "beta_std": 3.119586628173391e-05,
+    "ci_68": [
+      5.942395650701028e-05,
+      9.206999978397879e-05
+    ],
+    "ci_95": [
+      1.899070509913385e-05,
+      0.0001800294799499507
+    ]
+  },
+  "altitude_stratified": {
+    "low_altitude": {
+      "n_flybys": 4,
+      "n_with_obs": 2,
+      "beta_median": 0.00013604973986696474,
+      "beta_range": [
+        9.206999978397879e-05,
+        0.0001800294799499507
+      ]
+    },
+    "mid_altitude": {
+      "n_flybys": 4,
+      "n_with_obs": 2,
+      "beta_median": 7.041505824429752e-05,
+      "beta_range": [
+        5.9423956507010285e-05,
+        8.140615998158477e-05
+      ]
+    },
+    "high_altitude": {
+      "n_flybys": 4,
+      "n_with_obs": 1,
+      "beta_median": 1.899070509913385e-05,
+      "beta_range": [
+        1.899070509913385e-05,
+        1.899070509913385e-05
+      ]
+    }
+  },
+  "summary": {
+    "n_total_flybys": 12,
+    "n_with_observations": 5,
+    "validation_status": "complete"
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "one_at_a_time": {
+    "beta": {
+      "sensitivity_coefficient": 0.9999999999999996,
+      "max_impact": 0.9999999999999998,
+      "by_flyby": {
+        "NEAR_1998": 0.9999999999999994,
+        "Galileo_1990": 0.9999999999999998,
+        "Cassini_1999": 0.9999999999999994,
+        "Rosetta_2005": 0.9999999999999996
+      },
+      "nominal_value": 0.0001,
+      "impact_assessment": "high"
+    },
+    "lambda_tep_km": {
+      "sensitivity_coefficient": 0.3022743472834457,
+      "max_impact": 0.5031611164201674,
+      "by_flyby": {
+        "NEAR_1998": 0.1470430301214265,
+        "Galileo_1990": 0.2507654561813339,
+        "Cassini_1999": 0.30812778641085514,
+        "Rosetta_2005": 0.5031611164201674
+      },
+      "nominal_value": 4000.0,
+      "impact_assessment": "high"
+    },
+    "thin_shell_factor": {
+      "sensitivity_coefficient": 0.9999999999999996,
+      "max_impact": 0.9999999999999998,
+      "by_flyby": {
+        "NEAR_1998": 0.9999999999999994,
+        "Galileo_1990": 0.9999999999999998,
+        "Cassini_1999": 0.9999999999999994,
+        "Rosetta_2005": 0.9999999999999996
+      },
+      "nominal_value": 0.34,
+      "impact_assessment": "high"
+    },
+    "disformal_coupling": {
+      "sensitivity_coefficient": 0.04999999999999981,
+      "max_impact": 0.04999999999999994,
+      "by_flyby": {
+        "NEAR_1998": 0.04999999999999977,
+        "Galileo_1990": 0.04999999999999994,
+        "Cassini_1999": 0.04999999999999982,
+        "Rosetta_2005": 0.04999999999999972
+      },
+      "nominal_value": 0.5,
+      "impact_assessment": "low"
+    },
+    "j2": {
+      "sensitivity_coefficient": 0.04999999999999981,
+      "max_impact": 0.04999999999999994,
+      "by_flyby": {
+        "NEAR_1998": 0.04999999999999977,
+        "Galileo_1990": 0.04999999999999994,
+        "Cassini_1999": 0.04999999999999982,
+        "Rosetta_2005": 0.04999999999999972
+      },
+      "nominal_value": 0.00108263,
+      "impact_assessment": "low"
+    },
+    "j3": {
+      "sensitivity_coefficient": 0.04999999999999981,
+      "max_impact": 0.04999999999999994,
+      "by_flyby": {
+        "NEAR_1998": 0.04999999999999977,
+        "Galileo_1990": 0.04999999999999994,
+        "Cassini_1999": 0.04999999999999982,
+        "Rosetta_2005": 0.04999999999999972
+      },
+      "nominal_value": -2.54e-06,
+      "impact_assessment": "low"
+    }
+  },
+  "uncertainty_budget": {
+    "total_fractional_uncertainty": 1.0491824613138372,
+    "by_parameter": {
+      "beta": {
+        "uncertainty_fractional": 0.5,
+        "sensitivity": 0.9999999999999996,
+        "variance_contribution": 0.24999999999999978,
+        "percent_of_total": 22.71108927726762
+      },
+      "lambda_tep_km": {
+        "uncertainty_fractional": 0.47,
+        "sensitivity": 0.3022743472834457,
+        "variance_contribution": 0.02018358462856236,
+        "percent_of_total": 1.8335647697382664
+      },
+      "thin_shell_factor": {
+        "uncertainty_fractional": 0.91,
+        "sensitivity": 0.9999999999999996,
+        "variance_contribution": 0.8280999999999993,
+        "percent_of_total": 75.22821212202128
+      },
+      "disformal_coupling": {
+        "uncertainty_fractional": 1.0,
+        "sensitivity": 0.04999999999999981,
+        "variance_contribution": 0.002499999999999981,
+        "percent_of_total": 0.22711089277267466
+      },
+      "j2": {
+        "uncertainty_fractional": 0.001,
+        "sensitivity": 0.04999999999999981,
+        "variance_contribution": 2.4999999999999814e-09,
+        "percent_of_total": 2.271108927726747e-07
+      },
+      "j3": {
+        "uncertainty_fractional": 0.01,
+        "sensitivity": 0.04999999999999981,
+        "variance_contribution": 2.499999999999981e-07,
+        "percent_of_total": 2.2711089277267467e-05
+      }
+    }
+  },
+  "parameter_correlations": {
+    "beta_vs_altitude": {
+      "correlation": -0.6709354788988326,
+      "p_value": 0.2150612794547973,
+      "significant": false
+    }
+  },
+  "tornado_ranking": [
+    {
+      "parameter": "beta",
+      "sensitivity": 0.9999999999999996,
+      "impact": "high"
+    },
+    {
+      "parameter": "thin_shell_factor",
+      "sensitivity": 0.9999999999999996,
+      "impact": "high"
+    },
+    {
+      "parameter": "lambda_tep_km",
+      "sensitivity": 0.3022743472834457,
+      "impact": "high"
+    },
+    {
+      "parameter": "disformal_coupling",
+      "sensitivity": 0.04999999999999981,
+      "impact": "low"
+    },
+    {
+      "parameter": "j2",
+      "sensitivity": 0.04999999999999981,
+      "impact": "low"
+    },
+    {
+      "parameter": "j3",
+      "sensitivity": 0.04999999999999981,
+      "impact": "low"
+    }
+  ],
+  "summary": {
+    "dominant_uncertainty": "thin_shell_factor",
+    "total_uncertainty_percent": 104.91824613138373
+  }
+}

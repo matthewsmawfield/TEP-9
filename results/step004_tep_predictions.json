@@ -1,0 +1,414 @@
+{
+  "tep_parameters": {
+    "beta": 0.0001,
+    "n_chameleon": 3,
+    "Lambda_keV": 10000,
+    "Lambda_GeV": 0.01
+  },
+  "thin_shell_screening": {
+    "source": "Smawfield (2025), GNSS Atomic Clock Correlations and TEP, University College Dublin",
+    "reference": "manuscripts/7manuscript-tep-ucd.md",
+    "screening_radius_km": 4200,
+    "screening_uncertainty_km": 1967,
+    "earth_radius_km": 6371.0,
+    "thin_shell_thickness_km": 2171.0,
+    "thin_shell_factor": 0.3407628315805996,
+    "thin_shell_uncertainty": 0.91,
+    "ppn_gamma_deviation": 8e-08,
+    "ppn_bound": 2.3e-05,
+    "ppn_compliant": true,
+    "safety_margin": 287.5
+  },
+  "scalar_force_model": {
+    "screening_length_km": 4000,
+    "screening_length_source": "GNSS correlation / scalar field Compton wavelength",
+    "mechanism": "scalar_force_via_J2_asymmetry",
+    "note": "Clock-rate effects cancel in two-way Doppler; velocity anomaly from unmodeled scalar force \u2207\u03c6"
+  },
+  "predictions": {
+    "Galileo_1990": {
+      "spacecraft": "Galileo_1990",
+      "perigee": {
+        "datetime": "A.D. 1990-Dec-08 20:35:00.0000",
+        "range_km": 7343.326284153226,
+        "altitude_km": 972.326284153226,
+        "velocity_km_s": 13.734858931622512
+      },
+      "geometry": {
+        "dec_in_deg": 12.52,
+        "dec_out_deg": -34.21,
+        "cos_dec_asymmetry": 0.14923793634245497,
+        "declination_source": "Anderson_2008",
+        "altitude_km": 972.326284153226,
+        "v_perigee_km_s": 13.734858931622512,
+        "perigee_latitude_deg": 37.79264781098942
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 9070666153.072956,
+        "dphi_dr_GeV_m": 8240.842434356433,
+        "dv_tep_mm_s": 2.1774211651834934,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "1990-12-08 20:35:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 3.92,
+        "dv_unc_mm_s": 0.03
+      }
+    },
+    "Galileo_1992": {
+      "spacecraft": "Galileo_1992",
+      "perigee": {
+        "datetime": "A.D. 1992-Dec-08 15:10:00.0000",
+        "range_km": 6680.621368489293,
+        "altitude_km": 309.62136848929276,
+        "velocity_km_s": 14.076342937542945
+      },
+      "geometry": {
+        "dec_in_deg": -4.99,
+        "dec_out_deg": -4.87,
+        "cos_dec_asymmetry": -0.0001799893428909849,
+        "declination_source": "Anderson_2008",
+        "altitude_km": 309.62136848929276,
+        "v_perigee_km_s": 14.076342937542945,
+        "perigee_latitude_deg": -12.095134849540012
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 3130965964.7363,
+        "dphi_dr_GeV_m": 9725.767481440596,
+        "dv_tep_mm_s": 0.0030205217157856148,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "1992-12-08 15:10:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 0.0,
+        "dv_unc_mm_s": 0.05
+      }
+    },
+    "NEAR_1998": {
+      "spacecraft": "NEAR_1998",
+      "perigee": {
+        "datetime": "A.D. 1998-Jan-23 07:25:00.0000",
+        "range_km": 6938.9126239501475,
+        "altitude_km": 567.9126239501475,
+        "velocity_km_s": 12.721401342759908
+      },
+      "geometry": {
+        "dec_in_deg": -20.76,
+        "dec_out_deg": -71.96,
+        "cos_dec_asymmetry": 0.6253924782734438,
+        "declination_source": "Anderson_2008",
+        "altitude_km": 567.9126239501475,
+        "v_perigee_km_s": 12.721401342759908,
+        "perigee_latitude_deg": 50.08282510749049
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 5563658525.259117,
+        "dphi_dr_GeV_m": 9117.594341309894,
+        "dv_tep_mm_s": 14.619311427805817,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "1998-01-23 07:25:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 13.46,
+        "dv_unc_mm_s": 0.01
+      }
+    },
+    "Cassini_1999": {
+      "spacecraft": "Cassini_1999",
+      "perigee": {
+        "datetime": "A.D. 1999-Aug-18 03:30:00.0000",
+        "range_km": 7568.283650809504,
+        "altitude_km": 1197.2836508095043,
+        "velocity_km_s": 19.019547595117707
+      },
+      "geometry": {
+        "dec_in_deg": -12.92,
+        "dec_out_deg": -4.99,
+        "cos_dec_asymmetry": -0.021526688650125192,
+        "declination_source": "Anderson_2008",
+        "altitude_km": 1197.2836508095043,
+        "v_perigee_km_s": 19.019547595117707,
+        "perigee_latitude_deg": -1.5532148826056027
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 10873338698.63962,
+        "dphi_dr_GeV_m": 7790.174297964767,
+        "dv_tep_mm_s": 0.18511052859131524,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "1999-08-18 03:30:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 0.11,
+        "dv_unc_mm_s": 0.05
+      }
+    },
+    "Rosetta_2005": {
+      "spacecraft": "Rosetta_2005",
+      "perigee": {
+        "datetime": "A.D. 2005-Mar-04 22:10:00.0000",
+        "range_km": 8339.719444407985,
+        "altitude_km": 1968.719444407985,
+        "velocity_km_s": 10.512802597471808
+      },
+      "geometry": {
+        "dec_in_deg": -2.81,
+        "dec_out_deg": -34.29,
+        "cos_dec_asymmetry": 0.17260096047275697,
+        "declination_source": "Anderson_2008",
+        "altitude_km": 1968.719444407985,
+        "v_perigee_km_s": 10.512802597471808,
+        "perigee_latitude_deg": 18.531449761925266
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 16338978680.859169,
+        "dphi_dr_GeV_m": 6423.764302409881,
+        "dv_tep_mm_s": 2.2357030480392517,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "2005-03-04 22:10:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 1.82,
+        "dv_unc_mm_s": 0.05
+      }
+    },
+    "Rosetta_2007": {
+      "spacecraft": "Rosetta_2007",
+      "perigee": {
+        "datetime": "A.D. 2007-Nov-13 21:00:00.0000",
+        "range_km": 11800.899238974063,
+        "altitude_km": 5429.899238974063,
+        "velocity_km_s": 12.458122601229617
+      },
+      "geometry": {
+        "dec_in_deg": -10.80641860047126,
+        "dec_out_deg": 18.598318994266535,
+        "cos_dec_asymmetry": 0.03448848546399741,
+        "declination_source": "two_body_ephemeris",
+        "altitude_km": 5429.899238974063,
+        "v_perigee_km_s": 12.458122601229617,
+        "perigee_latitude_deg": -61.55330352423366
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 31218282719.739716,
+        "dphi_dr_GeV_m": 2703.938292689744,
+        "dv_tep_mm_s": 0.10531467839449618,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "2007-11-13 21:00:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 0.02,
+        "dv_unc_mm_s": 0.05
+      }
+    },
+    "Rosetta_2009": {
+      "spacecraft": "Rosetta_2009",
+      "perigee": {
+        "datetime": "A.D. 2009-Nov-13 07:45:00.0000",
+        "range_km": 8942.987085051403,
+        "altitude_km": 2571.9870850514035,
+        "velocity_km_s": 13.30822474166735
+      },
+      "geometry": {
+        "dec_in_deg": 29.37306480601045,
+        "dec_out_deg": 18.310040663383752,
+        "cos_dec_asymmetry": -0.07792594566306565,
+        "declination_source": "two_body_ephemeris",
+        "altitude_km": 2571.9870850514035,
+        "v_perigee_km_s": 13.30822474166735,
+        "perigee_latitude_deg": 10.924821033756228
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 19936154554.693066,
+        "dphi_dr_GeV_m": 5524.470333951406,
+        "dv_tep_mm_s": 0.5560478610611499,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "2009-11-13 07:45:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 0.0,
+        "dv_unc_mm_s": 0.05
+      }
+    },
+    "MESSENGER_2005": {
+      "spacecraft": "MESSENGER_2005",
+      "perigee": {
+        "datetime": "A.D. 2005-Aug-02 19:15:00.0000",
+        "range_km": 8722.241803428366,
+        "altitude_km": 2351.2418034283655,
+        "velocity_km_s": 10.385155258625337
+      },
+      "geometry": {
+        "dec_in_deg": 31.44,
+        "dec_out_deg": -31.4,
+        "cos_dec_asymmetry": -0.00036394131600714363,
+        "declination_source": "Anderson_2008",
+        "altitude_km": 2351.2418034283655,
+        "v_perigee_km_s": 10.385155258625337,
+        "perigee_latitude_deg": 48.675256928399364
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 18682376275.550545,
+        "dphi_dr_GeV_m": 5837.914903737036,
+        "dv_tep_mm_s": 0.0037971663648532854,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "2005-08-02 19:15:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 0.0,
+        "dv_unc_mm_s": 0.05
+      }
+    },
+    "Juno_2013": {
+      "spacecraft": "Juno_2013",
+      "perigee": {
+        "datetime": "A.D. 2013-Oct-09 19:25:00.0000",
+        "range_km": 7188.423122737795,
+        "altitude_km": 817.423122737795,
+        "velocity_km_s": 14.79384624021903
+      },
+      "geometry": {
+        "dec_in_deg": 0.07676712380167228,
+        "dec_out_deg": 16.963766003793598,
+        "cos_dec_asymmetry": 0.04350964108673572,
+        "declination_source": "two_body_ephemeris",
+        "altitude_km": 817.423122737795,
+        "v_perigee_km_s": 14.79384624021903,
+        "perigee_latitude_deg": -20.487389633098463
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 7769094061.774674,
+        "dphi_dr_GeV_m": 8566.235457181003,
+        "dv_tep_mm_s": 0.5872646042263592,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "2013-10-09 19:25:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 0.0,
+        "dv_unc_mm_s": 0.02
+      }
+    },
+    "Stardust_2001": {
+      "spacecraft": "Stardust_2001",
+      "perigee": {
+        "datetime": "A.D. 2001-Jan-15 11:15:00.0000",
+        "range_km": 12379.92043347896,
+        "altitude_km": 6008.920433478959,
+        "velocity_km_s": 10.314904022519391
+      },
+      "geometry": {
+        "dec_in_deg": -0.03856468876548293,
+        "dec_out_deg": 20.723728279230304,
+        "cos_dec_asymmetry": 0.06470220973509355,
+        "declination_source": "two_body_ephemeris",
+        "altitude_km": 6008.920433478959,
+        "v_perigee_km_s": 10.314904022519391,
+        "perigee_latitude_deg": -24.43271152648104
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 32675878607.220352,
+        "dphi_dr_GeV_m": 2339.539320819585,
+        "dv_tep_mm_s": 0.19888544793031046,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "2001-01-15 11:15:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 0.0,
+        "dv_unc_mm_s": 0.05
+      }
+    },
+    "OSIRIS-REx_2017": {
+      "spacecraft": "OSIRIS-REx_2017",
+      "perigee": {
+        "datetime": "A.D. 2017-Sep-22 16:55:00.0000",
+        "range_km": 23610.063089743,
+        "altitude_km": 17239.063089743,
+        "velocity_km_s": 8.518296761997322
+      },
+      "geometry": {
+        "dec_in_deg": -0.75081542211007,
+        "dec_out_deg": 32.59051883660257,
+        "cos_dec_asymmetry": 0.15737260125946106,
+        "declination_source": "two_body_ephemeris",
+        "altitude_km": 17239.063089743,
+        "v_perigee_km_s": 8.518296761997322,
+        "perigee_latitude_deg": -63.638799197679994
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 41469237964.21443,
+        "dphi_dr_GeV_m": 141.19948157106663,
+        "dv_tep_mm_s": 0.019162819775212912,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "2017-09-22 16:55:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 0.0,
+        "dv_unc_mm_s": 0.02
+      }
+    },
+    "BepiColombo_2020": {
+      "spacecraft": "BepiColombo_2020",
+      "perigee": {
+        "datetime": "A.D. 2020-Apr-10 04:25:00.0000",
+        "range_km": 19068.34107777789,
+        "altitude_km": 12697.341077777892,
+        "velocity_km_s": 7.594496738645929
+      },
+      "geometry": {
+        "dec_in_deg": -7.187305725966738,
+        "dec_out_deg": -11.08557117479607,
+        "cos_dec_asymmetry": 0.01080132962393554,
+        "declination_source": "two_body_ephemeris",
+        "altitude_km": 12697.341077777892,
+        "v_perigee_km_s": 7.594496738645929,
+        "perigee_latitude_deg": 3.6780290609020674
+      },
+      "tep_predictions": {
+        "beta_eff": 0.0001,
+        "phi_sc_GeV": 40276094889.17456,
+        "dphi_dr_GeV_m": 439.48525033103397,
+        "dv_tep_mm_s": 0.005338035202859058,
+        "method": "scalar_force_with_trajectory_asymmetry_temporal",
+        "screening_mode": "binary_thin_shell",
+        "temporal_mode_enabled": true,
+        "flyby_date": "2020-04-10 04:25:00"
+      },
+      "observed": {
+        "dv_obs_mm_s": 0.0,
+        "dv_unc_mm_s": 0.03
+      }
+    }
+  }
+}

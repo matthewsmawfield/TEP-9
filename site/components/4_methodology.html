@@ -1,0 +1,538 @@
+<h1>3. Methodology</h1>
+
+<p>
+    The analysis employs a four-step pipeline to test whether TEP with chameleon screening explains observed flyby velocity anomalies. The pipeline retrieves spacecraft trajectories from JPL Horizons, computes TEP predictions for each flyby geometry, fits the coupling parameter $\beta$ to match observed anomalies, and validates all parameters against solar system PPN constraints.
+</p>
+
+<h2>3.1 Data Acquisition</h2>
+
+<p>
+    Spacecraft trajectories are obtained from the NASA JPL Horizons ephemeris system using the astroquery interface. For each flyby, reconstructed state vectors (position and velocity) are retrieved in the ICRF (International Celestial Reference Frame) at 30-minute intervals spanning $\pm 2$ days around perigee passage.
+</p>
+
+<div class="key-concept">
+    <h4>Trajectory Parameters Extracted</h4>
+    <ul>
+        <li>Perigee altitude (minimum geocentric distance)</li>
+        <li>Perigee velocity (speed at closest approach)</li>
+        <li>Inbound/outbound asymptotic velocity ($v_\infty$)</li>
+        <li>Spacecraft potential at perigee ($\Phi_{\rm sc}$)</li>
+    </ul>
+</div>
+
+  <figure>
+    <img src="public/figures/step007_figure4_screening_profile.png" alt="Figure 3: Screening profile" style="max-width: 100%;">
+    <figcaption><strong>Figure 3:</strong> Chameleon scalar field profile as a function of altitude. The field $\phi$ relaxes from its Earth-interior value to the vacuum value over the TEP screening length $\lambda_{\rm TEP} \approx 4000$ km, established independently from GNSS clock correlations ($\lambda = 4201 \pm 1967$ km) and the scalar field Compton wavelength ($m_\phi \approx 5 \times 10^{-14}$ eV). The field gradient $\nabla\phi$, which determines the scalar force strength, peaks near the surface and decays exponentially with altitude.</figcaption>
+  </figure>
+
+  <p>Flyby velocity anomalies ($\Delta v_{\rm obs}$) are taken from published literature. The primary source is Anderson et al. (2008), with supplementary references for Rosetta (Morley & Budnik 2007; Müller et al. 2008, 2010) and Juno (Aksenov & Tuchin 2020). All values were measured by NASA/JPL using Deep Space Network Doppler tracking with the Orbit Determination Program. Asymptotic $v_\infty$ declinations ($\delta_{\rm in}$, $\delta_{\rm out}$) for the six flybys in Anderson et al. (2008) are taken from that source; for the remaining six flybys, declinations are computed from the ephemeris using two-body orbital mechanics (eccentricity vector method).</p>
+
+  <h2>3.2 TEP Scalar Force Model</h2>
+
+  <p>The TEP framework provides a quantitative model for the flyby anomaly through a scalar fifth force arising from the chameleon field φ. In scalar-tensor theories with conformal coupling A(φ) = exp(2β φ/M_Pl), the scalar field gradient produces an additional force on test masses:</p>
+
+  <div class="equation">
+    $$\mathbf{F}_\phi = \beta_{\rm eff} \, \frac{c^2 \nabla\phi}{M_{\rm Pl}}$$
+</div>
+
+  <p>where β_eff = β × (ΔR/R) is the effective coupling with thin-shell screening (ΔR/R = 0.34 from UCD analysis). The radial component of this force is indistinguishable from a small shift in GM and is absorbed by orbit determination. The non-radial component—modulated by Earth's oblateness (J2) and the spacecraft's trajectory geometry—produces a net velocity change that appears as the flyby anomaly.</p>
+
+  <p>The predicted velocity shift is:</p>
+
+  <div class="equation">
+    $$\Delta v_{\rm TEP} = \beta_{\rm eff} \, \frac{c^2}{M_{\rm Pl}} \left(\frac{d\phi}{dr}\right)_{r_p} \, \frac{r_p}{v_p} \, \left[J_2 + J_3 \sin(\lambda_p)\right] \left(\frac{R_\oplus}{r_p}\right)^2 (\cos\delta_{\rm in} - \cos\delta_{\rm out})$$
+</div>
+
+  <p>where:</p>
+  <ul>
+    <li>$(d\phi/dr)_{r_p}$ is the scalar field gradient at perigee altitude</li>
+    <li>$r_p$ and $v_p$ are the perigee distance and velocity</li>
+    <li>$J_2 = 1.0826 \times 10^{-3}$ is Earth's oblateness coefficient</li>
+    <li>$J_3 = -2.54 \times 10^{-6}$ is Earth's pear-shaped coefficient (latitude-dependent asymmetry)</li>
+    <li>$\lambda_p$ is the perigee latitude</li>
+    <li>$\delta_{\rm in}$ and $\delta_{\rm out}$ are the asymptotic declinations on approach and departure (from Anderson et al. 2008)</li>
+  </ul>
+
+  <p><strong>J3 contribution:</strong> The J3 term adds a latitude-dependent asymmetry to the non-radial force component. However, J3 is two orders of magnitude smaller than J2 ($|J_3/J_2| \approx 2.3 \times 10^{-3}$), and its inclusion does not significantly reduce the heterogeneity in fitted β values (which remains at 3.03× scatter with 4 fitted flybys). This suggests that the remaining heterogeneity arises from uncertainty in the thin-shell screening factor (75% of total variance), not from multipole corrections.</p>
+
+  <p>The scalar field φ relaxes outside Earth with a screening length λ_TEP ≈ 4000 km, established independently from GNSS atomic clock correlations (λ = 4201 ± 1967 km) and the scalar field Compton wavelength (m_φ ≈ 5 × 10⁻¹⁴ eV). This replaces the phenomenological chameleon atmospheric mass scale (~57 km) used in earlier versions of the model.</p>
+
+  <p>The trajectory asymmetry factor $\cos\delta_{\rm in} - \cos\delta_{\rm out}$ is the dominant source of inter-flyby variation. Symmetric trajectories (e.g., Galileo 1992, MESSENGER) have $\cos\delta_{\rm in} \approx \cos\delta_{\rm out}$ and predict negligible anomalies, consistent with observations. Asymmetric trajectories (e.g., NEAR with $\cos\delta_{\rm in} - \cos\delta_{\rm out} = 0.625$) predict large anomalies.</p>
+
+  <div class="equation">
+    $$\phi(r) = \phi_{\rm earth} + (\phi_{\rm space} - \phi_{\rm earth}) \left[1 - \exp\!\left(-\frac{r - R_\oplus}{\lambda_{\rm TEP}}\right)\right]$$
+  </div>
+
+  <p><strong>Thin-shell screening:</strong> Critical to PPN compliance is the screening radius $R_{\rm sol} \approx 4200$ km, independently determined from GNSS atomic clock correlation analysis (Paper 7, TEP-UCD repository). This provides a thin-shell factor $\Delta R/R = 0.34$ that reduces the effective coupling:</p>
+
+  <div class="equation">
+    $$\beta_{\rm eff} = \beta \times \frac{\Delta R}{R_{\oplus}} = \beta \times 0.34$$
+  </div>
+
+  <p>The chameleon field minimum at density $\rho$ is:</p>
+
+  <div class="equation">
+    $$\phi_{\rm min}(\rho) = \Lambda \left[ \frac{n \Lambda^{n+4} M_{\rm Pl}}{2\beta \rho} \right]^{1/(n+1)}$$
+  </div>
+
+  <div class="key-concept">
+    <h4>Characteristic Field Values ($n=3$, $\Lambda=10$ MeV)</h4>
+    <ul>
+        <li>Inside Earth ($\rho = 5515$ kg/m$^3$): $\phi_{\rm earth} = 4.88 \times 10^{4}$ GeV</li>
+        <li>At Earth's surface ($\rho = 2700$ kg/m$^3$): $\phi_{\rm surface} = 6.93 \times 10^{4}$ GeV</li>
+        <li>In vacuum ($\rho \to 0$): $\phi_{\rm space} = 4.19 \times 10^{10}$ GeV</li>
+        <li>TEP screening length: $\lambda_{\rm TEP} \approx 4000$ km (from GNSS / scalar field Compton wavelength)</li>
+        <li>Thin-shell factor: $\Delta R/R = 0.34$ (from UCD constraints)</li>
+    </ul>
+</div>
+
+<p><strong>Velocity shift formula:</strong> The predicted velocity anomaly combines four physical effects:</p>
+
+<div class="equation">
+    $$\Delta v_{\rm TEP} = \frac{\beta_{\rm eff}\, c^2}{M_{\rm Pl}} \cdot \underbrace{\frac{d\phi}{dr}\bigg|_{r_p}}_{\text{field gradient}} \cdot \underbrace{\frac{r_p}{v_p}}_{\text{perigee time}} \cdot \underbrace{J_2 \!\left(\frac{R_\oplus}{r_p}\right)^{\!2}}_{\text{non-radial fraction}} \cdot \underbrace{(\cos\delta_{\rm in} - \cos\delta_{\rm out})}_{\text{trajectory asymmetry}}$$
+</div>
+
+<p>Each factor has a distinct physical origin:</p>
+<ol>
+    <li><strong>Field gradient</strong> $d\phi/dr = (\Delta\phi / \lambda_{\rm TEP})\, e^{-h/\lambda_{\rm TEP}}$: the scalar force strength at perigee altitude $h$, decaying exponentially with the GNSS-established screening length. Lower flybys experience stronger gradients.</li>
+    <li><strong>Perigee dwell time</strong> $r_p / v_p$: the effective duration of the close encounter. Slower, lower flybys accumulate larger impulses.</li>
+    <li><strong>$J_2$ oblateness</strong> $J_2 (R_\oplus/r_p)^2$: the non-radial component of the scalar force arising from Earth's oblateness. The radial component is absorbed into the orbit determination program's estimate of $GM$; only the non-radial residual produces a net velocity change.</li>
+    <li><strong>Trajectory asymmetry</strong> $\cos\delta_{\rm in} - \cos\delta_{\rm out}$: the difference in approach and departure $v_\infty$ declinations (from Anderson et al. 2008). This factor determines how asymmetrically the spacecraft samples the oblate field. For symmetric trajectories ($\delta_{\rm in} \approx \delta_{\rm out}$), the non-radial impulse cancels and the predicted anomaly vanishes—correctly predicting null results for flybys such as Galileo 1992 and MESSENGER.</li>
+</ol>
+
+<h3>3.2.1 Disformal Coupling and Sign Reversal</h3>
+
+<p>In the full TEP scalar-tensor framework, the metric includes a disformal coupling term:</p>
+
+<div class="equation">
+    $$g_{\mu\nu} = A(\phi)\tilde{g}_{\mu\nu} + B(\phi)\partial_\mu\phi\partial_\nu\phi$$
+</div>
+
+<p>where $B(\phi)$ is the disformal coupling function. This term produces velocity-dependent effects that can reverse the sign of the predicted anomaly when the spacecraft velocity is anti-aligned with the field gradient. The disformal coupling creates an effective modification to the scalar force that depends on both velocity magnitude and trajectory geometry.</p>
+
+<p>The sign factor from disformal coupling is:</p>
+
+<div class="equation">
+    $$S_{\rm disformal} = \begin{cases} -1 + \alpha_B \frac{v}{v_{\rm th}} |\cos\delta_{\rm in} - \cos\delta_{\rm out}| & \text{if } \cos\theta < 0 \text{ and } v > v_{\rm th} \\ 1 + \alpha_B \frac{v}{v_{\rm th}} (\cos\delta_{\rm in} - \cos\delta_{\rm out}) & \text{otherwise} \end{cases}$$
+</div>
+
+<p>where $\alpha_B \approx 0.5$ is the disformal coupling strength and $v_{\rm th} \approx 10$ km/s is the velocity threshold for sign reversal effects. This mechanism is essential for explaining the Cassini flyby, where the observed positive anomaly (+0.11 mm/s) reverses the sign predicted by the standard scalar force model.</p>
+
+<p><strong>Physical interpretation:</strong> At high velocities ($v \gtrsim 10$ km/s) with anti-aligned geometry ($\cos\theta < 0$), the disformal term can dominate over the standard scalar force, producing a net sign reversal. The Cassini flyby (1999, $v_{\rm perigee} = 19.0$ km/s, $\cos\delta_{\rm in} - \cos\delta_{\rm out} = -0.0215$) is the archetypal case where this effect operates, converting a predicted $-0.05$ mm/s anomaly into the observed $+0.11$ mm/s.</p>
+
+<div class="key-concept">
+    <h4>Disformal Coupling Parameters</h4>
+    <ul>
+        <li>Coupling strength: $\alpha_B = 0.5$ (dimensionless, fitted to Cassini)</li>
+        <li>Velocity threshold: $v_{\rm th} = 10$ km/s</li>
+        <li>Effect: Sign reversal for high-velocity, anti-aligned trajectories</li>
+        <li>Cassini application: Predicts +0.185 mm/s vs observed +0.11 mm/s</li>
+    </ul>
+</div>
+
+  <p><strong>Trajectory uncertainty sensitivity:</strong> The JPL Horizons ephemerides have position uncertainties of approximately 1 km and velocity uncertainties of approximately 0.1 m/s for the epoch range considered (1990–2020). The resulting variation in predicted TEP velocity shifts is < 0.5% for altitude variations of ±1 km and < 0.2% for velocity variations of ±0.1 m/s. The dominant uncertainty enters through the asymptotic declinations; for the six Anderson et al. flybys, these are determined from precision orbit reconstruction and carry negligible uncertainty.</p>
+
+  <h2>3.3 Parameter Fitting</h2>
+
+  <p>
+    For each flyby with measured anomaly $\Delta v_{\rm obs} \neq 0$, the coupling parameter is fitted by linear scaling:
+  </p>
+
+  <div class="equation">
+    $$\beta_{\rm fitted} = \beta_{\rm ref} \times \frac{\Delta v_{\rm obs}}{\Delta v_{\rm TEP}(\beta_{\rm ref})}$$
+  </div>
+
+  <p>
+    with reference value $\beta_{\rm ref} = 10^{-4}$. The scaling is mathematically linear because $\Delta v_{\rm TEP} \propto \beta$.
+  </p>
+
+  <p>
+    <strong>PPN constraint validation:</strong> The fitted $\beta$ must satisfy, with thin-shell screening applied:
+  </p>
+
+  <div class="equation">
+    $$|\gamma - 1| = 8\beta_{\rm eff}^2 < 2.3 \times 10^{-5}$$
+  </div>
+
+  <h2>3.4 Orbit Determination Filtering Mechanism (Hypothesis)</h2>
+
+<p>Modern orbit determination (OD) employs a multi-stage processing pipeline that may inadvertently filter TEP-like signals. Understanding this potential mechanism is relevant for interpreting why some flybys show null results despite TEP predictions. This remains a hypothesis requiring independent verification through raw DSN data analysis.</p>
+
+<p><strong>Standard OD processing chain:</strong></p>
+<ol>
+  <li><strong>Raw Doppler measurements:</strong> Two-way/3-way Doppler tracking from DSN stations, typically at X-band (8.4 GHz) or Ka-band (32 GHz), with sampling rates of 1-60 Hz.</li>
+  <li><strong>Cycle-slip detection and correction:</strong> Automated algorithms detect discontinuities in phase measurements and correct them to maintain phase continuity.</li>
+  <li><strong>Outlier rejection:</strong> Measurements deviating by more than 3σ from the expected trajectory are flagged and removed as erroneous data points.</li>
+  <li><strong>Smoothing and averaging:</strong> Raw measurements are typically averaged over 10-60 second intervals to reduce noise and computational load.</li>
+  <li><strong>Bias estimation and removal:</strong> Systematic biases (e.g., station clock offsets, media delays) are estimated and subtracted from the measurements.</li>
+  <li><strong>Empirical acceleration estimation:</strong> To absorb unmodeled forces, OD fits empirical accelerations (constant, once-per-revolution, stochastic) that absorb any residual systematic errors.</li>
+  <li><strong>Residual analysis:</strong> Final residuals are examined; large residuals trigger additional data editing or model refinement.</li>
+</ol>
+
+<p><strong>Hypothesized filtering of TEP signals:</strong> TEP produces a sudden velocity shift precisely at perigee passage (±2 hours), characterized by:</p>
+<ul>
+  <li>Sharp temporal structure (not gradual acceleration)</li>
+  <li>Correlation with gravitational potential gradient</li>
+  <li>Consistent amplitude across multiple spacecraft geometries</li>
+  <li>Occurrence at a predictable location (perigee)</li>
+</ul>
+
+<p>These characteristics could cause TEP signals to be treated as systematic errors in the OD pipeline:</p>
+<ol>
+  <li><strong>Outlier rejection:</strong> The sharp perigee anomaly could appear as an outlier in the Doppler residuals and be removed by the 3σ threshold.</li>
+  <li><strong>Empirical acceleration absorption:</strong> The sudden velocity shift could be absorbed by empirical acceleration terms, effectively modeling it as a force rather than a clock rate effect.</li>
+  <li><strong>Smoothing:</strong> Averaging over 10-60 second intervals could dilute the sharp perigee signal, reducing its amplitude.</li>
+  <li><strong>Bias estimation:</strong> The perigee anomaly could be partially absorbed into station bias estimates.</li>
+</ol>
+
+<p><strong>Proposed minimal OD approach for validation:</strong> To test whether TEP signals can be recovered from raw data, a minimal OD pipeline is recommended:</p>
+<ul>
+  <li>Use reduced gravity field (10×10 instead of 50×50 or higher)</li>
+  <li>Disable empirical acceleration estimation</li>
+  <li>Disable outlier rejection (or use relaxed threshold)</li>
+  <li>Use raw Doppler without smoothing</li>
+  <li>Fit only initial state and solar radiation pressure coefficient</li>
+</ul>
+
+<p>This minimal approach would preserve TEP signals while still providing adequate orbit determination for anomaly extraction. The DSN acquisition framework (Step 009) has identified 7 missions with available raw DSN data, with Juno_2013 as the highest-priority candidate for minimal OD re-analysis to test this hypothesis.
+
+
+  <p>
+    where $\gamma$ is the PPN parameter and $\beta_{\rm eff} = \beta \times (\Delta R/R_\oplus)$. The Cassini solar conjunction experiment provides the tightest bound. With the UCD-derived thin-shell factor of 0.34, all fitted $\beta$ values satisfy this constraint with a safety margin of approximately $5\times$.
+  </p>
+
+<h2>3.5 Statistical Analysis</h2>
+
+<p>
+    The weighted mean $\beta$ across all detections is:
+</p>
+
+<div class="equation">
+    $$\bar{\beta} = \frac{\sum_i w_i \beta_i}{\sum_i w_i}, \quad w_i = \frac{1}{\sigma_{\beta,i}^2}$$
+</div>
+
+<p>
+    with inverse-variance weights derived from propagated measurement uncertainties. The weighted standard error is:
+</p>
+
+<div class="equation">
+    $$\sigma_{\bar{\beta}} = \left(\sum_i w_i\right)^{-1/2}$$
+</div>
+
+<p>
+    The NEAR detection dominates due to its superior measurement precision ($\sigma = 0.01$ mm/s vs. $0.03$–$0.05$ mm/s for others).
+</p>
+
+<p>
+    <strong>Heterogeneity assessment:</strong> Following meta-analysis conventions (Higgins & Thompson, 2002), heterogeneity is quantified using:
+</p>
+
+<div class="equation">
+    $$Q = \sum_i w_i (\beta_i - \bar{\beta})^2 \quad \text{(Cochran's Q)}$$
+</div>
+
+<div class="equation">
+    $$I^2 = \frac{Q - (n-1)}{Q} \times 100\% \quad \text{(percentage variance due to heterogeneity)}$$
+</div>
+  
+  <p>An $I^2 > 75\%$ indicates extreme heterogeneity, justifying uncertainty inflation by $\sqrt{Q/(n-1)}$ to account for model scatter beyond measurement error.</p>
+
+  <p><strong>Robustness verification:</strong> Two complementary approaches validate conclusion stability:</p>
+
+  <ol>
+    <li><em>Parametric bootstrap ($n = 10\,000$):</em> Resampling with replacement while adding measurement noise validates the weighted mean distribution and provides non-parametric confidence intervals.</li>
+    <li><em>Leave-one-out cross-validation:</em> Systematically excluding each detection verifies that no single flyby dominates the conclusion. Stability coefficient < 0.5 indicates robustness.</li>
+  </ol>
+
+  <h2>3.6 Hierarchical Bayesian Analysis</h2>
+
+  <p>
+    To address the extreme heterogeneity ($I^2 = 99.9\%$) in fitted $\beta$ values, a hierarchical Bayesian model is implemented using Markov chain Monte Carlo (MCMC) sampling (emcee). This approach models the flyby-to-flyby variation explicitly rather than treating it as a statistical nuisance.
+  </p>
+
+  <p>
+    The hierarchical model structure is:
+  </p>
+
+  <div class="equation">
+    $$\beta_i = \beta_0 \left(1 + \alpha_g f_i\right) + \epsilon_i$$
+  </div>
+
+  <p>
+    where:
+  </p>
+  <ul>
+    <li>$\beta_0$ is the universal coupling constant (shared across all flybys)</li>
+    <li>$\alpha_g$ parameterizes geometry-dependent modulation</li>
+    <li>$f_i = 0.5(h_i/2000\,\text{km}) + 0.5\cos\delta_{\rm asymmetry,i}$ is the geometry factor for flyby $i$</li>
+    <li>$\epsilon_i \sim \mathcal{N}(0, \sigma^2)$ captures individual flyby variation</li>
+  </ul>
+
+  <p>
+    Log-priors are chosen to be weakly informative:
+  </p>
+
+  <div class="equation">
+    $$\log p(\beta_0) \propto -\frac{(\log\beta_0 - \log 10^{-4})^2}{2\sigma_{\log\beta}^2}, \quad \sigma_{\log\beta} = 0.5$$
+  </div>
+
+  <div class="equation">
+    $$\log p(\sigma) \propto -\frac{(\log\sigma - \log 10^{-4})^2}{2\sigma_{\log\sigma}^2}, \quad \sigma_{\log\sigma} = 0.5$$
+  </div>
+
+  <p>
+    MCMC sampling uses 32 walkers with 2000 steps, discarding the first 500 as burn-in and thinning by 15 to reduce autocorrelation. Posterior distributions provide full uncertainty quantification for all parameters, including credible intervals that account for both measurement error and intrinsic scatter.
+  </p>
+
+  <p>
+    This approach addresses the model incompleteness indicated by extreme heterogeneity by allowing for systematic differences between flybys while still inferring a population-level coupling constant.
+  </p>
+
+  <h2>3.7 Plasma Modulation</h2>
+
+  <p>
+    The Cassini flyby exhibits a sign mismatch between observed ($+0.11$ mm/s) and predicted ($-0.19$ mm/s) anomalies with $p = 7.85 \times 10^{-5}$ for a sign flip by noise. To address this, plasma-dependent screening is implemented as a potential mechanism for sign reversal.
+  </p>
+
+  <p>
+    The plasma density along the flyby trajectory is computed using:
+  </p>
+
+  <div class="equation">
+    $$n_{\rm plasma}(h) = n_{\rm iono}(h) + n_{\rm mag}(h)$$
+  </div>
+
+  <p>
+    where the ionospheric component follows a Chapman layer:
+  </p>
+
+  <div class="equation">
+    $$n_{\rm iono}(h) = n_{\rm max} \exp\left[0.5\left(1 - \frac{h - h_{\rm max}}{H_{\rm scale}} - e^{-(h-h_{\rm max})/H_{\rm scale}}\right)\right]$$
+  </p>
+
+  <p>
+    with $h_{\rm max} = 300$ km, $H_{\rm scale} = 50$ km, and $n_{\rm max} = 10^6$ cm$^{-3}$ (solar maximum). The magnetospheric component scales with L-shell as $n_{\rm mag} \propto L^{-4}$.
+  </p>
+
+  <p>
+    Plasma screening is modeled as:
+  </p>
+
+  <div class="equation">
+    $$S_{\rm plasma} = \frac{1}{1 + (n_{\rm plasma}/n_{\rm crit})^2}$$
+  </div>
+
+  <p>
+    with critical density $n_{\rm crit} = 10^4$ cm$^{-3}$. In high-density plasma ($n \gg n_{\rm crit}$), the scalar field experiences strong screening ($S \ll 1$). At intermediate densities, charge screening effects can potentially reverse the sign of the scalar force.
+  </p>
+
+  <p>
+    A phenomenological sign-reversal factor is implemented:
+  </p>
+
+  <div class="equation">
+    $$f_{\rm sign}(n) = \begin{cases}
+      1 & n < 0.1 n_{\rm crit} \\
+      1 - 2(n - 0.1 n_{\rm crit})/0.9 n_{\rm crit} & 0.1 n_{\rm crit} < n < n_{\rm crit} \\
+      -1 & n \ge n_{\rm crit}
+    \end{cases}$$
+  </p>
+
+  <p>
+    This provides a mechanism for the Cassini sign mismatch without requiring exotic trajectory geometries. The plasma density at Cassini's perigee altitude ($1197$ km) during solar minimum conditions is insufficient for full sign reversal, indicating that additional effects (disformal coupling, time-varying $\phi$) may be required.
+  </p>
+
+  <h2>3.8 First-Principles Chameleon Calculation</h2>
+
+  <p>
+    To reduce systematic uncertainty from the phenomenological thin-shell factor, a first-principles chameleon field calculation is implemented. This solves the field equation numerically rather than using the simplified screening formula.
+  </p>
+
+  <p>
+    The chameleon field equation is:
+  </p>
+
+  <div class="equation">
+    $$\nabla^2\phi = V_{\rm eff}'(\phi) = \frac{(n+1)\Lambda^{4+n}}{\phi^{n+2}} - \frac{\rho \beta}{M_{\rm Pl}}$$
+  </p>
+
+  <p>
+    with potential $V(\phi) = \Lambda^{4+n}/\phi^n$. The field minimum at density $\rho$ is:
+  </p>
+
+  <div class="equation">
+    $$\phi_{\rm min}(\rho) = \left[\frac{(n+1)M_{\rm Pl}\Lambda^{4+n}}{\rho \beta}\right]^{1/(n+2)}$$
+  </p>
+
+  <p>
+    The radial profile is solved using boundary value problem integration (scipy.solve_bvp) with boundary conditions:
+  </p>
+
+  <div class="equation">
+    $$\left.\frac{d\phi}{dr}\right|_{r=0} = 0, \quad \phi(r_{\rm max}) = \phi_{\rm min}(\rho_{\rm space})$$
+  </p>
+
+  <p>
+    The screening factor is computed as the ratio:
+  </p>
+
+  <div class="equation">
+    $$S = \frac{\phi_{\rm min}(\rho_{\rm local})}{\phi_{\rm min}(\rho_{\rm surface})}$$
+  </div>
+
+  <p>
+    This approach eliminates the free thin-shell parameter and computes screening directly from the density profile. Comparison with the phenomenological model ($S = (\rho/\rho_c)^{-\gamma}$ with $\rho_c = 20$ g/cm$^3$, $\gamma = 0.334$) validates the approximation while providing a more rigorous foundation.
+  </p>
+
+  <h2>3.9 Bayesian Model Comparison</h2>
+
+  <p>
+    To improve statistical rigor beyond the AIC/BIC approximations, proper Bayesian model comparison using Bayes factors is implemented. The marginal likelihood for each model is computed via grid integration:
+  </p>
+
+  <div class="equation">
+    $$P(D|M) = \int P(D|\theta) P(\theta) d\theta$$
+  </div>
+
+  <p>
+    Three models are compared:
+  </p>
+  <ul>
+    <li><strong>TEP ($M_1$):</strong> Single parameter $\beta$ with log-normal prior</li>
+    <li><strong>Null ($M_0$):</strong> No parameters, predicts $\Delta v = 0$</li>
+    <li><strong>Empirical ($M_2$):</strong> Independent $\beta_i$ for each flyby</li>
+  </ul>
+
+  <p>
+    Bayes factors are computed as:
+  </p>
+
+  <div class="equation">
+    $$B_{12} = \frac{P(D|M_1)}{P(D|M_2)}$$
+  </div>
+
+  <p>
+    with interpretation following Kass & Raftery (1995):
+  </p>
+
+  <ul>
+    <li>$\log B > 5$: Very strong evidence for $M_1$</li>
+    <li>$2.5 < \log B < 5$: Strong evidence for $M_1$</li>
+    <li>$1 < \log B < 2.5$: Substantial evidence for $M_1$</li>
+    <li>$\log B < 1$: Weak or no evidence</li>
+  </ul>
+
+  <p>
+    Posterior model probabilities are computed assuming equal prior weights:
+  </p>
+
+  <div class="equation">
+    $$P(M_i|D) = \frac{P(D|M_i) P(M_i)}{\sum_j P(D|M_j) P(M_j)}$$
+  </p>
+
+  <p>
+    This approach provides a principled framework for model selection that accounts for model complexity (automatic Occam's razor) and yields interpretable evidence metrics.
+  </p>
+
+  <h2>3.10 Pipeline Implementation</h2>
+
+<p>
+    The analysis is implemented in Python 3.8+ with the following enhanced workflow (v3.0):
+</p>
+
+<ol>
+    <li><strong>Step 001a (SPICE Kernels):</strong> Download NAIF SPICE kernels for spacecraft trajectories</li>
+    <li><strong>Step 001b (SPICE to JSON):</strong> Convert SPICE kernel data to JSON format</li>
+    <li><strong>Step 010 (JPL Horizons):</strong> Fetch JPL Horizons ephemeris data for comparison</li>
+    <li><strong>Step 001 (Data Ingestion):</strong> Query JPL Horizons for trajectories; compile anomaly catalog with literature provenance</li>
+    <li><strong>Step 002 (Archival Data Mining):</strong> Compile archival flyby catalog from literature sources (13 flybys)</li>
+    <li><strong>Step 003 (DSN Framework):</strong> Establish DSN raw data acquisition framework</li>
+    <li><strong>Step 004 (TEP Model):</strong> Compute chameleon field values and TEP predictions for each flyby geometry</li>
+    <li><strong>Step 005 (Fitting):</strong> Fit $\beta$ parameters; validate against PPN constraints; compute weighted statistics</li>
+    <li><strong>Step 005b (Diagnostics):</strong> Comprehensive diagnostics and validation</li>
+    <li><strong>Step 005c (Enhanced Validation):</strong> Enhanced validation and model comparison</li>
+    <li><strong>Step 011 (Hierarchical Bayesian):</strong> MCMC-based hierarchical model to address extreme heterogeneity</li>
+    <li><strong>Step 012 (Plasma Modulation):</strong> Plasma-dependent screening to address Cassini sign mismatch</li>
+    <li><strong>Step 013 (First-Principles Chameleon):</strong> Numerical field equation solution to reduce systematic uncertainty</li>
+    <li><strong>Step 014 (Bayesian Model Comparison):</strong> Bayes factors for rigorous model selection</li>
+    <li><strong>Step 015 (Enhanced Report):</strong> Generate comprehensive results with uncertainty quantification</li>
+    <li><strong>Step 016 (Visualizations):</strong> Generate publication-quality figures for manuscript</li>
+    <li><strong>Step 017 (TEP Suppression):</strong> Analyze modern orbit determination filtering effects</li>
+</ol>
+
+<p>
+    <strong>Software dependencies:</strong> astroquery (JPL Horizons interface), numpy/scipy (numerical computation), emcee (MCMC sampling), corner (corner plots), standard Python libraries. All code is version-controlled with Git.
+</p>
+
+<p><strong>Pipeline summary:</strong> The enhanced analysis workflow (v3.0) proceeds as follows:</p>
+
+<table class="data-table">
+    <caption>Table 2: Enhanced Analysis Pipeline Summary (v3.0)</caption>
+    <thead>
+        <tr>
+            <th>Step</th>
+            <th>Input</th>
+            <th>Process</th>
+            <th>Output</th>
+            <th>Addresses</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1-3. Data Acquisition</td>
+            <td>NAIF SPICE, JPL Horizons</td>
+            <td>Extract trajectory parameters</td>
+            <td>State vectors, $\delta_{\rm in/out}$</td>
+            <td>Data quality</td>
+        </tr>
+        <tr>
+            <td>4. TEP Model</td>
+            <td>Trajectory parameters</td>
+            <td>Scalar force: $\nabla\phi$, $J_2$ asymmetry</td>
+            <td>$\Delta v_{\rm TEP}$ prediction ($\beta=10^{-4}$)</td>
+            <td>Model completeness</td>
+        </tr>
+        <tr>
+            <td>5-7. Standard Fitting</td>
+            <td>$\Delta v_{\rm TEP}$, $\Delta v_{\rm obs}$</td>
+            <td>Linear scaling, PPN validation</td>
+            <td>Fitted $\beta$ values</td>
+            <td>Baseline results</td>
+        </tr>
+        <tr>
+            <td>8. Hierarchical Bayesian</td>
+            <td>Fitted $\beta$, geometry</td>
+            <td>MCMC sampling of $\beta_0$, $\sigma$, $\alpha_g$</td>
+            <td>Posterior distributions</td>
+            <td>Heterogeneity (I² = 99.9%)</td>
+        </tr>
+        <tr>
+            <td>9. Plasma Modulation</td>
+            <td>Altitude, solar activity</td>
+            <td>Ionospheric/magnetospheric density</td>
+            <td>Screening/sign factors</td>
+            <td>Cassini sign mismatch</td>
+        </tr>
+        <tr>
+            <td>10. First-Principles Chameleon</td>
+            <td>Density profile</td>
+            <td>Numerical field equation solution</td>
+            <td>Screening from physics</td>
+            <td>Systematic uncertainty (102%)</td>
+        </tr>
+        <tr>
+            <td>11. Bayesian Model Comparison</td>
+            <td>All models</td>
+            <td>Bayes factors, posterior probabilities</td>
+            <td>Model evidence</td>
+            <td>Statistical rigor</td>
+        </tr>
+        <tr>
+            <td>12-14. Reporting</td>
+            <td>All results</td>
+            <td>Figures, reports, validation</td>
+            <td>Publication-ready outputs</td>
+            <td>Documentation</td>
+        </tr>
+    </tbody>
+</table>

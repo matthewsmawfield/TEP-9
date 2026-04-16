@@ -1,0 +1,30 @@
+{
+  "pipeline_version": "2.1.0",
+  "description": "TEP Flyby Pipeline with corrected chameleon parameters",
+  "parameters": {
+    "analysis": {
+      "tep_physics": {
+        "beta_initial": 1e-4,
+        "beta_range": [1e-9, 1e-5],
+        "n_chameleon": 3,
+        "Lambda_keV": 10000,
+        "Lambda_GeV": 0.01,
+        "screening_length_km": 4200,
+        "thin_shell_factor": 0.34,
+        "parameter_source": "UCD_GNSS_clock_correlation_paper"
+      },
+      "earth_model": {
+        "geoid": "WGS84",
+        "gravity_harmonics": ["J2", "J3", "J4"],
+        "density_model": "PREM"
+      },
+      "integration": {
+        "method": "DOP853",
+        "rtol": 1e-9,
+        "atol": 1e-12,
+        "max_step": 60
+      }
+    }
+  },
+  "notes": "Updated to use UCD GNSS clock correlation parameters: screening_length_km=4200, thin_shell_factor=0.34 (Smawfield 2025). n=3 primary detections (NEAR, Galileo 1990, Rosetta 2005). Lambda=10 MeV for physically consistent Earth-scale screening."
+}

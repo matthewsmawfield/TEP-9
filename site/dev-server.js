@@ -13,7 +13,7 @@ class DevServer {
         this.buildQueue = false;
         this.liveServerProcess = null;
         this.watcherReady = false;
-        this.port = 51737; // Unique port for TEP-JWST
+        this.port = 51738; // Unique port for TEP-EFA
     }
 
     async startLiveServer() {
@@ -45,7 +45,7 @@ class DevServer {
     }
 
     async start() {
-        console.log('🎯 TEP-JWST Development Server');
+        console.log('\n🎯 TEP-EFA Development Server\n');
         const distDir = path.join(__dirname, 'dist');
         if (!fs.existsSync(distDir)) fs.mkdirSync(distDir, { recursive: true });
         await this.build();

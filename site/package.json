@@ -1,0 +1,30 @@
+{
+  "name": "tep-efa-site",
+  "version": "1.0.0",
+  "description": "The Earth Flyby Anomaly: A Test of the Temporal Equivalence Principle with Chameleon Screening",
+  "main": "index.html",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "python3 -m http.server 8000",
+    "build": "node build.js",
+    "build:markdown": "npm run build && node html-to-markdown.js",
+    "markdown": "node html-to-markdown.js"
+  },
+  "keywords": [
+    "TEP-EFA",
+    "Earth Flyby Anomaly",
+    "Spacecraft Navigation",
+    "Chameleon Screening",
+    "Modified Gravity",
+    "Temporal Equivalence Principle"
+  ],
+  "author": "Matthew Lukin Smawfield",
+  "license": "CC-BY-4.0",
+  "devDependencies": {
+    "chokidar": "^4.0.3",
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

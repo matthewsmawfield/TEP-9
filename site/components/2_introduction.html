@@ -1,75 +1,53 @@
-<div class="introduction">
-    <h2>1. Introduction</h2>
+<h1>1. Introduction</h1>
 
-    <h3>1.1 Observational Tensions</h3>
-    <p>JWST has revealed a coherent pattern of anomalies at $z > 5$ that strains the standard framework for inferring stellar properties from photometry. The most visible example is the class of spectroscopically confirmed "Red Monsters" (Xiao et al. 2024), whose stellar masses ($M_* \gtrsim 10^{11}\,M_\odot$) imply baryon-to-star conversion efficiencies of $\sim 0.50$, more than double the $\sim 0.20$ theoretical maximum imposed by feedback in $\Lambda$CDM halos. Within the Boylan-Kolchin (2023) framework, the discrepancy reaches $11\sigma$. This tension is not isolated. The UNCOVER UV luminosity function at $z > 9$ implies a star formation rate density exceeding the halo accretion limit by factors of 4–10 (Chemerynska et al. 2024).</p>
+<p>
+    The Equivalence Principle (EP) is a cornerstone of general relativity, stating that gravitational acceleration is locally indistinguishable from acceleration due to motion. However, the Temporal Equivalence Principle (TEP)—the assumption that proper time flows uniformly everywhere—remains less tested. TEP violations can arise in scalar-tensor theories where a scalar field couples conformally to the metric, leading to position-dependent clock rates that scale with gravitational potential depth.
+</p>
 
-    <p>A second anomaly appears in the population of "Little Red Dots" (LRDs): compact, red sources hosting broad-line AGN whose supermassive black holes ($M_{\rm BH} \sim 10^7$–$10^8\,M_\odot$) are 10–100 times more massive relative to their hosts than local scaling relations predict ($M_{\rm BH}/M_* \sim 0.1$ vs. $0.001$; Matthee et al. 2024). Growing such objects from stellar seeds requires near-continuous super-Eddington accretion despite their high observed space density ($n \sim 10^{-5}\,\mathrm{Mpc}^{-3}$). A third anomaly emerges in JWST NIRSpec kinematics: at $z \gtrsim 3$–4, massive quiescent galaxies show $M_*/M_{\rm dyn} \gtrsim 1$ (Esdaile et al. 2021; Tanaka et al. 2019), while at $z > 5.5$ low-mass star-forming systems show the opposite extreme, with dynamical masses exceeding stellar masses by up to a factor 40 (de Graaff et al. 2024a). Both patterns are inconsistent with standard expectations and together suggest a mass-dependent bias in photometric stellar-mass estimates.</p>
-
-    <p>Across these cases, the common structure is the same: stellar masses and ages inferred from photometry appear systematically too large, too early, in precisely the environments with the deepest gravitational potentials.</p>
-
-    <h3>1.2 Challenging Isochrony with TEP</h3>
-    <p>Underlying every photometric inference of stellar age, mass, and star formation rate is the isochrony axiom: the assumption that the clock governing stellar evolution ticks at the universal cosmic rate, regardless of local gravitational environment. Under isochrony, an observed red colour is interpreted as a combination of age, dust, and metallicity, and the resulting mass-to-light ratio ($M/L \propto t^n$) is treated as universal. If this axiom is violated — if stars in deep gravitational potentials accumulate proper time faster than the cosmic mean — then SED-inferred masses and ages are systematically inflated in precisely the environments where JWST finds the largest anomalies.</p>
-
-    <p>The Temporal Equivalence Principle (TEP) formalises this possibility within a conformally coupled scalar-tensor framework with chameleon screening (Khoury &amp; Weltman 2004; Brax et al. 2004; Burrage &amp; Sakstein 2018). In unscreened halos, the conformal factor $A(\phi) > 1$ causes stellar clocks to tick faster relative to coordinate time, so that a galaxy's effective age $t_{\rm eff} = \Gamma_t\,t_{\rm cosmic}$ exceeds its cosmic age. The resulting bias in $M/L$ inflates inferred stellar masses by $\Gamma_t^n$, directly mimicking a star formation efficiency excess. This effect is physically distinct from standard gravitational redshift: photons still lose energy climbing out of potential wells (kinematic redshift, fully preserved in TEP), while the scalar field coupling independently accelerates atomic processes within the well. Both effects coexist; only the latter biases photometric mass inference.</p>
-
-    <div class="callout callout-info">
-        <p><strong>Physics Note: Dilation vs. Enhancement</strong></p>
-        <p>It is essential to distinguish between two relativistic effects:</p>
-        <ul>
-            <li><strong>Kinematic Gravitational Redshift (Standard GR):</strong> Photons lose energy climbing out of potential wells. This affects light and is fully preserved in TEP.</li>
-            <li><strong>Dynamical Clock Rate (TEP):</strong> The scalar field coupling modifies the effective mass of particles, changing the rate at which atomic clocks tick relative to coordinate time. In the TEP framework, the scalar field in diffuse halos relaxes to values where $A(\phi) > 1$, causing clocks to tick <em>faster</em> (enhancement) than the cosmic mean, even while photons suffer redshift.</li>
-        </ul>
-    </div>
-
-    <p>The temporal shear effect is governed by an enhancement factor $\Gamma_t$:</p>
-
-    <div class="equation">
-        $$\Gamma_t = \exp\left[\alpha(z) \times \frac{2}{3} \times \Delta\log(M_h) \times \frac{1+z}{1+z_{\rm ref}}\right]$$
-    </div>
-
-    <p>The zero-parameter JWST predictions adopt the external Cepheid prior $\alpha_0 = 0.58 \pm 0.16$, calibrated from local Cepheid observations ($z \approx 0$), and apply it unchanged to the high-redshift universe. The JWST observables are then examined to test whether they recover a mutually consistent coupling internally, yielding conditional concordance values near $\alpha_0 \approx 0.55$ in the high-redshift analyses. These internal recoveries are treated as self-consistency checks rather than as replacement calibrations. No parameters are tuned to the JWST data the model seeks to explain. The structural choices in the $\Gamma_t$ formula — the reference redshift $z_{\rm ref} = 5.5$, reference halo mass $\log M_{h,\rm ref} = 12.0$, exponential functional form, and $\sqrt{1+z}$ coupling scaling — were fixed by the scalar-tensor framework in prior papers (Papers 1 and 7); all have independent physical motivation and none were adjusted to improve JWST fits (§4.11.1).</p>
-
-    <h3>1.3 Reader's Guide to the Evidence</h3>
-    <p>This manuscript is easiest to read as a progression from prediction to population tests to physical interpretation. Because the analysis spans photometric, kinematic, and spatial data across multiple JWST surveys, the evidence is organized explicitly by role rather than presented as a flat list of correlations:</p>
+<div class="key-concept">
+    <h4>Key Terminology</h4>
     <ul>
-        <li><strong>Stage 1: The zero-parameter prediction (§3.2).</strong> The local-universe TEP calibration is applied directly to the most extreme $z > 5$ anomalies (the Red Monsters) to test whether it predicts the scale of the star formation efficiency correction without any JWST tuning.</li>
-        <li><strong>Stage 2: Two primary empirical lines, one ancillary spatial indication, one derived regime-level comparison, and one direct kinematic test (§3.0–3.10).</strong> The statistical core of the manuscript is built from three JWST surveys ($N = 4{,}726$), supplemented by a direct JWST-SUSPENSE kinematic comparison. The branches are separated according to evidential weight and independence:
-            <ul>
-                <li><strong>L1. Dust–$\Gamma_t$ emergence:</strong> At $z > 8$, massive galaxies are dusty while low-mass galaxies remain dust-poor ($\rho = +0.62$). The signal strengthens with redshift and is organized by an AGB-like effective-time threshold. A Fisher combination across the three photometric surveys yields $24.4\sigma$.</li>
-                <li><strong>L2. Inside-out core screening (ancillary spatial indication):</strong> JADES resolved photometry and the preferred DR5 direct-mass morphology sample indicate more centrally screened, bluer-core structures in the more massive systems. Because the direct gradient predictor-comparison and residual tests remain non-significant, this branch is retained as ancillary rather than counted as a primary line.</li>
-                <li><strong>L3. Mass–sSFR inversion:</strong> The standard downsizing correlation reverses sign at $z > 7$, consistent with time-dilation inflating the apparent sSFR in massive early halos. The discontinuous sign change makes this test difficult to mimic with smooth mass-measurement systematics.</li>
-                <li><strong>L4. Dynamical mass comparison (derived regime comparison):</strong> A matched regime-level kinematic comparison indicates that the TEP correction can reconcile anomalously high $M_*/M_{\rm dyn} > 1$ cases using SED-independent kinematics. A supplementary five-object direct literature ingestion at $z = 3.2$–$4.0$, including one conservative upper-limit row, is directionally consistent and materially strengthens the kinematic rebuttal to the photometric mass-proxy objection, but the higher-$z$ regime-level branch remains the authoritative derived comparison rather than a primary empirical line.</li>
-                <li><strong>L5. Direct kinematic test:</strong> The JWST-SUSPENSE comparison directly evaluates $\Gamma_t$ derived from $M_{\rm dyn}$ against photometric $M_*$ in predicting spectral age. It is the strongest current direct test on the mass-circularity objection, but because the sample is still small ($N = 15$) it is carried as a direct kinematic test with an explicit small-sample caveat rather than as one of the two primary large-sample lines.</li>
-            </ul>
-        </li>
-        <li><strong>Stage 3: The Little Red Dot mechanism (§4.9).</strong> The framework is then applied to the overmassive black-hole problem, where <em>differential temporal shear</em> between the dense core and the diffuse stellar halo provides a route to rapid apparent growth without requiring sustained extreme super-Eddington accretion.</li>
+        <li><em>Proper time</em> ($\tau$) is the time measured by a clock following a specific trajectory through spacetime.</li>
+        <li><em>Chameleon field</em> ($\phi$) is a hypothetical scalar field whose effective mass depends on local matter density, enabling "screening" in high-density environments.</li>
+        <li><em>PPN parameter $\gamma$</em> measures the amount of spatial curvature per unit mass in metric theories of gravity.</li>
+        <li><em>Hyperbolic excess velocity</em> ($v_\infty$) is the spacecraft's speed relative to Earth at infinite distance, characterizing the flyby trajectory.</li>
     </ul>
-
-    <h3>1.4 Prior Cross-Domain Evidence for TEP</h3>
-    <p>The JWST analysis presented here is not the first test of the TEP framework. A local Cepheid analysis (Paper 12) provides an external prior $\alpha_0 = 0.58 \pm 0.16$, and the present high-redshift study asks whether JWST observables independently recover a consistent coupling across multiple domains spanning 13.5 Gyr of cosmic time (Table 11, §4.2). <em>Important caveat:</em> all prior constraints in Table 11 derive from the same author's analysis programme; the TEP series has not yet undergone independent replication or peer review in a refereed journal. Readers should weigh the cross-domain consistency with this single-source limitation in mind (§4.11a). The three domains most directly used in this work are:</p>
-    <ul>
-        <li><strong>Hubble Tension:</strong> Stratification of $N = 29$ SH0ES Cepheid hosts by velocity dispersion reveals an environmental bias. High-$\sigma$ hosts yield $H_0 = 72.45 \pm 2.32$ km/s/Mpc; low-$\sigma$ hosts yield $H_0 = 67.82 \pm 1.62$ km/s/Mpc — consistent with Planck within $1\sigma$. The TEP correction with the external prior $\alpha_0 = 0.58$ yields $H_0^{\rm TEP} = 68.66 \pm 1.51$ km/s/Mpc ($0.79\sigma$ from Planck). This provides the external low-redshift anchor used in this work.</li>
-        <li><strong>Globular Cluster Pulsars:</strong> Analysis of 380 millisecond pulsars reveals a $0.13$ dex spin-down excess in cluster pulsars ($p = 1.7 \times 10^{-15}$). The environmental screening threshold $\sigma > 165$ km/s derived from this population is used directly in §2.3.2.2 and §4.4.3 of this work.</li>
-        <li><strong>Universal Critical Density:</strong> GNSS atomic clock networks yield $\rho_c \approx 20$ g/cm³, independently confirmed by the SPARC rotation curve slope and magnetar critical periods. This $\rho_c$ is used as the screening threshold in this work.</li>
-    </ul>
-    <p>The central question this work addresses is whether the same externally calibrated $\alpha_0$ that resolves the Hubble tension and accounts for pulsar timing anomalies also predicts the high-redshift galaxy anomalies, with no re-tuning. The dust-only and joint high-redshift concordance analyses both recover values near $\alpha_0 \approx 0.55$, consistent with the external Cepheid prior at $0.2\sigma$. The tighter internal JWST interval is interpreted as agreement among the high-redshift observables rather than as a replacement of the local prior; the Cepheid calibration remains the primary external anchor for $\alpha_0$.</p>
-
-    <h3>1.5 Alternative Explanations</h3>
-    <p>There is no shortage of standard-physics explanations for JWST's high-redshift surprises. Proposed mechanisms include top-heavy initial mass functions, bursty or ultra-efficient star formation, early black hole seeding, strong AGN contamination, dust geometry effects, and selection/systematic biases in the spectral-energy-distribution (SED) fitting procedures. The present work does not dismiss these a priori; instead, it evaluates whether they can reproduce the specific temporal and structural signatures in the data.</p>
-
-    <p>Standard alternatives include top-heavy initial mass functions (Boylan-Kolchin 2023), enhanced AGN feedback, bursty star formation, and super-Eddington accretion. Each can partially address one or two of the observed anomalies, but not the full set considered here. AGN feedback predicts a negative dust–black hole mass correlation, as AGN activity clears dust; the observed relation is positive ($\rho = +0.62$). Bursty star formation predicts bluer colours during burst phases, whereas the TEP-enhanced population is significantly redder at fixed magnitude ($\rho(M_{\rm mag}, \text{color}) = -0.40$, $p = 2.8 \times 10^{-16}$, $N = 398$). Top-heavy IMFs can partially relieve the star formation efficiency crisis but offer no mechanism for the spatially resolved screening gradients, the mass–sSFR inversion, or the differential black hole growth in Little Red Dots. In the systematic comparison across the live JWST core evidence package (§4.3.5), TEP is the only framework in that comparison that captures both primary empirical lines while remaining directionally consistent with the ancillary L2 indication and the derived L4 regime comparison. No alternative in that comparison reproduces the cross-domain consistency of $\alpha_0$ across instruments, epochs, and physical regimes.</p>
-
-    <div class="callout callout-warning">
-        <p><strong>Key Limitations</strong></p>
-        <p>Several important limitations should be borne in mind when evaluating the evidence presented here:</p>
-        <ul>
-            <li><strong>Mass circularity and the Kinematic Resolution:</strong> In purely photometric samples, because $\Gamma_t$ is derived from halo mass, distinguishing TEP effects from intrinsic mass-dependent evolution requires careful partial-correlation analysis and exploitation of the independent redshift-dependent component. The current SUSPENSE kinematic comparison materially narrows this objection by testing a dynamical-potential predictor and photometric stellar mass directly against spectral age. Its strongest discriminant is a one-sided residual structure: the dynamical predictor retains significant age information after $M_*$+$z$ control, whereas $M_*$ does not after $\Gamma_t$+$z$ control.</li>
-            <li><strong>Spectroscopic sample size:</strong> Two public spectroscopic compilations substantially improve the earlier small-sample situation. JADES DR4 (D'Eugenio et al. 2025) provides 2,858 good-quality spec-z with 118 at $z > 7$. The DJA NIRSpec Merged Table v4.4 (Brammer et al.; September 2025) provides 19,445 unique grade-$\ge 3$ sources from all public JWST/NIRSpec programs, with 698 at $z > 7$ and 234 at $z > 8$. These compilations materially strengthen the spectroscopic context, although some analysis-specific highest-redshift slices remain small. Stellar masses also still rely on photometric estimates ($\pm 0.3$–$0.5$ dex), so the spectroscopic branches remain supportive consistency checks rather than independent primary lines of evidence. In the main evidence synthesis, the SUSPENSE kinematic comparison provides the strongest direct evidence on the mass-circularity question. The three-survey photometric L1 combination ($24.4\sigma$) and the L3 mass–sSFR inversion provide the two large-sample primary empirical lines, while the dedicated UNCOVER $z > 8$ dust battery and DJA-based GOODS-S / H$\alpha$/H$\beta$ branches are treated as robustness or supplementary checks.</li>
-            <li><strong>Theoretical foundation:</strong> The enhancement factor $\Gamma_t > 1$ is motivated by a scalar-tensor, two-metric construction in which matter couples to a conformal factor $A(\phi)$ and screening suppresses the effective coupling in dense regimes. The first-principles action, field equations, screening mechanism, and PPN consistency mapping provide the foundation for this framework; this manuscript presents only the components required to define and test the observational mapping (§2.3.2). A full joint cosmological parameter inference is outside the scope of this work.</li>
-            <li><strong>Red Monsters case study:</strong> The $N = 3$ illustrative case study is not statistically robust in isolation. Population-level tests ($N = 2{,}315$) provide the primary evidence.</li>
-        </ul>
-    </div>
-
-    <p>Section 2 defines the TEP mapping, the datasets, and the statistical procedures. Section 3 presents the two primary empirical lines, the direct kinematic decisive test, and then places the ancillary spatial indication, the derived regime-level comparison, and the supplementary replications in their proper evidential order. Section 4 interprets the results in the broader theoretical context, including precision-GR consistency, the link to the Hubble tension, and the Little Red Dot mechanism. Section 5 closes with falsification criteria and observational predictions. Appendix A provides the theoretical foundation (action, field equations, screening mechanism), and Appendix B documents key computational definitions and reference tables.</p>
 </div>
+
+  <h2>1.1 The Earth Flyby Anomaly</h2>
+
+<p>
+    Since 1990, spacecraft executing Earth gravity assists have exhibited anomalous orbital energy changes that lack a standard explanation. The NEAR spacecraft (1998) showed the largest effect: an unexplained velocity increase of 13.46 mm/s. Galileo (1990) and Cassini (1999) displayed smaller but significant anomalies of 3.92 mm/s and 0.11 mm/s respectively. These velocity shifts, measured via NASA Deep Space Network (DSN) Doppler tracking, occur precisely at perigee passage and persist as asymptotic excess velocities ($v_\infty$) in the outbound trajectories.
+</p>
+
+<p>
+    Standard physics offers no satisfactory explanation. Thermal radiation pressure, atmospheric drag, and tidal effects have been exhaustively modeled and found insufficient by orders of magnitude. The anomalies show no correlation with spacecraft orientation, spin rate, or surface properties, ruling out conventional systematic errors. The effect appears genuinely gravitational in nature, yet violates neither energy conservation nor momentum conservation—it manifests as a pure velocity shift unaccompanied by trajectory deflection.
+</p>
+
+<h2>1.2 TEP as a Candidate Explanation</h2>
+
+<p>
+    The TEP framework provides a natural explanation. In scalar-tensor theories with chameleon screening, spacecraft clocks run at different rates inside versus outside Earth's gravitational well. As a spacecraft descends into Earth's potential well, its onboard clock slows relative to coordinate time; as it ascends, the clock accelerates. The cumulative effect is a measured velocity shift when comparing inbound and outbound Doppler tracking epochs.
+</p>
+
+<p>
+    The chameleon mechanism may be essential for three reasons: (1) without screening, the required coupling strength would violate solar system tests of general relativity (PPN constraints); (2) screening naturally explains both detections (at low altitude where the thin-shell condition is briefly violated) and non-detections (at high altitude where screening suppresses TEP effects); and (3) the screening threshold provides a quantitative prediction—flybys above ~2500 km should show negligible anomalies—which is empirically confirmed. Among proposed mechanisms considered to date, TEP with chameleon screening is one framework that reproduces the observed anomalies, predicts null results, and satisfies PPN constraints.
+</p>
+
+<p>
+    With chameleon screening, the scalar field acquires a mass that depends on local matter density, suppressing long-range effects in high-density environments while allowing significant couplings in the solar system. The thin-shell effect ensures Earth-screened trajectories experience the anomaly only during brief perigee passage at low altitude.
+</p>
+
+<h2>1.3 This Work</h2>
+
+<p>
+    This paper presents a comprehensive analysis of the Earth flyby anomaly using the TEP framework with chameleon field screening. Published Doppler tracking measurements from Anderson et al. (2008) are employed, obtained via NASA's Jet Propulsion Laboratory Orbit Determination Program (ODP). These measurements represent established spacecraft navigation precision, with velocity accuracies of $\sim 0.1$ mm/s.
+</p>
+
+<p>
+    The analysis proceeds in four stages: (1) data ingestion and trajectory reconstruction from JPL Horizons ephemeris; (2) TEP chameleon model calculations for each flyby geometry; (3) fitting the coupling parameter $\beta$ to observed anomalies with PPN constraint validation; and (4) synthesis of results and assessment of TEP viability. All fitted parameters are verified against solar system constraints, ensuring consistency with existing tests of gravity.
+</p>
+
+<p>
+    The structure of this paper is as follows: Section 2 describes the data sources and measurement methodology; Section 3 presents the TEP chameleon screening model; Section 4 reports the fitting results and PPN validation; Section 5 discusses implications for fundamental physics; and Section 6 concludes with prospects for additional spacecraft tests.
+</p>

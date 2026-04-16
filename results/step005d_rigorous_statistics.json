@@ -1,0 +1,213 @@
+{
+  "step": "005d_rigorous_statistics",
+  "timestamp": "2026-04-16 05:08:42",
+  "analyses": {
+    "correlation": {
+      "status": "success",
+      "n_samples": 4,
+      "fitted_flybys": [
+        "Galileo_1990",
+        "NEAR_1998",
+        "Cassini_1999",
+        "Rosetta_2005"
+      ],
+      "altitude_correlation": {
+        "pearson_r": -0.28949384073237905,
+        "pearson_p": 0.710506159267621,
+        "pearson_ci_95": [
+          -0.9783701730750178,
+          0.93047940022548
+        ],
+        "spearman_rho": -0.6000000000000001,
+        "spearman_p": 0.3999999999999999,
+        "n": 4,
+        "interpretation": "weak"
+      },
+      "velocity_correlation": {
+        "pearson_r": -0.2613691836818419,
+        "pearson_p": 0.7386308163181581,
+        "pearson_ci_95": [
+          -0.977028202230202,
+          0.9344505079990142
+        ],
+        "spearman_rho": -0.19999999999999998,
+        "spearman_p": 0.8,
+        "n": 4,
+        "interpretation": "weak"
+      },
+      "asymmetry_correlation": {
+        "pearson_r": 0.037682978541811504,
+        "pearson_p": 0.9623170214581884,
+        "pearson_ci_95": [
+          -0.9581033735651505,
+          0.9638622253856413
+        ],
+        "spearman_rho": 0.39999999999999997,
+        "spearman_p": 0.6,
+        "n": 4,
+        "interpretation": "negligible"
+      }
+    },
+    "robust_regression": {
+      "status": "success",
+      "theil_sen_slope": -2.9741771965862394e-08,
+      "theil_sen_intercept": 0.0001244600461519825,
+      "prediction_at_mean_altitude": 8.946705203224937e-05,
+      "n_slopes_computed": 6,
+      "interpretation": "negative slope indicates weaker coupling at higher altitudes"
+    },
+    "likelihood_ratio": {
+      "status": "success",
+      "n_included": 4,
+      "log_likelihoods": {
+        "null": -915049.3614503912,
+        "tep": -2034.9999654450123,
+        "systematic": 10.427438497597365
+      },
+      "likelihood_ratio_tests": {
+        "tep_vs_null": {
+          "statistic": 1826028.7229698924,
+          "p_value": 0.0,
+          "df": 1,
+          "conclusion": "TEP strongly favored"
+        },
+        "systematic_vs_tep": {
+          "statistic": 4090.8548078852195,
+          "p_value": 0.0,
+          "df": 3,
+          "conclusion": "systematic better"
+        }
+      },
+      "information_criteria": {
+        "aic": {
+          "null": 1830098.7229007825,
+          "tep": 4071.9999308900246,
+          "systematic": -12.85487699519473
+        },
+        "bic": {
+          "null": 1830098.7229007825,
+          "tep": 4071.3862252511444,
+          "systematic": -15.309699550715166
+        },
+        "akaike_weights": {
+          "null": 0.0,
+          "tep": 0.0,
+          "systematic": 1.0
+        }
+      },
+      "evidence_ratio_tep_null": Infinity
+    },
+    "sensitivity": {
+      "status": "success",
+      "parameters_tested": [
+        "thin_shell_factor",
+        "screening_length_km",
+        "j2_coefficient",
+        "beta_initial"
+      ],
+      "sensitivities": {
+        "thin_shell_factor": {
+          "range_tested": [
+            0.25,
+            0.45
+          ],
+          "baseline": {
+            "mean_beta": 0.00010468420708044524,
+            "std_beta": 5.243796812540017e-05
+          },
+          "stability": "sensitive"
+        },
+        "screening_length_km": {
+          "range_tested": [
+            3000.0,
+            5000.0
+          ],
+          "baseline": {
+            "mean_beta": 0.00010323239905563115,
+            "std_beta": 5.0032819896239414e-05
+          },
+          "stability": "stable"
+        },
+        "j2_coefficient": {
+          "range_tested": [
+            1.0,
+            1.1
+          ],
+          "baseline": {
+            "mean_beta": 9.842825588207084e-05,
+            "std_beta": 4.38902881553957e-05
+          },
+          "stability": "stable"
+        },
+        "beta_initial": {
+          "range_tested": [
+            5e-05,
+            0.0002
+          ],
+          "baseline": {
+            "mean_beta": 0.00010323239905563115,
+            "std_beta": 4.587470747057056e-05
+          },
+          "stability": "stable"
+        }
+      }
+    },
+    "model_adequacy": {
+      "status": "success",
+      "n_residuals": 4,
+      "residual_statistics": {
+        "mean": 3.2323990556311253e-06,
+        "std": 4.587470747057056e-05,
+        "min": -4.0576043492989726e-05,
+        "max": 8.002947994995069e-05
+      },
+      "standardized_residuals": {
+        "mean": -16.915363288160652,
+        "std": 62.73131382319452
+      },
+      "normality_tests": {
+        "shapiro_wilk": {
+          "statistic": 0.9259616612538699,
+          "p_value": 0.5708723169951367,
+          "conclusion": "normal"
+        },
+        "anderson_darling": {
+          "statistic": 0.30238617565377623,
+          "critical_5pct": 1.799,
+          "conclusion": "normal"
+        }
+      },
+      "heteroscedasticity": {
+        "test": "correlation_of_squared_residuals_with_altitude",
+        "r": -0.7865510987306619,
+        "p_value": 0.21344890126933813,
+        "conclusion": "homoscedastic"
+      },
+      "overall_adequacy": {
+        "model_adequate": true,
+        "conclusion": "TEP model adequately captures data structure"
+      }
+    },
+    "prediction_intervals": {
+      "status": "success",
+      "n_fitted": 4,
+      "beta_representative": {
+        "value": 9.227591904974993e-05,
+        "statistical_uncertainty": 6.82864565082299e-08,
+        "excess_scatter": 5.120411962837962e-05,
+        "total_prediction_uncertainty": 5.120416516219704e-05
+      },
+      "prediction_intervals": {
+        "beta_68pct": [
+          4.135553335102887e-05,
+          0.00014319630474847098
+        ],
+        "beta_95pct": [
+          -8.082400526596815e-06,
+          0.00019263423862609665
+        ]
+      },
+      "interpretation": "future flybys expected to have \u03b2 within these intervals"
+    }
+  }
+}

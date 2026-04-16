@@ -1,0 +1,39 @@
+
+ARCHIVAL DATA MINING REPORT
+===========================
+
+Sample Size Expansion:
+  Total catalog: 15 flybys
+  Usable for analysis: 13
+
+HONEST ASSESSMENT OF STATISTICAL POWER:
+  ✓ Dataset expanded from n=3 to n=13 flybys
+  ✗ BUT: Effective sample for β fitting remains n=4
+  ✓ Screening threshold confidence improved (n=13)
+
+Breakdown by Contribution:
+  Significant detections: 2 → Direct β constraints
+    (NEAR: 13.46 mm/s, Galileo 1990: 3.92 mm/s)
+  Marginal detections: 2 → Weak β constraints  
+    (Cassini: 0.11 mm/s, Rosetta 2005: 1.82 mm/s)
+  Null detections: 5 → Screening threshold ONLY
+    (Provide upper bounds, not β constraints)
+  Predicted nulls: 6 → Screening validation
+    (Confirm altitude dependence, no β information)
+
+Key Finding:
+  The 100× scatter in β (I² ≈ 100%) demonstrates that:
+  - 3-4 measurements is insufficient for precise parameter estimation
+  - Systematic differences between missions dominate
+  - Model incompleteness contributes to scatter (see Step 004)
+
+What the Expansion Actually Achieved:
+  1. CONFIRMED: Chameleon screening threshold at ~2500 km
+  2. VALIDATED: Altitude dependence of TEP effects  
+  3. CONSTRAINED: Upper bounds on coupling from null results
+  4. DID NOT: Improve precision of β fitting (still n=3 effective)
+
+Recommendations:
+  - For β precision: Need 3-5 additional low-altitude detections
+  - For screening model: Current dataset is sufficient
+  - Priority: Raw DSN reanalysis (Step 003 framework)
