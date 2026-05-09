@@ -10,7 +10,7 @@ Usage:
     python process_pdf.py <input_pdf> [--quality ebook|printer|prepress|default]
     
 Example:
-    python process_pdf.py site/public/docs/Smawfield_2026_TEP-J0437_v0.1_Sintra.pdf --quality ebook
+    python process_pdf.py site/public/docs/Smawfield_2026_TEP-EFA_v0.1_Yogyakarta.pdf --quality ebook
 """
 
 import subprocess
@@ -227,7 +227,7 @@ def embed_metadata(pdf_path, metadata):
         subprocess.run(cmd, check=True, capture_output=True)
         return True
     except subprocess.CalledProcessError as e:
-        raise RuntimeError(f"Exiftool metadata embedding failed: {e.stderr.decode()")}
+        raise RuntimeError(f"Exiftool metadata embedding failed: {e.stderr.decode()}")  # Removed extra closing brace
 
 
 def build_metadata_dict(meta):

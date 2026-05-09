@@ -36,7 +36,7 @@ def load_citation_metadata():
     
     if not citation_file.exists():
         print("⚠️  CITATION.cff not found, using defaults")
-        return {'version': 'v0.1', 'codename': 'Sintra', 'title': 'TEP-J0437'}
+        return {'version': 'v0.1', 'codename': 'Yogyakarta', 'title': 'TEP-EFA'}
     
     try:
         if yaml:
@@ -50,22 +50,22 @@ def load_citation_metadata():
             version_match = re.search(r'version:\s*"?([^"\n]+)"?', content)
             version_str = version_match.group(1).strip() if version_match else 'v0.1'
         
-        # Parse version string like 'v0.1 (Sintra)'
+        # Parse version string like 'v0.1 (Yogyakarta)'
         pattern = r'^(v?[\d.]+)(?:\s*\(([^)]+)\))?$'
         match = re.match(pattern, version_str.strip())
         
         if match:
             version = match.group(1).lstrip('v')
-            codename = match.group(2) or 'Sintra'
+            codename = match.group(2) or 'Yogyakarta'
         else:
             version = version_str.lstrip('v')
-            codename = 'Sintra'
+            codename = 'Yogyakarta'
         
         return {'version': version, 'codename': codename}
         
     except Exception as e:
         print(f"⚠️  Error parsing CITATION.cff: {e}, using defaults")
-        return {'version': 'v0.1', 'codename': 'Sintra', 'title': 'TEP-J0437'}
+        return {'version': 'v0.1', 'codename': 'Yogyakarta', 'title': 'TEP-EFA'}
 
 
 def build_static_site():
@@ -100,10 +100,10 @@ def copy_pdf_to_docs(source_pdf: Path, docs_dir: Path):
     
     # Load metadata from CITATION.cff
     metadata = load_citation_metadata()
-    version_str = f"v{metadata['version']}_{metadata['codename']}"
+    version_str = f"v{metadata['version']}-{metadata['codename']}"
     
-    # Primary PDF name
-    target_name = f"Smawfield_2026_TEP-J0437_{version_str}.pdf"
+    # Primary PDF name (paper series 15 for Earth Flyby Anomaly)
+    target_name = f"15-TEP-EFA-{version_str}.pdf"
     target_path = docs_dir / target_name
     
     # Copy the file
@@ -111,6 +111,26 @@ def copy_pdf_to_docs(source_pdf: Path, docs_dir: Path):
     shutil.copy2(source_pdf, target_path)
     
     print(f"📄 Copied to: {target_path}")
+    print(f"   Size: {target_path.stat().st_size / (1024*1024):.2f} MB")
+    
+    return target_path
+
+
+def copy_pdf_to_root(source_pdf: Path, base_dir: Path):
+    """Copy PDF to the project root directory."""
+    # Load metadata from CITATION.cff
+    metadata = load_citation_metadata()
+    version_str = f"v{metadata['version']}-{metadata['codename']}"
+    
+    # Primary PDF name (paper series 15 for Earth Flyby Anomaly)
+    target_name = f"15-TEP-EFA-{version_str}.pdf"
+    target_path = base_dir / target_name
+    
+    # Copy the file
+    import shutil
+    shutil.copy2(source_pdf, target_path)
+    
+    print(f"📄 Copied to root: {target_path}")
     print(f"   Size: {target_path.stat().st_size / (1024*1024):.2f} MB")
     
     return target_path
@@ -168,19 +188,19 @@ async def generate_pdf(quality: str = 'high', wait_time: float = 5.0, skip_build
     if quality == 'maximum':
         # Highest resolution for archival/print quality
         options = presets['high_quality'].copy()
-        options['scale'] = 0.69  # Larger content, target <20 pages
+        options['scale'] = 0.72  # Larger content, target <20 pages
         options['device_scale_factor'] = 3.0  # High pixel density for sharpness
         options['viewport'] = {'width': 1920, 'height': 1080}
         options['prefer_css_page_size'] = True
     elif quality == 'high':
         options = presets['high_quality'].copy()
-        options['scale'] = 0.69
+        options['scale'] = 0.72
         options['device_scale_factor'] = 2.5
         options['viewport'] = {'width': 1920, 'height': 1080}
         options['prefer_css_page_size'] = True
     elif quality == 'print':
         options = presets['print_ready'].copy()
-        options['scale'] = 0.63
+        options['scale'] = 0.72
         options['device_scale_factor'] = 2.0
     else:
         options = presets['web_optimized'].copy()
@@ -227,11 +247,23 @@ async def generate_pdf(quality: str = 'high', wait_time: float = 5.0, skip_build
         # Copy to docs directory
         final_pdf = copy_pdf_to_docs(output_pdf, docs_dir)
         
-        # Process with metadata
+        # Copy to root directory (from uncompressed source)
+        copy_pdf_to_root(output_pdf, base_dir)
+        
+        # Process with metadata (compresses the docs version)
         process_pdf_with_metadata(final_pdf)
+        
+        # Copy compressed PDF to root as well
+        if final_pdf.exists():
+            import shutil
+            root_pdf = base_dir / final_pdf.name
+            shutil.copy2(final_pdf, root_pdf)
+            print(f"📄 Copied compressed PDF to root: {root_pdf}")
+            print(f"   Size: {root_pdf.stat().st_size / (1024*1024):.2f} MB")
         
         print(f"\n✅ Complete! PDF available at:")
         print(f"   {final_pdf}")
+        print(f"   {base_dir / final_pdf.name}")
         
         return True
 

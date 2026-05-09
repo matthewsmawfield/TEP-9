@@ -1,0 +1,197 @@
+{
+  "model_type": "two_level_hierarchical_scaling",
+  "beta_0_posterior": {
+    "median": 1.001825668689008,
+    "std": 0.5985521910078176,
+    "16th_percentile": 0.6066692118295434,
+    "84th_percentile": 1.6632325629409743
+  },
+  "sigma_posterior": {
+    "median": 5.254702062684089,
+    "std": 1.52457417352974
+  },
+  "deterministic_factors": {
+    "NEAR": {
+      "dv_tep_ref_mm_s": 4.235680546360339,
+      "dv_obs_mm_s": 13.46,
+      "sigma_mm_s": 0.01,
+      "altitude_km": 567.9,
+      "velocity_km_s": 12.72,
+      "G_traj": 2.9456503140388124,
+      "S_earth": 0.8676429472884601,
+      "F_OD": {
+        "value": 1.0,
+        "source": "mission-specific OD absorption factor from step 035",
+        "derivation": "OD absorption factor F_OD = 1.000 represents the fraction of TEP signal absorbed by orbit determination processing for NEAR; this is based on mission-specific OD characteristics from step 035; \u00b10.1 uncertainty accounts for variations in OD processing between missions"
+      },
+      "F_plasma": 0.0,
+      "F_plasma_metadata": {
+        "plasma_density_cm3": 6425.059943340189,
+        "plasma_screening_factor": 0.0,
+        "plasma_sign_factor": -0.20556887629781984,
+        "solar_activity": 0.5,
+        "iri_data_source": "chapman_fallback"
+      },
+      "F_disf": 0.6612322061319625,
+      "cos_asymmetry": 0.625
+    },
+    "Galileo_1990": {
+      "dv_tep_ref_mm_s": 1.053886183104347,
+      "dv_obs_mm_s": 3.92,
+      "sigma_mm_s": 0.03,
+      "altitude_km": 972.3,
+      "velocity_km_s": 13.73,
+      "G_traj": 1.4996688385919252,
+      "S_earth": 0.7842126956137321,
+      "F_OD": {
+        "value": 1.0,
+        "source": "mission-specific OD absorption factor from step 035",
+        "derivation": "OD absorption factor F_OD = 1.000 represents the fraction of TEP signal absorbed by orbit determination processing for Galileo_1990; this is based on mission-specific OD characteristics from step 035; \u00b10.1 uncertainty accounts for variations in OD processing between missions"
+      },
+      "F_plasma": 0.0,
+      "F_plasma_metadata": {
+        "plasma_density_cm3": 2020.8413212820146,
+        "plasma_screening_factor": 0.0,
+        "plasma_sign_factor": -0.12500532529912078,
+        "solar_activity": 1.5,
+        "iri_data_source": "chapman_fallback"
+      },
+      "F_disf": 0.6952903636648341,
+      "cos_asymmetry": 0.195
+    },
+    "Cassini": {
+      "dv_tep_ref_mm_s": 0.32074435654682387,
+      "dv_obs_mm_s": 0.11,
+      "sigma_mm_s": 0.05,
+      "altitude_km": 1197.3,
+      "velocity_km_s": 19.02,
+      "G_traj": 0.7426000600794942,
+      "S_earth": 0.741318441786308,
+      "F_OD": {
+        "value": 1.0,
+        "source": "mission-specific OD absorption factor from step 035",
+        "derivation": "OD absorption factor F_OD = 1.000 represents the fraction of TEP signal absorbed by orbit determination processing for Cassini; this is based on mission-specific OD characteristics from step 035; \u00b10.1 uncertainty accounts for variations in OD processing between missions"
+      },
+      "F_plasma": 0.0,
+      "F_plasma_metadata": {
+        "plasma_density_cm3": 197.40233498867804,
+        "plasma_screening_factor": 0.0,
+        "plasma_sign_factor": 1.0,
+        "solar_activity": 0.5,
+        "iri_data_source": "chapman_fallback"
+      },
+      "F_disf": 0.30388688542242126,
+      "cos_asymmetry": -0.088
+    },
+    "Rosetta_2005": {
+      "dv_tep_ref_mm_s": 1.6026543376704159,
+      "dv_obs_mm_s": 1.82,
+      "sigma_mm_s": 0.05,
+      "altitude_km": 1968.7,
+      "velocity_km_s": 10.51,
+      "G_traj": 1.3870716981912552,
+      "S_earth": 0.6112953797799405,
+      "F_OD": {
+        "value": 1.0,
+        "source": "mission-specific OD absorption factor from step 035",
+        "derivation": "OD absorption factor F_OD = 1.000 represents the fraction of TEP signal absorbed by orbit determination processing for Rosetta_2005; this is based on mission-specific OD characteristics from step 035; \u00b10.1 uncertainty accounts for variations in OD processing between missions"
+      },
+      "F_plasma": 0.0,
+      "F_plasma_metadata": {
+        "plasma_density_cm3": 42.1986050976043,
+        "plasma_screening_factor": 0.0,
+        "plasma_sign_factor": 1.0,
+        "solar_activity": 1.0,
+        "iri_data_source": "chapman_fallback"
+      },
+      "F_disf": 0.576279980001832,
+      "cos_asymmetry": 0.33
+    }
+  },
+  "posterior_predictive_check": {
+    "NEAR": {
+      "dv_obs_mm_s": 13.46,
+      "dv_pred_median_mm_s": 0.0,
+      "dv_pred_16th_mm_s": 0.0,
+      "dv_pred_84th_mm_s": 0.0,
+      "residual_mm_s": 13.46,
+      "p_value": {
+        "value": 1.0,
+        "source": "posterior predictive p-value from MCMC sampling",
+        "derivation": "p-value = 1.000 indicates the observed anomaly is not consistent with the posterior predictive distribution; a p-value near 0.5 suggests the model is well-calibrated; \u00b10.1 uncertainty accounts for MCMC sampling variability"
+      },
+      "G_traj": 2.9456503140388124,
+      "S_earth": 0.8676429472884601,
+      "F_OD": {
+        "value": 1.0,
+        "source": "mission-specific OD absorption factor from step 035",
+        "derivation": "OD absorption factor F_OD = 1.000 represents the fraction of TEP signal absorbed by orbit determination processing for NEAR; this is based on mission-specific OD characteristics from step 035; \u00b10.1 uncertainty accounts for variations in OD processing between missions"
+      },
+      "F_plasma": 0.0,
+      "F_disf": 0.6612322061319625
+    },
+    "Galileo_1990": {
+      "dv_obs_mm_s": 3.92,
+      "dv_pred_median_mm_s": 0.0,
+      "dv_pred_16th_mm_s": 0.0,
+      "dv_pred_84th_mm_s": 0.0,
+      "residual_mm_s": 3.92,
+      "p_value": {
+        "value": 1.0,
+        "source": "posterior predictive p-value from MCMC sampling",
+        "derivation": "p-value = 1.000 indicates the observed anomaly is not consistent with the posterior predictive distribution; a p-value near 0.5 suggests the model is well-calibrated; \u00b10.1 uncertainty accounts for MCMC sampling variability"
+      },
+      "G_traj": 1.4996688385919252,
+      "S_earth": 0.7842126956137321,
+      "F_OD": {
+        "value": 1.0,
+        "source": "mission-specific OD absorption factor from step 035",
+        "derivation": "OD absorption factor F_OD = 1.000 represents the fraction of TEP signal absorbed by orbit determination processing for Galileo_1990; this is based on mission-specific OD characteristics from step 035; \u00b10.1 uncertainty accounts for variations in OD processing between missions"
+      },
+      "F_plasma": 0.0,
+      "F_disf": 0.6952903636648341
+    },
+    "Cassini": {
+      "dv_obs_mm_s": 0.11,
+      "dv_pred_median_mm_s": 0.0,
+      "dv_pred_16th_mm_s": 0.0,
+      "dv_pred_84th_mm_s": 0.0,
+      "residual_mm_s": 0.11,
+      "p_value": {
+        "value": 1.0,
+        "source": "posterior predictive p-value from MCMC sampling",
+        "derivation": "p-value = 1.000 indicates the observed anomaly is not consistent with the posterior predictive distribution; a p-value near 0.5 suggests the model is well-calibrated; \u00b10.1 uncertainty accounts for MCMC sampling variability"
+      },
+      "G_traj": 0.7426000600794942,
+      "S_earth": 0.741318441786308,
+      "F_OD": {
+        "value": 1.0,
+        "source": "mission-specific OD absorption factor from step 035",
+        "derivation": "OD absorption factor F_OD = 1.000 represents the fraction of TEP signal absorbed by orbit determination processing for Cassini; this is based on mission-specific OD characteristics from step 035; \u00b10.1 uncertainty accounts for variations in OD processing between missions"
+      },
+      "F_plasma": 0.0,
+      "F_disf": 0.30388688542242126
+    },
+    "Rosetta_2005": {
+      "dv_obs_mm_s": 1.82,
+      "dv_pred_median_mm_s": 0.0,
+      "dv_pred_16th_mm_s": 0.0,
+      "dv_pred_84th_mm_s": 0.0,
+      "residual_mm_s": 1.82,
+      "p_value": {
+        "value": 1.0,
+        "source": "posterior predictive p-value from MCMC sampling",
+        "derivation": "p-value = 1.000 indicates the observed anomaly is not consistent with the posterior predictive distribution; a p-value near 0.5 suggests the model is well-calibrated; \u00b10.1 uncertainty accounts for MCMC sampling variability"
+      },
+      "G_traj": 1.3870716981912552,
+      "S_earth": 0.6112953797799405,
+      "F_OD": {
+        "value": 1.0,
+        "source": "mission-specific OD absorption factor from step 035",
+        "derivation": "OD absorption factor F_OD = 1.000 represents the fraction of TEP signal absorbed by orbit determination processing for Rosetta_2005; this is based on mission-specific OD characteristics from step 035; \u00b10.1 uncertainty accounts for variations in OD processing between missions"
+      },
+      "F_plasma": 0.0,
+      "F_disf": 0.576279980001832
+    }
+  }
+}

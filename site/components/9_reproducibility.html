@@ -1,4 +1,4 @@
-<h2>Data Availability & Reproducibility</h2>
+<h2>Data Availability &amp; Reproducibility</h2>
 
 <div class="reproducibility-box" style="background: #f5f5f5; padding: 1.5em; margin: 1em 0; border-left: 4px solid #2c5aa0;">
     <p>
@@ -8,7 +8,7 @@
     </p>
 </div>
 
-<h3>Repository & Code</h3>
+<h3>Repository &amp; Code</h3>
 <p>
     The repository contains a deterministic, version-controlled analysis pipeline with analysis steps 
     for Earth flyby trajectory data. All steps are orchestrated by 
@@ -33,7 +33,8 @@ TEP-EFA/
 │   │   ├── step_005_fitting.py
 │   │   ├── step_006_report.py
 │   │   ├── step_007_visualizations.py
-│   │   └── step_008_tep_suppression.py
+│   │   ├── step_008_tep_suppression.py
+│   │   └── step_015_Temporal Shear Suppression_first_principles.py
 │   ├── utils/                     # Utility functions
 │   └── build_markdown.js          # Manuscript builder
 ├── site/
@@ -78,7 +79,7 @@ TEP-EFA/
             <td>Peer-reviewed literature</td>
             <td>Manual compilation</td>
             <td>~50 KB</td>
-            <td><code>data/processed/archival_flyby_catalog.json</code></td>
+            <td><code>results/step002_archival_flyby_catalog.json</code></td>
         </tr>
         <tr>
             <td>SPICE Kernels</td>
@@ -110,7 +111,7 @@ TEP-EFA/
     </thead>
     <tbody>
         <tr style="background-color: #e8f4f8;">
-            <td colspan="5">Section 2-3: Data Ingestion & TEP Model</td>
+            <td colspan="5">Section 2-3: Data Ingestion &amp; TEP Model</td>
         </tr>
         <tr>
             <td>Data</td>
@@ -130,7 +131,7 @@ TEP-EFA/
             <td>Core</td>
             <td>4.0</td>
             <td><code>step_004_tep_model.py</code></td>
-            <td>TEP chameleon model with thin-shell screening</td>
+            <td>TEP Temporal Topology model with screening</td>
             <td>~2s</td>
         </tr>
         <tr style="background-color: #ffe8e8;">
@@ -170,6 +171,13 @@ TEP-EFA/
             <td>Modern OD suppression hypothesis testing</td>
             <td>~1s</td>
         </tr>
+        <tr>
+            <td>Valid</td>
+            <td>15.0</td>
+            <td><code>step_015_temporal_topology_first_principles.py</code></td>
+            <td>Temporal Topology first-principles derivation and SCF validation</td>
+            <td>~10s</td>
+        </tr>
         <tr style="background-color: #f5f0ff;">
             <td colspan="5">Section 7: Enhanced Validation (New Steps)</td>
         </tr>
@@ -184,7 +192,7 @@ TEP-EFA/
             <td>Valid</td>
             <td>18.0</td>
             <td><code>step_018_enhanced_bayesian.py</code></td>
-            <td>MCMC Bayesian inference with emcee</td>
+            <td>Weighted least squares hierarchical model</td>
             <td>~30s</td>
         </tr>
         <tr>
@@ -217,7 +225,7 @@ TEP-EFA/
         <td>~31s</td>
     </tr>
     <tr>
-        <td>TEP Model & Fitting</td>
+        <td>TEP Model &amp; Fitting</td>
         <td>3</td>
         <td>~4s</td>
     </tr>
@@ -253,10 +261,10 @@ pip install -r requirements.txt
 # 3. Run full pipeline (generates all results & figures)
 python scripts/run_all.py
 
-# 4. Results will be in:
-#    - data/processed/   (JSON data products)
+# 4. Results are located in:
+#    - results/          (JSON data products and figures)
 #    - logs/             (Detailed execution logs)
-#    - site/public/figures/  (Generated plots)
+#    - site/dist/        (Built static site)
 </pre>
 </div>
 
@@ -296,20 +304,21 @@ python scripts/run_all.py
 
 <h4>Key Analysis Outputs</h4>
 <ul>
-    <li><code>data/processed/step004_tep_predictions.json</code> — TEP model predictions for all flybys</li>
-    <li><code>data/processed/step005_fitting_results.json</code> — β fitting results with PPN validation</li>
-    <li><code>data/processed/step006_final_report.json</code> — Comprehensive results with thin-shell screening</li>
-    <li><code>data/processed/step008_tep_suppression_analysis.json</code> — TEP suppression hypothesis test</li>
-    <li><code>site/public/figures/step007_figure1_altitude_anomaly.png</code> — Altitude vs anomaly correlation</li>
-    <li><code>site/public/figures/step007_figure3_ppn_constraints.png</code> — PPN constraint analysis</li>
-    <li><code>site/public/figures/step007_figure4_screening_profile.png</code> — Chameleon screening profile</li>
+    <li><code>results/step002_archival_flyby_catalog.json</code> — Literature flyby catalog with provenance</li>
+    <li><code>results/step004_tep_predictions.json</code> — TEP model predictions for all modeled flybys</li>
+    <li><code>results/step005_fitting_results.json</code> — β fitting results with PPN validation</li>
+    <li><code>results/step006_final_report.json</code> — Comprehensive results with Temporal Topology screening</li>
+    <li><code>results/step026_tep_suppression_analysis.json</code> — TEP suppression hypothesis test</li>
+    <li><code>results/step007_figure1_altitude_anomaly.png</code> — Altitude vs anomaly correlation</li>
+    <li><code>results/step007_figure3_ppn_constraints.png</code> — PPN constraint analysis</li>
+    <li><code>results/step007_figure4_screening_profile.png</code> — Temporal Topology profile</li>
 </ul>
 
 <h4>Log Files</h4>
 <p>Each step produces detailed logs:</p>
 <ul>
-    <li><code>logs/pipeline_master.log</code> — Master pipeline execution log</li>
-    <li><code>logs/step_*.log</code> — Individual step logs (7 files)</li>
+    <li><code>logs/pipeline.log</code> — Master pipeline execution log</li>
+    <li><code>logs/step_*.log</code> — Individual step logs</li>
 </ul>
 
 <h3>Software Dependencies</h3>
@@ -352,29 +361,28 @@ python scripts/run_all.py
 </table>
 <p>All dependencies are specified in <code>requirements.txt</code>.</p>
 
-<h3>Validation & Testing</h3>
+<h3>Validation &amp; Testing</h3>
 <p>The pipeline includes comprehensive validation:</p>
 <ul>
     <li><strong>Bootstrap Resampling:</strong> n=10,000 iterations for uncertainty quantification</li>
     <li><strong>Leave-One-Out Cross-Validation:</strong> Tests robustness against single-flyby exclusion</li>
     <li><strong>Heterogeneity Assessment:</strong> Cochran's Q and I² statistics for model scatter</li>
-    <li><strong>PPN Validation:</strong> All fitted β values checked against Cassini bound |γ-1| < 2.3×10⁻⁵</li>
-    <li><strong>Minimal OD Framework:</strong> Testable framework for TEP suppression hypothesis</li>
+    <li><strong>GNSS clock correlation:</strong> The GNSS atomic clock correlation analysis provides an independent constraint on the transition radius ($R_{\rm sol} \approx 4146$ km). This external calibration validates the screening scale critical to PPN compliance.</li>
 </ul>
 
 <h3>Reproducibility Checklist</h3>
 <div class="checklist-box" style="background: #f9f9f9; padding: 1em; border: 1px solid #ddd; margin: 1em 0;">
     <p>To verify successful reproduction:</p>
     <ol>
-        <li>All 7 pipeline steps complete with "SUCCESS" status</li>
-        <li>9 JSON files in <code>data/processed/</code></li>
-        <li>3 figure files in <code>site/public/figures/</code> (PNG)</li>
-        <li>Key result: β_fitted range 8.87×10⁻⁵ to 1.98×10⁻⁴ (3 primary detections: NEAR, Galileo 1990, Rosetta 2005)</li>
-        <li>Key result: β_eff = (7.46 ± 1.46) × 10⁻⁴ with thin-shell screening</li>
-        <li>Key result: |γ-1| = 4.45×10⁻⁶ (safely below Cassini bound 2.3×10⁻⁵)</li>
-        <li>Key result: I² ≈ 100% extreme heterogeneity (supports β scatter hypotheses)</li>
+        <li>All configured pipeline steps complete with "SUCCESS" status</li>
+        <li>Primary JSON products are present in <code>results/</code></li>
+        <li>Figure files are present in <code>results/</code> (PNG)</li>
+        <li>Key result: β_fitted range $4.04 \times 10^{-4}$ to $3.22 \times 10^{-3}$ (4 primary detections: NEAR, Galileo 1990, Rosetta 2005, Cassini)</li>
+        <li>Key result: β_eff $\sim 10^{-5}$ with Temporal Topology screening</li>
+        <li>Key result: |γ-1| $\approx 10^{-8}$ (safely below Cassini bound $2.3 \times 10^{-5}$)</li>
+        <li>Key result: $I^2 \approx 100\%$ extreme heterogeneity (supports β scatter hypotheses)</li>
         <li>Key result: Altitude-anomaly correlation ρ = -0.85 (p = 0.004)</li>
-        <li>Key result: 4 missions (Galileo 1992, Cassini 1999, MESSENGER, Juno) show TEP suppression pattern</li>
+        <li>Key result: 5 missions (Galileo 1992, Rosetta 2007, Rosetta 2009, MESSENGER, Juno) show TEP suppression pattern</li>
     </ol>
 </div>
 

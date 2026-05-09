@@ -1,0 +1,42 @@
+{
+  "model_type": "variance_decomposition_anova",
+  "anova_table": {
+    "variance_sources": [
+      {
+        "source": "TEP scaling model (\u03b2\u2080)",
+        "model_term": "beta_0",
+        "prior": "log-normal centered at 1.0",
+        "posterior_contribution_pct": 18.951697145644484,
+        "uncertainty_ci_pct": null
+      },
+      {
+        "source": "OD absorption (F_OD)",
+        "model_term": "f_od",
+        "prior": "mission-specific from step 035",
+        "posterior_contribution_pct": 0.0,
+        "n_actual": 0,
+        "n_placeholder": 4,
+        "uncertainty_ci_pct": null
+      },
+      {
+        "source": "Plasma environment (F_plasma)",
+        "model_term": "f_plasma",
+        "prior": "Chapman layer from step 034",
+        "posterior_contribution_pct": 0.0,
+        "n_actual": 4,
+        "n_placeholder": 0,
+        "uncertainty_ci_pct": null
+      },
+      {
+        "source": "Residual (\u03b5_i)",
+        "model_term": "epsilon",
+        "prior": "Gaussian",
+        "posterior_contribution_pct": 81.04830285435551,
+        "uncertainty_ci_pct": null
+      }
+    ],
+    "total_variance_explained": 18.951697145644484,
+    "residual_variance_pct": 81.04830285435551,
+    "notes": "F_OD: 0/4 actual, F_plasma: 4/4 actual"
+  }
+}

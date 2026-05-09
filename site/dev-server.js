@@ -16,6 +16,16 @@ class DevServer {
         this.port = 51738; // Unique port for TEP-EFA
     }
 
+    async killPort() {
+        try {
+            const { execSync } = require('child_process');
+            const cmd = `lsof -ti :${this.port} | xargs kill -9 2>/dev/null || true`;
+            execSync(cmd);
+        } catch (e) {
+            // Port was free or command failed silently
+        }
+    }
+
     async startLiveServer() {
         console.log('🚀 Starting live server...');
         if (this.liveServerProcess) this.liveServerProcess.kill();
@@ -46,6 +56,7 @@ class DevServer {
 
     async start() {
         console.log('\n🎯 TEP-EFA Development Server\n');
+        await this.killPort();
         const distDir = path.join(__dirname, 'dist');
         if (!fs.existsSync(distDir)) fs.mkdirSync(distDir, { recursive: true });
         await this.build();

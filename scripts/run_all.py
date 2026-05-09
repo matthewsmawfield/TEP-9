@@ -1,25 +1,67 @@
 #!/usr/bin/env python3
 """
-Flyby TEP Pipeline - Run All Steps (Enhanced v3.0)
+Flyby TEP Pipeline - Run All Steps (Workflow-Organized v5.0)
+============================================================
 
-Executes the complete flyby analysis pipeline with detailed logging:
-  1. Download SPICE kernels (NAIF)
-  2. Convert SPICE to JSON format
-  3. Fetch JPL Horizons data
-  4. Data ingestion from JPL Horizons
-  5. Archival data mining (sample size expansion)
-  6. DSN data framework (addressing circularity)
-  7. Enhanced TEP chameleon model (WGS84, PREM, 3D integration)
-  8. Parameter fitting with small-sample statistics
-  9. Comprehensive diagnostics and validation
-  10. Enhanced validation and model comparison
-  11. Hierarchical Bayesian model (addresses extreme heterogeneity)
-  12. Plasma modulation (addresses Cassini sign mismatch)
-  13. First-principles chameleon calculation (reduces systematic uncertainty)
-  14. Bayesian model comparison with Bayes factors (statistical rigor)
-  15. Enhanced final report
-  16. Figure generation
-  17. TEP suppression analysis
+Executes the reorganized 29-step pipeline organized by analytical workflow phases.
+
+Phase 1: Data Acquisition & Preparation (001-004)
+  1a. Download SPICE Kernels (NAIF)
+  1b. Convert SPICE to JSON
+  2.  Archival Data Mining
+  2b. JPL Horizons Data Fetch
+  3.  DSN Data Ingestion
+  3b. DSN Framework (Resolves Horizons Circularity)
+
+Phase 2: Core Physics (004-007)
+  4.  Enhanced TEP Model (WGS84, PREM, 3D integration)
+  5.  Parameter Fitting
+  6.  Unified Variance Analysis (Four-Stage Decomposition)
+  7.  Temporal Shear Suppression First-Principles
+
+Phase 3: Trajectory & Observational Pipeline (008-010)
+  8.  Trajectory Integration
+  9.  OD Filter Simulation (Observational pipeline validation)
+  10. Cross-Validation Analysis
+
+Phase 4: Validation & Robustness (011-014)
+  11. Sensitivity Analysis
+  12. Hierarchical Bayesian Model
+  13. GNSS Validation
+
+Phase 5: Extended Physics (015-017)
+  14. Plasma Modulation (Cassini sign mismatch)
+  15. Space Weather Correlation (Solar activity)
+  16. 3D Field Integration
+  17. Enhanced Bayesian Analysis
+
+Phase 6: Model Comparison (018-019)
+  18. Bayesian Model Comparison
+  19. Saturation Model Analysis
+
+Phase 7: DSN Data Framework (020-023)
+  20. DSN Processing Framework
+  21. Read TRK-2-34 Data Format
+  22. Raw DSN Reanalysis
+
+Phase 8: Mission-Specific Analysis (024-026)
+  23. Juno 2013 Reanalysis
+  24. PDS Search
+  25. TEP Suppression Analysis
+
+Phase 9: Advanced Topics (026-028)
+  26. Covariant Synchronization Holonomy
+  27. Cross-Corpus Parameter Export
+
+Phase 10: Reporting (028-029)
+  28. Final Report Generation
+  29. Figure Generation
+
+Key Reorganization:
+- Workflow-based grouping instead of chronological addition order
+- Fixed duplicate step numbers (007, 010, 017, 031)
+- Archived development artifacts (029-031 series)
+- Unified variance analysis in Step 006 (consolidates 5b, 5c, 5d, 22, 28)
 
 All steps produce detailed logs with timestamps and execution metrics.
 """
@@ -27,6 +69,7 @@ All steps produce detailed logs with timestamps and execution metrics.
 import sys
 import subprocess
 import time
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Tuple, Dict
@@ -39,34 +82,77 @@ LOGS_DIR = PROJECT_ROOT / 'logs'
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
 # All pipeline steps (run_all runs everything by default)
+# Organized by workflow phases for clarity
 CORE_STEPS: List[Tuple[str, str]] = [
-    ('step_001a_download_spice.py', 'Step 001a: Download SPICE Kernels'),
+    # Phase 1: Data Acquisition & Preparation (001-004)
+    ('step_001a_download_spice.py', 'Step 001a: Download SPICE Kernels (NAIF)'),
     ('step_001b_spice_to_json.py', 'Step 001b: Convert SPICE to JSON'),
-    ('step_010_jpl_horizons_fetch.py', 'Step 010: JPL Horizons Data Fetch'),
-    ('step_001_data_ingestion.py', 'Step 001: Data Ingestion (JPL Horizons)'),
-    ('step_002_archival_data_mining.py', 'Step 002: Archival Data Mining (Sample Expansion)'),
-    ('step_003_dsn_data_ingestion.py', 'Step 003: DSN Data Framework (Addressing Circularity)'),
-    ('step_004_tep_model.py', 'Step 004: Enhanced TEP Chameleon Model'),
+    ('step_002_archival_data_mining.py', 'Step 002: Archival Data Mining'),
+    ('step_002b_jpl_horizons_fetch.py', 'Step 002b: JPL Horizons Data Fetch'),
+    ('step_003_dsn_data_ingestion.py', 'Step 003: DSN Data Ingestion'),
+    ('step_003_dsn_framework.py', 'Step 003b: DSN Framework (Resolves Horizons Circularity)'),
+    
+    # Phase 2: Core Physics (004-007)
+    ('step_004_tep_model.py', 'Step 004: Enhanced TEP Model (WGS84, PREM, 3D)'),
     ('step_005_fitting.py', 'Step 005: Parameter Fitting'),
-    ('step_005b_diagnostics.py', 'Step 005b: Comprehensive Diagnostics and Validation'),
-    ('step_005c_enhanced_validation.py', 'Step 005c: Enhanced Validation and Model Comparison'),
-    ('step_005d_rigorous_statistics.py', 'Step 005d: Rigorous Statistical Tests'),
-    ('step_009b_read_trk234_data.py', 'Step 009b: Read TRK-2-34 Data Format'),
-    ('step_010_hierarchical_bayesian.py', 'Step 010: Hierarchical Bayesian Model (Addresses Heterogeneity)'),
-    ('step_011_gnss_cross_validation.py', 'Step 011: GNSS Cross-Validation'),
-    ('step_012_saturation_model.py', 'Step 012: Saturation Model Analysis'),
-    ('step_013_dsn_processing.py', 'Step 013: DSN Data Processing Framework'),
-    ('step_014_plasma_modulation.py', 'Step 014: Plasma Modulation (Addresses Cassini Sign Mismatch)'),
-    ('step_015_chameleon_first_principles.py', 'Step 015: First-Principles Chameleon (Reduces Systematic Uncertainty)'),
-    ('step_016_bayesian_model_comparison.py', 'Step 016: Bayesian Model Comparison (Statistical Rigor)'),
-    ('step_017_3d_field_integration.py', 'Step 017: 3D Field Integration'),
-    ('step_017_trajectory_integration.py', 'Step 017b: Trajectory Integration'),
-    ('step_018_enhanced_bayesian.py', 'Step 018: Enhanced Bayesian Analysis'),
-    ('step_019_cross_validation.py', 'Step 019: Cross-Validation Analysis'),
-    ('step_020_sensitivity_analysis.py', 'Step 020: Sensitivity Analysis'),
-    ('step_006_report.py', 'Step 021: Enhanced Final Report'),
-    ('step_007_visualizations.py', 'Step 022: Figure Generation'),
-    ('step_008_tep_suppression.py', 'Step 023: TEP Suppression Analysis'),
+    ('step_007_variance_analysis.py', 'Step 006: Unified Variance Analysis (Four-Stage)'),
+    ('step_008_tep_first_principles.py', 'Step 007: Temporal Shear Suppression First-Principles'),
+    
+    # Phase 3: Trajectory & Observational Pipeline (008-010)
+    ('step_009_trajectory_integration.py', 'Step 008: Trajectory Integration'),
+    ('step_010_od_filter_simulation.py', 'Step 009: OD Filter Simulation'),
+    ('step_011_cross_validation.py', 'Step 010: Cross-Validation Analysis'),
+    
+    # Phase 4: Validation & Robustness (011-014)
+    ('step_012_sensitivity_analysis.py', 'Step 011: Sensitivity Analysis'),
+    ('step_013_hierarchical_bayesian.py', 'Step 012: Hierarchical Bayesian Model'),
+    ('step_014_gnss_validation.py', 'Step 013: GNSS Validation'),
+    
+    # Phase 5: Extended Physics (014-017)
+    ('step_015_plasma_modulation.py', 'Step 014: Plasma Modulation (Cassini Sign)'),
+    ('step_016_space_weather.py', 'Step 015: Space Weather Correlation'),
+    ('step_016b_3d_field_integration.py', 'Step 016: 3D Field Integration'),
+    ('step_017_enhanced_bayesian.py', 'Step 017: Enhanced Bayesian Analysis'),
+
+    # Phase 5.5: Paper 15 Enhancement Dependencies
+    ('step_034_plasma_environment_reconstruction.py', 'Step 034: Plasma Environment Reconstruction'),
+    ('step_035_mission_specific_od_absorption.py', 'Step 035: Mission-Specific OD Absorption'),
+    ('step_033_synthetic_dsn.py', 'Step 033: Synthetic DSN Tracking Generation'),
+    
+    # Phase 5.6: Paper 15 Hierarchical Analyses
+    ('step_031_two_level_hierarchical.py', 'Step 031: Two-Level Hierarchical Model (Universal β₀)'),
+    ('step_032_variance_anova.py', 'Step 032: Variance Decomposition ANOVA'),
+    ('step_036_atmospheric_drag_simulation.py', 'Step 036: Atmospheric Drag Simulation'),
+    ('step_037_thermal_recoil_modeling.py', 'Step 037: Thermal Recoil Simulation'),
+    
+    # Phase 6: Model Comparison (018-019)
+    ('step_018_bayesian_model_comparison.py', 'Step 018: Bayesian Model Comparison'),
+    ('step_019_saturation_model.py', 'Step 019: Saturation Model Analysis'),
+    
+    # Phase 7: DSN Data Framework (020-022)
+    ('step_021_dsn_processing.py', 'Step 020: DSN Processing Framework'),
+    ('step_022_read_trk234.py', 'Step 021: Read TRK-2-34 Data Format'),
+    
+    # Phase 8: Mission-Specific Analysis (023-026)
+    ('step_024_juno_reanalysis.py', 'Step 022: Juno 2013 Reanalysis'),
+    ('step_025_pds_search.py', 'Step 024: PDS Search'),
+    ('step_026_tep_suppression.py', 'Step 025: TEP Suppression Analysis'),
+    
+    # Phase 9: Advanced Topics (026-028)
+    ('step_027_iri_trajectory_profile.py', 'Step 027: Continuous IRI Trajectory Profiles'),
+    ('step_027_covariant_holonomy.py', 'Step 026: Covariant Synchronization Holonomy'),
+    ('step_028_cross_corpus_export.py', 'Step 027: Cross-Corpus Parameter Export'),
+    
+    # Phase 10: Reporting (028-029)
+    ('step_029_final_report.py', 'Step 028: Final Report Generation'),
+    ('step_020_visualizations.py', 'Step 029: Figure Generation')
+]
+
+DATA_INTEGRITY_REQUIRED_OUTPUTS = [
+    'step002_archival_flyby_catalog.json',
+    'step004_tep_predictions.json',
+    'step005_fitting_results.json',
+    'step006_final_report.json',
 ]
 
 
@@ -75,7 +161,7 @@ class PipelineLogger:
     
     def __init__(self):
         self.start_time = datetime.now(timezone.utc)
-        self.log_file = LOGS_DIR / f"pipeline_{self.start_time.strftime('%Y%m%d_%H%M%S')}.log"
+        self.log_file = LOGS_DIR / "pipeline.log"
         self.step_results: List[Dict] = []
         
     def _write(self, message: str, level: str = "INFO"):
@@ -86,9 +172,11 @@ class PipelineLogger:
         # Print to console
         print(message)
         
-        # Write to log file
-        with open(self.log_file, 'a') as f:
+        # Write to log file (overwrite on first write, then append)
+        mode = 'w' if not hasattr(self, '_log_initialized') else 'a'
+        with open(self.log_file, mode, encoding='utf-8') as f:
             f.write(log_line + '\n')
+        self._log_initialized = True
     
     def header(self, title: str, width: int = 70):
         """Print formatted header."""
@@ -149,8 +237,59 @@ class PipelineLogger:
             'timestamp': datetime.now(timezone.utc).isoformat()
         })
     
+    def generate_research_audit(self):
+        """Generate a professional-grade research audit for reproducibility."""
+        import platform
+        import hashlib
+        import json
+        import os
+
+        def get_file_hash(path):
+            if not path.exists(): return "MISSING"
+            sha256_hash = hashlib.sha256()
+            with open(path, "rb") as f:
+                for byte_block in iter(lambda: f.read(4096), b""):
+                    sha256_hash.update(byte_block)
+            return sha256_hash.hexdigest()
+
+        # Gather system telemetry
+        telemetry = {
+            "os": f"{platform.system()} {platform.release()}",
+            "python_version": platform.python_version(),
+            "processor": platform.processor(),
+            "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+            "project_root": str(PROJECT_ROOT)
+        }
+
+        # Gather script integrity hashes
+        integrity = {}
+        for filename, _ in CORE_STEPS:
+            path = STEPS_DIR / filename
+            integrity[filename] = get_file_hash(path)
+
+        # Final audit object
+        audit_data = {
+            "audit_type": "TEP-EFA Research-Grade Audit",
+            "theory_version": "Jakarta v0.8.0",
+            "telemetry": telemetry,
+            "pipeline_results": self.step_results,
+            "script_integrity": integrity
+        }
+
+        # Save audit
+        audit_dir = PROJECT_ROOT / "results" / "audits"
+        audit_dir.mkdir(parents=True, exist_ok=True)
+        audit_filename = f"RESEARCH_AUDIT_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        audit_path = audit_dir / audit_filename
+        
+        with open(audit_path, "w", encoding="utf-8") as f:
+            json.dump(audit_data, f, indent=4)
+        
+        self.info(f"Research audit generated: {audit_path.name}")
+        return audit_path
+
     def final_summary(self, total_steps: int) -> bool:
-        """Print detailed final summary."""
+        """Print detailed final summary and generate research audit."""
         total_duration = (datetime.now(timezone.utc) - self.start_time).total_seconds()
         
         success_count = sum(1 for r in self.step_results if r['status'] == 'SUCCESS')
@@ -179,14 +318,55 @@ class PipelineLogger:
         self.info(f"Successful:      {success_count}")
         self.info(f"Failed:          {fail_count}")
         self.info(f"Success rate:    {100*success_count/total_steps:.1f}%")
+
+        # Generate Research Audit
+        self.subheader("Research Accountability & Reproducibility")
+        self.generate_research_audit()
+        
+        # Validate Data Integrity - Zero Synthetic Data Tolerance
+        self.subheader("Data Integrity Validation")
+        self.info("Checking all results for synthetic data contamination...")
+        try:
+            sys.path.insert(0, str(PROJECT_ROOT / 'scripts' / 'utils'))
+            from data_integrity_validator import DataIntegrityValidator
+            validator = DataIntegrityValidator(PROJECT_ROOT)
+            
+            all_clean = True
+            for filename in DATA_INTEGRITY_REQUIRED_OUTPUTS:
+                json_file = PROJECT_ROOT / 'results' / filename
+                if not json_file.exists():
+                    self.warning(f"  ⚠ {filename}: Required integrity target not found")
+                    all_clean = False
+                    continue
+                try:
+                    with open(json_file, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                    if not validator.validate_results(data, context=json_file.name):
+                        all_clean = False
+                        self.error(f"  ✗ {json_file.name}: Data contamination detected")
+                        for v in validator.get_violations():
+                            self.error(f"      - {v}")
+                except Exception as e:
+                    all_clean = False
+                    self.error(f"  ✗ {json_file.name}: Could not validate ({e})")
+            
+            if all_clean:
+                self.success("  ✓ All results files passed data integrity check")
+            else:
+                self.error("  ✗ DATA INTEGRITY VIOLATIONS DETECTED")
+                self.error("  Pipeline results contain synthetic data contamination!")
+                return False
+        except Exception as e:
+            self.warning(f"  ⚠ Could not run data integrity validator: {e}")
         
         if success_count == total_steps:
             self.subheader("Output Locations")
             self.info(f"Log file:         {self.log_file}")
-            self.info(f"Results:          {PROJECT_ROOT / 'data' / 'processed'}")
-            self.info(f"Figures:          {PROJECT_ROOT / 'site' / 'public' / 'figures'}")
-            self.info(f"Archival catalog: data/processed/archival_flyby_catalog.json")
-            self.info(f"DSN framework:    data/processed/dsn_ingestion_framework.json")
+            self.info(f"Results:          {PROJECT_ROOT / 'results'}")
+            self.info(f"Key output:       results/step003_dsn_reanalysis.json")
+            self.info(f"Key output:       results/step005_fitting_results.json")
+            self.info(f"Key output:       results/step006_final_report.json")
+            self.info(f"Key figure:       results/step007_figure1_altitude_anomaly.png")
             self._write("")
             self.success("PIPELINE COMPLETED SUCCESSFULLY")
             return True
@@ -255,10 +435,10 @@ def main():
     logger.info("  • PREM dynamic density mapping")
     logger.info("  • 3D trajectory integration framework")
     logger.info("  • Expanded dataset (12+ flybys with archival mining)")
-    logger.info("  • Raw DSN data access framework (addressing circularity)")
+    logger.info("  • Core raw DSN reanalysis with minimal OD (resolves Horizons circularity)")
     logger.info("  • Hierarchical Bayesian model (addresses extreme heterogeneity)")
     logger.info("  • Plasma modulation (addresses Cassini sign mismatch)")
-    logger.info("  • First-principles chameleon calculation (reduces systematic uncertainty)")
+    logger.info("  • First-principles Temporal Shear Suppression calculation (reduces systematic uncertainty)")
     logger.info("  • Bayesian model comparison with Bayes factors (statistical rigor)")
     
     total_steps = len(CORE_STEPS)

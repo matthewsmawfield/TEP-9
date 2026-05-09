@@ -214,7 +214,7 @@ def query_trajectory(name, jpl_id, flyby_date, days_window=2, logger=None):
     
     Note: These ephemerides include the anomaly effects - they are the
     "observed" trajectories, not theoretical predictions. The anomaly
-    values we use come from separate Doppler tracking analysis.
+    values used come from separate Doppler tracking analysis.
     
     Parameters
     ----------
@@ -351,7 +351,7 @@ def load_existing_trajectory(name, info, output_dir, logger=None):
         return None
     
     try:
-        with open(trajectory_file, 'r') as f:
+        with open(trajectory_file, 'r', encoding='utf-8') as f:
             trajectory = json.load(f)
         
         if logger:
@@ -435,7 +435,7 @@ def main():
         logger.info(f"Anomaly: {info['dv_obs_mm_s']} ± {info['dv_unc_mm_s']} mm/s")
         logger.info(f"Reference: {info['primary_reference']}")
         
-        # First, check if we have an existing trajectory file (e.g., from SPICE)
+        # First, check for an existing trajectory file (e.g., from SPICE)
         traj = load_existing_trajectory(name, info, output_dir, logger)
         if traj:
             results[name] = traj
@@ -465,7 +465,7 @@ def main():
                 
                 # Save individual trajectory
                 output_file = output_dir / f'{name}_trajectory.json'
-                with open(output_file, 'w') as f:
+                with open(output_file, 'w', encoding='utf-8') as f:
                     json.dump(traj, f, indent=2)
                 logger.success(f"Saved: {output_file.name}")
                 logger.add_output_file(output_file, f"{name} trajectory JSON")
@@ -531,7 +531,7 @@ def main():
     }
     
     manifest_file = output_dir / 'step001_manifest.json'
-    with open(manifest_file, 'w') as f:
+    with open(manifest_file, 'w', encoding='utf-8') as f:
         json.dump(manifest, f, indent=2)
     logger.success(f"Manifest saved: {manifest_file.name}")
     logger.add_output_file(manifest_file, "Acquisition manifest with provenance")
@@ -564,6 +564,17 @@ def main():
     logger.info("  detected by this pipeline. Raw DSN data requires NASA/ESA archive")
     logger.info("  access and specialized orbit determination software.")
     
+    # Check if any significant flybys failed
+    significant_failed = []
+    for name, info in FLYBY_CATALOG.items():
+        if name not in results and info.get('dv_obs_mm_s', 0) > 1.0:
+            significant_failed.append(name)
+    
+    if significant_failed:
+        logger.error(f"CRITICAL: Failed to acquire data for significant flybys: {significant_failed}")
+        logger.log_step_summary(duration, "FAILED")
+        return 1
+
     if successful_queries == len(FLYBY_CATALOG):
         logger.success("All spacecraft trajectories successfully acquired")
         logger.success("Rosetta 2005/2007: ESA SPICE Service / ESOC Flight Dynamics")

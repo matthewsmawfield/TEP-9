@@ -47,7 +47,7 @@ class JPLHorizonsQuery:
 
     def compose(self, fname):
         """Compile CGI GET parameters from file"""
-        with open(fname) as pfile:
+        with open(fname, 'r', encoding='utf-8') as pfile:
             query = [self.encode(line.strip()) if '$$' not in line else ''
                      for line in pfile]
         return '&'.join(query)
@@ -55,7 +55,7 @@ class JPLHorizonsQuery:
     def fetch(self, qfname):
         """Fetch data from the JPL/Horizons server, using query parameters from file"""
         query = self.compose(qfname)
-        req = requests.get(self._url, params=self._pfx + query)
+        req = requests.get(self._url, params=self._pfx + query, timeout=30)
 
         if req.status_code != 200:
             raise QueryError("Unexpected response status: {}".format(req.status_code))

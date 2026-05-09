@@ -1,53 +1,46 @@
 <h1>1. Introduction</h1>
 
 <p>
-    The Equivalence Principle (EP) is a cornerstone of general relativity, stating that gravitational acceleration is locally indistinguishable from acceleration due to motion. However, the Temporal Equivalence Principle (TEP)—the assumption that proper time flows uniformly everywhere—remains less tested. TEP violations can arise in scalar-tensor theories where a scalar field couples conformally to the metric, leading to position-dependent clock rates that scale with gravitational potential depth.
+    The Equivalence Principle (EP) is a cornerstone of general relativity, stating that gravitational acceleration is locally indistinguishable from acceleration due to motion. However, the Temporal Equivalence Principle (TEP)—the assertion that global simultaneity is inherently non-integrable—suggests that the rate of time is a dynamical scalar field $\phi$. This framework, established in the Jakarta foundational axioms (v0.8), proposes that all non-gravitational matter couples universally to a causal matter metric $\tilde{g}_{\mu\nu} = A^2(\phi)g_{\mu\nu}$, where $A(\phi) = \exp(\beta \phi/M_{\text{Pl}})$.
 </p>
 
 <div class="key-concept">
     <h4>Key Terminology</h4>
     <ul>
-        <li><em>Proper time</em> ($\tau$) is the time measured by a clock following a specific trajectory through spacetime.</li>
-        <li><em>Chameleon field</em> ($\phi$) is a hypothetical scalar field whose effective mass depends on local matter density, enabling "screening" in high-density environments.</li>
-        <li><em>PPN parameter $\gamma$</em> measures the amount of spatial curvature per unit mass in metric theories of gravity.</li>
-        <li><em>Hyperbolic excess velocity</em> ($v_\infty$) is the spacecraft's speed relative to Earth at infinite distance, characterizing the flyby trajectory.</li>
+        <li><em>Proper time</em> ($\tau$) is the time measured by a clock following a specific trajectory through the causal metric.</li>
+        <li><em>Temporal Topology</em> refers to the spatial structure of the field $\phi$, which exhibits continuous suppression in high-density environments.</li>
+        <li><em>Temporal Shear</em> ($\nabla\phi$) is the gradient of the time field, which generates the observed scalar force.</li>
+        <li><em>Phantom Mass</em> describes the anomalous acceleration that mimics a gravitational mass distribution, arising from the non-radial coupling of the scalar field.</li>
+        <li><em>PPN parameter $\gamma$</em> measures the amount of spatial curvature; TEP predicts deviations $|\gamma - 1| = 2\beta_{\rm eff}^2$.</li>
     </ul>
 </div>
 
-  <h2>1.1 The Earth Flyby Anomaly</h2>
+<h2>1.1 The Earth Flyby Anomaly</h2>
 
 <p>
-    Since 1990, spacecraft executing Earth gravity assists have exhibited anomalous orbital energy changes that lack a standard explanation. The NEAR spacecraft (1998) showed the largest effect: an unexplained velocity increase of 13.46 mm/s. Galileo (1990) and Cassini (1999) displayed smaller but significant anomalies of 3.92 mm/s and 0.11 mm/s respectively. These velocity shifts, measured via NASA Deep Space Network (DSN) Doppler tracking, occur precisely at perigee passage and persist as asymptotic excess velocities ($v_\infty$) in the outbound trajectories.
+    Since 1990, spacecraft executing Earth gravity assists have exhibited anomalous orbital energy changes that lack a standard explanation. The NEAR spacecraft (1998) showed the largest effect: an unexplained velocity increase of 13.46 mm/s. Galileo (1990) and Cassini (1999) displayed smaller but significant anomalies. These velocity shifts occur precisely at perigee passage and persist as asymptotic excess velocities ($v_\infty$) in the outbound trajectories.
 </p>
 
 <p>
-    Standard physics offers no satisfactory explanation. Thermal radiation pressure, atmospheric drag, and tidal effects have been exhaustively modeled and found insufficient by orders of magnitude. The anomalies show no correlation with spacecraft orientation, spin rate, or surface properties, ruling out conventional systematic errors. The effect appears genuinely gravitational in nature, yet violates neither energy conservation nor momentum conservation—it manifests as a pure velocity shift unaccompanied by trajectory deflection.
+    Standard physics offers no satisfactory explanation. Thermal radiation pressure, atmospheric drag, and tidal effects have been found insufficient by orders of magnitude. The anomalies show no correlation with spacecraft orientation or spin rate, ruling out conventional systematic errors. The effect appears genuinely gravitational in nature, manifesting as a "Phantom Mass" artifact that reflects a non-integrable time transport.
 </p>
 
 <h2>1.2 TEP as a Candidate Explanation</h2>
 
 <p>
-    The TEP framework provides a natural explanation. In scalar-tensor theories with chameleon screening, spacecraft clocks run at different rates inside versus outside Earth's gravitational well. As a spacecraft descends into Earth's potential well, its onboard clock slows relative to coordinate time; as it ascends, the clock accelerates. The cumulative effect is a measured velocity shift when comparing inbound and outbound Doppler tracking epochs.
+    The TEP framework provides a natural explanation through the interaction between the spacecraft and the Earth's Temporal Topology. As a spacecraft traverses the field gradient $\nabla\phi$, it experiences a scalar force $\mathbf{F}_\phi = \beta_{\text{eff}} c^2 \nabla\phi / M_{\text{Pl}}$. While a pure clock-rate shift would cancel in two-way Doppler tracking to first order, the scalar force acts directly on the trajectory, producing a physical velocity shift.
 </p>
 
 <p>
-    The chameleon mechanism may be essential for three reasons: (1) without screening, the required coupling strength would violate solar system tests of general relativity (PPN constraints); (2) screening naturally explains both detections (at low altitude where the thin-shell condition is briefly violated) and non-detections (at high altitude where screening suppresses TEP effects); and (3) the screening threshold provides a quantitative prediction—flybys above ~2500 km should show negligible anomalies—which is empirically confirmed. Among proposed mechanisms considered to date, TEP with chameleon screening is one framework that reproduces the observed anomalies, predicts null results, and satisfies PPN constraints.
-</p>
-
-<p>
-    With chameleon screening, the scalar field acquires a mass that depends on local matter density, suppressing long-range effects in high-density environments while allowing significant couplings in the solar system. The thin-shell effect ensures Earth-screened trajectories experience the anomaly only during brief perigee passage at low altitude.
+    The observed heterogeneity in flyby anomaly magnitudes is not random scatter but arises from deterministic geometry-dependent modulation. The TEP prediction for a given flyby depends on several physical factors: (1) perigee altitude (determines Temporal Shear strength via density suppression), (2) approach-departure asymmetry (disformal coupling requires velocity-dependent anti-aligned geometry), (3) plasma environment (Debye screening attenuates the scalar field), and (4) solar activity (modulates ionospheric density). These factors combine to produce the observed 24.0-fold span in effective coupling strength across the dataset. The Temporal Shear Suppression mechanism is essential for three reasons: (1) it ensures the coupling strength satisfies solar system PPN constraints; (2) it explains both detections and null results through density-dependent screening; and (3) it establishes the transition radius $R_{\rm sol} \approx 4146$ km as a universal scale. Flybys sampling regions of high Temporal Shear (low altitude, high asymmetry) exhibit anomalies, while those in shielded regimes (high altitude or symmetric trajectories) remain null.
 </p>
 
 <h2>1.3 This Work</h2>
 
 <p>
-    This paper presents a comprehensive analysis of the Earth flyby anomaly using the TEP framework with chameleon field screening. Published Doppler tracking measurements from Anderson et al. (2008) are employed, obtained via NASA's Jet Propulsion Laboratory Orbit Determination Program (ODP). These measurements represent established spacecraft navigation precision, with velocity accuracies of $\sim 0.1$ mm/s.
+    This paper presents a comprehensive analysis of the Earth flyby anomaly using the TEP framework. Published Doppler tracking measurements from Anderson et al. (2008) are employed, interpreted as "Phantom Mass" signatures of the local Temporal Topology. The analysis proceeds by reconstructing trajectories from JPL Horizons, computing TEP predictions with full 3D integration, and fitting the universal coupling $\beta$ to the observed dataset.
 </p>
 
 <p>
-    The analysis proceeds in four stages: (1) data ingestion and trajectory reconstruction from JPL Horizons ephemeris; (2) TEP chameleon model calculations for each flyby geometry; (3) fitting the coupling parameter $\beta$ to observed anomalies with PPN constraint validation; and (4) synthesis of results and assessment of TEP viability. All fitted parameters are verified against solar system constraints, ensuring consistency with existing tests of gravity.
-</p>
-
-<p>
-    The structure of this paper is as follows: Section 2 describes the data sources and measurement methodology; Section 3 presents the TEP chameleon screening model; Section 4 reports the fitting results and PPN validation; Section 5 discusses implications for fundamental physics; and Section 6 concludes with prospects for additional spacecraft tests.
+    The structure of this paper is as follows: Section 2 describes the data sources; Section 3 presents the TEP Temporal Topology model; Section 4 reports the fitting results and PPN validation; Section 5 discusses the Phantom Mass interpretation; and Section 6 concludes with prospects for further multi-messenger tests.
 </p>

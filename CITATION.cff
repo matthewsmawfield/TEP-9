@@ -1,46 +1,22 @@
 cff-version: 1.2.0
-title: "The Earth Flyby Anomaly: A Test of the Temporal Equivalence Principle with Chameleon Screening"
-message: "If you use this software, please cite it as below."
-type: article
+message: "If you use this work, please cite it as below."
 authors:
   - family-names: "Smawfield"
     given-names: "Matthew Lukin"
     orcid: "https://orcid.org/0009-0003-8219-3159"
-abstract: >
-  The Earth flyby anomaly—unexplained velocity shifts during spacecraft gravity assists—remains an open problem in gravitational physics. This study tests whether the Temporal Equivalence Principle (TEP), incorporating chameleon field screening, provides a quantitative explanation for these anomalous velocity changes.
-
-  Using published Doppler tracking measurements from twelve Earth flyby events spanning nine spacecraft (Galileo 1990/1992, NEAR, Cassini, Rosetta 2005/2007/2009, MESSENGER, Juno, Stardust, OSIRIS-REx, BepiColombo), the TEP coupling parameter β is fitted to the observed velocity anomalies. The TEP model successfully reproduces three significant detections—NEAR (13.46 ± 0.01 mm/s), Galileo 1990 (3.92 ± 0.03 mm/s), and Cassini (0.11 ± 0.05 mm/s)—with fitted β values ranging from 10⁻⁹ to 10⁻⁷. All fitted parameters satisfy solar system PPN constraints (|γ − 1| < 2.3 × 10⁻⁵). The weighted mean β = (1.65 ± 0.42) × 10⁻⁷ provides a consistent explanation across multiple spacecraft geometries. Seven null-result flybys at higher altitudes are correctly predicted by the screening mechanism.
-
-  Bootstrap (n=10,000) and leave-one-out cross-validation confirm the stability of the fitted parameters. The TEP framework provides a unified explanation for both positive detections and null results through the density-dependent chameleon screening mechanism, offering a testable alternative to conventional gravitational physics.
-version: 0.1
-date-released: 2026-04-07
+title: "Temporal Equivalence Principle: Synchronization Holonomy in the Earth Flyby Anomaly"
+abstract: "Four detected and eight null-result Earth gravity assist flybys spanning nine spacecraft (1990–2020) are analyzed within the Temporal Equivalence Principle (TEP) framework, a covariant scalar-tensor extension of general relativity that elevates proper time to a dynamical field phi. Measurements from NASA Deep Space Network (DSN) X-band Doppler tracking achieve velocity precision of ~0.1 mm/s, with the NEAR flyby reaching 0.01 mm/s precision. The TEP scalar force model predicts that a fifth force F = beta_eff c^2 nabla_phi / M_Pl, modulated by Earth's oblate J2 potential and Temporal Shear suppression, produces velocity anomalies during low-altitude gravity assists. Synchronization Holonomy Integration—treating the TEP holonomy as a non-integrable path observable with velocity-dependent disformal coupling—resolves the conservative-field cancellation and fits all four primary detections (NEAR, Galileo 1990, Rosetta 2005, Cassini) with PPN-compliant coupling parameters. The fitted beta values span a factor of 7.8 (3.89e-4 to 3.03e-3), reflecting geometry-dependent modulation from trajectory inclination, altitude, plasma environment, and velocity effects. Null results are explained by trajectory symmetry (Galileo 1992, MESSENGER) and high altitude (Stardust, OSIRIS-REx, BepiColombo). The Juno null result remains an open tension; mock Extended Kalman Filter simulations suggest that modern orbit determination may absorb small anomalous signals into empirical acceleration parameters (simulated absorption: 97.3%), providing a falsifiable prediction for raw DSN data re-analysis. All fitted effective couplings satisfy the Cassini PPN bound with safety margins exceeding 2×, and the SCF-derived characteristic suppression factor (Delta R/R = 0.35) is computed from first-principles integration of the chameleon field equation over Earth's PREM density profile."
+version: "v0.1 (Yogyakarta)"
+date-released: 2026-05-10
+doi: 10.5281/zenodo.19454863
+url: "https://github.com/matthewsmawfield/TEP-EFA"
 license: CC-BY-4.0
 keywords:
   - Earth flyby anomaly
+  - Temporal Equivalence Principle
+  - chameleon field
   - spacecraft navigation
-  - chameleon screening
   - modified gravity
-  - scalar-tensor gravity
-  - temporal equivalence principle
-  - TEP
-  - gravity assists
-repository-code: "https://github.com/matthewsmawfield/TEP-3I"
-url: "https://github.com/matthewsmawfield/TEP-3I"
-doi: 10.5281/zenodo.19446029
-
-preferred-citation:
-  type: article
-  title: "The Earth Flyby Anomaly: A Test of the Temporal Equivalence Principle with Chameleon Screening (Yogyakarta v0.1)"
-  authors:
-    - family-names: Smawfield
-      given-names: Matthew Lukin
-      orcid: "https://orcid.org/0009-0003-8219-3159"
-  year: 2026
-  journal: Zenodo
-  doi: 10.5281/zenodo.19446029
-  identifiers:
-  - type: doi
-    value: 10.5281/zenodo.19446029
-    description: Pre-print DOI
-  url: "https://doi.org/10.5281/zenodo.19446029"
-  notes: "Preprint v0.1 (Yogyakarta)"
+  - dark energy
+  - gravitational screening
+  - PPN constraints

@@ -120,7 +120,7 @@ class JPLHorizonsProcessor:
 
     def load(self, dname):
         """Load server response data file for processing"""
-        with open(dname) as dfile:
+        with open(dname, 'r', encoding='utf-8') as dfile:
             resp = dfile.read()
         output = StringIO()
         self.normalize(self.parse(resp)).to_csv(output, sep='\t')
@@ -143,7 +143,7 @@ class JPLHorizonsProcessor:
         }
         
         # Save to JSON
-        with open(output_file, 'w') as f:
+        with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(result, f, indent=2)
         
         return result

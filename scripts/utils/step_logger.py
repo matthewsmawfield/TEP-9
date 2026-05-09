@@ -11,9 +11,11 @@ Each log entry is prefixed with the step number for easy filtering and tracing.
 import logging
 import sys
 import re
+import json
+import hashlib
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Dict, List, Any
 
 
 def extract_step_number(step_name: str) -> str:
@@ -23,15 +25,18 @@ def extract_step_number(step_name: str) -> str:
 
 
 class StepPrefixFormatter(logging.Formatter):
-    """Custom formatter that adds step number prefix to all log messages."""
+    """Custom formatter that adds step number prefix to log messages (except those with existing tags)."""
     
     def __init__(self, step_number: str, fmt=None, datefmt=None):
         super().__init__(fmt, datefmt)
         self.step_number = step_number
     
     def format(self, record):
-        # Add step number prefix to the message
-        record.msg = f"[STEP {self.step_number}] {record.msg}"
+        # Only add step prefix if message doesn't already start with a tag
+        # This prevents duplicate tags like [STEP 005] [CALC-005-0001]
+        msg = str(record.msg)
+        if not msg.startswith('['):
+            record.msg = f"[STEP {self.step_number}] {msg}"
         return super().format(record)
 
 
@@ -57,13 +62,23 @@ class StepLogger:
         self.logs_dir = project_root / 'logs'
         self.logs_dir.mkdir(parents=True, exist_ok=True)
         
-        # Create log file with timestamp
-        timestamp = datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')
-        self.log_file = self.logs_dir / f"{step_name}_{timestamp}.log"
+        # Create log file (overwrites on each run)
+        self.log_file = self.logs_dir / f"{step_name}.log"
         
         # Track output files
         self.output_files = []
         self.calculation_counter = 0
+        
+        # Track data provenance
+        self.data_provenance = {
+            'step_name': step_name,
+            'step_number': self.step_number,
+            'timestamp': datetime.now(timezone.utc).isoformat(),
+            'input_files': [],
+            'output_files': [],
+            'parameters': {},
+            'dependencies': []
+        }
         
         # Configure logging
         self._setup_logging()
@@ -226,12 +241,69 @@ class StepLogger:
     
     def add_output_file(self, file_path: Path, description: str = ""):
         """Register an output file created by this step."""
-        self.output_files.append({
+        file_info = {
             'path': str(file_path),
             'description': description,
             'size_bytes': file_path.stat().st_size if file_path.exists() else 0
+        }
+        self.output_files.append(file_info)
+        self.data_provenance['output_files'].append({
+            'path': str(file_path),
+            'description': description,
+            'size_bytes': file_info['size_bytes'],
+            'hash': self._compute_file_hash(file_path) if file_path.exists() else None
         })
         self.logger.info(f"  Output: {file_path.name} ({description})")
+    
+    def track_input_file(self, file_path: Path, description: str = "", source_step: str = None):
+        """Track an input file used by this step for provenance."""
+        file_info = {
+            'path': str(file_path),
+            'description': description,
+            'size_bytes': file_path.stat().st_size if file_path.exists() else 0,
+            'source_step': source_step
+        }
+        self.data_provenance['input_files'].append(file_info)
+        self.logger.debug(f"PROVENANCE: Input file {file_path.name} from {source_step if source_step else 'external'}")
+    
+    def track_parameter(self, param_name: str, value, source: str = "default"):
+        """Track a parameter used in this step for provenance."""
+        self.data_provenance['parameters'][param_name] = {
+            'value': str(value),
+            'source': source
+        }
+        self.logger.debug(f"PROVENANCE: Parameter {param_name} = {value} (source: {source})")
+    
+    def track_dependency(self, dependency_step: str, dependency_type: str = "data"):
+        """Track a dependency on another step."""
+        self.data_provenance['dependencies'].append({
+            'step': dependency_step,
+            'type': dependency_type
+        })
+        self.logger.debug(f"PROVENANCE: Dependency on {dependency_step} ({dependency_type})")
+    
+    def _compute_file_hash(self, file_path: Path) -> str:
+        """Compute SHA256 hash of a file for integrity verification."""
+        if not file_path.exists():
+            return None
+        sha256_hash = hashlib.sha256()
+        with open(file_path, "rb") as f:
+            for byte_block in iter(lambda: f.read(4096), b""):
+                sha256_hash.update(byte_block)
+        return sha256_hash.hexdigest()
+    
+    def save_provenance(self):
+        """Save data provenance information to a JSON file."""
+        provenance_dir = self.project_root / 'results' / 'provenance'
+        provenance_dir.mkdir(parents=True, exist_ok=True)
+        
+        provenance_file = provenance_dir / f"{self.step_name}_provenance.json"
+        
+        with open(provenance_file, 'w') as f:
+            json.dump(self.data_provenance, f, indent=2)
+        
+        self.logger.info(f"Provenance data saved to {provenance_file}")
+        return provenance_file
     
     def log_output_summary(self):
         """Log summary of all output files."""
@@ -262,6 +334,43 @@ class StepLogger:
         self.log_output_summary()
         self.logger.info("=" * 80)
         self.logger.info(f"STEP {self.step_number} COMPLETE: {status}")
+        
+        # Save data provenance
+        self.save_provenance()
+        
+        # Generate executive summary at end of log file
+        self._write_executive_summary(duration_seconds, status)
+    
+    def _write_executive_summary(self, duration_seconds: float, status: str):
+        """Write executive summary to end of log file for quick review."""
+        duration_str = f"{duration_seconds:.2f}s" if duration_seconds < 60 else f"{duration_seconds/60:.2f}m"
+        
+        summary_lines = [
+            "",
+            "=" * 80,
+            "EXECUTIVE SUMMARY",
+            "=" * 80,
+            f"Step: {self.step_name} (Step {self.step_number})",
+            f"Status: {status}",
+            f"Duration: {duration_str}",
+            f"Calculations: {self.calculation_counter}",
+            f"Output Files: {len(self.output_files)}",
+        ]
+        
+        if self.output_files:
+            summary_lines.append("Key Outputs:")
+            for output in self.output_files:
+                path = Path(output['path'])
+                size_kb = output['size_bytes'] / 1024
+                summary_lines.append(f"  - {path.name} ({size_kb:.2f} KB)")
+        
+        summary_lines.append("=" * 80)
+        
+        # Append to log file
+        with open(self.log_file, 'a') as f:
+            for line in summary_lines:
+                timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
+                f.write(f"[{timestamp} UTC] [INFO    ] [STEP {self.step_number}] {line}\n")
     
     def data_load(self, file_path: Path, description: str = ""):
         """Log data loading operation."""

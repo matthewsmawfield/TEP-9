@@ -11,39 +11,37 @@ Addresses Model Incompleteness weakness:
 
 import numpy as np
 from dataclasses import dataclass
-from typing import Tuple, List, Optional, Callable
+from typing import Tuple, List, Optional, Callable, Dict, Any
 from scipy.integrate import solve_ivp
 
-# Physical constants
-M_PL = 2.435e18  # GeV
-C_LIGHT = 2.998e8  # m/s
-G_NEWTON = 6.674e-11  # m^3 kg^-1 s^-2
-R_EARTH = 6.371e6  # m (equatorial radius)
-R_EARTH_POLAR = 6.357e6  # m (polar radius)
-M_EARTH = 5.972e24  # kg
-KG_M3_TO_GEV4 = 1.17e-22  # kg/m^3 to GeV^4
-J2_EARTH = 0.00108263  # Earth's dynamical oblateness
-J3_EARTH = -0.00000254  # Earth's pear-shaped coefficient
-J4_EARTH = -0.00000161  # Earth's higher order harmonic
-OMEGA_EARTH = 7.2921159e-5  # rad/s (Earth rotation rate)
+# Standardized Physics constants for Jakarta v0.8
+from scripts.utils.physics import (
+    C_LIGHT, G_NEWTON, R_EARTH, M_EARTH, J2_EARTH, M_PL_GEV as M_PL,
+    BETA_BASELINE, get_tep_metadata
+)
+
+# Conversion factors
+KG_M3_TO_GEV4 = 4.318e-21  # kg/m^3 to GeV^4 conversion factor
+OMEGA_EARTH = 7.2921159e-5  # Earth rotation rate [rad/s]
 
 
 @dataclass
 class EarthGeoidModel:
     """
-    Earth geoid model with oblateness and density structure.
+    Standardized Earth Geoid and Density Structure Model.
     
-    Uses WGS84 ellipsoid parameters and PREM (Preliminary Reference
-    Earth Model) density structure for interior density mapping.
+    This class implements the geodetic and geophysical parameters used for
+    mapping the Temporal Topology field near Earth, incorporating the
+    WGS84 ellipsoid and PREM density profile.
     """
     
     # WGS84 ellipsoid parameters
-    a_equatorial: float = 6.378137e6  # m
+    a_equatorial: float = R_EARTH
     b_polar: float = 6.3567523142e6  # m
     flattening: float = 1 / 298.257223563
     
-    # Gravitational harmonics (EGM2008 model)
-    J2: float = 1.08263e-3
+    # Gravitational harmonics (EGM2008 reference)
+    J2: float = J2_EARTH
     J3: float = -2.54e-6
     J4: float = -1.61e-6
     
@@ -206,17 +204,21 @@ class EarthGeoidModel:
         P3 = 0.5 * (5 * np.cos(theta)**3 - 3 * np.cos(theta))
         dP3 = 1.5 * np.sin(theta) * (1 - 5 * np.cos(theta)**2)
         
-        # Radial gravitational acceleration
+        # Radial gravitational acceleration (spherical + J2 + J3 + J4)
+        P4 = 0.125 * (35 * np.cos(theta)**4 - 30 * np.cos(theta)**2 + 3)
         g_r = -mu / r**2 * (
             1
             - 3 * self.J2 * (self.a_equatorial / r)**2 * P2
             - 4 * self.J3 * (self.a_equatorial / r)**3 * P3
+            - 5 * self.J4 * (self.a_equatorial / r)**4 * P4
         )
         
         # Tangential (meridional) component
+        dP4 = 2.5 * np.sin(theta) * (3 * np.cos(theta) - 7 * np.cos(theta)**3)
         g_theta = -mu / r**2 * (
             self.J2 * (self.a_equatorial / r)**2 * dP2
             + self.J3 * (self.a_equatorial / r)**3 * dP3
+            + self.J4 * (self.a_equatorial / r)**4 * dP4
         )
         
         # Convert to Cartesian
@@ -334,30 +336,30 @@ class EarthDensityModel:
             # Above surface: exponential atmosphere
             return self.RHO_ATM_SEA_LEVEL * np.exp(-alt / 8500)
     
-    def local_screening_threshold(self, x: float, y: float, z: float) -> float:
+    def local_temporal_topology_threshold(self, x: float, y: float, z: float) -> float:
         """
-        Compute local chameleon screening threshold based on local density.
+        Compute local Temporal Topology threshold based on local density.
         
-        The screening threshold depends on the local matter density.
-        Higher density = stronger screening = closer threshold.
+        The suppression threshold depends on the local matter density.
+        Higher density = stronger Temporal Shear suppression = shorter correlation length.
         
         Returns
         -------
         float
-            Characteristic screening length in meters
+            Characteristic Temporal Topology suppression length in meters
         """
         rho = self.density_with_geoid(x, y, z)
         
-        # Chameleon screening length: λ_scr ∝ 1/√ρ
-        # For a canonical chameleon model with n=1
-        rho_threshold = 1e-3  # kg/m^3 (approximate galaxy density)
+        # Temporal Topology suppression length: λ_rest ∝ 1/√rho
+        # Derived from the continuous Temporal Shear Suppression regime of the TEP scalar field
+        rho_threshold = 1e-3  # kg/m^3 (approximate transition density)
         
         if rho > rho_threshold:
-            # Strong screening: short range
+            # Shielded regime: short range suppression of Temporal Shear
             return 1000.0 * (rho_threshold / rho)**0.5  # meters
         else:
-            # Weak screening: long range (space)
-            return 1e6  # 1000 km in space
+            # Unscreened regime: long range active field (interplanetary space)
+            return 1e6  # 1000 km scale
 
 
 @dataclass
@@ -392,13 +394,13 @@ class TrajectoryState:
 
 class TEP3DTrajectoryIntegrator:
     """
-    3D trajectory integrator with TEP chameleon field and non-spherical Earth.
+    3D trajectory integrator with TEP Temporal Topology and non-spherical Earth.
     
     Integrates spacecraft trajectory accounting for:
     - Non-spherical Earth gravity (J2, J3, J4)
     - Earth's rotation
-    - TEP chameleon field perturbation
-    - Variable coupling based on local density
+    - TEP Temporal Topology field perturbation
+    - Variable coupling based on local density (Temporal Shear Suppression)
     """
     
     def __init__(self, 
@@ -415,20 +417,20 @@ class TEP3DTrajectoryIntegrator:
         density_model : EarthDensityModel
             Density distribution model
         tep_params : dict
-            TEP parameters (beta, Lambda_keV, n_chameleon)
+            TEP parameters (beta, Lambda_keV, n_topology)
         """
         self.geoid = geoid or EarthGeoidModel()
         self.density = density_model or EarthDensityModel(self.geoid)
-        self.tep = tep_params or {'beta': 1e-4, 'Lambda_keV': 10.0, 'n_chameleon': 1}
+        self.tep = tep_params or {'beta': BETA_BASELINE * 1e-4, 'Lambda_keV': 10.0, 'n_topology': 1}
         
-        # Precompute chameleon field constants
-        self._setup_chameleon_field()
+        # Precompute Temporal Topology field constants
+        self._setup_temporal_topology_field()
     
-    def _setup_chameleon_field(self):
-        """Precompute chameleon field values at key points."""
+    def _setup_temporal_topology_field(self):
+        """Precompute Temporal Topology field values at key points."""
         beta = self.tep['beta']
         Lambda = self.tep['Lambda_keV'] * 1e-6  # Convert to GeV
-        n = self.tep['n_chameleon']
+        n = self.tep['n_topology']
         
         # Field at Earth's center (highest density)
         rho_center = 13000  # kg/m^3
@@ -441,37 +443,39 @@ class TEP3DTrajectoryIntegrator:
         # Field in vacuum
         self.phi_space = self._phi_of_rho(1e-20, beta, Lambda, n)
         
-        # Screening length from atmosphere
+        # Restoration length from atmosphere
         rho_atm = 1.225
         phi_atm = self._phi_of_rho(rho_atm, beta, Lambda, n)
         hbar_c = 0.197e-15  # GeV·m
         m2_atm = (n * (n + 1) * Lambda**(4 + n) / phi_atm**(n + 2))
         m_atm = np.sqrt(m2_atm)
-        self.lambda_screen = hbar_c / m_atm
+        self.lambda_rest = hbar_c / m_atm
     
     @staticmethod
     def _phi_of_rho(rho_kg_m3: float, beta: float, Lambda: float, n: int) -> float:
-        """Compute chameleon field for given density."""
+        """Compute Temporal Topology field for given density."""
         rho_gev4 = rho_kg_m3 * KG_M3_TO_GEV4
         
         if rho_gev4 <= 0 or beta <= 0:
             return Lambda * 1e6
         
+        # Jakarta v0.8 consistency: use factor of 2 in denominator for field minimum
+        # Temporal Topology field minimum: φ_min = Λ [ (n Λ^(n+4) M_Pl) / (2β ρ) ]^(1/(n+1))
         numerator = n * M_PL * Lambda**(4 + n)
-        denominator = beta * rho_gev4
+        denominator = 2.0 * beta * rho_gev4
         
         if denominator <= 0:
             return Lambda * 1e6
         
         scale = (numerator / denominator)**(1.0 / (n + 1))
         return Lambda * scale
-    
-    def chameleon_field(self, x: float, y: float, z: float) -> float:
+
+    def temporal_topology_field(self, x: float, y: float, z: float) -> float:
         """
-        Compute chameleon field φ at position (x, y, z).
+        Compute Temporal Topology field φ at position (x, y, z).
         
-        Accounts for local density screening and exponential
-        relaxation outside Earth.
+        Accounts for Temporal Shear Suppression at high densities and 
+        exponential relaxation outside Earth.
         """
         r = np.sqrt(x**2 + y**2 + z**2)
         
@@ -480,42 +484,88 @@ class TEP3DTrajectoryIntegrator:
             rho = self.density.density_with_geoid(x, y, z)
             return self._phi_of_rho(rho, self.tep['beta'], 
                                    self.tep['Lambda_keV'] * 1e-6,
-                                   self.tep['n_chameleon'])
+                                   self.tep['n_topology'])
         else:
             # Outside Earth: exponential relaxation from surface value
             delta_r = r - R_EARTH
-            frac = 1.0 - np.exp(-delta_r / self.lambda_screen)
+            frac = 1.0 - np.exp(-delta_r / self.lambda_rest)
             return self.phi_surface + (self.phi_space - self.phi_surface) * frac
     
-    def tep_acceleration(self, x: float, y: float, z: float) -> Tuple[float, float, float]:
+    def tep_acceleration(self, x: float, y: float, z: float, vx: float = 0.0, vy: float = 0.0, vz: float = 0.0) -> Tuple[float, float, float]:
         """
-        Compute TEP-induced acceleration from gradient of chameleon field.
+        Compute TEP Temporal Topology acceleration at geocentric (x, y, z).
         
-        The TEP force comes from ∇(βφ/M_Pl), acting as an effective
-        modification to the gravitational potential.
+        Incorporates:
+        1. Scalar Gradient Force: a_grad = c² β ∇φ / M_Pl
+        2. Disformal Velocity Force: a_disf = (B/A) (∇φ · v) v
+        3. Geoid-dependent Screening: ∇φ scaled by exp(-h_wgs84 / λ)
+        
+        Parameters
+        ----------
+        x, y, z : float
+            Geocentric position (m)
+        vx, vy, vz : float
+            Geocentric velocity (m/s)
+            
+        Returns
+        -------
+        tuple (ax, ay, az)
+            Anomalous acceleration in m/s²
         """
-        eps = 1000.0  # 1 km step for gradient
+        r = np.sqrt(x**2 + y**2 + z**2)
+        if r < 1e-6:
+            return 0.0, 0.0, 0.0
         
-        phi_center = self.chameleon_field(x, y, z)
-        phi_x = self.chameleon_field(x + eps, y, z)
-        phi_y = self.chameleon_field(x, y + eps, z)
-        phi_z = self.chameleon_field(x, y, z + eps)
+        # 1. Get Geodetic Altitude for Screening
+        # This accounts for Earth's oblateness (J2) in the suppression logic
+        lat, lon, alt = self.geoid.geocentric_to_geodetic(x, y, z)
         
-        # Gradient of chameleon field
-        dphi_dx = (phi_x - phi_center) / eps
-        dphi_dy = (phi_y - phi_center) / eps
-        dphi_dz = (phi_z - phi_center) / eps
+        # If inside Earth, screening is effectively total (phi -> phi_surface)
+        if alt <= 0:
+            return 0.0, 0.0, 0.0
         
-        # TEP acceleration: a = c² β ∇φ / M_Pl
-        beta = self.tep['beta']
+        # 2. Scalar Gradient Calculation (∇φ)
+        # Jakarta v0.8: Continuous gradient suppression
+        # φ(h) = φ_surf + (φ_space - φ_surf) * (1 - exp(-h/λ))
+        # ∇φ = (φ_space - φ_surf) * (1/λ) * exp(-h/λ) * r̂
+        # Note: r̂ is locally vertical to the geoid (approximated as radial here)
+        grad_mag = (self.phi_space - self.phi_surface) * (1.0 / self.lambda_rest) * np.exp(-alt / self.lambda_rest)
+        
+        # Scalar Force Factor: a = c² β ∇φ / M_Pl
+        beta = self.tep.get('beta', 1e-4)
         c2 = C_LIGHT**2
-        factor = c2 * beta / M_PL
+        factor_scalar = c2 * beta / M_PL
         
-        ax_tep = factor * dphi_dx
-        ay_tep = factor * dphi_dy
-        az_tep = factor * dphi_dz
+        # Unit vector (radial approximation for gradient direction)
+        ux, uy, uz = x / r, y / r, z / r
         
-        return ax_tep, ay_tep, az_tep
+        # Static Scalar Acceleration
+        ax_scalar = factor_scalar * grad_mag * ux
+        ay_scalar = factor_scalar * grad_mag * uy
+        az_scalar = factor_scalar * grad_mag * uz
+        
+        # 3. Disformal Velocity Coupling (B-term)
+        # a_disf = (B/M_pl) * (∇φ · v) v / c² (simplified effective coupling)
+        # This term explains sign reversals and directional asymmetries.
+        b_disformal = self.tep.get('b_disformal', 0.05)
+        
+        # Velocity vector
+        v_vec = np.array([vx, vy, vz])
+        grad_phi_vec = grad_mag * np.array([ux, uy, uz])
+        
+        # Dot product: ∇φ · v
+        v_dot_grad = np.dot(v_vec, grad_phi_vec)
+        
+        # Disformal factor (dimensionless coupling)
+        # Using a phenomenological scaling for the velocity-dependent part
+        factor_disformal = (b_disformal / M_PL) * v_dot_grad
+        
+        ax_disf = factor_disformal * vx
+        ay_disf = factor_disformal * vy
+        az_disf = factor_disformal * vz
+        
+        # Total TEP Acceleration
+        return ax_scalar + ax_disf, ay_scalar + ay_disf, az_scalar + az_disf
     
     def equations_of_motion(self, t: float, state: np.ndarray) -> np.ndarray:
         """
@@ -524,15 +574,16 @@ class TEP3DTrajectoryIntegrator:
         Includes:
         - Non-spherical Earth gravity
         - Earth's rotation (centrifugal and Coriolis in inertial frame)
-        - TEP chameleon perturbation
+        - TEP Temporal Topology perturbation
         """
         x, y, z, vx, vy, vz = state
         
         # Standard gravitational acceleration
         ax_grav, ay_grav, az_grav = self.geoid.gravity_acceleration(x, y, z)
         
-        # TEP chameleon acceleration
-        ax_tep, ay_tep, az_tep = self.tep_acceleration(x, y, z)
+        # TEP Temporal Topology acceleration
+        # Pass velocity for disformal coupling calculation
+        ax_tep, ay_tep, az_tep = self.tep_acceleration(x, y, z, vx, vy, vz)
         
         # Total acceleration
         ax = ax_grav + ax_tep
@@ -599,7 +650,7 @@ class TEP3DTrajectoryIntegrator:
             )
             
             # Compute local TEP effects
-            phi = self.chameleon_field(state.x, state.y, state.z)
+            phi = self.temporal_topology_field(state.x, state.y, state.z)
             dtau = np.exp(self.tep['beta'] * phi / M_PL)
             
             traj_point = {
@@ -663,7 +714,7 @@ def compute_newtonian_baseline(trajectory_data: dict,
     geoid = geoid or EarthGeoidModel()
     
     # Create integrator with beta=0 (no TEP)
-    tep_params_zero = {'beta': 0.0, 'Lambda_keV': 10.0, 'n_chameleon': 1}
+    tep_params_zero = {'beta': 0.0, 'Lambda_keV': 10.0, 'n_topology': 1}
     integrator = TEP3DTrajectoryIntegrator(
         geoid=geoid,
         tep_params=tep_params_zero
@@ -727,7 +778,7 @@ def compute_tep_prediction_full(trajectory_data: dict,
     Compute full TEP prediction with 3D trajectory integration.
     
     This computes the velocity anomaly predicted by TEP theory
-    by integrating the trajectory with chameleon field effects.
+    by integrating the trajectory with Temporal Topology field effects.
     
     Parameters
     ----------
@@ -745,7 +796,7 @@ def compute_tep_prediction_full(trajectory_data: dict,
     """
     geoid = geoid or EarthGeoidModel()
     
-    tep_params = {'beta': beta, 'Lambda_keV': 10.0, 'n_chameleon': 1}
+    tep_params = {'beta': beta, 'Lambda_keV': 10.0, 'n_topology': 1}
     
     integrator = TEP3DTrajectoryIntegrator(
         geoid=geoid,
@@ -771,7 +822,7 @@ def compute_tep_prediction_full(trajectory_data: dict,
         atol=1e-15
     )
     
-    # TEP prediction: velocity change due to chameleon field
+    # TEP prediction: velocity change due to Temporal Topology field
     tep_dv = result['dv_total']
     
     # Also compute using simple formula for comparison
@@ -782,8 +833,7 @@ def compute_tep_prediction_full(trajectory_data: dict,
     
     return {
         'method': 'tep_3d_integration',
-        'geoid_model': 'WGS84_with_J2J3J4',
-        'chameleon_model': 'variable_density_screening',
+        'topology_model': 'temporal_shear_suppression',
         'beta_used': beta,
         'v_inf_in': result['v_inf_in'],
         'v_inf_out': result['v_inf_out'],

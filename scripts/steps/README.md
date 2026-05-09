@@ -1,32 +1,73 @@
-# Flyby TEP Pipeline v2.0
+# Flyby TEP Pipeline v5.0 (Workflow-Organized)
 
 ## Overview
 
-This pipeline analyzes Earth flyby anomalies within the Temporal Equivalence Principle (TEP) framework, providing empirical validation of the universal conformal coupling between matter and the dynamical time field φ. The fitted coupling constant β ≈ 1.3×10⁻⁴ is consistent across diverse flyby geometries and satisfies solar system PPN constraints with a safety margin exceeding 600×.
+This pipeline analyzes Earth flyby anomalies within the Temporal Equivalence Principle (TEP) framework, providing empirical validation of the universal conformal coupling between matter and the dynamical time field φ. The fitted coupling constant β ≈ 1.67×10⁻³ is consistent across diverse flyby geometries and satisfies solar system PPN constraints.
 
-**Key Result:** TEP is the preferred explanation (88% evidence weight) for Earth flyby anomalies, validated by 5/5 independent statistical tests.
+Key Result: TEP is the preferred explanation for Earth flyby anomalies. The 7.8-fold variance in fitted β values is comprehensively explained through a four-stage decomposition (Step 006).
+
+## Reorganization Summary
+
+Version 5.0 reorganizes the pipeline from chronological addition order to workflow-based analytical phases:
+
+- Fixed duplicate step numbers (007, 010, 017, 031)
+- Archived development artifacts (029-031 series)
+- Unified variance analysis (consolidates old 5b, 5c, 5d, 22, 28 into Step 006)
+- Clear phase-based grouping for easier navigation
 
 ## Pipeline Structure
 
-The pipeline consists of 9 sequential steps that address all identified weaknesses in the original analysis:
+### Workflow Phases
+
+| Phase | Steps | Description |
+|-------|-------|-------------|
+| 1 | 001-004 | Data Acquisition & Preparation |
+| 2 | 004-007 | Core Physics & Variance Analysis |
+| 3 | 008-010 | Trajectory & Observational Pipeline |
+| 4 | 011-014 | Validation & Robustness |
+| 5 | 015-017 | Extended Physics |
+| 6 | 018-019 | Model Comparison |
+| 7 | 020-023 | DSN Data Framework |
+| 8 | 024-026 | Mission-Specific Analysis |
+| 9 | 027-028 | Advanced Topics |
+| 10 | 029 | Reporting |
 
 ### Step Sequence
 
-| Step | Script | Purpose | Weakness Addressed |
-|------|--------|---------|-------------------|
-| 001 | `step_001_data_ingestion.py` | JPL Horizons trajectory data | Data acquisition |
-| 001a | `step_001a_download_spice.py` | Download SPICE kernels | Trajectory reconstruction |
-| 001b | `step_001b_spice_to_json.py` | Convert SPICE to JSON | Data format standardization |
-| 002 | `step_002_archival_data_mining.py` | Expand dataset (3→12 flybys) | Small sample size |
-| 003 | `step_003_dsn_data_ingestion.py` | Raw DSN framework | Data provenance/circularity |
-| 004 | `step_004_tep_model.py` | Enhanced TEP with WGS84/PREM | Model incompleteness |
-| 005 | `step_005_fitting.py` | Parameter fitting with statistics | Small sample size |
-| 005b | `step_005b_diagnostics.py` | Comprehensive diagnostics | Validation & robustness |
-| 005c | `step_005c_enhanced_validation.py` | Model comparison (AIC/BIC) | Statistical rigor |
-| 006 | `step_006_report.py` | Final report generation | Documentation |
-| 007 | `step_007_visualizations.py` | Figure generation | Visualization |
-| 008 | `step_008_tep_suppression.py` | OD suppression analysis | Systematic effects |
-| 009 | `step_009_dsn_acquisition.py` | Raw data acquisition framework | Future validation |
+| Step | Script | Purpose | Phase |
+|------|--------|---------|-------|
+| 001a | `step_001a_download_spice.py` | Download SPICE kernels (NAIF) | 1 |
+| 001b | `step_001b_spice_to_json.py` | Convert SPICE to JSON | 1 |
+| 002 | `step_002_archival_data_mining.py` | Expand dataset | 1 |
+| 002b | `step_002b_jpl_horizons_fetch.py` | JPL Horizons Data Fetch | 1 |
+| 003 | `step_003_dsn_data_ingestion.py` | DSN Data Ingestion | 1 |
+| 003b | `step_003_dsn_framework.py` | DSN Framework | 1 |
+| 004 | `step_004_tep_model.py` | Enhanced TEP Model | 2 |
+| 005 | `step_005_fitting.py` | Parameter Fitting | 2 |
+| 006 | `step_007_variance_analysis.py` | Unified Variance Analysis (NEW) | 2 |
+| 007 | `step_008_Temporal Shear Suppression_first_principles.py` | Temporal Shear Suppression First-Principles | 2 |
+| 008 | `step_009_trajectory_integration.py` | Trajectory Integration | 3 |
+| 009 | `step_010_od_filter_simulation.py` | OD Filter Simulation | 3 |
+| 010 | `step_011_cross_validation.py` | Cross-Validation | 4 |
+| 011 | `step_012_sensitivity_analysis.py` | Sensitivity Analysis | 4 |
+| 012 | `step_013_hierarchical_bayesian.py` | Hierarchical Bayesian | 4 |
+| 013 | `step_014_gnss_validation.py` | GNSS Validation | 4 |
+| 014 | `step_015_plasma_modulation.py` | Plasma Modulation | 5 |
+| 015 | `step_016_space_weather.py` | Space Weather Correlation | 5 |
+| 016 | `step_016b_3d_field_integration.py` | 3D Field Integration | 5 |
+| 017 | `step_017_enhanced_bayesian.py` | Enhanced Bayesian | 5 |
+| 018 | `step_018_bayesian_model_comparison.py` | Bayesian Model Comparison | 6 |
+| 019 | `step_019_saturation_model.py` | Saturation Model | 6 |
+| 020 | `step_021_dsn_processing.py` | DSN Processing Framework | 7 |
+| 021 | `step_022_read_trk234.py` | Read TRK-2-34 Format | 7 |
+| 022 | `step_023_raw_dsn_reanalysis.py` | Raw DSN Reanalysis | 7 |
+| 023 | `step_024_juno_reanalysis.py` | Juno 2013 Reanalysis | 8 |
+| 024 | `step_025_pds_search.py` | PDS Search | 8 |
+| 025 | `step_026_tep_suppression.py` | TEP Suppression | 8 |
+| 026 | `step_027_covariant_holonomy.py` | Covariant Holonomy | 9 |
+| 027 | `step_028_cross_corpus_export.py` | Cross-Corpus Export | 9 |
+| 028 | `step_029_final_report.py` | Final Report | 10 |
+| 029 | `step_020_visualizations.py` | Figure Generation | 10 |
 
 ### Supporting Modules
 
@@ -93,29 +134,29 @@ At completion, the pipeline outputs:
 
 | Output | Location | Description |
 |--------|----------|-------------|
-| Trajectory data | `data/raw/flyby_trajectories/` | JPL Horizons ephemeris for 12 flybys |
-| TEP predictions | `data/processed/step004_tep_predictions.json` | Predicted Δv for all flybys |
-| Fitting results | `data/processed/step005_fitting_results.json` | β values, uncertainties, PPN checks |
-| Diagnostic analysis | `data/processed/step005b_diagnostics.json` | Cassini analysis, sensitivity, systematics |
-| Enhanced validation | `data/processed/step005c_enhanced_validation.json` | AIC/BIC, effect sizes, model comparison |
-| Archival catalog | `data/processed/archival_flyby_catalog.json` | 12-flyby dataset with metadata |
+| Trajectory data | `data/raw/jpl_horizons/` | JPL Horizons ephemeris and raw responses |
+| TEP predictions | `results/step004_tep_predictions.json` | Predicted Δv for modeled flybys |
+| Fitting results | `results/step005_fitting_results.json` | β values, uncertainties, PPN checks |
+| Variance analysis | `results/step007_variance_analysis.json` | Unified variance decomposition |
+| Enhanced validation | `results/step018_enhanced_bayesian.json` | Bayesian robustness analysis |
+| Archival catalog | `results/step002_archival_flyby_catalog.json` | Literature flyby dataset with metadata |
 | DSN framework | `data/processed/dsn_ingestion_framework.json` | Raw data request templates |
-| Suppression analysis | `data/processed/step008_tep_suppression_analysis.json` | OD filtering diagnostics |
-| Final report | `data/processed/step006_final_report.json` | Comprehensive summary |
-| Figures | `site/public/figures/` | Publication-ready plots |
-| Pipeline logs | `logs/pipeline_*.log` | Detailed execution logs |
-| Step logs | `logs/step_*_YYYYMMDD_HHMMSS.log` | Individual step logs |
+| Suppression analysis | `results/step026_tep_suppression_analysis.json` | OD filtering diagnostics |
+| Final report | `results/step006_final_report.json` | Comprehensive summary |
+| Figures | `results/step007_figure*.png` | Publication-ready plots |
+| Pipeline logs | `logs/pipeline.log` | Detailed execution logs |
+| Step logs | `logs/step_*.log` | Individual step logs |
 
 ## Weaknesses Addressed
 
 ### 1. Small Sample Size (n=3)
-**Solution:** Archival data mining expands dataset to 12+ flybys
+Solution: Archival data mining expands dataset to 12+ flybys
 - Original: 3 significant detections
 - Expanded: 12 cataloged flybys
 - Effective weighted sample: n≈8.5
 
 ### 2. Model Incompleteness
-**Solution:** Enhanced physics in step_004_tep_model.py
+Solution: Enhanced physics in step_004_tep_model.py
 - WGS84 ellipsoid (not spherical)
 - J2, J3, J4 gravity harmonics
 - PREM dynamic density mapping
@@ -123,7 +164,7 @@ At completion, the pipeline outputs:
 - Proper residual calculation (not scaled)
 
 ### 3. Data Provenance/Circularity
-**Solution:** DSN framework in step_003_dsn_data_ingestion.py and step_009_dsn_acquisition.py
+Solution: DSN framework in step_003_dsn_data_ingestion.py and step_009_dsn_acquisition.py
 - Decoupled trajectory model
 - Raw DSN Level-1 data access protocol
 - Independent OD pathway (GMAT/Orekit)
@@ -131,17 +172,17 @@ At completion, the pipeline outputs:
 - Formal data request templates for NASA/ESA archives
 
 ### 4. Statistical Validation
-**Solution:** Two-step validation process (005b + 005c)
-- **Diagnostics (005b):** Cassini sign analysis, parameter sensitivity, systematic uncertainty budget
-- **Enhanced Validation (005c):** Bayesian model comparison (AIC/BIC), effect sizes (Cohen's d), residual analysis, prediction accuracy metrics
-- **Results:** TEP preferred with 88% evidence weight, 5/5 validation tests passed
+Solution: Two-step validation process (005b + 005c)
+- Diagnostics (005b): Cassini sign analysis, parameter sensitivity, systematic uncertainty budget
+- Enhanced Validation (005c): Bayesian model comparison (AIC/BIC), effect sizes (Cohen's d), residual analysis, prediction accuracy metrics
+- Results: TEP preferred with 88% evidence weight, 5/5 validation tests passed
 
 ### 5. PPN Compliance
-**Solution:** Thin-shell screening with independently determined factor
-- Screening radius R_sol ≈ 4200 km from GNSS clock correlations
-- Thin-shell factor ΔR/R = 0.34 (not tuned to fit flybys)
+Solution: Temporal Shear suppression with independently determined factor
+- Screening radius R_sol ≈ 4146 km from UCD soliton physics (Paper 7)
+- Characteristic suppression S_⊕ ≈ 0.35 (not tuned to fit flybys)
 - All fitted β values satisfy Cassini bound |γ-1| < 2.3×10⁻⁵
-- Safety margin >600× below bound
+- Margin to bound ratio: >10⁹:1
 
 ## Configuration
 

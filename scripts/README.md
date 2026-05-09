@@ -1,6 +1,6 @@
-# TEP-WB Analysis Scripts
+# TEP-EFA Analysis Scripts
 
-This folder contains the reproducible analysis pipeline for Paper 15.
+This folder contains the reproducible analysis pipeline for Paper 15 (Earth Flyby).
 
 ## Structure
 

@@ -149,12 +149,12 @@ function safeGet(obj, pathParts) {
 }
 
 function createInjectionContext() {
-    const processedDir = path.join(__dirname, '..', 'data', 'processed');
+    const resultsDir = path.join(__dirname, '..', 'results');
 
-    const step003 = readJsonIfExists(path.join(processedDir, 'step003_fitting_results.json'));
+    const step005 = readJsonIfExists(path.join(resultsDir, 'step005_fitting_results.json'));
 
-    if (!step003) {
-        console.warn('⚠️  Missing step003_fitting_results.json; placeholders may remain unresolved.');
+    if (!step005) {
+        console.warn('⚠️  Missing step005_fitting_results.json; placeholders may remain unresolved.');
     }
 
     const ctx = {
@@ -167,9 +167,9 @@ function createInjectionContext() {
         }
     };
 
-    if (step003) {
+    if (step005) {
         // Individual fits
-        const fits = step003.individual_fits || {};
+        const fits = step005.individual_fits || {};
         for (const [key, fit] of Object.entries(fits)) {
             if (fit.fit && fit.fit.beta_fitted) {
                 ctx.flyby.beta[key] = {
@@ -182,7 +182,7 @@ function createInjectionContext() {
         }
 
         // Summary statistics
-        const stats = step003.summary_statistics || {};
+        const stats = step005.summary_statistics || {};
         const betaStats = stats.beta_statistics || {};
         ctx.flyby.statistics = {
             weighted_mean: formatFixedNumber(betaStats.weighted_mean, 10),
@@ -205,7 +205,7 @@ function createInjectionContext() {
         };
 
         // Bootstrap results
-        const bootstrap = step003.robustness_analysis?.bootstrap || {};
+        const bootstrap = step005.robustness_analysis?.bootstrap || {};
         ctx.flyby.bootstrap = {
             n_bootstrap: formatIntegerWithCommas(bootstrap.n_bootstrap),
             mean: formatFixedNumber(bootstrap.bootstrap_mean, 10),
@@ -218,7 +218,7 @@ function createInjectionContext() {
         };
 
         // Leave-one-out results
-        const loo = step003.robustness_analysis?.leave_one_out || {};
+        const loo = step005.robustness_analysis?.leave_one_out || {};
         const looResults = loo.leave_one_out_results || {};
         for (const [key, result] of Object.entries(looResults)) {
             ctx.flyby.loo[key] = {
@@ -351,7 +351,7 @@ async function buildStaticSite() {
             console.log('📁 Copied simple-styles.css');
         }
         
-        // Copy figures from results/figures/ to dist/figures/ (main figure source)
+        // Copy figures from results/figures/ and root-level results PNGs.
         const resultsFiguresPath = path.join(__dirname, '..', 'results', 'figures');
         const distFiguresPath = path.join(distDir, 'figures');
         const distPublicFiguresPath = path.join(distDir, 'public', 'figures');
@@ -360,6 +360,29 @@ async function buildStaticSite() {
             copyRecursiveSync(resultsFiguresPath, distFiguresPath);
             console.log('📁 Copying results/figures/ → dist/public/figures/');
             copyRecursiveSync(resultsFiguresPath, distPublicFiguresPath);
+        }
+
+        const resultsPath = path.join(__dirname, '..', 'results');
+        if (fs.existsSync(resultsPath)) {
+            const rootFigureFiles = fs.readdirSync(resultsPath)
+                .filter((file) => /^step\d+_figure.*\.png$/i.test(file));
+
+            for (const file of rootFigureFiles) {
+                fs.mkdirSync(distFiguresPath, { recursive: true });
+                fs.mkdirSync(distPublicFiguresPath, { recursive: true });
+                fs.copyFileSync(
+                    path.join(resultsPath, file),
+                    path.join(distFiguresPath, file)
+                );
+                fs.copyFileSync(
+                    path.join(resultsPath, file),
+                    path.join(distPublicFiguresPath, file)
+                );
+            }
+
+            if (rootFigureFiles.length > 0) {
+                console.log(`📁 Copied ${rootFigureFiles.length} root results figure(s)`);
+            }
         }
         
         // Copy manifest.json for reference
@@ -422,11 +445,7 @@ async function buildStaticSite() {
             console.log(`📁 Copied .well-known/ to dist`);
         }
         
-        // Generate markdown version
-        console.log('📝 Generating markdown version...');
-        const { HTMLToMarkdownConverter } = require('./html-to-markdown.js');
-        const converter = new HTMLToMarkdownConverter();
-        await converter.convertSiteToMarkdown();
+        // Markdown generation is now handled by dev-server.js to avoid duplication
         
         console.log('✅ Static site built successfully!');
         console.log(`📁 Output: ${outputPath}`);

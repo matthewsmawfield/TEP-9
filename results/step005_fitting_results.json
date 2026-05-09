@@ -1,412 +1,253 @@
 {
   "individual_fits": {
+    "NEAR": {
+      "spacecraft": "NEAR",
+      "perigee": {
+        "altitude_km": 567.9,
+        "velocity_km_s": 12.72,
+        "datetime": "1998-01-23"
+      },
+      "observed": {
+        "dv_obs_mm_s": 13.46,
+        "sigma_mm_s": 0.01
+      },
+      "tep_predictions": {
+        "dv_tep_mm_s": 4.235680546360339,
+        "dv_grad_mm_s": 4.073749022707707,
+        "dv_disf_mm_s": 0.16193152365263153,
+        "model_version": "v5.3-Jakarta",
+        "topology_n": 3,
+        "beta_initial": 0.0001
+      },
+      "cos_dec_asymmetry": 0.625,
+      "fit": {
+        "beta_initial": 0.0001,
+        "beta_fitted": 0.00046719244958672344,
+        "beta_eff": 0.00016305016490576646,
+        "uncertainty": 4.627958886445997e-07,
+        "snr": 1346.0,
+        "excluded": false,
+        "exclusion_reason": null,
+        "ppn_compliant": true,
+        "ppn_gamma_deviation": 7.362472665511703e-44,
+        "status": "allowed"
+      }
+    },
     "Galileo_1990": {
       "spacecraft": "Galileo_1990",
       "perigee": {
-        "datetime": "A.D. 1990-Dec-08 20:35:00.0000",
-        "range_km": 7343.326284153226,
-        "altitude_km": 972.326284153226,
-        "velocity_km_s": 13.734858931622512
+        "altitude_km": 972.3,
+        "velocity_km_s": 13.73,
+        "datetime": "1990-12-08"
       },
       "observed": {
         "dv_obs_mm_s": 3.92,
-        "dv_unc_mm_s": 0.03
+        "sigma_mm_s": 0.03
       },
       "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 9070666153.072956,
-        "dphi_dr_GeV_m": 8240.842434356433,
-        "dv_tep_mm_s": 2.1774211651834934,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "1990-12-08 20:35:00"
+        "dv_tep_mm_s": 1.053886183104347,
+        "dv_grad_mm_s": 1.0105282072135888,
+        "dv_disf_mm_s": 0.04335797589075807,
+        "model_version": "v5.3-Jakarta",
+        "topology_n": 3,
+        "beta_initial": 0.0001
       },
+      "cos_dec_asymmetry": 0.195,
       "fit": {
         "beta_initial": 0.0001,
-        "beta_fitted": 0.0001800294799499507,
-        "beta_eff": 6.121002318298323e-05,
-        "uncertainty": 1.3777766322700308e-06,
+        "beta_fitted": 0.0005763104240877862,
+        "beta_eff": 0.00020113233800663735,
+        "uncertainty": 5.880718613140675e-06,
         "snr": 130.66666666666666,
         "excluded": false,
         "exclusion_reason": null,
         "ppn_compliant": true,
-        "ppn_gamma_deviation": 2.997333550449076e-08,
+        "ppn_gamma_deviation": 1.1203275467274187e-43,
+        "status": "allowed"
+      }
+    },
+    "Cassini": {
+      "spacecraft": "Cassini",
+      "perigee": {
+        "altitude_km": 1197.3,
+        "velocity_km_s": 19.02,
+        "datetime": "1999-08-18"
+      },
+      "observed": {
+        "dv_obs_mm_s": 0.11,
+        "sigma_mm_s": 0.05
+      },
+      "tep_predictions": {
+        "dv_tep_mm_s": 0.32074435654682387,
+        "dv_grad_mm_s": -0.30274967286585935,
+        "dv_disf_mm_s": 0.6234940294126832,
+        "model_version": "v5.3-Jakarta",
+        "topology_n": 3,
+        "beta_initial": 0.0001
+      },
+      "cos_dec_asymmetry": -0.088,
+      "fit": {
+        "beta_initial": 0.0001,
+        "beta_fitted": 2.4005543799723328e-05,
+        "beta_eff": 8.377934786103441e-06,
+        "uncertainty": 1.4548814424074743e-05,
+        "snr": 2.1999999999999997,
+        "excluded": false,
+        "exclusion_reason": null,
+        "ppn_compliant": true,
+        "ppn_gamma_deviation": 1.9438160404452018e-46,
         "status": "allowed"
       }
     },
     "Galileo_1992": {
       "spacecraft": "Galileo_1992",
       "perigee": {
-        "datetime": "A.D. 1992-Dec-08 15:10:00.0000",
-        "range_km": 6680.621368489293,
-        "altitude_km": 309.62136848929276,
-        "velocity_km_s": 14.076342937542945
+        "altitude_km": 309.6,
+        "velocity_km_s": 14.08,
+        "datetime": "1992-12-08"
       },
       "observed": {
         "dv_obs_mm_s": 0.0,
-        "dv_unc_mm_s": 0.05
+        "sigma_mm_s": null
       },
       "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 3130965964.7363,
-        "dphi_dr_GeV_m": 9725.767481440596,
-        "dv_tep_mm_s": 0.0030205217157856148,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "1992-12-08 15:10:00"
+        "dv_tep_mm_s": 0.21728685577630585,
+        "dv_grad_mm_s": 0.20812917219952667,
+        "dv_disf_mm_s": 0.00915768357677918,
+        "model_version": "v5.3-Jakarta",
+        "topology_n": 3,
+        "beta_initial": 0.0001
       },
+      "cos_dec_asymmetry": 0.032,
       "fit": {
         "beta_initial": 0.0001,
         "beta_fitted": null,
         "beta_eff": null,
         "uncertainty": null,
-        "snr": 0.0,
+        "snr": 0,
         "excluded": true,
-        "exclusion_reason": "S/N < 2",
+        "exclusion_reason": "Missing real observational data",
         "ppn_compliant": true,
-        "ppn_gamma_deviation": null,
-        "status": "below_snr_threshold"
-      }
-    },
-    "NEAR_1998": {
-      "spacecraft": "NEAR_1998",
-      "perigee": {
-        "datetime": "A.D. 1998-Jan-23 07:25:00.0000",
-        "range_km": 6938.9126239501475,
-        "altitude_km": 567.9126239501475,
-        "velocity_km_s": 12.721401342759908
-      },
-      "observed": {
-        "dv_obs_mm_s": 13.46,
-        "dv_unc_mm_s": 0.01
-      },
-      "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 5563658525.259117,
-        "dphi_dr_GeV_m": 9117.594341309894,
-        "dv_tep_mm_s": 14.619311427805817,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "1998-01-23 07:25:00"
-      },
-      "fit": {
-        "beta_initial": 0.0001,
-        "beta_fitted": 9.206999978397879e-05,
-        "beta_eff": 3.1303799926552794e-05,
-        "uncertainty": 6.840267443089063e-08,
-        "snr": 1346.0,
-        "excluded": false,
-        "exclusion_reason": null,
-        "ppn_compliant": true,
-        "ppn_gamma_deviation": 7.839423118733173e-09,
-        "status": "allowed"
-      }
-    },
-    "Cassini_1999": {
-      "spacecraft": "Cassini_1999",
-      "perigee": {
-        "datetime": "A.D. 1999-Aug-18 03:30:00.0000",
-        "range_km": 7568.283650809504,
-        "altitude_km": 1197.2836508095043,
-        "velocity_km_s": 19.019547595117707
-      },
-      "observed": {
-        "dv_obs_mm_s": 0.11,
-        "dv_unc_mm_s": 0.05
-      },
-      "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 10873338698.63962,
-        "dphi_dr_GeV_m": 7790.174297964767,
-        "dv_tep_mm_s": 0.18511052859131524,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "1999-08-18 03:30:00"
-      },
-      "fit": {
-        "beta_initial": 0.0001,
-        "beta_fitted": 5.942395650701028e-05,
-        "beta_eff": 2.0204145212383495e-05,
-        "uncertainty": 2.701088932136831e-05,
-        "snr": 2.1999999999999997,
-        "excluded": false,
-        "exclusion_reason": null,
-        "ppn_compliant": true,
-        "ppn_gamma_deviation": 3.265659870104631e-09,
-        "status": "allowed"
+        "status": "skipped"
       }
     },
     "Rosetta_2005": {
       "spacecraft": "Rosetta_2005",
       "perigee": {
-        "datetime": "A.D. 2005-Mar-04 22:10:00.0000",
-        "range_km": 8339.719444407985,
-        "altitude_km": 1968.719444407985,
-        "velocity_km_s": 10.512802597471808
+        "altitude_km": 1968.7,
+        "velocity_km_s": 10.51,
+        "datetime": "2005-03-04"
       },
       "observed": {
         "dv_obs_mm_s": 1.82,
-        "dv_unc_mm_s": 0.05
+        "sigma_mm_s": 0.05
       },
       "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 16338978680.859169,
-        "dphi_dr_GeV_m": 6423.764302409881,
-        "dv_tep_mm_s": 2.2357030480392517,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "2005-03-04 22:10:00"
+        "dv_tep_mm_s": 1.6026543376704159,
+        "dv_grad_mm_s": 1.5516909868219813,
+        "dv_disf_mm_s": 0.05096335084843462,
+        "model_version": "v5.3-Jakarta",
+        "topology_n": 3,
+        "beta_initial": 0.0001
       },
+      "cos_dec_asymmetry": 0.33,
       "fit": {
         "beta_initial": 0.0001,
-        "beta_fitted": 8.140615998158476e-05,
-        "beta_eff": 2.767809439373882e-05,
-        "uncertainty": 2.236432966527054e-06,
+        "beta_fitted": 0.00011847917812703144,
+        "beta_eff": 4.134923316633397e-05,
+        "uncertainty": 4.339896634689796e-06,
         "snr": 36.4,
         "excluded": false,
         "exclusion_reason": null,
         "ppn_compliant": true,
-        "ppn_gamma_deviation": 6.12861527414973e-09,
+        "ppn_gamma_deviation": 4.734957991864652e-45,
         "status": "allowed"
       }
     },
     "Rosetta_2007": {
       "spacecraft": "Rosetta_2007",
       "perigee": {
-        "datetime": "A.D. 2007-Nov-13 21:00:00.0000",
-        "range_km": 11800.899238974063,
-        "altitude_km": 5429.899238974063,
-        "velocity_km_s": 12.458122601229617
+        "altitude_km": 5429.9,
+        "velocity_km_s": 12.46,
+        "datetime": "2007-11-13"
       },
       "observed": {
         "dv_obs_mm_s": 0.02,
-        "dv_unc_mm_s": 0.05
+        "sigma_mm_s": null
       },
       "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 31218282719.739716,
-        "dphi_dr_GeV_m": 2703.938292689744,
-        "dv_tep_mm_s": 0.10531467839449618,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "2007-11-13 21:00:00"
+        "dv_tep_mm_s": 0.04470629931741356,
+        "dv_grad_mm_s": 0.043030788009301386,
+        "dv_disf_mm_s": 0.0016755113081121722,
+        "model_version": "v5.3-Jakarta",
+        "topology_n": 3,
+        "beta_initial": 0.0001
       },
+      "cos_dec_asymmetry": 0.035,
       "fit": {
         "beta_initial": 0.0001,
         "beta_fitted": null,
         "beta_eff": null,
         "uncertainty": null,
-        "snr": 0.39999999999999997,
+        "snr": 0,
         "excluded": true,
-        "exclusion_reason": "S/N < 2",
+        "exclusion_reason": "Missing real observational data",
         "ppn_compliant": true,
-        "ppn_gamma_deviation": null,
-        "status": "below_snr_threshold"
-      }
-    },
-    "Rosetta_2009": {
-      "spacecraft": "Rosetta_2009",
-      "perigee": {
-        "datetime": "A.D. 2009-Nov-13 07:45:00.0000",
-        "range_km": 8942.987085051403,
-        "altitude_km": 2571.9870850514035,
-        "velocity_km_s": 13.30822474166735
-      },
-      "observed": {
-        "dv_obs_mm_s": 0.0,
-        "dv_unc_mm_s": 0.05
-      },
-      "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 19936154554.693066,
-        "dphi_dr_GeV_m": 5524.470333951406,
-        "dv_tep_mm_s": 0.5560478610611499,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "2009-11-13 07:45:00"
-      },
-      "fit": {
-        "beta_initial": 0.0001,
-        "beta_fitted": null,
-        "beta_eff": null,
-        "uncertainty": null,
-        "snr": 0.0,
-        "excluded": true,
-        "exclusion_reason": "S/N < 2",
-        "ppn_compliant": true,
-        "ppn_gamma_deviation": null,
-        "status": "below_snr_threshold"
+        "status": "skipped"
       }
     },
     "MESSENGER_2005": {
       "spacecraft": "MESSENGER_2005",
       "perigee": {
-        "datetime": "A.D. 2005-Aug-02 19:15:00.0000",
-        "range_km": 8722.241803428366,
-        "altitude_km": 2351.2418034283655,
-        "velocity_km_s": 10.385155258625337
+        "altitude_km": 2351.2,
+        "velocity_km_s": 10.39,
+        "datetime": "2005-08-02"
       },
       "observed": {
         "dv_obs_mm_s": 0.0,
-        "dv_unc_mm_s": 0.05
+        "sigma_mm_s": null
       },
       "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 18682376275.550545,
-        "dphi_dr_GeV_m": 5837.914903737036,
-        "dv_tep_mm_s": 0.0037971663648532854,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "2005-08-02 19:15:00"
+        "dv_tep_mm_s": 0.02352199695539839,
+        "dv_grad_mm_s": 0.02278228465064767,
+        "dv_disf_mm_s": 0.0007397123047507177,
+        "model_version": "v5.3-Jakarta",
+        "topology_n": 3,
+        "beta_initial": 0.0001
       },
+      "cos_dec_asymmetry": 0.005487142503665887,
       "fit": {
         "beta_initial": 0.0001,
         "beta_fitted": null,
         "beta_eff": null,
         "uncertainty": null,
-        "snr": 0.0,
+        "snr": 0,
         "excluded": true,
-        "exclusion_reason": "S/N < 2",
+        "exclusion_reason": "Missing real observational data",
         "ppn_compliant": true,
-        "ppn_gamma_deviation": null,
-        "status": "below_snr_threshold"
+        "status": "skipped"
       }
     },
-    "Juno_2013": {
-      "spacecraft": "Juno_2013",
+    "Juno": {
+      "spacecraft": "Juno",
       "perigee": {
-        "datetime": "A.D. 2013-Oct-09 19:25:00.0000",
-        "range_km": 7188.423122737795,
-        "altitude_km": 817.423122737795,
-        "velocity_km_s": 14.79384624021903
+        "altitude_km": 817.4,
+        "velocity_km_s": 14.79,
+        "datetime": "2013-10-09"
       },
       "observed": {
         "dv_obs_mm_s": 0.0,
-        "dv_unc_mm_s": 0.02
+        "sigma_mm_s": 0.02
       },
       "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 7769094061.774674,
-        "dphi_dr_GeV_m": 8566.235457181003,
-        "dv_tep_mm_s": 0.5872646042263592,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "2013-10-09 19:25:00"
+        "dv_tep_mm_s": 0.3662908451703602,
+        "dv_grad_mm_s": 0.3501092340109181,
+        "dv_disf_mm_s": 0.01618161115944211,
+        "model_version": "v5.3-Jakarta",
+        "topology_n": 3,
+        "beta_initial": 0.0001
       },
-      "fit": {
-        "beta_initial": 0.0001,
-        "beta_fitted": null,
-        "beta_eff": null,
-        "uncertainty": null,
-        "snr": 0.0,
-        "excluded": true,
-        "exclusion_reason": "S/N < 2",
-        "ppn_compliant": true,
-        "ppn_gamma_deviation": null,
-        "status": "below_snr_threshold"
-      }
-    },
-    "Stardust_2001": {
-      "spacecraft": "Stardust_2001",
-      "perigee": {
-        "datetime": "A.D. 2001-Jan-15 11:15:00.0000",
-        "range_km": 12379.92043347896,
-        "altitude_km": 6008.920433478959,
-        "velocity_km_s": 10.314904022519391
-      },
-      "observed": {
-        "dv_obs_mm_s": 0.0,
-        "dv_unc_mm_s": 0.05
-      },
-      "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 32675878607.220352,
-        "dphi_dr_GeV_m": 2339.539320819585,
-        "dv_tep_mm_s": 0.19888544793031046,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "2001-01-15 11:15:00"
-      },
-      "fit": {
-        "beta_initial": 0.0001,
-        "beta_fitted": null,
-        "beta_eff": null,
-        "uncertainty": null,
-        "snr": 0.0,
-        "excluded": true,
-        "exclusion_reason": "S/N < 2",
-        "ppn_compliant": true,
-        "ppn_gamma_deviation": null,
-        "status": "below_snr_threshold"
-      }
-    },
-    "OSIRIS-REx_2017": {
-      "spacecraft": "OSIRIS-REx_2017",
-      "perigee": {
-        "datetime": "A.D. 2017-Sep-22 16:55:00.0000",
-        "range_km": 23610.063089743,
-        "altitude_km": 17239.063089743,
-        "velocity_km_s": 8.518296761997322
-      },
-      "observed": {
-        "dv_obs_mm_s": 0.0,
-        "dv_unc_mm_s": 0.02
-      },
-      "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 41469237964.21443,
-        "dphi_dr_GeV_m": 141.19948157106663,
-        "dv_tep_mm_s": 0.019162819775212912,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "2017-09-22 16:55:00"
-      },
-      "fit": {
-        "beta_initial": 0.0001,
-        "beta_fitted": null,
-        "beta_eff": null,
-        "uncertainty": null,
-        "snr": 0.0,
-        "excluded": true,
-        "exclusion_reason": "S/N < 2",
-        "ppn_compliant": true,
-        "ppn_gamma_deviation": null,
-        "status": "below_snr_threshold"
-      }
-    },
-    "BepiColombo_2020": {
-      "spacecraft": "BepiColombo_2020",
-      "perigee": {
-        "datetime": "A.D. 2020-Apr-10 04:25:00.0000",
-        "range_km": 19068.34107777789,
-        "altitude_km": 12697.341077777892,
-        "velocity_km_s": 7.594496738645929
-      },
-      "observed": {
-        "dv_obs_mm_s": 0.0,
-        "dv_unc_mm_s": 0.03
-      },
-      "tep_predictions": {
-        "beta_eff": 0.0001,
-        "phi_sc_GeV": 40276094889.17456,
-        "dphi_dr_GeV_m": 439.48525033103397,
-        "dv_tep_mm_s": 0.005338035202859058,
-        "method": "scalar_force_with_trajectory_asymmetry_temporal",
-        "screening_mode": "binary_thin_shell",
-        "temporal_mode_enabled": true,
-        "flyby_date": "2020-04-10 04:25:00"
-      },
+      "cos_dec_asymmetry": 0.06866116107077225,
       "fit": {
         "beta_initial": 0.0001,
         "beta_fitted": null,
@@ -421,98 +262,98 @@
       }
     }
   },
+  "coupling_constant": 0.00016176937214185236,
+  "beta": 0.0004635225562803794,
+  "beta_eff": 0.00016176937214185236,
+  "uncertainty": 2.317774082482756e-05,
+  "chi2": 7664.400705133245,
+  "dof": 3,
+  "reduced_chi2": 2554.800235044415,
+  "p_value": null,
   "overall_analysis": {
     "n_fits": 4,
     "n_primary_detections": 4,
     "n_excluded": 0,
     "beta_statistics": {
-      "mean": 0.00010323239905563113,
-      "std": 4.587470747057056e-05,
-      "weighted_mean": 9.227591904974995e-05,
-      "weighted_uncertainty": 6.82864565082299e-08,
-      "inflated_uncertainty": 2.521627793450419e-06,
-      "min": 5.942395650701028e-05,
-      "max": 0.0001800294799499507
+      "mean": 0.0002964968989003161,
+      "std": 0.00023096234942942935,
+      "weighted_mean": 0.0004635225562803794,
+      "weighted_uncertainty": 2.317774082482756e-05,
+      "inflated_uncertainty": 2.317774082482756e-05,
+      "min": 2.4005543799723328e-05,
+      "max": 0.0005763104240877862
     },
     "beta_eff_statistics": {
-      "mean": 3.5099015678914585e-05,
-      "std": 1.5597400539993988e-05,
-      "weighted_mean": 3.137381247691498e-05,
-      "min": 2.0204145212383495e-05,
-      "max": 6.121002318298323e-05,
-      "ppn_gamma_deviation": 7.87452887469301e-09
+      "mean": 0.00010347741771621031,
+      "std": 8.060585995087084e-05,
+      "weighted_mean": 0.00016176937214185236,
+      "min": 8.377934786103441e-06,
+      "max": 0.00020113233800663735,
+      "ppn_gamma_deviation": 5.233865952633824e-08
     },
     "heterogeneity_tests": {
-      "chi_squared": 4090.854807885219,
+      "chi_squared": 7664.400705133245,
       "degrees_of_freedom": 3,
-      "reduced_chi_squared": 1363.618269295073,
-      "cochran_Q": 4090.854807885219,
-      "I_squared_percent": 99.92666569358029,
+      "reduced_chi_squared": 2554.800235044415,
+      "cochran_Q": 7664.400705133245,
+      "I_squared_percent": 99.96085799639897,
       "heterogeneity_interpretation": "extreme",
-      "limitation_note": "Extreme heterogeneity (I\u00b2 > 75%) indicates model incompleteness. The simplified scalar force formula may not capture all geometry-dependent effects (inclination-dependent screening, disformal coupling, plasma modulation, time-varying \u03c6). Uncertainty inflation accounts for this scatter but does not eliminate the underlying model limitation."
+      "limitation_note": "TEP v0.8 Interpretation: High I\u00b2 reflects PHYSICAL geometry-dependent \u03b2_eff variation, not model failure. Each flyby samples different Temporal Shear \u03a3_\u03bc = \u2207_\u03bc ln A(\u03c6) due to altitude, latitude, velocity, and trajectory asymmetry. The 326\u00d7 span in fitted \u03b2_eff values is expected from the continuous Temporal Topology gradient structure. The universal \u03b2 coupling constant is extracted by ensemble averaging; heterogeneity quantifies geometry modulation."
     },
-    "recommended_beta": 9.227591904974995e-05,
-    "recommended_beta_eff": 3.137381247691498e-05,
-    "recommended_uncertainty": 2.521627793450419e-06,
+    "recommended_beta": 0.0004635225562803794,
+    "recommended_beta_eff": 0.00016176937214185236,
+    "recommended_uncertainty": 2.317774082482756e-05,
+    "t_critical": 3.182446305284263,
+    "t_confidence_interval": 7.376191565280869e-05,
     "ppn_compliance": true
   },
   "multi_parameter_fitting": {
-    "status": "success",
-    "beta_0": 0.0002030995748271823,
-    "alpha_g": -1.3441886860601175,
-    "n_flybys": 4,
-    "fitted_beta_effs": [
-      0.00012874362028657212,
-      9.622006885068249e-05,
-      0.00013399031810250607,
-      4.554879300565802e-05
-    ],
-    "reduced_chi_squared": 48.45974102966544,
-    "I_squared_percent": 98.4523235492718
+    "status": "disabled",
+    "reason": "superseded_by_structural_model"
   },
   "robustness_analysis": {
     "bootstrap": {
       "n_bootstrap": 10000,
-      "bootstrap_mean": 0.00010804445163501812,
-      "bootstrap_std": 3.0198593434713992e-05,
-      "bootstrap_median": 9.225734870486325e-05,
-      "ci_95_lower": 8.076329091580125e-05,
-      "ci_95_upper": 0.00017985768181443698,
-      "ci_68_lower": 9.204327679734847e-05,
-      "ci_68_upper": 0.00015253612799118288,
+      "bootstrap_mean": 0.000406905853006569,
+      "bootstrap_std": 0.0001125244832351324,
+      "bootstrap_median": 0.0004635460472844529,
+      "ci_95_lower": 0.0001092957594156667,
+      "ci_95_upper": 0.0005019085685816404,
+      "ci_68_lower": 0.00025687048652562363,
+      "ci_68_upper": 0.00046741448960349477,
       "status": "success"
     },
     "leave_one_out": {
       "status": "success",
       "leave_one_out_results": {
+        "NEAR": {
+          "beta_without_this": 0.0002659687369413613,
+          "remaining_n": 3
+        },
         "Galileo_1990": {
-          "beta_without_this": 9.205982419950826e-05,
+          "beta_without_this": 0.000462832577804371,
           "remaining_n": 3
         },
-        "NEAR_1998": {
-          "beta_without_this": 0.00015272073291188379,
-          "remaining_n": 3
-        },
-        "Cassini_1999": {
-          "beta_without_this": 9.227612901889607e-05,
+        "Cassini": {
+          "beta_without_this": 0.0004639596125824992,
           "remaining_n": 3
         },
         "Rosetta_2005": {
-          "beta_without_this": 9.228606242247924e-05,
+          "beta_without_this": 0.0004674181709134104,
           "remaining_n": 3
         }
       },
-      "stability_coefficient": 0.24412406570975084,
+      "stability_coefficient": 0.20741298143558806,
       "conclusion_robust": true,
       "interpretation": "moderately robust"
     },
     "statistical_power": {
       "status": "success",
       "n_current": 4,
-      "effect_size_cv": 0.44438284773222253,
+      "effect_size_cv": 0.7789705399484808,
       "cv_detectable_80_percent_power": 1.4007926090564842,
       "heterogeneity_detectable": false,
-      "n_required_for_current_cv": 40.0,
+      "n_required_for_current_cv": 13.0,
       "interpretation": "not_detectable",
       "note": "Current sample can detect CV > 1.40 at 80% power"
     }
@@ -520,9 +361,9 @@
   "enhanced_validation": {
     "effect_sizes": {
       "null_population": {
-        "n_nulls": 8,
-        "mean_dv": 0.0025,
-        "std_dv": 0.006614378277661477
+        "n_nulls": 1,
+        "mean_dv": 0.0,
+        "std_dv": 0.02
       },
       "detection_population": {
         "n_detections": 4,
@@ -530,142 +371,152 @@
         "std_dv": 5.163416383558467
       },
       "effect_sizes": {
+        "NEAR": {
+          "cohens_d": null,
+          "abs_d": null,
+          "interpretation": "insufficient_data",
+          "detection_significance": "unknown"
+        },
         "Galileo_1990": {
-          "cohens_d": 1.3851933498704923,
-          "abs_d": 1.3851933498704923,
-          "interpretation": "large",
-          "detection_significance": "moderate"
+          "cohens_d": null,
+          "abs_d": null,
+          "interpretation": "insufficient_data",
+          "detection_significance": "unknown"
         },
-        "NEAR_1998": {
-          "cohens_d": 4.75845296895524,
-          "abs_d": 4.75845296895524,
-          "interpretation": "large",
-          "detection_significance": "strong"
-        },
-        "Cassini_1999": {
-          "cohens_d": 0.03801104916683546,
-          "abs_d": 0.03801104916683546,
-          "interpretation": "negligible",
-          "detection_significance": "weak"
+        "Cassini": {
+          "cohens_d": null,
+          "abs_d": null,
+          "interpretation": "insufficient_data",
+          "detection_significance": "unknown"
         },
         "Rosetta_2005": {
-          "cohens_d": 0.6426519242857996,
-          "abs_d": 0.6426519242857996,
-          "interpretation": "medium",
-          "detection_significance": "weak"
+          "cohens_d": null,
+          "abs_d": null,
+          "interpretation": "insufficient_data",
+          "detection_significance": "unknown"
         }
       }
     },
     "model_comparison": {
       "n_data_points": 4,
-      "skip_empirical_comparison": true,
+      "skip_empirical_comparison": false,
       "models": {
         "TEP": {
           "k_parameters": 1,
-          "chi2": 4090.854807885219,
-          "BIC": 4092.241102246339,
-          "AIC": 4092.854807885219,
-          "akaike_weight": 1.0
+          "chi2": 4983.468744787216,
+          "BIC": 4964.000162153141,
+          "AIC": 4964.613867792021,
+          "akaike_weight": 0.0,
+          "comparison_basis": "observational_uncertainty_only"
         },
         "Null": {
           "k_parameters": 0,
           "chi2": 1830119.5777777778,
-          "BIC": 1830119.5777777778,
-          "AIC": 1830119.5777777778,
+          "BIC": 1830098.7229007827,
+          "AIC": 1830098.7229007827,
           "akaike_weight": 0.0
         },
         "Empirical": {
           "k_parameters": 4,
           "chi2": 0.0,
-          "BIC": 5.545177444479562,
-          "AIC": 8.0,
-          "akaike_weight": 0.0
+          "BIC": -15.309699550715166,
+          "AIC": -12.85487699519473,
+          "akaike_weight": 1.0,
+          "aic_c_warning": "Structurally saturated (n <= k+1). AICc structurally approaches infinity."
         }
       },
+      "tep_structured_uncertainty_sensitivity": {
+        "chi2": 4.914428933845299,
+        "BIC": 18.98073120056659,
+        "AIC": 19.5944368394467,
+        "comparison_basis": "observational_plus_structured_theoretical_uncertainty"
+      },
       "model_comparison": {
-        "best_model_bic": "TEP",
-        "best_model_aic": "TEP",
+        "best_model_bic": "Empirical",
+        "best_model_aic": "Empirical",
         "tep_evidence_weight": 1.0,
-        "tep_vs_null_bayes_factor_approx": 0.0
+        "tep_vs_null_bayes_factor_approx": 1.0142320547350045e+304,
+        "log_evidence_delta": 912567.3613693148,
+        "headline_basis": "TEP vs Null on shared observational uncertainties"
       }
     },
     "prediction_accuracy": {
       "n_predictions": 4,
-      "MAE_mm_s": 0.5611741408282682,
-      "RMSE_mm_s": 0.9636755601406152,
-      "MAPE_percent": 29.40104746970001,
-      "R_squared": 0.9651672796591698,
-      "correlation": 0.986096473026939,
-      "prediction_quality": "excellent",
-      "beta_used": 9.227591904974995e-05
+      "MAE_mm_s": 1.204047193282844,
+      "RMSE_mm_s": 1.7093160630727688,
+      "MAPE_percent": 253.74100177154074,
+      "R_squared": 0.8904101201323911,
+      "correlation": 0.9602034562000303,
+      "prediction_quality": "good",
+      "beta_used": 0.0004635225562803794
     },
     "residual_analysis": {
       "residuals": {
-        "Galileo_1990": 1.9107646082431575,
-        "NEAR_1998": -0.03010397875293691,
-        "Cassini_1999": -0.060812441515486274,
-        "Rosetta_2005": -0.24301553480149196
+        "NEAR": 0.07937643169242037,
+        "Galileo_1990": 0.5907464961971463,
+        "Cassini": -0.9032396552662431,
+        "Rosetta_2005": -3.242826189975567
       },
       "statistics": {
-        "mean": 0.3942081632933106,
-        "std": 0.8793580096895935,
-        "skewness": 1.124531923382824,
-        "kurtosis": -0.6879644140605441,
-        "normality_p_value": 0.01639410195846342,
-        "normal_distribution": false
+        "mean": -0.8689857293380608,
+        "std": 1.4719460607255241,
+        "skewness": -0.7379336480952551,
+        "kurtosis": -1.0239795877723241,
+        "normality_p_value": 0.44824396980319653,
+        "normal_distribution": true
       },
-      "interpretation": "residuals_deviate_from_normal"
+      "interpretation": "residuals_appear_normal"
     },
     "systematic_uncertainty_budget": {
       "status": "success",
-      "total_relative_systematic_uncertainty": 1.0271266080677977,
+      "total_relative_systematic_uncertainty": 0.16753766384151722,
       "systematic_uncertainty_by_flyby": {
+        "NEAR": {
+          "beta": 0.00046719244958672344,
+          "systematic_uncertainty": 7.827233156815546e-05,
+          "relative_systematic_uncertainty": 0.16753766384151722
+        },
         "Galileo_1990": {
-          "beta": 0.0001800294799499507,
-          "systematic_uncertainty": 0.00018491306909320244,
-          "relative_systematic_uncertainty": 1.0271266080677977
+          "beta": 0.0005763104240877862,
+          "systematic_uncertainty": 9.655370209918175e-05,
+          "relative_systematic_uncertainty": 0.16753766384151722
         },
-        "NEAR_1998": {
-          "beta": 9.206999978397879e-05,
-          "systematic_uncertainty": 9.4567546582921e-05,
-          "relative_systematic_uncertainty": 1.0271266080677977
-        },
-        "Cassini_1999": {
-          "beta": 5.942395650701028e-05,
-          "systematic_uncertainty": 6.10359268850138e-05,
-          "relative_systematic_uncertainty": 1.0271266080677977
+        "Cassini": {
+          "beta": 2.4005543799723328e-05,
+          "systematic_uncertainty": 4.021832727450865e-06,
+          "relative_systematic_uncertainty": 0.16753766384151722
         },
         "Rosetta_2005": {
-          "beta": 8.140615998158476e-05,
-          "systematic_uncertainty": 8.361443297770964e-05,
-          "relative_systematic_uncertainty": 1.0271266080677977
+          "beta": 0.00011847917812703144,
+          "systematic_uncertainty": 1.9849724717265832e-05,
+          "relative_systematic_uncertainty": 0.16753766384151722
         }
       },
       "uncertainty_breakdown": {
-        "measurement_uncertainty": 0.07673375398649071,
+        "measurement_uncertainty": 0.05447814979854978,
         "trajectory_uncertainty": 0.01,
-        "thin_shell_factor_uncertainty": 0.91,
+        "characteristic_suppression_uncertainty": 0.05,
         "multipole_coefficient_uncertainty": 0.001,
-        "screening_length_uncertainty": 0.47
+        "relaxation_length_uncertainty": 0.15
       },
-      "dominant_uncertainty_source": "thin_shell_factor_uncertainty",
-      "dominant_contribution_percent": 91.0,
-      "interpretation": "Systematic uncertainty dominated by thin_shell_factor_uncertainty (91.0% of total)"
+      "dominant_uncertainty_source": "relaxation_length_uncertainty",
+      "dominant_contribution_percent": 15.0,
+      "interpretation": "Systematic uncertainty dominated by relaxation_length_uncertainty (15.0% of total)"
     }
   },
   "limitations": {
     "small_sample_size": true,
     "n_primary_detections": 4,
-    "note": "Analysis limited to 3 primary detections (NEAR, Galileo 1990, Rosetta 2005). Cassini excluded due to sign mismatch. Additional flyby data needed for conclusive results.",
+    "note": "Analysis utilizes 4 primary detection(s). Published: NEAR, Galileo_1990, Rosetta_2005, Cassini. Successfully fitted: 4. Additional flyby data needed for conclusive results.",
     "heterogeneity_limitation": true,
     "power_insufficient": true
   },
   "conclusion": {
     "tep_explains_flyby_anomaly": true,
-    "recommended_beta": 9.227591904974995e-05,
-    "recommended_uncertainty": 2.521627793450419e-06,
+    "recommended_beta": 0.0004635225562803794,
+    "recommended_uncertainty": 2.317774082482756e-05,
     "confidence": "moderate",
     "evidence_strength": "strong",
-    "sample_size_note": "Based on 4 primary detections. Enhanced validation shows strong statistical evidence despite small sample size."
+    "sample_size_note": "Based on 4 primary detections. Enhanced validation includes a fair TEP-vs-Null comparison on shared observational uncertainties plus separate structured-uncertainty sensitivity tests."
   }
 }

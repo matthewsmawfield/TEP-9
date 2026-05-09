@@ -201,18 +201,24 @@ class HTMLToPDFConverter:
                     timeout=30000
                 )
                 logger.info("Loading indicator hidden, content should be ready")
-            except:
-                logger.warning("Could not detect loading indicator state, proceeding anyway")
+            except (TimeoutError, Exception) as e:
+                logger.warning(f"Could not detect loading indicator state, proceeding anyway: {e}")
             
-            # Final check for content presence
+            # Final check for content presence - skip if element doesn't exist
             try:
-                content_ready = await page.wait_for_function(
-                    "() => { const content = document.getElementById('content'); return content && content.children.length > 0; }",
-                    timeout=10000
+                has_content_element = await page.evaluate(
+                    "() => { return document.getElementById('content') !== null; }"
                 )
-                logger.info("Content container has content loaded")
-            except:
-                logger.warning("Could not verify content loading, proceeding anyway")
+                if has_content_element:
+                    content_ready = await page.wait_for_function(
+                        "() => { const content = document.getElementById('content'); return content && content.children.length > 0; }",
+                        timeout=10000
+                    )
+                    logger.info("Content container has content loaded")
+                else:
+                    logger.info("No content element found, skipping content check")
+            except (TimeoutError, Exception) as e:
+                logger.warning(f"Could not verify content loading: {e}, proceeding anyway")
             
             # Wait specifically for images to load
             try:
@@ -227,13 +233,13 @@ class HTMLToPDFConverter:
                     timeout=15000
                 )
                 logger.info(f"All images loaded successfully")
-            except:
-                logger.warning("Could not verify all images loaded, proceeding anyway")
+            except (TimeoutError, Exception) as e:
+                logger.warning(f"Could not verify all images loaded, proceeding anyway: {e}")
                 # Log how many images we found
                 try:
                     image_count = await page.evaluate("document.querySelectorAll('img').length")
                     logger.info(f"Found {image_count} images in document")
-                except:
+                except (TimeoutError, Exception) as e:
                     pass
             
             # Configure PDF options
@@ -302,7 +308,7 @@ def create_preset_configs() -> Dict[str, Dict]:
     """Create preset configurations for common use cases."""
     return {
         'high_quality': {
-            'scale': 1.0,
+            'scale': 0.72,
             'device_scale_factor': 2.0,
             'format': 'A4',
             'margin_top': '1.5cm',
@@ -317,7 +323,7 @@ def create_preset_configs() -> Dict[str, Dict]:
             '''
         },
         'print_ready': {
-            'scale': 1.0,
+            'scale': 0.72,
             'format': 'A4',
             'display_header_footer': True,
             'header_template': '<div></div>',  # Empty header
@@ -333,7 +339,7 @@ def create_preset_configs() -> Dict[str, Dict]:
             'margin_right': '2cm',
         },
         'web_optimized': {
-            'scale': 0.8,
+            'scale': 0.72,
             'format': 'A4',
             'margin_top': '1cm',
             'margin_bottom': '1cm',
