@@ -15,4 +15,4 @@ scripts/
 
 ## Execution
 
-Steps should be run in numerical order. Each step produces outputs in `results/outputs/`.
+Steps should be run in numerical order. Each step produces outputs in `results/`.

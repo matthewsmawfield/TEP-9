@@ -6,7 +6,7 @@
     The TEP scalar force model with J2/J3/J4 multipole contributions,
     <em>disformal coupling</em>, and
     <em>Temporal Topology screening</em> quantitatively fits four primary flyby
-    detections as "Phantom Mass" artifacts. The model incorporates: (1) scalar force F = β_eff c² ∇φ/M_Pl
+    detections as "Phantom Mass" artifacts. The model incorporates: (1) scalar force F = β_eff c² ∇φ/M_{\rm Pl}
     from the Temporal Topology field gradient, (2) non-radial force modulation by
     Earth's zonal harmonics, (3) trajectory asymmetry factor, and (4)
     velocity-dependent disformal coupling. Cassini (1999) is classified as a high-velocity anti-aligned
@@ -198,7 +198,7 @@
 </p>
 
 <p>
-    <strong>Stable Results (Step 043):</strong>
+    <strong>Stable Results (Step 026):</strong>
 </p>
 
 <ul>
@@ -373,7 +373,7 @@
 
 <p>
     To quantitatively test the OD suppression hypothesis, a rigorous numerical
-    simulation (Step 021) was performed using 3D orbital mechanics with a
+    simulation (Step 009) was performed using 3D orbital mechanics with a
     realistic TEP scalar force model. The simulation compares two orbit
     determination approaches: (1) <em>Minimal OD</em> (6-state batch
     least-squares, pure Keplerian dynamics) representing 1990s-era analysis, and
@@ -416,7 +416,7 @@
 
 <table class="data-table">
     <caption>
-        Table 3c: OD Filter Simulation Results (Step 021)
+        Table 3d: OD Filter Simulation Results (Step 009)
     </caption>
     <thead>
         <tr>
@@ -500,7 +500,7 @@
 
 <table class="data-table">
     <caption>
-        Table 3b: Leave-One-Out Cross-Validation Results
+        Table 3c: Leave-One-Out Cross-Validation Results
     </caption>
     <thead>
         <tr>
@@ -589,7 +589,7 @@
 </p>
 
 <p>
-    <strong>Bayesian model comparison:</strong> Stable Bayesian model comparison (Step 043) strongly favors the TEP model over alternatives. Comparing three models—(1) TEP with 1 shared parameter $\beta$, (2) Null model with 0 parameters (no anomalies), and (3) Empirical model with 4 independent parameters (one per flyby)—using Akaike Information Criterion (AIC) and Bayesian Information Criterion (BIC):
+    <strong>Bayesian model comparison:</strong> Stable Bayesian model comparison (Step 026) strongly favors the TEP model over alternatives. Comparing three models—(1) TEP with 1 shared parameter $\beta$, (2) Null model with 0 parameters (no anomalies), and (3) Empirical model with 4 independent parameters (one per flyby)—using Akaike Information Criterion (AIC) and Bayesian Information Criterion (BIC):
 </p>
 
 <ul>
@@ -619,13 +619,13 @@
 <h3>4.6.6 Characteristic Suppression from First-Principles</h3>
 
 <p>
-    The characteristic suppression $S_{\oplus} \approx 0.35$—critical to PPN compliance and the magnitude of the flyby anomaly—is derived from UCD soliton first-principles in Section 3.12. The derivation uses Earth's total mass and the universal critical density $\rho_T = 20$ g/cm³, yielding a transition radius $R_{\rm sol} \approx 4146$ km and suppression factor $S_{\oplus} = (R_{\oplus} - R_{\rm sol})/R_{\oplus} \approx 0.35$. This first-principles value is cross-validated by GNSS atomic clock correlations ($L_c = 4201$ km, 2% agreement) and three additional independent methods (Compton wavelength, flyby altitude threshold, and dwarf galaxy core densities), all converging on $S_{\oplus} \in [0.34, 0.39]$. See Section 3.12 for the complete derivation and cross-scale consistency arguments.
+    The characteristic suppression $S_{\oplus} \approx 0.35$—critical to PPN compliance and the magnitude of the flyby anomaly—is derived from UCD soliton first-principles in Section 3.11. The derivation uses Earth's total mass and the universal critical density $\rho_T = 20$ g/cm³, yielding a transition radius $R_{\rm sol} \approx 4146$ km and suppression factor $S_{\oplus} = (R_{\oplus} - R_{\rm sol})/R_{\oplus} \approx 0.35$. This first-principles value is cross-validated by GNSS atomic clock correlations ($L_c = 4201$ km, 2% agreement) and three additional independent methods (Compton wavelength, flyby altitude threshold, and dwarf galaxy core densities), all converging on $S_{\oplus} \in [0.34, 0.39]$. See Section 3.11 for the complete derivation and cross-scale consistency arguments.
 </p>
 
 <h3>4.6.7 Systematic Uncertainty Budget</h3>
 
 <p>
-    A comprehensive uncertainty budget quantifies the contribution of each uncertainty source to the fitted $\beta$ parameters. The corrected uncertainty analysis (Step 042) distinguishes between variance contributions and total relative uncertainty:
+    A comprehensive uncertainty budget quantifies the contribution of each uncertainty source to the fitted $\beta$ parameters. The corrected uncertainty analysis (Step 025) distinguishes between variance contributions and total relative uncertainty:
 </p>
 
 <p>
@@ -958,7 +958,7 @@
 
 <p>
     The 24.0-fold variance in fitted $\beta$ values is comprehensively explained
-    through a four-stage decomposition (Step 007). This unified analysis
+    through a four-stage decomposition (Step 009). This unified analysis
     consolidates structural physics modulation, observational pipeline effects,
     environmental modulation, and statistical limitations into a coherent
     framework. The apparent scatter is not stochastic noise, but rather a
@@ -968,7 +968,7 @@
 <h2>4.10 PPN Compliance and Global State</h2>
 
 <p>
-    <strong>Bayesian model comparison:</strong> Stable model comparison (Step 043) compares
+    <strong>Bayesian model comparison:</strong> Stable model comparison (Step 026) compares
     three models: (1) Null model (no anomalies), (2) TEP model with single
     shared β parameter, and (3) Empirical model with independent
     parameters per flyby. The Bayes factor for TEP vs Null is

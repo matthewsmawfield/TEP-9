@@ -27,14 +27,43 @@ TEP-EFA/
 │   └── processed/                 # Pipeline outputs (JSON/CSV)
 ├── scripts/
 │   ├── steps/                     # Analysis pipeline steps
-│   │   ├── step_001_data_ingestion.py
-│   │   ├── step_002_archival_data_mining.py
-│   │   ├── step_004_tep_model.py
-│   │   ├── step_005_fitting.py
-│   │   ├── step_006_report.py
-│   │   ├── step_007_visualizations.py
-│   │   ├── step_008_tep_suppression.py
-│   │   └── step_015_Temporal Shear Suppression_first_principles.py
+│   │   ├── step_001_download_spice.py
+│   │   ├── step_002_spice_to_json.py
+│   │   ├── step_003_archival_data_mining.py
+│   │   ├── step_004_jpl_horizons_fetch.py
+│   │   ├── step_005_dsn_data_ingestion.py
+│   │   ├── step_006_dsn_framework.py
+│   │   ├── step_007_tep_model.py
+│   │   ├── step_008_fitting.py
+│   │   ├── step_009_variance_analysis.py
+│   │   ├── step_010_tep_first_principles.py
+│   │   ├── step_011_trajectory_integration.py
+│   │   ├── step_012_od_filter_simulation.py
+│   │   ├── step_013_cross_validation.py
+│   │   ├── step_014_sensitivity_analysis.py
+│   │   ├── step_015_hierarchical_bayesian.py
+│   │   ├── step_016_gnss_validation.py
+│   │   ├── step_017_plasma_modulation.py
+│   │   ├── step_018_space_weather.py
+│   │   ├── step_019_3d_field_integration.py
+│   │   ├── step_020_plasma_environment_reconstruction.py
+│   │   ├── step_021_mission_specific_od_absorption.py
+│   │   ├── step_022_atmospheric_drag_simulation.py
+│   │   ├── step_023_thermal_recoil_modeling.py
+│   │   ├── step_024_systematic_error_monte_carlo.py
+│   │   ├── step_025_corrected_uncertainty.py
+│   │   ├── step_026_stable_model_comparison.py
+│   │   ├── step_027_claim_consistency_audit.py
+│   │   ├── step_028_dsn_processing.py
+│   │   ├── step_029_read_trk234.py
+│   │   ├── step_030_juno_reanalysis.py
+│   │   ├── step_031_pds_search.py
+│   │   ├── step_032_tep_suppression.py
+│   │   ├── step_033_iri_trajectory_profile.py
+│   │   ├── step_034_covariant_holonomy.py
+│   │   ├── step_035_cross_corpus_export.py
+│   │   ├── step_036_final_report.py
+│   │   └── step_037_visualizations.py
 │   ├── utils/                     # Utility functions
 │   └── build_markdown.js          # Manuscript builder
 ├── site/
@@ -79,7 +108,7 @@ TEP-EFA/
             <td>Peer-reviewed literature</td>
             <td>Manual compilation</td>
             <td>~50 KB</td>
-            <td><code>results/step002_archival_flyby_catalog.json</code></td>
+            <td><code>results/step003_archival_flyby_catalog.json</code></td>
         </tr>
         <tr>
             <td>SPICE Kernels</td>
@@ -111,103 +140,296 @@ TEP-EFA/
     </thead>
     <tbody>
         <tr style="background-color: #e8f4f8;">
-            <td colspan="5">Section 2-3: Data Ingestion &amp; TEP Model</td>
+            <td colspan="5">Phase 1: Data Acquisition & Preparation (001-006)</td>
         </tr>
         <tr>
             <td>Data</td>
-            <td>1.0</td>
-            <td><code>step_001_data_ingestion.py</code></td>
-            <td>JPL Horizons trajectory retrieval (10 flybys; Rosetta 2005/2007 from ESA SPICE)</td>
+            <td>001</td>
+            <td><code>step_001_download_spice.py</code></td>
+            <td>SPICE kernel download (NAIF archive)</td>
             <td>~30s</td>
         </tr>
         <tr>
             <td>Data</td>
-            <td>2.0</td>
-            <td><code>step_002_archival_data_mining.py</code></td>
+            <td>002</td>
+            <td><code>step_002_spice_to_json.py</code></td>
+            <td>SPICE to JSON conversion</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Data</td>
+            <td>003</td>
+            <td><code>step_003_archival_data_mining.py</code></td>
             <td>Archival flyby catalog compilation</td>
+            <td>~2s</td>
+        </tr>
+        <tr>
+            <td>Data</td>
+            <td>004</td>
+            <td><code>step_004_jpl_horizons_fetch.py</code></td>
+            <td>JPL Horizons ephemeris data fetch</td>
+            <td>~5s</td>
+        </tr>
+        <tr>
+            <td>Data</td>
+            <td>005</td>
+            <td><code>step_005_dsn_data_ingestion.py</code></td>
+            <td>DSN tracking data ingestion</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Data</td>
+            <td>006</td>
+            <td><code>step_006_dsn_framework.py</code></td>
+            <td>DSN raw data acquisition framework</td>
+            <td>~1s</td>
+        </tr>
+        <tr style="background-color: #ffe8e8;">
+            <td colspan="5">Phase 2: Core Physics & Variance Analysis (007-010)</td>
+        </tr>
+        <tr>
+            <td>Core</td>
+            <td>007</td>
+            <td><code>step_007_tep_model.py</code></td>
+            <td>TEP Temporal Topology model with screening</td>
             <td>~1s</td>
         </tr>
         <tr>
             <td>Core</td>
-            <td>4.0</td>
-            <td><code>step_004_tep_model.py</code></td>
-            <td>TEP Temporal Topology model with screening</td>
-            <td>~2s</td>
-        </tr>
-        <tr style="background-color: #ffe8e8;">
-            <td colspan="5">Section 4: Parameter Fitting</td>
-        </tr>
-        <tr>
-            <td>Core</td>
-            <td>5.0</td>
-            <td><code>step_005_fitting.py</code></td>
+            <td>008</td>
+            <td><code>step_008_fitting.py</code></td>
             <td>β parameter fitting with PPN validation</td>
             <td>~1s</td>
         </tr>
         <tr>
             <td>Core</td>
-            <td>6.0</td>
-            <td><code>step_006_report.py</code></td>
-            <td>Comprehensive results generation</td>
-            <td>~1s</td>
-        </tr>
-        <tr style="background-color: #fff4e6;">
-            <td colspan="5">Section 5: Visualizations</td>
+            <td>009</td>
+            <td><code>step_009_variance_analysis.py</code></td>
+            <td>Unified variance decomposition</td>
+            <td>~2s</td>
         </tr>
         <tr>
-            <td>Fig</td>
-            <td>7.0</td>
-            <td><code>step_007_visualizations.py</code></td>
-            <td>Publication-quality figure generation (3 figures)</td>
+            <td>Core</td>
+            <td>010</td>
+            <td><code>step_010_tep_first_principles.py</code></td>
+            <td>Temporal Topology first-principles derivation</td>
+            <td>~10s</td>
+        </tr>
+        <tr style="background-color: #fff4e6;">
+            <td colspan="5">Phase 3: Trajectory & Observational Pipeline (011-012)</td>
+        </tr>
+        <tr>
+            <td>Traj</td>
+            <td>011</td>
+            <td><code>step_011_trajectory_integration.py</code></td>
+            <td>Numerical trajectory integration</td>
+            <td>~5s</td>
+        </tr>
+        <tr>
+            <td>OD</td>
+            <td>012</td>
+            <td><code>step_012_od_filter_simulation.py</code></td>
+            <td>OD filter simulation validation</td>
             <td>~3s</td>
         </tr>
         <tr style="background-color: #f0f8f8;">
-            <td colspan="5">Section 6: TEP Suppression Analysis</td>
+            <td colspan="5">Phase 4: Validation & Robustness (013-016)</td>
         </tr>
         <tr>
             <td>Valid</td>
-            <td>8.0</td>
-            <td><code>step_008_tep_suppression.py</code></td>
-            <td>Modern OD suppression hypothesis testing</td>
-            <td>~1s</td>
-        </tr>
-        <tr>
-            <td>Valid</td>
-            <td>15.0</td>
-            <td><code>step_015_temporal_topology_first_principles.py</code></td>
-            <td>Temporal Topology first-principles derivation and SCF validation</td>
-            <td>~10s</td>
-        </tr>
-        <tr style="background-color: #f5f0ff;">
-            <td colspan="5">Section 7: Enhanced Validation (New Steps)</td>
-        </tr>
-        <tr>
-            <td>Valid</td>
-            <td>17.0</td>
-            <td><code>step_017_trajectory_integration.py</code></td>
-            <td>Full trajectory integration (placeholder)</td>
+            <td>013</td>
+            <td><code>step_013_cross_validation.py</code></td>
+            <td>Cross-validation analysis</td>
             <td>~5s</td>
         </tr>
         <tr>
             <td>Valid</td>
-            <td>18.0</td>
-            <td><code>step_018_enhanced_bayesian.py</code></td>
-            <td>Weighted least squares hierarchical model</td>
+            <td>014</td>
+            <td><code>step_014_sensitivity_analysis.py</code></td>
+            <td>Parameter sensitivity analysis</td>
+            <td>~2s</td>
+        </tr>
+        <tr>
+            <td>Valid</td>
+            <td>015</td>
+            <td><code>step_015_hierarchical_bayesian.py</code></td>
+            <td>Hierarchical Bayesian model</td>
             <td>~30s</td>
         </tr>
         <tr>
             <td>Valid</td>
-            <td>19.0</td>
-            <td><code>step_019_cross_validation.py</code></td>
-            <td>LOO-CV, bootstrap, altitude-stratified</td>
+            <td>016</td>
+            <td><code>step_016_gnss_validation.py</code></td>
+            <td>GNSS atomic clock validation</td>
+            <td>~1s</td>
+        </tr>
+        <tr style="background-color: #f5f0ff;">
+            <td colspan="5">Phase 5: Extended Physics (017-019)</td>
+        </tr>
+        <tr>
+            <td>Phys</td>
+            <td>017</td>
+            <td><code>step_017_plasma_modulation.py</code></td>
+            <td>Plasma-dependent gradient modulation</td>
+            <td>~2s</td>
+        </tr>
+        <tr>
+            <td>Phys</td>
+            <td>018</td>
+            <td><code>step_018_space_weather.py</code></td>
+            <td>Space weather correlation analysis</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Phys</td>
+            <td>019</td>
+            <td><code>step_019_3d_field_integration.py</code></td>
+            <td>3D field integration</td>
+            <td>~1s</td>
+        </tr>
+        <tr style="background-color: #e8ffe8;">
+            <td colspan="5">Phase 6: Plasma & Environmental (020-023)</td>
+        </tr>
+        <tr>
+            <td>Plasma</td>
+            <td>020</td>
+            <td><code>step_020_plasma_environment_reconstruction.py</code></td>
+            <td>Plasma environment reconstruction</td>
+            <td>~3s</td>
+        </tr>
+        <tr>
+            <td>OD</td>
+            <td>021</td>
+            <td><code>step_021_mission_specific_od_absorption.py</code></td>
+            <td>Mission-specific OD absorption</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Env</td>
+            <td>022</td>
+            <td><code>step_022_atmospheric_drag_simulation.py</code></td>
+            <td>Atmospheric drag simulation</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Env</td>
+            <td>023</td>
+            <td><code>step_023_thermal_recoil_modeling.py</code></td>
+            <td>Thermal recoil modeling</td>
+            <td>~1s</td>
+        </tr>
+        <tr style="background-color: #ffe8f8;">
+            <td colspan="5">Phase 7: Statistical Analysis (024-026)</td>
+        </tr>
+        <tr>
+            <td>Stat</td>
+            <td>024</td>
+            <td><code>step_024_systematic_error_monte_carlo.py</code></td>
+            <td>Systematic error Monte Carlo analysis</td>
             <td>~5s</td>
         </tr>
         <tr>
-            <td>Valid</td>
-            <td>20.0</td>
-            <td><code>step_020_sensitivity_analysis.py</code></td>
-            <td>Parameter sensitivity and uncertainty budget</td>
+            <td>Stat</td>
+            <td>025</td>
+            <td><code>step_025_corrected_uncertainty.py</code></td>
+            <td>Corrected uncertainty analysis</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Stat</td>
+            <td>026</td>
+            <td><code>step_026_stable_model_comparison.py</code></td>
+            <td>Stable model comparison</td>
             <td>~2s</td>
+        </tr>
+        <tr style="background-color: #f8f8e8;">
+            <td colspan="5">Phase 8: Advanced Topics (027-028)</td>
+        </tr>
+        <tr>
+            <td>Audit</td>
+            <td>027</td>
+            <td><code>step_027_claim_consistency_audit.py</code></td>
+            <td>Claim consistency audit</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>DSN</td>
+            <td>028</td>
+            <td><code>step_028_dsn_processing.py</code></td>
+            <td>DSN processing framework</td>
+            <td>~1s</td>
+        </tr>
+        <tr style="background-color: #e8e8ff;">
+            <td colspan="5">Phase 9: DSN Reanalysis (029-032)</td>
+        </tr>
+        <tr>
+            <td>DSN</td>
+            <td>029</td>
+            <td><code>step_029_read_trk234.py</code></td>
+            <td>Read TRK-2-34 data format</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>DSN</td>
+            <td>030</td>
+            <td><code>step_030_juno_reanalysis.py</code></td>
+            <td>Juno 2013 Earth flyby reanalysis</td>
+            <td>~5s</td>
+        </tr>
+        <tr>
+            <td>DSN</td>
+            <td>031</td>
+            <td><code>step_031_pds_search.py</code></td>
+            <td>NASA PDS archive search</td>
+            <td>~2s</td>
+        </tr>
+        <tr>
+            <td>DSN</td>
+            <td>032</td>
+            <td><code>step_032_tep_suppression.py</code></td>
+            <td>TEP suppression analysis</td>
+            <td>~1s</td>
+        </tr>
+        <tr style="background-color: #fff8e8;">
+            <td colspan="5">Phase 10: Advanced Analysis (033-035)</td>
+        </tr>
+        <tr>
+            <td>IRI</td>
+            <td>033</td>
+            <td><code>step_033_iri_trajectory_profile.py</code></td>
+            <td>Continuous IRI trajectory profiles</td>
+            <td>~5s</td>
+        </tr>
+        <tr>
+            <td>Holo</td>
+            <td>034</td>
+            <td><code>step_034_covariant_holonomy.py</code></td>
+            <td>Covariant synchronization holonomy</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Export</td>
+            <td>035</td>
+            <td><code>step_035_cross_corpus_export.py</code></td>
+            <td>Cross-corpus parameter export</td>
+            <td>~1s</td>
+        </tr>
+        <tr style="background-color: #f8f8ff;">
+            <td colspan="5">Phase 11: Reporting (036-037)</td>
+        </tr>
+        <tr>
+            <td>Report</td>
+            <td>036</td>
+            <td><code>step_036_final_report.py</code></td>
+            <td>Final report generation</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Fig</td>
+            <td>037</td>
+            <td><code>step_037_visualizations.py</code></td>
+            <td>Publication-quality figure generation</td>
+            <td>~3s</td>
         </tr>
     </tbody>
 </table>
@@ -220,29 +442,64 @@ TEP-EFA/
         <th>Runtime</th>
     </tr>
     <tr>
-        <td>Data Ingestion</td>
-        <td>2</td>
-        <td>~31s</td>
+        <td>Data Acquisition (001-006)</td>
+        <td>6</td>
+        <td>~40s</td>
     </tr>
     <tr>
-        <td>TEP Model &amp; Fitting</td>
+        <td>Core Physics & Variance (007-010)</td>
+        <td>4</td>
+        <td>~14s</td>
+    </tr>
+    <tr>
+        <td>Trajectory & Observational (011-012)</td>
+        <td>2</td>
+        <td>~8s</td>
+    </tr>
+    <tr>
+        <td>Validation & Robustness (013-016)</td>
+        <td>4</td>
+        <td>~38s</td>
+    </tr>
+    <tr>
+        <td>Extended Physics (017-019)</td>
         <td>3</td>
         <td>~4s</td>
     </tr>
     <tr>
-        <td>Figure Generation</td>
-        <td>1</td>
-        <td>~3s</td>
+        <td>Plasma & Environmental (020-023)</td>
+        <td>4</td>
+        <td>~6s</td>
     </tr>
     <tr>
-        <td>Validation</td>
-        <td>1</td>
-        <td>~1s</td>
+        <td>Statistical Analysis (024-026)</td>
+        <td>3</td>
+        <td>~8s</td>
+    </tr>
+    <tr>
+        <td>Advanced Topics (027-028)</td>
+        <td>2</td>
+        <td>~2s</td>
+    </tr>
+    <tr>
+        <td>DSN Reanalysis (029-032)</td>
+        <td>4</td>
+        <td>~9s</td>
+    </tr>
+    <tr>
+        <td>Advanced Analysis (033-035)</td>
+        <td>3</td>
+        <td>~7s</td>
+    </tr>
+    <tr>
+        <td>Reporting (036-037)</td>
+        <td>2</td>
+        <td>~4s</td>
     </tr>
     <tr style="font-weight: bold;">
         <td>Total</td>
-        <td>7</td>
-        <td>~40s</td>
+        <td>37</td>
+        <td>~2 min</td>
     </tr>
 </table>
 
@@ -304,14 +561,14 @@ python scripts/run_all.py
 
 <h4>Key Analysis Outputs</h4>
 <ul>
-    <li><code>results/step002_archival_flyby_catalog.json</code> — Literature flyby catalog with provenance</li>
-    <li><code>results/step004_tep_predictions.json</code> — TEP model predictions for all modeled flybys</li>
-    <li><code>results/step005_fitting_results.json</code> — β fitting results with PPN validation</li>
-    <li><code>results/step006_final_report.json</code> — Comprehensive results with Temporal Topology screening</li>
-    <li><code>results/step026_tep_suppression_analysis.json</code> — TEP suppression hypothesis test</li>
-    <li><code>results/step007_figure1_altitude_anomaly.png</code> — Altitude vs anomaly correlation</li>
-    <li><code>results/step007_figure3_ppn_constraints.png</code> — PPN constraint analysis</li>
-    <li><code>results/step007_figure4_screening_profile.png</code> — Temporal Topology profile</li>
+    <li><code>results/step003_archival_flyby_catalog.json</code> — Literature flyby catalog with provenance</li>
+    <li><code>results/step007_tep_predictions.json</code> — TEP model predictions for all modeled flybys</li>
+    <li><code>results/step008_fitting_results.json</code> — β fitting results with PPN validation</li>
+    <li><code>results/step036_final_report.json</code> — Comprehensive results with Temporal Topology screening</li>
+    <li><code>results/step032_tep_suppression_analysis.json</code> — TEP suppression hypothesis test</li>
+    <li><code>results/step037_figure1_altitude_anomaly.png</code> — Altitude vs anomaly correlation</li>
+    <li><code>results/step037_figure3_ppn_constraints.png</code> — PPN constraint analysis</li>
+    <li><code>results/step037_figure4_screening_profile.png</code> — Temporal Topology profile</li>
 </ul>
 
 <h4>Log Files</h4>
@@ -391,7 +648,7 @@ python scripts/run_all.py
     Spacecraft trajectories are available through the <a href="https://ssd.jpl.nasa.gov/horizons/">NASA JPL Horizons ephemeris service</a>. 
     Literature anomaly values are from Anderson et al. (2008) and companion publications. 
     Analysis code and processed data products are available at <a href="https://github.com/mlsmawfield/TEP-EFA">https://github.com/mlsmawfield/TEP-EFA</a> 
-    with archived DOI at <a href="https://doi.org/10.5281/zenodo.19446029">10.5281/zenodo.19446029</a>.
+    with archived DOI at <a href="https://doi.org/10.5281/zenodo.19454863">10.5281/zenodo.19454863</a>.
 </p>
 
 <p>

@@ -48,7 +48,7 @@ for s in f.sfdu_list:
 **Source:** https://github.com/AndrewAnnex/SpiceyPy
 **Use Case:** Spacecraft ephemeris, geometry calculations
 
-**Already used in pipeline:** `step_001a_download_spice.py`, `step_001b_spice_to_json.py`
+**Already used in pipeline:** `step_001_download_spice.py`, `step_002_spice_to_json.py`
 
 ---
 

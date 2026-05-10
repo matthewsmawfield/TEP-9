@@ -84,75 +84,75 @@ LOGS_DIR.mkdir(parents=True, exist_ok=True)
 # All pipeline steps (run_all runs everything by default)
 # Organized by workflow phases for clarity
 CORE_STEPS: List[Tuple[str, str]] = [
-    # Phase 1: Data Acquisition & Preparation (001-004)
-    ('step_001a_download_spice.py', 'Step 001a: Download SPICE Kernels (NAIF)'),
-    ('step_001b_spice_to_json.py', 'Step 001b: Convert SPICE to JSON'),
-    ('step_002_archival_data_mining.py', 'Step 002: Archival Data Mining'),
-    ('step_002b_jpl_horizons_fetch.py', 'Step 002b: JPL Horizons Data Fetch'),
-    ('step_003_dsn_data_ingestion.py', 'Step 003: DSN Data Ingestion'),
-    ('step_003_dsn_framework.py', 'Step 003b: DSN Framework (Resolves Horizons Circularity)'),
+    # Phase 1: Data Acquisition & Preparation (001-006)
+    ('step_001_download_spice.py', 'Step 001: Download SPICE Kernels (NAIF)'),
+    ('step_002_spice_to_json.py', 'Step 002: Convert SPICE to JSON'),
+    ('step_003_archival_data_mining.py', 'Step 003: Archival Data Mining'),
+    ('step_004_jpl_horizons_fetch.py', 'Step 004: JPL Horizons Data Fetch'),
+    ('step_005_dsn_data_ingestion.py', 'Step 005: DSN Data Ingestion'),
+    ('step_006_dsn_framework.py', 'Step 006: DSN Framework (Resolves Horizons Circularity)'),
     
-    # Phase 2: Core Physics (004-007)
-    ('step_004_tep_model.py', 'Step 004: Enhanced TEP Model (WGS84, PREM, 3D)'),
-    ('step_005_fitting.py', 'Step 005: Parameter Fitting'),
-    ('step_007_variance_analysis.py', 'Step 006: Unified Variance Analysis (Four-Stage)'),
-    ('step_008_tep_first_principles.py', 'Step 007: Temporal Shear Suppression First-Principles'),
+    # Phase 2: Core Physics (007-010)
+    ('step_007_tep_model.py', 'Step 007: Enhanced TEP Model (WGS84, PREM, 3D)'),
+    ('step_008_fitting.py', 'Step 008: Parameter Fitting'),
+    ('step_009_variance_analysis.py', 'Step 009: Unified Variance Analysis (Four-Stage)'),
+    ('step_010_tep_first_principles.py', 'Step 010: Temporal Shear Suppression First-Principles'),
     
-    # Phase 3: Trajectory & Observational Pipeline (008-010)
-    ('step_009_trajectory_integration.py', 'Step 008: Trajectory Integration'),
-    ('step_010_od_filter_simulation.py', 'Step 009: OD Filter Simulation'),
-    ('step_011_cross_validation.py', 'Step 010: Cross-Validation Analysis'),
+    # Phase 3: Trajectory & Observational Pipeline (011-013)
+    ('step_011_trajectory_integration.py', 'Step 011: Trajectory Integration'),
+    ('step_012_od_filter_simulation.py', 'Step 012: OD Filter Simulation'),
+    ('step_013_cross_validation.py', 'Step 013: Cross-Validation Analysis'),
     
-    # Phase 4: Validation & Robustness (011-014)
-    ('step_012_sensitivity_analysis.py', 'Step 011: Sensitivity Analysis'),
-    ('step_013_hierarchical_bayesian.py', 'Step 012: Hierarchical Bayesian Model'),
-    ('step_014_gnss_validation.py', 'Step 013: GNSS Validation'),
+    # Phase 4: Validation & Robustness (014-016)
+    ('step_014_sensitivity_analysis.py', 'Step 014: Sensitivity Analysis'),
+    ('step_015_hierarchical_bayesian.py', 'Step 015: Hierarchical Bayesian Model'),
+    ('step_016_gnss_validation.py', 'Step 016: GNSS Validation'),
     
-    # Phase 5: Extended Physics (014-017)
-    ('step_015_plasma_modulation.py', 'Step 014: Plasma Modulation (Cassini Sign)'),
-    ('step_016_space_weather.py', 'Step 015: Space Weather Correlation'),
-    ('step_016b_3d_field_integration.py', 'Step 016: 3D Field Integration'),
-    ('step_017_enhanced_bayesian.py', 'Step 017: Enhanced Bayesian Analysis'),
-
-    # Phase 5.5: Paper 15 Enhancement Dependencies
-    ('step_034_plasma_environment_reconstruction.py', 'Step 034: Plasma Environment Reconstruction'),
-    ('step_035_mission_specific_od_absorption.py', 'Step 035: Mission-Specific OD Absorption'),
-    ('step_033_synthetic_dsn.py', 'Step 033: Synthetic DSN Tracking Generation'),
+    # Phase 5: Extended Physics (017-019)
+    ('step_017_plasma_modulation.py', 'Step 017: Plasma Modulation (Cassini Sign)'),
+    ('step_018_space_weather.py', 'Step 018: Space Weather Correlation'),
+    ('step_019_3d_field_integration.py', 'Step 019: 3D Field Integration'),
     
-    # Phase 5.6: Paper 15 Hierarchical Analyses
-    ('step_031_two_level_hierarchical.py', 'Step 031: Two-Level Hierarchical Model (Universal β₀)'),
-    ('step_032_variance_anova.py', 'Step 032: Variance Decomposition ANOVA'),
-    ('step_036_atmospheric_drag_simulation.py', 'Step 036: Atmospheric Drag Simulation'),
-    ('step_037_thermal_recoil_modeling.py', 'Step 037: Thermal Recoil Simulation'),
+    # Phase 6: Plasma Environment (020-021)
+    ('step_020_plasma_environment_reconstruction.py', 'Step 020: Plasma Environment Reconstruction'),
+    ('step_021_mission_specific_od_absorption.py', 'Step 021: Mission-Specific OD Absorption'),
     
-    # Phase 6: Model Comparison (018-019)
-    ('step_018_bayesian_model_comparison.py', 'Step 018: Bayesian Model Comparison'),
-    ('step_019_saturation_model.py', 'Step 019: Saturation Model Analysis'),
+    # Phase 7: Atmospheric & Thermal Effects (022-023)
+    ('step_022_atmospheric_drag_simulation.py', 'Step 022: Atmospheric Drag Simulation'),
+    ('step_023_thermal_recoil_modeling.py', 'Step 023: Thermal Recoil Simulation'),
     
-    # Phase 7: DSN Data Framework (020-022)
-    ('step_021_dsn_processing.py', 'Step 020: DSN Processing Framework'),
-    ('step_022_read_trk234.py', 'Step 021: Read TRK-2-34 Data Format'),
+    # Phase 8: Statistical Validation (024-026)
+    ('step_024_systematic_error_monte_carlo.py', 'Step 024: Systematic Error Monte Carlo'),
+    ('step_025_corrected_uncertainty.py', 'Step 025: Corrected Uncertainty Analysis'),
+    ('step_026_stable_model_comparison.py', 'Step 026: Stable Model Comparison'),
     
-    # Phase 8: Mission-Specific Analysis (023-026)
-    ('step_024_juno_reanalysis.py', 'Step 022: Juno 2013 Reanalysis'),
-    ('step_025_pds_search.py', 'Step 024: PDS Search'),
-    ('step_026_tep_suppression.py', 'Step 025: TEP Suppression Analysis'),
+    # Phase 9: Additional Validation (027)
+    ('step_027_claim_consistency_audit.py', 'Step 027: Claim Consistency Audit'),
     
-    # Phase 9: Advanced Topics (026-028)
-    ('step_027_iri_trajectory_profile.py', 'Step 027: Continuous IRI Trajectory Profiles'),
-    ('step_027_covariant_holonomy.py', 'Step 026: Covariant Synchronization Holonomy'),
-    ('step_028_cross_corpus_export.py', 'Step 027: Cross-Corpus Parameter Export'),
+    # Phase 10: DSN Data Framework (028-029)
+    ('step_028_dsn_processing.py', 'Step 028: DSN Processing Framework'),
+    ('step_029_read_trk234.py', 'Step 029: Read TRK-2-34 Data Format'),
     
-    # Phase 10: Reporting (028-029)
-    ('step_029_final_report.py', 'Step 028: Final Report Generation'),
-    ('step_020_visualizations.py', 'Step 029: Figure Generation')
+    # Phase 11: Mission-Specific Analysis (030-032)
+    ('step_030_juno_reanalysis.py', 'Step 030: Juno 2013 Reanalysis'),
+    ('step_031_pds_search.py', 'Step 031: PDS Search'),
+    ('step_032_tep_suppression.py', 'Step 032: TEP Suppression Analysis'),
+    
+    # Phase 12: Advanced Topics (033-035)
+    ('step_033_iri_trajectory_profile.py', 'Step 033: Continuous IRI Trajectory Profiles'),
+    ('step_034_covariant_holonomy.py', 'Step 034: Covariant Synchronization Holonomy'),
+    ('step_035_cross_corpus_export.py', 'Step 035: Cross-Corpus Parameter Export'),
+    
+    # Phase 13: Reporting (036-037)
+    ('step_036_final_report.py', 'Step 036: Final Report Generation'),
+    ('step_037_visualizations.py', 'Step 037: Figure Generation')
 ]
 
 DATA_INTEGRITY_REQUIRED_OUTPUTS = [
-    'step002_archival_flyby_catalog.json',
-    'step004_tep_predictions.json',
-    'step005_fitting_results.json',
-    'step006_final_report.json',
+    'step003_archival_flyby_catalog.json',
+    'step007_tep_predictions.json',
+    'step008_fitting_results.json',
+    'step036_final_report.json',
 ]
 
 
@@ -364,8 +364,8 @@ class PipelineLogger:
             self.info(f"Log file:         {self.log_file}")
             self.info(f"Results:          {PROJECT_ROOT / 'results'}")
             self.info(f"Key output:       results/step003_dsn_reanalysis.json")
-            self.info(f"Key output:       results/step005_fitting_results.json")
-            self.info(f"Key output:       results/step006_final_report.json")
+            self.info(f"Key output:       results/step008_fitting_results.json")
+            self.info(f"Key output:       results/step036_final_report.json")
             self.info(f"Key figure:       results/step007_figure1_altitude_anomaly.png")
             self._write("")
             self.success("PIPELINE COMPLETED SUCCESSFULLY")

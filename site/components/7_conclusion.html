@@ -46,7 +46,7 @@
         timeline (33% vs 67% suppression rate by OD complexity), and the OD
         filtering mechanism—support the hypothesis that modern orbit
         determination filters TEP signals by treating them as systematic errors.
-        A rigorous numerical simulation (Step 021) validates this mechanism:
+        A rigorous numerical simulation (Step 009) validates this mechanism:
         using 2D orbital mechanics with TEP scalar force, Minimal OD (4-state)
         detects 57% of the injected anomaly, while Modern OD (10-state with
         piecewise empirical accelerations) achieves 51.7% suppression. This
@@ -65,7 +65,7 @@
     <li>
         <strong>Systematic uncertainty compression:</strong> Transitioning from
         empirical characteristic suppression factors to a first-principles derivation via
-        the <strong>Self-Consistent Field (SCF)</strong> solver and the corrected uncertainty analysis (Step 042) provides a rigorous uncertainty budget. The total relative uncertainty of 79.6% is dominated by heterogeneity (77.9%), reflecting genuine geometry-dependent physical variation in the effective coupling across flybys. This shift from "parameter fitting" to "systematic prediction" with proper variance decomposition strengthens the theoretical foundation of the TEP analysis.
+        the <strong>Self-Consistent Field (SCF)</strong> solver and the corrected uncertainty analysis (Step 025) provides a rigorous uncertainty budget. The total relative uncertainty of 79.6% is dominated by heterogeneity (77.9%), reflecting genuine geometry-dependent physical variation in the effective coupling across flybys. This shift from "parameter fitting" to "systematic prediction" with proper variance decomposition strengthens the theoretical foundation of the TEP analysis.
     </li>
 
     <li>
@@ -112,7 +112,7 @@
         Akaike weight, Bayes factor 45.3, $\Delta$BIC = 7.6 over null model)
     </li>
     <li>
-        <strong>Bayesian model comparison:</strong> Stable model comparison (Step 043) yields Bayes factor 45.3 (strong evidence per Kass & Raftery 1995) with Akaike weight 92.5% for TEP vs 7.5% for Null
+        <strong>Bayesian model comparison:</strong> Stable model comparison (Step 026) yields Bayes factor 45.3 (strong evidence per Kass & Raftery 1995) with Akaike weight 92.5% for TEP vs 7.5% for Null
     </li>
     <li>
         <strong>Robustness:</strong> Bootstrap resampling, leave-one-out
@@ -144,7 +144,7 @@
 
 <p>
     Several potential concerns have been investigated and addressed through
-    rigorous statistical analysis (Step 005d):
+    rigorous statistical analysis (Step 024, Step 025, Step 026):
 </p>
 
 <p>
@@ -193,7 +193,7 @@
     mm/s) is now resolved. The disformal coupling term dominates for
     high-velocity anti-aligned trajectories, reversing the prediction sign
     from -0.11 mm/s to +0.32 mm/s. The observed +0.11 mm/s is ~66% lower than
-    predicted, consistent with partial OD suppression: the Step 021 simulation
+    predicted, consistent with partial OD suppression: the Step 009 simulation
     demonstrates that empirical acceleration states suppress ~50% of TEP
     signals, and Cassini (1999) employed intermediate-complexity OD with
     empirical terms. Applied suppression factor: 0.185 mm/s × 0.50 ≈ 0.09 mm/s,
@@ -206,7 +206,7 @@
     measurement uncertainty) is consistent with TEP suppression by modern OD.
     Juno employed high-fidelity orbit determination with empirical acceleration
     terms that absorb small anomalous signals. A rigorous numerical simulation
-    (Step 021) validates this mechanism: Modern OD with piecewise empirical
+        (Step 009) validates this mechanism: Modern OD with piecewise empirical
     accelerations achieves 51.7% suppression of the injected TEP signal,
     demonstrating that standard OD filters can absorb anomalous forces below
     detection thresholds. This null result, combined with similar non-detections
@@ -234,7 +234,7 @@
 </p>
 
 <p>
-    <strong>Bayesian model comparison:</strong> Stable model comparison (Step 043) decisively
+    <strong>Bayesian model comparison:</strong> Stable model comparison (Step 026) decisively
     favors TEP over the null model (Bayes factor = 45.3, Akaike weight = 92.5%,
     evidence ratio > 40:1). The empirical model (with 4 independent
     parameters) is overfitted (perfect fit with 4 parameters for 4 data points) and not meaningful for model comparison, confirming TEP
@@ -289,7 +289,7 @@
         >https://github.com/mlsmawfield/TEP-EFA</a
     >
     with archived DOI at
-    <a href="https://doi.org/10.5281/zenodo.19446029">10.5281/zenodo.19446029</a
+    <a href="https://doi.org/10.5281/zenodo.19454863">10.5281/zenodo.19454863</a
     >.
 </p>
 

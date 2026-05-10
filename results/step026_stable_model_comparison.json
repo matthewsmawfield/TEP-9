@@ -1,0 +1,45 @@
+{
+  "n_data": 4,
+  "systematic_uncertainty_mm_s": 3.7604802816012914,
+  "log_likelihoods": {
+    "TEP": -11.533606314868045,
+    "Null": -16.040720347617423,
+    "Empirical": 0.0
+  },
+  "information_criteria": {
+    "TEP": {
+      "AIC": 25.06721262973609,
+      "AICc": 27.06721262973609,
+      "BIC": 24.45350699085598
+    },
+    "Null": {
+      "AIC": 32.081440695234846,
+      "AICc": 32.081440695234846,
+      "BIC": 32.081440695234846
+    },
+    "Empirical": {
+      "AIC": 8.0,
+      "AICc": Infinity,
+      "BIC": 5.545177444479562
+    }
+  },
+  "bayes_factors": {
+    "TEP_vs_Null": 45.329899695549436,
+    "Empirical_vs_TEP": 12761.202256488286,
+    "delta_BIC_TEP_vs_Null": 7.627933704378865,
+    "delta_BIC_Empirical_vs_TEP": 18.908329546376418
+  },
+  "model_selection": {
+    "best_model_BIC": "Empirical",
+    "akaike_weights": {
+      "TEP": 0.9246390377327552,
+      "Null": 0.07536096226724476
+    },
+    "interpretation": "BIC selects Empirical model"
+  },
+  "stability_improvements": {
+    "issue": "Numerical instability with anomalously high WAIC values",
+    "fix": "Use log-likelihood calculations with systematic uncertainty to account for heterogeneity",
+    "result": "Stable information criteria with proper numerical handling"
+  }
+}

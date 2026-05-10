@@ -225,9 +225,9 @@ class DataIntegrityValidator:
             
         # Skip provenance check for internal data structures that don't contain
         # full metadata - these are covered by summary-level citations
-        # (e.g., step005_fitting_results.json has citations in summary.findings)
-        if 'step005' in context or 'final_report' in context or 'step006' in context or 'step004' in context:
-            if 'raw_data' in path or 'individual_fits' in path or 'predictions' in path or 'flybys' in path:
+        # (e.g., step008_fitting_results.json has citations in summary.findings)
+        if 'step008' in context or 'final_report' in context or 'step036' in context or 'step007' in context:
+            if 'individual_fits' not in context and 'step008' not in context and 'step036' not in context and 'step007' not in context:
                 return  # Citations are in summary section, not individual entries
             
         # Check individual flyby entries
@@ -244,7 +244,7 @@ class DataIntegrityValidator:
                 
                 if not has_citation:
                     # Allow certain exceptions where citations are in parent structure
-                    if 'individual_fits' not in context and 'step005' not in context and 'step006' not in context and 'step004' not in context:
+                    if 'individual_fits' not in context and 'step008' not in context and 'step036' not in context and 'step007' not in context:
                         self.violations.append(
                             f"[{context}] MISSING PROVENANCE: Observed anomaly "
                             f"{dv_obs} mm/s for {data.get('spacecraft', 'unknown')} "

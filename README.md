@@ -7,7 +7,7 @@
 
 **Author:** Matthew Lukin Smawfield  
 **Version:** v0.1 (Yogyakarta)  
-**Date:** 20 April 2026  
+**First published:** 10 May 2026 · **Last updated:** 10 May 2026  
 **Status:** Complete  
 **DOI:** [10.5281/zenodo.19454863](https://doi.org/10.5281/zenodo.19454863)  
 **Website:** [https://mlsmawfield.com/tep/efa/](https://mlsmawfield.com/tep/efa/)  
@@ -54,17 +54,16 @@ Four successful TEP fits to flyby anomalies (NEAR, Galileo 1990, Rosetta 2005, C
 ```
 TEP-EFA/
 ├── data/                          # Flyby trajectories and processed outputs
-│   ├── raw/                       # Original data sources
-│   └── processed/                 # Processed analysis outputs
+│   └── raw/                       # Original data sources
 ├── scripts/
-│   ├── flyby_pipeline/            # Sequential analysis pipeline
+│   ├── steps/                     # Sequential analysis pipeline
 │   └── utils/                     # Shared utilities
 ├── results/                       # Analytical outputs and figures
 ├── site/
 │   ├── components/                # Manuscript HTML sections
 │   └── public/                    # Static assets
 ├── logs/                          # Pipeline execution logs
-├── manuscripts/                   # Generated PDF/Markdown outputs
+├── config/                        # Pipeline configuration
 ├── README.md                      # This file
 └── requirements.txt               # Python dependencies
 ```
