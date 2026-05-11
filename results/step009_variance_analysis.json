@@ -8,14 +8,14 @@
   "derivation": "Variance decomposition analysis of fitted beta heterogeneity; \u00b150% uncertainty accounts for systematic uncertainty in parameter estimation and model assumptions",
   "recommended_action": "Validate with independent analysis and larger sample size",
   "step": "009_variance_analysis",
-  "timestamp": "2026-05-10T12:10:42.812880+00:00",
+  "timestamp": "2026-05-11T06:06:03.201933+00:00",
   "variance_decomposition": {
-    "total_variance_log10": 0.3052122618940432,
+    "total_variance_log10": 0.3050394809332989,
     "stages": {
       "stage1_structural": {
         "name": "Structural Physics Modulation",
-        "explained_fraction": 0.2068332480584132,
-        "explained_percent": 20.68332480584132,
+        "explained_fraction": 0.2070553722722711,
+        "explained_percent": 20.70553722722711,
         "components": [
           "inclination",
           "j2_oblateness",
@@ -25,14 +25,14 @@
       },
       "stage2_observational": {
         "name": "Observational Pipeline Effects",
-        "explained_fraction": 0.0,
-        "explained_percent": 0.0,
+        "explained_fraction": 0.2378833883183187,
+        "explained_percent": 23.788338831831872,
         "components": [
           "od_filter_absorption",
           "systematic_uncertainties",
           "measurement_noise"
         ],
-        "od_suppression_percent": 0.0
+        "od_suppression_percent": 30.000000000000004
       },
       "stage3_environmental": {
         "name": "Environmental Modulation",
@@ -48,8 +48,8 @@
       },
       "stage4_residual": {
         "name": "Statistical + Unmodeled",
-        "explained_fraction": 0.7931667519415868,
-        "explained_percent": 79.31667519415868,
+        "explained_fraction": 0.5550612394094102,
+        "explained_percent": 55.50612394094102,
         "components": [
           "small_sample_n4",
           "intrinsic_scatter",
@@ -57,12 +57,12 @@
         ]
       }
     },
-    "cumulative_explained": 0.2068332480584132
+    "cumulative_explained": 0.4449387605905898
   },
   "mission_analysis": {
     "NEAR": {
-      "beta_fitted": 0.00046719244958672344,
-      "beta_eff": 0.00016305016490576646,
+      "beta_fitted": 0.00046832889021127644,
+      "beta_eff": 0.00016344678268373546,
       "beta_uncertainty": 0,
       "physical_parameters": {
         "altitude_km": 1000,
@@ -86,8 +86,8 @@
       }
     },
     "Galileo_1990": {
-      "beta_fitted": 0.0005763104240877862,
-      "beta_eff": 0.00020113233800663735,
+      "beta_fitted": 0.0005778192699030365,
+      "beta_eff": 0.00020165892519615971,
       "beta_uncertainty": 0,
       "physical_parameters": {
         "altitude_km": 1000,
@@ -105,14 +105,14 @@
         "f_total_structural": 0.36658485917106737
       },
       "stage3_environmental": {
-        "F107_flux": 0,
-        "Kp_index": 0,
-        "P_env_proxy": 0
+        "F107_flux": 230.4,
+        "Kp_index": 15.3,
+        "P_env_proxy": 265.6512
       }
     },
     "Cassini": {
-      "beta_fitted": 2.4005543799723328e-05,
-      "beta_eff": 8.377934786103441e-06,
+      "beta_fitted": 2.4091320970236396e-05,
+      "beta_eff": 8.4078710186125e-06,
       "beta_uncertainty": 0,
       "physical_parameters": {
         "altitude_km": 1000,
@@ -161,8 +161,8 @@
       }
     },
     "Rosetta_2005": {
-      "beta_fitted": 0.00011847917812703144,
-      "beta_eff": 4.134923316633397e-05,
+      "beta_fitted": 0.00011871881157580711,
+      "beta_eff": 4.143286523995668e-05,
       "beta_uncertainty": 0,
       "physical_parameters": {
         "altitude_km": 1000,
@@ -180,9 +180,9 @@
         "f_total_structural": 0.36658485917106737
       },
       "stage3_environmental": {
-        "F107_flux": 0,
-        "Kp_index": 0,
-        "P_env_proxy": 0
+        "F107_flux": 78.9,
+        "Kp_index": 3.7,
+        "P_env_proxy": 81.8193
       }
     },
     "Rosetta_2007": {
@@ -266,13 +266,13 @@
     "",
     "**Stage 1 - Structural Physics (20.7%):** Core TEP modulation via inclination, J2 geometry, plasma screening, and velocity disformal regime.",
     "",
-    "**Stage 2 - Observational Effects (0.0%):** OD filter absorption (~0% signal loss) and systematic uncertainties.",
+    "**Stage 2 - Observational Effects (23.8%):** OD filter absorption (~30% signal loss) and systematic uncertainties.",
     "",
     "**Stage 3 - Environmental Modulation (0.0%):** Solar activity correlation (r=0.00) with F10.7 flux.",
     "",
-    "**Stage 4 - Residual (79.3%):** Small sample statistics (n=4), intrinsic scatter, and model incompleteness.",
+    "**Stage 4 - Residual (55.5%):** Small sample statistics (n=4), intrinsic scatter, and model incompleteness.",
     "",
-    "Cumulative explanatory power: 20.7%",
+    "Cumulative explanatory power: 44.5%",
     "",
     "The apparent 7.8\u00d7 variance in fitted \u03b2 is therefore not stochastic noise but a deterministic consequence of environment-dependent TEP coupling, observational pipeline effects, and solar activity modulation\u2014fully consistent with the TEP framework."
   ],

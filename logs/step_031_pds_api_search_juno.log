@@ -1,69 +1,69 @@
-[2026-05-10 15:10:59 UTC] [INFO    ] [STEP 031] LOGGER INITIALIZED: step_031_pds_api_search_juno (Step 031)
-[2026-05-10 15:10:59 UTC] [DEBUG   ] [STEP 031] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_031_pds_api_search_juno.log
-[2026-05-10 15:10:59 UTC] [DEBUG   ] [STEP 031] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
-[2026-05-10 15:10:59 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-05-10 15:10:59 UTC] [INFO    ] [STEP 031] STEP 031b: DIRECT PDS API SEARCH
-[2026-05-10 15:10:59 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-05-10 15:10:59 UTC] [INFO    ] [STEP 031] API Endpoint: https://pds.nasa.gov/api/search/1/products
-[2026-05-10 15:10:59 UTC] [INFO    ] [STEP 031] Reference: https://nasa-pds.github.io/pds-api/guides/search/quickstart.html
-[2026-05-10 15:10:59 UTC] [DEBUG   ] [STEP 031] 
-[2026-05-10 15:10:59 UTC] [DEBUG   ] [STEP 031] --- Testing API Connection ---
-[2026-05-10 15:11:01 UTC] [INFO    ] [STEP 031] API Status: 200
-[2026-05-10 15:11:01 UTC] [INFO    ] [STEP 031] ✓ PDS API accessible
-[2026-05-10 15:11:01 UTC] [DEBUG   ] [STEP 031] 
-[2026-05-10 15:11:01 UTC] [DEBUG   ] [STEP 031] --- Strategy 1: Search for Juno products ---
-[2026-05-10 15:11:01 UTC] [INFO    ] [STEP 031]   Query: juno
-[2026-05-10 15:11:01 UTC] [DEBUG   ] [STEP 031]     Query failed: 400
-[2026-05-10 15:11:01 UTC] [INFO    ] [STEP 031]   Query: juno earth
-[2026-05-10 15:11:01 UTC] [DEBUG   ] [STEP 031]     Query failed: 400
-[2026-05-10 15:11:01 UTC] [INFO    ] [STEP 031]   Query: juno 2013
-[2026-05-10 15:11:02 UTC] [DEBUG   ] [STEP 031]     Query failed: 400
-[2026-05-10 15:11:02 UTC] [INFO    ] [STEP 031]   Query: JNO-E-RSS
-[2026-05-10 15:11:02 UTC] [DEBUG   ] [STEP 031]     Query failed: 400
-[2026-05-10 15:11:02 UTC] [INFO    ] [STEP 031]   Query: radio science
-[2026-05-10 15:11:03 UTC] [DEBUG   ] [STEP 031]     Query failed: 400
-[2026-05-10 15:11:03 UTC] [DEBUG   ] [STEP 031] 
-[2026-05-10 15:11:03 UTC] [DEBUG   ] [STEP 031] --- Filtering for 2013 Earth Flyby ---
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] Total products found: 0
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] 2013-10 products: 0
-[2026-05-10 15:11:03 UTC] [DEBUG   ] [STEP 031] 
-[2026-05-10 15:11:03 UTC] [DEBUG   ] [STEP 031] ================================================================================
-[2026-05-10 15:11:03 UTC] [DEBUG   ] [STEP 031] SECTION: SEARCH SUMMARY
-[2026-05-10 15:11:03 UTC] [DEBUG   ] [STEP 031] ================================================================================
-[2026-05-10 15:11:03 UTC] [WARNING ] [STEP 031] ⚠ ✗ Peppi search returned no results
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] ✓ ✓ Direct API connection successful
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] 
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] NEXT STEPS:
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] 1. Review search results in results/step031_pds_api_search.json
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] 2. If products found, download URLs will be provided
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] 3. If no results, try manual search at https://pds.mcp.nasa.gov/portal/search
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] 
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] Alternative direct contact:
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031]   pds-rn@jpl.nasa.gov
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031]   Subject: 'Juno 2013 Earth Flyby TRK-2-25 Data Request'
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] 
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] Combined results: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step031_pds_api_search_combined.json
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] 
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] STEP SUMMARY: step_031_pds_api_search_juno
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] Step Number: 031
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] Status: SUCCESS
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] Duration: 0.00s
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] Calculations Logged: 0
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] Output Files: 0
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_031_pds_api_search_juno.log
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] No output files generated
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] STEP 031 COMPLETE: SUCCESS
-[2026-05-10 15:11:03 UTC] [INFO    ] [STEP 031] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_031_pds_api_search_juno_provenance.json
-[2026-05-10 12:11:03 UTC] [INFO    ] [STEP 031] 
-[2026-05-10 12:11:03 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-05-10 12:11:03 UTC] [INFO    ] [STEP 031] EXECUTIVE SUMMARY
-[2026-05-10 12:11:03 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-05-10 12:11:03 UTC] [INFO    ] [STEP 031] Step: step_031_pds_api_search_juno (Step 031)
-[2026-05-10 12:11:03 UTC] [INFO    ] [STEP 031] Status: SUCCESS
-[2026-05-10 12:11:03 UTC] [INFO    ] [STEP 031] Duration: 0.00s
-[2026-05-10 12:11:03 UTC] [INFO    ] [STEP 031] Calculations: 0
-[2026-05-10 12:11:03 UTC] [INFO    ] [STEP 031] Output Files: 0
-[2026-05-10 12:11:03 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-05-11 09:06:15 UTC] [INFO    ] [STEP 031] LOGGER INITIALIZED: step_031_pds_api_search_juno (Step 031)
+[2026-05-11 09:06:15 UTC] [DEBUG   ] [STEP 031] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_031_pds_api_search_juno.log
+[2026-05-11 09:06:15 UTC] [DEBUG   ] [STEP 031] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-05-11 09:06:15 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-05-11 09:06:15 UTC] [INFO    ] [STEP 031] STEP 031b: DIRECT PDS API SEARCH
+[2026-05-11 09:06:15 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-05-11 09:06:16 UTC] [INFO    ] [STEP 031] API Endpoint: https://pds.nasa.gov/api/search/1/products
+[2026-05-11 09:06:16 UTC] [INFO    ] [STEP 031] Reference: https://nasa-pds.github.io/pds-api/guides/search/quickstart.html
+[2026-05-11 09:06:16 UTC] [DEBUG   ] [STEP 031] 
+[2026-05-11 09:06:16 UTC] [DEBUG   ] [STEP 031] --- Testing API Connection ---
+[2026-05-11 09:06:17 UTC] [INFO    ] [STEP 031] API Status: 200
+[2026-05-11 09:06:17 UTC] [INFO    ] [STEP 031] ✓ PDS API accessible
+[2026-05-11 09:06:17 UTC] [DEBUG   ] [STEP 031] 
+[2026-05-11 09:06:17 UTC] [DEBUG   ] [STEP 031] --- Strategy 1: Search for Juno products ---
+[2026-05-11 09:06:17 UTC] [INFO    ] [STEP 031]   Query: juno
+[2026-05-11 09:06:17 UTC] [DEBUG   ] [STEP 031]     Query failed: 400
+[2026-05-11 09:06:17 UTC] [INFO    ] [STEP 031]   Query: juno earth
+[2026-05-11 09:06:18 UTC] [DEBUG   ] [STEP 031]     Query failed: 400
+[2026-05-11 09:06:18 UTC] [INFO    ] [STEP 031]   Query: juno 2013
+[2026-05-11 09:06:18 UTC] [DEBUG   ] [STEP 031]     Query failed: 400
+[2026-05-11 09:06:18 UTC] [INFO    ] [STEP 031]   Query: JNO-E-RSS
+[2026-05-11 09:06:19 UTC] [DEBUG   ] [STEP 031]     Query failed: 400
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031]   Query: radio science
+[2026-05-11 09:06:19 UTC] [DEBUG   ] [STEP 031]     Query failed: 400
+[2026-05-11 09:06:19 UTC] [DEBUG   ] [STEP 031] 
+[2026-05-11 09:06:19 UTC] [DEBUG   ] [STEP 031] --- Filtering for 2013 Earth Flyby ---
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] Total products found: 0
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] 2013-10 products: 0
+[2026-05-11 09:06:19 UTC] [DEBUG   ] [STEP 031] 
+[2026-05-11 09:06:19 UTC] [DEBUG   ] [STEP 031] ================================================================================
+[2026-05-11 09:06:19 UTC] [DEBUG   ] [STEP 031] SECTION: SEARCH SUMMARY
+[2026-05-11 09:06:19 UTC] [DEBUG   ] [STEP 031] ================================================================================
+[2026-05-11 09:06:19 UTC] [WARNING ] [STEP 031] ⚠ ✗ Peppi search returned no results
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] ✓ ✓ Direct API connection successful
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] 
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] NEXT STEPS:
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] 1. Review search results in results/step031_pds_api_search.json
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] 2. If products found, download URLs will be provided
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] 3. If no results, try manual search at https://pds.mcp.nasa.gov/portal/search
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] 
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] Alternative direct contact:
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031]   pds-rn@jpl.nasa.gov
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031]   Subject: 'Juno 2013 Earth Flyby TRK-2-25 Data Request'
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] 
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] Combined results: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step031_pds_api_search_combined.json
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] 
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] STEP SUMMARY: step_031_pds_api_search_juno
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] Step Number: 031
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] Status: SUCCESS
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] Duration: 0.00s
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] Calculations Logged: 0
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] Output Files: 0
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_031_pds_api_search_juno.log
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] No output files generated
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] STEP 031 COMPLETE: SUCCESS
+[2026-05-11 09:06:19 UTC] [INFO    ] [STEP 031] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_031_pds_api_search_juno_provenance.json
+[2026-05-11 06:06:19 UTC] [INFO    ] [STEP 031] 
+[2026-05-11 06:06:19 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-05-11 06:06:19 UTC] [INFO    ] [STEP 031] EXECUTIVE SUMMARY
+[2026-05-11 06:06:19 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-05-11 06:06:19 UTC] [INFO    ] [STEP 031] Step: step_031_pds_api_search_juno (Step 031)
+[2026-05-11 06:06:19 UTC] [INFO    ] [STEP 031] Status: SUCCESS
+[2026-05-11 06:06:19 UTC] [INFO    ] [STEP 031] Duration: 0.00s
+[2026-05-11 06:06:19 UTC] [INFO    ] [STEP 031] Calculations: 0
+[2026-05-11 06:06:19 UTC] [INFO    ] [STEP 031] Output Files: 0
+[2026-05-11 06:06:19 UTC] [INFO    ] [STEP 031] ================================================================================

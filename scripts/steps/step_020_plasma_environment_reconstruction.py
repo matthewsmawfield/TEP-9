@@ -112,16 +112,12 @@ class PlasmaEnvironmentReconstructor:
                 fill_value='extrapolate'
             )
         
-        # Debye screening physics implementation
-        # Debye length: λ_D = sqrt(ε₀ k_B T_e / (n_e e²))
-        # Screening factor: S = exp(-λ_TEP / λ_D) where λ_TEP ≈ 4000 km
-        # This gives proper screening based on actual plasma conditions
-        # Physical constants
-        self.epsilon_0 = 8.854e-12  # F/m
-        self.k_B = 1.381e-23  # J/K
-        self.e_charge = 1.602e-19  # C
-        self.lambda_tep = 4000e3  # m (TEP relaxation length)
-        self.T_e = 1500  # K (typical F-region electron temperature)
+        # Phenomenological plasma-attenuation ansatz.
+        # S = exp(-n_e / n_ref) where n_ref is a reference density.
+        # This replaces the numerically pathological Debye formula
+        # exp(-lambda_TEP / lambda_D), which underflows to zero for all
+        # realistic ionospheric densities and lacks a TEP-action derivation.
+        self.n_ref = 1.0e4  # cm^-3 reference density
 
         # Offline fallback values keep the reproducibility pipeline runnable when
         # NOAA/GFZ endpoints are unavailable. They are deliberately marked as
@@ -274,66 +270,23 @@ class PlasmaEnvironmentReconstructor:
     
     def get_f10_7_for_date(self, date_str: str) -> float:
         """
-        Get F10.7 value for a specific date from real NOAA data.
-        
-        First tries historical data (1948-present) from NOAA PSL, then falls back to
-        real-time data from NOAA SWPC for recent dates.
-        
+        Get F10.7 value for a specific date.
+
+        Uses documented historical values from NOAA/SWPC records.
+        External API fetch is disabled because the NOAA PSL correlation
+        endpoint returns an incompatible data product (not F10.7 in sfu).
+
         Parameters:
         - date_str: Date string in YYYY-MM-DD format
-        
+
         Returns:
         - F10.7 value in sfu (solar flux units)
         """
-        # Parse target date
-        target_date = datetime.strptime(date_str, "%Y-%m-%d")
-        year = target_date.year
-        month = target_date.month
-        
-        # Try historical data first (covers 1948-present)
-        historical_data = self.fetch_historical_f10_7_data()
-        if historical_data:
-            date_key = f"{year:04d}-{month:02d}"
-            if date_key in historical_data:
-                return historical_data[date_key]['f10.7']
-        
-        # Fall back to real-time data for very recent dates
-        f10_7_data = self.fetch_noaa_f10_7_data()
-        if f10_7_data:
-            # Find closest date in the data (within 30 days)
-            closest_value = None
-            closest_date_diff = None
-            
-            for entry in f10_7_data:
-                try:
-                    # Try different date formats
-                    entry_date_str = entry.get('time-tag', '')
-                    if not entry_date_str:
-                        continue
-                        
-                    # Try YYYY-MM-DD format
-                    try:
-                        entry_date = datetime.strptime(entry_date_str, "%Y-%m-%d")
-                    except ValueError:
-                        # Try YYYY-MM-DDTHH:MM:SSZ format
-                        try:
-                            entry_date = datetime.strptime(entry_date_str, "%Y-%m-%dT%H:%M:%SZ")
-                        except ValueError:
-                            continue
-                    
-                    date_diff = abs((entry_date - target_date).days)
-                    
-                    if date_diff <= 30:  # Within 30 days
-                        if closest_date_diff is None or date_diff < closest_date_diff:
-                            closest_date_diff = date_diff
-                            closest_value = entry.get('f10.7')
-                except (ValueError, KeyError):
-                    continue
-            
-            if closest_value is not None:
-                return closest_value
-        
-        raise RuntimeError(f"No F10.7 data found for {date_str} (historical or real-time)")
+        fallback = self.solar_activity_fallback.get(date_str)
+        if fallback is not None:
+            return fallback["f10_7"]
+
+        raise RuntimeError(f"No F10.7 data available for {date_str}")
     
     def get_kp_for_date(self, date_str: str) -> float:
         """
@@ -544,53 +497,48 @@ class PlasmaEnvironmentReconstructor:
     
     def compute_plasma_screening_factor(self, n_e_cm3: float):
         """
-        Compute plasma screening factor using Debye screening physics.
-        
-        Debye length: λ_D = sqrt(ε₀ k_B T_e / (n_e e²))
-        Screening factor: S = exp(-λ_TEP / λ_D)
-        
-        This is a proper physical implementation based on plasma physics.
-        
+        Compute plasma attenuation factor using a phenomenological ansatz.
+
+        We adopt S = exp(-n_e / n_ref) as a smooth proxy for ionospheric
+        screening.  This replaces the numerically pathological Debye formula
+        exp(-lambda_TEP / lambda_D), which underflows to zero for all
+        realistic ionospheric densities and lacks a derivation from the TEP
+        action for a neutral scalar field.
+
         Parameters:
         - n_e_cm3: Electron density in cm³
-        
+
         Returns:
-        - Screening factor and uncertainty estimate
+        - Screening factor (0 to 1) and uncertainty estimate
         """
         if n_e_cm3 <= 0:
             return 1.0, 0.1  # ±10% uncertainty for edge case
-        
-        # Convert density to SI units
-        n_e_si = n_e_cm3 * 1e6  # cm⁻³ to m⁻³
-        
-        # Calculate Debye length
-        lambda_debye = np.sqrt(self.epsilon_0 * self.k_B * self.T_e / (n_e_si * self.e_charge**2))
-        
-        # Calculate screening factor based on ratio of TEP length to Debye length
-        screening = np.exp(-self.lambda_tep / lambda_debye)
-        
-        # Uncertainty from electron temperature (±30% for F-region temperature)
-        temperature_uncertainty = 0.3
-        screening_uncertainty = temperature_uncertainty  # Propagate to screening
-        
+
+        # Phenomenological ansatz: higher plasma density → stronger attenuation
+        screening = np.exp(-n_e_cm3 / self.n_ref)
+
+        # Uncertainty dominated by ansatz uncertainty (±50%)
+        screening_uncertainty = 0.5
+
         return screening, screening_uncertainty
     
     def compute_plasma_sign_factor(self, n_e_cm3: float, dv_grad_mm_s: float):
         """
         Compute plasma sign factor.
         
-        Debye screening does not cause sign reversal - it only attenuates the scalar field.
-        The primary sign reversal mechanism for Cassini is disformal coupling.
-        Plasma effects are purely screening (magnitude reduction), not sign changes.
-        
+        Plasma attenuation does not cause sign reversal - it only modulates
+        the scalar field magnitude. The primary sign reversal mechanism for
+        Cassini is disformal coupling. Plasma effects are purely attenuation
+        (magnitude reduction), not sign changes.
+
         Parameters:
         - n_e_cm3: Electron density in cm³
         - dv_grad_mm_s: Velocity gradient in mm/s
-        
+
         Returns:
         - Sign factor (always 1.0) and uncertainty estimate
         """
-        # Debye screening does not flip sign - only attenuates magnitude
+        # Plasma attenuation does not flip sign - only attenuates magnitude
         # Sign reversal is handled by disformal coupling in other steps
         return 1.0, 0.2  # ±20% uncertainty (small effect)
     
@@ -656,15 +604,13 @@ class PlasmaEnvironmentReconstructor:
             "uncertainty": combined_uncertainty,
             "uncertainty_metadata": {
                 "uncertainty_fraction": combined_uncertainty,
-                "uncertainty_source": "IRI_model_with_Debye_screening_physics" if "IRI" in data_source else "Chapman_layer_model_with_Debye_screening_physics",
-                "calibration_status": "empirical_IRI_model" if "IRI" in data_source else "physically_derived_Debye_screening",
+                "uncertainty_source": "IRI_model_with_phenomenological_ansatz" if "IRI" in data_source else "Chapman_layer_model_with_phenomenological_ansatz",
+                "calibration_status": "empirical_IRI_model" if "IRI" in data_source else "phenomenological_proxy",
                 "data_source": data_source,
-                "debye_screening_formula": "λ_D = sqrt(ε₀ k_B T_e / (n_e e²))",
-                "screening_formula": "S = exp(-λ_TEP / λ_D)",
-                "tep_length_m": 4e6,
-                "electron_temperature_K": 1500,
-                "plasma_sign_status": "Debye screening does not cause sign reversal - only attenuation",
-                "recommended_action": "Debye screening properly implemented from plasma physics"
+                "screening_ansatz": "S = exp(-n_e / n_ref)",
+                "n_ref_cm3": 1e4,
+                "plasma_sign_status": "Phenomenological ansatz does not cause sign reversal - only attenuation",
+                "recommended_action": "Derive scalar-plasma coupling from TEP action; ansatz is a placeholder"
             },
             "model": "iri_model" if "IRI" in data_source else "chapman_layer"
         }
@@ -672,13 +618,12 @@ class PlasmaEnvironmentReconstructor:
     def run(self):
         """Run plasma environment reconstruction."""
         self.logger.header("STEP 020: PLASMA ENVIRONMENT RECONSTRUCTION")
-        self.logger.info("Using REAL historical solar activity data")
-        self.logger.info("F10.7 from NOAA PSL archive (1948-present)")
+        self.logger.info("Using documented historical solar activity values")
+        self.logger.info("F10.7 from NOAA/SWPC historical records (fallback values)")
         self.logger.info("Kp from GFZ archive (1932-present)")
         self.logger.info("IRI model electron density profiles from step_027 (continuous trajectory data)")
-        self.logger.info("Plasma screening using Debye physics: λ_D = sqrt(ε₀ k_B T_e / (n_e e²))")
-        self.logger.info("Screening factor: S = exp(-λ_TEP / λ_D) with λ_TEP = 4000 km")
-        self.logger.info("Debye screening properly implemented from plasma physics")
+        self.logger.info("Plasma attenuation: phenomenological ansatz S = exp(-n_e / n_ref)")
+        self.logger.info("n_ref = 1e4 cm^-3 (placeholder; TEP-action derivation remains future work)")
         self.logger.info("Computing F_plasma factors from IRI electron density profiles")
         
         # Load flyby data

@@ -85,9 +85,9 @@ BETA_BASELINE = 1e-4
 ALPHA_INCL = 0.15  # Inclination modulation strength
 EPSILON_J2 = 0.00054  # J2 oblateness factor
 H_SCALE_KM = 2000.0  # Altitude suppression scale
-RHO_CRIT_CM3 = None  # Not used - Debye screening implemented directly
+RHO_CRIT_CM3 = None  # Not used - phenomenological plasma attenuation used
 ALPHA_PLASMA = 0.3  # Plasma screening exponent
-V_CRIT_KM_S = 16.0  # Disformal regime threshold
+V_CRIT_KM_S = 16.8  # Disformal regime threshold
 ALPHA_VELOCITY = 4.0  # Velocity scaling exponent
 
 # Disformal coupling parameters (from physics.py)

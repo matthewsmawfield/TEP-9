@@ -30,24 +30,25 @@ from scripts.utils.step_logger import StepLogger
 class PlasmaModulationModel:
     """
     Plasma modulation model for TEP scalar force.
-    
-    The scalar field can be screened or enhanced by plasma density,
-    potentially causing sign reversals in certain regimes.
+
+    Uses a bounded phenomenological ansatz for plasma attenuation.
+    The Debye-screening formula exp(-lambda_TEP / lambda_D) is
+    numerically catastrophic (underflows to zero for all realistic
+    ionospheric densities) and physically unjustified for a neutral
+    scalar-gravity field.  We replace it with a smooth exponential
+    in electron density that is explicitly labelled as an ansatz.
+    A derivation of scalar-plasma coupling from the underlying TEP
+    action remains future work.
     """
-    
+
     def __init__(self):
         self.logger = StepLogger("step_017_plasma_modulation", PROJECT_ROOT)
-        
-        # Debye screening physics implementation
-        # Debye length: λ_D = sqrt(ε₀ k_B T_e / (n_e e²))
-        # Screening factor: S = exp(-λ_TEP / λ_D) where λ_TEP ≈ 4000 km
-        # This gives proper screening based on actual plasma conditions
-        # Physical constants
-        self.epsilon_0 = 8.854e-12  # F/m
-        self.k_B = 1.381e-23  # J/K
-        self.e_charge = 1.602e-19  # C
-        self.lambda_tep = 4000e3  # m (TEP relaxation length)
-        self.T_e = 1500  # K (typical F-region electron temperature)
+
+        # Phenomenological plasma-attenuation ansatz.
+        # S = exp(-n_e / n_ref) where n_ref is a reference density.
+        # This is a proxy for ionospheric screening; it is NOT derived
+        # from the TEP action and should be treated as a placeholder.
+        self.n_ref = 1.0e4  # cm^-3 reference density
         self.n_crit = 1.0e4  # cm^-3 transition scale for plasma sign modulation
         
         # Load IRI trajectory profiles from step_027
@@ -158,31 +159,26 @@ class PlasmaModulationModel:
     
     def plasma_screening_factor(self, plasma_density):
         """
-        Calculate plasma screening factor using Debye screening physics.
-        
-        Debye length: λ_D = sqrt(ε₀ k_B T_e / (n_e e²))
-        Screening factor: S = exp(-λ_TEP / λ_D)
-        
-        This is a proper physical implementation based on plasma physics.
-        
+        Calculate plasma attenuation factor using a phenomenological ansatz.
+
+        We adopt S = exp(-n_e / n_ref) as a smooth proxy for ionospheric
+        screening.  This replaces the numerically pathological Debye formula
+        exp(-lambda_TEP / lambda_D), which underflows to zero for all
+        realistic ionospheric densities and lacks a derivation from the TEP
+        action for a neutral scalar field.
+
         Parameters:
         - plasma_density: Electron density in cm⁻³
-        
+
         Returns:
-        - Screening factor
+        - Screening factor (0 to 1)
         """
         if plasma_density <= 0:
             return 1.0
-        
-        # Convert density to SI units
-        n_e_si = plasma_density * 1e6  # cm⁻³ to m⁻³
-        
-        # Calculate Debye length
-        lambda_debye = np.sqrt(self.epsilon_0 * self.k_B * self.T_e / (n_e_si * self.e_charge**2))
-        
-        # Calculate screening factor based on ratio of TEP length to Debye length
-        screening_factor = np.exp(-self.lambda_tep / lambda_debye)
-        
+
+        # Phenomenological ansatz: higher plasma density → stronger attenuation
+        screening_factor = np.exp(-plasma_density / self.n_ref)
+
         return screening_factor
     
     def plasma_sign_factor(self, plasma_density, solar_activity=1.0):

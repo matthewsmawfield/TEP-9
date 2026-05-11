@@ -341,21 +341,18 @@ def fit_beta_to_observation(
         )
 
     # PPN validation
-    # Jakarta v0.8: PPN bound constrains the cosmological (unscreened) coupling
-    # γ - 1 ≈ -2α₀² with α₀ = β/M_Pl (unscreened regime)
-    # The screened beta_eff used in TEP predictions does NOT appear in PPN formula
-    # PPN bound constrains the fundamental β, not the geometry-dependent β_eff
+    # The screened PPN deviation uses the effective coupling beta_eff:
+    # |γ - 1| ≈ 2 beta_eff² (for small beta_eff)
+    # This is the quantity directly comparable to the Cassini solar-system bound.
     if beta_fitted is not None:
-        # Use the fundamental beta (not beta_eff) for PPN constraint
-        alpha_0 = beta_fitted / M_PL_GEV
-        gamma_dev = 2 * alpha_0**2
+        gamma_dev = 2 * beta_eff**2
         ppn_compliant = gamma_dev < 2.3e-5
 
         if logger:
             logger.calculation(
-                "PPN Gamma Deviation (Unscreened Regime)",
-                inputs={"beta_fitted": beta_fitted, "M_Pl": M_PL_GEV},
-                formula="|γ-1| = 2 × (β/M_Pl)² (cosmological α₀)",
+                "PPN Gamma Deviation (Screened Regime)",
+                inputs={"beta_eff": beta_eff},
+                formula="|γ-1| = 2 × β_eff²",
                 result=gamma_dev,
             )
             logger.threshold_check(

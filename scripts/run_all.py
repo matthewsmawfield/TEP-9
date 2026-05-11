@@ -50,7 +50,7 @@ Phase 8: Mission-Specific Analysis (024-026)
   25. TEP Suppression Analysis
 
 Phase 9: Advanced Topics (026-028)
-  26. Covariant Synchronization Holonomy
+  26. Covariant Temporal Shear Impulse
   27. Cross-Corpus Parameter Export
 
 Phase 10: Reporting (028-029)
@@ -140,7 +140,7 @@ CORE_STEPS: List[Tuple[str, str]] = [
     
     # Phase 12: Advanced Topics (033-035)
     ('step_033_iri_trajectory_profile.py', 'Step 033: Continuous IRI Trajectory Profiles'),
-    ('step_034_covariant_holonomy.py', 'Step 034: Covariant Synchronization Holonomy'),
+    ('step_034_covariant_holonomy.py', 'Step 034: Covariant Temporal Shear Impulse'),
     ('step_035_cross_corpus_export.py', 'Step 035: Cross-Corpus Parameter Export'),
     
     # Phase 13: Reporting (036-037)

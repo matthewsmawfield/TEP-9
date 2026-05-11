@@ -1,92 +1,89 @@
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] LOGGER INITIALIZED: step_020_plasma_environment_reconstruction (Step 020)
-[2026-05-10 15:10:50 UTC] [DEBUG   ] [STEP 020] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_020_plasma_environment_reconstruction.log
-[2026-05-10 15:10:50 UTC] [DEBUG   ] [STEP 020] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
-[2026-05-10 15:10:50 UTC] [WARNING ] [STEP 020] ⚠ IRI profiles not found, falling back to Chapman layer
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] ================================================================================
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] STEP 020: PLASMA ENVIRONMENT RECONSTRUCTION
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] ================================================================================
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] Using REAL historical solar activity data
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] F10.7 from NOAA PSL archive (1948-present)
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] Kp from GFZ archive (1932-present)
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] IRI model electron density profiles from step_027 (continuous trajectory data)
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] Plasma screening using Debye physics: λ_D = sqrt(ε₀ k_B T_e / (n_e e²))
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] Screening factor: S = exp(-λ_TEP / λ_D) with λ_TEP = 4000 km
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] Debye screening properly implemented from plasma physics
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] Computing F_plasma factors from IRI electron density profiles
-[2026-05-10 15:10:50 UTC] [INFO    ] [STEP 020] Fetching historical F10.7 data from NOAA PSL...
-[2026-05-10 15:10:52 UTC] [INFO    ] [STEP 020] ✓ Fetched 922 historical F10.7 data points from NOAA PSL
-[2026-05-10 15:10:52 UTC] [INFO    ] [STEP 020] Fetching historical Kp data from GFZ...
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] ✓ Fetched 34463 historical Kp data points from GFZ
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] NEAR:
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   n_e = 0.0 ± 0.5 cm³
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F10.7 = 934.0 ± 0.1 sfu
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Activity = high
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F_screening = 1.0000 ± 0.1000
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F_sign = 1.0 ± 0.2
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Combined uncertainty: ±58%
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Data source: Chapman_layer_fallback
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Galileo_1990:
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   n_e = 0.0 ± 0.5 cm³
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F10.7 = 2049.0 ± 0.1 sfu
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Activity = high
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F_screening = 1.0000 ± 0.1000
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F_sign = 1.0 ± 0.2
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Combined uncertainty: ±58%
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Data source: Chapman_layer_fallback
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Cassini:
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   n_e = 0.0 ± 0.5 cm³
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F10.7 = 1708.0 ± 0.1 sfu
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Activity = high
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F_screening = 1.0000 ± 0.1000
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F_sign = 1.0 ± 0.2
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Combined uncertainty: ±58%
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Data source: Chapman_layer_fallback
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Rosetta_2005:
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   n_e = 0.0 ± 0.5 cm³
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F10.7 = 899.0 ± 0.1 sfu
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Activity = high
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F_screening = 1.0000 ± 0.1000
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F_sign = 1.0 ± 0.2
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Combined uncertainty: ±58%
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Data source: Chapman_layer_fallback
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Rosetta_2007:
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   n_e = 54610.8 ± 0.5 cm³
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F10.7 = 696.0 ± 0.1 sfu
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Activity = high
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F_screening = 0.0000 ± 0.3000
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   F_sign = 1.0 ± 0.2
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Combined uncertainty: ±65%
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Data source: Chapman_layer_fallback
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Plasma environment reconstruction saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step020_plasma_environment.json
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   Output: step020_plasma_environment.json (Plasma environment reconstruction)
-[2026-05-10 15:10:57 UTC] [DEBUG   ] [STEP 020] 
-[2026-05-10 15:10:57 UTC] [DEBUG   ] [STEP 020] --- SUMMARY ---
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Flybys with non-trivial plasma screening: Rosetta_2007
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] 
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] ================================================================================
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] STEP SUMMARY: step_020_plasma_environment_reconstruction
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] ================================================================================
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Step Number: 020
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Status: SUCCESS
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Duration: 0.00s
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Calculations Logged: 0
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Output Files: 1
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_020_plasma_environment_reconstruction.log
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] 
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Generated 1 output file(s):
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020]   • step020_plasma_environment.json: 6.01 KB - Plasma environment reconstruction
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] ================================================================================
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] STEP 020 COMPLETE: SUCCESS
-[2026-05-10 15:10:57 UTC] [INFO    ] [STEP 020] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_020_plasma_environment_reconstruction_provenance.json
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] 
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] ================================================================================
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] EXECUTIVE SUMMARY
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] ================================================================================
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] Step: step_020_plasma_environment_reconstruction (Step 020)
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] Status: SUCCESS
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] Duration: 0.00s
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] Calculations: 0
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] Output Files: 1
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] Key Outputs:
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020]   - step020_plasma_environment.json (6.01 KB)
-[2026-05-10 12:10:57 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] LOGGER INITIALIZED: step_020_plasma_environment_reconstruction (Step 020)
+[2026-05-11 09:06:10 UTC] [DEBUG   ] [STEP 020] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_020_plasma_environment_reconstruction.log
+[2026-05-11 09:06:10 UTC] [DEBUG   ] [STEP 020] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] Loaded IRI trajectory profiles from step_027
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] STEP 020: PLASMA ENVIRONMENT RECONSTRUCTION
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] Using documented historical solar activity values
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] F10.7 from NOAA/SWPC historical records (fallback values)
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] Kp from GFZ archive (1932-present)
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] IRI model electron density profiles from step_027 (continuous trajectory data)
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] Plasma attenuation: phenomenological ansatz S = exp(-n_e / n_ref)
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] n_ref = 1e4 cm^-3 (placeholder; TEP-action derivation remains future work)
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] Computing F_plasma factors from IRI electron density profiles
+[2026-05-11 09:06:10 UTC] [INFO    ] [STEP 020] Fetching historical Kp data from GFZ...
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] ✓ Fetched 34464 historical Kp data points from GFZ
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] NEAR:
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   n_e = 135428.9 ± 0.1 cm³
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F10.7 = 100.0 ± 0.1 sfu
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Activity = moderate
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F_screening = 0.0000 ± 0.5000
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F_sign = 1.0 ± 0.2
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Combined uncertainty: ±57%
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Data source: IRI_model_step_027
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Galileo_1990:
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   n_e = 48933.4 ± 0.1 cm³
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F10.7 = 200.0 ± 0.1 sfu
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Activity = high
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F_screening = 0.0075 ± 0.5000
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F_sign = 1.0 ± 0.2
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Combined uncertainty: ±57%
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Data source: IRI_model_step_027
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Cassini:
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   n_e = 13620.0 ± 0.1 cm³
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F10.7 = 150.0 ± 0.1 sfu
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Activity = high
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F_screening = 0.2561 ± 0.5000
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F_sign = 1.0 ± 0.2
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Combined uncertainty: ±57%
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Data source: IRI_model_step_027
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Rosetta_2005:
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   n_e = 2328.1 ± 0.1 cm³
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F10.7 = 90.0 ± 0.1 sfu
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Activity = moderate
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F_screening = 0.7923 ± 0.5000
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F_sign = 1.0 ± 0.2
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Combined uncertainty: ±57%
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Data source: IRI_model_step_027
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Rosetta_2007:
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   n_e = 432.7 ± 0.1 cm³
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F10.7 = 70.0 ± 0.1 sfu
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Activity = low
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F_screening = 0.9577 ± 0.5000
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   F_sign = 1.0 ± 0.2
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Combined uncertainty: ±57%
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Data source: IRI_model_step_027
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Plasma environment reconstruction saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step020_plasma_environment.json
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   Output: step020_plasma_environment.json (Plasma environment reconstruction)
+[2026-05-11 09:06:13 UTC] [DEBUG   ] [STEP 020] 
+[2026-05-11 09:06:13 UTC] [DEBUG   ] [STEP 020] --- SUMMARY ---
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Flybys with non-trivial plasma screening: NEAR, Galileo_1990, Cassini, Rosetta_2005, Rosetta_2007
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] 
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] STEP SUMMARY: step_020_plasma_environment_reconstruction
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Step Number: 020
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Status: SUCCESS
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Duration: 0.00s
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Calculations Logged: 0
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Output Files: 1
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_020_plasma_environment_reconstruction.log
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] 
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Generated 1 output file(s):
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020]   • step020_plasma_environment.json: 5.46 KB - Plasma environment reconstruction
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] STEP 020 COMPLETE: SUCCESS
+[2026-05-11 09:06:13 UTC] [INFO    ] [STEP 020] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_020_plasma_environment_reconstruction_provenance.json
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] 
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] EXECUTIVE SUMMARY
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] Step: step_020_plasma_environment_reconstruction (Step 020)
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] Status: SUCCESS
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] Duration: 0.00s
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] Calculations: 0
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] Output Files: 1
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] Key Outputs:
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020]   - step020_plasma_environment.json (5.46 KB)
+[2026-05-11 06:06:13 UTC] [INFO    ] [STEP 020] ================================================================================

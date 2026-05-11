@@ -1,66 +1,72 @@
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] LOGGER INITIALIZED: step_026_stable_model_comparison (Step 026)
-[2026-05-10 15:10:58 UTC] [DEBUG   ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_026_stable_model_comparison.log
-[2026-05-10 15:10:58 UTC] [DEBUG   ] [STEP 026] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] STEP 026: STABLE MODEL COMPARISON (Regularized Likelihood)
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-10 15:10:58 UTC] [DEBUG   ] [STEP 026] 
-[2026-05-10 15:10:58 UTC] [DEBUG   ] [STEP 026] ================================================================================
-[2026-05-10 15:10:58 UTC] [DEBUG   ] [STEP 026] SECTION: ISSUE IDENTIFICATION
-[2026-05-10 15:10:58 UTC] [DEBUG   ] [STEP 026] ================================================================================
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Original model comparison showed:
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   - Anomalously high WAIC values
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   - Numerical instability in likelihood calculations
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] 
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Fix: Use log-likelihood and AICc/BIC corrections for stability
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Loaded 4 flybys with S/N >= 2
-[2026-05-10 15:10:58 UTC] [DEBUG   ] [STEP 026] 
-[2026-05-10 15:10:58 UTC] [DEBUG   ] [STEP 026] ================================================================================
-[2026-05-10 15:10:58 UTC] [DEBUG   ] [STEP 026] SECTION: STABLE MODEL COMPARISON
-[2026-05-10 15:10:58 UTC] [DEBUG   ] [STEP 026] ================================================================================
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Using 4 flybys with S/N >= 2
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Using weighted mean beta (accounts for geometry): 4.64e-04
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Systematic uncertainty (heterogeneity): 3.7605 mm/s
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Log-likelihoods (with systematic uncertainty):
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   TEP: -11.53
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   Null: -16.04
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   Empirical: 0.00
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] 
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Information Criteria:
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   TEP: AIC=25.1, AICc=27.1, BIC=24.5
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   Null: AIC=32.1, AICc=32.1, BIC=32.1
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   Empirical: AIC=8.0, AICc=inf, BIC=5.5
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] 
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Bayes Factors:
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   TEP vs Null: 4.53e+01 (ΔBIC = 7.6)
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   Empirical vs TEP: 1.28e+04 (ΔBIC = 18.9)
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] ✓ Stable model comparison complete. Saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step026_stable_model_comparison.json
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   Output: step026_stable_model_comparison.json (Stable model comparison results)
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] 
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] STEP SUMMARY: step_026_stable_model_comparison
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Step Number: 026
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Status: SUCCESS
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Duration: 0.00s
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Calculations Logged: 0
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Output Files: 1
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_026_stable_model_comparison.log
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] 
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Generated 1 output file(s):
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026]   • step026_stable_model_comparison.json: 1.23 KB - Stable model comparison results
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] STEP 026 COMPLETE: SUCCESS
-[2026-05-10 15:10:58 UTC] [INFO    ] [STEP 026] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_026_stable_model_comparison_provenance.json
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] 
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] EXECUTIVE SUMMARY
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] Step: step_026_stable_model_comparison (Step 026)
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] Status: SUCCESS
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] Duration: 0.00s
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] Calculations: 0
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] Output Files: 1
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] Key Outputs:
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026]   - step026_stable_model_comparison.json (1.23 KB)
-[2026-05-10 12:10:58 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] LOGGER INITIALIZED: step_026_stable_model_comparison (Step 026)
+[2026-05-11 09:06:14 UTC] [DEBUG   ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_026_stable_model_comparison.log
+[2026-05-11 09:06:14 UTC] [DEBUG   ] [STEP 026] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] STEP 026: FOUR-TIER MODEL COMPARISON
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-11 09:06:14 UTC] [DEBUG   ] [STEP 026] 
+[2026-05-11 09:06:14 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-11 09:06:14 UTC] [DEBUG   ] [STEP 026] SECTION: FRAMEWORK
+[2026-05-11 09:06:14 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Tiers: Null (0 param) | Anderson (2 param) | TEP restricted (1 param) | TEP flexible (3 param)
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] TEP restricted is the primary evidence claim: all parameters except beta are pre-specified.
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Loaded 4 flybys with S/N >= 2
+[2026-05-11 09:06:14 UTC] [DEBUG   ] [STEP 026] 
+[2026-05-11 09:06:14 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-11 09:06:14 UTC] [DEBUG   ] [STEP 026] SECTION: FOUR-TIER MODEL COMPARISON
+[2026-05-11 09:06:14 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Using 4 flybys with S/N >= 2
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Systematic uncertainty (heterogeneity): 3.7608 mm/s
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] 
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Fitted parameters:
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   Anderson: A=17.625, B=0.148
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   TEP restricted: beta=2.96e-04
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   TEP flexible: beta=3.43e+00, b_disf=4.43e+00, offset=-1.567
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] 
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Log-likelihoods:
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   Null:        -16.04
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   Anderson:    -9.85
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   TEP res:     -9.35
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   TEP flex:    -9.26
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] 
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Information Criteria:
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   Null:        AIC=32.1, BIC=32.1
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   Anderson:    AIC=23.7, BIC=22.5
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   TEP res:     AIC=20.7, BIC=20.1
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   TEP flex:    AIC=24.5, BIC=22.7
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] 
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Bayes Factors (vs Null):
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   Anderson vs Null:       121.62 (ΔBIC=9.6)
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   TEP restricted vs Null: 400.36 (ΔBIC=12.0)
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   TEP flexible vs Null:   109.76 (ΔBIC=9.4)
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   TEP res vs Anderson:    3.29 (ΔBIC=2.4)
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] ✓ Stable model comparison complete. Saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step026_stable_model_comparison.json
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   Output: step026_stable_model_comparison.json (Stable model comparison results)
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] 
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] STEP SUMMARY: step_026_stable_model_comparison
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Step Number: 026
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Status: SUCCESS
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Duration: 0.00s
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Calculations Logged: 0
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Output Files: 1
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_026_stable_model_comparison.log
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] 
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Generated 1 output file(s):
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026]   • step026_stable_model_comparison.json: 2.10 KB - Stable model comparison results
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] STEP 026 COMPLETE: SUCCESS
+[2026-05-11 09:06:14 UTC] [INFO    ] [STEP 026] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_026_stable_model_comparison_provenance.json
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] 
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] EXECUTIVE SUMMARY
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] Step: step_026_stable_model_comparison (Step 026)
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] Status: SUCCESS
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] Duration: 0.00s
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] Calculations: 0
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] Output Files: 1
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] Key Outputs:
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026]   - step026_stable_model_comparison.json (2.10 KB)
+[2026-05-11 06:06:14 UTC] [INFO    ] [STEP 026] ================================================================================

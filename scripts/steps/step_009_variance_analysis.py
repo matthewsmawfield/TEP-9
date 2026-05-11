@@ -386,7 +386,7 @@ def calculate_variance_decomposition(
                 # Calculate average F_OD across all missions
                 f_od_values = []
                 for spacecraft, data in step021_results['results'].items():
-                    if 'f_od_estimate' in data and data['f_od_estimate'] is not None:
+                    if isinstance(data, dict) and 'f_od_estimate' in data and data['f_od_estimate'] is not None:
                         f_od_values.append(data['f_od_estimate'])
                 
                 if f_od_values:
@@ -587,7 +587,7 @@ def main():
                 # Calculate average F_OD across all missions
                 f_od_values = []
                 for spacecraft, data in step_results['step021']['results'].items():
-                    if 'f_od_estimate' in data and data['f_od_estimate'] is not None:
+                    if isinstance(data, dict) and 'f_od_estimate' in data and data['f_od_estimate'] is not None:
                         f_od_values.append(data['f_od_estimate'])
                 
                 if f_od_values:

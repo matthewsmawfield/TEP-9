@@ -44,16 +44,16 @@ be ingested directly by:
 
 ### 2. Disformal Coupling Bound (b/a)
 
-**Source:** Covariant holonomy analysis matching GW170817 constraints (Step 027)
+**Source:** Covariant temporal shear impulse analysis matching GW170817 constraints (Step 034)
 
 **Mathematical Derivation:**
 - Disformal coupling metric term: ds² = a(φ)²g_μν dx^μ dx^ν + b(φ)/M_Pl² (∂_μ φ ∂_ν φ) dx^μ dx^ν
 - Theoretical upper bound from causality: |b/a| < 1
 - GW170817 gravitational wave speed constraint: v_gw - c < 3×10⁻¹⁵
-- Holonomy analysis yields: b/a < 1×10⁻¹⁵
+- Temporal shear impulse analysis yields: b/a < 1×10⁻¹⁵
 
 **Data Flow:**
-- Step 027: Covariant synchronization holonomy → Step 028: Cross-corpus export
+- Step 034: Covariant temporal shear impulse → Step 035: Cross-corpus export
 
 **Assumptions:**
 - Disformal coupling respects causality constraints
@@ -66,7 +66,7 @@ be ingested directly by:
 - Translation from v_gw constraint to b/a bound: ±50%
 
 **Cross-References:**
-- Step 027: Holonomy analysis details
+- Step 034: Temporal shear impulse analysis details
 - GW170817 observation: Abbott et al. 2017, Phys. Rev. Lett. 119, 161101
 
 ### 3. Temporal Shear Suppression Index (n)
@@ -233,7 +233,7 @@ def main():
     # Load all relevant parameters from the modular EFA pipeline
     tep_predictions = load_results('step007_tep_predictions.json')
     space_weather = load_results('step018_space_weather.json')
-    holonomy = load_results('step034_holonomy_results.json')
+    impulse_results = load_results('step034_holonomy_results.json')
     
     # Extract fundamental parameters
     # EFA baseline beta fits at standard screening ~ 3.4e-8
@@ -249,9 +249,9 @@ def main():
         logger.warning("No inferred galactic rho floor found in space weather concordance data. Using canonical value.")
         inferred_rho_floor = 2e-23  # canonical galactic density
     
-    disformal_bound = holonomy.get('b_over_a_bound')
+    disformal_bound = impulse_results.get('b_over_a_bound')
     if disformal_bound is None:
-        logger.warning("No disformal bound found in holonomy results, using theoretical upper bound")
+        logger.warning("No disformal bound found in temporal shear impulse results, using theoretical upper bound")
         disformal_bound = 1e-15  # theoretical upper bound
     
     logger.info("Extracting verified constants across EFA steps...")
@@ -310,8 +310,8 @@ def main():
                         "uncertainty": 1e-15,
                         "uncertainty_fraction": 1.0,
                         "uncertainty_absolute": 1e-15,
-                        "data_source": "Covariant holonomy analysis matching GW170817 constraints",
-                        "derivation": "b/a < 1e-15 is the theoretical upper bound on metric directionality derived from covariant holonomy analysis; this matches GW170817 gravitational wave constraints on the speed of gravitational waves; ±100% uncertainty represents the theoretical nature of this bound",
+                        "data_source": "Covariant temporal shear impulse analysis matching GW170817 constraints",
+                        "derivation": "b/a < 1e-15 is the theoretical upper bound on metric directionality derived from covariant temporal shear impulse analysis; this matches GW170817 gravitational wave constraints on the speed of gravitational waves; ±100% uncertainty represents the theoretical nature of this bound",
                         "status": "THEORETICAL",
                         "calibration_status": "MATCHES_GW170817",
                         "recommended_action": "Refine with future multi-messenger gravitational wave observations"

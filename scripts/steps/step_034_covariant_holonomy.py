@@ -1,10 +1,10 @@
 """
-Step 034: Covariant Synchronization Holonomy Ray-Tracer
+Step 034: Covariant Temporal Shear Impulse Ray-Tracer
 
-This script computes the fundamental observable of the Temporal Equivalence Principle (TEP):
-Synchronization Holonomy (H), which is the non-integrable time transport around a loop.
-It bridges the gap between the foundational two-metric continuum axioms and the kinematic
-macroscopic Earth Flyby Anomaly (EFA) data.
+This script computes the covariant temporal shear impulse observable of the Temporal
+Equivalence Principle (TEP), quantifying the non-integrable time transport around a loop
+via disformal metric coupling. It bridges the gap between the foundational two-metric
+continuum axioms and the kinematic macroscopic Earth Flyby Anomaly (EFA) data.
 """
 
 import json
@@ -19,7 +19,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import BETA_BASELINE
 
-class SynchronizationHolonomyTracer:
+class TemporalShearImpulseTracer:
     """Ray-traces null geodesics through the conformal-disformal two metric to compute time non-closure."""
     
     def __init__(self):
@@ -49,9 +49,9 @@ class SynchronizationHolonomyTracer:
             'duration': tracking_duration_s
         }
 
-    def compute_holonomy(self, loop: dict) -> dict:
+    def compute_impulse(self, loop: dict) -> dict:
         """
-        Computes the Synchronization Holonomy H = Oint (B / 2A) |grad_perp phi|^2 dl
+        Computes the Temporal Shear Impulse H = Oint (B / 2A) |grad_perp phi|^2 dl
         as specified in TEP Eq 6.3.
         """
         # Time-transport connection curvature integrates around the tracking loop.
@@ -65,7 +65,7 @@ class SynchronizationHolonomyTracer:
         
         holonomy_time_s = (delta_L / self.c) * (self.b_over_a_times_grad_phi_sq / 2.0)
         
-        # The apparent velocity shift to an observer who ignores holonomy (Standard OD)
+        # The apparent velocity shift to an observer who ignores the impulse (Standard OD)
         # is derived by assuming time ran linearly, yielding a distance/time mismatch.
         # dv/c = H / T_loop
         dv_apparent = self.c * (holonomy_time_s / loop['duration']) if loop['duration'] > 0 else 0.0
@@ -86,23 +86,23 @@ def main():
     logger = StepLogger("step_034_covariant_holonomy", PROJECT_ROOT)
     start_time = time.time()
     
-    logger.header("STEP 034: COVARIANT SYNCHRONIZATION HOLONOMY")
+    logger.header("STEP 034: COVARIANT TEMPORAL SHEAR IMPULSE")
     
-    tracer = SynchronizationHolonomyTracer()
+    tracer = TemporalShearImpulseTracer()
     loop = tracer.generate_flyby_loop()
     
-    logger.info("Computing exact metric time-transport non-closure (Holonomy) around DSN tracking loop.")
+    logger.info("Computing exact metric time-transport non-closure (temporal shear impulse) around DSN tracking loop.")
     logger.info(f"Using GW170817 multi-messenger disformal bound: (B/A)|grad phi|^2 = {tracer.b_over_a_times_grad_phi_sq:1.0e}")
     
-    results = tracer.compute_holonomy(loop)
+    results = tracer.compute_impulse(loop)
     
-    logger.section("HOLONOMY OBSERVABLES")
+    logger.section("TEMPORAL SHEAR IMPULSE OBSERVABLES")
     logger.info(f"Loop proper-time non-closure (H): {results['holonomy_fs']:.2f} femtoseconds")
     logger.info(f"Apparent kinematic velocity mismatch: {results['dv_apparent_mm_s']:.6f} mm/s")
     
     logger.subsection("THEORETICAL VERIFICATION")
     logger.success("The covariant ray-trace confirms that a disformal metric perturbation bounded ")
-    logger.success("by GW170817 yields femtosecond-scale holonomy on planetary baselines.")
+    logger.success("by GW170817 yields femtosecond-scale temporal shear impulse on planetary baselines.")
     logger.success("This physically isolates the conformal gradient (classical scalar force) as the ")
     logger.success("dominant driver of the mm/s-scale Flyby Anomaly, preserving theoretical purity.")
     
@@ -115,7 +115,7 @@ def main():
     with open(output_file, 'w') as f:
         json.dump(results, f, indent=2)
         
-    logger.info(f"Exported holonomy verification to {output_file}")
+    logger.info(f"Exported temporal shear impulse verification to {output_file}")
     
     duration = time.time() - start_time
     logger.log_step_summary(duration, "SUCCESS")

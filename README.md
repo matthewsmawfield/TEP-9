@@ -1,4 +1,4 @@
-# The Temporal Equivalence Principle: Synchronization Holonomy in the Earth Flyby Anomaly
+# The Temporal Equivalence Principle: Temporal Shear Impulses in the Earth Flyby Anomaly
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19454863.svg)](https://doi.org/10.5281/zenodo.19454863)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -47,7 +47,7 @@ Four successful TEP fits to flyby anomalies (NEAR, Galileo 1990, Rosetta 2005, C
 | **Paper 11** | [TEP-H0](https://github.com/matthewsmawfield/TEP-H0) | The Cepheid Bias: Resolving the Hubble Tension | [10.5281/zenodo.18209702](https://doi.org/10.5281/zenodo.18209702) |
 | **Paper 12** | [TEP-JWST](https://github.com/matthewsmawfield/TEP-JWST) | The Temporal Equivalence Principle: A Unified Resolution to the JWST High-Redshift Anomalies | [10.5281/zenodo.19000827](https://doi.org/10.5281/zenodo.19000827) |
 | **Paper 13** | [TEP-WB](https://github.com/matthewsmawfield/TEP-WB) | The Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries | [10.5281/zenodo.19102062](https://doi.org/10.5281/zenodo.19102062) |
-| **Paper 15** | **TEP-EFA** (This repo) | Temporal Equivalence Principle: Synchronization Holonomy in the Earth Flyby Anomaly | [10.5281/zenodo.19454863](https://doi.org/10.5281/zenodo.19454863) |
+| **Paper 15** | **TEP-EFA** (This repo) | Temporal Equivalence Principle: Temporal Shear Impulses in the Earth Flyby Anomaly | [10.5281/zenodo.19454863](https://doi.org/10.5281/zenodo.19454863) |
 
 ## Directory Structure
 
@@ -93,7 +93,7 @@ This will populate `results/` and `data/processed/` with fresh analysis outputs.
 
 ```bibtex
 @article{smawfield2026earthflyby,
-  title={The Temporal Equivalence Principle: Synchronization Holonomy in the Earth Flyby Anomaly},
+  title={The Temporal Equivalence Principle: Temporal Shear Impulses in the Earth Flyby Anomaly},
   author={Smawfield, Matthew Lukin},
   journal={Zenodo},
   year={2026},

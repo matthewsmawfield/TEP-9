@@ -55,7 +55,7 @@ SUPPRESSION_EXPONENT: Final[float] = 0.334    # Theoretical density scaling (≈
 # Disformal Coupling Parameters (Yogyakarta v0.1)
 # CRITICAL: These are theoretical parameters with limited empirical validation
 DISFORMAL_COUPLING_STRENGTH: Final[float] = 0.05  # α_B - Disformal coupling strength (±50% uncertainty - theoretical)
-DISFORMAL_VELOCITY_THRESHOLD_KM_S: Final[float] = 16.0  # v_trans - Velocity threshold [km/s] (±20% uncertainty - theoretical)
+DISFORMAL_VELOCITY_THRESHOLD_KM_S: Final[float] = 16.8  # v_trans - Velocity threshold [km/s] (±20% uncertainty - theoretical)
 DISFORMAL_COUPLING_UNCERTAINTY: Final[float] = 0.5  # ±50% uncertainty (theoretical)
 DISFORMAL_VELOCITY_UNCERTAINTY: Final[float] = 0.2  # ±20% uncertainty (theoretical)
 

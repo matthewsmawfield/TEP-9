@@ -1,11 +1,11 @@
 {
   "one_at_a_time": {
     "beta": {
-      "sensitivity_coefficient": 0.9999999999999996,
-      "max_impact": 0.9999999999999998,
+      "sensitivity_coefficient": 0.9999999999999999,
+      "max_impact": 1.0,
       "by_flyby": {
         "Galileo_1990": 0.9999999999999998,
-        "Rosetta_2005": 0.9999999999999994
+        "Rosetta_2005": 1.0
       },
       "nominal_value": {
         "value": 0.0001,
@@ -15,11 +15,11 @@
       "impact_assessment": "high"
     },
     "lambda_tep_km": {
-      "sensitivity_coefficient": 0.363868544982835,
-      "max_impact": 0.4857295890927249,
+      "sensitivity_coefficient": 0.3638685449828351,
+      "max_impact": 0.48572958909272507,
       "by_flyby": {
-        "Galileo_1990": 0.24200750087294506,
-        "Rosetta_2005": 0.4857295890927249
+        "Galileo_1990": 0.24200750087294515,
+        "Rosetta_2005": 0.48572958909272507
       },
       "nominal_value": {
         "value": 4146.0,
@@ -29,11 +29,11 @@
       "impact_assessment": "moderate"
     },
     "characteristic_suppression": {
-      "sensitivity_coefficient": 0.9999999999999999,
+      "sensitivity_coefficient": 1.0,
       "max_impact": 1.0,
       "by_flyby": {
         "Galileo_1990": 1.0,
-        "Rosetta_2005": 0.9999999999999998
+        "Rosetta_2005": 1.0
       },
       "nominal_value": {
         "value": 0.35,
@@ -43,11 +43,11 @@
       "impact_assessment": "high"
     },
     "disformal_coupling": {
-      "sensitivity_coefficient": 0.05000000000000028,
-      "max_impact": 0.05000000000000051,
+      "sensitivity_coefficient": 0.0499999999999999,
+      "max_impact": 0.04999999999999994,
       "by_flyby": {
-        "Galileo_1990": 0.05000000000000051,
-        "Rosetta_2005": 0.050000000000000044
+        "Galileo_1990": 0.04999999999999994,
+        "Rosetta_2005": 0.04999999999999986
       },
       "nominal_value": {
         "value": 0.5,
@@ -57,11 +57,11 @@
       "impact_assessment": "low"
     },
     "j2": {
-      "sensitivity_coefficient": 0.05000000000000028,
-      "max_impact": 0.05000000000000051,
+      "sensitivity_coefficient": 0.0499999999999999,
+      "max_impact": 0.04999999999999994,
       "by_flyby": {
-        "Galileo_1990": 0.05000000000000051,
-        "Rosetta_2005": 0.050000000000000044
+        "Galileo_1990": 0.04999999999999994,
+        "Rosetta_2005": 0.04999999999999986
       },
       "nominal_value": {
         "value": 0.00108263,
@@ -71,11 +71,11 @@
       "impact_assessment": "low"
     },
     "j3": {
-      "sensitivity_coefficient": 0.05000000000000028,
-      "max_impact": 0.05000000000000051,
+      "sensitivity_coefficient": 0.0499999999999999,
+      "max_impact": 0.04999999999999994,
       "by_flyby": {
-        "Galileo_1990": 0.05000000000000051,
-        "Rosetta_2005": 0.050000000000000044
+        "Galileo_1990": 0.04999999999999994,
+        "Rosetta_2005": 0.04999999999999986
       },
       "nominal_value": {
         "value": -2.54e-06,
@@ -89,9 +89,9 @@
     "by_parameter": {
       "beta": {
         "fractional_uncertainty": 0.5,
-        "sensitivity_coefficient": 0.9999999999999996,
-        "contribution_to_total": 0.4999999999999998,
-        "percent_of_total": 0.6848092902041356,
+        "sensitivity_coefficient": 0.9999999999999999,
+        "contribution_to_total": 0.49999999999999994,
+        "percent_of_total": 0.6848092902041358,
         "data_source": "TEP-EFA pipeline weighted mean from flyby anomaly analysis",
         "calibration_status": "empirically_calibrated_from_flyby_fits",
         "derivation": "\u03b2 = 1\u00d710\u207b\u2074 is the nominal coupling constant for TEP scalar field; this value is derived from the ensemble weighted mean of flyby anomaly fits; \u00b150% uncertainty accounts for systematic uncertainty in GNSS calibration and heterogeneity across flybys",
@@ -99,9 +99,9 @@
       },
       "lambda_tep_km": {
         "fractional_uncertainty": 0.15,
-        "sensitivity_coefficient": 0.363868544982835,
-        "contribution_to_total": 0.05458028174742525,
-        "percent_of_total": 0.07475416800519208,
+        "sensitivity_coefficient": 0.3638685449828351,
+        "contribution_to_total": 0.05458028174742526,
+        "percent_of_total": 0.0747541680051921,
         "data_source": "GNSS atomic clock correlation analysis (Paper 6, UCD)",
         "calibration_status": "empirically_calibrated_from_GNSS",
         "derivation": "\u03bb_TEP = 4146 km is the characteristic relaxation length from GNSS atomic clock correlation analysis; \u00b115% uncertainty from the GNSS calibration represents the precision of the clock correlation measurement",
@@ -109,9 +109,9 @@
       },
       "characteristic_suppression": {
         "fractional_uncertainty": 0.15,
-        "sensitivity_coefficient": 0.9999999999999999,
-        "contribution_to_total": 0.14999999999999997,
-        "percent_of_total": 0.20544278706124075,
+        "sensitivity_coefficient": 1.0,
+        "contribution_to_total": 0.15,
+        "percent_of_total": 0.20544278706124078,
         "data_source": "UCD soliton formula with GNSS-derived \u03c1_T = 20 g/cm\u00b3",
         "calibration_status": "empirically_calibrated_from_GNSS_UCD",
         "derivation": "S_\u2295 = 0.349 is the characteristic suppression factor from UCD soliton model: R_sol = (3M/4\u03c0\u03c1_T)^(1/3) \u2248 4146 km, S_\u2295 = (R_earth - R_sol)/R_earth; \u00b115% uncertainty from GNSS calibration of \u03c1_T",
@@ -119,9 +119,9 @@
       },
       "disformal_coupling": {
         "fractional_uncertainty": 0.5,
-        "sensitivity_coefficient": 0.05000000000000028,
-        "contribution_to_total": 0.02500000000000014,
-        "percent_of_total": 0.03424046451020699,
+        "sensitivity_coefficient": 0.0499999999999999,
+        "contribution_to_total": 0.02499999999999995,
+        "percent_of_total": 0.03424046451020673,
         "data_source": "Theoretical coupling strength from Yogyakarta v0.1",
         "calibration_status": "theoretical_estimate_poorly_constrained",
         "derivation": "b_disf = 0.5 represents the relative strength of disformal to conformal coupling; this value is calibrated from the Cassini cancellation regime where disformal term partially cancels gradient term; \u00b150% uncertainty accounts for potential variations in the disformal coupling function B(\u03c6)",
@@ -129,9 +129,9 @@
       },
       "j2": {
         "fractional_uncertainty": 0.001,
-        "sensitivity_coefficient": 0.05000000000000028,
-        "contribution_to_total": 5.000000000000028e-05,
-        "percent_of_total": 6.848092902041398e-05,
+        "sensitivity_coefficient": 0.0499999999999999,
+        "contribution_to_total": 4.99999999999999e-05,
+        "percent_of_total": 6.848092902041346e-05,
         "data_source": "Geodetic measurements (Earth's gravitational J2 coefficient)",
         "calibration_status": "well_constrained_geodetic",
         "derivation": "J2 = 0.00108263 is Earth's quadrupole moment coefficient from geodetic measurements; \u00b10.1% uncertainty represents the precision of geodetic measurements",
@@ -139,54 +139,54 @@
       },
       "j3": {
         "fractional_uncertainty": 0.01,
-        "sensitivity_coefficient": 0.05000000000000028,
-        "contribution_to_total": 0.0005000000000000028,
-        "percent_of_total": 0.0006848092902041399,
+        "sensitivity_coefficient": 0.0499999999999999,
+        "contribution_to_total": 0.000499999999999999,
+        "percent_of_total": 0.0006848092902041347,
         "data_source": "Geodetic measurements (Earth's gravitational J3 coefficient)",
         "calibration_status": "well_constrained_geodetic",
         "derivation": "J3 = -2.54\u00d710\u207b\u2076 is Earth's octupole moment coefficient from geodetic measurements; \u00b11% uncertainty represents the precision of geodetic measurements",
         "recommended_action": "No action needed - well constrained"
       }
     },
-    "total_fractional_uncertainty": 0.52545623952488,
+    "total_fractional_uncertainty": 0.5254562395248802,
     "dominant_source": "beta"
   },
   "parameter_correlations": {
     "beta_vs_altitude": {
-      "correlation": -0.594207299553448,
-      "p_value": 0.29067331736521257,
+      "correlation": -0.5942236833957032,
+      "p_value": 0.2906565390974655,
       "significant": false
     }
   },
   "tornado_ranking": [
     {
       "parameter": "characteristic_suppression",
-      "sensitivity": 0.9999999999999999,
+      "sensitivity": 1.0,
       "impact": "high"
     },
     {
       "parameter": "beta",
-      "sensitivity": 0.9999999999999996,
+      "sensitivity": 0.9999999999999999,
       "impact": "high"
     },
     {
       "parameter": "lambda_tep_km",
-      "sensitivity": 0.363868544982835,
+      "sensitivity": 0.3638685449828351,
       "impact": "moderate"
     },
     {
       "parameter": "disformal_coupling",
-      "sensitivity": 0.05000000000000028,
+      "sensitivity": 0.0499999999999999,
       "impact": "low"
     },
     {
       "parameter": "j2",
-      "sensitivity": 0.05000000000000028,
+      "sensitivity": 0.0499999999999999,
       "impact": "low"
     },
     {
       "parameter": "j3",
-      "sensitivity": 0.05000000000000028,
+      "sensitivity": 0.0499999999999999,
       "impact": "low"
     }
   ],
@@ -254,6 +254,6 @@
   },
   "summary": {
     "dominant_uncertainty": "beta",
-    "total_uncertainty_percent": 52.54562395248799
+    "total_uncertainty_percent": 52.54562395248802
   }
 }
