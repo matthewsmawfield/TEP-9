@@ -17,7 +17,7 @@ Model Tiers:
 3. TEP Restricted (M_T^res): 1 parameter. Universal coupling β is the sole
    fitted parameter. All other TEP quantities are pre-specified:
    - λ_TEP ≈ 4000 km (from GNSS atomic clock correlations, Step 016)
-   - S_⊕ ≈ 0.35 (from UCD soliton first-principles, Step 010)
+   - S_⊕ ≈ 0.35 (from UCD saturation first-principles, Step 010)
    - v_trans ≈ 16.8 km/s (from TEP field equations)
    - Geometry (altitude, velocity, declinations) from JPL Horizons ephemerides
 
@@ -158,20 +158,35 @@ class StableModelComparison:
         - S_⊕ ≈ 0.35 (UCD Step 010)
         - v_trans ≈ 16.8 km/s (TEP field equations)
         - Geometry from JPL Horizons
+        
+        The TEP velocity shift follows a 3/4 power law in β:
+            dv_tep ∝ β^(3/4)
+        This arises from the field dependence: scalar force ∝ β * ∇φ ∝ β * β^(-1/4).
+        Therefore predictions at arbitrary β are scaled from the reference (β₀=1e-4):
+            dv_pred(β) = dv_pred_base * (β / 1e-4)^(3/4)
         """
         log_like = 0.0
         for fb in flybys:
-            dv_pred = fb['dv_pred_base'] * (beta / 1e-4)
+            scale = (beta / 1e-4) ** 0.75
+            dv_pred = fb['dv_pred_base'] * scale
             sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_sys**2)
             residual = fb['dv_obs'] - dv_pred
             log_like += self._gauss_loglike(residual, sigma_total)
         return log_like
 
     def fit_tep_restricted(self, flybys, sigma_sys=0.0):
-        """Weighted least-squares fit of β for TEP restricted."""
+        """
+        Weighted least-squares fit of β for TEP restricted with 3/4 power law scaling.
+        
+        We solve for the optimal scaling factor x = (β / 1e-4)^0.75, then back out β.
+        chi² = Σ (obs - pred_base * x)² / σ²
+        d(chi²)/dx = 0  →  x = Σ(pred_base * obs / σ²) / Σ(pred_base² / σ²)
+        β_fit = 1e-4 * x^(4/3)
+        """
         num = sum(fb['dv_obs'] * fb['dv_pred_base'] / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys)
         den = sum(fb['dv_pred_base']**2 / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys)
-        beta_fit = 1e-4 * (num / den) if den > 0 else 1e-4
+        x = (num / den) if den > 0 else 1.0
+        beta_fit = 1e-4 * (x ** (4.0 / 3.0)) if den > 0 else 1e-4
         log_like = self.log_likelihood_tep_restricted(flybys, beta_fit, sigma_sys)
         return beta_fit, log_like
 
@@ -179,28 +194,69 @@ class StableModelComparison:
         """
         TEP Flexible: 3 fitted parameters (β, b_disf, offset).
         
-        The prediction is:
-            Δv = β * dv_grad_base + b_disf * dv_disf_base + offset
+        Both gradient and disformal components scale with the 3/4 power law:
+            dv_grad(β) = dv_grad_base * (β / 1e-4)^0.75
+            dv_disf(β) = dv_disf_base * (β / 1e-4)^0.75
         
-        b_disf allows the disformal amplitude to vary independently,
+        The prediction is:
+            Δv = (β / 1e-4)^0.75 * (dv_grad_base + b_disf * dv_disf_base) + offset
+        
+        b_disf allows the disformal amplitude to vary independently (as a ratio),
         and offset captures residual modulation (plasma, OD, etc.).
+        
+        Note: This is a non-linear model in β. For fitting, we use an iterative
+        approach: first fit the linear combination at a reference β, then optimize β.
         """
         log_like = 0.0
+        scale = (beta / 1e-4) ** 0.75
         for fb in flybys:
-            dv_pred = beta * fb['dv_grad_base'] + b_disf * fb['dv_disf_base'] + offset
+            dv_pred = scale * (fb['dv_grad_base'] + b_disf * fb['dv_disf_base']) + offset
             sigma_total = np.sqrt(fb['dv_unc']**2 + sigma_sys**2)
             residual = fb['dv_obs'] - dv_pred
             log_like += self._gauss_loglike(residual, sigma_total)
         return log_like
 
     def fit_tep_flexible(self, flybys, sigma_sys=0.0):
-        """Weighted least-squares fit of β, b_disf, offset for TEP flexible."""
-        X = np.array([[fb['dv_grad_base'], fb['dv_disf_base'], 1.0] for fb in flybys])
-        y = np.array([fb['dv_obs'] for fb in flybys])
+        """
+        Fit TEP flexible with 3/4 power law scaling.
+        
+        Strategy: For a given β, the model is linear in (b_disf, offset) with
+        design matrix columns (scale*dv_disf_base, 1.0). We iterate over β to
+        find the global optimum.
+        """
+        from scipy.optimize import minimize_scalar
+        
+        def _neg_loglike_at_beta(log_beta):
+            beta = np.exp(log_beta)
+            scale = (beta / 1e-4) ** 0.75
+            # Linear least squares for b_disf and offset at fixed beta
+            X = np.array([[scale * fb['dv_disf_base'], 1.0] for fb in flybys])
+            y = np.array([fb['dv_obs'] - scale * fb['dv_grad_base'] for fb in flybys])
+            w = np.array([1.0 / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys])
+            W = np.diag(w)
+            
+            try:
+                beta_hat = np.linalg.lstsq(X.T @ W @ X, X.T @ W @ y, rcond=None)[0]
+                b_disf_fit, offset_fit = beta_hat[0], beta_hat[1]
+            except (np.linalg.LinAlgError, ValueError):
+                return 1e10
+            
+            log_like = self.log_likelihood_tep_flexible(flybys, beta, b_disf_fit, offset_fit, sigma_sys)
+            return -log_like
+        
+        # Optimize log_beta in a broad range around the step008 value
+        result = minimize_scalar(_neg_loglike_at_beta, bounds=(-12, -6), method='bounded')
+        beta_fit = np.exp(result.x)
+        
+        # Refit b_disf and offset at optimal beta
+        scale = (beta_fit / 1e-4) ** 0.75
+        X = np.array([[scale * fb['dv_disf_base'], 1.0] for fb in flybys])
+        y = np.array([fb['dv_obs'] - scale * fb['dv_grad_base'] for fb in flybys])
         w = np.array([1.0 / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys])
         W = np.diag(w)
         beta_hat = np.linalg.lstsq(X.T @ W @ X, X.T @ W @ y, rcond=None)[0]
-        beta_fit, b_disf_fit, offset_fit = beta_hat[0], beta_hat[1], beta_hat[2]
+        b_disf_fit, offset_fit = beta_hat[0], beta_hat[1]
+        
         log_like = self.log_likelihood_tep_flexible(flybys, beta_fit, b_disf_fit, offset_fit, sigma_sys)
         return beta_fit, b_disf_fit, offset_fit, log_like
 
@@ -393,7 +449,7 @@ class StableModelComparison:
                 'lambda_TEP_km': 4000,
                 'lambda_TEP_source': 'GNSS atomic clock correlations (Step 016)',
                 'S_earth': 0.35,
-                'S_earth_source': 'UCD soliton first-principles (Step 010)',
+                'S_earth_source': 'UCD saturation first-principles (Step 010)',
                 'v_trans_km_s': 16.8,
                 'v_trans_source': 'TEP field equations',
                 'geometry_source': 'JPL Horizons ephemerides'

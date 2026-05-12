@@ -1,6 +1,6 @@
 {
-  "calculation_type": "UCD_SOLITON_TOPOLOGY_WITH_CROSS_CORROBORATION",
-  "reference": "TEP Paper 7 (UCD), Paper 6 (GTE), Paper 15 (EFA)",
+  "calculation_type": "UCD_SATURATION_TOPOLOGY_WITH_CROSS_CORROBORATION",
+  "reference": "TEP Paper 6 (UCD), Paper 5 (GTE), Paper 15 (EFA)",
   "parameters": {
     "rho_T_g_cm3": 20.0,
     "M_earth_kg": 5.97e+24,
@@ -18,16 +18,16 @@
     "percent_difference": 0.07300991078587035
   },
   "cross_corroboration": {
-    "method_1_ucd_soliton": {
+    "method_1_ucd_saturation": {
       "value": 0.34925480458864266,
       "formula": "R_sol = (3M/4\u03c0\u03c1_c)^(1/3)",
-      "reference": "Paper 7 (UCD)",
+      "reference": "Paper 6 (UCD)",
       "status": "PRIMARY"
     },
     "method_2_gnss_direct": {
       "value": 0.34060587035002354,
       "formula": "S_\u2295 = (R_earth - L_c) / R_earth",
-      "reference": "Paper 6 (GTE): L_c = 4201 km",
+      "reference": "Paper 5 (GTE): L_c = 4201 km",
       "status": "INDEPENDENT_EMPIRICAL"
     },
     "method_4_compton_wavelength": {
@@ -98,9 +98,9 @@
   ],
   "reviewer_response": {
     "concern": "Origin of 0.34 geometric Temporal Shear Suppression factor needs first-principles verification",
-    "resolution": "4 independent TEP methods corroborate S_\u2295 \u2248 0.34 \u00b1 0.02",
-    "key_finding": "UCD Soliton: 0.349, GNSS Direct: 0.341, Compton \u03bb: 0.381, Altitude: 0.392",
+    "resolution": "4 independent TEP methods corroborate S_\u2295 \u2248 0.34 \u00b1 0.09 (\u00b125% from \u03c1_T = 20 \u00b1 8 g/cm\u00b3, Paper 6 UCD)",
+    "key_finding": "UCD Saturation: 0.349, GNSS Direct: 0.341, Compton \u03bb: 0.381, Altitude: 0.392",
     "audit_status": "CONFIRMED",
-    "literature_consistency": "All methods consistent with Paper 6 (GTE), Paper 7 (UCD), Paper 15 (EFA)"
+    "literature_consistency": "All methods consistent with Paper 5 (GTE), Paper 6 (UCD), Paper 15 (EFA)"
   }
 }

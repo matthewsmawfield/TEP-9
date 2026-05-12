@@ -81,6 +81,158 @@ GM_EARTH = 3.986004418e14  # m³/s²
 # Disformal coupling parameters (from physics.py)
 # DISFORMAL_COUPLING_STRENGTH and DISFORMAL_VELOCITY_THRESHOLD_KM_S are imported from physics.py
 
+# CMB dipole parameters (Planck 2018) — scalar field rest-frame anchor
+CMB_DIPOLE_RA_DEG = 167.94
+CMB_DIPOLE_DEC_DEG = -6.93
+CMB_DIPOLE_VELOCITY_KM_S = 369.82
+
+# Earth orbital parameters for CMB-frame velocity computation
+EARTH_ORBITAL_ECCENTRICITY = 0.0167086
+EARTH_ORBITAL_SEMI_MAJOR_AU = 1.000001018
+EARTH_ORBITAL_LONGITUDE_OF_PERIHELION_DEG = 102.937348
+AU_M = 1.495978707e11
+M_SUN_KG = 1.98847e30
+G_MKS = 6.67430e-11
+
+
+def _julian_day(dt):
+    y, m, d = dt.year, dt.month, dt.day
+    if m <= 2:
+        y -= 1
+        m += 12
+    A = y // 100
+    B = 2 - A + A // 4
+    JD = int(365.25 * (y + 4716)) + int(30.6001 * (m + 1)) + d + B - 1524.5
+    frac = (dt.hour + dt.minute / 60.0 + dt.second / 3600.0) / 24.0
+    return JD + frac
+
+
+def _earth_orbital_velocity_equatorial(dt):
+    """
+    Compute Earth's heliocentric orbital velocity vector in J2000 equatorial frame.
+    Returns (vx, vy, vz) in km/s.
+    """
+    JD = _julian_day(dt)
+    T = (JD - 2451545.0) / 36525.0
+
+    L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T
+    L0 = L0 % 360.0
+
+    M = math.radians((357.52911 + 35999.05029 * T - 0.0001537 * T * T) % 360.0)
+    e = 0.016708634 - 0.000042037 * T - 0.0000001267 * T * T
+
+    C = (1.914602 - 0.004817 * T - 0.000014 * T * T) * math.sin(M)
+    C += (0.019993 - 0.000101 * T) * math.sin(2 * M)
+    C += 0.000289 * math.sin(3 * M)
+
+    true_lon_sun = (L0 + C) % 360.0
+    true_lon_earth = (true_lon_sun + 180.0) % 360.0
+    true_lon_earth_rad = math.radians(true_lon_earth)
+
+    nu_rad = math.radians((true_lon_earth - EARTH_ORBITAL_LONGITUDE_OF_PERIHELION_DEG) % 360.0)
+    a = EARTH_ORBITAL_SEMI_MAJOR_AU
+    r_au = a * (1 - e * e) / (1 + e * math.cos(nu_rad))
+
+    mu_km3_s2 = 1.32712440018e11
+    r_km = r_au * AU_M / 1000.0
+    p_km = a * AU_M / 1000.0 * (1 - e * e)
+    h = math.sqrt(mu_km3_s2 * p_km)
+
+    v_r = (mu_km3_s2 / h) * e * math.sin(nu_rad)
+    v_t = (mu_km3_s2 / h) * (1 + e * math.cos(nu_rad))
+
+    vx_ecl = v_r * math.cos(true_lon_earth_rad) - v_t * math.sin(true_lon_earth_rad)
+    vy_ecl = v_r * math.sin(true_lon_earth_rad) + v_t * math.cos(true_lon_earth_rad)
+    vz_ecl = 0.0
+
+    eps = math.radians(23.439281)
+    vx_eq = vx_ecl
+    vy_eq = vy_ecl * math.cos(eps) - vz_ecl * math.sin(eps)
+    vz_eq = vy_ecl * math.sin(eps) + vz_ecl * math.cos(eps)
+
+    return vx_eq, vy_eq, vz_eq
+
+
+def _cmb_dipole_unit_vector():
+    ra = math.radians(CMB_DIPOLE_RA_DEG)
+    dec = math.radians(CMB_DIPOLE_DEC_DEG)
+    return np.array([
+        math.cos(dec) * math.cos(ra),
+        math.cos(dec) * math.sin(ra),
+        math.sin(dec)
+    ])
+
+
+def _sc_velocity_unit_vector_equatorial(dec_in_deg):
+    dec = math.radians(dec_in_deg)
+    return np.array([math.cos(dec), 0.0, math.sin(dec)])
+
+
+def compute_sc_cmb_cos_theta(dec_in_deg, state_vectors=None, mission_name=None):
+    """
+    Compute cos(theta) between SC velocity direction and CMB dipole apex.
+
+    Uses 3D state vectors from JPL Horizons (step_040a) if available.
+    Falls back to declination-only approximation otherwise.
+    """
+    n_cmb = _cmb_dipole_unit_vector()
+
+    # Try 3D state vectors first
+    if state_vectors and mission_name:
+        vec = state_vectors.get(mission_name)
+        if vec is not None and "ux_ecl" in vec:
+            ux_ecl = vec["ux_ecl"]
+            uy_ecl = vec["uy_ecl"]
+            uz_ecl = vec["uz_ecl"]
+            eps = math.radians(23.439281)
+            ux_eq = ux_ecl
+            uy_eq = uy_ecl * math.cos(eps) + uz_ecl * math.sin(eps)
+            uz_eq = -uy_ecl * math.sin(eps) + uz_ecl * math.cos(eps)
+            v_sc_hat = np.array([ux_eq, uy_eq, uz_eq])
+            return float(np.dot(v_sc_hat, n_cmb))
+
+    # Fallback to declination-only
+    if dec_in_deg is not None:
+        v_sc_hat = _sc_velocity_unit_vector_equatorial(dec_in_deg)
+        return float(np.dot(v_sc_hat, n_cmb))
+
+    return None
+
+
+def compute_cmb_frame_speed_kms(flyby_date_str, v_sc_kms, dec_in_deg):
+    """
+    Compute the total CMB-frame speed for a flyby.
+
+    In TEP, the disformal coupling depends on velocity relative to the scalar
+    field rest frame. If the CMB frame approximates the scalar rest frame, the
+    effective velocity is the vector sum:
+
+        v_cmb = v_CMB_dipole + v_Earth_orbit + v_SC
+
+    Returns the magnitude |v_cmb| in km/s, or None if flyby_date_str is empty
+    (caller should fall back to geocentric velocity).
+    """
+    if not flyby_date_str:
+        return None
+    try:
+        dt = datetime.datetime.strptime(flyby_date_str, "%Y-%m-%d")
+    except ValueError:
+        try:
+            dt = datetime.datetime.strptime(flyby_date_str[:10], "%Y-%m-%d")
+        except ValueError:
+            return None
+
+    n_cmb = _cmb_dipole_unit_vector()
+    v_cmb_bulk = CMB_DIPOLE_VELOCITY_KM_S * n_cmb
+
+    v_earth = np.array(_earth_orbital_velocity_equatorial(dt))
+
+    v_sc_hat = _sc_velocity_unit_vector_equatorial(dec_in_deg)
+    v_sc = v_sc_hat * v_sc_kms
+
+    v_total = v_cmb_bulk + v_earth + v_sc
+    return float(np.linalg.norm(v_total))
+
 
 def _vinf_declinations_from_ephemeris(trajectory_data):
     ephemeris = trajectory_data.get("ephemeris", [])
@@ -166,6 +318,8 @@ def extract_trajectory_geometry(flyby_data, spacecraft_name=""):
     if cos_dec_asymmetry is None:
         cos_dec_asymmetry = math.cos(dec_in_rad) - math.cos(dec_out_rad)
 
+    flyby_date = flyby_data.get("flyby_date", "")
+
     return {
         "dec_in_deg": dec_in_deg,
         "dec_out_deg": dec_out_deg,
@@ -177,6 +331,7 @@ def extract_trajectory_geometry(flyby_data, spacecraft_name=""):
         "altitude_km": alt_p,
         "perigee_latitude_rad": perigee_lat,
         "ephemeris": ephemeris,
+        "flyby_date": flyby_date,
     }
 
 
@@ -258,34 +413,45 @@ class TEPTemporalTopologyModel:
         }
 
     def disformal_modulation_factor(
-        self, v_sc_m_s, cos_asymmetry
+        self, v_sc_m_s, cos_asymmetry, v_cmb_frame_kms=None, sc_cmb_cos_theta=None
     ):
         """
         Disformal coupling modulation factor from the TEP metric.
-        
+
         The full TEP metric includes a disformal term B(phi) * d_mu(phi) * d_nu(phi).
         For a spacecraft with 4-velocity u^mu, this produces a velocity-dependent
-        modulation of the scalar force that can flip sign for high-velocity trajectories
-        with negative asymmetry:
-        
-            S_disf = 1.0 + alpha_B * (v / v_th) * sign(cos_asymmetry)
-        
+        modulation of the scalar force:
+
+            S_disf = 1.0 + alpha_B * (v_eff / v_th) * sign(cos_asymmetry)
+
+        The effective velocity v_eff depends on the spacecraft motion relative to
+        the scalar field rest frame (approximated by the CMB frame):
+
+        - If sc_cmb_cos_theta > 0 (spacecraft moving toward CMB dipole apex):
+          v_eff = v_cmb_frame_kms (CMB-frame total speed)
+        - Otherwise: v_eff = v_sc_m_s / 1e3 (geocentric perigee speed)
+
+        This directional dependence arises because the disformal coupling
+        contracts the 4-velocity with d_mu(phi), and the sign of the time
+        component dphi/dt_cmb matters when the scalar rest frame is the CMB.
+
         For high-velocity flybys (v > v_th) with negative asymmetry, the disformal
-        term dominates and reverses the sign of the predicted anomaly, resolving
-        the Cassini sign mismatch.
+        term dominates and reverses the sign of the predicted anomaly.
         """
-        v_km_s = v_sc_m_s / 1e3
         v_th = DISFORMAL_VELOCITY_THRESHOLD_KM_S
         alpha_B = DISFORMAL_COUPLING_STRENGTH
-        
-        # For high-velocity flybys with negative asymmetry, disformal coupling
-        # can reverse the sign of the prediction
+
+        # Determine effective velocity based on CMB alignment
+        if v_cmb_frame_kms is not None and sc_cmb_cos_theta is not None and sc_cmb_cos_theta > 0:
+            v_km_s = v_cmb_frame_kms
+        elif v_cmb_frame_kms is not None:
+            v_km_s = v_sc_m_s / 1e3
+        else:
+            v_km_s = v_sc_m_s / 1e3
+
         if v_km_s > v_th and cos_asymmetry < 0:
-            # Disformal regime: sign reversal possible
-            # The factor becomes negative, flipping the prediction sign
             return -1.0 * abs(1.0 + alpha_B * (v_km_s / v_th))
         else:
-            # Standard regime: magnitude modulation only
             return 1.0 + alpha_B * (v_km_s / v_th) * np.sign(cos_asymmetry)
 
     def ambient_relaxation_factor(self, density_g_cm3):
@@ -341,7 +507,17 @@ class TEPTemporalTopologyModel:
             r_p = altitude_km * 1e3 + R_EARTH
             beta_eff = self.effective_coupling(r_p)
             dphi_dr = self.field_gradient(r_p)
-            S_disf = self.disformal_modulation_factor(v_p, cos_asymmetry)
+            v_cmb = compute_cmb_frame_speed_kms(
+                geometry.get("flyby_date", ""),
+                velocity_km_s,
+                geometry.get("dec_in_deg", 0.0)
+            )
+            sc_cmb_cos = compute_sc_cmb_cos_theta(
+                geometry.get("dec_in_deg"),
+                geometry.get("state_vectors"),
+                geometry.get("mission_name")
+            )
+            S_disf = self.disformal_modulation_factor(v_p, cos_asymmetry, v_cmb, sc_cmb_cos)
             j2_factor = J2_EARTH * (R_EARTH / r_p) ** 2
             dv_base = (
                 beta_eff
@@ -392,9 +568,19 @@ class TEPTemporalTopologyModel:
                 * dt
             )
 
+        v_cmb = compute_cmb_frame_speed_kms(
+            geometry.get("flyby_date", ""),
+            velocity_km_s,
+            geometry.get("dec_in_deg", 0.0)
+        )
+        sc_cmb_cos = compute_sc_cmb_cos_theta(
+                geometry.get("dec_in_deg"),
+                geometry.get("state_vectors"),
+                geometry.get("mission_name")
+            )
         return (
             integral_F_dt
-            * self.disformal_modulation_factor(v_p, cos_asymmetry)
+            * self.disformal_modulation_factor(v_p, cos_asymmetry, v_cmb, sc_cmb_cos)
             * 1e3
         )
 
@@ -418,8 +604,22 @@ def main():
     flybys = catalog.get("flybys", [])
     logger.info(f"Loaded {len(flybys)} flybys from archival catalog")
 
-    model = TEPTemporalTopologyModel()
+    # Use theoretical reference coupling BETA_INITIAL = 1e-04.
+    # Step_008 fits empirical scaling factors relative to this reference.
+    # Loading fitted beta here would break consistency with step_008's formula.
+    beta_ref = BETA_INITIAL
+    logger.info(f"Using reference beta = {beta_ref:.4e}")
+
+    model = TEPTemporalTopologyModel(beta=beta_ref)
     predictions = {}
+
+    # Load 3D state vectors for CMB alignment computation
+    state_vectors_path = PROJECT_ROOT / "results" / "step040a_3d_state_vectors.json"
+    state_vectors = {}
+    if state_vectors_path.exists():
+        with open(state_vectors_path, "r", encoding="utf-8") as f:
+            state_vectors = json.load(f)
+        logger.info(f"Loaded {len(state_vectors)} 3D state vectors for CMB alignment")
 
     for flyby in flybys:
         name = flyby["mission_name"]
@@ -428,6 +628,8 @@ def main():
         try:
             # Extract geometry
             geometry = extract_trajectory_geometry(flyby, name)
+            geometry["state_vectors"] = state_vectors
+            geometry["mission_name"] = name
 
             # Calculate TEP velocity shift
             dv_tep = model.tep_velocity_shift(geometry)
@@ -449,8 +651,18 @@ def main():
         
         j2_factor = J2_EARTH * (R_EARTH / r_p) ** 2
         dv_grad = (beta_eff * (C_LIGHT**2) * dphi_dr / M_PL * (r_p / v_p) * j2_factor * cos_asym_factor * 1e3)
-        
-        S_disf = model.disformal_modulation_factor(v_p, cos_asym_factor)
+
+        v_cmb_kms = compute_cmb_frame_speed_kms(
+            geometry.get("flyby_date", ""),
+            v_p / 1000.0,
+            geometry.get("dec_in_deg", 0.0)
+        )
+        sc_cmb_cos = compute_sc_cmb_cos_theta(
+                geometry.get("dec_in_deg"),
+                geometry.get("state_vectors"),
+                geometry.get("mission_name")
+            )
+        S_disf = model.disformal_modulation_factor(v_p, cos_asym_factor, v_cmb_kms, sc_cmb_cos)
         dv_total = dv_grad * S_disf
         dv_disf = dv_total - dv_grad
         
@@ -471,7 +683,7 @@ def main():
                 "dv_disf_mm_s": dv_disf,
                 "model_version": "v5.3-Jakarta",
                 "topology_n": N_TOPOLOGY,
-                "beta_initial": BETA_INITIAL,
+                "beta_reference": beta_ref,
             },
             "geometry": geometry,
         }

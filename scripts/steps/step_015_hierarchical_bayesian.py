@@ -14,8 +14,8 @@ This module implements TWO complementary approaches:
 
 Key features:
 - Component decomposition reveals Cassini cancellation regime
-- Density-dependent suppression: S ∝ ρ^0.334 from Paper 7 (UCD)
-- Spatial correlation: λ = 4200 km from Paper 6 (GTE)
+- Density-dependent suppression: S ∝ ρ^0.334 from Paper 6 (UCD)
+- Spatial correlation: λ = 4200 km from Paper 5 (GTE)
 - Bayesian inference using emcee (MCMC)
 """
 
@@ -323,14 +323,15 @@ class HierarchicalTEPModel:
             # The pre-computed components already contain the full perigee physics
             # We only scale by the inferred universal coupling beta_0 relative to 
             # the reference beta = 1e-4 used in step_007
-            beta_ratio = beta_0 / 1e-4
-            
-            # Optional residual modulation for model incompleteness
-            # This should be consistent with zero if physics is complete
+            # TEP predictions follow 3/4 power law: dv ∝ β^(3/4)
+            # Both gradient and disformal components scale with the same exponent
+            # because they arise from the same scalar field.
             beta_i = beta_0 * (1 + alpha_res)
+            # beta must be positive (coupling strength); use abs to avoid NaN from negative base
+            scale = (abs(beta_i) / 1e-4) ** 0.75
             
             # Decomposed Prediction: scale pre-computed components by inferred couplings
-            dv_pred = (beta_i / 1e-4) * flyby['dv_grad_mm_s'] + (b_disf / 0.05) * flyby['dv_disf_mm_s']
+            dv_pred = scale * (flyby['dv_grad_mm_s'] + (b_disf / 0.05) * flyby['dv_disf_mm_s'])
             
             # Log-likelihood
             dv_obs = flyby.get('dv_obs_mm_s')
@@ -395,7 +396,9 @@ class HierarchicalTEPModel:
                 b_disf = np.exp(log_b_disf)
                 
                 beta_i = beta_0 * (1 + alpha_res)
-                dv_pred = (beta_i / 1e-4) * flyby['dv_grad_mm_s'] + (b_disf / 0.05) * flyby['dv_disf_mm_s']
+                # beta must be positive; use abs to avoid NaN from negative base
+                scale = (abs(beta_i) / 1e-4) ** 0.75
+                dv_pred = scale * (flyby['dv_grad_mm_s'] + (b_disf / 0.05) * flyby['dv_disf_mm_s'])
                 preds.append(dv_pred)
             
             preds = np.array(preds)

@@ -1,20 +1,21 @@
 """
-Step 010: First-Principles UCD Soliton Topology Calculation
+Step 010: First-Principles UCD Saturation Topology Calculation
 
 This module implements first-principles calculation of characteristic geometric suppression
-using the Universal Temporal Topology Density (UCD) soliton model from TEP Paper 7.
+using the Universal Temporal Topology Density (UCD) saturation model from TEP Paper 6 (UCD).
+A soliton interpretation is one candidate microscopic realization, not assumed in the calibration.
 
-PRIMARY METHOD: UCD Soliton (ΔR/R = 0.349)
-==========================================
+PRIMARY METHOD: UCD Saturation (ΔR/R = 0.349)
+==============================================
 The UCD framework establishes a universal Temporal Topology density ρ_T ≈ 20 g/cm³
-that governs scalar field soliton formation across all mass scales. For Earth:
+that governs scalar field saturation across all mass scales. For Earth:
 
     R_sol = (3M / 4πρ_T)^(1/3) ≈ 4146 km
     ΔR/R = (R_earth - R_sol) / R_earth ≈ 0.349
 
 FOUR INDEPENDENT CROSS-CORROBORATING METHODS:
 =============================================
-1. UCD Soliton (Primary):    ΔR/R = 0.349  [Paper 7, R_sol = (3M/4πρ_T)^(1/3)]
+1. UCD Saturation (Primary): ΔR/R = 0.349  [Paper 6, R_sol = (3M/4πρ_T)^(1/3)]
 2. GNSS Direct:              ΔR/R = 0.341  [Paper 6, L_c = 4201 km]
 3. Compton Wavelength:       ΔR/R = 0.381  [Paper 6, λ = ℏc/m_φ, m_φ ≈ 5×10⁻¹⁴ eV]
 4. Altitude Threshold:       ΔR/R = 0.392  [Paper 15, empirical null cutoff ~2500 km]
@@ -23,21 +24,21 @@ Consensus (UCD + GNSS): 0.345 ± 0.004 (2% agreement)
 
 IMPORTANT PHYSICS DISTINCTION:
 ==============================
-UCD Soliton Model for Earth Flyby Analysis
+UCD Saturation Model for Earth Flyby Analysis
 
-The TEP-EFA pipeline uses the UCD (Universal Critical Density) soliton model
+The TEP-EFA pipeline uses the UCD (Universal Critical Density) saturation model
 to calculate the characteristic geometric suppression for Earth flybys.
 
-UCD Soliton Calculation:
+UCD Saturation Calculation:
 - Universal critical density: ρ_T ≈ 20 g/cm³ (from GNSS clock correlations, Paper 6)
-- Soliton radius: R_sol = (3M / 4πρ_T)^(1/3) ≈ 4146 km for Earth
+- Saturation radius: R_sol = (3M / 4πρ_T)^(1/3) ≈ 4146 km for Earth
 - Characteristic suppression: S_⊕ = (R_earth - R_sol) / R_earth ≈ 0.349
 
 This is distinct from standard Temporal Topology Temporal Shear Suppression
 (V(φ) = Λ^(4+n)/φ^n with n=3, Λ=10 MeV, β=0.01), which would produce
 ΔR/R ≈ 1.0 (essentially no suppression) for Earth's density profile.
 
-The TEP framework adopts the UCD soliton model as the empirically calibrated
+The TEP framework adopts the UCD saturation model as the empirically calibrated
 transition mechanism, consistent with the GNSS-derived correlation length
 L_c ≈ 4200 km. This is the model implemented throughout the TEP-EFA pipeline.
 """
@@ -79,20 +80,23 @@ except ImportError:
 
 class UCDSolitonCalculator:
     """
-    Calculates characteristic geometric suppression using UCD soliton model.
+    Calculates characteristic geometric suppression using UCD saturation model.
 
     Based on TEP Paper 6 (UCD): Universal Critical Density analysis establishes
-    ρ_T ≈ 20 g/cm³ as the saturation density for scalar field solitons,
-    empirically calibrated from GNSS atomic clock correlations.
+    ρ_T ≈ 20 g/cm³ as the saturation density for scalar field configurations.
+    A soliton interpretation is one candidate microscopic realization.
+    Empirically calibrated from GNSS atomic clock correlations.
 
-    The soliton radius R_sol = (3M / 4πρ_T)^(1/3) defines the transition boundary,
+    The saturation radius R_sol = (3M / 4πρ_T)^(1/3) defines the transition boundary,
     yielding characteristic suppression S_⊕ = (R_earth - R_sol) / R_earth ≈ 0.349.
+    This is the gradient suppression ratio at the surface, distinct from the
+    UCD embedding factor S = R_sol/R_earth ≈ 0.65 used in Paper 6 (UCD).
 
     This is consistent with GNSS correlation length L_c ≈ 4200 km and
     the empirical suppression exponent β = 0.334 from multi-scale validation.
 
-    Systematic uncertainty: ±40% on ρ_T from GNSS calibration, propagating to
-    ~±15% uncertainty in R_sol and S_⊕.
+    Systematic uncertainty: ±40% on ρ_T from GNSS calibration (Paper 6), propagating to
+    ~±13% uncertainty in R_sol and ~±25% uncertainty in S_⊕.
     """
 
     # Physical constants
@@ -100,7 +104,7 @@ class UCDSolitonCalculator:
     R_EARTH = 6.371e6  # m
     M_EARTH = 5.97e24  # kg
 
-    # UCD parameters from Paper 7 (empirically validated)
+    # UCD parameters from Paper 6 (empirically validated)
     RHO_T = 20.0  # g/cm³ - universal Temporal Topology density
     SUPPRESSION_EXPONENT = 0.334  # empirical from multi-scale validation
 
@@ -130,7 +134,7 @@ class UCDSolitonCalculator:
         # Convert ρ_T from g/cm³ to kg/m³
         rho_T_kg_m3 = rho_T * 1000.0  # 20 g/cm³ = 20,000 kg/m³
 
-        # Soliton radius formula from Paper 7
+        # Saturation radius formula from Paper 6
         R_sol = ((3.0 * mass) / (4.0 * np.pi * rho_T_kg_m3)) ** (1.0 / 3.0)
         return R_sol
 
@@ -173,16 +177,16 @@ class UCDSolitonCalculator:
         """
         APPROACH 2: Direct GNSS correlation length → characteristic suppression.
 
-        From Paper 6 (GTE): GNSS correlation length L_c ≈ 4201 km
+        From Paper 5 (GTE): GNSS correlation length L_c ≈ 4201 km
         Interpreted as transition radius R_sol ≈ L_c.
 
         Formula: S_⊕ = (R_earth - L_c) / R_earth
 
-        This is an INDEPENDENT empirical method from the UCD soliton calculation,
+        This is an INDEPENDENT empirical method from the UCD saturation calculation,
         providing cross-corroboration of the 0.34 characteristic suppression.
 
         Literature basis:
-        - Paper 6 (GTE): GNSS correlation length λ = 4201 ± 1967 km
+        - Paper 5 (GTE): GNSS correlation length λ = 4201 ± 1967 km
         - Paper 15 (EFA): "transition radius R_sol ≈ 4200 km from GNSS"
         """
         R_sol = L_c_km * 1000.0  # meters
@@ -198,7 +202,7 @@ class UCDSolitonCalculator:
         From quantum field theory, the Compton wavelength is:
             λ = ℏc / (m_φ c²) = ℏ / (m_φ c)
 
-        From Paper 6 (GTE): Field mass m_φ ≈ 5×10^-14 eV/c² corresponds to
+        From Paper 5 (GTE): Field mass m_φ ≈ 5×10^-14 eV/c² corresponds to
         correlation length λ ≈ 4000 km, consistent with GNSS observations.
 
         Literature basis:
@@ -366,7 +370,7 @@ class UCDSolitonCalculator:
 
         self.logger.info(f"  SCF characteristic suppression: S_⊕ = {characteristic_suppression_scf:.3f}")
         self.logger.info(
-            f"  UCD soliton: R_sol = {self.calculate_soliton_radius(rho_T=self.RHO_T) / 1e3:.1f} km"
+            f"  UCD saturation: R_sol = {self.calculate_soliton_radius(rho_T=self.RHO_T) / 1e3:.1f} km"
         )
 
         # Check agreement between independent methods
@@ -384,7 +388,7 @@ class UCDSolitonCalculator:
 
 def run_verification_tests(calculator, logger):
     """
-    Run comprehensive verification tests to validate the UCD soliton calculation.
+    Run comprehensive verification tests to validate the UCD saturation calculation.
 
     Addresses reviewer concern: "The coincidence that first-principles
     yields exactly the GNSS-empirical 0.34 needs to be auditable."
@@ -518,10 +522,10 @@ def run_verification_tests(calculator, logger):
     return tests, sensitivity_results
 
 def main():
-    """Execute first-principles UCD soliton topology calculation."""
+    """Execute first-principles UCD saturation topology calculation."""
     logger = StepLogger("step_010_tep_first_principles", PROJECT_ROOT)
-    logger.header("STEP 010: FIRST-PRINCIPLES UCD SOLITON TOPOLOGY CALCULATION")
-    logger.info("Reference: TEP Paper 7 (UCD) - Universal Temporal Topology Density Analysis")
+    logger.header("STEP 010: FIRST-PRINCIPLES UCD SATURATION TOPOLOGY CALCULATION")
+    logger.info("Reference: TEP Paper 6 (UCD) - Universal Temporal Topology Density Analysis")
 
     # Initialize UCD calculator
     calculator = UCDSolitonCalculator()
@@ -551,7 +555,7 @@ def main():
     logger.section("CHARACTERISTIC SUPPRESSION - MULTI-METHOD ANALYSIS")
 
     # Calculate geometric Temporal Shear Suppression factor using ALL TEP approaches
-    logger.subsection("Approach 1: UCD Soliton (Primary)")
+    logger.subsection("Approach 1: UCD Saturation (Primary)")
     S_factor_1, R_sol_1 = calculator.calculate_characteristic_suppression()
     logger.info(f"Formula: R_sol = (3M/4πρ_T)^(1/3)")
     logger.info(f"ρ_T = {calculator.RHO_T} g/cm³ → R_sol = {R_sol_1 / 1000:.1f} km")
@@ -560,10 +564,10 @@ def main():
     logger.subsection("Approach 2: GNSS Correlation Length Direct")
     S_factor_2, R_sol_2 = calculator.calculate_from_gnss_direct(4201)
     logger.info(f"Formula: S_⊕ = (R_earth - L_c) / R_earth")
-    logger.info(f"L_c = 4201 km (Paper 6, GTE)")
+    logger.info(f"L_c = 4201 km (Paper 5, GTE)")
     logger.info(f"R_sol ≈ L_c = {R_sol_2:.1f} km")
     logger.info(f"S_⊕ = {S_factor_2:.5f} ≈ {S_factor_2:.2f}")
-    logger.info(f"Literature: Paper 6 (GTE), Paper 15 (EFA)")
+    logger.info(f"Literature: Paper 5 (GTE), Paper 15 (EFA)")
 
     logger.subsection("Approach 4: Compton Wavelength (QFT)")
     S_factor_4, lambda_km, m_phi = calculator.calculate_from_compton_wavelength(5e-14)
@@ -588,8 +592,8 @@ def main():
     S_factor_scf, R_sol_scf, scf_history = calculator.solve_scf_topology()
 
     all_methods = [
-        ("UCD Soliton (Simple)", S_factor_1),
-        ("UCD Soliton (SCF)", S_factor_scf),
+        ("UCD Saturation (Simple)", S_factor_1),
+        ("UCD Saturation (SCF)", S_factor_scf),
         ("GNSS Direct", S_factor_2),
         ("Compton λ", S_factor_4),
         ("Altitude Threshold", S_factor_5),
@@ -606,9 +610,9 @@ def main():
     logger.info("-" * 55)
     logger.info(f"{'Average':20s} | {avg_value:.3f} | ±{std_value:.3f} std")
     logger.info(f"\nAll 4 TEP methods consistent with 0.34 ± 20%")
-    logger.info(f"Best agreement: UCD Soliton (0.349) and GNSS Direct (0.341)")
+    logger.info(f"Best agreement: UCD Saturation (0.349) and GNSS Direct (0.341)")
 
-    # Primary characteristic suppression (UCD soliton)
+    # Primary characteristic suppression (UCD saturation)
     characteristic_suppression = S_factor_1
     R_sol = R_sol_1
 
@@ -620,11 +624,11 @@ def main():
         )
         if pct_diff < 5.0:
             logger.info(
-                f"✓ AGREEMENT: UCD Soliton matches GNSS value ({pct_diff:.2f}% diff)"
+                f"✓ AGREEMENT: UCD Saturation matches GNSS value ({pct_diff:.2f}% diff)"
             )
             match_status = "CONFIRMED"
         else:
-            logger.warning(f"UCD Soliton deviates from GNSS by {pct_diff:.2f}%")
+            logger.warning(f"UCD Saturation deviates from GNSS by {pct_diff:.f}%")
             match_status = "REVIEW_REQUIRED"
     else:
         logger.info("\nGNSS comparison: Using physics-based calculation")
@@ -650,13 +654,13 @@ def main():
     logger.info(
         "Concern: Origin of 0.34 characteristic suppression needs verification."
     )
-    logger.info("Resolution: UCD soliton model provides first-principles derivation.")
+    logger.info("Resolution: UCD saturation model provides first-principles derivation.")
     logger.info("Key Finding: ρ_T = 20 g/cm³ → R_sol ≈ 4146 km → S_⊕ ≈ 0.34")
 
     # Save results
     results = {
-        "calculation_type": "UCD_SOLITON_TOPOLOGY_WITH_CROSS_CORROBORATION",
-        "reference": "TEP Paper 7 (UCD), Paper 6 (GTE), Paper 15 (EFA)",
+        "calculation_type": "UCD_SATURATION_TOPOLOGY_WITH_CROSS_CORROBORATION",
+        "reference": "TEP Paper 6 (UCD), Paper 5 (GTE), Paper 15 (EFA)",
         "parameters": {
             "rho_T_g_cm3": calculator.RHO_T,
             "M_earth_kg": calculator.M_EARTH,
@@ -674,16 +678,16 @@ def main():
             "percent_difference": pct_diff,
         },
         "cross_corroboration": {
-            "method_1_ucd_soliton": {
+            "method_1_ucd_saturation": {
                 "value": S_factor_1,
                 "formula": "R_sol = (3M/4πρ_c)^(1/3)",
-                "reference": "Paper 7 (UCD)",
+                "reference": "Paper 6 (UCD)",
                 "status": "PRIMARY",
             },
             "method_2_gnss_direct": {
                 "value": S_factor_2,
                 "formula": "S_⊕ = (R_earth - L_c) / R_earth",
-                "reference": "Paper 6 (GTE): L_c = 4201 km",
+                "reference": "Paper 5 (GTE): L_c = 4201 km",
                 "status": "INDEPENDENT_EMPIRICAL",
             },
             "method_4_compton_wavelength": {
@@ -715,14 +719,14 @@ def main():
         "sensitivity_analysis": sensitivity,
         "reviewer_response": {
             "concern": "Origin of 0.34 geometric Temporal Shear Suppression factor needs first-principles verification",
-            "resolution": "4 independent TEP methods corroborate S_⊕ ≈ 0.34 ± 0.02",
-            "key_finding": f"UCD Soliton: {S_factor_1:.3f}, GNSS Direct: {S_factor_2:.3f}, Compton λ: {S_factor_4:.3f}, Altitude: {S_factor_5:.3f}",
+            "resolution": "4 independent TEP methods corroborate S_⊕ ≈ 0.34 ± 0.09 (±25% from ρ_T = 20 ± 8 g/cm³, Paper 6 UCD)",
+            "key_finding": f"UCD Saturation: {S_factor_1:.3f}, GNSS Direct: {S_factor_2:.3f}, Compton λ: {S_factor_4:.3f}, Altitude: {S_factor_5:.3f}",
             "audit_status": match_status,
-            "literature_consistency": "All methods consistent with Paper 6 (GTE), Paper 7 (UCD), Paper 15 (EFA)",
+            "literature_consistency": "All methods consistent with Paper 5 (GTE), Paper 6 (UCD), Paper 15 (EFA)",
         },
     }
 
-    output_file = PROJECT_ROOT / "results" / "step010_ucd_soliton_results.json"
+    output_file = PROJECT_ROOT / "results" / "step010_ucd_saturation_results.json"
     with open(output_file, "w") as f:
         json.dump(results, f, indent=2)
 

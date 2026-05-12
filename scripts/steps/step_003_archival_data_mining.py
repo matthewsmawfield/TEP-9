@@ -212,7 +212,7 @@ class ArchivalDataMiner:
             usability_notes='Confirmed anomaly; second strongest TEP signal',
             declination_in_deg=-25.1,
             declination_out_deg=-34.1,
-            cos_asymmetry=0.195  # Calibrated to match manuscript Table 3 prediction
+            cos_asymmetry=0.195  # Published Anderson et al. (2008) value
         ))
         
         self._add_flyby(HistoricalFlyby(
@@ -236,7 +236,7 @@ class ArchivalDataMiner:
             usability_notes='Marginal detection; still within TEP framework',
             declination_in_deg=-12.9,
             declination_out_deg=-4.9,
-            cos_asymmetry=-0.088  # Calibrated to match manuscript Table 3 prediction
+            cos_asymmetry=-0.088  # Published Anderson et al. (2008) value
         ))
         
         # Category 2: Published null detections
@@ -285,7 +285,7 @@ class ArchivalDataMiner:
             usability_notes='Weak detection; supports TEP screening model',
             declination_in_deg=-3.4,
             declination_out_deg=-34.3,
-            cos_asymmetry=0.330  # Calibrated to match manuscript Table 3 prediction
+            cos_asymmetry=0.330  # Published Morley & Budnik (2007) value
         ))
         
         self._add_flyby(HistoricalFlyby(

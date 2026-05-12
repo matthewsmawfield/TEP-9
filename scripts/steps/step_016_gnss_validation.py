@@ -2,10 +2,10 @@
 GNSS Cross-Validation for TEP Parameters
 
 This module implements cross-validation between flyby analysis and GNSS clock
-correlation data from Paper 6 (GTE). The GNSS analysis provides independent
+correlation data from Paper 5 (GTE). The GNSS analysis provides independent
 empirical support for the theoretically derived TEP parameters, particularly:
 - Correlation length: λ = 4,201 ± 1,967 km
-- Density modulation exponent: α_d = 0.334 (from Paper 7)
+- Density modulation exponent: α_d = 0.334 (from Paper 6)
 - Universal critical density: ρ_c ≈ 20 g/cm³
 
 These empirical constraints serve to validate the analytical PREM boundary value 
@@ -23,7 +23,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import BETA_BASELINE, RHO_T, SUPPRESSION_EXPONENT, LAMBDA_TEP_M
 
-# GNSS-derived parameters from Paper 6 (GTE)
+# GNSS-derived parameters from Paper 5 (GTE)
 GNSS_CORRELATION_LENGTH_KM = 4201  # km
 GNSS_CORRELATION_UNCERTAINTY_KM = 1967  # km
 
@@ -121,15 +121,15 @@ class GNSSCrossValidation:
         # Compare density exponent
         self.logger.subsection("DENSITY EXPONENT COMPARISON")
         self.logger.info("Density modulation exponent α_d:")
-        self.logger.info(f"  Paper 7 (UCD): {SUPPRESSION_EXPONENT:.3f} (from physics.py)")
+        self.logger.info(f"  Paper 6 (UCD): {SUPPRESSION_EXPONENT:.3f} (from physics.py)")
         self.logger.info(f"  Flyby multi-parameter fit: {SUPPRESSION_EXPONENT:.3f} (assumed)")
         
         # Cross-paper consistency check
         self.logger.section("CROSS-PAPER CONSISTENCY")
         self.logger.info("Consistency across manuscript series:")
         self.logger.info("  Paper 1 (Theory): β = 1e-4")
-        self.logger.info("  Paper 6 (GTE): λ = 4201 ± 1967 km")
-        self.logger.info("  Paper 7 (UCD): α_d = 0.334, ρ_c = 20 g/cm³")
+        self.logger.info("  Paper 5 (GTE): λ = 4201 ± 1967 km")
+        self.logger.info("  Paper 6 (UCD): α_d = 0.334, ρ_c = 20 g/cm³")
         self.logger.info("  Paper 10 (Exp): Identifies conformal loophole")
         self.logger.info("  Paper 14 (Cos): Suppressed density scaling")
         

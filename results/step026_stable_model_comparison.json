@@ -4,8 +4,8 @@
   "log_likelihoods": {
     "Null": -16.03997738109101,
     "Anderson": -9.852818510737187,
-    "TEP_restricted": -9.354461362875506,
-    "TEP_flexible": -9.262221754562297
+    "TEP_restricted": -9.005626185506928,
+    "TEP_flexible": -8.997108489362377
   },
   "fitted_parameters": {
     "Anderson": {
@@ -13,12 +13,12 @@
       "B": 0.1482618542823442
     },
     "TEP_restricted": {
-      "beta": 0.0002955863769501172
+      "beta": 0.00017891502787632717
     },
     "TEP_flexible": {
-      "beta": 3.4320479767150154,
-      "b_disf": 4.431227921045662,
-      "offset": -1.5665326501480084
+      "beta": 0.00015358991851978994,
+      "b_disf": 1.279214681794227,
+      "offset": -0.21040152068763016
     }
   },
   "information_criteria": {
@@ -33,32 +33,32 @@
       "BIC": 22.478225743714155
     },
     "TEP_restricted": {
-      "AIC": 20.708922725751012,
-      "AICc": 22.708922725751012,
-      "BIC": 20.095217086870903
+      "AIC": 20.011252371013857,
+      "AICc": 22.011252371013857,
+      "BIC": 19.397546732133748
     },
     "TEP_flexible": {
-      "AIC": 24.524443509124595,
-      "AICc": null,
-      "BIC": 22.683326592484267
+      "AIC": 23.994216978724754,
+      "AICc": Infinity,
+      "BIC": 22.153100062084427
     }
   },
   "bayes_factors": {
     "Anderson_vs_Null": 121.61550981678452,
-    "TEP_restricted_vs_Null": 400.3618798166189,
-    "TEP_flexible_vs_Null": 109.76196701245925,
-    "TEP_restricted_vs_Anderson": 3.2920297782722754,
+    "TEP_restricted_vs_Null": 567.4791536498088,
+    "TEP_flexible_vs_Null": 143.0833532132359,
+    "TEP_restricted_vs_Anderson": 4.6661741952545706,
     "delta_BIC_Anderson_vs_Null": 9.601729018467864,
-    "delta_BIC_TEP_restricted_vs_Null": 11.984737675311116,
-    "delta_BIC_TEP_flexible_vs_Null": 9.396628169697752,
-    "delta_BIC_TEP_restricted_vs_Anderson": 2.383008656843252
+    "delta_BIC_TEP_restricted_vs_Null": 12.682408030048272,
+    "delta_BIC_TEP_flexible_vs_Null": 9.926854700097593,
+    "delta_BIC_TEP_restricted_vs_Anderson": 3.0806790115804077
   },
   "model_selection": {
     "best_model_BIC": "TEP_restricted",
     "akaike_weights": {
-      "TEP_restricted": 0.9893801099214934,
-      "Null": 0.0091299715381552,
-      "Anderson": 0.0014899185403513498
+      "TEP_restricted": 0.9924840618948613,
+      "Null": 0.0064614888172272854,
+      "Anderson": 0.0010544492879114816
     },
     "interpretation": "BIC selects TEP_restricted model"
   },
@@ -66,7 +66,7 @@
     "lambda_TEP_km": 4000,
     "lambda_TEP_source": "GNSS atomic clock correlations (Step 016)",
     "S_earth": 0.35,
-    "S_earth_source": "UCD soliton first-principles (Step 010)",
+    "S_earth_source": "UCD saturation first-principles (Step 010)",
     "v_trans_km_s": 16.8,
     "v_trans_source": "TEP field equations",
     "geometry_source": "JPL Horizons ephemerides"

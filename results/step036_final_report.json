@@ -1,5 +1,5 @@
 {
-  "report_date": "2026-05-11T06:07:16.858733+00:00",
+  "report_date": "2026-05-12T10:20:04.963733+00:00",
   "summary": {
     "findings": [
       {
@@ -96,7 +96,7 @@
       "trajectory_source": "NASA JPL Horizons ephemeris system",
       "anomaly_source": "Peer-reviewed literature (Anderson et al. 2008)",
       "measurement_method": "DSN Doppler tracking + JPL ODP",
-      "acquisition_date": "2026-05-11T06:07:16.857744+00:00"
+      "acquisition_date": "2026-05-12T10:20:04.962828+00:00"
     }
   },
   "raw_data": {
@@ -118,7 +118,7 @@
           "dv_disf_mm_s": 0.1542204987167919,
           "model_version": "v5.3-Jakarta",
           "topology_n": 3,
-          "beta_initial": 0.0001
+          "beta_reference": 0.0001
         },
         "cos_dec_asymmetry": 0.625,
         "fit": {
@@ -151,7 +151,7 @@
           "dv_disf_mm_s": 0.04129331037215067,
           "model_version": "v5.3-Jakarta",
           "topology_n": 3,
-          "beta_initial": 0.0001
+          "beta_reference": 0.0001
         },
         "cos_dec_asymmetry": 0.195,
         "fit": {
@@ -184,7 +184,7 @@
           "dv_disf_mm_s": 0.6226371397135897,
           "model_version": "v5.3-Jakarta",
           "topology_n": 3,
-          "beta_initial": 0.0001
+          "beta_reference": 0.0001
         },
         "cos_dec_asymmetry": -0.088,
         "fit": {
@@ -217,7 +217,7 @@
           "dv_disf_mm_s": 0.008721603406456363,
           "model_version": "v5.3-Jakarta",
           "topology_n": 3,
-          "beta_initial": 0.0001
+          "beta_reference": 0.0001
         },
         "cos_dec_asymmetry": 0.032,
         "fit": {
@@ -249,7 +249,7 @@
           "dv_disf_mm_s": 0.048536524617556864,
           "model_version": "v5.3-Jakarta",
           "topology_n": 3,
-          "beta_initial": 0.0001
+          "beta_reference": 0.0001
         },
         "cos_dec_asymmetry": 0.33,
         "fit": {
@@ -282,7 +282,7 @@
           "dv_disf_mm_s": 0.0015957250553449293,
           "model_version": "v5.3-Jakarta",
           "topology_n": 3,
-          "beta_initial": 0.0001
+          "beta_reference": 0.0001
         },
         "cos_dec_asymmetry": 0.035,
         "fit": {
@@ -314,7 +314,7 @@
           "dv_disf_mm_s": 0.0007044879092863963,
           "model_version": "v5.3-Jakarta",
           "topology_n": 3,
-          "beta_initial": 0.0001
+          "beta_reference": 0.0001
         },
         "cos_dec_asymmetry": 0.005487142503665887,
         "fit": {
@@ -346,7 +346,7 @@
           "dv_disf_mm_s": 0.015411058247087717,
           "model_version": "v5.3-Jakarta",
           "topology_n": 3,
-          "beta_initial": 0.0001
+          "beta_reference": 0.0001
         },
         "cos_dec_asymmetry": 0.06866116107077225,
         "fit": {
@@ -462,9 +462,9 @@
     "enhanced_validation": {
       "effect_sizes": {
         "null_population": {
-          "n_nulls": 1,
-          "mean_dv": 0.0,
-          "std_dv": 0.02
+          "n_nulls": 5,
+          "mean_dv": 0.004,
+          "std_dv": 0.008
         },
         "detection_population": {
           "n_detections": 4,
@@ -473,28 +473,28 @@
         },
         "effect_sizes": {
           "NEAR": {
-            "cohens_d": null,
-            "abs_d": null,
-            "interpretation": "insufficient_data",
-            "detection_significance": "unknown"
+            "cohens_d": 3.9807648843657657,
+            "abs_d": 3.9807648843657657,
+            "interpretation": "large",
+            "detection_significance": "strong"
           },
           "Galileo_1990": {
-            "cohens_d": null,
-            "abs_d": null,
-            "interpretation": "insufficient_data",
-            "detection_significance": "unknown"
+            "cohens_d": 1.1584925153965766,
+            "abs_d": 1.1584925153965766,
+            "interpretation": "large",
+            "detection_significance": "moderate"
           },
           "Cassini": {
-            "cohens_d": null,
-            "abs_d": null,
-            "interpretation": "insufficient_data",
-            "detection_significance": "unknown"
+            "cohens_d": 0.031358581877435426,
+            "abs_d": 0.031358581877435426,
+            "interpretation": "negligible",
+            "detection_significance": "weak"
           },
           "Rosetta_2005": {
-            "cohens_d": null,
-            "abs_d": null,
-            "interpretation": "insufficient_data",
-            "detection_significance": "unknown"
+            "cohens_d": 0.5372375914096484,
+            "abs_d": 0.5372375914096484,
+            "interpretation": "medium",
+            "detection_significance": "weak"
           }
         }
       },
@@ -570,39 +570,39 @@
       },
       "systematic_uncertainty_budget": {
         "status": "success",
-        "total_relative_systematic_uncertainty": 0.16758039449000856,
+        "total_relative_systematic_uncertainty": 0.29678812074850114,
         "systematic_uncertainty_by_flyby": {
           "NEAR": {
             "beta": 0.00046832889021127644,
-            "systematic_uncertainty": 7.848274017267361e-05,
-            "relative_systematic_uncertainty": 0.16758039449000856
+            "systematic_uncertainty": 0.00013899445121803584,
+            "relative_systematic_uncertainty": 0.29678812074850114
           },
           "Galileo_1990": {
             "beta": 0.0005778192699030365,
-            "systematic_uncertainty": 9.683118119427959e-05,
-            "relative_systematic_uncertainty": 0.16758039449000856
+            "systematic_uncertainty": 0.00017148989524679316,
+            "relative_systematic_uncertainty": 0.29678812074850114
           },
           "Cassini": {
             "beta": 2.4091320970236396e-05,
-            "systematic_uncertainty": 4.0372330719776305e-06,
-            "relative_systematic_uncertainty": 0.16758039449000856
+            "systematic_uncertainty": 7.150017877105417e-06,
+            "relative_systematic_uncertainty": 0.29678812074850114
           },
           "Rosetta_2005": {
             "beta": 0.00011871881157580711,
-            "systematic_uncertainty": 1.989494527725875e-05,
-            "relative_systematic_uncertainty": 0.16758039449000856
+            "systematic_uncertainty": 3.5234332985079196e-05,
+            "relative_systematic_uncertainty": 0.29678812074850114
           }
         },
         "uncertainty_breakdown": {
           "measurement_uncertainty": 0.05460941876111569,
           "trajectory_uncertainty": 0.01,
-          "characteristic_suppression_uncertainty": 0.05,
+          "characteristic_suppression_uncertainty": 0.25,
           "multipole_coefficient_uncertainty": 0.001,
           "relaxation_length_uncertainty": 0.15
         },
-        "dominant_uncertainty_source": "relaxation_length_uncertainty",
-        "dominant_contribution_percent": 15.0,
-        "interpretation": "Systematic uncertainty dominated by relaxation_length_uncertainty (15.0% of total)"
+        "dominant_uncertainty_source": "characteristic_suppression_uncertainty",
+        "dominant_contribution_percent": 25.0,
+        "interpretation": "Systematic uncertainty dominated by characteristic_suppression_uncertainty (25.0% of total)"
       }
     },
     "limitations": {

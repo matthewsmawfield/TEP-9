@@ -2,7 +2,7 @@
   "n_trials": 1000,
   "derivation": "Number of Monte Carlo trials = 1000 represents convergence threshold for systematic error uncertainty quantification; sufficient for 5% statistical precision on mean estimates; \u00b120% uncertainty accounts for non-Gaussian error distributions",
   "source": "Systematic error Monte Carlo analysis",
-  "beta_ref": 0.00016216207681685852,
+  "beta_ref": 0.00017898454981689154,
   "systematic_error_magnitudes": {
     "dsn_antenna_phase": 0.1,
     "derivation": "Antenna phase center motion = 0.1 mm/s represents typical DSN antenna mechanical motion during tracking; \u00b150% uncertainty accounts for varying antenna types and environmental conditions",
@@ -11,73 +11,75 @@
     "dsn_station_position": 0.02,
     "trajectory_altitude": 1.0,
     "trajectory_velocity": 1.0,
-    "calibration_drift": 0.01
+    "calibration_drift": 0.01,
+    "geometry_cos_asymmetry": 0.01,
+    "geometry_latitude_deg": 2.0
   },
   "flyby_results": [
     {
       "mission": "NEAR",
       "observed_dv_mm_s": 13.46,
       "tracking_precision_mm_s": 0.01,
-      "tep_dv_mean_mm_s": 0.00026774818047894684,
-      "tep_dv_std_mm_s": 7.989526165042863e-08,
-      "tep_dv_ci_lower_mm_s": 0.0002675888881085881,
-      "tep_dv_ci_upper_mm_s": 0.0002679070460499438,
-      "residual_mean_mm_s": 13.461936445316049,
-      "residual_std_mm_s": 0.11159195343148615,
-      "systematic_uncertainty_fraction": 0.00029839702928144017
+      "tep_dv_mean_mm_s": 6.540359751161169,
+      "tep_dv_std_mm_s": 0.10761883268508297,
+      "tep_dv_ci_lower_mm_s": 6.3308612890156954,
+      "tep_dv_ci_upper_mm_s": 6.748770284830691,
+      "residual_mean_mm_s": 6.921844442335358,
+      "residual_std_mm_s": 0.15599332546978445,
+      "systematic_uncertainty_fraction": 0.016454573873551287
     },
     {
       "mission": "Galileo_1990",
       "observed_dv_mm_s": 3.92,
       "tracking_precision_mm_s": 0.03,
-      "tep_dv_mean_mm_s": 8.051490378519608e-05,
-      "tep_dv_std_mm_s": 2.277956911728773e-08,
-      "tep_dv_ci_lower_mm_s": 8.047442602703998e-05,
-      "tep_dv_ci_upper_mm_s": 8.056145521059032e-05,
-      "residual_mean_mm_s": 3.917720474914162,
-      "residual_std_mm_s": 0.12060040603309424,
-      "systematic_uncertainty_fraction": 0.00028292363334446544
+      "tep_dv_mean_mm_s": 1.6291685289631492,
+      "tep_dv_std_mm_s": 0.08440013218030501,
+      "tep_dv_ci_lower_mm_s": 1.462111322659795,
+      "tep_dv_ci_upper_mm_s": 1.7988784099455928,
+      "residual_mean_mm_s": 2.28534104616403,
+      "residual_std_mm_s": 0.14408854981160812,
+      "systematic_uncertainty_fraction": 0.05180564851324481
     },
     {
       "mission": "Cassini",
       "observed_dv_mm_s": 0.11,
       "tracking_precision_mm_s": 0.05,
-      "tep_dv_mean_mm_s": -4.738534455114968e-05,
-      "tep_dv_std_mm_s": 1.3213726293622885e-08,
-      "tep_dv_ci_lower_mm_s": -4.7411984482138955e-05,
-      "tep_dv_ci_upper_mm_s": -4.735980770480171e-05,
-      "residual_mean_mm_s": 0.10655325360220996,
-      "residual_std_mm_s": 0.1271360968827184,
-      "systematic_uncertainty_fraction": 0
+      "tep_dv_mean_mm_s": 0.49140677730506227,
+      "tep_dv_std_mm_s": 0.057652207560312904,
+      "tep_dv_ci_lower_mm_s": 0.3786092769685959,
+      "tep_dv_ci_upper_mm_s": 0.6069491233263402,
+      "residual_mean_mm_s": -0.3863592934900287,
+      "residual_std_mm_s": 0.13153662401193497,
+      "systematic_uncertainty_fraction": 0.11732074163991998
     },
     {
       "mission": "Rosetta_2005",
       "observed_dv_mm_s": 1.82,
       "tracking_precision_mm_s": 0.05,
-      "tep_dv_mean_mm_s": 8.086653011364539e-05,
-      "tep_dv_std_mm_s": 2.014867658675587e-08,
-      "tep_dv_ci_lower_mm_s": 8.082723309534223e-05,
-      "tep_dv_ci_upper_mm_s": 8.090524629679569e-05,
-      "residual_mean_mm_s": 1.8184257314465517,
-      "residual_std_mm_s": 0.11970874828862246,
-      "systematic_uncertainty_fraction": 0.00024915965305349474
+      "tep_dv_mean_mm_s": 2.4759182664767834,
+      "tep_dv_std_mm_s": 0.07442328149952564,
+      "tep_dv_ci_lower_mm_s": 2.3372882741072476,
+      "tep_dv_ci_upper_mm_s": 2.6239258573224196,
+      "residual_mean_mm_s": -0.6568149522929121,
+      "residual_std_mm_s": 0.14870197826456383,
+      "systematic_uncertainty_fraction": 0.030058860386142517
     },
     {
       "mission": "Rosetta_2007",
       "observed_dv_mm_s": 0.02,
       "tracking_precision_mm_s": 0.05,
-      "tep_dv_mean_mm_s": 5.078103077426217e-06,
-      "tep_dv_std_mm_s": 9.823366371508172e-10,
-      "tep_dv_ci_lower_mm_s": 5.0761830170363355e-06,
-      "tep_dv_ci_upper_mm_s": 5.080168455604826e-06,
-      "residual_mean_mm_s": 0.021078472685166036,
-      "residual_std_mm_s": 0.12071373473283716,
-      "systematic_uncertainty_fraction": 0.0001934455882783506
+      "tep_dv_mean_mm_s": 0.06882895069695277,
+      "tep_dv_std_mm_s": 0.01904196526090537,
+      "tep_dv_ci_lower_mm_s": 0.03390373229691281,
+      "tep_dv_ci_upper_mm_s": 0.10622447067194894,
+      "residual_mean_mm_s": -0.05369943114846613,
+      "residual_std_mm_s": 0.12765417860244013,
+      "systematic_uncertainty_fraction": 0.27665633527881756
     }
   ],
   "systematic_error_budget": {
-    "mean_systematic_uncertainty": 0.00020478518079155016,
-    "max_systematic_uncertainty": 0.00029839702928144017,
-    "interpretation": "Systematic uncertainties contribute 0.0% on average to TEP predictions"
+    "mean_systematic_uncertainty": 0.09845923193833524,
+    "max_systematic_uncertainty": 0.27665633527881756,
+    "interpretation": "Systematic uncertainties contribute 9.8% on average to TEP predictions"
   }
 }

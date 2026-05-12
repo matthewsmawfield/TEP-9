@@ -36,9 +36,9 @@ PC_METERS: Final[float] = 3.08567758e16   # Parsec [m]
 LY_METERS: Final[float] = 9.46073047e15   # Light year [m]
 
 # TEP Baseline Theory Parameters (Jakarta v0.8)
-LAMBDA_BASELINE_GEV: Final[float] = 1.0e-5  # 10 keV scale [GeV]
+LAMBDA_BASELINE_GEV: Final[float] = 1.0e-2  # 10 MeV scale [GeV]
 BETA_BASELINE: Final[float] = 1.0           # Unit scalar coupling
-N_TOPOLOGY: Final[int] = 1                   # Continuous gradient suppression index
+N_TOPOLOGY: Final[int] = 3                   # Continuous gradient suppression index
 
 # TEP Field Relaxation and Screening (Empirical Anchors)
 # CRITICAL: These parameters are empirically calibrated from GNSS atomic clock correlations

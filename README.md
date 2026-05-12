@@ -1,4 +1,4 @@
-# The Temporal Equivalence Principle: Temporal Shear Impulses in the Earth Flyby Anomaly
+# The Temporal Equivalence Principle: Temporal Shear in the Earth Flyby Anomaly
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19454863.svg)](https://doi.org/10.5281/zenodo.19454863)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -15,7 +15,7 @@
 
 ## Abstract
 
-Twelve Earth gravity assist flybys spanning nine spacecraft (NEAR, Galileo 1990/1992, Cassini, Rosetta 2005/2007/2009, MESSENGER, Juno, Stardust, OSIRIS-REx, BepiColombo) are analyzed within the Temporal Equivalence Principle (TEP) framework. The TEP framework proposes that global simultaneity is inherently non-integrable, with the rate of time represented as a dynamical scalar field φ. All non-gravitational matter couples universally to a causal matter metric through conformal coupling A(φ) = exp(β φ/M_Pl), where β is a dimensionless coupling constant and M_Pl is the reduced Planck mass. This coupling produces a scalar force F = β_eff c² ∇φ/M_Pl on test masses, where β_eff = β × S_⊕(r) incorporates geometric screening via Temporal Topology. The screening factor S_⊕(r) encodes continuous suppression of Temporal Shear in density gradients, with a characteristic transition radius R_sol ≈ 4146 km derived from first-principles Universal Critical Density (UCD) soliton physics and independently validated by GNSS atomic clock correlations (λ_TEP ≈ 4000 km).
+Twelve Earth gravity assist flybys spanning nine spacecraft (NEAR, Galileo 1990/1992, Cassini, Rosetta 2005/2007/2009, MESSENGER, Juno, Stardust, OSIRIS-REx, BepiColombo) are analyzed within the Temporal Equivalence Principle (TEP) framework. The TEP framework proposes that global simultaneity is inherently non-integrable, with the rate of time represented as a dynamical scalar field φ. All non-gravitational matter couples universally to a causal matter metric through conformal coupling A(φ) = exp(β φ/M_Pl), where β is a dimensionless coupling constant and M_Pl is the reduced Planck mass. This coupling produces a scalar force F = β_eff c² ∇φ/M_Pl on test masses, where β_eff = β × S_⊕(r) incorporates geometric screening via Temporal Topology. The screening factor S_⊕(r) encodes continuous suppression of Temporal Shear in density gradients, with a characteristic transition radius R_sol ≈ 4146 km derived from first-principles Universal Critical Density (UCD) saturation model and independently validated by GNSS atomic clock correlations (λ_TEP ≈ 4000 km).
 
 The scalar force manifests as a "Phantom Mass" artifact—velocity anomalies that mimic unmodeled gravitational mass distributions through field-gradient couplings. The radial component of this force is indistinguishable from a small shift in GM and is absorbed by orbit determination programs. The non-radial component, modulated by Earth's oblateness (J2, J3, J4), trajectory asymmetry, and velocity-dependent disformal coupling, produces the observed flyby anomaly. Four primary detections are successfully fitted: NEAR (13.46 ± 0.01 mm/s), Galileo 1990 (3.92 ± 0.03 mm/s), Rosetta 2005 (1.82 ± 0.05 mm/s), and Cassini (0.11 ± 0.05 mm/s). The Cassini sign reversal is resolved through velocity-dependent disformal coupling that reverses the prediction sign for high-velocity (v > 16 km/s) anti-aligned trajectories.
 
@@ -47,7 +47,7 @@ Four successful TEP fits to flyby anomalies (NEAR, Galileo 1990, Rosetta 2005, C
 | **Paper 11** | [TEP-H0](https://github.com/matthewsmawfield/TEP-H0) | The Cepheid Bias: Resolving the Hubble Tension | [10.5281/zenodo.18209702](https://doi.org/10.5281/zenodo.18209702) |
 | **Paper 12** | [TEP-JWST](https://github.com/matthewsmawfield/TEP-JWST) | The Temporal Equivalence Principle: A Unified Resolution to the JWST High-Redshift Anomalies | [10.5281/zenodo.19000827](https://doi.org/10.5281/zenodo.19000827) |
 | **Paper 13** | [TEP-WB](https://github.com/matthewsmawfield/TEP-WB) | The Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries | [10.5281/zenodo.19102062](https://doi.org/10.5281/zenodo.19102062) |
-| **Paper 15** | **TEP-EFA** (This repo) | Temporal Equivalence Principle: Temporal Shear Impulses in the Earth Flyby Anomaly | [10.5281/zenodo.19454863](https://doi.org/10.5281/zenodo.19454863) |
+| **Paper 15** | **TEP-EFA** (This repo) | Temporal Equivalence Principle: Temporal Shear in the Earth Flyby Anomaly | [10.5281/zenodo.19454863](https://doi.org/10.5281/zenodo.19454863) |
 
 ## Directory Structure
 
@@ -93,7 +93,7 @@ This will populate `results/` and `data/processed/` with fresh analysis outputs.
 
 ```bibtex
 @article{smawfield2026earthflyby,
-  title={The Temporal Equivalence Principle: Temporal Shear Impulses in the Earth Flyby Anomaly},
+  title={The Temporal Equivalence Principle: Temporal Shear in the Earth Flyby Anomaly},
   author={Smawfield, Matthew Lukin},
   journal={Zenodo},
   year={2026},

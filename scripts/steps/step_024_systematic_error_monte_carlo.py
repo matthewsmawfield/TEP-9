@@ -50,6 +50,8 @@ class SystematicErrorMonteCarlo:
             'trajectory_altitude': 1.0,   # km (perigee altitude uncertainty)
             'trajectory_velocity': 1.0,   # m/s (perigee velocity uncertainty)
             'calibration_drift': 0.01,   # mm/s/hour (calibration drift rate)
+            'geometry_cos_asymmetry': 0.01,  # declination reconstruction uncertainty
+            'geometry_latitude_deg': 2.0,   # perigee latitude reconstruction uncertainty
         }
     
     def inject_dsn_systematics(
@@ -130,19 +132,56 @@ class SystematicErrorMonteCarlo:
         )
         
         return perturbed_altitude, perturbed_velocity
-    
+
+    def inject_geometry_uncertainty(
+        self,
+        cos_asymmetry: float,
+        perigee_latitude_deg: float,
+        n_trials: int = 1000
+    ) -> Tuple[np.ndarray, np.ndarray]:
+        """
+        Inject geometry reconstruction uncertainties into trajectory parameters.
+
+        Parameters:
+        -----------
+        cos_asymmetry : float
+            Cosine of declination asymmetry
+        perigee_latitude_deg : float
+            Perigee latitude (degrees)
+        n_trials : int
+            Number of Monte Carlo trials
+
+        Returns:
+        --------
+        perturbed_cos_asym : np.ndarray
+            Array of perturbed cos_asymmetry values
+        perturbed_lat : np.ndarray
+            Array of perturbed latitude values (radians)
+        """
+        perturbed_cos_asym = np.random.normal(
+            cos_asymmetry,
+            self.systematic_errors['geometry_cos_asymmetry'],
+            n_trials
+        )
+        perturbed_lat_deg = np.random.normal(
+            perigee_latitude_deg,
+            self.systematic_errors['geometry_latitude_deg'],
+            n_trials
+        )
+        perturbed_lat_rad = np.radians(perturbed_lat_deg)
+        return perturbed_cos_asym, perturbed_lat_rad
+
     def compute_tep_sensitivity(
         self,
         altitude_km: float,
         velocity_km_s: float,
         cos_asymmetry: float,
+        perigee_latitude_rad: float = 0.0,
         beta: float = None
     ) -> float:
         """
-        Compute TEP-predicted anomaly given trajectory parameters.
-        
-        Simplified TEP model: Δv ∝ β * (1/r²) * v * cos(α)
-        
+        Compute TEP-predicted anomaly using the actual TEP field model from step_007.
+
         Parameters:
         -----------
         altitude_km : float
@@ -151,27 +190,32 @@ class SystematicErrorMonteCarlo:
             Perigee velocity (km/s)
         cos_asymmetry : float
             Cosine of declination asymmetry
+        perigee_latitude_rad : float
+            Perigee latitude in radians (affects J2 and inclination modulation)
         beta : float
             TEP coupling constant (defaults to BETA_BASELINE from physics.py)
-        
+
         Returns:
         --------
         dv_tep_mm_s : float
             TEP-predicted velocity anomaly (mm/s)
         """
         if beta is None:
-            beta = BETA_BASELINE * 1e-4  # Convert baseline to actual coupling
-        
-        R_EARTH = 6371.0  # km
-        r = R_EARTH + altitude_km  # Distance from Earth center
-        
-        # Simplified TEP scaling (from step_008 results)
-        # Scaling factor calibrated to match step_008 predictions
-        scaling_factor = 1e7
-        
-        dv_tep = beta * scaling_factor * (1.0 / r**2) * velocity_km_s * cos_asymmetry
-        
-        return dv_tep
+            beta = BETA_BASELINE * 1e-4
+
+        from scripts.steps.step_007_tep_model import TEPTemporalTopologyModel
+
+        model = TEPTemporalTopologyModel(beta=beta)
+
+        geometry = {
+            "altitude_km": altitude_km,
+            "v_perigee_m_s": velocity_km_s * 1e3,
+            "cos_dec_asymmetry": cos_asymmetry,
+            "perigee_latitude_rad": perigee_latitude_rad,
+            "ephemeris": []
+        }
+
+        return model.tep_velocity_shift(geometry)
     
     def monte_carlo_analysis(
         self,
@@ -209,8 +253,10 @@ class SystematicErrorMonteCarlo:
             self.logger.error(f"Failed to load fitting results: {e}")
             return None
         
-        # Use coupling constant as reference beta
-        beta_ref = fitting_data.get('coupling_constant', fitting_data.get('beta', 0.0004635))
+        # Use recommended_beta (raw fitted coupling) as reference.
+        # The TEP model computes effective_coupling internally, so we must
+        # pass the raw beta, not beta_eff (coupling_constant).
+        beta_ref = fitting_data.get('recommended_beta', fitting_data.get('beta', 0.0004635))
         
         flyby_results = []
         
@@ -229,16 +275,26 @@ class SystematicErrorMonteCarlo:
             velocity = flyby['perigee_velocity_km_s']
             cos_asym = flyby.get('cos_asymmetry', 0.0)
             precision = flyby.get('tracking_precision_mm_s', 0.05)
-            
+            # Estimate perigee latitude from declinations (approximate; defaults to equatorial)
+            dec_in = flyby.get('declination_in_deg', 0.0)
+            dec_out = flyby.get('declination_out_deg', 0.0)
+            perigee_lat_deg = (dec_in + dec_out) / 2.0 if dec_in is not None and dec_out is not None else 0.0
+
             # Monte Carlo trials
             dv_perturbed = self.inject_dsn_systematics(observed, precision, n_trials)
             alt_perturbed, vel_perturbed = self.inject_trajectory_uncertainty(
                 altitude, velocity, n_trials
             )
-            
+            cos_asym_perturbed, lat_perturbed = self.inject_geometry_uncertainty(
+                cos_asym, perigee_lat_deg, n_trials
+            )
+
             # Compute TEP predictions for each trial
             dv_tep_trials = np.array([
-                self.compute_tep_sensitivity(alt_perturbed[i], vel_perturbed[i], cos_asym, beta_ref)
+                self.compute_tep_sensitivity(
+                    alt_perturbed[i], vel_perturbed[i],
+                    cos_asym_perturbed[i], lat_perturbed[i], beta_ref
+                )
                 for i in range(n_trials)
             ])
             
@@ -287,7 +343,9 @@ class SystematicErrorMonteCarlo:
                 'dsn_station_position': self.systematic_errors['dsn_station_position'],
                 'trajectory_altitude': self.systematic_errors['trajectory_altitude'],
                 'trajectory_velocity': self.systematic_errors['trajectory_velocity'],
-                'calibration_drift': self.systematic_errors['calibration_drift']
+                'calibration_drift': self.systematic_errors['calibration_drift'],
+                'geometry_cos_asymmetry': self.systematic_errors['geometry_cos_asymmetry'],
+                'geometry_latitude_deg': self.systematic_errors['geometry_latitude_deg'],
             },
             'flyby_results': flyby_results,
             'systematic_error_budget': {

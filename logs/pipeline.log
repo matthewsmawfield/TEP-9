@@ -1,285 +1,285 @@
-[2026-05-11 06:05:17 UTC] [INFO    ] ================================================================================
-[2026-05-11 06:05:17 UTC] [INFO    ] FLYBY TEP PIPELINE v3.0 - FULL EXECUTION
-[2026-05-11 06:05:17 UTC] [INFO    ] ================================================================================
-[2026-05-11 06:05:17 UTC] [INFO    ] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
-[2026-05-11 06:05:17 UTC] [INFO    ] Steps dir:     /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps
-[2026-05-11 06:05:17 UTC] [INFO    ] Log file:      /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/pipeline.log
-[2026-05-11 06:05:17 UTC] [INFO    ] --------------------------------------------------------------------------------
-[2026-05-11 06:05:17 UTC] [INFO    ] Enhancements in v3.0
-[2026-05-11 06:05:17 UTC] [INFO    ] --------------------------------------------------------------------------------
-[2026-05-11 06:05:17 UTC] [INFO    ]   • WGS84 non-spherical Earth model with J2, J3, J4 harmonics
-[2026-05-11 06:05:17 UTC] [INFO    ]   • PREM dynamic density mapping
-[2026-05-11 06:05:17 UTC] [INFO    ]   • 3D trajectory integration framework
-[2026-05-11 06:05:17 UTC] [INFO    ]   • Expanded dataset (12+ flybys with archival mining)
-[2026-05-11 06:05:17 UTC] [INFO    ]   • Core raw DSN reanalysis with minimal OD (resolves Horizons circularity)
-[2026-05-11 06:05:17 UTC] [INFO    ]   • Hierarchical Bayesian model (addresses extreme heterogeneity)
-[2026-05-11 06:05:17 UTC] [INFO    ]   • Plasma modulation (addresses Cassini sign mismatch)
-[2026-05-11 06:05:17 UTC] [INFO    ]   • First-principles Temporal Shear Suppression calculation (reduces systematic uncertainty)
-[2026-05-11 06:05:17 UTC] [INFO    ]   • Bayesian model comparison with Bayes factors (statistical rigor)
-[2026-05-11 06:05:17 UTC] [INFO    ] --------------------------------------------------------------------------------
-[2026-05-11 06:05:17 UTC] [INFO    ] EXECUTING PIPELINE STEPS
-[2026-05-11 06:05:17 UTC] [INFO    ] --------------------------------------------------------------------------------
-[2026-05-11 06:05:17 UTC] [INFO    ] 
-[2026-05-11 06:05:17 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:05:17 UTC] [INFO    ] [1/37] Step 001: Download SPICE Kernels (NAIF)
-[2026-05-11 06:05:17 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:05:44 UTC] [SUCCESS ] ✓ Step 001: Download SPICE Kernels (NAIF) completed in 27.23s
-[2026-05-11 06:05:44 UTC] [INFO    ] 
-[2026-05-11 06:05:44 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:05:44 UTC] [INFO    ] [2/37] Step 002: Convert SPICE to JSON
-[2026-05-11 06:05:44 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:05:44 UTC] [SUCCESS ] ✓ Step 002: Convert SPICE to JSON completed in 0.21s
-[2026-05-11 06:05:44 UTC] [INFO    ] 
-[2026-05-11 06:05:44 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:05:44 UTC] [INFO    ] [3/37] Step 003: Archival Data Mining
-[2026-05-11 06:05:44 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:05:44 UTC] [SUCCESS ] ✓ Step 003: Archival Data Mining completed in 0.08s
-[2026-05-11 06:05:44 UTC] [INFO    ] 
-[2026-05-11 06:05:44 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:05:44 UTC] [INFO    ] [4/37] Step 004: JPL Horizons Data Fetch
-[2026-05-11 06:05:44 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:01 UTC] [SUCCESS ] ✓ Step 004: JPL Horizons Data Fetch completed in 17.13s
-[2026-05-11 06:06:01 UTC] [INFO    ] 
-[2026-05-11 06:06:01 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:01 UTC] [INFO    ] [5/37] Step 005: DSN Data Ingestion
-[2026-05-11 06:06:01 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:01 UTC] [SUCCESS ] ✓ Step 005: DSN Data Ingestion completed in 0.04s
-[2026-05-11 06:06:01 UTC] [INFO    ] 
-[2026-05-11 06:06:01 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:01 UTC] [INFO    ] [6/37] Step 006: DSN Framework (Resolves Horizons Circularity)
-[2026-05-11 06:06:01 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:02 UTC] [SUCCESS ] ✓ Step 006: DSN Framework (Resolves Horizons Circularity) completed in 0.19s
-[2026-05-11 06:06:02 UTC] [INFO    ] 
-[2026-05-11 06:06:02 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:02 UTC] [INFO    ] [7/37] Step 007: Enhanced TEP Model (WGS84, PREM, 3D)
-[2026-05-11 06:06:02 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:02 UTC] [SUCCESS ] ✓ Step 007: Enhanced TEP Model (WGS84, PREM, 3D) completed in 0.27s
-[2026-05-11 06:06:02 UTC] [INFO    ] 
-[2026-05-11 06:06:02 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:02 UTC] [INFO    ] [8/37] Step 008: Parameter Fitting
-[2026-05-11 06:06:02 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:02 UTC] [SUCCESS ] ✓ Step 008: Parameter Fitting completed in 0.47s
-[2026-05-11 06:06:02 UTC] [INFO    ] 
-[2026-05-11 06:06:02 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:02 UTC] [INFO    ] [9/37] Step 009: Unified Variance Analysis (Four-Stage)
-[2026-05-11 06:06:02 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:03 UTC] [SUCCESS ] ✓ Step 009: Unified Variance Analysis (Four-Stage) completed in 0.34s
-[2026-05-11 06:06:03 UTC] [INFO    ] 
-[2026-05-11 06:06:03 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:03 UTC] [INFO    ] [10/37] Step 010: Temporal Shear Suppression First-Principles
-[2026-05-11 06:06:03 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:03 UTC] [SUCCESS ] ✓ Step 010: Temporal Shear Suppression First-Principles completed in 0.21s
-[2026-05-11 06:06:03 UTC] [INFO    ] 
-[2026-05-11 06:06:03 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:03 UTC] [INFO    ] [11/37] Step 011: Trajectory Integration
-[2026-05-11 06:06:03 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:03 UTC] [SUCCESS ] ✓ Step 011: Trajectory Integration completed in 0.22s
-[2026-05-11 06:06:03 UTC] [INFO    ] 
-[2026-05-11 06:06:03 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:03 UTC] [INFO    ] [12/37] Step 012: OD Filter Simulation
-[2026-05-11 06:06:03 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:06 UTC] [SUCCESS ] ✓ Step 012: OD Filter Simulation completed in 2.34s
-[2026-05-11 06:06:06 UTC] [INFO    ] 
-[2026-05-11 06:06:06 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:06 UTC] [INFO    ] [13/37] Step 013: Cross-Validation Analysis
-[2026-05-11 06:06:06 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:06 UTC] [SUCCESS ] ✓ Step 013: Cross-Validation Analysis completed in 0.16s
-[2026-05-11 06:06:06 UTC] [INFO    ] 
-[2026-05-11 06:06:06 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:06 UTC] [INFO    ] [14/37] Step 014: Sensitivity Analysis
-[2026-05-11 06:06:06 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:06 UTC] [SUCCESS ] ✓ Step 014: Sensitivity Analysis completed in 0.34s
-[2026-05-11 06:06:06 UTC] [INFO    ] 
-[2026-05-11 06:06:06 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:06 UTC] [INFO    ] [15/37] Step 015: Hierarchical Bayesian Model
-[2026-05-11 06:06:06 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:09 UTC] [SUCCESS ] ✓ Step 015: Hierarchical Bayesian Model completed in 3.08s
-[2026-05-11 06:06:09 UTC] [INFO    ] 
-[2026-05-11 06:06:09 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:09 UTC] [INFO    ] [16/37] Step 016: GNSS Validation
-[2026-05-11 06:06:09 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:09 UTC] [SUCCESS ] ✓ Step 016: GNSS Validation completed in 0.07s
-[2026-05-11 06:06:09 UTC] [INFO    ] 
-[2026-05-11 06:06:09 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:09 UTC] [INFO    ] [17/37] Step 017: Plasma Modulation (Cassini Sign)
-[2026-05-11 06:06:09 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:09 UTC] [SUCCESS ] ✓ Step 017: Plasma Modulation (Cassini Sign) completed in 0.22s
-[2026-05-11 06:06:09 UTC] [INFO    ] 
-[2026-05-11 06:06:09 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:09 UTC] [INFO    ] [18/37] Step 018: Space Weather Correlation
-[2026-05-11 06:06:09 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:10 UTC] [SUCCESS ] ✓ Step 018: Space Weather Correlation completed in 0.34s
-[2026-05-11 06:06:10 UTC] [INFO    ] 
-[2026-05-11 06:06:10 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:10 UTC] [INFO    ] [19/37] Step 019: 3D Field Integration
-[2026-05-11 06:06:10 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:10 UTC] [SUCCESS ] ✓ Step 019: 3D Field Integration completed in 0.24s
-[2026-05-11 06:06:10 UTC] [INFO    ] 
-[2026-05-11 06:06:10 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:10 UTC] [INFO    ] [20/37] Step 020: Plasma Environment Reconstruction
-[2026-05-11 06:06:10 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:13 UTC] [SUCCESS ] ✓ Step 020: Plasma Environment Reconstruction completed in 3.22s
-[2026-05-11 06:06:13 UTC] [INFO    ] 
-[2026-05-11 06:06:13 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:13 UTC] [INFO    ] [21/37] Step 021: Mission-Specific OD Absorption
-[2026-05-11 06:06:13 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:13 UTC] [SUCCESS ] ✓ Step 021: Mission-Specific OD Absorption completed in 0.07s
-[2026-05-11 06:06:13 UTC] [INFO    ] 
-[2026-05-11 06:06:13 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:13 UTC] [INFO    ] [22/37] Step 022: Atmospheric Drag Simulation
-[2026-05-11 06:06:13 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:13 UTC] [SUCCESS ] ✓ Step 022: Atmospheric Drag Simulation completed in 0.07s
-[2026-05-11 06:06:13 UTC] [INFO    ] 
-[2026-05-11 06:06:13 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:13 UTC] [INFO    ] [23/37] Step 023: Thermal Recoil Simulation
-[2026-05-11 06:06:13 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:13 UTC] [SUCCESS ] ✓ Step 023: Thermal Recoil Simulation completed in 0.07s
-[2026-05-11 06:06:13 UTC] [INFO    ] 
-[2026-05-11 06:06:13 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:13 UTC] [INFO    ] [24/37] Step 024: Systematic Error Monte Carlo
-[2026-05-11 06:06:13 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [SUCCESS ] ✓ Step 024: Systematic Error Monte Carlo completed in 0.33s
-[2026-05-11 06:06:14 UTC] [INFO    ] 
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [INFO    ] [25/37] Step 025: Corrected Uncertainty Analysis
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [SUCCESS ] ✓ Step 025: Corrected Uncertainty Analysis completed in 0.07s
-[2026-05-11 06:06:14 UTC] [INFO    ] 
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [INFO    ] [26/37] Step 026: Stable Model Comparison
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [SUCCESS ] ✓ Step 026: Stable Model Comparison completed in 0.37s
-[2026-05-11 06:06:14 UTC] [INFO    ] 
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [INFO    ] [27/37] Step 027: Claim Consistency Audit
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [SUCCESS ] ✓ Step 027: Claim Consistency Audit completed in 0.04s
-[2026-05-11 06:06:14 UTC] [INFO    ] 
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [INFO    ] [28/37] Step 028: DSN Processing Framework
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [SUCCESS ] ✓ Step 028: DSN Processing Framework completed in 0.13s
-[2026-05-11 06:06:14 UTC] [INFO    ] 
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [INFO    ] [29/37] Step 029: Read TRK-2-34 Data Format
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [SUCCESS ] ✓ Step 029: Read TRK-2-34 Data Format completed in 0.05s
-[2026-05-11 06:06:14 UTC] [INFO    ] 
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:14 UTC] [INFO    ] [30/37] Step 030: Juno 2013 Reanalysis
-[2026-05-11 06:06:14 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:15 UTC] [SUCCESS ] ✓ Step 030: Juno 2013 Reanalysis completed in 1.05s
-[2026-05-11 06:06:15 UTC] [INFO    ] 
-[2026-05-11 06:06:15 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:15 UTC] [INFO    ] [31/37] Step 031: PDS Search
-[2026-05-11 06:06:15 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:19 UTC] [SUCCESS ] ✓ Step 031: PDS Search completed in 3.53s
-[2026-05-11 06:06:19 UTC] [INFO    ] 
-[2026-05-11 06:06:19 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:19 UTC] [INFO    ] [32/37] Step 032: TEP Suppression Analysis
-[2026-05-11 06:06:19 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:19 UTC] [SUCCESS ] ✓ Step 032: TEP Suppression Analysis completed in 0.35s
-[2026-05-11 06:06:19 UTC] [INFO    ] 
-[2026-05-11 06:06:19 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:06:19 UTC] [INFO    ] [33/37] Step 033: Continuous IRI Trajectory Profiles
-[2026-05-11 06:06:19 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:16 UTC] [SUCCESS ] ✓ Step 033: Continuous IRI Trajectory Profiles completed in 56.86s
-[2026-05-11 06:07:16 UTC] [INFO    ] 
-[2026-05-11 06:07:16 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:16 UTC] [INFO    ] [34/37] Step 034: Covariant Temporal Shear Impulse
-[2026-05-11 06:07:16 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:16 UTC] [SUCCESS ] ✓ Step 034: Covariant Temporal Shear Impulse completed in 0.12s
-[2026-05-11 06:07:16 UTC] [INFO    ] 
-[2026-05-11 06:07:16 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:16 UTC] [INFO    ] [35/37] Step 035: Cross-Corpus Parameter Export
-[2026-05-11 06:07:16 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:16 UTC] [SUCCESS ] ✓ Step 035: Cross-Corpus Parameter Export completed in 0.03s
-[2026-05-11 06:07:16 UTC] [INFO    ] 
-[2026-05-11 06:07:16 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:16 UTC] [INFO    ] [36/37] Step 036: Final Report Generation
-[2026-05-11 06:07:16 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:16 UTC] [SUCCESS ] ✓ Step 036: Final Report Generation completed in 0.03s
-[2026-05-11 06:07:16 UTC] [INFO    ] 
-[2026-05-11 06:07:16 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:16 UTC] [INFO    ] [37/37] Step 037: Figure Generation
-[2026-05-11 06:07:16 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:18 UTC] [SUCCESS ] ✓ Step 037: Figure Generation completed in 1.14s
-[2026-05-11 06:07:18 UTC] [INFO    ] 
-[2026-05-11 06:07:18 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:18 UTC] [INFO    ] PIPELINE EXECUTION SUMMARY
-[2026-05-11 06:07:18 UTC] [INFO    ] ======================================================================
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Execution Timeline
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Pipeline started: 2026-05-11 06:05:17 UTC
-[2026-05-11 06:07:18 UTC] [INFO    ] Pipeline ended:   2026-05-11 06:07:18 UTC
-[2026-05-11 06:07:18 UTC] [INFO    ] Total duration:   2.01 minutes
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Step-by-Step Results
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Step   Description                                        Status     Duration    
-[2026-05-11 06:07:18 UTC] [INFO    ] --------------------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 001 Step 001: Download SPICE Kernels (NAIF)            ✓ SUCCESS  27.23s      
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 002 Step 002: Convert SPICE to JSON                    ✓ SUCCESS  0.21s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 003 Step 003: Archival Data Mining                     ✓ SUCCESS  0.08s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 004 Step 004: JPL Horizons Data Fetch                  ✓ SUCCESS  17.13s      
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 005 Step 005: DSN Data Ingestion                       ✓ SUCCESS  0.04s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 006 Step 006: DSN Framework (Resolves Horizons Circu   ✓ SUCCESS  0.19s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 007 Step 007: Enhanced TEP Model (WGS84, PREM, 3D)     ✓ SUCCESS  0.27s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 008 Step 008: Parameter Fitting                        ✓ SUCCESS  0.47s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 009 Step 009: Unified Variance Analysis (Four-Stage)   ✓ SUCCESS  0.34s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 010 Step 010: Temporal Shear Suppression First-Princ   ✓ SUCCESS  0.21s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 011 Step 011: Trajectory Integration                   ✓ SUCCESS  0.22s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 012 Step 012: OD Filter Simulation                     ✓ SUCCESS  2.34s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 013 Step 013: Cross-Validation Analysis                ✓ SUCCESS  0.16s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 014 Step 014: Sensitivity Analysis                     ✓ SUCCESS  0.34s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 015 Step 015: Hierarchical Bayesian Model              ✓ SUCCESS  3.08s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 016 Step 016: GNSS Validation                          ✓ SUCCESS  0.07s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 017 Step 017: Plasma Modulation (Cassini Sign)         ✓ SUCCESS  0.22s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 018 Step 018: Space Weather Correlation                ✓ SUCCESS  0.34s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 019 Step 019: 3D Field Integration                     ✓ SUCCESS  0.24s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 020 Step 020: Plasma Environment Reconstruction        ✓ SUCCESS  3.22s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 021 Step 021: Mission-Specific OD Absorption           ✓ SUCCESS  0.07s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 022 Step 022: Atmospheric Drag Simulation              ✓ SUCCESS  0.07s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 023 Step 023: Thermal Recoil Simulation                ✓ SUCCESS  0.07s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 024 Step 024: Systematic Error Monte Carlo             ✓ SUCCESS  0.33s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 025 Step 025: Corrected Uncertainty Analysis           ✓ SUCCESS  0.07s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 026 Step 026: Stable Model Comparison                  ✓ SUCCESS  0.37s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 027 Step 027: Claim Consistency Audit                  ✓ SUCCESS  0.04s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 028 Step 028: DSN Processing Framework                 ✓ SUCCESS  0.13s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 029 Step 029: Read TRK-2-34 Data Format                ✓ SUCCESS  0.05s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 030 Step 030: Juno 2013 Reanalysis                     ✓ SUCCESS  1.05s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 031 Step 031: PDS Search                               ✓ SUCCESS  3.53s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 032 Step 032: TEP Suppression Analysis                 ✓ SUCCESS  0.35s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 033 Step 033: Continuous IRI Trajectory Profiles       ✓ SUCCESS  56.86s      
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 034 Step 034: Covariant Temporal Shear Impulse         ✓ SUCCESS  0.12s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 035 Step 035: Cross-Corpus Parameter Export            ✓ SUCCESS  0.03s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 036 Step 036: Final Report Generation                  ✓ SUCCESS  0.03s       
-[2026-05-11 06:07:18 UTC] [INFO    ] Step 037 Step 037: Figure Generation                        ✓ SUCCESS  1.14s       
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Statistics
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Total steps:     37
-[2026-05-11 06:07:18 UTC] [INFO    ] Successful:      37
-[2026-05-11 06:07:18 UTC] [INFO    ] Failed:          0
-[2026-05-11 06:07:18 UTC] [INFO    ] Success rate:    100.0%
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Research Accountability & Reproducibility
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Research audit generated: RESEARCH_AUDIT_20260511_090718.json
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Data Integrity Validation
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Checking all results for synthetic data contamination...
-[2026-05-11 06:07:18 UTC] [SUCCESS ] ✓   ✓ All results files passed data integrity check
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Output Locations
-[2026-05-11 06:07:18 UTC] [INFO    ] ----------------------------------------------------------------------
-[2026-05-11 06:07:18 UTC] [INFO    ] Log file:         /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/pipeline.log
-[2026-05-11 06:07:18 UTC] [INFO    ] Results:          /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results
-[2026-05-11 06:07:18 UTC] [INFO    ] Key output:       results/step003_dsn_reanalysis.json
-[2026-05-11 06:07:18 UTC] [INFO    ] Key output:       results/step008_fitting_results.json
-[2026-05-11 06:07:18 UTC] [INFO    ] Key output:       results/step036_final_report.json
-[2026-05-11 06:07:18 UTC] [INFO    ] Key figure:       results/step007_figure1_altitude_anomaly.png
-[2026-05-11 06:07:18 UTC] [INFO    ] 
-[2026-05-11 06:07:18 UTC] [SUCCESS ] ✓ PIPELINE COMPLETED SUCCESSFULLY
+[2026-05-12 10:17:52 UTC] [INFO    ] ================================================================================
+[2026-05-12 10:17:52 UTC] [INFO    ] FLYBY TEP PIPELINE v3.0 - FULL EXECUTION
+[2026-05-12 10:17:52 UTC] [INFO    ] ================================================================================
+[2026-05-12 10:17:52 UTC] [INFO    ] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-05-12 10:17:52 UTC] [INFO    ] Steps dir:     /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps
+[2026-05-12 10:17:52 UTC] [INFO    ] Log file:      /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/pipeline.log
+[2026-05-12 10:17:52 UTC] [INFO    ] --------------------------------------------------------------------------------
+[2026-05-12 10:17:52 UTC] [INFO    ] Enhancements in v3.0
+[2026-05-12 10:17:52 UTC] [INFO    ] --------------------------------------------------------------------------------
+[2026-05-12 10:17:52 UTC] [INFO    ]   • WGS84 non-spherical Earth model with J2, J3, J4 harmonics
+[2026-05-12 10:17:52 UTC] [INFO    ]   • PREM dynamic density mapping
+[2026-05-12 10:17:52 UTC] [INFO    ]   • 3D trajectory integration framework
+[2026-05-12 10:17:52 UTC] [INFO    ]   • Expanded dataset (12+ flybys with archival mining)
+[2026-05-12 10:17:52 UTC] [INFO    ]   • Core raw DSN reanalysis with minimal OD (resolves Horizons circularity)
+[2026-05-12 10:17:52 UTC] [INFO    ]   • Hierarchical Bayesian model (addresses extreme heterogeneity)
+[2026-05-12 10:17:52 UTC] [INFO    ]   • Plasma modulation (addresses Cassini sign mismatch)
+[2026-05-12 10:17:52 UTC] [INFO    ]   • First-principles Temporal Shear Suppression calculation (reduces systematic uncertainty)
+[2026-05-12 10:17:52 UTC] [INFO    ]   • Bayesian model comparison with Bayes factors (statistical rigor)
+[2026-05-12 10:17:52 UTC] [INFO    ] --------------------------------------------------------------------------------
+[2026-05-12 10:17:52 UTC] [INFO    ] EXECUTING PIPELINE STEPS
+[2026-05-12 10:17:52 UTC] [INFO    ] --------------------------------------------------------------------------------
+[2026-05-12 10:17:52 UTC] [INFO    ] 
+[2026-05-12 10:17:52 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:17:52 UTC] [INFO    ] [1/37] Step 001: Download SPICE Kernels (NAIF)
+[2026-05-12 10:17:52 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:29 UTC] [SUCCESS ] ✓ Step 001: Download SPICE Kernels (NAIF) completed in 36.73s
+[2026-05-12 10:18:29 UTC] [INFO    ] 
+[2026-05-12 10:18:29 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:29 UTC] [INFO    ] [2/37] Step 002: Convert SPICE to JSON
+[2026-05-12 10:18:29 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:29 UTC] [SUCCESS ] ✓ Step 002: Convert SPICE to JSON completed in 0.19s
+[2026-05-12 10:18:29 UTC] [INFO    ] 
+[2026-05-12 10:18:29 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:29 UTC] [INFO    ] [3/37] Step 003: Archival Data Mining
+[2026-05-12 10:18:29 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:29 UTC] [SUCCESS ] ✓ Step 003: Archival Data Mining completed in 0.07s
+[2026-05-12 10:18:29 UTC] [INFO    ] 
+[2026-05-12 10:18:29 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:29 UTC] [INFO    ] [4/37] Step 004: JPL Horizons Data Fetch
+[2026-05-12 10:18:29 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:46 UTC] [SUCCESS ] ✓ Step 004: JPL Horizons Data Fetch completed in 16.63s
+[2026-05-12 10:18:46 UTC] [INFO    ] 
+[2026-05-12 10:18:46 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:46 UTC] [INFO    ] [5/37] Step 005: DSN Data Ingestion
+[2026-05-12 10:18:46 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:46 UTC] [SUCCESS ] ✓ Step 005: DSN Data Ingestion completed in 0.04s
+[2026-05-12 10:18:46 UTC] [INFO    ] 
+[2026-05-12 10:18:46 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:46 UTC] [INFO    ] [6/37] Step 006: DSN Framework (Resolves Horizons Circularity)
+[2026-05-12 10:18:46 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:46 UTC] [SUCCESS ] ✓ Step 006: DSN Framework (Resolves Horizons Circularity) completed in 0.20s
+[2026-05-12 10:18:46 UTC] [INFO    ] 
+[2026-05-12 10:18:46 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:46 UTC] [INFO    ] [7/37] Step 007: Enhanced TEP Model (WGS84, PREM, 3D)
+[2026-05-12 10:18:46 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:46 UTC] [SUCCESS ] ✓ Step 007: Enhanced TEP Model (WGS84, PREM, 3D) completed in 0.37s
+[2026-05-12 10:18:46 UTC] [INFO    ] 
+[2026-05-12 10:18:46 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:46 UTC] [INFO    ] [8/37] Step 008: Parameter Fitting
+[2026-05-12 10:18:46 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:47 UTC] [SUCCESS ] ✓ Step 008: Parameter Fitting completed in 0.49s
+[2026-05-12 10:18:47 UTC] [INFO    ] 
+[2026-05-12 10:18:47 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:47 UTC] [INFO    ] [9/37] Step 009: Unified Variance Analysis (Four-Stage)
+[2026-05-12 10:18:47 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:47 UTC] [SUCCESS ] ✓ Step 009: Unified Variance Analysis (Four-Stage) completed in 0.37s
+[2026-05-12 10:18:47 UTC] [INFO    ] 
+[2026-05-12 10:18:47 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:47 UTC] [INFO    ] [10/37] Step 010: Temporal Shear Suppression First-Principles
+[2026-05-12 10:18:47 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:47 UTC] [SUCCESS ] ✓ Step 010: Temporal Shear Suppression First-Principles completed in 0.23s
+[2026-05-12 10:18:47 UTC] [INFO    ] 
+[2026-05-12 10:18:47 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:47 UTC] [INFO    ] [11/37] Step 011: Trajectory Integration
+[2026-05-12 10:18:47 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:48 UTC] [SUCCESS ] ✓ Step 011: Trajectory Integration completed in 0.23s
+[2026-05-12 10:18:48 UTC] [INFO    ] 
+[2026-05-12 10:18:48 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:48 UTC] [INFO    ] [12/37] Step 012: OD Filter Simulation
+[2026-05-12 10:18:48 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:50 UTC] [SUCCESS ] ✓ Step 012: OD Filter Simulation completed in 2.22s
+[2026-05-12 10:18:50 UTC] [INFO    ] 
+[2026-05-12 10:18:50 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:50 UTC] [INFO    ] [13/37] Step 013: Cross-Validation Analysis
+[2026-05-12 10:18:50 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:50 UTC] [SUCCESS ] ✓ Step 013: Cross-Validation Analysis completed in 0.16s
+[2026-05-12 10:18:50 UTC] [INFO    ] 
+[2026-05-12 10:18:50 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:50 UTC] [INFO    ] [14/37] Step 014: Sensitivity Analysis
+[2026-05-12 10:18:50 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:50 UTC] [SUCCESS ] ✓ Step 014: Sensitivity Analysis completed in 0.37s
+[2026-05-12 10:18:50 UTC] [INFO    ] 
+[2026-05-12 10:18:50 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:50 UTC] [INFO    ] [15/37] Step 015: Hierarchical Bayesian Model
+[2026-05-12 10:18:50 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:54 UTC] [SUCCESS ] ✓ Step 015: Hierarchical Bayesian Model completed in 3.25s
+[2026-05-12 10:18:54 UTC] [INFO    ] 
+[2026-05-12 10:18:54 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:54 UTC] [INFO    ] [16/37] Step 016: GNSS Validation
+[2026-05-12 10:18:54 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:54 UTC] [SUCCESS ] ✓ Step 016: GNSS Validation completed in 0.08s
+[2026-05-12 10:18:54 UTC] [INFO    ] 
+[2026-05-12 10:18:54 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:54 UTC] [INFO    ] [17/37] Step 017: Plasma Modulation (Cassini Sign)
+[2026-05-12 10:18:54 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:54 UTC] [SUCCESS ] ✓ Step 017: Plasma Modulation (Cassini Sign) completed in 0.31s
+[2026-05-12 10:18:54 UTC] [INFO    ] 
+[2026-05-12 10:18:54 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:54 UTC] [INFO    ] [18/37] Step 018: Space Weather Correlation
+[2026-05-12 10:18:54 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:54 UTC] [SUCCESS ] ✓ Step 018: Space Weather Correlation completed in 0.43s
+[2026-05-12 10:18:54 UTC] [INFO    ] 
+[2026-05-12 10:18:54 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:54 UTC] [INFO    ] [19/37] Step 019: 3D Field Integration
+[2026-05-12 10:18:54 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:55 UTC] [SUCCESS ] ✓ Step 019: 3D Field Integration completed in 0.25s
+[2026-05-12 10:18:55 UTC] [INFO    ] 
+[2026-05-12 10:18:55 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:55 UTC] [INFO    ] [20/37] Step 020: Plasma Environment Reconstruction
+[2026-05-12 10:18:55 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [SUCCESS ] ✓ Step 020: Plasma Environment Reconstruction completed in 4.01s
+[2026-05-12 10:18:59 UTC] [INFO    ] 
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [INFO    ] [21/37] Step 021: Mission-Specific OD Absorption
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [SUCCESS ] ✓ Step 021: Mission-Specific OD Absorption completed in 0.08s
+[2026-05-12 10:18:59 UTC] [INFO    ] 
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [INFO    ] [22/37] Step 022: Atmospheric Drag Simulation
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [SUCCESS ] ✓ Step 022: Atmospheric Drag Simulation completed in 0.08s
+[2026-05-12 10:18:59 UTC] [INFO    ] 
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [INFO    ] [23/37] Step 023: Thermal Recoil Simulation
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [SUCCESS ] ✓ Step 023: Thermal Recoil Simulation completed in 0.08s
+[2026-05-12 10:18:59 UTC] [INFO    ] 
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [INFO    ] [24/37] Step 024: Systematic Error Monte Carlo
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [SUCCESS ] ✓ Step 024: Systematic Error Monte Carlo completed in 0.39s
+[2026-05-12 10:18:59 UTC] [INFO    ] 
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [INFO    ] [25/37] Step 025: Corrected Uncertainty Analysis
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [SUCCESS ] ✓ Step 025: Corrected Uncertainty Analysis completed in 0.08s
+[2026-05-12 10:18:59 UTC] [INFO    ] 
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:18:59 UTC] [INFO    ] [26/37] Step 026: Stable Model Comparison
+[2026-05-12 10:18:59 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:00 UTC] [SUCCESS ] ✓ Step 026: Stable Model Comparison completed in 0.36s
+[2026-05-12 10:19:00 UTC] [INFO    ] 
+[2026-05-12 10:19:00 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:00 UTC] [INFO    ] [27/37] Step 027: Claim Consistency Audit
+[2026-05-12 10:19:00 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:00 UTC] [SUCCESS ] ✓ Step 027: Claim Consistency Audit completed in 0.04s
+[2026-05-12 10:19:00 UTC] [INFO    ] 
+[2026-05-12 10:19:00 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:00 UTC] [INFO    ] [28/37] Step 028: DSN Processing Framework
+[2026-05-12 10:19:00 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:00 UTC] [SUCCESS ] ✓ Step 028: DSN Processing Framework completed in 0.15s
+[2026-05-12 10:19:00 UTC] [INFO    ] 
+[2026-05-12 10:19:00 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:00 UTC] [INFO    ] [29/37] Step 029: Read TRK-2-34 Data Format
+[2026-05-12 10:19:00 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:00 UTC] [SUCCESS ] ✓ Step 029: Read TRK-2-34 Data Format completed in 0.06s
+[2026-05-12 10:19:00 UTC] [INFO    ] 
+[2026-05-12 10:19:00 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:00 UTC] [INFO    ] [30/37] Step 030: Juno 2013 Reanalysis
+[2026-05-12 10:19:00 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:00 UTC] [SUCCESS ] ✓ Step 030: Juno 2013 Reanalysis completed in 0.35s
+[2026-05-12 10:19:00 UTC] [INFO    ] 
+[2026-05-12 10:19:00 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:00 UTC] [INFO    ] [31/37] Step 031: PDS Search
+[2026-05-12 10:19:00 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:05 UTC] [SUCCESS ] ✓ Step 031: PDS Search completed in 5.05s
+[2026-05-12 10:19:05 UTC] [INFO    ] 
+[2026-05-12 10:19:05 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:05 UTC] [INFO    ] [32/37] Step 032: TEP Suppression Analysis
+[2026-05-12 10:19:05 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:06 UTC] [SUCCESS ] ✓ Step 032: TEP Suppression Analysis completed in 0.37s
+[2026-05-12 10:19:06 UTC] [INFO    ] 
+[2026-05-12 10:19:06 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:19:06 UTC] [INFO    ] [33/37] Step 033: Continuous IRI Trajectory Profiles
+[2026-05-12 10:19:06 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:04 UTC] [SUCCESS ] ✓ Step 033: Continuous IRI Trajectory Profiles completed in 58.53s
+[2026-05-12 10:20:04 UTC] [INFO    ] 
+[2026-05-12 10:20:04 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:04 UTC] [INFO    ] [34/37] Step 034: Covariant Temporal Shear Impulse
+[2026-05-12 10:20:04 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:04 UTC] [SUCCESS ] ✓ Step 034: Covariant Temporal Shear Impulse completed in 0.10s
+[2026-05-12 10:20:04 UTC] [INFO    ] 
+[2026-05-12 10:20:04 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:04 UTC] [INFO    ] [35/37] Step 035: Cross-Corpus Parameter Export
+[2026-05-12 10:20:04 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:04 UTC] [SUCCESS ] ✓ Step 035: Cross-Corpus Parameter Export completed in 0.03s
+[2026-05-12 10:20:04 UTC] [INFO    ] 
+[2026-05-12 10:20:04 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:04 UTC] [INFO    ] [36/37] Step 036: Final Report Generation
+[2026-05-12 10:20:04 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:04 UTC] [SUCCESS ] ✓ Step 036: Final Report Generation completed in 0.03s
+[2026-05-12 10:20:04 UTC] [INFO    ] 
+[2026-05-12 10:20:04 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:04 UTC] [INFO    ] [37/37] Step 037: Figure Generation
+[2026-05-12 10:20:04 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:06 UTC] [SUCCESS ] ✓ Step 037: Figure Generation completed in 1.11s
+[2026-05-12 10:20:06 UTC] [INFO    ] 
+[2026-05-12 10:20:06 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:06 UTC] [INFO    ] PIPELINE EXECUTION SUMMARY
+[2026-05-12 10:20:06 UTC] [INFO    ] ======================================================================
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Execution Timeline
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Pipeline started: 2026-05-12 10:17:52 UTC
+[2026-05-12 10:20:06 UTC] [INFO    ] Pipeline ended:   2026-05-12 10:20:06 UTC
+[2026-05-12 10:20:06 UTC] [INFO    ] Total duration:   2.23 minutes
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Step-by-Step Results
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Step   Description                                        Status     Duration    
+[2026-05-12 10:20:06 UTC] [INFO    ] --------------------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 001 Step 001: Download SPICE Kernels (NAIF)            ✓ SUCCESS  36.73s      
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 002 Step 002: Convert SPICE to JSON                    ✓ SUCCESS  0.19s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 003 Step 003: Archival Data Mining                     ✓ SUCCESS  0.07s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 004 Step 004: JPL Horizons Data Fetch                  ✓ SUCCESS  16.63s      
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 005 Step 005: DSN Data Ingestion                       ✓ SUCCESS  0.04s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 006 Step 006: DSN Framework (Resolves Horizons Circu   ✓ SUCCESS  0.20s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 007 Step 007: Enhanced TEP Model (WGS84, PREM, 3D)     ✓ SUCCESS  0.37s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 008 Step 008: Parameter Fitting                        ✓ SUCCESS  0.49s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 009 Step 009: Unified Variance Analysis (Four-Stage)   ✓ SUCCESS  0.37s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 010 Step 010: Temporal Shear Suppression First-Princ   ✓ SUCCESS  0.23s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 011 Step 011: Trajectory Integration                   ✓ SUCCESS  0.23s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 012 Step 012: OD Filter Simulation                     ✓ SUCCESS  2.22s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 013 Step 013: Cross-Validation Analysis                ✓ SUCCESS  0.16s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 014 Step 014: Sensitivity Analysis                     ✓ SUCCESS  0.37s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 015 Step 015: Hierarchical Bayesian Model              ✓ SUCCESS  3.25s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 016 Step 016: GNSS Validation                          ✓ SUCCESS  0.08s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 017 Step 017: Plasma Modulation (Cassini Sign)         ✓ SUCCESS  0.31s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 018 Step 018: Space Weather Correlation                ✓ SUCCESS  0.43s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 019 Step 019: 3D Field Integration                     ✓ SUCCESS  0.25s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 020 Step 020: Plasma Environment Reconstruction        ✓ SUCCESS  4.01s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 021 Step 021: Mission-Specific OD Absorption           ✓ SUCCESS  0.08s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 022 Step 022: Atmospheric Drag Simulation              ✓ SUCCESS  0.08s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 023 Step 023: Thermal Recoil Simulation                ✓ SUCCESS  0.08s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 024 Step 024: Systematic Error Monte Carlo             ✓ SUCCESS  0.39s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 025 Step 025: Corrected Uncertainty Analysis           ✓ SUCCESS  0.08s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 026 Step 026: Stable Model Comparison                  ✓ SUCCESS  0.36s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 027 Step 027: Claim Consistency Audit                  ✓ SUCCESS  0.04s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 028 Step 028: DSN Processing Framework                 ✓ SUCCESS  0.15s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 029 Step 029: Read TRK-2-34 Data Format                ✓ SUCCESS  0.06s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 030 Step 030: Juno 2013 Reanalysis                     ✓ SUCCESS  0.35s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 031 Step 031: PDS Search                               ✓ SUCCESS  5.05s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 032 Step 032: TEP Suppression Analysis                 ✓ SUCCESS  0.37s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 033 Step 033: Continuous IRI Trajectory Profiles       ✓ SUCCESS  58.53s      
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 034 Step 034: Covariant Temporal Shear Impulse         ✓ SUCCESS  0.10s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 035 Step 035: Cross-Corpus Parameter Export            ✓ SUCCESS  0.03s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 036 Step 036: Final Report Generation                  ✓ SUCCESS  0.03s       
+[2026-05-12 10:20:06 UTC] [INFO    ] Step 037 Step 037: Figure Generation                        ✓ SUCCESS  1.11s       
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Statistics
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Total steps:     37
+[2026-05-12 10:20:06 UTC] [INFO    ] Successful:      37
+[2026-05-12 10:20:06 UTC] [INFO    ] Failed:          0
+[2026-05-12 10:20:06 UTC] [INFO    ] Success rate:    100.0%
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Research Accountability & Reproducibility
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Research audit generated: RESEARCH_AUDIT_20260512_132006.json
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Data Integrity Validation
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Checking all results for synthetic data contamination...
+[2026-05-12 10:20:06 UTC] [SUCCESS ] ✓   ✓ All results files passed data integrity check
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Output Locations
+[2026-05-12 10:20:06 UTC] [INFO    ] ----------------------------------------------------------------------
+[2026-05-12 10:20:06 UTC] [INFO    ] Log file:         /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/pipeline.log
+[2026-05-12 10:20:06 UTC] [INFO    ] Results:          /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results
+[2026-05-12 10:20:06 UTC] [INFO    ] Key output:       results/step003_dsn_reanalysis.json
+[2026-05-12 10:20:06 UTC] [INFO    ] Key output:       results/step008_fitting_results.json
+[2026-05-12 10:20:06 UTC] [INFO    ] Key output:       results/step036_final_report.json
+[2026-05-12 10:20:06 UTC] [INFO    ] Key figure:       results/step007_figure1_altitude_anomaly.png
+[2026-05-12 10:20:06 UTC] [INFO    ] 
+[2026-05-12 10:20:06 UTC] [SUCCESS ] ✓ PIPELINE COMPLETED SUCCESSFULLY

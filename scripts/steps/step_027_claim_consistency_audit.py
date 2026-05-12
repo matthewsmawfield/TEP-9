@@ -61,7 +61,7 @@ class ClaimConsistencyAuditor:
         beta_initial = BETA_BASELINE * 1e-4  # Default from physics.py
         if step_007.exists():
             content = step_007.read_text()
-            match = re.search(r'BETA_INITIAL\s*=\s*([\d.e-]+)', content)
+            match = re.search(r'^[ \t]*BETA_INITIAL\s*=\s*([\d.e-]+)', content, re.MULTILINE)
             if match:
                 beta_initial = float(match.group(1))
         

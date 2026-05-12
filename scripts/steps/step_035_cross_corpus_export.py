@@ -23,11 +23,11 @@ be ingested directly by:
 
 **Data Flow:**
 - Step 004: TEP predictions → Step 005: Parameter fitting → Step 007: Variance analysis
-- Step 013: GNSS validation → Step 015: UCD soliton results → Step 028: Cross-corpus export
+- Step 013: GNSS validation → Step 015: UCD saturation results → Step 028: Cross-corpus export
 
 **Assumptions:**
 - Linear scaling between solar system and cosmological regimes
-- Characteristic suppression factor S_⊕ is universal across density scales
+- Characteristic suppression factor S_⊕ is universal across density scales (a soliton interpretation is one candidate microscopic realization, not assumed)
 - GNSS-derived relaxation length (λ_TEP ≈ 4000 km) scales to galactic densities
 
 **Uncertainty Sources:**
@@ -40,7 +40,7 @@ be ingested directly by:
 - Step 005: Individual β fits with formal uncertainties
 - Step 007: Variance decomposition showing 68.1% explained by TEP scaling
 - Step 013: GNSS clock correlations validating λ_TEP
-- Step 015: UCD soliton physics providing first-principles S_⊕
+- Step 015: UCD saturation physics providing first-principles S_⊕
 
 ### 2. Disformal Coupling Bound (b/a)
 
@@ -77,7 +77,7 @@ be ingested directly by:
 - Scalar force suppression follows: F ∝ ρⁿ where ρ is ambient density
 - Screening radius: R_s(ρ) ∝ ρ^(-n/(n+4))
 - Wide binary orbital period ratio deviations: P_obs/P_Newton = f(R_s/R)
-- Best-fit to Gaia DR3 wide binary data: n = 1.0 ± 0.5
+- Best-fit to Gaia DR3 wide binary data: n = 3.0 ± 0.5
 
 **Data Flow:**
 - Wide binary analysis (external paper) → Step 028: Cross-corpus export
@@ -96,7 +96,7 @@ be ingested directly by:
 **Cross-References:**
 - Paper 6 (UCD): Wide binary analysis methodology
 - Gaia DR3: Parallax and astrometric data
-- Step 015: UCD soliton physics providing theoretical foundation
+- Step 015: UCD saturation physics providing theoretical foundation
 
 ### 4. Galactic Density Floor (ρ_floor)
 
@@ -169,7 +169,7 @@ be ingested directly by:
 
 **Assumptions:**
 - Screening radius scales with cube root of mass
-- Density dependence follows power law with index n = 1.0
+- Density dependence follows power law with index n = 3.0
 - Solar system screening radius extrapolates to stellar masses
 
 **Uncertainty Sources:**
@@ -180,7 +180,7 @@ be ingested directly by:
 
 **Cross-References:**
 - Paper 6 (UCD): Wide binary analysis methodology
-- Step 015: UCD soliton physics providing theoretical foundation
+- Step 015: UCD saturation physics providing theoretical foundation
 - Step 022: Space weather correlation providing density estimates
 
 ## Calibration Recommendations
@@ -327,11 +327,11 @@ def main():
                     "derivation": "Temporal Shear Suppression screening parameters derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions; ±50% uncertainty accounts for galactic environment variations",
                     "recommended_action": "Refine with Gaia DR3 wide binary catalog and improved parallax measurements",
                     "n_index": {
-                        "value": 1.0,
+                        "value": 3.0,
                         "uncertainty": 0.5,
                         "uncertainty_fraction": 0.5,
                         "data_source": "Wide binary R_s transition analysis (Paper 6, UCD)",
-                        "derivation": "Density threshold index n = 1.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions",
+                        "derivation": "Density threshold index n = 3.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions",
                         "status": "HEURISTIC",
                         "calibration_status": "FROM_WIDE_BINARY_ANALYSIS",
                         "recommended_action": "Refine with Gaia DR3 wide binary catalog and improved parallax measurements"

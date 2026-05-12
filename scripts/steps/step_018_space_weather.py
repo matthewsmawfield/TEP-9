@@ -178,7 +178,7 @@ class SpaceWeatherCorrelator:
             'status': 'preliminary',
             'calibration_status': 'theoretical_estimate_from_wide_binary_analysis',
             'data_source': 'Wide binary R_s transition analysis (Paper 6, UCD)',
-            'derivation': 'Temporal Shear Suppression index n = 1.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions',
+            'derivation': 'Temporal Shear Suppression index n = 3.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions',
             'recommended_action': 'Validate against independent galactic rotation curve analysis and GNSS calibration consistency check'
         }
         
@@ -190,11 +190,11 @@ class SpaceWeatherCorrelator:
                 'status': 'preliminary',
                 'calibration_status': 'theoretical_estimate_from_wide_binary_analysis',
                 'data_source': 'Wide binary R_s transition analysis (Paper 6, UCD)',
-                'derivation': 'Temporal Shear Suppression index n = 1.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions',
+                'derivation': 'Temporal Shear Suppression index n = 3.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions',
                 'recommended_action': 'Validate against independent galactic rotation curve analysis and GNSS calibration consistency check',
                 'observed_transition_au': wb_rs_au,
                 'inferred_galactic_rho_floor_g_cm3': wb_rho_floor_g_cm3,
-                'Temporal Shear Suppression_index_n': 1.0,
+                'Temporal Shear Suppression_index_n': 3.0,
                 'consistency': "EFA beta variance strongly correlates with local space weather proxy, confirming Temporal Shear Suppression screening is density-dependent as required by WB results."
             }
         }
@@ -270,7 +270,7 @@ def main():
             'status': 'preliminary',
             'calibration_status': 'theoretical_estimate_from_wide_binary_analysis',
             'data_source': 'Wide binary R_s transition analysis (Paper 6, UCD)',
-            'derivation': 'Wide binary concordance analysis; Temporal Shear Suppression index n = 1.0 represents power-law dependence of scalar force suppression on ambient density; ±50% uncertainty accounts for galactic environment variations',
+            'derivation': 'Wide binary concordance analysis; Temporal Shear Suppression index n = 3.0 represents power-law dependence of scalar force suppression on ambient density; ±50% uncertainty accounts for galactic environment variations',
             'recommended_action': 'Validate against independent galactic rotation curve analysis and GNSS calibration consistency check',
             **wb_data
         },

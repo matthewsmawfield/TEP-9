@@ -110,12 +110,12 @@ class SensitivityAnalyzer:
             },
             "characteristic_suppression": {
                 "value": 0.35,
-                "uncertainty_fraction": 0.15,
-                "uncertainty_absolute": 0.0525,
+                "uncertainty_fraction": 0.25,
+                "uncertainty_absolute": 0.0875,
                 "status": "empirical",
                 "calibration_status": "empirically_calibrated_from_GNSS_UCD",
-                "data_source": "UCD soliton formula with GNSS-derived ρ_T = 20 g/cm³",
-                "derivation": "S_⊕ = 0.349 is the characteristic suppression factor from UCD soliton model: R_sol = (3M/4πρ_T)^(1/3) ≈ 4146 km, S_⊕ = (R_earth - R_sol)/R_earth; ±15% uncertainty from GNSS calibration of ρ_T",
+                "data_source": "UCD saturation formula with GNSS-derived ρ_T = 20 g/cm³",
+                "derivation": "S_⊕ = 0.349 is the characteristic suppression factor from UCD saturation model: R_sol = (3M/4πρ_T)^(1/3) ≈ 4146 km, S_⊕ = (R_earth - R_sol)/R_earth; ~±25% uncertainty from ρ_T = 20 ± 8 g/cm³ (Paper 6 UCD), distinct from UCD embedding factor S = R_sol/R_earth ≈ 0.65",
                 "recommended_action": "Validate against independent geophysical measurements of field gradients"
             },
             "disformal_coupling": {
@@ -393,7 +393,9 @@ class SensitivityAnalyzer:
 
         for name, info in obs_flybys.items():
             if info["dv_pred"] != 0:
-                beta_fit = 1e-4 * info["dv_obs"] / info["dv_pred"] if info["dv_pred"] != 0 else 0.0
+                # TEP scaling: dv ∝ β^(3/4)  →  β = β_ref * (dv_obs / dv_pred)^(4/3)
+                ratio = info["dv_obs"] / info["dv_pred"]
+                beta_fit = 1e-4 * (abs(ratio) ** (4.0 / 3.0)) * (1.0 if ratio >= 0 else -1.0)
                 fitted_betas.append(beta_fit)
                 altitudes.append(info["altitude_km"])
 
