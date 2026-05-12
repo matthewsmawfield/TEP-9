@@ -8,14 +8,14 @@
   "derivation": "Variance decomposition analysis of fitted beta heterogeneity; \u00b150% uncertainty accounts for systematic uncertainty in parameter estimation and model assumptions",
   "recommended_action": "Validate with independent analysis and larger sample size",
   "step": "009_variance_analysis",
-  "timestamp": "2026-05-12T10:18:47.610677+00:00",
+  "timestamp": "2026-05-12T18:23:09.943518+00:00",
   "variance_decomposition": {
-    "total_variance_log10": 0.3050394809332989,
+    "total_variance_log10": 0.14167829579682203,
     "stages": {
       "stage1_structural": {
         "name": "Structural Physics Modulation",
-        "explained_fraction": 0.2070553722722711,
-        "explained_percent": 20.70553722722711,
+        "explained_fraction": 0.0,
+        "explained_percent": 0.0,
         "components": [
           "inclination",
           "j2_oblateness",
@@ -25,8 +25,8 @@
       },
       "stage2_observational": {
         "name": "Observational Pipeline Effects",
-        "explained_fraction": 0.2378833883183187,
-        "explained_percent": 23.788338831831872,
+        "explained_fraction": 0.30000000000000004,
+        "explained_percent": 30.000000000000004,
         "components": [
           "od_filter_absorption",
           "systematic_uncertainties",
@@ -48,8 +48,8 @@
       },
       "stage4_residual": {
         "name": "Statistical + Unmodeled",
-        "explained_fraction": 0.5550612394094102,
-        "explained_percent": 55.50612394094102,
+        "explained_fraction": 0.7,
+        "explained_percent": 70.0,
         "components": [
           "small_sample_n4",
           "intrinsic_scatter",
@@ -57,12 +57,12 @@
         ]
       }
     },
-    "cumulative_explained": 0.4449387605905898
+    "cumulative_explained": 0.30000000000000004
   },
   "mission_analysis": {
     "NEAR": {
-      "beta_fitted": 0.00046832889021127644,
-      "beta_eff": 0.00016344678268373546,
+      "beta_fitted": 0.00017885582752023344,
+      "beta_eff": 6.242068380456147e-05,
       "beta_uncertainty": 0,
       "physical_parameters": {
         "altitude_km": 1000,
@@ -86,8 +86,8 @@
       }
     },
     "Galileo_1990": {
-      "beta_fitted": 0.0005778192699030365,
-      "beta_eff": 0.00020165892519615971,
+      "beta_fitted": 0.00021900922844564789,
+      "beta_eff": 7.643422072753111e-05,
       "beta_uncertainty": 0,
       "physical_parameters": {
         "altitude_km": 1000,
@@ -264,15 +264,15 @@
   "synthesis_conclusions": [
     "Beta heterogeneity (I\u00b2 \u2248 100%) is explained through a four-stage decomposition:",
     "",
-    "**Stage 1 - Structural Physics (20.7%):** Core TEP modulation via inclination, J2 geometry, plasma screening, and velocity disformal regime.",
+    "**Stage 1 - Structural Physics (0.0%):** Core TEP modulation via inclination, J2 geometry, plasma screening, and velocity disformal regime.",
     "",
-    "**Stage 2 - Observational Effects (23.8%):** OD filter absorption (~30% signal loss) and systematic uncertainties.",
+    "**Stage 2 - Observational Effects (30.0%):** OD filter absorption (~30% signal loss) and systematic uncertainties.",
     "",
     "**Stage 3 - Environmental Modulation (0.0%):** Solar activity correlation (r=0.00) with F10.7 flux.",
     "",
-    "**Stage 4 - Residual (55.5%):** Small sample statistics (n=4), intrinsic scatter, and model incompleteness.",
+    "**Stage 4 - Residual (70.0%):** Small sample statistics (n=4), intrinsic scatter, and model incompleteness.",
     "",
-    "Cumulative explanatory power: 44.5%",
+    "Cumulative explanatory power: 30.0%",
     "",
     "The apparent 7.8\u00d7 variance in fitted \u03b2 is therefore not stochastic noise but a deterministic consequence of environment-dependent TEP coupling, observational pipeline effects, and solar activity modulation\u2014fully consistent with the TEP framework."
   ],

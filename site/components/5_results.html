@@ -36,23 +36,23 @@
         <tr>
             <td>NEAR</td>
             <td>1998-01-23</td>
-            <td>4.24</td>
+            <td>8.70</td>
             <td>13.46</td>
-            <td>$4.67 \times 10^{-4}$</td>
-            <td>$4.63 \times 10^{-7}$</td>
-            <td>$1.63 \times 10^{-4}$</td>
-            <td>$5.31 \times 10^{-8}$</td>
+            <td>$1.79 \times 10^{-4}$</td>
+            <td>$1.77 \times 10^{-7}$</td>
+            <td>$6.24 \times 10^{-5}$</td>
+            <td>$7.79 \times 10^{-9}$</td>
             <td>✓</td>
         </tr>
         <tr>
             <td>Galileo</td>
             <td>1990-12-08</td>
-            <td>1.05</td>
+            <td>2.18</td>
             <td>3.92</td>
-            <td>$5.76 \times 10^{-4}$</td>
-            <td>$5.88 \times 10^{-6}$</td>
-            <td>$2.01 \times 10^{-4}$</td>
-            <td>$8.08 \times 10^{-8}$</td>
+            <td>$2.19 \times 10^{-4}$</td>
+            <td>$2.23 \times 10^{-6}$</td>
+            <td>$7.64 \times 10^{-5}$</td>
+            <td>$1.17 \times 10^{-8}$</td>
             <td>✓</td>
         </tr>
         <tr>
@@ -71,22 +71,22 @@
             <td>1999-08-18</td>
             <td>0.32</td>
             <td>0.11</td>
-            <td>$2.40 \times 10^{-5}$</td>
-            <td>$1.45 \times 10^{-5}$</td>
-            <td>$8.38 \times 10^{-6}$</td>
-            <td>$1.40 \times 10^{-10}$</td>
+            <td>$2.41 \times 10^{-5}$</td>
+            <td>$1.46 \times 10^{-5}$</td>
+            <td>$8.41 \times 10^{-6}$</td>
+            <td>$1.41 \times 10^{-10}$</td>
             <td>✓</td>
         </tr>
     </tbody>
 </table>
 
 <p>
-    The fitted $β$ values span a factor of 24.0 ($2.40 \times 10^{-5}$ to
-    $5.76 \times 10^{-4}$), consistent with geometry-dependent modulation.
-    The ensemble weighted mean is $β = 4.64 \times 10^{-4} \pm 2.32 \times 10^{-5}$ (5% uncertainty).
+    The fitted $β$ values span a factor of 9.1 ($2.41 \times 10^{-5}$ to
+    $2.19 \times 10^{-4}$), consistent with geometry-dependent modulation.
+    The ensemble weighted mean is $β = 1.79 \times 10^{-4} \pm 2.55 \times 10^{-6}$ (1.4% formal uncertainty).
     Cross-validation confirms model stability
-    (stability coefficient 0.21). The residuals follow a normal distribution
-    ($p = 0.45$, Shapiro-Wilk).
+    (stability coefficient 0.04). The residuals follow a normal distribution
+    ($p = 0.85$, Shapiro-Wilk).
 </p>
 
 <h2>4.1.1 Cassini Cancellation Regime Component Analysis</h2>
@@ -214,7 +214,7 @@
 <h3>4.2.2 MCMC Hierarchical Inference</h3>
 
 <p>
-    The four-parameter hierarchical Bayesian model ($\beta_0$, $b_{\text{disf}}$, $\sigma$, $\alpha_{\text{res}}$) is sampled via MCMC using empirically calibrated priors centered on the step008 weighted mean ($\beta_0 \sim \text{LogNormal}(\ln(4.6 \times 10^{-4}), 1.5)$). The pre-computed gradient and disformal components from step007 contain the full perigee physics; the likelihood only scales by the inferred universal couplings, with any residual modulation captured by $\alpha_{\text{res}}$.
+    The four-parameter hierarchical Bayesian model ($\beta_0$, $b_{\text{disf}}$, $\sigma$, $\alpha_{\text{res}}$) is sampled via MCMC using empirically calibrated priors centered near the current step008 weighted mean ($\beta_0 \sim \text{LogNormal}(\ln(1.8 \times 10^{-4}), 1.5)$). The pre-computed gradient and disformal components from step007 contain the full perigee physics; the likelihood only scales by the inferred universal couplings, with any residual modulation captured by $\alpha_{\text{res}}$.
 </p>
 
 <p>
@@ -222,14 +222,14 @@
 </p>
 
 <ul>
-    <li>$\beta_0 = 3.08 \times 10^{-4} \pm 1.47 \times 10^{-4}$ (16th–84th: $2.22$–$4.43 \times 10^{-4}$)</li>
-    <li>$b_{\text{disf}} = 0.049 \pm 0.058$ (consistent with the theoretical value 0.05)</li>
-    <li>$\sigma = 1.69 \pm 0.75$ mm/s (flyby-to-flyby scatter)</li>
-    <li>$\alpha_{\text{res}} = -0.032 \pm 0.292$ (consistent with zero)</li>
+    <li>$\beta_0 = 1.66 \times 10^{-4} \pm 1.24 \times 10^{-4}$ (16th–84th: $1.11$–$2.62 \times 10^{-4}$)</li>
+    <li>$b_{\text{disf}} = 0.059 \pm 0.030$ (consistent with the theoretical value 0.05)</li>
+    <li>$\sigma = 0.59 \pm 0.37$ mm/s (flyby-to-flyby scatter)</li>
+    <li>$\alpha_{\text{res}} = -0.039 \pm 0.305$ (consistent with zero)</li>
 </ul>
 
 <p>
-    The residual geometry modulation $\alpha_{\text{res}}$ is consistent with zero, indicating that the step007 component physics (altitude, J2, asymmetry, velocity) is sufficient and no additional residual modulation is required. The posterior predictive checks show the model captures NEAR and Galileo 1990 well, but overpredicts Rosetta 2005 by 2.88 mm/s, suggesting that mission-specific systematic effects (plasma screening, OD absorption, or trajectory reconstruction uncertainty) remain incompletely modeled for that flyby.
+    The residual geometry modulation $\alpha_{\text{res}}$ is consistent with zero, indicating that the step007 component physics (altitude, J2, asymmetry, velocity) captures the dominant geometry dependence. The posterior predictive checks show the model captures NEAR closely and leaves sub-mm/s residuals for Galileo 1990, Cassini, and Rosetta 2005, suggesting that remaining mission-specific systematic effects are smaller than in the earlier calibration but still relevant at the precision of the published anomalies.
 </p>
 
 <table class="data-table">
@@ -248,38 +248,38 @@
         <tr>
             <td>NEAR</td>
             <td>13.46</td>
-            <td>$12.35 \pm 1.87$</td>
-            <td>$+1.11$</td>
+            <td>$13.48 \pm 0.76$</td>
+            <td>$-0.02$</td>
         </tr>
         <tr>
             <td>Galileo 1990</td>
             <td>3.92</td>
-            <td>$3.07 \pm 0.46$</td>
-            <td>$+0.85$</td>
+            <td>$3.37 \pm 0.19$</td>
+            <td>$+0.55$</td>
         </tr>
         <tr>
             <td>Cassini</td>
             <td>0.11</td>
-            <td>$-0.28 \pm 0.75$</td>
-            <td>$+0.39$</td>
+            <td>$0.62 \pm 0.30$</td>
+            <td>$-0.51$</td>
         </tr>
         <tr>
             <td>Rosetta 2005</td>
             <td>1.82</td>
-            <td>$4.70 \pm 0.71$</td>
-            <td>$-2.88$</td>
+            <td>$2.27 \pm 0.53$</td>
+            <td>$-0.45$</td>
         </tr>
     </tbody>
 </table>
 
 <p>
-    The posterior median $\beta_0 = 3.08 \times 10^{-4}$ lies between the theoretical reference ($10^{-4}$) and the step008 weighted mean ($4.64 \times 10^{-4}$), reflecting a compromise between the prior and the data. The factor-of-3.1 discrepancy between theoretical and inferred $\beta_0$ is naturally explained by the geometry-dependent coupling: the theoretical value assumes unity geometry factor, while the median observed geometry factor is $G_{\text{eff}} \approx 2.24$.
+    The posterior median $\beta_0 = 1.66 \times 10^{-4}$ lies between the theoretical reference ($10^{-4}$) and the step008 weighted mean ($1.79 \times 10^{-4}$), reflecting a compromise between the prior and the data. The factor-of-1.7 discrepancy between theoretical and inferred $\beta_0$ is naturally explained by the geometry-dependent coupling: the theoretical value assumes unity geometry factor, while the median observed geometry factor is $G_{\text{eff}} \approx 2.24$.
 </p>
 
 <h2>4.3 Variance Decomposition Analysis</h2>
 
 <p>
-    The four-stage variance decomposition quantifies the contribution of each deterministic factor to the total heterogeneity in fitted β values. The total variance in log₁₀(β) is 0.305 dex². The decomposition reveals that structural physics modulation (altitude, J2, asymmetry, velocity) explains 20.7% of the variance, observational pipeline effects (OD filter absorption, systematic uncertainties) explain 0.0%, environmental modulation (solar activity, space weather) contributes 0.0% (no significant F10.7 correlation detected), and the residual (small-sample statistics, intrinsic scatter, model incompleteness) accounts for 79.3%. The dominant residual fraction reflects the n = 4 detection sample and incomplete modeling of mission-specific plasma screening; geometry-dependent structural modulation is the sole detectable source of deterministic variance.
+    The four-stage variance decomposition quantifies the contribution of each deterministic factor to the total heterogeneity in fitted β values. The total variance in log₁₀(β) is 0.142 dex². In the current run, the structural proxy bundle accounts for 0.0% of this variance, observational pipeline effects (OD filter absorption and systematic uncertainties) account for 30.0%, environmental modulation contributes 0.0% (no significant F10.7 correlation detected), and the residual (small-sample statistics, intrinsic scatter, model incompleteness) accounts for 70.0%. The dominant residual fraction reflects the n = 4 detection sample and incomplete modeling of mission-specific plasma screening.
 </p>
 
 <h2>4.4 Disformal Transition Criterion Results</h2>
@@ -326,13 +326,13 @@
             <td>TEP Restricted ($M_{\rm T}^{\rm res}$)</td>
             <td>1 ($\beta$)</td>
             <td>$\lambda_{\rm TEP} \approx 4000$ km (GNSS Step 016); $S_\oplus \approx 0.35$ (UCD Step 010); $v_{\rm trans} \approx 16.8$ km/s (field equations); geometry from JPL Horizons</td>
-            <td>$\Delta v = \beta \times dv_{\rm pred}^{\rm base}$. All physics except the coupling amplitude is pre-specified from independent data or first principles.</td>
+            <td>$\Delta v = dv_{\rm pred}^{\rm base}(\beta/\beta_{\rm ref})^{3/4}$. All physics except the coupling amplitude is pre-specified from independent data or first principles.</td>
         </tr>
         <tr>
             <td>TEP Flexible ($M_{\rm T}^{\rm flex}$)</td>
             <td>3 ($\beta$, $b_{\rm disf}$, offset)</td>
             <td>Same pre-specified quantities as restricted</td>
-            <td>$\Delta v = \beta \, dv_{\rm grad} + b_{\rm disf} \, dv_{\rm disf} + \text{offset}$. Allows disformal amplitude and residual modulation (plasma, OD) to vary freely.</td>
+            <td>$\Delta v = (\beta/\beta_{\rm ref})^{3/4}(dv_{\rm grad} + b_{\rm disf} \, dv_{\rm disf}) + \text{offset}$. Allows disformal amplitude and residual modulation (plasma, OD) to vary freely.</td>
         </tr>
     </tbody>
 </table>
@@ -345,9 +345,9 @@
 
 <ul>
     <li><strong>Null:</strong> log L = -16.04, AIC = 32.1, BIC = 32.1</li>
-    <li><strong>Anderson:</strong> log L = -9.84, AIC = 23.7, BIC = 22.5</li>
-    <li><strong>TEP restricted:</strong> log L = -9.35, AIC = 20.7, BIC = 20.1</li>
-    <li><strong>TEP flexible:</strong> log L = -9.26, AIC = 24.5, BIC = 22.7</li>
+    <li><strong>Anderson:</strong> log L = -9.85, AIC = 23.7, BIC = 22.5</li>
+    <li><strong>TEP restricted:</strong> log L = -9.01, AIC = 20.0, BIC = 19.4</li>
+    <li><strong>TEP flexible:</strong> log L = -9.00, AIC = 24.0, BIC = 22.2</li>
 </ul>
 
 <h3>4.5.3 Bayes Factors</h3>
@@ -357,22 +357,22 @@
 </p>
 
 <ul>
-    <li><strong>Anderson vs Null:</strong> $B_{A0} = 121.7$ ($\Delta$BIC = 9.6)</li>
-    <li><strong>TEP restricted vs Null:</strong> $B_{10} = 400.9$ ($\Delta$BIC = 12.0) — <em>strong evidence</em></li>
-    <li><strong>TEP flexible vs Null:</strong> $B_{f0} = 109.9$ ($\Delta$BIC = 9.4)</li>
-    <li><strong>TEP restricted vs Anderson:</strong> $B = 3.3$ ($\Delta$BIC = 2.4) — <em>positive evidence</em></li>
+    <li><strong>Anderson vs Null:</strong> $B_{A0} = 121.6$ ($\Delta$BIC = 9.6)</li>
+    <li><strong>TEP restricted vs Null:</strong> $B_{10} = 567.5$ ($\Delta$BIC = 12.7) — <em>strong evidence</em></li>
+    <li><strong>TEP flexible vs Null:</strong> $B_{f0} = 143.1$ ($\Delta$BIC = 9.9)</li>
+    <li><strong>TEP restricted vs Anderson:</strong> $B = 4.7$ ($\Delta$BIC = 3.1) — <em>positive evidence</em></li>
 </ul>
 
 <p>
-    <strong>Interpretation.</strong> The TEP restricted model yields the strongest evidence against the Null, with $B_{10} = 400.9$ exceeding the $B > 10$ threshold for strong evidence (Kass & Raftery 1995). The Anderson empirical model also shows strong evidence against the Null ($B_{A0} = 121.7$), demonstrating that the trajectory asymmetry alone carries signal. Direct comparison of TEP restricted against Anderson gives $B = 3.3$, indicating positive but not decisive preference for the physics-based restricted model. The TEP flexible model, despite its extra freedom, is penalized by its larger parameter count and does not outperform the restricted model.
+    <strong>Interpretation.</strong> The TEP restricted model yields the strongest evidence against the Null, with $B_{10} = 567.5$ exceeding the $B > 10$ threshold for strong evidence (Kass & Raftery 1995). The Anderson empirical model also shows strong evidence against the Null ($B_{A0} = 121.6$), demonstrating that the trajectory asymmetry alone carries signal. Direct comparison of TEP restricted against Anderson gives $B = 4.7$, indicating positive but not decisive preference for the physics-based restricted model. The TEP flexible model, despite its extra freedom, is penalized by its larger parameter count and does not outperform the restricted model.
 </p>
 
 <p>
-    <strong>Akaike weights</strong> (TEP restricted, Anderson, Null): TEP restricted 98.9%, Anderson 0.1%, Null 0.9%.
+    <strong>Akaike weights</strong> (TEP restricted, Anderson, Null): TEP restricted 99.2%, Anderson 0.1%, Null 0.6%.
 </p>
 
 <p>
-    The restricted model is the scientifically important tier because every quantity except $\beta$ is pre-specified from independent measurements or first-principles theory. The Bayes factor $B_{10} = 400.9$ therefore reflects genuine predictive power, not parameter-fitting advantage.
+    The restricted model is the scientifically important tier because every quantity except $\beta$ is pre-specified from independent measurements or first-principles theory. The Bayes factor $B_{10} = 567.5$ therefore reflects genuine predictive power, not parameter-fitting advantage.
 </p>
 
 <div class="key-concept">
@@ -397,7 +397,7 @@
 
 <p>
     All fitted $β$ values satisfy the Cassini PPN bound ($|γ - 1| < 2.3
-    \times 10^{-5}$). The ensemble weighted mean yields $β = 4.64 \times 10^{-4} \pm 2.32 \times 10^{-5}$ (5% uncertainty), corresponding to $|γ - 1| = 5.27 \times 10^{-8}$. The corrected Earth-screened PPN estimates remain below the Cassini bound by factors of roughly $3 \times 10^{2}$ to $10^{5}$, and the solar-screened estimate remains below by a factor exceeding 30 (Section 4.6.1a), depending on flyby. This confirms the robustness of Temporal Topology screening in both terrestrial and solar environments.
+    \times 10^{-5}$). The ensemble weighted mean yields $β = 1.79 \times 10^{-4} \pm 2.55 \times 10^{-6}$ (1.4% formal uncertainty), corresponding to $|γ - 1| = 7.80 \times 10^{-9}$. The corrected Earth-screened PPN estimates remain below the Cassini bound by factors of roughly $2 \times 10^{3}$ to $10^{5}$, and the solar-screened estimate remains below by a factor exceeding 30 (Section 4.6.1a), depending on flyby. This confirms the robustness of Temporal Topology screening in both terrestrial and solar environments.
 </p>
 
 <h2>4.6 PPN Constraints and Validation</h2>
@@ -479,7 +479,7 @@
 </div>
 
 <p>
-    Using the largest fitted $\beta$ (Galileo 1990, $\beta = 5.76\times 10^{-4}$):
+    Using the largest fitted $\beta$ (Galileo 1990, $\beta = 2.19\times 10^{-4}$):
 </p>
 
 <ul>
@@ -689,7 +689,7 @@
 </p>
 
 <p>
-    <strong>Juno tension:</strong> The Juno non-detection (predicted post-OD 0.81 ± 0.35 mm/s, observed
+    <strong>Juno tension:</strong> The Juno non-detection (predicted post-OD 0.40 ± 0.17 mm/s, observed
     0.00 ± 0.02 mm/s) is the most serious tension: even with conservative OD
     suppression, the predicted signal exceeds the noise floor by more than
     20σ. This is not explained by the current OD-suppressed model and
@@ -718,42 +718,42 @@
     <tbody>
         <tr>
             <td>None (full sample)</td>
-            <td>4.64×10⁻⁴</td>
+            <td>1.79×10⁻⁴</td>
             <td>✓ Yes</td>
             <td>—</td>
         </tr>
         <tr>
             <td>NEAR (1998)</td>
-            <td>2.66×10⁻⁴</td>
+            <td>1.95×10⁻⁴</td>
             <td>✓ Yes</td>
-            <td>−43%</td>
+            <td>+8.9%</td>
         </tr>
         <tr>
             <td>Galileo (1990)</td>
-            <td>4.63×10⁻⁴</td>
+            <td>1.79×10⁻⁴</td>
             <td>✓ Yes</td>
-            <td>−0.2%</td>
+            <td>−0.1%</td>
         </tr>
         <tr>
             <td>Cassini (1999)</td>
-            <td>4.64×10⁻⁴</td>
+            <td>1.79×10⁻⁴</td>
             <td>✓ Yes</td>
             <td>0.0%</td>
         </tr>
         <tr>
             <td>Rosetta (2005)</td>
-            <td>4.67×10⁻⁴</td>
+            <td>1.79×10⁻⁴</td>
             <td>✓ Yes</td>
-            <td>+0.6%</td>
+            <td>+0.1%</td>
         </tr>
     </tbody>
 </table>
 
 <p>
     The stability coefficient (relative standard deviation of LOO estimates
-    divided by their mean) is 0.21, indicating robustness (values < 0.5 are
+    divided by their mean) is 0.04, indicating robustness (values < 0.5 are
     considered robust). Even when the high-S/N NEAR detection is excluded, the
-    remaining three flybys yield β = 2.66×10⁻⁴, which is within the 95% confidence
+    remaining three flybys yield β = 1.95×10⁻⁴, which is within the 95% confidence
     interval and still PPN-compliant. This indicates that the TEP conclusion
     does not depend on any single detection.
 </p>
@@ -789,17 +789,17 @@
 </p>
 
 <p>
-    <strong>Bayesian model comparison:</strong> Stable four-tier model comparison (Step 026) strongly favors the TEP restricted model over alternatives. See Section 4.5 for the complete tier definitions. The comparison yields: TEP restricted vs Null Bayes factor B₁₀ = 400.9 (ΔBIC = 12.0, strong evidence); TEP restricted vs Anderson empirical B = 3.3 (ΔBIC = 2.4, positive evidence); Akaike weight 98.9% for TEP restricted. These results confirm that the physics-based restricted model, with only β fitted and all geometry pre-specified from independent data, outperforms both the Null and the trajectory-asymmetry empirical baseline.
+    <strong>Bayesian model comparison:</strong> Stable four-tier model comparison (Step 026) strongly favors the TEP restricted model over alternatives. See Section 4.5 for the complete tier definitions. The comparison yields: TEP restricted vs Null Bayes factor B₁₀ = 567.5 (ΔBIC = 12.7, strong evidence); TEP restricted vs Anderson empirical B = 4.7 (ΔBIC = 3.1, positive evidence); Akaike weight 99.2% for TEP restricted. These results confirm that the physics-based restricted model, with only β fitted and all geometry pre-specified from independent data, outperforms both the Null and the trajectory-asymmetry empirical baseline.
 </p>
 
 <p>
     <strong>Prediction accuracy:</strong> The TEP scalar force model achieves
-    $R² = 0.8904$ and correlation $\rho = 0.9602$ between predicted and observed anomalies, driven primarily by NEAR's large variance contribution.  The mean absolute error is MAE = 1.20 mm/s, and the mean absolute percentage error is MAPE = 254%.  The high $R²$ reflects the model's ability to capture the rank ordering and variance structure across flybys, while the elevated MAPE indicates that percentage residuals remain substantial for individual predictions (particularly Cassini and Rosetta 2005).
+    $R² = 0.9917$ and correlation $\rho = 0.9964$ between predicted and observed anomalies, driven primarily by NEAR's large variance contribution. The mean absolute error is MAE = 0.40 mm/s, and the mean absolute percentage error is MAPE = 100.0%. The high $R²$ reflects the model's ability to capture the rank ordering and variance structure across flybys, while the elevated MAPE indicates that percentage residuals remain substantial for individual predictions with small observed anomalies, particularly Cassini.
 </p>
 
 <p>
     <strong>Residual analysis:</strong> Shapiro-Wilk normality test on the
-    prediction residuals yields $p = 0.45$, indicating the residuals are
+    prediction residuals yields $p = 0.85$, indicating the residuals are
     consistent with a normal distribution. This suggests no systematic unmodeled
     structure remains in the residuals, supporting the adequacy of the scalar
     force model with J2/J3 multipoles and trajectory asymmetry.
@@ -855,14 +855,14 @@
 </ul>
 
 <p>
-    <strong>Interpretation:</strong> The total relative uncertainty of 83.3% is dominated by heterogeneity (77.9%), which reflects genuine geometry-dependent physical variation in the effective coupling across flybys. This is expected in the TEP framework where $\beta_{\rm eff}$ varies with altitude, latitude, velocity, and trajectory asymmetry. The systematic uncertainty (29.2%) is dominated by characteristic suppression uncertainty (25.0%) from the UCD saturation model (ρ_T = 20 ± 8 g/cm³, Paper 6), with relaxation length uncertainty (15.0%) from the SCF theoretical prior as the second-largest source. This reflects genuine physical uncertainty in the Temporal Topology screening mechanism, not a bookkeeping artifact. Even with this uncertainty, all fitted $\beta$ values remain PPN-compliant by wide margins.
+    <strong>Interpretation:</strong> The total relative uncertainty of 83.3% is dominated by heterogeneity (77.9%), which reflects genuine geometry-dependent physical variation in the effective coupling across flybys. This is expected in the TEP framework where $\beta_{\rm eff}$ varies with altitude, latitude, velocity, and trajectory asymmetry. The systematic uncertainty (29.2%) is dominated by characteristic suppression uncertainty (25.0%) from the UCD saturation model (ρ_T = 20 ± 8 g/cm³, Paper 6), with relaxation length uncertainty (15.0%) from the SCF theoretical prior as the second-largest source. Even with this uncertainty, all fitted $\beta$ values remain PPN-compliant by wide margins.
 </p>
 
 <h2>4.7 Model Predictions for All Flybys</h2>
 
 <p>
     Table 4 presents the full prediction set evaluated at the universal
-    weighted-mean coupling constant ($\beta = 4.64 \times 10^{-4}$), scaled
+    weighted-mean coupling constant ($\beta = 1.79 \times 10^{-4}$), scaled
     from the reference predictions ($\beta_0 = 10^{-4}$) via the $3/4$ power
     law established in Step 008. Each row reports the raw TEP prediction, the
     OD survival factor $F_{\rm OD}$ from Step 021, and the post-OD
@@ -896,9 +896,9 @@
             <td>568</td>
             <td>$+0.625$</td>
             <td>$+13.46 \pm 0.01$</td>
-            <td>$+13.38 \pm 0.50$</td>
+            <td>$+13.45 \pm 0.50$</td>
             <td>$0.85 \pm 0.15$</td>
-            <td>$+11.37 \pm 2.05$</td>
+            <td>$+11.43 \pm 2.08$</td>
             <td>True positive</td>
         </tr>
         <tr>
@@ -918,9 +918,9 @@
             <td>1969</td>
             <td>$+0.330$</td>
             <td>$+1.82 \pm 0.05$</td>
-            <td>$+5.06 \pm 0.19$</td>
+            <td>$+2.47 \pm 0.09$</td>
             <td>$0.50 \pm 0.25$</td>
-            <td>$+2.53 \pm 1.27$</td>
+            <td>$+1.24 \pm 0.62$</td>
             <td>True positive</td>
         </tr>
         <tr>
@@ -929,9 +929,9 @@
             <td>1197</td>
             <td>$-0.088$</td>
             <td>$+0.11 \pm 0.05$</td>
-            <td>$+1.01 \pm 0.04$</td>
+            <td>$+0.49 \pm 0.02$</td>
             <td>$0.85 \pm 0.15$</td>
-            <td>$+0.86 \pm 0.16$</td>
+            <td>$+0.42 \pm 0.08$</td>
             <td>True positive (marginal)</td>
         </tr>
         <tr>
@@ -940,9 +940,9 @@
             <td>310</td>
             <td>$+0.032$</td>
             <td>$0.00 \pm 0.05$</td>
-            <td>$+0.69 \pm 0.03$</td>
+            <td>$+0.33 \pm 0.02$</td>
             <td>$0.85 \pm 0.15$</td>
-            <td>$+0.58 \pm 0.11$</td>
+            <td>$+0.28 \pm 0.05$</td>
             <td>False negative</td>
         </tr>
         <tr>
@@ -951,9 +951,9 @@
             <td>2351</td>
             <td>$\approx 0$</td>
             <td>$0.00 \pm 0.05$</td>
-            <td>$+0.07 \pm 0.003$</td>
+            <td>$+0.04 \pm 0.002$</td>
             <td>$0.50 \pm 0.25$</td>
-            <td>$+0.04 \pm 0.02$</td>
+            <td>$+0.02 \pm 0.01$</td>
             <td>True null</td>
         </tr>
         <tr>
@@ -973,9 +973,9 @@
             <td>817</td>
             <td>$+0.069$</td>
             <td>$0.00 \pm 0.02$</td>
-            <td>$+1.16 \pm 0.04$</td>
+            <td>$+0.56 \pm 0.02$</td>
             <td>$0.70 \pm 0.30$</td>
-            <td>$+0.81 \pm 0.35$</td>
+            <td>$+0.40 \pm 0.17$</td>
             <td>False negative</td>
         </tr>
         <tr>
@@ -984,9 +984,9 @@
             <td>5430</td>
             <td>$+0.035$</td>
             <td>$0.02 \pm 0.05$</td>
-            <td>$+0.14 \pm 0.005$</td>
+            <td>$+0.07 \pm 0.003$</td>
             <td>$0.50 \pm 0.25$</td>
-            <td>$+0.07 \pm 0.04$</td>
+            <td>$+0.03 \pm 0.02$</td>
             <td>True null</td>
         </tr>
         <tr>
@@ -1040,8 +1040,8 @@
     <strong>Falsifiability criterion:</strong> The OD-suppression hypothesis
     is falsifiable. If the model predicts a detectable post-OD signal for a
     flyby but the observation is null, the escape hatch is broken. Table 4
-    identifies two such cases: Galileo 1992 (post-OD $0.58 \pm 0.11$ mm/s vs.
-    observed $0.00 \pm 0.05$ mm/s) and Juno (post-OD $0.81 \pm 0.35$ mm/s
+    identifies two such cases: Galileo 1992 (post-OD $0.28 \pm 0.05$ mm/s vs.
+    observed $0.00 \pm 0.05$ mm/s) and Juno (post-OD $0.40 \pm 0.17$ mm/s
     vs. observed $0.00 \pm 0.02$ mm/s). These false negatives demonstrate
     that OD suppression is <em>not</em> an all-purpose explanation for null
     results; the model makes testable predictions that sometimes fail, and
@@ -1053,10 +1053,10 @@
     predicts the sign of the four primary detections (including Cassini via
     disformal coupling) and correctly predicts null results for symmetric or
     high-altitude trajectories. The two false negatives are genuine model
-    tensions. Galileo 1992 has a small predicted signal ($0.58$ mm/s) that
+    tensions. Galileo 1992 has a small predicted signal ($0.28$ mm/s) that
     may be sensitive to higher-order multipole terms omitted in the J2-only
     approximation, but the model does not currently resolve this. Juno has a
-    larger predicted signal ($0.81$ mm/s) that remains unexplained. These
+    larger predicted signal ($0.40$ mm/s) that remains unexplained. These
     tensions are acknowledged openly because they are the only way to
     prevent OD suppression from becoming an unfalsifiable escape hatch.
 </p>
@@ -1065,9 +1065,9 @@
 
 <p>
     <strong>Heterogeneity assessment:</strong> The four fitted $\beta$ values
-    span a factor of 24.0. The residual scatter is dominated by
-    uncertainty in the characteristic suppression (75% of total variance per
-    step020 sensitivity analysis). The formal statistical heterogeneity is
+    span a factor of 9.1. The current variance decomposition assigns 30.0%
+    of the scatter to observational pipeline effects and 70.0% to residual
+    small-sample/model-incompleteness terms. The formal statistical heterogeneity is
     elevated because measurement uncertainties are at sub-percent level:
 </p>
 
@@ -1105,10 +1105,10 @@
         </tr>
         <tr>
             <td>$\beta$ range</td>
-            <td>$2.40 \times 10^{-5}$ – $5.76 \times 10^{-4}$</td>
+            <td>$2.41 \times 10^{-5}$ – $2.19 \times 10^{-4}$</td>
             <td>
-                Factor 24.0 (was $\sim 100\times$ in prior model; geometry
-                modulation explains ~70%)
+                Factor 9.1 (was $\sim 100\times$ in prior model; geometry
+                and pipeline modulation explain part of the scatter)
             </td>
         </tr>
         <tr>
@@ -1140,11 +1140,11 @@
 
 <ul>
     <li>
-        <em>Bootstrap mean:</em> $\beta = 4.07 \times 10^{-4}$ (estimated from
+        <em>Bootstrap mean:</em> $\beta = 1.79 \times 10^{-4}$ (estimated from
         geometry-corrected fits)
     </li>
     <li>
-        <em>Bootstrap standard deviation:</em> $\sigma = 1.13 \times 10^{-4}$
+        <em>Bootstrap standard deviation:</em> $\sigma = 2.22 \times 10^{-5}$
         (reflects geometry-dependent scatter)
     </li>
     <li>
@@ -1173,21 +1173,21 @@
         remaining 3)
     </li>
     <li>
-        <em>Exclude NEAR:</em> $\beta = 2.66 \times 10^{-4}$ (mean of remaining
+        <em>Exclude NEAR:</em> $\beta = 1.95 \times 10^{-4}$ (mean of remaining
         3)
     </li>
     <li>
-        <em>Exclude Rosetta 2005:</em> $\beta = 4.67 \times 10^{-4}$ (mean of
+        <em>Exclude Rosetta 2005:</em> $\beta = 1.79 \times 10^{-4}$ (mean of
         remaining 3)
     </li>
     <li>
-        <em>Exclude Cassini:</em> $\beta = 4.64 \times 10^{-4}$ (mean of
+        <em>Exclude Cassini:</em> $\beta = 1.79 \times 10^{-4}$ (mean of
         remaining 3)
     </li>
 </ul>
 
 <p>
-    The stability coefficient is 0.21, indicating robustness (values < 0.5 are
+    The stability coefficient is 0.04, indicating robustness (values < 0.5 are
     considered robust). All leave-one-out $\beta$ values satisfy PPN constraints
     ($|\gamma - 1| < 2.3 \times 10^{-5}$), indicating that the TEP viability
     conclusion does not depend on any single detection.
@@ -1216,13 +1216,13 @@
 </ul>
 
 <p>
-    NEAR and Galileo 1990 are strongly distinguishable from the null population ($d &gt; 0.8$).  Rosetta 2005 shows a medium effect, while Cassini — despite passing the S/N &gt; 2 threshold — has a negligible effect size ($d \ll 0.2$), reflecting its proximity to the null-population mean.  The wide spread in $d$ values is consistent with the 24-fold heterogeneity in fitted $\beta$ (coefficient of variation CV $\approx 0.79$ for the $\beta$ ensemble), confirming genuine geometry-dependent modulation rather than a single universal coupling.
+    NEAR and Galileo 1990 are strongly distinguishable from the null population ($d &gt; 0.8$).  Rosetta 2005 shows a medium effect, while Cassini — despite passing the S/N &gt; 2 threshold — has a negligible effect size ($d \ll 0.2$), reflecting its proximity to the null-population mean.  The wide spread in $d$ values is consistent with the 9.1-fold heterogeneity in fitted $\beta$ (coefficient of variation CV $\approx 0.54$ for the $\beta$ ensemble), confirming geometry-dependent modulation rather than a perfectly universal effective coupling.
 </p>
 
 <h2>4.9 Resolution of Beta Heterogeneity</h2>
 
 <p>
-    The 24.0-fold variance in fitted $\beta$ values is comprehensively explained
+    The 9.1-fold variance in fitted $\beta$ values is partially explained
     through a four-stage decomposition (Step 009). This unified analysis
     consolidates structural physics modulation, observational pipeline effects,
     environmental modulation, and statistical limitations into a coherent
@@ -1235,9 +1235,9 @@
 <p>
     <strong>Bayesian model comparison:</strong> Stable four-tier model comparison (Step 026) compares
     the Null, Anderson empirical, TEP restricted, and TEP flexible models. The Bayes factor for TEP restricted vs Null is
-    $B_{10} = 400.9$ (strong evidence per Kass & Raftery 1995), decisively favoring TEP. The Akaike weight
-    for TEP restricted is 98.9%. The Anderson empirical model (2 parameters, trajectory-asymmetry fit) also shows strong evidence vs Null ($B_{A0} = 121.7$),
-    confirming that trajectory asymmetry carries genuine signal, while direct comparison gives TEP restricted positive evidence over Anderson ($B = 3.3$).
+    $B_{10} = 567.5$ (strong evidence per Kass & Raftery 1995), decisively favoring TEP. The Akaike weight
+    for TEP restricted is 99.2%. The Anderson empirical model (2 parameters, trajectory-asymmetry fit) also shows strong evidence vs Null ($B_{A0} = 121.6$),
+    confirming that trajectory asymmetry carries genuine signal, while direct comparison gives TEP restricted positive evidence over Anderson ($B = 4.7$).
 </p>
 
 <p>
@@ -1357,7 +1357,7 @@
 
 <p>
     <strong>Model adequacy tests:</strong> Shapiro-Wilk test for normality of
-    standardized residuals yields p = 0.45, confirming normally
+    standardized residuals yields p = 0.85, confirming normally
     distributed residuals. The Breusch-Pagan test for heteroscedasticity yields
     p = 0.46, indicating homoscedastic variance. These tests validate the TEP
     model structure as statistically adequate.
@@ -1464,25 +1464,25 @@
             <td>NEAR</td>
             <td>0.984</td>
             <td>+0.17</td>
-            <td>+0.068</td>
-            <td>+0.9</td>
-            <td>811</td>
+            <td>+0.083</td>
+            <td>+1.1</td>
+            <td>964</td>
             <td><strong>YES</strong></td>
             <td>13.46</td>
-            <td>4.23</td>
-            <td><strong>3.18</strong></td>
+            <td>8.70</td>
+            <td><strong>1.55</strong></td>
         </tr>
         <tr>
             <td>Galileo 1990</td>
             <td>0.985</td>
             <td>−0.23</td>
-            <td>+0.146</td>
-            <td>+2.0</td>
-            <td>722</td>
+            <td>+0.161</td>
+            <td>+2.2</td>
+            <td>861</td>
             <td><strong>YES</strong></td>
             <td>3.92</td>
-            <td>1.05</td>
-            <td><strong>3.73</strong></td>
+            <td>2.18</td>
+            <td><strong>1.80</strong></td>
         </tr>
         <tr>
             <td>Cassini</td>
@@ -1490,7 +1490,7 @@
             <td>−0.33</td>
             <td>−0.994</td>
             <td>−18.7</td>
-            <td>350</td>
+            <td>322</td>
             <td>no</td>
             <td>0.11</td>
             <td>0.32</td>
@@ -1526,7 +1526,7 @@
             <td>−0.40</td>
             <td>−0.964</td>
             <td>−12.0</td>
-            <td>825</td>
+            <td>948</td>
             <td>no</td>
             <td>0.02</td>
             <td>0.05</td>
@@ -1653,17 +1653,17 @@
 </p>
 
 <p class="key-concept">
-    <strong>Both-aligned flag:</strong> Pearson r = +0.963, p ≈ 0.000 (n = 8)
+    <strong>Both-aligned flag:</strong> Pearson r = +0.853, p = 0.007 (n = 8)
     <br>
     <strong>Mann-Whitney U</strong> (aligned &gt; unaligned): U = 12, p = 0.036 (exact test)
 </p>
 
 <p>
     The two flybys where both velocity vectors align with the CMB dipole—
-    <strong>NEAR</strong> (ratio = 3.18) and <strong>Galileo 1990</strong>
-    (ratio = 3.73)—are exactly the two strongest anomalies in the sample.
+    <strong>NEAR</strong> (ratio = 1.55) and <strong>Galileo 1990</strong>
+    (ratio = 1.80)—are exactly the two strongest residual ratios in the sample.
     The six flybys where the alignment is not both-positive have ratios
-    averaging 0.32. The Mann-Whitney U test confirms that the aligned group
+    averaging 0.32. The Mann-Whitney U test indicates that the aligned group
     has systematically higher residuals than the unaligned group at the
     p = 0.036 level (exact test).
 </p>
@@ -1684,14 +1684,14 @@
 </p>
 
 <p>
-    The fitted coefficients are <em>b</em><sub>0</sub> = +1.52,
-    <em>b</em><sub>1</sub> = +1.75, <em>b</em><sub>2</sub> = +1.00,
-    <em>b</em><sub>3</sub> = +0.68. The model achieves
-    <em>R</em><sup>2</sup> = 0.688 and reduces the residual standard
-    deviation from 1.408 to 0.787, a 44.1% reduction. The adjusted
-    <em>R</em><sup>2</sup> = +0.45 indicates that even with <em>n</em> = 8
+    The fitted coefficients are <em>b</em><sub>0</sub> = +0.728,
+    <em>b</em><sub>1</sub> = +0.549, <em>b</em><sub>2</sub> = +0.455,
+    <em>b</em><sub>3</sub> = +0.472. The model achieves
+    <em>R</em><sup>2</sup> = 0.567 and reduces the residual standard
+    deviation from 0.686 to 0.452, a 34.2% reduction. The adjusted
+    <em>R</em><sup>2</sup> = +0.242 indicates that with <em>n</em> = 8
     and four parameters (including intercept), the model explains a
-    substantial fraction of the residual variance.
+    suggestive but not definitive fraction of the residual variance.
 </p>
 
 <table class="data-table">
@@ -1709,51 +1709,51 @@
     <tbody>
         <tr>
             <td>NEAR</td>
-            <td>3.18</td>
-            <td>2.84</td>
-            <td>+0.34</td>
+            <td>1.55</td>
+            <td>1.43</td>
+            <td>+0.12</td>
         </tr>
         <tr>
             <td>Galileo 1990</td>
-            <td>3.73</td>
-            <td>2.85</td>
-            <td>+0.87</td>
+            <td>1.80</td>
+            <td>1.34</td>
+            <td>+0.46</td>
         </tr>
         <tr>
             <td>Cassini</td>
             <td>0.34</td>
-            <td>−0.46</td>
-            <td>+0.80</td>
+            <td>0.11</td>
+            <td>+0.23</td>
         </tr>
         <tr>
             <td>Galileo 1992</td>
             <td>0.00</td>
-            <td>0.50</td>
-            <td>−0.50</td>
+            <td>0.33</td>
+            <td>−0.33</td>
         </tr>
         <tr>
             <td>Rosetta 2005</td>
             <td>1.14</td>
-            <td>0.96</td>
-            <td>+0.18</td>
+            <td>0.75</td>
+            <td>+0.39</td>
         </tr>
         <tr>
             <td>Rosetta 2007</td>
             <td>0.45</td>
-            <td>0.16</td>
-            <td>+0.29</td>
+            <td>0.22</td>
+            <td>+0.23</td>
         </tr>
         <tr>
             <td>MESSENGER 2005</td>
             <td>0.00</td>
-            <td>0.26</td>
-            <td>−0.26</td>
+            <td>0.08</td>
+            <td>−0.08</td>
         </tr>
         <tr>
             <td>Juno</td>
             <td>0.00</td>
-            <td>1.73</td>
-            <td>−1.73</td>
+            <td>1.02</td>
+            <td>−1.02</td>
         </tr>
     </tbody>
 </table>
@@ -1766,14 +1766,14 @@
     E = cos <em>θ</em><sub>SC-CMB</sub> + <em>w</em>
     (<strong>v</strong><sub>Earth</sub> · <strong>n</strong><sub>CMB</sub> / 30)
     and selecting the value that maximizes |<em>r</em>(E, ratio)|. The optimal
-    weight is <em>w</em> = 0.460, yielding:
+    weight is <em>w</em> = 0.580, yielding:
 </p>
 
 <p class="key-concept">
-    <strong>Optimal combination:</strong> E = cos <em>θ</em><sub>SC-CMB</sub> + 0.460
+    <strong>Optimal combination:</strong> E = cos <em>θ</em><sub>SC-CMB</sub> + 0.580
     (<strong>v</strong><sub>Earth</sub> · <strong>n</strong><sub>CMB</sub> / 30)
     <br>
-    Pearson <em>r</em> = +0.777, <em>p</em> = 0.023 (n = 8, significant at <em>p</em> &lt; 0.05)
+    Pearson <em>r</em> = +0.623, <em>p</em> = 0.099 (n = 8)
 </p>
 
 <p>
@@ -1785,38 +1785,38 @@
     by the geometric contribution of the disformal term to each prediction.
     For NEAR the disformal term is ~4% of the total prediction; for Cassini it
     dominates due to gradient-disformal cancellation. This geometric weighting
-    compresses the effective coefficient from ~2.2 to ~0.5.
+    compresses the effective coefficient from ~2.2 to ~0.6.
 </p>
 
 <h3>4.11.8 Interpretation</h3>
 
 <p>
     The cosmographic analysis reveals three converging pieces of evidence that
-    the flyby anomaly residual correlates with the CMB-frame velocity geometry:
+    the flyby anomaly residual is suggestively associated with the CMB-frame velocity geometry:
 </p>
 
 <ol>
-    <li><strong>Both-aligned directional consistency (r = +0.963, p ≈ 0.000):</strong>
+    <li><strong>Both-aligned directional consistency (r = +0.853, p = 0.007):</strong>
     When both the spacecraft velocity and Earth's orbital velocity point toward
     the CMB dipole apex, the anomaly is systematically enhanced. The two
     strongest anomalies (NEAR, Galileo 1990) are precisely the two both-aligned
     flybys. This is the directional signature expected from a velocity-dependent
     disformal coupling in the CMB rest frame.</li>
 
-    <li><strong>Optimal weighted combination (r = +0.777, p = 0.023):</strong>
+    <li><strong>Optimal weighted combination (r = +0.623, p = 0.099):</strong>
     A linear combination of the spacecraft and Earth CMB projections achieves
-    statistical significance at <em>p</em> &lt; 0.05. The multivariate regression
-    finds the Earth-CMB projection term has the largest coefficient
-    (+1.00), followed by the SC-CMB directional term (+1.75), with the
-    SC-orbital alignment term being smaller (+0.68). The optimal weighted
-    combination E = cos <em>θ</em><sub>SC-CMB</sub> + 0.460
+    a suggestive correlation that does not reach the conventional <em>p</em> &lt; 0.05 threshold. The multivariate regression
+    finds positive coefficients for all three geometry terms:
+    SC-CMB direction (+0.549), Earth-CMB projection (+0.455), and
+    SC-orbital alignment (+0.472). The optimal weighted
+    combination E = cos <em>θ</em><sub>SC-CMB</sub> + 0.580
     (<strong>v</strong><sub>Earth</sub> · <strong>n</strong><sub>CMB</sub> / 30)
     shows that the SC-CMB directional term carries unit weight while the Earth
-    term contributes at weight 0.460. Both models confirm that the Earth
+    term contributes at weight 0.580. Both models indicate that the Earth
     orbital velocity participates in the CMB-frame disformal coupling alongside
     the spacecraft velocity.</li>
 
-    <li><strong>Null CMB magnitude correlation (r = −0.010, p = 0.982):</strong>
+    <li><strong>CMB enhancement correlation (r = +0.295, p = 0.478):</strong>
     The total CMB-frame speed varies only by a factor of ~4 across the sample
     (350–1300), and the bulk of this variation comes from the nearly constant
     370 km/s CMB velocity, not from flyby-specific physics. The discriminating
@@ -1828,7 +1828,7 @@
 
 <p>
     The heliocentric distance and Earth orbital speed correlations are secondary
-    and not statistically significant at the <em>p</em> &lt; 0.10 level, consistent
+    and not statistically significant at the <em>p</em> &lt; 0.05 level, consistent
     with the TEP solar scalar topology model: the Sun's scalar field saturation
     radius (~0.002 AU) is far smaller than Earth's orbital radius, so the scalar
     topology at 1 AU is in the asymptotic 1/<em>r</em><sup>2</sup> regime with
@@ -1838,8 +1838,8 @@
 <p>
     <strong>Caveats:</strong> With <em>n</em> = 8 flybys, the statistical power
     is limited, though the multivariate regression achieves positive adjusted
-    <em>R</em><sup>2</sup> = +0.45. The both-aligned test, while extremely
-    significant (r = +0.963), is based on only two aligned and six unaligned
+    <em>R</em><sup>2</sup> = +0.242. The both-aligned test, while statistically
+    significant (r = +0.853), is based on only two aligned and six unaligned
     flybys; the exact Mann-Whitney U test (p = 0.036) provides a robust
     non-parametric confirmation. Future flybys with published anomaly
     detections—particularly those with 3D trajectory reconstructions and a range

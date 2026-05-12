@@ -1,64 +1,64 @@
 {
   "n_data": 4,
-  "systematic_uncertainty_mm_s": 3.7607560341467985,
+  "systematic_uncertainty_mm_s": 2.621229420933984,
   "log_likelihoods": {
-    "Null": -16.03997738109101,
-    "Anderson": -9.852818510737187,
-    "TEP_restricted": -9.005626185506928,
-    "TEP_flexible": -8.997108489362377
+    "Null": -22.07458552448187,
+    "Anderson": -9.338581256055036,
+    "TEP_restricted": -7.594937429563134,
+    "TEP_flexible": -7.577408987424427
   },
   "fitted_parameters": {
     "Anderson": {
-      "A": 17.624651729107654,
-      "B": 0.1482618542823442
+      "A": 17.62520390400674,
+      "B": 0.14822835345492427
     },
     "TEP_restricted": {
-      "beta": 0.00017891502787632717
+      "beta": 0.0001789152847748045
     },
     "TEP_flexible": {
-      "beta": 0.00015358991851978994,
-      "b_disf": 1.279214681794227,
-      "offset": -0.21040152068763016
+      "beta": 0.00015358866650281208,
+      "b_disf": 1.2792213810312805,
+      "offset": -0.21037079639766856
     }
   },
   "information_criteria": {
     "Null": {
-      "AIC": 32.07995476218202,
-      "AICc": 32.07995476218202,
-      "BIC": 32.07995476218202
+      "AIC": 44.14917104896374,
+      "AICc": 44.14917104896374,
+      "BIC": 44.14917104896374
     },
     "Anderson": {
-      "AIC": 23.705637021474374,
-      "AICc": 35.705637021474374,
-      "BIC": 22.478225743714155
+      "AIC": 22.677162512110073,
+      "AICc": 34.67716251211007,
+      "BIC": 21.449751234349854
     },
     "TEP_restricted": {
-      "AIC": 20.011252371013857,
-      "AICc": 22.011252371013857,
-      "BIC": 19.397546732133748
+      "AIC": 17.18987485912627,
+      "AICc": 19.18987485912627,
+      "BIC": 16.576169220246157
     },
     "TEP_flexible": {
-      "AIC": 23.994216978724754,
+      "AIC": 21.154817974848854,
       "AICc": Infinity,
-      "BIC": 22.153100062084427
+      "BIC": 19.313701058208526
     }
   },
   "bayes_factors": {
-    "Anderson_vs_Null": 121.61550981678452,
-    "TEP_restricted_vs_Null": 567.4791536498088,
-    "TEP_flexible_vs_Null": 143.0833532132359,
-    "TEP_restricted_vs_Anderson": 4.6661741952545706,
-    "delta_BIC_Anderson_vs_Null": 9.601729018467864,
-    "delta_BIC_TEP_restricted_vs_Null": 12.682408030048272,
-    "delta_BIC_TEP_flexible_vs_Null": 9.926854700097593,
-    "delta_BIC_TEP_restricted_vs_Anderson": 3.0806790115804077
+    "Anderson_vs_Null": 84940.80722600206,
+    "TEP_restricted_vs_Null": 971407.0965546308,
+    "TEP_flexible_vs_Null": 247146.11400274446,
+    "TEP_restricted_vs_Anderson": 11.436282845417367,
+    "delta_BIC_Anderson_vs_Null": 22.699419814613883,
+    "delta_BIC_TEP_restricted_vs_Null": 27.57300182871758,
+    "delta_BIC_TEP_flexible_vs_Null": 24.83546999075521,
+    "delta_BIC_TEP_restricted_vs_Anderson": 4.873582014103697
   },
   "model_selection": {
     "best_model_BIC": "TEP_restricted",
     "akaike_weights": {
-      "TEP_restricted": 0.9924840618948613,
-      "Null": 0.0064614888172272854,
-      "Anderson": 0.0010544492879114816
+      "TEP_restricted": 0.9995628987317825,
+      "Null": 3.801612300000075e-06,
+      "Anderson": 0.0004332996559173372
     },
     "interpretation": "BIC selects TEP_restricted model"
   },

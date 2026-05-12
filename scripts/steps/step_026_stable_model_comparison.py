@@ -186,7 +186,11 @@ class StableModelComparison:
         num = sum(fb['dv_obs'] * fb['dv_pred_base'] / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys)
         den = sum(fb['dv_pred_base']**2 / (fb['dv_unc']**2 + sigma_sys**2) for fb in flybys)
         x = (num / den) if den > 0 else 1.0
-        beta_fit = 1e-4 * (x ** (4.0 / 3.0)) if den > 0 else 1e-4
+        # beta is a positive coupling. A negative optimal scale means the
+        # restricted positive-beta model cannot follow the data's sign pattern,
+        # so choose the boundary-like smallest finite value instead of letting
+        # fractional powers create a complex beta.
+        beta_fit = 1e-12 if x <= 0 else 1e-4 * (x ** (4.0 / 3.0))
         log_like = self.log_likelihood_tep_restricted(flybys, beta_fit, sigma_sys)
         return beta_fit, log_like
 

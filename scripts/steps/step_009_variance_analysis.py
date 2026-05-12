@@ -354,8 +354,8 @@ def calculate_variance_decomposition(
         # Access geometry data from perigee section
         perigee = fit_data.get('perigee', {})
         alt = perigee.get('altitude_km', 1000)
-        lat = 0.0  # Default to equatorial if not available
-        vel = perigee.get('v_perigee_km_s', 10)
+        lat = perigee.get('perigee_latitude_deg', 0.0)
+        vel = perigee.get('velocity_km_s', 10)
         
         # Get cos_dec_asymmetry for disformal effects
         cos_asym = fit_data.get('cos_dec_asymmetry', 0.0)
@@ -479,10 +479,10 @@ def generate_mission_analysis(
         beta_eff = fit_data['fit'].get('beta_eff', beta_fitted)
         
         # Get geometry
-        geom = fit_data.get('observed', {}).get('geometry', {})
-        alt = geom.get('altitude_km', 1000)
-        lat = geom.get('perigee_latitude_deg', 0)
-        vel = geom.get('v_perigee_km_s', 10)
+        perigee = fit_data.get('perigee', {})
+        alt = perigee.get('altitude_km', 1000)
+        lat = perigee.get('perigee_latitude_deg', 0.0)
+        vel = perigee.get('velocity_km_s', 10)
         
         # Estimate plasma
         plasma = 1000 * np.exp(-alt / 300) if alt < 1000 else 50

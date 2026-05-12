@@ -323,7 +323,7 @@ def compute_cmb_dipole_modulation(v_earth_equ: np.ndarray, v_sc_equ: np.ndarray)
 
     # Bulk CMB velocity of Earth (including solar motion)
     v_solar_cmb = CMB_DIPOLE_VELOCITY_KM_S * n_cmb
-    v_total_with_solar = v_solar_cmb + v_sc_equ
+    v_total_with_solar = v_solar_cmb + v_earth_equ + v_sc_equ
     v_total_solar_proj = float(np.dot(v_total_with_solar, n_cmb))
 
     # Spacecraft velocity magnitude and alignment with CMB dipole

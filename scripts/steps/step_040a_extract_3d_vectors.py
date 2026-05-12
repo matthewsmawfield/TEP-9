@@ -50,7 +50,7 @@ def hms_to_degrees(h, m, s):
 def dms_to_degrees(d, m, s):
     """Convert degrees/minutes/seconds to decimal degrees."""
     sign = -1 if d < 0 else 1
-    return sign * (abs(d) + m / 60.0 + s / 60.0)
+    return sign * (abs(d) + m / 60.0 + s / 3600.0)
 
 
 def parse_hms(hms_str):
