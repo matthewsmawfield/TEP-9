@@ -33,16 +33,25 @@
 
     <li>
         <strong>PPN compliance via Temporal Topology screening:</strong>
-        The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector, measuring $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$. This constrains the solar-system Shapiro/light-propagation sector but does not directly test spatial clock-sector covariance, one-way residual shear, or low-density temporal-shear recovery. The fitted $\beta$ values, when reduced by the characteristic suppression from Earth's 4146 km transition radius of Temporal Topology (UCD soliton model), yield $|\gamma - 1| = 2\beta_{\rm eff}^2$ safely below the Cassini bound ($2.3 \times 10^{-5}$). This demonstrates that TEP reduces to the GR PPN light-propagation limit in the screened solar-system environment while reserving its discriminating predictions for observables outside the Cassini measurement class.
+        The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector, measuring $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$. This constrains the solar-system Shapiro/light-propagation sector but does not directly test spatial clock-sector covariance, one-way residual shear, or low-density temporal-shear recovery.        The fitted $\beta$ values, when reduced by the characteristic suppression from Earth's 4146 km transition radius of Temporal Topology (UCD saturation model), yield $|\gamma - 1| = 2\beta_{\rm eff}^2$ safely below the Cassini bound for terrestrial flyby dynamics. A separate solar-screening calculation (Section 4.6.1a) using the UCD saturation radius for the Sun ($R_{\rm sol,\odot} \approx 2.87 \times 10^{5}$ km) shows that the effective coupling along the Cassini radio path also satisfies the bound with margin exceeding $10^{2}$. This demonstrates that TEP reduces to the GR PPN light-propagation limit in both screened environments while reserving its discriminating predictions for observables outside the Cassini measurement class.
     </li>
 
     <li>
         <strong>TEP suppression by modern orbit determination:</strong> Analysis
-        of the expanded dataset reveals that several missions (Galileo_1992,
-        Rosetta_2007, Rosetta_2009, MESSENGER_2005, Juno_2013) show null results
-        where TEP predicts detectable signals (mean predicted 9.3 mm/s).
-        Multiple independent lines of evidence—including altitude correlation,
-        statistical significance (weak correlation r=0.33, p=0.29), historical
+        of the expanded dataset reveals that published null results (MESSENGER,
+        Rosetta 2007, Galileo 1992, Juno) are consistent with altitude-dependent
+        gradient suppression and OD filtering for the true nulls, while two
+        missions (Galileo 1992 and Juno 2013) are classified as false negatives:
+        the model predicts post-OD signals of 0.58 ± 0.11 mm/s and 0.81 ± 0.35 mm/s
+        respectively, well above measurement precision, demonstrating that OD
+        suppression alone cannot explain every null result. Four additional flybys
+        (Rosetta 2009, Stardust, OSIRIS-REx, BepiColombo) have no public anomaly
+        report and are not used in quantitative likelihood.
+    </li>
+
+    <li>
+        <strong>Multiple independent lines of evidence:</strong> Altitude-dependent
+        anomaly pattern (see point 6), historical
         timeline (33% vs 67% suppression rate by OD complexity), and the OD
         filtering mechanism—support the hypothesis that modern orbit
         determination filters TEP signals by treating them as systematic errors.
@@ -65,16 +74,33 @@
     <li>
         <strong>Systematic uncertainty compression:</strong> Transitioning from
         empirical characteristic suppression factors to a UCD-derived estimate via
-        the <strong>Self-Consistent Field (SCF)</strong> solver and the corrected uncertainty analysis (Step 025) provides a rigorous uncertainty budget. The total relative uncertainty of 79.6% is dominated by heterogeneity (77.9%), reflecting genuine geometry-dependent physical variation in the effective coupling across flybys. This shift from "parameter fitting" to "systematic prediction" with proper variance decomposition strengthens the theoretical foundation of the TEP analysis.
+        the <strong>Self-Consistent Field (SCF)</strong> solver and the corrected uncertainty analysis (Step 025) provides a rigorous uncertainty budget. The total relative uncertainty of 83.3% is dominated by heterogeneity (77.9%), reflecting genuine geometry-dependent physical variation in the effective coupling across flybys. The systematic uncertainty (29.2%) is dominated by characteristic suppression uncertainty (25.0%, Paper 6 UCD) and relaxation length uncertainty (15.0%, SCF theoretical prior). This shift from "parameter fitting" to "systematic prediction" with proper variance decomposition strengthens the theoretical foundation of the TEP analysis.
     </li>
 
     <li>
         <strong>Robust Statistical Inference:</strong> The adoption of a
         <strong>Student's t-distribution likelihood</strong> provides natural
         outlier resistance, ensuring that fitted parameters are not skewed by
-        dataset heterogeneity. Residual analysis confirms normality ($p=0.075$),
+        dataset heterogeneity. Residual analysis confirms normality ($p=0.45$),
         validating the statistical integrity of the primary detection dataset
         (NEAR, Galileo, Rosetta, Cassini).
+    </li>
+
+    <li>
+        <strong>Cosmographic CMB-frame directional consistency:</strong> Full 3D
+        spacecraft state vectors from JPL Horizons reveal that the residual
+        anomaly ratio correlates with the CMB-frame velocity geometry. The
+        both-aligned directional consistency test shows that when both the
+        spacecraft velocity and Earth's orbital velocity point toward the CMB
+        dipole apex, the anomaly is systematically enhanced (Pearson r = +0.963,
+        p ≈ 0.000; exact Mann-Whitney U = 12, p = 0.036). The two strongest
+        anomalies (NEAR and Galileo 1990) are precisely the two both-aligned
+        flybys. A multivariate geometric regression of residual ratio on
+        CMB-frame alignment factors achieves R² = 0.688 (adjusted R² = +0.45),
+        and an optimal weighted combination of spacecraft and Earth CMB
+        projections achieves r = +0.777, p = 0.023, confirming that both
+        velocity components participate in the CMB-frame disformal coupling as
+        predicted by TEP.
     </li>
 </ol>
 
@@ -93,7 +119,7 @@
     all successes of general relativity in solar system tests while explaining
     anomalous behavior in the specific regime of planetary gravity assists. The
     geometric screening via Temporal Shear suppression, calibrated by independent UCD
-    soliton analysis, is essential for PPN compliance: without it, the
+    saturation analysis, is essential for PPN compliance: without it, the
     required $\beta$ would violate constraints.
 </p>
 
@@ -104,14 +130,13 @@
 
 <ul>
     <li>
-        <strong>Effect sizes:</strong> The detection population mean (4.83 mm/s) differs substantially from the null population mean (0.0 mm/s), with coefficient of variation CV = 0.78 indicating substantial geometry-dependent variation. The anomalies exceed
-        conventional "large effect" thresholds by 1-2 orders of magnitude
+        <strong>Effect sizes:</strong> Cohen's $d$ relative to the published null population ($n_{\rm null}=5$) yields very large effects for NEAR ($d \approx 4.0$) and Galileo 1990 ($d \approx 1.2$), a medium effect for Rosetta 2005 ($d \approx 0.5$), and a negligible effect for Cassini ($d \approx 0.03$).  The coefficient of variation CV $\approx 0.79$ in the fitted $\beta$ ensemble reflects genuine geometry-dependent modulation.
     </li>
     <li>
         <strong>Model comparison:</strong> Four-tier framework shows TEP restricted strongly favored over Null (Bayes factor 400.9, ΔBIC = 12.0) and positively over Anderson empirical (Bayes factor 3.3, ΔBIC = 2.4)
     </li>
     <li>
-        <strong>Bayesian model comparison:</strong> Stable four-tier model comparison (Step 026) yields Bayes factor 400.9 for TEP restricted vs Null (strong evidence) and 3.3 vs Anderson empirical (positive evidence), with Akaike weight 83.2% for TEP restricted
+        <strong>Bayesian model comparison:</strong> Stable four-tier model comparison (Step 026) yields Bayes factor 400.9 for TEP restricted vs Null (strong evidence) and 3.3 vs Anderson empirical (positive evidence), with Akaike weight 98.9% for TEP restricted
     </li>
     <li>
         <strong>Robustness:</strong> Bootstrap resampling, leave-one-out
@@ -123,7 +148,7 @@
         validated
     </li>
     <li>
-        <strong>Residual analysis:</strong> Shapiro-Wilk W = 0.91, p = 0.42
+        <strong>Residual analysis:</strong> Shapiro-Wilk p = 0.45
         (normal); Breusch-Pagan p = 0.46 (homoscedastic)
     </li>
     <li>
@@ -134,8 +159,10 @@
 
 <p>
     The complete dataset of Earth flyby events ($n = 4$ primary detections
-    including Cassini with disformal coupling, 8 null results) provides
-    substantial statistical support for TEP. Bayesian model comparison with a four-tier framework favors the TEP restricted model (83.2% evidence weight, Bayes factor 400.9 vs Null, ΔBIC = 12.0; Bayes factor 3.3 vs Anderson empirical, ΔBIC = 2.4).
+    including Cassini with disformal coupling, 5 published nulls/bounds, and
+    4 flybys with no public anomaly report) provides substantial statistical
+    support for TEP. Only the 4 primary detections and 5 published nulls/bounds
+    are used in quantitative likelihood. Bayesian model comparison with a four-tier framework favors the TEP restricted model (98.9% evidence weight, Bayes factor 400.9 vs Null, ΔBIC = 12.0; Bayes factor 3.3 vs Anderson empirical, ΔBIC = 2.4).
 </p>
 
 <h2>Robustness Assessment</h2>
@@ -178,9 +205,9 @@
     modulation: altitude ($J_2$ gradient suppression), perigee latitude
     (inclination-dependent coupling), plasma environment (ionospheric gradient
     modulation), and velocity (disformal regime). Geometry modulation factors
-    explain approximately 44.5% of the heterogeneity; residual scatter is
-    consistent with uncertainty in the characteristic suppression (55.5% of total
-    variance per Step 009). Cross-validation confirms model stability (stability coefficient
+    explain approximately 20.7% of the heterogeneity; the residual accounts for
+    79.3% of total variance per Step 009 (dominated by small-sample statistics and
+    model incompleteness). Cross-validation confirms model stability (stability coefficient
     0.21 < 0.5). The UCD-derived characteristic suppression $S_\oplus \approx
     0.35$ provides a cross-scale prior. See Section 5.5 for detailed four-stage variance decomposition.
 </p>
@@ -200,16 +227,17 @@
 </p>
 
 <p>
-    <strong>Juno null result:</strong> The predicted Δv_TEP = 0.37 mm/s (18×
-    measurement uncertainty) is consistent with TEP suppression by modern OD.
-    Juno employed high-fidelity orbit determination with empirical acceleration
-    terms that absorb small anomalous signals. A rigorous numerical simulation
-        (Step 021) validates this mechanism: Modern OD with piecewise empirical
-    accelerations achieves 51.7% suppression of the injected TEP signal,
-    demonstrating that standard OD filters can absorb anomalous forces below
-    detection thresholds. This null result, combined with similar non-detections
-    for Galileo 1992, MESSENGER, and Rosetta 2007/2009, provides quantitative
-    supporting evidence for the TEP suppression hypothesis.
+    <strong>Juno falsification pressure:</strong> The predicted post-OD Δv_TEP
+    = 0.81 ± 0.35 mm/s (more than 40× the 0.02 mm/s measurement uncertainty)
+    is not explained by the current OD-suppressed model. Juno is the strongest
+    falsification pressure on the TEP flyby analysis: even with conservative
+    OD survival factors, the signal should survive at a detectable level. The
+    Step 021 simulation demonstrates that modern OD can suppress TEP signals,
+    but the quantified survival factors show this suppression is insufficient to
+    explain the Juno null. Independent raw DSN re-analysis with TEP-inclusive
+    orbit determination is motivated by this tension. Juno is not swept under
+    the rug as an OD artifact; it is the most serious remaining challenge to
+    the model and must be resolved for the framework to be fully credible.
 </p>
 
 <p>
@@ -225,9 +253,9 @@
 
 <p>
     <strong>PPN compliance:</strong> The UCD-derived characteristic suppression
-    $S_\oplus \approx 0.35$ is determined from UCD soliton physics.
+    $S_\oplus \approx 0.35$ is determined from the UCD saturation model.
     Sensitivity analysis confirms stable PPN compliance across parameter ranges.
-    All fitted β_eff values satisfy the Cassini bound ($|\gamma - 1| = 2\beta_{\rm eff}^2 < 2.3 \times 10^{-5}$), remaining below it by factors of roughly $3 \times 10^{2}$ to $10^{5}$, depending on flyby.
+    All fitted β_eff values satisfy the Cassini bound ($|\gamma - 1| = 2\beta_{\rm eff}^2 < 2.3 \times 10^{-5}$) with Earth screening, and the solar-screened calculation (Section 4.6.1a) confirms compliance in the solar environment as well, remaining below the bound by factors exceeding $10^{2}$ in both regimes.
 </p>
 
 <p>
@@ -237,7 +265,7 @@
     The Anderson empirical model also shows strong evidence vs Null (Bayes factor = 121.7, ΔBIC = 9.6),
     confirming that trajectory asymmetry carries genuine signal. The TEP flexible model
     (3 parameters) is penalized by its parameter count and does not outperform the restricted model.
-    Model adequacy tests validate normally distributed residuals (Shapiro-Wilk p = 0.42) and
+    Model adequacy tests validate normally distributed residuals (Shapiro-Wilk p = 0.45) and
     homoscedastic variance (Breusch-Pagan p = 0.46).
 </p>
 

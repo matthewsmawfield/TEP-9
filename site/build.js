@@ -151,10 +151,10 @@ function safeGet(obj, pathParts) {
 function createInjectionContext() {
     const resultsDir = path.join(__dirname, '..', 'results');
 
-    const step005 = readJsonIfExists(path.join(resultsDir, 'step005_fitting_results.json'));
+    const step008 = readJsonIfExists(path.join(resultsDir, 'step008_fitting_results.json'));
 
-    if (!step005) {
-        console.warn('⚠️  Missing step005_fitting_results.json; placeholders may remain unresolved.');
+    if (!step008) {
+        console.warn('⚠️  Missing step008_fitting_results.json; placeholders may remain unresolved.');
     }
 
     const ctx = {
@@ -167,22 +167,22 @@ function createInjectionContext() {
         }
     };
 
-    if (step005) {
+    if (step008) {
         // Individual fits
-        const fits = step005.individual_fits || {};
+        const fits = step008.individual_fits || {};
         for (const [key, fit] of Object.entries(fits)) {
             if (fit.fit && fit.fit.beta_fitted) {
                 ctx.flyby.beta[key] = {
                     fitted: formatFixedNumber(fit.fit.beta_fitted, 10),
-                    uncertainty: formatFixedNumber(fit.fit.beta_uncertainty, 10),
+                    uncertainty: formatFixedNumber(fit.fit.uncertainty, 10),
                     ppn_gamma: formatFixedNumber(fit.fit.ppn_gamma_deviation, 15),
-                    ppn_valid: fit.fit.ppn_valid ? '✓' : '✗'
+                    ppn_valid: fit.fit.ppn_compliant ? '✓' : '✗'
                 };
             }
         }
 
-        // Summary statistics
-        const stats = step005.summary_statistics || {};
+        // Overall analysis statistics
+        const stats = step008.overall_analysis || {};
         const betaStats = stats.beta_statistics || {};
         ctx.flyby.statistics = {
             weighted_mean: formatFixedNumber(betaStats.weighted_mean, 10),
@@ -205,7 +205,7 @@ function createInjectionContext() {
         };
 
         // Bootstrap results
-        const bootstrap = step005.robustness_analysis?.bootstrap || {};
+        const bootstrap = step008.robustness_analysis?.bootstrap || {};
         ctx.flyby.bootstrap = {
             n_bootstrap: formatIntegerWithCommas(bootstrap.n_bootstrap),
             mean: formatFixedNumber(bootstrap.bootstrap_mean, 10),
@@ -218,7 +218,7 @@ function createInjectionContext() {
         };
 
         // Leave-one-out results
-        const loo = step005.robustness_analysis?.leave_one_out || {};
+        const loo = step008.robustness_analysis?.leave_one_out || {};
         const looResults = loo.leave_one_out_results || {};
         for (const [key, result] of Object.entries(looResults)) {
             ctx.flyby.loo[key] = {
@@ -229,6 +229,27 @@ function createInjectionContext() {
         ctx.flyby.loo.stability_coefficient = formatFixedNumber(loo.stability_coefficient, 2);
         ctx.flyby.loo.robust = loo.conclusion_robust ? 'Yes' : 'No';
         ctx.flyby.loo.interpretation = loo.interpretation || '';
+
+        // Effect sizes from enhanced_validation
+        const enhanced = step008.enhanced_validation || {};
+        const effectSizes = enhanced.effect_sizes || {};
+        ctx.flyby.effect_sizes = {};
+        for (const [key, es] of Object.entries(effectSizes.effect_sizes || {})) {
+            ctx.flyby.effect_sizes[key] = {
+                cohens_d: formatFixedNumber(es.cohens_d, 3),
+                interpretation: es.interpretation || ''
+            };
+        }
+        const nullPop = effectSizes.null_population || {};
+        const detPop = effectSizes.detection_population || {};
+        ctx.flyby.effect_size_summary = {
+            n_nulls: formatIntegerWithCommas(nullPop.n_nulls),
+            null_mean: formatFixedNumber(nullPop.mean_dv, 4),
+            null_std: formatFixedNumber(nullPop.std_dv, 4),
+            n_detections: formatIntegerWithCommas(detPop.n_detections),
+            det_mean: formatFixedNumber(detPop.mean_dv, 4),
+            det_std: formatFixedNumber(detPop.std_dv, 4)
+        };
     }
 
     return ctx;

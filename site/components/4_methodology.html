@@ -32,7 +32,7 @@
     \end{equation}
   </div>
 
-  <p>where β_eff = β × S_⊕(r) is the effective coupling with geometric screening, where S_⊕(r) describes the continuous suppression of Temporal Shear. The characteristic suppression ratio S_⊕ ≈ 0.35 emerges from the UCD soliton geometry as the ratio of effective to bare gradient at Earth's surface. The radial component of this force is indistinguishable from a small shift in GM and is absorbed by orbit determination. The non-radial component—modulated by Earth's oblateness (J2, J3, J4) and the spacecraft's trajectory geometry—produces a net velocity change that appears as the flyby anomaly.</p>
+  <p>where β_eff = β × S_⊕(r) is the effective coupling with geometric screening, where S_⊕(r) describes the continuous suppression of Temporal Shear. The characteristic suppression ratio S_⊕ ≈ 0.35 emerges from the UCD saturation geometry as the ratio of effective to bare gradient at Earth's surface. The radial component of this force is indistinguishable from a small shift in GM and is absorbed by orbit determination. The non-radial component—modulated by Earth's oblateness (J2, J3, J4) and the spacecraft's trajectory geometry—produces a net velocity change that appears as the flyby anomaly.</p>
 
   <p>The predicted velocity shift is resolved through rigorous numerical integration of the equations of motion (EOM) in the Earth-centered inertial (ECI) frame. This approach captures the dynamic evolution of the scalar force as the spacecraft traverses the varying field gradient, incorporating a 4th-order Spherical Harmonic Expansion (SHEX) for the geopotential to ensure that local gravitational perturbations are not conflated with the scalar force:</p>
 
@@ -71,7 +71,7 @@
     \end{equation}
   </div>
 
-  <p>Geometric screening: Critical to PPN compliance is the transition radius $R_{\rm sol} \approx 4146$ km from UCD soliton physics (Step 010), cross-validated by GNSS correlation length. This defines the characteristic suppression ratio $S_{\oplus} \approx 0.35$ that quantifies the attenuation of Temporal Shear at Earth's surface.</p>
+  <p>Geometric screening: Critical to PPN compliance is the transition radius $R_{\rm sol} \approx 4146$ km from the UCD saturation model (Step 010), cross-validated by GNSS correlation length. This defines the characteristic suppression ratio $S_{\oplus} \approx 0.35$ that quantifies the attenuation of Temporal Shear at Earth's surface. $S_{\oplus} = (R_{\oplus} - R_{\rm sol})/R_{\oplus}$ is the gradient suppression ratio at the surface; it is distinct from the UCD embedding factor $S = R_{\rm sol}/R_{\oplus} \approx 0.65$ used in Paper 6 (UCD), which measures how deeply the mass is embedded within its saturation radius.</p>
 
   <div class="equation">
     \begin{equation}
@@ -102,7 +102,7 @@
 
 <p>Geometry modulation factors: The fitted β values exhibit 24.0× scatter across flybys, reflecting substantial geometry-dependent modulation. Four physical mechanisms explain this heterogeneity: (1) <em>inclination-dependent screening</em>—higher latitude trajectories sample less equatorial bulge; (2) <em>J2 oblateness</em>—altitude-dependent screening from Earth's shape; (3) <em>plasma environment</em>—ionospheric density modulates local screening; and (4) <em>velocity effects</em>—disformal coupling in the high-velocity regime. These factors are incorporated into the scalar force calculation.</p>
 
-<h2>3.2 Component-Level Geometry Factor Analysis</h2>
+<h2>3.2a Component-Level Geometry Factor Analysis</h2>
 
 <p>
     To address the extreme heterogeneity (I² ≈ 100%) in fitted β values across flybys, a component-level analysis extracts the effective geometry factor for each flyby independently. The geometry factor isolates trajectory-dependent modulation from the universal coupling strength, revealing the physical origin of the observed variation.
@@ -170,7 +170,7 @@
 </p>
 
 <p>
-    The four-stage variance decomposition shows that structural physics modulation (altitude, J2, asymmetry, velocity) explains 20.7% of the variance, observational pipeline effects (OD filter absorption, systematic uncertainties) explain 23.8%, environmental modulation (solar activity, space weather) contributes 0.0% (no significant F10.7 correlation), and the residual (small-sample statistics, intrinsic scatter, model incompleteness) accounts for 55.5%. The substantial residual fraction reflects the n = 4 detection sample and incomplete modeling of mission-specific plasma screening and OD absorption tuning parameters.
+    The four-stage variance decomposition shows that structural physics modulation (altitude, J2, asymmetry, velocity) explains 20.7% of the variance, observational pipeline effects (OD filter absorption, systematic uncertainties) explain 0.0%, environmental modulation (solar activity, space weather) contributes 0.0% (no significant F10.7 correlation), and the residual (small-sample statistics, intrinsic scatter, model incompleteness) accounts for 79.3%. The dominant residual fraction reflects the n = 4 detection sample and incomplete modeling of mission-specific plasma screening; geometry-dependent structural modulation is the sole detectable source of deterministic variance.
 </p>
 
 <h2>3.5 Disformal Transition Criterion</h2>
@@ -236,12 +236,12 @@
 
 <div class="equation">
     \begin{equation}
-    v_{\rm trans} = \frac{c}{\sqrt{2}}\left(\frac{\lambda_{\rm TEP}}{R_\oplus}\right)^{1/2}\left(\frac{|\nabla\phi_\oplus|}{M_{\rm Pl}}\right)^{+1/2}
+    v_{\rm trans} = \frac{c}{\sqrt{2}}\left(\frac{\lambda_{\rm TEP}}{R_\oplus}\right)^{1/2}\left(\frac{|\nabla\phi_\oplus|\,\lambda_{\rm TEP}}{M_{\rm Pl}}\right)^{+1/2}
     \end{equation}
 </div>
 
 <p>
-    Substituting the independently-determined TEP relaxation length λ_TEP ≈ 4000 km (from GNSS atomic clock correlations, Step 016), Earth's radius R_⊕ = 6371 km, and the surface Temporal Shear |∇φ_⊕|/M_{\rm Pl} ≈ 10⁻⁸ (from the UCD-derived characteristic suppression S_⊕ ≈ 0.35), the transition velocity is obtained:
+    Substituting the independently-determined TEP relaxation length λ_TEP ≈ 4000 km (from GNSS atomic clock correlations, Step 016), Earth's radius R_⊕ = 6371 km, and the dimensionless surface field combination |∇φ_⊕| λ_TEP / M_{\rm Pl} ≈ 10⁻⁸ (from the UCD-derived characteristic suppression S_⊕ ≈ 0.35), the transition velocity is obtained:
 </p>
 
 <div class="equation">
@@ -405,6 +405,16 @@
 <h2>3.9 PPN Constraints and Cassini Solar Conjunction</h2>
 
 <p>
+    For scalar-tensor theories with conformal coupling, the PPN parameter deviation is bounded by
+</p>
+
+<div class="equation">
+    \begin{equation}
+    |\gamma - 1| \approx 2\beta_{\rm eff}^2
+    \end{equation}
+</div>
+
+<p>
     where $\gamma$ is the PPN parameter and $\beta_{\rm eff} = \beta \times S_{\oplus}(r)$. The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector. It measured the gravitationally induced frequency shift of radio photons exchanged with the spacecraft and obtained $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$.
 </p>
 
@@ -429,7 +439,7 @@
 </p>
 
 <p>
-    In the solar environment, the deep potential well of the Sun suppresses Temporal Shear toward zero, providing the screening mechanism. The UCD-derived characteristic suppression $S_{\oplus} \approx 0.35$ at Earth's surface ensures all fitted $\beta$ values satisfy this constraint, remaining below the Cassini bound by factors of roughly $3 \times 10^{2}$ to $10^{5}$, depending on flyby.
+    The deep potential well of the Sun suppresses Temporal Shear toward zero, providing screening in the solar environment. The UCD-derived characteristic suppression $S_{\oplus} \approx 0.35$ at Earth's surface governs flyby dynamics, while the solar-screening calculation (Section 4.6.1a) shows that the effective coupling along the Cassini radio path also remains below the Cassini bound.
   </p>
 
   <h2>3.10 Plasma Modulation</h2>
@@ -488,11 +498,11 @@ S_{\rm plasma} = \exp\left(-\frac{n_e}{n_{\rm ref}}\right)\end{equation}
   <h2>3.11 UCD-Motivated Temporal Topology Derivation</h2>
 
   <p>
-    To eliminate systematic bias from phenomenological suppression factors, $R_{\rm sol}$ and the characteristic suppression $S_{\oplus}$ are derived from the Universal Critical Density (UCD) soliton model. The soliton radius is calculated from the UCD soliton ansatz using Earth's total mass and the universal critical density $\rho_T \approx 20$ g/cm³ established across astrophysical scales.
+    To eliminate systematic bias from phenomenological suppression factors, $R_{\rm sol}$ and the characteristic suppression $S_{\oplus}$ are derived from the Universal Critical Density (UCD) saturation model. The saturation radius is calculated from the UCD ansatz using Earth's total mass and the universal critical density $\rho_T \approx 20$ g/cm³ established across astrophysical scales. A soliton interpretation is one candidate microscopic realization, not assumed in the calibration.
   </p>
 
   <p>
-    The UCD saturation value of $\rho_T \approx 20$ g/cm³ is not an arbitrary parameter but emerges from cross-scale consistency in the TEP framework. This density represents the saturation limit for scalar field solitons across all mass scales, from dwarf galaxies to galaxy clusters, as demonstrated in the broader TEP preprint series (see preprint series: TEP-I through TEP-V). The value is independently corroborated by:
+    The UCD saturation value of $\rho_T \approx 20$ g/cm³ is not an arbitrary parameter but emerges from cross-scale consistency in the TEP framework. This density represents the saturation limit for scalar field configurations across all mass scales, from dwarf galaxies to galaxy clusters, as demonstrated in the broader TEP preprint series (see preprint series: TEP-I through TEP-V). The value is independently corroborated by:
   </p>
 
   <ul>
@@ -524,5 +534,61 @@ R_{\rm sol} = \left( \frac{3 M_{\oplus}}{4\pi\rho_T} \right)^{1/3} \approx 4146 
   </div>
 
   <p>
-    Grounding the screening mechanism in numerical convergence rather than empirical literature reduces the systematic uncertainty of the phase-boundary factor from 91% to 5%, providing a more rigorous diagnostic for the TEP detection.
+    Grounding the screening mechanism in the UCD saturation model provides a first-principles derivation, though the systematic uncertainty on $\rho_T = 20 \pm 8$ g/cm³ (40%) from Paper 6 (UCD) propagates to $\Delta R_{\rm sol} \approx \pm 540$ km ($\sim$13%) and $\Delta S_{\oplus} \approx \pm 0.09$ ($\sim$25%). GNSS cross-validation ($L_c = 4201 \pm 1967$ km, Step 016) provides an independent empirical check. Together, these constraints establish $S_{\oplus} = 0.35^{+0.09}_{-0.09}$ as a rigorously derived prior.
   </p>
+
+  <h2>3.12 Cosmographic Temporal Shear Modulation Analysis</h2>
+
+  <p>
+    A key prediction of the TEP framework is that the disformal coupling term
+    depends on the <em>total</em> velocity in the scalar field rest frame, not
+    merely the spacecraft velocity relative to Earth. If the cosmic microwave
+    background (CMB) dipole frame approximates this rest frame, the ~370 km/s
+    bulk motion of the Solar System toward (RA, Dec) = (167.94°, −6.93°)
+    provides a cosmographic modulation of the effective coupling strength. This
+    section describes the analysis pipeline (Step 040) that tests this
+    prediction using full three-dimensional spacecraft state vectors.
+  </p>
+
+  <p>
+    <strong>Data extraction:</strong> Raw JPL Horizons ephemeris files are
+    parsed for each flyby mission, extracting geocentric apparent right
+    ascension, declination, range, and range-rate at 1-minute intervals.
+    Cartesian position and velocity vectors are reconstructed in the J2000
+    equatorial frame and rotated to the ecliptic frame using the obliquity of
+    the ecliptic <em>ε</em> = 23.439281°. Perigee state vectors are identified
+    by minimum geocentric range. Earth heliocentric position and velocity are
+    computed via a low-precision analytical ephemeris with proper elliptical
+    orbit mechanics (eccentricity <em>e</em> = 0.0167), yielding non-zero radial
+    velocity components up to ±0.5 km/s.
+  </p>
+
+  <p>
+    <strong>Modulation proxies:</strong> Three classes of cosmographic proxies
+    are computed for each flyby: (1) heliocentric distance modulation
+    <em>M</em><sub>⊙</sub> = 1/<em>r</em><sup>2</sup><sub>AU</sub> for solar
+    scalar topology; (2) CMB dipole projection
+    <em>M</em><sub>CMB</sub> = (<strong>v</strong><sub>total</sub> ·
+    <strong>n</strong><sub>CMB</sub>) / 369.82 km/s, where
+    <strong>v</strong><sub>total</sub> = <strong>v</strong><sub>CMB</sub> +
+    <strong>v</strong><sub>Earth</sub> + <strong>v</strong><sub>sc</sub>;
+    and (3) the disformal enhancement factor
+    <em>f</em><sub>enh</sub> = |<strong>v</strong><sub>total</sub>|<sup>2</sup>
+    / |<strong>v</strong><sub>sc</sub>|<sup>2</sup>.
+  </p>
+
+  <p>
+    <strong>Statistical tests:</strong> Pearson correlations are computed
+    between the observed-to-predicted anomaly ratio and each modulation proxy.
+    A binary "both-aligned" flag is defined for each flyby, equal to 1 when
+    both the spacecraft velocity projection and Earth orbital velocity
+    projection onto the CMB dipole direction are positive. Directional
+    consistency is assessed via the Mann-Whitney U test comparing aligned
+    versus unaligned flybys. A multivariate ordinary least squares regression
+    tests whether a linear combination of geometric alignment factors explains
+    residual ratio variance. An optimal weighted combination is determined by
+    scanning the relative weight of the Earth-CMB projection to maximize the
+    correlation with the residual ratio.
+  </p>
+
+</section>
