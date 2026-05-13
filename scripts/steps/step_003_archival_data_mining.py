@@ -706,7 +706,7 @@ def main():
     """
     Execute archival data mining and statistical analysis.
     """
-    logger = StepLogger("step_002_archival_data_mining", PROJECT_ROOT)
+    logger = StepLogger("step_003_archival_data_mining", PROJECT_ROOT)
     start_time = time.time()
     
     logger.header("ARCHIVAL DATA MINING - EXPANDING THE SAMPLE")

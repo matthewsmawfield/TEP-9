@@ -51,6 +51,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.flyby_ensemble import flyby_ensemble_exclusion_reason
+from scripts.utils.physics import CHARACTERISTIC_SUPPRESSION
 
 
 def convert_to_native_types(obj):
@@ -88,19 +90,19 @@ class StableModelComparison:
         with open(pred_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
-        # Extract flybys with S/N >= 2
+        # Extract flybys that pass the same ensemble gates as Step 008.
         flybys = []
         for name, pred in data['predictions'].items():
+            exclusion_reason = flyby_ensemble_exclusion_reason(pred)
+            if exclusion_reason:
+                self.logger.info(
+                    f"Skipping {name} for model comparison: {exclusion_reason}"
+                )
+                continue
+
             dv_obs = pred['observed']['dv_obs_mm_s']
-            dv_unc = pred['observed'].get('sigma_mm_s')
-            
-            if dv_obs is None or dv_unc is None:
-                continue
-            
+            dv_unc = pred['observed']['sigma_mm_s']
             snr = abs(dv_obs) / dv_unc if dv_unc > 0 else 0
-            if snr < 2:
-                continue
-            
             geometry = pred.get('geometry', {})
             tep_pred = pred.get('tep_predictions', {})
             
@@ -322,18 +324,15 @@ class StableModelComparison:
         self.logger.section("FOUR-TIER MODEL COMPARISON")
         
         n_data = len(flybys)
-        self.logger.info(f"Using {n_data} flybys with S/N >= 2")
+        self.logger.info(f"Using {n_data} flybys passing Step 008 ensemble gates")
         
-        # Load corrected uncertainty to get systematic component
-        uncertainty_file = PROJECT_ROOT / 'results' / 'step025_corrected_uncertainty.json'
-        with open(uncertainty_file, 'r', encoding='utf-8') as f:
-            uncertainty_data = json.load(f)
-        
-        heterogeneity_rel_unc = uncertainty_data['corrected_uncertainty_budget']['heterogeneity_relative_uncertainty']
-        obs_velocities = [fb['dv_obs'] for fb in flybys]
-        mean_obs_velocity = np.mean(np.abs(obs_velocities))
-        sigma_sys = mean_obs_velocity * heterogeneity_rel_unc
-        self.logger.info(f"Systematic uncertainty (heterogeneity): {sigma_sys:.4f} mm/s")
+        # Systematic uncertainty: use std of TEP predictions at reference beta.
+        # This captures the genuine range of predictions across flyby geometries
+        # and is not circular (does not depend on observed anomalies).
+        # It is conservative relative to the post-fit residual RMS (~0.5 mm/s).
+        pred_values = [abs(fb['dv_pred_base']) for fb in flybys]
+        sigma_sys = float(np.std(pred_values)) if len(pred_values) > 1 else 1.0
+        self.logger.info(f"Systematic uncertainty (std of |predictions|): {sigma_sys:.4f} mm/s")
         
         # --- Tier 1: Null ---
         log_like_null = self.log_likelihood_null(flybys, sigma_sys)
@@ -452,7 +451,7 @@ class StableModelComparison:
             'pre_specified_parameters': {
                 'lambda_TEP_km': 4000,
                 'lambda_TEP_source': 'GNSS atomic clock correlations (Step 016)',
-                'S_earth': 0.35,
+                'S_earth': round(CHARACTERISTIC_SUPPRESSION, 3),
                 'S_earth_source': 'UCD saturation first-principles (Step 010)',
                 'v_trans_km_s': 16.8,
                 'v_trans_source': 'TEP field equations',
@@ -481,8 +480,12 @@ def main():
     if flybys is None:
         logger.error("Failed to load data")
         return 1
-    
-    logger.info(f"Loaded {len(flybys)} flybys with S/N >= 2")
+
+    if not flybys:
+        logger.error("No flybys passed Step 008 ensemble gates for model comparison")
+        return 1
+
+    logger.info(f"Loaded {len(flybys)} flybys passing Step 008 ensemble gates")
     
     # Perform stable model comparison
     results = comparison.stable_model_comparison(flybys)

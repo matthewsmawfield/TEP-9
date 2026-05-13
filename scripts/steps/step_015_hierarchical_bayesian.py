@@ -154,15 +154,11 @@ class PerFlybyGeometryAnalyzer:
         X_corr = np.column_stack([np.ones(n), alt_norm, vel_norm, asym_norm])
         y_log = np.log10(np.abs(g_effs))
 
-        try:
-            coeffs, resids, rank, s = np.linalg.lstsq(X_corr, y_log, rcond=None)
-            y_pred = X_corr @ coeffs
-            ss_res = np.sum((y_log - y_pred) ** 2)
-            ss_tot = np.sum((y_log - np.mean(y_log)) ** 2)
-            r_squared = 1 - ss_res / ss_tot if ss_tot > 0 else 0.0
-        except Exception:
-            coeffs = np.zeros(4)
-            r_squared = 0.0
+        coeffs, resids, rank, s = np.linalg.lstsq(X_corr, y_log, rcond=None)
+        y_pred = X_corr @ coeffs
+        ss_res = np.sum((y_log - y_pred) ** 2)
+        ss_tot = np.sum((y_log - np.mean(y_log)) ** 2)
+        r_squared = 1 - ss_res / ss_tot if ss_tot > 0 else 0.0
 
         self.logger.subsection("GEOMETRY FACTOR REGRESSION")
         self.logger.info(f"  log10|G_eff| = c0 + c1·alt_norm + c2·vel_norm + c3·asym_norm")
@@ -353,7 +349,7 @@ class HierarchicalTEPModel:
         log_prior = 0.0
         
         # Prior for beta_0: wide log-normal centered near empirical fitted value
-        # From step008: weighted mean beta = 4.64e-4, consistent with WLS a_grad ~ 4.0
+        # From step008 ensemble weighted mean beta; see load_step008_ensemble_summary.
         BETA_EMPIRICAL = 4.6e-4
         log_beta_0_mean = np.log(BETA_EMPIRICAL)
         log_prior += -0.5 * ((log_beta_0 - log_beta_0_mean) / 1.5)**2

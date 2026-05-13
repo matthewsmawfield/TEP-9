@@ -225,26 +225,15 @@ def ecliptic_to_equatorial(vx, vy, vz) -> np.ndarray:
     return np.array([x, y, z])
 
 
-def declination_to_unit_vector(dec_deg: float, use_incoming: bool = True) -> np.ndarray:
-    """
-    Fallback approximate 3D unit vector from declination only.
-    Only used when proper 3D state vectors are unavailable.
-    """
-    dec = math.radians(dec_deg)
-    return np.array([math.cos(dec), 0.0, math.sin(dec)])
-
-
-def get_spacecraft_velocity_unit_vector(mission: str, state_vectors: dict, declination_in_deg: float = None) -> np.ndarray:
-    """
-    Return spacecraft velocity unit vector in ecliptic frame.
-    Prefers actual 3D state vector from JPL Horizons; falls back to declination approximation.
-    """
+def get_spacecraft_velocity_unit_vector(mission: str, state_vectors: dict) -> np.ndarray:
+    """Return spacecraft velocity unit vector in ecliptic frame from step_040a."""
     vec = state_vectors.get(mission)
-    if vec is not None and "ux_ecl" in vec:
-        return np.array([vec["ux_ecl"], vec["uy_ecl"], vec["uz_ecl"]])
-    if declination_in_deg is not None:
-        return declination_to_unit_vector(declination_in_deg)
-    return np.array([1.0, 0.0, 0.0])
+    if vec is None or "ux_ecl" not in vec:
+        raise RuntimeError(
+            f"Missing JPL Horizons 3D state vector for {mission}; "
+            "declination-only geometry is not used"
+        )
+    return np.array([vec["ux_ecl"], vec["uy_ecl"], vec["uz_ecl"]])
 
 
 def compute_solar_scalar_modulation(r_au: float, lon_deg: float,
@@ -408,11 +397,6 @@ def main():
     logger.info(f"Loaded {len(flybys)} flybys from catalog")
     logger.info(f"Loaded {len(state_vectors)} 3D state vectors from step_040a")
 
-    # CMB dipole unit vector
-    n_cmb = unit_vector_equatorial(CMB_DIPOLE_RA_DEG, CMB_DIPOLE_DEC_DEG)
-    logger.info(f"CMB dipole direction: RA={CMB_DIPOLE_RA_DEG} deg, Dec={CMB_DIPOLE_DEC_DEG} deg")
-    logger.info(f"CMB dipole velocity: {CMB_DIPOLE_VELOCITY_KM_S} km/s")
-
     results = []
     logger.section("COMPUTING COSMOGRAPHIC MODULATION FOR EACH FLYBY")
 
@@ -422,6 +406,12 @@ def main():
 
         # Skip future missions
         if dt.year > 2025:
+            continue
+
+        if mission not in state_vectors:
+            logger.warning(
+                f"Skipping {mission}: no JPL Horizons 3D state vector in step_040a output"
+            )
             continue
 
         logger.subsection(mission)
@@ -436,21 +426,12 @@ def main():
         logger.info(f"  Ecliptic longitude: {lon_deg:.2f} deg")
         logger.info(f"  Earth orbital speed: {np.linalg.norm(v_earth_ecl):.2f} km/s")
 
-        # Spacecraft velocity vector (3D from JPL Horizons, or fallback)
-        dec_in = fb.get("declination_in_deg")
-        v_sc_hat_ecl = get_spacecraft_velocity_unit_vector(mission, state_vectors, dec_in)
-
-        # Get actual spacecraft speed from state vectors if available
-        vec = state_vectors.get(mission)
-        if vec is not None and "speed_ecl_km_s" in vec:
-            v_sc_mag = vec["speed_ecl_km_s"]
-            v_sc_ecl = v_sc_hat_ecl * v_sc_mag
-            logger.info(f"  Using 3D state vector: speed = {v_sc_mag:.2f} km/s")
-            logger.info(f"    ecliptic velocity: [{v_sc_ecl[0]:+.2f}, {v_sc_ecl[1]:+.2f}, {v_sc_ecl[2]:+.2f}] km/s")
-        else:
-            v_sc_mag = fb.get("velocity_km_s", 15.0)
-            v_sc_ecl = v_sc_hat_ecl * v_sc_mag
-            logger.info(f"  Using declination approximation (no 3D vector): speed = {v_sc_mag:.2f} km/s")
+        vec = state_vectors[mission]
+        v_sc_hat_ecl = get_spacecraft_velocity_unit_vector(mission, state_vectors)
+        v_sc_mag = vec["speed_ecl_km_s"]
+        v_sc_ecl = v_sc_hat_ecl * v_sc_mag
+        logger.info(f"  Using 3D state vector: speed = {v_sc_mag:.2f} km/s")
+        logger.info(f"    ecliptic velocity: [{v_sc_ecl[0]:+.2f}, {v_sc_ecl[1]:+.2f}, {v_sc_ecl[2]:+.2f}] km/s")
 
         # Convert spacecraft velocity to equatorial for CMB analysis
         # ecliptic_to_equatorial rotation inverse: x_eq = x_ec, y_eq = y_ec*cos(eps) + z_ec*sin(eps), z_eq = -y_ec*sin(eps) + z_ec*cos(eps)
@@ -503,8 +484,7 @@ def main():
             "ratio_obs_pred": ratio,
             "difference_mm_s": diff,
             "sigma_difference": sigma_diff,
-            "declination_in_deg": dec_in,
-            "has_3d_vector": vec is not None,
+            "has_3d_vector": True,
         })
 
     # Correlation analysis
@@ -716,6 +696,14 @@ def main():
             "n_flybys_total": len(results),
             "n_flybys_usable": len(usable),
             "n_with_3d_vectors": sum(1 for r in usable if r.get("has_3d_vector", False)),
+            "uncertainty": None,
+            "uncertainty_fraction": None,
+            "uncertainty_absolute": None,
+            "status": "cosmographic_test",
+            "calibration_status": "horizons_3d_vectors_and_catalog_dates",
+            "data_source": "step040a JPL Horizons raw responses and step003 flyby catalog",
+            "recommended_action": "Extend Horizons coverage before drawing cosmographic conclusions for skipped catalog flybys",
+            "derivation": "Counts of catalog flybys with geocentric Horizons 3D vectors at perigee",
         },
         "flyby_results": results,
         "correlations": correlations,

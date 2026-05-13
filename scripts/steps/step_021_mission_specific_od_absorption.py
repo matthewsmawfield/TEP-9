@@ -43,7 +43,7 @@ import numpy as np
 from pathlib import Path
 import sys
 from typing import Dict, Any
-from datetime import datetime
+from datetime import UTC, datetime
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
@@ -135,6 +135,35 @@ class MissionSpecificODAbsorption:
                 "requires_mission_archive_access": True
             }
     
+    def load_od_simulation_reference(self) -> Dict[str, Any]:
+        """Load Step 012 OD filter simulation metrics (not mission-specific F_OD)."""
+        step_012_file = self.project_root / "results" / "step012_od_simulation_validation.json"
+        if not step_012_file.exists():
+            raise FileNotFoundError(
+                "Step 012 OD simulation results are required (results/step012_od_simulation_validation.json)"
+            )
+        with open(step_012_file, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+        minimal = data.get("minimal_od", {})
+        modern = data.get("modern_od", {})
+        valid_for_inference = (
+            data.get("valid_for_mission_f_od") is True
+            and data.get("od_suppression_hypothesis_validated") is True
+            and data.get("conclusion", {}).get("od_suppression_hypothesis_validated") is True
+        )
+        return {
+            "source_step": "012_od_filter_simulation",
+            "scope": "synthetic_3d_batch_least_squares",
+            "minimal_od_suppression_percent": minimal.get("suppression_percent"),
+            "modern_od_suppression_percent": modern.get("suppression_percent"),
+            "od_suppression_hypothesis_validated": bool(valid_for_inference),
+            "valid_for_mission_f_od": bool(valid_for_inference),
+            "note": (
+                "Synthetic diagnostic only; not a substitute for mission F_OD. "
+                "Use only after Step 012 marks the run valid for mission inference."
+            ),
+        }
+
     def load_flyby_data(self):
         """Load flyby data from step007 predictions."""
         step_007_file = self.project_root / "results/step007_tep_predictions.json"
@@ -166,45 +195,25 @@ class MissionSpecificODAbsorption:
         Returns:
         - Dictionary with F_OD estimate, uncertainty, and data provenance
         """
-        # Get literature reference
         od_data = self.load_mission_od_characteristics(spacecraft)
-        
-        # Conservative upper bound estimate based on mission era
-        # Early missions (pre-2000): Minimal OD, less absorption → higher F_OD
-        # Modern missions (post-2000): Modern OD with empirical accelerations → lower F_OD
-        
-        # Mission era classification
-        early_missions = ['NEAR', 'Galileo_1990', 'Galileo_1992', 'Cassini']
-        modern_missions = ['Rosetta_2005', 'Rosetta_2007', 'Rosetta_2009', 'MESSENGER_2005', 'Stardust']
-        
-        if spacecraft in early_missions:
-            # Early era: Minimal OD, empirical accelerations not standard
-            f_od_estimate = 0.85  # 85% signal survives
-            f_od_uncertainty = 0.15  # ±15% uncertainty
-            era = "early_minimal_od"
-        elif spacecraft in modern_missions:
-            # Modern era: Standard OD with empirical accelerations
-            f_od_estimate = 0.50  # 50% signal survives
-            f_od_uncertainty = 0.25  # ±50% uncertainty due to unknown filter tuning
-            era = "modern_empirical_od"
-        else:
-            # Unknown era: Conservative estimate
-            f_od_estimate = 0.70  # 70% signal survives (midpoint)
-            f_od_uncertainty = 0.30  # ±30% uncertainty
-            era = "unknown_era_conservative"
-        
         return {
             "spacecraft": spacecraft,
-            "f_od_estimate": f_od_estimate,
-            "f_od_uncertainty": f_od_uncertainty,
-            "uncertainty_fraction": f_od_uncertainty / f_od_estimate if f_od_estimate > 0 else None,
-            "status": "conservative_upper_bound",
-            "calibration_status": "estimated_from_mission_era",
-            "data_source": f"Mission era classification ({era}) - not from real OD configuration data",
-            "derivation": f"F_OD estimate based on mission era OD practices: early missions used minimal OD without empirical accelerations (higher F_OD), modern missions use standard OD with empirical accelerations (lower F_OD). ±{int(f_od_uncertainty*100)}% uncertainty accounts for unknown filter tuning parameters. Real mission OD configuration data required for defensible calculation.",
+            "f_od_estimate": None,
+            "f_od_uncertainty": None,
+            "uncertainty_fraction": None,
+            "status": "not_computable_without_mission_od_configuration",
+            "calibration_status": "cannot_compute_without_real_data",
+            "data_source": od_data.get("data_source"),
+            "derivation": (
+                "F_OD is not computed without mission OD configuration files; "
+                "published navigation papers do not provide quantitative filter parameters."
+            ),
             "literature_citation": od_data.get("citation"),
             "requires_mission_archive_access": True,
-            "recommended_action": "Obtain real mission OD configuration files from JPL/ESA NAIF with research justification to replace this estimate with defensible calculation"
+            "recommended_action": od_data.get("recommended_action")
+            or "Obtain real mission OD configuration files from JPL/ESA NAIF with research justification",
+            "data_status": od_data.get("data_status"),
+            "notes": od_data.get("notes"),
         }
     
     def run(self):
@@ -216,6 +225,12 @@ class MissionSpecificODAbsorption:
         if not flyby_data:
             self.logger.error("Failed to load flyby data")
             return None
+        
+        od_simulation_reference = self.load_od_simulation_reference()
+        self.logger.info(
+            "Loaded Step 012 OD simulation reference "
+            f"(minimal suppression {od_simulation_reference['minimal_od_suppression_percent']:.1f}%)"
+        )
         
         # Compute F_OD estimates for each flyby
         results = {}
@@ -231,7 +246,10 @@ class MissionSpecificODAbsorption:
                 f_od_result = self.compute_od_survival_factor(spacecraft, altitude_km, velocity_km_s)
                 results[spacecraft] = f_od_result
                 
-                self.logger.info(f"{spacecraft}: F_OD = {f_od_result['f_od_estimate']:.2f} ± {f_od_result['f_od_uncertainty']:.2f} ({f_od_result['status']})")
+                self.logger.info(
+                    f"{spacecraft}: F_OD not computed ({f_od_result['status']}); "
+                    "mission OD configuration required"
+                )
                 
             except Exception as e:
                 self.logger.error(f"Failed to compute F_OD for {spacecraft}: {e}")
@@ -248,31 +266,31 @@ class MissionSpecificODAbsorption:
                 "uncertainty": None,
                 "uncertainty_fraction": 0.30,
                 "uncertainty_absolute": None,
-                "status": "estimated",
-                "calibration_status": "estimated_from_mission_era",
-                "data_source": "Mission era classification and conservative upper bound estimation",
-                "derivation": "F_OD estimates are conservative upper bounds based on mission era OD practices; early missions used minimal OD without empirical accelerations (higher F_OD), modern missions use standard OD with empirical accelerations (lower F_OD); ±30% uncertainty accounts for unknown filter tuning parameters",
-                "recommended_action": "Validate with actual mission OD configuration data from JPL/ESA NAIF for higher precision",
+                "status": "not_computable_without_mission_od_configuration",
+                "calibration_status": "cannot_compute_without_real_data",
+                "data_source": "literature_reference_only",
+                "derivation": "F_OD is not computed without mission OD configuration files",
+                "recommended_action": "Obtain real mission OD configuration files from JPL/ESA NAIF with research justification",
                 "step": "021_mission_specific_od_absorption",
-                "timestamp": datetime.utcnow().isoformat() + "+00:00",
-                "method": "conservative_upper_bound_estimation",
-                "disclaimer": "F_OD estimates are conservative upper bounds based on mission era OD practices. Real mission OD configuration data required for defensible calculation.",
+                "timestamp": datetime.now(UTC).isoformat(),
+                "method": "not_computed",
+                "disclaimer": "F_OD is not computed without real mission OD configuration data.",
+                "od_simulation_reference": od_simulation_reference,
                 "results": {
                     "uncertainty": None,
-                    "uncertainty_fraction": 0.30,
+                    "uncertainty_fraction": None,
                     "uncertainty_absolute": None,
-                    "status": "estimated",
-                    "calibration_status": "estimated_from_mission_era",
-                    "data_source": "Mission era classification and conservative upper bound estimation",
-                    "derivation": "F_OD estimates are conservative upper bounds based on mission era OD practices; early missions used minimal OD without empirical accelerations (higher F_OD), modern missions use standard OD with empirical accelerations (lower F_OD); ±30% uncertainty accounts for unknown filter tuning parameters",
-                    "recommended_action": "Validate with actual mission OD configuration data from JPL/ESA NAIF for higher precision",
+                    "status": "not_computable_without_mission_od_configuration",
+                    "calibration_status": "cannot_compute_without_real_data",
+                    "data_source": "literature_reference_only",
+                    "derivation": "F_OD is not computed without mission OD configuration files",
+                    "recommended_action": "Obtain real mission OD configuration files from JPL/ESA NAIF with research justification",
                     **results
                 }
             }, f, indent=2)
         
-        self.logger.success(f"OD absorption estimates saved to {output_file}")
-        self.logger.warning("These are CONSERVATIVE ESTIMATES, not defensible calculations.")
-        self.logger.warning("To obtain defensible F_OD values, contact JPL/ESA NAIF with research justification.")
+        self.logger.success(f"OD absorption metadata saved to {output_file}")
+        self.logger.info("F_OD values were not computed; mission OD configuration data is required.")
         
         return results
 

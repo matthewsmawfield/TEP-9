@@ -29,6 +29,8 @@ R_EARTH: Final[float] = 6371000.0   # Mean Earth radius [m]
 M_EARTH: Final[float] = 5.9722e24   # Earth mass [kg]
 GM_EARTH: Final[float] = 3.986004418e14  # Earth gravitational parameter [m³ s⁻²]
 J2_EARTH: Final[float] = 1.08263e-3  # Earth's second dynamic form factor (J2)
+J3_EARTH: Final[float] = -2.53266e-6  # Earth's third dynamic form factor (J3, EGM96)
+J4_EARTH: Final[float] = -1.61099e-6  # Earth's fourth dynamic form factor (J4, EGM96)
 
 # Astronomy Units
 AU_METERS: Final[float] = 1.495978707e11  # Astronomical Unit [m]
@@ -62,12 +64,41 @@ DISFORMAL_VELOCITY_UNCERTAINTY: Final[float] = 0.2  # ±20% uncertainty (theoret
 # Legacy alias for backward compatibility
 RHO_TEMPORAL_TOPOLOGY_G_CM3: Final[float] = RHO_T  # Universal Temporal Topology density [g/cm³] (deprecated, use RHO_T)
 
-# Screening Factor (Jakarta v0.8 standard)
-# S_⊕ = (R_transition / R_Earth)^(1/3) ≈ (4146/6371)^(1/3) ≈ 0.349
-CHARACTERISTIC_SUPPRESSION: Final[float] = 0.349
+# Screening factors (Paper 6 UCD + Paper 15 EFA)
+# S_⊕: surface gradient-suppression ratio used in flyby β_eff = β × S_⊕
+# S_ucd: embedding depth R_sol / R_⊕ used in Paper 6 (distinct from S_⊕)
+CHARACTERISTIC_SUPPRESSION: Final[float] = (R_EARTH - R_TRANSITION_M) / R_EARTH
+UCD_EMBEDDING_FACTOR: Final[float] = R_TRANSITION_M / R_EARTH
 
 # Conversion Factors
 KG_M3_TO_GEV4: Final[float] = 4.318e-21  # kg/m³ to GeV⁴ conversion (Natural Units)
+
+
+def screened_beta(beta: float, surface_suppression: float = CHARACTERISTIC_SUPPRESSION) -> float:
+    """Map universal conformal β to Earth-surface screened β_eff."""
+    return beta * surface_suppression
+
+
+def ppn_gamma_deviation(beta_eff: float) -> float:
+    """Magnitude |γ − 1| used for Cassini checks (Jakarta v0.8 Sec. 7: γ − 1 = −2 α_eff² in DEF; here |γ−1| ≈ 2 β_eff² with β_eff the screened dimensionless coupling for A = exp(β φ/M_Pl))."""
+    return 2.0 * beta_eff**2
+
+
+def validate_screened_coupling(
+    beta: float,
+    beta_eff: float,
+    *,
+    surface_suppression: float = CHARACTERISTIC_SUPPRESSION,
+    rtol: float = 0.02,
+) -> None:
+    expected = screened_beta(beta, surface_suppression)
+    scale = max(abs(beta_eff), 1e-30)
+    if abs(expected - beta_eff) / scale > rtol:
+        raise ValueError(
+            "β_eff is inconsistent with β × S_⊕: "
+            f"beta={beta:.6e}, beta_eff={beta_eff:.6e}, "
+            f"expected={expected:.6e}, S_earth={surface_suppression:.6f}"
+        )
 
 def get_tep_metadata() -> dict:
     """Return theory version and metadata for data provenance."""
@@ -82,6 +113,7 @@ def get_tep_metadata() -> dict:
             "rho_T": f"{RHO_T} g/cm³",
             "rho_T_error": f"{RHO_T_ERROR} g/cm³",
             "rho_T_source": RHO_T_SOURCE,
-            "S_earth": f"{CHARACTERISTIC_SUPPRESSION}"
+            "S_earth": f"{CHARACTERISTIC_SUPPRESSION:.3f}",
+            "S_ucd_embedding": f"{UCD_EMBEDDING_FACTOR:.3f}",
         }
     }

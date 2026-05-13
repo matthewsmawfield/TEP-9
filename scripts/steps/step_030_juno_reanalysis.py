@@ -32,7 +32,10 @@ import re
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
+from scripts.utils.dsn_pds_ingest import ingest_mission_tracking
+from scripts.utils.dsn_tracking_discovery import discover_dsn_tracking_file, is_trk234_archive
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.trk234_extract import extract_trk234_measurements
 
 
 class JunoDSNReanalysis:
@@ -123,9 +126,20 @@ class JunoDSNReanalysis:
         4. NASA CDDIS (if applicable)
         """
         self.logger.subsection("Acquiring Raw TRK-2-25 Data")
-        
-        # First, check for existing local data
-        existing_files = list(self.data_dir.glob('*.trk')) + list(self.data_dir.glob('*.dat')) + list(self.data_dir.glob('*.TNF'))
+
+        ingest_manifest = ingest_mission_tracking(PROJECT_ROOT, "Juno_2013")
+        self.logger.info(
+            f"PDS ingest status: {ingest_manifest['status']} "
+            f"({len(ingest_manifest.get('downloads', []))} files)"
+        )
+
+        existing_files = []
+        for pattern in ('*.trk', '*.dat', '*.TNF', '*.tnf'):
+            existing_files.extend(self.data_dir.rglob(pattern))
+        existing_files = [
+            path for path in existing_files
+            if path.is_file() and is_trk234_archive(path)
+        ]
         if existing_files:
             self.logger.info(f"Found {len(existing_files)} existing data files:")
             for f in existing_files:

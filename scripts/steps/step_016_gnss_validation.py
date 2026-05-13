@@ -21,14 +21,20 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.utils.step_logger import StepLogger
-from scripts.utils.physics import BETA_BASELINE, RHO_T, SUPPRESSION_EXPONENT, LAMBDA_TEP_M
+from scripts.utils.physics import (
+    BETA_BASELINE,
+    RHO_T,
+    SUPPRESSION_EXPONENT,
+    LAMBDA_TEP_M,
+    LAMBDA_TEP_UNCERTAINTY,
+)
 
 # GNSS-derived parameters from Paper 5 (GTE)
 GNSS_CORRELATION_LENGTH_KM = 4201  # km
 GNSS_CORRELATION_UNCERTAINTY_KM = 1967  # km
 
-# Theoretical coupling from physics.py
-BETA_THEORETICAL = BETA_BASELINE * 1e-4  # Convert baseline to actual coupling
+# Theoretical coupling from physics.py (β = 1e-4 in flyby convention)
+BETA_THEORETICAL = BETA_BASELINE * 1e-4
 
 
 class GNSSCrossValidation:
@@ -85,38 +91,52 @@ class GNSSCrossValidation:
         # Extract flyby-derived parameters from nested dict
         stats = flyby_data.get('overall_analysis', {}).get('beta_statistics', {})
         weighted_mean_beta = stats.get('weighted_mean')
-        beta_uncertainty = stats.get('inflated_uncertainty', stats.get('weighted_uncertainty'))
+        beta_spread = stats.get('std')
+        beta_fit_uncertainty = stats.get('weighted_uncertainty')
         
         self.logger.subsection("PARAMETER COMPARISON")
         
-        # Compare β values
+        # Compare β values (flyby ensemble vs theory anchor)
         self.logger.info("Universal coupling β:")
-        if weighted_mean_beta is not None and beta_uncertainty is not None:
-            self.logger.info(f"  Flyby-derived: {weighted_mean_beta:.2e} ± {beta_uncertainty:.2e}")
+        if weighted_mean_beta is not None and beta_spread is not None:
+            self.logger.info(f"  Flyby-derived: {weighted_mean_beta:.2e} ± {beta_spread:.2e} (mission spread)")
+        elif weighted_mean_beta is not None:
+            self.logger.info(f"  Flyby-derived: {weighted_mean_beta:.2e}")
         else:
             self.logger.info("  Flyby-derived: Not available")
         self.logger.info(f"  Theoretical (Paper 1): {BETA_THEORETICAL:.2e}")
         
-        if weighted_mean_beta is not None and beta_uncertainty is not None:
-            beta_diff = abs(weighted_mean_beta - BETA_THEORETICAL)
-            beta_sigma = beta_diff / beta_uncertainty
-            self.logger.info(f"  Difference: {beta_diff:.2e} ({beta_sigma:.1f}σ)")
-            
-            if beta_sigma < 2:
-                self.logger.info("  Status: ✓ CONSISTENT (< 2σ)")
-            elif beta_sigma < 3:
-                self.logger.info("  Status: ~ MARGINALLY CONSISTENT (< 3σ)")
+        beta_theory_sigma = np.inf
+        if weighted_mean_beta is not None and beta_spread is not None and beta_spread > 0:
+            beta_theory_sigma = abs(weighted_mean_beta - BETA_THEORETICAL) / beta_spread
+            self.logger.info(f"  Difference vs theory: {abs(weighted_mean_beta - BETA_THEORETICAL):.2e} ({beta_theory_sigma:.1f}σ vs mission spread)")
+            if beta_theory_sigma < 2:
+                self.logger.info("  Theory anchor: ✓ CONSISTENT (< 2σ mission spread)")
+            elif beta_theory_sigma < 3:
+                self.logger.info("  Theory anchor: ~ MARGINALLY CONSISTENT (< 3σ mission spread)")
             else:
-                self.logger.info("  Status: ✗ INCONSISTENT (> 3σ)")
-        else:
-            beta_sigma = np.inf
+                self.logger.info("  Theory anchor: ✗ INCONSISTENT (> 3σ mission spread)")
         
-        # Compare screening length
+        # Compare screening length (primary GNSS cross-scale check)
         self.logger.subsection("SCREENING LENGTH COMPARISON")
         lambda_tep_km = LAMBDA_TEP_M / 1000.0
+        lambda_tep_sigma_km = lambda_tep_km * LAMBDA_TEP_UNCERTAINTY
+        gnss_sigma_km = GNSS_CORRELATION_UNCERTAINTY_KM
+        lambda_sigma_combined = np.hypot(lambda_tep_sigma_km, gnss_sigma_km)
+        lambda_diff_km = abs(lambda_tep_km - GNSS_CORRELATION_LENGTH_KM)
+        lambda_sigma = lambda_diff_km / lambda_sigma_combined if lambda_sigma_combined > 0 else np.inf
+        lambda_consistent = bool(lambda_sigma < 2.0) if lambda_sigma != np.inf else False
+        
         self.logger.info("Screening length λ:")
-        self.logger.info(f"  GNSS-derived (Paper 6): {GNSS_CORRELATION_LENGTH_KM:.0f} ± {GNSS_CORRELATION_UNCERTAINTY_KM:.0f} km")
-        self.logger.info(f"  Flyby model (Paper 7): {lambda_tep_km:.0f} km (from physics.py)")
+        self.logger.info(f"  GNSS-derived (Paper 5): {GNSS_CORRELATION_LENGTH_KM:.0f} ± {GNSS_CORRELATION_UNCERTAINTY_KM:.0f} km")
+        self.logger.info(f"  Flyby model (physics.py): {lambda_tep_km:.0f} ± {lambda_tep_sigma_km:.0f} km (SCF prior)")
+        self.logger.info(f"  Difference: {lambda_diff_km:.0f} km ({lambda_sigma:.1f}σ combined)")
+        if lambda_consistent:
+            self.logger.info("  GNSS cross-scale: ✓ CONSISTENT (< 2σ)")
+        elif lambda_sigma < 3:
+            self.logger.info("  GNSS cross-scale: ~ MARGINALLY CONSISTENT (< 3σ)")
+        else:
+            self.logger.info("  GNSS cross-scale: ✗ INCONSISTENT (> 3σ)")
         
         # Compare density exponent
         self.logger.subsection("DENSITY EXPONENT COMPARISON")
@@ -134,11 +154,19 @@ class GNSSCrossValidation:
         self.logger.info("  Paper 14 (Cos): Suppressed density scaling")
         
         return {
-            'beta_consistent': bool(beta_sigma < 2) if beta_sigma != np.inf else False,
+            'gnss_scale_consistent': lambda_consistent,
+            'beta_consistent': lambda_consistent,
+            'lambda_consistent': lambda_consistent,
+            'lambda_sigma': float(lambda_sigma) if lambda_sigma != np.inf else None,
+            'lambda_tep_km': lambda_tep_km,
+            'lambda_tep_uncertainty_km': lambda_tep_sigma_km,
+            'beta_theory_consistent': bool(beta_theory_sigma < 2.0) if beta_theory_sigma != np.inf else None,
+            'beta_theory_sigma': float(beta_theory_sigma) if beta_theory_sigma != np.inf else None,
             'gnss_correlation_length': GNSS_CORRELATION_LENGTH_KM,
             'gnss_correlation_uncertainty': GNSS_CORRELATION_UNCERTAINTY_KM,
             'flyby_beta': weighted_mean_beta,
-            'flyby_beta_uncertainty': beta_uncertainty,
+            'flyby_beta_spread': beta_spread,
+            'flyby_beta_fit_uncertainty': beta_fit_uncertainty,
             'theoretical_beta': BETA_THEORETICAL
         }
 

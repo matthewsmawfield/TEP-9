@@ -177,7 +177,11 @@ class SystematicErrorMonteCarlo:
         velocity_km_s: float,
         cos_asymmetry: float,
         perigee_latitude_rad: float = 0.0,
-        beta: float = None
+        beta: float = None,
+        plasma_effects: Dict = None,
+        flyby_date: str = "",
+        mission_name: str = "",
+        dec_in_deg: float = None,
     ) -> float:
         """
         Compute TEP-predicted anomaly using the actual TEP field model from step_007.
@@ -202,6 +206,8 @@ class SystematicErrorMonteCarlo:
         """
         if beta is None:
             beta = BETA_BASELINE * 1e-4
+        if plasma_effects is None:
+            raise ValueError("Missing perigee plasma effects for deterministic geometry envelope.")
 
         from scripts.steps.step_007_tep_model import TEPTemporalTopologyModel
 
@@ -212,10 +218,14 @@ class SystematicErrorMonteCarlo:
             "v_perigee_m_s": velocity_km_s * 1e3,
             "cos_dec_asymmetry": cos_asymmetry,
             "perigee_latitude_rad": perigee_latitude_rad,
-            "ephemeris": []
+            "flyby_date": flyby_date,
+            "mission_name": mission_name,
+            "dec_in_deg": dec_in_deg if dec_in_deg is not None else 0.0,
+            "state_vectors": {},
+            "ephemeris": [],
         }
 
-        return model.tep_velocity_shift(geometry)
+        return model.tep_velocity_shift(geometry, plasma_effects)
     
     def monte_carlo_analysis(
         self,
@@ -258,6 +268,9 @@ class SystematicErrorMonteCarlo:
         # pass the raw beta, not beta_eff (coupling_constant).
         beta_ref = fitting_data.get('recommended_beta', fitting_data.get('beta', 0.0004635))
         
+        from scripts.steps.step_017_plasma_modulation import PlasmaModulationModel
+
+        plasma_model = PlasmaModulationModel()
         flyby_results = []
         
         for flyby in catalog['flybys']:
@@ -269,6 +282,18 @@ class SystematicErrorMonteCarlo:
                 continue
             
             mission = flyby['mission_name']
+            flyby_date = flyby.get('flyby_date') or flyby.get('perigee_time', '')
+            if not flyby_date:
+                self.logger.error(f"Missing flyby_date for {mission}")
+                continue
+
+            plasma_effects = plasma_model.calculate_plasma_effects(
+                {
+                    'name': mission,
+                    'flyby_date': flyby_date,
+                    'altitude_km': flyby['perigee_altitude_km'],
+                }
+            )
             
             # Get mission-specific parameters
             altitude = flyby['perigee_altitude_km']
@@ -293,7 +318,11 @@ class SystematicErrorMonteCarlo:
             dv_tep_trials = np.array([
                 self.compute_tep_sensitivity(
                     alt_perturbed[i], vel_perturbed[i],
-                    cos_asym_perturbed[i], lat_perturbed[i], beta_ref
+                    cos_asym_perturbed[i], lat_perturbed[i], beta_ref,
+                    plasma_effects=plasma_effects,
+                    flyby_date=flyby_date,
+                    mission_name=mission,
+                    dec_in_deg=dec_in,
                 )
                 for i in range(n_trials)
             ])
@@ -358,7 +387,7 @@ class SystematicErrorMonteCarlo:
 
 def main():
     """Execute systematic error Monte Carlo analysis."""
-    logger = StepLogger("step_039_systematic_error_monte_carlo")
+    logger = StepLogger("step_024_systematic_error_monte_carlo")
     
     try:
         mc = SystematicErrorMonteCarlo(seed=42)

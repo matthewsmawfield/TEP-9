@@ -175,7 +175,8 @@ class SensitivityAnalyzer:
         if fit_file.exists():
             try:
                 with open(fit_file) as f:
-                    fit_data = json.load(f).get("fits", {})
+                    fit_payload = json.load(f)
+                    fit_data = fit_payload.get("individual_fits", fit_payload.get("fits", {}))
             except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
                 self.logger.warning(f"Failed to load fitting results: {e}")
                 fit_data = {}
@@ -187,7 +188,7 @@ class SensitivityAnalyzer:
             fit_info = fit_data.get(name, {}).get("fit", {})
             beta_eff = fit_info.get("beta_eff")
             if beta_eff is None:
-                beta_eff = fit_info.get("beta_fitted", 1e-4)  # fallback to beta_fitted or baseline
+                continue
             
             flybys[name] = {
                 "dv_pred": pred["tep_predictions"]["dv_tep_mm_s"],

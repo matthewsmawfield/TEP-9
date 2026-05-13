@@ -1,16 +1,21 @@
 # TEP-EFA: Earth Flyby Anomaly Analysis Pipeline
 # Keywords: Earth flyby, spacecraft navigation, TEP, temporal equivalence principle,
 # Temporal Shear Suppression screening, modified gravity, orbital dynamics, astrophysics
-numpy
-pandas
-astropy
-astroquery
-matplotlib
-scipy
-scikit-learn
-emcee
-corner
-tqdm
-aiohttp
-spiceypy
-# trk234 - Optional: Only needed for DSN TRK-2-34 data format parsing. Not available on PyPI.
+#
+# Pinned for exact reproducibility (generated from the active environment).
+numpy==1.26.4
+pandas==2.2.3
+astropy==7.1.1
+astroquery==0.4.11
+matplotlib==3.10.7
+scipy==1.16.2
+scikit-learn==1.7.2
+emcee==3.1.6
+corner==2.2.3
+tqdm==4.67.1
+aiohttp==3.9.1
+spiceypy==8.0.2
+PyIRI==0.1.6
+pytest==9.0.1
+
+# trk234 - Optional: Only needed for DSN TRK-2-34 parsing. Not available on PyPI in general.

@@ -48,12 +48,18 @@ from scripts.utils.enhanced_physics import (
 )
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep_geometry_envelope import (
+    compose_geometry_envelope,
+    disformal_envelope_factor,
+    j2_only_bracket,
+    zonal_harmonic_bracket,
+)
 
 # TEP Theoretical Framework (Standardized for Jakarta v0.8)
 # These constants are centrally managed in scripts/utils/physics.py
 LAMBDA_TEP_KM = LAMBDA_TEP_M / 1e3
 R_TRANSITION_KM = R_TRANSITION_M / 1e3
-# Note: CHARACTERISTIC_SUPPRESSION (S_⊕ ≈ 0.349) is derived from PREM transition radius
+# Note: CHARACTERISTIC_SUPPRESSION (S_⊕) is the UCD surface gradient-suppression ratio
 RELAXATION_EXPONENT = SUPPRESSION_EXPONENT
 
 # Load config
@@ -267,9 +273,8 @@ def extract_trajectory_geometry(flyby_data, spacecraft_name=""):
     Extract trajectory geometry from flyby data.
     
     Priority:
-    1. Ephemeris file (reconstruction)
-    2. Published declinations in catalog
-    3. Anderson_DECLINATIONS fallback (if any)
+    1. If ``data/trajectories/{name}_ephemeris.csv`` exists, load it (required to succeed).
+    2. Otherwise use published declinations from the flyby catalog.
     """
     name = spacecraft_name or flyby_data.get("mission_name", "Unknown")
     
@@ -299,8 +304,9 @@ def extract_trajectory_geometry(flyby_data, spacecraft_name=""):
                 if r_p > 0:
                     perigee_lat = math.asin(p["z_km"] / r_p)
         except Exception as e:
-            # Fallback to catalog if ephemeris fails
-            pass
+            raise RuntimeError(
+                f"Ephemeris file is present but could not be used for {name}: {ephemeris_path}"
+            ) from e
 
     if dec_in_deg is None or dec_out_deg is None:
         raise ValueError(f"Insufficient geometry data for {name} (no ephemeris or catalog declinations).")
@@ -352,8 +358,10 @@ class TEPTemporalTopologyModel:
         # =====================================================================
         # SELF-CONSISTENT FIELD PARAMETERS (Jakarta v0.8 field equations)
         # =====================================================================
-        # phi is computed from the first-principles field equation:
-        #   phi(rho) = Lambda * [n * Lambda^(n+4) * M_Pl / (beta * rho)]^(1/(n+1))
+        # phi is computed from the Jakarta v0.8 / EFA field minimum (Temporal Shear Suppression):
+        #   phi(rho) = Lambda * [n * Lambda^(n+4) * M_Pl / (2 * beta * rho_GeV4)]^(1/(n+1))
+        # Matter coupling supplies the factor 2 in the denominator (Einstein-frame
+        # TSS implementation shared with Step 011 / Step 019; EFA v0.1 Yogyakarta text).
         # with n=3 (Temporal Topology index), Lambda=10 MeV.
         #
         # Earth interior density ~5515 kg/m³ gives phi_earth ~ 2.4×10⁴ GeV.
@@ -415,121 +423,97 @@ class TEPTemporalTopologyModel:
     def disformal_modulation_factor(
         self, v_sc_m_s, cos_asymmetry, v_cmb_frame_kms=None, sc_cmb_cos_theta=None
     ):
-        """
-        Disformal coupling modulation factor from the TEP metric.
-
-        The full TEP metric includes a disformal term B(phi) * d_mu(phi) * d_nu(phi).
-        For a spacecraft with 4-velocity u^mu, this produces a velocity-dependent
-        modulation of the scalar force:
-
-            S_disf = 1.0 + alpha_B * (v_eff / v_th) * sign(cos_asymmetry)
-
-        The effective velocity v_eff depends on the spacecraft motion relative to
-        the scalar field rest frame (approximated by the CMB frame):
-
-        - If sc_cmb_cos_theta > 0 (spacecraft moving toward CMB dipole apex):
-          v_eff = v_cmb_frame_kms (CMB-frame total speed)
-        - Otherwise: v_eff = v_sc_m_s / 1e3 (geocentric perigee speed)
-
-        This directional dependence arises because the disformal coupling
-        contracts the 4-velocity with d_mu(phi), and the sign of the time
-        component dphi/dt_cmb matters when the scalar rest frame is the CMB.
-
-        For high-velocity flybys (v > v_th) with negative asymmetry, the disformal
-        term dominates and reverses the sign of the predicted anomaly.
-        """
-        v_th = DISFORMAL_VELOCITY_THRESHOLD_KM_S
-        alpha_B = DISFORMAL_COUPLING_STRENGTH
-
-        # Determine effective velocity based on CMB alignment
-        if v_cmb_frame_kms is not None and sc_cmb_cos_theta is not None and sc_cmb_cos_theta > 0:
-            v_km_s = v_cmb_frame_kms
-        elif v_cmb_frame_kms is not None:
-            v_km_s = v_sc_m_s / 1e3
-        else:
-            v_km_s = v_sc_m_s / 1e3
-
-        if v_km_s > v_th and cos_asymmetry < 0:
-            return -1.0 * abs(1.0 + alpha_B * (v_km_s / v_th))
-        else:
-            return 1.0 + alpha_B * (v_km_s / v_th) * np.sign(cos_asymmetry)
-
-    def ambient_relaxation_factor(self, density_g_cm3):
-        if density_g_cm3 <= 0:
-            return 1.0
-        rho_norm = density_g_cm3 / RHO_T
-        return min(rho_norm ** (-RELAXATION_EXPONENT), 1.0)
-
-    def local_density_at_altitude(self, altitude_km):
-        if altitude_km < 0:
-            return 5.515
-        if altitude_km > 1000:
-            return 1e-20
-        return 1.225e-3 * np.exp(-altitude_km / 8.5)
-
-    def effective_coupling(self, r):
-        """
-        Continuous density-driven screening via Temporal Shear suppression (v0.8).
-        Aligned with Jakarta v0.8: A(phi) = exp(beta*phi/M_Pl).
-        """
-        altitude_km = (r - R_EARTH) / 1e3
-        return self.beta * self.ambient_relaxation_factor(
-            self.local_density_at_altitude(altitude_km)
+        return disformal_envelope_factor(
+            v_sc_m_s,
+            cos_asymmetry,
+            v_cmb_frame_kms=v_cmb_frame_kms,
+            sc_cmb_cos_theta=sc_cmb_cos_theta,
         )
 
-    def tep_velocity_shift(
-        self, geometry, use_temporal=False
-    ):
-        ephemeris = geometry.get("ephemeris", [])
-        altitude_km = geometry.get("altitude_km")
-        if altitude_km is None:
-            raise ValueError("Missing altitude_km")
-        v_p = geometry.get("v_perigee_m_s")
-        if v_p is None:
-            raise ValueError("Missing v_perigee_m_s")
-        cos_asymmetry = geometry.get("cos_dec_asymmetry")
-        if cos_asymmetry is None:
-            raise ValueError("Missing cos_dec_asymmetry")
-        perigee_lat_rad = geometry.get("perigee_latitude_rad")
-        if perigee_lat_rad is None:
-            raise ValueError("Missing perigee_latitude_rad")
-        perigee_lat_deg = np.degrees(perigee_lat_rad)
+    def _plasma_density_cm3(self, altitude_km):
+        if altitude_km < 1000:
+            return 10000.0 * np.exp(-altitude_km / 200.0)
+        return 100.0
+
+    def _geometry_context(self, geometry, plasma_effects=None):
+        altitude_km = geometry["altitude_km"]
+        v_p = geometry["v_perigee_m_s"]
+        cos_asymmetry = geometry["cos_dec_asymmetry"]
+        perigee_lat_deg = np.degrees(geometry["perigee_latitude_rad"])
         velocity_km_s = v_p / 1000.0
-        plasma_density = (
-            10000 * np.exp(-altitude_km / 200.0) if altitude_km < 1000 else 100.0
-        )
+        r_p = altitude_km * 1e3 + R_EARTH
+
+        if plasma_effects is None:
+            raise ValueError("Missing perigee plasma effects for deterministic geometry envelope.")
+        plasma_density = plasma_effects["plasma_density_cm3"]
+        plasma_screening = plasma_effects["plasma_screening_factor"]
+        plasma_sign = plasma_effects["plasma_sign_factor"]
+
         modulation = self.geometry_modulation_factors(
             altitude_km, perigee_lat_deg, velocity_km_s, plasma_density
         )
-        f_geometry = modulation["f_total_core"]
+        envelope = compose_geometry_envelope(
+            altitude_km=altitude_km,
+            latitude_deg=perigee_lat_deg,
+            velocity_km_s=velocity_km_s,
+            cos_asymmetry=cos_asymmetry,
+            plasma_density_cm3=plasma_density,
+            modulation=modulation,
+            plasma_screening_factor=plasma_screening,
+            plasma_sign_factor=plasma_sign,
+        )
+
+        v_cmb = compute_cmb_frame_speed_kms(
+            geometry.get("flyby_date", ""),
+            velocity_km_s,
+            geometry.get("dec_in_deg", 0.0),
+        )
+        sc_cmb_cos = compute_sc_cmb_cos_theta(
+            geometry.get("dec_in_deg"),
+            geometry.get("state_vectors"),
+            geometry.get("mission_name"),
+        )
+        s_disf = self.disformal_modulation_factor(
+            v_p, cos_asymmetry, v_cmb, sc_cmb_cos
+        )
+
+        return {
+            "r_p": r_p,
+            "v_p": v_p,
+            "cos_asymmetry": cos_asymmetry,
+            "perigee_lat_deg": perigee_lat_deg,
+            "harmonic_bracket": zonal_harmonic_bracket(perigee_lat_deg, r_p),
+            "j2_bracket": j2_only_bracket(perigee_lat_deg, r_p),
+            "envelope": envelope,
+            "s_disf": s_disf,
+        }
+
+    def tep_velocity_shift(
+        self, geometry, plasma_effects=None
+    ):
+        ephemeris = geometry.get("ephemeris", [])
+        ctx = self._geometry_context(geometry, plasma_effects)
+        r_p = ctx["r_p"]
+        v_p = ctx["v_p"]
+        cos_asymmetry = ctx["cos_asymmetry"]
+        envelope_factor = ctx["envelope"]["geometry_envelope"]
+        s_disf = ctx["s_disf"]
 
         if not ephemeris:
-            r_p = altitude_km * 1e3 + R_EARTH
             beta_eff = self.effective_coupling(r_p)
             dphi_dr = self.field_gradient(r_p)
-            v_cmb = compute_cmb_frame_speed_kms(
-                geometry.get("flyby_date", ""),
-                velocity_km_s,
-                geometry.get("dec_in_deg", 0.0)
-            )
-            sc_cmb_cos = compute_sc_cmb_cos_theta(
-                geometry.get("dec_in_deg"),
-                geometry.get("state_vectors"),
-                geometry.get("mission_name")
-            )
-            S_disf = self.disformal_modulation_factor(v_p, cos_asymmetry, v_cmb, sc_cmb_cos)
-            j2_factor = J2_EARTH * (R_EARTH / r_p) ** 2
             dv_base = (
                 beta_eff
                 * (C_LIGHT**2)
                 * dphi_dr
                 / M_PL
                 * (r_p / v_p)
-                * j2_factor
+                * ctx["harmonic_bracket"]
                 * cos_asymmetry
+                * envelope_factor
                 * 1e3
             )
-            return dv_base * S_disf
+            return dv_base * s_disf
 
         integral_F_dt = 0.0
         for i in range(len(ephemeris) - 1):
@@ -560,28 +544,42 @@ class TEPTemporalTopologyModel:
             )
             if r <= R_EARTH:
                 continue
+            lat_deg = math.degrees(math.asin(((p1["z_km"] + p2["z_km"]) / 2) / (r / 1e3)))
+            bracket = zonal_harmonic_bracket(lat_deg, r)
             integral_F_dt += (
                 self.effective_coupling(r)
                 * (C_LIGHT**2)
                 * self.field_gradient(r)
                 / M_PL
+                * bracket
+                * cos_asymmetry
+                * envelope_factor
                 * dt
             )
 
-        v_cmb = compute_cmb_frame_speed_kms(
-            geometry.get("flyby_date", ""),
-            velocity_km_s,
-            geometry.get("dec_in_deg", 0.0)
-        )
-        sc_cmb_cos = compute_sc_cmb_cos_theta(
-                geometry.get("dec_in_deg"),
-                geometry.get("state_vectors"),
-                geometry.get("mission_name")
-            )
-        return (
-            integral_F_dt
-            * self.disformal_modulation_factor(v_p, cos_asymmetry, v_cmb, sc_cmb_cos)
-            * 1e3
+        return integral_F_dt * s_disf * 1e3
+
+    def ambient_relaxation_factor(self, density_g_cm3):
+        if density_g_cm3 <= 0:
+            return 1.0
+        rho_norm = density_g_cm3 / RHO_T
+        return min(rho_norm ** (-RELAXATION_EXPONENT), 1.0)
+
+    def local_density_at_altitude(self, altitude_km):
+        if altitude_km < 0:
+            return 5.515
+        if altitude_km > 1000:
+            return 1e-20
+        return 1.225e-3 * np.exp(-altitude_km / 8.5)
+
+    def effective_coupling(self, r):
+        """
+        Continuous density-driven screening via Temporal Shear suppression (v0.8).
+        Aligned with Jakarta v0.8: A(phi) = exp(beta*phi/M_Pl).
+        """
+        altitude_km = (r - R_EARTH) / 1e3
+        return self.beta * self.ambient_relaxation_factor(
+            self.local_density_at_altitude(altitude_km)
         )
 
 
@@ -613,6 +611,10 @@ def main():
     model = TEPTemporalTopologyModel(beta=beta_ref)
     predictions = {}
 
+    from scripts.steps.step_017_plasma_modulation import PlasmaModulationModel
+
+    plasma_model = PlasmaModulationModel()
+
     # Load 3D state vectors for CMB alignment computation
     state_vectors_path = PROJECT_ROOT / "results" / "step040a_3d_state_vectors.json"
     state_vectors = {}
@@ -631,41 +633,38 @@ def main():
             geometry["state_vectors"] = state_vectors
             geometry["mission_name"] = name
 
-            # Calculate TEP velocity shift
-            dv_tep = model.tep_velocity_shift(geometry)
-        except (ValueError, FileNotFoundError) as e:
+            perigee_vector = state_vectors.get(name)
+            if perigee_vector and geometry["perigee_latitude_rad"] == 0.0:
+                geometry["perigee_latitude_rad"] = math.radians(perigee_vector["dec_deg"])
+
+            plasma_effects = plasma_model.calculate_plasma_effects(
+                {
+                    "name": name,
+                    "flyby_date": flyby.get("flyby_date", geometry.get("flyby_date", "")),
+                    "altitude_km": geometry["altitude_km"],
+                }
+            )
+
+            ctx = model._geometry_context(geometry, plasma_effects)
+            dv_tep = model.tep_velocity_shift(geometry, plasma_effects)
+        except (ValueError, FileNotFoundError, RuntimeError) as e:
             logger.warning(f"  Skipping {name}: {str(e)}")
             continue
         except Exception as e:
             logger.error(f"  Unexpected error modeling {name}: {str(e)}")
-            continue
+            raise
 
-        # Component decomposition (Jakarta v0.8 Standard)
-        # dv_grad: Static scalar force (gradient-driven, no disformal modulation)
-        # dv_disf: Disformal contribution = dv_total - dv_grad
-        r_p = geometry["altitude_km"] * 1e3 + R_EARTH
+        r_p = ctx["r_p"]
         beta_eff = model.effective_coupling(r_p)
         dphi_dr = model.field_gradient(r_p)
-        v_p = geometry["v_perigee_m_s"]
-        cos_asym_factor = geometry["cos_dec_asymmetry"]
-        
-        j2_factor = J2_EARTH * (R_EARTH / r_p) ** 2
-        dv_grad = (beta_eff * (C_LIGHT**2) * dphi_dr / M_PL * (r_p / v_p) * j2_factor * cos_asym_factor * 1e3)
+        v_p = ctx["v_p"]
+        cos_asym_factor = ctx["cos_asymmetry"]
+        envelope_factor = ctx["envelope"]["geometry_envelope"]
 
-        v_cmb_kms = compute_cmb_frame_speed_kms(
-            geometry.get("flyby_date", ""),
-            v_p / 1000.0,
-            geometry.get("dec_in_deg", 0.0)
-        )
-        sc_cmb_cos = compute_sc_cmb_cos_theta(
-                geometry.get("dec_in_deg"),
-                geometry.get("state_vectors"),
-                geometry.get("mission_name")
-            )
-        S_disf = model.disformal_modulation_factor(v_p, cos_asym_factor, v_cmb_kms, sc_cmb_cos)
-        dv_total = dv_grad * S_disf
+        dv_grad = dv_tep / ctx["s_disf"] if ctx["s_disf"] else dv_tep
+        dv_total = dv_tep
         dv_disf = dv_total - dv_grad
-        
+
         predictions[name] = {
             "spacecraft": name,
             "perigee": {
@@ -681,9 +680,10 @@ def main():
                 "dv_tep_mm_s": dv_tep,
                 "dv_grad_mm_s": dv_grad,
                 "dv_disf_mm_s": dv_disf,
-                "model_version": "v5.3-Jakarta",
+                "model_version": "v5.4-Yogyakarta-geometry-envelope",
                 "topology_n": N_TOPOLOGY,
                 "beta_reference": beta_ref,
+                "geometry_envelope": ctx["envelope"],
             },
             "geometry": geometry,
         }

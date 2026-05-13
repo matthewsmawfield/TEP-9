@@ -5,8 +5,15 @@
     "status": "preliminary",
     "calibration_status": "needs_empirical_calibration",
     "data_source": "TEP-EFA pipeline analysis (Yogyakarta v0.1)",
-    "derivation": "Universal constants manifest derived from TEP-EFA pipeline weighted mean analysis; \u00b150% uncertainty accounts for systematic uncertainty in GNSS calibration and propagation to cosmological regime",
+    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 5.653484e-04 +/- 2.793538e-05, beta_eff = 1.974416e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
     "recommended_action": "Replace with empirically calibrated values from dedicated fifth-force experiments",
+    "efa_ensemble": {
+        "beta_weighted": 0.0005653483835550213,
+        "beta_uncertainty": 2.7935380075892315e-05,
+        "beta_eff_weighted": 0.0001974415560210206,
+        "n_fits": 3,
+        "source_step": "step008_fitting_results.json"
+    },
     "tep_universal_constants": {
         "uncertainty": 0.5,
         "uncertainty_fraction": 0.5,
@@ -35,15 +42,26 @@
                 "derivation": "Conformal coupling parameters derived from ensemble weighted mean of flyby anomaly fits scaled by characteristic suppression; \u00b150% uncertainty accounts for systematic uncertainty in GNSS calibration",
                 "recommended_action": "Calibrate with laboratory fifth-force experiments",
                 "beta": {
-                    "value": 3.4e-08,
-                    "uncertainty": 1.7e-08,
-                    "uncertainty_fraction": 0.5,
-                    "uncertainty_absolute": 1.7e-08,
-                    "data_source": "TEP-EFA pipeline weighted mean from flyby anomaly analysis",
-                    "derivation": "\u03b2 = 3.4\u00d710\u207b\u2078 is the fundamental conformal coupling derived from the ensemble weighted mean of flyby anomaly fits (\u03b2 = 4.64\u00d710\u207b\u2074) scaled by the characteristic suppression S_\u2295 = 0.35; this represents the unscreened cosmological coupling; \u00b150% uncertainty accounts for systematic uncertainty in GNSS calibration and propagation to cosmological regime",
+                    "value": 0.0005653483835550213,
+                    "uncertainty": 2.7935380075892315e-05,
+                    "uncertainty_fraction": 0.04941268231851867,
+                    "uncertainty_absolute": 2.7935380075892315e-05,
+                    "data_source": "step008_fitting_results.json weighted mean (universal conformal beta)",
+                    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 5.653484e-04 +/- 2.793538e-05, beta_eff = 1.974416e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
                     "status": "HEURISTIC",
                     "calibration_status": "NEEDS_LAB_MEASUREMENT",
                     "recommended_action": "Calibrate with laboratory fifth-force experiments or cosmological constraints"
+                },
+                "beta_eff": {
+                    "value": 0.0001974415560210206,
+                    "uncertainty": 9.7561168841407e-06,
+                    "uncertainty_fraction": 0.04941268231851867,
+                    "uncertainty_absolute": 9.7561168841407e-06,
+                    "data_source": "step008_fitting_results.json weighted mean screened by S_earth",
+                    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 5.653484e-04 +/- 2.793538e-05, beta_eff = 1.974416e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
+                    "status": "HEURISTIC",
+                    "calibration_status": "NEEDS_LAB_MEASUREMENT",
+                    "recommended_action": "Use for PPN-screened solar-system and CLASS/CAMB export targets"
                 }
             },
             "disformal": {
@@ -109,7 +127,7 @@
                 "class_camb_params": {
                     "Omega_phi": 0.69,
                     "w_phi_0": -0.98,
-                    "beta_phi": 3.4e-08
+                    "beta_phi": 0.0001974415560210206
                 }
             },
             "wide_binaries": {

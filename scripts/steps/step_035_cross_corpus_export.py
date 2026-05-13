@@ -18,8 +18,8 @@ be ingested directly by:
 **Mathematical Derivation:**
 - Raw fitted values from individual flyby fits: β_i (i = NEAR, Galileo 1990, Rosetta 2005, Cassini)
 - Weighted mean calculation: β_weighted = Σ(w_i × β_i) / Σ(w_i) where w_i = 1/σ_i²
-- Characteristic suppression factor: S_⊕ = 0.35 (derived from GNSS clock correlations, Step 013)
-- Unscreened cosmological coupling: β_cosmological = β_weighted / S_⊕
+- Characteristic suppression factor: S_⊕ = (R_⊕ - R_sol) / R_⊕ from Step 010 / physics.py
+- Screened surface coupling: β_eff = β × S_⊕
 
 **Data Flow:**
 - Step 004: TEP predictions → Step 005: Parameter fitting → Step 007: Variance analysis
@@ -213,16 +213,16 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.utils.step_logger import StepLogger
 
+from scripts.utils.step_logger import StepLogger
+from scripts.utils.flyby_ensemble import load_validated_step008_ensemble_summary
+from scripts.utils.physics import CHARACTERISTIC_SUPPRESSION, validate_screened_coupling
+
 def load_results(filename: str) -> dict:
     filepath = PROJECT_ROOT / 'results' / filename
-    if filepath.exists():
-        try:
-            with open(filepath, encoding='utf-8') as f:
-                return json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
-            logger.error(f"Failed to load JSON file {filepath}: {e}")
-            return {}
-    return {}
+    if not filepath.exists():
+        raise FileNotFoundError(f"Required results file not found: {filepath}")
+    with open(filepath, encoding='utf-8') as f:
+        return json.load(f)
 
 def main():
     logger = StepLogger("step_035_cross_corpus_export", PROJECT_ROOT)
@@ -231,28 +231,47 @@ def main():
     logger.header("STEP 035: TEP CROSS-CORPUS PARAMETER EXPORT")
     
     # Load all relevant parameters from the modular EFA pipeline
-    tep_predictions = load_results('step007_tep_predictions.json')
+    fitting_results = load_results('step008_fitting_results.json')
+    ensemble = load_validated_step008_ensemble_summary(fitting_results)
     space_weather = load_results('step018_space_weather.json')
     impulse_results = load_results('step034_holonomy_results.json')
-    
-    # Extract fundamental parameters
-    # EFA baseline beta fits at standard screening ~ 3.4e-8
-    beta_baseline = 3.4e-8 
+
+    beta_weighted = ensemble["beta_weighted"]
+    beta_uncertainty = ensemble["beta_uncertainty"]
+    beta_eff_weighted = ensemble["beta_eff_weighted"]
+    beta_screened_uncertainty = beta_uncertainty * CHARACTERISTIC_SUPPRESSION
+    logger.info(
+        "Step 008 ensemble: "
+        f"beta={beta_weighted:.6e} +/- {beta_uncertainty:.6e}, "
+        f"beta_eff={beta_eff_weighted:.6e}, "
+        f"n_fits={ensemble['n_fits']}"
+    )
     
     wb_concordance = space_weather.get('concordance', {}).get('wide_binary_concordance')
     if wb_concordance is None:
-        logger.warning("No wide binary concordance data found")
-        wb_concordance = {}
+        raise ValueError(
+            "step018_space_weather.json is missing concordance.wide_binary_concordance"
+        )
     inferred_rho_floor = wb_concordance.get('inferred_galactic_rho_floor_g_cm3')
-    
+
     if inferred_rho_floor is None:
-        logger.warning("No inferred galactic rho floor found in space weather concordance data. Using canonical value.")
-        inferred_rho_floor = 2e-23  # canonical galactic density
-    
+        raise ValueError(
+            "step018_space_weather.json is missing concordance.wide_binary_concordance."
+            "inferred_galactic_rho_floor_g_cm3"
+        )
+
     disformal_bound = impulse_results.get('b_over_a_bound')
     if disformal_bound is None:
-        logger.warning("No disformal bound found in temporal shear impulse results, using theoretical upper bound")
-        disformal_bound = 1e-15  # theoretical upper bound
+        raise ValueError("step034_holonomy_results.json is missing b_over_a_bound")
+
+    beta_uncertainty_fraction = (
+        beta_uncertainty / beta_weighted if beta_weighted > 0 else 0.0
+    )
+    beta_derivation = (
+        f"beta_eff = beta × S_earth with beta = {beta_weighted:.6e} +/- "
+        f"{beta_uncertainty:.6e}, beta_eff = {beta_eff_weighted:.6e}, and "
+        f"S_earth = {CHARACTERISTIC_SUPPRESSION:.6f} from UCD surface gradient suppression."
+    )
     
     logger.info("Extracting verified constants across EFA steps...")
     
@@ -263,8 +282,15 @@ def main():
         "status": "preliminary",
         "calibration_status": "needs_empirical_calibration",
         "data_source": "TEP-EFA pipeline analysis (Yogyakarta v0.1)",
-        "derivation": "Universal constants manifest derived from TEP-EFA pipeline weighted mean analysis; ±50% uncertainty accounts for systematic uncertainty in GNSS calibration and propagation to cosmological regime",
+        "derivation": beta_derivation,
         "recommended_action": "Replace with empirically calibrated values from dedicated fifth-force experiments",
+        "efa_ensemble": {
+            "beta_weighted": beta_weighted,
+            "beta_uncertainty": beta_uncertainty,
+            "beta_eff_weighted": beta_eff_weighted,
+            "n_fits": ensemble["n_fits"],
+            "source_step": "step008_fitting_results.json",
+        },
         "tep_universal_constants": {
             "uncertainty": 0.5,
             "uncertainty_fraction": 0.5,
@@ -293,15 +319,26 @@ def main():
                     "derivation": "Conformal coupling parameters derived from ensemble weighted mean of flyby anomaly fits scaled by characteristic suppression; ±50% uncertainty accounts for systematic uncertainty in GNSS calibration",
                     "recommended_action": "Calibrate with laboratory fifth-force experiments",
                     "beta": {
-                        "value": beta_baseline,
-                        "uncertainty": 1.7e-08,
-                        "uncertainty_fraction": 0.5,
-                        "uncertainty_absolute": 1.7e-08,
-                        "data_source": "TEP-EFA pipeline weighted mean from flyby anomaly analysis",
-                        "derivation": "β = 3.4×10⁻⁸ is the fundamental conformal coupling derived from the ensemble weighted mean of flyby anomaly fits (β = 4.64×10⁻⁴) scaled by the characteristic suppression S_⊕ = 0.35; this represents the unscreened cosmological coupling; ±50% uncertainty accounts for systematic uncertainty in GNSS calibration and propagation to cosmological regime",
+                        "value": beta_weighted,
+                        "uncertainty": beta_uncertainty,
+                        "uncertainty_fraction": beta_uncertainty_fraction,
+                        "uncertainty_absolute": beta_uncertainty,
+                        "data_source": "step008_fitting_results.json weighted mean (universal conformal beta)",
+                        "derivation": beta_derivation,
                         "status": "HEURISTIC",
                         "calibration_status": "NEEDS_LAB_MEASUREMENT",
                         "recommended_action": "Calibrate with laboratory fifth-force experiments or cosmological constraints"
+                    },
+                    "beta_eff": {
+                        "value": beta_eff_weighted,
+                        "uncertainty": beta_screened_uncertainty,
+                        "uncertainty_fraction": beta_uncertainty_fraction,
+                        "uncertainty_absolute": beta_screened_uncertainty,
+                        "data_source": "step008_fitting_results.json weighted mean screened by S_earth",
+                        "derivation": beta_derivation,
+                        "status": "HEURISTIC",
+                        "calibration_status": "NEEDS_LAB_MEASUREMENT",
+                        "recommended_action": "Use for PPN-screened solar-system and CLASS/CAMB export targets"
                     }
                 },
                 "disformal": {
@@ -367,7 +404,7 @@ def main():
                     "class_camb_params": {
                         "Omega_phi": 0.69,       # Dynamic proper-time field mapping to Dark Energy
                         "w_phi_0": -0.98,        # Mild deviation from Lambda
-                        "beta_phi": beta_baseline
+                        "beta_phi": beta_eff_weighted
                     }
                 },
                 "wide_binaries": {

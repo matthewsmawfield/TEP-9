@@ -18,7 +18,26 @@ from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import M_PL_GEV
 
 
-def generate_report(fitting_data: dict) -> dict:
+def literature_synthesis_metadata(chi2_consistency: float | None = None) -> dict:
+    metadata = {
+        'uncertainty': None,
+        'uncertainty_fraction': None,
+        'uncertainty_absolute': None,
+        'status': 'literature_synthesis',
+        'calibration_status': 'literature_and_pipeline_outputs',
+        'data_source': 'peer_reviewed_literature_and_pipeline_outputs',
+        'recommended_action': (
+            'Replace literature anomaly inputs with independent DSN OD reanalysis before external claims'
+        ),
+    }
+    if chi2_consistency is not None:
+        metadata['derivation'] = (
+            f'Literature synthesis with beta-scatter consistency chi2~{chi2_consistency:.0f}'
+        )
+    return metadata
+
+
+def generate_report(fitting_data: dict, project_root: Path) -> dict:
     """Generate comprehensive scientific report from fitting results."""
     
     fits = fitting_data['individual_fits']
@@ -66,7 +85,7 @@ def generate_report(fitting_data: dict) -> dict:
             fit = fits[name]['fit']
             if fit['beta_fitted']:
                 gamma_dev = fit['ppn_gamma_deviation']
-                beta_unc = fit.get('beta_uncertainty', fit['beta_fitted'] * 0.1)
+                beta_unc = fit.get('uncertainty', fit['beta_fitted'] * 0.1)
                 
                 findings.append({
                     'spacecraft': name,
@@ -115,8 +134,11 @@ def generate_report(fitting_data: dict) -> dict:
     # Determine confidence level with justification
     # NOTE: Based on actual fitting results (n_fits), not published anomaly count
     if tep_viable and len(findings) >= 4:
-        confidence = 'high'
-        confidence_rationale = 'Four independent detections all satisfying PPN constraints; fitted β values span two orders of magnitude, indicating model captures qualitative behavior while the ensemble β should be treated as a summary statistic'
+        confidence = 'moderate'
+        confidence_rationale = (
+            'Four literature-reported detections satisfy PPN constraints in the current fit set, '
+            'but the sample remains small and per-flyby β values span nearly an order of magnitude'
+        )
     elif tep_viable and len(findings) >= 3:
         confidence = 'moderate'
         confidence_rationale = 'Three detections consistent; limited by small sample size'
@@ -136,6 +158,59 @@ def generate_report(fitting_data: dict) -> dict:
         if entry.get('fit', {}).get('excluded')
     ]
 
+    beta_stats = overall.get('beta_statistics', {})
+    chi2_consistency = None
+    if len(beta_values) > 1:
+        mean_beta = beta_stats.get('mean', 0)
+        chi2_consistency = sum(
+            ((b - mean_beta) / (b * 0.1 if b != 0 else 0.1)) ** 2
+            for b in beta_values
+            if b != 0
+        )
+
+    gnss_file = project_root / 'results' / 'step016_gnss_cross_validation.json'
+    gnss_scale_consistent = None
+    if gnss_file.exists():
+        with open(gnss_file, encoding='utf-8') as f:
+            gnss_data = json.load(f)
+        gnss_scale_consistent = gnss_data.get('gnss_scale_consistent', gnss_data.get('beta_consistent'))
+
+    if gnss_scale_consistent is False and confidence in ('high', 'moderate'):
+        confidence = 'limited'
+        confidence_rationale += (
+            '; GNSS correlation-length calibration is not consistent with the flyby relaxation-length prior'
+        )
+
+    if chi2_consistency is not None and chi2_consistency > 100 and confidence != 'none':
+        if confidence == 'moderate':
+            confidence = 'limited'
+        confidence_rationale += (
+            f'; per-flyby β consistency χ²≈{chi2_consistency:.0f} indicates weak ensemble agreement'
+        )
+
+    caveats = [
+        'Analysis relies on literature anomaly values, not independent DSN data analysis',
+        f'{len(fitted_names)} flybys yielded successful fits: {", ".join(fitted_names)}',
+        f'Excluded or skipped flybys in current fit table: {", ".join(excluded) if excluded else "none"}',
+        'Temporal Shear Suppression restoration phase-boundary factor derived from first-principles PREM integration (Step 015); GNSS cross-check must agree before elevating confidence',
+        'Null results at high altitude support restoration but do not independently constrain β',
+    ]
+    if gnss_scale_consistent is False:
+        caveats.append('GNSS correlation-length cross-check failed for the current flyby relaxation-length prior')
+
+    hierarchical_beta = None
+    hierarchical_file = project_root / 'results' / 'step015_hierarchical_bayesian_results.json'
+    if hierarchical_file.exists():
+        with open(hierarchical_file, encoding='utf-8') as handle:
+            hierarchical = json.load(handle)
+        summary = hierarchical.get('hierarchical_mcmc', {})
+        hierarchical_beta = summary.get('beta_0_median')
+        if hierarchical_beta is not None:
+            caveats.append(
+                f'Hierarchical Bayesian pooled β₀ median (Step 015) is {hierarchical_beta:.2e}; '
+                'per-flyby β scatter remains large relative to this pooled scale'
+            )
+
     conclusion = {
         'tep_viable': tep_viable,
         'recommended_beta': weighted_mean,
@@ -148,32 +223,19 @@ def generate_report(fitting_data: dict) -> dict:
         'n_null_results': 8,  # Galileo 1992, Rosetta 2007, Rosetta 2009, MESSENGER, Juno, Stardust, OSIRIS-REx, BepiColombo
         'confidence': confidence,
         'confidence_rationale': confidence_rationale,
-        'caveats': [
-            'Analysis relies on literature anomaly values, not independent DSN data analysis',
-            f'{len(fitted_names)} flybys yielded successful fits: {", ".join(fitted_names)}',
-            f'Excluded or skipped flybys in current fit table: {", ".join(excluded) if excluded else "none"}',
-            'Temporal Shear Suppression restoration phase-boundary factor derived from first-principles PREM integration (Step 015); independently validated by GNSS correlation',
-            'Null results at high altitude support restoration but do not independently constrain β'
-        ],
-        'physical_interpretation': f'The fitted β = {weighted_mean:.2e} implies a PPN γ deviation of {gamma_deviation:.2e}, well within solar system constraints. The Ambient Symmetry Restoration mechanism addresses both detections (NEAR, Galileo 1990, Rosetta 2005) and non-detections (MESSENGER, Juno) across varying flyby geometries.'
+        'caveats': caveats,
+        'physical_interpretation': f'The fitted β = {weighted_mean:.2e} implies a PPN γ deviation of {gamma_deviation:.2e}, well within solar system constraints. The Ambient Symmetry Restoration mechanism addresses both detections (NEAR, Galileo 1990, Rosetta 2005) and non-detections (MESSENGER, Juno) across varying flyby geometries.',
+        **literature_synthesis_metadata(chi2_consistency),
     }
     
-    # Enhanced statistical summary
-    beta_stats = overall.get('beta_statistics', {})
-    chi2_consistency = None
-    if len(beta_values) > 1:
-        # Test consistency: are beta values mutually compatible?
-        mean_beta = beta_stats.get('mean', 0)
-        var_beta = beta_stats.get('std', 0) ** 2
-        # Safe division: avoid division by zero
-        chi2_consistency = sum(((b - mean_beta) / (b * 0.1 if b != 0 else 0.1)) ** 2 for b in beta_values if b != 0)  # Approximate
-    
     return {
+        **literature_synthesis_metadata(chi2_consistency),
         'findings': findings,
         'statistics': {
             'beta_mean': beta_stats.get('mean'),
             'beta_std': beta_stats.get('std'),
             'beta_weighted_mean': beta_stats.get('weighted_mean'),
+            'beta_hierarchical_median': hierarchical_beta,
             'beta_min': beta_stats.get('min'),
             'beta_max': beta_stats.get('max'),
             'n_fits': overall.get('n_fits', 0),
@@ -221,7 +283,7 @@ def main():
         return 1
     
     logger.section("GENERATING COMPREHENSIVE REPORT")
-    report = generate_report(fitting_data)
+    report = generate_report(fitting_data, PROJECT_ROOT)
     
     # Display findings with comprehensive detail
     logger.section("KEY FINDINGS")
@@ -293,8 +355,9 @@ def main():
     logger.section("SAVING FINAL REPORT")
     final_output = {
         'report_date': datetime.now(timezone.utc).isoformat(),
+        **literature_synthesis_metadata(report['statistics'].get('chi2_consistency_approx')),
         'summary': report,
-        'raw_data': fitting_data
+        'raw_data': fitting_data,
     }
     
     output_file = results_dir / 'step036_final_report.json'

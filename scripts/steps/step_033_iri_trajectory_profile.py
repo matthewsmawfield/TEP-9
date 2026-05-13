@@ -6,18 +6,17 @@ This step fetches IRI electron density data for continuous points along
 the full historical trajectories, replacing the Chapman layer approximation
 with real empirical ionospheric data.
 
-For each flyby trajectory (301 points at 1-minute intervals), IRI data
-is fetched using historical F10.7 solar flux values and approximate
-perigee coordinates.
-
-Author: TEP-EFA Pipeline
-Date: 2026-05-10
+For each flyby trajectory, IRI data is fetched using Celestrak F10.7 values
+and sub-satellite latitude/longitude reconstructed from cached JPL Horizons
+RA/Dec responses. Missing IRI or space-weather inputs raise errors instead
+of substituting defaults.
 """
 
 import json
+import math
 import numpy as np
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, Tuple
 import sys
 from datetime import datetime
 import time
@@ -25,6 +24,8 @@ import time
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
+from scripts.utils.celestrak_space_weather import lookup_space_weather
+from scripts.steps.step_040a_extract_3d_vectors import parse_raw_response
 from scripts.utils.step_logger import StepLogger
 
 # Check if PyIRI is available
@@ -54,60 +55,52 @@ def parse_datetime(dt_str):
     raise ValueError(f"Cannot parse datetime: {dt_str}")
 
 
-def fetch_iri_data(year, month, day, hour, minute, second, 
-                  altitude_km, latitude_deg, longitude_deg, f107_override=None):
-    """
-    Fetch IRI electron density data for specific location and time.
-    
-    Returns: electron density in electrons/cm^3
-    """
+def geodetic_lat_lon_deg(ra_deg: float, dec_deg: float) -> Tuple[float, float]:
+    """Sub-satellite geodetic latitude/longitude from JPL Horizons RA/Dec."""
+    lat_deg = float(dec_deg)
+    lon_deg = float(ra_deg)
+    if lon_deg > 180.0:
+        lon_deg -= 360.0
+    return lat_deg, lon_deg
+
+
+def horizons_geometry_by_timestamp(mission: str) -> Dict[str, Tuple[float, float]]:
+    """Map trajectory timestamps to geodetic coordinates from cached Horizons data."""
+    raw_path = PROJECT_ROOT / "data" / "raw" / "jpl_horizons" / mission / f"{mission}_raw_response.txt"
+    if not raw_path.exists():
+        raise FileNotFoundError(f"Missing JPL Horizons raw response for {mission}: {raw_path}")
+
+    parsed = parse_raw_response(raw_path)
+    if not parsed or not parsed.get("timestamps"):
+        raise RuntimeError(f"Could not parse JPL Horizons geometry for {mission}")
+
+    geometry = {}
+    for dt, ra_deg, dec_deg in zip(parsed["timestamps"], parsed["ra_deg"], parsed["dec_deg"]):
+        geometry[dt.strftime("%Y-%m-%d %H:%M:%S")] = geodetic_lat_lon_deg(ra_deg, dec_deg)
+    return geometry
+
+
+def fetch_iri_data(year, month, day, hour, minute, second,
+                  altitude_km, latitude_deg, longitude_deg, f107_sf: float) -> float:
+    """Fetch IRI electron density data for a specific location and time."""
     if not IRI_AVAILABLE:
-        return None
-    
-    try:
-        # PyIRI IRI_density_1day requires:
-        # - year, month, day: integers
-        # - ahr: array of UT hours
-        # - alon: array of longitudes
-        # - alat: array of latitudes
-        # - aalt: array of altitudes
-        # - f107: F10.7 solar flux
-        # - coeff_dir: coefficient directory
-        # - ccir_or_ursi: coefficient model choice
-        
-        # Set up arrays for single point query
-        ahr = np.array([hour + minute/60.0])
-        alon = np.array([longitude_deg])
-        alat = np.array([latitude_deg])
-        aalt = np.array([altitude_km])
-        
-        # Use provided F10.7 value or default
-        f107 = f107_override if f107_override is not None else 100.0
-        
-        # Get coefficient directory from PyIRI
-        coeff_dir = PyIRI.coeff_dir
-        
-        # Use CCIR coefficients (0 = CCIR, 1 = URSI)
-        ccir_or_ursi = 0
-        
-        # Call IRI_density_1day
-        # Returns: F2, F1, E, Es, sun, mag, EDP (7 values)
-        F2, F1, E, Es, sun, mag, edp = IRI_density_1day(
-            year, month, day, ahr, alon, alat, aalt, f107, coeff_dir, ccir_or_ursi
+        raise RuntimeError("PyIRI library not available. Install with: pip install PyIRI")
+
+    ahr = np.array([hour + minute / 60.0])
+    alon = np.array([longitude_deg])
+    alat = np.array([latitude_deg])
+    aalt = np.array([altitude_km])
+    coeff_dir = PyIRI.coeff_dir
+    _, _, _, _, _, _, edp = IRI_density_1day(
+        year, month, day, ahr, alon, alat, aalt, f107_sf, coeff_dir, 0
+    )
+    ne = edp[0, 0, 0] / 1e6
+    if not np.isfinite(ne) or ne < 0:
+        raise RuntimeError(
+            f"IRI returned invalid electron density at {year:04d}-{month:02d}-{day:02d} "
+            f"{hour:02d}:{minute:02d}:{second:02d} UT"
         )
-        
-        # Extract electron density from EDP array
-        # EDP shape: (altitudes, longitudes, latitudes, parameters)
-        # We want electron density at our single point
-        ne = edp[0, 0, 0]  # electrons/m^3
-        ne = ne / 1e6  # Convert from m^-3 to cm^-3
-        
-        return ne
-    except Exception as e:
-        print(f"Error fetching IRI data: {e}")
-        import traceback
-        traceback.print_exc()
-        return None
+    return float(ne)
 
 
 def main():
@@ -118,69 +111,61 @@ def main():
     if not IRI_AVAILABLE:
         logger.error("PyIRI library not available. Install with: pip install PyIRI")
         return 1
-    
-    # Historical F10.7 solar flux data from step_016_space_weather.py
-    historical_f107 = {
-        'Galileo_1990': 230.4,  # Solar maximum
-        'NEAR_1998': 96.9,      # Moderate
-        'Cassini_1999': 130.7,   # Moderate
-        'Rosetta_2005': 78.9     # Solar minimum
-    }
-    
-    # Approximate perigee coordinates from step_001c_download_ionospheric.py
-    flyby_coordinates = {
-        'NEAR_1998': {'lat': -16.0, 'lon': 120.0, 'perigee_altitude_km': 567.9, 'perigee_date': '1998-01-23'},
-        'Galileo_1990': {'lat': 15.0, 'lon': -80.0, 'perigee_altitude_km': 972.3, 'perigee_date': '1990-12-08'},
-        'Cassini_1999': {'lat': -20.0, 'lon': 130.0, 'perigee_altitude_km': 1197.3, 'perigee_date': '1999-08-18'},
-        'Rosetta_2005': {'lat': 5.0, 'lon': 20.0, 'perigee_altitude_km': 1968.7, 'perigee_date': '2005-03-04'}
-    }
-    
-    # Primary flybys with their trajectory files
+
     primary_flybys = {
         'NEAR_1998': 'data/raw/jpl_horizons/NEAR_1998/NEAR_1998_trajectory.json',
         'Galileo_1990': 'data/raw/jpl_horizons/Galileo_1990/Galileo_1990_trajectory.json',
+        'Galileo_1992': 'data/raw/jpl_horizons/Galileo_1992/Galileo_1992_trajectory.json',
         'Cassini_1999': 'data/raw/jpl_horizons/Cassini_1999/Cassini_1999_trajectory.json',
-        'Rosetta_2005': 'data/raw/jpl_horizons/Rosetta_2005/Rosetta_2005_trajectory.json'
+        'Rosetta_2005': 'data/raw/jpl_horizons/Rosetta_2005/Rosetta_2005_trajectory.json',
+        'Rosetta_2007': 'data/raw/jpl_horizons/Rosetta_2007/Rosetta_2007_trajectory.json',
+        'Rosetta_2009': 'data/raw/jpl_horizons/Rosetta_2009/Rosetta_2009_trajectory.json',
+        'MESSENGER_2005': 'data/raw/jpl_horizons/MESSENGER_2005/MESSENGER_2005_trajectory.json',
+        'Juno_2013': 'data/raw/jpl_horizons/Juno_2013/Juno_2013_trajectory.json',
+        'Stardust_2001': 'data/raw/jpl_horizons/Stardust_2001/Stardust_2001_trajectory.json',
     }
-    
+
     results = {}
-    
+
     for mission, traj_file in primary_flybys.items():
         logger.subsection(f"Processing {mission}")
-        
+
         traj_path = PROJECT_ROOT / traj_file
         if not traj_path.exists():
-            logger.warning(f"Trajectory file not found: {traj_path}")
-            continue
-        
-        # Load trajectory data
-        with open(traj_path, 'r') as f:
+            raise FileNotFoundError(f"Trajectory file not found: {traj_path}")
+
+        with open(traj_path, 'r', encoding='utf-8') as f:
             traj_data = json.load(f)
-        
-        # Get coordinates and F10.7 for this mission
-        coords = flyby_coordinates.get(mission, {'lat': 0.0, 'lon': 0.0})
-        f107_actual = historical_f107.get(mission, 100.0)
-        
-        logger.info(f"Trajectory points: {len(traj_data['timestamp'])}")
-        logger.info(f"Location: Lat {coords['lat']:.1f}°, Lon {coords['lon']:.1f}°")
-        logger.info(f"Historical F10.7: {f107_actual:.1f} sfu")
-        
-        # Fetch IRI data for each trajectory point
+
+        geometry_by_timestamp = horizons_geometry_by_timestamp(mission)
+
         iri_profile = []
         chapman_profile = []
         altitude_profile = []
         timestamp_profile = []
-        
+        latitude_profile = []
+        longitude_profile = []
+
         total_points = len(traj_data['timestamp'])
+        perigee_index = 0
+        perigee_altitude_km = math.inf
+        perigee_timestamp = None
+        perigee_lat = None
+        perigee_lon = None
+
         for i, (timestamp_str, range_m) in enumerate(zip(traj_data['timestamp'], traj_data['range_m'])):
-            # Calculate altitude
-            R_EARTH = 6371000  # meters
-            altitude_km = (range_m - R_EARTH) / 1000.0
-            
-            # Parse datetime
+            altitude_km = (range_m - 6371000.0) / 1000.0
+            if altitude_km < perigee_altitude_km:
+                perigee_altitude_km = altitude_km
+                perigee_index = i
+
+            if timestamp_str not in geometry_by_timestamp:
+                raise RuntimeError(f"No JPL Horizons geometry for {mission} at {timestamp_str}")
+
+            lat_deg, lon_deg = geometry_by_timestamp[timestamp_str]
             dt = parse_datetime(timestamp_str)
-            
-            # Fetch IRI data
+            f107_actual = lookup_space_weather(dt.strftime("%Y-%m-%d"))["f10_7"]
+
             iri_ne = fetch_iri_data(
                 year=dt.year,
                 month=dt.month,
@@ -189,52 +174,49 @@ def main():
                 minute=dt.minute,
                 second=dt.second,
                 altitude_km=altitude_km,
-                latitude_deg=coords['lat'],
-                longitude_deg=coords['lon'],
-                f107_override=f107_actual
+                latitude_deg=lat_deg,
+                longitude_deg=lon_deg,
+                f107_sf=f107_actual,
             )
-            
-            # Compute Chapman layer density for comparison
-            h_max = 300  # km
-            n_max = 2e5 * (f107_actual / 150.0)  # Scale with F10.7
+
+            h_max = 300
+            n_max = 2e5 * (f107_actual / 150.0)
             if altitude_km <= h_max:
                 scale_height = 50
                 z = (altitude_km - h_max) / scale_height
-                chapman_ne = n_max * np.exp(0.5 * (1 - z - np.exp(-z)))
+                chapman_ne = n_max * math.exp(0.5 * (1 - z - math.exp(-z)))
             else:
-                alpha_topside = 4.5
-                chapman_ne = n_max * (h_max / altitude_km) ** alpha_topside
-            
-            iri_profile.append(iri_ne if iri_ne is not None else 0.0)
+                chapman_ne = n_max * (h_max / altitude_km) ** 4.5
+
+            iri_profile.append(iri_ne)
             chapman_profile.append(chapman_ne)
             altitude_profile.append(altitude_km)
             timestamp_profile.append(timestamp_str)
-            
-            # Progress update every 50 points
+            latitude_profile.append(lat_deg)
+            longitude_profile.append(lon_deg)
+
             if (i + 1) % 50 == 0:
                 logger.info(f"Progress: {i + 1}/{total_points} points processed")
-            
-            # Small delay to avoid overwhelming the IRI library
             time.sleep(0.01)
-        
-        # Add additional altitude points from perigee up to trajectory minimum
-        # This ensures IRI data coverage for perigee region where plasma matters most
-        min_traj_altitude = min(altitude_profile) if altitude_profile else 60000
-        perigee_alt = coords.get('perigee_altitude_km', 500)
-        perigee_date_str = coords.get('perigee_date', '2000-01-01')
-        perigee_dt = parse_datetime(perigee_date_str + ' 12:00:00')
-        
-        # Generate altitude points from perigee to min trajectory altitude
-        # Use 100 km spacing for efficient coverage
-        additional_altitudes = np.arange(perigee_alt, min_traj_altitude, 100)
-        logger.info(f"Adding {len(additional_altitudes)} additional altitude points from {perigee_alt:.1f} km to {min_traj_altitude:.1f} km")
-        
+
+        perigee_timestamp = timestamp_profile[perigee_index]
+        perigee_lat = latitude_profile[perigee_index]
+        perigee_lon = longitude_profile[perigee_index]
+        perigee_dt = parse_datetime(perigee_timestamp)
+        perigee_sw = lookup_space_weather(perigee_dt.strftime("%Y-%m-%d"))
+        f107_perigee = perigee_sw["f10_7"]
+
+        min_traj_altitude = min(altitude_profile)
+        additional_altitudes = np.arange(perigee_altitude_km, min_traj_altitude, 100)
+        logger.info(
+            f"Adding {len(additional_altitudes)} additional altitude points from "
+            f"{perigee_altitude_km:.1f} km to {min_traj_altitude:.1f} km"
+        )
+
         for alt in additional_altitudes:
-            # Skip if already close to existing point
             if any(abs(alt - existing) < 50 for existing in altitude_profile):
                 continue
-            
-            # Fetch IRI data at this altitude using perigee time and location
+
             iri_ne = fetch_iri_data(
                 year=perigee_dt.year,
                 month=perigee_dt.month,
@@ -242,59 +224,68 @@ def main():
                 hour=perigee_dt.hour,
                 minute=perigee_dt.minute,
                 second=perigee_dt.second,
-                altitude_km=alt,
-                latitude_deg=coords['lat'],
-                longitude_deg=coords['lon'],
-                f107_override=f107_actual
+                altitude_km=float(alt),
+                latitude_deg=perigee_lat,
+                longitude_deg=perigee_lon,
+                f107_sf=f107_perigee,
             )
-            
-            # Compute Chapman layer density
-            h_max = 300  # km
-            n_max = 2e5 * (f107_actual / 150.0)
-            if alt <= h_max:
+
+            n_max = 2e5 * (f107_perigee / 150.0)
+            if alt <= 300:
                 scale_height = 50
-                z = (alt - h_max) / scale_height
-                chapman_ne = n_max * np.exp(0.5 * (1 - z - np.exp(-z)))
+                z = (alt - 300) / scale_height
+                chapman_ne = n_max * math.exp(0.5 * (1 - z - math.exp(-z)))
             else:
-                alpha_topside = 4.5
-                chapman_ne = n_max * (h_max / alt) ** alpha_topside
-            
-            # Add to profiles
-            iri_profile.append(iri_ne if iri_ne is not None else 0.0)
+                chapman_ne = n_max * (300 / alt) ** 4.5
+
+            iri_profile.append(iri_ne)
             chapman_profile.append(chapman_ne)
-            altitude_profile.append(alt)
-            timestamp_profile.append(perigee_date_str + ' 12:00:00')
-            
-            # Small delay
+            altitude_profile.append(float(alt))
+            timestamp_profile.append(perigee_timestamp)
+            latitude_profile.append(perigee_lat)
+            longitude_profile.append(perigee_lon)
             time.sleep(0.005)
-        
-        # Sort all profiles by altitude for proper interpolation
+
         sorted_indices = np.argsort(altitude_profile)
         altitude_profile = [altitude_profile[i] for i in sorted_indices]
         iri_profile = [iri_profile[i] for i in sorted_indices]
         chapman_profile = [chapman_profile[i] for i in sorted_indices]
         timestamp_profile = [timestamp_profile[i] for i in sorted_indices]
-        
+        latitude_profile = [latitude_profile[i] for i in sorted_indices]
+        longitude_profile = [longitude_profile[i] for i in sorted_indices]
+
         logger.info(f"Total altitude points after adding perigee coverage: {len(altitude_profile)}")
         logger.info(f"Altitude range: {min(altitude_profile):.1f} km to {max(altitude_profile):.1f} km")
-        
+
         results[mission] = {
             'trajectory': {
                 'timestamp': timestamp_profile,
                 'altitude_km': altitude_profile,
+                'latitude_deg': latitude_profile,
+                'longitude_deg': longitude_profile,
                 'iri_ne_cm3': iri_profile,
-                'chapman_ne_cm3': chapman_profile
+                'chapman_ne_cm3': chapman_profile,
             },
-            'coordinates': coords,
-            'f107_sfu': f107_actual,
+            'coordinates': {
+                'perigee_timestamp': perigee_timestamp,
+                'perigee_altitude_km': perigee_altitude_km,
+                'perigee_latitude_deg': perigee_lat,
+                'perigee_longitude_deg': perigee_lon,
+            },
+            'f107_sfu': f107_perigee,
+            'f10_7_source': perigee_sw["data_source"],
+            'f10_7_field': perigee_sw["f10_7_field"],
+            'geometry_source': 'JPL_Horizons_RA_Dec',
             'iri_mean_cm3': float(np.mean(iri_profile)),
             'chapman_mean_cm3': float(np.mean(chapman_profile)),
             'iri_max_cm3': float(np.max(iri_profile)),
             'chapman_max_cm3': float(np.max(chapman_profile)),
             'altitude_range_km': [float(min(altitude_profile)), float(max(altitude_profile))],
-            'n_points': len(altitude_profile)
+            'n_points': len(altitude_profile),
         }
-        
+
+        logger.info(f"Perigee location: Lat {perigee_lat:.2f}°, Lon {perigee_lon:.2f}°")
+        logger.info(f"Historical F10.7: {f107_perigee:.1f} sfu ({perigee_sw['data_source']})")
         logger.info(f"IRI mean density: {results[mission]['iri_mean_cm3']:.2e} cm^-3")
         logger.info(f"Chapman mean density: {results[mission]['chapman_mean_cm3']:.2e} cm^-3")
     
@@ -304,7 +295,7 @@ def main():
         json.dump(results, f, indent=2)
     
     logger.success(f"IRI trajectory profiles saved to: {output_file}")
-    logger.success("STEP 027 COMPLETE")
+    logger.success("STEP 033 COMPLETE")
     
     return 0
 

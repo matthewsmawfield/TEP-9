@@ -5,8 +5,9 @@ Step 039: Per-Flyby Post-OD Prediction and Classification Table
 Computes a rigorous classification table for all 12 flybys using:
   1. Step 007 raw TEP predictions (at reference beta = 1e-4)
   2. Step 008 universal weighted-mean beta and uncertainty
-  3. Step 021 OD survival factors (F_OD) per mission era
-  4. Algorithmic classification logic with falsifiability criterion
+  3. Step 021 OD survival factors (F_OD), emitted only when mission-specific
+     OD configuration data provide defensible values
+  4. Algorithmic raw-layer classification logic with falsifiability criterion
 
 Output: results/step039_flyby_prediction_table.json
 """
@@ -28,9 +29,50 @@ def load_json(path: Path) -> dict:
         return json.load(f)
 
 
+def _detection_flags(observed_mm_s, sigma_mm_s, raw_mm_s, post_od_mm_s=None):
+    if sigma_mm_s is None or sigma_mm_s <= 0:
+        return None
+    if observed_mm_s is None or raw_mm_s is None:
+        return None
+
+    threshold = 3.0 * sigma_mm_s
+    return {
+        "threshold_mm_s": threshold,
+        "obs_detected": abs(observed_mm_s) > threshold,
+        "raw_predicted": abs(raw_mm_s) > threshold,
+        "post_predicted": (
+            abs(post_od_mm_s) > threshold if post_od_mm_s is not None else None
+        ),
+    }
+
+
+def classify_raw_universal_beta(observed_mm_s, sigma_mm_s, raw_mm_s):
+    """
+    Universal-beta classification at the raw TEP layer (no OD survival applied).
+
+    Classifications:
+      true_positive      : anomaly observed AND raw prediction exceeds threshold
+      true_null          : null observed AND raw prediction below threshold
+      raw_tension        : null observed BUT raw prediction exceeds threshold
+      raw_surplus        : anomaly observed BUT raw prediction below threshold
+    """
+    flags = _detection_flags(observed_mm_s, sigma_mm_s, raw_mm_s)
+    if flags is None:
+        return "uncertainty_unavailable"
+    if flags["obs_detected"] and flags["raw_predicted"]:
+        return "true_positive"
+    if not flags["obs_detected"] and not flags["raw_predicted"]:
+        return "true_null"
+    if not flags["obs_detected"] and flags["raw_predicted"]:
+        return "raw_tension"
+    if flags["obs_detected"] and not flags["raw_predicted"]:
+        return "raw_surplus"
+    return "unclassified"
+
+
 def classify_flyby(observed_mm_s, sigma_mm_s, raw_mm_s, post_od_mm_s):
     """
-    Algorithmic classification with 3-sigma threshold.
+    Post-OD classification with 3-sigma threshold.
 
     Classifications:
       true_positive      : anomaly observed AND post-OD predicts anomaly
@@ -39,29 +81,91 @@ def classify_flyby(observed_mm_s, sigma_mm_s, raw_mm_s, post_od_mm_s):
       false_positive     : anomaly observed BUT post-OD predicts null
       false_negative     : null observed BUT post-OD predicts anomaly
     """
-    if sigma_mm_s is None or sigma_mm_s <= 0:
-        sigma_mm_s = 0.05  # default conservative uncertainty
+    flags = _detection_flags(observed_mm_s, sigma_mm_s, raw_mm_s, post_od_mm_s)
+    if flags is None:
+        return "uncertainty_unavailable"
+    if post_od_mm_s is None or flags["post_predicted"] is None:
+        return "unclassified"
 
-    threshold = 3.0 * sigma_mm_s
-    obs_detected = abs(observed_mm_s) > threshold if observed_mm_s is not None else False
-    raw_predicted = abs(raw_mm_s) > threshold if raw_mm_s is not None else False
-    post_predicted = abs(post_od_mm_s) > threshold if post_od_mm_s is not None else False
-
-    if obs_detected and post_predicted:
+    if flags["obs_detected"] and flags["post_predicted"]:
         return "true_positive"
-    if not obs_detected and not post_predicted:
+    if not flags["obs_detected"] and not flags["post_predicted"]:
         return "true_null"
-    if not obs_detected and raw_predicted and not post_predicted:
+    if not flags["obs_detected"] and flags["raw_predicted"] and not flags["post_predicted"]:
         return "suppressed_positive"
-    if obs_detected and not post_predicted:
+    if flags["obs_detected"] and not flags["post_predicted"]:
         return "false_positive"
-    if not obs_detected and post_predicted:
+    if not flags["obs_detected"] and flags["post_predicted"]:
         return "false_negative"
     return "unclassified"
 
 
+def compute_full_catalog_raw_likelihood(rows):
+    """
+    Compute a raw-layer full-catalog stress-test likelihood.
+
+    This is deliberately not a replacement for mission-specific OD reanalysis.
+    It compares the null model against the universal-beta raw TEP prediction
+    for rows with published observations and explicit raw TEP predictions.
+    Uncertainty combines the published observational uncertainty and the
+    propagated universal-beta prediction uncertainty.
+    """
+    included = []
+    for row in rows:
+        observed = row.get("observed_dv_mm_s")
+        sigma_obs = row.get("observed_sigma_mm_s")
+        raw = row.get("raw_tep_prediction_mm_s")
+        sigma_raw = row.get("raw_tep_uncertainty_mm_s")
+        if observed is None or sigma_obs is None or raw is None:
+            continue
+        sigma_raw = sigma_raw or 0.0
+        sigma_total = float(np.sqrt(float(sigma_obs) ** 2 + float(sigma_raw) ** 2))
+        if sigma_total <= 0:
+            continue
+        included.append(
+            {
+                "flyby": row["flyby"],
+                "observed": float(observed),
+                "raw_prediction": float(raw),
+                "sigma_total": sigma_total,
+                "tep_residual": float(observed - raw),
+                "null_residual": float(observed),
+            }
+        )
+
+    def _loglike(residual, sigma):
+        return -0.5 * (residual / sigma) ** 2 - 0.5 * np.log(2 * np.pi * sigma**2)
+
+    log_l_null = sum(_loglike(row["null_residual"], row["sigma_total"]) for row in included)
+    log_l_tep = sum(_loglike(row["tep_residual"], row["sigma_total"]) for row in included)
+    chi2_null = sum((row["null_residual"] / row["sigma_total"]) ** 2 for row in included)
+    chi2_tep = sum((row["tep_residual"] / row["sigma_total"]) ** 2 for row in included)
+
+    return {
+        "description": (
+            "Raw universal-beta full-catalog stress test over published rows with "
+            "explicit raw TEP predictions; excludes geometry-unavailable Rosetta 2009 "
+            "and no-public-report flybys."
+        ),
+        "n_rows": len(included),
+        "included_flybys": [row["flyby"] for row in included],
+        "log_likelihood_null": float(log_l_null),
+        "log_likelihood_tep_raw": float(log_l_tep),
+        "delta_log_likelihood_tep_minus_null": float(log_l_tep - log_l_null),
+        "chi2_null": float(chi2_null),
+        "chi2_tep_raw": float(chi2_tep),
+        "delta_chi2_null_minus_tep": float(chi2_null - chi2_tep),
+        "notes": [
+            "This is a raw-layer stress test, not a post-OD mission likelihood.",
+            "Juno and Cassini remain explicit stress cases in this likelihood.",
+            "Prediction uncertainty is the universal-beta propagated uncertainty from Step 039."
+        ],
+        "per_flyby": included,
+    }
+
+
 def main():
-    logger = StepLogger("step_039_flyby_prediction_table")
+    logger = StepLogger("step_039_flyby_prediction_table", PROJECT_ROOT)
     logger.header("STEP 039: PER-FLYBY POST-OD PREDICTION AND CLASSIFICATION TABLE")
 
     results_dir = PROJECT_ROOT / "results"
@@ -97,19 +201,24 @@ def main():
     catalog_by_name = {entry["mission_name"]: entry for entry in catalog["flybys"]}
     fod_results = step021.get("results", {})
 
-    # Default F_OD by era (for missions not explicitly in step021)
-    default_fod_early = {"f_od_estimate": 0.85, "f_od_uncertainty": 0.15}
-    default_fod_modern = {"f_od_estimate": 0.50, "f_od_uncertainty": 0.25}
+    def get_fod(mission_name: str):
+        """Retrieve F_OD from step021 when a real value exists."""
+        entry = fod_results.get(mission_name)
+        if isinstance(entry, dict) and entry.get("f_od_estimate") is not None:
+            return entry
+        return None
 
-    def get_fod(mission_name: str, flyby_date: str):
-        """Retrieve F_OD from step021 or assign default by era."""
-        if mission_name in fod_results:
-            return fod_results[mission_name]
-
-        year = int(flyby_date.split("-")[0]) if flyby_date else 2000
-        if year < 2000:
-            return dict(default_fod_early, spacecraft=mission_name)
-        return dict(default_fod_modern, spacecraft=mission_name)
+    def infer_data_class(entry: dict) -> str:
+        """Classify catalog provenance for manuscript table regeneration."""
+        observed = entry.get("published_anomaly_mm_s")
+        if observed is None:
+            return "No public anomaly report"
+        sigma = entry.get("published_anomaly_uncertainty_mm_s")
+        if sigma is None:
+            sigma = entry.get("tracking_precision_mm_s")
+        if observed == 0 or (sigma is not None and abs(observed) < 2 * sigma):
+            return "Published null/bound"
+        return "Published anomaly"
 
     # ------------------------------------------------------------------
     # Ordered list of the 12 flybys as they appear in the manuscript
@@ -137,6 +246,12 @@ def main():
         "false_positive": 0,
         "false_negative": 0,
     }
+    raw_classification_counts = {
+        "true_positive": 0,
+        "true_null": 0,
+        "raw_tension": 0,
+        "raw_surplus": 0,
+    }
 
     for display_name, key in flyby_order:
         cat = catalog_by_name.get(key, {})
@@ -144,14 +259,13 @@ def main():
         fit = fits.get(key, {})
 
         observed = cat.get("published_anomaly_mm_s")
-        if observed is None:
-            observed = 0.0
         sigma = cat.get("published_anomaly_uncertainty_mm_s")
         if sigma is None:
-            sigma = cat.get("tracking_precision_mm_s", 0.05)
+            sigma = cat.get("tracking_precision_mm_s")
 
         altitude_km = cat.get("perigee_altitude_km")
         flyby_date = cat.get("flyby_date", "")
+        data_class = infer_data_class(cat)
 
         if pred:
             dv_tep_ref = pred["tep_predictions"]["dv_tep_mm_s"]
@@ -163,36 +277,52 @@ def main():
             dv_raw = dv_tep_ref * scale_factor
             sigma_raw = abs(dv_raw) * rel_unc_raw
 
-            # Apply F_OD
-            fod_data = get_fod(key, flyby_date)
-            f_od = fod_data["f_od_estimate"]
-            sigma_fod = fod_data["f_od_uncertainty"]
+            raw_classification = classify_raw_universal_beta(observed, sigma, dv_raw)
+            universal_beta_residual = (
+                round(observed - dv_raw, 3)
+                if observed is not None and dv_raw is not None
+                else None
+            )
 
-            dv_post_od = dv_raw * f_od
-            rel_unc_fod = sigma_fod / f_od if f_od > 0 else 1.0
-            sigma_post_od = abs(dv_post_od) * np.sqrt(rel_unc_raw**2 + rel_unc_fod**2)
-
-            classification = classify_flyby(observed, sigma, dv_raw, dv_post_od)
-
-            # Special case: Cassini is treated as marginal detection in manuscript
-            if key == "Cassini" and observed is not None and abs(observed) > 2 * sigma:
-                classification = "true_positive"
+            # Apply F_OD only when mission OD configuration produced a value
+            fod_data = get_fod(key)
+            if fod_data is None:
+                dv_post_od = None
+                sigma_post_od = None
+                f_od = None
+                sigma_fod = None
+                classification = "f_od_unavailable"
+                notes = (
+                    "Post-OD classification withheld until mission OD configuration "
+                    "yields F_OD. Raw universal-beta classification is authoritative."
+                )
+            else:
+                f_od = fod_data["f_od_estimate"]
+                sigma_fod = fod_data["f_od_uncertainty"]
+                dv_post_od = dv_raw * f_od
+                rel_unc_fod = sigma_fod / f_od if f_od > 0 else 1.0
+                sigma_post_od = abs(dv_post_od) * np.sqrt(rel_unc_raw**2 + rel_unc_fod**2)
+                classification = classify_flyby(observed, sigma, dv_raw, dv_post_od)
+                notes = ""
 
             row = {
                 "flyby": display_name,
+                "data_class": data_class,
                 "altitude_km": altitude_km,
                 "cos_asymmetry": cos_asym,
                 "observed_dv_mm_s": observed,
                 "observed_sigma_mm_s": sigma,
-                "raw_tep_prediction_mm_s": round(dv_raw, 3),
-                "raw_tep_uncertainty_mm_s": round(sigma_raw, 3),
+                "raw_tep_prediction_mm_s": round(dv_raw, 3) if dv_raw is not None else None,
+                "raw_tep_uncertainty_mm_s": round(sigma_raw, 3) if sigma_raw is not None else None,
+                "universal_beta_residual_mm_s": universal_beta_residual,
+                "raw_classification": raw_classification,
                 "f_od": f_od,
                 "f_od_uncertainty": sigma_fod,
-                "post_od_prediction_mm_s": round(dv_post_od, 3),
-                "post_od_uncertainty_mm_s": round(sigma_post_od, 3),
+                "post_od_prediction_mm_s": round(dv_post_od, 3) if dv_post_od is not None else None,
+                "post_od_uncertainty_mm_s": round(sigma_post_od, 3) if sigma_post_od is not None else None,
                 "classification": classification,
                 "tep_geometry_available": True,
-                "notes": "",
+                "notes": notes,
             }
         else:
             # No TEP prediction available (insufficient geometry data)
@@ -201,12 +331,16 @@ def main():
             if altitude_km and altitude_km > 5000:
                 classification = "true_null"
                 notes = "High altitude; negligible TEP signal expected. Insufficient declination data for explicit prediction."
+            elif observed == 0:
+                classification = "insufficient_geometry_published_null"
+                notes = "Published null/bound; insufficient geometry data for explicit universal-beta TEP prediction."
             else:
                 classification = "insufficient_data"
                 notes = "Insufficient geometry data for TEP prediction."
 
             row = {
                 "flyby": display_name,
+                "data_class": data_class,
                 "altitude_km": altitude_km,
                 "cos_asymmetry": None,
                 "observed_dv_mm_s": observed,
@@ -224,11 +358,24 @@ def main():
 
         if classification in classification_counts:
             classification_counts[classification] += 1
+        elif classification not in (
+            "f_od_unavailable",
+            "uncertainty_unavailable",
+            "unclassified",
+            "insufficient_data",
+            "insufficient_geometry_published_null",
+        ):
+            classification_counts[classification] = classification_counts.get(classification, 0) + 1
+
+        raw_classification = row.get("raw_classification")
+        if raw_classification in raw_classification_counts:
+            raw_classification_counts[raw_classification] += 1
 
         rows.append(row)
         logger.info(
             f"{display_name:20s} | obs={observed!s:>8} | raw={row.get('raw_tep_prediction_mm_s')!s:>8} | "
-            f"FOD={row.get('f_od')!s:>6} | post={row.get('post_od_prediction_mm_s')!s:>8} | {classification}"
+            f"raw_cls={raw_classification!s:>14} | FOD={row.get('f_od')!s:>6} | "
+            f"post={row.get('post_od_prediction_mm_s')!s:>8} | {classification}"
         )
 
     # ------------------------------------------------------------------
@@ -244,16 +391,26 @@ def main():
             "rel_unc_raw": rel_unc_raw,
             "n_flybys": len(rows),
             "classification_summary": classification_counts,
+            "raw_classification_summary": raw_classification_counts,
+            "f_od_policy": (
+                "Post-OD columns are emitted only when Step 021 supplies mission-specific "
+                "F_OD from real OD configuration data. Raw universal-beta classification "
+                "uses the weighted-mean beta scaled prediction without OD survival factors."
+            ),
+            "geometry_envelope": "step007 v5.4 deterministic multipole/plasma/symmetry envelope",
         },
         "falsifiability_criterion": {
             "description": (
-                "A single false negative (observed null where Post-OD prediction exceeds 3-sigma "
-                "detection threshold) falsifies the OD-suppression escape-hatch hypothesis. "
-                "The model must account for all such cases without ad-hoc parameter tuning."
+                "Raw universal-beta tension cases (observed null where the scaled TEP "
+                "prediction exceeds the 3-sigma detection threshold) define model stress "
+                "tests independent of OD survival factors. Post-OD false negatives are "
+                "counted only when mission-specific F_OD is available."
             ),
+            "raw_tensions_found": raw_classification_counts["raw_tension"],
             "false_negatives_found": classification_counts["false_negative"],
             "threshold_sigma": 3.0,
         },
+        "full_catalog_raw_likelihood": compute_full_catalog_raw_likelihood(rows),
         "rows": rows,
     }
 
@@ -261,7 +418,11 @@ def main():
         json.dump(output, f, indent=2)
 
     logger.info(f"")
-    logger.info(f"Classification summary:")
+    logger.info(f"Raw universal-beta classification summary:")
+    for cls, count in raw_classification_counts.items():
+        logger.info(f"  {cls:25s}: {count}")
+    logger.info(f"")
+    logger.info(f"Post-OD classification summary:")
     for cls, count in classification_counts.items():
         logger.info(f"  {cls:25s}: {count}")
     logger.info(f"")

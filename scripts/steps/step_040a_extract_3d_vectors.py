@@ -126,7 +126,7 @@ def parse_raw_response(raw_path: Path) -> dict:
                 dec_deg_list.append(dec_deg)
                 range_km_list.append(range_km)
                 range_rate_kms_list.append(range_rate_kms)
-        except Exception:
+        except (ValueError, TypeError, IndexError):
             continue
 
     return {
@@ -272,7 +272,10 @@ def main():
         "Rosetta_2009": "Rosetta_2009",
         "MESSENGER_2005": "MESSENGER_2005",
         "Juno_2013": "Juno",
-        "Stardust_2001": "Stardust_2001",
+        "Stardust_2001": "Stardust",
+        "OSIRIS-REx_2017": "OSIRIS-REx",
+        "BepiColombo_2020": "BepiColombo",
+        "BepiColombo_2021": "BepiColombo_2021",
     }
 
     results = {}
@@ -338,9 +341,17 @@ def main():
         json.dump(results, f, indent=2)
 
     logger.info(f"Saved 3D state vectors to: {out_file}")
+    if fail_count > 0:
+        logger.error(
+            f"Missing or unparseable Horizons raw data for {fail_count} mission(s); "
+            "refusing fabricated geometry fallbacks."
+        )
+        logger.log_step_summary(0, "FAILED")
+        return 1
+
     logger.log_step_summary(0, "SUCCESS")
-    return results
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

@@ -1,11 +1,14 @@
 """
-Step 032: Minimal Orbit Determination Analysis for TEP Signal Recovery
+Step 032: Legacy Minimal-OD Suppression Screen
 
-This script implements the critical test: re-analyze flybys with minimal OD
-to determine if TEP signals are being filtered by modern orbit determination.
+This script is retained as a historical diagnostic only. It uses an empirical
+NEAR-baseline altitude scaling and does not include the current Step 007
+geometry/plasma/disformal envelope or real mission OD configuration data.
 
-This addresses the key question: Why do close flybys show null results when
-TEP predicts anomalies?
+Do not use this step for fitted likelihoods, mission F_OD estimates, or
+manuscript inference. Step 039 is the authoritative raw universal-beta
+classification table; Step 021 withholds F_OD until mission OD configuration
+files are available.
 """
 
 import json
@@ -21,7 +24,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.utils.step_logger import StepLogger
-from scripts.utils.physics import M_PL_GEV, BETA_BASELINE
+from scripts.utils.physics import M_PL_GEV, BETA_BASELINE, CHARACTERISTIC_SUPPRESSION, R_TRANSITION_M, R_EARTH
 
 
 @dataclass
@@ -52,9 +55,9 @@ class TEPMinimalODAnalysis:
     # TEP gradient suppression model parameters (theoretically derived)
     # Transition radius derived via PREM integration
     BETA_INITIAL = BETA_BASELINE * 1e-4  # 10^-4 initial coupling constraint from physics.py
-    R_EARTH = 6371.0  # km
-    R_TRANSITION = 4200.0  # km - from theoretical PREM derivation (confirmed by GNSS)
-    S_FACTOR = (R_EARTH - R_TRANSITION) / R_EARTH  # ΔR/R ≈ 0.34
+    R_EARTH_KM = R_EARTH / 1e3
+    R_TRANSITION_KM = R_TRANSITION_M / 1e3
+    S_FACTOR = CHARACTERISTIC_SUPPRESSION
 
     def __init__(self, results_file: Path):
         """Load fitting results from pipeline."""
@@ -254,6 +257,8 @@ class TEPMinimalODAnalysis:
         enhanced_evidence = self._generate_enhanced_evidence(results)
 
         return {
+            'status': 'legacy_diagnostic_not_for_inference',
+            'valid_for_manuscript_inference': False,
             'individual_results': results,
             'summary': {
                 'total_analyzed': len(results),
@@ -261,7 +266,12 @@ class TEPMinimalODAnalysis:
                 'likely_suppressed': suppressed_count,
                 'conclusion': self._generate_conclusion(suppressed_count)
             },
-            'enhanced_evidence': enhanced_evidence
+            'enhanced_evidence': enhanced_evidence,
+            'legacy_warning': (
+                "Empirical NEAR-baseline altitude scaling is superseded by "
+                "Step 007/039 geometry-envelope predictions. Retained only "
+                "for historical diagnostics."
+            ),
         }
 
     def _generate_conclusion(self, suppressed_count: int) -> str:
@@ -410,6 +420,13 @@ class TEPMinimalODAnalysis:
 
         report = {
             'analysis_date': '2026-04-18',
+            'status': 'legacy_diagnostic_not_for_inference',
+            'valid_for_manuscript_inference': False,
+            'legacy_warning': (
+                'Empirical NEAR-baseline altitude scaling is superseded by '
+                'Step 007/039 geometry-envelope predictions. Do not use for '
+                'current manuscript likelihoods or OD-survival claims.'
+            ),
             'method': 'TEP suppression test via minimal OD prediction',
             'model': 'Empirical scaling from NEAR baseline',
             'parameters': {

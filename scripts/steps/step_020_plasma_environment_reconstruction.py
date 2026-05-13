@@ -52,6 +52,9 @@ from scipy.interpolate import interp1d
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
+from scripts.utils.celestrak_space_weather import lookup_space_weather
+from scripts.utils.iri_mission_map import resolve_iri_mission
+from scripts.utils.plasma_screening import iri_reference_electron_density_cm3
 from scripts.utils.step_logger import StepLogger
 
 
@@ -85,20 +88,14 @@ class PlasmaEnvironmentReconstructor:
         if iri_file.exists():
             with open(iri_file, 'r') as f:
                 self.iri_profiles = json.load(f)
-            self.logger.info("Loaded IRI trajectory profiles from step_027")
+            self.logger.info("Loaded IRI trajectory profiles from step_033")
         else:
-            self.logger.warning("IRI profiles not found, falling back to Chapman layer")
+            raise RuntimeError(
+                "IRI trajectory profiles are required (results/step033_iri_trajectory_profiles.json)"
+            )
         
         # Build interpolation functions for each mission
         self.iri_interpolators = {}
-        # Mission name mapping: flyby names in pipeline -> IRI profile names
-        self.mission_name_mapping = {
-            "NEAR": "NEAR_1998",
-            "Galileo_1990": "Galileo_1990",
-            "Cassini": "Cassini_1999",
-            "Rosetta_2005": "Rosetta_2005",
-            "Rosetta_2007": "Rosetta_2005",  # Use Rosetta_2005 profile as closest match
-        }
         
         for mission, data in self.iri_profiles.items():
             altitudes = np.array(data['trajectory']['altitude_km'])
@@ -113,22 +110,8 @@ class PlasmaEnvironmentReconstructor:
             )
         
         # Phenomenological plasma-attenuation ansatz.
-        # S = exp(-n_e / n_ref) where n_ref is a reference density.
-        # This replaces the numerically pathological Debye formula
-        # exp(-lambda_TEP / lambda_D), which underflows to zero for all
-        # realistic ionospheric densities and lacks a TEP-action derivation.
-        self.n_ref = 1.0e4  # cm^-3 reference density
-
-        # Offline fallback values keep the reproducibility pipeline runnable when
-        # NOAA/GFZ endpoints are unavailable. They are deliberately marked as
-        # literature-cycle fallback data with larger uncertainty in outputs.
-        self.solar_activity_fallback = {
-            "1990-12-08": {"f10_7": 200.0, "kp": 3.0, "cycle": 22, "phase": "maximum"},
-            "1998-01-23": {"f10_7": 100.0, "kp": 2.0, "cycle": 23, "phase": "rising"},
-            "1999-08-18": {"f10_7": 150.0, "kp": 3.0, "cycle": 23, "phase": "rising"},
-            "2005-03-04": {"f10_7": 90.0, "kp": 2.0, "cycle": 23, "phase": "declining"},
-            "2007-11-13": {"f10_7": 70.0, "kp": 1.5, "cycle": 23, "phase": "minimum"},
-        }
+        # S = exp(-n_e / n_ref) where n_ref is calibrated from IRI peak densities.
+        self.n_ref = iri_reference_electron_density_cm3(self.project_root)
     
     def fetch_noaa_f10_7_data(self) -> dict:
         """Fetch real F10.7 solar radio flux data from NOAA SWPC API."""
@@ -268,85 +251,6 @@ class PlasmaEnvironmentReconstructor:
             self._kp_cache = []
             return self._kp_cache
     
-    def get_f10_7_for_date(self, date_str: str) -> float:
-        """
-        Get F10.7 value for a specific date.
-
-        Uses documented historical values from NOAA/SWPC records.
-        External API fetch is disabled because the NOAA PSL correlation
-        endpoint returns an incompatible data product (not F10.7 in sfu).
-
-        Parameters:
-        - date_str: Date string in YYYY-MM-DD format
-
-        Returns:
-        - F10.7 value in sfu (solar flux units)
-        """
-        fallback = self.solar_activity_fallback.get(date_str)
-        if fallback is not None:
-            return fallback["f10_7"]
-
-        raise RuntimeError(f"No F10.7 data available for {date_str}")
-    
-    def get_kp_for_date(self, date_str: str) -> float:
-        """
-        Get Kp planetary index for a specific date from real historical data.
-        
-        First tries historical data (1932-present) from GFZ, then falls back to
-        real-time data from NOAA SWPC for recent dates.
-        
-        Parameters:
-        - date_str: Date string in YYYY-MM-DD format
-        
-        Returns:
-        - Kp value (0-9 scale)
-        """
-        # Try historical data first (covers 1932-present)
-        historical_data = self.fetch_historical_kp_data()
-        if historical_data and date_str in historical_data:
-            return historical_data[date_str]['kp']
-        
-        # Fall back to real-time data for very recent dates
-        kp_data = self.fetch_noaa_kp_data()
-        if kp_data:
-            # Parse target date
-            target_date = datetime.strptime(date_str, "%Y-%m-%d")
-            
-            # Find closest date in the data (within 30 days)
-            closest_value = None
-            closest_date_diff = None
-            
-            for entry in kp_data:
-                try:
-                    # Try different date formats
-                    entry_date_str = entry.get('time-tag', '')
-                    if not entry_date_str:
-                        continue
-                        
-                    # Try YYYY-MM-DD format
-                    try:
-                        entry_date = datetime.strptime(entry_date_str, "%Y-%m-%d")
-                    except ValueError:
-                        # Try YYYY-MM-DDTHH:MM:SSZ format
-                        try:
-                            entry_date = datetime.strptime(entry_date_str, "%Y-%m-%dT%H:%M:%SZ")
-                        except ValueError:
-                            continue
-                    
-                    date_diff = abs((entry_date - target_date).days)
-                    
-                    if date_diff <= 30:
-                        if closest_date_diff is None or date_diff < closest_date_diff:
-                            closest_date_diff = date_diff
-                            closest_value = entry.get('kp_index')
-                except (ValueError, KeyError):
-                    continue
-            
-            if closest_value is not None:
-                return closest_value
-        
-        raise RuntimeError(f"No Kp data found for {date_str} (historical or real-time)")
-        
     def load_flyby_data(self):
         """Load flyby data from step007 predictions."""
         step_007_file = self.project_root / "results" / "step007_tep_predictions.json"
@@ -373,55 +277,35 @@ class PlasmaEnvironmentReconstructor:
         Returns:
         - Dictionary with f10_7, kp, cycle, phase, and data_source flag
         """
-        # Fetch real data from NOAA SWPC
-        try:
-            f10_7 = self.get_f10_7_for_date(flyby_date)
-            kp = self.get_kp_for_date(flyby_date)
-            
-            # Determine solar cycle and phase from real F10.7 data
-            date_obj = datetime.strptime(flyby_date, "%Y-%m-%d")
-            year = date_obj.year
-            
-            if 1986 <= year <= 1996:
-                cycle = 22
-                phase = "declining" if year > 1991 else "rising"
-            elif 1996 <= year <= 2008:
-                cycle = 23
-                phase = "rising" if year < 2000 else "declining"
-            elif 2008 <= year <= 2019:
-                cycle = 24
-                phase = "rising" if year < 2014 else "declining"
-            else:
-                cycle = 25
-                phase = "rising"
-            
-            return {
-                "f10_7": f10_7,
-                "kp": kp,
-                "cycle": cycle,
-                "phase": phase,
-                "data_source": "NOAA_PSL_F10.7_GFZ_Kp_historical_data",
-                "f10_7_uncertainty": 0.1,  # ±10% uncertainty for real measurements
-                "kp_uncertainty": 0.2,  # ±20% uncertainty for real measurements
-            }
-        except RuntimeError as e:
-            fallback = self.solar_activity_fallback.get(flyby_date)
-            if fallback is None:
-                self.logger.error(f"Failed to get solar activity data for {flyby_date}: {e}")
-                raise RuntimeError(f"Cannot proceed without solar activity data: {e}")
+        solar = lookup_space_weather(flyby_date)
+        date_obj = datetime.strptime(flyby_date, "%Y-%m-%d")
+        year = date_obj.year
 
-            self.logger.warning(
-                f"Using offline literature-cycle solar activity fallback for {flyby_date}: {e}"
-            )
-            return {
-                "f10_7": fallback["f10_7"],
-                "kp": fallback["kp"],
-                "cycle": fallback["cycle"],
-                "phase": fallback["phase"],
-                "data_source": "offline_literature_cycle_fallback",
-                "f10_7_uncertainty": 0.5,
-                "kp_uncertainty": 0.5,
-            }
+        if 1986 <= year <= 1996:
+            cycle = 22
+            phase = "declining" if year > 1991 else "rising"
+        elif 1996 <= year <= 2008:
+            cycle = 23
+            phase = "rising" if year < 2000 else "declining"
+        elif 2008 <= year <= 2019:
+            cycle = 24
+            phase = "rising" if year < 2014 else "declining"
+        else:
+            cycle = 25
+            phase = "rising"
+
+        return {
+            "f10_7": solar["f10_7"],
+            "kp": solar["kp"],
+            "kp_sum": solar["kp_sum"],
+            "cycle": cycle,
+            "phase": phase,
+            "data_source": solar["data_source"],
+            "f10_7_field": solar["f10_7_field"],
+            "source_url": solar["source_url"],
+            "f10_7_uncertainty": 0.1,
+            "kp_uncertainty": 0.2,
+        }
     
     def compute_iri_density(self, altitude_km: float, mission_name: str):
         """
@@ -434,66 +318,13 @@ class PlasmaEnvironmentReconstructor:
         Returns:
         - Electron density in cm³ with uncertainty estimate
         """
-        # Map pipeline mission name to IRI profile name
-        iri_mission_name = self.mission_name_mapping.get(mission_name, mission_name)
-        
-        if iri_mission_name in self.iri_interpolators:
-            try:
-                log_density = self.iri_interpolators[iri_mission_name](altitude_km)
-                n_e_cm3 = 10**log_density
-                # IRI model uncertainty: ±15%
-                return n_e_cm3, 0.15
-            except (KeyError, ValueError, IndexError):
-                # Fall back to Chapman on error
-                pass
-        
-        return None, None
-    
-    def compute_chapman_density(self, altitude_km: float, f10_7: float, local_time: float = 12.0):
-        """
-        Compute electron density using Chapman layer model (fallback if IRI unavailable).
-        
-        This is a fallback method when IRI profiles are not available.
-        The Chapman model parameters are heuristic but driven by real solar flux.
-        
-        Simplified Chapman function:
-        n_e(h) = n_max * exp(0.5 * (1 - z - exp(-z)))
-        where z = (h - h_max) / H
-        
-        Parameters:
-        - altitude_km: Altitude in km
-        - f10_7: Solar radio flux (sfu) - REAL from NOAA SWPC
-        - local_time: Local solar time (hours)
-        
-        Returns:
-        - Electron density in cm³ with uncertainty estimate
-        """
-        # Scale height depends on temperature (still heuristic but now uses real F10.7)
-        H = 50.0 + (f10_7 - 70) / 50.0 * 10.0  # km (±30% uncertainty)
-        
-        # Peak altitude depends on solar activity (now uses real F10.7)
-        h_max = 300.0 + (f10_7 - 70) / 10.0 * 50.0  # km (±30% uncertainty)
-        
-        # Peak density depends on solar activity and local time (now uses real F10.7)
-        n_max = 1e12 * (f10_7 / 100.0) * (1 + 0.5 * np.cos(np.pi * (local_time - 14) / 12))
-        
-        # Chapman function
-        z = (altitude_km - h_max) / H
-        n_e = n_max * np.exp(0.5 * (1 - z - np.exp(-z)))
-        
-        # Convert from m³ to cm³
-        n_e_cm3 = n_e * 1e-6
-        
-        # Compute uncertainty (reduced from ±50% to ±30% with real F10.7 data)
-        uncertainty_components = {
-            "H_scale_height": 0.3,  # ±30% (heuristic but with real F10.7)
-            "h_max_formula": 0.3,  # ±30% (heuristic but with real F10.7)
-            "n_max_formula": 0.3,  # ±30% (heuristic but with real F10.7)
-            "f10_7_input": 0.1,  # ±10% (real NOAA measurement)
-        }
-        combined_uncertainty = np.sqrt(sum(u**2 for u in uncertainty_components.values()))
-        
-        return n_e_cm3, combined_uncertainty
+        iri_mission_name = resolve_iri_mission(mission_name)
+        if iri_mission_name not in self.iri_interpolators:
+            return None, None
+
+        log_density = self.iri_interpolators[iri_mission_name](altitude_km)
+        n_e_cm3 = 10**log_density
+        return n_e_cm3, 0.15
     
     def compute_plasma_screening_factor(self, n_e_cm3: float):
         """
@@ -552,14 +383,12 @@ class PlasmaEnvironmentReconstructor:
         # Get solar activity using REAL NOAA SWPC data
         solar = self.get_solar_activity(date)
         
-        # Try to use IRI profile first
         n_e_cm3, n_e_uncertainty = self.compute_iri_density(altitude, flyby_name)
-        data_source = "IRI_model_step_027"
-        
-        # Fall back to Chapman if IRI unavailable
         if n_e_cm3 is None:
-            n_e_cm3, n_e_uncertainty = self.compute_chapman_density(altitude, solar["f10_7"], local_time=12.0)
-            data_source = "Chapman_layer_fallback"
+            raise RuntimeError(
+                f"No IRI trajectory profile available for {flyby_name}"
+            )
+        data_source = "IRI_model_step_033"
         
         # Compute plasma factors using electron density
         f_screening, screening_uncertainty = self.compute_plasma_screening_factor(n_e_cm3)
@@ -604,26 +433,25 @@ class PlasmaEnvironmentReconstructor:
             "uncertainty": combined_uncertainty,
             "uncertainty_metadata": {
                 "uncertainty_fraction": combined_uncertainty,
-                "uncertainty_source": "IRI_model_with_phenomenological_ansatz" if "IRI" in data_source else "Chapman_layer_model_with_phenomenological_ansatz",
-                "calibration_status": "empirical_IRI_model" if "IRI" in data_source else "phenomenological_proxy",
+                "uncertainty_source": "IRI_model_with_phenomenological_ansatz",
+                "calibration_status": "empirical_IRI_model",
                 "data_source": data_source,
                 "screening_ansatz": "S = exp(-n_e / n_ref)",
-                "n_ref_cm3": 1e4,
+                "n_ref_cm3": float(self.n_ref),
+                "n_ref_source": "median_peak_iri_ne_cm3_from_step033",
                 "plasma_sign_status": "Phenomenological ansatz does not cause sign reversal - only attenuation",
-                "recommended_action": "Derive scalar-plasma coupling from TEP action; ansatz is a placeholder"
+                "recommended_action": "Derive scalar-plasma coupling from TEP action; current n_ref is IRI-calibrated only"
             },
-            "model": "iri_model" if "IRI" in data_source else "chapman_layer"
+            "model": "iri_model"
         }
     
     def run(self):
         """Run plasma environment reconstruction."""
         self.logger.header("STEP 020: PLASMA ENVIRONMENT RECONSTRUCTION")
-        self.logger.info("Using documented historical solar activity values")
-        self.logger.info("F10.7 from NOAA/SWPC historical records (fallback values)")
-        self.logger.info("Kp from GFZ archive (1932-present)")
-        self.logger.info("IRI model electron density profiles from step_027 (continuous trajectory data)")
+        self.logger.info("Solar activity from Celestrak SW-All.csv (F10.7_OBS/F10.7_ADJ, KP_SUM)")
+        self.logger.info("IRI model electron density profiles from step_033 (continuous trajectory data)")
         self.logger.info("Plasma attenuation: phenomenological ansatz S = exp(-n_e / n_ref)")
-        self.logger.info("n_ref = 1e4 cm^-3 (placeholder; TEP-action derivation remains future work)")
+        self.logger.info(f"n_ref = {self.n_ref:.3g} cm^-3 (median peak IRI n_e from step_033)")
         self.logger.info("Computing F_plasma factors from IRI electron density profiles")
         
         # Load flyby data
@@ -635,8 +463,12 @@ class PlasmaEnvironmentReconstructor:
         for name, data in flyby_data.items():
             if data["observed"]["dv_obs_mm_s"] == 0:
                 continue
-            
-            plasma = self.reconstruct_for_flyby(name, data)
+
+            try:
+                plasma = self.reconstruct_for_flyby(name, data)
+            except RuntimeError as exc:
+                self.logger.warning(f"{name}: skipped plasma reconstruction ({exc})")
+                continue
             results[name] = plasma
             
             self.logger.info(f"{name}:")

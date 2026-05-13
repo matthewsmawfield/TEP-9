@@ -3,67 +3,19 @@
 Flyby TEP Pipeline - Run All Steps (Workflow-Organized v5.0)
 ============================================================
 
-Executes the reorganized 29-step pipeline organized by analytical workflow phases.
+Runs every script listed in ``CORE_STEPS`` in order (currently
+``len(CORE_STEPS)`` entries). Order follows analytical workflow, not
+strict numeric step IDs (for example Step 009 runs after Step 033).
 
-Phase 1: Data Acquisition & Preparation (001-004)
-  1a. Download SPICE Kernels (NAIF)
-  1b. Convert SPICE to JSON
-  2.  Archival Data Mining
-  2b. JPL Horizons Data Fetch
-  3.  DSN Data Ingestion
-  3b. DSN Framework (Resolves Horizons Circularity)
+Coverage includes: SPICE and Horizons acquisition, DSN ingest and
+framework, TEP model and fitting, trajectory integration and OD
+simulation, cross-validation and sensitivity, hierarchical Bayes and GNSS,
+plasma and space-weather extensions, DSN processing and Juno reanalysis,
+IRI trajectory profiles, variance decomposition, reporting and figures,
+cosmographic shear (040a/040), and claim-consistency audit (027).
 
-Phase 2: Core Physics (004-007)
-  4.  Enhanced TEP Model (WGS84, PREM, 3D integration)
-  5.  Parameter Fitting
-  6.  Unified Variance Analysis (Four-Stage Decomposition)
-  7.  Temporal Shear Suppression First-Principles
-
-Phase 3: Trajectory & Observational Pipeline (008-010)
-  8.  Trajectory Integration
-  9.  OD Filter Simulation (Observational pipeline validation)
-  10. Cross-Validation Analysis
-
-Phase 4: Validation & Robustness (011-014)
-  11. Sensitivity Analysis
-  12. Hierarchical Bayesian Model
-  13. GNSS Validation
-
-Phase 5: Extended Physics (015-017)
-  14. Plasma Modulation (Cassini sign mismatch)
-  15. Space Weather Correlation (Solar activity)
-  16. 3D Field Integration
-  17. Enhanced Bayesian Analysis
-
-Phase 6: Model Comparison (018-019)
-  18. Bayesian Model Comparison
-  19. Saturation Model Analysis
-
-Phase 7: DSN Data Framework (020-023)
-  20. DSN Processing Framework
-  21. Read TRK-2-34 Data Format
-  22. Raw DSN Reanalysis
-
-Phase 8: Mission-Specific Analysis (024-026)
-  23. Juno 2013 Reanalysis
-  24. PDS Search
-  25. TEP Suppression Analysis
-
-Phase 9: Advanced Topics (026-028)
-  26. Covariant Temporal Shear Impulse
-  27. Cross-Corpus Parameter Export
-
-Phase 10: Reporting (028-029)
-  28. Final Report Generation
-  29. Figure Generation
-
-Key Reorganization:
-- Workflow-based grouping instead of chronological addition order
-- Fixed duplicate step numbers (007, 010, 017, 031)
-- Archived development artifacts (029-031 series)
-- Unified variance analysis in Step 006 (consolidates 5b, 5c, 5d, 22, 28)
-
-All steps produce detailed logs with timestamps and execution metrics.
+Each step writes ``logs/<step_name>.log``; ``logs/pipeline.log`` records
+the orchestrator run.
 """
 
 import sys
@@ -89,6 +41,7 @@ CORE_STEPS: List[Tuple[str, str]] = [
     ('step_002_spice_to_json.py', 'Step 002: Convert SPICE to JSON'),
     ('step_003_archival_data_mining.py', 'Step 003: Archival Data Mining'),
     ('step_004_jpl_horizons_fetch.py', 'Step 004: JPL Horizons Data Fetch'),
+    ('step_033_iri_trajectory_profile.py', 'Step 033: Continuous IRI Trajectory Profiles'),
     ('step_005_dsn_data_ingestion.py', 'Step 005: DSN Data Ingestion'),
     ('step_006_dsn_framework.py', 'Step 006: DSN Framework (Resolves Horizons Circularity)'),
     
@@ -138,12 +91,15 @@ CORE_STEPS: List[Tuple[str, str]] = [
     ('step_031_pds_search.py', 'Step 031: PDS Search'),
     ('step_032_tep_suppression.py', 'Step 032: TEP Suppression Analysis'),
     
-    # Phase 12: Advanced Topics (033-035)
-    ('step_033_iri_trajectory_profile.py', 'Step 033: Continuous IRI Trajectory Profiles'),
+    # Phase 12: Advanced Topics (034-035)
     ('step_034_covariant_holonomy.py', 'Step 034: Covariant Temporal Shear Impulse'),
     ('step_035_cross_corpus_export.py', 'Step 035: Cross-Corpus Parameter Export'),
     
-    # Phase 13: Reporting (036-037)
+    # Phase 13: Cosmographic Analysis (040a-040)
+    ('step_040a_extract_3d_vectors.py', 'Step 040a: Extract 3D State Vectors from JPL Horizons'),
+    ('step_040_cosmographic_shear.py', 'Step 040: Cosmographic Temporal Shear Modulation Test'),
+    
+    # Phase 14: Reporting (036-037)
     ('step_036_final_report.py', 'Step 036: Final Report Generation'),
     ('step_037_visualizations.py', 'Step 037: Figure Generation')
 ]

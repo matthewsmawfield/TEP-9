@@ -50,7 +50,10 @@ class JPLHorizonsFetcher:
             'Rosetta_2007': 'Rosetta_2007',
             'Rosetta_2009': 'Rosetta_2009',
             'Galileo_1992': 'Galileo_1992',
-            'Stardust_2001': 'Stardust_2001'
+            'Stardust_2001': 'Stardust_2001',
+            'OSIRIS-REx_2017': 'OSIRIS-REx_2017',
+            'BepiColombo_2020': 'BepiColombo_2020',
+            'BepiColombo_2021': 'BepiColombo_2021'
         }
     
     def fetch_mission(self, mission_name: str, logger: StepLogger) -> dict:

@@ -125,17 +125,22 @@ def generate_altitude_anomaly_figure(fitting_data, predictions_data, output_dir)
     markers = []
     
     for name, pred in predictions_data['predictions'].items():
+        dv = pred.get('observed', {}).get('dv_obs_mm_s')
+        alt_km = pred['perigee']['altitude_km']
         spacecraft_names.append(name)
-        altitudes.append(pred['perigee']['altitude_km'])
-        anomalies.append(pred['observed']['dv_obs_mm_s'])
-        
-        # Color by detection status - blue-grey palette
-        if pred['observed']['dv_obs_mm_s'] > 0.5:
-            colors.append(BLUE_GREY_COLORS['highlight'])  # Blue highlight for detections
+        altitudes.append(alt_km)
+        # Matplotlib omits NaN x coordinates in scatter
+        anomalies.append(float('nan') if dv is None else float(dv))
+
+        if dv is not None and dv > 0.5:
+            colors.append(BLUE_GREY_COLORS['highlight'])
             markers.append('o')
-        else:
-            colors.append(BLUE_GREY_COLORS['accent'])  # Slate for nulls
+        elif dv is not None:
+            colors.append(BLUE_GREY_COLORS['accent'])
             markers.append('s')
+        else:
+            colors.append(BLUE_GREY_COLORS['light'])
+            markers.append('^')
     
     # Create figure
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -144,6 +149,8 @@ def generate_altitude_anomaly_figure(fitting_data, predictions_data, output_dir)
         ax.scatter(anom, alt, c=color, marker=marker, s=100, alpha=0.8, edgecolors=BLUE_GREY_COLORS['primary_dark'], linewidth=1, zorder=3)
         # Add label with offset to avoid overlap - keep within plot bounds
         label = name.split('_')[0]
+        if isinstance(anom, (float, np.floating)) and np.isnan(anom):
+            continue
         # Use staggered offsets based on position to prevent overlap
         if alt < 1000:
             offset_x, offset_y = 5, 10
@@ -176,7 +183,7 @@ def generate_altitude_anomaly_figure(fitting_data, predictions_data, output_dir)
     ax.margins(x=0.15, y=0.15)
     
     # Add annotation with blue-grey styling
-    ax.text(0.02, 0.98, '● Detections: 4 published, 1 TEP fit success\n[] Non-detections (n=7)\n[Note: NEAR, Rosetta_2005, Cassini excluded by sign mismatch]',
+    ax.text(0.02, 0.98, '● Detections: strong positive Δv\n■ Non-detections / low |Δv|\n△ No published anomaly in catalog\n[Note: NEAR, Rosetta_2005, Cassini excluded by sign mismatch]',
             transform=ax.transAxes, fontsize=10, verticalalignment='top',
             bbox=dict(boxstyle='round', facecolor=BLUE_GREY_COLORS['background'],
                      edgecolor=BLUE_GREY_COLORS['lighter'], alpha=0.9))
@@ -198,7 +205,7 @@ def generate_beta_comparison_figure(fitting_data, output_dir):
             fits.append({
                 'name': name.split('_')[0],
                 'beta': data['fit']['beta_fitted'],
-                'uncertainty': data['fit']['beta_uncertainty'],
+                'uncertainty': data['fit']['uncertainty'],
                 'altitude': data['perigee']['altitude_km'],
                 'is_marginal': data['fit']['beta_fitted'] < 1e-5  # Marginal detection threshold
             })
@@ -415,6 +422,14 @@ def main():
     try:
         # Load data
         fitting_data, predictions_data = load_pipeline_data(logger)
+        if fitting_data is None or predictions_data is None:
+            logger.error(
+                "Missing or invalid step008_fitting_results.json and/or "
+                "step007_tep_predictions.json. Run Steps 007 and 008 before Step 037."
+            )
+            duration = time.time() - start_time
+            logger.log_step_summary(duration, "FAILED")
+            return 1
 
         # Generate figures to results folder only
         logger.subheader("Figure 1: Altitude vs Anomaly correlation")
@@ -422,15 +437,20 @@ def main():
         logger.success(f"Generated: {fig1}")
         logger.add_output_file(fig1, "Altitude vs Anomaly figure")
 
-        logger.subheader("Figure 2: PPN constraint analysis")
-        fig2 = generate_ppn_constraint_figure(fitting_data, results_dir)
+        logger.subheader("Figure 2: Fitted β comparison")
+        fig2 = generate_beta_comparison_figure(fitting_data, results_dir)
         logger.success(f"Generated: {fig2}")
-        logger.add_output_file(fig2, "PPN constraint figure")
+        logger.add_output_file(fig2, "Fitted beta comparison figure")
 
-        logger.subheader("Figure 3: Screening profile")
-        fig3 = generate_screening_profile_figure(results_dir)
+        logger.subheader("Figure 3: PPN constraint analysis")
+        fig3 = generate_ppn_constraint_figure(fitting_data, results_dir)
         logger.success(f"Generated: {fig3}")
-        logger.add_output_file(fig3, "Screening profile figure")
+        logger.add_output_file(fig3, "PPN constraint figure")
+
+        logger.subheader("Figure 4: Temporal screening profile")
+        fig4 = generate_screening_profile_figure(results_dir)
+        logger.success(f"Generated: {fig4}")
+        logger.add_output_file(fig4, "Screening profile figure")
 
         logger.success("All figures generated successfully")
 

@@ -1981,10 +1981,12 @@ For a potential of the form $V(\phi) = \Lambda^4 [1 + (\Lambda/\phi)^n]$ with $n
 $V_{\rm eff}(\phi; \rho) = V(\phi) + [A(\phi) - 1] \rho \approx V(\phi) +
 \frac{\beta\phi}{M_{\rm Pl}}\rho$
 
-where $A(\phi) = \exp(\beta\phi/M_{\rm Pl})$ and the approximation holds for small $\beta\phi/M_{\rm Pl}$. The equilibrium field value $\phi_{\rm min}(\rho)$ and effective mass $m_{\rm eff}(\rho)$ are:
+where $A(\phi) = \exp(\beta\phi/M_{\rm Pl})$ and the approximation holds for small $\beta\phi/M_{\rm Pl}$. The equilibrium field value $\phi_{\rm min}(\rho)$ and effective mass $m_{\rm eff}(\rho)$ are (canonical TEP-EFA / Einstein-frame matter coupling; $\rho$ denotes matter energy density with the same SI-to-GeV$^4$ conversion as Steps 007–019):
 
-$\phi_{\rm min}(\rho) \approx \left[ \frac{n \Lambda^{n+4} M_{\rm Pl}}{\beta \rho} \right]^{1/(n+1)}, \quad m_{\rm eff}^2(\rho) \approx
+$\phi_{\rm min}(\rho) = \Lambda \left[ \dfrac{n \Lambda^{n+4} M_{\rm Pl}}{2\beta \rho} \right]^{1/(n+1)}, \quad m_{\rm eff}^2(\rho) \approx
 \frac{(n+1) n \Lambda^{n+4}}{\phi_{\rm min}^{n+2}}$
+
+The factor $2$ in the denominator matches the trace coupling in the scalar equation used across Jakarta v0.8 and the EFA implementation (Steps 007, 011, 019); omitting it recovers the linearized small-field extremum of $V_{\rm eff}\approx V(\phi)+\beta\phi\rho/M_{\rm Pl}$ only in the approximation that folds the conformal coupling into $\beta$ without the Einstein-frame normalization. The explicit prefactor $\Lambda$ keeps dimensions consistent with the chameleon-type potential $V(\phi)=\Lambda^4[1+(\Lambda/\phi)^n]$ used above.
 
 The effective mass grows with ambient density, ensuring that in dense regions (Solar System), the scalar field is massive and suppressed, while in diffuse regions (clusters, cosmology), the field is light and dynamical.
 

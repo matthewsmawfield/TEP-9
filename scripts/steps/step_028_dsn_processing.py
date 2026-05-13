@@ -33,6 +33,8 @@ import time
 sys.path.insert(0, str(Path(__file__).parent.parent))
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
+from scripts.utils.dsn_pds_ingest import ingest_mission_tracking, resolve_prediction_key
+from scripts.utils.dsn_tracking_discovery import discover_dsn_tracking_file
 from scripts.utils.step_logger import StepLogger
 
 
@@ -147,12 +149,14 @@ class DSNRawDataAcquisition:
         """
         if mission_name in self.MISSION_DATASETS:
             dataset = self.MISSION_DATASETS[mission_name]
+            local_product = discover_dsn_tracking_file(self.cache_dir / mission_name)
             return {
-                'available': dataset['available'],
+                'available': bool(dataset['available'] or local_product),
                 'pds_id': dataset['pds_id'],
                 'date_range': dataset['date_range'],
                 'stations': dataset['stations'],
                 'data_url': dataset.get('data_url', 'N/A'),
+                'local_product': str(local_product) if local_product else None,
                 'notes': 'Ka-band available' if dataset.get('ka_band') else 'Standard X/S-band'
             }
         else:
@@ -236,6 +240,16 @@ class DSNRawDataAcquisition:
                 'data': None
             }
         
+        if file_path.suffix.lower() == '.dat':
+            return self.process_trk234_file(file_path)
+
+        if file_path.suffix.lower() == '.raw':
+            return {
+                'success': False,
+                'error': 'ESA RSI RAW products are not yet supported by this pipeline',
+                'data': None
+            }
+
         # TRK-2-25/ODF format parsing
         # Format is typically fixed-width or CSV with specific headers
         # This is a simplified parser that handles common formats
@@ -314,6 +328,73 @@ class DSNRawDataAcquisition:
             'time_range': (data_records[0]['timestamp'], data_records[-1]['timestamp']),
             'doppler_range_hz': (min(r['doppler_frequency_hz'] for r in data_records),
                                   max(r['doppler_frequency_hz'] for r in data_records))
+        }
+
+    def process_trk234_file(self, file_path: Path) -> Dict:
+        """Parse TRK-2-34 (TNF) products with PyTrk234 when available."""
+        from datetime import datetime
+
+        if not file_path.exists():
+            return {
+                'success': False,
+                'error': f'File not found: {file_path}',
+                'data': None
+            }
+
+        try:
+            import trk234
+        except ImportError:
+            return {
+                'success': False,
+                'error': 'PyTrk234 is required to parse TRK-2-34 .DAT products',
+                'data': None
+            }
+
+        try:
+            reader = trk234.Reader(str(file_path))
+        except Exception as exc:
+            return {
+                'success': False,
+                'error': f'Error reading TRK-2-34 file: {exc}',
+                'data': None
+            }
+
+        data_records = []
+        for sfdu in reader.sfdu_list:
+            if not hasattr(sfdu, 'trk_chdo') or sfdu.trk_chdo is None:
+                continue
+            trk = sfdu.trk_chdo
+            doppler = float(trk.doppler) if getattr(trk, 'doppler', None) is not None else None
+            if doppler is None:
+                continue
+            recvtime = getattr(trk, 'recvtime', None)
+            if recvtime is None:
+                continue
+            timestamp = recvtime if isinstance(recvtime, datetime) else datetime.fromisoformat(str(recvtime))
+            data_records.append({
+                'timestamp': timestamp,
+                'doppler_frequency_hz': doppler,
+                'range_km': float(trk.range) if getattr(trk, 'range', None) is not None else None,
+                'snr_db': None,
+            })
+
+        if not data_records:
+            return {
+                'success': False,
+                'error': 'No valid Doppler records found in TRK-2-34 file',
+                'data': None
+            }
+
+        return {
+            'success': True,
+            'format': 'TRK-2-34',
+            'n_records': len(data_records),
+            'data': data_records,
+            'time_range': (data_records[0]['timestamp'], data_records[-1]['timestamp']),
+            'doppler_range_hz': (
+                min(r['doppler_frequency_hz'] for r in data_records),
+                max(r['doppler_frequency_hz'] for r in data_records),
+            ),
         }
     
     def generate_data_request_template(self, mission_name: str) -> str:
@@ -554,21 +635,17 @@ to enable full TEP signal recovery analysis.
         Returns:
             dict with full analysis results
         """
-        # Load TEP predictions
-        tep_predictions_file = Path(__file__).parent.parent.parent / 'data' / 'processed' / 'step007_tep_predictions.json'
-        
-        if not tep_predictions_file.exists():
+        # Parse TRK file
+        if trk_file_path is None:
+            trk_file_path = discover_dsn_tracking_file(self.data_dir / mission_name)
+
+        if trk_file_path is None:
             return {
                 'success': False,
-                'error': 'TEP predictions not found. Run step007 first.',
+                'error': f'No local DSN tracking product found for {mission_name}',
                 'results': None
             }
-        
-        # Determine TRK file path
-        if trk_file_path is None:
-            trk_file_path = self.data_dir / mission_name / f'{mission_name}_doppler.trk'
-        
-        # Parse TRK file
+
         parse_result = self.acquisition.process_trk_file(trk_file_path)
         
         if not parse_result['success']:
@@ -728,19 +805,37 @@ def main():
         return None
     
     logger.info(f"Loaded TEP predictions for {len(tep_data['predictions'])} flybys")
+
+    logger.section("PDS INGEST")
+    ingest_summaries = {}
+    for mission in available_missions:
+        prediction_key = resolve_prediction_key(mission)
+        if prediction_key not in tep_data['predictions']:
+            continue
+        try:
+            ingest_summaries[mission] = ingest_mission_tracking(PROJECT_ROOT, mission)
+            logger.info(
+                f"{mission}: ingest status {ingest_summaries[mission]['status']} "
+                f"({len(ingest_summaries[mission].get('downloads', []))} files)"
+            )
+        except (FileNotFoundError, KeyError, ValueError) as exc:
+            ingest_summaries[mission] = {'status': 'skipped', 'error': str(exc)}
+            logger.warning(f"{mission}: ingest skipped ({exc})")
     
     # Process missions with available DSN data
     logger.section("DSN DATA PROCESSING")
     logger.info("Processing missions with available raw DSN data")
     
     analysis_results = {}
+    parsing_failures = {}
     
     for mission in available_missions:
         logger.subsection(f"Processing {mission}")
         
         # Get perigee time from TEP predictions
-        if mission in tep_data['predictions']:
-            pred = tep_data['predictions'][mission]
+        prediction_key = resolve_prediction_key(mission)
+        if prediction_key in tep_data['predictions']:
+            pred = tep_data['predictions'][prediction_key]
             # Extract perigee time from datetime string
             # Format: "A.D. 1990-Dec-08 20:35:00.0000" or "1990-12-08"
             from datetime import datetime
@@ -762,14 +857,20 @@ def main():
                     continue
             tep_prediction = pred['tep_predictions']['dv_tep_mm_s']
             
-            # Check if TRK file exists
-            trk_file = pipeline.data_dir / mission / f'{mission}_doppler.trk'
+            mission_dir = pipeline.data_dir / mission
+            trk_file = discover_dsn_tracking_file(
+                mission_dir,
+                perigee=perigee_time,
+                window_hours=48.0,
+            )
             
-            if not trk_file.exists():
-                logger.info(f"TRK file not found: {trk_file}")
+            if trk_file is None:
+                logger.info(f"No local DSN tracking product found under: {mission_dir}")
                 logger.info("Raw DSN data must be downloaded from NASA PDS first")
                 logger.info("Use download script: bash download_dsn_data.sh")
                 continue
+            
+            logger.info(f"Using local DSN tracking product: {trk_file}")
             
             # Process with minimal OD
             result = pipeline.analyze_mission_dsn_data(
@@ -787,6 +888,7 @@ def main():
                 analysis_results[mission] = result
             else:
                 logger.error(f"Analysis failed: {result['error']}")
+                parsing_failures[mission] = result['error']
     
     # Save results
     logger.section("SAVING RESULTS")
@@ -808,7 +910,9 @@ def main():
             'message': 'Raw DSN data must be downloaded from NASA PDS first',
             'note': 'DSN data is external and not included in repository',
             'available_missions_checked': len(available_missions),
-            'missions_processed': 0
+            'missions_processed': 0,
+            'ingest_summaries': ingest_summaries,
+            'parsing_failures': parsing_failures,
         }
         with open(output_file, 'w') as f:
             json.dump(no_data_result, f, indent=2)

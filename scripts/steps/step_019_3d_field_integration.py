@@ -4,10 +4,12 @@ Full 3D Field Integration for TEP Scalar Force
 This module implements full 3D integration of the scalar field gradient
 along flyby trajectories, replacing the simplified scalar force formula.
 
-The scalar force is computed as:
-F_φ = -β ∇φ/m
+The matter-frame scalar acceleration used in the EFA pipeline matches
+Step 007 / Jakarta v0.8 conformal coupling:
+a_φ = β_eff c² ∇φ / M_Pl (vector form; sign from ∇φ and trajectory projection).
 
-Where ∇φ is computed numerically from the full 3D field solution.
+∇φ is obtained numerically from the Temporal Shear Suppression field minimum
+φ_min(ρ) with denominator 2βρ_GeV⁴ as in `TEPTemporalTopologyModel._phi_of_rho`.
 
 Key features:
 - Numerical field gradient calculation
@@ -97,8 +99,11 @@ class Field3DIntegrator:
     def compute_field_at_position(self, position, density_field):
         """
         Compute scalar field value at given position using Temporal Shear Suppression formula.
-        
-        φ = φ_min where φ_min = [(n+1)M_PlΛ^(4+n)/(ρβ)]^(1/(n+2))
+
+        Field minimum (Jakarta v0.8 / Step 007 convention, matter density ρ in kg m⁻³
+        converted to GeV⁴):
+
+            φ_min = Λ [ (n Λ^(n+4) M_Pl) / (2 β ρ_GeV⁴) ]^(1/(n+1)).
         
         Args:
             position: (x, y, z) tuple in meters

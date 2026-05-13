@@ -32,7 +32,7 @@
     \end{equation}
   </div>
 
-  <p>where β_eff = β × S_⊕(r) is the effective coupling with geometric screening, where S_⊕(r) describes the continuous suppression of Temporal Shear. The characteristic suppression ratio S_⊕ ≈ 0.35 emerges from the UCD saturation geometry as the ratio of effective to bare gradient at Earth's surface. The radial component of this force is indistinguishable from a small shift in GM and is absorbed by orbit determination. The non-radial component—modulated by Earth's oblateness (J2, J3, J4) and the spacecraft's trajectory geometry—produces a net velocity change that appears as the flyby anomaly.</p>
+  <p>where β_eff = β × S_⊕(r) is the effective coupling with geometric screening, where S_⊕(r) describes the continuous suppression of Temporal Shear. The characteristic surface ratio S_⊕ ≈ 0.35 is fixed by the UCD saturation geometry as S_⊕ = (R_⊕ − R_sol)/R_⊕ with R_sol ≈ 4146 km (distinct from the embedding factor R_sol/R_⊕ used in Paper 6). The radial component of this force is indistinguishable from a small shift in GM and is absorbed by orbit determination. The non-radial component—modulated by Earth's oblateness (J2, J3, J4) and the spacecraft's trajectory geometry—produces a net velocity change that appears as the flyby anomaly.</p>
 
   <p>The predicted velocity shift is resolved through rigorous numerical integration of the equations of motion (EOM) in the Earth-centered inertial (ECI) frame. This approach captures the dynamic evolution of the scalar force as the spacecraft traverses the varying field gradient, incorporating a 4th-order Spherical Harmonic Expansion (SHEX) for the geopotential to ensure that local gravitational perturbations are not conflated with the scalar force:</p>
 
@@ -59,7 +59,23 @@
     <li>$\delta_{\rm in}$ and $\delta_{\rm out}$ are the asymptotic declinations on approach and departure (from Anderson et al. (2008))</li>
   </ul>
 
-  <p>J3 contribution: The J3 term adds a latitude-dependent asymmetry to the non-radial force component. However, J3 is two orders of magnitude smaller than J2 ($|J_3/J_2| \approx 2.3 \times 10^{-3}$), and its inclusion does not significantly reduce the heterogeneity in fitted β values (which remains at 9.1× scatter with 4 fitted flybys, consistent with geometry-dependent modulation). This suggests that the remaining heterogeneity arises from phase-boundary and geometry modulation effects, not from multipole corrections.</p>
+  <h3>3.2b Full 3D Trajectory Integration</h3>
+
+  <p>The perigee approximation provides a computationally efficient closed-form estimate, but the primary predictions are validated against full 3D trajectory integration to capture dynamic evolution of the scalar force along the spacecraft path. JPL Horizons ephemeris data for historical flybys provide scalar range and velocity observables rather than complete 3D state vectors. To reconstruct the trajectory, perigee state vectors (position and velocity) from the TEP geometry model serve as anchor points, and the hyperbolic orbit is propagated via Keplerian mechanics to generate full 3D ephemeris consistent with the JPL Horizons time grid. The reconstructed trajectory is validated against the JPL range data to ensure physical consistency.</p>
+
+  <p>The scalar velocity shift is accumulated by integrating the TEP force along the reconstructed path:</p>
+
+  <div class="equation">
+    \begin{equation}
+    \Delta v_{\rm TEP}^{(3D)} = \int_{t_{\rm in}}^{t_{\rm out}} \beta_{\rm eff}(r(t)) \, \frac{c^2}{M_{\rm Pl}} \, \left|\frac{d\phi}{dr}\right|_{r(t)} \, \mathcal{B}(\lambda(t), r(t)) \, \cos\delta_{\rm asym} \, \mathcal{E}(t) \, s_{\rm disf}(t) \, dt
+    \end{equation}
+  </div>
+
+  <p>where $\mathcal{B}(\lambda, r) = [J_2 + J_3 \sin(\lambda) + J_4 P_4(\sin\lambda)] (R_\oplus/r)^2$ is the zonal harmonic bracket, $\mathcal{E}(t)$ is the geometry envelope factor, and $s_{\rm disf}(t)$ is the disformal modulation factor. The integration uses 240–360 points per flyby and captures altitude-dependent field gradient variation, local plasma modulation, and velocity-dependent disformal factors at each point along the trajectory.</p>
+
+  <p>This 3D integration validates the perigee approximation: for the three primary detections, the integrated $\Delta v$ agrees with the perigee estimate within 8–16% (Section 4.1.2). For symmetric trajectories (Galileo 1992, MESSENGER) and high-altitude flybys (Rosetta 2007), both methods predict negligible anomalies, consistent with observations. The perigee approximation is therefore retained as the primary computational tool for ensemble fitting, while the 3D integration provides an independent cross-check.</p>
+
+  <p>J3 contribution: The J3 term adds a latitude-dependent asymmetry to the non-radial force component. However, J3 is two orders of magnitude smaller than J2 ($|J_3/J_2| \approx 2.3 \times 10^{-3}$), and its inclusion does not collapse the heterogeneity in fitted β across the three-gated ensemble (factor ~4 in β at fixed reference coupling, with formal Cochran Q ≫ 1). This indicates that remaining spread arises from phase-boundary and geometry–plasma modulation in the envelope, not from neglected J3 alone.</p>
 
   <p>The scalar field φ relaxes outside Earth with a relaxation length λ_TEP ≈ 4000 km, established independently from GNSS atomic clock correlations and the scalar field mass inferred from the cosmological sound horizon.</p>
 
@@ -83,7 +99,7 @@
 
   <div class="equation">
     \begin{equation}
-    \phi_{\rm min}(\rho) = \Lambda \left[ \frac{n \Lambda^{n+4} M_{\rm Pl}}{\beta \rho} \right]^{1/(n+1)}
+    \phi_{\rm min}(\rho) = \Lambda \left[ \frac{n \Lambda^{n+4} M_{\rm Pl}}{2\beta \rho} \right]^{1/(n+1)}
     \end{equation}
   </div>
 
@@ -92,7 +108,7 @@
     <ul>
         <li>Inside Earth ($\rho = 5515$ kg/m$^3$): $\phi_{\rm earth} = 2.35 \times 10^{4}$ GeV</li>
         <li>At Earth's surface ($\rho = 2700$ kg/m$^3$): $\phi_{\rm surface} = 2.81 \times 10^{4}$ GeV</li>
-        <li>In vacuum ($\rho \approx 10^{-20}$ kg/m$^3$): $\phi_{\rm space} \approx 2.0 \times 10^{10}$ GeV (computed self-consistently from field equation)</li>
+        <li>In vacuum ($\rho \approx 10^{-20}$ kg/m$^3$): $\phi_{\rm space} \approx 2.0 \times 10^{10}$ GeV (same closed form with $2\beta\rho$ as in Step 007; $\rho$ converted to GeV$^4$ via CODATA-based factors)</li>
         <li>TEP relaxation length: $\lambda_{\rm TEP} \approx 4000$ km (from GNSS / scalar field Compton wavelength)</li>
         <li>Characteristic suppression: $S_{\oplus} \approx 0.35$ (UCD-derived from Step 010)</li>
     </ul>
@@ -100,7 +116,7 @@
 
 <p>Vacuum field value: The Temporal Topology field formula φ ∝ ρ^(-1/4) produces large but finite values in the interplanetary medium (ρ ≈ 10⁻²⁰ kg/m³). The self-consistent field equation yields φ_space ≈ 2.0×10¹⁰ GeV for the reference coupling β=10⁻⁴. No ad-hoc cutoff is applied; the field is computed directly from the physical density.</p>
 
-<p>Geometry modulation factors: The fitted β values exhibit 9.1× scatter across flybys, reflecting substantial geometry-dependent modulation. Four physical mechanisms are tracked in the analysis: (1) <em>inclination-dependent screening</em>—higher latitude trajectories sample less equatorial bulge; (2) <em>J2 oblateness</em>—altitude-dependent screening from Earth's shape; (3) <em>plasma environment</em>—ionospheric density modulates local screening; and (4) <em>velocity effects</em>—disformal coupling in the high-velocity regime. These factors are incorporated into the scalar force calculation.</p>
+<p>Geometry modulation factors: Per-flyby fitted β in the three-gated ensemble spans roughly a factor of four, reflecting substantial geometry-, plasma-, and velocity-dependent modulation encoded in the Step 007 envelope. Four physical mechanisms are tracked in the analysis: (1) <em>inclination-dependent screening</em>—higher latitude trajectories sample less equatorial bulge; (2) <em>J2 oblateness</em>—altitude-dependent screening from Earth's shape; (3) <em>plasma environment</em>—ionospheric density modulates local screening (IRI at perigee, Step 033); and (4) <em>velocity effects</em>—disformal coupling in the high-velocity regime. These factors are incorporated into the scalar force calculation.</p>
 
 <h2>3.2a Component-Level Geometry Factor Analysis</h2>
 
@@ -156,8 +172,8 @@
     <h4>Deterministic Factors</h4>
     <ul>
         <li><strong>Trajectory geometry (G_traj):</strong> G_traj = exp(-(h - 300 km)/2000 km) × (1 + |cosδ_asym|)</li>
-        <li><strong>Temporal Shear Suppression (S_⊕):</strong> S_⊕ = (R_⊕ - R_sol)/(R_⊕ - R_i) where R_sol ≈ 4146 km</li>
-        <li><strong>OD absorption (F_OD):</strong> Fraction of injected TEP signal surviving standard OD processing</li>
+        <li><strong>Temporal Shear Suppression (S_⊕):</strong> $S_\oplus = (R_\oplus - R_{\rm sol})/R_\oplus$ with $R_{\rm sol} \approx 4146$ km (UCD saturation radius; matches <code>CHARACTERISTIC_SUPPRESSION</code> in <code>scripts/utils/physics.py</code>)</li>
+        <li><strong>OD absorption (F_OD):</strong> Mission-specific fraction of injected TEP signal surviving standard OD processing. Step 039 withholds post-OD columns until Step 021 supplies defensible mission OD configuration data.</li>
         <li><strong>Plasma factor (F_plasma):</strong> Modulated by solar activity indices (F10.7 flux, Kp index)</li>
         <li><strong>Disformal factor (F_disf):</strong> Velocity-activated sign reversal for v > 16.8 km/s with negative asymmetry</li>
     </ul>
@@ -170,7 +186,7 @@
 </p>
 
 <p>
-    The current four-stage variance decomposition attributes 0.0% of the fitted-β variance to the structural proxy bundle, 30.0% to observational pipeline effects (OD filter absorption and systematic uncertainties), 0.0% to environmental modulation (no significant F10.7 correlation), and 70.0% to residual small-sample statistics, intrinsic scatter, and model incompleteness. The dominant residual fraction reflects the n = 4 detection sample and incomplete modeling of mission-specific plasma screening.
+    The current four-stage variance decomposition (Step 009, fitted-β heterogeneity) attributes 0.0% of the variance to the structural proxy bundle, 0.0% to observational pipeline effects, 99.5% to environmental modulation (F10.7 correlation |r| ≈ 0.998, p ≈ 0.043 on n = 3), and 0.5% to residual small-sample statistics, intrinsic scatter, and model incompleteness. The dominant environmental fraction reflects the small detection sample and solar-epoch covariation; it should not be read as a uniquely causal F10.7 driver without larger n.
 </p>
 
 <h2>3.5 Disformal Transition Criterion</h2>
@@ -286,7 +302,12 @@
 <h2>3.6 Robust Bayesian Fitting</h2>
 
   <p>
-    Parameter estimation is performed using a robust Bayesian framework to address the small sample size and potential outliers. A Student's t-distribution likelihood with degrees of freedom $\nu = 3$ is employed instead of standard Gaussian least-squares, providing natural outlier resistance and more realistic confidence intervals.
+    The primary Step 008 coupling estimate is an inverse-variance scaling fit on
+    the sign-gated detections, and the Step 026 model-comparison layer uses
+    Gaussian weighted least-squares likelihoods. A Student's t-distribution
+    likelihood with degrees of freedom $\nu = 3$ is used only in the auxiliary
+    robust Bayesian/hierarchical checks, where it tests whether the conclusions
+    are sensitive to outlier treatment in the small sample.
   </p>
 
   <p>
@@ -304,8 +325,10 @@
 
   <div class="equation">
     \begin{equation}
-| \gamma - 1 | = 2\beta_{\rm eff}^2 < 2.3 \times 10^{-5}\end{equation}
+|\gamma - 1| \approx 2\beta_{\rm eff}^2 < 2.3 \times 10^{-5}\end{equation}
   </div>
+
+  <p>Jakarta v0.8 (Sec. 7, DEF screened limit) gives $\gamma - 1 = -2\alpha_{\rm eff}^2$ with $\alpha_{\rm eff} \equiv d(\ln A)/d\phi$ evaluated at the screened source. For $A(\phi)=\exp(\beta\phi/M_{\rm Pl})$, write $\psi\equiv\phi/M_{\rm Pl}$ so that $d(\ln A)/d\psi=\beta$; identifying the locally active dimensionless coupling with screened $\beta_{\rm eff}$ yields $|\gamma - 1| \approx 2\beta_{\rm eff}^2$ for comparison to the Cassini magnitude bound.</p>
 
   <h2>3.7 Statistical Analysis</h2>
 
@@ -345,7 +368,7 @@
 
 <div class="equation">
     \begin{equation}
-    I^2 = \frac{Q - (n-1)}{Q} \times 100\% \quad \text{(percentage variance due to heterogeneity)}
+    I^2 = \max\!\left(0,\,\frac{Q - (n-1)}{Q}\right) \times 100\% \quad \text{(percentage variance due to heterogeneity; Higgins 2002)}
     \end{equation}
 </div>
 
@@ -400,7 +423,7 @@
   <li>Fit only initial state and solar radiation pressure coefficient</li>
 </ul>
 
-<p>This minimal approach would preserve TEP signals while still providing adequate orbit determination for anomaly extraction. The DSN acquisition framework (Step 006) has identified 7 missions with available raw DSN data, with Juno_2013 as the highest-priority candidate for minimal OD re-analysis to test this hypothesis.</p>
+<p>This minimal approach would preserve TEP signals while still providing adequate orbit determination for anomaly extraction. The DSN acquisition framework (Steps 005–006) identifies missions and archival endpoints where raw DSN tracking products are expected to exist and emits structured request artifacts for ingestion; however, in the current repository state most missions are not yet indexed into a usable local product set (pipeline ingest status <code>no_indexed_products</code>). Therefore the DSN layer should be read as an operational framework and a falsification pathway, not as a completed raw-DSN reanalysis for the full catalog. Juno_2013 remains the highest-priority candidate for a first minimal-OD re-analysis once raw Doppler products are indexed.</p>
 
 <h2>3.9 PPN Constraints and Cassini Solar Conjunction</h2>
 
@@ -471,7 +494,7 @@ n_{\rm iono}(h) = n_{\rm max} \exp\left[0.5\left(1 - \frac{h - h_{\rm max}}{H_{\
   </p>
 
   <p>
-    We use a Debye-like plasma attenuation ansatz as a phenomenological proxy for ionospheric screening:
+    A Debye-like plasma attenuation ansatz is used as a phenomenological proxy for ionospheric screening:
   </p>
 
   <div class="equation">

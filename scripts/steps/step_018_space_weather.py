@@ -22,65 +22,74 @@ import time
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
+from scripts.utils.celestrak_space_weather import lookup_space_weather
 from scripts.utils.step_logger import StepLogger
 
 class SpaceWeatherCorrelator:
-    """Matches exact historical tracking data to EFA parameters to map screening."""
-    
-    # Historical Space Weather Data downloaded locally from Celestrak (SW-All.csv)
-    # F10.7 is in sfu, Kp is the daily sum
-    SW_DATA = {
-        'Galileo_1990': {'F107': 230.4, 'Kp': 15.3, 'date': '1990-12-08'},
-        'Galileo_1992': {'F107': 129.0, 'Kp': 31.3, 'date': '1992-12-08'},
-        'NEAR_1998': {'F107': 96.9, 'Kp': 6.7, 'date': '1998-01-23'},
-        'Cassini_1999': {'F107': 130.7, 'Kp': 31.7, 'date': '1999-08-18'},
-        'Stardust_2001': {'F107': 169.2, 'Kp': 12.3, 'date': '2001-01-15'},
-        'Rosetta_2005': {'F107': 78.9, 'Kp': 3.7, 'date': '2005-03-04'},
-        'MESSENGER_2005': {'F107': 110.2, 'Kp': 17.3, 'date': '2005-08-02'},
-        'Rosetta_2007': {'F107': 69.9, 'Kp': 19.0, 'date': '2007-11-13'},
-        'Rosetta_2009': {'F107': 74.1, 'Kp': 3.3, 'date': '2009-11-13'},
-        'Juno_2013': {'F107': 113.4, 'Kp': 30.3, 'date': '2013-10-09'},
-        'OSIRIS-REx_2017': {'F107': 77.5, 'Kp': 10.3, 'date': '2017-09-22'},
-        'BepiColombo_2020': {'F107': 69.2, 'Kp': 7.7, 'date': '2020-04-10'},
-    }
+    """Match historical space weather to flyby catalog dates and fitted beta values."""
 
-    def __init__(self, results_file: Path):
+    def __init__(self, results_file: Path, catalog_file: Path):
         try:
-            with open(results_file, encoding='utf-8') as f:
+            with open(results_file, encoding="utf-8") as f:
                 self.results = json.load(f)
         except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
             raise RuntimeError(f"Failed to load results file {results_file}: {e}")
-        self.fits = self.results.get('individual_fits', {})
+        try:
+            with open(catalog_file, encoding="utf-8") as f:
+                self.catalog = json.load(f).get("flybys", [])
+        except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
+            raise RuntimeError(f"Failed to load catalog file {catalog_file}: {e}")
+        self.fits = self.results.get("individual_fits", {})
         self.data_points = []
-        
+        self.catalog_context = []
+
     def analyze(self) -> dict:
-        for mission, sw in self.SW_DATA.items():
-            if mission in self.fits:
-                fit = self.fits[mission]
-                beta = fit['fit']['beta_fitted']
-                
-                # Retrieve effective dv_obs and altitude
-                alt = fit['perigee'].get('altitude_km')
-                dv = fit['observed'].get('dv_obs_mm_s')
-                
-                if alt is None or dv is None:
-                    continue
-                
-                # F10.7 drives ionospheric plasma, Kp drives magnetospheric storms
-                p_env = sw['F107'] * (1.0 + sw['Kp']/100.0)
-                
-                # Include all fitted flybys for exploratory analysis
-                # Note: With n=4 detections, correlations are hypothesis-generating only
-                if beta is not None and not fit['fit'].get('excluded', True):
-                    self.data_points.append({
-                        'mission': mission,
-                        'beta': beta,
-                        'F107': sw['F107'],
-                        'Kp': sw['Kp'],
-                        'P_env': p_env,
-                        'altitude': alt,
-                        'dv_obs': dv
-                    })
+        for entry in self.catalog:
+            mission = entry.get("mission_name")
+            flyby_date = entry.get("flyby_date")
+            if not mission or not flyby_date:
+                continue
+            try:
+                sw = lookup_space_weather(flyby_date)
+            except RuntimeError as exc:
+                self.catalog_context.append(
+                    {
+                        "mission": mission,
+                        "flyby_date": flyby_date,
+                        "status": "space_weather_unavailable",
+                        "error": str(exc),
+                    }
+                )
+                continue
+            p_env = sw["f10_7"] * (1.0 + sw["kp_sum"] / 100.0)
+            context = {
+                "mission": mission,
+                "flyby_date": flyby_date,
+                "F107": sw["f10_7"],
+                "Kp_sum": sw["kp_sum"],
+                "P_env": p_env,
+                "data_source": sw["data_source"],
+            }
+            self.catalog_context.append(context)
+
+            if mission not in self.fits:
+                continue
+            fit = self.fits[mission]
+            beta = fit.get("fit", {}).get("beta_fitted")
+            if beta is None or fit.get("fit", {}).get("excluded", True):
+                continue
+            alt = fit.get("perigee", {}).get("altitude_km")
+            dv = fit.get("observed", {}).get("dv_obs_mm_s")
+            if alt is None or dv is None:
+                continue
+            self.data_points.append(
+                {
+                    **context,
+                    "beta": beta,
+                    "altitude": alt,
+                    "dv_obs": dv,
+                }
+            )
                     
         # Compute Pearson correlation (exploratory only with small n)
         betas = [d['beta'] for d in self.data_points]
@@ -134,7 +143,8 @@ class SpaceWeatherCorrelator:
                     f'Current sample is underpowered for definitive correlation testing.'
                 )
             },
-            'data_points': self.data_points
+            'data_points': self.data_points,
+            'catalog_context': self.catalog_context,
         }
     
     def _interpret_correlation(self, r: float, p: float, n: int) -> str:
@@ -156,7 +166,7 @@ class SpaceWeatherCorrelator:
         else:
             return f'r={r:.2f}, p={p:.2f} (n={n}): Statistically significant but small sample warrants caution'
         
-    def export_wide_binary_concordance(self) -> dict:
+    def export_wide_binary_concordance(self, correlation: dict) -> dict:
         # Based on Wide Binary TEP framework: R_s = (3M / 4 pi rho_floor)^(1/3)
         # SPARC rotation curves fix rho_T ~ 20 g/cm^3.
         # From EFA, the effective local plasma screening density can be back-calculated.
@@ -182,6 +192,19 @@ class SpaceWeatherCorrelator:
             'recommended_action': 'Validate against independent galactic rotation curve analysis and GNSS calibration consistency check'
         }
         
+        pearson_r = correlation.get("pearson_r", 0.0)
+        p_value = correlation.get("p_value", 1.0)
+        if correlation.get("n_samples", 0) >= 3 and p_value < 0.05:
+            consistency = (
+                "Exploratory beta vs P_env correlation is statistically significant at the "
+                "catalog-fitted subset; screening interpretation remains hypothesis-generating."
+            )
+        else:
+            consistency = (
+                "Wide-binary screening scale is documented separately; flyby beta vs P_env "
+                "correlation is not significant at the current fitted-sample size."
+            )
+
         return {
             'wide_binary_concordance': {
                 'uncertainty': 0.5,
@@ -195,7 +218,7 @@ class SpaceWeatherCorrelator:
                 'observed_transition_au': wb_rs_au,
                 'inferred_galactic_rho_floor_g_cm3': wb_rho_floor_g_cm3,
                 'Temporal Shear Suppression_index_n': 3.0,
-                'consistency': "EFA beta variance strongly correlates with local space weather proxy, confirming Temporal Shear Suppression screening is density-dependent as required by WB results."
+                'consistency': consistency,
             }
         }
 
@@ -206,11 +229,15 @@ def main():
     logger.header("STEP 018: EMPIRICAL SPACE WEATHER CORRELATION")
     
     results_file = PROJECT_ROOT / 'results' / 'step008_fitting_results.json'
+    catalog_file = PROJECT_ROOT / 'results' / 'step003_archival_flyby_catalog.json'
     if not results_file.exists():
         logger.error("Missing step008 fits.")
         return 1
-        
-    correlator = SpaceWeatherCorrelator(results_file)
+    if not catalog_file.exists():
+        logger.error("Missing step003 flyby catalog.")
+        return 1
+
+    correlator = SpaceWeatherCorrelator(results_file, catalog_file)
     logger.info("Matching historical flybys to Celestrak SW-All data (Kp, F10.7)")
     
     analysis = correlator.analyze()
@@ -241,7 +268,7 @@ def main():
     
     logger.info(f"Interpretation: {corr['interpretation']}")
         
-    wb_data = correlator.export_wide_binary_concordance()
+    wb_data = correlator.export_wide_binary_concordance(corr)
     
     report = {
         'uncertainty': None,
@@ -250,7 +277,10 @@ def main():
         'status': 'preliminary',
         'calibration_status': 'exploratory_hypothesis_generating',
         'data_source': 'Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits',
-        'derivation': 'Space weather correlation analysis with small sample size (n=2); ±50% uncertainty accounts for statistical limitations and systematic errors in space weather proxy; results are hypothesis-generating only',
+        'derivation': (
+            f'Space weather correlation analysis with n={corr["n_samples"]} fitted flybys; '
+            '±50% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy'
+        ),
         'recommended_action': 'Validate with larger sample size (n>10) from future flyby measurements',
         'analysis': {
             'uncertainty': None,
@@ -259,7 +289,10 @@ def main():
             'status': 'preliminary',
             'calibration_status': 'exploratory_hypothesis_generating',
             'data_source': 'Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits',
-            'derivation': 'Space weather correlation analysis with small sample size (n=2); ±50% uncertainty accounts for statistical limitations and systematic errors in space weather proxy; results are hypothesis-generating only',
+            'derivation': (
+            f'Space weather correlation analysis with n={corr["n_samples"]} fitted flybys; '
+            '±50% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy'
+        ),
             'recommended_action': 'Validate with larger sample size (n>10) from future flyby measurements',
             **analysis
         },

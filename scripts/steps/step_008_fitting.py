@@ -150,7 +150,12 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scipy import stats
 from scripts.utils.step_logger import StepLogger
 
-from scripts.utils.physics import CHARACTERISTIC_SUPPRESSION, KG_M3_TO_GEV4, M_PL_GEV, BETA_BASELINE
+from scripts.utils.physics import (
+    BETA_BASELINE,
+    CHARACTERISTIC_SUPPRESSION,
+    ppn_gamma_deviation,
+    screened_beta,
+)
 
 # TEP Universal Parameters (Jakarta v0.8)
 BETA_INITIAL = BETA_BASELINE * 1e-4  # Unified Yogyakarta anchor from physics.py
@@ -325,9 +330,7 @@ def fit_beta_to_observation(
         )
 
     # Calculate effective coupling with Temporal Shear Suppression
-    beta_eff = (
-        beta_fitted * CHARACTERISTIC_SUPPRESSION if beta_fitted is not None else None
-    )
+    beta_eff = screened_beta(beta_fitted) if beta_fitted is not None else None
 
     if logger and beta_eff is not None:
         logger.calculation(
@@ -345,7 +348,7 @@ def fit_beta_to_observation(
     # |γ - 1| ≈ 2 beta_eff² (for small beta_eff)
     # This is the quantity directly comparable to the Cassini solar-system bound.
     if beta_fitted is not None:
-        gamma_dev = 2 * beta_eff**2
+        gamma_dev = ppn_gamma_deviation(beta_eff)
         ppn_compliant = gamma_dev < 2.3e-5
 
         if logger:
@@ -703,8 +706,10 @@ def calculate_effect_sizes(all_fits: dict) -> dict:
                             "sigma_mm_s": unc,
                         }
                     }
-        except (FileNotFoundError, json.JSONDecodeError):
-            pass
+        except (FileNotFoundError, json.JSONDecodeError, OSError) as e:
+            raise RuntimeError(
+                f"Cannot load archival catalog for null-population augmentation: {catalog_path}"
+            ) from e
 
     # Separate detections from nulls using the fit data
     detections = {}
@@ -1982,30 +1987,73 @@ def main():
                 and not power.get("power_sufficient", False)
             ),
         },
-        "conclusion": {
-            "tep_explains_flyby_anomaly": bool(
-                quality.get("ppn_compliance", False) and quality["n_fits"] >= 2
-            ),
-            "recommended_beta": float(quality.get("recommended_beta", 0)),
-            "recommended_uncertainty": float(quality.get("recommended_uncertainty", 0)),
-            "confidence": "high"
-            if (
-                quality.get("n_fits", 0) >= 3
-                and quality.get("ppn_compliance")
-                and model_comp.get("model_comparison", {}).get("best_model_bic")
-                == "TEP"
-                and pred_acc.get("R_squared", 0) > 0.8
-            )
-            else "moderate",
-            "evidence_strength": "strong"
-            if (
-                model_comp.get("model_comparison", {}).get("tep_evidence_weight", 0)
-                > 0.8
-                and pred_acc.get("R_squared", 0) > 0.8
-            )
-            else "moderate",
-            "sample_size_note": f"Based on {quality.get('n_fits', 0)} primary detections. Enhanced validation includes a fair TEP-vs-Null comparison on shared observational uncertainties plus separate structured-uncertainty sensitivity tests.",
-        },
+    }
+
+    beta_values = [
+        entry["fit"]["beta_fitted"]
+        for entry in fits.values()
+        if entry.get("fit", {}).get("beta_fitted") is not None
+    ]
+    chi2_consistency = None
+    if len(beta_values) > 1:
+        mean_beta = sum(beta_values) / len(beta_values)
+        chi2_consistency = sum(
+            ((beta - mean_beta) / (beta * 0.1 if beta else 0.1)) ** 2
+            for beta in beta_values
+            if beta
+        )
+
+    gnss_scale_consistent = None
+    gnss_file = results_dir / "step016_gnss_cross_validation.json"
+    if gnss_file.exists():
+        with open(gnss_file, encoding="utf-8") as handle:
+            gnss_data = json.load(handle)
+        gnss_scale_consistent = gnss_data.get(
+            "gnss_scale_consistent", gnss_data.get("beta_consistent")
+        )
+
+    confidence = (
+        "high"
+        if (
+            quality.get("n_fits", 0) >= 3
+            and quality.get("ppn_compliance")
+            and model_comp.get("model_comparison", {}).get("best_model_bic") == "TEP"
+            and pred_acc.get("R_squared", 0) > 0.8
+        )
+        else "moderate"
+    )
+    if gnss_scale_consistent is False and confidence in ("high", "moderate"):
+        confidence = "limited"
+    if chi2_consistency is not None and chi2_consistency > 100 and confidence != "none":
+        if confidence == "moderate":
+            confidence = "limited"
+
+    evidence_strength = (
+        "strong"
+        if (
+            model_comp.get("model_comparison", {}).get("tep_evidence_weight", 0) > 0.8
+            and pred_acc.get("R_squared", 0) > 0.8
+        )
+        else "moderate"
+    )
+    if chi2_consistency is not None and chi2_consistency > 100:
+        evidence_strength = "limited"
+    if gnss_scale_consistent is False and evidence_strength in ("strong", "moderate"):
+        evidence_strength = "limited"
+
+    output["conclusion"] = {
+        "tep_explains_flyby_anomaly": bool(
+            quality.get("ppn_compliance", False) and quality["n_fits"] >= 2
+        ),
+        "recommended_beta": float(quality.get("recommended_beta", 0)),
+        "recommended_uncertainty": float(quality.get("recommended_uncertainty", 0)),
+        "confidence": confidence,
+        "evidence_strength": evidence_strength,
+        "sample_size_note": (
+            f"Based on {quality.get('n_fits', 0)} primary detections. Enhanced validation "
+            "includes a fair TEP-vs-Null comparison on shared observational uncertainties "
+            "plus separate structured-uncertainty sensitivity tests."
+        ),
     }
 
     # Convert numpy types to native Python types for JSON serialization

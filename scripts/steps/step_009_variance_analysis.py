@@ -60,6 +60,11 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.iri_mission_map import resolve_iri_mission
+from scripts.utils.plasma_screening import (
+    load_iri_trajectory_profiles,
+    mission_peak_electron_density_cm3,
+)
 import time
 from datetime import datetime, timezone
 
@@ -69,13 +74,12 @@ def ensure_dir(path: Path):
     path.mkdir(parents=True, exist_ok=True)
 
 def load_json(filepath):
-    """Load JSON file with error handling."""
+    """Load JSON file strictly (fail on missing/unreadable inputs)."""
     try:
-        with open(filepath, 'r') as f:
+        with open(filepath, "r", encoding="utf-8") as f:
             return json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError, IOError) as e:
-        print(f"Warning: Failed to load JSON file {filepath}: {e}")
-        return None
+    except (FileNotFoundError, json.JSONDecodeError, OSError) as e:
+        raise RuntimeError(f"Failed to load JSON file: {filepath}") from e
 
 def save_json(data: dict, filepath: Path):
     """Save JSON file."""
@@ -197,10 +201,10 @@ def load_step_results(results_dir: Path) -> Dict[str, Any]:
     
     for key, filename in step_files.items():
         filepath = results_dir / filename
-        if filepath.exists():
-            results[key] = load_json(filepath)
-        else:
+        if not filepath.exists():
             results[key] = None
+            continue
+        results[key] = load_json(filepath)
     
     return results
 
@@ -225,8 +229,7 @@ def calculate_stage1_residual_modulation(
     
     # Plasma factor: ionospheric density suppression
     if plasma_density_cm3 is None:
-        # Use default plasma density if not provided
-        plasma_density_cm3 = 1000.0  # Default ionospheric density
+        raise ValueError("plasma_density_cm3 is required for structural modulation analysis")
     f_plasma = (1.0 + plasma_density_cm3 / PLASMA_DENSITY_SCALE)**(-0.3)
     
     # Velocity factor: disformal regime transition
@@ -291,11 +294,9 @@ def analyze_stage3_environmental_modulation(
     p_value = correlation.get('p_value')
     
     if pearson_r is None:
-        self.logger.warning("Missing pearson_r in correlation analysis")
         pearson_r = 0.0
     if p_value is None:
-        self.logger.warning("Missing p_value in correlation analysis")
-        p_value = None  # Not default to 1.0
+        p_value = None
     
     # Explanatory power = R² (if significant), otherwise 0
     if p_value is not None and p_value < 0.05:
@@ -315,7 +316,8 @@ def analyze_stage3_environmental_modulation(
 def calculate_variance_decomposition(
     individual_fits: Dict[str, Any],
     step018_results: Dict,
-    step021_results: Dict
+    step021_results: Dict,
+    iri_profiles: Dict[str, Any],
 ) -> Dict[str, Any]:
     """
     Calculate comprehensive variance decomposition across all stages.
@@ -326,7 +328,7 @@ def calculate_variance_decomposition(
     for mission, fit_data in individual_fits.items():
         if 'fit' in fit_data:
             betas.append(fit_data['fit']['beta_fitted'])
-            beta_uncertainties.append(fit_data['fit'].get('beta_uncertainty', 0.1))
+            beta_uncertainties.append(fit_data['fit'].get('uncertainty', 0.1))
     
     # Filter out None and non-positive values for log space analysis
     valid_indices = [i for i, b in enumerate(betas) if b is not None and b > 0]
@@ -353,15 +355,16 @@ def calculate_variance_decomposition(
     for mission, fit_data in individual_fits.items():
         # Access geometry data from perigee section
         perigee = fit_data.get('perigee', {})
-        alt = perigee.get('altitude_km', 1000)
-        lat = perigee.get('perigee_latitude_deg', 0.0)
-        vel = perigee.get('velocity_km_s', 10)
-        
-        # Get cos_dec_asymmetry for disformal effects
-        cos_asym = fit_data.get('cos_dec_asymmetry', 0.0)
-        
-        # Estimate plasma density from altitude
-        plasma = 1000 * np.exp(-alt / 300) if alt < 1000 else 50
+        alt = perigee.get('altitude_km')
+        lat = perigee.get('perigee_latitude_deg', perigee.get('latitude_deg', 0.0))
+        vel = perigee.get('velocity_km_s')
+        if alt is None or vel is None:
+            continue
+
+        iri_key = resolve_iri_mission(mission)
+        plasma = mission_peak_electron_density_cm3(iri_profiles, iri_key)
+        if plasma is None:
+            continue
         
         factors = calculate_stage1_residual_modulation(alt, lat, vel, plasma)
         predicted_beta = baseline_beta * factors['f_total_structural']
@@ -436,7 +439,7 @@ def calculate_variance_decomposition(
                 'explained_percent': float(stage3_contribution * 100),
                 'components': ['solar_activity_f10.7', 'space_weather_kp', 'temporal_variation'],
                 'f10.7_correlation': env_analysis.get('pearson_r', 0.0),
-                'f10.7_p_value': env_analysis.get('p_value', 1.0)
+                'f10.7_p_value': env_analysis.get('p_value'),
             },
             'stage4_residual': {
                 'name': 'Statistical + Unmodeled',
@@ -451,25 +454,18 @@ def calculate_variance_decomposition(
 
 def generate_mission_analysis(
     individual_fits: Dict[str, Any],
-    step018_results: Dict
+    step018_results: Dict,
+    iri_profiles: Dict[str, Any],
 ) -> Dict[str, Any]:
     """Generate per-mission variance analysis."""
     missions = {}
     
-    # Get space weather data if available
-    space_weather_data = {}
-    if not step018_results or 'analysis' not in step018_results:
-        pass
-    else:
-        analysis = step018_results['analysis'].get('data_points', [])
-        for dp in analysis:
-            mission_name = dp.get('mission', '')
+    env_by_mission: dict[str, dict[str, Any]] = {}
+    if step018_results and "analysis" in step018_results:
+        for row in step018_results["analysis"].get("catalog_context", []):
+            mission_name = row.get("mission")
             if mission_name:
-                space_weather_data[mission_name] = {
-                    'F107': dp.get('F107', 0),
-                    'Kp': dp.get('Kp', 0),
-                    'P_env': dp.get('P_env', 0)
-                }
+                env_by_mission[mission_name] = row
     
     for mission, fit_data in individual_fits.items():
         if 'fit' not in fit_data:
@@ -480,43 +476,47 @@ def generate_mission_analysis(
         
         # Get geometry
         perigee = fit_data.get('perigee', {})
-        alt = perigee.get('altitude_km', 1000)
-        lat = perigee.get('perigee_latitude_deg', 0.0)
-        vel = perigee.get('velocity_km_s', 10)
-        
-        # Estimate plasma
-        plasma = 1000 * np.exp(-alt / 300) if alt < 1000 else 50
-        
-        # Calculate structural factors
+        alt = perigee.get('altitude_km')
+        lat = perigee.get('perigee_latitude_deg', perigee.get('latitude_deg', 0.0))
+        vel = perigee.get('velocity_km_s')
+        if alt is None or vel is None:
+            continue
+
+        iri_key = resolve_iri_mission(mission)
+        plasma = mission_peak_electron_density_cm3(iri_profiles, iri_key)
+        if plasma is None:
+            continue
+
         structural = calculate_stage1_residual_modulation(alt, lat, vel, plasma)
         
-        # Get space weather
-        sw = space_weather_data.get(mission, {})
+        sw = env_by_mission.get(mission, {})
         
         missions[mission] = {
             'beta_fitted': beta_fitted,
             'beta_eff': beta_eff,
-            'beta_uncertainty': fit_data['fit'].get('beta_uncertainty', 0),
+            'beta_uncertainty': fit_data['fit'].get('uncertainty', 0),
             'physical_parameters': {
                 'altitude_km': alt,
                 'perigee_latitude_deg': lat,
                 'velocity_km_s': vel,
                 'plasma_density_cm3': plasma,
-                'derivation': 'Default values for missions without observed anomaly; altitude_km=1000 represents typical flyby altitude range; velocity_km_s=10 represents typical Earth escape velocity; plasma_density_cm3=50 represents nominal ionospheric density at 1000 km altitude; ±50% uncertainty',
-                'source': 'TEP-EFA pipeline default parameter values'
+                'derivation': (
+                    'Perigee geometry from Step 008 fits; peak IRI n_e along Step 033 trajectory profile'
+                ),
+                'source': 'step008_fitting_results.json + step033_iri_trajectory_profiles.json',
             },
             'stage1_structural_factors': structural,
             'stage3_environmental': {
                 'F107_flux': sw.get('F107', 0),
-                'Kp_index': sw.get('Kp', 0),
-                'P_env_proxy': sw.get('P_env', 0)
+                'Kp_index': sw.get('Kp_sum', sw.get('Kp', 0)),
+                'P_env_proxy': sw.get('P_env', 0),
             }
         }
     
     return missions
 
 
-def generate_synthesis_conclusions(variance_decomp: Dict) -> List[str]:
+def generate_synthesis_conclusions(variance_decomp: Dict, beta_span: float = 9.1) -> List[str]:
     """Generate synthesis conclusions for the manuscript."""
     if 'stages' not in variance_decomp:
         return {
@@ -533,7 +533,7 @@ def generate_synthesis_conclusions(variance_decomp: Dict) -> List[str]:
         "Core TEP modulation via inclination, J2 geometry, plasma screening, and velocity disformal regime.",
         "",
         f"**Stage 2 - Observational Effects ({stages['stage2_observational']['explained_percent']:.1f}%):** "
-        f"OD filter absorption (~{stages['stage2_observational']['od_suppression_percent']:.0f}% signal loss) and systematic uncertainties.",
+        f"OD filter absorption withheld without mission F_OD; systematic uncertainties only.",
         "",
         f"**Stage 3 - Environmental Modulation ({stages['stage3_environmental']['explained_percent']:.1f}%):** "
         f"Solar activity correlation (r={stages['stage3_environmental']['f10.7_correlation']:.2f}) with F10.7 flux.",
@@ -543,7 +543,7 @@ def generate_synthesis_conclusions(variance_decomp: Dict) -> List[str]:
         "",
         f"Cumulative explanatory power: {variance_decomp['cumulative_explained']*100:.1f}%",
         "",
-        "The apparent 7.8× variance in fitted β is therefore not stochastic noise but "
+        f"The apparent {beta_span:.1f}× variance in fitted β is therefore not stochastic noise but "
         "a deterministic consequence of environment-dependent TEP coupling, observational pipeline effects, "
         "and solar activity modulation—fully consistent with the TEP framework."
     ]
@@ -571,8 +571,16 @@ def main():
     # Verify required results
     if not step_results['step008']:
         logger.error("Missing step008_fitting_results.json - cannot proceed")
+        logger.log_step_summary(0, "FAILED")
+        return 1
 
     individual_fits = step_results['step008'].get('individual_fits', {})
+    try:
+        iri_profiles = load_iri_trajectory_profiles(project_root)
+    except FileNotFoundError as exc:
+        logger.error(str(exc))
+        logger.log_step_summary(0, "FAILED")
+        return 1
     
     # Stage 1: Structural modulation analysis
     logger.subsection("Stage 1: Structural Physics Modulation")
@@ -592,19 +600,21 @@ def main():
                 
                 if f_od_values:
                     avg_f_od = sum(f_od_values) / len(f_od_values)
-                    suppression = (1 - avg_f_od) * 100  # Convert to percentage
+                    suppression = (1 - avg_f_od) * 100
                 else:
-                    suppression = 50.0
+                    suppression = 0.0
             else:
-                # Legacy structure fallback
-                suppression = step_results['step021'].get('modern_od', {}).get('suppression_percent', 50.0)
+                suppression = step_results['step021'].get('modern_od', {}).get('suppression_percent', 0.0)
         else:
-            suppression = 50.0
-        logger.info(f"OD filter suppression: {suppression:.1f}% (from Step 021)")
+            suppression = 0.0
+        if suppression == 0.0:
+            logger.info("OD filter suppression: not computed (Step 021 has no mission F_OD values)")
+        else:
+            logger.info(f"OD filter suppression: {suppression:.1f}% (from Step 021)")
     except Exception as e:
         logger.warning(f"Could not load OD absorption from step 021: {e}")
-        suppression = 50.0
-        logger.info(f"OD filter suppression: {suppression:.1f}% (default)")
+        suppression = 0.0
+        logger.info("OD filter suppression: not computed (Step 021 unavailable)")
     
     # Stage 3: Environmental modulation (from Step 018)
     logger.subsection("Stage 3: Environmental Modulation")
@@ -618,12 +628,17 @@ def main():
     variance_decomp = calculate_variance_decomposition(
         individual_fits,
         step_results['step018'],
-        step_results['step021']
+        step_results['step021'],
+        iri_profiles,
     )
     
     # Generate per-mission analysis
     logger.subsection("Generating Mission-Level Analysis")
-    mission_analysis = generate_mission_analysis(individual_fits, step_results['step018'])
+    mission_analysis = generate_mission_analysis(
+        individual_fits,
+        step_results['step018'],
+        iri_profiles,
+    )
     
     # Generate synthesis
     logger.subsection("Generating Synthesis Conclusions")
@@ -635,7 +650,10 @@ def main():
             'summary': variance_decomp.get('message')
         }
     else:
-        conclusions = generate_synthesis_conclusions(variance_decomp)
+        # Compute actual beta span for synthesis text
+        fitted_betas = [v['beta_fitted'] for v in mission_analysis.values() if v['beta_fitted'] is not None]
+        beta_span = max(fitted_betas) / min(fitted_betas) if len(fitted_betas) >= 2 else 1.0
+        conclusions = generate_synthesis_conclusions(variance_decomp, beta_span)
     for line in conclusions:
         logger.info(line)
     
@@ -665,7 +683,7 @@ def main():
         'manuscript_citations': {
             'results_section': 'Section 4.3 - Variance Analysis',
             'discussion_section': 'Section 5.7 - Physics of Beta Scatter',
-            'key_claim': '7.8× variance explained through 4-stage decomposition'
+            'key_claim': f'{beta_span:.1f}× variance explained through 4-stage decomposition'
         }
     }
     
@@ -683,7 +701,7 @@ def main():
     logger.info(f"Stage 4 (Residual): {variance_decomp['stages']['stage4_residual']['explained_percent']:.1f}%")
     logger.info(f"Cumulative explained: {variance_decomp['cumulative_explained']*100:.1f}%")
     
-    logger.success(f"Step 007 completed in {timer.elapsed():.1f}s")
+    logger.success(f"Step 009 completed in {timer.elapsed():.1f}s")
     
     return 0
 

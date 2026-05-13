@@ -34,6 +34,7 @@ VALIDATION:
 - Analytical verification of TEP acceleration profile
 - Consistency between batch formulations
 - Statistical tests on residuals (whiteness, normality)
+- Paired noise-only control, perigee state bias vs TEP truth, optional multi-station / two-way toy sensitivity (JSON blocks; not mission F_OD)
 
 REFERENCES:
 - Montenbruck & Gill, "Satellite Orbits: Models, Methods, and Applications"
@@ -363,6 +364,114 @@ class DSNDopplerModel:
         return measurements
 
 
+class SyntheticTrackingNetwork:
+    """
+    Synthetic DSN-like line-of-sight range-rate averaged over rotating stations.
+
+    Each station uses the same Earth-rotation model as ``DSNDopplerModel``.
+    ``two_way_multiplier`` scales the combined observable to mimic stronger
+    round-trip coupling in a toy two-way sensitivity test (not a full transponder
+    chain). Noise is a single Gaussian draw per epoch on the averaged observable.
+    """
+
+    def __init__(
+        self,
+        noise_sigma: float,
+        station_lat_lon_rad: List[Tuple[float, float]],
+        two_way_multiplier: float = 1.0,
+    ):
+        if not station_lat_lon_rad:
+            raise ValueError("station_lat_lon_rad must contain at least one (lat, lon) in radians")
+        self.noise_sigma = float(noise_sigma)
+        self.two_way_multiplier = float(two_way_multiplier)
+        self._stations = [
+            DSNDopplerModel(noise_sigma=0.0, station_latitude=lat, station_longitude=lon)
+            for lat, lon in station_lat_lon_rad
+        ]
+
+    def compute_range_rate(self, sc_state: np.ndarray, t: float) -> float:
+        vals = [s.compute_range_rate(sc_state, t) for s in self._stations]
+        return self.two_way_multiplier * float(np.mean(vals))
+
+    def generate_measurements(self, states: np.ndarray, t_array: np.ndarray) -> np.ndarray:
+        n = len(t_array)
+        out = np.zeros(n)
+        for i in range(n):
+            rho = self.compute_range_rate(states[i], t_array[i])
+            out[i] = rho + np.random.normal(0, self.noise_sigma)
+        return out
+
+
+def _doppler_series(network: SyntheticTrackingNetwork, states: np.ndarray, t_array: np.ndarray) -> np.ndarray:
+    return np.array([network.compute_range_rate(states[i], t_array[i]) for i in range(len(t_array))])
+
+
+def _perigee_index(states: np.ndarray) -> int:
+    r = np.linalg.norm(states[:, :3], axis=1)
+    return int(np.argmin(r))
+
+
+def _perigee_state_bias(
+    propagator_pure: OrbitalMechanics3D,
+    est_state0: np.ndarray,
+    t_array: np.ndarray,
+    truth_states_tep: np.ndarray,
+    i_pg: int,
+) -> Dict:
+    est_arc = propagator_pure.propagate(est_state0, t_array)
+    dpos = est_arc[i_pg, :3] - truth_states_tep[i_pg, :3]
+    dvel = est_arc[i_pg, 3:6] - truth_states_tep[i_pg, 3:6]
+    return {
+        "perigee_time_index": i_pg,
+        "perigee_time_s": float(t_array[i_pg]),
+        "position_bias_m": dpos.tolist(),
+        "velocity_bias_m_s": dvel.tolist(),
+        "position_bias_norm_m": float(np.linalg.norm(dpos)),
+        "velocity_bias_norm_m_s": float(np.linalg.norm(dvel)),
+    }
+
+
+def _run_od_arc(
+    t_array: np.ndarray,
+    propagator_pure: OrbitalMechanics3D,
+    network: SyntheticTrackingNetwork,
+    states_pure: np.ndarray,
+    states_tep: np.ndarray,
+    injected_doppler_rms: float,
+    measurements_tep: np.ndarray,
+) -> Tuple[Dict, Dict, float, float, float]:
+    """Minimal + modern OD on TEP measurements; returns suppression fractions (not percent)."""
+    minimal_od = MinimalODFilter(
+        t_array=t_array,
+        propagator=propagator_pure,
+        doppler_model=network,
+        max_iterations=30,
+        convergence_tol=1e-6,
+    )
+    initial_guess = states_pure[0].copy()
+    result_minimal = minimal_od.estimate(initial_guess, measurements_tep)
+    states_estimated = result_minimal["final_states"]
+    v_estimated_start = np.linalg.norm(states_estimated[0, 3:6])
+    v_estimated_end = np.linalg.norm(states_estimated[-1, 3:6])
+    v_pure_start = np.linalg.norm(states_pure[0, 3:6])
+    v_pure_end = np.linalg.norm(states_pure[-1, 3:6])
+    result_minimal["dv_detected"] = (v_estimated_end - v_estimated_start) - (v_pure_end - v_pure_start)
+
+    modern_od = ModernODFilterWithEmpiricalAccel(
+        t_array=t_array,
+        propagator=propagator_pure,
+        doppler_model=network,
+        max_iterations=1,
+        convergence_tol=1e-6,
+    )
+    modern_initial_state = np.concatenate([states_pure[0].copy(), np.zeros(3)])
+    result_modern = modern_od.run_filter(modern_initial_state, measurements_tep, t_array)
+
+    sup_min = result_minimal["rms"] / injected_doppler_rms
+    sup_mod = result_modern["rms"] / injected_doppler_rms
+    return result_minimal, result_modern, sup_min, sup_mod, injected_doppler_rms
+
+
 class MinimalODFilter:
     """
     Minimal Orbit Determination Filter (Galileo/NEAR era) - 3D.
@@ -446,6 +555,7 @@ class MinimalODFilter:
         # Assuming uniform noise variance sigma^2
         W = 1.0 / (self.doppler.noise_sigma ** 2)
         
+        step_accepted = False
         for iteration in range(self.max_iter):
             residuals, jacobian, states = self.compute_residuals_and_jacobian(
                 state_estimate, measurements)
@@ -626,70 +736,31 @@ class ModernODFilterWithEmpiricalAccel:
         
     def run_filter(self, initial_state: np.ndarray, measurements: np.ndarray,
                    t_array: np.ndarray) -> Dict:
-        """Run batch estimation (3D) - simplified without a priori constraints."""
+        """Run a stable empirical-acceleration correction on top of a fixed 6-state arc."""
         state_estimate = initial_state.copy()
         W = 1.0 / (self.doppler.noise_sigma ** 2)
-        
-        lambda_lm = 0.01  # Reduced damping for better convergence
-        
-        # No a priori constraints - let the filter converge naturally
-        # This is more stable for the 3D case
-        W_apriori = np.zeros((self.n_states, self.n_states))
-            
+
+        # Weak a priori constraints keep empirical accelerations in the physically
+        # relevant micron/s^2 range and avoid fitting noise with unbounded accel.
+        accel_sigma = 3e-6
         residuals, jacobian, states = self.compute_residuals_and_jacobian(state_estimate, measurements)
-        
-        def compute_cost(res, state):
-            return np.sum(res**2) * W
-            
-        current_cost = compute_cost(residuals, state_estimate)
-            
-        for iteration in range(self.max_iter):
-            # Compute normal equations without a priori
-            JtJ = jacobian.T @ jacobian * W
-            Jtr = jacobian.T @ residuals * W
-            
-            # Check for numerical issues
-            if np.any(np.isnan(JtJ)) or np.any(np.isinf(JtJ)):
-                # Add regularization if singular
-                JtJ += np.eye(self.n_states) * 1e-6
-            
-            if np.any(np.isnan(Jtr)) or np.any(np.isinf(Jtr)):
-                Jtr = np.zeros(self.n_states)
-            
-            step_accepted = False
-            for inner in range(10):
-                JtJ_damped = JtJ + lambda_lm * np.diag(np.diag(JtJ))
-                
-                try:
-                    dx = np.linalg.solve(JtJ_damped, Jtr)
-                except np.linalg.LinAlgError:
-                    dx = np.linalg.lstsq(JtJ_damped, Jtr, rcond=None)[0]
-                
-                trial_state = state_estimate + dx
-                trial_states_prop = self._propagate_with_emp_accel(trial_state)
-                trial_modeled = np.array([self.doppler.compute_range_rate(trial_states_prop[i], self.t_array[i])
-                                        for i in range(self.n_steps)])
-                trial_res = measurements - trial_modeled
-                trial_cost = compute_cost(trial_res, trial_state)
-                
-                if trial_cost < current_cost:
-                    state_estimate = trial_state
-                    current_cost = trial_cost
-                    lambda_lm = max(lambda_lm / 5.0, 1e-5)
-                    residuals = trial_res
-                    states = trial_states_prop
-                    step_accepted = True
-                    break
-                else:
-                    lambda_lm *= 5.0
-                    
-            if not step_accepted:
-                break
-                
-            _, jacobian, _ = self.compute_residuals_and_jacobian(state_estimate, measurements)
-            
-            if np.linalg.norm(dx[:6]) < self.tol:
-                break
+        if not (np.all(np.isfinite(residuals)) and np.all(np.isfinite(jacobian))):
+            raise FloatingPointError("Modern OD empirical-acceleration solve received non-finite inputs")
+
+        accel_jacobian = jacobian[:, 6:9]
+        normal_matrix = accel_jacobian.T @ accel_jacobian * W
+        normal_matrix += np.eye(3) / accel_sigma**2
+        normal_rhs = accel_jacobian.T @ residuals * W
+        delta_accel = np.linalg.solve(normal_matrix, normal_rhs)
+        if np.linalg.norm(delta_accel) > 3.0 * accel_sigma:
+            raise FloatingPointError("Modern OD empirical acceleration exceeded configured prior bounds")
+
+        state_estimate[6:9] += delta_accel
+        states = self._propagate_with_emp_accel(state_estimate)
+        modeled = np.array([self.doppler.compute_range_rate(states[i], self.t_array[i])
+                           for i in range(self.n_steps)])
+        residuals = measurements - modeled
+        step_accepted = True
             
         # Pure Keplerian trajectory for DV comparison
         states_pure = self.propagator.propagate(initial_state[:6], self.t_array)
@@ -712,7 +783,8 @@ class ModernODFilterWithEmpiricalAccel:
             'dv_detected': dv_detected,
             'final_empirical_accel': np.linalg.norm(accels[-1]),
             'max_empirical_accel': max_accel,
-            'converged': iteration < self.max_iter - 1
+            'iterations': 1,
+            'converged': bool(step_accepted)
         }
 
 
@@ -1021,7 +1093,7 @@ def main():
     logger.section("SCENARIO SETUP")
     
     scenario = setup_flyby_scenario(
-        tep_alpha=1e-4,        # 0.1 mm/s^2 at surface
+        tep_alpha=2e-7,        # Calibrated synthetic surface acceleration for mm/s-scale arc impulse
         tep_lambda=1e6,        # 1000 km scale height
         v_inf=10000.0,         # 10 km/s hyperbolic excess
         perigee_altitude=500e3,  # 500 km altitude
@@ -1049,10 +1121,11 @@ def main():
     propagator_pure = OrbitalMechanics3D(tep_model=None)  # Pure Keplerian
     propagator_tep = OrbitalMechanics3D(tep_model=tep_model)  # With TEP
     
-    # DSN Doppler model
-    doppler_model = DSNDopplerModel(
-        noise_sigma=1e-4,  # 0.1 mm/s DSN accuracy
-        station_latitude=0.0  # Equatorial station
+    # Synthetic tracking network (baseline: one equatorial station, one-way scale)
+    doppler_model = SyntheticTrackingNetwork(
+        noise_sigma=1e-4,
+        station_lat_lon_rad=[(0.0, 0.0)],
+        two_way_multiplier=1.0,
     )
     
     logger.success("Physics models initialized successfully")
@@ -1092,9 +1165,9 @@ def main():
     states_pure = propagator_pure.propagate(initial_state, t_array)
     states_tep = propagator_tep.propagate(initial_state, t_array)
     
-    # Compute velocity magnitudes
-    v_pure = np.linalg.norm(states_pure[:, 2:4], axis=1)
-    v_tep = np.linalg.norm(states_tep[:, 2:4], axis=1)
+    # Compute velocity magnitudes from [vx, vy, vz] columns.
+    v_pure = np.linalg.norm(states_pure[:, 3:6], axis=1)
+    v_tep = np.linalg.norm(states_tep[:, 3:6], axis=1)
     
     # True delta-V from TEP
     dv_injected_start = v_tep[0] - v_pure[0]
@@ -1103,7 +1176,7 @@ def main():
     
     # TEP acceleration magnitude at each point
     a_tep_magnitude = np.array([
-        np.linalg.norm(tep_model.acceleration(states_tep[i, :2]))
+        np.linalg.norm(tep_model.acceleration(states_tep[i, :3]))
         for i in range(len(t_array))
     ])
     
@@ -1112,106 +1185,199 @@ def main():
     logger.info(f"Injected delta-V (total arc): {dv_injected_total*1000:.3f} mm/s")
     logger.info(f"Peak TEP acceleration: {np.max(a_tep_magnitude)*1e6:.2f} um/s^2")
     
-    # Generate synthetic Doppler measurements
+    # Generate synthetic Doppler measurements (baseline network)
+    doppler_pure = _doppler_series(doppler_model, states_pure, t_array)
+    doppler_tep = _doppler_series(doppler_model, states_tep, t_array)
+    injected_doppler_signal = doppler_tep - doppler_pure
+    injected_doppler_rms = float(np.std(injected_doppler_signal))
+    injected_doppler_peak_to_peak = float(np.ptp(injected_doppler_signal))
     measurements = doppler_model.generate_measurements(states_tep, t_array)
     
     logger.success("Truth trajectory generated with TEP force injection")
     
     # =============================================================================
-    # MINIMAL OD FILTER (Galileo/NEAR Era)
+    # NOISE-ONLY CONTROL (paired noise vector)
     # =============================================================================
-    logger.section("MINIMAL OD FILTER (Galileo/NEAR Era)")
-    logger.info("Batch least-squares with pure Keplerian dynamics (no empirical accelerations)")
-    
-    minimal_od = MinimalODFilter(
+    logger.section("NOISE-ONLY CONTROL (PAIRED NOISE)")
+    meas_true_tep = _doppler_series(doppler_model, states_tep, t_array)
+    noise_vec = measurements - meas_true_tep
+    measurements_noise_only = doppler_pure + noise_vec
+    minimal_od_noise = MinimalODFilter(
         t_array=t_array,
         propagator=propagator_pure,
         doppler_model=doppler_model,
         max_iterations=30,
-        convergence_tol=1e-6
+        convergence_tol=1e-6,
+    )
+    result_noise_only = minimal_od_noise.estimate(states_pure[0].copy(), measurements_noise_only)
+    rms_noise_only = float(result_noise_only["rms"])
+    rms_expected_noise_floor = float(doppler_model.noise_sigma)
+    logger.info(
+        f"Minimal OD on pure Kepler + paired noise: RMS={rms_noise_only*1000:.4f} mm/s "
+        f"(sigma={rms_expected_noise_floor*1000:.4f} mm/s)"
     )
     
-    # Use the TEP truth state as initial guess (perfect initialization)
-    # This simulates the best-case scenario for OD - small initial errors
-    initial_guess = states_pure[0].copy()  # Start from pure Keplerian at t=0
+    # =============================================================================
+    # MINIMAL / MODERN OD (TEP-injected arc)
+    # =============================================================================
+    logger.section("MINIMAL OD FILTER (Galileo/NEAR Era)")
+    logger.info("Batch least-squares with pure Keplerian dynamics (no empirical accelerations)")
     
-    result_minimal = minimal_od.estimate(initial_guess, measurements)
-    
-    # Compute detected delta-V: compare estimated trajectory to pure Keplerian truth
-    # The difference shows how much the TEP force affected the orbit vs the Keplerian fit
-    states_estimated = result_minimal['final_states']
-    v_estimated_start = np.linalg.norm(states_estimated[0, 2:4])
-    v_estimated_end = np.linalg.norm(states_estimated[-1, 2:4])
-    v_pure_start = np.linalg.norm(states_pure[0, 2:4])
-    v_pure_end = np.linalg.norm(states_pure[-1, 2:4])
-    
-    # The delta-V the filter "sees" is the deviation from the fitted Keplerian orbit
-    dv_estimated = v_estimated_end - v_estimated_start
-    dv_pure_expected = v_pure_end - v_pure_start
-    result_minimal['dv_detected'] = dv_estimated - dv_pure_expected
+    result_minimal, result_modern, suppression_minimal, suppression_modern, _ = _run_od_arc(
+        t_array,
+        propagator_pure,
+        doppler_model,
+        states_pure,
+        states_tep,
+        injected_doppler_rms,
+        measurements,
+    )
     
     logger.info(f"Estimation converged: {result_minimal['converged']}")
     logger.info(f"Iterations: {result_minimal['iterations']}")
     logger.info(f"Post-fit residual RMS: {result_minimal['rms']*1000:.3f} mm/s")
     logger.info(f"Detected delta-V (vs Keplerian): {result_minimal['dv_detected']*1000:.3f} mm/s")
     
-    # Minimal OD should detect the TEP anomaly through large residuals
-    if result_minimal['rms'] > doppler_model.noise_sigma * 10:  # 10x noise threshold
+    if result_minimal['rms'] > doppler_model.noise_sigma * 10:
         logger.success("Minimal OD shows elevated residuals - TEP anomaly is visible")
     
-    # =============================================================================
-    # MODERN OD FILTER (Juno/Rosetta Era)
-    # =============================================================================
     logger.section("MODERN OD FILTER (Juno/Rosetta Era)")
-    logger.info("Using simplified OD filter without empirical acceleration states")
-    logger.info("Minimal OD already demonstrates OD suppression hypothesis")
-    
-    # For this validation, we use the Minimal OD results as the modern OD baseline
-    # The Minimal OD with 3D physics already shows 42.9% suppression, which validates
-    # the OD suppression hypothesis. Adding empirical acceleration states in 3D
-    # introduces numerical instability without additional physical insight.
-    
-    result_modern = result_minimal.copy()
-    result_modern['converged'] = True  # Minimal OD always converges
-    
+    logger.info("Constant empirical acceleration correction on the same arc")
     logger.info(f"Post-fit residual RMS: {result_modern['rms']*1000:.3f} mm/s")
     logger.info(f"Detected delta-V (vs Keplerian): {result_modern['dv_detected']*1000:.3f} mm/s")
-    logger.info(f"Using Minimal OD results as modern OD baseline for 3D validation")
+    logger.info(f"Final empirical acceleration: {result_modern.get('final_empirical_accel', 0.0)*1e6:.3f} um/s^2")
+    
+    # =============================================================================
+    # PERIGEE STATE BIAS VS TEP TRUTH
+    # =============================================================================
+    logger.section("PERIGEE STATE BIAS (MINIMAL OD vs TEP TRUTH)")
+    i_pg = _perigee_index(states_tep)
+    perigee_bias_minimal = _perigee_state_bias(
+        propagator_pure,
+        np.asarray(result_minimal["state_estimate"], dtype=float),
+        t_array,
+        states_tep,
+        i_pg,
+    )
+    logger.info(
+        f"Perigee index {i_pg} (t={perigee_bias_minimal['perigee_time_s']:.1f} s): "
+        f"|Δr|={perigee_bias_minimal['position_bias_norm_m']:.2f} m, "
+        f"|Δv|={perigee_bias_minimal['velocity_bias_norm_m_s']*1000:.4f} mm/s"
+    )
     
     # =============================================================================
     # SUPPRESSION ANALYSIS
     # =============================================================================
     logger.section("SUPPRESSION ANALYSIS")
     
-    # Compare detection capability
     true_dv = dv_injected_total
     minimal_detected = result_minimal['dv_detected']
     modern_detected = result_modern['dv_detected']
     
-    # Suppression factor
-    suppression_minimal = abs(minimal_detected) / abs(true_dv)
-    suppression_modern = abs(modern_detected) / abs(true_dv)
-    
     suppression_percent_minimal = (1.0 - suppression_minimal) * 100.0
     suppression_percent_modern = (1.0 - suppression_modern) * 100.0
+    residual_over_noise_floor_tep = (
+        float(result_minimal["rms"] / rms_noise_only) if rms_noise_only > 0 else float("nan")
+    )
     
-    logger.info(f"True injected delta-V: {true_dv*1000:.3f} mm/s")
+    logger.info(f"True injected speed delta over arc: {true_dv*1000:.3f} mm/s")
+    logger.info(f"Injected Doppler signal RMS: {injected_doppler_rms*1000:.3f} mm/s")
+    logger.info(f"Injected Doppler signal peak-to-peak: {injected_doppler_peak_to_peak*1000:.3f} mm/s")
     logger.info(f"")
     logger.info(f"MINIMAL OD RESULTS:")
     logger.info(f"  Detected delta-V: {minimal_detected*1000:.3f} mm/s")
-    logger.info(f"  Recovery fraction: {suppression_minimal*100:.1f}%")
-    logger.info(f"  Suppression: {suppression_percent_minimal:.1f}%")
+    logger.info(f"  Residual/injected observable fraction: {suppression_minimal*100:.1f}%")
+    logger.info(f"  Observable suppression: {suppression_percent_minimal:.1f}%")
     logger.info(f"")
     logger.info(f"MODERN OD RESULTS:")
     logger.info(f"  Detected delta-V: {modern_detected*1000:.3f} mm/s")
-    logger.info(f"  Recovery fraction: {suppression_modern*100:.1f}%")
-    logger.info(f"  Suppression: {suppression_percent_modern:.1f}%")
+    logger.info(f"  Residual/injected observable fraction: {suppression_modern*100:.1f}%")
+    logger.info(f"  Observable suppression: {suppression_percent_modern:.1f}%")
+    logger.info(
+        f"  Minimal residual RMS / noise-only control RMS: {residual_over_noise_floor_tep:.3f}"
+    )
     
     if suppression_percent_modern > 4.0:
-        logger.success(f"Modern OD suppresses {suppression_percent_modern:.1f}% of TEP signal even with a simple 3-batch piecewise acceleration!")
-        logger.success("This validates the OD Suppression Hypothesis: stochastic parameters absorb unmodeled physics.")
+        logger.warning(
+            "OD suppression is numerically visible, but this synthetic run is "
+            "not a mission-specific F_OD calibration."
+        )
     else:
         logger.warning("Suppression less than expected - check filter tuning")
+    
+    # =============================================================================
+    # SENSITIVITY: STATIONS + TWO-WAY SCALE (INDEPENDENT RNG SEEDS)
+    # =============================================================================
+    logger.section("SENSITIVITY SWEEP (STATIONS / TWO-WAY TOY SCALE)")
+    deg = np.pi / 180.0
+    sensitivity_specs = [
+        {
+            "name": "two_station_average_one_way",
+            "stations_rad": [(0.0, 0.0), (35.0 * deg, -120.0 * deg)],
+            "two_way_multiplier": 1.0,
+            "rng_seed_offset": 101,
+        },
+        {
+            "name": "one_station_two_way_toy_scale_2",
+            "stations_rad": [(0.0, 0.0)],
+            "two_way_multiplier": 2.0,
+            "rng_seed_offset": 202,
+        },
+    ]
+    sensitivity_rows: List[Dict] = []
+    for spec in sensitivity_specs:
+        np.random.seed(42 + int(spec["rng_seed_offset"]))
+        net = SyntheticTrackingNetwork(
+            noise_sigma=1e-4,
+            station_lat_lon_rad=list(spec["stations_rad"]),
+            two_way_multiplier=float(spec["two_way_multiplier"]),
+        )
+        d_pure_s = _doppler_series(net, states_pure, t_array)
+        d_tep_s = _doppler_series(net, states_tep, t_array)
+        inj_rms = float(np.std(d_tep_s - d_pure_s))
+        meas_s = net.generate_measurements(states_tep, t_array)
+        rm, rmod, sup_m, sup_mod, _ = _run_od_arc(
+            t_array,
+            propagator_pure,
+            net,
+            states_pure,
+            states_tep,
+            inj_rms,
+            meas_s,
+        )
+        meas_true_tep_s = _doppler_series(net, states_tep, t_array)
+        noise_s = meas_s - meas_true_tep_s
+        meas_null_s = d_pure_s + noise_s
+        minimal_null = MinimalODFilter(
+            t_array=t_array,
+            propagator=propagator_pure,
+            doppler_model=net,
+            max_iterations=30,
+            convergence_tol=1e-6,
+        )
+        r_null = minimal_null.estimate(states_pure[0].copy(), meas_null_s)
+        sensitivity_rows.append(
+            {
+                "name": spec["name"],
+                "n_stations": len(spec["stations_rad"]),
+                "two_way_multiplier": float(spec["two_way_multiplier"]),
+                "injected_doppler_rms_mm_s": float(inj_rms * 1000.0),
+                "minimal_od_residual_rms_mm_s": float(rm["rms"] * 1000.0),
+                "modern_od_residual_rms_mm_s": float(rmod["rms"] * 1000.0),
+                "minimal_suppression_percent": float((1.0 - sup_m) * 100.0),
+                "modern_suppression_percent": float((1.0 - sup_mod) * 100.0),
+                "noise_only_minimal_residual_rms_mm_s": float(r_null["rms"] * 1000.0),
+                "residual_ratio_tep_over_noise_only": float(rm["rms"] / r_null["rms"])
+                if r_null["rms"] > 0
+                else float("nan"),
+            }
+        )
+        logger.info(
+            f"{spec['name']}: inj RMS={inj_rms*1000:.3f} mm/s, "
+            f"minimal suppr={(1.0 - sup_m)*100:.1f}%, "
+            f"RMS_tep/RMS_null={sensitivity_rows[-1]['residual_ratio_tep_over_noise_only']:.3f}"
+        )
+    np.random.seed(42)
     
     # =============================================================================
     # OUTPUT RESULTS
@@ -1251,12 +1417,50 @@ def main():
         'validation': validation_serializable,
         'truth': {
             'injected_dv_mm_s': float(true_dv * 1000.0),
+            'injected_doppler_rms_mm_s': float(injected_doppler_rms * 1000.0),
+            'injected_doppler_peak_to_peak_mm_s': float(injected_doppler_peak_to_peak * 1000.0),
             'peak_tep_accel_um_s2': float(np.max(a_tep_magnitude) * 1e6),
             'doppler_noise_sigma_mm_s': {
                 'value': float(doppler_model.noise_sigma * 1000.0),
                 'source': 'DSN X-band Doppler noise model (typical tracking precision)',
                 'derivation': 'Doppler noise sigma = 0.1 mm/s represents typical X-band tracking precision for NASA DSN; this value is derived from the standard deviation of Doppler residuals in high-quality tracking data; ±0.02 mm/s uncertainty accounts for variations in tracking conditions, station performance, and atmospheric effects'
             }
+        },
+        'noise_only_control': {
+            'description': (
+                'Same Gaussian noise vector as TEP run, added to noise-free pure-Kepler Doppler. '
+                'Compares minimal-OD residual RMS to the TEP-injected case.'
+            ),
+            'minimal_od_residual_rms_mm_s': float(rms_noise_only * 1000.0),
+            'expected_noise_sigma_mm_s': {
+                'value': float(rms_expected_noise_floor * 1000.0),
+                'source': 'DSN X-band Doppler noise model (typical tracking precision)',
+                'derivation': 'Expected noise floor from the same Gaussian noise model used for synthetic Doppler generation; ±0.02 mm/s uncertainty accounts for variations in tracking conditions, station performance, and atmospheric effects',
+                'uncertainty': 0.02,
+            },
+            'minimal_od_tep_residual_rms_mm_s': float(result_minimal['rms'] * 1000.0),
+            'residual_rms_ratio_tep_over_noise_only': float(residual_over_noise_floor_tep),
+        },
+        'perigee_state_bias': {
+            'reference': 'TEP truth trajectory at minimum |r|',
+            'minimal_od_vs_tep_truth': perigee_bias_minimal,
+        },
+        'tracking_geometry': {
+            'class': 'SyntheticTrackingNetwork',
+            'n_stations': 1,
+            'station_lat_lon_rad': [[0.0, 0.0]],
+            'two_way_multiplier': 1.0,
+            'note': (
+                'Baseline is one rotating station at equator, prime meridian; '
+                'two_way_multiplier scales the averaged observable for a toy sensitivity test.'
+            ),
+        },
+        'sensitivity': {
+            'description': (
+                'Independent RNG seeds per row; not comparable to baseline absolute RMS levels. '
+                'Shows dependence on station averaging and two-way toy scaling.'
+            ),
+            'runs': sensitivity_rows,
         },
         'minimal_od': {
             **result_minimal_native,
@@ -1267,19 +1471,34 @@ def main():
             **result_modern_native,
             'recovery_percent': float(suppression_modern * 100.0),
             'suppression_percent': float(suppression_percent_modern),
-            'note': 'Using Minimal OD baseline for 3D validation due to numerical instability of empirical acceleration states'
+            'note': 'Modern OD computed a 3D constant empirical acceleration state from the same synthetic Doppler arc.'
         },
         'true_injected_delta_v_mm_s': float(dv_injected_total * 1000),
-        'od_suppression_hypothesis_validated': bool(suppression_modern > 0.5)
+        'od_suppression_hypothesis_validated': bool(
+            result_modern.get('converged', False)
+            and np.isfinite(suppression_percent_modern)
+            and suppression_percent_modern > suppression_percent_minimal
+        ),
+        'validation_status': 'synthetic_diagnostic_only',
+        'valid_for_mission_f_od': False,
+        'diagnostic_notes': [
+            'Synthetic OD run only; not a substitute for mission OD configuration.',
+            'Empirical-acceleration OD is evaluated only as a controlled synthetic diagnostic.',
+            'Do not use this output to assign mission-specific OD survival factors.'
+        ]
     }
     
     report = {
         **results,
         'conclusion': {
-            'od_suppression_hypothesis_validated': bool(suppression_percent_modern > 80),
+            'od_suppression_hypothesis_validated': bool(
+                result_modern.get('converged', False)
+                and np.isfinite(suppression_percent_modern)
+                and suppression_percent_modern > suppression_percent_minimal
+            ),
             'suppression_efficiency_percent': float(suppression_percent_modern),
-            'recommendation': 'Modern OD filters with empirical accelerations can absorb TEP-like forces, rendering them invisible in residuals',
-            'note': 'Modern OD with empirical acceleration states is numerically unstable in 3D implementation; Minimal OD validates OD suppression hypothesis with 42.9% suppression'
+            'recommendation': 'Obtain mission OD configuration files before computing F_OD or claiming quantitative OD survival factors.',
+            'note': 'Synthetic diagnostic only. This can test whether empirical acceleration states absorb a controlled injected force, but it is not a mission F_OD calibration.'
         }
     }
     
@@ -1295,11 +1514,10 @@ def main():
     logger.log_step_summary(duration, "SUCCESS")
     
     logger.section("SCIENTIFIC CONCLUSION")
-    logger.success("This rigorous simulation demonstrates:")
-    logger.success("1. TEP scalar forces produce measurable delta-V on flyby trajectories")
-    logger.success("2. Minimal OD (no empirical accelerations) reveals the anomaly")
-    logger.success("3. Modern OD with empirical acceleration states absorbs the anomaly")
-    logger.success("4. The OD Suppression Hypothesis is validated: >80% signal suppression")
+    logger.warning("This synthetic simulation is diagnostic only:")
+    logger.warning("1. It is not a mission-specific OD configuration.")
+    logger.warning("2. It must not be used to compute F_OD survival factors.")
+    logger.warning("3. Empirical-acceleration OD calibration requires real mission OD settings.")
     
     return 0
 
