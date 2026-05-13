@@ -5,12 +5,12 @@
     "status": "preliminary",
     "calibration_status": "needs_empirical_calibration",
     "data_source": "TEP-EFA pipeline analysis (Yogyakarta v0.1)",
-    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 5.653484e-04 +/- 2.793538e-05, beta_eff = 1.974416e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
+    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 1.240755e-03 +/- 5.688954e-05, beta_eff = 4.333198e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
     "recommended_action": "Replace with empirically calibrated values from dedicated fifth-force experiments",
     "efa_ensemble": {
-        "beta_weighted": 0.0005653483835550213,
-        "beta_uncertainty": 2.7935380075892315e-05,
-        "beta_eff_weighted": 0.0001974415560210206,
+        "beta_weighted": 0.0012407553191405897,
+        "beta_uncertainty": 5.688953887294333e-05,
+        "beta_eff_weighted": 0.00043331982186278637,
         "n_fits": 3,
         "source_step": "step008_fitting_results.json"
     },
@@ -42,23 +42,23 @@
                 "derivation": "Conformal coupling parameters derived from ensemble weighted mean of flyby anomaly fits scaled by characteristic suppression; \u00b150% uncertainty accounts for systematic uncertainty in GNSS calibration",
                 "recommended_action": "Calibrate with laboratory fifth-force experiments",
                 "beta": {
-                    "value": 0.0005653483835550213,
-                    "uncertainty": 2.7935380075892315e-05,
-                    "uncertainty_fraction": 0.04941268231851867,
-                    "uncertainty_absolute": 2.7935380075892315e-05,
+                    "value": 0.0012407553191405897,
+                    "uncertainty": 5.688953887294333e-05,
+                    "uncertainty_fraction": 0.045850731401536865,
+                    "uncertainty_absolute": 5.688953887294333e-05,
                     "data_source": "step008_fitting_results.json weighted mean (universal conformal beta)",
-                    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 5.653484e-04 +/- 2.793538e-05, beta_eff = 1.974416e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
+                    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 1.240755e-03 +/- 5.688954e-05, beta_eff = 4.333198e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
                     "status": "HEURISTIC",
                     "calibration_status": "NEEDS_LAB_MEASUREMENT",
                     "recommended_action": "Calibrate with laboratory fifth-force experiments or cosmological constraints"
                 },
                 "beta_eff": {
-                    "value": 0.0001974415560210206,
-                    "uncertainty": 9.7561168841407e-06,
-                    "uncertainty_fraction": 0.04941268231851867,
-                    "uncertainty_absolute": 9.7561168841407e-06,
+                    "value": 0.00043331982186278637,
+                    "uncertainty": 1.986803076319242e-05,
+                    "uncertainty_fraction": 0.045850731401536865,
+                    "uncertainty_absolute": 1.986803076319242e-05,
                     "data_source": "step008_fitting_results.json weighted mean screened by S_earth",
-                    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 5.653484e-04 +/- 2.793538e-05, beta_eff = 1.974416e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
+                    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 1.240755e-03 +/- 5.688954e-05, beta_eff = 4.333198e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
                     "status": "HEURISTIC",
                     "calibration_status": "NEEDS_LAB_MEASUREMENT",
                     "recommended_action": "Use for PPN-screened solar-system and CLASS/CAMB export targets"
@@ -127,7 +127,7 @@
                 "class_camb_params": {
                     "Omega_phi": 0.69,
                     "w_phi_0": -0.98,
-                    "beta_phi": 0.0001974415560210206
+                    "beta_phi": 0.00043331982186278637
                 }
             },
             "wide_binaries": {

@@ -1,0 +1,56 @@
+{
+  "step": "006_dsn_framework",
+  "timestamp": "2026-05-13T11:57:38.071833",
+  "reference_validation": {
+    "step": "006_dsn_framework",
+    "mission": "DART_TRK234_REFERENCE",
+    "timestamp": "2026-05-13T11:57:38.072449",
+    "mode": "reference_format_validation",
+    "status": "REFERENCE_FORMAT_VALIDATION_COMPLETE",
+    "parsing": {
+      "n_total_measurements": 75342,
+      "success": true
+    },
+    "reference_validation": {
+      "success": true,
+      "purpose": "format_validation_only",
+      "n_points": 75342,
+      "time_start": "2021-11-24T03:26:21",
+      "time_end": "2021-11-24T16:09:43",
+      "sequential_ramp_deltas": 59049,
+      "sequential_phase_deltas": 75319,
+      "parser_chain": "TRK-2-34",
+      "minimal_od_config": {
+        "gravity": {
+          "model": "EGM-96",
+          "degree": 10,
+          "order": 10,
+          "reference": "EGM-96 truncated to degree/order 10 for minimal OD format-validation baseline aligned with Step 012 OD filter simulation grid",
+          "derivation": "Reduced geopotential truncation held fixed for DART TRK-2-34 parser validation; not a mission-specific gravity tuning choice"
+        },
+        "tides": "Elastic_Earth_No_Ocean",
+        "srp": {
+          "model": "Cannonball",
+          "fit_coefficient": true
+        },
+        "empirical_accelerations": "DISABLED",
+        "outlier_rejection": "Disabled",
+        "doppler_smoothing": "Raw",
+        "estimation_params": [
+          "Initial_state_6_params",
+          "SRP_coefficient_1_param"
+        ],
+        "integrator": "DOP853",
+        "step_size_sec": 60.0
+      }
+    },
+    "note": "TRK-2-34 parser and minimal OD chain verified on reference archive only"
+  },
+  "flyby_reanalysis": {
+    "step": "006_dsn_framework",
+    "status": "NO_DATA_AVAILABLE",
+    "message": "No perigee-matched DSN tracking product available for flyby reanalysis",
+    "note": "Ingest perigee-matched NASA PDS tracking products before expecting independent \u0394v"
+  },
+  "status": "REFERENCE_FORMAT_VALIDATION_COMPLETE"
+}

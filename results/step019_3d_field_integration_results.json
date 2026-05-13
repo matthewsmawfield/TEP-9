@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "trajectory_source": "idealized_analytic_hypoflyby",
+    "trajectory_description": "Asymmetric approach/departure segments built from catalog perigee altitude; not SPICE or Horizons arcs.",
+    "comparison_intent": "Compare 3D numerical integrator vs simplified estimate on identical toy geometry.",
+    "step": "019_3d_field_integration"
+  },
+  "per_flyby": {
+    "NEAR": {
+      "dv_3d_mm_s": 8.68213823700521,
+      "dv_simplified_mm_s": 6.892261808522482,
+      "dv_current_mm_s": 2.036202568740968,
+      "ratio_3d_simplified": 1.2596936213696197
+    },
+    "Galileo_1990": {
+      "dv_3d_mm_s": 8.38764332385529,
+      "dv_simplified_mm_s": 6.360418461812376,
+      "dv_current_mm_s": 0.31864548294532113,
+      "ratio_3d_simplified": 1.3187250766933445
+    },
+    "Cassini": {
+      "dv_3d_mm_s": 8.232282070913058,
+      "dv_simplified_mm_s": 6.092072605300018,
+      "dv_current_mm_s": -0.022034584903033106,
+      "ratio_3d_simplified": 1.3513105644458485
+    },
+    "Rosetta_2005": {
+      "dv_3d_mm_s": 7.740716945203529,
+      "dv_simplified_mm_s": 5.295413741440382,
+      "dv_current_mm_s": 0.5146341073352638,
+      "ratio_3d_simplified": 1.461777553777698
+    },
+    "Rosetta_2007": {
+      "dv_3d_mm_s": 6.105043376333373,
+      "dv_simplified_mm_s": 3.146794838502645,
+      "dv_current_mm_s": 7.070263593910525e-05,
+      "ratio_3d_simplified": 1.9400830653575007
+    }
+  }
+}

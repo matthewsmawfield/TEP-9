@@ -379,11 +379,13 @@ class SyntheticTrackingNetwork:
         noise_sigma: float,
         station_lat_lon_rad: List[Tuple[float, float]],
         two_way_multiplier: float = 1.0,
+        use_stacked: bool = False,
     ):
         if not station_lat_lon_rad:
             raise ValueError("station_lat_lon_rad must contain at least one (lat, lon) in radians")
         self.noise_sigma = float(noise_sigma)
         self.two_way_multiplier = float(two_way_multiplier)
+        self.use_stacked = bool(use_stacked)
         self._stations = [
             DSNDopplerModel(noise_sigma=0.0, station_latitude=lat, station_longitude=lon)
             for lat, lon in station_lat_lon_rad
@@ -393,6 +395,16 @@ class SyntheticTrackingNetwork:
         vals = [s.compute_range_rate(sc_state, t) for s in self._stations]
         return self.two_way_multiplier * float(np.mean(vals))
 
+    def compute_range_rate_vector(self, sc_state: np.ndarray, t: float) -> np.ndarray:
+        """
+        Per-station one-way range-rate vector (no averaging).
+
+        Returned shape: (n_stations,). The two_way_multiplier is applied to each
+        station's observable as a toy scaling.
+        """
+        vals = np.array([s.compute_range_rate(sc_state, t) for s in self._stations], dtype=float)
+        return self.two_way_multiplier * vals
+
     def generate_measurements(self, states: np.ndarray, t_array: np.ndarray) -> np.ndarray:
         n = len(t_array)
         out = np.zeros(n)
@@ -401,9 +413,52 @@ class SyntheticTrackingNetwork:
             out[i] = rho + np.random.normal(0, self.noise_sigma)
         return out
 
+    def generate_measurements_stacked(self, states: np.ndarray, t_array: np.ndarray) -> np.ndarray:
+        """
+        Generate stacked multi-station measurements.
+
+        Returned shape: (n_times, n_stations).
+        """
+        n = len(t_array)
+        m = len(self._stations)
+        out = np.zeros((n, m), dtype=float)
+        for i in range(n):
+            rho_vec = self.compute_range_rate_vector(states[i], t_array[i])
+            out[i, :] = rho_vec + np.random.normal(0, self.noise_sigma, size=m)
+        return out
+
 
 def _doppler_series(network: SyntheticTrackingNetwork, states: np.ndarray, t_array: np.ndarray) -> np.ndarray:
     return np.array([network.compute_range_rate(states[i], t_array[i]) for i in range(len(t_array))])
+
+
+def _doppler_series_stacked(network: SyntheticTrackingNetwork, states: np.ndarray, t_array: np.ndarray) -> np.ndarray:
+    """
+    Noise-free stacked observable series (n_times, n_stations).
+    """
+    return np.vstack([network.compute_range_rate_vector(states[i], t_array[i]) for i in range(len(t_array))])
+
+
+def _flatten_measurements(measurements: np.ndarray) -> np.ndarray:
+    """
+    Accept either (n,) or (n, m) and return a 1D vector.
+    """
+    arr = np.asarray(measurements)
+    if arr.ndim == 1:
+        return arr
+    if arr.ndim == 2:
+        return arr.reshape(-1)
+    raise ValueError(f"Unsupported measurement shape: {arr.shape}")
+
+
+def _modeled_vector(doppler, states: np.ndarray, t_array: np.ndarray) -> np.ndarray:
+    """
+    Modeled observable vector for OD: always returned as 1D length n or n*m.
+    """
+    if getattr(doppler, "use_stacked", False) and hasattr(doppler, "compute_range_rate_vector"):
+        stacked = _doppler_series_stacked(doppler, states, t_array)
+        return stacked.reshape(-1)
+    return np.array([doppler.compute_range_rate(states[i], t_array[i]) for i in range(len(t_array))], dtype=float)
 
 
 def _perigee_index(states: np.ndarray) -> int:
@@ -472,6 +527,29 @@ def _run_od_arc(
     return result_minimal, result_modern, sup_min, sup_mod, injected_doppler_rms
 
 
+def _run_oracle_tep_od(
+    t_array: np.ndarray,
+    propagator_tep: OrbitalMechanics3D,
+    network: SyntheticTrackingNetwork,
+    initial_guess_state0: np.ndarray,
+    measurements_tep: np.ndarray,
+) -> Dict:
+    """
+    Oracle OD: same 6-state batch estimator, but with the correct dynamics (TEP included).
+
+    This provides a lower bound on achievable post-fit residual RMS given the
+    measurement noise and the estimator structure.
+    """
+    oracle = MinimalODFilter(
+        t_array=t_array,
+        propagator=propagator_tep,
+        doppler_model=network,
+        max_iterations=30,
+        convergence_tol=1e-6,
+    )
+    return oracle.estimate(initial_guess_state0, measurements_tep)
+
+
 class MinimalODFilter:
     """
     Minimal Orbit Determination Filter (Galileo/NEAR era) - 3D.
@@ -515,14 +593,14 @@ class MinimalODFilter:
         # Propagate with current state estimate
         states = self.propagator.propagate(state0, self.t_array)
         
-        # Compute modeled measurements
-        modeled = np.array([self.doppler.compute_range_rate(states[i], self.t_array[i])
-                           for i in range(self.n_steps)])
-        
-        residuals = measurements - modeled
+        modeled = _modeled_vector(self.doppler, states, self.t_array)
+        meas_vec = _flatten_measurements(measurements)
+        if meas_vec.shape[0] != modeled.shape[0]:
+            raise ValueError(f"Measurement length {meas_vec.shape[0]} != modeled length {modeled.shape[0]}")
+        residuals = meas_vec - modeled
         
         # Numerical Jacobian (finite differences)
-        jacobian = np.zeros((self.n_steps, 6))
+        jacobian = np.zeros((modeled.shape[0], 6))
         
         for j in range(6):
             eps = 1.0 if j < 3 else 1e-3  # 1.0 m for position, 1.0 mm/s for velocity
@@ -531,8 +609,7 @@ class MinimalODFilter:
             perturbed_state[j] += eps
             
             states_pert = self.propagator.propagate(perturbed_state, self.t_array)
-            modeled_pert = np.array([self.doppler.compute_range_rate(states_pert[i], self.t_array[i])
-                                    for i in range(self.n_steps)])
+            modeled_pert = _modeled_vector(self.doppler, states_pert, self.t_array)
             
             jacobian[:, j] = (modeled_pert - modeled) / eps
         
@@ -708,12 +785,12 @@ class ModernODFilterWithEmpiricalAccel:
                                         measurements: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """Compute residuals and N-parameter Jacobian (3D)."""
         states = self._propagate_with_emp_accel(state)
-        
-        modeled = np.array([self.doppler.compute_range_rate(states[i], self.t_array[i])
-                           for i in range(self.n_steps)])
-        
-        residuals = measurements - modeled
-        jacobian = np.zeros((self.n_steps, self.n_states))
+        modeled = _modeled_vector(self.doppler, states, self.t_array)
+        meas_vec = _flatten_measurements(measurements)
+        if meas_vec.shape[0] != modeled.shape[0]:
+            raise ValueError(f"Measurement length {meas_vec.shape[0]} != modeled length {modeled.shape[0]}")
+        residuals = meas_vec - modeled
+        jacobian = np.zeros((modeled.shape[0], self.n_states))
         
         for j in range(self.n_states):
             if j < 3:
@@ -727,8 +804,7 @@ class ModernODFilterWithEmpiricalAccel:
             perturbed_state[j] += eps
             
             states_pert = self._propagate_with_emp_accel(perturbed_state)
-            modeled_pert = np.array([self.doppler.compute_range_rate(states_pert[i], self.t_array[i])
-                                    for i in range(self.n_steps)])
+            modeled_pert = _modeled_vector(self.doppler, states_pert, self.t_array)
             
             jacobian[:, j] = (modeled_pert - modeled) / eps
         
@@ -757,9 +833,13 @@ class ModernODFilterWithEmpiricalAccel:
 
         state_estimate[6:9] += delta_accel
         states = self._propagate_with_emp_accel(state_estimate)
-        modeled = np.array([self.doppler.compute_range_rate(states[i], self.t_array[i])
-                           for i in range(self.n_steps)])
-        residuals = measurements - modeled
+        modeled = _modeled_vector(self.doppler, states, self.t_array)
+        meas_vec = _flatten_measurements(measurements)
+        if meas_vec.shape[0] != modeled.shape[0]:
+            raise ValueError(
+                f"Measurement length {meas_vec.shape[0]} != modeled length {modeled.shape[0]}"
+            )
+        residuals = meas_vec - modeled
         step_accepted = True
             
         # Pure Keplerian trajectory for DV comparison
@@ -839,14 +919,14 @@ class ModernODFilter:
         # Propagate with current state estimate
         states = self._propagate_with_emp_accel(state)
         
-        # Compute modeled measurements
-        modeled = np.array([self.doppler.compute_range_rate(states[i], self.t_array[i])
-                           for i in range(self.n_steps)])
-        
-        residuals = measurements - modeled
+        modeled = _modeled_vector(self.doppler, states, self.t_array)
+        meas_vec = _flatten_measurements(measurements)
+        if meas_vec.shape[0] != modeled.shape[0]:
+            raise ValueError(f"Measurement length {meas_vec.shape[0]} != modeled length {modeled.shape[0]}")
+        residuals = meas_vec - modeled
         
         # Numerical Jacobian
-        jacobian = np.zeros((self.n_steps, self.n_states))
+        jacobian = np.zeros((modeled.shape[0], self.n_states))
         
         for j in range(self.n_states):
             if j < 3:
@@ -860,8 +940,7 @@ class ModernODFilter:
             perturbed_state[j] += eps
             
             states_pert = self._propagate_with_emp_accel(perturbed_state)
-            modeled_pert = np.array([self.doppler.compute_range_rate(states_pert[i], self.t_array[i])
-                                    for i in range(self.n_steps)])
+            modeled_pert = _modeled_vector(self.doppler, states_pert, self.t_array)
             
             jacobian[:, j] = (modeled_pert - modeled) / eps
         
@@ -1126,6 +1205,7 @@ def main():
         noise_sigma=1e-4,
         station_lat_lon_rad=[(0.0, 0.0)],
         two_way_multiplier=1.0,
+        use_stacked=False,
     )
     
     logger.success("Physics models initialized successfully")
@@ -1191,6 +1271,7 @@ def main():
     injected_doppler_signal = doppler_tep - doppler_pure
     injected_doppler_rms = float(np.std(injected_doppler_signal))
     injected_doppler_peak_to_peak = float(np.ptp(injected_doppler_signal))
+    # Baseline: one scalar observable per epoch (station-averaged).
     measurements = doppler_model.generate_measurements(states_tep, t_array)
     
     logger.success("Truth trajectory generated with TEP force injection")
@@ -1199,9 +1280,10 @@ def main():
     # NOISE-ONLY CONTROL (paired noise vector)
     # =============================================================================
     logger.section("NOISE-ONLY CONTROL (PAIRED NOISE)")
-    meas_true_tep = _doppler_series(doppler_model, states_tep, t_array)
-    noise_vec = measurements - meas_true_tep
-    measurements_noise_only = doppler_pure + noise_vec
+    meas_true_tep = _modeled_vector(doppler_model, states_tep, t_array)
+    meas_vec = _flatten_measurements(measurements)
+    noise_vec = meas_vec - meas_true_tep
+    measurements_noise_only = _modeled_vector(doppler_model, states_pure, t_array) + noise_vec
     minimal_od_noise = MinimalODFilter(
         t_array=t_array,
         propagator=propagator_pure,
@@ -1215,6 +1297,22 @@ def main():
     logger.info(
         f"Minimal OD on pure Kepler + paired noise: RMS={rms_noise_only*1000:.4f} mm/s "
         f"(sigma={rms_expected_noise_floor*1000:.4f} mm/s)"
+    )
+
+    # =============================================================================
+    # ORACLE CONTROL: OD WITH CORRECT (TEP) DYNAMICS
+    # =============================================================================
+    logger.section("ORACLE CONTROL (TEP DYNAMICS MATCHED)")
+    oracle_tep = _run_oracle_tep_od(
+        t_array=t_array,
+        propagator_tep=propagator_tep,
+        network=doppler_model,
+        initial_guess_state0=states_tep[0].copy(),
+        measurements_tep=measurements,
+    )
+    oracle_rms = float(oracle_tep["rms"])
+    logger.info(
+        f"Oracle 6-state OD (TEP dynamics) on TEP measurements: RMS={oracle_rms*1000:.4f} mm/s"
     )
     
     # =============================================================================
@@ -1279,6 +1377,9 @@ def main():
     residual_over_noise_floor_tep = (
         float(result_minimal["rms"] / rms_noise_only) if rms_noise_only > 0 else float("nan")
     )
+    residual_over_oracle_floor_tep = (
+        float(result_minimal["rms"] / oracle_rms) if oracle_rms > 0 else float("nan")
+    )
     
     logger.info(f"True injected speed delta over arc: {true_dv*1000:.3f} mm/s")
     logger.info(f"Injected Doppler signal RMS: {injected_doppler_rms*1000:.3f} mm/s")
@@ -1295,6 +1396,9 @@ def main():
     logger.info(f"  Observable suppression: {suppression_percent_modern:.1f}%")
     logger.info(
         f"  Minimal residual RMS / noise-only control RMS: {residual_over_noise_floor_tep:.3f}"
+    )
+    logger.info(
+        f"  Minimal residual RMS / oracle(TEP) control RMS: {residual_over_oracle_floor_tep:.3f}"
     )
     
     if suppression_percent_modern > 4.0:
@@ -1318,6 +1422,13 @@ def main():
             "rng_seed_offset": 101,
         },
         {
+            "name": "two_station_stacked_one_way",
+            "stations_rad": [(0.0, 0.0), (35.0 * deg, -120.0 * deg)],
+            "two_way_multiplier": 1.0,
+            "stacked": True,
+            "rng_seed_offset": 111,
+        },
+        {
             "name": "one_station_two_way_toy_scale_2",
             "stations_rad": [(0.0, 0.0)],
             "two_way_multiplier": 2.0,
@@ -1331,11 +1442,25 @@ def main():
             noise_sigma=1e-4,
             station_lat_lon_rad=list(spec["stations_rad"]),
             two_way_multiplier=float(spec["two_way_multiplier"]),
+            use_stacked=bool(spec.get("stacked", False)),
         )
-        d_pure_s = _doppler_series(net, states_pure, t_array)
-        d_tep_s = _doppler_series(net, states_tep, t_array)
-        inj_rms = float(np.std(d_tep_s - d_pure_s))
-        meas_s = net.generate_measurements(states_tep, t_array)
+        use_stacked = bool(spec.get("stacked", False))
+        if use_stacked:
+            d_pure_s = _doppler_series_stacked(net, states_pure, t_array)
+            d_tep_s = _doppler_series_stacked(net, states_tep, t_array)
+            inj_rms = float(np.std((d_tep_s - d_pure_s).reshape(-1)))
+            meas_s = net.generate_measurements_stacked(states_tep, t_array)
+            meas_true_tep_s = d_tep_s.reshape(-1)
+            d_pure_vec = d_pure_s.reshape(-1)
+        else:
+            d_pure_s = _doppler_series(net, states_pure, t_array)
+            d_tep_s = _doppler_series(net, states_tep, t_array)
+            inj_rms = float(np.std(d_tep_s - d_pure_s))
+            meas_s = net.generate_measurements(states_tep, t_array)
+            meas_true_tep_s = d_tep_s
+            d_pure_vec = d_pure_s
+
+        meas_vec_s = _flatten_measurements(meas_s)
         rm, rmod, sup_m, sup_mod, _ = _run_od_arc(
             t_array,
             propagator_pure,
@@ -1345,9 +1470,8 @@ def main():
             inj_rms,
             meas_s,
         )
-        meas_true_tep_s = _doppler_series(net, states_tep, t_array)
-        noise_s = meas_s - meas_true_tep_s
-        meas_null_s = d_pure_s + noise_s
+        noise_s = meas_vec_s - meas_true_tep_s
+        meas_null_s = d_pure_vec + noise_s
         minimal_null = MinimalODFilter(
             t_array=t_array,
             propagator=propagator_pure,
@@ -1361,6 +1485,7 @@ def main():
                 "name": spec["name"],
                 "n_stations": len(spec["stations_rad"]),
                 "two_way_multiplier": float(spec["two_way_multiplier"]),
+                "stacked": use_stacked,
                 "injected_doppler_rms_mm_s": float(inj_rms * 1000.0),
                 "minimal_od_residual_rms_mm_s": float(rm["rms"] * 1000.0),
                 "modern_od_residual_rms_mm_s": float(rmod["rms"] * 1000.0),
@@ -1440,6 +1565,16 @@ def main():
             },
             'minimal_od_tep_residual_rms_mm_s': float(result_minimal['rms'] * 1000.0),
             'residual_rms_ratio_tep_over_noise_only': float(residual_over_noise_floor_tep),
+        },
+        'oracle_control': {
+            'description': (
+                'Oracle lower bound: same 6-state batch estimator, but with TEP dynamics included '
+                'and initialized on the TEP truth state. Quantifies the residual floor from noise '
+                'and estimator structure when the force model is correct.'
+            ),
+            'oracle_minimal_od_rms_mm_s': float(oracle_rms * 1000.0),
+            'minimal_od_tep_residual_rms_mm_s': float(result_minimal['rms'] * 1000.0),
+            'residual_rms_ratio_tep_over_oracle': float(residual_over_oracle_floor_tep),
         },
         'perigee_state_bias': {
             'reference': 'TEP truth trajectory at minimum |r|',

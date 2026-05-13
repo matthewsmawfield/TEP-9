@@ -1,0 +1,227 @@
+{
+  "uncertainty": null,
+  "uncertainty_fraction": 0.5,
+  "uncertainty_absolute": null,
+  "status": "preliminary",
+  "calibration_status": "exploratory_hypothesis_generating",
+  "data_source": "Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits",
+  "derivation": "Space weather correlation analysis with n=3 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
+  "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements",
+  "analysis": {
+    "uncertainty": null,
+    "uncertainty_fraction": 0.5,
+    "uncertainty_absolute": null,
+    "status": "preliminary",
+    "calibration_status": "exploratory_hypothesis_generating",
+    "data_source": "Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits",
+    "derivation": "Space weather correlation analysis with n=3 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
+    "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements",
+    "correlation": {
+      "uncertainty": 1.0,
+      "uncertainty_fraction": 0.5,
+      "uncertainty_absolute": 1.0,
+      "status": "preliminary",
+      "calibration_status": "exploratory_hypothesis_generating",
+      "data_source": "Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits",
+      "derivation": "Pearson correlation r=0.9803 between space weather plasma index (P_env = F107 * (1 + Kp/100)) and fitted beta values; n=3 samples; \u00b150% uncertainty accounts for small sample statistical limitations and systematic errors in space weather proxy",
+      "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements; consider multi-mission coordinated campaigns to increase statistical power",
+      "pearson_r": 0.9803433032608468,
+      "p_value": 0.1264341423113719,
+      "n_samples": 3,
+      "r_ci_95": [
+        -1.0,
+        1.0
+      ],
+      "interpretation": "Insufficient data (n=3) for reliable correlation assessment",
+      "statistical_power_note": "With n=3, minimum detectable correlation at 80% power is r\u22480.8. Current sample is underpowered for definitive correlation testing."
+    },
+    "data_points": [
+      {
+        "mission": "NEAR",
+        "flyby_date": "1998-01-23",
+        "F107": 96.9,
+        "Kp_sum": 67.0,
+        "P_env": 161.823,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
+        "beta": 0.001240600938020586,
+        "altitude": 567.9,
+        "dv_obs": 13.46
+      },
+      {
+        "mission": "Galileo_1990",
+        "flyby_date": "1990-12-08",
+        "F107": 230.4,
+        "Kp_sum": 153.0,
+        "P_env": 582.912,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
+        "beta": 0.0028399088482491024,
+        "altitude": 972.3,
+        "dv_obs": 3.92
+      },
+      {
+        "mission": "Rosetta_2005",
+        "flyby_date": "2005-03-04",
+        "F107": 78.9,
+        "Kp_sum": 37.0,
+        "P_env": 108.09300000000002,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
+        "beta": 0.000538803526776471,
+        "altitude": 1968.7,
+        "dv_obs": 1.82
+      }
+    ],
+    "catalog_context": [
+      {
+        "mission": "NEAR",
+        "flyby_date": "1998-01-23",
+        "F107": 96.9,
+        "Kp_sum": 67.0,
+        "P_env": 161.823,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "Galileo_1990",
+        "flyby_date": "1990-12-08",
+        "F107": 230.4,
+        "Kp_sum": 153.0,
+        "P_env": 582.912,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "Cassini",
+        "flyby_date": "1999-08-18",
+        "F107": 130.7,
+        "Kp_sum": 317.0,
+        "P_env": 545.0189999999999,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "Galileo_1992",
+        "flyby_date": "1992-12-08",
+        "F107": 129.0,
+        "Kp_sum": 313.0,
+        "P_env": 532.77,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "Rosetta_2005",
+        "flyby_date": "2005-03-04",
+        "F107": 78.9,
+        "Kp_sum": 37.0,
+        "P_env": 108.09300000000002,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "Rosetta_2007",
+        "flyby_date": "2007-11-13",
+        "F107": 69.9,
+        "Kp_sum": 190.0,
+        "P_env": 202.71,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "Rosetta_2009",
+        "flyby_date": "2009-11-13",
+        "F107": 74.1,
+        "Kp_sum": 33.0,
+        "P_env": 98.553,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "MESSENGER_2005",
+        "flyby_date": "2005-08-02",
+        "F107": 110.2,
+        "Kp_sum": 173.0,
+        "P_env": 300.846,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "Juno",
+        "flyby_date": "2013-10-09",
+        "F107": 113.4,
+        "Kp_sum": 303.0,
+        "P_env": 457.00199999999995,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "Stardust",
+        "flyby_date": "2001-01-15",
+        "F107": 169.2,
+        "Kp_sum": 123.0,
+        "P_env": 377.316,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "OSIRIS-REx",
+        "flyby_date": "2017-09-22",
+        "F107": 77.5,
+        "Kp_sum": 103.0,
+        "P_env": 157.32500000000002,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "BepiColombo",
+        "flyby_date": "2020-04-10",
+        "F107": 69.2,
+        "Kp_sum": 77.0,
+        "P_env": 122.48400000000001,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "BepiColombo_2021",
+        "flyby_date": "2021-08-10",
+        "F107": 73.3,
+        "Kp_sum": 127.0,
+        "P_env": 166.391,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
+      },
+      {
+        "mission": "JUICE",
+        "flyby_date": "2029-08-01",
+        "status": "space_weather_unavailable",
+        "error": "No usable KP_SUM value in Celestrak SW-All for 2029-08-01"
+      },
+      {
+        "mission": "Europa_Clipper",
+        "flyby_date": "2030-02-01",
+        "status": "space_weather_unavailable",
+        "error": "No usable KP_SUM value in Celestrak SW-All for 2030-02-01"
+      }
+    ]
+  },
+  "concordance": {
+    "uncertainty": null,
+    "uncertainty_fraction": 0.5,
+    "uncertainty_absolute": null,
+    "status": "preliminary",
+    "calibration_status": "theoretical_estimate_from_wide_binary_analysis",
+    "data_source": "Wide binary R_s transition analysis (Paper 6, UCD)",
+    "derivation": "Wide binary concordance analysis; Temporal Shear Suppression index n = 3.0 represents power-law dependence of scalar force suppression on ambient density; \u00b150% uncertainty accounts for galactic environment variations",
+    "recommended_action": "Validate against independent galactic rotation curve analysis and GNSS calibration consistency check",
+    "wide_binary_concordance": {
+      "uncertainty": 0.5,
+      "uncertainty_fraction": 0.5,
+      "uncertainty_absolute": 0.5,
+      "status": "preliminary",
+      "calibration_status": "theoretical_estimate_from_wide_binary_analysis",
+      "data_source": "Wide binary R_s transition analysis (Paper 6, UCD)",
+      "derivation": "Temporal Shear Suppression index n = 3.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions",
+      "recommended_action": "Validate against independent galactic rotation curve analysis and GNSS calibration consistency check",
+      "observed_transition_au": 2646.0,
+      "inferred_galactic_rho_floor_g_cm3": 9.186775842895367e-18,
+      "Temporal Shear Suppression_index_n": 3.0,
+      "consistency": "Wide-binary screening scale is documented separately; flyby beta vs P_env correlation is not significant at the current fitted-sample size."
+    }
+  },
+  "statistical_notes": [
+    "With n=4 primary detections, correlation analysis is exploratory only",
+    "I\u00b2 > 99.9% heterogeneity may reflect genuine modulation OR model limitations",
+    "Space weather correlation requires validation with n>10 flybys",
+    "Do not cite correlations from this step as confirmed results"
+  ],
+  "reviewer_warnings": [
+    "r=0.64, p=0.36 on n=4 is not statistically significant",
+    "Remove ionospheric correlation claims from main manuscript",
+    "Reframe as: \"hypothesis requiring future validation\""
+  ]
+}

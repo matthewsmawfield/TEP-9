@@ -62,25 +62,41 @@ R_TRANSITION_KM = R_TRANSITION_M / 1e3
 # Note: CHARACTERISTIC_SUPPRESSION (S_⊕) is the UCD surface gradient-suppression ratio
 RELAXATION_EXPONENT = SUPPRESSION_EXPONENT
 
-# Load config
+# Load config (required; no silent fallback)
+_PIPELINE_CONFIG_PATH = PROJECT_ROOT / "config" / "pipeline_config.json"
 try:
-    with open(
-        PROJECT_ROOT / "config" / "pipeline_config.json", "r", encoding="utf-8"
-    ) as f:
+    with open(_PIPELINE_CONFIG_PATH, "r", encoding="utf-8") as f:
         config = json.load(f)
+except FileNotFoundError as e:
+    raise RuntimeError(
+        f"Missing required pipeline config: {_PIPELINE_CONFIG_PATH}"
+    ) from e
+except PermissionError as e:
+    raise RuntimeError(
+        f"Cannot read pipeline config: {_PIPELINE_CONFIG_PATH}"
+    ) from e
+except json.JSONDecodeError as e:
+    raise RuntimeError(
+        f"Invalid JSON in pipeline config: {_PIPELINE_CONFIG_PATH}: {e}"
+    ) from e
+
+try:
     tep_config = config["parameters"]["analysis"]["tep_physics"]
+except KeyError as e:
+    raise RuntimeError(
+        f"{_PIPELINE_CONFIG_PATH} must define parameters.analysis.tep_physics: {e}"
+    ) from e
+
+try:
     N_TOPOLOGY = tep_config["n_temporal_shear_suppression"]
     LAMBDA_GEV = tep_config["lambda_gev"]
-    BETA_INITIAL = BETA_BASELINE * 1e-4  # Unified Yogyakarta anchor from physics.py
-    GEOMETRIC_SCREENING_FACTOR = tep_config.get(
-        "geometric_screening_factor", CHARACTERISTIC_SUPPRESSION
-    )
-except (FileNotFoundError, json.JSONDecodeError, KeyError, PermissionError) as e:
-    # Use standardized Jakarta v0.8.0 defaults from physics.py
-    N_TOPOLOGY = 3
-    LAMBDA_GEV = 0.01
-    BETA_INITIAL = BETA_BASELINE * 1e-4
-    GEOMETRIC_SCREENING_FACTOR = CHARACTERISTIC_SUPPRESSION
+except KeyError as e:
+    raise RuntimeError(
+        f"{_PIPELINE_CONFIG_PATH}: tep_physics missing required key: {e}"
+    ) from e
+
+BETA_INITIAL = BETA_BASELINE * 1e-4  # Unified Yogyakarta anchor from physics.py
+GEOMETRIC_SCREENING_FACTOR = float(tep_config["characteristic_suppression"])
 
 GM_EARTH = 3.986004418e14  # m³/s²
 

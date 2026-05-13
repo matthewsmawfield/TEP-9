@@ -1,18 +1,10 @@
 #!/usr/bin/env python3
 """
-Flyby TEP Pipeline - Run All Steps (Workflow-Organized v5.0)
-============================================================
+Flyby TEP Pipeline - Run All Steps (v0.1)
+========================================
 
 Runs every script listed in ``CORE_STEPS`` in order (currently
-``len(CORE_STEPS)`` entries). Order follows analytical workflow, not
-strict numeric step IDs (for example Step 009 runs after Step 033).
-
-Coverage includes: SPICE and Horizons acquisition, DSN ingest and
-framework, TEP model and fitting, trajectory integration and OD
-simulation, cross-validation and sensitivity, hierarchical Bayes and GNSS,
-plasma and space-weather extensions, DSN processing and Juno reanalysis,
-IRI trajectory profiles, variance decomposition, reporting and figures,
-cosmographic shear (040a/040), and claim-consistency audit (027).
+``len(CORE_STEPS)`` entries). The order is explicitly defined in this file.
 
 Each step writes ``logs/<step_name>.log``; ``logs/pipeline.log`` records
 the orchestrator run.
@@ -79,7 +71,8 @@ CORE_STEPS: List[Tuple[str, str]] = [
     ('step_025_corrected_uncertainty.py', 'Step 025: Corrected Uncertainty Analysis'),
     ('step_026_stable_model_comparison.py', 'Step 026: Stable Model Comparison'),
     
-    # Phase 9: Additional Validation (027)
+    # Phase 9: Publication tables & validation (039, 027)
+    ('step_039_flyby_prediction_table.py', 'Step 039: Flyby Prediction Table'),
     ('step_027_claim_consistency_audit.py', 'Step 027: Claim Consistency Audit'),
     
     # Phase 10: DSN Data Framework (028-029)
@@ -313,13 +306,14 @@ class PipelineLogger:
                 self.error("  Pipeline results contain synthetic data contamination!")
                 return False
         except Exception as e:
-            self.warning(f"  ⚠ Could not run data integrity validator: {e}")
-        
+            self.error(f"  ✗ Data integrity validator failed to run: {e}")
+            return False
+
         if success_count == total_steps:
             self.subheader("Output Locations")
             self.info(f"Log file:         {self.log_file}")
             self.info(f"Results:          {PROJECT_ROOT / 'results'}")
-            self.info(f"Key output:       results/step003_dsn_reanalysis.json")
+            self.info(f"Key output:       results/step003_archival_flyby_catalog.json")
             self.info(f"Key output:       results/step008_fitting_results.json")
             self.info(f"Key output:       results/step036_final_report.json")
             self.info(f"Key figure:       results/step007_figure1_altitude_anomaly.png")
@@ -381,21 +375,10 @@ def main():
     logger = PipelineLogger()
     
     # Header
-    logger.header("FLYBY TEP PIPELINE v3.0 - FULL EXECUTION", 80)
+    logger.header("FLYBY TEP PIPELINE v0.1 - FULL EXECUTION", 80)
     logger.info(f"Project root: {PROJECT_ROOT}")
     logger.info(f"Steps dir:     {STEPS_DIR}")
     logger.info(f"Log file:      {logger.log_file}")
-    
-    logger.subheader("Enhancements in v3.0", 80)
-    logger.info("  • WGS84 non-spherical Earth model with J2, J3, J4 harmonics")
-    logger.info("  • PREM dynamic density mapping")
-    logger.info("  • 3D trajectory integration framework")
-    logger.info("  • Expanded dataset (12+ flybys with archival mining)")
-    logger.info("  • Core raw DSN reanalysis with minimal OD (resolves Horizons circularity)")
-    logger.info("  • Hierarchical Bayesian model (addresses extreme heterogeneity)")
-    logger.info("  • Plasma modulation (addresses Cassini sign mismatch)")
-    logger.info("  • First-principles Temporal Shear Suppression calculation (reduces systematic uncertainty)")
-    logger.info("  • Bayesian model comparison with Bayes factors (statistical rigor)")
     
     total_steps = len(CORE_STEPS)
     

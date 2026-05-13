@@ -559,10 +559,10 @@ Table 3a: Component-Level TEP Predictions for Primary Detections
 
 | Flyby | Δv_grad (mm/s) | Δv_disf (mm/s) | Δv_total (mm/s) | Δv_obs (mm/s) | Regime |
 | --- | --- | --- | --- | --- | --- |
-| NEAR | +2.15 | +1.53 | +3.68 | 13.46 | Gradient-dominated |
-| Galileo 1990 | +0.34 | +0.08 | +0.41 | 3.92 | Mixed gradient-disformal |
-| Cassini | -0.03 | +0.01 | -0.02 | 0.11 | Sign mismatch at β_ref (excluded from β ensemble) |
-| Rosetta 2005 | +0.54 | +0.01 | +0.54 | 1.82 | Gradient-dominated |
+| NEAR | +1.99 | +0.05 | +2.04 | 13.46 | Gradient-dominated |
+| Galileo 1990 | +0.32 | 0.00 | +0.32 | 3.92 | Mixed gradient-disformal |
+| Cassini | -0.03 | 0.00 | -0.02 | 0.11 | Sign mismatch at β_ref (excluded from β ensemble) |
+| Rosetta 2005 | +0.51 | +0.01 | +0.51 | 1.82 | Gradient-dominated |
 
 At β_ref = 10⁻⁴, Cassini’s small negative total arises from partial cancellation between the conformal-gradient and disformal contributions; the observed anomaly is positive, so no positive-definite β scaling of the reference prediction can match both sign and magnitude without revisiting geometry, plasma, or independent DSN orbit determination. Raw DSN reanalysis remains the decisive test.
 
@@ -574,10 +574,10 @@ Table 3b: 3D Trajectory Integration vs Perigee Approximation
 
 | Spacecraft | $\Delta v_{\rm peri}$ (mm/s) | $\Delta v_{\rm int}$ (mm/s) | Ratio $\Delta v_{\rm int} / \Delta v_{\rm peri}$ | $n_{\rm points}$ | Path length (km) |
 | --- | --- | --- | --- | --- | --- |
-| NEAR | +2.15 | +1.53 | +3.68 | 301 | 156,084 |
-| Galileo 1990 | +0.34 | +0.08 | +0.41 | 301 | 184,423 |
-| Rosetta 2005 | +0.54 | +0.01 | +0.54 | 361 | 142,565 |
-| Cassini | -0.03 | +0.01 | -0.02 | 301 | 295,844 |
+| NEAR | +1.99 | +0.05 | +2.04 | 301 | 156,084 |
+| Galileo 1990 | +0.32 | 0.00 | +0.32 | 301 | 184,423 |
+| Rosetta 2005 | +0.51 | +0.01 | +0.51 | 361 | 142,565 |
+| Cassini | -0.03 | 0.00 | -0.02 | 301 | 295,844 |
 | Juno | 0.028 | 0.046 | 1.63 | 301 | 205,656 |
 | Galileo 1992 | 0.003 | $\approx 0$ | $\approx 0$ | 301 | 175,176 |
 | Rosetta 2007 | $7.5 \times 10^{-5}$ | $\approx 0$ | $\approx 0$ | 241 | 147,099 |
@@ -637,7 +637,7 @@ The posterior median $\beta_0 = 6.30 \times 10^{-4}$ lies near the Step 008 inve
 
 ## 4.3 Variance Decomposition Analysis
 
-The four-stage variance decomposition quantifies the contribution of each deterministic factor to the total heterogeneity in fitted β values. The total variance in log₁₀(β) is 0.075 dex² (Step 009). In the current run, the structural proxy bundle accounts for 0.0% of this variance, observational pipeline effects account for 0.0%, environmental modulation contributes 99.5% (F10.7 correlation |r| ≈ 0.998, p ≈ 0.043 on n = 3), and the residual accounts for 0.5%. The environmental fraction is dominated by small-n covariation with solar-epoch proxies and should be interpreted cautiously; the dominant formal heterogeneity statistic remains Cochran Q / I² on the three gated β fits (Step 008).
+The four-stage variance decomposition quantifies the contribution of each deterministic factor to the total heterogeneity in fitted β values. The total variance in log₁₀(β) is 0.075 dex² (Step 009). In the current run, the structural proxy bundle accounts for 12.9% of this variance, observational pipeline effects account for 0.0%, environmental modulation contributes 0.0% (F10.7 correlation |r| ≈ 0.998, p ≈ 0.043 on n = 3), and the residual accounts for 87.1%. The environmental fraction is dominated by small-n covariation with solar-epoch proxies and should be interpreted cautiously; the dominant formal heterogeneity statistic remains Cochran Q / I² on the three gated β fits (Step 008).
 
 ## 4.4 Disformal Transition Criterion Results
 
@@ -677,31 +677,31 @@ The four-tier model comparison below is a gated compression test rather than the
 
 Each model is fitted by weighted least squares. Log-likelihoods, AIC, and BIC are:
 
-- **Null:** log L = -47.85, AIC = 95.7, BIC = 95.7
+- **Null:** log L = -171.48, AIC = 343.0, BIC = 343.0
 
-- **Anderson:** log L = -7.62, AIC = 19.2, BIC = 17.4
+- **Anderson:** log L = -15.96, AIC = 35.9, BIC = 34.1
 
-- **TEP restricted:** log L = -5.27, AIC = 12.5, BIC = 11.6
+- **TEP restricted:** log L = -6.86, AIC = 15.7, BIC = 14.8
 
-- **TEP flexible:** log L = -4.29, AIC = 14.6, BIC = 11.9
+- **TEP flexible:** log L = -5.23, AIC = 16.5, BIC = 13.8
 
 ### 4.5.3 Bayes Factors
 
 Approximate Bayes factors via BIC (stable for small $n$):
 
-- **Anderson vs Null:** $B_{A0} \approx 9.9 \times 10^{16}$ ($\Delta$BIC $\approx 78.3$)
+- **Anderson vs Null:** $B_{A0} \approx 5.2 \times 10^{21}$ ($\Delta$BIC $\approx 308.8$)
 
-- **TEP restricted vs Null:** $B_{10} \approx 1.8 \times 10^{18}$ ($\Delta$BIC $\approx 84.1$) — *strong evidence*
+- **TEP restricted vs Null:** $B_{10} \approx 5.2 \times 10^{21}$ ($\Delta$BIC $\approx 328.1$) — *strong evidence*
 
-- **TEP flexible vs Null:** $B_{f0} \approx 1.6 \times 10^{18}$ ($\Delta$BIC $\approx 83.8$)
+- **TEP flexible vs Null:** $B_{f0} \approx 5.2 \times 10^{21}$ ($\Delta$BIC $\approx 329.2$)
 
-- **TEP restricted vs Anderson:** $B \approx 18.2$ ($\Delta$BIC $\approx 5.8$) — *positive evidence*
+- **TEP restricted vs Anderson:** $B \approx 15536.4$ ($\Delta$BIC $\approx 19.3$) — *positive evidence*
 
-**Interpretation.** The TEP restricted model yields the strongest evidence against the Null among the parsimonious tiers, with $B_{10} \approx 1.8 \times 10^{18}$ exceeding the $B > 10$ threshold for strong evidence (Kass & Raftery 1995). The Anderson empirical model also shows strong evidence against the Null ($B_{A0} \approx 9.9 \times 10^{16}$), demonstrating that trajectory asymmetry alone carries signal. Direct comparison of TEP restricted against Anderson gives $B \approx 18.2$, indicating positive but not decisive preference for the physics-based restricted model at n = 3. The TEP flexible model, despite its extra freedom, is penalized by its larger parameter count and does not outperform the restricted model on BIC.
+**Interpretation.** The TEP restricted model yields the strongest evidence against the Null among the parsimonious tiers, with $B_{10} \approx 5.2 \times 10^{21}$ exceeding the $B > 10$ threshold for strong evidence (Kass & Raftery 1995). The Anderson empirical model also shows strong evidence against the Null ($B_{A0} \approx 5.2 \times 10^{21}$), demonstrating that trajectory asymmetry alone carries signal. Direct comparison of TEP restricted against Anderson gives $B \approx 15536.4$, indicating positive but not decisive preference for the physics-based restricted model at n = 3. The TEP flexible model, despite its extra freedom, is penalized by its larger parameter count and does not outperform the restricted model on BIC.
 
 **Akaike weights** (Step 026): TEP restricted $\approx 1.0$, Null $\approx 6.4 \times 10^{-18}$ (Anderson receives negligible weight in the displayed two-model Akaike comparison).
 
-The restricted model is the scientifically important tier because every quantity except $\beta$ is pre-specified from independent measurements or first-principles theory. The Bayes factor $B_{10} \approx 1.8 \times 10^{18}$ on the three-gated ensemble therefore reflects predictive compression relative to the Null, not an extra free parameter from Cassini.
+The restricted model is the scientifically important tier because every quantity except $\beta$ is pre-specified from independent measurements or first-principles theory. The Bayes factor $B_{10} \approx 5.2 \times 10^{21}$ on the three-gated ensemble therefore reflects predictive compression relative to the Null, not an extra free parameter from Cassini.
 
 #### Temporal Shear Impulse Consistency Verification
 
@@ -831,7 +831,7 @@ The stability coefficient (relative standard deviation of LOO estimates divided 
 
 NEAR and Galileo 1990 show large to very large effects, providing strong statistical separation from null results. Rosetta 2005 shows a medium effect. Cassini's negligible Cohen's $d$ is consistent with its small published anomaly lying near the null-population mean, while the Step 007 reference prediction remains sign-tensioned relative to that anomaly. The two strongest detections (NEAR and Galileo 1990) provide the bulk of the statistical separation.
 
-**Bayesian model comparison:** Stable four-tier model comparison (Step 026) on the three-gated ensemble favors TEP restricted over Null ($B_{10}\approx1.8\times10^{18}$, $\Delta{\rm BIC}\approx84$) and over Anderson ($B\approx18.2$, $\Delta{\rm BIC}\approx5.8$). See Section 4.5 for tier definitions. These results indicate that a single physics-based amplitude, with geometry pre-specified, compresses the gated data more parsimoniously than the null or a two-parameter asymmetry fit alone.
+**Bayesian model comparison:** Stable four-tier model comparison (Step 026) on the three-gated ensemble favors TEP restricted over Null ($B_{10} \approx 5.2 \times 10^{21}$, $\Delta{\rm BIC}\approx84$) and over Anderson ($B \approx 15536.4$, $\Delta{\rm BIC}\approx5.8$). See Section 4.5 for tier definitions. These results indicate that a single physics-based amplitude, with geometry pre-specified, compresses the gated data more parsimoniously than the null or a two-parameter asymmetry fit alone.
 
 **Prediction accuracy:** On the Step 008 primary comparison, $R^2 \approx 0.924$, Pearson $\rho \approx 0.979$, MAE $\approx 0.87$ mm/s, RMSE $\approx 1.40$ mm/s, and MAPE $\approx 23.6\%$. NEAR dominates variance fraction; small-anomaly rows inflate percentage errors.
 
@@ -887,14 +887,14 @@ Table 4: Per-Flyby Universal-$\beta$ Predictions and Classification (Step 039)
 
 | Spacecraft | Data class | Alt. (km) | $\cos\delta_{\rm in} - \cos\delta_{\rm out}$ | $\Delta v_{\rm obs}$ (mm/s) | $\Delta v_{\rm TEP}^{\rm raw}$ (mm/s) | Residual (mm/s) | $F_{\rm OD}$ | $\Delta v_{\rm TEP}^{\rm post\text{-}OD}$ (mm/s) | Raw classification |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| NEAR | Published anomaly | 567.9 | $+0.625$ | $+13.46 \pm 0.01$ | $+13.478 \pm 0.499$ | $-0.018$ | — | — | True positive |
-| Galileo 1990 | Published anomaly | 972.3 | $+0.195$ | $+3.92 \pm 0.03$ | $+1.506 \pm 0.056$ | $+2.414$ | — | — | True positive |
-| Rosetta 2005 | Published anomaly | 1968.7 | $+0.330$ | $+1.82 \pm 0.05$ | $+1.987 \pm 0.074$ | $-0.167$ | — | — | True positive |
-| Cassini | Published anomaly | 1197.3 | $-0.088$ | $+0.11 \pm 0.05$ | $-0.086 \pm 0.003$ | $+0.196$ | — | — | True null |
-| Galileo 1992 | Published null/bound | 309.6 | $+0.032$ | $0.00 \pm 0.05$ | $+0.012 \pm 0.000$ | $-0.012$ | — | — | True null |
+| NEAR | Published anomaly | 567.9 | $+0.625$ | $+13.46 \pm 0.01$ | $+13.461 \pm 0.463$ | $-0.001$ | — | — | True positive |
+| Galileo 1990 | Published anomaly | 972.3 | $+0.195$ | $+3.92 \pm 0.03$ | $+2.107 \pm 0.072$ | $+1.813$ | — | — | True positive |
+| Rosetta 2005 | Published anomaly | 1968.7 | $+0.330$ | $+1.82 \pm 0.05$ | $+3.402 \pm 0.117$ | $-1.582$ | — | — | True positive |
+| Cassini | Published anomaly | 1197.3 | $-0.088$ | $+0.11 \pm 0.05$ | $-0.146 \pm 0.005$ | $+0.256$ | — | — | True null |
+| Galileo 1992 | Published null/bound | 309.6 | $+0.032$ | $0.00 \pm 0.05$ | $+0.021 \pm 0.001$ | $-0.021$ | — | — | True null |
 | MESSENGER | Published null/bound | 2351.2 | $\approx 0$ | $0.00 \pm 0.05$ | $0.000 \pm 0.000$ | $-0.000$ | — | — | True null |
 | Rosetta 2009 | Published null/bound | 2572.0 | --- | $0.00 \pm 0.05$ | N/A | — | — | — | Published null (geometry unavailable) |
-| Juno | Published null/bound | 817.4 | $+0.069$ | $0.00 \pm 0.02$ | $+0.104 \pm 0.004$ | $-0.104$ | — | — | Raw tension |
+| Juno | Published null/bound | 817.4 | $+0.069$ | $0.00 \pm 0.02$ | $+0.172 \pm 0.006$ | $-0.172$ | — | — | Raw tension |
 | Rosetta 2007 | Published null/bound | 5429.9 | $+0.035$ | $+0.02 \pm 0.05$ | $0.000 \pm 0.000$ | $+0.020$ | — | — | True null |
 | Stardust | No public anomaly report | 6008.9 | --- | — | N/A | — | — | — | Predicted null |
 | OSIRIS-REx | No public anomaly report | 17239.1 | --- | — | N/A | — | — | — | Predicted null |
@@ -968,7 +968,7 @@ The multiplicative spread in gated fitted $\beta$ values is partially summarized
 
 ## 4.10 PPN Compliance and Global State
 
-**Bayesian model comparison:** Stable four-tier model comparison (Step 026) compares the Null, Anderson empirical, TEP restricted, and TEP flexible models on the three-gated ensemble. The Bayes factor for TEP restricted vs Null is $B_{10} \approx 1.8 \times 10^{18}$ (strong evidence per Kass & Raftery 1995). The Akaike weight for TEP restricted is essentially 100% in the reported two-model summary. The Anderson empirical model also shows strong evidence vs Null ($B_{A0} \approx 9.9 \times 10^{16}$), confirming that trajectory asymmetry carries genuine signal, while direct comparison gives TEP restricted positive evidence over Anderson ($B \approx 18.2$).
+**Bayesian model comparison:** Stable four-tier model comparison (Step 026) compares the Null, Anderson empirical, TEP restricted, and TEP flexible models on the three-gated ensemble. The Bayes factor for TEP restricted vs Null is $B_{10} \approx 5.2 \times 10^{21}$ (strong evidence per Kass & Raftery 1995). The Akaike weight for TEP restricted is essentially 100% in the reported two-model summary. The Anderson empirical model also shows strong evidence vs Null ($B_{A0} \approx 5.2 \times 10^{21}$), confirming that trajectory asymmetry carries genuine signal, while direct comparison gives TEP restricted positive evidence over Anderson ($B \approx 15536.4$).
 
 **Formal correlation analysis:** Pearson and Spearman correlation tests quantify relationships between fitted β and physical parameters:
 
@@ -1045,7 +1045,7 @@ Table 8: Cosmographic Modulation Parameters and Residual Ratios
 
 | Mission | *r*AU | *v*rad (km/s) | cos *θ*SC-CMB | *v*SC,CMB (km/s) | *f*enh | Both Aligned | Obs (mm/s) | Pred (mm/s) | Ratio |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| NEAR | +2.15 | +1.53 | +3.68 | +1.06 | 964 | **YES** | 13.46 | 3.68 | **3.66** |
+| NEAR | +1.99 | +0.05 | +2.04 | +1.06 | 964 | **YES** | 13.46 | 3.68 | **3.66** |
 | Galileo 1990 | 0.985 | −0.228 | +0.161 | +2.21 | 861 | **YES** | 3.92 | 0.411 | **9.54** |
 | Cassini | 1.012 | −0.331 | −0.994 | −18.8 | 322 | no | 0.11 | −0.023 | — |
 | Galileo 1992 | 0.985 | −0.22 | −0.824 | −11.6 | 648 | no | 0.00 | 0.22 | 0.00 |
@@ -1093,8 +1093,8 @@ Table 9b: Multivariate Geometric Regression Predictions
 
 | Mission | Observed Ratio | Predicted Ratio | Residual |
 | --- | --- | --- | --- |
-| NEAR | +2.15 | +1.53 | +3.68 |
-| Galileo 1990 | +0.34 | +0.08 | +0.41 |
+| NEAR | +1.99 | +0.05 | +2.04 |
+| Galileo 1990 | +0.32 | 0.00 | +0.32 |
 | Cassini | 0.34 | — | — |
 | Galileo 1992 | 0.00 | — | — |
 | Rosetta 2005 | 1.14 | — | — |
@@ -1235,7 +1235,7 @@ This cross-paper consistency supports the TEP as a multi-messenger framework wit
 
 ## 5.4 Remaining Limitations
 
-β scatter as four-stage variance decomposition (Step 009): The fitted β values span 5.03×10⁻⁴ to 2.02×10⁻³ across the three primary ensemble fits—a factor of 4.0. In the current decomposition, the tracked structural proxy bundle accounts for 0.0% of fitted-β variance, observational effects account for 0.0%, environmental modulation contributes 99.5%, and the residual accounts for 0.5%. The dominant residual fraction reflects the limited detection sample and incomplete modeling of mission-specific plasma attenuation. Cross-validation indicates model stability (stability coefficient 0.38 < 0.5). The inverse-variance weighted mean β = 5.65×10⁻⁴ ± 2.79×10⁻⁵ is representative across flyby geometries.
+β scatter as four-stage variance decomposition (Step 009): The fitted β values span 5.03×10⁻⁴ to 2.02×10⁻³ across the three primary ensemble fits—a factor of 4.0. In the current decomposition, the tracked structural proxy bundle accounts for 12.9% of fitted-β variance, observational effects account for 0.0%, environmental modulation contributes 0.0%, and the residual accounts for 87.1%. The dominant residual fraction reflects the limited detection sample and incomplete modeling of mission-specific plasma attenuation. Cross-validation indicates model stability (stability coefficient 0.38 < 0.5). The inverse-variance weighted mean β = 5.65×10⁻⁴ ± 2.79×10⁻⁵ is representative across flyby geometries.
 
 Model completeness: Cassini exhibits a sign mismatch between the Step 007 prediction at $\beta_{\rm ref}=10^{-4}$ (negative total $\Delta v_{\rm TEP}$) and the published positive anomaly; it is therefore excluded from the inverse-variance $\beta$ ensemble while remaining in the catalog for diagnostics and hierarchical layers. Disformal and plasma–velocity structure in the envelope controls the small magnitude at $\beta_{\rm ref}$; a full resolution is not asserted until raw DSN OD tests the literature value.
 
@@ -1269,11 +1269,11 @@ Disformal coupling validation: Cassini provides a stress test for the disformal 
 
 Model parameter sensitivity: The TEP model maintains PPN compliance across a broad range of characteristic suppression factors ($S_\oplus = 0.30$ to $0.50$), indicating the screening mechanism via Temporal Shear suppression is robust, not fine-tuned.
 
-Diagnostic conclusion: Rigorous statistical analysis addresses the main concerns: the model maintains PPN compliance across broad parameter variations; stable four-tier Bayesian model comparison (Step 026) on the three-gated ensemble yields a large information-criterion separation from the Null ($B_{10} \approx 1.8\times10^{18}$, $\Delta{\rm BIC}\approx 84$) and a modest preference over the Anderson empirical model ($B\approx 18.2$, $\Delta{\rm BIC}\approx 5.8$); and systematic errors in the DSN budget remain small compared to the mm/s anomalies. Because $n=3$ in that likelihood, BIC-derived Bayes factors are useful summaries, not definitive posterior odds.
+Diagnostic conclusion: Rigorous statistical analysis addresses the main concerns: the model maintains PPN compliance across broad parameter variations; stable four-tier Bayesian model comparison (Step 026) on the three-gated ensemble yields a large information-criterion separation from the Null ($B_{10} \approx 5.2 \times 10^{21}$, $\Delta{\rm BIC}\approx 84$) and a modest preference over the Anderson empirical model ($B \approx 15536.4$, $\Delta{\rm BIC}\approx 5.8$); and systematic errors in the DSN budget remain small compared to the mm/s anomalies. Because $n=3$ in that likelihood, BIC-derived Bayes factors are useful summaries, not definitive posterior odds.
 
 ## 5.7 Enhanced Statistical Validation
 
-The statistical validation results are presented comprehensively in Section 4.6.5. Key conclusions are summarized here: stable four-tier Bayesian model comparison (Step 026) on the three-gated ensemble favors the TEP restricted model over the Null ($B_{10} \approx 1.8\times10^{18}$, $\Delta{\rm BIC}\approx 84$) and over the Anderson empirical model ($B\approx 18.2$, $\Delta{\rm BIC}\approx 5.8$). Residuals on the gated set are marginally consistent with normality (Shapiro–Wilk $p \approx 0.098$). The model achieves $R^2 \approx 0.924$ between predicted and observed anomalies for the primary comparison reported in Step 008. Because $n=3$ in that headline likelihood, information criteria should be read as qualitative support alongside physics checks.
+The statistical validation results are presented comprehensively in Section 4.6.5. Key conclusions are summarized here: stable four-tier Bayesian model comparison (Step 026) on the three-gated ensemble favors the TEP restricted model over the Null ($B_{10} \approx 5.2 \times 10^{21}$, $\Delta{\rm BIC}\approx 84$) and over the Anderson empirical model ($B \approx 15536.4$, $\Delta{\rm BIC}\approx 5.8$). Residuals on the gated set are marginally consistent with normality (Shapiro–Wilk $p \approx 0.098$). The model achieves $R^2 \approx 0.924$ between predicted and observed anomalies for the primary comparison reported in Step 008. Because $n=3$ in that headline likelihood, information criteria should be read as qualitative support alongside physics checks.
 
 Juno null result: The Juno 2013 flyby ($\Delta v_{\rm obs} = 0.00 \pm 0.02$ mm/s) is the sole raw-tension case in Table 4. At the refit weighted-mean $\beta$, Step 039 predicts $+0.10 \pm 0.00$ mm/s, above the $0.02$ mm/s measurement precision. Post-OD survival factors are withheld until mission OD configuration yields defensible $F_{\rm OD}$ estimates from Step 021.
 
@@ -1451,7 +1451,7 @@ A rigorous assessment of this analysis requires explicit acknowledgment of sever
 
 - *Justification:* The accessible set of low-altitude, well-tracked Earth flybys is small by nature of the mission cadence.
 
-- *Statistical robustness:* Despite small $n$, the effect sizes are substantial (detection population mean 4.83 mm/s vs null mean 0.004 mm/s, CV $\approx 0.68$ on gated $\beta$). Step 026 on the $n=3$ gated set favors TEP restricted over Null ($B_{10}\approx1.8\times10^{18}$) and over Anderson ($B\approx18.2$). Leave-one-out shows NEAR as the dominant lever on the pooled $\beta$.
+- *Statistical robustness:* Despite small $n$, the effect sizes are substantial (detection population mean 4.83 mm/s vs null mean 0.004 mm/s, CV $\approx 0.68$ on gated $\beta$). Step 026 on the $n=3$ gated set favors TEP restricted over Null ($B_{10} \approx 5.2 \times 10^{21}$) and over Anderson ($B \approx 15536.4$). Leave-one-out shows NEAR as the dominant lever on the pooled $\beta$.
 
 - *Sample expansion:* Additional Earth flybys with adequate tracking precision would strengthen the statistical analysis and enable tests of model variations. Approximately $n \approx 74$ primary detections would be required to achieve 80% power to distinguish between geometry-dependent modulation of $\beta$ and a single universal coupling constant (conservative estimate: $n \approx 153$).
 
@@ -1581,7 +1581,7 @@ Unlike ad hoc modifications to gravity, the TEP framework preserves all successe
 
 - **Effect sizes:** Cohen's $d$ relative to the published null population ($n_{\rm null}=5$) yields very large effects for NEAR ($d \approx 4.0$) and Galileo 1990 ($d \approx 1.2$), a medium effect for Rosetta 2005 ($d \approx 0.5$), and a negligible effect for Cassini ($d \approx 0.03$).  The coefficient of variation CV $\approx 68\%$ across the three gated $\beta$ fits reflects genuine geometry-dependent modulation at fixed envelope.
 
-- **Model comparison:** On the $n=3$ gated ensemble, Step 026 gives a large information-criterion separation between TEP restricted and Null ($B_{10}\approx1.8\times10^{18}$, $\Delta{\rm BIC}\approx84$) and positive but not decisive preference over Anderson empirical ($B\approx18.2$, $\Delta{\rm BIC}\approx5.8$)
+- **Model comparison:** On the $n=3$ gated ensemble, Step 026 gives a large information-criterion separation between TEP restricted and Null ($B_{10} \approx 5.2 \times 10^{21}$, $\Delta{\rm BIC}\approx84$) and positive but not decisive preference over Anderson empirical ($B \approx 15536.4$, $\Delta{\rm BIC}\approx5.8$)
 
 - **Bayesian model comparison:** Akaike weight on TEP restricted $\approx 1$ in the reported two-model summary; Anderson and flexible tiers are documented in Step 026 outputs.
 
@@ -1596,7 +1596,7 @@ on the gated trio; heterogeneity diagnostics dominate formal tests.
 - **Sensitivity analysis:** All parameters stable across
 plausible ranges; PPN compliance maintained
 
-The catalog of Earth flyby events (four published anomalies, five published nulls/bounds, and several without public anomaly reports) provides the empirical substrate. Step 026’s headline likelihood uses the three-gated primary detections only. Bayesian summaries on that $n=3$ set favor TEP restricted over Null ($B_{10}\approx1.8\times10^{18}$, $\Delta{\rm BIC}\approx84$) and over Anderson ($B\approx18.2$, $\Delta{\rm BIC}\approx5.8$).
+The catalog of Earth flyby events (four published anomalies, five published nulls/bounds, and several without public anomaly reports) provides the empirical substrate. Step 026’s headline likelihood uses the three-gated primary detections only. Bayesian summaries on that $n=3$ set favor TEP restricted over Null ($B_{10} \approx 5.2 \times 10^{21}$, $\Delta{\rm BIC}\approx84$) and over Anderson ($B \approx 15536.4$, $\Delta{\rm BIC}\approx5.8$).
 
 ## Robustness Assessment
 
@@ -1616,7 +1616,7 @@ Several potential concerns have been investigated and addressed through rigorous
 
 **PPN compliance:** The UCD-derived characteristic suppression $S_\oplus \approx 0.35$ is determined from the UCD saturation model. Sensitivity analysis indicates stable PPN compliance across parameter ranges. All gated $\beta_{\rm eff}$ values satisfy the Cassini bound ($|\gamma - 1| \approx 2\beta_{\rm eff}^2 < 2.3 \times 10^{-5}$) with Earth screening. The solar-screened calculation (Section 4.6.1a) also remains below the bound, with the conservative largest-coupling radio-path estimate giving a margin of about 3.5 rather than the much larger Earth-screened factors.
 
-**Bayesian model comparison:** Step 026 on the three-gated ensemble gives a large information-criterion separation between TEP restricted and Null ($B_{10}\approx1.8\times10^{18}$, $\Delta{\rm BIC}\approx84$) and a positive but not decisive preference over Anderson ($B\approx18.2$, $\Delta{\rm BIC}\approx5.8$). The Anderson empirical model also shows strong evidence vs Null ($B_{A0}\approx9.9\times10^{16}$, $\Delta{\rm BIC}\approx78$), confirming that trajectory asymmetry carries genuine signal. The TEP flexible model (3 parameters) is penalized by its parameter count and does not outperform the restricted model on BIC. Residual diagnostics on the gated trio are marginally Gaussian (Shapiro–Wilk $p\approx0.10$).
+**Bayesian model comparison:** Step 026 on the three-gated ensemble gives a large information-criterion separation between TEP restricted and Null ($B_{10} \approx 5.2 \times 10^{21}$, $\Delta{\rm BIC}\approx84$) and a positive but not decisive preference over Anderson ($B \approx 15536.4$, $\Delta{\rm BIC}\approx5.8$). The Anderson empirical model also shows strong evidence vs Null ($B_{A0} \approx 5.2 \times 10^{21}$, $\Delta{\rm BIC}\approx78$), confirming that trajectory asymmetry carries genuine signal. The TEP flexible model (3 parameters) is penalized by its parameter count and does not outperform the restricted model on BIC. Residual diagnostics on the gated trio are marginally Gaussian (Shapiro–Wilk $p\approx0.10$).
 
 **Independent validation pathways:** Several approaches can independently test the TEP hypothesis without relying on the published anomaly values:
 

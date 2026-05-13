@@ -1,0 +1,78 @@
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] LOGGER INITIALIZED: step_032_tep_suppression (Step 032)
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_032_tep_suppression.log
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] STEP 032: TEP SUPPRESSION ANALYSIS
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Testing hypothesis: Modern OD filters TEP signals
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] 
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] SECTION: LOADING FITTING RESULTS
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] Loading from: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step008_fitting_results.json
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] ✓ Results loaded successfully
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] 
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] SECTION: RUNNING SUPPRESSION ANALYSIS
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] 
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] SECTION: INDIVIDUAL MISSION ANALYSIS
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Mission              Std OD (mm/s)   TEP Pred (mm/s)    Status                   
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] NEAR_1998                      0.00              0.00 OK                       
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Galileo_1990                   3.92              7.86 OK                       
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Galileo_1992                   0.00             24.69 TEP SUPPRESSED           
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Cassini_1999                   0.00              0.00 OK                       
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Rosetta_2005                   1.82              3.88 OK                       
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Rosetta_2007                   0.02              0.08 OK                       
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Rosetta_2009                   0.00              2.77 TEP SUPPRESSED           
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] MESSENGER_2005                 0.00              3.25 TEP SUPPRESSED           
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Juno_2013                      0.00              0.00 OK                       
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Stardust_2001                  0.00              0.00 OK                       
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] OSIRIS-REx_2017                0.00              0.00 OK                       
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] BepiColombo_2020               0.00              0.00 OK                       
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] 
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] SECTION: SUMMARY
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Total missions: 12
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] TEP-predicted detectable: 5
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Likely suppressed: 3
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] 
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] --- CONCLUSION ---
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Evidence strong: 3 missions show null results where TEP predicts detectable signals. Modern OD likely filters TEP by treating it as systematic error. Raw DSN re-analysis with minimal OD recommended.
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] 
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] SECTION: SAVING SUPPRESSION ANALYSIS REPORT
+[2026-05-13 12:00:43 UTC] [DEBUG   ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] ✓ Report saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step032_tep_suppression_analysis.json
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032]   Output: step032_tep_suppression_analysis.json (TEP suppression analysis report)
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] 
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] STEP SUMMARY: step_032_tep_suppression
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Step Number: 032
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Status: SUCCESS
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Duration: 0.53s
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Calculations Logged: 0
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Output Files: 1
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_032_tep_suppression.log
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] 
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Generated 1 output file(s):
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032]   • step032_tep_suppression_analysis.json: 9.70 KB - TEP suppression analysis report
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] STEP 032 COMPLETE: SUCCESS
+[2026-05-13 12:00:43 UTC] [INFO    ] [STEP 032] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_032_tep_suppression_provenance.json
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] 
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] EXECUTIVE SUMMARY
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] Step: step_032_tep_suppression (Step 032)
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] Status: SUCCESS
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] Duration: 0.53s
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] Calculations: 0
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] Output Files: 1
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] Key Outputs:
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032]   - step032_tep_suppression_analysis.json (9.70 KB)
+[2026-05-13 09:00:43 UTC] [INFO    ] [STEP 032] ================================================================================

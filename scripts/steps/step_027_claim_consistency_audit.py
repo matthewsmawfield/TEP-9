@@ -10,11 +10,14 @@ import json
 import math
 import re
 import sys
+import time
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
+
+from scripts.utils.step_logger import StepLogger
 
 from scripts.utils.publication_sync import (
     PRIMARY_DETECTIONS,
@@ -395,10 +398,11 @@ class ClaimConsistencyAuditor:
             return False
         return True
 
-    def run_all_audits(self) -> bool:
-        print("=" * 70)
-        print("CLAIM CONSISTENCY AUDIT")
-        print("=" * 70)
+    def run_all_audits(self, logger: StepLogger | None = None) -> bool:
+        emit = logger.info if logger else print
+        emit("=" * 70)
+        emit("CLAIM CONSISTENCY AUDIT")
+        emit("=" * 70)
 
         audits = [
             ("v_trans consistency", self.audit_v_trans_consistency),
@@ -416,36 +420,72 @@ class ClaimConsistencyAuditor:
 
         all_passed = True
         for name, audit_func in audits:
-            print(f"\n[{name}]...", end=" ")
+            if logger:
+                logger.info(f"[{name}]... ")
+            else:
+                print(f"\n[{name}]...", end=" ")
             try:
                 passed = audit_func()
-                print("✓ PASS" if passed else "✗ FAIL")
+                if logger:
+                    logger.success("PASS" if passed else "FAIL")
+                else:
+                    print("✓ PASS" if passed else "✗ FAIL")
                 all_passed = all_passed and passed
             except Exception as exc:
-                print(f"✗ ERROR: {exc}")
+                if logger:
+                    logger.error(f"ERROR: {exc}")
+                else:
+                    print(f"✗ ERROR: {exc}")
                 all_passed = False
 
-        print("\n" + "=" * 70)
+        emit("\n" + "=" * 70)
         if all_passed:
-            print("ALL AUDITS PASSED - Manuscript and pipeline are consistent")
+            emit("ALL AUDITS PASSED - Manuscript and pipeline are consistent")
         else:
-            print("AUDIT FAILED - Manuscript and pipeline have inconsistencies")
-            print("\nViolations:")
+            emit("AUDIT FAILED - Manuscript and pipeline have inconsistencies")
+            emit("\nViolations:")
             for index, violation in enumerate(self.violations, 1):
-                print(f"  {index}. {violation}")
-        print("=" * 70)
+                emit(f"  {index}. {violation}")
+        emit("=" * 70)
         return all_passed
 
 
 def main() -> None:
     project_root = PROJECT_ROOT
-    updated = sync_publication_artifacts(project_root)
-    if updated:
-        print("Synchronized publication artifacts:")
-        for path in updated:
-            print(f"  - {path.relative_to(project_root)}")
-    auditor = ClaimConsistencyAuditor(project_root)
-    sys.exit(0 if auditor.run_all_audits() else 1)
+    logger = StepLogger("step_027_claim_consistency_audit", project_root)
+    start = time.time()
+    status = "SUCCESS"
+    try:
+        logger.header("STEP 027: CLAIM CONSISTENCY AUDIT")
+        logger.track_dependency("step_007_tep_model", "results")
+        logger.track_dependency("step_009_variance_analysis", "results")
+        logger.track_dependency("step_026_stable_model_comparison", "results")
+        logger.track_dependency("step_039_flyby_prediction_table", "results")
+
+        updated = sync_publication_artifacts(project_root)
+        if updated:
+            logger.info("Synchronized publication artifacts:")
+            for path in updated:
+                logger.info(f"  - {path.relative_to(project_root)}")
+
+        auditor = ClaimConsistencyAuditor(project_root)
+        passed = auditor.run_all_audits(logger=logger)
+        if not passed:
+            status = "FAILED"
+            raise SystemExit(1)
+    except SystemExit as exc:
+        if int(getattr(exc, "code", 1) or 1) != 0:
+            status = "FAILED"
+        raise
+    except Exception as exc:
+        status = "FAILED"
+        logger.error(f"Unhandled exception: {exc}")
+        raise
+    finally:
+        duration = time.time() - start
+        logger.log_step_summary(duration, status=status)
+
+    sys.exit(0)
 
 
 if __name__ == "__main__":

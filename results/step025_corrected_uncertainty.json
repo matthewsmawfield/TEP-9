@@ -1,0 +1,31 @@
+{
+  "corrected_uncertainty_budget": {
+    "statistical_relative_uncertainty": 0.045850731401536865,
+    "systematic_relative_uncertainty": 0.29172075688918675,
+    "heterogeneity_relative_uncertainty": 0.6253827920884052,
+    "total_relative_uncertainty": 0.6915973729059021,
+    "variance_contributions": {
+      "statistical": 0.00439527310781896,
+      "systematic": 0.17792132067637062,
+      "heterogeneity": 0.8176834062158103,
+      "total": 0.9999999999999998
+    }
+  },
+  "systematic_breakdown": {
+    "trajectory_uncertainty": 0.01,
+    "characteristic_suppression_uncertainty": 0.25,
+    "multipole_coefficient_uncertainty": 0.001,
+    "relaxation_length_uncertainty": 0.15,
+    "total_systematic": 0.29172075688918675
+  },
+  "heterogeneity_metrics": {
+    "I_squared_percent": 99.95359884226573,
+    "heterogeneity_relative_uncertainty": 0.6253827920884052
+  },
+  "resolution": {
+    "issue": "Contradiction between 0.03% and 102% claims",
+    "root_cause": "Confusion between variance contributions and total relative uncertainty",
+    "fix": "Clearly distinguish between fractional variance contributions and total relative uncertainty",
+    "interpretation": "Total uncertainty is 69.2%, with heterogeneity (81.8%) and systematic (17.8%) as dominant sources"
+  }
+}

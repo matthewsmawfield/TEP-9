@@ -1,15 +1,19 @@
 """
 Step 030: Juno 2013 Raw DSN Reanalysis - Critical Validation Test
 
-This step implements the definitive falsification test by:
+This step implements a raw-archive check by:
 1. Downloading raw TRK-2-25 (ATDF) data from NASA PDS for Juno 2013 Earth flyby
-2. Processing with MINIMAL orbit determination (no empirical accelerations)
-3. Extracting Doppler residuals around perigee passage
-4. Testing for TEP-predicted +2.25 mm/s signal
+2. Building a Doppler **pairwise-difference residual proxy** (not orbit determination)
+3. Summarizing values in a ±2 h perigee window
+4. Comparing to a TEP-predicted +2.25 mm/s scale and a ±0.08 mm/s decision threshold
 
-FALSIFICATION CRITERION:
-- If minimal OD recovers signal > 0.08 mm/s at 95% confidence: TEP validated
-- If minimal OD shows null (|Δv| < 0.08 mm/s): TEP falsified for Juno 2013
+A definitive minimal-OD pipeline (e.g. MONTE / JPL ODP-class fit with EGM-96,
+no empirical accelerations) is **not** implemented here; ``intended_minimal_od_when_bound``
+documents the target configuration for when that software is attached.
+
+FALSIFICATION CRITERION (proxy-based, same numeric gate as before):
+- If the perigee-window proxy mean exceeds 0.08 mm/s: gate reports TEP_VALIDATED
+- If below 0.08 mm/s: gate reports TEP_FALSIFIED for this proxy
 
 Data Source: NASA PDS Radio Science Node
 - Primary: https://pds-rn.jpl.nasa.gov/data/jno-e-rss-1-edr/ (Earth flyby)
@@ -98,9 +102,9 @@ class JunoDSNReanalysis:
                 },
                 {
                     'type': 'ODF (Orbit Data File)',
-                    'description': 'Processed orbit data (not minimal OD)',
+                    'description': 'Processed orbit data',
                     'url_pattern': f'{self.PDS_RN_BASE}{self.JUNO_EARTH_FLYBY_COLLECTION}{year}/{month:02d}/',
-                    'note': 'May contain pre-processed data - use TRK-2-25 for minimal OD'
+                    'note': 'May contain pre-processed data - use TRK-2-25 for raw Doppler proxy'
                 }
             ],
             'dss_stations': ['DSS-24', 'DSS-25', 'DSS-54', 'DSS-34', 'DSS-63'],
@@ -349,20 +353,18 @@ class JunoDSNReanalysis:
             
         return measurements
     
-    def apply_minimal_od(self, doppler_data: List[Dict]) -> Dict:
+    def extract_doppler_pair_residual_proxy(self, doppler_data: List[Dict]) -> Dict:
         """
-        Apply minimal orbit determination to extract velocity residuals.
-        
-        MINIMAL OD CONFIGURATION (per falsification test requirements):
-        - Gravity field: EGM-96 (10×10 only) - reduced fidelity
-        - Empirical accelerations: DISABLED - no signal absorption
-        - Outlier rejection: Disabled or 5σ threshold - preserve perigee anomalies
-        - Doppler smoothing: Raw (no averaging) - preserve sharp signals
-        - Estimation: Initial state (6 params) + SRP coefficient (1 param) only
-        
-        This is designed to preserve TEP signals that standard OD would absorb.
+        Build a per-station Doppler pairwise-difference proxy in mm/s.
+
+        This is **not** orbit determination: there is no batch least-squares state
+        estimate, no force model, and no rigorously defined post-fit residual.
+        Real minimal-OD residuals require MONTE, JPL ODP, or equivalent.
+
+        ``intended_minimal_od_when_bound`` lists the configuration a future OD
+        bind should implement for falsification-grade comparison.
         """
-        self.logger.subsection("Applying Minimal Orbit Determination")
+        self.logger.subsection("Doppler pair residual proxy (not orbit determination)")
         
         if not doppler_data:
             return {
@@ -371,9 +373,6 @@ class JunoDSNReanalysis:
             }
         
         self.logger.info(f"Input: {len(doppler_data)} raw Doppler measurements")
-        
-        # Minimal OD simulation (simplified - full implementation needs OD software)
-        # In practice, this would interface with JPL ODP or MONTE
         
         # Group by station
         stations = {}
@@ -385,26 +384,19 @@ class JunoDSNReanalysis:
         
         self.logger.info(f"Data from {len(stations)} stations: {list(stations.keys())}")
         
-        # Simulate minimal OD residuals
-        # In minimal OD, the raw signal is expected minus small model errors
-        
         residuals = []
         
         for station_name, station_data in stations.items():
-            # Sort by time
             station_data_sorted = sorted(station_data, 
                                        key=lambda x: x.get('timestamp', ''))
             
-            # Compute simple differences (simulating residual extraction)
             for i in range(1, len(station_data_sorted)):
                 prev = station_data_sorted[i-1]
                 curr = station_data_sorted[i]
                 
                 if 'doppler_hz' in prev and 'doppler_hz' in curr:
-                    # Doppler difference (Hz)
                     doppler_diff = curr['doppler_hz'] - prev['doppler_hz']
                     
-                    # Convert to velocity (approximate: Δv ≈ c * Δf/f)
                     if 'frequency_hz' in curr:
                         freq = curr['frequency_hz']
                         c = 299792458  # m/s
@@ -417,23 +409,28 @@ class JunoDSNReanalysis:
                             'velocity_mm_s': velocity_mm_s
                         })
         
-        self.logger.info(f"Computed {len(residuals)} residual points")
+        self.logger.info(f"Computed {len(residuals)} pairwise-difference points")
         
-        # Analyze perigee passage
         perigee_residuals = self._analyze_perigee_passage(residuals)
         
         return {
             'status': 'success',
+            'analysis_method': 'doppler_pair_residual_proxy',
+            'analysis_method_note': (
+                'Sequential per-station ΔDoppler converted with Δv ≈ c Δf/f; '
+                'not post-fit OD residuals.'
+            ),
             'n_stations': len(stations),
             'n_residuals': len(residuals),
             'perigee_analysis': perigee_residuals,
-            'minimal_od_config': {
+            'intended_minimal_od_when_bound': {
                 'gravity_field': 'EGM-96 (10×10)',
                 'empirical_accelerations': 'DISABLED',
-                'outlier_rejection': 'Disabled',
+                'outlier_rejection': 'Disabled or 5σ (document in OD run)',
                 'doppler_smoothing': 'Raw',
-                'estimation_params': 'Initial state + SRP only'
-            }
+                'estimation_params': 'Initial state (6) + SRP (1)',
+                'software_class': 'MONTE / JPL ODP-class batch least squares',
+            },
         }
     
     def _analyze_perigee_passage(self, residuals: List[Dict]) -> Dict:
@@ -479,19 +476,23 @@ class JunoDSNReanalysis:
             'message': 'No perigee residuals computed'
         }
     
-    def compute_falsification_test(self, od_results: Dict) -> Dict:
+    def compute_falsification_test(self, proxy_results: Dict) -> Dict:
         """
-        Compute the definitive falsification test result.
-        
-        Compares minimal OD result against falsification threshold.
+        Gate the perigee-window Doppler proxy statistic against the falsification threshold.
+
+        This uses ``proxy_results['perigee_analysis']`` from
+        :meth:`extract_doppler_pair_residual_proxy`; it does not substitute
+        for a full minimal-OD residual time series.
         """
         self.logger.subsection("FALSIFICATION TEST RESULT")
         
-        perigee = od_results.get('perigee_analysis', {})
+        perigee = proxy_results.get('perigee_analysis', {})
+        basis = proxy_results.get('analysis_method', 'unknown')
         
         if 'mean_velocity_mm_s' not in perigee:
             return {
                 'status': 'inconclusive',
+                'analysis_basis': basis,
                 'reason': 'No perigee velocity measurement available',
                 'recommendation': 'Check data quality and reprocess'
             }
@@ -506,13 +507,16 @@ class JunoDSNReanalysis:
         if abs(measured_v) < self.FALSIFICATION_THRESHOLD:
             result = {
                 'status': 'TEP_FALSIFIED',
+                'analysis_basis': basis,
                 'conclusion': (
                     f'Measured |Δv| = {abs(measured_v):.3f} mm/s < '
                     f'falsification threshold ({self.FALSIFICATION_THRESHOLD:.3f} mm/s)'
                 ),
                 'interpretation': (
-                    'TEP model predicts +2.25 mm/s but minimal OD shows no signal. '
-                    'The Juno 2013 null result is genuine, not an OD artifact.'
+                    'TEP model predicts +2.25 mm/s at the literature scale, but the '
+                    'Doppler pair residual proxy shows no excess in the perigee window '
+                    'above the gate. Interpretation requires a full minimal-OD residual '
+                    'chain to separate navigation physics from this crude statistic.'
                 ),
                 'measured_velocity_mm_s': float(measured_v),
                 'falsification_threshold_mm_s': self.FALSIFICATION_THRESHOLD,
@@ -522,13 +526,15 @@ class JunoDSNReanalysis:
         else:
             result = {
                 'status': 'TEP_VALIDATED',
+                'analysis_basis': basis,
                 'conclusion': (
                     f'Measured |Δv| = {abs(measured_v):.3f} mm/s > '
                     f'falsification threshold ({self.FALSIFICATION_THRESHOLD:.3f} mm/s)'
                 ),
                 'interpretation': (
-                    'Minimal OD recovers anomalous signal consistent with TEP prediction. '
-                    'The Juno 2013 null result in standard OD is due to signal absorption.'
+                    'The perigee-window Doppler proxy exceeds the nominal gate. '
+                    'This does not by itself establish minimal-OD recovery of a physical '
+                    'anomaly; attach MONTE-class residuals to claim OD-level validation.'
                 ),
                 'measured_velocity_mm_s': float(measured_v),
                 'predicted_velocity_mm_s': self.TEP_PREDICTED_SIGNAL,
@@ -569,7 +575,7 @@ class JunoDSNReanalysis:
             self.logger.error("2. Search: 'Juno Earth flyby 2013' or 'JNO-E-RSS-1-EDR'")
             self.logger.error("3. Download TRK-2-25/ATDF files for 2013-10-08 to 2013-10-10")
             self.logger.error("4. Place in: data/raw/dsn_tracking/Juno_2013/")
-            self.logger.error("5. Re-run: python scripts/steps/step_026_juno_dsn_reanalysis.py")
+            self.logger.error("5. Re-run: python scripts/steps/step_030_juno_reanalysis.py")
             self.logger.error("")
             self.logger.error("CONTACT FOR ASSISTANCE:")
             self.logger.error("  pds-rn@jpl.nasa.gov")
@@ -618,11 +624,11 @@ class JunoDSNReanalysis:
                 'files': download_result['file_paths']
             }
         
-        # Step 4: Apply minimal OD
-        od_results = self.apply_minimal_od(all_measurements)
+        # Step 4: Doppler pair residual proxy (not orbit determination)
+        proxy_results = self.extract_doppler_pair_residual_proxy(all_measurements)
         
-        # Step 5: Compute falsification test
-        falsification_result = self.compute_falsification_test(od_results)
+        # Step 5: Gate statistic vs falsification threshold
+        falsification_result = self.compute_falsification_test(proxy_results)
         
         # Compile final results
         final_results = {
@@ -639,7 +645,7 @@ class JunoDSNReanalysis:
             'download': download_result,
             'data_processing': {
                 'n_measurements': len(all_measurements),
-                'minimal_od': od_results
+                'doppler_residual_proxy_analysis': proxy_results
             },
             'falsification_test': falsification_result,
             'reviewer_response': {
@@ -678,16 +684,16 @@ def main():
         logger.warning("="*70)
         logger.warning("TEP FALSIFIED FOR JUNO 2013")
         logger.warning("="*70)
-        logger.info("The minimal OD analysis shows no TEP signal.")
-        logger.info("This contradicts the TEP prediction of +2.25 mm/s.")
+        logger.info("The Doppler pair residual proxy shows no excess at the falsification gate.")
+        logger.info("This contradicts a naive reading of the +2.25 mm/s TEP scale absent full OD residuals.")
         logger.info("The model requires revision or the heterogeneity is not OD-related.")
         
     elif results.get('falsification_test', {}).get('status') == 'TEP_VALIDATED':
         logger.success("="*70)
         logger.success("TEP VALIDATED FOR JUNO 2013")
         logger.success("="*70)
-        logger.info("The minimal OD recovers the predicted TEP signal.")
-        logger.info("The standard OD null result is due to signal absorption.")
+        logger.info("The perigee-window Doppler proxy exceeds the falsification gate threshold.")
+        logger.info("Interpret with MONTE-class minimal OD before claiming navigation-level recovery.")
         
     else:
         logger.info("="*70)

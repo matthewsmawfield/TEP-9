@@ -1,0 +1,114 @@
+{
+  "data_source": "step008_fitting_results.json (primary detections only, S/N>2)",
+  "n_primary_detections": 3,
+  "detection_names": [
+    "NEAR",
+    "Galileo_1990",
+    "Rosetta_2005"
+  ],
+  "fitted_betas": {
+    "NEAR": 0.001240600938020586,
+    "Galileo_1990": 0.0028399088482491024,
+    "Rosetta_2005": 0.000538803526776471
+  },
+  "fitted_beta_uncertainties": {
+    "NEAR": 1.2289261396934977e-06,
+    "Galileo_1990": 2.8978661716827572e-05,
+    "Rosetta_2005": 1.9736392922215054e-05
+  },
+  "beta_summary": {
+    "mean": 0.00153977110434872,
+    "std": 0.0009629463524146497,
+    "min": 0.000538803526776471,
+    "max": 0.0028399088482491024,
+    "scatter_ratio": 5.27076885565241,
+    "all_positive": true
+  },
+  "leave_one_out": {
+    "n_folds": 3,
+    "beta_loo_mean": 0.00153977110434872,
+    "beta_loo_std": 0.0004814731762073249,
+    "stability_coefficient": 0.31269139604420265,
+    "stability_assessment": "stable",
+    "sign_accuracy": 1.0,
+    "fold_results": [
+      {
+        "left_out": "NEAR",
+        "beta_loo": 0.0016893561875127867,
+        "dv_obs": 13.46,
+        "dv_pred": 16.96726727605995,
+        "residual_mm_s": -3.507267276059949,
+        "abs_error_mm_s": 3.507267276059949,
+        "rel_error_pct": 26.056963417978817,
+        "correct_sign": true
+      },
+      {
+        "left_out": "Galileo_1990",
+        "beta_loo": 0.0008897022323985285,
+        "dv_obs": 3.92,
+        "dv_pred": 1.6415014723156303,
+        "residual_mm_s": 2.27849852768437,
+        "abs_error_mm_s": 2.27849852768437,
+        "rel_error_pct": 58.12496244092781,
+        "correct_sign": true
+      },
+      {
+        "left_out": "Rosetta_2005",
+        "beta_loo": 0.0020402548931348443,
+        "dv_obs": 1.82,
+        "dv_pred": 4.94039742554312,
+        "residual_mm_s": -3.1203974255431195,
+        "abs_error_mm_s": 3.1203974255431195,
+        "rel_error_pct": 171.4504079968747,
+        "correct_sign": true
+      }
+    ]
+  },
+  "bootstrap": {
+    "n_bootstrap": 10000,
+    "n_valid_samples": 10000,
+    "beta_mean": 0.0015409487180889994,
+    "beta_median": 0.0015369074418501746,
+    "beta_std": 0.0005578517858265657,
+    "ci_68": [
+      0.0009992687781542485,
+      0.0020931860416164515
+    ],
+    "ci_95": [
+      0.000542655479003151,
+      0.002833749607626803
+    ]
+  },
+  "altitude_stratified": {
+    "low_altitude": {
+      "n_flybys": 2,
+      "beta_mean": 0.0020402548931348443,
+      "beta_median": 0.0020402548931348443,
+      "beta_range": [
+        0.001240600938020586,
+        0.0028399088482491024
+      ],
+      "members": [
+        "NEAR",
+        "Galileo_1990"
+      ]
+    },
+    "mid_altitude": {
+      "n_flybys": 1,
+      "beta_mean": 0.000538803526776471,
+      "beta_median": 0.000538803526776471,
+      "beta_range": [
+        0.000538803526776471,
+        0.000538803526776471
+      ],
+      "members": [
+        "Rosetta_2005"
+      ]
+    }
+  },
+  "summary": {
+    "n_total_flybys": 3,
+    "n_with_observations": 3,
+    "validation_status": "complete"
+  }
+}

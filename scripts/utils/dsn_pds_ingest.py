@@ -594,15 +594,19 @@ def search_collection_tracking_products(
     metadata: dict[str, Any],
     window_hours: float = 48.0,
     limit: int = 200,
-) -> tuple[list[dict[str, Any]], dict[str, int]]:
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     window_start = perigee - timedelta(hours=window_hours / 2.0)
     window_end = perigee + timedelta(hours=window_hours / 2.0)
     products: list[dict[str, Any]] = []
     seen_ids: set[str] = set()
     title_pages = 0
     member_pages = 0
+    unindexed_collections: list[str] = []
 
     for collection_lid in mission_collection_lids(mission, metadata):
+        if not _collection_is_indexed(session, collection_lid):
+            unindexed_collections.append(collection_lid)
+            continue
         title_tokens = _perigee_title_tokens(perigee, window_start, window_end)
         title_products, title_page_count = search_collection_members_by_title(
             session,
@@ -650,6 +654,7 @@ def search_collection_tracking_products(
     return products, {
         "title_search_pages": title_pages,
         "member_search_pages": member_pages,
+        "unindexed_collection_lids": unindexed_collections,
     }
 
 

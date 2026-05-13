@@ -1,0 +1,73 @@
+{
+  "n_data": 3,
+  "systematic_uncertainty_mm_s": 0.7676504171533651,
+  "log_likelihoods": {
+    "Null": -171.47830036086256,
+    "Anderson": -15.958848172372026,
+    "TEP_restricted": -6.857213714637304,
+    "TEP_flexible": -5.233449554542105
+  },
+  "fitted_parameters": {
+    "Anderson": {
+      "A": 24.994292847759873,
+      "B": -3.1777564532199425
+    },
+    "TEP_restricted": {
+      "beta": 0.0012276562280099101
+    },
+    "TEP_flexible": {
+      "beta": 6.144252209846899e-06,
+      "b_disf": 1925.883008851102,
+      "offset": 1.9407571908086836
+    }
+  },
+  "information_criteria": {
+    "Null": {
+      "AIC": 342.9566007217251,
+      "AICc": 342.9566007217251,
+      "BIC": 342.9566007217251
+    },
+    "Anderson": {
+      "AIC": 35.91769634474405,
+      "AICc": Infinity,
+      "BIC": 34.11492092208027
+    },
+    "TEP_restricted": {
+      "AIC": 15.714427429274608,
+      "AICc": 19.714427429274608,
+      "BIC": 14.813039717942717
+    },
+    "TEP_flexible": {
+      "AIC": 16.46689910908421,
+      "AICc": Infinity,
+      "BIC": 13.762735975088539
+    }
+  },
+  "bayes_factors": {
+    "Anderson_vs_Null": 5.184705528587072e+21,
+    "TEP_restricted_vs_Null": 5.184705528587072e+21,
+    "TEP_flexible_vs_Null": 5.184705528587072e+21,
+    "TEP_restricted_vs_Anderson": 15536.394798665488,
+    "delta_BIC_Anderson_vs_Null": 308.84167979964485,
+    "delta_BIC_TEP_restricted_vs_Null": 328.1435610037824,
+    "delta_BIC_TEP_flexible_vs_Null": 329.19386474663656,
+    "delta_BIC_TEP_restricted_vs_Anderson": 19.30188120413756
+  },
+  "model_selection": {
+    "best_model_BIC": "TEP_flexible",
+    "akaike_weights": {
+      "TEP_restricted": 1.0,
+      "Null": 6.439526137992592e-71
+    },
+    "interpretation": "BIC selects TEP_flexible model"
+  },
+  "pre_specified_parameters": {
+    "lambda_TEP_km": 4000,
+    "lambda_TEP_source": "GNSS atomic clock correlations (Step 016)",
+    "S_earth": 0.349,
+    "S_earth_source": "UCD saturation first-principles (Step 010)",
+    "v_trans_km_s": 16.8,
+    "v_trans_source": "TEP field equations",
+    "geometry_source": "JPL Horizons ephemerides"
+  }
+}

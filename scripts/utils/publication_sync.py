@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -29,6 +30,23 @@ def _format_signed_mm(value: float, digits: int = 2) -> str:
     if rounded > 0:
         return f"+{rounded:.{digits}f}"
     return f"{rounded:.{digits}f}"
+
+
+def _mantissa_exponent(value: float) -> Tuple[float, int]:
+    if value == 0.0:
+        return 0.0, 0
+    exp = int(math.floor(math.log10(abs(float(value)))))
+    mant = round(float(value) / (10**exp), 1)
+    return mant, exp
+
+
+def _format_bayes_factor_approx(symbol: str, value: float) -> str:
+    mant, exp = _mantissa_exponent(value)
+    return f"${symbol} \\\\approx {mant} \\\\times 10^{{{exp}}}$"
+
+
+def _format_delta_bic_approx(value: float) -> str:
+    return f"$\\\\Delta$BIC $\\\\approx {value}$"
 
 
 def load_expected_publication_values(project_root: Path) -> Dict[str, Any]:
@@ -78,6 +96,16 @@ def load_expected_publication_values(project_root: Path) -> Dict[str, Any]:
                 "delta_bic_tep_null": _round(bayes["delta_BIC_TEP_restricted_vs_Null"], 1),
                 "delta_bic_flex_null": _round(bayes["delta_BIC_TEP_flexible_vs_Null"], 1),
                 "delta_bic_tep_anderson": _round(bayes["delta_BIC_TEP_restricted_vs_Anderson"], 1),
+            },
+            "bayes_approx": {
+                "B10": _format_bayes_factor_approx("B_{10}", bayes["TEP_restricted_vs_Null"]),
+                "BA0": _format_bayes_factor_approx("B_{A0}", bayes["Anderson_vs_Null"]),
+                "Bf0": _format_bayes_factor_approx("B_{f0}", bayes["TEP_flexible_vs_Null"]),
+                "B_vs_anderson": f"$B \\\\approx {_round(bayes['TEP_restricted_vs_Anderson'], 1)}$",
+                "dBIC_tep_null": _format_delta_bic_approx(_round(bayes["delta_BIC_TEP_restricted_vs_Null"], 1)),
+                "dBIC_anderson_null": _format_delta_bic_approx(_round(bayes["delta_BIC_Anderson_vs_Null"], 1)),
+                "dBIC_flex_null": _format_delta_bic_approx(_round(bayes["delta_BIC_TEP_flexible_vs_Null"], 1)),
+                "dBIC_tep_anderson": _format_delta_bic_approx(_round(bayes["delta_BIC_TEP_restricted_vs_Anderson"], 1)),
             },
             "akaike_weight_tep": _format_percent(
                 100.0 * model["model_selection"]["akaike_weights"]["TEP_restricted"],
@@ -277,17 +305,23 @@ def _sync_step039_prose(text: str, step039: Dict[str, Any]) -> str:
 
 
 def _sync_text(text: str, expected: Dict[str, Any], step039: Dict[str, Any]) -> str:
+    text = text.replace("\x07pprox", r"\approx")
+    text = re.sub(r"\t+imes", r"\\times", text)
+    text = re.sub(r"\t+approx", r"\\approx", text)
+
     model = expected["model"]
     variance = expected["variance"]
+    bayes_approx = model.get("bayes_approx", {})
 
     replacements = [
         (r"log L = -?\d+\.\d+(?=, AIC = [\d.]+, BIC = 35\.7)", f"log L = {model['log_likelihoods']['Null']}"),
         (r"log L = -?\d+\.\d+(?=, AIC = [\d.]+, BIC = 21\.9)", f"log L = {model['log_likelihoods']['Anderson']}"),
         (r"log L = -?\d+\.\d+(?=, AIC = [\d.]+, BIC = 18\.2)", f"log L = {model['log_likelihoods']['TEP_restricted']}"),
         (r"log L = -?\d+\.\d+(?=, AIC = [\d.]+, BIC = 21\.0)", f"log L = {model['log_likelihoods']['TEP_flexible']}"),
-        (r"\$B_\{10\} = [\d.]+", f"$B_{{10}} = {model['bayes']['tep_vs_null']}"),
-        (r"\$B_\{A0\} = [\d.]+", f"$B_{{A0}} = {model['bayes']['anderson_vs_null']}"),
-        (r"against Anderson gives \$B = [\d.]+", f"against Anderson gives $B = {model['bayes']['tep_vs_anderson']}"),
+        (r"\$B_\{10\}\s*(?:=|\\approx)\s*[\de.+-]+", bayes_approx.get("B10", f"$B_{{10}} = {model['bayes']['tep_vs_null']}")),
+        (r"\$B_\{A0\}\s*(?:=|\\approx)\s*[\de.+-]+", bayes_approx.get("BA0", f"$B_{{A0}} = {model['bayes']['anderson_vs_null']}")),
+        (r"\$B_\{f0\}\s*(?:=|\\approx)\s*[\de.+-]+", bayes_approx.get("Bf0", f"$B_{{f0}} = {model['bayes']['flex_vs_null']}")),
+        (r"against Anderson gives \$B\s*(?:=|\\approx)\s*[\de.+-]+", f"against Anderson gives {bayes_approx.get('B_vs_anderson', f'$B = {model['bayes']['tep_vs_anderson']}')}"),
         (r"Akaike weight for TEP restricted is [\d.]+%", f"Akaike weight for TEP restricted is {model['akaike_weight_tep']}"),
         (r"structural proxy bundle accounts for [\d.]+%", f"structural proxy bundle accounts for {variance['structural']}"),
         (r"observational pipeline effects \(OD filter absorption and systematic uncertainties\) account for [\d.]+%", f"observational pipeline effects (OD filter absorption and systematic uncertainties) account for {variance['observational']}"),
@@ -316,17 +350,35 @@ def _sync_text(text: str, expected: Dict[str, Any], step039: Dict[str, Any]) -> 
             text,
         )
 
-    text = re.sub(r"\$B_\{10\} = [\de.+-]+", f"$B_{{10}} = {model['bayes']['tep_vs_null']}", text)
-    text = re.sub(r"\$B_\{A0\} = [\de.+-]+", f"$B_{{A0}} = {model['bayes']['anderson_vs_null']}", text)
-    text = re.sub(r"\$B_\{f0\} = [\d.]+", f"$B_{{f0}} = {model['bayes']['flex_vs_null']}", text)
+    if bayes_approx:
+        approx_token = r"(?:=|\\approx|\x07pprox)"
+        text = re.sub(rf"\$B_\{{10\}}\s*{approx_token}\s*[\de.+-]+", bayes_approx["B10"], text)
+        text = re.sub(rf"\$B_\{{A0\}}\s*{approx_token}\s*[\de.+-]+", bayes_approx["BA0"], text)
+        text = re.sub(rf"\$B_\{{f0\}}\s*{approx_token}\s*[\de.+-]+", bayes_approx["Bf0"], text)
+    else:
+        text = re.sub(r"\$B_\{10\} = [\de.+-]+", f"$B_{{10}} = {model['bayes']['tep_vs_null']}", text)
+        text = re.sub(r"\$B_\{A0\} = [\de.+-]+", f"$B_{{A0}} = {model['bayes']['anderson_vs_null']}", text)
+        text = re.sub(r"\$B_\{f0\} = [\d.]+", f"$B_{{f0}} = {model['bayes']['flex_vs_null']}", text)
+
+    if bayes_approx:
+        # Repair legacy corruption where repeated "\times 10^{...}$" fragments were appended
+        # outside the closing "$" of the Bayes-factor math segment.
+        for symbol_key, replacement in (
+            ("B_{10}", bayes_approx["B10"]),
+            ("B_{A0}", bayes_approx["BA0"]),
+            ("B_{f0}", bayes_approx["Bf0"]),
+        ):
+            pattern = rf"(\${re.escape(symbol_key)}[\s\S]*?\$)(?:\s*\\times\s*10\^\{{-?\d+\}}\$)+"
+            text = re.sub(pattern, replacement, text)
+        text = re.sub(r"\$B\s*\\approx\s*[\d.]+\$+", bayes_approx["B_vs_anderson"], text)
     text = re.sub(
         r"against Anderson gives \$B = [\d.]+",
-        f"against Anderson gives $B = {model['bayes']['tep_vs_anderson']}",
+        f"against Anderson gives {bayes_approx.get('B_vs_anderson', f'$B = {model['bayes']['tep_vs_anderson']}')}",
         text,
     )
     text = re.sub(
         r"Direct comparison of TEP restricted against Anderson gives \$B = [\d.]+",
-        f"Direct comparison of TEP restricted against Anderson gives $B = {model['bayes']['tep_vs_anderson']}",
+        f"Direct comparison of TEP restricted against Anderson gives {bayes_approx.get('B_vs_anderson', f'$B = {model['bayes']['tep_vs_anderson']}')}",
         text,
     )
     text = re.sub(
@@ -342,8 +394,24 @@ def _sync_text(text: str, expected: Dict[str, Any], step039: Dict[str, Any]) -> 
         ),
         text,
     )
+
+    def _sync_delta_bic(text_in: str, label: str, value: float) -> str:
+        pattern = rf"(<strong>{re.escape(label)}:</strong>[\s\S]*?\$\\Delta\\$BIC\s*\$\\approx\s*)[\d.]+(?=\$)"
+        return re.sub(pattern, rf"\g<1>{value}", text_in, count=1)
+
+    def _sync_delta_bic_paren(text_in: str, label: str, value: float) -> str:
+        pattern = rf"(<strong>{re.escape(label)}:</strong>[\s\S]*?\(\$\\Delta\\$BIC\s*\$\\approx\s*)[\d.]+(?=\$\))"
+        return re.sub(pattern, rf"\g<1>{value}", text_in, count=1)
+
+    for label, value in (
+        ("TEP restricted vs Null", model["bayes"]["delta_bic_tep_null"]),
+        ("Anderson vs Null", model["bayes"]["delta_bic_anderson_null"]),
+        ("TEP flexible vs Null", model["bayes"]["delta_bic_flex_null"]),
+    ):
+        text = _sync_delta_bic(text, label, value)
+        text = _sync_delta_bic_paren(text, label, value)
     def _delta_bic_replacement(value: float) -> str:
-        return "($\\Delta$BIC = " + f"{value})"
+        return _format_delta_bic_approx(value)
 
     def _replace_anderson_vs_null(_match: re.Match[str]) -> str:
         return (

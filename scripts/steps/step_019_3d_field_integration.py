@@ -1,8 +1,12 @@
 """
-Full 3D Field Integration for TEP Scalar Force
+3D field integrator diagnostics on an idealized analytic flyby path.
 
-This module implements full 3D integration of the scalar field gradient
-along flyby trajectories, replacing the simplified scalar force formula.
+This step exercises the numerical 3D gradient integration machinery and
+compares it to a simplified scalar estimate. It does **not** integrate
+along mission SPICE kernels or JPL Horizons state-vector arcs; trajectories
+are constructed analytically from catalog perigee altitude (see output
+``metadata.trajectory_source``). Do not treat ``per_flyby`` numbers as
+replacements for Step 007 predictions on real paths.
 
 The matter-frame scalar acceleration used in the EFA pipeline matches
 Step 007 / Jakarta v0.8 conformal coupling:
@@ -13,9 +17,9 @@ a_φ = β_eff c² ∇φ / M_Pl (vector form; sign from ∇φ and trajectory proj
 
 Key features:
 - Numerical field gradient calculation
-- Full trajectory integration
-- 3D density profile integration
-- Comparison with simplified formula
+- Integration along the prescribed toy 3D polyline
+- 3D density profile sampling
+- Comparison with simplified formula on the same geometry
 """
 
 import numpy as np
@@ -307,7 +311,10 @@ def main():
     
     # Process each flyby
     logger.subsection("TRAJECTORY INTEGRATION")
-    
+    logger.warning(
+        "Using idealized analytic hypoflyby paths (metadata.trajectory_source); "
+        "results are diagnostic only, not mission-true arcs."
+    )
     results = {}
     
     for name, pred in data['predictions'].items():
@@ -377,8 +384,22 @@ def main():
     results_dir.mkdir(parents=True, exist_ok=True)
     
     output_file = results_dir / 'step019_3d_field_integration_results.json'
+    output_payload = {
+        "metadata": {
+            "trajectory_source": "idealized_analytic_hypoflyby",
+            "trajectory_description": (
+                "Asymmetric approach/departure segments built from catalog perigee altitude; "
+                "not SPICE or Horizons arcs."
+            ),
+            "comparison_intent": (
+                "Compare 3D numerical integrator vs simplified estimate on identical toy geometry."
+            ),
+            "step": "019_3d_field_integration",
+        },
+        "per_flyby": results,
+    }
     with open(output_file, 'w') as f:
-        json.dump(results, f, indent=2)
+        json.dump(output_payload, f, indent=2)
     
     logger.section("SAVING RESULTS")
     logger.info(f"Results saved to: {output_file}")
