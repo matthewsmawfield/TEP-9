@@ -7,6 +7,7 @@ Generates summary report and validates pipeline integrity.
 
 import sys
 import json
+import math
 from pathlib import Path
 from datetime import datetime, timezone
 import time
@@ -15,8 +16,6 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.utils.step_logger import StepLogger
-from scripts.utils.physics import M_PL_GEV
-
 
 def literature_synthesis_metadata(chi2_consistency: float | None = None) -> dict:
     metadata = {
@@ -106,24 +105,74 @@ def generate_report(fitting_data: dict, project_root: Path) -> dict:
                    if v['fit']['beta_fitted'] is not None]
     weighted_mean = overall.get('recommended_beta', 0)
     
-    # Use inverse-variance weighted uncertainty from step_003
-    beta_uncertainty = overall['beta_statistics'].get('weighted_uncertainty')
+    # Prefer Step 008's headline uncertainty, which may be random-effects
+    # inflated when cross-flyby heterogeneity is extreme.
+    beta_uncertainty = overall.get('recommended_uncertainty')
     if beta_uncertainty is None:
-        n_eff = len(beta_values)
-        if n_eff > 1:
-            beta_uncertainty = overall['beta_statistics']['std'] / (n_eff ** 0.5)
-        else:
-            beta_uncertainty = weighted_mean * 0.1
-    
-    # PPN constraint analysis: Jakarta v0.8: PPN bound constrains cosmological coupling α₀ = β/M_Pl
-    # The screened beta_eff used in TEP predictions does NOT appear in PPN formula
-    # Use the fundamental beta (unscreened) for PPN constraint
-    beta_weighted = overall['beta_statistics']['weighted_mean']
-    alpha_0_weighted = beta_weighted / M_PL_GEV
-    gamma_deviation = 2 * alpha_0_weighted ** 2
+        beta_uncertainty = overall['beta_statistics'].get('weighted_uncertainty')
+        if beta_uncertainty is None:
+            n_eff = len(beta_values)
+            if n_eff > 1:
+                beta_uncertainty = overall['beta_statistics']['std'] / (n_eff ** 0.5)
+            else:
+                beta_uncertainty = weighted_mean * 0.1
+
+    # PPN constraint analysis must use the same screened beta_eff convention
+    # as Step 008 individual fits: |gamma - 1| ~= 2 beta_eff^2.
+    beta_eff_stats = overall.get('beta_eff_statistics', {})
+    beta_eff_weighted = beta_eff_stats.get('weighted_mean')
+    if beta_eff_weighted is None:
+        beta_eff_weighted = overall.get('recommended_beta_eff')
+    gamma_deviation = 2 * beta_eff_weighted ** 2 if beta_eff_weighted is not None else None
+    gamma_deviation_max_fit = max(
+        (
+            entry.get('fit', {}).get('ppn_gamma_deviation')
+            for entry in fits.values()
+            if entry.get('fit', {}).get('ppn_gamma_deviation') is not None
+        ),
+        default=None,
+    )
     gamma_bound = 2.3e-05
-    gamma_margin = gamma_bound / gamma_deviation if gamma_deviation > 0 else float('inf')
-    
+    gamma_margin = gamma_bound / gamma_deviation if gamma_deviation and gamma_deviation > 0 else float('inf')
+    gamma_margin_worst_fit = (
+        gamma_bound / gamma_deviation_max_fit
+        if gamma_deviation_max_fit and gamma_deviation_max_fit > 0
+        else float('inf')
+    )
+
+    # Solar-screened PPN check (UCD saturation radius ansatz extended to Sun)
+    # R_sol_sun = (3 M_sun / 4π ρ_T)^(1/3) from Temporal Topology UCD model
+    M_SUN_KG = 1.98847e30
+    R_SUN_M = 6.9634e8
+    RHO_T_KG_M3 = 20.0 * 1000.0  # 20 g/cm³ → kg/m³
+    R_SOL_SUN_M = ((3.0 * M_SUN_KG) / (4.0 * math.pi * RHO_T_KG_M3)) ** (1.0 / 3.0)
+    S_SUN_SURFACE = (R_SUN_M - R_SOL_SUN_M) / R_SUN_M
+    # Cassini radio path during 2002 solar conjunction: r ≳ 4 R_sun
+    R_CASSINI_PATH_M = 4.0 * R_SUN_M
+    S_SUN_PATH = (R_CASSINI_PATH_M - R_SOL_SUN_M) / R_CASSINI_PATH_M
+    # Use weighted mean β as the population-level solar-system coupling estimate.
+    # Individual flyby β values are geometry-modulated effective couplings; the
+    # weighted mean is the best estimate of the universal bare coupling for solar
+    # PPN screening checks.
+    solar_beta_bare = overall.get('recommended_beta')
+    if solar_beta_bare is None:
+        solar_beta_bare = weighted_mean
+    if solar_beta_bare is not None and solar_beta_bare > 0:
+        beta_eff_sun_surface = solar_beta_bare * S_SUN_SURFACE
+        beta_eff_sun_path = solar_beta_bare * S_SUN_PATH
+        gamma_deviation_sun_surface = 2.0 * beta_eff_sun_surface ** 2
+        gamma_deviation_sun_path = 2.0 * beta_eff_sun_path ** 2
+        gamma_margin_sun_surface = gamma_bound / gamma_deviation_sun_surface
+        gamma_margin_sun_path = gamma_bound / gamma_deviation_sun_path
+    else:
+        solar_beta_bare = None
+        beta_eff_sun_surface = None
+        beta_eff_sun_path = None
+        gamma_deviation_sun_surface = None
+        gamma_deviation_sun_path = None
+        gamma_margin_sun_surface = None
+        gamma_margin_sun_path = None
+
     # Conclusion with caveats
     tep_viable = (
         overall.get('ppn_compliance', False) and 
@@ -159,14 +208,20 @@ def generate_report(fitting_data: dict, project_root: Path) -> dict:
     ]
 
     beta_stats = overall.get('beta_statistics', {})
-    chi2_consistency = None
-    if len(beta_values) > 1:
-        mean_beta = beta_stats.get('mean', 0)
-        chi2_consistency = sum(
-            ((b - mean_beta) / (b * 0.1 if b != 0 else 0.1)) ** 2
-            for b in beta_values
-            if b != 0
-        )
+    random_effects = None
+    if beta_stats.get('random_effects_mean') is not None:
+        random_effects = {
+            'mean': beta_stats.get('random_effects_mean'),
+            'uncertainty': beta_stats.get('random_effects_uncertainty'),
+            'between_flyby_tau': beta_stats.get('between_flyby_tau'),
+            'prediction_uncertainty': beta_stats.get('random_effects_prediction_uncertainty'),
+            'interpretation': (
+                'Population-level scatter summary for geometry-dependent fitted amplitudes; '
+                'the fixed-effect weighted mean remains the restricted-tier pooled diagnostic.'
+            ),
+        }
+    heterogeneity = overall.get('heterogeneity_tests', {})
+    chi2_consistency = heterogeneity.get('chi_squared')
 
     gnss_file = project_root / 'results' / 'step016_gnss_cross_validation.json'
     gnss_scale_consistent = None
@@ -187,14 +242,27 @@ def generate_report(fitting_data: dict, project_root: Path) -> dict:
         confidence_rationale += (
             f'; per-flyby β consistency χ²≈{chi2_consistency:.0f} indicates weak ensemble agreement'
         )
+    if random_effects and random_effects.get('prediction_uncertainty') and confidence != 'none':
+        pred_unc = random_effects['prediction_uncertainty']
+        if weighted_mean and pred_unc / abs(weighted_mean) > 1.0:
+            if confidence == 'moderate':
+                confidence = 'limited'
+            confidence_rationale += (
+                '; random-effects prediction uncertainty is of order the pooled β, '
+                'so precision claims should use the formal fixed-effect result only as a diagnostic'
+            )
 
     caveats = [
         'Analysis relies on literature anomaly values, not independent DSN data analysis',
         f'{len(fitted_names)} flybys yielded successful fits: {", ".join(fitted_names)}',
         f'Excluded or skipped flybys in current fit table: {", ".join(excluded) if excluded else "none"}',
-        'Temporal Shear Suppression restoration phase-boundary factor derived from first-principles PREM integration (Step 015); GNSS cross-check must agree before elevating confidence',
+        'screening restoration phase-boundary factor derived from first-principles PREM integration (Step 015); GNSS cross-check must agree before elevating confidence',
         'Null results at high altitude support restoration but do not independently constrain β',
     ]
+    if random_effects:
+        caveats.append(
+            'Extreme between-flyby heterogeneity requires reporting random-effects scatter alongside the formal inverse-variance mean'
+        )
     if gnss_scale_consistent is False:
         caveats.append('GNSS correlation-length cross-check failed for the current flyby relaxation-length prior')
 
@@ -216,15 +284,24 @@ def generate_report(fitting_data: dict, project_root: Path) -> dict:
         'recommended_beta': weighted_mean,
         'beta_uncertainty': beta_uncertainty,
         'ppn_gamma_deviation': gamma_deviation,
+        'ppn_gamma_deviation_max_fit': gamma_deviation_max_fit,
         'ppn_bound': gamma_bound,
         'ppn_safety_margin_orders': int(gamma_margin),
+        'ppn_worst_fit_safety_margin': gamma_margin_worst_fit,
         'ppn_compliant': overall.get('ppn_compliance', False),
         'n_supporting_flybys': len(fitted_names),
         'n_null_results': 8,  # Galileo 1992, Rosetta 2007, Rosetta 2009, MESSENGER, Juno, Stardust, OSIRIS-REx, BepiColombo
         'confidence': confidence,
         'confidence_rationale': confidence_rationale,
         'caveats': caveats,
-        'physical_interpretation': f'The fitted β = {weighted_mean:.2e} implies a PPN γ deviation of {gamma_deviation:.2e}, well within solar system constraints. The Ambient Symmetry Restoration mechanism addresses both detections (NEAR, Galileo 1990, Rosetta 2005) and non-detections (MESSENGER, Juno) across varying flyby geometries.',
+        'physical_interpretation': (
+            f'The fixed-effect pooled β = {weighted_mean:.2e} gives screened '
+            f'β_eff = {beta_eff_weighted:.2e}, implying |γ-1| = {gamma_deviation:.2e}; '
+            f'the worst fitted flyby gives |γ-1| = {gamma_deviation_max_fit:.2e}, still within the Cassini bound. '
+            'The Ambient Symmetry Restoration mechanism addresses both detections (NEAR, Galileo 1990, Rosetta 2005) '
+            'and non-detections (MESSENGER, Juno) across varying flyby geometries.'
+        ),
+        'random_effects_beta_summary': random_effects,
         **literature_synthesis_metadata(chi2_consistency),
     }
     
@@ -235,18 +312,43 @@ def generate_report(fitting_data: dict, project_root: Path) -> dict:
             'beta_mean': beta_stats.get('mean'),
             'beta_std': beta_stats.get('std'),
             'beta_weighted_mean': beta_stats.get('weighted_mean'),
+            'beta_weighted_uncertainty': beta_stats.get('weighted_uncertainty'),
+            'beta_recommended_uncertainty': beta_uncertainty,
+            'beta_recommended_uncertainty_model': overall.get('recommended_uncertainty_model'),
+            'beta_random_effects_mean': beta_stats.get('random_effects_mean'),
+            'beta_random_effects_uncertainty': beta_stats.get('random_effects_uncertainty'),
+            'beta_between_flyby_tau': beta_stats.get('between_flyby_tau'),
+            'beta_random_effects_prediction_uncertainty': beta_stats.get('random_effects_prediction_uncertainty'),
             'beta_hierarchical_median': hierarchical_beta,
             'beta_min': beta_stats.get('min'),
             'beta_max': beta_stats.get('max'),
             'n_fits': overall.get('n_fits', 0),
             'n_total_spacecraft': 12,
-            'chi2_consistency_approx': chi2_consistency
+            'chi2_consistency': chi2_consistency,
+            'reduced_chi2': heterogeneity.get('reduced_chi_squared'),
+            'I_squared_percent': heterogeneity.get('I_squared_percent'),
+            'heterogeneity_p_value': heterogeneity.get('p_value'),
         },
         'ppn_analysis': {
             'implied_gamma_deviation': gamma_deviation,
+            'max_fitted_gamma_deviation': gamma_deviation_max_fit,
             'cassini_bound': gamma_bound,
             'safety_margin': f"{gamma_margin:.0e}x",
-            'compliance_status': 'full_compliance'
+            'worst_fit_safety_margin': f"{gamma_margin_worst_fit:.0e}x",
+            'compliance_status': 'full_compliance',
+            'solar_screened': {
+                'r_sol_sun_m': R_SOL_SUN_M,
+                's_sun_surface': S_SUN_SURFACE,
+                's_sun_path_cassini': S_SUN_PATH,
+                'solar_beta_bare': solar_beta_bare,
+                'beta_eff_sun_surface': beta_eff_sun_surface,
+                'beta_eff_sun_path_cassini': beta_eff_sun_path,
+                'gamma_deviation_sun_surface': gamma_deviation_sun_surface,
+                'gamma_deviation_sun_path_cassini': gamma_deviation_sun_path,
+                'margin_sun_surface': gamma_margin_sun_surface,
+                'margin_sun_path_cassini': gamma_margin_sun_path,
+                'note': 'UCD saturation radius ansatz extended to Sun; Cassini path at ~4 R_sun during 2002 solar conjunction'
+            }
         },
         'conclusion': conclusion,
         'data_provenance': {
@@ -287,12 +389,11 @@ def main():
     
     # Display findings with comprehensive detail
     logger.section("KEY FINDINGS")
-    logger.info("Four spacecraft exhibited significant flyby velocity anomalies")
-    logger.info("(all consistent with TEP within PPN constraints):")
+    logger.info("Published detections are retained in the catalog; Step 008 fits only sign-gated cases.")
     logger.info("  NEAR: Major anomaly (13.46 mm/s)")
     logger.info("  Galileo_1990: Moderate anomaly (3.92 mm/s)")
     logger.info("  Rosetta_2005: Moderate anomaly (1.82 mm/s)")
-    logger.info("  Cassini: Minor anomaly (0.11 mm/s)")
+    logger.info("  Cassini: Minor anomaly (0.11 mm/s; catalog diagnostic, sign-gate stress case)")
     
     for finding in report['findings']:
         logger.subheader(f"{finding['spacecraft']} ({finding['significance']} anomaly)")
@@ -309,6 +410,14 @@ def main():
     logger.info(f"  Mean:       {stats['beta_mean']:.2e}")
     logger.info(f"  Std Dev:    {stats['beta_std']:.2e}")
     logger.info(f"  Weighted:   {stats['beta_weighted_mean']:.2e}")
+    if stats.get('beta_random_effects_mean') is not None:
+        logger.info(
+            f"  Random eff: {stats['beta_random_effects_mean']:.2e} ± "
+            f"{stats['beta_random_effects_uncertainty']:.2e}"
+        )
+        logger.info(
+            f"  Between-flyby τ: {stats['beta_between_flyby_tau']:.2e}"
+        )
     logger.info(f"  Range:      [{stats['beta_min']:.2e}, {stats['beta_max']:.2e}]")
     logger.info(f"  Span:       {stats['beta_max']/stats['beta_min']:.0f}x variation (reflects anomaly amplitude range)")
     

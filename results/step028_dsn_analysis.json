@@ -1,6 +1,6 @@
 {
-  "status": "NO_DATA_AVAILABLE",
-  "message": "Raw DSN data must be downloaded from NASA PDS first",
+  "status": "LOCAL_NJPL_OUTSIDE_PERIGEE_WINDOW",
+  "message": "NJPL TRK-2-34 on disk but no archive overlaps perigee window; perigee-matched PDS ingest still required",
   "note": "DSN data is external and not included in repository",
   "available_missions_checked": 8,
   "missions_processed": 0,
@@ -19,7 +19,18 @@
         ],
         "title_search_pages": 6,
         "member_search_pages": 1,
-        "unindexed_collection_lids": []
+        "unindexed_collection_lids": [],
+        "exhaustive_lid_searches": [
+          {
+            "lid_root": "urn:nasa:pds:near_rss_raw:data_odf:",
+            "exhaustive_lid_root": "urn:nasa:pds:near_rss_raw:data_odf:",
+            "exhaustive_charset_size": 16,
+            "exhaustive_api_calls": 33,
+            "exhaustive_unique_products": 188,
+            "exhaustive_cap_hit": false,
+            "exhaustive_root_hits": 188
+          }
+        ]
       },
       "status": "no_indexed_products"
     },
@@ -41,13 +52,14 @@
         "unindexed_collection_lids": [
           "urn:nasa:pds:go-j-rss-1-edr::1.0",
           "urn:nasa:pds:go-j-rss-2-edr::1.0"
-        ]
+        ],
+        "exhaustive_lid_searches": []
       },
       "status": "no_indexed_products"
     },
     "Galileo_1992": {
       "mission": "Galileo_1992",
-      "perigee_utc": "1992-12-08T18:00:00+00:00",
+      "perigee_utc": "1992-12-08T15:09:00+00:00",
       "window_hours": 48.0,
       "pds_search_api": "https://pds.mcp.nasa.gov/api/search/1/products",
       "metadata_source": "data/raw/dsn_tracking/Galileo_1992/metadata.json",
@@ -63,7 +75,8 @@
         "unindexed_collection_lids": [
           "urn:nasa:pds:go-j-rss-1-edr::1.0",
           "urn:nasa:pds:go-j-rss-2-edr::1.0"
-        ]
+        ],
+        "exhaustive_lid_searches": []
       },
       "status": "no_indexed_products"
     },
@@ -85,7 +98,8 @@
         "unindexed_collection_lids": [
           "urn:nasa:pds:co-rss-1-edr::1.0",
           "urn:nasa:pds:co-rss-2-edr::1.0"
-        ]
+        ],
+        "exhaustive_lid_searches": []
       },
       "status": "no_indexed_products"
     },
@@ -103,7 +117,19 @@
         ],
         "title_search_pages": 6,
         "member_search_pages": 1,
-        "unindexed_collection_lids": []
+        "unindexed_collection_lids": [],
+        "exhaustive_lid_searches": [
+          {
+            "lid_root": "urn:nasa:pds:mess-rs-raw:data-tnf:",
+            "exhaustive_lid_root": "urn:nasa:pds:mess-rs-raw:data-tnf:",
+            "exhaustive_charset_size": 37,
+            "exhaustive_api_calls": 1,
+            "exhaustive_unique_products": 0,
+            "exhaustive_cap_hit": false,
+            "exhaustive_root_hits": 3924,
+            "exhaustive_skipped_due_to_hit_count": 3924
+          }
+        ]
       },
       "status": "no_indexed_products"
     },
@@ -125,9 +151,32 @@
         "unindexed_collection_lids": [
           "urn:nasa:pds:jno-e-rss-1-edr::1.0",
           "urn:nasa:pds:jno-j-rss-1-edr::1.0"
-        ]
+        ],
+        "exhaustive_lid_searches": []
       },
-      "status": "no_indexed_products"
+      "status": "no_indexed_products_local_njpl_verified",
+      "local_njpl_trk234_artifacts": [
+        {
+          "path": "data/raw/dsn_tracking/Juno_2013/NASA_PDS/GRV_OCRU_2015041_0310X25MC001V01.TNF",
+          "bytes": 66491124,
+          "format_magic": "NJPL",
+          "note": "Verified on disk; TRK-2-34 SFDU archive (not from PDS API ingest row).",
+          "lbl_start_utc": "2015-02-10T03:10:30+00:00",
+          "lbl_stop_utc": "2015-02-10T13:24:49+00:00",
+          "overlaps_perigee_window": false
+        }
+      ],
+      "atmospheres_index_probe": {
+        "index_url": "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/TNF/",
+        "status": "complete",
+        "tnf_listed": 16,
+        "lbl_scanned": 16,
+        "perigee_window_overlaps": 0,
+        "overlap_candidates": [],
+        "perigee_utc": "2013-10-09T19:21:00+00:00",
+        "window_utc": "2013-10-08T19:21:00+00:00 to 2013-10-10T19:21:00+00:00",
+        "interpretation": "jnogrv_0001 OCRU volume is outer-cruise; perigee-window TNFs are rare. Zero overlaps is expected unless Earth-phase JNO-E-RSS products are ingested separately."
+      }
     },
     "Rosetta_2005": {
       "mission": "Rosetta_2005",
@@ -141,10 +190,41 @@
         "collection_lids": [],
         "title_search_pages": 0,
         "member_search_pages": 0,
-        "unindexed_collection_lids": []
+        "unindexed_collection_lids": [],
+        "exhaustive_lid_searches": []
+      },
+      "status": "no_indexed_products"
+    },
+    "Stardust_2001": {
+      "mission": "Stardust_2001",
+      "perigee_utc": "2001-01-15T11:14:00+00:00",
+      "window_hours": 48.0,
+      "pds_search_api": "https://pds.mcp.nasa.gov/api/search/1/products",
+      "metadata_source": "data/raw/dsn_tracking/Stardust_2001/metadata.json",
+      "downloads": [],
+      "candidate_products": [],
+      "search_diagnostics": {
+        "collection_lids": [],
+        "title_search_pages": 0,
+        "member_search_pages": 0,
+        "unindexed_collection_lids": [],
+        "exhaustive_lid_searches": []
       },
       "status": "no_indexed_products"
     }
+  },
+  "local_njpl_trk234_artifacts": {
+    "Juno_2013": [
+      {
+        "path": "data/raw/dsn_tracking/Juno_2013/NASA_PDS/GRV_OCRU_2015041_0310X25MC001V01.TNF",
+        "bytes": 66491124,
+        "format_magic": "NJPL",
+        "note": "Verified on disk; TRK-2-34 SFDU archive (not from PDS API ingest row).",
+        "lbl_start_utc": "2015-02-10T03:10:30+00:00",
+        "lbl_stop_utc": "2015-02-10T13:24:49+00:00",
+        "overlaps_perigee_window": false
+      }
+    ]
   },
   "parsing_failures": {}
 }

@@ -55,7 +55,7 @@ class JPLHorizonsQuery:
     def fetch(self, qfname):
         """Fetch data from the JPL/Horizons server, using query parameters from file"""
         query = self.compose(qfname)
-        req = requests.get(self._url, params=self._pfx + query, timeout=30)
+        req = requests.get(self._url, params=self._pfx + query, timeout=120)
 
         if req.status_code != 200:
             raise QueryError("Unexpected response status: {}".format(req.status_code))

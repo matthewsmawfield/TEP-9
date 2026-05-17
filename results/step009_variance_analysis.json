@@ -8,62 +8,217 @@
   "derivation": "Variance decomposition analysis of fitted beta heterogeneity; \u00b150% uncertainty accounts for systematic uncertainty in parameter estimation and model assumptions",
   "recommended_action": "Validate with independent analysis and larger sample size",
   "step": "009_variance_analysis",
-  "timestamp": "2026-05-13T08:57:40.472204+00:00",
+  "timestamp": "2026-05-17T09:30:10.047688+00:00",
   "variance_decomposition": {
-    "total_variance_log10": 0.08685069378460035,
+    "status": "underpowered_for_variance_partition",
+    "warning": "With n=4 valid fits and n_sign_gated=3, formal variance decomposition is statistically meaningless. The standard error on sample variance with ddof=1 exceeds 100% of the estimate for n < 5. The analysis below uses deterministic geometry modulation across the full catalog instead.",
+    "n_valid_fits": 4,
+    "n_sign_gated": 3,
+    "variance_methodology": {
+      "note": "Formal variance decomposition (ANOVA-style partitioning) requires n >= 10 for reliable statistical power. The current dataset (n=4 fits, n_sign_gated=3) is insufficient. We replace the decomposition with a deterministic geometry modulation analysis that uses all n=12 catalogued flybys.",
+      "legacy_stage_fractions": "DEPRECATED. Do not use for manuscript inference."
+    },
+    "beta_scatter": {
+      "n_fits": 4,
+      "n_sign_gated": 3,
+      "beta_span": 5.275878781745436,
+      "beta_min": 0.0010102428095147484,
+      "beta_max": 0.005329918603129757,
+      "log_mean": -2.686053589457508,
+      "log_std": 0.30148636423660613,
+      "note": "The TEP prediction (Step 007) already includes the geometry envelope, so beta_fitted is the coupling required to match the observed anomaly after geometry, plasma, J2, and disformal modulation have been accounted for. Residual scatter in beta_fitted therefore reflects genuine coupling heterogeneity or model incompleteness, not unmodeled geometry. With n <= 4, this scatter cannot be decomposed into structural, observational, or environmental components with any statistical reliability.",
+      "per_mission": [
+        {
+          "mission": "NEAR",
+          "beta_fitted": 0.0017305147756031074,
+          "beta_uncertainty": 1.7142295944557774e-06,
+          "sign_agreement": true
+        },
+        {
+          "mission": "Galileo_1990",
+          "beta_fitted": 0.005329918603129757,
+          "beta_uncertainty": 5.438692452173221e-05,
+          "sign_agreement": true
+        },
+        {
+          "mission": "Cassini",
+          "beta_fitted": 0.0019340334704831914,
+          "beta_uncertainty": 0.0011721414972625402,
+          "sign_agreement": false
+        },
+        {
+          "mission": "Rosetta_2005",
+          "beta_fitted": 0.0010102428095147484,
+          "beta_uncertainty": 3.7005231117756344e-05,
+          "sign_agreement": true
+        }
+      ]
+    },
+    "detection_pattern": {
+      "n_total": 12,
+      "true_positives": 1,
+      "true_negatives": 8,
+      "false_negatives": 3,
+      "false_positives": 0,
+      "classification_accuracy": 0.75,
+      "catalog": [
+        {
+          "mission": "NEAR",
+          "dv_pred_mm_s": 1.586403195722739,
+          "dv_obs_mm_s": 13.46,
+          "sigma_mm_s": 0.01,
+          "predicted_detected": true,
+          "observed_detected": true,
+          "category": "true_positive"
+        },
+        {
+          "mission": "Galileo_1990",
+          "dv_pred_mm_s": 0.1987218559225848,
+          "dv_obs_mm_s": 3.92,
+          "sigma_mm_s": 0.03,
+          "predicted_detected": false,
+          "observed_detected": true,
+          "category": "false_negative"
+        },
+        {
+          "mission": "Cassini",
+          "dv_pred_mm_s": -0.011927370112788957,
+          "dv_obs_mm_s": 0.11,
+          "sigma_mm_s": 0.05,
+          "predicted_detected": false,
+          "observed_detected": true,
+          "category": "false_negative"
+        },
+        {
+          "mission": "Galileo_1992",
+          "dv_pred_mm_s": 0.0002782606561873544,
+          "dv_obs_mm_s": 0.0,
+          "sigma_mm_s": 0.05,
+          "predicted_detected": false,
+          "observed_detected": false,
+          "category": "true_negative"
+        },
+        {
+          "mission": "Rosetta_2005",
+          "dv_pred_mm_s": 0.321182638866365,
+          "dv_obs_mm_s": 1.82,
+          "sigma_mm_s": 0.05,
+          "predicted_detected": false,
+          "observed_detected": true,
+          "category": "false_negative"
+        },
+        {
+          "mission": "Rosetta_2007",
+          "dv_pred_mm_s": 6.762895846310001e-05,
+          "dv_obs_mm_s": 0.02,
+          "sigma_mm_s": 0.05,
+          "predicted_detected": false,
+          "observed_detected": false,
+          "category": "true_negative"
+        },
+        {
+          "mission": "Rosetta_2009",
+          "dv_pred_mm_s": 0.0012001144942585659,
+          "dv_obs_mm_s": 0.0,
+          "sigma_mm_s": 0.05,
+          "predicted_detected": false,
+          "observed_detected": false,
+          "category": "true_negative"
+        },
+        {
+          "mission": "MESSENGER_2005",
+          "dv_pred_mm_s": 4.2870208980271865e-07,
+          "dv_obs_mm_s": 0.0,
+          "sigma_mm_s": 0.05,
+          "predicted_detected": false,
+          "observed_detected": false,
+          "category": "true_negative"
+        },
+        {
+          "mission": "Juno",
+          "dv_pred_mm_s": 0.01316795791180281,
+          "dv_obs_mm_s": 0.0,
+          "sigma_mm_s": 0.02,
+          "predicted_detected": false,
+          "observed_detected": false,
+          "category": "true_negative"
+        },
+        {
+          "mission": "Stardust",
+          "dv_pred_mm_s": -0.0003350289101257082,
+          "dv_obs_mm_s": 0.0,
+          "sigma_mm_s": 0.05,
+          "predicted_detected": false,
+          "observed_detected": false,
+          "category": "true_negative"
+        },
+        {
+          "mission": "OSIRIS-REx",
+          "dv_pred_mm_s": 2.1460540362927517e-06,
+          "dv_obs_mm_s": 0.0,
+          "sigma_mm_s": 0.02,
+          "predicted_detected": false,
+          "observed_detected": false,
+          "category": "true_negative"
+        },
+        {
+          "mission": "BepiColombo",
+          "dv_pred_mm_s": -3.475335833742982e-07,
+          "dv_obs_mm_s": 0.0,
+          "sigma_mm_s": 0.03,
+          "predicted_detected": false,
+          "observed_detected": false,
+          "category": "true_negative"
+        }
+      ]
+    },
+    "rank_correlation": {
+      "spearman_r": 0.7252137165212658,
+      "spearman_p": 0.0076077456298081995,
+      "pearson_r_log": 0.7217600091919062,
+      "pearson_p_log": 0.00804617673464389,
+      "n_catalog": 12
+    },
     "stages": {
       "stage1_structural": {
         "name": "Structural Physics Modulation",
-        "explained_fraction": 0.1294697780893317,
-        "explained_percent": 12.94697780893317,
-        "components": [
-          "inclination",
-          "j2_oblateness",
-          "plasma_density",
-          "velocity_disformal"
-        ]
+        "explained_fraction": null,
+        "explained_percent": null,
+        "status": "underpowered",
+        "note": "Use beta_scatter and detection_pattern instead"
       },
       "stage2_observational": {
         "name": "Observational Pipeline Effects",
-        "explained_fraction": 0.0,
-        "explained_percent": 0.0,
-        "components": [
-          "od_filter_absorption",
-          "systematic_uncertainties",
-          "measurement_noise"
-        ],
-        "od_suppression_percent": 0.0
+        "explained_fraction": null,
+        "explained_percent": null,
+        "status": "underpowered",
+        "note": "Use detection_pattern.classification_accuracy instead"
       },
       "stage3_environmental": {
         "name": "Environmental Modulation",
-        "explained_fraction": 0.0,
-        "explained_percent": 0.0,
-        "components": [
-          "solar_activity_f10.7",
-          "space_weather_kp",
-          "temporal_variation"
-        ],
-        "f10.7_correlation": 0.0,
-        "f10.7_p_value": null
+        "explained_fraction": null,
+        "explained_percent": null,
+        "status": "underpowered",
+        "f10.7_correlation": 0.7495462181531118,
+        "f10.7_p_value": 0.25045378184688816,
+        "note": "Use rank_correlation instead"
       },
       "stage4_residual": {
         "name": "Statistical + Unmodeled",
-        "explained_fraction": 0.8705302219106683,
-        "explained_percent": 87.05302219106683,
-        "components": [
-          "small_sample_n4",
-          "intrinsic_scatter",
-          "model_incompleteness"
-        ]
+        "explained_fraction": null,
+        "explained_percent": null,
+        "n_valid_fits": 4,
+        "status": "underpowered",
+        "note": "Formal residual partitioning requires n >= 10"
       }
     },
-    "cumulative_explained": 0.1294697780893317
+    "cumulative_explained": null
   },
   "mission_analysis": {
     "NEAR": {
-      "beta_fitted": 0.001240600938020586,
-      "beta_eff": 0.00043326590599526043,
-      "beta_uncertainty": 1.2289261396934977e-06,
+      "beta_fitted": 0.0017305147756031074,
+      "beta_eff": 0.0006043627963768504,
+      "beta_uncertainty": 1.7142295944557774e-06,
       "physical_parameters": {
         "altitude_km": 567.9,
         "perigee_latitude_deg": 0.0,
@@ -73,22 +228,23 @@
         "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
       },
       "stage1_structural_factors": {
-        "f_inclination": 1.0,
-        "f_j2": 0.5664082642611574,
-        "f_plasma": 0.621639555729272,
+        "f_inclination": 1.080657062017727,
+        "f_j2": 0.7525153076184323,
+        "f_plasma": 0.6493301747624005,
         "f_velocity": 1.0,
-        "f_total_structural": 0.352101781756694
+        "f_total_structural": 0.5280424287064245,
+        "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
-        "F107_flux": 0,
-        "Kp_index": 0,
-        "P_env_proxy": 0
+        "F107_flux": 96.9,
+        "Kp_index": 67.0,
+        "P_env_proxy": 161.823
       }
     },
     "Galileo_1990": {
-      "beta_fitted": 0.0028399088482491024,
-      "beta_eff": 0.0009918061822875928,
-      "beta_uncertainty": 2.8978661716827572e-05,
+      "beta_fitted": 0.005329918603129757,
+      "beta_eff": 0.0018614140467687508,
+      "beta_uncertainty": 5.438692452173221e-05,
       "physical_parameters": {
         "altitude_km": 972.3,
         "perigee_latitude_deg": 0.0,
@@ -98,22 +254,23 @@
         "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
       },
       "stage1_structural_factors": {
-        "f_inclination": 1.0,
-        "f_j2": 0.3780079144616495,
-        "f_plasma": 0.504143718401024,
+        "f_inclination": 1.0608223618522366,
+        "f_j2": 0.6147120592252623,
+        "f_plasma": 0.5092390560012177,
         "f_velocity": 1.0,
-        "f_total_structural": 0.1905703155817122
+        "f_total_structural": 0.33207494043969343,
+        "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
-        "F107_flux": 0,
-        "Kp_index": 0,
-        "P_env_proxy": 0
+        "F107_flux": 230.4,
+        "Kp_index": 153.0,
+        "P_env_proxy": 582.912
       }
     },
     "Cassini": {
-      "beta_fitted": null,
-      "beta_eff": null,
-      "beta_uncertainty": null,
+      "beta_fitted": 0.0019340334704831914,
+      "beta_eff": 0.0006754394085426308,
+      "beta_uncertainty": 0.0011721414972625402,
       "physical_parameters": {
         "altitude_km": 1197.3,
         "perigee_latitude_deg": 0.0,
@@ -123,16 +280,17 @@
         "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
       },
       "stage1_structural_factors": {
-        "f_inclination": 1.0,
-        "f_j2": 0.3018454505170344,
-        "f_plasma": 0.6698458189677191,
+        "f_inclination": 1.0582372648224307,
+        "f_j2": 0.5493010059558688,
+        "f_plasma": 0.6743656955622473,
         "f_velocity": 0.6086884717269062,
-        "f_total_structural": 0.1230706691445523
+        "f_total_structural": 0.09409970672099979,
+        "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
-        "F107_flux": 0,
-        "Kp_index": 0,
-        "P_env_proxy": 0
+        "F107_flux": 130.7,
+        "Kp_index": 317.0,
+        "P_env_proxy": 545.0189999999999
       }
     },
     "Galileo_1992": {
@@ -143,27 +301,28 @@
         "altitude_km": 309.6,
         "perigee_latitude_deg": 0.0,
         "velocity_km_s": 14.08,
-        "plasma_density_cm3": 1e-06,
+        "plasma_density_cm3": 1661219.5433202146,
         "derivation": "Perigee geometry from Step 008 fits; peak IRI n_e along Step 033 trajectory profile",
         "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
       },
       "stage1_structural_factors": {
-        "f_inclination": 1.0,
-        "f_j2": 0.733344173877767,
-        "f_plasma": 0.99999999994,
+        "f_inclination": 1.0804254668676425,
+        "f_j2": 0.8562568958398531,
+        "f_plasma": 0.18550007341460703,
         "f_velocity": 1.0,
-        "f_total_structural": 0.7333441738337663
+        "f_total_structural": 0.0032542369894069958,
+        "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
-        "F107_flux": 0,
-        "Kp_index": 0,
-        "P_env_proxy": 0
+        "F107_flux": 129.0,
+        "Kp_index": 313.0,
+        "P_env_proxy": 532.77
       }
     },
     "Rosetta_2005": {
-      "beta_fitted": 0.000538803526776471,
-      "beta_eff": 0.00018817106373844735,
-      "beta_uncertainty": 1.9736392922215054e-05,
+      "beta_fitted": 0.0010102428095147484,
+      "beta_eff": 0.0003528159239005361,
+      "beta_uncertainty": 3.7005231117756344e-05,
       "physical_parameters": {
         "altitude_km": 1968.7,
         "perigee_latitude_deg": 0.0,
@@ -173,16 +332,17 @@
         "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
       },
       "stage1_structural_factors": {
-        "f_inclination": 1.0,
-        "f_j2": 0.1395628633555241,
-        "f_plasma": 0.8732792223367961,
+        "f_inclination": 1.0530436749333894,
+        "f_j2": 0.3735054867230335,
+        "f_plasma": 0.8794439085755273,
         "f_velocity": 1.0,
-        "f_total_structural": 0.12187734877820862
+        "f_total_structural": 0.3459007589659286,
+        "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
-        "F107_flux": 0,
-        "Kp_index": 0,
-        "P_env_proxy": 0
+        "F107_flux": 78.9,
+        "Kp_index": 37.0,
+        "P_env_proxy": 108.09300000000002
       }
     },
     "Rosetta_2007": {
@@ -193,21 +353,48 @@
         "altitude_km": 5429.9,
         "perigee_latitude_deg": 0.0,
         "velocity_km_s": 12.46,
-        "plasma_density_cm3": 1e-06,
+        "plasma_density_cm3": 276.34027237063435,
         "derivation": "Perigee geometry from Step 008 fits; peak IRI n_e along Step 033 trajectory profile",
         "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
       },
       "stage1_structural_factors": {
-        "f_inclination": 1.0,
-        "f_j2": 0.004381167025732802,
-        "f_plasma": 0.99999999994,
+        "f_inclination": 1.1356634321612977,
+        "f_j2": 0.06620175570104725,
+        "f_plasma": 0.984574104264115,
         "f_velocity": 1.0,
-        "f_total_structural": 0.004381167025469932
+        "f_total_structural": 0.001836656554933533,
+        "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
-        "F107_flux": 0,
-        "Kp_index": 0,
-        "P_env_proxy": 0
+        "F107_flux": 69.9,
+        "Kp_index": 190.0,
+        "P_env_proxy": 202.71
+      }
+    },
+    "Rosetta_2009": {
+      "beta_fitted": null,
+      "beta_eff": null,
+      "beta_uncertainty": null,
+      "physical_parameters": {
+        "altitude_km": 2572,
+        "perigee_latitude_deg": 0.0,
+        "velocity_km_s": 13.31,
+        "plasma_density_cm3": 621.0751007796449,
+        "derivation": "Perigee geometry from Step 008 fits; peak IRI n_e along Step 033 trajectory profile",
+        "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
+      },
+      "stage1_structural_factors": {
+        "f_inclination": 1.0194214516948295,
+        "f_j2": 0.27622733124036164,
+        "f_plasma": 0.9734096662043497,
+        "f_velocity": 1.0,
+        "f_total_structural": 0.008339884996321377,
+        "envelope_source": "step007_geometry_envelope"
+      },
+      "stage3_environmental": {
+        "F107_flux": 74.1,
+        "Kp_index": 33.0,
+        "P_env_proxy": 98.553
       }
     },
     "MESSENGER_2005": {
@@ -223,16 +410,17 @@
         "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
       },
       "stage1_structural_factors": {
-        "f_inclination": 1.0,
-        "f_j2": 0.0952033502737857,
-        "f_plasma": 0.913894673418509,
+        "f_inclination": 1.1096100664743906,
+        "f_j2": 0.30855607459000894,
+        "f_plasma": 0.9159642668239879,
         "f_velocity": 1.0,
-        "f_total_structural": 0.0870058347068093
+        "f_total_structural": 2.9983201248810396e-05,
+        "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
-        "F107_flux": 0,
-        "Kp_index": 0,
-        "P_env_proxy": 0
+        "F107_flux": 110.2,
+        "Kp_index": 173.0,
+        "P_env_proxy": 300.846
       }
     },
     "Juno": {
@@ -248,33 +436,110 @@
         "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
       },
       "stage1_structural_factors": {
-        "f_inclination": 1.0,
-        "f_j2": 0.4413398144936681,
-        "f_plasma": 0.43572816245055535,
+        "f_inclination": 1.0878484300876328,
+        "f_j2": 0.6642777979240975,
+        "f_plasma": 0.5954180980711038,
         "f_velocity": 1.0,
-        "f_total_structural": 0.192304186385595
+        "f_total_structural": 0.08059903629154824,
+        "envelope_source": "step007_geometry_envelope"
       },
       "stage3_environmental": {
-        "F107_flux": 0,
-        "Kp_index": 0,
-        "P_env_proxy": 0
+        "F107_flux": 113.4,
+        "Kp_index": 303.0,
+        "P_env_proxy": 457.00199999999995
+      }
+    },
+    "Stardust": {
+      "beta_fitted": null,
+      "beta_eff": null,
+      "beta_uncertainty": null,
+      "physical_parameters": {
+        "altitude_km": 6008.9,
+        "perigee_latitude_deg": 0.0,
+        "velocity_km_s": 10.31,
+        "plasma_density_cm3": 983.2800216450794,
+        "derivation": "Perigee geometry from Step 008 fits; peak IRI n_e along Step 033 trajectory profile",
+        "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
+      },
+      "stage1_structural_factors": {
+        "f_inclination": 1.097043034711868,
+        "f_j2": 0.04955044522445956,
+        "f_plasma": 0.9475807971754403,
+        "f_velocity": 1.0,
+        "f_total_structural": 0.004561431367442295,
+        "envelope_source": "step007_geometry_envelope"
+      },
+      "stage3_environmental": {
+        "F107_flux": 169.2,
+        "Kp_index": 123.0,
+        "P_env_proxy": 377.316
+      }
+    },
+    "OSIRIS-REx": {
+      "beta_fitted": null,
+      "beta_eff": null,
+      "beta_uncertainty": null,
+      "physical_parameters": {
+        "altitude_km": 17239.1,
+        "perigee_latitude_deg": 0.0,
+        "velocity_km_s": 8.52,
+        "plasma_density_cm3": 2.2892240721084067,
+        "derivation": "Perigee geometry from Step 008 fits; peak IRI n_e along Step 033 trajectory profile",
+        "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
+      },
+      "stage1_structural_factors": {
+        "f_inclination": 1.1444983941896427,
+        "f_j2": 0.00018053445970966697,
+        "f_plasma": 0.9998850872373294,
+        "f_velocity": 1.0,
+        "f_total_structural": 0.00020659765579779578,
+        "envelope_source": "step007_geometry_envelope"
+      },
+      "stage3_environmental": {
+        "F107_flux": 77.5,
+        "Kp_index": 103.0,
+        "P_env_proxy": 157.32500000000002
+      }
+    },
+    "BepiColombo": {
+      "beta_fitted": null,
+      "beta_eff": null,
+      "beta_uncertainty": null,
+      "physical_parameters": {
+        "altitude_km": 12697.3,
+        "perigee_latitude_deg": 0.0,
+        "velocity_km_s": 7.59,
+        "plasma_density_cm3": 41.67287944386488,
+        "derivation": "Perigee geometry from Step 008 fits; peak IRI n_e along Step 033 trajectory profile",
+        "source": "step008_fitting_results.json + step033_iri_trajectory_profiles.json"
+      },
+      "stage1_structural_factors": {
+        "f_inclination": 1.050282178035775,
+        "f_j2": 0.0017482684539383933,
+        "f_plasma": 0.9975756317267708,
+        "f_velocity": 1.0,
+        "f_total_structural": 3.994654930319213e-05,
+        "envelope_source": "step007_geometry_envelope"
+      },
+      "stage3_environmental": {
+        "F107_flux": 69.2,
+        "Kp_index": 77.0,
+        "P_env_proxy": 122.48400000000001
       }
     }
   },
   "synthesis_conclusions": [
-    "Beta heterogeneity (I\u00b2 \u2248 100%) is explained through a four-stage decomposition:",
+    "Beta heterogeneity is assessed through deterministic geometry modulation, not formal variance partitioning. With n=4 valid fits (n_sign_gated=3), ANOVA-style decomposition is statistically meaningless (standard error on variance > 100% of estimate).",
     "",
-    "**Stage 1 - Structural Physics (12.9%):** Core TEP modulation via inclination, J2 geometry, plasma screening, and velocity disformal regime.",
+    "Beta scatter statistics (n=4): Fitted beta spans a factor of 5.3 (log STD = 0.301 dex). Because the Step 007 prediction already includes the geometry envelope, this residual scatter reflects genuine coupling heterogeneity or model incompleteness, not unmodeled trajectory geometry. With n <= 4, formal variance partitioning is statistically meaningless.",
     "",
-    "**Stage 2 - Observational Effects (0.0%):** OD filter absorption withheld without mission F_OD; systematic uncertainties only.",
+    "Full-catalog detection pattern (n=12): The Step 007 deterministic prediction at \u03b2_ref = 10\u207b\u2074 correctly classifies 9/12 flybys (accuracy 75.00%)\u20141 true positive, 8 true negatives, 3 false negatives, 0 false positives. Only NEAR exceeds the 0.5 mm/s detection threshold at \u03b2_ref; Galileo 1990, Rosetta 2005, and Cassini are false negatives because their predicted magnitudes at \u03b2_ref fall below threshold while the published anomalies are detections. All published nulls are correctly predicted as null. No false positives are present.",
     "",
-    "**Stage 3 - Environmental Modulation (0.0%):** Solar activity correlation (r=0.00) with F10.7 flux.",
+    "Rank correlation across the full catalog (n=12): Spearman rho = 0.73 (p = 0.008) between predicted and observed anomaly magnitudes. This indicates moderate rank agreement.",
     "",
-    "**Stage 4 - Residual (87.1%):** Small sample statistics (n=4), intrinsic scatter, and model incompleteness.",
+    "Sample-size caveat: Formal variance decomposition requires n >= 10 for reliable power. The current dataset (n=4) is insufficient. The dominant formal heterogeneity statistic remains Cochran Q / I^2 on the gated beta fits (Step 008).",
     "",
-    "Cumulative explanatory power: 12.9%",
-    "",
-    "The apparent 5.3\u00d7 variance in fitted \u03b2 is therefore not stochastic noise but a deterministic consequence of environment-dependent TEP coupling, observational pipeline effects, and solar activity modulation\u2014fully consistent with the TEP framework."
+    "The 5.3x spread in gated fitted beta is consistent with geometry- and environment-dependent modulation of the effective coupling within the TEP framework. The envelope factors are pre-specified from trajectory geometry and independently measured plasma profiles; they are not tuned to reduce beta scatter."
   ],
   "heuristic_parameter_metadata": {
     "RESIDUAL_INCLINATION_SCALE": {
@@ -341,8 +606,8 @@
     "step020_sensitivity": "Parameter uncertainty propagation"
   },
   "manuscript_citations": {
-    "results_section": "Section 4.3 - Variance Analysis",
+    "results_section": "Section 4.3 - Deterministic Geometry Modulation Analysis",
     "discussion_section": "Section 5.7 - Physics of Beta Scatter",
-    "key_claim": "5.3\u00d7 variance explained through 4-stage decomposition"
+    "key_claim": "5.3x beta scatter assessed via deterministic geometry modulation; formal variance partitioning deferred to n >= 10"
   }
 }

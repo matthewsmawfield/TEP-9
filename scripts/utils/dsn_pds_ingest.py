@@ -41,6 +41,12 @@ REFERENCE_PRODUCT_LIDS = {
         "urn:nasa:pds:dart:data_trk234:dart_hga_tnf_20211124t032621_v01::1.0",
     ],
 }
+# PDS MCP search rejects the `start` offset parameter; results cap at `limit` (default 100)
+# with no `next` link when total hits exceed the page size. Subdivide `lid like` queries
+# until each leaf returns a complete page (hits == len(data) < limit) or hits == 0.
+PDS_MCP_RESULT_CAP = 100
+# Only run full LID-tree enumeration when the root query is small enough to stay bounded.
+PDS_EXHAUSTIVE_LID_MAX_ROOT_HITS = 400
 MISSION_COLLECTION_LIDS: dict[str, list[str]] = {
     "NEAR_1998": [
         "urn:nasa:pds:near_rss_raw:data_odf::1.0",
@@ -71,11 +77,7 @@ def _parse_pds_timestamp(value: str) -> datetime:
     cleaned = value.strip().strip('"')
     if cleaned.upper() == "N/A":
         raise ValueError("missing timestamp")
-    if "T" in cleaned:
-        if cleaned.endswith("Z"):
-            return datetime.fromisoformat(cleaned.replace("Z", "+00:00"))
-        return datetime.fromisoformat(cleaned).replace(tzinfo=timezone.utc)
-    # PDS3 day-of-year form: 2015-116T16:00:00
+    # PDS3 day-of-year form: 2015-041T03:10:30 (must precede ISO ``fromisoformat``)
     match = re.match(r"^(\d{4})-(\d{3})T", cleaned)
     if match:
         year = int(match.group(1))
@@ -88,6 +90,10 @@ def _parse_pds_timestamp(value: str) -> datetime:
             minute=int(minute),
             second=int(float(second)),
         )
+    if cleaned.endswith("Z"):
+        return datetime.fromisoformat(cleaned.replace("Z", "+00:00"))
+    if "T" in cleaned:
+        return datetime.fromisoformat(cleaned).replace(tzinfo=timezone.utc)
     return datetime.fromisoformat(cleaned).replace(tzinfo=timezone.utc)
 
 
@@ -587,6 +593,90 @@ def search_lid_family_products(
     return products
 
 
+def search_lid_root_exhaustive(
+    session: requests.Session,
+    lid_root: str,
+    charset: str,
+    *,
+    max_api_calls: int = 500,
+    limit: int = PDS_MCP_RESULT_CAP,
+    max_root_hits: Optional[int] = None,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """
+    Enumerate every product under lid_root despite the MCP 100-row cap.
+
+    lid_root must end with ':' so each query is (lid like "{lid_root}{suffix}*").
+    The MCP gateway rejects the `start` offset parameter, so when summary.hits
+    exceeds the returned rows the only recovery is to subdivide the LID pattern.
+    """
+    if not lid_root.endswith(":"):
+        raise ValueError("lid_root must end with ':' for exhaustive LID queries")
+    if not charset:
+        raise ValueError("charset must be non-empty")
+
+    from collections import deque
+
+    diagnostics: dict[str, Any] = {
+        "exhaustive_lid_root": lid_root,
+        "exhaustive_charset_size": len(charset),
+        "exhaustive_api_calls": 0,
+        "exhaustive_unique_products": 0,
+        "exhaustive_cap_hit": False,
+    }
+
+    queue: deque[str] = deque([""])
+    collected: dict[str, dict[str, Any]] = {}
+
+    while queue and diagnostics["exhaustive_api_calls"] < max_api_calls:
+        suffix = queue.popleft()
+        query = f'(lid like "{lid_root}{suffix}*")'
+        response = session.get(
+            PDS_SEARCH_API,
+            params={"q": query, "limit": limit},
+            timeout=120,
+        )
+        response.raise_for_status()
+        diagnostics["exhaustive_api_calls"] += 1
+        payload = response.json()
+        hits = int(payload.get("summary", {}).get("hits") or 0)
+        data = list(payload.get("data", []))
+
+        if suffix == "":
+            diagnostics["exhaustive_root_hits"] = hits
+
+        if suffix == "" and max_root_hits is not None and hits > max_root_hits:
+            diagnostics["exhaustive_skipped_due_to_hit_count"] = hits
+            return [], diagnostics
+
+        if hits == 0:
+            continue
+
+        truncated = hits > len(data) or (len(data) == limit and hits > limit)
+        if truncated:
+            if diagnostics["exhaustive_api_calls"] + len(charset) > max_api_calls:
+                diagnostics["exhaustive_cap_hit"] = True
+                break
+            for ch in charset:
+                queue.append(suffix + ch)
+            continue
+
+        for product in data:
+            product_id = str(product.get("id", ""))
+            if product_id:
+                collected[product_id] = product
+
+    diagnostics["exhaustive_unique_products"] = len(collected)
+    return list(collected.values()), diagnostics
+
+
+def _exhaustive_lid_charset_for_mission(mission: str) -> Optional[str]:
+    if mission == "NEAR_1998":
+        return "0123456789abcdef"
+    if mission == "MESSENGER_2005":
+        return "0123456789abcdefghijklmnopqrstuvwxyz_"
+    return None
+
+
 def search_collection_tracking_products(
     session: requests.Session,
     mission: str,
@@ -602,6 +692,8 @@ def search_collection_tracking_products(
     title_pages = 0
     member_pages = 0
     unindexed_collections: list[str] = []
+    exhaustive_reports: list[dict[str, Any]] = []
+    exhaustive_roots: set[str] = set()
 
     for collection_lid in mission_collection_lids(mission, metadata):
         if not _collection_is_indexed(session, collection_lid):
@@ -638,12 +730,14 @@ def search_collection_tracking_products(
             products.append(product)
 
         lid_prefix = collection_lid.split("::", 1)[0]
+        if not lid_prefix.endswith(":"):
+            lid_prefix = f"{lid_prefix}:"
         for product in search_lid_family_products(
             session,
             lid_prefix,
             window_start,
             window_end,
-            limit=limit,
+            limit=min(limit, PDS_MCP_RESULT_CAP),
         ):
             product_id = str(product.get("id", ""))
             if product_id in seen_ids:
@@ -651,10 +745,38 @@ def search_collection_tracking_products(
             seen_ids.add(product_id)
             products.append(product)
 
+        charset = _exhaustive_lid_charset_for_mission(mission)
+        if charset and lid_prefix not in exhaustive_roots:
+            exhaustive_roots.add(lid_prefix)
+            exhaustive, exdiag = search_lid_root_exhaustive(
+                session,
+                lid_prefix,
+                charset,
+                max_api_calls=500,
+                max_root_hits=PDS_EXHAUSTIVE_LID_MAX_ROOT_HITS,
+            )
+            report = {"lid_root": lid_prefix}
+            report.update(exdiag)
+            if "exhaustive_skipped_due_to_hit_count" not in exdiag:
+                for product in exhaustive:
+                    if _is_collection_product(product):
+                        continue
+                    if not _looks_like_tracking_product(product):
+                        continue
+                    if not _product_overlaps_window(product, window_start, window_end):
+                        continue
+                    product_id = str(product.get("id", ""))
+                    if product_id in seen_ids:
+                        continue
+                    seen_ids.add(product_id)
+                    products.append(product)
+            exhaustive_reports.append(report)
+
     return products, {
         "title_search_pages": title_pages,
         "member_search_pages": member_pages,
         "unindexed_collection_lids": unindexed_collections,
+        "exhaustive_lid_searches": exhaustive_reports,
     }
 
 
@@ -729,7 +851,7 @@ def search_tracking_products(
         response.raise_for_status()
         payload = response.json()
         url = payload.get("links", {}).get("next")
-        while True:
+        for _page in range(50):
             for product in payload.get("data", []):
                 product_id = str(product.get("id", ""))
                 if product_id in seen_ids:
@@ -813,6 +935,10 @@ def ingest_mission_tracking(
     except requests.RequestException as exc:
         manifest["status"] = "pds_search_failed"
         manifest["error"] = str(exc)
+        local_njpl = _scan_local_njpl_trk234_files(mission_dir, project_root)
+        if local_njpl:
+            manifest["local_njpl_trk234_artifacts"] = local_njpl
+            manifest["status"] = "pds_search_failed_local_njpl_verified"
         _write_manifest(mission_dir, manifest)
         return manifest
 
@@ -867,6 +993,32 @@ def ingest_mission_tracking(
             manifest["status"] = "downloaded"
     except requests.RequestException as exc:
         manifest.setdefault("label_download_errors", []).append(str(exc))
+
+    local_njpl = _scan_local_njpl_trk234_files(
+        mission_dir, project_root, perigee=perigee, window_hours=window_hours
+    )
+    if local_njpl:
+        manifest["local_njpl_trk234_artifacts"] = local_njpl
+        if manifest["status"] == "no_indexed_products":
+            manifest["status"] = "no_indexed_products_local_njpl_verified"
+        elif manifest["status"] == "pds_search_failed":
+            manifest["status"] = "pds_search_failed_local_njpl_verified"
+        if any(row.get("overlaps_perigee_window") for row in local_njpl):
+            manifest["perigee_window_local_njpl"] = True
+
+    if mission == "Juno_2013" and perigee is not None:
+        try:
+            from scripts.utils.atmospheres_tnf_index import probe_atmospheres_tnf_index
+
+            manifest["atmospheres_index_probe"] = probe_atmospheres_tnf_index(
+                session, perigee, window_hours=window_hours
+            )
+        except requests.RequestException as exc:
+            manifest["atmospheres_index_probe"] = {
+                "status": "probe_failed",
+                "error": str(exc),
+            }
+
     _write_manifest(mission_dir, manifest)
     return manifest
 
@@ -890,3 +1042,77 @@ def _write_manifest(mission_dir: Path, manifest: dict[str, Any]) -> None:
     manifest_path = mission_dir / "ingest_manifest.json"
     with open(manifest_path, "w", encoding="utf-8") as handle:
         json.dump(manifest, handle, indent=2)
+
+
+def _scan_local_njpl_trk234_files(
+    mission_dir: Path,
+    project_root: Path,
+    *,
+    perigee: Optional[datetime] = None,
+    window_hours: float = 48.0,
+) -> list[dict[str, Any]]:
+    """
+    Discover TRK-2-34 / NJPL-class tracking files already on disk under ``mission_dir``.
+
+    These are not synthetic; they are listed for provenance when the PDS search API
+    returns no indexed products (common for some collection LIDs).
+    """
+    from scripts.utils.dsn_tracking_discovery import (
+        _label_path_for_data_file,
+        is_label_only_dat_file,
+        is_trk234_archive,
+    )
+    from scripts.utils.pds3_lbl_time import interval_overlaps_window, parse_pds3_lbl_start_stop_utc
+
+    win_lo = win_hi = None
+    if perigee is not None:
+        if perigee.tzinfo is None:
+            perigee = perigee.replace(tzinfo=timezone.utc)
+        win_lo = perigee - timedelta(hours=window_hours / 2.0)
+        win_hi = perigee + timedelta(hours=window_hours / 2.0)
+
+    rows: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for pattern in ("*.dat", "*.DAT", "*.trk", "*.TRK", "*.tnf", "*.TNF"):
+        for path in mission_dir.rglob(pattern):
+            if not path.is_file():
+                continue
+            if is_label_only_dat_file(path):
+                continue
+            if not is_trk234_archive(path):
+                continue
+            rel = path.resolve().relative_to(project_root.resolve())
+            key = str(rel)
+            if key in seen:
+                continue
+            seen.add(key)
+            st = path.stat()
+            row: dict[str, Any] = {
+                "path": key.replace("\\", "/"),
+                "bytes": int(st.st_size),
+                "format_magic": "NJPL",
+                "note": "Verified on disk; TRK-2-34 SFDU archive (not from PDS API ingest row).",
+            }
+            if win_lo is not None and win_hi is not None:
+                lbl = _label_path_for_data_file(path)
+                if lbl is not None and lbl.is_file():
+                    try:
+                        span = parse_pds3_lbl_start_stop_utc(
+                            lbl.read_text(encoding="utf-8", errors="ignore")
+                        )
+                        if span is not None:
+                            t0, t1 = span
+                            row["lbl_start_utc"] = t0.isoformat()
+                            row["lbl_stop_utc"] = t1.isoformat()
+                            row["overlaps_perigee_window"] = interval_overlaps_window(
+                                t0, t1, win_lo, win_hi
+                            )
+                        else:
+                            row["overlaps_perigee_window"] = None
+                    except (ValueError, OSError):
+                        row["overlaps_perigee_window"] = None
+                else:
+                    row["overlaps_perigee_window"] = None
+            rows.append(row)
+    rows.sort(key=lambda r: r["path"])
+    return rows

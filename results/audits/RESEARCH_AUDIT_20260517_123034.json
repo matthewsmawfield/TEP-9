@@ -1,0 +1,306 @@
+{
+    "audit_type": "TEP-EFA Research-Grade Audit",
+    "theory_version": "Jakarta v0.8.0",
+    "telemetry": {
+        "os": "Darwin 25.3.0",
+        "python_version": "3.13.5",
+        "processor": "arm",
+        "timestamp_utc": "2026-05-17T09:30:34.147247+00:00",
+        "project_root": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA"
+    },
+    "strict_sign_gate": false,
+    "pipeline_results": [
+        {
+            "step": "Step 001",
+            "description": "Step 001: Download SPICE Kernels (NAIF)",
+            "status": "SUCCESS",
+            "duration_seconds": 32.67297697067261,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:27:14.185314+00:00"
+        },
+        {
+            "step": "Step 002",
+            "description": "Step 002: Convert SPICE to JSON",
+            "status": "SUCCESS",
+            "duration_seconds": 0.22213196754455566,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:27:14.408010+00:00"
+        },
+        {
+            "step": "Step 003",
+            "description": "Step 003: Archival Data Mining",
+            "status": "SUCCESS",
+            "duration_seconds": 0.0741879940032959,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:27:14.482697+00:00"
+        },
+        {
+            "step": "Step 004",
+            "description": "Step 004: JPL Horizons Data Fetch",
+            "status": "SUCCESS",
+            "duration_seconds": 0.9068408012390137,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:27:15.390013+00:00"
+        },
+        {
+            "step": "Step 005",
+            "description": "Step 038: Extract 3D State Vectors from JPL Horizons",
+            "status": "SUCCESS",
+            "duration_seconds": 0.6915669441223145,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:27:16.087310+00:00"
+        },
+        {
+            "step": "Step 006",
+            "description": "Step 033: Continuous IRI Trajectory Profiles",
+            "status": "SUCCESS",
+            "duration_seconds": 44.11921405792236,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:28:00.207980+00:00"
+        },
+        {
+            "step": "Step 007",
+            "description": "Step 005: DSN Data Ingestion",
+            "status": "SUCCESS",
+            "duration_seconds": 0.043760061264038086,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:28:00.252316+00:00"
+        },
+        {
+            "step": "Step 008",
+            "description": "Step 006: DSN Framework (Resolves Horizons Circularity)",
+            "status": "SUCCESS",
+            "duration_seconds": 112.45901823043823,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:29:52.712411+00:00"
+        },
+        {
+            "step": "Step 009",
+            "description": "Step 007: Enhanced TEP Model (WGS84, PREM, 3D)",
+            "status": "SUCCESS",
+            "duration_seconds": 0.9928209781646729,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:29:53.706043+00:00"
+        },
+        {
+            "step": "Step 010",
+            "description": "Step 008: Parameter Fitting",
+            "status": "SUCCESS",
+            "duration_seconds": 0.47004008293151855,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:29:54.176569+00:00"
+        },
+        {
+            "step": "Step 011",
+            "description": "Step 041: Geometry Envelope Heuristic Sensitivity",
+            "status": "SUCCESS",
+            "duration_seconds": 15.448880195617676,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:09.626807+00:00"
+        },
+        {
+            "step": "Step 012",
+            "description": "Step 009: Unified Variance Analysis (Four-Stage)",
+            "status": "SUCCESS",
+            "duration_seconds": 0.4478740692138672,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:10.075277+00:00"
+        },
+        {
+            "step": "Step 013",
+            "description": "Step 010: First-Principles UCD Saturation Topology",
+            "status": "SUCCESS",
+            "duration_seconds": 0.20749711990356445,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:10.283278+00:00"
+        },
+        {
+            "step": "Step 014",
+            "description": "Step 011: Trajectory Integration",
+            "status": "SUCCESS",
+            "duration_seconds": 3.3693010807037354,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:13.653180+00:00"
+        },
+        {
+            "step": "Step 015",
+            "description": "Step 012: OD Filter Simulation",
+            "status": "SUCCESS",
+            "duration_seconds": 13.695785999298096,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:27.349466+00:00"
+        },
+        {
+            "step": "Step 016",
+            "description": "Step 013: Cross-Validation Analysis",
+            "status": "SUCCESS",
+            "duration_seconds": 0.1921842098236084,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:27.542185+00:00"
+        },
+        {
+            "step": "Step 017",
+            "description": "Step 014: Sensitivity Analysis",
+            "status": "SUCCESS",
+            "duration_seconds": 0.35387396812438965,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:27.896565+00:00"
+        },
+        {
+            "step": "Step 018",
+            "description": "Step 015: Hierarchical Bayesian Model",
+            "status": "SUCCESS",
+            "duration_seconds": 3.200855016708374,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:31.097930+00:00"
+        },
+        {
+            "step": "Step 019",
+            "description": "Step 016: GNSS Validation",
+            "status": "SUCCESS",
+            "duration_seconds": 0.06758713722229004,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:31.165968+00:00"
+        },
+        {
+            "step": "Step 020",
+            "description": "Step 017: Plasma Modulation (Cassini Sign)",
+            "status": "SUCCESS",
+            "duration_seconds": 0.6438720226287842,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:31.810325+00:00"
+        },
+        {
+            "step": "Step 021",
+            "description": "Step 018: Space Weather Correlation",
+            "status": "SUCCESS",
+            "duration_seconds": 0.4439818859100342,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:32.254836+00:00"
+        },
+        {
+            "step": "Step 022",
+            "description": "Step 019: 3D Field Integration",
+            "status": "SUCCESS",
+            "duration_seconds": 0.25440001487731934,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:32.509736+00:00"
+        },
+        {
+            "step": "Step 023",
+            "description": "Step 020: Plasma Environment Reconstruction",
+            "status": "SUCCESS",
+            "duration_seconds": 0.3750159740447998,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:32.885239+00:00"
+        },
+        {
+            "step": "Step 024",
+            "description": "Step 021: Mission-Specific OD Absorption",
+            "status": "SUCCESS",
+            "duration_seconds": 0.09121394157409668,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:32.976911+00:00"
+        },
+        {
+            "step": "Step 025",
+            "description": "Step 022: Atmospheric Drag Simulation",
+            "status": "SUCCESS",
+            "duration_seconds": 0.06435775756835938,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:33.041730+00:00"
+        },
+        {
+            "step": "Step 026",
+            "description": "Step 023: Thermal Recoil Simulation",
+            "status": "SUCCESS",
+            "duration_seconds": 0.06640410423278809,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:33.108617+00:00"
+        },
+        {
+            "step": "Step 027",
+            "description": "Step 024: Systematic Error Monte Carlo",
+            "status": "SUCCESS",
+            "duration_seconds": 0.5552959442138672,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:33.664432+00:00"
+        },
+        {
+            "step": "Step 028",
+            "description": "Step 025: Corrected Uncertainty Analysis",
+            "status": "SUCCESS",
+            "duration_seconds": 0.0676109790802002,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:33.732577+00:00"
+        },
+        {
+            "step": "Step 029",
+            "description": "Step 026: Stable Model Comparison",
+            "status": "SUCCESS",
+            "duration_seconds": 0.24854588508605957,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:33.981645+00:00"
+        },
+        {
+            "step": "Step 030",
+            "description": "Step 039: Flyby Prediction Table",
+            "status": "SUCCESS",
+            "duration_seconds": 0.0920712947845459,
+            "exit_code": 0,
+            "timestamp": "2026-05-17T09:30:34.074200+00:00"
+        },
+        {
+            "step": "Step 031",
+            "description": "Step 027: Claim Consistency Audit",
+            "status": "FAILED",
+            "duration_seconds": 0.0648801326751709,
+            "exit_code": 1,
+            "timestamp": "2026-05-17T09:30:34.139536+00:00"
+        }
+    ],
+    "script_integrity": {
+        "step_001_download_spice.py": "e838224b19b9cb427d4d11e32ab27264bbc5f275cbd0524db51f5ad070a4e369",
+        "step_002_spice_to_json.py": "f4ced0642c48ccbac684c31c71dd3b06888685a0834c52fb94194fe8f33dba5b",
+        "step_003_archival_data_mining.py": "2ef54a563051a128fb3b29b7cb81ab9d62e961bb6a60ae206803104984c716b5",
+        "step_004_jpl_horizons_fetch.py": "b58faa963f7caeab42f14aa7b8fd33c8b4291d6a1342d7c99db8accd66de3110",
+        "step_038_extract_3d_vectors.py": "c09e6f543cfeaa1547ffbc22f3124a7ada9972f205a20d39ab48ee1cebd81785",
+        "step_033_iri_trajectory_profile.py": "b607eb97fe3050fe34e2898e931efb3870afa80d92be6c1c07e65e8cb850fb8c",
+        "step_005_dsn_data_ingestion.py": "92c2f6ac97bcd9a90eedbf5dfd08a39ab6e17894d0fb35176be21c913ee0c2f0",
+        "step_006_dsn_framework.py": "db28970d29b66b58f5f74196ce82fc911fc46b6dc2265b02cb2c85191eafaaf4",
+        "step_007_tep_model.py": "0437ce01ccc550fc34f9865a04fc075e918350fa38c6dcc62790d51bfb9c1416",
+        "step_008_fitting.py": "0f0d1f09050de3d1a00c6ea1341bf8a23b30116dbda0fe49df979c5983e7d254",
+        "step_041_envelope_heuristic_sensitivity.py": "c0a6706448048c92911de4c97b1e99ecacf1a3e8ce1e752f730a052874232590",
+        "step_009_variance_analysis.py": "6aa1bb747ac379d6faf61f991b07a253efbf8918264b72f3a26e79a0dfd6837f",
+        "step_010_tep_first_principles.py": "86d5e7700a25b4c1f885036f052db6db652c54f58d5b150dc0cfb81ad74e3d7a",
+        "step_011_trajectory_integration.py": "514812770c93a8a48eb82e240ae30f30e3bab7422ad5fd70baf727ca21d74e29",
+        "step_012_od_filter_simulation.py": "65f4dea374843faef3fb31090b77dc19ba204c193a5cba72cfc0ac4baa5b5ecd",
+        "step_013_cross_validation.py": "da2571e2f8d4f9ef5e12a1db81ad696874da787aad353e2e0cbf2525e326c30f",
+        "step_014_sensitivity_analysis.py": "a4997fdb882083e41552a13488745abf0778af2d4469660224c1c88ab196ae47",
+        "step_015_hierarchical_bayesian.py": "09559bad883938c8dab8e37dc462b35adf8643baeb60edc1dd21cf45ecc476f2",
+        "step_016_gnss_validation.py": "2a106381baa2d63fc9406044658eb59d3be50b08cd7e6d5bd006acacfbd19272",
+        "step_017_plasma_modulation.py": "009356ae7a9435cd985168f638f8499e4cbe83b1426f480daa7a0638ace04507",
+        "step_018_space_weather.py": "f0f7f2ba2acea0dae8be4b2cb20101cef037c28e3909b22ba89971cbacde30b3",
+        "step_019_3d_field_integration.py": "eccf87f3c8a095458db887e12e17bf167c46fc008416c90d57b5f5d949966a6f",
+        "step_020_plasma_environment_reconstruction.py": "9ac0cb818f84767b902b021508ccbe61f49fc7045c6640081470fb2df14313aa",
+        "step_021_mission_specific_od_absorption.py": "933ce1b010fe3df6c0833eca60cf11af95addc7c57332347f61015e38df7ca37",
+        "step_022_atmospheric_drag_simulation.py": "ae43a186ff7659009037d962d125a79119e4ad38551755265c4d4fb1d5b18ebf",
+        "step_023_thermal_recoil_modeling.py": "801a3bf3138624a56a16b8b33d4a8c1f77ec1e3b0b0522e3a43997fd155c4982",
+        "step_024_systematic_error_monte_carlo.py": "0e19ceef370396589663aa121ea038b82b7dbf5ec35f20e89c367be222a57bbd",
+        "step_025_corrected_uncertainty.py": "82a8e7feefb07d0be416735eebc716e5a0d0634aaea33c6666f7f224f75d51ee",
+        "step_026_stable_model_comparison.py": "b7865b5bff62760a5071a711a92f7ddd2f65b7ddd91c855017f5bc45715e1eb2",
+        "step_039_flyby_prediction_table.py": "066be2101d823747c21c64afd8f6f80b031483ccec13de0c2cb511ab1268ce4a",
+        "step_027_claim_consistency_audit.py": "a8319d413c6750f7c83405ff6d9a5cae8f7a883f3a0e17c6e7b811bc2b1fe5c1",
+        "step_028_dsn_processing.py": "9f328fe05fa99052adfdaa8806b7273147d228882117726001bb661def577f7a",
+        "step_029_read_trk234.py": "c4f0c7c6470b0be65db0f58af3efcba3dc7710ed6bf59a6ba6658236421a4a78",
+        "step_030_juno_reanalysis.py": "1289423d82c8ce101dfcb0ca4089d6ab14e0dceba8e838a6ce888d94a1dcd597",
+        "step_042_time_resolved_cosmography.py": "1611bb25815534e595382da36fead44933414e9075aeb5c6df58bcc53c90758a",
+        "step_031_pds_search.py": "9e6dee502f6ca79efd165ad7cdc1574b473643a19dd8158ee7dd8ff871a46ee2",
+        "step_032_tep_suppression.py": "c99f53f69ab7d7d166dddd9b7fee11cbb43c84647673dd29c250fe3b38715f57",
+        "step_034_covariant_holonomy.py": "a6de2cc37203b45a12d0347e395ac81b16492eb0202d7edeed665251adbad797",
+        "step_035_cross_corpus_export.py": "820a150b8d7f563164aef5abea12636840ca0c0c51b6a108f6f111e8d18276c7",
+        "step_040_cosmographic_shear.py": "85108be3324834cef6dfc33f010408145fcdeff3b5b0a4e2425736a5df83a212",
+        "step_036_final_report.py": "cdd3232eb9147ed03a8cf365092f23de0c71525d4885dd47e0db2fc08464c532",
+        "step_037_visualizations.py": "84a00c26a26d51f03ebfd1ea57fbb5e5849e8cf50c586bd3e94acb1cea74ca8a"
+    }
+}

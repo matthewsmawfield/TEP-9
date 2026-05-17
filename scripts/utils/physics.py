@@ -12,6 +12,7 @@ CRITICAL NOTE: Some TEP theory parameters are empirically calibrated from GNSS d
 and have significant systematic uncertainty. These are clearly marked below.
 """
 
+import math
 from typing import Final
 
 # Fundamental Constants
@@ -75,8 +76,42 @@ KG_M3_TO_GEV4: Final[float] = 4.318e-21  # kg/m³ to GeV⁴ conversion (Natural 
 
 
 def screened_beta(beta: float, surface_suppression: float = CHARACTERISTIC_SUPPRESSION) -> float:
-    """Map universal conformal β to Earth-surface screened β_eff."""
+    """Map bare conformal β to Earth-surface screened β_eff."""
     return beta * surface_suppression
+
+
+def ucd_screening_factor(r: float) -> float:
+    """
+    UCD-derived altitude-dependent screening factor S_UCD(r).
+
+    For r <= R_TRANSITION_M (the UCD saturation radius, ~4146 km):
+        S_UCD = 0.0  (fully saturated interior, field pinned)
+
+    For R_TRANSITION_M < r <= R_EARTH:
+        Linear transition from 0 to S_⊕ at the surface,
+        where S_⊕ = (R_EARTH - R_TRANSITION_M) / R_EARTH ≈ 0.349.
+
+    For r > R_EARTH:
+        Yukawa relaxation to full vacuum coupling over λ_TEP:
+        S_UCD(r) = 1 - (1 - S_⊕) * exp(-(r - R_EARTH) / λ_TEP)
+
+    This satisfies the boundary conditions:
+        S_UCD(R_EARTH) = S_⊕  (matches empirically calibrated surface suppression)
+        S_UCD(∞) → 1.0       (full bare coupling in vacuum)
+
+    References:
+        - Paper 6 (UCD): ρ_T ≈ 20 g/cm³, R_sol = (3M/4πρ_T)^(1/3)
+        - Paper 15 (EFA): β_eff = β × S_⊕(r), λ_TEP ≈ 4200 km from GNSS
+        - Jakarta v0.8: screening as Temporal Shear suppression, not local-density switch
+    """
+    if r <= R_TRANSITION_M:
+        return 0.0
+    if r <= R_EARTH:
+        # Linear transition from saturation radius to surface
+        return CHARACTERISTIC_SUPPRESSION * (r - R_TRANSITION_M) / (R_EARTH - R_TRANSITION_M)
+    # Above surface: Yukawa relaxation to vacuum coupling
+    delta_r = r - R_EARTH
+    return 1.0 - (1.0 - CHARACTERISTIC_SUPPRESSION) * math.exp(-delta_r / LAMBDA_TEP_M)
 
 
 def ppn_gamma_deviation(beta_eff: float) -> float:
@@ -104,7 +139,7 @@ def get_tep_metadata() -> dict:
     """Return theory version and metadata for data provenance."""
     return {
         "theory_version": "Jakarta v0.8",
-        "paradigm": "Temporal Shear Suppression (Continuous Gradient)",
+        "paradigm": "Temporal Topology screening (continuous gradient)",
         "coupling_convention": "A(phi) = exp(beta phi / M_Pl)",
         "mpl_definition": "Reduced Planck Mass (2.435e18 GeV)",
         "standard_constants": {

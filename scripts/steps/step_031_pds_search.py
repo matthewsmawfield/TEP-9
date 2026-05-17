@@ -1,325 +1,182 @@
 """
 Step 031: PDS API Search for Juno 2013 Earth Flyby Data
 
-This step uses the NASA PDS Search API to locate Juno 2013 Earth flyby
-tracking data (TRK-2-25/TRK-2-34 format) from the PDS archives.
-
-Uses:
-- PDS API: https://nasa-pds.github.io/pds-api/
-- Peppi Python library: pip install pds.peppi
-- Direct API calls to https://pds.nasa.gov/api/search/1/
-
-Data Products Sought:
-- Collection: JNO-E-RSS-1-EDR (Juno Earth Radio Science)
-- Format: TRK-2-25, TRK-2-34, or TNF
-- Date: 2013-10-08 to 2013-10-10 (perigee 2013-10-09 19:21 UTC)
-
-Author: TEP-EFA Pipeline
-Date: 2026-04-19
+Locates Juno 2013 Earth-flyby tracking products via:
+- Shared MCP ingest queries (Steps 005/028)
+- NMSU Atmospheres OCRU TNF index LBL time-window probe
+- Optional Peppi library (iterator slice; no deprecated ``.limit()``)
 """
 
-import sys
+from __future__ import annotations
+
 import json
+import sys
+from datetime import datetime, timezone
+from itertools import islice
 from pathlib import Path
-from datetime import datetime
+from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
+from scripts.utils.atmospheres_tnf_index import probe_atmospheres_tnf_index
+from scripts.utils.dsn_pds_ingest import PDS_SEARCH_API, search_tracking_products
 from scripts.utils.step_logger import StepLogger
 
+JUNO_PERIGEE_UTC = datetime(2013, 10, 9, 19, 21, tzinfo=timezone.utc)
+FLYBY_WINDOW_HOURS = 48.0
 
-def search_with_peppi():
-    """Search for Juno data using the Peppi Python library."""
-    logger = StepLogger("step_031_pds_api_search_juno", PROJECT_ROOT)
-    logger.header("STEP 031: PDS API SEARCH FOR JUNO 2013 DATA")
-    
-    logger.info("Attempting to search using PDS Peppi library...")
-    logger.info("API Reference: https://nasa-pds.github.io/pds-api/")
-    logger.info("Peppi Docs: https://nasa-pds.github.io/peppi/")
-    
+
+def search_with_mcp_api(logger: StepLogger) -> dict[str, Any]:
+    """Search PDS MCP using the same ingest queries as Steps 005/028."""
+    import requests
+
+    logger.subsection("PDS MCP Search API (shared ingest)")
+    logger.info(f"Endpoint: {PDS_SEARCH_API}")
+
+    session = requests.Session()
+    session.headers.update(
+        {
+            "Accept": "application/json",
+            "User-Agent": "TEP-EFA-Pipeline/1.0",
+        }
+    )
+
+    metadata_path = PROJECT_ROOT / "data/raw/dsn_tracking/Juno_2013/metadata.json"
+    metadata: dict[str, Any] = {}
+    if metadata_path.exists():
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+
+    products = search_tracking_products(
+        session,
+        "Juno_2013",
+        JUNO_PERIGEE_UTC,
+        metadata=metadata,
+        window_hours=FLYBY_WINDOW_HOURS,
+        limit=100,
+    )
+    logger.info(f"search_tracking_products: {len(products)} perigee-window candidate(s)")
+
+    mcp_rows = [
+        {
+            "id": product.get("id", "N/A"),
+            "title": product.get("title", "N/A"),
+            "start_date": product.get("start_date_time"),
+            "stop_date": product.get("stop_date_time"),
+            "strategy": "search_tracking_products",
+        }
+        for product in products
+    ]
+
+    atm_probe = probe_atmospheres_tnf_index(
+        session, JUNO_PERIGEE_UTC, window_hours=FLYBY_WINDOW_HOURS
+    )
+    logger.info(
+        f"Atmospheres index: {atm_probe.get('tnf_listed', 0)} TNF listed, "
+        f"{atm_probe.get('perigee_window_overlaps', 0)} LBL overlap(s) in flyby window"
+    )
+
+    return {
+        "api": PDS_SEARCH_API,
+        "perigee_utc": JUNO_PERIGEE_UTC.isoformat(),
+        "mcp_perigee_candidates": len(mcp_rows),
+        "mcp_results": mcp_rows,
+        "atmospheres_index_probe": atm_probe,
+    }
+
+
+def search_with_peppi(logger: StepLogger) -> dict[str, Any]:
+    """Optional Peppi search (slice iterable results; no ``.limit()``)."""
+    logger.subsection("Peppi library (optional)")
     try:
         import pds.peppi as pep
-        
-        logger.success("Peppi library available")
-        logger.info("Connecting to PDS Registry...")
-        
-        # Connect to PDS
-        client = pep.PDSRegistryClient()
-        
-        # Search for Juno context
-        logger.subsection("Searching for Juno Mission Context")
-        context = pep.Context()
-        
-        try:
-            juno_results = context.INSTRUMENT_HOSTS.search("juno")
-            logger.info(f"Found {len(juno_results)} Juno instrument host entries")
-            
-            if juno_results:
-                juno = juno_results[0]
-                logger.info(f"Juno LID: {juno.lid}")
-        except Exception as e:
-            logger.warning(f"Could not search instrument hosts: {e}")
-            juno = None
-        
-        # Search for products
-        logger.subsection("Searching for Juno Earth Flyby Products")
-        products = pep.Products(client)
-        
-        # Try different search strategies
-        search_results = []
-        
-        # Strategy 1: Search by target (Earth) and mission
-        logger.info("Strategy 1: Search by target=Earth, mission=Juno...")
-        try:
-            earth_products = products.has_target("Earth")
-            if juno:
-                earth_products = earth_products.has_instrument_host(juno.lid)
-            
-            # Filter by date range if possible
-            results = list(earth_products.limit(50))
-            logger.info(f"Found {len(results)} Earth-target products")
-            
-            for product in results:
-                search_results.append({
-                    'id': getattr(product, 'id', 'N/A'),
-                    'title': getattr(product, 'title', 'N/A'),
-                    'type': getattr(product, 'product_type', 'N/A'),
-                    'strategy': 'target_earth'
-                })
-        except Exception as e:
-            logger.warning(f"Strategy 1 failed: {e}")
-        
-        # Strategy 2: Search by collection type (radio science)
-        logger.info("Strategy 2: Search for radio science data...")
-        try:
-            # Search for RSS or radio science
-            rss_products = products.filter("radio science")
-            results = list(rss_products.limit(20))
-            logger.info(f"Found {len(results)} radio science products")
-            
-            for product in results:
-                search_results.append({
-                    'id': getattr(product, 'id', 'N/A'),
-                    'title': getattr(product, 'title', 'N/A'),
-                    'type': getattr(product, 'product_type', 'N/A'),
-                    'strategy': 'radio_science'
-                })
-        except Exception as e:
-            logger.warning(f"Strategy 2 failed: {e}")
-        
-        # Strategy 3: Direct LID search for known collection
-        logger.info("Strategy 3: Search for JNO-E-RSS-1-EDR collection...")
-        known_collections = [
-            "urn:nasa:pds:jno-e-rss-1-edr",
-            "urn:nasa:pds:jno-j-rss-1-edr",
-            "urn:nasa:pds:juno_radio_science"
-        ]
-        
-        for collection in known_collections:
-            try:
-                coll_products = products.filter(collection)
-                results = list(coll_products.limit(10))
-                if results:
-                    logger.success(f"Found {len(results)} products in {collection}")
-                    for product in results:
-                        search_results.append({
-                            'id': getattr(product, 'id', 'N/A'),
-                            'title': getattr(product, 'title', 'N/A'),
-                            'collection': collection,
-                            'strategy': 'known_collection'
-                        })
-            except Exception as e:
-                logger.debug(f"Collection {collection} not found: {e}")
-        
-        # Save results
-        output = {
-            'step': '031_pds_api_search_juno',
-            'timestamp': datetime.now().isoformat(),
-            'tool': 'peppi',
-            'search_results': search_results,
-            'n_total': len(search_results)
-        }
-        
-        output_file = PROJECT_ROOT / 'results' / 'step031_pds_api_search.json'
-        with open(output_file, 'w') as f:
-            json.dump(output, f, indent=2)
-        
-        logger.section("SEARCH RESULTS")
-        logger.info(f"Total products found: {len(search_results)}")
-        logger.info(f"Output: {output_file}")
-        
-        return output
-        
     except ImportError:
-        logger.error("Peppi library not installed")
-        logger.info("Install with: pip install pds.peppi")
-        return {'status': 'peppi_not_installed', 'error': 'pip install pds.peppi'}
-        
-    except Exception as e:
-        logger.error(f"Search failed: {e}")
-        return {'status': 'error', 'error': str(e)}
+        logger.info("Peppi not installed (pip install pds.peppi)")
+        return {"status": "peppi_not_installed", "search_results": [], "n_total": 0}
 
-
-def search_with_direct_api():
-    """Search using direct PDS API REST calls."""
-    logger = StepLogger("step_031_pds_api_search_juno", PROJECT_ROOT)
-    logger.header("STEP 031b: DIRECT PDS API SEARCH")
-    
-    import requests
-    
-    # PDS Search API base URL - CORRECT ENDPOINT IS /products
-    PDS_API_BASE = "https://pds.nasa.gov/api/search/1/products"
-    
-    logger.info(f"API Endpoint: {PDS_API_BASE}")
-    logger.info("Reference: https://nasa-pds.github.io/pds-api/guides/search/quickstart.html")
-    
+    search_results: list[dict[str, Any]] = []
     try:
-        session = requests.Session()
-        session.headers.update({
-            'Accept': 'application/json',
-            'User-Agent': 'TEP-EFA-Pipeline/1.0'
-        })
-        
-        # Test API connection
-        logger.subsection("Testing API Connection")
-        response = session.get(f"{PDS_API_BASE}?limit=1", timeout=10)
-        logger.info(f"API Status: {response.status_code}")
-        
-        if response.status_code == 200:
-            logger.success("PDS API accessible")
-            
-            # Search strategies
-            all_results = []
-            
-            # Strategy 1: Search for Juno
-            logger.subsection("Strategy 1: Search for Juno products")
-            search_configs = [
-                {'q': 'juno', 'limit': 50},
-                {'q': 'juno earth', 'limit': 50},
-                {'q': 'juno 2013', 'limit': 50},
-                {'q': 'JNO-E-RSS', 'limit': 50},
-                {'q': 'radio science', 'limit': 50},
-            ]
-            
-            for config in search_configs:
-                try:
-                    logger.info(f"  Query: {config['q']}")
-                    search_response = session.get(PDS_API_BASE, params=config, timeout=30)
-                    
-                    if search_response.status_code == 200:
-                        data = search_response.json()
-                        products = data.get('data', [])
-                        logger.info(f"    Found: {len(products)} products")
-                        
-                        for product in products:
-                            all_results.append({
-                                'id': product.get('id', 'N/A'),
-                                'title': product.get('title', 'N/A'),
-                                'type': product.get('type', 'N/A'),
-                                'query': config['q'],
-                                'start_date': product.get('start_date_time'),
-                                'stop_date': product.get('stop_date_time')
-                            })
-                    else:
-                        logger.debug(f"    Query failed: {search_response.status_code}")
-                        
-                except Exception as e:
-                    logger.debug(f"    Query error: {e}")
-            
-            # Filter for Earth flyby date
-            logger.subsection("Filtering for 2013 Earth Flyby")
-            from datetime import datetime
-            
-            flyby_products = []
-            for result in all_results:
-                start = result.get('start_date', '')
-                if start and '2013-10' in start:
-                    flyby_products.append(result)
-                    logger.info(f"  Found 2013-10 product: {result['title'][:60]}...")
-            
-            logger.info(f"Total products found: {len(all_results)}")
-            logger.info(f"2013-10 products: {len(flyby_products)}")
-            
-            return {
-                'total_products': len(all_results),
-                'flyby_products': len(flyby_products),
-                'all_results': all_results,
-                'flyby_candidates': flyby_products
-            }
-        else:
-            logger.warning(f"API not accessible: {response.status_code}")
-            logger.warning(f"Response: {response.text[:200]}")
-            
-    except Exception as e:
-        logger.error(f"API connection failed: {e}")
-        import traceback
-        logger.debug(traceback.format_exc())
-    
-    return None
+        client = pep.PDSRegistryClient()
+        products = pep.Products(client)
+        queries = [
+            products.has_target("Earth"),
+            products.filter('title like "*juno*"'),
+            products.filter('title like "*radio*science*"'),
+        ]
+        for query in queries:
+            try:
+                for product in islice(query, 50):
+                    search_results.append(
+                        {
+                            "id": getattr(product, "id", "N/A"),
+                            "title": getattr(product, "title", "N/A"),
+                            "type": getattr(product, "product_type", "N/A"),
+                            "strategy": "peppi_islice",
+                        }
+                    )
+            except Exception as exc:
+                logger.warning(f"Peppi query failed: {exc}")
+    except Exception as exc:
+        logger.warning(f"Peppi search failed: {exc}")
+        return {"status": "error", "error": str(exc), "search_results": [], "n_total": 0}
+
+    logger.info(f"Peppi products collected: {len(search_results)}")
+    return {
+        "step": "031_pds_api_search_juno",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "tool": "peppi",
+        "search_results": search_results,
+        "n_total": len(search_results),
+    }
 
 
-def main():
-    """Execute PDS API search for Juno data."""
+def main() -> int:
     logger = StepLogger("step_031_pds_api_search_juno", PROJECT_ROOT)
-    
     logger.header("STEP 031: PDS API SEARCH FOR JUNO 2013 DATA")
-    logger.info("="*70)
-    logger.info("Searching NASA PDS for Juno 2013 Earth Flyby TRK-2-25 data")
-    logger.info("="*70)
-    
-    all_results = {}
-    
-    # Try Peppi first
-    logger.section("Method 1: Peppi Python Library")
-    peppi_results = search_with_peppi()
-    all_results['peppi'] = peppi_results
-    
-    # Try direct API
-    logger.section("Method 2: Direct PDS REST API")
-    api_results = search_with_direct_api()
-    all_results['direct_api'] = api_results
-    
-    # Summary
+
+    peppi_results = search_with_peppi(logger)
+    mcp_results = search_with_mcp_api(logger)
+
+    output_file = PROJECT_ROOT / "results" / "step031_pds_api_search.json"
+    payload = {
+        **peppi_results,
+        "mcp_primary": mcp_results,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+    with open(output_file, "w", encoding="utf-8") as handle:
+        json.dump(payload, handle, indent=2)
+
+    combined_file = PROJECT_ROOT / "results" / "step031_pds_api_search_combined.json"
+    with open(combined_file, "w", encoding="utf-8") as handle:
+        json.dump(
+            {
+                "step": "031_pds_api_search_combined",
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "peppi": peppi_results,
+                "mcp_api": mcp_results,
+                "status": "complete",
+            },
+            handle,
+            indent=2,
+        )
+
+    n_mcp = mcp_results.get("mcp_perigee_candidates", 0)
+    n_atm = mcp_results.get("atmospheres_index_probe", {}).get("perigee_window_overlaps", 0)
     logger.section("SEARCH SUMMARY")
-    
-    if peppi_results.get('n_total', 0) > 0:
-        logger.success(f"✓ Peppi found {peppi_results['n_total']} products")
-    else:
-        logger.warning("✗ Peppi search returned no results")
-    
-    if api_results:
-        logger.success("✓ Direct API connection successful")
-    else:
-        logger.warning("✗ Direct API not accessible or returned no data")
-    
-    logger.info("")
-    logger.info("NEXT STEPS:")
-    logger.info("1. Review search results in results/step031_pds_api_search.json")
-    logger.info("2. If products found, download URLs will be provided")
-    logger.info("3. If no results, try manual search at https://pds.mcp.nasa.gov/portal/search")
-    logger.info("")
-    logger.info("Alternative direct contact:")
-    logger.info("  pds-rn@jpl.nasa.gov")
-    logger.info("  Subject: 'Juno 2013 Earth Flyby TRK-2-25 Data Request'")
-    
-    # Save combined results
-    output_file = PROJECT_ROOT / 'results' / 'step031_pds_api_search_combined.json'
-    with open(output_file, 'w') as f:
-        json.dump({
-            'step': '031_pds_api_search_combined',
-            'timestamp': datetime.now().isoformat(),
-            'peppi': peppi_results,
-            'direct_api': api_results,
-            'status': 'complete'
-        }, f, indent=2)
-    
-    logger.info(f"")
-    logger.info(f"Combined results: {output_file}")
-    
+    logger.info(f"MCP perigee-window candidates: {n_mcp}")
+    logger.info(f"Atmospheres LBL overlaps in flyby window: {n_atm}")
+    logger.info(f"Peppi products: {peppi_results.get('n_total', 0)}")
+    logger.info(f"Wrote {output_file}")
+
+    if n_mcp == 0 and n_atm == 0:
+        logger.warning(
+            "No automated perigee-window products found — manual PDS-RN ingest required "
+            "(see data/raw/dsn_tracking/Juno_2013/DOWNLOAD_INSTRUCTIONS.txt)"
+        )
+
     logger.log_step_summary(0, "SUCCESS")
     return 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sys.exit(main())

@@ -150,8 +150,8 @@ class GNSSCrossValidation:
         self.logger.info("  Paper 1 (Theory): β = 1e-4")
         self.logger.info("  Paper 5 (GTE): λ = 4201 ± 1967 km")
         self.logger.info("  Paper 6 (UCD): α_d = 0.334, ρ_c = 20 g/cm³")
-        self.logger.info("  Paper 10 (Exp): Identifies conformal loophole")
-        self.logger.info("  Paper 14 (Cos): Suppressed density scaling")
+        self.logger.info("  Paper 9 (Exp): Identifies conformal loophole")
+        self.logger.info("  Paper 10 (Cos): Suppressed density scaling")
         
         return {
             'gnss_scale_consistent': lambda_consistent,

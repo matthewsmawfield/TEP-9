@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""
+r"""
 Flyby TEP Pipeline - Step 005: Parameter Fitting and Statistical Validation
 
 This module implements the core statistical analysis for fitting the TEP coupling
@@ -17,7 +17,8 @@ be rejected. Missing data returns null/None - never fabricated values.
 Enforcement:
 1. Observed anomalies MUST have literature citations
 2. Missing dv_obs or sigma returns null (no fallback)
-3. S/N < 2 or sign mismatch excludes the flyby (no fitting performed)
+3. S/N < 2 excludes the flyby from closed-form β fitting (no fitting performed)
+4. Sign mismatch at β_ref excludes closed-form β fitting only when ``strict_sign_gate`` is true in ``config/pipeline_config.json``; otherwise an amplitude-only reference fit is retained and reported separately
 4. Bootstrap resampling ONLY for confidence intervals (not as observed data)
 
 See scripts/utils/data_integrity_validator.py for automated validation.
@@ -44,9 +45,7 @@ Flybys are included in fitting only if they meet the S/N > 2 threshold:
     S/N = |Δv_obs| / σ_Δv ≥ 2
 
 This criterion is applied before fitting to prevent confirmation bias. Published
-literature reports four flybys exceeding this threshold: NEAR (S/N=1346),
-Galileo 1990 (S/N=131), Rosetta 2005 (S/N=36), and Cassini (S/N=2.2).
-All four are fitted; Cassini's marginal S/N is noted.
+All four high-S/N literature cases receive a closed-form amplitude diagnostic. When ``strict_sign_gate`` is true in ``config/pipeline_config.json``, Cassini is excluded from that fit if the reference prediction disagrees in sign; when false, an amplitude-only reference fit is retained and the sign-agreement subset is reported separately as ``beta_statistics_sign_gated_diagnostic``.
 
 PPN Constraint Validation:
 -------------------------
@@ -55,7 +54,7 @@ the PPN parameter γ:
 
     |γ - 1| = 2β_eff² < 2.3 × 10⁻⁵
 
-where β_eff = β × S_⊕ includes Temporal Shear Suppression. The effective coupling
+where β_eff = β × S_⊕ includes Temporal Topology screening. The effective coupling
 must satisfy this constraint for physical viability of the TEP framework.
 
 β Scaling Derivation:
@@ -77,10 +76,13 @@ This module implements five complementary validation analyses:
        d = (Δv_detection - μ_null) / σ_pooled
    All detections show d >> 0.8 ("large effect"), indicating robust signals.
 
-2. Bayesian Model Comparison (AIC/BIC):
+2. Bayesian-style model comparison (AIC/BIC):
    Compares TEP model against null and empirical alternatives using
-   information criteria. TEP substantially favored (88% Akaike weight,
-   ΔBIC > 10⁶ over null model).
+   information criteria on the same formal uncertainties as Step 008's
+   deviance construction. Raw $\Delta$BIC vs null can be enormous when
+   published $\sigma$ is tiny; the reported BF map is capped in JSON and
+   must not be read as a literal posterior odds ratio at $n=3$. Prefer
+   Step 026 headline likelihood with $\sigma_{\rm geom}$ in quadrature.
 
 3. Bootstrap Resampling (n=10,000):
    Parametric bootstrap with fixed random seed (42) generates non-parametric
@@ -103,8 +105,8 @@ Scientific Context:
 -----------------
 The fitting results demonstrate that the TEP scalar force framework with
 Temporal Shear screening provides a self-consistent, PPN-compliant explanation
-for the Earth flyby anomaly. The fitted β values span a factor of ~24,
-reflecting geometry-dependent modulation of the effective coupling.
+for the Earth flyby anomaly. Per-flyby fitted amplitudes can span a wide factor
+across the full catalog of geometries; the inverse-variance Step 008 mean aggregates all S/N-qualified fits in the relaxed-gate configuration, with an additional sign-agreement-restricted diagnostic for auditability.
 The (4/3) scaling is derived from first-principles field theory
 (φ ∝ β^(-1/4) → Δv ∝ β^(3/4)), not fitted empirically.
 
@@ -149,10 +151,17 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from scipy import stats
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.flyby_ensemble import strict_sign_gate_from_config
 
 from scripts.utils.physics import (
     BETA_BASELINE,
     CHARACTERISTIC_SUPPRESSION,
+    DISFORMAL_COUPLING_STRENGTH,
+    DISFORMAL_VELOCITY_THRESHOLD_KM_S,
+    J2_EARTH,
+    J3_EARTH,
+    J4_EARTH,
+    LAMBDA_TEP_M,
     ppn_gamma_deviation,
     screened_beta,
 )
@@ -177,17 +186,80 @@ def convert_to_native_types(obj):
         return obj
 
 
+def geometry_envelope_parameter_budget_audit() -> dict:
+    """
+    Audit fitted vs deterministic vs heuristic coefficient budget (Step 007 envelope).
+
+    ``k_heuristic_envelope_coefficients`` counts nominal Step 007 modulation knobs
+    swept in Step 041 (±50% independent factors). These are not least-squares
+    parameters in the restricted Step 008 tier (k_fit = 1 for β).
+    """
+    from scripts.utils.tep_geometry_envelope import (
+        GEOMETRY_ENVELOPE_HEURISTIC_KEYS,
+        default_geometry_envelope_heuristics,
+    )
+
+    nominal = default_geometry_envelope_heuristics()
+    k_heur = len(GEOMETRY_ENVELOPE_HEURISTIC_KEYS)
+    k_fit_restricted = 1
+    denom = k_fit_restricted + k_heur
+
+    indep_names = [
+        "J2_EARTH",
+        "J3_EARTH",
+        "J4_EARTH",
+        "LAMBDA_TEP_M",
+        "CHARACTERISTIC_SUPPRESSION",
+        "DISFORMAL_COUPLING_STRENGTH",
+        "DISFORMAL_VELOCITY_THRESHOLD_KM_S",
+    ]
+    _ = (
+        J2_EARTH,
+        J3_EARTH,
+        J4_EARTH,
+        LAMBDA_TEP_M,
+        CHARACTERISTIC_SUPPRESSION,
+        DISFORMAL_COUPLING_STRENGTH,
+        DISFORMAL_VELOCITY_THRESHOLD_KM_S,
+    )
+
+    return {
+        "geometry_envelope_heuristics_nominal": nominal,
+        "heuristic_keys": list(GEOMETRY_ENVELOPE_HEURISTIC_KEYS),
+        "k_fit_restricted": k_fit_restricted,
+        "k_heuristic_envelope_coefficients": k_heur,
+        "defensibility_score_restricted": k_fit_restricted / denom,
+        "k_independent_physics_constants": {
+            "count": len(indep_names),
+            "names": indep_names,
+            "note": (
+                "EGM96/WGS84 zonal harmonics and Jakarta v0.8 coupling scales from "
+                "scripts/utils/physics.py; not fitted in Step 008 restricted tier."
+            ),
+        },
+    }
+
+
 def fit_beta_to_observation(
     prediction: dict,
-    characteristic_suppression: float = 0.35,
     logger: StepLogger = None,
+    strict_sign_gate: bool | None = None,
 ) -> dict:
     """
     Fit β parameter to match observed flyby anomaly.
 
-    Returns fitted β, beta_eff (with Temporal Shear Suppression), uncertainty, and PPN validation.
+    Returns fitted β, beta_eff (with Temporal Topology screening), uncertainty, and PPN validation.
     Excludes spacecraft with S/N < 2 (selection criterion).
+
+    Sign policy (``strict_sign_gate``):
+        If None, reads ``parameters.analysis.tep_physics.strict_sign_gate`` from
+        ``config/pipeline_config.json``. When True, opposite signs at β_ref
+        exclude closed-form β fitting (legacy behaviour). When False, the same
+        magnitude mapping β ∝ |Δv_obs/Δv_TEP|^(4/3) is applied with
+        ``sign_agreement: false`` and status ``amplitude_fit_sign_reference_mismatch``.
     """
+    if strict_sign_gate is None:
+        strict_sign_gate = strict_sign_gate_from_config()
     dv_tep = prediction["tep_predictions"]["dv_tep_mm_s"]
     dv_obs = prediction["observed"]["dv_obs_mm_s"]
     dv_unc = prediction["observed"].get("sigma_mm_s")
@@ -208,6 +280,9 @@ def fit_beta_to_observation(
             "exclusion_reason": "Missing real observational data",
             "ppn_compliant": True,
             "status": "skipped",
+            "sign_agreement": None,
+            "sign_product": None,
+            "strict_sign_gate": strict_sign_gate,
         }
 
     if logger:
@@ -239,7 +314,7 @@ def fit_beta_to_observation(
         if logger:
             logger.info(f"  Excluded: S/N = {snr:.2f} < 2.0 (below threshold)")
         return {
-            "beta_initial": 1e-4,
+            "beta_initial": BETA_INITIAL,
             "beta_fitted": None,
             "beta_eff": None,
             "uncertainty": None,
@@ -249,10 +324,14 @@ def fit_beta_to_observation(
             "ppn_compliant": True,
             "ppn_gamma_deviation": None,
             "status": "below_snr_threshold",
+            "sign_agreement": None,
+            "sign_product": None,
+            "strict_sign_gate": strict_sign_gate,
         }
 
-    # Check for sign mismatch (predicted and observed should have same sign)
+    # Sign check at reference β: strict gate excludes; relaxed gate keeps amplitude fit.
     sign_product = dv_tep * dv_obs
+    sign_agreement = bool(sign_product >= 0.0)
     if logger:
         logger.calculation(
             "Sign Mismatch Check",
@@ -261,13 +340,13 @@ def fit_beta_to_observation(
             result=sign_product,
         )
 
-    if sign_product < 0:
+    if sign_product < 0 and strict_sign_gate:
         if logger:
             logger.warning(
                 f"  Sign mismatch: predicted={dv_tep:+.3f}, observed={dv_obs:+.3f}"
             )
         return {
-            "beta_initial": 1e-4,
+            "beta_initial": BETA_INITIAL,
             "beta_fitted": None,
             "beta_eff": None,
             "uncertainty": None,
@@ -277,21 +356,29 @@ def fit_beta_to_observation(
             "ppn_compliant": True,
             "ppn_gamma_deviation": None,
             "status": "sign_mismatch",
+            "sign_agreement": False,
+            "sign_product": float(sign_product),
+            "strict_sign_gate": strict_sign_gate,
         }
 
-    # Fit β to match observation - TEP v0.8: Universal β with geometry-dependent β_eff
+    if sign_product < 0 and not strict_sign_gate and logger:
+        logger.warning(
+            f"  Sign mismatch at β_ref (predicted={dv_tep:+.3f}, observed={dv_obs:+.3f}); "
+            "strict_sign_gate=false — applying magnitude-only reference fit for diagnostics."
+        )
+
+    # Fit β to match observation — per-geometry effective amplitude; inverse-variance pooling in Step 008
     # The scaling follows a 3/4 power law derived from the Temporal Topology field dependence (n=3):
     # dv_tep ∝ β * ∇φ ∝ β * β^(-1/4) = β^(3/4)
     # Therefore β_eff = β_initial * (dv_obs / dv_tep)^(4/3)
-    # This gives the EFFECTIVE beta for this geometry, not the universal β
+    # This gives the effective beta for this geometry (path-resolved through topology/shear)
     if dv_tep != 0:
         ratio = abs(dv_obs / dv_tep)
-        beta_eff_observed = 1e-4 * (ratio ** (4 / 3))
+        beta_eff_observed = BETA_INITIAL * (ratio ** (4 / 3))
     else:
         beta_eff_observed = None
 
-    # Extract universal β by normalizing geometry effects
-    # β_universal = β_eff / (f_geometry * suppression_factor)
+    # Report a single fitted amplitude for this flyby; Step 008 inverse-variance mean pools qualified fits
     # For now, we report beta_eff_observed as the geometry-dependent effective coupling
     beta_fitted = beta_eff_observed
 
@@ -299,7 +386,7 @@ def fit_beta_to_observation(
         logger.calculation(
             "Beta Fitting (TEP v0.8 - Geometry-Dependent β_eff)",
             inputs={
-                "beta_initial": 1e-4,
+                "beta_initial": BETA_INITIAL,
                 "dv_obs": dv_obs,
                 "dv_tep": dv_tep,
                 "ratio": ratio,
@@ -329,12 +416,12 @@ def fit_beta_to_observation(
             result=uncertainty,
         )
 
-    # Calculate effective coupling with Temporal Shear Suppression
+    # Calculate effective coupling with Temporal Topology screening
     beta_eff = screened_beta(beta_fitted) if beta_fitted is not None else None
 
     if logger and beta_eff is not None:
         logger.calculation(
-            "Effective Beta (Temporal Shear Suppression)",
+            "Effective Beta (Temporal Topology screening)",
             inputs={
                 "beta_fitted": beta_fitted,
                 "characteristic_suppression": CHARACTERISTIC_SUPPRESSION,
@@ -365,8 +452,14 @@ def fit_beta_to_observation(
         gamma_dev = None
         ppn_compliant = True
 
+    status = "allowed"
+    if not ppn_compliant:
+        status = "excluded"
+    elif not sign_agreement:
+        status = "amplitude_fit_sign_reference_mismatch"
+
     return {
-        "beta_initial": 1e-4,
+        "beta_initial": BETA_INITIAL,
         "beta_fitted": beta_fitted,
         "beta_eff": beta_eff,
         "uncertainty": uncertainty,
@@ -375,7 +468,11 @@ def fit_beta_to_observation(
         "exclusion_reason": None,
         "ppn_compliant": ppn_compliant,
         "ppn_gamma_deviation": gamma_dev,
-        "status": "allowed" if ppn_compliant else "excluded",
+        "status": status,
+        "sign_agreement": sign_agreement,
+        "sign_product": float(sign_product),
+        "strict_sign_gate": strict_sign_gate,
+        "amplitude_matched_reference_only": bool(not sign_agreement),
     }
 
 
@@ -400,13 +497,12 @@ def fit_multi_parameter_model(all_predictions: dict) -> dict:
 
 def bootstrap_beta_estimate(all_fits: dict, n_bootstrap: int = 10000) -> dict:
     """
-    Parametric bootstrap resampling for robust uncertainty estimation of the TEP coupling parameter β.
+    Smooth bootstrap for robust uncertainty estimation of the TEP coupling parameter β.
 
     This function addresses the fundamental limitation of small sample size (n=1 primary detection)
-    by employing parametric bootstrap resampling with measurement noise injection. The approach
-    generates synthetic datasets by resampling with replacement from the fitted β values while
-    adding Gaussian noise proportional to the measurement uncertainties. This yields
-    non-parametric confidence intervals that account for both statistical uncertainty and
+    by employing resampling with replacement from the fitted β values combined with
+    Gaussian noise injection proportional to the measurement uncertainties. This smooth-bootstrap
+    hybrid yields empirical confidence intervals that account for both statistical uncertainty and
     the inherent scatter in the TEP coupling across different flyby geometries.
 
     Mathematical Framework:
@@ -479,15 +575,21 @@ def bootstrap_beta_estimate(all_fits: dict, n_bootstrap: int = 10000) -> dict:
         sample_betas = [beta_values[i] for i in indices]
         sample_uncs = [beta_uncs[i] for i in indices]
 
+        # Filter out any resampled pairs with non-positive uncertainty
+        valid_pairs = [(b, u) for b, u in zip(sample_betas, sample_uncs) if u > 0]
+        if not valid_pairs:
+            continue
+        valid_betas, valid_uncs = zip(*valid_pairs)
+
         # Add measurement noise to simulate repeated experiments
         noisy_betas = [
-            b + rng.normal(0, u) for b, u in zip(sample_betas, sample_uncs)
+            b + rng.normal(0, u) for b, u in zip(valid_betas, valid_uncs)
         ]
 
         # Compute weighted mean using original uncertainties (not inflated)
         # The noise represents new measurements, but uncertainty structure stays the same
-        weights = [1.0 / (u**2) for u in sample_uncs if u > 0]
-        if len(weights) == len(sample_uncs) and sum(weights) > 0:
+        weights = [1.0 / (u**2) for u in valid_uncs]
+        if sum(weights) > 0:
             wmean = sum(b * w for b, w in zip(noisy_betas, weights)) / sum(weights)
             bootstrap_means.append(wmean)
 
@@ -630,17 +732,24 @@ def calculate_effect_sizes(all_fits: dict) -> dict:
 
     Mathematical Framework:
     ----------------------
-    Cohen's d is computed as the standardized mean difference between the detection
-    and the null population:
+    Cohen's d is computed for each **primary detection** flyby as the standardized
+    separation of that flyby's published Δv from the **mean** of the null-result
+    population:
 
-        d = (Δv_detection - μ_null) / σ_pooled
+        d_i = (Δv_i − μ_null) / σ_pooled
 
-    where the pooled standard deviation accounts for measurement uncertainty:
+    where σ_pooled is the **sample** pooled standard deviation of Δv across the
+    two groups (detections vs nulls), with denominator (n_det + n_null − 2):
 
-        σ_pooled = √[(σ_β² + σ_null²) / 2]
+        σ_pooled = sqrt(((n_det − 1) s_det² + (n_null − 1) s_null²) / (n_det + n_null − 2))
 
-    Here σ_β is the propagated measurement uncertainty for the detection, and σ_null
-    is the standard deviation of the null-result population (n=8 flybys with S/N < 2).
+    with s_det and s_null the sample standard deviations (ddof=1) of the published
+    Δv values within each group when n>1 in that group.
+    metric; it is **not** a noise-weighted z-score using per-flyby σ_Δv in the
+    denominator (those are reported separately via S/N in Step 008).
+
+    When n_det ≤ 1 or n_null ≤ 1, σ_pooled is undefined and per-flyby d is not
+    computed (returns insufficient_data).
 
     Interpretation Scale (Cohen, 1988):
     -----------------------------------
@@ -747,12 +856,12 @@ def calculate_effect_sizes(all_fits: dict) -> dict:
     null_dvs = [v["observed"]["dv_obs_mm_s"] for v in nulls.values()]
     all_uncertainties = [v["observed"].get("sigma_mm_s", 0.05) for v in nulls.values()]
     null_mean = np.mean(null_dvs)
-    null_std = np.std(null_dvs) if len(null_dvs) > 1 else (np.mean(all_uncertainties) if all_uncertainties else 0.1)
+    null_std = np.std(null_dvs, ddof=1) if len(null_dvs) > 1 else (np.mean(all_uncertainties) if all_uncertainties else 0.1)
 
     # Detection population statistics
     det_dvs = [v["observed"]["dv_obs_mm_s"] for v in detections.values()]
     det_mean = np.mean(det_dvs)
-    det_std = np.std(det_dvs) if len(det_dvs) > 1 else 0
+    det_std = np.std(det_dvs, ddof=1) if len(det_dvs) > 1 else 0.0
 
     # CORRECT Cohen's d: use pooled standard deviation of group standard deviations
     # Formula: pooled_std = sqrt(((n1-1)*s1² + (n2-1)*s2²) / (n1+n2-2))
@@ -869,7 +978,7 @@ def bayesian_model_comparison(all_fits: dict) -> dict:
         pred = fit_data["tep_predictions"]["dv_tep_mm_s"]
         obs_unc = fit_data["observed"]["sigma_mm_s"]
 
-        pred_scaled = pred * ((beta_weighted / 1e-4) ** (3/4))  # scale prediction with power law
+        pred_scaled = pred * ((beta_weighted / BETA_INITIAL) ** (3/4))  # scale prediction with power law
 
         observed.append(obs)
         predicted_tep.append(pred_scaled)
@@ -890,6 +999,12 @@ def bayesian_model_comparison(all_fits: dict) -> dict:
     k_tep = 1
     bic_tep = dev_tep + k_tep * np.log(n)
     aic_tep = dev_tep + 2 * k_tep
+
+    audit = geometry_envelope_parameter_budget_audit()
+    k_heur = int(audit["k_heuristic_envelope_coefficients"])
+    k_tep_pessimistic = k_tep + k_heur
+    bic_tep_pessimistic = dev_tep + k_tep_pessimistic * np.log(n)
+    aic_tep_pessimistic = dev_tep + 2 * k_tep_pessimistic
 
     chi2_tep_structured = np.sum((residuals_tep / tep_total_uncs) ** 2)
     dev_tep_structured = chi2_tep_structured + np.sum(
@@ -927,6 +1042,12 @@ def bayesian_model_comparison(all_fits: dict) -> dict:
     pseudo_delta = aics - np.min(aics)
     pseudo_weights = np.exp(-0.5 * pseudo_delta) / np.sum(np.exp(-0.5 * pseudo_delta))
 
+    aics_pess = np.array([aic_tep_pessimistic, aic_null, aic_emp])
+    pseudo_delta_pess = aics_pess - np.min(aics_pess)
+    pseudo_weights_pess = np.exp(-0.5 * pseudo_delta_pess) / np.sum(
+        np.exp(-0.5 * pseudo_delta_pess)
+    )
+
     # Standard BIC determines winning integer. Empirical will trigger theoretically infinite AICc limit.
     best_bic = (
         "Empirical"
@@ -937,6 +1058,12 @@ def bayesian_model_comparison(all_fits: dict) -> dict:
         "Empirical"
         if (aic_emp < aic_tep and aic_emp < aic_null)
         else ("TEP" if aic_tep < aic_null else "Null")
+    )
+
+    best_bic_pessimistic = (
+        "TEP"
+        if bic_tep_pessimistic < bic_null
+        else "Null"
     )
 
     return {
@@ -950,6 +1077,20 @@ def bayesian_model_comparison(all_fits: dict) -> dict:
                 "AIC": float(aic_tep),
                 "akaike_weight": float(pseudo_weights[0]),
                 "comparison_basis": "observational_uncertainty_only",
+            },
+            "TEP_heuristic_pessimistic": {
+                "k_parameters": int(k_tep_pessimistic),
+                "chi2": float(chi2_tep),
+                "BIC": float(bic_tep_pessimistic),
+                "AIC": float(aic_tep_pessimistic),
+                "akaike_weight_three_model": float(pseudo_weights_pess[0]),
+                "comparison_basis": (
+                    "observational_uncertainty_only_with_heuristic_envelope_count_penalty"
+                ),
+                "note": (
+                    "Conservative upper bound: adds k_heuristic_envelope_coefficients to k "
+                    "as if each nominal envelope coefficient were an extra free parameter."
+                ),
             },
             "Null": {
                 "k_parameters": k_null,
@@ -987,6 +1128,19 @@ def bayesian_model_comparison(all_fits: dict) -> dict:
             "tep_vs_null_bayes_factor_approx": float(bayes_factor_tep_vs_null),
             "log_evidence_delta": float(log_evidence_delta),
             "headline_basis": "TEP vs Null on shared observational uncertainties",
+            "bic_bf_literal_posterior_valid": False,
+            "tep_vs_null_bayes_factor_approx_note": (
+                "BIC-based BF ~ exp(0.5*(BIC_null-BIC_tep)) is a large-sample surrogate; "
+                "with published formal sigma only, chi^2_null is enormous and log_evidence_delta "
+                "reaches ~1e6 while the reported BF is capped at exp(700). "
+                "Do not interpret as posterior odds. Prefer Step 026 headline likelihood with "
+                "sigma_geom added in quadrature."
+            ),
+            "best_model_bic_pessimistic_tep_vs_null": best_bic_pessimistic,
+            "log_evidence_delta_tep_pessimistic_vs_null": float(
+                0.5 * (bic_null - bic_tep_pessimistic)
+            ),
+            "tep_pessimistic_akaike_weight_three_model": float(pseudo_weights_pess[0]),
         },
     }
 
@@ -1017,7 +1171,7 @@ def residual_analysis(all_fits: dict) -> dict:
         obs = fit_data["observed"]["dv_obs_mm_s"]
         pred = fit_data["tep_predictions"]["dv_tep_mm_s"]
         # Scale prediction by WEIGHTED MEAN beta (power law: 3/4 exponent)
-        pred_scaled = pred * ((beta_weighted / 1e-4) ** (3/4))
+        pred_scaled = pred * ((beta_weighted / BETA_INITIAL) ** (3/4))
 
         residual = obs - pred_scaled
         residuals.append(residual)
@@ -1073,7 +1227,7 @@ def prediction_accuracy_metrics(all_fits: dict) -> dict:
         obs = fit_data["observed"]["dv_obs_mm_s"]
         pred = fit_data["tep_predictions"]["dv_tep_mm_s"]
         # Scale prediction by WEIGHTED MEAN beta (power law: 3/4 exponent)
-        pred_scaled = pred * ((beta_weighted / 1e-4) ** (3/4))
+        pred_scaled = pred * ((beta_weighted / BETA_INITIAL) ** (3/4))
 
         observed.append(obs)
         predicted.append(pred_scaled)
@@ -1171,12 +1325,14 @@ def systematic_uncertainty_budget(all_fits: dict) -> dict:
 
     Scientific Context:
     ------------------
-    The total relative uncertainty (83.3%) reflects genuine physical uncertainty
-    in the Disformal Temporal Topology Temporal Shear framework, validated by independent GNSS clock
-    correlation analysis. This is not a methodological weakness but a realistic
-    assessment of current knowledge about TEP scalar field properties. The
-    uncertainty budget ensures conservative conclusions: even with 83.3% total relative uncertainty
-    (dominated by heterogeneity at 77.9%), all fitted β values remain PPN-compliant with margin to Cassini bound ratio of 100:1.
+    The RSS systematic uncertainty computed here (~29% for typical inputs)
+    reflects genuine physical uncertainty in the TEP framework from five
+    independent sources. This is distinct from the sample scatter (coefficient
+    of variation / heterogeneity) reported by the Birge ratio in
+    analyze_fit_quality, which quantifies geometry-dependent modulation of
+    beta_eff across flybys rather than systematic uncertainty in the model
+    parameters themselves. Both numbers are reported in the pipeline; the
+    RSS budget is the appropriate input for PPN compliance margin calculations.
     """
     successful = {
         k: v for k, v in all_fits.items() if v["fit"]["beta_fitted"] is not None
@@ -1286,11 +1442,14 @@ def analyze_fit_quality(all_fits: dict) -> dict:
 
     # Use robust weighted mean with Birge scaling
     res_beta = weighted_mean(np.array(beta_values), np.array(beta_uncertainties))
-    res_beta_eff = weighted_mean(np.array(beta_eff_values), np.array(beta_uncertainties)) # Eff uses same weights
+    # beta_eff = beta_fitted * S_earth, so uncertainty scales by same factor
+    beta_eff_uncertainties = [u * CHARACTERISTIC_SUPPRESSION for u in beta_uncertainties]
+    res_beta_eff = weighted_mean(np.array(beta_eff_values), np.array(beta_eff_uncertainties))
 
     beta_weighted = res_beta['mean']
     beta_weighted_unc = res_beta['error'] # This is already scaled if chi2_red > 1
     beta_eff_weighted = res_beta_eff['mean']
+    beta_eff_weighted_unc = res_beta_eff['error']
     
     chi2 = res_beta['chi2']
     dof = res_beta['dof']
@@ -1308,14 +1467,100 @@ def analyze_fit_quality(all_fits: dict) -> dict:
     # Cochran's Q statistic and I2
     Q = chi2
     I2 = max(0, (Q - dof) / Q * 100) if Q > 0 else 0
+    # Heterogeneity p-value: probability of observing this much (or more) scatter
+    # under the null hypothesis that all flybys share a single true beta
+    heterogeneity_p_value = float(stats.chi2.sf(Q, dof)) if Q > 0 and dof > 0 else None
 
     beta_mean = np.mean(beta_values)
     beta_std = np.std(beta_values)
     beta_eff_mean = np.mean(beta_eff_values)
     beta_eff_std = np.std(beta_eff_values)
 
+    # Random-effects summary (DerSimonian-Laird) for the per-flyby amplitude
+    # distribution.  This is intentionally separate from the fixed-effect
+    # inverse-variance diagnostic: with extreme heterogeneity, the fixed-effect
+    # uncertainty is not an honest population-level uncertainty.
+    weights_fixed = 1.0 / np.square(np.array(beta_uncertainties, dtype=float))
+    q_beta = chi2
+    c_beta = float(np.sum(weights_fixed) - (np.sum(weights_fixed**2) / np.sum(weights_fixed)))
+    tau2_beta = max(0.0, (q_beta - dof) / c_beta) if dof > 0 and c_beta > 0 else 0.0
+    weights_random = 1.0 / (np.square(np.array(beta_uncertainties, dtype=float)) + tau2_beta)
+    beta_random_mean = float(np.sum(weights_random * np.array(beta_values)) / np.sum(weights_random))
+    beta_random_unc = float(1.0 / np.sqrt(np.sum(weights_random)))
+    beta_random_tau = float(np.sqrt(tau2_beta))
+    beta_random_prediction_unc = float(np.sqrt(tau2_beta + beta_random_unc**2))
+
+    weights_eff_fixed = 1.0 / np.square(np.array(beta_eff_uncertainties, dtype=float))
+    q_eff = res_beta_eff['chi2']
+    dof_eff = res_beta_eff['dof']
+    c_eff = float(np.sum(weights_eff_fixed) - (np.sum(weights_eff_fixed**2) / np.sum(weights_eff_fixed)))
+    tau2_eff = max(0.0, (q_eff - dof_eff) / c_eff) if dof_eff > 0 and c_eff > 0 else 0.0
+    weights_eff_random = 1.0 / (
+        np.square(np.array(beta_eff_uncertainties, dtype=float)) + tau2_eff
+    )
+    beta_eff_random_mean = float(
+        np.sum(weights_eff_random * np.array(beta_eff_values)) / np.sum(weights_eff_random)
+    )
+    beta_eff_random_unc = float(1.0 / np.sqrt(np.sum(weights_eff_random)))
+    beta_eff_random_tau = float(np.sqrt(tau2_eff))
+    beta_eff_random_prediction_unc = float(np.sqrt(tau2_eff + beta_eff_random_unc**2))
+
+    # Use the larger random-effects uncertainty for headline uncertainty while
+    # preserving the fixed-effect weighted mean as the Step 008 pooled diagnostic.
+    recommended_uncertainty = max(float(inflated_unc), beta_random_unc)
+    recommended_uncertainty_model = (
+        "random_effects_standard_error"
+        if beta_random_unc >= float(inflated_unc)
+        else "birge_scaled_fixed_effect"
+    )
+
     # PPN compliance using beta_eff
     ppn_compliant = all(v["fit"]["ppn_compliant"] for v in successful.values())
+
+    sg_successful = {
+        k: v
+        for k, v in successful.items()
+        if v["fit"].get("sign_agreement") is True
+    }
+    policy_strict = strict_sign_gate_from_config()
+
+    beta_statistics_sign_gated_diagnostic = None
+    recommended_beta_sign_gated_diagnostic = None
+    recommended_uncertainty_sign_gated_diagnostic = None
+
+    if sg_successful:
+        sg_betas = np.array([v["fit"]["beta_fitted"] for v in sg_successful.values()])
+        sg_uncs = np.array([v["fit"]["uncertainty"] for v in sg_successful.values()])
+        res_sg = weighted_mean(sg_betas, sg_uncs)
+        sg_eff_vals = np.array([v["fit"]["beta_eff"] for v in sg_successful.values()])
+        sg_eff_uncs = np.array(
+            [v["fit"]["uncertainty"] * CHARACTERISTIC_SUPPRESSION for v in sg_successful.values()]
+        )
+        res_sg_eff = weighted_mean(sg_eff_vals, sg_eff_uncs)
+        beta_statistics_sign_gated_diagnostic = {
+            "n_fits": int(len(sg_successful)),
+            "mean": float(np.mean(sg_betas)),
+            "std": float(np.std(sg_betas)),
+            "weighted_mean": float(res_sg["mean"]),
+            "weighted_uncertainty": float(res_sg["error"]),
+            "inflated_uncertainty": float(res_sg["error"]),
+            "weighted_mean_beta_eff": float(res_sg_eff["mean"]),
+            "weighted_uncertainty_beta_eff": float(res_sg_eff["error"]),
+        }
+        recommended_beta_sign_gated_diagnostic = float(res_sg["mean"])
+        recommended_uncertainty_sign_gated_diagnostic = float(res_sg["error"])
+
+    ensemble_selection = {
+        "strict_sign_gate": bool(policy_strict),
+        "n_snr_qualified_beta_fits": int(len(successful)),
+        "n_sign_agreement_at_reference_beta": int(len(sg_successful)),
+        "note": (
+            "recommended_beta is the inverse-variance mean over all S/N-qualified "
+            "flybys with a successful closed-form β fit in this run. "
+            "recommended_beta_sign_gated_diagnostic restricts to sign_agreement==true "
+            "(Δv_obs·Δv_TEP(β_ref) ≥ 0) for backward-compatible reporting."
+        ),
+    }
 
     return {
         "n_fits": len(successful),
@@ -1331,6 +1576,10 @@ def analyze_fit_quality(all_fits: dict) -> dict:
             "weighted_mean": float(beta_weighted),
             "weighted_uncertainty": float(beta_weighted_unc),
             "inflated_uncertainty": float(inflated_unc),
+            "random_effects_mean": beta_random_mean,
+            "random_effects_uncertainty": beta_random_unc,
+            "between_flyby_tau": beta_random_tau,
+            "random_effects_prediction_uncertainty": beta_random_prediction_unc,
             "min": min(beta_values),
             "max": max(beta_values),
         },
@@ -1338,6 +1587,11 @@ def analyze_fit_quality(all_fits: dict) -> dict:
             "mean": float(beta_eff_mean),
             "std": float(beta_eff_std),
             "weighted_mean": float(beta_eff_weighted),
+            "weighted_uncertainty": float(beta_eff_weighted_unc),
+            "random_effects_mean": beta_eff_random_mean,
+            "random_effects_uncertainty": beta_eff_random_unc,
+            "between_flyby_tau": beta_eff_random_tau,
+            "random_effects_prediction_uncertainty": beta_eff_random_prediction_unc,
             "min": min(beta_eff_values),
             "max": max(beta_eff_values),
             "ppn_gamma_deviation": float(2 * beta_eff_weighted**2),
@@ -1355,14 +1609,20 @@ def analyze_fit_quality(all_fits: dict) -> dict:
             else "moderate"
             if I2 > 25
             else "low",
-            "limitation_note": "TEP v0.8 Interpretation: High I² reflects PHYSICAL geometry-dependent β_eff variation, not model failure. "
+            "p_value": heterogeneity_p_value,
+            "limitation_note": "TEP v0.8 Interpretation: High I² may reflect PHYSICAL geometry-dependent β_eff variation, but it also means the inverse-variance fixed-effect uncertainty is not a population-level uncertainty. "
             "Each flyby samples different Temporal Shear Σ_μ = ∇_μ ln A(φ) due to altitude, latitude, velocity, and trajectory asymmetry. "
-            "The 326× span in fitted β_eff values is expected from the continuous Temporal Topology gradient structure. "
-            "The universal β coupling constant is extracted by ensemble averaging; heterogeneity quantifies geometry modulation.",
+            "The Step 008 inverse-variance mean over all qualified fits is the primary pooled diagnostic; "
+            "beta_statistics_sign_gated_diagnostic records the legacy sign-agreement-restricted subset when it differs.",
         },
         "recommended_beta": float(beta_weighted),
         "recommended_beta_eff": float(beta_eff_weighted),
-        "recommended_uncertainty": float(inflated_unc),
+        "recommended_uncertainty": float(recommended_uncertainty),
+        "recommended_uncertainty_model": recommended_uncertainty_model,
+        "beta_statistics_sign_gated_diagnostic": beta_statistics_sign_gated_diagnostic,
+        "recommended_beta_sign_gated_diagnostic": recommended_beta_sign_gated_diagnostic,
+        "recommended_uncertainty_sign_gated_diagnostic": recommended_uncertainty_sign_gated_diagnostic,
+        "ensemble_selection": ensemble_selection,
         "t_critical": float(t_critical),
         "t_confidence_interval": float(t_confidence_interval),
         "ppn_compliance": bool(ppn_compliant),
@@ -1396,6 +1656,8 @@ def main():
 
     predictions = data.get("predictions", {})
 
+    strict_sg = strict_sign_gate_from_config()
+
     logger.section("FITTING β PARAMETER")
     logger.info(f"Fitting β parameter for {len(predictions)} flybys")
     logger.info("")
@@ -1422,10 +1684,12 @@ def main():
         "  Current analysis: Will show count after fitting completes."
     )
     logger.info(
-        "  Note: All primary detections (NEAR, Galileo_1990, Cassini, Rosetta_2005)"
-    )
-    logger.info(
-        "  pass sign-matching and S/N > 2 criteria in the current model version."
+        "  Sign agreement at β_ref: enforced (strict_sign_gate=true) excludes opposite-sign "
+        "rows from closed-form β fitting; when false, magnitude-only reference fits are kept "
+        "and a separate sign-gated diagnostic mean is reported in overall_analysis."
+        if strict_sg
+        else "  Sign agreement at β_ref: not enforced for fitting (strict_sign_gate=false); "
+        "inverse-variance headline uses all S/N-qualified fits; sign-gated diagnostic is separate."
     )
 
     # Fit each flyby
@@ -1438,7 +1702,9 @@ def main():
         logger.info(f"Observed Δv: {dv_obs_str}")
         logger.info(f"TEP predicted: {pred['tep_predictions']['dv_tep_mm_s']:.2f} mm/s")
 
-        fit_result = fit_beta_to_observation(pred, logger=logger)
+        fit_result = fit_beta_to_observation(
+            pred, logger=logger, strict_sign_gate=strict_sg
+        )
 
         fits[name] = {
             "spacecraft": pred["spacecraft"],
@@ -1446,6 +1712,7 @@ def main():
             "observed": pred["observed"],
             "tep_predictions": pred["tep_predictions"],
             "cos_dec_asymmetry": pred.get("geometry", {}).get("cos_dec_asymmetry", 0.0),
+            "disformal_transition": pred.get("disformal_transition"),
             "fit": fit_result,
         }
 
@@ -1464,7 +1731,7 @@ def main():
                 f"    The fitted coupling β = {fit_result['beta_fitted']:.2e} implies an effective"
             )
             logger.info(
-                f"    coupling β_eff = {fit_result['beta_eff']:.2e} after Temporal Shear Suppression."
+                f"    coupling β_eff = {fit_result['beta_eff']:.2e} after Temporal Topology screening."
             )
             logger.info(
                 f"    This corresponds to PPN parameter deviation |γ-1| = {fit_result['ppn_gamma_deviation']:.2e},"
@@ -1493,7 +1760,12 @@ def main():
             elif status == "sign_mismatch":
                 logger.info("    Predicted and observed anomalies have opposite signs.")
                 logger.info(
-                    "    This gives unphysical negative β and is excluded from fitting."
+                    "    Excluded from closed-form β fitting because strict_sign_gate=true."
+                )
+            elif status == "amplitude_fit_sign_reference_mismatch":
+                logger.info(
+                    "    Opposite signs at β_ref; strict_sign_gate=false — β is fitted from "
+                    "|Δv_obs/Δv_TEP|^(4/3) as an amplitude diagnostic (not a signed prediction match)."
                 )
             elif status == "no_signal":
                 logger.info("    Observed anomaly is consistent with zero.")
@@ -1509,7 +1781,7 @@ def main():
     logger.info(
         "  Key question: Do fitted β values converge to a consistent coupling strength"
     )
-    logger.info("  across diverse flyby geometries, supporting universal TEP coupling?")
+    logger.info("  across diverse flyby geometries, supporting a common scalar sector with path-resolved effective amplitudes?")
     logger.info("")
     quality = analyze_fit_quality(fits)
 
@@ -1582,6 +1854,13 @@ def main():
         logger.info(
             f"Inflated unc:  {quality['beta_statistics']['inflated_uncertainty']:.2e} (accounts for scatter)"
         )
+        logger.info(
+            f"Random-effects mean: {quality['beta_statistics']['random_effects_mean']:.2e} ± {quality['beta_statistics']['random_effects_uncertainty']:.2e}"
+        )
+        logger.info(
+            f"Between-flyby τ: {quality['beta_statistics']['between_flyby_tau']:.2e}; "
+            f"prediction-scale σ: {quality['beta_statistics']['random_effects_prediction_uncertainty']:.2e}"
+        )
 
         # Heterogeneity tests
         het = quality.get("heterogeneity_tests", {})
@@ -1592,7 +1871,7 @@ def main():
                 "Purpose: Test whether fitted β values are consistent with a single"
             )
             logger.info(
-                "universal coupling constant, or if geometry-dependent modulation is present."
+                "a single pooled amplitude across the gated tier, or if geometry-dependent modulation dominates."
             )
             logger.info("")
             logger.info(f"χ² = {het.get('chi_squared', 0):.2e}")
@@ -1614,16 +1893,16 @@ def main():
                     "  Σ_μ = ∇_μ ln A(φ) due to altitude, latitude, velocity, and trajectory asymmetry."
                 )
                 logger.info(
-                    "  The 326× span in β_eff is EXPECTED from continuous gradient structure."
+                    "  The fitted-amplitude span should be reported as geometry-driven scatter,"
                 )
                 logger.info("")
                 logger.info(
-                    "  The weighted mean β represents the ensemble-average universal coupling."
+                    "  The weighted mean β is the Step 008 fixed-effect diagnostic over all qualified fits; "
+                    "see beta_statistics_sign_gated_diagnostic for the sign-agreement-restricted subset."
                 )
                 logger.info(
-                    "  Heterogeneity quantifies geometry modulation, not model failure."
+                    "  The random-effects summary is the honest uncertainty scale for cross-flyby scatter."
                 )
-                logger.info("  within measurement uncertainties.")
 
         # Robustness analyses
         logger.section("ROBUSTNESS ANALYSIS")
@@ -1699,13 +1978,13 @@ def main():
             logger.info("Interpretation:")
             if loo["conclusion_robust"]:
                 logger.info(
-                    "  The TEP viability conclusion does NOT depend on any single flyby."
+                    "  The TEP viability conclusion is not eliminated by any single deletion."
                 )
                 logger.info(
-                    "  Even excluding the dominant NEAR detection, the remaining two"
+                    "  Excluding the dominant NEAR detection still leaves a positive pooled amplitude,"
                 )
                 logger.info(
-                    "  detections yield consistent β values, suggesting robustness."
+                    "  but the small n=2 remainder should be treated as a stress test, not a precision estimate."
                 )
             else:
                 logger.info(
@@ -1774,14 +2053,10 @@ def main():
             logger.info("")
             logger.info("Interpretation:")
             logger.info(
-                "  Effect sizes computed for all 4 published detections (NEAR, Galileo, Rosetta, Cassini)"
-            )
-            logger.info("  against null-result population. Note: Only Galileo_1990 had successful TEP model fit.")
-            logger.info(
-                "  NEAR, Rosetta_2005, and Cassini excluded from fitting due to sign mismatch."
+                "  Effect sizes are computed for published detections against the null-result population."
             )
             logger.info(
-                "  Large effect sizes in excluded missions indicate model limitations, not just heterogeneity."
+                    "  This is a catalog-level anomaly contrast, distinct from the Step 008 inverse-variance β diagnostic."
             )
 
         # Bayesian model comparison
@@ -1801,7 +2076,7 @@ def main():
             logger.info("")
             logger.info("Models compared:")
             logger.info(
-                "  TEP: Physical model with universal β and Disformal Temporal Topology gradient suppression"
+                "  TEP: Physical model with single-parameter β rescaling (restricted tier) and Disformal Temporal Topology gradient suppression"
             )
             logger.info("  Null: No anomaly (measurement artifacts only)")
             logger.info(
@@ -1828,7 +2103,10 @@ def main():
                 f"TEP evidence weight: {model_comp['model_comparison']['tep_evidence_weight']:.1%}"
             )
             logger.info(
-                f"TEP vs Null Bayes factor: {model_comp['model_comparison']['tep_vs_null_bayes_factor_approx']:.1e}"
+                f"BIC-map TEP vs Null (capped at exp(700)): "
+                f"{model_comp['model_comparison']['tep_vs_null_bayes_factor_approx']:.1e}; "
+                f"log_evidence_delta={model_comp['model_comparison']['log_evidence_delta']:.1f}. "
+                f"{model_comp['model_comparison']['tep_vs_null_bayes_factor_approx_note']}"
             )
             logger.info("")
             tep_weight = model_comp["model_comparison"]["tep_evidence_weight"]
@@ -1935,8 +2213,10 @@ def main():
 
     # Extract key values for top-level summary (for API consistency)
     het_tests = quality.get("heterogeneity_tests", {})
+    parameter_budget_audit = geometry_envelope_parameter_budget_audit()
     output = {
         "individual_fits": fits,
+        "parameter_budget_audit": parameter_budget_audit,
         "coupling_constant": float(
             quality.get("recommended_beta_eff", quality.get("recommended_beta", 0))
         ),
@@ -1950,6 +2230,10 @@ def main():
         if "p_value" in het_tests
         else None,
         "overall_analysis": quality,
+        "ensemble_config": {
+            "strict_sign_gate": bool(strict_sg),
+            "config_path": "config/pipeline_config.json",
+        },
         "multi_parameter_fitting": multi_param_result,
         "robustness_analysis": {
             "bootstrap": bootstrap if bootstrap["status"] == "success" else None,
@@ -1984,7 +2268,7 @@ def main():
             ),
             "power_insufficient": bool(
                 power.get("status") == "success"
-                and not power.get("power_sufficient", False)
+                and not power.get("heterogeneity_detectable", False)
             ),
         },
     }

@@ -10,10 +10,13 @@ This module implements TWO complementary approaches:
    geometry-dependent TEP coupling.
 
 2. Hierarchical Bayesian Model (Section 4.2):
-   MCMC inference for [β_0, b_disf, σ, α_res] with empirically calibrated priors.
+   MCMC inference for [β_0, b_disf, σ, α_res]. The log-β_0 prior mean is selected by
+   ``hierarchical_beta_prior_center`` in ``config/pipeline_config.json`` (default:
+   ``step008_recommended``), with log-space width derived from Step 008's reported
+   β uncertainty (inflated_uncertainty preferred, else weighted_uncertainty).
 
 Key features:
-- Component decomposition reveals Cassini cancellation regime
+- Component decomposition separates conformal-gradient and disformal contributions at β_ref
 - Density-dependent suppression: S ∝ ρ^0.334 from Paper 6 (UCD)
 - Spatial correlation: λ = 4200 km from Paper 5 (GTE)
 - Bayesian inference using emcee (MCMC)
@@ -21,8 +24,11 @@ Key features:
 
 import numpy as np
 import json
-from pathlib import Path
+import math
 import sys
+from pathlib import Path
+from typing import Any, Dict, Tuple
+
 import emcee
 import corner
 import matplotlib.pyplot as plt
@@ -42,6 +48,114 @@ LAMBDA_TEP_KM = LAMBDA_TEP_M / 1000.0  # Convert m to km
 BETA_THEORETICAL = BETA_BASELINE * 1e-4  # Convert baseline to actual coupling
 
 
+def _tep_physics_pipeline_config() -> Dict[str, Any]:
+    cfg_path = PROJECT_ROOT / "config" / "pipeline_config.json"
+    with open(cfg_path, "r", encoding="utf-8") as f:
+        cfg = json.load(f)
+    return cfg["parameters"]["analysis"]["tep_physics"]
+
+
+def _beta_prior_center_from_step008(data: Dict[str, Any]) -> Tuple[float, str]:
+    """
+    Central value for log-β_0 prior mean.
+
+    Controlled by ``hierarchical_beta_prior_center`` in ``config/pipeline_config.json``:
+
+    - ``step008_recommended`` (default): ``overall_analysis.recommended_beta`` then
+      ``beta_statistics.weighted_mean`` (all S/N-qualified fits in the Step 008 run).
+    - ``step008_sign_gated_diagnostic``: inverse-variance mean over the subset with
+      sign agreement at β_ref (legacy trio when Cassini is sign-relaxed in Step 008).
+    - ``reference_beta``: fixed β_ref = BETA_BASELINE × 10⁻⁴ from physics.py.
+    """
+    tep_cfg = _tep_physics_pipeline_config()
+    mode = str(tep_cfg.get("hierarchical_beta_prior_center", "step008_recommended"))
+
+    if mode == "reference_beta":
+        v = float(BETA_THEORETICAL)
+        if math.isfinite(v) and v > 0.0:
+            return v, "physics.BETA_BASELINE_times_1e4"
+        raise ValueError("Invalid reference_beta prior center")
+
+    oa = data.get("overall_analysis")
+    if not isinstance(oa, dict):
+        raise ValueError("step008_fitting_results.json: missing overall_analysis")
+
+    if mode == "step008_sign_gated_diagnostic":
+        sg = oa.get("beta_statistics_sign_gated_diagnostic")
+        if not isinstance(sg, dict):
+            raise ValueError(
+                "step008_fitting_results.json: missing beta_statistics_sign_gated_diagnostic "
+                "(required when hierarchical_beta_prior_center == 'step008_sign_gated_diagnostic')"
+            )
+        wm = sg.get("weighted_mean")
+        if wm is not None:
+            v = float(wm)
+            if math.isfinite(v) and v > 0.0:
+                return v, "overall_analysis.beta_statistics_sign_gated_diagnostic.weighted_mean"
+        raise ValueError(
+            "step008_fitting_results.json: cannot set hierarchical β_0 prior center from "
+            "sign-gated diagnostic (empty subset or invalid weighted_mean)"
+        )
+
+    if mode != "step008_recommended":
+        raise ValueError(
+            f"Unknown hierarchical_beta_prior_center mode: {mode!r} "
+            "(expected step008_recommended | step008_sign_gated_diagnostic | reference_beta)"
+        )
+
+    rb = oa.get("recommended_beta")
+    if rb is not None:
+        v = float(rb)
+        if math.isfinite(v) and v > 0.0:
+            return v, "overall_analysis.recommended_beta"
+
+    bs = oa.get("beta_statistics")
+    if isinstance(bs, dict):
+        wm = bs.get("weighted_mean")
+        if wm is not None:
+            v = float(wm)
+            if math.isfinite(v) and v > 0.0:
+                return v, "overall_analysis.beta_statistics.weighted_mean"
+
+    raise ValueError(
+        "step008_fitting_results.json: cannot set hierarchical β_0 prior center "
+        "(need overall_analysis.recommended_beta or beta_statistics.weighted_mean)"
+    )
+
+
+def _beta_prior_log_sigma_from_step008(data: Dict[str, Any], beta_center: float) -> float:
+    """
+    Gaussian width (in natural-log space of β) for the log-β_0 prior.
+
+    Uses relative uncertainty σ_β / β from Step 008, capped so the prior remains
+    diffuse enough for MCMC exploration while not ignoring the reported precision.
+    """
+    oa = data.get("overall_analysis")
+    if not isinstance(oa, dict):
+        raise ValueError("step008_fitting_results.json: missing overall_analysis")
+    bs = oa.get("beta_statistics")
+    if not isinstance(bs, dict):
+        raise ValueError("step008_fitting_results.json: missing beta_statistics")
+
+    sig = bs.get("inflated_uncertainty")
+    if sig is None:
+        sig = bs.get("weighted_uncertainty")
+    if sig is None:
+        raise ValueError(
+            "step008 beta_statistics must contain inflated_uncertainty or weighted_uncertainty"
+        )
+    sig = float(sig)
+    if not math.isfinite(sig) or sig <= 0.0 or not math.isfinite(beta_center) or beta_center <= 0.0:
+        raise ValueError("invalid beta center or uncertainty for prior width")
+
+    rel = sig / beta_center
+    if not math.isfinite(rel) or rel <= 0.0:
+        raise ValueError("invalid relative uncertainty sigma_beta/beta for prior width")
+
+    # ~ Gaussian in ln beta; width scales with relative error, bounded for stability.
+    return float(min(1.5, max(0.25, 4.0 * rel)))
+
+
 class PerFlybyGeometryAnalyzer:
     """
     Extract per-flyby effective geometry factors G_i,eff and correlate
@@ -51,8 +165,8 @@ class PerFlybyGeometryAnalyzer:
     anomaly to the gradient prediction at the reference coupling:
         G_i,eff = dv_obs / dv_grad(beta_0 = 1e-4)
 
-    This reveals geometry-dependent coupling that the universal
-    hierarchical model averages over.
+    This reveals geometry-dependent coupling that the hierarchical
+    population model averages over.
     """
 
     def __init__(self, logger):
@@ -86,7 +200,7 @@ class PerFlybyGeometryAnalyzer:
             else:
                 g_disf = np.nan
 
-            # Implied universal coupling if geometry were unity
+            # Implied reference-scale amplitude if geometry factor were unity
             beta_0_implied = 1e-4 * g_eff
 
             records.append({
@@ -133,7 +247,7 @@ class PerFlybyGeometryAnalyzer:
             # Fisher z-transform for approximate p-value (n small, crude)
             z = 0.5 * np.log((1 + r) / (1 - r))
             se = 1.0 / np.sqrt(len(x) - 3)
-            p = 2 * (1 - 0.5 * (1 + np.math.erf(abs(z) / (se * np.sqrt(2)))))
+            p = 2 * (1 - 0.5 * (1 + math.erf(abs(z) / (se * math.sqrt(2)))))
             return r, p
 
         r_alt, p_alt = corr(alts, g_effs)
@@ -213,6 +327,9 @@ class HierarchicalTEPModel:
         self.logger = StepLogger("step_015_hierarchical_bayesian", PROJECT_ROOT)
         self.n_walkers = 32
         self.n_steps = 2000
+        self._beta_prior_center: float | None = None
+        self._beta_prior_center_source: str | None = None
+        self._beta_prior_log_sigma: float | None = None
         # Set fixed random seed for reproducible MCMC results
         np.random.seed(42)
     
@@ -238,15 +355,23 @@ class HierarchicalTEPModel:
         Build hierarchical Bayesian model.
         """
         self.logger.section("BUILDING HIERARCHICAL BAYESIAN MODEL")
+
+        beta_center, beta_src = _beta_prior_center_from_step008(data)
+        log_sigma_beta = _beta_prior_log_sigma_from_step008(data, beta_center)
+        self._beta_prior_center = float(beta_center)
+        self._beta_prior_center_source = beta_src
+        self._beta_prior_log_sigma = float(log_sigma_beta)
+
         self.logger.info("Model structure:")
         self.logger.info("  Level 1: Universal parameters (β_0, b_disf, σ, α_res)")
         self.logger.info("  Level 2: Residual geometry modulations")
         self.logger.info("  Level 3: Observations with measurement noise")
 
         self.logger.subsection("PRIORS")
-        BETA_EMPIRICAL = 4.6e-4
         self.logger.info(
-            f"β_0 ~ LogNormal(ln({BETA_EMPIRICAL:.1e}), 1.5)  # Empirically calibrated prior"
+            f"β_0 ~ LogNormal(ln({self._beta_prior_center:.3e}), σ_ln={self._beta_prior_log_sigma:.3f})  "
+            f"# center from Step 008 ({self._beta_prior_center_source}), "
+            f"hierarchical_beta_prior_center={_tep_physics_pipeline_config().get('hierarchical_beta_prior_center', 'step008_recommended')}"
         )
         self.logger.info("b_disf ~ LogNormal(ln(0.05), 1.0)  # Disformal coupling strength")
         self.logger.info("σ ~ LogNormal(ln(0.5), 1.0)  # Flyby-to-flyby scatter")
@@ -302,7 +427,7 @@ class HierarchicalTEPModel:
         - Trajectory asymmetry (cos_dec_asymmetry)
         - Time spent in field (r_p / v_p)
         
-        The only scaling needed is the universal beta_0 / beta_ref ratio,
+        The only scaling needed is the population-level beta_0 / beta_ref ratio,
         plus the disformal coupling strength b_disf.
         Any residual geometry modulation is captured by alpha_res.
         """
@@ -317,14 +442,16 @@ class HierarchicalTEPModel:
         
         for flyby in flybys:
             # The pre-computed components already contain the full perigee physics
-            # We only scale by the inferred universal coupling beta_0 relative to 
+            # We only scale by the inferred population-level beta_0 relative to 
             # the reference beta = 1e-4 used in step_007
             # TEP predictions follow 3/4 power law: dv ∝ β^(3/4)
             # Both gradient and disformal components scale with the same exponent
             # because they arise from the same scalar field.
             beta_i = beta_0 * (1 + alpha_res)
-            # beta must be positive (coupling strength); use abs to avoid NaN from negative base
-            scale = (abs(beta_i) / 1e-4) ** 0.75
+            # beta must be positive (coupling strength); negative is unphysical
+            if beta_i <= 0:
+                return -np.inf
+            scale = (beta_i / 1e-4) ** 0.75
             
             # Decomposed Prediction: scale pre-computed components by inferred couplings
             dv_pred = scale * (flyby['dv_grad_mm_s'] + (b_disf / 0.05) * flyby['dv_disf_mm_s'])
@@ -347,14 +474,20 @@ class HierarchicalTEPModel:
         log_beta_0, log_b_disf, log_sigma, alpha_res = theta
         
         log_prior = 0.0
+
+        if self._beta_prior_center is None or self._beta_prior_log_sigma is None:
+            raise RuntimeError(
+                "HierarchicalTEPModel prior hyperparameters unset; call build_model(data) first."
+            )
+
+        # Prior for beta_0: log-normal in beta space <=> Gaussian on log_beta_0
+        log_beta_0_mean = np.log(self._beta_prior_center)
+        log_prior += -0.5 * (
+            (log_beta_0 - log_beta_0_mean) / self._beta_prior_log_sigma
+        ) ** 2
         
-        # Prior for beta_0: wide log-normal centered near empirical fitted value
-        # From step008 ensemble weighted mean beta; see load_step008_ensemble_summary.
-        BETA_EMPIRICAL = 4.6e-4
-        log_beta_0_mean = np.log(BETA_EMPIRICAL)
-        log_prior += -0.5 * ((log_beta_0 - log_beta_0_mean) / 1.5)**2
-        
-        # Prior for b_disf: centered near 0.05 (based on Cassini sign reversal)
+        # Prior for b_disf: log-normal width allows exploration around the nominal
+        # disformal sector scale from physics.py (not tuned per-flyby).
         log_b_disf_mean = np.log(0.05)
         log_prior += -0.5 * ((log_b_disf - log_b_disf_mean) / 1.0)**2
         
@@ -392,8 +525,10 @@ class HierarchicalTEPModel:
                 b_disf = np.exp(log_b_disf)
                 
                 beta_i = beta_0 * (1 + alpha_res)
-                # beta must be positive; use abs to avoid NaN from negative base
-                scale = (abs(beta_i) / 1e-4) ** 0.75
+                # beta must be positive; skip unphysical samples
+                if beta_i <= 0:
+                    continue
+                scale = (beta_i / 1e-4) ** 0.75
                 dv_pred = scale * (flyby['dv_grad_mm_s'] + (b_disf / 0.05) * flyby['dv_disf_mm_s'])
                 preds.append(dv_pred)
             
@@ -412,12 +547,21 @@ class HierarchicalTEPModel:
     
     def run_mcmc(self, flybys):
         """Run MCMC sampling."""
+        if self._beta_prior_center is None or self._beta_prior_log_sigma is None:
+            raise RuntimeError(
+                "HierarchicalTEPModel prior hyperparameters unset; call build_model(data) before run_mcmc()."
+            )
+
         # Initial parameters: [log_beta_0, log_b_disf, log_sigma, alpha_res]
-        # Centered on empirical beta_0 ~ 4.6e-4 from step008 fitting results
-        BETA_EMPIRICAL = 4.6e-4
-        theta_0 = [np.log(BETA_EMPIRICAL), np.log(0.05), np.log(0.5), 0.0]
+        beta_0 = float(self._beta_prior_center)
+        theta_0 = [np.log(beta_0), np.log(0.05), np.log(0.5), 0.0]
         ndim = len(theta_0)
-        
+
+        self.logger.info(
+            f"MCMC init: log β_0 = ln({beta_0:.6e}) from Step 008 ({self._beta_prior_center_source}), "
+            f"prior σ_lnβ = {self._beta_prior_log_sigma:.4f}"
+        )
+
         pos = theta_0 + 1e-4 * np.random.randn(self.n_walkers, ndim)
         
         sampler = emcee.EnsembleSampler(
@@ -449,7 +593,10 @@ class HierarchicalTEPModel:
             )
 
         results = {
-            'beta_0_median': float(np.median(beta_0_samples)),
+            "prior_beta_0_center": float(self._beta_prior_center),
+            "prior_beta_0_center_source": self._beta_prior_center_source,
+            "prior_log_beta_0_sigma": float(self._beta_prior_log_sigma),
+            "beta_0_median": float(np.median(beta_0_samples)),
             'beta_0_std': float(np.std(beta_0_samples)),
             'beta_0_16th': float(np.percentile(beta_0_samples, 16)),
             'beta_0_84th': float(np.percentile(beta_0_samples, 84)),

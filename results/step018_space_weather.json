@@ -5,7 +5,7 @@
   "status": "preliminary",
   "calibration_status": "exploratory_hypothesis_generating",
   "data_source": "Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits",
-  "derivation": "Space weather correlation analysis with n=3 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
+  "derivation": "Space weather correlation analysis with n=4 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
   "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements",
   "analysis": {
     "uncertainty": null,
@@ -14,26 +14,26 @@
     "status": "preliminary",
     "calibration_status": "exploratory_hypothesis_generating",
     "data_source": "Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits",
-    "derivation": "Space weather correlation analysis with n=3 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
+    "derivation": "Space weather correlation analysis with n=4 fitted flybys; \u00b150% uncertainty accounts for statistical limitations and systematic errors in the space weather proxy",
     "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements",
     "correlation": {
-      "uncertainty": 1.0,
+      "uncertainty": 0.8833816760321715,
       "uncertainty_fraction": 0.5,
-      "uncertainty_absolute": 1.0,
+      "uncertainty_absolute": 0.8833816760321715,
       "status": "preliminary",
       "calibration_status": "exploratory_hypothesis_generating",
       "data_source": "Historical space weather data (Celestrak SW-All.csv) matched to TEP-EFA flyby fits",
-      "derivation": "Pearson correlation r=0.9803 between space weather plasma index (P_env = F107 * (1 + Kp/100)) and fitted beta values; n=3 samples; \u00b150% uncertainty accounts for small sample statistical limitations and systematic errors in space weather proxy",
+      "derivation": "Pearson correlation r=0.7318 between space weather plasma index (P_env = F107 * (1 + Kp/100)) and fitted beta values; n=4 samples; \u00b150% uncertainty accounts for small sample statistical limitations and systematic errors in space weather proxy",
       "recommended_action": "Validate with larger sample size (n>10) from future flyby measurements; consider multi-mission coordinated campaigns to increase statistical power",
-      "pearson_r": 0.9803433032608468,
-      "p_value": 0.1264341423113719,
-      "n_samples": 3,
+      "pearson_r": 0.7317545567403081,
+      "p_value": 0.2682454432596919,
+      "n_samples": 4,
       "r_ci_95": [
-        -1.0,
-        1.0
+        -0.7728916537490295,
+        0.9938716983153136
       ],
-      "interpretation": "Insufficient data (n=3) for reliable correlation assessment",
-      "statistical_power_note": "With n=3, minimum detectable correlation at 80% power is r\u22480.8. Current sample is underpowered for definitive correlation testing."
+      "interpretation": "r=0.73, p=0.27 (n=4): Not statistically significant. With n=4, chance of false positive is high. This is an exploratory observation requiring validation with n>10.",
+      "statistical_power_note": "With n=4, minimum detectable correlation at 80% power is r\u22480.8. Current sample is underpowered for definitive correlation testing."
     },
     "data_points": [
       {
@@ -43,7 +43,7 @@
         "Kp_sum": 67.0,
         "P_env": 161.823,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.001240600938020586,
+        "beta": 0.0017305147756031074,
         "altitude": 567.9,
         "dv_obs": 13.46
       },
@@ -54,9 +54,20 @@
         "Kp_sum": 153.0,
         "P_env": 582.912,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.0028399088482491024,
+        "beta": 0.005329918603129757,
         "altitude": 972.3,
         "dv_obs": 3.92
+      },
+      {
+        "mission": "Cassini",
+        "flyby_date": "1999-08-18",
+        "F107": 130.7,
+        "Kp_sum": 317.0,
+        "P_env": 545.0189999999999,
+        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
+        "beta": 0.0019340334704831914,
+        "altitude": 1197.3,
+        "dv_obs": 0.11
       },
       {
         "mission": "Rosetta_2005",
@@ -65,7 +76,7 @@
         "Kp_sum": 37.0,
         "P_env": 108.09300000000002,
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv",
-        "beta": 0.000538803526776471,
+        "beta": 0.0010102428095147484,
         "altitude": 1968.7,
         "dv_obs": 1.82
       }
@@ -168,14 +179,6 @@
         "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
       },
       {
-        "mission": "BepiColombo_2021",
-        "flyby_date": "2021-08-10",
-        "F107": 73.3,
-        "Kp_sum": 127.0,
-        "P_env": 166.391,
-        "data_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/space_weather/SW-All.csv"
-      },
-      {
         "mission": "JUICE",
         "flyby_date": "2029-08-01",
         "status": "space_weather_unavailable",
@@ -196,7 +199,7 @@
     "status": "preliminary",
     "calibration_status": "theoretical_estimate_from_wide_binary_analysis",
     "data_source": "Wide binary R_s transition analysis (Paper 6, UCD)",
-    "derivation": "Wide binary concordance analysis; Temporal Shear Suppression index n = 3.0 represents power-law dependence of scalar force suppression on ambient density; \u00b150% uncertainty accounts for galactic environment variations",
+    "derivation": "Wide binary concordance analysis; Temporal Topology screening index n = 3.0 represents power-law dependence of scalar force suppression on ambient density; \u00b150% uncertainty accounts for galactic environment variations",
     "recommended_action": "Validate against independent galactic rotation curve analysis and GNSS calibration consistency check",
     "wide_binary_concordance": {
       "uncertainty": 0.5,
@@ -205,11 +208,11 @@
       "status": "preliminary",
       "calibration_status": "theoretical_estimate_from_wide_binary_analysis",
       "data_source": "Wide binary R_s transition analysis (Paper 6, UCD)",
-      "derivation": "Temporal Shear Suppression index n = 3.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions",
+      "derivation": "Temporal Topology screening index n = 3.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions",
       "recommended_action": "Validate against independent galactic rotation curve analysis and GNSS calibration consistency check",
       "observed_transition_au": 2646.0,
       "inferred_galactic_rho_floor_g_cm3": 9.186775842895367e-18,
-      "Temporal Shear Suppression_index_n": 3.0,
+      "screening_index_n": 3.0,
       "consistency": "Wide-binary screening scale is documented separately; flyby beta vs P_env correlation is not significant at the current fitted-sample size."
     }
   },

@@ -5,6 +5,8 @@ Step 004: Fetch Real Trajectory Data from JPL Horizons
 This step fetches real spacecraft trajectory data from JPL's official
 Horizons system for Earth flyby analysis. This is REAL DATA, not simulated.
 
+Raw JPL Horizons batch parameters live under ``scripts/utils/jpl_horizons/queries/*.q``.
+
 JPL Horizons provides:
 - Range and range rate data
 - Official spacecraft ephemerides
@@ -53,7 +55,6 @@ class JPLHorizonsFetcher:
             'Stardust_2001': 'Stardust_2001',
             'OSIRIS-REx_2017': 'OSIRIS-REx_2017',
             'BepiColombo_2020': 'BepiColombo_2020',
-            'BepiColombo_2021': 'BepiColombo_2021'
         }
     
     def fetch_mission(self, mission_name: str, logger: StepLogger) -> dict:
@@ -73,6 +74,34 @@ class JPLHorizonsFetcher:
         output_dir.mkdir(parents=True, exist_ok=True)
         logger.debug(f"Output directory: {output_dir}")
         
+        raw_file = output_dir / f"{mission_name}_raw_response.txt"
+        json_file = output_dir / f"{mission_name}_trajectory.json"
+        
+        # Use cached data if available for reproducibility
+        if raw_file.exists() and json_file.exists():
+            logger.info(f"Using cached JPL Horizons data for {mission_name}")
+            logger.info(f"  Raw: {raw_file}")
+            logger.info(f"  JSON: {json_file}")
+            # Re-process from cached raw to ensure JSON is valid
+            try:
+                with open(raw_file, 'r', encoding='utf-8') as f:
+                    response = f.read()
+                result = self.processor.process_to_json(response, str(json_file))
+                logger.success(f"Re-processed cached data: {len(result['timestamp'])} data points")
+                logger.add_output_file(raw_file, "JPL Horizons raw response (cached)")
+                logger.add_output_file(json_file, "Processed trajectory JSON (cached)")
+                return {
+                    'mission': mission_name,
+                    'status': 'SUCCESS',
+                    'data_points': len(result['timestamp']),
+                    'raw_file': str(raw_file),
+                    'json_file': str(json_file)
+                }
+            except Exception as e:
+                logger.warning(f"Failed to re-process cached data: {e}")
+                logger.warning("Re-fetching from JPL Horizons...")
+                # Fall through to fetch below
+        
         try:
             # Fetch data from JPL Horizons
             logger.progress("Querying JPL Horizons...")
@@ -80,7 +109,6 @@ class JPLHorizonsFetcher:
             logger.debug(f"Response length: {len(response)} characters")
             
             # Save raw response
-            raw_file = output_dir / f"{mission_name}_raw_response.txt"
             with open(raw_file, 'w', encoding='utf-8') as f:
                 f.write(response)
             logger.success(f"Saved raw response: {raw_file}")
@@ -88,7 +116,6 @@ class JPLHorizonsFetcher:
             
             # Process to JSON
             logger.progress("Processing trajectory data...")
-            json_file = output_dir / f"{mission_name}_trajectory.json"
             result = self.processor.process_to_json(response, str(json_file))
             logger.success(f"Saved processed data: {json_file}")
             logger.info(f"Data points: {len(result['timestamp'])}")

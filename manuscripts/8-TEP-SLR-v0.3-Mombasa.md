@@ -225,8 +225,6 @@ $\approx -0.042$ (95% CI: −0.120 to 0.028).
 **Longer path ($\gtrsim 8{,}000$ km):** mean lag-1
 $\approx -0.275$ (95% CI: −0.534 to −0.018).
 
-![Residual Coherence vs Path Length](results/figures/slr_residual_vs_elevation_full.png)
-
 **Figure 3.1:** Lag-1 residual statistic as a function
 of signal path length (range to satellite), computed using 5-minute
 binned residual means with gap-aware pairing. Under a strict
@@ -241,7 +239,6 @@ $\Delta(\mathrm{low}-\mathrm{high})=-0.044$ (95% CI: −0.208 to
 25.51). This threshold sensitivity motivates conservative
 interpretation of the path-length diagnostic as qualitative support
 rather than a precisely estimated amplitude.
-
 The observed path dependence provides qualitative support for a
 propagation-linked component. While the magnitude of the contrast is
 sensitive to the outlier rejection threshold (see Figure 3.1), the sign
@@ -254,9 +251,7 @@ concentration in the predicted TEP band (Section 3.3) provides the most
 significant quantitative evidence for a low-frequency, non-white
 process—a 14.00× enhancement that is threshold-stable and statistically
 robust.
-
 ### 3.3 Spectral Concentration: Primary Quantitative Signature
-
 Frequency-domain analysis of the residuals reveals a significant
 concentration of power within the predicted TEP frequency band (10–500
 $\mu$Hz). On 5-minute resampled station series, the station-averaged
@@ -271,9 +266,7 @@ in GNSS (Smawfield 2025b, 2025c, 2025d; Papers 1-3). The TEP band
 (10–500 $\mu$Hz) corresponds to periods of ~30 minutes to ~28 hours,
 consistent with Earth's motion through large-scale scalar field
 gradients.
-
 ### 3.4 Inter-Station Analysis: Expected Network Limitations
-
 The ILRS network is sparse in time; most station pairs lack sufficient
 contiguous overlap to support the cross-spectral methods employed in
 GNSS analysis. Inter-station inference uses contemporaneous,
@@ -281,12 +274,9 @@ same-satellite 5-minute bins: for each satellite and time bin, pass-mean
 residual anomalies are computed per station (after removing each
 station's global mean), and station-pair correlations are estimated
 across bins.
-
 **Key Finding:**
-
 Inter-Station Pass Correlations: Statistical Evidence with Geometric
 Complexity
-
 Distance-binned mean pass-correlation estimates fluctuate with large
 variance under a strict 5-minute contemporaneous binning. However,
 when the contemporaneous overlap window is widened to 15-minute bins
@@ -295,7 +285,6 @@ family-wise circular-shift test yields statistically significant
 evidence for systematic distance-structured inter-station
 correlations (Fisher-combined $\chi^2=15.35$ with 4 d.o.f.;
 $p=0.0040$).
-
 This signal is driven almost entirely by LAGEOS-2 ($p=0.0005$),
 which exhibits a strong negative correlation ($r \approx -0.59$) in
 the 5,000–7,500 km distance bin. In contrast, LAGEOS-1 remains
@@ -306,16 +295,12 @@ orbital geometry—LAGEOS-2's prograde $52.6^\circ$ orbit versus
 LAGEOS-1's retrograde $109.8^\circ$ orbit—and small-number
 statistics in the critical distance bin ($N=3$ pairs for LAGEOS-2 vs
 $N=8$ for LAGEOS-1).
-
 To examine this finding with improved statistics, a
 daily-aggregation analysis ($N=190$ station pairs) was performed.
 This identified a subtler but statistically significant negative
 correlation at shorter ranges (500–1,000 km, $p=0.017$), suggesting
 a persistent global background structure independent of the
 high-amplitude LAGEOS-2 events.
-
-![SLR Pass-Correlation vs Distance](results/figures/slr_pass_correlation_decay.png)
-
 **Figure 3.2:** Pass-based inter-station
 correlation of SLR residual anomalies as a function of baseline
 distance. While the primary 5-minute analysis shows limited
@@ -325,63 +310,36 @@ driven largely by strong anti-correlations in LAGEOS-2 residuals
 at 5,000–7,500 km baselines. A complementary daily-aggregation
 analysis ($N=190$ pairs) identifies significant negative
 correlations at 500–1,000 km ($p=0.017$).
-
 The range-dependent and spectral signatures (Sections 3.2-3.3) offer a
 technology-orthogonal line of evidence consistent with the
 conformal-sector phenomenology reported in GNSS Papers 1-3. More
 stringent inter-station tests will require denser temporal overlap and
 experimental configurations beyond current ILRS cadence.
-
 ## 4. Future Experimental Directions
-
 Based on the conformal-sector evidence presented, future experimental directions for testing the disformal sector are outlined below. Specifically, the "Anti-Echo" mechanism and the experimental requirements for future closed-loop time-transfer tests are described.
-
 ### 4.1 Conformal vs. Disformal: Two Distinct Predictions
-
 The TEP bi-metric geometry $\tilde{g}_{\mu\nu} = A^2(\phi) g_{\mu\nu} + B(\phi) \nabla_\mu\phi \nabla_\nu\phi$ contains two physically distinct coupling mechanisms:
-
 - **Conformal Coupling $A(\phi)$:** Modulates clock rates universally. Creates spatial correlations in timing residuals with length scale $\lambda \sim m_\phi^{-1}$. *This is the sector probed in GNSS and SLR analyses.*
-
 - **Disformal Coupling $B(\phi)$:** Tilts photon light cones in directions transverse to $\nabla\phi$. Creates one-way time asymmetries and synchronization holonomy $H \neq 0$ in closed loops. *This requires closed-loop time transfer to test.*
-
 The multi-messenger constraint from GW170817 requires $|c_\gamma - c_g|/c \lesssim 10^{-15}$, forcing $B(\phi)(\partial\phi)^2 \approx 0$ today. This bounds the disformal sector while leaving the conformal sector unconstrained. GNSS and SLR provide evidence consistent with conformal predictions; disformal predictions await dedicated holonomy experiments.
-
 ### 4.2 Estimator-Dependent Sign Structure: The "Anti-Echo" Mechanism
-
 Within the disformal sector, TEP predicts *estimator dependence*: the same underlying common-mode propagation delay can map differently into post-fit residuals depending on whether the estimator absorbs global modes into clocks (kinematic GNSS positioning) or into orbital parameters (dynamic SLR orbit determination).
-
 The mechanism operates as follows:
-
 **Schematic:**
-
 - GNSS (Kinematic PPP):  τTEP → δtreceiver → r > 0
-
 - SLR (Dynamic OD):      τTEP → δaorbit   → r < 0 (Predicted)
-
 - **GNSS (Kinematic PPP):** In Precise Point Positioning, the receiver coordinates and clock bias are solved epoch-by-epoch. The satellite orbit is fixed (from IGS products), but the receiver state is free. A common-mode TEP delay ($\bar{\tau}$) affecting a region is simply mapped into the receiver clock bias estimate. Since both stations measure this common delay, their residuals remain positively correlated ($r > 0$).
-
 - **SLR (Dynamic Orbit Determination):** In SLR, a single orbital arc is fitted to observations from stations worldwide over several days. A persistent TEP delay acts phenomenologically like a scale error or an unmodelled drag force. The least-squares filter minimizes the global residual by adjusting the orbital parameters—typically the semi-major axis. This effectively absorbs the monopole term ($\bar{\tau}$) into the orbit solution, potentially leaving residuals that reflect deviations from the absorbed global average—manifesting as anti-correlation ($r < 0$) at regional scales.
-
 ### 4.3 Experimental Design Considerations
-
 Monte Carlo simulations (see supplementary materials) demonstrate that estimator-dependent sign structure is plausible: when dynamic orbit fits absorb common-mode delays into orbital parameters, post-fit residual correlations can exhibit sign inversion at regional baselines. This provides the theoretical basis for future experimental designs.
-
 ### 4.4 Experimental Requirements for Testing the Anti-Echo
-
 Detecting the "Anti-Echo" in real SLR data requires:
-
 - **Dense Temporal Overlap:** Synchronous observations from multiple stations within correlation timescales (~hours), not available in current ILRS cadence.
-
 - **Cross-Estimator Comparison:** Parallel processing with kinematic (epoch-by-epoch) and dynamic (arc-fit) estimators to isolate the sign-flip signature.
-
 - **Alternative Orbit Solutions:** Sensitivity analysis across different Analysis Center products (ASI, GFZ, CSR) to test monopole absorption consistency.
-
 The current SLR dataset does not meet these requirements. Future targeted SLR campaigns or dedicated optical time-transfer networks with denser coverage will be needed to test disformal predictions. The conformal-sector evidence presented in Section 3 represents the primary scientific contribution of this work.
-
 ## 5. Synthesis & Critical Analysis
-
 ### 5.1 The Ladder of Evidence: Conformal Sector Assessment
-
 The TEP-SLR analysis provides an optical-domain consistency test of the
 Temporal Equivalence Principle's conformal sector. By integrating these
 findings with the previous GNSS results (Smawfield 2025b, 2025c, 2025d;
@@ -390,11 +348,8 @@ conformal interpretation while distinguishing it from untested
 disformal predictions. Throughout, robust empirical observables are
 distinguished from interpretive inferences that remain contingent on
 additional systematics controls:
-
 **Critical Analysis:**
-
 #### 1. Universality (Frequency Independence)
-
 The conformal signal affects optical frequencies ($\sim 10^{14}$ Hz,
 SLR) as well as microwave ($\sim 10^9$ Hz, GNSS). This vast
 frequency difference (factor of $\sim 10^5$) provides a strong
@@ -406,9 +361,7 @@ consistent with an achromatic, temporally structured anomaly. Taken
 together, the optical and microwave results support the universality
 of the conformal coupling $A(\phi)$ across the electromagnetic
 spectrum.
-
 #### 2. Propagation Origin (Metric Modulation)
-
 The residuals exhibit a path-length dependent temporal contrast in a
 gap-aware lag-1 diagnostic. In the primary $|\Delta\rho|<0.5$ m
 analysis, the long-minus-short contrast is
@@ -424,9 +377,7 @@ estimated amplitude. Standard tropospheric corrections
 persists in the *post-correction* residuals, motivating
 deeper atmospheric-systematics testing rather than serving as a
 refutation of the baseline refraction model.
-
 #### 3. Scale Consistency (The Characteristic Scale)
-
 The GNSS correlation length ($\lambda_T = 4,201 \pm 1,967$ km) and the
 SLR path-length dependent contrast (over a $\sim 3{,}000$ km path
 difference between the high- and low-range selections) are both
@@ -447,9 +398,7 @@ range-dependent diagnostic and TEP-band spectral concentration
 provide complementary constraints. The convergence of GNSS and SLR
 evidence at similar spatial scales supports the Temporal Topology
 interpretation across two independent measurement systems.
-
 #### 4. Inter-Station Correlation (Spatial Coherence)
-
 While the sparse network limits synchronous overlap, advanced
 correlation techniques have successfully isolated a
 distance-structured signal. High-cadence (15-minute) pass-bin
@@ -462,9 +411,7 @@ spatial coherence—observed in an optical, passive system—mirrors the
 distance-structured correlations found in microwave GNSS networks,
 offering a technology-orthogonal test of the conformal sector
 phenomenology.
-
 #### 5. Disformal Sector: Untested in Current Data
-
 The "Anti-Echo" sign inversion is a
 *disformal prediction* ($B(\phi) \neq 0$) requiring
 closed-loop time transfer to test. Neither GNSS (Papers 1-3) nor SLR
@@ -476,21 +423,16 @@ future experiments: closed-loop optical time transfer (Smawfield
 measurements, and triangle synchronization holonomy tests. The
 simulation (Figure 4.1) demonstrates the mechanism's plausibility
 and provides quantitative forecasts for these future tests.
-
 ### 5.2 Limitations & Systematics
-
 While the evidence supports a conformal-sector interpretation, several
 systematic effects warrant specific attention to assess the robustness
 of these findings.
-
 #### Atmospheric Loading & Troposphere
-
 Residual atmospheric pressure loading and tropospheric delays are
 leading candidate systematics for low-frequency structure in SLR
 residuals and require targeted controls. Several observed properties
 are suggestive of a propagation-linked component, but are not, by
 themselves, definitive:
-
 -
 **Spatial Scale Considerations:** Many atmospheric
 fields exhibit synoptic correlation lengths of order $\sim
@@ -502,7 +444,6 @@ rather than remaining dominated by station-local weather. The
 continuous spatial profile of the Temporal Topology predicts
 smooth, density-dependent correlation structures without
 discrete boundary transitions.
-
 -
 **Timescale Overlap:** The TEP band (10–500
 $\mu$Hz) corresponds to periods of 30 minutes to 28 hours, which
@@ -512,7 +453,6 @@ systematics; the key question is whether plausible
 troposphere/loading mismodeling can reproduce the observed
 concentration and its scaling diagnostics without leaving strong
 correlations with independent atmospheric proxies.
-
 -
 **Elevation/Path Dependence:** Loading-induced
 station displacements are largely elevation-independent, whereas
@@ -521,7 +461,6 @@ observed long-minus-short contrast in a gap-aware lag-1
 statistic is suggestive of a path-integrated component, but its
 amplitude remains estimator- and threshold-sensitive and is
 therefore treated conservatively.
-
 Concrete falsifiers and controls are therefore prioritized: (1)
 replace the baseline Marini-Murray refraction with ray-traced delays
 from numerical weather models (NWM) and retest spectral
@@ -538,9 +477,7 @@ atmospheric/geodetic or whether a technology-orthogonal
 propagation-linked component—arising from the continuous spatial
 profile of the Temporal Topology—remains after state-of-the-art
 corrections.
-
 #### Satellite-Specific Asymmetry & Center-of-Mass
-
 The stark contrast in statistical significance between LAGEOS-2
 ($p=0.0005$) and LAGEOS-1 ($p=0.93$) warrants careful scrutiny.
 While the TEP framework allows for geometry-dependent sensitivity
@@ -563,15 +500,12 @@ the signal observed here exhibits a coherent distance-dependent
 structure with a correlation length of $\approx 4,000$ km—a spatial
 scale difficult to reproduce with purely local spacecraft
 systematics.
-
 #### Geodetic Anomalies & Reinterpretation
-
 The geodetic literature records several persistent "anomalies" or
 unexplained systematics that align with the TEP phenomenology
 reported here. Rather than viewing these as isolated technical
 errors, they may be reinterpreted as independent detections of the
 same underlying conformal field structure.
-
 **1. The VLBI Scale Drift (2013–Present):** Recent
 realizations of the International Terrestrial Reference Frame
 (ITRF2020) have identified an unexpected "peculiar" drift in the
@@ -586,7 +520,6 @@ drift in the conformal factor $A(\phi)$. This acts as a dynamic
 rescaling of proper lengths, naturally manifesting as a scale drift
 between dynamic (SLR, governed by gravitational potential $GM$) and
 geometric (VLBI) reference frames.
-
 **2. LAGEOS-2 "Signature Effects":** Precision orbit
 determination analysis consistently notes "satellite-dependent
 signature effects" in LAGEOS-2 residuals that exceed those of
@@ -600,7 +533,6 @@ reflect enhanced coupling between the Temporal Topology and the
 prograde orbital geometry of LAGEOS-2. The TEP correlation provides
 a coherent physical mechanism for these "anomalous" residuals
 without requiring ad-hoc thermal tunings.
-
 **3. The "Flicker Noise" Floor & Common Mode Errors:**
 Geodetic analyses routinely identify "flicker noise" ($1/f$) spectra
 in station coordinate time series and "spatially correlated errors"
@@ -612,18 +544,14 @@ colored noise is a *prediction* of the theory ($\lambda_T
 \approx 4,000$ km), not merely atmospheric residue. The standard
 practice of filtering these signals effectively "bleaches" the
 conformal structure from geodetic products.
-
 #### Network Sparsity
-
 The ILRS network is significantly sparser than the IGS (GNSS)
 network. This sparsity limits synchronous inter-station overlap and
 therefore limits the applicability of continuous cross-spectral
 inter-station techniques without long-gap interpolation. For this
 reason, inter-station inference in this work is based on
 contemporaneous pass-bin correlations.
-
 #### Orbit Modeling Dependencies
-
 The estimator-dependent sign-inversion hypothesis ("Anti-Echo")
 relies on the specific behavior of the least-squares orbit
 determination filter. While the simulation (Section 4.3)
@@ -635,9 +563,7 @@ sign-flip signature, and (3) cross-Analysis-Center orbit comparisons
 (ASI vs. GFZ vs. CSR) to test monopole absorption consistency. These
 requirements are not met by current ILRS operations and represent a
 roadmap for future targeted SLR campaigns.
-
 ## 6. Conclusion
-
 This study presents an optical-domain consistency test of the Temporal
 Equivalence Principle's conformal sector using Satellite Laser Ranging.
 By analyzing 11 years of LAGEOS data, a spatially coherent residual
@@ -651,7 +577,6 @@ The observation of matching low-frequency structure in a system devoid
 of active clocks and microwave transmission challenges hypotheses that
 rely on microwave-specific receiver electronics, clock steering, or
 ionospheric modeling.
-
 Taken together with the GNSS results, the SLR evidence is consistent
 with the conformal-sector interpretation across five orders of magnitude
 in frequency (microwave to optical) and across two independent
@@ -665,7 +590,6 @@ characteristic scale of the scalar field's continuous spatial profile
 Temporal Shear (vanishing field gradient $\nabla\phi \to 0$) attenuates
 the conformal coupling while leaving the field light cosmologically,
 reconciling local null tests with the observed correlation structure.
-
 In the inter-station domain, the sparse ILRS cadence limits synchronous
 overlap; however, by employing daily aggregation and widened
 contemporaneous windows, statistically significant distance-structured
@@ -678,7 +602,6 @@ physical explanation for persistent geodetic anomalies, including the
 ITRF2020 VLBI-SLR scale drift and the pervasive "flicker noise" floor in
 station coordinates, reinterpreting them as evidence of conformal metric
 coupling rather than intractable systematics.
-
 The evidence presented here is consistent with a conformal-sector signal
 across two independent measurement systems, multiple processing centers,
 long-term GNSS stability, raw observational data, and the full
@@ -690,83 +613,46 @@ optical time transfer, interplanetary one-way asymmetry measurements,
 and triangle synchronization holonomy tests—will determine whether the
 disformal sector also manifests in nature or remains a theoretical
 possibility bounded to negligibility by multi-messenger constraints.
-
 ## References
-
 ### TEP Research Program
-
 Smawfield, M. L. (2025). *Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed*. Preprint v0.8 (Jakarta). Zenodo. DOI: [10.5281/zenodo.16921911](https://doi.org/10.5281/zenodo.16921911) (Paper 0)
-
 Smawfield, M. L. (2025). *Global Time Echoes: Distance-Structured Correlations in GNSS Clocks*. Preprint v0.25 (Jaipur). Zenodo. DOI: [10.5281/zenodo.17127229](https://doi.org/10.5281/zenodo.17127229) (Paper 1)
-
 Smawfield, M. L. (2025). *Global Time Echoes: 25-Year Analysis of CODE Precise Clock Products*. Preprint v0.18 (Cairo). Zenodo. DOI: [10.5281/zenodo.17517141](https://doi.org/10.5281/zenodo.17517141) (Paper 2)
-
 Smawfield, M. L. (2025). *Global Time Echoes: Raw RINEX Consistency Test*. Preprint v0.5 (Kathmandu). Zenodo. DOI: [10.5281/zenodo.17860166](https://doi.org/10.5281/zenodo.17860166) (Paper 3)
-
 Smawfield, M. L. (2025). *Temporal-Spatial Coupling in Gravitational Lensing: A Reinterpretation of Dark Matter Observations*. Preprint v0.5 (Tortola). Zenodo. DOI: [10.5281/zenodo.17982540](https://doi.org/10.5281/zenodo.17982540) (Paper 4)
-
 Smawfield, M. L. (2025). *Global Time Echoes: Empirical Synthesis*. Preprint v0.4 (Singapore). Zenodo. DOI: [10.5281/zenodo.18004832](https://doi.org/10.5281/zenodo.18004832) (Paper 5)
-
 Smawfield, M. L. (2025). *Universal Critical Density: Cross-Scale Consistency of ρ_T*. Preprint v0.3 (New Delhi). Zenodo. DOI: [10.5281/zenodo.18064365](https://doi.org/10.5281/zenodo.18064365) (Paper 6)
-
 Smawfield, M. L. (2025). *The Soliton Wake: Exploring RBH-1 as a Temporal Topology Candidate*. Preprint v0.3 (Blantyre). Zenodo. DOI: [10.5281/zenodo.18059250](https://doi.org/10.5281/zenodo.18059250) (Paper 7)
-
 Smawfield, M. L. (2025). *Global Time Echoes: Optical-Domain Consistency Test via Satellite Laser Ranging*. Preprint v0.3 (Mombasa). Zenodo. DOI: [10.5281/zenodo.18064581](https://doi.org/10.5281/zenodo.18064581) (Paper 8 — this work)
-
 Smawfield, M. L. (2025). *What Do Precision Tests of General Relativity Actually Measure?*. Preprint v0.3 (Istanbul). Zenodo. DOI: [10.5281/zenodo.18109760](https://doi.org/10.5281/zenodo.18109760) (Paper 9)
-
 Smawfield, M. L. (2026). *Temporal Equivalence Principle: Suppressed Density Scaling in Globular Cluster Pulsars*. Preprint v0.6 (Caracas). Zenodo. DOI: [10.5281/zenodo.18165798](https://doi.org/10.5281/zenodo.18165798) (Paper 10)
-
 Smawfield, M. L. (2026). *The Cepheid Bias: Resolving the Hubble Tension*. Preprint v0.6 (Kingston upon Hull). Zenodo. DOI: [10.5281/zenodo.18209702](https://doi.org/10.5281/zenodo.18209702) (Paper 11)
-
 Smawfield, M. L. (2026). *Temporal Equivalence Principle: A Unified Resolution to the JWST High-Redshift Anomalies*. Preprint v0.4 (Kos). Zenodo. DOI: [10.5281/zenodo.19000827](https://doi.org/10.5281/zenodo.19000827) (Paper 12)
-
 Smawfield, M. L. (2026). *Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries*. Preprint v0.3 (Kilifi). Zenodo. DOI: [10.5281/zenodo.19102061](https://doi.org/10.5281/zenodo.19102061) (Paper 13)
-
 ### SLR & Geodesy References
-
 Pearlman, M. R., Degnan, J. J., & Bosworth, J. M. (2002). *The International Laser Ranging Service*. Advances in Space Research, 30(2), 135-143. [DOI: 10.1016/S0273-1177(02)00277-6](https://doi.org/10.1016/S0273-1177(02)00277-6)
-
 Marini, J. W., & Murray, C. W. (1973). *Correction of Laser Range Tracking Data for Atmospheric Refraction at Elevations Above 10 Degrees*. NASA Technical Report X-591-73-351.
-
 Mendes, V. B., & Pavlis, E. C. (2004). *High-accuracy zenith delay prediction at optical wavelengths*. Geophysical Research Letters, 31(14). [DOI: 10.1029/2004GL020308](https://doi.org/10.1029/2004GL020308)
-
 International Laser Ranging Service (ILRS). (2025). *SLR monthly normal point data*. Greenbelt, MD, USA: NASA Crustal Dynamics Data Information System (CDDIS). [DOI: 10.5067/SLR/slr_data_monthly_npt_001](https://doi.org/10.5067/SLR/slr_data_monthly_npt_001)
-
 International Laser Ranging Service (ILRS). (2025). *SLR Combination Center (CC) Orbit Product*. Greenbelt, MD, USA: NASA Crustal Dynamics Data Information System (CDDIS). [DOI: 10.5067/SLR/SLR_ILRSORB_001](https://doi.org/10.5067/SLR/SLR_ILRSORB_001)
-
 International Laser Ranging Service (ILRS). (2025). *Satellite Laser Ranging Frame 2020 (SLRF2020) Product*. Greenbelt, MD, USA: NASA Crustal Dynamics Data Information System (CDDIS). [DOI: 10.5067/SLR/slrf2020_001](https://doi.org/10.5067/SLR/slrf2020_001)
-
 Hellmers, H., et al. (2025). *Terrestrial reference frame scale drift anomalies in VLBI and the contribution of Ny-Ålesund radio telescopes*. Earth, Planets and Space, 77. [DOI: 10.1186/s40623-025-02159-z](https://doi.org/10.1186/s40623-025-02159-z)
-
 Lucchesi, D. M., et al. (2004). *Spin axis behavior of the LAGEOS satellites*. Journal of Geophysical Research: Solid Earth, 109(B6). [DOI: 10.1029/2003JB002692](https://doi.org/10.1029/2003JB002692)
-
 Appleby, G., Rodríguez, J., & Altamimi, Z. (2016). *Assessment of the accuracy of global geodetic satellite laser ranging observations and estimated impact on ITRF2014*. Journal of Geodesy, 90, 1371–1388. [DOI: 10.1007/s00190-016-0929-2](https://doi.org/10.1007/s00190-016-0929-2)
-
 Kern, L., et al. (2024). *Verifying the impact of additional breaks in station coordinates on VLBI scale drift*. Technical Report, Vienna University of Technology.
-
 Altamimi, Z., et al. (2023). *ITRF2020: an augmented reference frame refining the modeling of nonlinear station motions*. Journal of Geodesy, 97, 1005–1023. [DOI: 10.1007/s00190-023-01738-w](https://doi.org/10.1007/s00190-023-01738-w)
-
 Williams, S. D. P., et al. (2004). *Error analysis of continuous GPS position time series*. Journal of Geophysical Research: Solid Earth, 109(B3). [DOI: 10.1029/2003JB002741](https://doi.org/10.1029/2003JB002741)
-
 Jiang, M., et al. (2023). *Long-Baseline Quantum Sensor Network as Dark Matter Haloscope*. Nature Communications / arXiv:2305.00890. [arXiv:2305.00890](https://doi.org/10.48550/arXiv.2305.00890)
-
 ## Data Availability & Reproducibility
-
 This work follows open-science practices. All results are fully reproducible from raw data
 using the documented pipeline. All numerical results, figures, and statistics are generated by deterministic
 Python scripts processing real observational data from the ILRS (International Laser Ranging Service) archives.
-
 ### Repository & Code
-
 **GitHub Repository:** [github.com/matthewsmawfield/TEP-SLR](https://github.com/matthewsmawfield/TEP-SLR)
-
 The repository contains a deterministic, version-controlled analysis pipeline for Satellite Laser Ranging (SLR)
 data validation of TEP predictions. The pipeline processes LAGEOS satellite range residuals across multiple
 ground stations to search for conformal-sector TEP signatures.
-
 #### Repository Structure
-
 TEP-SLR/
 ├── data/
 │   └── slr/                    # ILRS NPT CRD range residual files
@@ -791,94 +677,52 @@ TEP-SLR/
 │       └── plot_style.py
 ├── site/                      # Manuscript website source
 └── requirements.txt           # Python dependencies
-
 ### Data Provenance
-
 | Source | Data Type | Download Size | Time Span |
 | --- | --- | --- | --- |
 | [ILRS Data Centers](https://ilrs.gsfc.nasa.gov/) | NPT CRD Range Residuals | ~2 GB | 2015–2025 |
 | [NASA CDDIS](https://cddis.nasa.gov/) | LAGEOS Satellite Data | ~500 MB | 2015–2025 |
-
 ### Reproduction Instructions
-
 #### Quick Start (Full Reproduction)
-
 # 1. Clone repository
-
 git clone https://github.com/matthewsmawfield/TEP-SLR.git
 cd TEP-SLR
-
 # 2. Install dependencies
-
 pip install -r requirements.txt
-
 # 3. Run complete analysis pipeline
-
 bash reproduce_analysis.sh
-
 # 4. Build manuscript site
-
 cd site
 npm install
 npm run build
-
 #### System Requirements
-
 - **Python** 3.10+
-
 - **Storage:** ~5 GB free (for data and outputs)
-
 - **Memory:** 8 GB RAM recommended
-
 - **Runtime:** ~30–60 minutes for full pipeline
-
 #### Pipeline Overview
-
 The analysis consists of 6 deterministic steps:
-
 - **Step 1.0:** Data acquisition from ILRS/CDDIS archives (NPT CRD files)
-
 - **Step 2.1:** Residual calculation and quality filtering (year-by-year processing)
-
 - **Step 2.3:** Magnitude-Weighted Phase Correlation (MWPC) analysis — primary statistical test
-
 - **Step 2.4:** Generate standard figures (residual distributions, correlation decay)
-
 - **Step 2.5:** Enhanced figures with phase alignment analysis
-
 - **Step 3.0:** Anti-echo simulation — conformal vs. disformal sector prediction
-
 #### Key Analysis Outputs
-
 - `results/outputs/step_2_1_slr_residuals_summary.json` — Residual statistics by station
-
 - `results/outputs/step_2_3_mwpc_analysis.json` — MWPC correlation results
-
 - `results/figures/slr_pass_correlation_decay.png` — Figure 1: Correlation decay analysis
-
 - `results/figures/slr_phase_alignment_decay.png` — Phase alignment signatures
-
 #### CDDIS Data Access (Step 1 Only)
-
 Step 1 requires NASA CDDIS credentials for automated data download. Set up either:
-
 - `~/.netrc` file with `machine urs.earthdata.nasa.gov` credentials, or
-
 - Environment variables: `CDDIS_USER` and `CDDIS_PASS`
-
 *Note:* The reproduction script can skip Step 1 if data is already present — contact the author
 for pre-processed data access.
-
 ### Software Versions
-
 - **Python** 3.10+
-
 - **NumPy** 1.24+
-
 - **SciPy** 1.10+
-
 - **Pandas** 2.0+
-
 - **Matplotlib** 3.7+
-
 - **NetworkX** (for station network analysis)

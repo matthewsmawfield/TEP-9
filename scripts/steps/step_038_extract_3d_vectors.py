@@ -1,9 +1,17 @@
 """
-Step 040a: Extract 3D State Vectors from JPL Horizons Raw Responses
+Step 038: Extract 3D State Vectors from JPL Horizons Raw Responses
 
 Parses existing JPL Horizons raw response files (which contain RA/Dec in HMS format,
 range, and range-rate) to reconstruct full 3D position and velocity vectors
-at perigee in geocentric equatorial and ecliptic coordinates.
+along each flyby arc in geocentric equatorial and ecliptic coordinates.
+
+Perigee for Step 040 tables is the minimum geocentric range within
+±TEP_038_PERIGEE_HALF_WINDOW_HOURS (default 18) of the archival flyby_date anchor
+at 12:00 UTC from step003_archival_flyby_catalog.json, so widened Horizons arcs do
+not select an unrelated range minimum.
+
+Writes (1) perigee state vectors for Step 040 and (2) full trajectory series
+(step038_trajectory_series.json) for Step 042 time-resolved cosmography.
 
 No new web requests needed — works from cached raw data.
 """
@@ -12,8 +20,10 @@ import json
 import sys
 import re
 import math
+import os
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
+from typing import Dict, Optional
 
 import numpy as np
 
@@ -39,6 +49,63 @@ except ImportError:
 
 # Obliquity of the ecliptic J2000
 OBLIQUITY_RAD = math.radians(23.439281)
+
+
+def load_flyby_date_anchors(catalog_path: Path) -> Dict[str, datetime]:
+    """
+    Map mission_name (e.g. Cassini) to catalog flyby_date at 12:00 UTC.
+
+    Used to restrict geocentric perigee search so widened Horizons windows do not
+    pick an unrelated range minimum along the arc.
+    """
+    with open(catalog_path, encoding="utf-8") as f:
+        c = json.load(f)
+    out: Dict[str, datetime] = {}
+    for fb in c.get("flybys", []):
+        if not fb.get("usable_for_analysis", False):
+            continue
+        name = str(fb.get("mission_name", ""))
+        ds = fb.get("flyby_date")
+        if not name or not isinstance(ds, str) or not ds:
+            continue
+        out[name] = datetime.strptime(ds, "%Y-%m-%d").replace(
+            hour=12, minute=0, second=0, tzinfo=timezone.utc
+        )
+    return out
+
+
+def geocentric_perigee_index(
+    state: dict,
+    anchor_dt: Optional[datetime],
+    half_window_hours: float,
+) -> int:
+    """Index of minimum geocentric range, optionally within ±half_window_hours of anchor."""
+    r = np.asarray(state["r_m"], dtype=float)
+    ts: list = state["timestamps"]
+    if anchor_dt is None or len(r) == 0:
+        return int(np.argmin(r))
+    a = anchor_dt
+    if a.tzinfo is None:
+        a = a.replace(tzinfo=timezone.utc)
+    else:
+        a = a.astimezone(timezone.utc)
+    half_s = float(half_window_hours) * 3600.0
+    best_i = -1
+    best_r = float("inf")
+    for i in range(len(r)):
+        t = ts[i]
+        if t.tzinfo is None:
+            t_u = t.replace(tzinfo=timezone.utc)
+        else:
+            t_u = t.astimezone(timezone.utc)
+        if abs((t_u - a).total_seconds()) > half_s:
+            continue
+        if float(r[i]) < best_r:
+            best_r = float(r[i])
+            best_i = i
+    if best_i < 0:
+        return int(np.argmin(r))
+    return int(best_i)
 
 
 def hms_to_degrees(h, m, s):
@@ -217,9 +284,74 @@ def compute_3d_state_vectors(data: dict) -> dict:
     }
 
 
-def extract_perigee_state(state: dict) -> dict:
-    """Find index of minimum range and return state at perigee."""
-    idx = np.argmin(state["r_m"])
+def build_trajectory_series(state: dict, mission_name: str, anchor_dt: Optional[datetime] = None) -> dict:
+    """
+    Serialize full Horizons arc geometry for time-resolved cosmography (Step 042).
+
+    Times are tagged as UTC. Hours from perigee use the minimum geocentric range epoch
+    within ±TEP_038_PERIGEE_HALF_WINDOW_HOURS (default 18) of catalog flyby_date noon UTC
+    when an anchor is available; otherwise global minimum range.
+    """
+    wh = float(os.environ.get("TEP_038_PERIGEE_HALF_WINDOW_HOURS", "18"))
+    perigee_index = geocentric_perigee_index(state, anchor_dt, wh)
+    ts_list = state["timestamps"]
+    t_pg = ts_list[perigee_index]
+
+    utc_iso: list = []
+    hours_from_perigee: list = []
+    for t in ts_list:
+        if t.tzinfo is None:
+            t_utc = t.replace(tzinfo=timezone.utc)
+        else:
+            t_utc = t.astimezone(timezone.utc)
+        utc_iso.append(t_utc.strftime("%Y-%m-%dT%H:%M:%SZ"))
+        hours_from_perigee.append((t - t_pg).total_seconds() / 3600.0)
+
+    n = len(ts_list)
+    range_km = (state["r_m"] / 1000.0).astype(float).tolist()
+    altitude_km = [float(state["r_m"][i] / 1000.0 - 6378.137) for i in range(n)]
+
+    vx_km_s = (state["vx_m_s"] / 1000.0).astype(float).tolist()
+    vy_km_s = (state["vy_m_s"] / 1000.0).astype(float).tolist()
+    vz_km_s = (state["vz_m_s"] / 1000.0).astype(float).tolist()
+
+    vx_ecl: list = []
+    vy_ecl: list = []
+    vz_ecl: list = []
+    for i in range(n):
+        ex, ey, ez = equatorial_to_ecliptic(vx_km_s[i], vy_km_s[i], vz_km_s[i])
+        vx_ecl.append(float(ex))
+        vy_ecl.append(float(ey))
+        vz_ecl.append(float(ez))
+
+    sc_rx_km = (state["rx_m"] / 1000.0).astype(float).tolist()
+    sc_ry_km = (state["ry_m"] / 1000.0).astype(float).tolist()
+    sc_rz_km = (state["rz_m"] / 1000.0).astype(float).tolist()
+
+    return {
+        "mission": mission_name,
+        "perigee_index": perigee_index,
+        "n_points": n,
+        "utc_iso": utc_iso,
+        "hours_from_perigee": hours_from_perigee,
+        "range_km": range_km,
+        "altitude_km": altitude_km,
+        "sc_rx_km": sc_rx_km,
+        "sc_ry_km": sc_ry_km,
+        "sc_rz_km": sc_rz_km,
+        "vx_km_s": vx_km_s,
+        "vy_km_s": vy_km_s,
+        "vz_km_s": vz_km_s,
+        "vx_ecl_km_s": vx_ecl,
+        "vy_ecl_km_s": vy_ecl,
+        "vz_ecl_km_s": vz_ecl,
+    }
+
+
+def extract_perigee_state(state: dict, anchor_dt: Optional[datetime] = None) -> dict:
+    """Minimum geocentric range near catalog flyby anchor (see geocentric_perigee_index)."""
+    wh = float(os.environ.get("TEP_038_PERIGEE_HALF_WINDOW_HOURS", "18"))
+    idx = geocentric_perigee_index(state, anchor_dt, wh)
     ts = state["timestamps"][idx]
 
     return {
@@ -258,10 +390,20 @@ def unit_vector(vx, vy, vz):
 
 
 def main():
-    logger = StepLogger("step_040a_extract_3d_vectors", PROJECT_ROOT)
-    logger.header("STEP 040a: EXTRACT 3D STATE VECTORS FROM JPL HORIZONS RAW DATA")
+    logger = StepLogger("step_038_extract_3d_vectors", PROJECT_ROOT)
+    logger.header("STEP 038: EXTRACT 3D STATE VECTORS FROM JPL HORIZONS RAW DATA")
 
     raw_dir = PROJECT_ROOT / "data" / "raw" / "jpl_horizons"
+    catalog_path = PROJECT_ROOT / "results" / "step003_archival_flyby_catalog.json"
+    anchors: Dict[str, datetime] = {}
+    if catalog_path.is_file():
+        anchors = load_flyby_date_anchors(catalog_path)
+        logger.info(f"Loaded {len(anchors)} flyby-date anchors from {catalog_path.name} for perigee search")
+    else:
+        logger.warning(
+            f"No {catalog_path.name}; perigee = global minimum range (widened arcs may mis-pick)"
+        )
+
     missions = {
         "NEAR_1998": "NEAR",
         "Galileo_1990": "Galileo_1990",
@@ -275,10 +417,10 @@ def main():
         "Stardust_2001": "Stardust",
         "OSIRIS-REx_2017": "OSIRIS-REx",
         "BepiColombo_2020": "BepiColombo",
-        "BepiColombo_2021": "BepiColombo_2021",
     }
 
     results = {}
+    trajectory_missions: dict = {}
     success_count = 0
     fail_count = 0
 
@@ -305,7 +447,7 @@ def main():
             fail_count += 1
             continue
 
-        perigee = extract_perigee_state(state)
+        perigee = extract_perigee_state(state, anchors.get(mission_name))
 
         # Convert velocity to ecliptic for solar/CMB analysis
         vx_eq = perigee["vx_km_s"]
@@ -330,17 +472,35 @@ def main():
         logger.info(f"  Velocity (ecliptic): [{vx_ec:+.2f}, {vy_ec:+.2f}, {vz_ec:+.2f}] km/s")
 
         results[mission_name] = perigee
+        trajectory_missions[mission_name] = build_trajectory_series(state, mission_name, anchors.get(mission_name))
         success_count += 1
 
     logger.section("SUMMARY")
     logger.info(f"Successfully processed: {success_count}")
     logger.info(f"Failed: {fail_count}")
 
-    out_file = PROJECT_ROOT / "results" / "step040a_3d_state_vectors.json"
+    out_file = PROJECT_ROOT / "results" / "step038_3d_state_vectors.json"
     with open(out_file, "w") as f:
         json.dump(results, f, indent=2)
 
     logger.info(f"Saved 3D state vectors to: {out_file}")
+
+    traj_file = PROJECT_ROOT / "results" / "step038_trajectory_series.json"
+    traj_payload = {
+        "metadata": {
+            "step": "038",
+            "companion_file": "step038_3d_state_vectors.json",
+            "description": (
+                "Full Horizons arc sampling: UTC, hours from geocentric perigee, range, "
+                "geocentric SC Cartesian position (km, J2000 equatorial), and SC velocity "
+                "in equatorial and ecliptic km/s for Step 042."
+            ),
+        },
+        "missions": trajectory_missions,
+    }
+    with open(traj_file, "w") as f:
+        json.dump(traj_payload, f, indent=2)
+    logger.info(f"Saved trajectory time series to: {traj_file}")
     if fail_count > 0:
         logger.error(
             f"Missing or unparseable Horizons raw data for {fail_count} mission(s); "

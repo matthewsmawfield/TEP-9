@@ -6,12 +6,13 @@ NEAR-baseline altitude scaling and does not include the current Step 007
 geometry/plasma/disformal envelope or real mission OD configuration data.
 
 Do not use this step for fitted likelihoods, mission F_OD estimates, or
-manuscript inference. Step 039 is the authoritative raw universal-beta
-classification table; Step 021 withholds F_OD until mission OD configuration
+manuscript inference. Step 039 is the authoritative raw pooled-amplitude
+classification table (Step 008 inverse-variance scale); Step 021 withholds F_OD until mission OD configuration
 files are available.
 """
 
 import json
+import math
 import numpy as np
 from pathlib import Path
 from dataclasses import dataclass
@@ -24,7 +25,14 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.utils.step_logger import StepLogger
-from scripts.utils.physics import M_PL_GEV, BETA_BASELINE, CHARACTERISTIC_SUPPRESSION, R_TRANSITION_M, R_EARTH
+from scripts.utils.physics import (
+    BETA_BASELINE,
+    CHARACTERISTIC_SUPPRESSION,
+    R_TRANSITION_M,
+    R_EARTH,
+    ppn_gamma_deviation,
+    screened_beta,
+)
 
 
 @dataclass
@@ -58,6 +66,21 @@ class TEPMinimalODAnalysis:
     R_EARTH_KM = R_EARTH / 1e3
     R_TRANSITION_KM = R_TRANSITION_M / 1e3
     S_FACTOR = CHARACTERISTIC_SUPPRESSION
+
+    # Mapping from legacy mission names (with year suffixes) to fitting result keys
+    _MISSION_NAME_MAP: Dict[str, str] = {
+        'NEAR_1998': 'NEAR',
+        'Cassini_1999': 'Cassini',
+        'MESSENGER_2005': 'MESSENGER',
+        'Juno_2013': 'Juno',
+        'Stardust_2001': 'Stardust',
+        'OSIRIS-REx_2017': 'OSIRIS-REx',
+        'BepiColombo_2020': 'BepiColombo',
+    }
+
+    def _normalize_mission_name(self, mission: str) -> str:
+        """Map legacy mission name to fitting result key."""
+        return self._MISSION_NAME_MAP.get(mission, mission)
 
     def __init__(self, results_file: Path):
         """Load fitting results from pipeline."""
@@ -123,8 +146,9 @@ class TEPMinimalODAnalysis:
         - TEP prediction (what minimal OD should find)
         - Suppression indicator
         """
-        # Check if mission is in fitting results
-        if mission_name not in self.fits:
+        # Check if mission is in fitting results (using normalized name)
+        fit_key = self._normalize_mission_name(mission_name)
+        if fit_key not in self.fits:
             # Try to get data from archival catalog
             # The catalog uses full mission names (e.g., "Rosetta_2005")
             if mission_name in self.archival_catalog:
@@ -141,13 +165,9 @@ class TEPMinimalODAnalysis:
                 # Check if TEP would have been detected
                 tep_detected = tep_dv > 0.5
 
-                # PPN compliance check
-                # Jakarta v0.8: PPN bound constrains cosmological coupling α₀ = β/M_Pl
-                # The screened beta_eff used in TEP predictions does NOT appear in PPN formula
-                # Use the fundamental BETA_INITIAL (unscreened) for PPN constraint
-                beta_fundamental = self.BETA_INITIAL
-                alpha_0 = beta_fundamental / M_PL_GEV
-                gamma_dev = 2 * alpha_0**2
+                # Historical diagnostic PPN check, using the same screened
+                # convention as Step 008: |gamma - 1| ~= 2 beta_eff^2.
+                gamma_dev = ppn_gamma_deviation(screened_beta(self.BETA_INITIAL))
                 ppn_bound = 2.3e-5
                 ppn_compliant = gamma_dev < ppn_bound
 
@@ -184,11 +204,22 @@ class TEPMinimalODAnalysis:
                     notes="Mission not in analysis"
                 )
 
-        fit = self.fits[mission_name]
+        fit = self.fits[fit_key]
         perigee = fit['perigee']
 
         altitude = perigee['altitude_km']
         standard_dv = fit['observed']['dv_obs_mm_s']
+        if standard_dv is None:
+            # No published observation for this mission
+            return MinimalODResult(
+                mission=mission_name,
+                standard_od_dv=0.0,
+                minimal_od_predicted_dv=0.0,
+                tep_detected=False,
+                confidence=0.0,
+                ppn_compliant=False,
+                notes="Mission not in analysis"
+            )
 
         # TEP prediction for this altitude
         tep_dv = self.compute_tep_prediction(altitude)
@@ -197,13 +228,12 @@ class TEPMinimalODAnalysis:
         # (TEP signal > typical uncertainty ~0.05 mm/s)
         tep_detected = tep_dv > 0.5
 
-        # PPN compliance check
-        # Jakarta v0.8: PPN bound constrains cosmological coupling α₀ = β/M_Pl
-        # The screened beta_eff used in TEP predictions does NOT appear in PPN formula
-        # Use the fundamental BETA_INITIAL (unscreened) for PPN constraint
-        beta_fundamental = self.BETA_INITIAL
-        alpha_0 = beta_fundamental / M_PL_GEV
-        gamma_dev = 2 * alpha_0**2
+        # Historical diagnostic PPN check, using the same screened convention
+        # as Step 008. Prefer the fitted per-flyby PPN value when available.
+        gamma_dev = fit.get('fit', {}).get('ppn_gamma_deviation')
+        if gamma_dev is None:
+            beta = fit.get('fit', {}).get('beta_fitted') or self.BETA_INITIAL
+            gamma_dev = ppn_gamma_deviation(screened_beta(beta))
         ppn_bound = 2.3e-5
         ppn_compliant = gamma_dev < ppn_bound
 
@@ -278,20 +308,20 @@ class TEPMinimalODAnalysis:
         """Generate conclusion based on analysis."""
         if suppressed_count >= 2:
             return (
-                f"Evidence strong: {suppressed_count} missions show null results "
-                "where TEP predicts detectable signals. "
-                "Modern OD likely filters TEP by treating it as systematic error. "
-                "Raw DSN re-analysis with minimal OD recommended."
+                f"Legacy diagnostic flags {suppressed_count} null missions where "
+                "the superseded altitude-only scaling predicts a detectable signal. "
+                "Do not treat this as evidence for OD absorption; use Step 039 and "
+                "raw DSN re-analysis for inference."
             )
         elif suppressed_count == 1:
             return (
-                "Evidence moderate: 1 mission shows possible suppression. "
-                "Pattern suggests OD may filter TEP, but more data needed."
+                "Legacy diagnostic flags 1 possible suppression case under the "
+                "superseded altitude-only scaling; this is hypothesis-generating only."
             )
         else:
             return (
-                "NO CLEAR SUPPRESSION: Null results consistent with TEP predictions. "
-                "Either TEP is not physical, or gradient suppression is stronger than predicted."
+                "Legacy diagnostic flags no suppression cases under the superseded "
+                "altitude-only scaling."
             )
 
     def _generate_enhanced_evidence(self, results: List[MinimalODResult]) -> Dict:
@@ -312,7 +342,7 @@ class TEPMinimalODAnalysis:
 
         altitude_data.sort(key=lambda x: x['altitude'])
 
-        # Statistical significance
+        # Statistical significance: Pearson observed-vs-predicted
         from scipy import stats
         observed = [r.standard_od_dv for r in results]
         predicted = [r.minimal_od_predicted_dv for r in results]
@@ -322,6 +352,38 @@ class TEPMinimalODAnalysis:
         except (ValueError, KeyError, AttributeError) as e:
             logger.warning(f"Data processing error: {e}")
             corr, p_value = 0.0, 1.0
+
+        # Spearman rank correlation: altitude vs observed anomaly
+        # Only includes missions with actual published observations (n = 9)
+        alt_anom_pairs = []
+        for r in results:
+            alt = None
+            has_real_observation = False
+            fit_key = self._normalize_mission_name(r.mission)
+            if r.mission in self.archival_catalog:
+                entry = self.archival_catalog[r.mission]
+                alt = entry['perigee_altitude_km']
+                has_real_observation = entry.get('published_anomaly_mm_s') is not None
+            elif fit_key in self.fits:
+                entry = self.fits[fit_key]
+                alt = entry['perigee']['altitude_km']
+                has_real_observation = entry['observed']['dv_obs_mm_s'] is not None
+            if alt is not None and has_real_observation and r.standard_od_dv is not None:
+                alt_anom_pairs.append((alt, r.standard_od_dv))
+
+        try:
+            if len(alt_anom_pairs) >= 3:
+                altitudes_arr = np.array([p[0] for p in alt_anom_pairs])
+                anomalies_arr = np.array([p[1] for p in alt_anom_pairs])
+                spearman_rho, spearman_p = stats.spearmanr(altitudes_arr, anomalies_arr)
+                if not math.isfinite(spearman_rho):
+                    spearman_rho = 0.0
+                    spearman_p = 1.0
+            else:
+                spearman_rho, spearman_p = 0.0, 1.0
+        except (ValueError, KeyError, AttributeError) as e:
+            logger.warning(f"Spearman computation error: {e}")
+            spearman_rho, spearman_p = 0.0, 1.0
 
         # Historical timeline data: OD complexity evolution and anomaly detection status
         # Data sources:
@@ -373,6 +435,17 @@ class TEPMinimalODAnalysis:
                 'pearson_correlation': float(corr),
                 'p_value': float(p_value),
                 'interpretation': 'WEAK correlation' if p_value > 0.05 else 'STRONG correlation' if p_value < 0.01 else 'MODERATE correlation'
+            },
+            'altitude_anomaly_spearman': {
+                'rho': float(spearman_rho),
+                'p_value': float(spearman_p),
+                'n': len(alt_anom_pairs),
+                'interpretation': (
+                    'not significant' if spearman_p > 0.05
+                    else 'significant at p < 0.05' if spearman_p < 0.05
+                    else 'significant at p < 0.01'
+                ),
+                'note': 'Computed from all flybys with published observations; expected anti-correlation masked by null results at intermediate altitudes and trajectory-asymmetry modulation'
             },
             'historical_timeline': {
                 'data': historical_data,
@@ -445,9 +518,9 @@ class TEPMinimalODAnalysis:
             },
             'enhanced_evidence': analysis['enhanced_evidence'],
             'implications': {
-                'tep_viable': bool(analysis['summary']['likely_suppressed'] > 0),
-                'suppression_mechanism': 'Modern OD gravity field over-fitting and Doppler filtering',
-                'recommendation': 'Re-analyze with minimal OD (10x10 gravity, no filtering)'
+                'tep_viable': None,
+                'suppression_mechanism': 'not_inferred_from_legacy_diagnostic',
+                'recommendation': 'Use Step 039 and raw DSN re-analysis for current inference'
             }
         }
 
@@ -503,14 +576,14 @@ def main():
     logger.section("INDIVIDUAL MISSION ANALYSIS")
     logger.info(f"{'Mission':<20} {'Std OD (mm/s)':<15} {'TEP Pred (mm/s)':<18} {'Status':<25}")
     for result in analysis['individual_results']:
-        status = "TEP SUPPRESSED" if (result.standard_od_dv < 0.5 and result.tep_detected) else "OK"
+        status = "LEGACY FLAG" if (result.standard_od_dv < 0.5 and result.tep_detected) else "OK"
         logger.info(f"{result.mission:<20} {result.standard_od_dv:>14.2f} {result.minimal_od_predicted_dv:>17.2f} {status:<25}")
 
     # Summary
     logger.section("SUMMARY")
     logger.info(f"Total missions: {analysis['summary']['total_analyzed']}")
     logger.info(f"TEP-predicted detectable: {analysis['summary']['tep_predicted']}")
-    logger.info(f"Likely suppressed: {analysis['summary']['likely_suppressed']}")
+    logger.info(f"Legacy flags: {analysis['summary']['likely_suppressed']}")
 
     logger.subsection("CONCLUSION")
     logger.info(analysis['summary']['conclusion'])

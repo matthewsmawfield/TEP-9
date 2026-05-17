@@ -61,8 +61,9 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.physics import (
     M_PL_GEV as M_PL, C_LIGHT, R_EARTH, M_EARTH, GM_EARTH, J2_EARTH, J3_EARTH, J4_EARTH,
-    LAMBDA_TEP_M, R_TRANSITION_M, RHO_T, CHARACTERISTIC_SUPPRESSION,
-    SUPPRESSION_EXPONENT as RELAXATION_EXPONENT, N_TOPOLOGY, get_tep_metadata,
+    LAMBDA_TEP_M, R_TRANSITION_M, CHARACTERISTIC_SUPPRESSION,
+    N_TOPOLOGY, get_tep_metadata,
+    ucd_screening_factor,
     KG_M3_TO_GEV4, LAMBDA_BASELINE_GEV,
     DISFORMAL_COUPLING_STRENGTH, DISFORMAL_VELOCITY_THRESHOLD_KM_S
 )
@@ -80,14 +81,21 @@ LAMBDA_TEP_KM = LAMBDA_TEP_M / 1e3
 R_SOL_KM = R_TRANSITION_M / 1e3
 BETA_BASELINE = 1e-4
 
-# Geometry modulation parameters (Residual systematic correction templates)
-ALPHA_INCL = 0.15  # Inclination modulation strength
-EPSILON_J2 = 0.00054  # J2 oblateness factor
-H_SCALE_KM = 2000.0  # Altitude suppression scale
-RHO_CRIT_CM3 = 2300.0  # Reference IRI peak electron density [cm^-3]
-ALPHA_PLASMA = 0.3  # Plasma screening exponent
-V_CRIT_KM_S = 16.8  # Disformal regime threshold
-ALPHA_VELOCITY = 4.0  # Velocity scaling exponent
+# Geometry modulation parameters (Empirical calibration templates)
+# CRITICAL: These parameters are HEURISTIC ESTIMATES calibrated to the flyby
+# ensemble scatter. They are NOT independently derived from first principles.
+# Each carries a nominal ±50% systematic uncertainty pending independent
+# validation (e.g., dedicated spacecraft mission with controlled geometry).
+# See step_009_variance_analysis.py for propagation of these uncertainties.
+GEOMETRY_MODULATION_UNCERTAINTY = 0.50  # Nominal fractional uncertainty
+
+ALPHA_INCL = 0.15  # Inclination modulation strength (empirical; ±50%)
+EPSILON_J2 = 0.00054  # J2 oblateness factor (empirical; ±50%)
+H_SCALE_KM = 2000.0  # Altitude suppression scale [km] (empirical; ±50%)
+RHO_CRIT_CM3 = 2300.0  # Reference IRI peak electron density [cm^-3] (empirical; ±50%)
+ALPHA_PLASMA = 0.3  # Plasma screening exponent (empirical; ±50%)
+V_CRIT_KM_S = 16.8  # Disformal regime threshold [km/s] (from physics.py; ±20%)
+ALPHA_VELOCITY = 4.0  # Velocity scaling exponent (empirical; ±50%)
 
 # Disformal coupling parameters (from physics.py)
 # DISFORMAL_COUPLING_STRENGTH and DISFORMAL_VELOCITY_THRESHOLD_KM_S are imported from physics.py
@@ -170,21 +178,6 @@ class GeometryDependentBetaModulator:
         
         return cos_asymmetry + disformal_term
     
-    def ambient_relaxation_factor(self, density_g_cm3: float) -> float:
-        """Continuous density-driven screening via Temporal Shear suppression (v0.8)."""
-        if density_g_cm3 <= 0:
-            return 1.0
-        rho_norm = density_g_cm3 / RHO_T
-        return min(rho_norm ** (-RELAXATION_EXPONENT), 1.0)
-    
-    def local_density_at_altitude(self, altitude_km: float) -> float:
-        """Approximate Earth atmospheric density profile."""
-        if altitude_km < 0:
-            return 5.515
-        if altitude_km > 1000:
-            return 1e-20
-        return 1.225e-3 * np.exp(-altitude_km / 8.5)
-
     def compute_effective_beta(self, altitude_km: float, latitude_deg: float,
                                 velocity_km_s: float, plasma_density_cm3: float,
                                 use_screening: bool = True) -> Dict:
@@ -237,11 +230,11 @@ class Trajectory3DIntegrator:
         self.geoid = EarthGeoidModel()
         self.density_model = EarthDensityModel(self.geoid)
         
-        # Precompute Temporal Shear Suppression field values
-        self._setup_tss_field()
+        # Precompute screened field values
+        self._setup_screened_field()
     
-    def _setup_tss_field(self):
-        """Precompute Temporal Shear Suppression field reference values."""
+    def _setup_screened_field(self):
+        """Precompute screened field reference values."""
         rho_earth = 5515  # kg/m³ mean Earth density
         rho_surface = 2700  # kg/m³ crustal density
         
@@ -251,7 +244,7 @@ class Trajectory3DIntegrator:
         self.delta_phi = self.phi_space - self.phi_earth
     
     def _phi_of_rho(self, rho_kg_m3: float) -> float:
-        """Temporal Shear Suppression field value at given density."""
+        """Screened field value at given density."""
         rho_gev4 = rho_kg_m3 * KG_M3_TO_GEV4
         if rho_gev4 <= 0:
             return LAMBDA_GEV * 1e6
@@ -574,7 +567,8 @@ class Trajectory3DIntegrator:
         path_length = 0.0
         beta_eff_values = []
         force_magnitudes = []
-        
+        beta_mod = None
+
         # Integration loop over ephemeris points
         for i in range(len(eph) - 1):
             p1 = eph[i]
@@ -697,7 +691,7 @@ class Trajectory3DIntegrator:
             'path_length_km': float(path_length / 1000.0),
             'n_integration_points': len(eph),
             'beta_eff_stats': beta_stats,
-            'modulation_factors_at_perigee': beta_mod if 'beta_mod' in dir() else {}
+            'modulation_factors_at_perigee': beta_mod if beta_mod is not None else {}
         }
     
     def run_full_integration(self) -> Dict:

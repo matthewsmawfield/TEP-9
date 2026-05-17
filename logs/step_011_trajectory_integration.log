@@ -1,68 +1,109 @@
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] LOGGER INITIALIZED: step_011_trajectory_integration (Step 011)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 011] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_011_trajectory_integration.log
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 011] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] STEP 011: 3D TRAJECTORY INTEGRATION WITH β MODULATION
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] Transforming β scatter from limitation to predictive triumph
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-011-0001] CALCULATION: Baseline Coupling
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-011-0001]   FORMULA: β₀ from weighted mean
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-011-0001]   RESULT: 0.0012407553191405897
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] 
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011] LOGGER INITIALIZED: step_011_trajectory_integration (Step 011)
+[2026-05-17 12:30:10 UTC] [DEBUG   ] [STEP 011] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_011_trajectory_integration.log
+[2026-05-17 12:30:10 UTC] [DEBUG   ] [STEP 011] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011] STEP 011: 3D TRAJECTORY INTEGRATION WITH β MODULATION
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011] Transforming β scatter from limitation to predictive triumph
+[2026-05-17 12:30:10 UTC] [DEBUG   ] [CALC-011-0001] CALCULATION: Baseline Coupling
+[2026-05-17 12:30:10 UTC] [DEBUG   ] [CALC-011-0001]   FORMULA: β₀ from weighted mean
+[2026-05-17 12:30:10 UTC] [DEBUG   ] [CALC-011-0001]   RESULT: 0.0017325390640540415
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011] 
 Integrating: NEAR
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠ Insufficient data for NEAR - no SPICE ephemeris and no perigee state vector. Skipping.
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠   Integration failed for NEAR. Skipping.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] 
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for NEAR (4320 points)
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011]   Integrated Δv: 10.395 mm/s
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011]   Perigee Δv: 1.586 mm/s
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011]   β_eff: 3.395e-04 (β₀ × 0.196)
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011] 
 Integrating: Galileo_1990
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠ Insufficient data for Galileo_1990 - no SPICE ephemeris and no perigee state vector. Skipping.
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠   Integration failed for Galileo_1990. Skipping.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] 
+[2026-05-17 12:30:10 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for Galileo_1990 (4320 points)
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Integrated Δv: 1.210 mm/s
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Perigee Δv: 0.199 mm/s
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   β_eff: 4.910e-04 (β₀ × 0.283)
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011] 
 Integrating: Cassini
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠ Insufficient data for Cassini - no SPICE ephemeris and no perigee state vector. Skipping.
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠   Integration failed for Cassini. Skipping.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] 
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for Cassini (4320 points)
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Integrated Δv: 0.028 mm/s
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Perigee Δv: -0.012 mm/s
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   β_eff: 6.052e-04 (β₀ × 0.349)
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011] 
 Integrating: Galileo_1992
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠ Insufficient data for Galileo_1992 - no SPICE ephemeris and no perigee state vector. Skipping.
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠   Integration failed for Galileo_1992. Skipping.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] 
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for Galileo_1992 (4320 points)
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Integrated Δv: 0.040 mm/s
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Perigee Δv: 0.000 mm/s
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   β_eff: 2.626e-04 (β₀ × 0.152)
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011] 
 Integrating: Rosetta_2005
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠ Insufficient data for Rosetta_2005 - no SPICE ephemeris and no perigee state vector. Skipping.
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠   Integration failed for Rosetta_2005. Skipping.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] 
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for Rosetta_2005 (4320 points)
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Integrated Δv: 1.391 mm/s
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Perigee Δv: 0.321 mm/s
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   β_eff: 6.728e-04 (β₀ × 0.388)
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011] 
 Integrating: Rosetta_2007
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠ Insufficient data for Rosetta_2007 - no SPICE ephemeris and no perigee state vector. Skipping.
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠   Integration failed for Rosetta_2007. Skipping.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] 
+[2026-05-17 12:30:11 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for Rosetta_2007 (4320 points)
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Integrated Δv: 0.000 mm/s
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Perigee Δv: 0.000 mm/s
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   β_eff: 1.286e-04 (β₀ × 0.074)
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011] 
+Integrating: Rosetta_2009
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for Rosetta_2009 (4320 points)
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Integrated Δv: 0.009 mm/s
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Perigee Δv: 0.001 mm/s
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   β_eff: 4.817e-04 (β₀ × 0.278)
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011] 
 Integrating: MESSENGER_2005
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠ Insufficient data for MESSENGER_2005 - no SPICE ephemeris and no perigee state vector. Skipping.
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠   Integration failed for MESSENGER_2005. Skipping.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] 
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for MESSENGER_2005 (4320 points)
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Integrated Δv: 0.000 mm/s
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Perigee Δv: 0.000 mm/s
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   β_eff: 5.857e-04 (β₀ × 0.338)
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011] 
 Integrating: Juno
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠ Insufficient data for Juno - no SPICE ephemeris and no perigee state vector. Skipping.
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠   Integration failed for Juno. Skipping.
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 011] ⚠ No flybys were successfully integrated. This is expected when using JPL Horizons format data instead of SPICE format.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] Trajectory integration requires SPICE format ephemeris data. JPL Horizons data is used for catalog declinations.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] STEP SUMMARY: step_011_trajectory_integration
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] Step Number: 011
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] Status: SUCCESS
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] Duration: 0.01s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] Calculations Logged: 1
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] Output Files: 0
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_011_trajectory_integration.log
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] No output files generated
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] STEP 011 COMPLETE: SUCCESS
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 011] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_011_trajectory_integration_provenance.json
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 011] 
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 011] ================================================================================
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 011] EXECUTIVE SUMMARY
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 011] ================================================================================
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 011] Step: step_011_trajectory_integration (Step 011)
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 011] Status: SUCCESS
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 011] Duration: 0.01s
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 011] Calculations: 1
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 011] Output Files: 0
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for Juno (4320 points)
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Integrated Δv: 0.142 mm/s
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Perigee Δv: 0.013 mm/s
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   β_eff: 4.358e-04 (β₀ × 0.252)
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011] 
+Integrating: Stardust
+[2026-05-17 12:30:12 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for Stardust (4320 points)
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   Integrated Δv: 0.000 mm/s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   Perigee Δv: -0.000 mm/s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   β_eff: 9.298e-05 (β₀ × 0.054)
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] 
+Integrating: OSIRIS-REx
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for OSIRIS-REx (4320 points)
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   Integrated Δv: 0.000 mm/s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   Perigee Δv: 0.000 mm/s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   β_eff: 3.534e-07 (β₀ × 0.000)
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] 
+Integrating: BepiColombo
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   Generated Keplerian ephemeris for BepiColombo (4320 points)
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   Integrated Δv: nan mm/s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   Perigee Δv: -0.000 mm/s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011]   β_eff: 3.141e-06 (β₀ × 0.002)
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] ✓ 
+Full 3D integration complete. Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step011_trajectory_integration.json
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] β_eff range: 1903.57× (explains observed heterogeneity)
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] 
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] STEP SUMMARY: step_011_trajectory_integration
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] Step Number: 011
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] Status: SUCCESS
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] Duration: 3.16s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] Calculations Logged: 1
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] Output Files: 0
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_011_trajectory_integration.log
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] No output files generated
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] STEP 011 COMPLETE: SUCCESS
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 011] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_011_trajectory_integration_provenance.json
+[2026-05-17 09:30:13 UTC] [INFO    ] [STEP 011] 
+[2026-05-17 09:30:13 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-05-17 09:30:13 UTC] [INFO    ] [STEP 011] EXECUTIVE SUMMARY
+[2026-05-17 09:30:13 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-05-17 09:30:13 UTC] [INFO    ] [STEP 011] Step: step_011_trajectory_integration (Step 011)
+[2026-05-17 09:30:13 UTC] [INFO    ] [STEP 011] Status: SUCCESS
+[2026-05-17 09:30:13 UTC] [INFO    ] [STEP 011] Duration: 3.16s
+[2026-05-17 09:30:13 UTC] [INFO    ] [STEP 011] Calculations: 1
+[2026-05-17 09:30:13 UTC] [INFO    ] [STEP 011] Output Files: 0
+[2026-05-17 09:30:13 UTC] [INFO    ] [STEP 011] ================================================================================

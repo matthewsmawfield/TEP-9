@@ -16,7 +16,6 @@ import time
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.step_logger import StepLogger
-from scripts.utils.physics import M_PL_GEV
 
 # Blue-grey colour palette for TEP figures
 BLUE_GREY_COLORS = {
@@ -271,15 +270,12 @@ def generate_beta_comparison_figure(fitting_data, output_dir):
 def generate_ppn_constraint_figure(fitting_data, output_dir):
     """Generate Figure 3: PPN constraint visualization."""
 
-    # Calculate |gamma - 1| for each fit using fundamental beta (unscreened regime)
-    # Jakarta v0.8: PPN bound constrains cosmological coupling α₀ = β/M_Pl
-    # The screened beta_eff used in TEP predictions does NOT appear in PPN formula
+    # Use the same screened-coupling convention as Step 008:
+    # |gamma - 1| ~= 2 beta_eff^2.
     fits = []
     for name, data in fitting_data['individual_fits'].items():
         if data['fit']['beta_fitted']:
-            beta_fitted = data['fit']['beta_fitted']  # Use fundamental beta for PPN
-            alpha_0 = beta_fitted / M_PL_GEV
-            gamma_dev = 2 * alpha_0**2
+            gamma_dev = data['fit']['ppn_gamma_deviation']
             fits.append({
                 'name': name.split('_')[0],
                 'gamma_dev': gamma_dev,
@@ -315,13 +311,13 @@ def generate_ppn_constraint_figure(fitting_data, output_dir):
     # Add shaded region for excluded zone
     ax.axvspan(cassini_bound, 1e-3, alpha=0.15, color=BLUE_GREY_COLORS['light'], label='Excluded region')
 
-    # Add weighted mean gamma deviation using fundamental beta (unscreened regime)
-    # Jakarta v0.8: PPN bound constrains cosmological coupling α₀ = β/M_Pl
-    weighted_beta = fitting_data['overall_analysis']['beta_statistics']['weighted_mean']
-    alpha_0_weighted = weighted_beta / M_PL_GEV
-    weighted_gamma = 2 * alpha_0_weighted**2
+    # Add weighted mean screened gamma deviation.
+    beta_eff_stats = fitting_data['overall_analysis']['beta_eff_statistics']
+    weighted_gamma = beta_eff_stats.get('ppn_gamma_deviation')
+    if weighted_gamma is None:
+        weighted_gamma = 2 * beta_eff_stats['weighted_mean']**2
     ax.axvline(x=weighted_gamma, color=BLUE_GREY_COLORS['highlight'], linestyle='--', linewidth=2,
-               label=r'TEP weighted mean: $|\gamma-1| = 4.45 \times 10^{-6}$')
+               label=rf'TEP weighted mean: $|\gamma-1| = {weighted_gamma:.1e}$')
 
     # Styling
     ax.set_ylabel('Perigee Altitude (km)', fontsize=12)
@@ -335,7 +331,8 @@ def generate_ppn_constraint_figure(fitting_data, output_dir):
     ax.margins(x=0.15, y=0.15)
 
     # Add annotation for safety margin - blue-grey styling
-    ax.text(0.98, 0.98, r'TEP predictions well below' + '\n' + r'Cassini PPN bound' + '\n' + r'(Margin: ~5×)',
+    margin = cassini_bound / weighted_gamma if weighted_gamma and weighted_gamma > 0 else np.inf
+    ax.text(0.98, 0.98, r'TEP predictions below' + '\n' + r'Cassini PPN bound' + '\n' + rf'(weighted margin: {margin:.0f}x)',
             transform=ax.transAxes, fontsize=10, verticalalignment='top', horizontalalignment='right',
             bbox=dict(boxstyle='round', facecolor=BLUE_GREY_COLORS['background'],
                      edgecolor=BLUE_GREY_COLORS['lighter'], alpha=0.9))
@@ -348,7 +345,7 @@ def generate_ppn_constraint_figure(fitting_data, output_dir):
 
 
 def generate_screening_profile_figure(output_dir):
-    """Generate Figure 4: Temporal Shear Suppression screening profile."""
+    """Generate Figure 4: Temporal Topology screening profile."""
     
     # Physical constants
     R_EARTH = 6371  # km
@@ -370,7 +367,7 @@ def generate_screening_profile_figure(output_dir):
     fig, ax = plt.subplots(figsize=(10, 6))
     
     # Plot screening profile with blue-grey color
-    ax.plot(altitudes, phi / 1e18, linewidth=2.5, color=BLUE_GREY_COLORS['primary'], label='Temporal Shear Suppression field φ(r)')
+    ax.plot(altitudes, phi / 1e18, linewidth=2.5, color=BLUE_GREY_COLORS['primary'], label='screened field φ(r)')
     
     # Add Earth's surface
     ax.axvline(x=0, color=BLUE_GREY_COLORS['secondary'], linestyle='-', linewidth=2, alpha=0.8, label='Earth surface')
@@ -389,7 +386,7 @@ def generate_screening_profile_figure(output_dir):
 
     # Styling - no title
     ax.set_xlabel('Altitude above Earth surface (km)', fontsize=12)
-    ax.set_ylabel('Temporal Shear Suppression field φ (× 10¹⁸ GeV)', fontsize=12)
+    ax.set_ylabel('screened field φ (× 10¹⁸ GeV)', fontsize=12)
     ax.set_xlim(0, 50000)
     ax.set_yscale('log')
     ax.grid(True, alpha=0.4, which='both')

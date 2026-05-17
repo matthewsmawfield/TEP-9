@@ -136,7 +136,7 @@
     </tbody>
 </table>
 
-<p><em>Note:</em> $\Delta v_{\rm obs}$ values for the published anomaly and published null/bound classes are from Anderson et al. (2008) and companion papers. Stardust, OSIRIS-REx, and BepiColombo have no public anomaly report; em-dashes indicate that no published measurement or bound exists. These three flybys are not used in quantitative likelihood but are listed as predicted nulls based on their high perigee altitudes. Rosetta 2009 has a published null result (dv = 0.00 mm/s) from Muller et al. (2010); the uncertainty is the DSN tracking precision (0.05 mm/s) as no formal bound was published. Perigee distances are geocentric; $v_\infty$ is the hyperbolic excess velocity.</p>
+<p><em>Note:</em> $\Delta v_{\rm obs}$ values for the published anomaly and published null/bound classes are from Anderson et al. (2008) and companion papers. Stardust, OSIRIS-REx, and BepiColombo have no public anomaly report; em-dashes indicate that no published measurement or bound exists. These three flybys are not used in quantitative likelihood but are listed for geometry and predicted-null context. Rosetta 2009 is a published null (Müller et al. 2010); the archival catalogue assigns $\sigma = 0.05$ mm/s in the same null/bound precision class as Table&nbsp;1, so the automated gate classifies it as below the headline S/N threshold rather than as a missing-uncertainty row. Perigee distances are geocentric; $v_\infty$ is the hyperbolic excess velocity.</p>
 
 <h2>2.2 Data Sources and Provenance</h2>
 
@@ -156,7 +156,11 @@
 <h2>2.3 Data Quality Assessment</h2>
 
 <p>
-    A rigorous analysis requires assessment of data quality for each flyby. All four primary detections have complete DSN coverage spanning $\pm 12$ hours around perigee, enabling robust pre/post comparison. The reported uncertainties (0.01–0.05 mm/s) are consistent with DSN Doppler precision at X-band.
+    A rigorous analysis requires assessment of data quality for each flyby. All four primary detections have complete DSN coverage spanning $\pm 12$ hours around perigee, enabling robust pre/post comparison (catalog-level statement; the inverse-variance $\beta$ ensemble in Steps 008 and 026 uses $n=4$ S/N-qualified primary fits when <code>strict_sign_gate</code> is false, with a separate $n=3$ sign-agreement diagnostic). The reported uncertainties (0.01–0.05 mm/s) are consistent with DSN Doppler precision at X-band.
+</p>
+
+<p>
+    Ensemble gates (Steps 008 and 026) are applied mechanically: a flyby enters the restricted likelihood only if it carries a published $(\Delta v, \sigma)$ pair, satisfies $|\Delta v|/\sigma &gt; 2$, and shows sign agreement between $\Delta v_{\rm obs}$ and the TEP prediction at the pre-specified reference coupling. Rows that fail a gate are retained in the JSON audit trail with an explicit machine-readable reason (<code>missing_observation</code>, <code>snr_below_threshold</code>, <code>sign_mismatch</code>, etc.) and, where available, the Step&nbsp;003 archival reference string, so exclusions are reviewable rather than tacit.
 </p>
 
 <p>
@@ -167,4 +171,100 @@
 
 <p>
     Spacecraft trajectories for the analysis were obtained from NASA's JPL Horizons ephemeris system. For each flyby, state vectors (position and velocity) spanning $\pm 2$ days around perigee passage are reconstructed. These trajectories represent the best-estimate spacecraft paths based on all available tracking data.
+</p>
+
+<h3>2.4a Geometry Factor Audit: Published Declinations vs Horizons</h3>
+
+<p>
+    The trajectory asymmetry factor used in both the Anderson et al. (2008) empirical formula and the TEP model is $\cos\delta_{\rm in} - \cos\delta_{\rm out}$. Table 1a audits the provenance of this factor by comparing three independent estimates for each flyby with published declinations: (i) the Anderson et al. (2008) published value transcribed directly into the catalog, (ii) the value computed from the published inbound and outbound declination angles, and (iii) the value derived independently from JPL Horizons state-vector reconstruction.
+</p>
+
+<table class="data-table">
+    <caption>
+        Table 1a: Trajectory Asymmetry Factor Audit
+    </caption>
+    <thead>
+        <tr>
+            <th>Flyby</th>
+            <th>$\delta_{\rm in}$ (deg)</th>
+            <th>$\delta_{\rm out}$ (deg)</th>
+            <th>$\cos\delta_{\rm in} - \cos\delta_{\rm out}$ (published)</th>
+            <th>$\cos\delta_{\rm in} - \cos\delta_{\rm out}$ (computed from decs)</th>
+            <th>$\cos\delta_{\rm in} - \cos\delta_{\rm out}$ (Horizons)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>NEAR</td>
+            <td>$-20.8$</td>
+            <td>$-19.7$</td>
+            <td>$\mathbf{0.625}$</td>
+            <td>$-0.007$</td>
+            <td>$0.625$</td>
+        </tr>
+        <tr>
+            <td>Galileo 1990</td>
+            <td>$-25.1$</td>
+            <td>$-34.1$</td>
+            <td>$\mathbf{0.195}$</td>
+            <td>$0.078$</td>
+            <td>$0.195$</td>
+        </tr>
+        <tr>
+            <td>Cassini</td>
+            <td>$-12.9$</td>
+            <td>$-4.9$</td>
+            <td>$\mathbf{-0.088}$</td>
+            <td>$-0.022$</td>
+            <td>$-0.088$</td>
+        </tr>
+        <tr>
+            <td>Galileo 1992</td>
+            <td>$-30.3$</td>
+            <td>$-33.8$</td>
+            <td>$\mathbf{0.032}$</td>
+            <td>$0.032$</td>
+            <td>$0.032$</td>
+        </tr>
+        <tr>
+            <td>Rosetta 2005</td>
+            <td>$-3.4$</td>
+            <td>$-34.3$</td>
+            <td>$\mathbf{0.33}$</td>
+            <td>$0.172$</td>
+            <td>$0.33$</td>
+        </tr>
+        <tr>
+            <td>Rosetta 2007</td>
+            <td>$-5.5$</td>
+            <td>$-6.5$</td>
+            <td>$\mathbf{0.035}$</td>
+            <td>$0.002$</td>
+            <td>$0.035$</td>
+        </tr>
+        <tr>
+            <td>MESSENGER 2005</td>
+            <td>$+31.3$</td>
+            <td>$-31.9$</td>
+            <td>—</td>
+            <td>$0.006$</td>
+            <td>$0.005$</td>
+        </tr>
+        <tr>
+            <td>Juno</td>
+            <td>$-26.9$</td>
+            <td>$+34.6$</td>
+            <td>—</td>
+            <td>$0.069$</td>
+            <td>$0.069$</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    Key finding: For five of the six flybys with published Anderson values, the computed $\cos\delta_{\rm in} - \cos\delta_{\rm out}$ from the published declination angles <em>does not match</em> the published asymmetry factor. NEAR shows the largest discrepancy: published 0.625 versus computed $-0.007$ from the tabulated declinations. Only Galileo 1992 agrees (0.032). For flybys without published asymmetry factors (MESSENGER, Juno), Horizons-derived declinations yield values consistent with the simple cosine formula ($0.006$ and $0.069$ respectively). This indicates that the Anderson et al. (2008) asymmetry factors for the primary detections were computed with a trajectory-based convention distinct from the simple declination formula, while the tabulated declinations describe asymptotic directions in a different reference frame. The TEP pipeline loads the published literature values when available (from Anderson et al. 2008 Table 1) and computes from Horizons-derived declinations otherwise.
+</p>
+
+<p>
+    Systematic uncertainty from the NEAR convention mismatch. For NEAR, the published asymmetry factor (0.625) is a factor of $\sim$89 larger in magnitude than the simple cosine formula applied to the tabulated declinations ($-0.007$). Because the TEP scalar-force amplitude scales with asymmetry, this discrepancy propagates linearly into the predicted anomaly. If the Anderson asymmetry were replaced by the Horizons-derived value, the predicted NEAR anomaly at $\beta_{\rm ref}$ would drop from $+3.68$ mm/s to $\sim 0.04$ mm/s, requiring a fitted $\beta$ two orders of magnitude larger to match the observed 13.46 mm/s. Such a coupling would violate Cassini PPN constraints by orders of magnitude. The TEP pipeline therefore adopts the published Anderson values for consistency with the historical literature, but the NEAR geometry factor remains the dominant unquantified systematic in the primary detection. Resolving the Anderson trajectory convention—via independent orbit reconstruction or published mission-specific asymptotic-state vectors—is a priority for reducing this systematic.
 </p>

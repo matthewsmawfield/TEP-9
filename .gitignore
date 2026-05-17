@@ -19,6 +19,29 @@ venv/
 *.swp
 *.swo
 .windsurf/
+.cursor/
+
+# Build artifacts
+site/node_modules/
+site/dist/
+
+# Env / secrets
+.env*
+.env.local
+*.pem
+*.key
+credentials.json
+*secret*.json
+
+# Large binaries and archives
+*.tar
+*.tar.gz
+*.npz
+*.zip
+*.7z
+
+# Test cache
+.pytest_cache/
 
 # OS
 .DS_Store
@@ -28,5 +51,6 @@ Thumbs.db
 *.tmp
 *.temp
 
-# Scratch/development files
-scratch/
+# Large Juno OCRU TNF bulk downloads (Step 030 opt-in mirror)
+data/raw/dsn_tracking/Juno_2013/NASA_PDS/*.TNF
+

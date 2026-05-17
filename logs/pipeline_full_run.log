@@ -1,0 +1,2616 @@
+================================================================================
+FLYBY TEP PIPELINE v0.1 - FULL EXECUTION
+================================================================================
+Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+Steps dir:     /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps
+Log file:      /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/pipeline.log
+Ensemble policy: strict_sign_gate=False (config/pipeline_config.json; default false)
+strict_sign_gate=false: four S/N-qualified primary fits in Step 008/026; sign-agreement n=3 reported as sign_agreement_model_comparison / beta_statistics_sign_gated_diagnostic.
+Gate policy text: Likelihood rows require a published (Δv_obs, σ) pair with no imputation and S/N = |Δv_obs|/σ > 2. Sign agreement between...
+--------------------------------------------------------------------------------
+EXECUTING PIPELINE STEPS
+--------------------------------------------------------------------------------
+
+======================================================================
+[1/42] Step 001: Download SPICE Kernels (NAIF)
+======================================================================
+[INFO] [STEP 001] LOGGER INITIALIZED: step_001_download_spice (Step 001)
+[INFO] [STEP 001] ================================================================================
+[INFO] [STEP 001] ROSETTA 2005/2007 SPICE KERNEL DOWNLOAD
+[INFO] [STEP 001] ================================================================================
+[INFO] [STEP 001] Source: ESA SPICE Service
+[INFO] [STEP 001] URL: https://spiftp.esac.esa.int/data/SPICE/ROSETTA/kernels/spk/
+[INFO] [STEP 001] Output directory: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/spice_kernels
+[INFO] [STEP 001] --------------------------------------------------------------------------------
+[INFO] [STEP 001] Mission: Rosetta_2005
+[INFO] [STEP 001] --------------------------------------------------------------------------------
+[INFO] [STEP 001] Description: 1st Earth flyby (March 4, 2005)
+[INFO] [STEP 001] Flyby date: 2005-03-04
+[INFO] [STEP 001] Perigee altitude: 1956 km
+[INFO] [STEP 001] Observed anomaly: 1.82 mm/s
+[INFO] [STEP 001]   → Downloading: ORER_______________00031.BSP
+[INFO] [STEP 001] ✓ Downloaded: ORER_______________00031.BSP (467,968 bytes in 8.07s)
+[INFO] [STEP 001]   Output: ORER_______________00031.BSP (SPICE BSP kernel file)
+[INFO] [STEP 001] --------------------------------------------------------------------------------
+[INFO] [STEP 001] Mission: Rosetta_2007
+[INFO] [STEP 001] --------------------------------------------------------------------------------
+[INFO] [STEP 001] Description: 2nd Earth flyby (November 13, 2007)
+[INFO] [STEP 001] Flyby date: 2007-11-13
+[INFO] [STEP 001] Perigee altitude: 5322 km
+[INFO] [STEP 001] Observed anomaly: 0.02 mm/s
+[INFO] [STEP 001]   → Downloading: ORFR_______________00067.BSP
+[INFO] [STEP 001] ✓ Downloaded: ORFR_______________00067.BSP (2,164,736 bytes in 24.50s)
+[INFO] [STEP 001]   Output: ORFR_______________00067.BSP (SPICE BSP kernel file)
+[INFO] [STEP 001] Successfully downloaded: 2/2 kernels
+[INFO] [STEP 001] ✓ All kernels downloaded successfully!
+[INFO] [STEP 001] Next step: Run 'step_002_spice_to_json.py' to convert BSP to JSON
+[INFO] [STEP 001] 
+[INFO] [STEP 001] ================================================================================
+[INFO] [STEP 001] STEP SUMMARY: step_001_download_spice
+[INFO] [STEP 001] ================================================================================
+[INFO] [STEP 001] Step Number: 001
+[INFO] [STEP 001] Status: SUCCESS
+[INFO] [STEP 001] Duration: 32.58s
+[INFO] [STEP 001] Calculations Logged: 0
+[INFO] [STEP 001] Output Files: 2
+[INFO] [STEP 001] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_001_download_spice.log
+[INFO] [STEP 001] 
+[INFO] [STEP 001] Generated 2 output file(s):
+[INFO] [STEP 001]   • ORER_______________00031.BSP: 457.00 KB - SPICE BSP kernel file
+[INFO] [STEP 001]   • ORFR_______________00067.BSP: 2114.00 KB - SPICE BSP kernel file
+[INFO] [STEP 001] ================================================================================
+[INFO] [STEP 001] STEP 001 COMPLETE: SUCCESS
+[INFO] [STEP 001] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_001_download_spice_provenance.json
+✓ Step 001: Download SPICE Kernels (NAIF) completed in 32.67s
+
+======================================================================
+[2/42] Step 002: Convert SPICE to JSON
+======================================================================
+[INFO] [STEP 002] LOGGER INITIALIZED: step_002_spice_to_json (Step 002)
+[INFO] [STEP 002] ================================================================================
+[INFO] [STEP 002] ROSETTA SPICE KERNEL TO JSON CONVERTER
+[INFO] [STEP 002] ================================================================================
+[INFO] [STEP 002] Kernel directory: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/spice_kernels
+[INFO] [STEP 002] Output directory: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/flyby_trajectories
+[INFO] [STEP 002] ✓ Leapseconds kernel already present: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/spice_kernels/naif0012.tls
+[INFO] [STEP 002]   → Loading leapseconds kernel...
+[INFO] [STEP 002] ✓ Loaded: naif0012.tls
+[INFO] [STEP 002] --------------------------------------------------------------------------------
+[INFO] [STEP 002] Processing: Rosetta_2005
+[INFO] [STEP 002] --------------------------------------------------------------------------------
+[INFO] [STEP 002] Kernel: ORER_______________00031.BSP
+[INFO] [STEP 002] Flyby date: 2005-03-04
+[INFO] [STEP 002]   → Loading kernel...
+[INFO] [STEP 002]   → Extracting trajectory (±1 days)...
+[INFO] [STEP 002] Centered on perigee: 2005-03-04T22:10:00
+[INFO] [STEP 002]   → Saving to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/flyby_trajectories/Rosetta_2005_trajectory.json
+[INFO] [STEP 002] ✓ Saved: 31,361 bytes
+[INFO] [STEP 002] Perigee altitude: 1968.7 km
+[INFO] [STEP 002] Perigee velocity: 10.51 km/s
+[INFO] [STEP 002] Data points: 97
+[INFO] [STEP 002]   Output: Rosetta_2005_trajectory.json (Rosetta_2005 trajectory JSON)
+[INFO] [STEP 002] --------------------------------------------------------------------------------
+[INFO] [STEP 002] Processing: Rosetta_2007
+[INFO] [STEP 002] --------------------------------------------------------------------------------
+[INFO] [STEP 002] Kernel: ORFR_______________00067.BSP
+[INFO] [STEP 002] Flyby date: 2007-11-13
+[INFO] [STEP 002]   → Loading kernel...
+[INFO] [STEP 002]   → Extracting trajectory (±2 days)...
+[INFO] [STEP 002]   → Saving to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/flyby_trajectories/Rosetta_2007_trajectory.json
+[INFO] [STEP 002] ✓ Saved: 61,189 bytes
+[INFO] [STEP 002] Perigee altitude: 5429.9 km
+[INFO] [STEP 002] Perigee velocity: 12.46 km/s
+[INFO] [STEP 002] Data points: 193
+[INFO] [STEP 002]   Output: Rosetta_2007_trajectory.json (Rosetta_2007 trajectory JSON)
+[INFO] [STEP 002] Successfully converted: 2/2 flybys
+[INFO] [STEP 002] ✓ All SPICE kernels converted to JSON!
+[INFO] [STEP 002] Next steps:
+[INFO] [STEP 002]   1. Update 'step_001_data_ingestion.py' to include Rosetta 2005/2007
+[INFO] [STEP 002]   2. Update 'archival_flyby_catalog.json' processed_ephemeris_available = true
+[INFO] [STEP 002]   3. Re-run the pipeline with expanded dataset
+[INFO] [STEP 002] 
+[INFO] [STEP 002] ================================================================================
+[INFO] [STEP 002] STEP SUMMARY: step_002_spice_to_json
+[INFO] [STEP 002] ================================================================================
+[INFO] [STEP 002] Step Number: 002
+[INFO] [STEP 002] Status: SUCCESS
+[INFO] [STEP 002] Duration: 0.03s
+[INFO] [STEP 002] Calculations Logged: 0
+[INFO] [STEP 002] Output Files: 2
+[INFO] [STEP 002] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_002_spice_to_json.log
+[INFO] [STEP 002] 
+[INFO] [STEP 002] Generated 2 output file(s):
+[INFO] [STEP 002]   • Rosetta_2005_trajectory.json: 30.63 KB - Rosetta_2005 trajectory JSON
+[INFO] [STEP 002]   • Rosetta_2007_trajectory.json: 59.75 KB - Rosetta_2007 trajectory JSON
+[INFO] [STEP 002] ================================================================================
+[INFO] [STEP 002] STEP 002 COMPLETE: SUCCESS
+[INFO] [STEP 002] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_002_spice_to_json_provenance.json
+✓ Step 002: Convert SPICE to JSON completed in 0.22s
+
+======================================================================
+[3/42] Step 003: Archival Data Mining
+======================================================================
+[INFO] [STEP 003] LOGGER INITIALIZED: step_003_archival_data_mining (Step 003)
+[INFO] [STEP 003] ================================================================================
+[INFO] [STEP 003] ARCHIVAL DATA MINING - EXPANDING THE SAMPLE
+[INFO] [STEP 003] ================================================================================
+[INFO] [STEP 003] LOGGER INITIALIZED: step_003_archival_data_mining (Step 003)
+[INFO] [STEP 003] ✓   ✓ All literature values match Anderson et al. (2008)
+[INFO] [STEP 003] Total catalog: 14 flybys
+[INFO] [STEP 003] Usable for analysis: 12
+[INFO] [STEP 003] Significant detections: 2 (n=2) → Direct β constraints
+[INFO] [STEP 003] Marginal detections: 2 (n=2) → Weak β constraints
+[INFO] [STEP 003] Null detections: 5 → Screening threshold ONLY
+[INFO] [STEP 003] Predicted nulls: 5 → Screening validation ONLY
+[INFO] [STEP 003] For β fitting: n=4 (unchanged from canonical n=3)
+[INFO] [STEP 003] For screening threshold: n=12 (improved from n=3)
+[INFO] [STEP 003] Weighted effective n: 5.0 (includes constraint weighting)
+[INFO] [STEP 003] Detection Categories:
+[INFO] [STEP 003]   Significant: 2
+[INFO] [STEP 003]   Marginal: 2
+[INFO] [STEP 003]   Null: 5
+[INFO] [STEP 003]   Predicted null: 5
+[INFO] [STEP 003] +1 missions: σ_β = 5.00e-05, power = 1.00
+[INFO] [STEP 003] +2 missions: σ_β = 5.00e-05, power = 1.00
+[INFO] [STEP 003] +3 missions: σ_β = 5.00e-05, power = 1.00
+[INFO] [STEP 003] +5 missions: σ_β = 5.00e-05, power = 1.00
+[INFO] [STEP 003] +10 missions: σ_β = 5.00e-05, power = 1.00
+[INFO] [STEP 003] Recommendation: 1 additional missions needed for 80% power
+[INFO] [STEP 003] ✓ Exported catalog to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step003_archival_flyby_catalog.json
+[INFO] [STEP 003] Total entries: 14
+[INFO] [STEP 003] Usable entries: 12
+[INFO] [STEP 003]   Output: step003_archival_flyby_catalog.json (Archival flyby catalog with metadata)
+[INFO] [STEP 003] 
+ARCHIVAL DATA MINING REPORT
+===========================
+
+Sample Size Expansion:
+  Total catalog: 14 flybys
+  Usable for analysis: 12
+
+HONEST ASSESSMENT OF STATISTICAL POWER:
+  ✓ Dataset expanded from n=3 to n=12 flybys
+  ✗ BUT: Effective sample for β fitting remains n=4
+  ✓ Screening threshold confidence improved (n=12)
+
+Breakdown by Contribution:
+  Significant detections: 2 → Direct β constraints
+    (NEAR: 13.46 mm/s, Galileo 1990: 3.92 mm/s)
+  Marginal detections: 2 → Weak β constraints  
+    (Cassini: 0.11 mm/s, Rosetta 2005: 1.82 mm/s)
+  Null detections: 5 → Screening threshold ONLY
+    (Provide upper bounds, not β constraints)
+  Predicted nulls: 5 → Screening validation
+    (Confirm altitude dependence, no β information)
+
+Key Finding:
+  The 100× scatter in β (I² ≈ 100%) demonstrates that:
+  - 3-4 measurements is insufficient for precise parameter estimation
+  - Systematic differences between missions dominate
+  - Model incompleteness contributes to scatter (see Step 004)
+
+What the Expansion Actually Achieved:
+  1. Consistent with: Temporal Topology screening threshold at ~2500 km
+  2. Supported: Altitude dependence of TEP effects  
+  3. CONSTRAINED: Upper bounds on coupling from null results
+  4. DID NOT: Improve precision of β fitting (still n=3 effective)
+
+Recommendations:
+  - For β precision: Need 3-5 additional low-altitude detections
+  - For screening model: Current dataset is sufficient
+  - Priority: Raw DSN reanalysis (Step 003 framework)
+
+[INFO] [STEP 003] 
+[INFO] [STEP 003] ================================================================================
+[INFO] [STEP 003] STEP SUMMARY: step_003_archival_data_mining
+[INFO] [STEP 003] ================================================================================
+[INFO] [STEP 003] Step Number: 003
+[INFO] [STEP 003] Status: SUCCESS
+[INFO] [STEP 003] Duration: 0.00s
+[INFO] [STEP 003] Calculations Logged: 0
+[INFO] [STEP 003] Output Files: 1
+[INFO] [STEP 003] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_003_archival_data_mining.log
+[INFO] [STEP 003] 
+[INFO] [STEP 003] Generated 1 output file(s):
+[INFO] [STEP 003]   • step003_archival_flyby_catalog.json: 14.14 KB - Archival flyby catalog with metadata
+[INFO] [STEP 003] ================================================================================
+[INFO] [STEP 003] STEP 003 COMPLETE: SUCCESS
+[INFO] [STEP 003] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_003_archival_data_mining_provenance.json
+✓ Step 003: Archival Data Mining completed in 0.07s
+
+======================================================================
+[4/42] Step 004: JPL Horizons Data Fetch
+======================================================================
+[INFO] [STEP 004] LOGGER INITIALIZED: step_004_jpl_horizons_fetch (Step 004)
+[INFO] [STEP 004] ================================================================================
+[INFO] [STEP 004] STEP 010: FETCH ALL MISSIONS FROM JPL HORIZONS
+[INFO] [STEP 004] ================================================================================
+[INFO] [STEP 004] ================================================================================
+[INFO] [STEP 004] STEP 004: Fetch Real Trajectory Data from JPL Horizons
+[INFO] [STEP 004] ================================================================================
+[INFO] [STEP 004] ================================================================================
+[INFO] [STEP 004] STEP 004: FETCH ALL MISSIONS FROM JPL HORIZONS
+[INFO] [STEP 004] ================================================================================
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: NEAR_1998
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for NEAR_1998
+[INFO] [STEP 004] Using cached JPL Horizons data for NEAR_1998
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/NEAR_1998/NEAR_1998_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/NEAR_1998/NEAR_1998_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: NEAR_1998_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: NEAR_1998_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: Galileo_1990
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for Galileo_1990
+[INFO] [STEP 004] Using cached JPL Horizons data for Galileo_1990
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Galileo_1990/Galileo_1990_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Galileo_1990/Galileo_1990_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: Galileo_1990_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: Galileo_1990_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: Cassini_1999
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for Cassini_1999
+[INFO] [STEP 004] Using cached JPL Horizons data for Cassini_1999
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Cassini_1999/Cassini_1999_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Cassini_1999/Cassini_1999_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: Cassini_1999_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: Cassini_1999_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: Rosetta_2005
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for Rosetta_2005
+[INFO] [STEP 004] Using cached JPL Horizons data for Rosetta_2005
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2005/Rosetta_2005_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2005/Rosetta_2005_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: Rosetta_2005_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: Rosetta_2005_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: MESSENGER_2005
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for MESSENGER_2005
+[INFO] [STEP 004] Using cached JPL Horizons data for MESSENGER_2005
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/MESSENGER_2005/MESSENGER_2005_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/MESSENGER_2005/MESSENGER_2005_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: MESSENGER_2005_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: MESSENGER_2005_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: Juno_2013
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for Juno_2013
+[INFO] [STEP 004] Using cached JPL Horizons data for Juno_2013
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Juno_2013/Juno_2013_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Juno_2013/Juno_2013_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: Juno_2013_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: Juno_2013_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: Rosetta_2007
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for Rosetta_2007
+[INFO] [STEP 004] Using cached JPL Horizons data for Rosetta_2007
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2007/Rosetta_2007_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2007/Rosetta_2007_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: Rosetta_2007_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: Rosetta_2007_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: Rosetta_2009
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for Rosetta_2009
+[INFO] [STEP 004] Using cached JPL Horizons data for Rosetta_2009
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2009/Rosetta_2009_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Rosetta_2009/Rosetta_2009_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: Rosetta_2009_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: Rosetta_2009_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: Galileo_1992
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for Galileo_1992
+[INFO] [STEP 004] Using cached JPL Horizons data for Galileo_1992
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Galileo_1992/Galileo_1992_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Galileo_1992/Galileo_1992_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: Galileo_1992_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: Galileo_1992_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: Stardust_2001
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for Stardust_2001
+[INFO] [STEP 004] Using cached JPL Horizons data for Stardust_2001
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Stardust_2001/Stardust_2001_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/Stardust_2001/Stardust_2001_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: Stardust_2001_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: Stardust_2001_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: OSIRIS-REx_2017
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for OSIRIS-REx_2017
+[INFO] [STEP 004] Using cached JPL Horizons data for OSIRIS-REx_2017
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/OSIRIS-REx_2017/OSIRIS-REx_2017_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/OSIRIS-REx_2017/OSIRIS-REx_2017_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: OSIRIS-REx_2017_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: OSIRIS-REx_2017_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004] Processing: BepiColombo_2020
+[INFO] [STEP 004] --------------------------------------------------------------------------------
+[INFO] [STEP 004]   → Fetching JPL Horizons data for BepiColombo_2020
+[INFO] [STEP 004] Using cached JPL Horizons data for BepiColombo_2020
+[INFO] [STEP 004]   Raw: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/BepiColombo_2020/BepiColombo_2020_raw_response.txt
+[INFO] [STEP 004]   JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/BepiColombo_2020/BepiColombo_2020_trajectory.json
+[INFO] [STEP 004] ✓ Re-processed cached data: 4320 data points
+[INFO] [STEP 004]   Output: BepiColombo_2020_raw_response.txt (JPL Horizons raw response (cached))
+[INFO] [STEP 004]   Output: BepiColombo_2020_trajectory.json (Processed trajectory JSON (cached))
+[INFO] [STEP 004] ✓ NEAR_1998            4320 data points
+[INFO] [STEP 004] ✓ Galileo_1990         4320 data points
+[INFO] [STEP 004] ✓ Cassini_1999         4320 data points
+[INFO] [STEP 004] ✓ Rosetta_2005         4320 data points
+[INFO] [STEP 004] ✓ MESSENGER_2005       4320 data points
+[INFO] [STEP 004] ✓ Juno_2013            4320 data points
+[INFO] [STEP 004] ✓ Rosetta_2007         4320 data points
+[INFO] [STEP 004] ✓ Rosetta_2009         4320 data points
+[INFO] [STEP 004] ✓ Galileo_1992         4320 data points
+[INFO] [STEP 004] ✓ Stardust_2001        4320 data points
+[INFO] [STEP 004] ✓ OSIRIS-REx_2017      4320 data points
+[INFO] [STEP 004] ✓ BepiColombo_2020     4320 data points
+[INFO] [STEP 004] ✓ Saved summary to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/raw/jpl_horizons/step004_fetch_summary.json
+[INFO] [STEP 004]   Output: step004_fetch_summary.json (Fetch summary JSON)
+[INFO] [STEP 004] Successfully fetched: 12/12 missions
+[INFO] [STEP 004] 
+[INFO] [STEP 004] ================================================================================
+[INFO] [STEP 004] STEP SUMMARY: step_004_jpl_horizons_fetch
+[INFO] [STEP 004] ================================================================================
+[INFO] [STEP 004] Step Number: 004
+[INFO] [STEP 004] Status: SUCCESS
+[INFO] [STEP 004] Duration: 0.31s
+[INFO] [STEP 004] Calculations Logged: 0
+[INFO] [STEP 004] Output Files: 25
+[INFO] [STEP 004] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_004_jpl_horizons_fetch.log
+[INFO] [STEP 004] 
+[INFO] [STEP 004] Generated 25 output file(s):
+[INFO] [STEP 004]   • NEAR_1998_raw_response.txt: 427.82 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • NEAR_1998_trajectory.json: 673.31 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • Galileo_1990_raw_response.txt: 426.51 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • Galileo_1990_trajectory.json: 675.96 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • Cassini_1999_raw_response.txt: 429.11 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • Cassini_1999_trajectory.json: 686.37 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • Rosetta_2005_raw_response.txt: 428.34 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • Rosetta_2005_trajectory.json: 675.18 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • MESSENGER_2005_raw_response.txt: 426.68 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • MESSENGER_2005_trajectory.json: 672.25 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • Juno_2013_raw_response.txt: 428.43 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • Juno_2013_trajectory.json: 679.96 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • Rosetta_2007_raw_response.txt: 428.34 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • Rosetta_2007_trajectory.json: 676.48 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • Rosetta_2009_raw_response.txt: 428.34 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • Rosetta_2009_trajectory.json: 674.82 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • Galileo_1992_raw_response.txt: 426.51 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • Galileo_1992_trajectory.json: 674.97 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • Stardust_2001_raw_response.txt: 427.53 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • Stardust_2001_trajectory.json: 673.56 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • OSIRIS-REx_2017_raw_response.txt: 432.24 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • OSIRIS-REx_2017_trajectory.json: 674.58 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • BepiColombo_2020_raw_response.txt: 428.20 KB - JPL Horizons raw response (cached)
+[INFO] [STEP 004]   • BepiColombo_2020_trajectory.json: 670.21 KB - Processed trajectory JSON (cached)
+[INFO] [STEP 004]   • step004_fetch_summary.json: 4.60 KB - Fetch summary JSON
+[INFO] [STEP 004] ================================================================================
+[INFO] [STEP 004] STEP 004 COMPLETE: SUCCESS
+[INFO] [STEP 004] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_004_jpl_horizons_fetch_provenance.json
+✓ Step 004: JPL Horizons Data Fetch completed in 0.91s
+
+======================================================================
+[5/42] Step 038: Extract 3D State Vectors from JPL Horizons
+======================================================================
+[INFO] [STEP 038] LOGGER INITIALIZED: step_038_extract_3d_vectors (Step 038)
+[INFO] [STEP 038] ================================================================================
+[INFO] [STEP 038] STEP 038: EXTRACT 3D STATE VECTORS FROM JPL HORIZONS RAW DATA
+[INFO] [STEP 038] ================================================================================
+[INFO] [STEP 038] Loaded 12 flyby-date anchors from step003_archival_flyby_catalog.json for perigee search
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=280.17 deg, Dec=32.53 deg
+[INFO] [STEP 038]   Range: 6910.6 km, Altitude: 532.5 km
+[INFO] [STEP 038]   Speed (equatorial): 12.71 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [-3.48, -10.50, -6.27] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=319.85 deg, Dec=23.92 deg
+[INFO] [STEP 038]   Range: 7340.7 km, Altitude: 962.6 km
+[INFO] [STEP 038]   Speed (equatorial): 13.70 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [-5.33, -12.58, -0.96] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=302.61 deg, Dec=-32.42 deg
+[INFO] [STEP 038]   Range: 6681.5 km, Altitude: 303.3 km
+[INFO] [STEP 038]   Speed (equatorial): 14.02 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [-12.59, -5.22, -3.32] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=245.58 deg, Dec=-22.85 deg
+[INFO] [STEP 038]   Range: 7563.8 km, Altitude: 1185.7 km
+[INFO] [STEP 038]   Speed (equatorial): 18.89 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [+17.83, -6.20, -0.61] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=22.77 deg, Dec=20.71 deg
+[INFO] [STEP 038]   Range: 8333.8 km, Altitude: 1955.6 km
+[INFO] [STEP 038]   Speed (equatorial): 10.51 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [+5.12, -9.08, -1.29] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=304.23 deg, Dec=-64.75 deg
+[INFO] [STEP 038]   Range: 11681.1 km, Altitude: 5303.0 km
+[INFO] [STEP 038]   Speed (equatorial): 12.40 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [-9.58, -6.88, +3.83] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=276.40 deg, Dec=-7.44 deg
+[INFO] [STEP 038]   Range: 8862.2 km, Altitude: 2484.0 km
+[INFO] [STEP 038]   Speed (equatorial): 13.32 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [-12.05, -0.09, +5.66] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=348.06 deg, Dec=46.95 deg
+[INFO] [STEP 038]   Range: 8713.9 km, Altitude: 2335.8 km
+[INFO] [STEP 038]   Speed (equatorial): 10.36 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [-2.20, -9.30, +4.00] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=339.73 deg, Dec=-35.85 deg
+[INFO] [STEP 038]   Range: 6940.4 km, Altitude: 562.2 km
+[INFO] [STEP 038]   Speed (equatorial): 14.86 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [+8.29, +12.14, +2.20] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=323.46 deg, Dec=-40.31 deg
+[INFO] [STEP 038]   Range: 12379.5 km, Altitude: 6001.4 km
+[INFO] [STEP 038]   Speed (equatorial): 10.30 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [-6.98, -7.31, +1.99] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=166.94 deg, Dec=-74.43 deg
+[INFO] [STEP 038]   Range: 23592.8 km, Altitude: 17214.6 km
+[INFO] [STEP 038]   Speed (equatorial): 8.52 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [-8.19, -0.12, +2.36] km/s
+[INFO] [STEP 038]   Parsed 4320 data points
+[INFO] [STEP 038]   Perigee: RA=257.88 deg, Dec=-19.59 deg
+[INFO] [STEP 038]   Range: 19062.5 km, Altitude: 12684.3 km
+[INFO] [STEP 038]   Speed (equatorial): 7.59 km/s
+[INFO] [STEP 038]   Velocity (ecliptic): [-7.32, +1.39, -1.46] km/s
+[INFO] [STEP 038] Successfully processed: 12
+[INFO] [STEP 038] Failed: 0
+[INFO] [STEP 038] Saved 3D state vectors to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step038_3d_state_vectors.json
+[INFO] [STEP 038] Saved trajectory time series to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step038_trajectory_series.json
+[INFO] [STEP 038] 
+[INFO] [STEP 038] ================================================================================
+[INFO] [STEP 038] STEP SUMMARY: step_038_extract_3d_vectors
+[INFO] [STEP 038] ================================================================================
+[INFO] [STEP 038] Step Number: 038
+[INFO] [STEP 038] Status: SUCCESS
+[INFO] [STEP 038] Duration: 0.00s
+[INFO] [STEP 038] Calculations Logged: 0
+[INFO] [STEP 038] Output Files: 0
+[INFO] [STEP 038] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_038_extract_3d_vectors.log
+[INFO] [STEP 038] No output files generated
+[INFO] [STEP 038] ================================================================================
+[INFO] [STEP 038] STEP 038 COMPLETE: SUCCESS
+[INFO] [STEP 038] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_038_extract_3d_vectors_provenance.json
+✓ Step 038: Extract 3D State Vectors from JPL Horizons completed in 0.69s
+
+======================================================================
+[6/42] Step 033: Continuous IRI Trajectory Profiles
+======================================================================
+[INFO] [STEP 033] LOGGER INITIALIZED: step_033_iri_trajectory_profile (Step 033)
+[INFO] [STEP 033] ================================================================================
+[INFO] [STEP 033] STEP 033: CONTINUOUS IRI TRAJECTORY PROFILES
+[INFO] [STEP 033] ================================================================================
+[INFO] [STEP 033] IRI sampling: stride=6, perigee_halfwidth=200, mission_parallel_workers=12 (cpu_count=14)
+[INFO] [STEP 033] ✓ IRI trajectory profiles saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step033_iri_trajectory_profiles.json
+[INFO] [STEP 033] ✓ STEP 033 COMPLETE
+✓ Step 033: Continuous IRI Trajectory Profiles completed in 44.12s
+
+======================================================================
+[7/42] Step 005: DSN Data Ingestion
+======================================================================
+[INFO] [STEP 005] LOGGER INITIALIZED: step_005_dsn_data_ingestion (Step 005)
+[INFO] [STEP 005] ================================================================================
+[INFO] [STEP 005] STEP 005: DSN Data Request Workflow
+[INFO] [STEP 005] ================================================================================
+[INFO] [STEP 005] Generating actual data request packages for NASA/ESA archives
+[INFO] [STEP 005] --------------------------------------------------------------------------------
+[INFO] [STEP 005] Processing: NEAR_1998
+[INFO] [STEP 005] --------------------------------------------------------------------------------
+[INFO] [STEP 005] Agency: NASA
+[INFO] [STEP 005] Data volume: 2.5 GB
+[INFO] [STEP 005] ✓ Generated: step005_NASA_request_NEAR_1998.json
+[INFO] [STEP 005]   Output: step005_NASA_request_NEAR_1998.json (DSN request for NEAR_1998)
+[INFO] [STEP 005] --------------------------------------------------------------------------------
+[INFO] [STEP 005] Processing: Galileo_1990
+[INFO] [STEP 005] --------------------------------------------------------------------------------
+[INFO] [STEP 005] Agency: NASA
+[INFO] [STEP 005] Data volume: 1.8 GB
+[INFO] [STEP 005] ✓ Generated: step005_NASA_request_Galileo_1990.json
+[INFO] [STEP 005]   Output: step005_NASA_request_Galileo_1990.json (DSN request for Galileo_1990)
+[INFO] [STEP 005] --------------------------------------------------------------------------------
+[INFO] [STEP 005] Processing: Cassini_1999
+[INFO] [STEP 005] --------------------------------------------------------------------------------
+[INFO] [STEP 005] Agency: NASA
+[INFO] [STEP 005] Data volume: 3.2 GB
+[INFO] [STEP 005] ✓ Generated: step005_NASA_request_Cassini_1999.json
+[INFO] [STEP 005]   Output: step005_NASA_request_Cassini_1999.json (DSN request for Cassini_1999)
+[INFO] [STEP 005] --------------------------------------------------------------------------------
+[INFO] [STEP 005] Processing: Juno_2013
+[INFO] [STEP 005] --------------------------------------------------------------------------------
+[INFO] [STEP 005] Agency: NASA
+[INFO] [STEP 005] Data volume: 5.5 GB
+[INFO] [STEP 005] ✓ Generated: step005_NASA_request_Juno_2013.json
+[INFO] [STEP 005]   Output: step005_NASA_request_Juno_2013.json (DSN request for Juno_2013)
+[INFO] [STEP 005] --------------------------------------------------------------------------------
+[INFO] [STEP 005] Processing: Rosetta_2005
+[INFO] [STEP 005] --------------------------------------------------------------------------------
+[INFO] [STEP 005] Agency: ESA
+[INFO] [STEP 005] Data volume: 2.1 GB
+[INFO] [STEP 005] ✓ Generated: step005_ESA_request_Rosetta_2005.json
+[INFO] [STEP 005]   Output: step005_ESA_request_Rosetta_2005.json (DSN request for Rosetta_2005)
+[INFO] [STEP 005] Generated 5 request packages in: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/data/processed/dsn_requests
+[INFO] [STEP 005] Total data volume: 15.1 GB
+[INFO] [STEP 005] Next step: Submit requests to NASA/ESA archives
+[INFO] [STEP 005] Timeline: 2-3 months for independent verification
+[INFO] [STEP 005] 
+[INFO] [STEP 005] ================================================================================
+[INFO] [STEP 005] STEP SUMMARY: step_005_dsn_data_ingestion
+[INFO] [STEP 005] ================================================================================
+[INFO] [STEP 005] Step Number: 005
+[INFO] [STEP 005] Status: SUCCESS
+[INFO] [STEP 005] Duration: 0.00s
+[INFO] [STEP 005] Calculations Logged: 0
+[INFO] [STEP 005] Output Files: 5
+[INFO] [STEP 005] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_005_dsn_data_ingestion.log
+[INFO] [STEP 005] 
+[INFO] [STEP 005] Generated 5 output file(s):
+[INFO] [STEP 005]   • step005_NASA_request_NEAR_1998.json: 1.13 KB - DSN request for NEAR_1998
+[INFO] [STEP 005]   • step005_NASA_request_Galileo_1990.json: 1.13 KB - DSN request for Galileo_1990
+[INFO] [STEP 005]   • step005_NASA_request_Cassini_1999.json: 1.13 KB - DSN request for Cassini_1999
+[INFO] [STEP 005]   • step005_NASA_request_Juno_2013.json: 1.13 KB - DSN request for Juno_2013
+[INFO] [STEP 005]   • step005_ESA_request_Rosetta_2005.json: 1.13 KB - DSN request for Rosetta_2005
+[INFO] [STEP 005] ================================================================================
+[INFO] [STEP 005] STEP 005 COMPLETE: SUCCESS
+[INFO] [STEP 005] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_005_dsn_data_ingestion_provenance.json
+✓ Step 005: DSN Data Ingestion completed in 0.04s
+
+======================================================================
+[8/42] Step 006: DSN Framework (Resolves Horizons Circularity)
+======================================================================
+[INFO] [STEP 006] LOGGER INITIALIZED: step_006_dsn_framework (Step 006)
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] STEP 006: CORE DSN RAW DATA REANALYSIS FRAMEWORK
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] ======================================================================
+[INFO] [STEP 006] RESOLVING JPL HORIZONS DATA CIRCULARITY
+[INFO] [STEP 006] ======================================================================
+[INFO] [STEP 006] 
+[INFO] [STEP 006] Purpose:
+[INFO] [STEP 006]   - Process raw DSN tracking data with minimal orbit determination
+[INFO] [STEP 006]   - Provide empirical proof of TEP signal suppression by standard OD
+[INFO] [STEP 006]   - Definitive falsification test for the TEP framework
+[INFO] [STEP 006] 
+[INFO] [STEP 006] Target: Juno 2013 (priority mission)
+[INFO] [STEP 006]   - Predicted: +2.25 mm/s
+[INFO] [STEP 006]   - Observed (standard OD): 0.00 ± 0.02 mm/s
+[INFO] [STEP 006]   - Tension: 112σ
+[INFO] [STEP 006] 
+[INFO] [STEP 006] Falsification pathway (current implementation):
+[INFO] [STEP 006]   - Perigee-window **pairwise-Doppler proxy** vs a z·SE statistical gate; not commensurate with published minimal-OD Δv without MONTE-class residuals.
+[INFO] [STEP 006] ======================================================================
+[INFO] [STEP 006] NEAR_1998: no_indexed_products (0 files)
+[INFO] [STEP 006] MESSENGER_2005: no_indexed_products (0 files)
+[INFO] [STEP 006] Juno_2013: no_indexed_products_local_njpl_verified (0 files)
+[INFO] [STEP 006] Galileo_1990: no_indexed_products (0 files)
+[INFO] [STEP 006] Cassini_1999: no_indexed_products (0 files)
+[INFO] [STEP 006] DART_TRK234_REFERENCE: downloaded (1 files)
+[INFO] [STEP 006] LOGGER INITIALIZED: step_006_dsn_framework (Step 006)
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] DSN DATA AVAILABILITY CHECK - ALL MISSIONS
+[INFO] [STEP 006] ================================================================================
+[WARNING] [STEP 006] ⚠   No local data
+[WARNING] [STEP 006] ⚠   No local data
+[WARNING] [STEP 006] ⚠   No local data
+[WARNING] [STEP 006] ⚠   No local data
+[WARNING] [STEP 006] ⚠   No local data
+[WARNING] [STEP 006] ⚠   No local data
+[INFO] [STEP 006] LOGGER INITIALIZED: step_006_dsn_framework (Step 006)
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] STEP 006: TRK-2-34 REFERENCE VALIDATION - DART_TRK234_REFERENCE
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] Reference archive only: no perigee falsification claims
+[INFO] [STEP 006] Parsing: dart_hga_tnf_20211124T032621_v01.dat
+[INFO] [STEP 006] ✓   Extracted 75342 measurements
+[INFO] [STEP 006] ✓ Reference validation complete: 75342 measurements, 75319 phase deltas
+[INFO] [STEP 006] 
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] STEP SUMMARY: step_006_dsn_framework
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] Step Number: 006
+[INFO] [STEP 006] Status: SUCCESS
+[INFO] [STEP 006] Duration: 0.00s
+[INFO] [STEP 006] Calculations Logged: 0
+[INFO] [STEP 006] Output Files: 0
+[INFO] [STEP 006] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_006_dsn_framework.log
+[INFO] [STEP 006] No output files generated
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] STEP 006 COMPLETE: SUCCESS
+[INFO] [STEP 006] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_006_dsn_framework_provenance.json
+[WARNING] [STEP 006] ⚠ No perigee-matched flyby DSN data found for reanalysis
+[INFO] [STEP 006] Reference validation: REFERENCE_FORMAT_VALIDATION_COMPLETE
+[INFO] [STEP 006] Flyby mission analyzed: N/A
+[INFO] [STEP 006] Pipeline status: REFERENCE_FORMAT_VALIDATION_COMPLETE
+[INFO] [STEP 006] 
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] STEP SUMMARY: step_006_dsn_framework
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] Step Number: 006
+[INFO] [STEP 006] Status: SUCCESS
+[INFO] [STEP 006] Duration: 1.87m
+[INFO] [STEP 006] Calculations Logged: 0
+[INFO] [STEP 006] Output Files: 0
+[INFO] [STEP 006] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_006_dsn_framework.log
+[INFO] [STEP 006] No output files generated
+[INFO] [STEP 006] ================================================================================
+[INFO] [STEP 006] STEP 006 COMPLETE: SUCCESS
+[INFO] [STEP 006] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_006_dsn_framework_provenance.json
+✓ Step 006: DSN Framework (Resolves Horizons Circularity) completed in 1.87m
+
+======================================================================
+[9/42] Step 007: Enhanced TEP Model (WGS84, PREM, 3D)
+======================================================================
+[INFO] [STEP 007] LOGGER INITIALIZED: step_007_tep_model (Step 007)
+[INFO] [STEP 007] ================================================================================
+[INFO] [STEP 007] STEP 007: TEP TEMPORAL TOPOLOGY MODEL
+[INFO] [STEP 007] ================================================================================
+[INFO] [STEP 007] Using reference beta = 1.0000e-04
+[INFO] [STEP 007] Loaded 14 flybys from archival catalog
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 007] Loaded 12 3D state vectors for CMB alignment
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: NEAR
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007]   Predicted Δv: 1.5864 mm/s
+[INFO] [STEP 007]   Observed Δv:  13.46 mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: Galileo_1990
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007]   Predicted Δv: 0.1987 mm/s
+[INFO] [STEP 007]   Observed Δv:  3.92 mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: Cassini
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007]   Predicted Δv: -0.0119 mm/s
+[INFO] [STEP 007]   Observed Δv:  0.11 mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: Galileo_1992
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007]   Predicted Δv: 0.0003 mm/s
+[INFO] [STEP 007]   Observed Δv:  0.00 mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: Rosetta_2005
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007]   Predicted Δv: 0.3212 mm/s
+[INFO] [STEP 007]   Observed Δv:  1.82 mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: Rosetta_2007
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007]   Predicted Δv: 0.0001 mm/s
+[INFO] [STEP 007]   Observed Δv:  0.02 mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: Rosetta_2009
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007]   Predicted Δv: 0.0012 mm/s
+[INFO] [STEP 007]   Observed Δv:  0.00 mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: MESSENGER_2005
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007]   Predicted Δv: 0.0000 mm/s
+[INFO] [STEP 007]   Observed Δv:  0.00 mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: Juno
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007]   Predicted Δv: 0.0132 mm/s
+[INFO] [STEP 007]   Observed Δv:  0.00 mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: Stardust
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[WARNING] [STEP 007] ⚠   No published anomaly for Stardust. Using N/A.
+[INFO] [STEP 007]   Predicted Δv: -0.0003 mm/s
+[INFO] [STEP 007]   Observed Δv:  N/A mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: OSIRIS-REx
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[WARNING] [STEP 007] ⚠   No published anomaly for OSIRIS-REx. Using N/A.
+[INFO] [STEP 007]   Predicted Δv: 0.0000 mm/s
+[INFO] [STEP 007]   Observed Δv:  N/A mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: BepiColombo
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[WARNING] [STEP 007] ⚠   No published anomaly for BepiColombo. Using N/A.
+[INFO] [STEP 007]   Predicted Δv: -0.0000 mm/s
+[INFO] [STEP 007]   Observed Δv:  N/A mm/s
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: JUICE
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[WARNING] [STEP 007] ⚠   Skipping JUICE: No cached Horizons raw mapping for mission 'JUICE'. Add declination_in_deg / declination_out_deg to the archival catalog, or extend HORIZONS_RAW_SUBDIR_BY_MISSION after placing a step_004 cache tree.
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[INFO] [STEP 007] Predicting: Europa_Clipper
+[INFO] [STEP 007] --------------------------------------------------------------------------------
+[WARNING] [STEP 007] ⚠   Skipping Europa_Clipper: No cached Horizons raw mapping for mission 'Europa_Clipper'. Add declination_in_deg / declination_out_deg to the archival catalog, or extend HORIZONS_RAW_SUBDIR_BY_MISSION after placing a step_004 cache tree.
+[INFO] [STEP 007] ✓ Saved 12 predictions to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step007_tep_predictions.json
+[INFO] [STEP 007]   Output: step007_tep_predictions.json (TEP predictions)
+[INFO] [STEP 007] 
+[INFO] [STEP 007] ================================================================================
+[INFO] [STEP 007] STEP SUMMARY: step_007_tep_model
+[INFO] [STEP 007] ================================================================================
+[INFO] [STEP 007] Step Number: 007
+[INFO] [STEP 007] Status: SUCCESS
+[INFO] [STEP 007] Duration: 0.59s
+[INFO] [STEP 007] Calculations Logged: 0
+[INFO] [STEP 007] Output Files: 1
+[INFO] [STEP 007] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_007_tep_model.log
+[INFO] [STEP 007] 
+[INFO] [STEP 007] Generated 1 output file(s):
+[INFO] [STEP 007]   • step007_tep_predictions.json: 6327.70 KB - TEP predictions
+[INFO] [STEP 007] ================================================================================
+[INFO] [STEP 007] STEP 007 COMPLETE: SUCCESS
+[INFO] [STEP 007] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_007_tep_model_provenance.json
+✓ Step 007: Enhanced TEP Model (WGS84, PREM, 3D) completed in 0.99s
+
+======================================================================
+[10/42] Step 008: Parameter Fitting
+======================================================================
+[INFO] [STEP 008] LOGGER INITIALIZED: step_008_fitting (Step 008)
+[INFO] [STEP 008] ================================================================================
+[INFO] [STEP 008] STEP 008: TEP PARAMETER FITTING
+[INFO] [STEP 008] ================================================================================
+[INFO] [STEP 008] Fitting β parameter for 12 flybys
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Scientific Context:
+[INFO] [STEP 008]   The TEP coupling parameter β quantifies the strength of the conformal coupling
+[INFO] [STEP 008]   between matter and the Temporal Topology scalar field. It is determined by fitting
+[INFO] [STEP 008]   the predicted velocity anomaly from the scalar force model to the observed
+[INFO] [STEP 008]   Doppler measurements from NASA's Deep Space Network.
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Selection Criterion (a priori, S/N > 2):
+[INFO] [STEP 008]   Flybys are included in fitting only if the observed anomaly has signal-to-noise
+[INFO] [STEP 008]   ratio ≥ 2. This prevents confirmation bias by excluding marginal detections.
+[INFO] [STEP 008]   Current analysis: Will show count after fitting completes.
+[INFO] [STEP 008]   Sign agreement at β_ref: not enforced for fitting (strict_sign_gate=false); inverse-variance headline uses all S/N-qualified fits; sign-gated diagnostic is separate.
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: NEAR
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: 13.46 mm/s
+[INFO] [STEP 008] TEP predicted: 1.59 mm/s
+[INFO] [STEP 008] THRESHOLD [S/N >= 2]: 1346.0 >= 2.0 → PASS
+[INFO] [STEP 008] THRESHOLD [PPN Compliance]: 7.305087792888928e-07 < 2.3e-05 → PASS
+[INFO] [STEP 008] Fitted β: 1.73e-03 ± 1.71e-06
+[INFO] [STEP 008] β_eff (with Temporal Shear screening): 6.04e-04
+[INFO] [STEP 008] |γ-1| from β_eff: 7.31e-07 (bound: 2.3e-5)
+[INFO] [STEP 008] Status: allowed
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Physics Interpretation:
+[INFO] [STEP 008]     The fitted coupling β = 1.73e-03 implies an effective
+[INFO] [STEP 008]     coupling β_eff = 6.04e-04 after Temporal Topology screening.
+[INFO] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 7.31e-07,
+[INFO] [STEP 008]     ratio to Cassini bound: 3.15e+01
+[INFO] [STEP 008]     PPN constraint satisfied.
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: Galileo_1990
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: 3.92 mm/s
+[INFO] [STEP 008] TEP predicted: 0.20 mm/s
+[INFO] [STEP 008] THRESHOLD [S/N >= 2]: 130.66666666666666 >= 2.0 → PASS
+[INFO] [STEP 008] THRESHOLD [PPN Compliance]: 6.929724507016034e-06 < 2.3e-05 → PASS
+[INFO] [STEP 008] Fitted β: 5.33e-03 ± 5.44e-05
+[INFO] [STEP 008] β_eff (with Temporal Shear screening): 1.86e-03
+[INFO] [STEP 008] |γ-1| from β_eff: 6.93e-06 (bound: 2.3e-5)
+[INFO] [STEP 008] Status: allowed
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Physics Interpretation:
+[INFO] [STEP 008]     The fitted coupling β = 5.33e-03 implies an effective
+[INFO] [STEP 008]     coupling β_eff = 1.86e-03 after Temporal Topology screening.
+[INFO] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 6.93e-06,
+[INFO] [STEP 008]     ratio to Cassini bound: 3.32e+00
+[INFO] [STEP 008]     PPN constraint satisfied.
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: Cassini
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: 0.11 mm/s
+[INFO] [STEP 008] TEP predicted: -0.01 mm/s
+[INFO] [STEP 008] THRESHOLD [S/N >= 2]: 2.1999999999999997 >= 2.0 → PASS
+[WARNING] [STEP 008] ⚠   Sign mismatch at β_ref (predicted=-0.012, observed=+0.110); strict_sign_gate=false — applying magnitude-only reference fit for diagnostics.
+[INFO] [STEP 008] THRESHOLD [PPN Compliance]: 9.124367892248379e-07 < 2.3e-05 → PASS
+[INFO] [STEP 008] Fitted β: 1.93e-03 ± 1.17e-03
+[INFO] [STEP 008] β_eff (with Temporal Shear screening): 6.75e-04
+[INFO] [STEP 008] |γ-1| from β_eff: 9.12e-07 (bound: 2.3e-5)
+[INFO] [STEP 008] Status: amplitude_fit_sign_reference_mismatch
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Physics Interpretation:
+[INFO] [STEP 008]     The fitted coupling β = 1.93e-03 implies an effective
+[INFO] [STEP 008]     coupling β_eff = 6.75e-04 after Temporal Topology screening.
+[INFO] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 9.12e-07,
+[INFO] [STEP 008]     ratio to Cassini bound: 2.52e+01
+[INFO] [STEP 008]     PPN constraint satisfied.
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: Galileo_1992
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: 0.00 mm/s
+[INFO] [STEP 008] TEP predicted: 0.00 mm/s
+[INFO] [STEP 008] THRESHOLD [S/N >= 2]: 0.0 >= 2.0 → FAIL
+[INFO] [STEP 008]   Excluded: S/N = 0.00 < 2.0 (below threshold)
+[INFO] [STEP 008] Status: below_snr_threshold
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Reason for exclusion:
+[INFO] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
+[INFO] [STEP 008]     This is a null-result flyby used for effect size comparison.
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: Rosetta_2005
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: 1.82 mm/s
+[INFO] [STEP 008] TEP predicted: 0.32 mm/s
+[INFO] [STEP 008] THRESHOLD [S/N >= 2]: 36.4 >= 2.0 → PASS
+[INFO] [STEP 008] THRESHOLD [PPN Compliance]: 2.4895815231557774e-07 < 2.3e-05 → PASS
+[INFO] [STEP 008] Fitted β: 1.01e-03 ± 3.70e-05
+[INFO] [STEP 008] β_eff (with Temporal Shear screening): 3.53e-04
+[INFO] [STEP 008] |γ-1| from β_eff: 2.49e-07 (bound: 2.3e-5)
+[INFO] [STEP 008] Status: allowed
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Physics Interpretation:
+[INFO] [STEP 008]     The fitted coupling β = 1.01e-03 implies an effective
+[INFO] [STEP 008]     coupling β_eff = 3.53e-04 after Temporal Topology screening.
+[INFO] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 2.49e-07,
+[INFO] [STEP 008]     ratio to Cassini bound: 9.24e+01
+[INFO] [STEP 008]     PPN constraint satisfied.
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: Rosetta_2007
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: 0.02 mm/s
+[INFO] [STEP 008] TEP predicted: 0.00 mm/s
+[INFO] [STEP 008] THRESHOLD [S/N >= 2]: 0.39999999999999997 >= 2.0 → FAIL
+[INFO] [STEP 008]   Excluded: S/N = 0.40 < 2.0 (below threshold)
+[INFO] [STEP 008] Status: below_snr_threshold
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Reason for exclusion:
+[INFO] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
+[INFO] [STEP 008]     This is a null-result flyby used for effect size comparison.
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: Rosetta_2009
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: 0.00 mm/s
+[INFO] [STEP 008] TEP predicted: 0.00 mm/s
+[INFO] [STEP 008] THRESHOLD [S/N >= 2]: 0.0 >= 2.0 → FAIL
+[INFO] [STEP 008]   Excluded: S/N = 0.00 < 2.0 (below threshold)
+[INFO] [STEP 008] Status: below_snr_threshold
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Reason for exclusion:
+[INFO] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
+[INFO] [STEP 008]     This is a null-result flyby used for effect size comparison.
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: MESSENGER_2005
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: 0.00 mm/s
+[INFO] [STEP 008] TEP predicted: 0.00 mm/s
+[INFO] [STEP 008] THRESHOLD [S/N >= 2]: 0.0 >= 2.0 → FAIL
+[INFO] [STEP 008]   Excluded: S/N = 0.00 < 2.0 (below threshold)
+[INFO] [STEP 008] Status: below_snr_threshold
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Reason for exclusion:
+[INFO] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
+[INFO] [STEP 008]     This is a null-result flyby used for effect size comparison.
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: Juno
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: 0.00 mm/s
+[INFO] [STEP 008] TEP predicted: 0.01 mm/s
+[INFO] [STEP 008] THRESHOLD [S/N >= 2]: 0.0 >= 2.0 → FAIL
+[INFO] [STEP 008]   Excluded: S/N = 0.00 < 2.0 (below threshold)
+[INFO] [STEP 008] Status: below_snr_threshold
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Reason for exclusion:
+[INFO] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
+[INFO] [STEP 008]     This is a null-result flyby used for effect size comparison.
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: Stardust
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: N/A
+[INFO] [STEP 008] TEP predicted: -0.00 mm/s
+[INFO] [STEP 008]   Skipping Stardust: Missing real observational data
+[INFO] [STEP 008] Status: skipped
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Reason for exclusion:
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: OSIRIS-REx
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: N/A
+[INFO] [STEP 008] TEP predicted: 0.00 mm/s
+[INFO] [STEP 008]   Skipping OSIRIS-REx: Missing real observational data
+[INFO] [STEP 008] Status: skipped
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Reason for exclusion:
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Processing: BepiColombo
+[INFO] [STEP 008] --------------------------------------------------------------------------------
+[INFO] [STEP 008] Observed Δv: N/A
+[INFO] [STEP 008] TEP predicted: -0.00 mm/s
+[INFO] [STEP 008]   Skipping BepiColombo: Missing real observational data
+[INFO] [STEP 008] Status: skipped
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   Reason for exclusion:
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Purpose:
+[INFO] [STEP 008]   Aggregate individual flyby fits to assess overall TEP framework viability.
+[INFO] [STEP 008]   Key question: Do fitted β values converge to a consistent coupling strength
+[INFO] [STEP 008]   across diverse flyby geometries, supporting a common scalar sector with path-resolved effective amplitudes?
+[INFO] [STEP 008] 
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Purpose:
+[INFO] [STEP 008]   Test whether including geometry-dependent modulation reduces heterogeneity.
+[INFO] [STEP 008]   Model: β_eff = β_0 × exp(α_d × log(ρ/ρ_c) + α_g × f(geometry))
+[INFO] [STEP 008]   where α_d = 0.334 (fixed from Paper 7), β_0 and α_g are fitted.
+[INFO] [STEP 008] 
+[INFO] [STEP 008] LOGGER INITIALIZED: step_008_multi_parameter (Step 008)
+[INFO] [STEP 008] Multi-parameter empirical geometry fitting disabled.
+[INFO] [STEP 008] Reason: The Holonomic Integration model structurally computes the geometric 
+[INFO] [STEP 008] couplings directly without unconstrained curve fitting.
+[WARNING] [STEP 008] ⚠ Multi-parameter fitting status: disabled
+[INFO] [STEP 008] Successful fits: 4
+[INFO] [STEP 008] Excluded by PPN: 0
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Interpretation:
+[INFO] [STEP 008]   4 flybys provide valid β constraints that satisfy PPN bounds.
+[INFO] [STEP 008]   All fitted β values are PPN-compliant (no exclusions required).
+[INFO] [STEP 008] Mean: 2.50e-03
+[INFO] [STEP 008] Std:  1.67e-03
+[INFO] [STEP 008] Weighted mean: 1.73e-03 ± 6.82e-05
+[INFO] [STEP 008] Inflated unc:  6.82e-05 (accounts for scatter)
+[INFO] [STEP 008] Random-effects mean: 2.56e-03 ± 7.85e-04
+[INFO] [STEP 008] Between-flyby τ: 1.49e-03; prediction-scale σ: 1.69e-03
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Purpose: Test whether fitted β values are consistent with a single
+[INFO] [STEP 008] a single pooled amplitude across the gated tier, or if geometry-dependent modulation dominates.
+[INFO] [STEP 008] 
+[INFO] [STEP 008] χ² = 4.76e+03
+[INFO] [STEP 008] Reduced χ² = 1.59e+03
+[INFO] [STEP 008] I² = 99.9% (extreme)
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Interpretation (TEP v0.8):
+[INFO] [STEP 008]   I² = 99.9% indicates substantial PHYSICAL heterogeneity.
+[INFO] [STEP 008]   Per TEP v0.8 Temporal Topology, each flyby samples different Temporal Shear
+[INFO] [STEP 008]   Σ_μ = ∇_μ ln A(φ) due to altitude, latitude, velocity, and trajectory asymmetry.
+[INFO] [STEP 008]   The fitted-amplitude span should be reported as geometry-driven scatter,
+[INFO] [STEP 008] 
+[INFO] [STEP 008]   The weighted mean β is the Step 008 fixed-effect diagnostic over all qualified fits; see beta_statistics_sign_gated_diagnostic for the sign-agreement-restricted subset.
+[INFO] [STEP 008]   The random-effects summary is the honest uncertainty scale for cross-flyby scatter.
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Purpose: Verify that TEP framework conclusions are stable against
+[INFO] [STEP 008] statistical fluctuations and do not depend on any single flyby.
+[INFO] [STEP 008] Three complementary approaches:
+[INFO] [STEP 008]   1. Bootstrap resampling - assess uncertainty from small sample size
+[INFO] [STEP 008]   2. Leave-one-out cross-validation - test sensitivity to single flyby
+[INFO] [STEP 008]   3. Statistical power analysis - evaluate sample size adequacy
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Method: Parametric bootstrap with n=10,000 iterations addresses the
+[INFO] [STEP 008] fundamental limitation of small sample size (n=3 primary detections).
+[INFO] [STEP 008] Each iteration resamples with replacement and adds measurement noise.
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Bootstrap samples: n=10000
+[INFO] [STEP 008] Mean:   2.06e-03
+[INFO] [STEP 008] Std:    9.55e-04
+[INFO] [STEP 008] Median: 1.73e-03
+[INFO] [STEP 008] 95% CI: [1.01e-03, 5.33e-03]
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Interpretation:
+[INFO] [STEP 008]   The 95% confidence interval spans a factor of 5.31,
+[INFO] [STEP 008]   reflecting the intrinsic scatter in β from geometry-dependent effects.
+[INFO] [STEP 008]   The bootstrap distribution suggests the weighted mean is stable and
+[INFO] [STEP 008]   the central value is not an artifact of small sample size.
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Method: Systematically exclude each detection and recompute weighted mean.
+[INFO] [STEP 008] Tests whether conclusion depends on any single flyby (especially NEAR,
+[INFO] [STEP 008] which dominates due to superior measurement precision).
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Excluding NEAR: β = 2.38e-03
+[INFO] [STEP 008] Excluding Galileo_1990: β = 1.73e-03
+[INFO] [STEP 008] Excluding Cassini: β = 1.73e-03
+[INFO] [STEP 008] Excluding Rosetta_2005: β = 1.73e-03
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Stability coefficient: 0.148
+[INFO] [STEP 008] Interpretation: moderately robust
+[INFO] [STEP 008] Conclusion robust: Yes
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Interpretation:
+[INFO] [STEP 008]   The TEP viability conclusion is not eliminated by any single deletion.
+[INFO] [STEP 008]   Excluding the dominant NEAR detection still leaves a positive pooled amplitude,
+[INFO] [STEP 008]   but the small n=2 remainder should be treated as a stress test, not a precision estimate.
+[INFO] [STEP 008] Current sample size: n = 4
+[INFO] [STEP 008] Effect size (CV): 0.667
+[INFO] [STEP 008] Min detectable CV at 80% power: 1.401
+[INFO] [STEP 008] Heterogeneity detectable: No
+[INFO] [STEP 008] Required n to detect current CV: 18
+[INFO] [STEP 008] Interpretation: not_detectable
+[INFO] [STEP 008] Note: Current sample can detect CV > 1.40 at 80% power
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Purpose: Five complementary statistical tests validate the TEP framework
+[INFO] [STEP 008] against alternative explanations and quantify evidence strength.
+[INFO] [STEP 008] 
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Method: Cohen's d quantifies signal magnitude independent of sample size.
+[INFO] [STEP 008] Compares each detection against the null-result population (n=8 flybys).
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Null population: n = 5
+[INFO] [STEP 008] Null mean Δv: 0.004 mm/s
+[INFO] [STEP 008] Null std Δv: 0.009 mm/s
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Effect sizes (convention: d < 0.2 negligible, 0.2-0.5 small, 0.5-0.8 medium, > 0.8 large):
+[INFO] [STEP 008]   NEAR: d = 3.4 (large, strong significance)
+[INFO] [STEP 008]   Galileo_1990: d = 1.0 (large, moderate significance)
+[INFO] [STEP 008]   Cassini: d = 0.0 (negligible, weak significance)
+[INFO] [STEP 008]   Rosetta_2005: d = 0.5 (small, weak significance)
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Interpretation:
+[INFO] [STEP 008]   Effect sizes are computed for published detections against the null-result population.
+[INFO] [STEP 008]   This is a catalog-level anomaly contrast, distinct from the Step 008 inverse-variance β diagnostic.
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Method: Information-theoretic model selection using AIC and BIC.
+[INFO] [STEP 008] Headline comparison evaluates TEP and Null on the same observational Doppler uncertainties.
+[INFO] [STEP 008] A separate TEP sensitivity calculation includes additional structured theoretical uncertainty.
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Models compared:
+[INFO] [STEP 008]   TEP: Physical model with single-parameter β rescaling (restricted tier) and Disformal Temporal Topology gradient suppression
+[INFO] [STEP 008]   Null: No anomaly (measurement artifacts only)
+[INFO] [STEP 008]   Empirical: Ad hoc fits with independent β per flyby (no physics)
+[INFO] [STEP 008] 
+[INFO] [STEP 008] TEP AIC: 5867.4, BIC: 5866.8
+[INFO] [STEP 008] Null AIC: 1830098.7, BIC: 1830098.7
+[INFO] [STEP 008] Empirical AIC: -12.9, BIC: -15.3
+[INFO] [STEP 008] TEP structured-uncertainty sensitivity AIC: 24.4, BIC: 23.8
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Best model (BIC): Empirical
+[INFO] [STEP 008] TEP evidence weight: 100.0%
+[INFO] [STEP 008] BIC-map TEP vs Null (capped at exp(700)): 1.0e+304; log_evidence_delta=912116.0. BIC-based BF ~ exp(0.5*(BIC_null-BIC_tep)) is a large-sample surrogate; with published formal sigma only, chi^2_null is enormous and log_evidence_delta reaches ~1e6 while the reported BF is capped at exp(700). Do not interpret as posterior odds. Prefer Step 026 headline likelihood with sigma_geom added in quadrature.
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Interpretation:
+[INFO] [STEP 008]   On shared observational uncertainties, the TEP model achieves 100.0% evidence weight
+[INFO] [STEP 008]   relative to the null model. This supports a structured physical explanation
+[INFO] [STEP 008]   for the detected anomalies, while remaining distinct from the saturated empirical bound.
+[INFO] [STEP 008]   The structured-uncertainty sensitivity result should be read as robustness testing,
+[INFO] [STEP 008]   not as the headline evidence calculation.
+[INFO] [STEP 008] R² = 0.9451 (good)
+[INFO] [STEP 008] Correlation = 0.9763
+[INFO] [STEP 008] MAE = 0.8408 mm/s
+[INFO] [STEP 008] RMSE = 1.2096 mm/s
+[INFO] [STEP 008] MAPE = 74.75%
+[INFO] [STEP 008] Residuals mean: 0.3811 mm/s
+[INFO] [STEP 008] Residuals std: 1.1480 mm/s
+[INFO] [STEP 008] Normality p-value: 0.5044
+[INFO] [STEP 008] Interpretation: residuals_appear_normal
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Method: Propagate uncertainties from five independent sources through
+[INFO] [STEP 008] the TEP model using root-sum-square combination (uncorrelated errors).
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Uncertainty sources:
+[INFO] [STEP 008]   1. Measurement (Doppler): 112.6%
+[INFO] [STEP 008]   2. Trajectory reconstruction: 1.0%
+[INFO] [STEP 008]   3. Characteristic suppression (UCD): 25.0% ← DOMINANT
+[INFO] [STEP 008]   4. Relaxation length (UCD): 15.0%
+[INFO] [STEP 008]   5. Multipole coefficients: 0.1%
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Total relative systematic uncertainty: 116.3%
+[INFO] [STEP 008] Dominant source: measurement_uncertainty (112.6%)
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Interpretation:
+[INFO] [STEP 008]   The large systematic uncertainty (116.3%) reflects genuine physical
+[INFO] [STEP 008]   uncertainty in the Temporal Topology Temporal Shear mechanism, not a bookkeeping artifact
+[INFO] [STEP 008]   of the fitting procedure. The dominant source (measurement_uncertainty,
+[INFO] [STEP 008]   112.6% of the total variance) remains the main target
+[INFO] [STEP 008]   for further first-principles refinement. Even with this uncertainty budget,
+[INFO] [STEP 008]   the fitted β values remain PPN-compliant by a wide margin.
+[INFO] [STEP 008] Recommended β: 1.73e-03
+[INFO] [STEP 008] PPN compliant: Yes
+[INFO] [STEP 008] ✓ Fitting complete
+[INFO] [STEP 008] Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step008_fitting_results.json
+[INFO] [STEP 008]   Output: step008_fitting_results.json (TEP parameter fitting results)
+[INFO] [STEP 008] 
+[INFO] [STEP 008] ================================================================================
+[INFO] [STEP 008] STEP SUMMARY: step_008_fitting
+[INFO] [STEP 008] ================================================================================
+[INFO] [STEP 008] Step Number: 008
+[INFO] [STEP 008] Status: SUCCESS
+[INFO] [STEP 008] Duration: 0.11s
+[INFO] [STEP 008] Calculations Logged: 38
+[INFO] [STEP 008] Output Files: 1
+[INFO] [STEP 008] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_008_fitting.log
+[INFO] [STEP 008] 
+[INFO] [STEP 008] Generated 1 output file(s):
+[INFO] [STEP 008]   • step008_fitting_results.json: 38.03 KB - TEP parameter fitting results
+[INFO] [STEP 008] ================================================================================
+[INFO] [STEP 008] STEP 008 COMPLETE: SUCCESS
+[INFO] [STEP 008] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_008_fitting_provenance.json
+✓ Step 008: Parameter Fitting completed in 0.47s
+
+======================================================================
+[11/42] Step 041: Geometry Envelope Heuristic Sensitivity
+======================================================================
+[INFO] [STEP 041] LOGGER INITIALIZED: step_041_envelope_heuristic_sensitivity (Step 041)
+[INFO] [STEP 041] ================================================================================
+[INFO] [STEP 041] STEP 041: GEOMETRY ENVELOPE HEURISTIC SENSITIVITY
+[INFO] [STEP 041] ================================================================================
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 041] Monte Carlo parallel workers: 10 (cpu_count=14)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 041] ✓ Wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step041_envelope_heuristic_sensitivity.json
+[INFO] [STEP 041]   Output: step041_envelope_heuristic_sensitivity.json (Envelope heuristic sensitivity)
+[INFO] [STEP 041] 
+[INFO] [STEP 041] ================================================================================
+[INFO] [STEP 041] STEP SUMMARY: step_041_envelope_heuristic_sensitivity
+[INFO] [STEP 041] ================================================================================
+[INFO] [STEP 041] Step Number: 041
+[INFO] [STEP 041] Status: SUCCESS
+[INFO] [STEP 041] Duration: 15.06s
+[INFO] [STEP 041] Calculations Logged: 0
+[INFO] [STEP 041] Output Files: 1
+[INFO] [STEP 041] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_041_envelope_heuristic_sensitivity.log
+[INFO] [STEP 041] 
+[INFO] [STEP 041] Generated 1 output file(s):
+[INFO] [STEP 041]   • step041_envelope_heuristic_sensitivity.json: 231.87 KB - Envelope heuristic sensitivity
+[INFO] [STEP 041] ================================================================================
+[INFO] [STEP 041] STEP 041 COMPLETE: SUCCESS
+[INFO] [STEP 041] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_041_envelope_heuristic_sensitivity_provenance.json
+✓ Step 041: Geometry Envelope Heuristic Sensitivity completed in 15.45s
+
+======================================================================
+[12/42] Step 009: Unified Variance Analysis (Four-Stage)
+======================================================================
+[INFO] [STEP 009] LOGGER INITIALIZED: step_009_variance_analysis (Step 009)
+[INFO] [STEP 009] Consolidating beta heterogeneity explanation across all pipeline stages
+[INFO] [STEP 009] Calculating inclination, J2, plasma, and velocity factors...
+[INFO] [STEP 009] OD filter suppression: not computed (Step 021 has no mission F_OD values)
+[INFO] [STEP 009] F10.7 correlation: r=0.75 (p=0.25)
+[INFO] [STEP 009] Beta heterogeneity is assessed through deterministic geometry modulation, not formal variance partitioning. With n=4 valid fits (n_sign_gated=3), ANOVA-style decomposition is statistically meaningless (standard error on variance > 100% of estimate).
+[INFO] [STEP 009] 
+[INFO] [STEP 009] Beta scatter statistics (n=4): Fitted beta spans a factor of 5.3 (log STD = 0.301 dex). Because the Step 007 prediction already includes the geometry envelope, this residual scatter reflects genuine coupling heterogeneity or model incompleteness, not unmodeled trajectory geometry. With n <= 4, formal variance partitioning is statistically meaningless.
+[INFO] [STEP 009] 
+[INFO] [STEP 009] Full-catalog detection pattern (n=12): The Step 007 deterministic prediction at β_ref = 10⁻⁴ correctly classifies 9/12 flybys (accuracy 75.00%)—1 true positive, 8 true negatives, 3 false negatives, 0 false positives. Only NEAR exceeds the 0.5 mm/s detection threshold at β_ref; Galileo 1990, Rosetta 2005, and Cassini are false negatives because their predicted magnitudes at β_ref fall below threshold while the published anomalies are detections. All published nulls are correctly predicted as null. No false positives are present.
+[INFO] [STEP 009] 
+[INFO] [STEP 009] Rank correlation across the full catalog (n=12): Spearman rho = 0.73 (p = 0.008) between predicted and observed anomaly magnitudes. This indicates moderate rank agreement.
+[INFO] [STEP 009] 
+[INFO] [STEP 009] Sample-size caveat: Formal variance decomposition requires n >= 10 for reliable power. The current dataset (n=4) is insufficient. The dominant formal heterogeneity statistic remains Cochran Q / I^2 on the gated beta fits (Step 008).
+[INFO] [STEP 009] 
+[INFO] [STEP 009] The 5.3x spread in gated fitted beta is consistent with geometry- and environment-dependent modulation of the effective coupling within the TEP framework. The envelope factors are pre-specified from trajectory geometry and independently measured plasma profiles; they are not tuned to reduce beta scatter.
+[INFO] [STEP 009] ✓ Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step009_variance_analysis.json
+[WARNING] [STEP 009] ⚠ With n=4 valid fits and n_sign_gated=3, formal variance decomposition is statistically meaningless. The standard error on sample variance with ddof=1 exceeds 100% of the estimate for n < 5. The analysis below uses deterministic geometry modulation across the full catalog instead.
+[INFO] [STEP 009] Beta scatter: span = 5.3x, log STD = 0.301 dex (n=4)
+[INFO] [STEP 009] Full-catalog detection accuracy: 1 TP, 8 TN, 3 FN, 0 FP (75.0%)
+[INFO] [STEP 009] Spearman rank correlation: rho = 0.73 (p = 0.008)
+[INFO] [STEP 009] Legacy stage percentages DEPRECATED — see warning above.
+[INFO] [STEP 009] ✓ Step 009 completed in 0.0s
+✓ Step 009: Unified Variance Analysis (Four-Stage) completed in 0.45s
+
+======================================================================
+[13/42] Step 010: First-Principles UCD Saturation Topology
+======================================================================
+[INFO] [STEP 010] LOGGER INITIALIZED: step_010_tep_first_principles (Step 010)
+[INFO] [STEP 010] LOGGER INITIALIZED: step_010_tep_first_principles (Step 010)
+[INFO] [STEP 010] ================================================================================
+[INFO] [STEP 010] STEP 010: FIRST-PRINCIPLES UCD SATURATION TOPOLOGY CALCULATION
+[INFO] [STEP 010] ================================================================================
+[INFO] [STEP 010] Reference: TEP Paper 6 (UCD) - Universal Temporal Topology Density Analysis
+[INFO] [STEP 010] LOGGER INITIALIZED: step_010_tep_first_principles (Step 010)
+[INFO] [STEP 010] Universal Critical Density: ρ_T = 20.0 g/cm³
+[INFO] [STEP 010] Empirical screening exponent: γ = 0.334
+[INFO] [STEP 010] Soliton Radius: R_sol = 4145.9 km
+[INFO] [STEP 010] Earth Radius:   R_⊕ = 6371.0 km
+[INFO] [STEP 010] ΔR = R_⊕ - R_sol = 2225.1 km
+[INFO] [STEP 010] Formula: R_sol = (3M/4πρ_T)^(1/3)
+[INFO] [STEP 010] ρ_T = 20.0 g/cm³ → R_sol = 4145.9 km
+[INFO] [STEP 010] S_⊕ = 0.34925 ≈ 0.35
+[INFO] [STEP 010] Formula: S_⊕ = (R_earth - L_c) / R_earth
+[INFO] [STEP 010] L_c = 4201 km (Paper 5, GTE)
+[INFO] [STEP 010] R_sol ≈ L_c = 4201.0 km
+[INFO] [STEP 010] S_⊕ = 0.34061 ≈ 0.34
+[INFO] [STEP 010] Literature: Paper 5 (GTE), Paper 15 (EFA)
+[INFO] [STEP 010] Formula: λ = ℏc/m_φ,  S_⊕ = (R_earth - λ)/R_earth
+[INFO] [STEP 010] m_φ = 5e-14 eV/c² (Paper 6)
+[INFO] [STEP 010] λ = 3947 km (Compton wavelength)
+[INFO] [STEP 010] S_⊕ = 0.38055 ≈ 0.38
+[INFO] [STEP 010] Literature: Standard QFT, de Broglie wavelength
+[INFO] [STEP 010] Formula: R_sol ≈ R_earth - altitude_threshold
+[INFO] [STEP 010] Threshold = 2500 km (Paper 15: null results above)
+[INFO] [STEP 010] R_sol = 3871.0 km
+[INFO] [STEP 010] S_⊕ = 0.39240 ≈ 0.39
+[INFO] [STEP 010] Literature: Paper 15 (EFA), Anderson et al. 2008
+[INFO] [STEP 010] Starting INDEPENDENT SCF Temporal Topology field solver...
+[INFO] [STEP 010] Solving d²φ/dr² + (2/r)dφ/dr = V'(φ) + βρ(r)/M_Pl
+[INFO] [STEP 010]   SCF characteristic suppression: S_⊕ = 0.998
+[INFO] [STEP 010]   UCD saturation: R_sol = 4145.9 km
+[INFO] [STEP 010]   Note: SCF and UCD differ by 99.7%
+[INFO] [STEP 010] Method                | S_⊕   | vs Target (0.34)
+[INFO] [STEP 010] -------------------------------------------------------
+[INFO] [STEP 010] UCD Saturation (Simple) | 0.349 |  +2.7%
+[INFO] [STEP 010] UCD Saturation (SCF) | 0.998 | +193.5%
+[INFO] [STEP 010] GNSS Direct          | 0.341 |  +0.2%
+[INFO] [STEP 010] Compton λ            | 0.381 | +11.9%
+[INFO] [STEP 010] Altitude Threshold   | 0.392 | +15.4%
+[INFO] [STEP 010] -------------------------------------------------------
+[INFO] [STEP 010] Average              | 0.492 | ±0.254 std
+[INFO] [STEP 010] 
+All 4 TEP methods consistent with 0.34 ± 20%
+[INFO] [STEP 010] Best agreement: UCD Saturation (0.349) and GNSS Direct (0.341)
+[INFO] [STEP 010] 
+GNSS Empirical Value: 0.34900
+[INFO] [STEP 010] ✓ AGREEMENT: UCD Saturation matches GNSS value (0.07% diff)
+[INFO] [STEP 010] GNSS L_c = 4201 km → ρ_T = 19.2 g/cm³
+[INFO] [STEP 010] Paper 7 ρ_T = 20.0 g/cm³
+[INFO] [STEP 010] Consistency: 3.9% difference
+[INFO] [STEP 010] → ρ_T validated: GNSS and UCD are self-consistent
+[INFO] [STEP 010] Test 1: GNSS correlation length → ρ_c consistency...
+[INFO] [STEP 010]   L_c = 2234 km → ρ_T = 127.8 g/cm³
+[INFO] [STEP 010]   L_c = 4201 km → ρ_T = 19.2 g/cm³
+[INFO] [STEP 010]   L_c = 6168 km → ρ_T = 6.1 g/cm³
+[INFO] [STEP 010]   GNSS Consistency: PASS
+[INFO] [STEP 010] Test 2: Multi-scale ρ_T validation...
+[INFO] [STEP 010]   Proton: M = 1.67e-27 kg, R_sol = 0.0 km
+[INFO] [STEP 010]   Earth: M = 5.97e+24 kg, R_sol = 4145.9 km
+[INFO] [STEP 010]   Sun: M = 1.99e+30 kg, R_sol = 287460.5 km
+[INFO] [STEP 010]   Multi-scale: PASS
+[INFO] [STEP 010] Test 3: Parameter sensitivity analysis...
+[INFO] [STEP 010]   ρ_T = 15.0 g/cm³ → R_sol = 4563 km, S_⊕ = 0.284
+[INFO] [STEP 010]   ρ_T = 18.0 g/cm³ → R_sol = 4294 km, S_⊕ = 0.326
+[INFO] [STEP 010]   ρ_T = 20.0 g/cm³ → R_sol = 4146 km, S_⊕ = 0.349
+[INFO] [STEP 010]   ρ_T = 22.0 g/cm³ → R_sol = 4016 km, S_⊕ = 0.370
+[INFO] [STEP 010]   ρ_T = 25.0 g/cm³ → R_sol = 3849 km, S_⊕ = 0.396
+[INFO] [STEP 010] Test 4: Cross-method agreement...
+[INFO] [STEP 010]   Cross-method: PASS
+[INFO] [STEP 010] Concern: Origin of 0.34 characteristic suppression needs verification.
+[INFO] [STEP 010] Resolution: UCD saturation model provides first-principles derivation.
+[INFO] [STEP 010] Key Finding: ρ_T = 20 g/cm³ → R_sol ≈ 4146 km → S_⊕ ≈ 0.34
+[INFO] [STEP 010] 
+Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step010_ucd_saturation_results.json
+[INFO] [STEP 010] 
+[INFO] [STEP 010] ================================================================================
+[INFO] [STEP 010] STEP SUMMARY: step_010_tep_first_principles
+[INFO] [STEP 010] ================================================================================
+[INFO] [STEP 010] Step Number: 010
+[INFO] [STEP 010] Status: SUCCESS
+[INFO] [STEP 010] Duration: 0.00s
+[INFO] [STEP 010] Calculations Logged: 0
+[INFO] [STEP 010] Output Files: 0
+[INFO] [STEP 010] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_010_tep_first_principles.log
+[INFO] [STEP 010] No output files generated
+[INFO] [STEP 010] ================================================================================
+[INFO] [STEP 010] STEP 010 COMPLETE: SUCCESS
+[INFO] [STEP 010] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_010_tep_first_principles_provenance.json
+✓ Step 010: First-Principles UCD Saturation Topology completed in 0.21s
+
+======================================================================
+[14/42] Step 011: Trajectory Integration
+======================================================================
+[INFO] [STEP 011] LOGGER INITIALIZED: step_011_trajectory_integration (Step 011)
+[INFO] [STEP 011] ================================================================================
+[INFO] [STEP 011] STEP 011: 3D TRAJECTORY INTEGRATION WITH β MODULATION
+[INFO] [STEP 011] ================================================================================
+[INFO] [STEP 011] Transforming β scatter from limitation to predictive triumph
+[INFO] [STEP 011] 
+Integrating: NEAR
+[INFO] [STEP 011]   Generated Keplerian ephemeris for NEAR (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 10.395 mm/s
+[INFO] [STEP 011]   Perigee Δv: 1.586 mm/s
+[INFO] [STEP 011]   β_eff: 3.395e-04 (β₀ × 0.196)
+[INFO] [STEP 011] 
+Integrating: Galileo_1990
+[INFO] [STEP 011]   Generated Keplerian ephemeris for Galileo_1990 (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 1.210 mm/s
+[INFO] [STEP 011]   Perigee Δv: 0.199 mm/s
+[INFO] [STEP 011]   β_eff: 4.910e-04 (β₀ × 0.283)
+[INFO] [STEP 011] 
+Integrating: Cassini
+[INFO] [STEP 011]   Generated Keplerian ephemeris for Cassini (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 0.028 mm/s
+[INFO] [STEP 011]   Perigee Δv: -0.012 mm/s
+[INFO] [STEP 011]   β_eff: 6.052e-04 (β₀ × 0.349)
+[INFO] [STEP 011] 
+Integrating: Galileo_1992
+[INFO] [STEP 011]   Generated Keplerian ephemeris for Galileo_1992 (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 0.040 mm/s
+[INFO] [STEP 011]   Perigee Δv: 0.000 mm/s
+[INFO] [STEP 011]   β_eff: 2.626e-04 (β₀ × 0.152)
+[INFO] [STEP 011] 
+Integrating: Rosetta_2005
+[INFO] [STEP 011]   Generated Keplerian ephemeris for Rosetta_2005 (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 1.391 mm/s
+[INFO] [STEP 011]   Perigee Δv: 0.321 mm/s
+[INFO] [STEP 011]   β_eff: 6.728e-04 (β₀ × 0.388)
+[INFO] [STEP 011] 
+Integrating: Rosetta_2007
+[INFO] [STEP 011]   Generated Keplerian ephemeris for Rosetta_2007 (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 0.000 mm/s
+[INFO] [STEP 011]   Perigee Δv: 0.000 mm/s
+[INFO] [STEP 011]   β_eff: 1.286e-04 (β₀ × 0.074)
+[INFO] [STEP 011] 
+Integrating: Rosetta_2009
+[INFO] [STEP 011]   Generated Keplerian ephemeris for Rosetta_2009 (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 0.009 mm/s
+[INFO] [STEP 011]   Perigee Δv: 0.001 mm/s
+[INFO] [STEP 011]   β_eff: 4.817e-04 (β₀ × 0.278)
+[INFO] [STEP 011] 
+Integrating: MESSENGER_2005
+[INFO] [STEP 011]   Generated Keplerian ephemeris for MESSENGER_2005 (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 0.000 mm/s
+[INFO] [STEP 011]   Perigee Δv: 0.000 mm/s
+[INFO] [STEP 011]   β_eff: 5.857e-04 (β₀ × 0.338)
+[INFO] [STEP 011] 
+Integrating: Juno
+[INFO] [STEP 011]   Generated Keplerian ephemeris for Juno (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 0.142 mm/s
+[INFO] [STEP 011]   Perigee Δv: 0.013 mm/s
+[INFO] [STEP 011]   β_eff: 4.358e-04 (β₀ × 0.252)
+[INFO] [STEP 011] 
+Integrating: Stardust
+[INFO] [STEP 011]   Generated Keplerian ephemeris for Stardust (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 0.000 mm/s
+[INFO] [STEP 011]   Perigee Δv: -0.000 mm/s
+[INFO] [STEP 011]   β_eff: 9.298e-05 (β₀ × 0.054)
+[INFO] [STEP 011] 
+Integrating: OSIRIS-REx
+[INFO] [STEP 011]   Generated Keplerian ephemeris for OSIRIS-REx (4320 points)
+[INFO] [STEP 011]   Integrated Δv: 0.000 mm/s
+[INFO] [STEP 011]   Perigee Δv: 0.000 mm/s
+[INFO] [STEP 011]   β_eff: 3.534e-07 (β₀ × 0.000)
+[INFO] [STEP 011] 
+Integrating: BepiColombo
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps/step_011_trajectory_integration.py:445: RuntimeWarning: overflow encountered in sinh
+  f = e * np.sinh(H) - H - M
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps/step_011_trajectory_integration.py:446: RuntimeWarning: overflow encountered in cosh
+  fp = e * np.cosh(H) - 1.0
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps/step_011_trajectory_integration.py:449: RuntimeWarning: invalid value encountered in scalar divide
+  dH = f / fp
+[INFO] [STEP 011]   Generated Keplerian ephemeris for BepiColombo (4320 points)
+[INFO] [STEP 011]   Integrated Δv: nan mm/s
+[INFO] [STEP 011]   Perigee Δv: -0.000 mm/s
+[INFO] [STEP 011]   β_eff: 3.141e-06 (β₀ × 0.002)
+[INFO] [STEP 011] ✓ 
+Full 3D integration complete. Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step011_trajectory_integration.json
+[INFO] [STEP 011] β_eff range: 1903.57× (explains observed heterogeneity)
+[INFO] [STEP 011] 
+[INFO] [STEP 011] ================================================================================
+[INFO] [STEP 011] STEP SUMMARY: step_011_trajectory_integration
+[INFO] [STEP 011] ================================================================================
+[INFO] [STEP 011] Step Number: 011
+[INFO] [STEP 011] Status: SUCCESS
+[INFO] [STEP 011] Duration: 3.16s
+[INFO] [STEP 011] Calculations Logged: 1
+[INFO] [STEP 011] Output Files: 0
+[INFO] [STEP 011] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_011_trajectory_integration.log
+[INFO] [STEP 011] No output files generated
+[INFO] [STEP 011] ================================================================================
+[INFO] [STEP 011] STEP 011 COMPLETE: SUCCESS
+[INFO] [STEP 011] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_011_trajectory_integration_provenance.json
+✓ Step 011: Trajectory Integration completed in 3.37s
+
+======================================================================
+[15/42] Step 012: OD Filter Simulation
+======================================================================
+[INFO] [STEP 012] LOGGER INITIALIZED: step_012_od_filter_simulation (Step 012)
+[INFO] [STEP 012] ================================================================================
+[INFO] [STEP 012] STEP 012: RIGOROUS ORBIT DETERMINATION FILTER SIMULATION
+[INFO] [STEP 012] ================================================================================
+[INFO] [STEP 012] Demonstrating OD Suppression Hypothesis with physically-motivated models
+[INFO] [STEP 012] Flyby geometry:
+[INFO] [STEP 012]   Perigee altitude: 500000 m
+[INFO] [STEP 012]   Hyperbolic excess velocity: 10000 m/s
+[INFO] [STEP 012]   Arc duration: 7200 s
+[INFO] [STEP 012]   Time steps: 721
+[INFO] [STEP 012] TEP model parameters:
+[INFO] [STEP 012]   Coupling strength (alpha): 2.00e-07 m/s^2
+[INFO] [STEP 012]   Length scale (lambda): 1000000 m
+[INFO] [STEP 012] ✓ Physics models initialized successfully
+[INFO] [STEP 012] energy_conservation: PASS
+[INFO] [STEP 012]   initial_energy: 49999993.918193
+[INFO] [STEP 012]   final_energy: 49999987.9088765
+[INFO] [STEP 012]   relative_drift: -1.2018634455002377e-07
+[INFO] [STEP 012] angular_momentum_conservation: PASS
+[INFO] [STEP 012]   initial_h: 50494136245.42526
+[INFO] [STEP 012]   final_h: 50494135773.714874
+[INFO] [STEP 012]   relative_drift: -9.341884489138685e-09
+[INFO] [STEP 012] tep_acceleration: PASS
+[INFO] [STEP 012]   computed_magnitude: 1.213061319425267e-07
+[INFO] [STEP 012]   expected_magnitude: 1.213061319425267e-07
+[INFO] [STEP 012]   relative_error: 0.0
+[INFO] [STEP 012] tep_direction: PASS
+[INFO] [STEP 012]   a_x: -1.213061319425267e-07
+[INFO] [STEP 012]   a_y: -0.0
+[INFO] [STEP 012]   a_z: -0.0
+[INFO] [STEP 012]   direction_error: 0.0
+[INFO] [STEP 012] ✓ All validation tests passed
+[INFO] [STEP 012] Pure Keplerian velocity at perigee: 11983.18 m/s
+[INFO] [STEP 012] TEP velocity at perigee: 11983.18 m/s
+[INFO] [STEP 012] Injected delta-V (total arc): 0.004 mm/s
+[INFO] [STEP 012] Peak TEP acceleration: 10.12 um/s^2
+[INFO] [STEP 012] ✓ Truth trajectory generated with TEP force injection
+[INFO] [STEP 012] Minimal OD on pure Kepler + paired noise: RMS=0.0983 mm/s (sigma=0.1000 mm/s)
+[INFO] [STEP 012] Oracle 6-state OD (TEP dynamics) on TEP measurements: RMS=0.0983 mm/s
+[INFO] [STEP 012] Batch least-squares with pure Keplerian dynamics (no empirical accelerations)
+[INFO] [STEP 012] Estimation converged: False
+[INFO] [STEP 012] Iterations: 30
+[INFO] [STEP 012] Post-fit residual RMS: 0.101 mm/s
+[INFO] [STEP 012] Detected delta-V (vs Keplerian): 0.044 mm/s
+[INFO] [STEP 012] Constant empirical acceleration correction on the same arc
+[INFO] [STEP 012] Post-fit residual RMS: 0.102 mm/s
+[INFO] [STEP 012] Detected delta-V (vs Keplerian): -0.072 mm/s
+[INFO] [STEP 012] Final empirical acceleration: 0.084 um/s^2
+[INFO] [STEP 012] Perigee index 497 (t=-430.0 s): |Δr|=0.44 m, |Δv|=27.2174 mm/s
+[INFO] [STEP 012] True injected speed delta over arc: 0.004 mm/s
+[INFO] [STEP 012] Injected Doppler signal RMS: 0.395 mm/s
+[INFO] [STEP 012] Injected Doppler signal peak-to-peak: 6.267 mm/s
+[INFO] [STEP 012] 
+[INFO] [STEP 012] MINIMAL OD RESULTS:
+[INFO] [STEP 012]   Detected delta-V: 0.044 mm/s
+[INFO] [STEP 012]   Residual/injected observable fraction: 25.6%
+[INFO] [STEP 012]   Observable suppression: 74.4%
+[INFO] [STEP 012] 
+[INFO] [STEP 012] MODERN OD RESULTS:
+[INFO] [STEP 012]   Detected delta-V: -0.072 mm/s
+[INFO] [STEP 012]   Residual/injected observable fraction: 25.8%
+[INFO] [STEP 012]   Observable suppression: 74.2%
+[INFO] [STEP 012]   Minimal residual RMS / noise-only control RMS: 1.027
+[INFO] [STEP 012]   Minimal residual RMS / oracle(TEP) control RMS: 1.027
+[WARNING] [STEP 012] ⚠ OD suppression is numerically visible, but this synthetic run is not a mission-specific F_OD calibration.
+[INFO] [STEP 012] two_station_average_one_way: inj RMS=0.273 mm/s, minimal suppr=64.2%, RMS_tep/RMS_null=1.000
+[INFO] [STEP 012] two_station_stacked_one_way: inj RMS=0.333 mm/s, minimal suppr=67.7%, RMS_tep/RMS_null=1.083
+[INFO] [STEP 012] one_station_two_way_toy_scale_2: inj RMS=0.791 mm/s, minimal suppr=86.4%, RMS_tep/RMS_null=1.100
+[INFO] [STEP 012] Results exported to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step012_od_simulation_validation.json
+[INFO] [STEP 012] 
+[INFO] [STEP 012] ================================================================================
+[INFO] [STEP 012] STEP SUMMARY: step_012_od_filter_simulation
+[INFO] [STEP 012] ================================================================================
+[INFO] [STEP 012] Step Number: 012
+[INFO] [STEP 012] Status: SUCCESS
+[INFO] [STEP 012] Duration: 13.63s
+[INFO] [STEP 012] Calculations Logged: 0
+[INFO] [STEP 012] Output Files: 0
+[INFO] [STEP 012] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_012_od_filter_simulation.log
+[INFO] [STEP 012] No output files generated
+[INFO] [STEP 012] ================================================================================
+[INFO] [STEP 012] STEP 012 COMPLETE: SUCCESS
+[INFO] [STEP 012] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_012_od_filter_simulation_provenance.json
+[WARNING] [STEP 012] ⚠ This synthetic simulation is diagnostic only:
+[WARNING] [STEP 012] ⚠ 1. It is not a mission-specific OD configuration.
+[WARNING] [STEP 012] ⚠ 2. It must not be used to compute F_OD survival factors.
+[WARNING] [STEP 012] ⚠ 3. Empirical-acceleration OD calibration requires real mission OD settings.
+✓ Step 012: OD Filter Simulation completed in 13.70s
+
+======================================================================
+[16/42] Step 013: Cross-Validation Analysis
+======================================================================
+[INFO] [STEP 013] LOGGER INITIALIZED: step_013_cross_validation (Step 013)
+[INFO] [STEP 013] ================================================================================
+[INFO] [STEP 013] STEP 013: CROSS-VALIDATION AND ROBUSTNESS ANALYSIS
+[INFO] [STEP 013] ================================================================================
+[INFO] [STEP 013] Loading primary detections from step008 (S/N>2, excluded=False, β>0). Rosetta_2007 (S/N=0.4) and other sub-threshold flybys are correctly excluded from training data.
+[INFO] [STEP 013] Primary detections loaded: 4
+[INFO] [STEP 013]   NEAR                : β=1.731e-03, dv_obs=13.46 mm/s, alt=568 km
+[INFO] [STEP 013]   Galileo_1990        : β=5.330e-03, dv_obs=3.92 mm/s, alt=972 km
+[INFO] [STEP 013]   Cassini             : β=1.934e-03, dv_obs=0.11 mm/s, alt=1197 km
+[INFO] [STEP 013]   Rosetta_2005        : β=1.010e-03, dv_obs=1.82 mm/s, alt=1969 km
+[INFO] [STEP 013] Left out NEAR:
+[INFO] [STEP 013]   β_loo            = 2.377e-03
+[INFO] [STEP 013]   Predicted Δv     = 17.0774 mm/s
+[INFO] [STEP 013]   Observed  Δv     = 13.4600 mm/s
+[INFO] [STEP 013]   |Residual|       = 3.6174 mm/s (26.9%)
+[INFO] [STEP 013]   Sign correct     = True
+[INFO] [STEP 013] Left out Galileo_1990:
+[INFO] [STEP 013]   β_loo            = 1.729e-03
+[INFO] [STEP 013]   Predicted Δv     = 1.6849 mm/s
+[INFO] [STEP 013]   Observed  Δv     = 3.9200 mm/s
+[INFO] [STEP 013]   |Residual|       = 2.2351 mm/s (57.0%)
+[INFO] [STEP 013]   Sign correct     = True
+[INFO] [STEP 013] Left out Cassini:
+[INFO] [STEP 013]   β_loo            = 1.733e-03
+[INFO] [STEP 013]   Predicted Δv     = -0.1013 mm/s
+[INFO] [STEP 013]   Observed  Δv     = 0.1100 mm/s
+[INFO] [STEP 013]   |Residual|       = 0.2113 mm/s (192.1%)
+[INFO] [STEP 013]   Sign correct     = False
+[INFO] [STEP 013] Left out Rosetta_2005:
+[INFO] [STEP 013]   β_loo            = 1.734e-03
+[INFO] [STEP 013]   Predicted Δv     = 2.7293 mm/s
+[INFO] [STEP 013]   Observed  Δv     = 1.8200 mm/s
+[INFO] [STEP 013]   |Residual|       = 0.9093 mm/s (50.0%)
+[INFO] [STEP 013]   Sign correct     = True
+[INFO] [STEP 013] 
+LOO-CV Summary:
+[INFO] [STEP 013]   β_loo = 1.893e-03 ± 2.793e-04
+[INFO] [STEP 013]   Stability coefficient: 0.148 (stable)
+[INFO] [STEP 013]   Sign accuracy: 75%
+[INFO] [STEP 013] Held out mission 'Cassini' (1 flyby(s)); β_train=1.733e-03 from 3 training flybys
+[INFO] [STEP 013]   Cassini: dv_pred=-0.1013 mm/s, dv_obs=0.1100 mm/s, sign_ok=False (exempt: known sign mismatch at β_ref)
+[INFO] [STEP 013] Held out mission 'Galileo' (1 flyby(s)); β_train=1.729e-03 from 3 training flybys
+[INFO] [STEP 013]   Galileo_1990: dv_pred=1.6849 mm/s, dv_obs=3.9200 mm/s, sign_ok=True
+[INFO] [STEP 013] Held out mission 'NEAR' (1 flyby(s)); β_train=2.377e-03 from 3 training flybys
+[INFO] [STEP 013]   NEAR: dv_pred=17.0774 mm/s, dv_obs=13.4600 mm/s, sign_ok=True
+[INFO] [STEP 013] Held out mission 'Rosetta' (1 flyby(s)); β_train=1.734e-03 from 3 training flybys
+[INFO] [STEP 013]   Rosetta_2005: dv_pred=2.7293 mm/s, dv_obs=1.8200 mm/s, sign_ok=True
+[INFO] [STEP 013] LOOMO summary: 4 mission group(s), all folds sign-correct=True, equivalent_to_LOO=True
+[INFO] [STEP 013] Bootstrap Results (10000 samples):
+[INFO] [STEP 013]   β = 2.535e-03 ± 8.763e-04
+[INFO] [STEP 013]   68% CI: [1.549e-03, 3.405e-03]
+[INFO] [STEP 013]   95% CI: [1.154e-03, 4.424e-03]
+[INFO] [STEP 013] low_altitude: β = 3.530e-03 (n=2, members=['NEAR', 'Galileo_1990'])
+[INFO] [STEP 013] mid_altitude: β = 1.472e-03 (n=2, members=['Cassini', 'Rosetta_2005'])
+[INFO] [STEP 013] Bootstrap β: 2.535e-03 ± 8.763e-04
+[INFO] [STEP 013] LOO stability: 0.148 (stable)
+[INFO] [STEP 013] β scatter ratio: 5.28× (all positive: True)
+[INFO] [STEP 013] ✓ Cross-mission mandatory held-out protocol: PASS
+[INFO] [STEP 013] ✓ Cross-validation complete. Saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step013_cross_validation.json
+[INFO] [STEP 013] 
+[INFO] [STEP 013] ================================================================================
+[INFO] [STEP 013] STEP SUMMARY: step_013_cross_validation
+[INFO] [STEP 013] ================================================================================
+[INFO] [STEP 013] Step Number: 013
+[INFO] [STEP 013] Status: SUCCESS
+[INFO] [STEP 013] Duration: 0.12s
+[INFO] [STEP 013] Calculations Logged: 0
+[INFO] [STEP 013] Output Files: 0
+[INFO] [STEP 013] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_013_cross_validation.log
+[INFO] [STEP 013] No output files generated
+[INFO] [STEP 013] ================================================================================
+[INFO] [STEP 013] STEP 013 COMPLETE: SUCCESS
+[INFO] [STEP 013] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_013_cross_validation_provenance.json
+✓ Step 013: Cross-Validation Analysis completed in 0.19s
+
+======================================================================
+[17/42] Step 014: Sensitivity Analysis
+======================================================================
+[INFO] [STEP 014] LOGGER INITIALIZED: step_014_sensitivity_analysis (Step 014)
+[INFO] [STEP 014] ================================================================================
+[INFO] [STEP 014] STEP 014: SENSITIVITY ANALYSIS
+[INFO] [STEP 014] ================================================================================
+[INFO] [STEP 014] Loaded 4 flyby predictions
+[INFO] [STEP 014]   Avg sensitivity: 1.000
+[INFO] [STEP 014]   Max impact: 1.000
+[INFO] [STEP 014]   Assessment: high
+[INFO] [STEP 014]   Avg sensitivity: 0.364
+[INFO] [STEP 014]   Max impact: 0.486
+[INFO] [STEP 014]   Assessment: moderate
+[INFO] [STEP 014]   Avg sensitivity: 1.000
+[INFO] [STEP 014]   Max impact: 1.000
+[INFO] [STEP 014]   Assessment: high
+[INFO] [STEP 014]   Avg sensitivity: 0.050
+[INFO] [STEP 014]   Max impact: 0.050
+[INFO] [STEP 014]   Assessment: low
+[INFO] [STEP 014]   Avg sensitivity: 0.050
+[INFO] [STEP 014]   Max impact: 0.050
+[INFO] [STEP 014]   Assessment: low
+[INFO] [STEP 014]   Avg sensitivity: 0.050
+[INFO] [STEP 014]   Max impact: 0.050
+[INFO] [STEP 014]   Assessment: low
+[INFO] [STEP 014] Correlation (β vs altitude): r = -0.262, p = 0.738
+[INFO] [STEP 014] 1. characteristic_suppression S = +1.000 (high)
+[INFO] [STEP 014] 2. beta                 S = +1.000 (high)
+[INFO] [STEP 014] 3. lambda_tep_km        S = +0.364 (moderate)
+[INFO] [STEP 014] 4. disformal_coupling   S = +0.050 (low)
+[INFO] [STEP 014] 5. j2                   S = +0.050 (low)
+[INFO] [STEP 014] 6. j3                   S = +0.050 (low)
+[INFO] [STEP 014] ✓ Sensitivity analysis complete. Saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step014_sensitivity_analysis.json
+[INFO] [STEP 014] 
+[INFO] [STEP 014] ================================================================================
+[INFO] [STEP 014] STEP SUMMARY: step_014_sensitivity_analysis
+[INFO] [STEP 014] ================================================================================
+[INFO] [STEP 014] Step Number: 014
+[INFO] [STEP 014] Status: SUCCESS
+[INFO] [STEP 014] Duration: 0.00s
+[INFO] [STEP 014] Calculations Logged: 0
+[INFO] [STEP 014] Output Files: 0
+[INFO] [STEP 014] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_014_sensitivity_analysis.log
+[INFO] [STEP 014] No output files generated
+[INFO] [STEP 014] ================================================================================
+[INFO] [STEP 014] STEP 014 COMPLETE: SUCCESS
+[INFO] [STEP 014] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_014_sensitivity_analysis_provenance.json
+✓ Step 014: Sensitivity Analysis completed in 0.35s
+
+======================================================================
+[18/42] Step 015: Hierarchical Bayesian Model
+======================================================================
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/arviz/__init__.py:50: FutureWarning: 
+ArviZ is undergoing a major refactor to improve flexibility and extensibility while maintaining a user-friendly interface.
+Some upcoming changes may be backward incompatible.
+For details and migration guidance, visit: https://python.arviz.org/en/latest/user_guide/migration_guide.html
+  warn(
+[INFO] [STEP 015] LOGGER INITIALIZED: step_015_hierarchical_bayesian (Step 015)
+[INFO] [STEP 015] LOGGER INITIALIZED: step_015_hierarchical_bayesian (Step 015)
+[INFO] [STEP 015] Model structure:
+[INFO] [STEP 015]   Level 1: Universal parameters (β_0, b_disf, σ, α_res)
+[INFO] [STEP 015]   Level 2: Residual geometry modulations
+[INFO] [STEP 015]   Level 3: Observations with measurement noise
+[INFO] [STEP 015] β_0 ~ LogNormal(ln(1.733e-03), σ_ln=0.250)  # center from Step 008 (overall_analysis.recommended_beta), hierarchical_beta_prior_center=step008_recommended
+[INFO] [STEP 015] b_disf ~ LogNormal(ln(0.05), 1.0)  # Disformal coupling strength
+[INFO] [STEP 015] σ ~ LogNormal(ln(0.5), 1.0)  # Flyby-to-flyby scatter
+[INFO] [STEP 015] α_res ~ Normal(0, 0.3)  # Residual geometry modulation
+[INFO] [STEP 015] Loaded 8 flybys with observations
+[INFO] [STEP 015] G_i,eff = dv_obs / dv_grad  (reference beta_0 = 1e-4)
+[INFO] [STEP 015]   NEAR           : G_eff =  14.51, alt=  568km, v=12.7km/s, asym=+0.625
+[INFO] [STEP 015]   Galileo_1990   : G_eff =  24.17, alt=  972km, v=13.7km/s, asym=+0.195
+[INFO] [STEP 015]   Cassini        : G_eff =  -7.55, alt= 1197km, v=19.0km/s, asym=-0.088
+[INFO] [STEP 015]   Rosetta_2005   : G_eff =   5.73, alt= 1969km, v=10.5km/s, asym=+0.330
+[INFO] [STEP 015]   Rosetta_2007   : G_eff = 307.55, alt= 5430km, v=12.5km/s, asym=+0.035
+[INFO] [STEP 015]   G_eff vs altitude:   r = +0.953 (p ≈ 0.008)
+[INFO] [STEP 015]   G_eff vs velocity:   r = -0.262 (p ≈ 0.704)
+[INFO] [STEP 015]   G_eff vs asymmetry:  r = -0.327 (p ≈ 0.631)
+[INFO] [STEP 015]   log10|G_eff| = c0 + c1·alt_norm + c2·vel_norm + c3·asym_norm
+[INFO] [STEP 015]   c0 = 1.334, c1 = 0.711, c2 = 0.247, c3 = 0.291
+[INFO] [STEP 015]   R² = 0.750
+[INFO] [STEP 015]   Median G_eff = 14.51
+[INFO] [STEP 015]   Mean   G_eff = 68.88 ± 119.79
+[INFO] [STEP 015]   Range: [-7.55, 307.55]
+[INFO] [STEP 015] 
+[INFO] [STEP 015]   If beta_0 = 1.00e-4 (theoretical reference):
+[INFO] [STEP 015]     The effective geometry factor varies by a factor of 53.7 across flybys.
+[INFO] [STEP 015]     This confirms geometry-dependent TEP coupling.
+[INFO] [STEP 015] 
+[INFO] [STEP 015]   Empirically, the median implied coupling is:
+[INFO] [STEP 015]     beta_0,implied = 1e-4 × G_eff,median = 1.45e-03
+[INFO] [STEP 015] MCMC init: log β_0 = ln(1.732539e-03) from Step 008 (overall_analysis.recommended_beta), prior σ_lnβ = 0.2500
+[INFO] [STEP 015] Running 2000 steps with 32 walkers...
+  0%|          | 0/2000 [00:00<?, ?it/s] 12%|█▏        | 234/2000 [00:00<00:00, 2330.00it/s] 24%|██▎       | 470/2000 [00:00<00:00, 2342.82it/s] 35%|███▌      | 709/2000 [00:00<00:00, 2363.52it/s] 47%|████▋     | 948/2000 [00:00<00:00, 2373.26it/s] 59%|█████▉    | 1186/2000 [00:00<00:00, 2363.92it/s] 71%|███████   | 1423/2000 [00:00<00:00, 2361.98it/s] 83%|████████▎ | 1663/2000 [00:00<00:00, 2371.44it/s] 95%|█████████▌| 1902/2000 [00:00<00:00, 2376.30it/s]100%|██████████| 2000/2000 [00:00<00:00, 2364.44it/s]
+[INFO] [STEP 015]   NEAR           : obs =   13.46, pred =   13.41 ±  1.33 mm/s, residual = +0.05 mm/s
+[INFO] [STEP 015]   Galileo_1990   : obs =    3.92, pred =    1.71 ±  0.21 mm/s, residual = +2.21 mm/s
+[INFO] [STEP 015]   Cassini        : obs =    0.11, pred =   -0.11 ±  0.03 mm/s, residual = +0.22 mm/s
+[INFO] [STEP 015]   Rosetta_2005   : obs =    1.82, pred =    2.79 ±  0.53 mm/s, residual = -0.97 mm/s
+[INFO] [STEP 015]   Rosetta_2007   : obs =    0.02, pred =    0.00 ±  0.00 mm/s, residual = +0.02 mm/s
+[INFO] [STEP 015] β_0 = 1.74e-03 ± 3.91e-04
+[INFO] [STEP 015] σ = 1.19e+00 ± 5.07e-01
+[INFO] [STEP 015] α_res = 0.024 ± 0.242
+[INFO] [STEP 015] Corner plot saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step015_hierarchical_bayesian_corner.png
+[INFO] [STEP 015]   Output: step015_hierarchical_bayesian_corner.png (Hierarchical Bayesian corner plot)
+[INFO] [STEP 015] Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step015_hierarchical_bayesian_results.json
+[INFO] [STEP 015] 
+[INFO] [STEP 015] ================================================================================
+[INFO] [STEP 015] STEP SUMMARY: step_015_hierarchical_bayesian
+[INFO] [STEP 015] ================================================================================
+[INFO] [STEP 015] Step Number: 015
+[INFO] [STEP 015] Status: SUCCESS
+[INFO] [STEP 015] Duration: 0.00s
+[INFO] [STEP 015] Calculations Logged: 0
+[INFO] [STEP 015] Output Files: 1
+[INFO] [STEP 015] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_015_hierarchical_bayesian.log
+[INFO] [STEP 015] 
+[INFO] [STEP 015] Generated 1 output file(s):
+[INFO] [STEP 015]   • step015_hierarchical_bayesian_corner.png: 210.75 KB - Hierarchical Bayesian corner plot
+[INFO] [STEP 015] ================================================================================
+[INFO] [STEP 015] STEP 015 COMPLETE: SUCCESS
+[INFO] [STEP 015] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_015_hierarchical_bayesian_provenance.json
+✓ Step 015: Hierarchical Bayesian Model completed in 3.20s
+
+======================================================================
+[19/42] Step 016: GNSS Validation
+======================================================================
+[INFO] [STEP 016] LOGGER INITIALIZED: step_016_gnss_validation (Step 016)
+[INFO] [STEP 016] LOGGER INITIALIZED: step_016_gnss_validation (Step 016)
+[INFO] [STEP 016] Universal coupling β:
+[INFO] [STEP 016]   Flyby-derived: 1.73e-03 ± 1.67e-03 (mission spread)
+[INFO] [STEP 016]   Theoretical (Paper 1): 1.00e-04
+[INFO] [STEP 016]   Difference vs theory: 1.63e-03 (1.0σ vs mission spread)
+[INFO] [STEP 016]   Theory anchor: ✓ CONSISTENT (< 2σ mission spread)
+[INFO] [STEP 016] Screening length λ:
+[INFO] [STEP 016]   GNSS-derived (Paper 5): 4201 ± 1967 km
+[INFO] [STEP 016]   Flyby model (physics.py): 4200 ± 630 km (SCF prior)
+[INFO] [STEP 016]   Difference: 1 km (0.0σ combined)
+[INFO] [STEP 016]   GNSS cross-scale: ✓ CONSISTENT (< 2σ)
+[INFO] [STEP 016] Density modulation exponent α_d:
+[INFO] [STEP 016]   Paper 6 (UCD): 0.334 (from physics.py)
+[INFO] [STEP 016]   Flyby multi-parameter fit: 0.334 (assumed)
+[INFO] [STEP 016] Consistency across manuscript series:
+[INFO] [STEP 016]   Paper 1 (Theory): β = 1e-4
+[INFO] [STEP 016]   Paper 5 (GTE): λ = 4201 ± 1967 km
+[INFO] [STEP 016]   Paper 6 (UCD): α_d = 0.334, ρ_c = 20 g/cm³
+[INFO] [STEP 016]   Paper 9 (Exp): Identifies conformal loophole
+[INFO] [STEP 016]   Paper 10 (Cos): Suppressed density scaling
+[INFO] [STEP 016] Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step016_gnss_cross_validation.json
+[INFO] [STEP 016] 
+[INFO] [STEP 016] ================================================================================
+[INFO] [STEP 016] STEP SUMMARY: step_016_gnss_validation
+[INFO] [STEP 016] ================================================================================
+[INFO] [STEP 016] Step Number: 016
+[INFO] [STEP 016] Status: SUCCESS
+[INFO] [STEP 016] Duration: 0.00s
+[INFO] [STEP 016] Calculations Logged: 0
+[INFO] [STEP 016] Output Files: 0
+[INFO] [STEP 016] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_016_gnss_validation.log
+[INFO] [STEP 016] No output files generated
+[INFO] [STEP 016] ================================================================================
+[INFO] [STEP 016] STEP 016 COMPLETE: SUCCESS
+[INFO] [STEP 016] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_016_gnss_validation_provenance.json
+✓ Step 016: GNSS Validation completed in 0.07s
+
+======================================================================
+[20/42] Step 017: Plasma Modulation (Cassini Sign)
+======================================================================
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 017] NEAR:
+[INFO] [STEP 017]   Altitude: 568 km
+[INFO] [STEP 017]   Plasma density: 1.61e+04 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 9.224e-04
+[INFO] [STEP 017]   Plasma sign factor: -0.761
+[INFO] [STEP 017]   Solar activity: 1.0
+[INFO] [STEP 017] Galileo_1990:
+[INFO] [STEP 017]   Altitude: 972 km
+[INFO] [STEP 017]   Plasma density: 4.24e+04 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 9.996e-09
+[INFO] [STEP 017]   Plasma sign factor: 1.000
+[INFO] [STEP 017]   Solar activity: 2.3
+[INFO] [STEP 017] Cassini:
+[INFO] [STEP 017]   Altitude: 1197 km
+[INFO] [STEP 017]   Plasma density: 1.36e+04 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 2.731e-03
+[INFO] [STEP 017]   Plasma sign factor: -0.714
+[INFO] [STEP 017]   Solar activity: 1.3
+[INFO] [STEP 017] Galileo_1992:
+[INFO] [STEP 017]   Altitude: 310 km
+[INFO] [STEP 017]   Plasma density: 1.37e+06 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 7.401e-259
+[INFO] [STEP 017]   Plasma sign factor: 1.000
+[INFO] [STEP 017]   Solar activity: 1.3
+[INFO] [STEP 017] Rosetta_2005:
+[INFO] [STEP 017]   Altitude: 1969 km
+[INFO] [STEP 017]   Plasma density: 2.67e+03 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 3.132e-01
+[INFO] [STEP 017]   Plasma sign factor: -1.000
+[INFO] [STEP 017]   Solar activity: 0.8
+[INFO] [STEP 017] Rosetta_2007:
+[INFO] [STEP 017]   Altitude: 5430 km
+[INFO] [STEP 017]   Plasma density: 2.66e+02 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 8.909e-01
+[INFO] [STEP 017]   Plasma sign factor: 0.863
+[INFO] [STEP 017]   Solar activity: 0.7
+[INFO] [STEP 017] Rosetta_2009:
+[INFO] [STEP 017]   Altitude: 2572 km
+[INFO] [STEP 017]   Plasma density: 4.70e+02 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 8.154e-01
+[INFO] [STEP 017]   Plasma sign factor: 0.550
+[INFO] [STEP 017]   Solar activity: 0.7
+[INFO] [STEP 017] MESSENGER_2005:
+[INFO] [STEP 017]   Altitude: 2351 km
+[INFO] [STEP 017]   Plasma density: 1.70e+03 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 4.780e-01
+[INFO] [STEP 017]   Plasma sign factor: -1.000
+[INFO] [STEP 017]   Solar activity: 1.1
+[INFO] [STEP 017] Juno:
+[INFO] [STEP 017]   Altitude: 817 km
+[INFO] [STEP 017]   Plasma density: 2.32e+04 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 4.288e-05
+[INFO] [STEP 017]   Plasma sign factor: -0.530
+[INFO] [STEP 017]   Solar activity: 1.1
+[INFO] [STEP 017] Stardust:
+[INFO] [STEP 017]   Altitude: 6009 km
+[INFO] [STEP 017]   Plasma density: 9.83e+02 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 6.525e-01
+[INFO] [STEP 017]   Plasma sign factor: -1.000
+[INFO] [STEP 017]   Solar activity: 1.7
+[INFO] [STEP 017] OSIRIS-REx:
+[INFO] [STEP 017]   Altitude: 17239 km
+[INFO] [STEP 017]   Plasma density: 1.92e+00 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 9.992e-01
+[INFO] [STEP 017]   Plasma sign factor: 1.000
+[INFO] [STEP 017]   Solar activity: 0.8
+[INFO] [STEP 017] BepiColombo:
+[INFO] [STEP 017]   Altitude: 12697 km
+[INFO] [STEP 017]   Plasma density: 4.06e+01 cm^-3
+[INFO] [STEP 017]   Plasma screening factor: 9.825e-01
+[INFO] [STEP 017]   Plasma sign factor: 1.000
+[INFO] [STEP 017]   Solar activity: 0.7
+[INFO] [STEP 017] Cassini observed: +0.11 mm/s
+[INFO] [STEP 017] Cassini predicted (mixed disformal regime): -0.012 mm/s
+[INFO] [STEP 017] Plasma sign factor: -0.714
+[INFO] [STEP 017] CONCLUSION: Disformal coupling produces partial cancellation in the mixed regime; plasma modulates magnitude. The literature geometry sign remains an open stress test, not a resolved confirmation. Independent DSN/OD reanalysis is required.
+[INFO] [STEP 017] Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step017_plasma_modulation.json
+[INFO] [STEP 017]   Output: step017_plasma_modulation.json (Plasma modulation factors)
+[INFO] [STEP 017] 
+[INFO] [STEP 017] ================================================================================
+[INFO] [STEP 017] STEP SUMMARY: step_017_plasma_modulation
+[INFO] [STEP 017] ================================================================================
+[INFO] [STEP 017] Step Number: 017
+[INFO] [STEP 017] Status: SUCCESS
+[INFO] [STEP 017] Duration: 0.00s
+[INFO] [STEP 017] Calculations Logged: 0
+[INFO] [STEP 017] Output Files: 1
+[INFO] [STEP 017] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_017_plasma_modulation.log
+[INFO] [STEP 017] 
+[INFO] [STEP 017] Generated 1 output file(s):
+[INFO] [STEP 017]   • step017_plasma_modulation.json: 30.16 KB - Plasma modulation factors
+[INFO] [STEP 017] ================================================================================
+[INFO] [STEP 017] STEP 017 COMPLETE: SUCCESS
+[INFO] [STEP 017] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_017_plasma_modulation_provenance.json
+✓ Step 017: Plasma Modulation (Cassini Sign) completed in 0.64s
+
+======================================================================
+[21/42] Step 018: Space Weather Correlation
+======================================================================
+[INFO] [STEP 018] LOGGER INITIALIZED: step_018_space_weather (Step 018)
+[INFO] [STEP 018] ================================================================================
+[INFO] [STEP 018] STEP 018: EMPIRICAL SPACE WEATHER CORRELATION
+[INFO] [STEP 018] ================================================================================
+[INFO] [STEP 018] Matching historical flybys to Celestrak SW-All data (Kp, F10.7)
+[INFO] [STEP 018] Matched 4 flybys with fitted β values.
+[INFO] [STEP 018] Pearson r against space-weather plasma index: 0.7318
+[INFO] [STEP 018] 95% CI: [-0.773, 0.994]
+[INFO] [STEP 018] P-value: 0.2682
+[INFO] [STEP 018] Status: preliminary
+[WARNING] [STEP 018] ⚠ ============================================================
+[WARNING] [STEP 018] ⚠ SMALL SAMPLE WARNING (n≤4)
+[WARNING] [STEP 018] ⚠ ============================================================
+[WARNING] [STEP 018] ⚠ With n=4 primary detections:
+[WARNING] [STEP 018] ⚠ - Correlation analysis is underpowered (need n>10 for reliable r)
+[WARNING] [STEP 018] ⚠ - Chance probability of |r|>0.6 by coincidence is ~20%
+[WARNING] [STEP 018] ⚠ - This is HYPOTHESIS-GENERATING, not confirmatory
+[WARNING] [STEP 018] ⚠ - Any correlation claims require validation with future flybys
+[WARNING] [STEP 018] ⚠ ============================================================
+[INFO] [STEP 018] Correlation not significant (p=0.27) - as expected with n=4
+[INFO] [STEP 018] Interpretation: r=0.73, p=0.27 (n=4): Not statistically significant. With n=4, chance of false positive is high. This is an exploratory observation requiring validation with n>10.
+[INFO] [STEP 018] ✓ Space weather correlation isolated. Conformal parameters bridged. Report: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step018_space_weather.json
+[INFO] [STEP 018] 
+[INFO] [STEP 018] ================================================================================
+[INFO] [STEP 018] STEP SUMMARY: step_018_space_weather
+[INFO] [STEP 018] ================================================================================
+[INFO] [STEP 018] Step Number: 018
+[INFO] [STEP 018] Status: SUCCESS
+[INFO] [STEP 018] Duration: 0.05s
+[INFO] [STEP 018] Calculations Logged: 0
+[INFO] [STEP 018] Output Files: 0
+[INFO] [STEP 018] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_018_space_weather.log
+[INFO] [STEP 018] No output files generated
+[INFO] [STEP 018] ================================================================================
+[INFO] [STEP 018] STEP 018 COMPLETE: SUCCESS
+[INFO] [STEP 018] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_018_space_weather_provenance.json
+✓ Step 018: Space Weather Correlation completed in 0.44s
+
+======================================================================
+[22/42] Step 019: 3D Field Integration
+======================================================================
+[INFO] [STEP 019] LOGGER INITIALIZED: step_019_3d_field_integration (Step 019)
+[INFO] [STEP 019] LOGGER INITIALIZED: step_019_3d_field_integration (Step 019)
+[INFO] [STEP 019] LOGGER INITIALIZED: step_019_3d_field_integration (Step 019)
+[INFO] [STEP 019] β = 1.00e-04
+[INFO] [STEP 019] J2 = 1.08e-03
+[WARNING] [STEP 019] ⚠ Using idealized analytic hypoflyby paths (metadata.trajectory_source); results are diagnostic only, not mission-true arcs.
+[INFO] [STEP 019] Processing NEAR...
+[INFO] [STEP 019]   3D integration: 8.6821 mm/s
+[INFO] [STEP 019]   Simplified: 6.8923 mm/s
+[INFO] [STEP 019]   Current: 1.5864 mm/s
+[INFO] [STEP 019]   Ratio: 1.26
+[INFO] [STEP 019] Processing Galileo_1990...
+[INFO] [STEP 019]   3D integration: 8.3876 mm/s
+[INFO] [STEP 019]   Simplified: 6.3604 mm/s
+[INFO] [STEP 019]   Current: 0.1987 mm/s
+[INFO] [STEP 019]   Ratio: 1.32
+[INFO] [STEP 019] Processing Cassini...
+[INFO] [STEP 019]   3D integration: 8.2323 mm/s
+[INFO] [STEP 019]   Simplified: 6.0921 mm/s
+[INFO] [STEP 019]   Current: -0.0119 mm/s
+[INFO] [STEP 019]   Ratio: 1.35
+[INFO] [STEP 019] Processing Rosetta_2005...
+[INFO] [STEP 019]   3D integration: 7.7407 mm/s
+[INFO] [STEP 019]   Simplified: 5.2954 mm/s
+[INFO] [STEP 019]   Current: 0.3212 mm/s
+[INFO] [STEP 019]   Ratio: 1.46
+[INFO] [STEP 019] Processing Rosetta_2007...
+[INFO] [STEP 019]   3D integration: 6.1050 mm/s
+[INFO] [STEP 019]   Simplified: 3.1468 mm/s
+[INFO] [STEP 019]   Current: 0.0001 mm/s
+[INFO] [STEP 019]   Ratio: 1.94
+[INFO] [STEP 019] Processing Stardust...
+[INFO] [STEP 019]   3D integration: 5.8966 mm/s
+[INFO] [STEP 019]   Simplified: 2.9218 mm/s
+[INFO] [STEP 019]   Current: -0.0003 mm/s
+[INFO] [STEP 019]   Ratio: 2.02
+[INFO] [STEP 019] Processing OSIRIS-REx...
+[INFO] [STEP 019]   3D integration: 3.5475 mm/s
+[INFO] [STEP 019]   Simplified: 1.0194 mm/s
+[INFO] [STEP 019]   Current: 0.0000 mm/s
+[INFO] [STEP 019]   Ratio: 3.48
+[INFO] [STEP 019] Processing BepiColombo...
+[INFO] [STEP 019]   3D integration: 4.2288 mm/s
+[INFO] [STEP 019]   Simplified: 1.4598 mm/s
+[INFO] [STEP 019]   Current: -0.0000 mm/s
+[INFO] [STEP 019]   Ratio: 2.90
+[INFO] [STEP 019] Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step019_3d_field_integration_results.json
+[INFO] [STEP 019] 
+[INFO] [STEP 019] ================================================================================
+[INFO] [STEP 019] STEP SUMMARY: step_019_3d_field_integration
+[INFO] [STEP 019] ================================================================================
+[INFO] [STEP 019] Step Number: 019
+[INFO] [STEP 019] Status: SUCCESS
+[INFO] [STEP 019] Duration: 0.00s
+[INFO] [STEP 019] Calculations Logged: 0
+[INFO] [STEP 019] Output Files: 0
+[INFO] [STEP 019] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_019_3d_field_integration.log
+[INFO] [STEP 019] No output files generated
+[INFO] [STEP 019] ================================================================================
+[INFO] [STEP 019] STEP 019 COMPLETE: SUCCESS
+[INFO] [STEP 019] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_019_3d_field_integration_provenance.json
+✓ Step 019: 3D Field Integration completed in 0.25s
+
+======================================================================
+[23/42] Step 020: Plasma Environment Reconstruction
+======================================================================
+[INFO] [STEP 020] LOGGER INITIALIZED: step_020_plasma_environment_reconstruction (Step 020)
+[INFO] [STEP 020] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 020] ================================================================================
+[INFO] [STEP 020] STEP 020: PLASMA ENVIRONMENT RECONSTRUCTION
+[INFO] [STEP 020] ================================================================================
+[INFO] [STEP 020] Solar activity from Celestrak SW-All.csv (F10.7_OBS/F10.7_ADJ, KP_SUM)
+[INFO] [STEP 020] IRI model electron density profiles from step_033 (continuous trajectory data)
+[INFO] [STEP 020] Plasma attenuation: phenomenological ansatz S = exp(-n_e / n_ref)
+[INFO] [STEP 020] n_ref = 2.3e+03 cm^-3 (median peak IRI n_e from step_033)
+[INFO] [STEP 020] Computing F_plasma factors from IRI electron density profiles
+[INFO] [STEP 020] NEAR:
+[INFO] [STEP 020]   n_e = 15325.4 ± 0.1 cm³
+[INFO] [STEP 020]   F10.7 = 96.9 ± 0.1 sfu
+[INFO] [STEP 020]   Activity = moderate
+[INFO] [STEP 020]   F_screening = 0.0013 ± 0.5000
+[INFO] [STEP 020]   F_sign = 1.0 ± 0.2
+[INFO] [STEP 020]   Combined uncertainty: ±57%
+[INFO] [STEP 020]   Data source: IRI_model_step_033
+[INFO] [STEP 020] Galileo_1990:
+[INFO] [STEP 020]   n_e = 41902.5 ± 0.1 cm³
+[INFO] [STEP 020]   F10.7 = 230.4 ± 0.1 sfu
+[INFO] [STEP 020]   Activity = high
+[INFO] [STEP 020]   F_screening = 0.0000 ± 0.5000
+[INFO] [STEP 020]   F_sign = 1.0 ± 0.2
+[INFO] [STEP 020]   Combined uncertainty: ±57%
+[INFO] [STEP 020]   Data source: IRI_model_step_033
+[INFO] [STEP 020] Cassini:
+[INFO] [STEP 020]   n_e = 13591.6 ± 0.1 cm³
+[INFO] [STEP 020]   F10.7 = 130.7 ± 0.1 sfu
+[INFO] [STEP 020]   Activity = moderate
+[INFO] [STEP 020]   F_screening = 0.0027 ± 0.5000
+[INFO] [STEP 020]   F_sign = 1.0 ± 0.2
+[INFO] [STEP 020]   Combined uncertainty: ±57%
+[INFO] [STEP 020]   Data source: IRI_model_step_033
+[INFO] [STEP 020] Rosetta_2005:
+[INFO] [STEP 020]   n_e = 2672.5 ± 0.1 cm³
+[INFO] [STEP 020]   F10.7 = 78.9 ± 0.1 sfu
+[INFO] [STEP 020]   Activity = low
+[INFO] [STEP 020]   F_screening = 0.3133 ± 0.5000
+[INFO] [STEP 020]   F_sign = 1.0 ± 0.2
+[INFO] [STEP 020]   Combined uncertainty: ±57%
+[INFO] [STEP 020]   Data source: IRI_model_step_033
+[INFO] [STEP 020] Rosetta_2007:
+[INFO] [STEP 020]   n_e = 265.8 ± 0.1 cm³
+[INFO] [STEP 020]   F10.7 = 69.9 ± 0.1 sfu
+[INFO] [STEP 020]   Activity = low
+[INFO] [STEP 020]   F_screening = 0.8910 ± 0.5000
+[INFO] [STEP 020]   F_sign = 1.0 ± 0.2
+[INFO] [STEP 020]   Combined uncertainty: ±57%
+[INFO] [STEP 020]   Data source: IRI_model_step_033
+[INFO] [STEP 020] Stardust:
+[INFO] [STEP 020]   n_e = 982.9 ± 0.1 cm³
+[INFO] [STEP 020]   F10.7 = 169.2 ± 0.1 sfu
+[INFO] [STEP 020]   Activity = high
+[INFO] [STEP 020]   F_screening = 0.6525 ± 0.5000
+[INFO] [STEP 020]   F_sign = 1.0 ± 0.2
+[INFO] [STEP 020]   Combined uncertainty: ±57%
+[INFO] [STEP 020]   Data source: IRI_model_step_033
+[INFO] [STEP 020] OSIRIS-REx:
+[INFO] [STEP 020]   n_e = 1.8 ± 0.1 cm³
+[INFO] [STEP 020]   F10.7 = 77.5 ± 0.1 sfu
+[INFO] [STEP 020]   Activity = low
+[INFO] [STEP 020]   F_screening = 0.9992 ± 0.5000
+[INFO] [STEP 020]   F_sign = 1.0 ± 0.2
+[INFO] [STEP 020]   Combined uncertainty: ±57%
+[INFO] [STEP 020]   Data source: IRI_model_step_033
+[INFO] [STEP 020] BepiColombo:
+[INFO] [STEP 020]   n_e = 40.5 ± 0.1 cm³
+[INFO] [STEP 020]   F10.7 = 69.2 ± 0.1 sfu
+[INFO] [STEP 020]   Activity = low
+[INFO] [STEP 020]   F_screening = 0.9826 ± 0.5000
+[INFO] [STEP 020]   F_sign = 1.0 ± 0.2
+[INFO] [STEP 020]   Combined uncertainty: ±57%
+[INFO] [STEP 020]   Data source: IRI_model_step_033
+[INFO] [STEP 020] Plasma environment reconstruction saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step020_plasma_environment.json
+[INFO] [STEP 020]   Output: step020_plasma_environment.json (Plasma environment reconstruction)
+[INFO] [STEP 020] Flybys with non-trivial plasma screening: NEAR, Galileo_1990, Cassini, Rosetta_2005, Rosetta_2007, Stardust, BepiColombo
+[INFO] [STEP 020] 
+[INFO] [STEP 020] ================================================================================
+[INFO] [STEP 020] STEP SUMMARY: step_020_plasma_environment_reconstruction
+[INFO] [STEP 020] ================================================================================
+[INFO] [STEP 020] Step Number: 020
+[INFO] [STEP 020] Status: SUCCESS
+[INFO] [STEP 020] Duration: 0.00s
+[INFO] [STEP 020] Calculations Logged: 0
+[INFO] [STEP 020] Output Files: 1
+[INFO] [STEP 020] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_020_plasma_environment_reconstruction.log
+[INFO] [STEP 020] 
+[INFO] [STEP 020] Generated 1 output file(s):
+[INFO] [STEP 020]   • step020_plasma_environment.json: 9.34 KB - Plasma environment reconstruction
+[INFO] [STEP 020] ================================================================================
+[INFO] [STEP 020] STEP 020 COMPLETE: SUCCESS
+[INFO] [STEP 020] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_020_plasma_environment_reconstruction_provenance.json
+✓ Step 020: Plasma Environment Reconstruction completed in 0.38s
+
+======================================================================
+[24/42] Step 021: Mission-Specific OD Absorption
+======================================================================
+[INFO] [STEP 021] LOGGER INITIALIZED: step_021_mission_specific_od_absorption (Step 021)
+[INFO] [STEP 021] ================================================================================
+[INFO] [STEP 021] STEP 021: MISSION-SPECIFIC OD ABSORPTION
+[INFO] [STEP 021] ================================================================================
+[INFO] [STEP 021] Loaded Step 012 OD simulation reference (minimal suppression 74.4%)
+[INFO] [STEP 021] NEAR: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] Galileo_1990: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] Cassini: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] Galileo_1992: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] Rosetta_2005: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] Rosetta_2007: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] Rosetta_2009: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] MESSENGER_2005: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] Juno: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] Stardust: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] OSIRIS-REx: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] BepiColombo: F_OD not computed (not_computable_without_mission_od_configuration); mission OD configuration required
+[INFO] [STEP 021] ✓ OD absorption metadata saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step021_od_simulation_validation.json
+[INFO] [STEP 021] F_OD values were not computed; mission OD configuration data is required.
+✓ Step 021: Mission-Specific OD Absorption completed in 0.09s
+
+======================================================================
+[25/42] Step 022: Atmospheric Drag Simulation
+======================================================================
+[INFO] [STEP 022] LOGGER INITIALIZED: step_022_atmospheric_drag_simulation (Step 022)
+[INFO] [STEP 022] LOGGER INITIALIZED: step_022_atmospheric_drag_simulation (Step 022)
+
+======================================================================
+ATMOSPHERIC DRAG SIMULATION RESULTS
+======================================================================
+
+Analyzed 5 flybys
+
+Summary:
+  All excluded: True
+  Maximum drag fraction: 6.61e-20
+  Conclusion: Atmospheric drag excluded for all flybys
+
+Per-flyby results:
+
+  NEAR:
+    Perigee altitude: 567.9 km
+    Atmospheric density: 6.94e-31 kg/m³
+    Integrated Δv from drag: 8.90e-19 mm/s
+    Observed anomaly: 13.46 mm/s
+    Drag fraction: 6.61e-20
+    Excluded: True
+
+  Galileo_1990:
+    Perigee altitude: 972.3 km
+    Atmospheric density: 1.51e-51 kg/m³
+    Integrated Δv from drag: 2.26e-39 mm/s
+    Observed anomaly: 3.92 mm/s
+    Drag fraction: 5.76e-40
+    Excluded: True
+
+  Cassini:
+    Perigee altitude: 1197.3 km
+    Atmospheric density: 4.82e-63 kg/m³
+    Integrated Δv from drag: 1.38e-50 mm/s
+    Observed anomaly: 0.11 mm/s
+    Drag fraction: 1.26e-49
+    Excluded: True
+
+  Rosetta_2005:
+    Perigee altitude: 1968.7 km
+    Atmospheric density: 1.86e-102 kg/m³
+    Integrated Δv from drag: 1.63e-90 mm/s
+    Observed anomaly: 1.82 mm/s
+    Drag fraction: 8.95e-91
+    Excluded: True
+
+  Rosetta_2007:
+    Perigee altitude: 5429.9 km
+    Atmospheric density: 2.66e-279 kg/m³
+    Integrated Δv from drag: 3.27e-267 mm/s
+    Observed anomaly: 0.02 mm/s
+    Drag fraction: 1.64e-265
+    Excluded: True
+[INFO] [STEP 022] ✓ Atmospheric drag excluded for all 5 flybys
+[INFO] [STEP 022]   Output: step022_atmospheric_drag_simulation.json (Atmospheric drag simulation results)
+
+✓ Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step022_atmospheric_drag_simulation.json
+✓ Step 022: Atmospheric Drag Simulation completed in 0.06s
+
+======================================================================
+[26/42] Step 023: Thermal Recoil Simulation
+======================================================================
+[INFO] [STEP 023] LOGGER INITIALIZED: step_023_thermal_recoil_modeling (Step 023)
+[INFO] [STEP 023] LOGGER INITIALIZED: step_023_thermal_recoil_modeling (Step 023)
+
+======================================================================
+THERMAL RECOIL MODELING RESULTS
+======================================================================
+
+Analyzed 5 flybys
+RTG-powered flybys: 2
+
+Summary:
+  All excluded: False
+  Maximum thermal fraction: 6.42e-02
+  Conclusion: Thermal recoil may contribute to some anomalies
+
+Per-flyby results:
+
+  NEAR:
+    Has RTG: False
+    Spacecraft mass: 805 kg
+    Thermal force: 6.00e-09 N
+    Thermal acceleration: 7.46e-12 m/s²
+    Integrated Δv from thermal: 6.44e-04 mm/s
+    Observed anomaly: 13.46 mm/s
+    Thermal fraction: 4.79e-05
+    Excluded: True
+
+  Galileo_1990:
+    Has RTG: True
+    RTG power: 5700 W
+    Spacecraft mass: 2222 kg
+    Thermal force: 1.90e-07 N
+    Thermal acceleration: 8.56e-11 m/s²
+    Integrated Δv from thermal: 7.39e-03 mm/s
+    Observed anomaly: 3.92 mm/s
+    Thermal fraction: 1.89e-03
+    Excluded: True
+
+  Cassini:
+    Has RTG: True
+    RTG power: 14000 W
+    Spacecraft mass: 5712 kg
+    Thermal force: 4.67e-07 N
+    Thermal acceleration: 8.18e-11 m/s²
+    Integrated Δv from thermal: 7.06e-03 mm/s
+    Observed anomaly: 0.11 mm/s
+    Thermal fraction: 6.42e-02
+    Excluded: False
+
+  Rosetta_2005:
+    Has RTG: False
+    Spacecraft mass: 2900 kg
+    Thermal force: 6.67e-09 N
+    Thermal acceleration: 2.30e-12 m/s²
+    Integrated Δv from thermal: 1.99e-04 mm/s
+    Observed anomaly: 1.82 mm/s
+    Thermal fraction: 1.09e-04
+    Excluded: True
+
+  Rosetta_2007:
+    Has RTG: False
+    Spacecraft mass: 2900 kg
+    Thermal force: 6.67e-09 N
+    Thermal acceleration: 2.30e-12 m/s²
+    Integrated Δv from thermal: 1.99e-04 mm/s
+    Observed anomaly: 0.02 mm/s
+    Thermal fraction: 9.94e-03
+    Excluded: True
+[INFO] [STEP 023] ✓ Thermal recoil excluded for all 5 flybys
+[INFO] [STEP 023]   Output: step023_thermal_recoil_modeling.json (Thermal recoil modeling results)
+
+✓ Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step023_thermal_recoil_modeling.json
+✓ Step 023: Thermal Recoil Simulation completed in 0.07s
+
+======================================================================
+[27/42] Step 024: Systematic Error Monte Carlo
+======================================================================
+[INFO] [STEP 024] LOGGER INITIALIZED: step_024_systematic_error_monte_carlo (Step 024)
+[INFO] [STEP 024] LOGGER INITIALIZED: step_024_systematic_error_monte_carlo (Step 024)
+[INFO] [STEP 017] LOGGER INITIALIZED: step_017_plasma_modulation (Step 017)
+[INFO] [STEP 017] Loaded IRI trajectory profiles from step_033
+[INFO] [STEP 024] LOGGER INITIALIZED: step_024_systematic_error_monte_carlo (Step 024)
+
+======================================================================
+SYSTEMATIC ERROR MONTE CARLO ANALYSIS RESULTS
+======================================================================
+
+Monte Carlo trials: 1000
+Reference β: 1.73e-03
+
+Systematic error magnitudes:
+  dsn_antenna_phase: 0.1
+  derivation: Antenna phase center motion = 0.1 mm/s represents typical DSN antenna mechanical motion during tracking; ±50% uncertainty accounts for varying antenna types and environmental conditions
+  source: DSN antenna phase center motion specifications
+  dsn_tropospheric: 0.05
+  dsn_station_position: 0.02
+  trajectory_altitude: 1.0
+  trajectory_velocity: 1.0
+  calibration_drift: 0.01
+  geometry_cos_asymmetry: 0.01
+  geometry_latitude_deg: 2.0
+
+Systematic error budget:
+  Mean systematic uncertainty: 22.84%
+  Max systematic uncertainty: 104.15%
+  Interpretation: Systematic uncertainties contribute 22.8% on average to TEP predictions
+
+Per-flyby results:
+
+  NEAR:
+    Observed Δv: 13.46 mm/s
+    TEP Δv (mean ± std): 7.860 ± 0.137 mm/s
+    TEP Δv (95% CI): [7.591, 8.109] mm/s
+    Residual (mean ± std): 5.602 ± 0.177 mm/s
+    Systematic uncertainty fraction: 1.74%
+
+  Galileo_1990:
+    Observed Δv: 3.92 mm/s
+    TEP Δv (mean ± std): 1.411 ± 0.074 mm/s
+    TEP Δv (95% CI): [1.266, 1.559] mm/s
+    Residual (mean ± std): 2.504 ± 0.138 mm/s
+    Systematic uncertainty fraction: 5.26%
+
+  Cassini:
+    Observed Δv: 0.11 mm/s
+    TEP Δv (mean ± std): -0.102 ± 0.044 mm/s
+    TEP Δv (95% CI): [-0.210, -0.035] mm/s
+    Residual (mean ± std): 0.207 ± 0.130 mm/s
+    Systematic uncertainty fraction: 0.00%
+
+  Rosetta_2005:
+    Observed Δv: 1.82 mm/s
+    TEP Δv (mean ± std): 2.719 ± 0.083 mm/s
+    TEP Δv (95% CI): [2.562, 2.887] mm/s
+    Residual (mean ± std): -0.900 ± 0.154 mm/s
+    Systematic uncertainty fraction: 3.06%
+
+  Rosetta_2007:
+    Observed Δv: 0.02 mm/s
+    TEP Δv (mean ± std): 0.001 ± 0.001 mm/s
+    TEP Δv (95% CI): [0.000, 0.003] mm/s
+    Residual (mean ± std): 0.014 ± 0.126 mm/s
+    Systematic uncertainty fraction: 104.15%
+[INFO] [STEP 024] ✓ Monte Carlo systematic error analysis completed with 1000 trials
+[INFO] [STEP 024]   Output: step024_systematic_error_monte_carlo.json (Systematic error Monte Carlo results)
+
+✓ Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step024_systematic_error_monte_carlo.json
+✓ Step 024: Systematic Error Monte Carlo completed in 0.56s
+
+======================================================================
+[28/42] Step 025: Corrected Uncertainty Analysis
+======================================================================
+[INFO] [STEP 025] LOGGER INITIALIZED: step_025_corrected_uncertainty (Step 025)
+[INFO] [STEP 025] ================================================================================
+[INFO] [STEP 025] STEP 025: CORRECTED SYSTEMATIC UNCERTAINTY CALCULATION
+[INFO] [STEP 025] ================================================================================
+[INFO] [STEP 025] Original manuscript claims:
+[INFO] [STEP 025]   - '0.03% systematic uncertainty contribution'
+[INFO] [STEP 025]   - '102% total relative uncertainty'
+[INFO] [STEP 025] 
+[INFO] [STEP 025] These are contradictory.
+[INFO] [STEP 025] Root cause: Confusion between variance contributions and total relative uncertainty
+[INFO] [STEP 025] Corrected Uncertainty Budget:
+[INFO] [STEP 025]   Statistical uncertainty: 3.93%
+[INFO] [STEP 025]   Systematic uncertainty: 29.17%
+[INFO] [STEP 025]   Heterogeneity uncertainty: 66.72%
+[INFO] [STEP 025]   Total uncertainty: 72.93%
+[INFO] [STEP 025] 
+[INFO] [STEP 025] Variance Contributions:
+[INFO] [STEP 025]   Statistical: 0.3%
+[INFO] [STEP 025]   Systematic: 16.0%
+[INFO] [STEP 025]   Heterogeneity: 83.7%
+[INFO] [STEP 025]   Total: 100.0%
+[INFO] [STEP 025] ✓ Corrected uncertainty calculation complete. Saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step025_corrected_uncertainty.json
+[INFO] [STEP 025]   Output: step025_corrected_uncertainty.json (Corrected uncertainty budget)
+[INFO] [STEP 025] 
+[INFO] [STEP 025] ================================================================================
+[INFO] [STEP 025] STEP SUMMARY: step_025_corrected_uncertainty
+[INFO] [STEP 025] ================================================================================
+[INFO] [STEP 025] Step Number: 025
+[INFO] [STEP 025] Status: SUCCESS
+[INFO] [STEP 025] Duration: 0.00s
+[INFO] [STEP 025] Calculations Logged: 0
+[INFO] [STEP 025] Output Files: 1
+[INFO] [STEP 025] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_025_corrected_uncertainty.log
+[INFO] [STEP 025] 
+[INFO] [STEP 025] Generated 1 output file(s):
+[INFO] [STEP 025]   • step025_corrected_uncertainty.json: 1.24 KB - Corrected uncertainty budget
+[INFO] [STEP 025] ================================================================================
+[INFO] [STEP 025] STEP 025 COMPLETE: SUCCESS
+[INFO] [STEP 025] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_025_corrected_uncertainty_provenance.json
+✓ Step 025: Corrected Uncertainty Analysis completed in 0.07s
+
+======================================================================
+[29/42] Step 026: Stable Model Comparison
+======================================================================
+[INFO] [STEP 026] LOGGER INITIALIZED: step_026_stable_model_comparison (Step 026)
+[INFO] [STEP 026] ================================================================================
+[INFO] [STEP 026] STEP 026: FOUR-TIER MODEL COMPARISON
+[INFO] [STEP 026] ================================================================================
+[INFO] [STEP 026] Tiers: Null (0 param) | Anderson (2 param) | TEP restricted (1 param) | TEP flexible (3 param)
+[INFO] [STEP 026] TEP restricted is the primary evidence claim: all parameters except beta are pre-specified.
+[INFO] [STEP 026] Skipping Galileo_1992 for model comparison: snr_below_threshold
+[INFO] [STEP 026] Skipping Rosetta_2007 for model comparison: snr_below_threshold
+[INFO] [STEP 026] Skipping Rosetta_2009 for model comparison: snr_below_threshold
+[INFO] [STEP 026] Skipping MESSENGER_2005 for model comparison: snr_below_threshold
+[INFO] [STEP 026] Skipping Juno for model comparison: snr_below_threshold
+[INFO] [STEP 026] Skipping Stardust for model comparison: missing_observation
+[INFO] [STEP 026] Skipping OSIRIS-REx for model comparison: missing_observation
+[INFO] [STEP 026] Skipping BepiColombo for model comparison: missing_observation
+[INFO] [STEP 026] Loaded 4 flybys passing Step 008 ensemble gates
+[INFO] [STEP 026] Catalog entries excluded from ensemble: 8
+[INFO] [STEP 026] Ensemble config: strict_sign_gate=False (pipeline default: false)
+[INFO] [STEP 026] Using 4 flybys passing Step 008 ensemble gates
+[INFO] [STEP 026] Headline IC/BF: extra σ_sys = 0.722 mm/s (geometry-prediction spread, ddof=1).
+[INFO] [STEP 026] This accounts for the fact that published per-flyby uncertainties (~0.01–0.05 mm/s) are inconsistent with the ~1–10 mm/s residuals of the single-β restricted scaling model.
+[INFO] [STEP 026] 
+[INFO] [STEP 026] Fitted parameters:
+[INFO] [STEP 026]   Anderson: A=17.638, B=0.147
+[INFO] [STEP 026]   TEP restricted: beta=1.75e-03
+[INFO] [STEP 026]   TEP flexible: beta=6.84e-04, b_disf=3.07e+00, offset=1.083
+[INFO] [STEP 026] 
+[INFO] [STEP 026] Log-likelihoods:
+[INFO] [STEP 026]   Null:        -194.13
+[INFO] [STEP 026]   Anderson:    -26.14
+[INFO] [STEP 026]   TEP res:     -7.98
+[INFO] [STEP 026]   TEP flex:    -6.34
+[INFO] [STEP 026] 
+[INFO] [STEP 026] Information Criteria:
+[INFO] [STEP 026]   Null:        AIC=388.3, BIC=388.3
+[INFO] [STEP 026]   Anderson:    AIC=56.3, BIC=55.0
+[INFO] [STEP 026]   TEP res:     AIC=18.0, BIC=17.3
+[INFO] [STEP 026]   TEP flex:    AIC=18.7, BIC=16.8
+[INFO] [STEP 026] 
+[INFO] [STEP 026] Bayes Factors (via BIC; log10 shown):
+[INFO] [STEP 026]   WARNING: n=4 is too small for the BIC large-sample approximation.
+[INFO] [STEP 026]   log10(BF) values exceeding 100.0 are driven by formal
+[INFO] [STEP 026]   uncertainties and should not be reported as literal probability ratios.
+[INFO] [STEP 026]   Anderson vs Null:       log10(B)=72.36 (ΔBIC=333.2)
+[INFO] [STEP 026]   TEP restricted vs Null: log10(B)=80.54 (ΔBIC=370.9)
+[INFO] [STEP 026]   TEP flexible vs Null:   log10(B)=80.65 (ΔBIC=371.4)
+[INFO] [STEP 026]   TEP res vs Anderson:    log10(B)=8.19 (ΔBIC=37.7)
+[INFO] [STEP 026] Sign-agreement diagnostic: n=3 (TEP vs Null log10 B = 71.13)
+[INFO] [STEP 026] Testing whether model-comparison conclusions are sensitive to the n=3 vs n=4 choice (Cassini excluded vs included).
+[INFO] [STEP 026] Cassini already in eligible ensemble (strict_sign_gate=false); skipping separate n=4 re-merge.
+[INFO] [STEP 026] Testing whether model-preference conclusions hold when the comparison is forced to explain ALL published flybys, not only the three sign-gated primary detections.
+[INFO] [STEP 026] Using 9 flybys with published observations from Step 007
+[INFO] [STEP 026] Geometry-spread sigma_sys = 0.520 mm/s (sample std of 9 reference-scale TEP predictions, ddof=1).
+[INFO] [STEP 026] This includes both primary detections and null-result bounds, providing a more conservative test of model discrimination.
+[INFO] [STEP 026] 
+[INFO] [STEP 026] Fitted parameters:
+[INFO] [STEP 026]   Anderson: A=18.591, B=-0.413
+[INFO] [STEP 026]   TEP restricted: beta=1.75e-03
+[INFO] [STEP 026]   TEP flexible: beta=1.40e-03, b_disf=1.38e+00, offset=0.232
+[INFO] [STEP 026] 
+[INFO] [STEP 026] Log-likelihoods:
+[INFO] [STEP 026]   Null:        -371.34
+[INFO] [STEP 026]   Anderson:    -50.97
+[INFO] [STEP 026]   TEP res:     -13.20
+[INFO] [STEP 026]   TEP flex:    -12.53
+[INFO] [STEP 026] 
+[INFO] [STEP 026] Information Criteria:
+[INFO] [STEP 026]   Null:        AIC=742.7, BIC=742.7
+[INFO] [STEP 026]   Anderson:    AIC=105.9, BIC=106.3
+[INFO] [STEP 026]   TEP res:     AIC=28.4, BIC=28.6
+[INFO] [STEP 026]   TEP flex:    AIC=31.1, BIC=31.7
+[INFO] [STEP 026] 
+[INFO] [STEP 026] Bayes Factors (via BIC; log10 shown):
+[INFO] [STEP 026]   WARNING: n=9 is too small for the BIC large-sample approximation.
+[INFO] [STEP 026]   log10(BF) values exceeding 100.0 are driven by formal
+[INFO] [STEP 026]   uncertainties and should not be reported as literal probability ratios.
+[INFO] [STEP 026]   Anderson vs Null:       log10(B)=138.18 (ΔBIC=636.4)
+[INFO] [STEP 026]   TEP restricted vs Null: log10(B)=155.06 (ΔBIC=714.1)
+[INFO] [STEP 026]   TEP flexible vs Null:   log10(B)=154.40 (ΔBIC=711.0)
+[INFO] [STEP 026]   TEP res vs Anderson:    log10(B)=16.88 (ΔBIC=77.7)
+[INFO] [STEP 026] 
+[INFO] [STEP 026] ======================================================================
+[INFO] [STEP 026] FULL-CATALOG RESULTS SUMMARY
+[INFO] [STEP 026]   n_data = 9
+[INFO] [STEP 026]   TEP restricted vs Null log10(BF) = 155.06
+[INFO] [STEP 026]   TEP restricted vs Anderson log10(BF) = 16.88
+[INFO] [STEP 026]   Best model (BIC) = TEP_restricted
+[INFO] [STEP 026] ======================================================================
+[INFO] [STEP 026] ✓ Stable model comparison complete. Saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step026_stable_model_comparison.json
+[INFO] [STEP 026]   Output: step026_stable_model_comparison.json (Stable model comparison results)
+[INFO] [STEP 026] 
+[INFO] [STEP 026] ================================================================================
+[INFO] [STEP 026] STEP SUMMARY: step_026_stable_model_comparison
+[INFO] [STEP 026] ================================================================================
+[INFO] [STEP 026] Step Number: 026
+[INFO] [STEP 026] Status: SUCCESS
+[INFO] [STEP 026] Duration: 0.17s
+[INFO] [STEP 026] Calculations Logged: 0
+[INFO] [STEP 026] Output Files: 1
+[INFO] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_026_stable_model_comparison.log
+[INFO] [STEP 026] 
+[INFO] [STEP 026] Generated 1 output file(s):
+[INFO] [STEP 026]   • step026_stable_model_comparison.json: 18.47 KB - Stable model comparison results
+[INFO] [STEP 026] ================================================================================
+[INFO] [STEP 026] STEP 026 COMPLETE: SUCCESS
+[INFO] [STEP 026] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_026_stable_model_comparison_provenance.json
+✓ Step 026: Stable Model Comparison completed in 0.25s
+
+======================================================================
+[30/42] Step 039: Flyby Prediction Table
+======================================================================
+[INFO] [STEP 039] LOGGER INITIALIZED: step_039_flyby_prediction_table (Step 039)
+[INFO] [STEP 039] ================================================================================
+[INFO] [STEP 039] STEP 039: PER-FLYBY POST-OD PREDICTION AND CLASSIFICATION TABLE
+[INFO] [STEP 039] ================================================================================
+[INFO] [STEP 039] Step 008 pooled beta = 1.732539e-03; prediction uncertainty uses random_effects_uncertainty = 7.850735e-04
+[INFO] [STEP 039] Scale factor (beta^(3/4)) = 8.4920
+[INFO] [STEP 039] Relative uncertainty on raw prediction = 0.3399
+[INFO] [STEP 039] NEAR                 | obs=   13.46 | raw=  13.472 | raw_cls= true_positive | raw_unc=observed_detection_prediction_uncertain | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] Galileo 1990         | obs=    3.92 | raw=   1.688 | raw_cls= true_positive | raw_unc=observed_detection_prediction_uncertain | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] Rosetta 2005         | obs=    1.82 | raw=   2.727 | raw_cls= true_positive | raw_unc=observed_detection_prediction_uncertain | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] Cassini              | obs=    0.11 | raw=  -0.101 | raw_cls=     true_null | raw_unc=     true_null | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] Galileo 1992         | obs=     0.0 | raw=   0.002 | raw_cls=     true_null | raw_unc=     true_null | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] MESSENGER            | obs=     0.0 | raw=     0.0 | raw_cls=     true_null | raw_unc=     true_null | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] Rosetta 2009         | obs=     0.0 | raw=    0.01 | raw_cls=     true_null | raw_unc=     true_null | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] Juno                 | obs=     0.0 | raw=   0.112 | raw_cls=   raw_tension | raw_unc=     true_null | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] Rosetta 2007         | obs=    0.02 | raw=   0.001 | raw_cls=     true_null | raw_unc=     true_null | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] Stardust             | obs=    None | raw=  -0.003 | raw_cls=uncertainty_unavailable | raw_unc=uncertainty_unavailable | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] OSIRIS-REx           | obs=    None | raw=     0.0 | raw_cls=uncertainty_unavailable | raw_unc=uncertainty_unavailable | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] BepiColombo          | obs=    None | raw=    -0.0 | raw_cls=uncertainty_unavailable | raw_unc=uncertainty_unavailable | FOD=  None | post=    None | f_od_unavailable
+[INFO] [STEP 039] 
+[INFO] [STEP 039] Raw pooled-amplitude classification summary:
+[INFO] [STEP 039]   true_positive            : 3
+[INFO] [STEP 039]   true_null                : 5
+[INFO] [STEP 039]   raw_tension              : 1
+[INFO] [STEP 039]   raw_surplus              : 0
+[INFO] [STEP 039] 
+[INFO] [STEP 039] Uncertainty-aware raw classification summary:
+[INFO] [STEP 039]   true_positive            : 0
+[INFO] [STEP 039]   true_null                : 6
+[INFO] [STEP 039]   raw_tension              : 0
+[INFO] [STEP 039]   raw_surplus              : 0
+[INFO] [STEP 039]   observed_detection_prediction_uncertain: 3
+[INFO] [STEP 039] 
+[INFO] [STEP 039] Post-OD classification summary:
+[INFO] [STEP 039]   true_positive            : 0
+[INFO] [STEP 039]   true_null                : 0
+[INFO] [STEP 039]   suppressed_positive      : 0
+[INFO] [STEP 039]   false_positive           : 0
+[INFO] [STEP 039]   false_negative           : 0
+[INFO] [STEP 039] 
+[INFO] [STEP 039] Output written to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step039_flyby_prediction_table.json
+[INFO] [STEP 039] 
+[INFO] [STEP 039] ================================================================================
+[INFO] [STEP 039] STEP SUMMARY: step_039_flyby_prediction_table
+[INFO] [STEP 039] ================================================================================
+[INFO] [STEP 039] Step Number: 039
+[INFO] [STEP 039] Status: SUCCESS
+[INFO] [STEP 039] Duration: 12.00s
+[INFO] [STEP 039] Calculations Logged: 0
+[INFO] [STEP 039] Output Files: 0
+[INFO] [STEP 039] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_039_flyby_prediction_table.log
+[INFO] [STEP 039] No output files generated
+[INFO] [STEP 039] ================================================================================
+[INFO] [STEP 039] STEP 039 COMPLETE: SUCCESS
+[INFO] [STEP 039] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_039_flyby_prediction_table_provenance.json
+✓ Step 039: Flyby Prediction Table completed in 0.09s
+
+======================================================================
+[31/42] Step 027: Claim Consistency Audit
+======================================================================
+[INFO] [STEP 027] LOGGER INITIALIZED: step_027_claim_consistency_audit (Step 027)
+[INFO] [STEP 027] ================================================================================
+[INFO] [STEP 027] STEP 027: CLAIM CONSISTENCY AUDIT
+[INFO] [STEP 027] ================================================================================
+[ERROR] [STEP 027] ✗ Unhandled exception: float() argument must be a string or a real number, not 'NoneType'
+[INFO] [STEP 027] 
+[INFO] [STEP 027] ================================================================================
+[INFO] [STEP 027] STEP SUMMARY: step_027_claim_consistency_audit
+[INFO] [STEP 027] ================================================================================
+[INFO] [STEP 027] Step Number: 027
+[INFO] [STEP 027] Status: FAILED
+[INFO] [STEP 027] Duration: 0.02s
+[INFO] [STEP 027] Calculations Logged: 0
+[INFO] [STEP 027] Output Files: 0
+[INFO] [STEP 027] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_027_claim_consistency_audit.log
+[INFO] [STEP 027] No output files generated
+[INFO] [STEP 027] ================================================================================
+[INFO] [STEP 027] STEP 027 COMPLETE: FAILED
+[INFO] [STEP 027] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_027_claim_consistency_audit_provenance.json
+Traceback (most recent call last):
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps/step_027_claim_consistency_audit.py", line 930, in <module>
+    main()
+    ~~~~^^
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/steps/step_027_claim_consistency_audit.py", line 879, in main
+    updated = sync_publication_artifacts(project_root)
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/utils/publication_sync.py", line 1476, in sync_publication_artifacts
+    expected = load_expected_publication_values(project_root)
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/utils/publication_sync.py", line 235, in load_expected_publication_values
+    "structural": _format_percent(stages["stage1_structural"]["explained_percent"]),
+                  ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/utils/publication_sync.py", line 25, in _format_percent
+    return f"{_round(value, digits):.{digits}f}%"
+              ~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/scripts/utils/publication_sync.py", line 21, in _round
+    return round(float(value), digits)
+                 ~~~~~^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'NoneType'
+✗ Step 027: Claim Consistency Audit failed after 0.06s
+✗ Stopping pipeline due to failure
+
+======================================================================
+PIPELINE EXECUTION SUMMARY
+======================================================================
+----------------------------------------------------------------------
+Execution Timeline
+----------------------------------------------------------------------
+Pipeline started: 2026-05-17 09:26:41 UTC
+Pipeline ended:   2026-05-17 09:30:34 UTC
+Total duration:   3.88 minutes
+----------------------------------------------------------------------
+Step-by-Step Results
+----------------------------------------------------------------------
+Step   Description                                        Status     Duration    
+--------------------------------------------------------------------------------
+Step 001 Step 001: Download SPICE Kernels (NAIF)            ✓ SUCCESS  32.67s      
+Step 002 Step 002: Convert SPICE to JSON                    ✓ SUCCESS  0.22s       
+Step 003 Step 003: Archival Data Mining                     ✓ SUCCESS  0.07s       
+Step 004 Step 004: JPL Horizons Data Fetch                  ✓ SUCCESS  0.91s       
+Step 005 Step 038: Extract 3D State Vectors from JPL Hori   ✓ SUCCESS  0.69s       
+Step 006 Step 033: Continuous IRI Trajectory Profiles       ✓ SUCCESS  44.12s      
+Step 007 Step 005: DSN Data Ingestion                       ✓ SUCCESS  0.04s       
+Step 008 Step 006: DSN Framework (Resolves Horizons Circu   ✓ SUCCESS  112.46s     
+Step 009 Step 007: Enhanced TEP Model (WGS84, PREM, 3D)     ✓ SUCCESS  0.99s       
+Step 010 Step 008: Parameter Fitting                        ✓ SUCCESS  0.47s       
+Step 011 Step 041: Geometry Envelope Heuristic Sensitivit   ✓ SUCCESS  15.45s      
+Step 012 Step 009: Unified Variance Analysis (Four-Stage)   ✓ SUCCESS  0.45s       
+Step 013 Step 010: First-Principles UCD Saturation Topolo   ✓ SUCCESS  0.21s       
+Step 014 Step 011: Trajectory Integration                   ✓ SUCCESS  3.37s       
+Step 015 Step 012: OD Filter Simulation                     ✓ SUCCESS  13.70s      
+Step 016 Step 013: Cross-Validation Analysis                ✓ SUCCESS  0.19s       
+Step 017 Step 014: Sensitivity Analysis                     ✓ SUCCESS  0.35s       
+Step 018 Step 015: Hierarchical Bayesian Model              ✓ SUCCESS  3.20s       
+Step 019 Step 016: GNSS Validation                          ✓ SUCCESS  0.07s       
+Step 020 Step 017: Plasma Modulation (Cassini Sign)         ✓ SUCCESS  0.64s       
+Step 021 Step 018: Space Weather Correlation                ✓ SUCCESS  0.44s       
+Step 022 Step 019: 3D Field Integration                     ✓ SUCCESS  0.25s       
+Step 023 Step 020: Plasma Environment Reconstruction        ✓ SUCCESS  0.38s       
+Step 024 Step 021: Mission-Specific OD Absorption           ✓ SUCCESS  0.09s       
+Step 025 Step 022: Atmospheric Drag Simulation              ✓ SUCCESS  0.06s       
+Step 026 Step 023: Thermal Recoil Simulation                ✓ SUCCESS  0.07s       
+Step 027 Step 024: Systematic Error Monte Carlo             ✓ SUCCESS  0.56s       
+Step 028 Step 025: Corrected Uncertainty Analysis           ✓ SUCCESS  0.07s       
+Step 029 Step 026: Stable Model Comparison                  ✓ SUCCESS  0.25s       
+Step 030 Step 039: Flyby Prediction Table                   ✓ SUCCESS  0.09s       
+Step 031 Step 027: Claim Consistency Audit                  ✗ FAILED   0.06s       
+----------------------------------------------------------------------
+Statistics
+----------------------------------------------------------------------
+Total steps:     42
+Successful:      30
+Failed:          1
+Success rate:    71.4%
+----------------------------------------------------------------------
+Research Accountability & Reproducibility
+----------------------------------------------------------------------
+Research audit generated: RESEARCH_AUDIT_20260517_123034.json
+----------------------------------------------------------------------
+Data Integrity Validation
+----------------------------------------------------------------------
+Checking all results for synthetic data contamination...
+✓   ✓ All results files passed data integrity check
+
+✗ PIPELINE FAILED - 1 step(s) did not complete

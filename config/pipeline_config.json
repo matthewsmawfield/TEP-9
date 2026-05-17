@@ -1,8 +1,14 @@
 {
   "pipeline_version": "2.1.0",
-  "description": "TEP Flyby Pipeline with corrected Temporal Shear Suppression parameters",
+  "description": "TEP Flyby Pipeline with corrected Temporal Topology screening parameters",
   "parameters": {
     "analysis": {
+      "ephemeris": {
+        "solar_system": "de440",
+        "jpl_horizons": "de440/de441 (JPL internal, as of 2025)",
+        "esa_spice": "Rosetta ORER/ORFR kernels (ESA SPICE Service, uses JPL DE series internally)",
+        "notes": "Standardized to DE440 for all Earth/Sun barycentric calculations (steps 040, 042). JPL Horizons uses DE440/DE441 internally. ESA SPICE kernels for Rosetta use JPL DE ephemerides (kernel-internal, consistent with JPL standards)."
+      },
       "tep_physics": {
         "beta_initial": 0.0001,
         "beta_range": [
@@ -14,7 +20,15 @@
         "lambda_gev": 0.01,
         "screening_length_km": 4200,
         "characteristic_suppression": 0.349,
-        "parameter_source": "UCD_soliton_first_principles"
+        "parameter_source": "UCD_soliton_first_principles",
+        "strict_sign_gate": false,
+        "_strict_sign_gate_note": "Publication default: false. S/N-qualified flybys stay in the Step 008/026 primary pool; sign-mismatch rows use amplitude-only reference fits. Set true only for legacy n=3 sign-gated reproduction.",
+        "hierarchical_beta_prior_center": "step008_recommended",
+        "_hierarchical_beta_prior_center_values": {
+          "step008_recommended": "Center log-β_0 prior on Step 008 overall_analysis.recommended_beta (inverse-variance mean over all S/N-qualified fits in the current run).",
+          "step008_sign_gated_diagnostic": "Center on beta_statistics_sign_gated_diagnostic.weighted_mean (NEAR, Galileo 1990, Rosetta 2005 only when Cassini is sign-relaxed).",
+          "reference_beta": "Center on the fixed reference coupling β_ref = BETA_BASELINE × 10^{-4} from physics.py (fully independent of Step 008 pooled summaries)."
+        }
       },
       "earth_model": {
         "geoid": "WGS84",
@@ -33,5 +47,49 @@
       }
     }
   },
+  "steps": [
+    {"id": "step_001", "script": "step_001_download_spice.py", "description": "Download SPICE Kernels (NAIF)"},
+    {"id": "step_002", "script": "step_002_spice_to_json.py", "description": "Convert SPICE to JSON"},
+    {"id": "step_003", "script": "step_003_archival_data_mining.py", "description": "Archival Data Mining"},
+    {"id": "step_004", "script": "step_004_jpl_horizons_fetch.py", "description": "JPL Horizons Data Fetch"},
+    {"id": "step_038", "script": "step_038_extract_3d_vectors.py", "description": "Extract 3D State Vectors from JPL Horizons"},
+    {"id": "step_033", "script": "step_033_iri_trajectory_profile.py", "description": "Continuous IRI Trajectory Profiles"},
+    {"id": "step_005", "script": "step_005_dsn_data_ingestion.py", "description": "DSN Data Ingestion"},
+    {"id": "step_006", "script": "step_006_dsn_framework.py", "description": "DSN Framework (Resolves Horizons Circularity)"},
+    {"id": "step_007", "script": "step_007_tep_model.py", "description": "Enhanced TEP Model (WGS84, PREM, 3D)"},
+    {"id": "step_008", "script": "step_008_fitting.py", "description": "Parameter Fitting"},
+    {"id": "step_041", "script": "step_041_envelope_heuristic_sensitivity.py", "description": "Geometry Envelope Heuristic Sensitivity"},
+    {"id": "step_009", "script": "step_009_variance_analysis.py", "description": "Unified Variance Analysis (Four-Stage)"},
+    {"id": "step_010", "script": "step_010_tep_first_principles.py", "description": "First-Principles UCD Saturation Topology"},
+    {"id": "step_011", "script": "step_011_trajectory_integration.py", "description": "Trajectory Integration"},
+    {"id": "step_012", "script": "step_012_od_filter_simulation.py", "description": "OD Filter Simulation"},
+    {"id": "step_013", "script": "step_013_cross_validation.py", "description": "Cross-Validation Analysis"},
+    {"id": "step_014", "script": "step_014_sensitivity_analysis.py", "description": "Sensitivity Analysis"},
+    {"id": "step_015", "script": "step_015_hierarchical_bayesian.py", "description": "Hierarchical Bayesian Model"},
+    {"id": "step_016", "script": "step_016_gnss_validation.py", "description": "GNSS Validation"},
+    {"id": "step_017", "script": "step_017_plasma_modulation.py", "description": "Plasma Modulation (Cassini Sign)"},
+    {"id": "step_018", "script": "step_018_space_weather.py", "description": "Space Weather Correlation"},
+    {"id": "step_019", "script": "step_019_3d_field_integration.py", "description": "3D Field Integration"},
+    {"id": "step_020", "script": "step_020_plasma_environment_reconstruction.py", "description": "Plasma Environment Reconstruction"},
+    {"id": "step_021", "script": "step_021_mission_specific_od_absorption.py", "description": "Mission-Specific OD Absorption"},
+    {"id": "step_022", "script": "step_022_atmospheric_drag_simulation.py", "description": "Atmospheric Drag Simulation"},
+    {"id": "step_023", "script": "step_023_thermal_recoil_modeling.py", "description": "Thermal Recoil Simulation"},
+    {"id": "step_024", "script": "step_024_systematic_error_monte_carlo.py", "description": "Systematic Error Monte Carlo"},
+    {"id": "step_025", "script": "step_025_corrected_uncertainty.py", "description": "Corrected Uncertainty Analysis"},
+    {"id": "step_026", "script": "step_026_stable_model_comparison.py", "description": "Stable Model Comparison"},
+    {"id": "step_039", "script": "step_039_flyby_prediction_table.py", "description": "Flyby Prediction Table"},
+    {"id": "step_027", "script": "step_027_claim_consistency_audit.py", "description": "Claim Consistency Audit"},
+    {"id": "step_028", "script": "step_028_dsn_processing.py", "description": "DSN Processing Framework"},
+    {"id": "step_029", "script": "step_029_read_trk234.py", "description": "Read TRK-2-34 Data Format"},
+    {"id": "step_030", "script": "step_030_juno_reanalysis.py", "description": "Juno 2013 Reanalysis"},
+    {"id": "step_042", "script": "step_042_time_resolved_cosmography.py", "description": "Time-Resolved Cosmography"},
+    {"id": "step_031", "script": "step_031_pds_search.py", "description": "PDS Search"},
+    {"id": "step_032", "script": "step_032_tep_suppression.py", "description": "TEP Suppression Analysis"},
+    {"id": "step_034", "script": "step_034_covariant_holonomy.py", "description": "Covariant Temporal Shear Impulse"},
+    {"id": "step_035", "script": "step_035_cross_corpus_export.py", "description": "Cross-Corpus Parameter Export"},
+    {"id": "step_040", "script": "step_040_cosmographic_shear.py", "description": "Cosmographic Temporal Shear Modulation Test"},
+    {"id": "step_036", "script": "step_036_final_report.py", "description": "Final Report Generation"},
+    {"id": "step_037", "script": "step_037_visualizations.py", "description": "Figure Generation"}
+  ],
   "notes": "Corrected characteristic suppression formula (removed erroneous beta factor, use cosmic boundary). Lambda=10 MeV (physically motivated dark energy scale). n=3. First-principles PREM integration now yields calculated characteristic suppression."
 }

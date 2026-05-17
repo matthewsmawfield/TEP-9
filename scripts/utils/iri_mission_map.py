@@ -11,6 +11,8 @@ IRI_MISSION_MAP = {
     "MESSENGER_2005": "MESSENGER_2005",
     "Juno": "Juno_2013",
     "Stardust": "Stardust_2001",
+    "OSIRIS-REx": "OSIRIS-REx_2017",
+    "BepiColombo": "BepiColombo_2020",
 }
 
 

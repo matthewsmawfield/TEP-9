@@ -1,84 +1,105 @@
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] LOGGER INITIALIZED: step_013_cross_validation (Step 013)
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_013_cross_validation.log
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] STEP 013: CROSS-VALIDATION AND ROBUSTNESS ANALYSIS
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Loading primary detections from step008 (S/N>2, excluded=False, β>0). Rosetta_2007 (S/N=0.4) and other sub-threshold flybys are correctly excluded from training data.
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Primary detections loaded: 3
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   NEAR                : β=1.241e-03, dv_obs=13.46 mm/s, alt=568 km
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Galileo_1990        : β=2.840e-03, dv_obs=3.92 mm/s, alt=972 km
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Rosetta_2005        : β=5.388e-04, dv_obs=1.82 mm/s, alt=1969 km
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] 
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] SECTION: LEAVE-ONE-OUT CROSS-VALIDATION
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Left out NEAR:
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   β_loo            = 1.689e-03
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Predicted Δv     = 16.9673 mm/s
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Observed  Δv     = 13.4600 mm/s
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   |Residual|       = 3.5073 mm/s (26.1%)
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Sign correct     = True
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Left out Galileo_1990:
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   β_loo            = 8.897e-04
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Predicted Δv     = 1.6415 mm/s
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Observed  Δv     = 3.9200 mm/s
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   |Residual|       = 2.2785 mm/s (58.1%)
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Sign correct     = True
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Left out Rosetta_2005:
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   β_loo            = 2.040e-03
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Predicted Δv     = 4.9404 mm/s
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Observed  Δv     = 1.8200 mm/s
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   |Residual|       = 3.1204 mm/s (171.5%)
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Sign correct     = True
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] 
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] LOGGER INITIALIZED: step_013_cross_validation (Step 013)
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_013_cross_validation.log
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] STEP 013: CROSS-VALIDATION AND ROBUSTNESS ANALYSIS
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Loading primary detections from step008 (S/N>2, excluded=False, β>0). Rosetta_2007 (S/N=0.4) and other sub-threshold flybys are correctly excluded from training data.
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Primary detections loaded: 4
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   NEAR                : β=1.731e-03, dv_obs=13.46 mm/s, alt=568 km
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Galileo_1990        : β=5.330e-03, dv_obs=3.92 mm/s, alt=972 km
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Cassini             : β=1.934e-03, dv_obs=0.11 mm/s, alt=1197 km
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Rosetta_2005        : β=1.010e-03, dv_obs=1.82 mm/s, alt=1969 km
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] 
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] SECTION: LEAVE-ONE-OUT CROSS-VALIDATION
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Left out NEAR:
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   β_loo            = 2.377e-03
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Predicted Δv     = 17.0774 mm/s
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Observed  Δv     = 13.4600 mm/s
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   |Residual|       = 3.6174 mm/s (26.9%)
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Sign correct     = True
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Left out Galileo_1990:
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   β_loo            = 1.729e-03
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Predicted Δv     = 1.6849 mm/s
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Observed  Δv     = 3.9200 mm/s
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   |Residual|       = 2.2351 mm/s (57.0%)
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Sign correct     = True
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Left out Cassini:
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   β_loo            = 1.733e-03
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Predicted Δv     = -0.1013 mm/s
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Observed  Δv     = 0.1100 mm/s
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   |Residual|       = 0.2113 mm/s (192.1%)
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Sign correct     = False
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Left out Rosetta_2005:
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   β_loo            = 1.734e-03
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Predicted Δv     = 2.7293 mm/s
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Observed  Δv     = 1.8200 mm/s
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   |Residual|       = 0.9093 mm/s (50.0%)
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Sign correct     = True
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] 
 LOO-CV Summary:
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   β_loo = 1.540e-03 ± 4.815e-04
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Stability coefficient: 0.313 (stable)
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   Sign accuracy: 100%
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] 
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] SECTION: BOOTSTRAP VALIDATION
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Bootstrap Results (10000 samples):
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   β = 1.541e-03 ± 5.579e-04
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   68% CI: [9.993e-04, 2.093e-03]
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013]   95% CI: [5.427e-04, 2.834e-03]
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] 
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] SECTION: ALTITUDE-STRATIFIED ANALYSIS
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] low_altitude: β = 2.040e-03 (n=2, members=['NEAR', 'Galileo_1990'])
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] mid_altitude: β = 5.388e-04 (n=1, members=['Rosetta_2005'])
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] 
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] SECTION: OVERALL VALIDATION SUMMARY
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Bootstrap β: 1.541e-03 ± 5.579e-04
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] LOO stability: 0.313 (stable)
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] β scatter ratio: 5.27× (all positive: True)
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] ✓ Cross-validation complete. Saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step013_cross_validation.json
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] 
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] STEP SUMMARY: step_013_cross_validation
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Step Number: 013
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Status: SUCCESS
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Duration: 0.08s
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Calculations Logged: 0
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Output Files: 0
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_013_cross_validation.log
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] No output files generated
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] STEP 013 COMPLETE: SUCCESS
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 013] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_013_cross_validation_provenance.json
-[2026-05-13 08:57:55 UTC] [INFO    ] [STEP 013] 
-[2026-05-13 08:57:55 UTC] [INFO    ] [STEP 013] ================================================================================
-[2026-05-13 08:57:55 UTC] [INFO    ] [STEP 013] EXECUTIVE SUMMARY
-[2026-05-13 08:57:55 UTC] [INFO    ] [STEP 013] ================================================================================
-[2026-05-13 08:57:55 UTC] [INFO    ] [STEP 013] Step: step_013_cross_validation (Step 013)
-[2026-05-13 08:57:55 UTC] [INFO    ] [STEP 013] Status: SUCCESS
-[2026-05-13 08:57:55 UTC] [INFO    ] [STEP 013] Duration: 0.08s
-[2026-05-13 08:57:55 UTC] [INFO    ] [STEP 013] Calculations: 0
-[2026-05-13 08:57:55 UTC] [INFO    ] [STEP 013] Output Files: 0
-[2026-05-13 08:57:55 UTC] [INFO    ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   β_loo = 1.893e-03 ± 2.793e-04
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Stability coefficient: 0.148 (stable)
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Sign accuracy: 75%
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] 
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] SECTION: LEAVE-ONE-MISSION-OUT CROSS-VALIDATION (MANDATORY PROTOCOL)
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Held out mission 'Cassini' (1 flyby(s)); β_train=1.733e-03 from 3 training flybys
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Cassini: dv_pred=-0.1013 mm/s, dv_obs=0.1100 mm/s, sign_ok=False (exempt: known sign mismatch at β_ref)
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Held out mission 'Galileo' (1 flyby(s)); β_train=1.729e-03 from 3 training flybys
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Galileo_1990: dv_pred=1.6849 mm/s, dv_obs=3.9200 mm/s, sign_ok=True
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Held out mission 'NEAR' (1 flyby(s)); β_train=2.377e-03 from 3 training flybys
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   NEAR: dv_pred=17.0774 mm/s, dv_obs=13.4600 mm/s, sign_ok=True
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Held out mission 'Rosetta' (1 flyby(s)); β_train=1.734e-03 from 3 training flybys
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   Rosetta_2005: dv_pred=2.7293 mm/s, dv_obs=1.8200 mm/s, sign_ok=True
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] LOOMO summary: 4 mission group(s), all folds sign-correct=True, equivalent_to_LOO=True
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] 
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] SECTION: BOOTSTRAP VALIDATION
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Bootstrap Results (10000 samples):
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   β = 2.535e-03 ± 8.763e-04
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   68% CI: [1.549e-03, 3.405e-03]
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013]   95% CI: [1.154e-03, 4.424e-03]
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] 
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] SECTION: ALTITUDE-STRATIFIED ANALYSIS
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] low_altitude: β = 3.530e-03 (n=2, members=['NEAR', 'Galileo_1990'])
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] mid_altitude: β = 1.472e-03 (n=2, members=['Cassini', 'Rosetta_2005'])
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] 
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] SECTION: OVERALL VALIDATION SUMMARY
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Bootstrap β: 2.535e-03 ± 8.763e-04
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] LOO stability: 0.148 (stable)
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] β scatter ratio: 5.28× (all positive: True)
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] ✓ Cross-mission mandatory held-out protocol: PASS
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] ✓ Cross-validation complete. Saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step013_cross_validation.json
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] 
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] STEP SUMMARY: step_013_cross_validation
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Step Number: 013
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Status: SUCCESS
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Duration: 0.12s
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Calculations Logged: 0
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Output Files: 0
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_013_cross_validation.log
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] No output files generated
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] STEP 013 COMPLETE: SUCCESS
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 013] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_013_cross_validation_provenance.json
+[2026-05-17 09:30:27 UTC] [INFO    ] [STEP 013] 
+[2026-05-17 09:30:27 UTC] [INFO    ] [STEP 013] ================================================================================
+[2026-05-17 09:30:27 UTC] [INFO    ] [STEP 013] EXECUTIVE SUMMARY
+[2026-05-17 09:30:27 UTC] [INFO    ] [STEP 013] ================================================================================
+[2026-05-17 09:30:27 UTC] [INFO    ] [STEP 013] Step: step_013_cross_validation (Step 013)
+[2026-05-17 09:30:27 UTC] [INFO    ] [STEP 013] Status: SUCCESS
+[2026-05-17 09:30:27 UTC] [INFO    ] [STEP 013] Duration: 0.12s
+[2026-05-17 09:30:27 UTC] [INFO    ] [STEP 013] Calculations: 0
+[2026-05-17 09:30:27 UTC] [INFO    ] [STEP 013] Output Files: 0
+[2026-05-17 09:30:27 UTC] [INFO    ] [STEP 013] ================================================================================

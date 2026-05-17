@@ -1,77 +1,135 @@
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] LOGGER INITIALIZED: step_026_stable_model_comparison (Step 026)
-[2026-05-13 11:58:02 UTC] [DEBUG   ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_026_stable_model_comparison.log
-[2026-05-13 11:58:02 UTC] [DEBUG   ] [STEP 026] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] STEP 026: FOUR-TIER MODEL COMPARISON
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-13 11:58:02 UTC] [DEBUG   ] [STEP 026] 
-[2026-05-13 11:58:02 UTC] [DEBUG   ] [STEP 026] ================================================================================
-[2026-05-13 11:58:02 UTC] [DEBUG   ] [STEP 026] SECTION: FRAMEWORK
-[2026-05-13 11:58:02 UTC] [DEBUG   ] [STEP 026] ================================================================================
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Tiers: Null (0 param) | Anderson (2 param) | TEP restricted (1 param) | TEP flexible (3 param)
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] TEP restricted is the primary evidence claim: all parameters except beta are pre-specified.
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Skipping Cassini for model comparison: sign_mismatch
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Skipping Galileo_1992 for model comparison: missing_observation
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Skipping Rosetta_2007 for model comparison: missing_observation
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Skipping MESSENGER_2005 for model comparison: missing_observation
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Skipping Juno for model comparison: snr_below_threshold
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Loaded 3 flybys passing Step 008 ensemble gates
-[2026-05-13 11:58:02 UTC] [DEBUG   ] [STEP 026] 
-[2026-05-13 11:58:02 UTC] [DEBUG   ] [STEP 026] ================================================================================
-[2026-05-13 11:58:02 UTC] [DEBUG   ] [STEP 026] SECTION: FOUR-TIER MODEL COMPARISON
-[2026-05-13 11:58:02 UTC] [DEBUG   ] [STEP 026] ================================================================================
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Using 3 flybys passing Step 008 ensemble gates
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Systematic uncertainty (std of |predictions|): 0.7677 mm/s
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] 
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Fitted parameters:
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   Anderson: A=24.994, B=-3.178
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   TEP restricted: beta=1.23e-03
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   TEP flexible: beta=6.14e-06, b_disf=1.93e+03, offset=1.941
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] 
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Log-likelihoods:
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   Null:        -171.48
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   Anderson:    -15.96
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   TEP res:     -6.86
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   TEP flex:    -5.23
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] 
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Information Criteria:
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   Null:        AIC=343.0, BIC=343.0
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   Anderson:    AIC=35.9, BIC=34.1
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   TEP res:     AIC=15.7, BIC=14.8
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   TEP flex:    AIC=16.5, BIC=13.8
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] 
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Bayes Factors (vs Null):
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   Anderson vs Null:       5184705528587072045056.00 (ΔBIC=308.8)
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   TEP restricted vs Null: 5184705528587072045056.00 (ΔBIC=328.1)
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   TEP flexible vs Null:   5184705528587072045056.00 (ΔBIC=329.2)
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   TEP res vs Anderson:    15536.39 (ΔBIC=19.3)
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] ✓ Stable model comparison complete. Saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step026_stable_model_comparison.json
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   Output: step026_stable_model_comparison.json (Stable model comparison results)
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] 
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] STEP SUMMARY: step_026_stable_model_comparison
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Step Number: 026
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Status: SUCCESS
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Duration: 0.00s
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Calculations Logged: 0
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Output Files: 1
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_026_stable_model_comparison.log
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] 
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Generated 1 output file(s):
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026]   • step026_stable_model_comparison.json: 2.05 KB - Stable model comparison results
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] STEP 026 COMPLETE: SUCCESS
-[2026-05-13 11:58:02 UTC] [INFO    ] [STEP 026] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_026_stable_model_comparison_provenance.json
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] 
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] EXECUTIVE SUMMARY
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] Step: step_026_stable_model_comparison (Step 026)
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] Status: SUCCESS
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] Duration: 0.00s
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] Calculations: 0
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] Output Files: 1
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] Key Outputs:
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026]   - step026_stable_model_comparison.json (2.05 KB)
-[2026-05-13 08:58:02 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] LOGGER INITIALIZED: step_026_stable_model_comparison (Step 026)
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_026_stable_model_comparison.log
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] STEP 026: FOUR-TIER MODEL COMPARISON
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] SECTION: FRAMEWORK
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Tiers: Null (0 param) | Anderson (2 param) | TEP restricted (1 param) | TEP flexible (3 param)
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] TEP restricted is the primary evidence claim: all parameters except beta are pre-specified.
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Skipping Galileo_1992 for model comparison: snr_below_threshold
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Skipping Rosetta_2007 for model comparison: snr_below_threshold
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Skipping Rosetta_2009 for model comparison: snr_below_threshold
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Skipping MESSENGER_2005 for model comparison: snr_below_threshold
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Skipping Juno for model comparison: snr_below_threshold
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Skipping Stardust for model comparison: missing_observation
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Skipping OSIRIS-REx for model comparison: missing_observation
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Skipping BepiColombo for model comparison: missing_observation
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Loaded 4 flybys passing Step 008 ensemble gates
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Catalog entries excluded from ensemble: 8
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Ensemble config: strict_sign_gate=False (pipeline default: false)
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] SECTION: FOUR-TIER MODEL COMPARISON
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Using 4 flybys passing Step 008 ensemble gates
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Headline IC/BF: extra σ_sys = 0.722 mm/s (geometry-prediction spread, ddof=1).
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] This accounts for the fact that published per-flyby uncertainties (~0.01–0.05 mm/s) are inconsistent with the ~1–10 mm/s residuals of the single-β restricted scaling model.
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Fitted parameters:
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Anderson: A=17.638, B=0.147
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP restricted: beta=1.75e-03
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP flexible: beta=6.84e-04, b_disf=3.07e+00, offset=1.083
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Log-likelihoods:
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Null:        -194.13
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Anderson:    -26.14
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP res:     -7.98
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP flex:    -6.34
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Information Criteria:
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Null:        AIC=388.3, BIC=388.3
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Anderson:    AIC=56.3, BIC=55.0
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP res:     AIC=18.0, BIC=17.3
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP flex:    AIC=18.7, BIC=16.8
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Bayes Factors (via BIC; log10 shown):
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   WARNING: n=4 is too small for the BIC large-sample approximation.
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   log10(BF) values exceeding 100.0 are driven by formal
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   uncertainties and should not be reported as literal probability ratios.
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Anderson vs Null:       log10(B)=72.36 (ΔBIC=333.2)
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP restricted vs Null: log10(B)=80.54 (ΔBIC=370.9)
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP flexible vs Null:   log10(B)=80.65 (ΔBIC=371.4)
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP res vs Anderson:    log10(B)=8.19 (ΔBIC=37.7)
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Sign-agreement diagnostic: n=3 (TEP vs Null log10 B = 71.13)
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] SECTION: ENSEMBLE COMPOSITION ROBUSTNESS
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Testing whether model-comparison conclusions are sensitive to the n=3 vs n=4 choice (Cassini excluded vs included).
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Cassini already in eligible ensemble (strict_sign_gate=false); skipping separate n=4 re-merge.
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] SECTION: FULL-CATALOG MODEL COMPARISON (n=9)
+[2026-05-17 12:30:33 UTC] [DEBUG   ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Testing whether model-preference conclusions hold when the comparison is forced to explain ALL published flybys, not only the three sign-gated primary detections.
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Using 9 flybys with published observations from Step 007
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Geometry-spread sigma_sys = 0.520 mm/s (sample std of 9 reference-scale TEP predictions, ddof=1).
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] This includes both primary detections and null-result bounds, providing a more conservative test of model discrimination.
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Fitted parameters:
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Anderson: A=18.591, B=-0.413
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP restricted: beta=1.75e-03
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP flexible: beta=1.40e-03, b_disf=1.38e+00, offset=0.232
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Log-likelihoods:
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Null:        -371.34
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Anderson:    -50.97
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP res:     -13.20
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP flex:    -12.53
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Information Criteria:
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Null:        AIC=742.7, BIC=742.7
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Anderson:    AIC=105.9, BIC=106.3
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP res:     AIC=28.4, BIC=28.6
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP flex:    AIC=31.1, BIC=31.7
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Bayes Factors (via BIC; log10 shown):
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   WARNING: n=9 is too small for the BIC large-sample approximation.
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   log10(BF) values exceeding 100.0 are driven by formal
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   uncertainties and should not be reported as literal probability ratios.
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Anderson vs Null:       log10(B)=138.18 (ΔBIC=636.4)
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP restricted vs Null: log10(B)=155.06 (ΔBIC=714.1)
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP flexible vs Null:   log10(B)=154.40 (ΔBIC=711.0)
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP res vs Anderson:    log10(B)=16.88 (ΔBIC=77.7)
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] ======================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] FULL-CATALOG RESULTS SUMMARY
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   n_data = 9
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP restricted vs Null log10(BF) = 155.06
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   TEP restricted vs Anderson log10(BF) = 16.88
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Best model (BIC) = TEP_restricted
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] ======================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] ✓ Stable model comparison complete. Saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step026_stable_model_comparison.json
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   Output: step026_stable_model_comparison.json (Stable model comparison results)
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] STEP SUMMARY: step_026_stable_model_comparison
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Step Number: 026
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Status: SUCCESS
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Duration: 0.17s
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Calculations Logged: 0
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Output Files: 1
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_026_stable_model_comparison.log
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Generated 1 output file(s):
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026]   • step026_stable_model_comparison.json: 18.47 KB - Stable model comparison results
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] STEP 026 COMPLETE: SUCCESS
+[2026-05-17 12:30:33 UTC] [INFO    ] [STEP 026] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_026_stable_model_comparison_provenance.json
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] 
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] EXECUTIVE SUMMARY
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] Step: step_026_stable_model_comparison (Step 026)
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] Status: SUCCESS
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] Duration: 0.17s
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] Calculations: 0
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] Output Files: 1
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] Key Outputs:
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026]   - step026_stable_model_comparison.json (18.47 KB)
+[2026-05-17 09:30:33 UTC] [INFO    ] [STEP 026] ================================================================================

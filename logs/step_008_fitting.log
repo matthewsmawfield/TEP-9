@@ -1,521 +1,644 @@
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] LOGGER INITIALIZED: step_008_fitting (Step 008)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_008_fitting.log
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] STEP 008: TEP PARAMETER FITTING
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] SECTION: FITTING β PARAMETER
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Fitting β parameter for 8 flybys
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Scientific Context:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   The TEP coupling parameter β quantifies the strength of the conformal coupling
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   between matter and the Temporal Topology scalar field. It is determined by fitting
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   the predicted velocity anomaly from the scalar force model to the observed
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Doppler measurements from NASA's Deep Space Network.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Selection Criterion (a priori, S/N > 2):
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Flybys are included in fitting only if the observed anomaly has signal-to-noise
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   ratio ≥ 2. This prevents confirmation bias by excluding marginal detections.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Current analysis: Will show count after fitting completes.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Note: All primary detections (NEAR, Galileo_1990, Cassini, Rosetta_2005)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   pass sign-matching and S/N > 2 criteria in the current model version.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Processing: NEAR
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Observed Δv: 13.46 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP predicted: 2.04 mm/s
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0001] CALCULATION: Beta Fitting - Input Values
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0001]   INPUT: dv_tep_mm_s = 2.036202568740968
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0001]   INPUT: dv_obs_mm_s = 13.46
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0001]   INPUT: sigma_mm_s = 0.01
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0001]   INPUT: characteristic_suppression = 0.3492387380317062
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0001]   INPUT: beta_initial = 0.0001
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0002] CALCULATION: Signal-to-Noise Ratio
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0002]   INPUT: dv_obs = 13.46
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0002]   INPUT: dv_unc = 0.01
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0002]   FORMULA: S/N = |Δv_obs| / σ_Δv
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0002]   RESULT: 1346.0
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 1346.0 >= 2.0 → PASS
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0003] CALCULATION: Sign Mismatch Check
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0003]   INPUT: dv_tep = 2.036202568740968
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0003]   INPUT: dv_obs = 13.46
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0003]   INPUT: sign_product = 27.40728657525343
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0003]   FORMULA: dv_tep × dv_obs
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0003]   RESULT: 27.40728657525343
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0004] CALCULATION: Beta Fitting (TEP v0.8 - Geometry-Dependent β_eff)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: beta_initial = 0.0001
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: dv_obs = 13.46
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: dv_tep = 2.036202568740968
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: ratio = 6.610344278429349
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: exponent = 1.3333333333333333
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: note = beta_eff varies with geometry per TEP v0.8 Temporal Topology
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0004]   FORMULA: β_eff = β_initial × (Δv_obs / Δv_tep)^(4/3)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0004]   RESULT: 0.001240600938020586
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0005] CALCULATION: Beta Uncertainty
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0005]   INPUT: beta_fitted = 0.001240600938020586
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0005]   INPUT: dv_unc = 0.01
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0005]   INPUT: abs_dv_obs = 13.46
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0005]   INPUT: exponent_factor = 1.3333333333333333
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0005]   FORMULA: σ_β = β_fitted × (4/3) × (σ_Δv / |Δv_obs|)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0005]   RESULT: 1.2289261396934977e-06
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0006] CALCULATION: Effective Beta (Temporal Shear Suppression)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0006]   INPUT: beta_fitted = 0.001240600938020586
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0006]   INPUT: characteristic_suppression = 0.3492387380317062
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0006]   FORMULA: β_eff = β_fitted × S_⊕
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0006]   RESULT: 0.00043326590599526043
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0007] CALCULATION: PPN Gamma Deviation (Screened Regime)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0007]   INPUT: beta_eff = 0.00043326590599526043
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0007]   FORMULA: |γ-1| = 2 × β_eff²
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0007]   RESULT: 3.7543869059578767e-07
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] THRESHOLD [PPN Compliance]: 3.7543869059578767e-07 < 2.3e-05 → PASS
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Fitted β: 1.24e-03 ± 1.23e-06
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] β_eff (with Temporal Shear screening): 4.33e-04
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] |γ-1| from β_eff: 3.75e-07 (bound: 2.3e-5)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Status: allowed
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Physics Interpretation:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     The fitted coupling β = 1.24e-03 implies an effective
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     coupling β_eff = 4.33e-04 after Temporal Shear Suppression.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 3.75e-07,
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     ratio to Cassini bound: 6.13e+01
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     PPN constraint satisfied.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Processing: Galileo_1990
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Observed Δv: 3.92 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP predicted: 0.32 mm/s
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0008] CALCULATION: Beta Fitting - Input Values
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0008]   INPUT: dv_tep_mm_s = 0.31864548294532113
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0008]   INPUT: dv_obs_mm_s = 3.92
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0008]   INPUT: sigma_mm_s = 0.03
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0008]   INPUT: characteristic_suppression = 0.3492387380317062
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0008]   INPUT: beta_initial = 0.0001
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0009] CALCULATION: Signal-to-Noise Ratio
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0009]   INPUT: dv_obs = 3.92
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0009]   INPUT: dv_unc = 0.03
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0009]   FORMULA: S/N = |Δv_obs| / σ_Δv
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0009]   RESULT: 130.66666666666666
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 130.66666666666666 >= 2.0 → PASS
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0010] CALCULATION: Sign Mismatch Check
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0010]   INPUT: dv_tep = 0.31864548294532113
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0010]   INPUT: dv_obs = 3.92
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0010]   INPUT: sign_product = 1.249090293145659
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0010]   FORMULA: dv_tep × dv_obs
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0010]   RESULT: 1.249090293145659
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0011] CALCULATION: Beta Fitting (TEP v0.8 - Geometry-Dependent β_eff)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: beta_initial = 0.0001
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: dv_obs = 3.92
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: dv_tep = 0.31864548294532113
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: ratio = 12.30207302412212
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: exponent = 1.3333333333333333
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: note = beta_eff varies with geometry per TEP v0.8 Temporal Topology
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0011]   FORMULA: β_eff = β_initial × (Δv_obs / Δv_tep)^(4/3)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0011]   RESULT: 0.0028399088482491024
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0012] CALCULATION: Beta Uncertainty
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0012]   INPUT: beta_fitted = 0.0028399088482491024
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0012]   INPUT: dv_unc = 0.03
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0012]   INPUT: abs_dv_obs = 3.92
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0012]   INPUT: exponent_factor = 1.3333333333333333
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0012]   FORMULA: σ_β = β_fitted × (4/3) × (σ_Δv / |Δv_obs|)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0012]   RESULT: 2.8978661716827572e-05
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0013] CALCULATION: Effective Beta (Temporal Shear Suppression)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0013]   INPUT: beta_fitted = 0.0028399088482491024
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0013]   INPUT: characteristic_suppression = 0.3492387380317062
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0013]   FORMULA: β_eff = β_fitted × S_⊕
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0013]   RESULT: 0.0009918061822875928
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0014] CALCULATION: PPN Gamma Deviation (Screened Regime)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0014]   INPUT: beta_eff = 0.0009918061822875928
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0014]   FORMULA: |γ-1| = 2 × β_eff²
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0014]   RESULT: 1.9673590064477795e-06
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] THRESHOLD [PPN Compliance]: 1.9673590064477795e-06 < 2.3e-05 → PASS
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Fitted β: 2.84e-03 ± 2.90e-05
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] β_eff (with Temporal Shear screening): 9.92e-04
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] |γ-1| from β_eff: 1.97e-06 (bound: 2.3e-5)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Status: allowed
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Physics Interpretation:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     The fitted coupling β = 2.84e-03 implies an effective
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     coupling β_eff = 9.92e-04 after Temporal Shear Suppression.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 1.97e-06,
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     ratio to Cassini bound: 1.17e+01
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     PPN constraint satisfied.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Processing: Cassini
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Observed Δv: 0.11 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP predicted: -0.02 mm/s
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0015] CALCULATION: Beta Fitting - Input Values
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0015]   INPUT: dv_tep_mm_s = -0.022034584903033106
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0015]   INPUT: dv_obs_mm_s = 0.11
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0015]   INPUT: sigma_mm_s = 0.05
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0015]   INPUT: characteristic_suppression = 0.3492387380317062
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0015]   INPUT: beta_initial = 0.0001
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0016] CALCULATION: Signal-to-Noise Ratio
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0016]   INPUT: dv_obs = 0.11
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0016]   INPUT: dv_unc = 0.05
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0016]   FORMULA: S/N = |Δv_obs| / σ_Δv
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0016]   RESULT: 2.1999999999999997
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 2.1999999999999997 >= 2.0 → PASS
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0017] CALCULATION: Sign Mismatch Check
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0017]   INPUT: dv_tep = -0.022034584903033106
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0017]   INPUT: dv_obs = 0.11
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0017]   INPUT: sign_product = -0.002423804339333642
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0017]   FORMULA: dv_tep × dv_obs
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0017]   RESULT: -0.002423804339333642
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 008] ⚠   Sign mismatch: predicted=-0.022, observed=+0.110
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Status: sign_mismatch
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     Predicted and observed anomalies have opposite signs.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     This gives unphysical negative β and is excluded from fitting.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Processing: Galileo_1992
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Observed Δv: 0.00 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP predicted: 0.00 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Skipping Galileo_1992: Missing real observational data
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Status: skipped
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Processing: Rosetta_2005
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Observed Δv: 1.82 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP predicted: 0.51 mm/s
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0018] CALCULATION: Beta Fitting - Input Values
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: dv_tep_mm_s = 0.5146341073352638
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: dv_obs_mm_s = 1.82
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: sigma_mm_s = 0.05
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: characteristic_suppression = 0.3492387380317062
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: beta_initial = 0.0001
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0019] CALCULATION: Signal-to-Noise Ratio
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0019]   INPUT: dv_obs = 1.82
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0019]   INPUT: dv_unc = 0.05
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0019]   FORMULA: S/N = |Δv_obs| / σ_Δv
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0019]   RESULT: 36.4
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 36.4 >= 2.0 → PASS
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0020] CALCULATION: Sign Mismatch Check
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0020]   INPUT: dv_tep = 0.5146341073352638
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0020]   INPUT: dv_obs = 1.82
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0020]   INPUT: sign_product = 0.9366340753501802
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0020]   FORMULA: dv_tep × dv_obs
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0020]   RESULT: 0.9366340753501802
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0021] CALCULATION: Beta Fitting (TEP v0.8 - Geometry-Dependent β_eff)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0021]   INPUT: beta_initial = 0.0001
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0021]   INPUT: dv_obs = 1.82
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0021]   INPUT: dv_tep = 0.5146341073352638
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0021]   INPUT: ratio = 3.5364931590403548
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0021]   INPUT: exponent = 1.3333333333333333
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0021]   INPUT: note = beta_eff varies with geometry per TEP v0.8 Temporal Topology
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0021]   FORMULA: β_eff = β_initial × (Δv_obs / Δv_tep)^(4/3)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0021]   RESULT: 0.000538803526776471
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0022] CALCULATION: Beta Uncertainty
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0022]   INPUT: beta_fitted = 0.000538803526776471
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0022]   INPUT: dv_unc = 0.05
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0022]   INPUT: abs_dv_obs = 1.82
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0022]   INPUT: exponent_factor = 1.3333333333333333
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0022]   FORMULA: σ_β = β_fitted × (4/3) × (σ_Δv / |Δv_obs|)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0022]   RESULT: 1.9736392922215054e-05
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0023] CALCULATION: Effective Beta (Temporal Shear Suppression)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0023]   INPUT: beta_fitted = 0.000538803526776471
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0023]   INPUT: characteristic_suppression = 0.3492387380317062
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0023]   FORMULA: β_eff = β_fitted × S_⊕
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0023]   RESULT: 0.00018817106373844735
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0024] CALCULATION: PPN Gamma Deviation (Screened Regime)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0024]   INPUT: beta_eff = 0.00018817106373844735
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0024]   FORMULA: |γ-1| = 2 × β_eff²
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0024]   RESULT: 7.081669845691764e-08
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] THRESHOLD [PPN Compliance]: 7.081669845691764e-08 < 2.3e-05 → PASS
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Fitted β: 5.39e-04 ± 1.97e-05
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] β_eff (with Temporal Shear screening): 1.88e-04
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] |γ-1| from β_eff: 7.08e-08 (bound: 2.3e-5)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Status: allowed
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Physics Interpretation:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     The fitted coupling β = 5.39e-04 implies an effective
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     coupling β_eff = 1.88e-04 after Temporal Shear Suppression.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 7.08e-08,
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     ratio to Cassini bound: 3.25e+02
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     PPN constraint satisfied.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Processing: Rosetta_2007
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Observed Δv: 0.02 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP predicted: 0.00 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Skipping Rosetta_2007: Missing real observational data
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Status: skipped
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Processing: MESSENGER_2005
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Observed Δv: 0.00 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP predicted: 0.00 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Skipping MESSENGER_2005: Missing real observational data
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Status: skipped
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Processing: Juno
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Observed Δv: 0.00 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP predicted: 0.03 mm/s
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0025] CALCULATION: Beta Fitting - Input Values
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0025]   INPUT: dv_tep_mm_s = 0.025998766123931948
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0025]   INPUT: dv_obs_mm_s = 0.0
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0025]   INPUT: sigma_mm_s = 0.02
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0025]   INPUT: characteristic_suppression = 0.3492387380317062
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0025]   INPUT: beta_initial = 0.0001
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0026] CALCULATION: Signal-to-Noise Ratio
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0026]   INPUT: dv_obs = 0.0
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0026]   INPUT: dv_unc = 0.02
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0026]   FORMULA: S/N = |Δv_obs| / σ_Δv
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [CALC-008-0026]   RESULT: 0.0
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 0.0 >= 2.0 → FAIL
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Excluded: S/N = 0.00 < 2.0 (below threshold)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Status: below_snr_threshold
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]     This is a null-result flyby used for effect size comparison.
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] SECTION: OVERALL ANALYSIS
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Purpose:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Aggregate individual flyby fits to assess overall TEP framework viability.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Key question: Do fitted β values converge to a consistent coupling strength
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   across diverse flyby geometries, supporting universal TEP coupling?
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] SECTION: MULTI-PARAMETER FITTING WITH GEOMETRY MODULATION
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Purpose:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Test whether including geometry-dependent modulation reduces heterogeneity.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Model: β_eff = β_0 × exp(α_d × log(ρ/ρ_c) + α_g × f(geometry))
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   where α_d = 0.334 (fixed from Paper 7), β_0 and α_g are fitted.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [WARNING ] [STEP 008] ⚠ Multi-parameter fitting status: disabled
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Successful fits: 3
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Excluded by PPN: 0
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Interpretation:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   3 flybys provide valid β constraints that satisfy PPN bounds.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   All fitted β values are PPN-compliant (no exclusions required).
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] --- β Statistics ---
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Mean: 1.54e-03
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Std:  9.63e-04
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Weighted mean: 1.24e-03 ± 5.69e-05
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Inflated unc:  5.69e-05 (accounts for scatter)
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] --- Heterogeneity Assessment ---
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Purpose: Test whether fitted β values are consistent with a single
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] universal coupling constant, or if geometry-dependent modulation is present.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] χ² = 4.31e+03
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Reduced χ² = 2.16e+03
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] I² = 100.0% (extreme)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Interpretation (TEP v0.8):
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   I² = 100.0% indicates substantial PHYSICAL heterogeneity.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Per TEP v0.8 Temporal Topology, each flyby samples different Temporal Shear
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Σ_μ = ∇_μ ln A(φ) due to altitude, latitude, velocity, and trajectory asymmetry.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   The 326× span in β_eff is EXPECTED from continuous gradient structure.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   The weighted mean β represents the ensemble-average universal coupling.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Heterogeneity quantifies geometry modulation, not model failure.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   within measurement uncertainties.
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] SECTION: ROBUSTNESS ANALYSIS
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Purpose: Verify that TEP framework conclusions are stable against
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] statistical fluctuations and do not depend on any single flyby.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Three complementary approaches:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   1. Bootstrap resampling - assess uncertainty from small sample size
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   2. Leave-one-out cross-validation - test sensitivity to single flyby
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   3. Statistical power analysis - evaluate sample size adequacy
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] --- Bootstrap Resampling ---
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Method: Parametric bootstrap with n=10,000 iterations addresses the
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] fundamental limitation of small sample size (n=3 primary detections).
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Each iteration resamples with replacement and adds measurement noise.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Bootstrap samples: n=10000
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Mean:   1.29e-03
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Std:    3.65e-04
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Median: 1.24e-03
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 95% CI: [5.45e-04, 2.83e-03]
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Interpretation:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   The 95% confidence interval spans a factor of 5.19,
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   reflecting the intrinsic scatter in β from geometry-dependent effects.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   The bootstrap distribution suggests the weighted mean is stable and
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   the central value is not an artifact of small sample size.
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] --- Leave-One-Out Cross-Validation ---
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Method: Systematically exclude each detection and recompute weighted mean.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Tests whether conclusion depends on any single flyby (especially NEAR,
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] which dominates due to superior measurement precision).
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Excluding NEAR: β = 1.27e-03
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Excluding Galileo_1990: β = 1.24e-03
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Excluding Rosetta_2005: β = 1.24e-03
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Stability coefficient: 0.010
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Interpretation: highly robust
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Conclusion robust: Yes
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Interpretation:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   The TEP viability conclusion does NOT depend on any single flyby.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Even excluding the dominant NEAR detection, the remaining two
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   detections yield consistent β values, suggesting robustness.
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] --- Statistical Power Analysis ---
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Current sample size: n = 3
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Effect size (CV): 0.625
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Min detectable CV at 80% power: 1.617
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Heterogeneity detectable: No
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Required n to detect current CV: 21
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Interpretation: not_detectable
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Note: Current sample can detect CV > 1.62 at 80% power
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] SECTION: ENHANCED VALIDATION
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Purpose: Five complementary statistical tests validate the TEP framework
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] against alternative explanations and quantify evidence strength.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] --- Effect Size Analysis (Cohen's d) ---
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Method: Cohen's d quantifies signal magnitude independent of sample size.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Compares each detection against the null-result population (n=8 flybys).
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Null population: n = 5
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Null mean Δv: 0.004 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Null std Δv: 0.008 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Effect sizes (convention: d < 0.2 negligible, 0.2-0.5 small, 0.5-0.8 medium, > 0.8 large):
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   NEAR: d = 4.0 (large, strong significance)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Galileo_1990: d = 1.2 (large, moderate significance)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Cassini: d = 0.0 (negligible, weak significance)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Rosetta_2005: d = 0.5 (medium, weak significance)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Interpretation:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Effect sizes computed for all 4 published detections (NEAR, Galileo, Rosetta, Cassini)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   against null-result population. Note: Only Galileo_1990 had successful TEP model fit.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   NEAR, Rosetta_2005, and Cassini excluded from fitting due to sign mismatch.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Large effect sizes in excluded missions indicate model limitations, not just heterogeneity.
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] --- Bayesian Model Comparison ---
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Method: Information-theoretic model selection using AIC and BIC.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Headline comparison evaluates TEP and Null on the same observational Doppler uncertainties.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] A separate TEP sensitivity calculation includes additional structured theoretical uncertainty.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Models compared:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   TEP: Physical model with universal β and Disformal Temporal Topology gradient suppression
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Null: No anomaly (measurement artifacts only)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Empirical: Ad hoc fits with independent β per flyby (no physics)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP AIC: 4640.7, BIC: 4639.8
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Null AIC: 1830098.0, BIC: 1830098.0
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Empirical AIC: -10.7, BIC: -13.4
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP structured-uncertainty sensitivity AIC: 16.3, BIC: 15.4
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Best model (BIC): Empirical
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP evidence weight: 100.0%
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] TEP vs Null Bayes factor: 1.0e+304
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Interpretation:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   On shared observational uncertainties, the TEP model achieves 100.0% evidence weight
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   relative to the null model. This supports a structured physical explanation
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   for the detected anomalies, while remaining distinct from the saturated empirical bound.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   The structured-uncertainty sensitivity result should be read as robustness testing,
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   not as the headline evidence calculation.
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] --- Prediction Accuracy ---
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] R² = 0.9247 (good)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Correlation = 0.9626
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] MAE = 1.1323 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] RMSE = 1.3895 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] MAPE = 44.40%
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] --- Residual Analysis ---
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Residuals mean: 0.0767 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Residuals std: 1.3874 mm/s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Normality p-value: 0.9241
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Interpretation: residuals_appear_normal
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] --- Systematic Uncertainty Budget ---
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Method: Propagate uncertainties from five independent sources through
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] the TEP model using root-sum-square combination (uncorrelated errors).
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Uncertainty sources:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   1. Measurement (Doppler): 6.5%
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   2. Trajectory reconstruction: 1.0%
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   3. Characteristic suppression (UCD): 25.0% ← DOMINANT
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   4. Relaxation length (UCD): 15.0%
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   5. Multipole coefficients: 0.1%
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Total relative systematic uncertainty: 29.9%
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Dominant source: characteristic_suppression_uncertainty (25.0%)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Interpretation:
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   The large systematic uncertainty (29.9%) reflects genuine physical
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   uncertainty in the Temporal Topology Temporal Shear mechanism, not a bookkeeping artifact
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   of the fitting procedure. The dominant source (characteristic_suppression_uncertainty,
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   25.0% of the total variance) remains the main target
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   for further first-principles refinement. Even with this uncertainty budget,
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   the fitted β values remain PPN-compliant by a wide margin.
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Recommended β: 1.24e-03
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] PPN compliant: Yes
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] SECTION: SAVING FITTING RESULTS
-[2026-05-13 11:57:40 UTC] [DEBUG   ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] ✓ Fitting complete
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step008_fitting_results.json
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   Output: step008_fitting_results.json (TEP parameter fitting results)
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] STEP SUMMARY: step_008_fitting
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Step Number: 008
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Status: SUCCESS
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Duration: 0.08s
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Calculations Logged: 26
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Output Files: 1
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_008_fitting.log
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Generated 1 output file(s):
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008]   • step008_fitting_results.json: 20.20 KB - TEP parameter fitting results
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] ================================================================================
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] STEP 008 COMPLETE: SUCCESS
-[2026-05-13 11:57:40 UTC] [INFO    ] [STEP 008] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_008_fitting_provenance.json
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] 
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] ================================================================================
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] EXECUTIVE SUMMARY
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] ================================================================================
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] Step: step_008_fitting (Step 008)
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] Status: SUCCESS
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] Duration: 0.08s
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] Calculations: 26
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] Output Files: 1
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] Key Outputs:
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008]   - step008_fitting_results.json (20.20 KB)
-[2026-05-13 08:57:40 UTC] [INFO    ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] LOGGER INITIALIZED: step_008_fitting (Step 008)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_008_fitting.log
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] STEP 008: TEP PARAMETER FITTING
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] SECTION: FITTING β PARAMETER
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Fitting β parameter for 12 flybys
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Scientific Context:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   The TEP coupling parameter β quantifies the strength of the conformal coupling
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   between matter and the Temporal Topology scalar field. It is determined by fitting
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   the predicted velocity anomaly from the scalar force model to the observed
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Doppler measurements from NASA's Deep Space Network.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Selection Criterion (a priori, S/N > 2):
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Flybys are included in fitting only if the observed anomaly has signal-to-noise
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   ratio ≥ 2. This prevents confirmation bias by excluding marginal detections.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Current analysis: Will show count after fitting completes.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Sign agreement at β_ref: not enforced for fitting (strict_sign_gate=false); inverse-variance headline uses all S/N-qualified fits; sign-gated diagnostic is separate.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: NEAR
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: 13.46 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: 1.59 mm/s
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0001] CALCULATION: Beta Fitting - Input Values
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0001]   INPUT: dv_tep_mm_s = 1.586403195722739
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0001]   INPUT: dv_obs_mm_s = 13.46
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0001]   INPUT: sigma_mm_s = 0.01
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0001]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0001]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0002] CALCULATION: Signal-to-Noise Ratio
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0002]   INPUT: dv_obs = 13.46
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0002]   INPUT: dv_unc = 0.01
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0002]   FORMULA: S/N = |Δv_obs| / σ_Δv
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0002]   RESULT: 1346.0
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 1346.0 >= 2.0 → PASS
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0003] CALCULATION: Sign Mismatch Check
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0003]   INPUT: dv_tep = 1.586403195722739
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0003]   INPUT: dv_obs = 13.46
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0003]   INPUT: sign_product = 21.352987014428066
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0003]   FORMULA: dv_tep × dv_obs
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0003]   RESULT: 21.352987014428066
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0004] CALCULATION: Beta Fitting (TEP v0.8 - Geometry-Dependent β_eff)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: dv_obs = 13.46
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: dv_tep = 1.586403195722739
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: ratio = 8.484602171938924
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: exponent = 1.3333333333333333
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0004]   INPUT: note = beta_eff varies with geometry per TEP v0.8 Temporal Topology
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0004]   FORMULA: β_eff = β_initial × (Δv_obs / Δv_tep)^(4/3)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0004]   RESULT: 0.0017305147756031074
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0005] CALCULATION: Beta Uncertainty
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0005]   INPUT: beta_fitted = 0.0017305147756031074
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0005]   INPUT: dv_unc = 0.01
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0005]   INPUT: abs_dv_obs = 13.46
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0005]   INPUT: exponent_factor = 1.3333333333333333
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0005]   FORMULA: σ_β = β_fitted × (4/3) × (σ_Δv / |Δv_obs|)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0005]   RESULT: 1.7142295944557774e-06
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0006] CALCULATION: Effective Beta (Temporal Topology screening)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0006]   INPUT: beta_fitted = 0.0017305147756031074
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0006]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0006]   FORMULA: β_eff = β_fitted × S_⊕
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0006]   RESULT: 0.0006043627963768504
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0007] CALCULATION: PPN Gamma Deviation (Screened Regime)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0007]   INPUT: beta_eff = 0.0006043627963768504
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0007]   FORMULA: |γ-1| = 2 × β_eff²
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0007]   RESULT: 7.305087792888928e-07
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [PPN Compliance]: 7.305087792888928e-07 < 2.3e-05 → PASS
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Fitted β: 1.73e-03 ± 1.71e-06
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] β_eff (with Temporal Shear screening): 6.04e-04
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] |γ-1| from β_eff: 7.31e-07 (bound: 2.3e-5)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: allowed
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Physics Interpretation:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     The fitted coupling β = 1.73e-03 implies an effective
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     coupling β_eff = 6.04e-04 after Temporal Topology screening.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 7.31e-07,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     ratio to Cassini bound: 3.15e+01
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     PPN constraint satisfied.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: Galileo_1990
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: 3.92 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: 0.20 mm/s
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0008] CALCULATION: Beta Fitting - Input Values
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0008]   INPUT: dv_tep_mm_s = 0.1987218559225848
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0008]   INPUT: dv_obs_mm_s = 3.92
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0008]   INPUT: sigma_mm_s = 0.03
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0008]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0008]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0009] CALCULATION: Signal-to-Noise Ratio
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0009]   INPUT: dv_obs = 3.92
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0009]   INPUT: dv_unc = 0.03
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0009]   FORMULA: S/N = |Δv_obs| / σ_Δv
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0009]   RESULT: 130.66666666666666
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 130.66666666666666 >= 2.0 → PASS
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0010] CALCULATION: Sign Mismatch Check
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0010]   INPUT: dv_tep = 0.1987218559225848
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0010]   INPUT: dv_obs = 3.92
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0010]   INPUT: sign_product = 0.7789896752165324
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0010]   FORMULA: dv_tep × dv_obs
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0010]   RESULT: 0.7789896752165324
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0011] CALCULATION: Beta Fitting (TEP v0.8 - Geometry-Dependent β_eff)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: dv_obs = 3.92
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: dv_tep = 0.1987218559225848
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: ratio = 19.726063757813822
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: exponent = 1.3333333333333333
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0011]   INPUT: note = beta_eff varies with geometry per TEP v0.8 Temporal Topology
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0011]   FORMULA: β_eff = β_initial × (Δv_obs / Δv_tep)^(4/3)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0011]   RESULT: 0.005329918603129757
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0012] CALCULATION: Beta Uncertainty
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0012]   INPUT: beta_fitted = 0.005329918603129757
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0012]   INPUT: dv_unc = 0.03
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0012]   INPUT: abs_dv_obs = 3.92
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0012]   INPUT: exponent_factor = 1.3333333333333333
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0012]   FORMULA: σ_β = β_fitted × (4/3) × (σ_Δv / |Δv_obs|)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0012]   RESULT: 5.438692452173221e-05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0013] CALCULATION: Effective Beta (Temporal Topology screening)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0013]   INPUT: beta_fitted = 0.005329918603129757
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0013]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0013]   FORMULA: β_eff = β_fitted × S_⊕
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0013]   RESULT: 0.0018614140467687508
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0014] CALCULATION: PPN Gamma Deviation (Screened Regime)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0014]   INPUT: beta_eff = 0.0018614140467687508
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0014]   FORMULA: |γ-1| = 2 × β_eff²
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0014]   RESULT: 6.929724507016034e-06
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [PPN Compliance]: 6.929724507016034e-06 < 2.3e-05 → PASS
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Fitted β: 5.33e-03 ± 5.44e-05
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] β_eff (with Temporal Shear screening): 1.86e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] |γ-1| from β_eff: 6.93e-06 (bound: 2.3e-5)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: allowed
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Physics Interpretation:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     The fitted coupling β = 5.33e-03 implies an effective
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     coupling β_eff = 1.86e-03 after Temporal Topology screening.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 6.93e-06,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     ratio to Cassini bound: 3.32e+00
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     PPN constraint satisfied.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: Cassini
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: 0.11 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: -0.01 mm/s
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0015] CALCULATION: Beta Fitting - Input Values
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0015]   INPUT: dv_tep_mm_s = -0.011927370112788957
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0015]   INPUT: dv_obs_mm_s = 0.11
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0015]   INPUT: sigma_mm_s = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0015]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0015]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0016] CALCULATION: Signal-to-Noise Ratio
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0016]   INPUT: dv_obs = 0.11
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0016]   INPUT: dv_unc = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0016]   FORMULA: S/N = |Δv_obs| / σ_Δv
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0016]   RESULT: 2.1999999999999997
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 2.1999999999999997 >= 2.0 → PASS
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0017] CALCULATION: Sign Mismatch Check
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0017]   INPUT: dv_tep = -0.011927370112788957
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0017]   INPUT: dv_obs = 0.11
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0017]   INPUT: sign_product = -0.0013120107124067852
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0017]   FORMULA: dv_tep × dv_obs
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0017]   RESULT: -0.0013120107124067852
+[2026-05-17 12:29:54 UTC] [WARNING ] [STEP 008] ⚠   Sign mismatch at β_ref (predicted=-0.012, observed=+0.110); strict_sign_gate=false — applying magnitude-only reference fit for diagnostics.
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0018] CALCULATION: Beta Fitting (TEP v0.8 - Geometry-Dependent β_eff)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: dv_obs = 0.11
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: dv_tep = -0.011927370112788957
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: ratio = 9.222485674528874
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: exponent = 1.3333333333333333
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0018]   INPUT: note = beta_eff varies with geometry per TEP v0.8 Temporal Topology
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0018]   FORMULA: β_eff = β_initial × (Δv_obs / Δv_tep)^(4/3)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0018]   RESULT: 0.0019340334704831914
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0019] CALCULATION: Beta Uncertainty
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0019]   INPUT: beta_fitted = 0.0019340334704831914
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0019]   INPUT: dv_unc = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0019]   INPUT: abs_dv_obs = 0.11
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0019]   INPUT: exponent_factor = 1.3333333333333333
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0019]   FORMULA: σ_β = β_fitted × (4/3) × (σ_Δv / |Δv_obs|)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0019]   RESULT: 0.0011721414972625402
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0020] CALCULATION: Effective Beta (Temporal Topology screening)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0020]   INPUT: beta_fitted = 0.0019340334704831914
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0020]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0020]   FORMULA: β_eff = β_fitted × S_⊕
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0020]   RESULT: 0.0006754394085426308
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0021] CALCULATION: PPN Gamma Deviation (Screened Regime)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0021]   INPUT: beta_eff = 0.0006754394085426308
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0021]   FORMULA: |γ-1| = 2 × β_eff²
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0021]   RESULT: 9.124367892248379e-07
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [PPN Compliance]: 9.124367892248379e-07 < 2.3e-05 → PASS
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Fitted β: 1.93e-03 ± 1.17e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] β_eff (with Temporal Shear screening): 6.75e-04
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] |γ-1| from β_eff: 9.12e-07 (bound: 2.3e-5)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: amplitude_fit_sign_reference_mismatch
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Physics Interpretation:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     The fitted coupling β = 1.93e-03 implies an effective
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     coupling β_eff = 6.75e-04 after Temporal Topology screening.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 9.12e-07,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     ratio to Cassini bound: 2.52e+01
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     PPN constraint satisfied.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: Galileo_1992
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: 0.00 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: 0.00 mm/s
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0022] CALCULATION: Beta Fitting - Input Values
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0022]   INPUT: dv_tep_mm_s = 0.0002782606561873544
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0022]   INPUT: dv_obs_mm_s = 0.0
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0022]   INPUT: sigma_mm_s = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0022]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0022]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0023] CALCULATION: Signal-to-Noise Ratio
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0023]   INPUT: dv_obs = 0.0
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0023]   INPUT: dv_unc = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0023]   FORMULA: S/N = |Δv_obs| / σ_Δv
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0023]   RESULT: 0.0
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 0.0 >= 2.0 → FAIL
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Excluded: S/N = 0.00 < 2.0 (below threshold)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: below_snr_threshold
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     This is a null-result flyby used for effect size comparison.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: Rosetta_2005
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: 1.82 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: 0.32 mm/s
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0024] CALCULATION: Beta Fitting - Input Values
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0024]   INPUT: dv_tep_mm_s = 0.321182638866365
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0024]   INPUT: dv_obs_mm_s = 1.82
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0024]   INPUT: sigma_mm_s = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0024]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0024]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0025] CALCULATION: Signal-to-Noise Ratio
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0025]   INPUT: dv_obs = 1.82
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0025]   INPUT: dv_unc = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0025]   FORMULA: S/N = |Δv_obs| / σ_Δv
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0025]   RESULT: 36.4
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 36.4 >= 2.0 → PASS
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0026] CALCULATION: Sign Mismatch Check
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0026]   INPUT: dv_tep = 0.321182638866365
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0026]   INPUT: dv_obs = 1.82
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0026]   INPUT: sign_product = 0.5845524027367843
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0026]   FORMULA: dv_tep × dv_obs
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0026]   RESULT: 0.5845524027367843
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0027] CALCULATION: Beta Fitting (TEP v0.8 - Geometry-Dependent β_eff)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0027]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0027]   INPUT: dv_obs = 1.82
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0027]   INPUT: dv_tep = 0.321182638866365
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0027]   INPUT: ratio = 5.666557838941134
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0027]   INPUT: exponent = 1.3333333333333333
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0027]   INPUT: note = beta_eff varies with geometry per TEP v0.8 Temporal Topology
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0027]   FORMULA: β_eff = β_initial × (Δv_obs / Δv_tep)^(4/3)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0027]   RESULT: 0.0010102428095147484
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0028] CALCULATION: Beta Uncertainty
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0028]   INPUT: beta_fitted = 0.0010102428095147484
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0028]   INPUT: dv_unc = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0028]   INPUT: abs_dv_obs = 1.82
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0028]   INPUT: exponent_factor = 1.3333333333333333
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0028]   FORMULA: σ_β = β_fitted × (4/3) × (σ_Δv / |Δv_obs|)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0028]   RESULT: 3.7005231117756344e-05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0029] CALCULATION: Effective Beta (Temporal Topology screening)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0029]   INPUT: beta_fitted = 0.0010102428095147484
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0029]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0029]   FORMULA: β_eff = β_fitted × S_⊕
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0029]   RESULT: 0.0003528159239005361
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0030] CALCULATION: PPN Gamma Deviation (Screened Regime)
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0030]   INPUT: beta_eff = 0.0003528159239005361
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0030]   FORMULA: |γ-1| = 2 × β_eff²
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0030]   RESULT: 2.4895815231557774e-07
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [PPN Compliance]: 2.4895815231557774e-07 < 2.3e-05 → PASS
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Fitted β: 1.01e-03 ± 3.70e-05
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] β_eff (with Temporal Shear screening): 3.53e-04
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] |γ-1| from β_eff: 2.49e-07 (bound: 2.3e-5)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: allowed
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Physics Interpretation:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     The fitted coupling β = 1.01e-03 implies an effective
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     coupling β_eff = 3.53e-04 after Temporal Topology screening.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     This corresponds to PPN parameter deviation |γ-1| = 2.49e-07,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     ratio to Cassini bound: 9.24e+01
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     PPN constraint satisfied.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: Rosetta_2007
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: 0.02 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: 0.00 mm/s
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0031] CALCULATION: Beta Fitting - Input Values
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0031]   INPUT: dv_tep_mm_s = 6.762895846310001e-05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0031]   INPUT: dv_obs_mm_s = 0.02
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0031]   INPUT: sigma_mm_s = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0031]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0031]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0032] CALCULATION: Signal-to-Noise Ratio
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0032]   INPUT: dv_obs = 0.02
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0032]   INPUT: dv_unc = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0032]   FORMULA: S/N = |Δv_obs| / σ_Δv
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0032]   RESULT: 0.39999999999999997
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 0.39999999999999997 >= 2.0 → FAIL
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Excluded: S/N = 0.40 < 2.0 (below threshold)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: below_snr_threshold
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     This is a null-result flyby used for effect size comparison.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: Rosetta_2009
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: 0.00 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: 0.00 mm/s
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0033] CALCULATION: Beta Fitting - Input Values
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0033]   INPUT: dv_tep_mm_s = 0.0012001144942585659
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0033]   INPUT: dv_obs_mm_s = 0.0
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0033]   INPUT: sigma_mm_s = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0033]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0033]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0034] CALCULATION: Signal-to-Noise Ratio
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0034]   INPUT: dv_obs = 0.0
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0034]   INPUT: dv_unc = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0034]   FORMULA: S/N = |Δv_obs| / σ_Δv
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0034]   RESULT: 0.0
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 0.0 >= 2.0 → FAIL
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Excluded: S/N = 0.00 < 2.0 (below threshold)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: below_snr_threshold
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     This is a null-result flyby used for effect size comparison.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: MESSENGER_2005
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: 0.00 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: 0.00 mm/s
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0035] CALCULATION: Beta Fitting - Input Values
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0035]   INPUT: dv_tep_mm_s = 4.2870208980271865e-07
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0035]   INPUT: dv_obs_mm_s = 0.0
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0035]   INPUT: sigma_mm_s = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0035]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0035]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0036] CALCULATION: Signal-to-Noise Ratio
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0036]   INPUT: dv_obs = 0.0
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0036]   INPUT: dv_unc = 0.05
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0036]   FORMULA: S/N = |Δv_obs| / σ_Δv
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0036]   RESULT: 0.0
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 0.0 >= 2.0 → FAIL
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Excluded: S/N = 0.00 < 2.0 (below threshold)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: below_snr_threshold
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     This is a null-result flyby used for effect size comparison.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: Juno
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: 0.00 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: 0.01 mm/s
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0037] CALCULATION: Beta Fitting - Input Values
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0037]   INPUT: dv_tep_mm_s = 0.01316795791180281
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0037]   INPUT: dv_obs_mm_s = 0.0
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0037]   INPUT: sigma_mm_s = 0.02
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0037]   INPUT: characteristic_suppression = 0.3492387380317062
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0037]   INPUT: beta_initial = 0.0001
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0038] CALCULATION: Signal-to-Noise Ratio
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0038]   INPUT: dv_obs = 0.0
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0038]   INPUT: dv_unc = 0.02
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0038]   FORMULA: S/N = |Δv_obs| / σ_Δv
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [CALC-008-0038]   RESULT: 0.0
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] THRESHOLD [S/N >= 2]: 0.0 >= 2.0 → FAIL
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Excluded: S/N = 0.00 < 2.0 (below threshold)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: below_snr_threshold
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     Signal-to-noise ratio < 2 (a priori selection criterion).
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]     This is a null-result flyby used for effect size comparison.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: Stardust
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: N/A
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: -0.00 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Skipping Stardust: Missing real observational data
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: skipped
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: OSIRIS-REx
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: N/A
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: 0.00 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Skipping OSIRIS-REx: Missing real observational data
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: skipped
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Processing: BepiColombo
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] --------------------------------------------------------------------------------
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Observed Δv: N/A
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP predicted: -0.00 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Skipping BepiColombo: Missing real observational data
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: skipped
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Reason for exclusion:
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] SECTION: OVERALL ANALYSIS
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Purpose:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Aggregate individual flyby fits to assess overall TEP framework viability.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Key question: Do fitted β values converge to a consistent coupling strength
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   across diverse flyby geometries, supporting a common scalar sector with path-resolved effective amplitudes?
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] SECTION: MULTI-PARAMETER FITTING WITH GEOMETRY MODULATION
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Purpose:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Test whether including geometry-dependent modulation reduces heterogeneity.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Model: β_eff = β_0 × exp(α_d × log(ρ/ρ_c) + α_g × f(geometry))
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   where α_d = 0.334 (fixed from Paper 7), β_0 and α_g are fitted.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [WARNING ] [STEP 008] ⚠ Multi-parameter fitting status: disabled
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Successful fits: 4
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Excluded by PPN: 0
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Interpretation:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   4 flybys provide valid β constraints that satisfy PPN bounds.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   All fitted β values are PPN-compliant (no exclusions required).
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] --- β Statistics ---
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Mean: 2.50e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Std:  1.67e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Weighted mean: 1.73e-03 ± 6.82e-05
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Inflated unc:  6.82e-05 (accounts for scatter)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Random-effects mean: 2.56e-03 ± 7.85e-04
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Between-flyby τ: 1.49e-03; prediction-scale σ: 1.69e-03
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] --- Heterogeneity Assessment ---
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Purpose: Test whether fitted β values are consistent with a single
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] a single pooled amplitude across the gated tier, or if geometry-dependent modulation dominates.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] χ² = 4.76e+03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Reduced χ² = 1.59e+03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] I² = 99.9% (extreme)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Interpretation (TEP v0.8):
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   I² = 99.9% indicates substantial PHYSICAL heterogeneity.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Per TEP v0.8 Temporal Topology, each flyby samples different Temporal Shear
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Σ_μ = ∇_μ ln A(φ) due to altitude, latitude, velocity, and trajectory asymmetry.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   The fitted-amplitude span should be reported as geometry-driven scatter,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   The weighted mean β is the Step 008 fixed-effect diagnostic over all qualified fits; see beta_statistics_sign_gated_diagnostic for the sign-agreement-restricted subset.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   The random-effects summary is the honest uncertainty scale for cross-flyby scatter.
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] SECTION: ROBUSTNESS ANALYSIS
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Purpose: Verify that TEP framework conclusions are stable against
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] statistical fluctuations and do not depend on any single flyby.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Three complementary approaches:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   1. Bootstrap resampling - assess uncertainty from small sample size
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   2. Leave-one-out cross-validation - test sensitivity to single flyby
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   3. Statistical power analysis - evaluate sample size adequacy
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] --- Bootstrap Resampling ---
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Method: Parametric bootstrap with n=10,000 iterations addresses the
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] fundamental limitation of small sample size (n=3 primary detections).
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Each iteration resamples with replacement and adds measurement noise.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Bootstrap samples: n=10000
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Mean:   2.06e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Std:    9.55e-04
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Median: 1.73e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 95% CI: [1.01e-03, 5.33e-03]
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Interpretation:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   The 95% confidence interval spans a factor of 5.31,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   reflecting the intrinsic scatter in β from geometry-dependent effects.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   The bootstrap distribution suggests the weighted mean is stable and
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   the central value is not an artifact of small sample size.
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] --- Leave-One-Out Cross-Validation ---
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Method: Systematically exclude each detection and recompute weighted mean.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Tests whether conclusion depends on any single flyby (especially NEAR,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] which dominates due to superior measurement precision).
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Excluding NEAR: β = 2.38e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Excluding Galileo_1990: β = 1.73e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Excluding Cassini: β = 1.73e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Excluding Rosetta_2005: β = 1.73e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Stability coefficient: 0.148
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Interpretation: moderately robust
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Conclusion robust: Yes
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Interpretation:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   The TEP viability conclusion is not eliminated by any single deletion.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Excluding the dominant NEAR detection still leaves a positive pooled amplitude,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   but the small n=2 remainder should be treated as a stress test, not a precision estimate.
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] --- Statistical Power Analysis ---
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Current sample size: n = 4
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Effect size (CV): 0.667
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Min detectable CV at 80% power: 1.401
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Heterogeneity detectable: No
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Required n to detect current CV: 18
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Interpretation: not_detectable
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Note: Current sample can detect CV > 1.40 at 80% power
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] SECTION: ENHANCED VALIDATION
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Purpose: Five complementary statistical tests validate the TEP framework
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] against alternative explanations and quantify evidence strength.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] --- Effect Size Analysis (Cohen's d) ---
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Method: Cohen's d quantifies signal magnitude independent of sample size.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Compares each detection against the null-result population (n=8 flybys).
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Null population: n = 5
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Null mean Δv: 0.004 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Null std Δv: 0.009 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Effect sizes (convention: d < 0.2 negligible, 0.2-0.5 small, 0.5-0.8 medium, > 0.8 large):
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   NEAR: d = 3.4 (large, strong significance)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Galileo_1990: d = 1.0 (large, moderate significance)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Cassini: d = 0.0 (negligible, weak significance)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Rosetta_2005: d = 0.5 (small, weak significance)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Interpretation:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Effect sizes are computed for published detections against the null-result population.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   This is a catalog-level anomaly contrast, distinct from the Step 008 inverse-variance β diagnostic.
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] --- Bayesian Model Comparison ---
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Method: Information-theoretic model selection using AIC and BIC.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Headline comparison evaluates TEP and Null on the same observational Doppler uncertainties.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] A separate TEP sensitivity calculation includes additional structured theoretical uncertainty.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Models compared:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   TEP: Physical model with single-parameter β rescaling (restricted tier) and Disformal Temporal Topology gradient suppression
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Null: No anomaly (measurement artifacts only)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Empirical: Ad hoc fits with independent β per flyby (no physics)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP AIC: 5867.4, BIC: 5866.8
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Null AIC: 1830098.7, BIC: 1830098.7
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Empirical AIC: -12.9, BIC: -15.3
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP structured-uncertainty sensitivity AIC: 24.4, BIC: 23.8
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Best model (BIC): Empirical
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] TEP evidence weight: 100.0%
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] BIC-map TEP vs Null (capped at exp(700)): 1.0e+304; log_evidence_delta=912116.0. BIC-based BF ~ exp(0.5*(BIC_null-BIC_tep)) is a large-sample surrogate; with published formal sigma only, chi^2_null is enormous and log_evidence_delta reaches ~1e6 while the reported BF is capped at exp(700). Do not interpret as posterior odds. Prefer Step 026 headline likelihood with sigma_geom added in quadrature.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Interpretation:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   On shared observational uncertainties, the TEP model achieves 100.0% evidence weight
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   relative to the null model. This supports a structured physical explanation
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   for the detected anomalies, while remaining distinct from the saturated empirical bound.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   The structured-uncertainty sensitivity result should be read as robustness testing,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   not as the headline evidence calculation.
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] --- Prediction Accuracy ---
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] R² = 0.9451 (good)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Correlation = 0.9763
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] MAE = 0.8408 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] RMSE = 1.2096 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] MAPE = 74.75%
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] --- Residual Analysis ---
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Residuals mean: 0.3811 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Residuals std: 1.1480 mm/s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Normality p-value: 0.5044
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Interpretation: residuals_appear_normal
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] --- Systematic Uncertainty Budget ---
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Method: Propagate uncertainties from five independent sources through
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] the TEP model using root-sum-square combination (uncorrelated errors).
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Uncertainty sources:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   1. Measurement (Doppler): 112.6%
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   2. Trajectory reconstruction: 1.0%
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   3. Characteristic suppression (UCD): 25.0% ← DOMINANT
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   4. Relaxation length (UCD): 15.0%
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   5. Multipole coefficients: 0.1%
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Total relative systematic uncertainty: 116.3%
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Dominant source: measurement_uncertainty (112.6%)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Interpretation:
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   The large systematic uncertainty (116.3%) reflects genuine physical
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   uncertainty in the Temporal Topology Temporal Shear mechanism, not a bookkeeping artifact
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   of the fitting procedure. The dominant source (measurement_uncertainty,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   112.6% of the total variance) remains the main target
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   for further first-principles refinement. Even with this uncertainty budget,
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   the fitted β values remain PPN-compliant by a wide margin.
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Recommended β: 1.73e-03
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] PPN compliant: Yes
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] SECTION: SAVING FITTING RESULTS
+[2026-05-17 12:29:54 UTC] [DEBUG   ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] ✓ Fitting complete
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Results saved to: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step008_fitting_results.json
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   Output: step008_fitting_results.json (TEP parameter fitting results)
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] STEP SUMMARY: step_008_fitting
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Step Number: 008
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Status: SUCCESS
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Duration: 0.11s
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Calculations Logged: 38
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Output Files: 1
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_008_fitting.log
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Generated 1 output file(s):
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008]   • step008_fitting_results.json: 38.03 KB - TEP parameter fitting results
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] ================================================================================
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] STEP 008 COMPLETE: SUCCESS
+[2026-05-17 12:29:54 UTC] [INFO    ] [STEP 008] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_008_fitting_provenance.json
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] 
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] ================================================================================
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] EXECUTIVE SUMMARY
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] ================================================================================
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] Step: step_008_fitting (Step 008)
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] Status: SUCCESS
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] Duration: 0.11s
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] Calculations: 38
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] Output Files: 1
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] Key Outputs:
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008]   - step008_fitting_results.json (38.03 KB)
+[2026-05-17 09:29:54 UTC] [INFO    ] [STEP 008] ================================================================================

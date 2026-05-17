@@ -351,7 +351,7 @@ class EarthDensityModel:
         rho = self.density_with_geoid(x, y, z)
         
         # Temporal Topology suppression length: λ_rest ∝ 1/√rho
-        # Derived from the continuous Temporal Shear Suppression regime of the TEP scalar field
+        # Derived from the continuous screening regime of the TEP scalar field
         rho_threshold = 1e-3  # kg/m^3 (approximate transition density)
         
         if rho > rho_threshold:
@@ -400,7 +400,7 @@ class TEP3DTrajectoryIntegrator:
     - Non-spherical Earth gravity (J2, J3, J4)
     - Earth's rotation
     - TEP Temporal Topology field perturbation
-    - Variable coupling based on local density (Temporal Shear Suppression)
+    - Variable coupling based on local density (Temporal Topology screening)
     """
     
     def __init__(self, 
@@ -474,7 +474,7 @@ class TEP3DTrajectoryIntegrator:
         """
         Compute Temporal Topology field φ at position (x, y, z).
         
-        Accounts for Temporal Shear Suppression at high densities and 
+        Accounts for screening at high densities and 
         exponential relaxation outside Earth.
         """
         r = np.sqrt(x**2 + y**2 + z**2)

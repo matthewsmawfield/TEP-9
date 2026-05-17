@@ -2,10 +2,38 @@
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
 from typing import Any, Dict, Optional
 
 from scripts.utils.physics import validate_screened_coupling
 
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+_PIPELINE_CONFIG_PATH = PROJECT_ROOT / "config" / "pipeline_config.json"
+
+
+def strict_sign_gate_from_config() -> bool:
+    """
+    When True, ensemble rows require Δv_obs and Δv_TEP(β_ref) to share a sign.
+
+    Default is False: S/N-qualified rows remain in the likelihood layer; the
+    sign-gated subset is reported separately by Step 008.
+    """
+    with open(_PIPELINE_CONFIG_PATH, "r", encoding="utf-8") as f:
+        cfg = json.load(f)
+    tep = cfg["parameters"]["analysis"]["tep_physics"]
+    return bool(tep.get("strict_sign_gate", False))
+
+
+# Frozen policy text for JSON audit exports (Step 026 / provenance).
+ENSEMBLE_GATE_POLICY = (
+    "Likelihood rows require a published (Δv_obs, σ) pair with no imputation and "
+    "S/N = |Δv_obs|/σ > 2. Sign agreement between Δv_obs and the TEP reference "
+    "prediction at β_ref is enforced only when parameters.analysis.tep_physics."
+    "strict_sign_gate is true (default: false). Exclusion reasons are explicit "
+    "(missing_observation, snr_below_threshold, sign_mismatch, missing_prediction) "
+    "rather than silent omission."
+)
 
 SNR_THRESHOLD: float = 2.0
 
@@ -22,7 +50,11 @@ def flyby_sign_product(dv_tep: Optional[float], dv_obs: Optional[float]) -> Opti
     return dv_tep * dv_obs
 
 
-def flyby_ensemble_exclusion_reason(prediction: Dict[str, Any]) -> Optional[str]:
+def flyby_ensemble_exclusion_reason(
+    prediction: Dict[str, Any],
+    *,
+    enforce_sign_agreement: Optional[bool] = None,
+) -> Optional[str]:
     observed = prediction.get("observed", {})
     dv_obs = observed.get("dv_obs_mm_s")
     dv_unc = observed.get("sigma_mm_s")
@@ -33,11 +65,14 @@ def flyby_ensemble_exclusion_reason(prediction: Dict[str, Any]) -> Optional[str]
     if snr < SNR_THRESHOLD:
         return "snr_below_threshold"
 
+    if enforce_sign_agreement is None:
+        enforce_sign_agreement = strict_sign_gate_from_config()
+
     dv_tep = prediction.get("tep_predictions", {}).get("dv_tep_mm_s")
     sign_product = flyby_sign_product(dv_tep, dv_obs)
     if sign_product is None:
         return "missing_prediction"
-    if sign_product < 0:
+    if enforce_sign_agreement and sign_product < 0:
         return "sign_mismatch"
     return None
 

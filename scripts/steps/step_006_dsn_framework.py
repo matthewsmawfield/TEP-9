@@ -30,9 +30,15 @@ Data Sources:
 - PDS Search API: https://pds.nasa.gov/api/search/
 - TRK-2-34 format raw Doppler tracking files
 
-FALSIFICATION CRITERION:
-- If minimal OD recovers signal > 0.08 mm/s at 95% confidence: TEP validated
-- If minimal OD shows null (|Δv| < 0.08 mm/s): TEP falsified for Juno 2013
+FALSIFICATION CRITERION (proxy-only, not OD-scale):
+--------------------------------------------------
+The perigee-window statistic is derived from **pairwise Doppler differences**
+(Δv ≈ c Δf/f), not from batch least-squares OD residuals. Status values
+``PAIRWISE_DOPPLER_PROXY_BELOW_STATISTICAL_THRESHOLD`` and
+``PAIRWISE_DOPPLER_PROXY_ABOVE_STATISTICAL_THRESHOLD`` compare the proxy mean
+to a z-score-based detection threshold only. They do **not** by themselves
+establish TEP falsification at the published minimal-OD Δv scale; that requires
+MONTE-class residuals.
 
 Author: TEP-EFA Pipeline
 Date: 2026-04-20
@@ -54,7 +60,12 @@ import io
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.utils.dsn_pds_ingest import REFERENCE_PRODUCT_LIDS, ingest_mission_tracking, load_perigee_datetime
+from scripts.utils.dsn_pds_ingest import (
+    PDS_SEARCH_API,
+    REFERENCE_PRODUCT_LIDS,
+    ingest_mission_tracking,
+    load_perigee_datetime,
+)
 from scripts.utils.dsn_tracking_discovery import discover_dsn_tracking_file, is_trk234_archive
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.trk234_extract import extract_trk234_measurements
@@ -149,8 +160,7 @@ class PDSDataInterface:
     - Extract Doppler measurements
     """
     
-    # PDS endpoints
-    PDS_SEARCH_API = "https://pds.nasa.gov/api/search/1/products"
+    PDS_SEARCH_API = PDS_SEARCH_API
     PDS_RN_BASE = "https://pds-rn.jpl.nasa.gov/data/"
     
     # Known mission collections in PDS
@@ -838,17 +848,17 @@ class MinimalODProcessor:
                           predicted_signal_mm_s: float,
                           confidence: float = 0.95) -> Dict:
         """
-        Perform falsification test comparing measured signal to prediction.
-        
-        FALSIFICATION CRITERION:
-        - If |measured| < threshold: TEP falsified for this flyby
-        - If |measured| >= threshold: TEP validated for this flyby
+        Compare the pairwise-Doppler proxy mean to a statistical detection threshold.
+
+        The measured quantity is **not** commensurate with published post-OD
+        flyby Δv anomalies (mm/s) unless a full minimal-OD residual pipeline is
+        bound. ``predicted_signal_mm_s`` is recorded for reference only.
         """
         if not residuals.get('success', False):
             return {
                 'status': 'INCONCLUSIVE',
                 'reason': residuals.get('error', 'Analysis failed'),
-                'falsified': None
+                'claims_tep_od_scale_falsified': None,
             }
         
         measured = residuals.get('mean_velocity_mm_s', 0)
@@ -866,26 +876,29 @@ class MinimalODProcessor:
         # Statistical significance
         significance = abs(measured) / se if se > 0 else 0
         
-        # Falsification decision
-        if abs(measured) < threshold:
-            status = 'TEP_FALSIFIED'
+        below = abs(measured) < threshold
+        if below:
+            status = 'PAIRWISE_DOPPLER_PROXY_BELOW_STATISTICAL_THRESHOLD'
             conclusion = (
-                f'Minimal OD shows |Δv| = {abs(measured):.3f} mm/s < '
-                f'threshold {threshold:.3f} mm/s at {confidence*100:.0f}% confidence'
+                f'Pairwise-Doppler proxy |mean| = {abs(measured):.3f} mm/s < '
+                f'detection threshold {threshold:.3f} mm/s at {confidence*100:.0f}% confidence '
+                f'(z·SE on the proxy sample mean).'
             )
             interpretation = (
-                f'TEP predicted {predicted_signal_mm_s:.2f} mm/s but minimal OD shows '
-                f'no significant signal. The Juno 2013 null result is genuine.'
+                'The perigee-window proxy mean is statistically consistent with zero '
+                'under this crude differencing statistic. This does **not** map to a '
+                'claim that TEP is falsified at the published minimal-OD Δv scale.'
             )
         else:
-            status = 'TEP_VALIDATED'
+            status = 'PAIRWISE_DOPPLER_PROXY_ABOVE_STATISTICAL_THRESHOLD'
             conclusion = (
-                f'Minimal OD shows |Δv| = {abs(measured):.3f} mm/s >= '
-                f'threshold {threshold:.3f} mm/s at {confidence*100:.0f}% confidence'
+                f'Pairwise-Doppler proxy |mean| = {abs(measured):.3f} mm/s ≥ '
+                f'detection threshold {threshold:.3f} mm/s at {confidence*100:.0f}% confidence.'
             )
             interpretation = (
-                f'Minimal OD recovers signal consistent with TEP prediction. '
-                f'Standard OD null result is due to signal absorption.'
+                'The proxy mean exceeds the nominal statistical gate. A MONTE-class '
+                'minimal-OD residual series is still required before equating this to '
+                'literature-style Δv anomaly recovery.'
             )
         
         return {
@@ -893,13 +906,14 @@ class MinimalODProcessor:
             'conclusion': conclusion,
             'interpretation': interpretation,
             'measured_velocity_mm_s': float(measured),
-            'predicted_velocity_mm_s': float(predicted_signal_mm_s),
+            'reference_tep_scale_mm_s': float(predicted_signal_mm_s),
             'difference_mm_s': float(measured - predicted_signal_mm_s),
             'threshold_mm_s': float(threshold),
             'confidence_level': confidence,
             'z_score': float(z),
             'significance_sigma': float(significance),
-            'falsified': status == 'TEP_FALSIFIED',
+            'claims_tep_od_scale_falsified': False,
+            'commensurate_with_literature_delta_v_mm_s': False,
             'minimal_od_config': self.config.to_dict()
         }
 
@@ -1040,19 +1054,19 @@ class DSNReanalysisPipeline:
         
         results['falsification_test'] = falsification
         
-        logger.info(f"Predicted TEP signal: {predicted:.2f} mm/s")
-        logger.info(f"Measured signal: {falsification['measured_velocity_mm_s']:.3f} mm/s")
+        logger.info(f"Reference TEP scale (not commensurate with proxy): {predicted:.2f} mm/s")
+        logger.info(f"Measured proxy mean: {falsification['measured_velocity_mm_s']:.3f} mm/s")
         logger.info(f"Threshold: {falsification['threshold_mm_s']:.3f} mm/s")
         logger.info(f"Status: {falsification['status']}")
         
-        if falsification['status'] == 'TEP_FALSIFIED':
-            logger.error("="*70)
-            logger.error("TEP FALSIFIED FOR THIS FLYBY")
-            logger.error("="*70)
-        elif falsification['status'] == 'TEP_VALIDATED':
-            logger.success("="*70)
-            logger.success("TEP VALIDATED - OD ABSORPTION CONFIRMED")
-            logger.success("="*70)
+        if falsification['status'] == 'PAIRWISE_DOPPLER_PROXY_BELOW_STATISTICAL_THRESHOLD':
+            logger.info(
+                "Proxy mean below statistical threshold (does not assert OD-scale TEP falsification)."
+            )
+        elif falsification['status'] == 'PAIRWISE_DOPPLER_PROXY_ABOVE_STATISTICAL_THRESHOLD':
+            logger.success(
+                "Proxy mean above statistical threshold (still not OD-scale Δv without MONTE-class fit)."
+            )
         
         # Final status
         results['status'] = 'COMPLETE'
@@ -1213,9 +1227,11 @@ def main():
     logger.info("  - Observed (standard OD): 0.00 ± 0.02 mm/s")
     logger.info("  - Tension: 112σ")
     logger.info("")
-    logger.info("Falsification Criterion:")
-    logger.info("  - Minimal OD recovers > 0.08 mm/s at 95% confidence: TEP validated")
-    logger.info("  - Minimal OD shows null: TEP falsified for Juno 2013")
+    logger.info("Falsification pathway (current implementation):")
+    logger.info(
+        "  - Perigee-window **pairwise-Doppler proxy** vs a z·SE statistical gate; "
+        "not commensurate with published minimal-OD Δv without MONTE-class residuals."
+    )
     logger.info("="*70)
     
     # Initialize pipeline
@@ -1332,10 +1348,13 @@ def main():
     if 'falsification_test' in flyby_results:
         ft = flyby_results['falsification_test']
         logger.info(f"Falsification result: {ft.get('status', 'N/A')}")
-        if ft.get('status') == 'TEP_VALIDATED':
-            logger.success("Minimal OD confirms TEP signal recovery")
-        elif ft.get('status') == 'TEP_FALSIFIED':
-            logger.error("TEP falsified - model requires revision")
+        if ft.get('status') == 'PAIRWISE_DOPPLER_PROXY_ABOVE_STATISTICAL_THRESHOLD':
+            logger.success("Pairwise-Doppler proxy above statistical detection threshold")
+        elif ft.get('status') == 'PAIRWISE_DOPPLER_PROXY_BELOW_STATISTICAL_THRESHOLD':
+            logger.info(
+                "Pairwise-Doppler proxy below statistical threshold "
+                "(not an OD-scale TEP falsification claim)"
+            )
     
     duration = time.time() - start_time
     results = combined_results

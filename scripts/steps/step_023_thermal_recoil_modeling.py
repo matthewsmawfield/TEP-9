@@ -124,12 +124,6 @@ class ThermalRecoilModeler:
                 'mass_kg': 4100.0,
                 'solar_array_power_w': 10000.0  # Large solar arrays for inner solar system
             },
-            'BepiColombo_2021': {
-                'has_rtg': False,
-                'rtg_power_w': 0.0,
-                'mass_kg': 4100.0,
-                'solar_array_power_w': 10000.0
-            }
         }
         
         self.logger = StepLogger("step_023_thermal_recoil_modeling")

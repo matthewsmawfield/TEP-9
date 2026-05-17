@@ -55,7 +55,7 @@ class TemporalShearImpulseTracer:
         as specified in TEP Eq 6.3.
         """
         # Time-transport connection curvature integrates around the tracking loop.
-        # Over a long baseline DSN track, passing through the Temporal Shear Suppression screening gradient,
+        # Over a long baseline DSN track, passing through the Temporal Topology screening gradient,
         # the projection |grad_perp phi|^2 acquires a net non-zero integral compared to 
         # the return leg or the base station clock.
         

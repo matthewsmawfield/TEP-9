@@ -33,7 +33,11 @@ import time
 sys.path.insert(0, str(Path(__file__).parent.parent))
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from scripts.utils.dsn_pds_ingest import ingest_mission_tracking, resolve_prediction_key
+from scripts.utils.dsn_pds_ingest import (
+    PDS_SEARCH_API,
+    ingest_mission_tracking,
+    resolve_prediction_key,
+)
 from scripts.utils.dsn_tracking_discovery import discover_dsn_tracking_file
 from scripts.utils.step_logger import StepLogger
 
@@ -62,8 +66,8 @@ class DSNRawDataAcquisition:
     before orbit determination filtering.
     """
     
-    # NASA PDS data portal base URLs
-    PDS_BASE_URL = "https://pds.nasa.gov/api/search/"
+    # NASA PDS MCP search API (authoritative; legacy pds.nasa.gov search often returns empty)
+    PDS_BASE_URL = PDS_SEARCH_API.rsplit("/products", 1)[0] + "/"
     PDS_IMG_URL = "https://planetarydata.jpl.nasa.gov/img/data/"
     
     # Mission data availability in PDS
@@ -904,14 +908,33 @@ def main():
         status = "SUCCESS"
         exit_code = 0
     else:
-        # Save status indicating DSN data not available (not a failure)
+        local_njpl: dict[str, list] = {}
+        for mission, summary in ingest_summaries.items():
+            arts = summary.get("local_njpl_trk234_artifacts") or []
+            if arts:
+                local_njpl[mission] = arts
+        has_format_validation_only = any(
+            row.get("format_magic") == "NJPL"
+            for arts in local_njpl.values()
+            for row in arts
+        )
         no_data_result = {
-            'status': 'NO_DATA_AVAILABLE',
-            'message': 'Raw DSN data must be downloaded from NASA PDS first',
+            'status': (
+                'LOCAL_NJPL_OUTSIDE_PERIGEE_WINDOW'
+                if has_format_validation_only
+                else 'NO_DATA_AVAILABLE'
+            ),
+            'message': (
+                'NJPL TRK-2-34 on disk but no archive overlaps perigee window; '
+                'perigee-matched PDS ingest still required'
+                if has_format_validation_only
+                else 'Raw DSN data must be downloaded from NASA PDS first'
+            ),
             'note': 'DSN data is external and not included in repository',
             'available_missions_checked': len(available_missions),
             'missions_processed': 0,
             'ingest_summaries': ingest_summaries,
+            'local_njpl_trk234_artifacts': local_njpl,
             'parsing_failures': parsing_failures,
         }
         with open(output_file, 'w') as f:

@@ -1,138 +1,138 @@
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] LOGGER INITIALIZED: step_012_od_filter_simulation (Step 012)
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_012_od_filter_simulation.log
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] STEP 012: RIGOROUS ORBIT DETERMINATION FILTER SIMULATION
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] Demonstrating OD Suppression Hypothesis with physically-motivated models
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] SECTION: SCENARIO SETUP
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] Flyby geometry:
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   Perigee altitude: 500000 m
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   Hyperbolic excess velocity: 10000 m/s
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   Arc duration: 7200 s
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   Time steps: 721
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] TEP model parameters:
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   Coupling strength (alpha): 2.00e-07 m/s^2
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   Length scale (lambda): 1000000 m
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] SECTION: PHYSICS MODEL INITIALIZATION
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] ✓ Physics models initialized successfully
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] SECTION: VALIDATION TESTS
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] energy_conservation: PASS
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   initial_energy: 49999993.918193
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   final_energy: 49999987.9088765
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   relative_drift: -1.2018634455002377e-07
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] angular_momentum_conservation: PASS
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   initial_h: 50494136245.42526
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   final_h: 50494135773.714874
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   relative_drift: -9.341884489138685e-09
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] tep_acceleration: PASS
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   computed_magnitude: 1.213061319425267e-07
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   expected_magnitude: 1.213061319425267e-07
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   relative_error: 0.0
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] tep_direction: PASS
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   a_x: -1.213061319425267e-07
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   a_y: -0.0
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   a_z: -0.0
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012]   direction_error: 0.0
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] ✓ All validation tests passed
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] SECTION: TRUTH TRAJECTORY GENERATION
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] Pure Keplerian velocity at perigee: 11983.18 m/s
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] TEP velocity at perigee: 11983.18 m/s
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] Injected delta-V (total arc): 0.004 mm/s
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] Peak TEP acceleration: 10.12 um/s^2
-[2026-05-13 11:57:41 UTC] [INFO    ] [STEP 012] ✓ Truth trajectory generated with TEP force injection
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] SECTION: NOISE-ONLY CONTROL (PAIRED NOISE)
-[2026-05-13 11:57:41 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:43 UTC] [INFO    ] [STEP 012] Minimal OD on pure Kepler + paired noise: RMS=0.0983 mm/s (sigma=0.1000 mm/s)
-[2026-05-13 11:57:43 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:43 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:43 UTC] [DEBUG   ] [STEP 012] SECTION: ORACLE CONTROL (TEP DYNAMICS MATCHED)
-[2026-05-13 11:57:43 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:47 UTC] [INFO    ] [STEP 012] Oracle 6-state OD (TEP dynamics) on TEP measurements: RMS=0.0983 mm/s
-[2026-05-13 11:57:47 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:47 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:47 UTC] [DEBUG   ] [STEP 012] SECTION: MINIMAL OD FILTER (Galileo/NEAR Era)
-[2026-05-13 11:57:47 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:47 UTC] [INFO    ] [STEP 012] Batch least-squares with pure Keplerian dynamics (no empirical accelerations)
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Estimation converged: False
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Iterations: 30
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Post-fit residual RMS: 0.101 mm/s
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Detected delta-V (vs Keplerian): 0.044 mm/s
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] SECTION: MODERN OD FILTER (Juno/Rosetta Era)
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Constant empirical acceleration correction on the same arc
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Post-fit residual RMS: 0.102 mm/s
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Detected delta-V (vs Keplerian): -0.072 mm/s
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Final empirical acceleration: 0.084 um/s^2
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] SECTION: PERIGEE STATE BIAS (MINIMAL OD vs TEP TRUTH)
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Perigee index 497 (t=-430.0 s): |Δr|=0.44 m, |Δv|=27.2174 mm/s
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] SECTION: SUPPRESSION ANALYSIS
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] True injected speed delta over arc: 0.004 mm/s
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Injected Doppler signal RMS: 0.395 mm/s
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] Injected Doppler signal peak-to-peak: 6.267 mm/s
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] 
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] MINIMAL OD RESULTS:
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012]   Detected delta-V: 0.044 mm/s
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012]   Residual/injected observable fraction: 25.6%
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012]   Observable suppression: 74.4%
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] 
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012] MODERN OD RESULTS:
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012]   Detected delta-V: -0.072 mm/s
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012]   Residual/injected observable fraction: 25.8%
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012]   Observable suppression: 74.2%
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012]   Minimal residual RMS / noise-only control RMS: 1.027
-[2026-05-13 11:57:50 UTC] [INFO    ] [STEP 012]   Minimal residual RMS / oracle(TEP) control RMS: 1.027
-[2026-05-13 11:57:50 UTC] [WARNING ] [STEP 012] ⚠ OD suppression is numerically visible, but this synthetic run is not a mission-specific F_OD calibration.
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] SECTION: SENSITIVITY SWEEP (STATIONS / TWO-WAY TOY SCALE)
-[2026-05-13 11:57:50 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:51 UTC] [INFO    ] [STEP 012] two_station_average_one_way: inj RMS=0.273 mm/s, minimal suppr=64.2%, RMS_tep/RMS_null=1.000
-[2026-05-13 11:57:52 UTC] [INFO    ] [STEP 012] two_station_stacked_one_way: inj RMS=0.333 mm/s, minimal suppr=67.7%, RMS_tep/RMS_null=1.083
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] one_station_two_way_toy_scale_2: inj RMS=0.791 mm/s, minimal suppr=86.4%, RMS_tep/RMS_null=1.100
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] Results exported to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step012_od_simulation_validation.json
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] 
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] STEP SUMMARY: step_012_od_filter_simulation
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] Step Number: 012
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] Status: SUCCESS
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] Duration: 14.27s
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] Calculations Logged: 0
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] Output Files: 0
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_012_od_filter_simulation.log
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] No output files generated
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] ================================================================================
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] STEP 012 COMPLETE: SUCCESS
-[2026-05-13 11:57:55 UTC] [INFO    ] [STEP 012] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_012_od_filter_simulation_provenance.json
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 012] 
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 012] SECTION: SCIENTIFIC CONCLUSION
-[2026-05-13 11:57:55 UTC] [DEBUG   ] [STEP 012] ================================================================================
-[2026-05-13 11:57:55 UTC] [WARNING ] [STEP 012] ⚠ This synthetic simulation is diagnostic only:
-[2026-05-13 11:57:55 UTC] [WARNING ] [STEP 012] ⚠ 1. It is not a mission-specific OD configuration.
-[2026-05-13 11:57:55 UTC] [WARNING ] [STEP 012] ⚠ 2. It must not be used to compute F_OD survival factors.
-[2026-05-13 11:57:55 UTC] [WARNING ] [STEP 012] ⚠ 3. Empirical-acceleration OD calibration requires real mission OD settings.
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] LOGGER INITIALIZED: step_012_od_filter_simulation (Step 012)
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_012_od_filter_simulation.log
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] STEP 012: RIGOROUS ORBIT DETERMINATION FILTER SIMULATION
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] Demonstrating OD Suppression Hypothesis with physically-motivated models
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] SECTION: SCENARIO SETUP
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] Flyby geometry:
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   Perigee altitude: 500000 m
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   Hyperbolic excess velocity: 10000 m/s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   Arc duration: 7200 s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   Time steps: 721
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] TEP model parameters:
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   Coupling strength (alpha): 2.00e-07 m/s^2
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   Length scale (lambda): 1000000 m
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] SECTION: PHYSICS MODEL INITIALIZATION
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] ✓ Physics models initialized successfully
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] SECTION: VALIDATION TESTS
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] energy_conservation: PASS
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   initial_energy: 49999993.918193
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   final_energy: 49999987.9088765
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   relative_drift: -1.2018634455002377e-07
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] angular_momentum_conservation: PASS
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   initial_h: 50494136245.42526
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   final_h: 50494135773.714874
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   relative_drift: -9.341884489138685e-09
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] tep_acceleration: PASS
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   computed_magnitude: 1.213061319425267e-07
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   expected_magnitude: 1.213061319425267e-07
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   relative_error: 0.0
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] tep_direction: PASS
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   a_x: -1.213061319425267e-07
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   a_y: -0.0
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   a_z: -0.0
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012]   direction_error: 0.0
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] ✓ All validation tests passed
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] SECTION: TRUTH TRAJECTORY GENERATION
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] Pure Keplerian velocity at perigee: 11983.18 m/s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] TEP velocity at perigee: 11983.18 m/s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] Injected delta-V (total arc): 0.004 mm/s
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] Peak TEP acceleration: 10.12 um/s^2
+[2026-05-17 12:30:13 UTC] [INFO    ] [STEP 012] ✓ Truth trajectory generated with TEP force injection
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] SECTION: NOISE-ONLY CONTROL (PAIRED NOISE)
+[2026-05-17 12:30:13 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:16 UTC] [INFO    ] [STEP 012] Minimal OD on pure Kepler + paired noise: RMS=0.0983 mm/s (sigma=0.1000 mm/s)
+[2026-05-17 12:30:16 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:16 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:16 UTC] [DEBUG   ] [STEP 012] SECTION: ORACLE CONTROL (TEP DYNAMICS MATCHED)
+[2026-05-17 12:30:16 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:20 UTC] [INFO    ] [STEP 012] Oracle 6-state OD (TEP dynamics) on TEP measurements: RMS=0.0983 mm/s
+[2026-05-17 12:30:20 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:20 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:20 UTC] [DEBUG   ] [STEP 012] SECTION: MINIMAL OD FILTER (Galileo/NEAR Era)
+[2026-05-17 12:30:20 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:20 UTC] [INFO    ] [STEP 012] Batch least-squares with pure Keplerian dynamics (no empirical accelerations)
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Estimation converged: False
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Iterations: 30
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Post-fit residual RMS: 0.101 mm/s
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Detected delta-V (vs Keplerian): 0.044 mm/s
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] SECTION: MODERN OD FILTER (Juno/Rosetta Era)
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Constant empirical acceleration correction on the same arc
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Post-fit residual RMS: 0.102 mm/s
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Detected delta-V (vs Keplerian): -0.072 mm/s
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Final empirical acceleration: 0.084 um/s^2
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] SECTION: PERIGEE STATE BIAS (MINIMAL OD vs TEP TRUTH)
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Perigee index 497 (t=-430.0 s): |Δr|=0.44 m, |Δv|=27.2174 mm/s
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] SECTION: SUPPRESSION ANALYSIS
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] True injected speed delta over arc: 0.004 mm/s
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Injected Doppler signal RMS: 0.395 mm/s
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] Injected Doppler signal peak-to-peak: 6.267 mm/s
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] 
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] MINIMAL OD RESULTS:
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012]   Detected delta-V: 0.044 mm/s
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012]   Residual/injected observable fraction: 25.6%
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012]   Observable suppression: 74.4%
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] 
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012] MODERN OD RESULTS:
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012]   Detected delta-V: -0.072 mm/s
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012]   Residual/injected observable fraction: 25.8%
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012]   Observable suppression: 74.2%
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012]   Minimal residual RMS / noise-only control RMS: 1.027
+[2026-05-17 12:30:22 UTC] [INFO    ] [STEP 012]   Minimal residual RMS / oracle(TEP) control RMS: 1.027
+[2026-05-17 12:30:22 UTC] [WARNING ] [STEP 012] ⚠ OD suppression is numerically visible, but this synthetic run is not a mission-specific F_OD calibration.
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] SECTION: SENSITIVITY SWEEP (STATIONS / TWO-WAY TOY SCALE)
+[2026-05-17 12:30:22 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:23 UTC] [INFO    ] [STEP 012] two_station_average_one_way: inj RMS=0.273 mm/s, minimal suppr=64.2%, RMS_tep/RMS_null=1.000
+[2026-05-17 12:30:24 UTC] [INFO    ] [STEP 012] two_station_stacked_one_way: inj RMS=0.333 mm/s, minimal suppr=67.7%, RMS_tep/RMS_null=1.083
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] one_station_two_way_toy_scale_2: inj RMS=0.791 mm/s, minimal suppr=86.4%, RMS_tep/RMS_null=1.100
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] Results exported to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/step012_od_simulation_validation.json
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] 
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] STEP SUMMARY: step_012_od_filter_simulation
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] Step Number: 012
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] Status: SUCCESS
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] Duration: 13.63s
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] Calculations Logged: 0
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] Output Files: 0
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/logs/step_012_od_filter_simulation.log
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] No output files generated
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] STEP 012 COMPLETE: SUCCESS
+[2026-05-17 12:30:27 UTC] [INFO    ] [STEP 012] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA/results/provenance/step_012_od_filter_simulation_provenance.json
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 012] 
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 012] SECTION: SCIENTIFIC CONCLUSION
+[2026-05-17 12:30:27 UTC] [DEBUG   ] [STEP 012] ================================================================================
+[2026-05-17 12:30:27 UTC] [WARNING ] [STEP 012] ⚠ This synthetic simulation is diagnostic only:
+[2026-05-17 12:30:27 UTC] [WARNING ] [STEP 012] ⚠ 1. It is not a mission-specific OD configuration.
+[2026-05-17 12:30:27 UTC] [WARNING ] [STEP 012] ⚠ 2. It must not be used to compute F_OD survival factors.
+[2026-05-17 12:30:27 UTC] [WARNING ] [STEP 012] ⚠ 3. Empirical-acceleration OD calibration requires real mission OD settings.
 ==============================

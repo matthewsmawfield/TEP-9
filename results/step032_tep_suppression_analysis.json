@@ -14,12 +14,12 @@
     "individual_results": [
       {
         "mission": "NEAR_1998",
-        "standard_od_dv_mm_s": 0.0,
-        "minimal_od_predicted_dv_mm_s": 0.0,
-        "tep_detected": false,
-        "confidence": 0.0,
-        "ppn_compliant": false,
-        "notes": "Mission not in analysis"
+        "standard_od_dv_mm_s": 13.46,
+        "minimal_od_predicted_dv_mm_s": 13.462370135587253,
+        "tep_detected": true,
+        "confidence": 1.0,
+        "ppn_compliant": true,
+        "notes": "Both standard OD and TEP predict anomaly."
       },
       {
         "mission": "Galileo_1990",
@@ -41,12 +41,12 @@
       },
       {
         "mission": "Cassini_1999",
-        "standard_od_dv_mm_s": 0.0,
-        "minimal_od_predicted_dv_mm_s": 0.0,
-        "tep_detected": false,
-        "confidence": 0.0,
-        "ppn_compliant": false,
-        "notes": "Mission not in analysis"
+        "standard_od_dv_mm_s": 0.11,
+        "minimal_od_predicted_dv_mm_s": 6.38543389292575,
+        "tep_detected": true,
+        "confidence": 1.0,
+        "ppn_compliant": true,
+        "notes": "Standard OD: 0.11 mm/s. Minimal OD prediction: 6.39 mm/s. TEP signal likely filtered by OD."
       },
       {
         "mission": "Rosetta_2005",
@@ -87,11 +87,11 @@
       {
         "mission": "Juno_2013",
         "standard_od_dv_mm_s": 0.0,
-        "minimal_od_predicted_dv_mm_s": 0.0,
-        "tep_detected": false,
-        "confidence": 0.0,
-        "ppn_compliant": false,
-        "notes": "Mission not in analysis"
+        "minimal_od_predicted_dv_mm_s": 9.353168583312945,
+        "tep_detected": true,
+        "confidence": 1.0,
+        "ppn_compliant": true,
+        "notes": "Standard OD: 0.00 mm/s. Minimal OD prediction: 9.35 mm/s. TEP signal likely filtered by OD."
       },
       {
         "mission": "Stardust_2001",
@@ -123,9 +123,9 @@
     ],
     "summary": {
       "total_analyzed": 12,
-      "tep_predicted": 5,
-      "likely_suppressed": 3,
-      "conclusion": "Evidence strong: 3 missions show null results where TEP predicts detectable signals. Modern OD likely filters TEP by treating it as systematic error. Raw DSN re-analysis with minimal OD recommended."
+      "tep_predicted": 8,
+      "likely_suppressed": 5,
+      "conclusion": "Legacy diagnostic flags 5 null missions where the superseded altitude-only scaling predicts a detectable signal. Do not treat this as evidence for OD absorption; use Step 039 and raw DSN re-analysis for inference."
     }
   },
   "enhanced_evidence": {
@@ -180,9 +180,16 @@
       "total_high_altitude": 3
     },
     "statistical_significance": {
-      "pearson_correlation": 0.18609598866804333,
-      "p_value": 0.5625281533334453,
+      "pearson_correlation": 0.33164030214597173,
+      "p_value": 0.292299305258112,
       "interpretation": "WEAK correlation"
+    },
+    "altitude_anomaly_spearman": {
+      "rho": -0.18278153875348274,
+      "p_value": 0.6378520997897523,
+      "n": 9,
+      "interpretation": "not significant",
+      "note": "Computed from all flybys with published observations; expected anti-correlation masked by null results at intermediate altitudes and trajectory-asymmetry modulation"
     },
     "historical_timeline": {
       "data": [
@@ -303,8 +310,8 @@
     }
   },
   "implications": {
-    "tep_viable": true,
-    "suppression_mechanism": "Modern OD gravity field over-fitting and Doppler filtering",
-    "recommendation": "Re-analyze with minimal OD (10x10 gravity, no filtering)"
+    "tep_viable": null,
+    "suppression_mechanism": "not_inferred_from_legacy_diagnostic",
+    "recommendation": "Use Step 039 and raw DSN re-analysis for current inference"
   }
 }

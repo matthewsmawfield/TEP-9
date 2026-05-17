@@ -1,0 +1,186 @@
+{
+    "audit_type": "TEP-EFA Research-Grade Audit",
+    "theory_version": "Jakarta v0.8.0",
+    "telemetry": {
+        "os": "Darwin 25.3.0",
+        "python_version": "3.13.5",
+        "processor": "arm",
+        "timestamp_utc": "2026-05-16T11:23:30.218775+00:00",
+        "project_root": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-EFA"
+    },
+    "strict_sign_gate": false,
+    "pipeline_results": [
+        {
+            "step": "Step 001",
+            "description": "Step 001: Download SPICE Kernels (NAIF)",
+            "status": "SUCCESS",
+            "duration_seconds": 32.54820203781128,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:19:01.879402+00:00"
+        },
+        {
+            "step": "Step 002",
+            "description": "Step 002: Convert SPICE to JSON",
+            "status": "SUCCESS",
+            "duration_seconds": 0.23568320274353027,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:19:02.115763+00:00"
+        },
+        {
+            "step": "Step 003",
+            "description": "Step 003: Archival Data Mining",
+            "status": "SUCCESS",
+            "duration_seconds": 0.07330918312072754,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:19:02.189549+00:00"
+        },
+        {
+            "step": "Step 004",
+            "description": "Step 004: JPL Horizons Data Fetch",
+            "status": "SUCCESS",
+            "duration_seconds": 0.8997817039489746,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:19:03.089873+00:00"
+        },
+        {
+            "step": "Step 005",
+            "description": "Step 038: Extract 3D State Vectors from JPL Horizons",
+            "status": "SUCCESS",
+            "duration_seconds": 0.7151849269866943,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:19:03.805696+00:00"
+        },
+        {
+            "step": "Step 006",
+            "description": "Step 033: Continuous IRI Trajectory Profiles",
+            "status": "SUCCESS",
+            "duration_seconds": 60.02669286727905,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:20:03.833222+00:00"
+        },
+        {
+            "step": "Step 007",
+            "description": "Step 005: DSN Data Ingestion",
+            "status": "SUCCESS",
+            "duration_seconds": 0.042304039001464844,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:20:03.876209+00:00"
+        },
+        {
+            "step": "Step 008",
+            "description": "Step 006: DSN Framework (Resolves Horizons Circularity)",
+            "status": "SUCCESS",
+            "duration_seconds": 107.30482816696167,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:21:51.182124+00:00"
+        },
+        {
+            "step": "Step 009",
+            "description": "Step 007: Enhanced TEP Model (WGS84, PREM, 3D)",
+            "status": "SUCCESS",
+            "duration_seconds": 2.206000804901123,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:21:53.389120+00:00"
+        },
+        {
+            "step": "Step 010",
+            "description": "Step 008: Parameter Fitting",
+            "status": "SUCCESS",
+            "duration_seconds": 1.2941863536834717,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:21:54.684252+00:00"
+        },
+        {
+            "step": "Step 011",
+            "description": "Step 041: Geometry Envelope Heuristic Sensitivity",
+            "status": "SUCCESS",
+            "duration_seconds": 54.59304904937744,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:22:49.279101+00:00"
+        },
+        {
+            "step": "Step 012",
+            "description": "Step 009: Unified Variance Analysis (Four-Stage)",
+            "status": "SUCCESS",
+            "duration_seconds": 0.8591170310974121,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:22:50.139073+00:00"
+        },
+        {
+            "step": "Step 013",
+            "description": "Step 010: First-Principles UCD Saturation Topology",
+            "status": "SUCCESS",
+            "duration_seconds": 0.5035190582275391,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:22:50.643185+00:00"
+        },
+        {
+            "step": "Step 014",
+            "description": "Step 011: Trajectory Integration",
+            "status": "SUCCESS",
+            "duration_seconds": 8.404085874557495,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:22:59.048911+00:00"
+        },
+        {
+            "step": "Step 015",
+            "description": "Step 012: OD Filter Simulation",
+            "status": "SUCCESS",
+            "duration_seconds": 30.833725929260254,
+            "exit_code": 0,
+            "timestamp": "2026-05-16T11:23:29.884424+00:00"
+        },
+        {
+            "step": "Step 016",
+            "description": "Step 013: Cross-Validation Analysis",
+            "status": "FAILED",
+            "duration_seconds": 0.3219449520111084,
+            "exit_code": 1,
+            "timestamp": "2026-05-16T11:23:30.207271+00:00"
+        }
+    ],
+    "script_integrity": {
+        "step_001_download_spice.py": "e838224b19b9cb427d4d11e32ab27264bbc5f275cbd0524db51f5ad070a4e369",
+        "step_002_spice_to_json.py": "f4ced0642c48ccbac684c31c71dd3b06888685a0834c52fb94194fe8f33dba5b",
+        "step_003_archival_data_mining.py": "2ef54a563051a128fb3b29b7cb81ab9d62e961bb6a60ae206803104984c716b5",
+        "step_004_jpl_horizons_fetch.py": "00826645d254b55b29cb02ef63e7c3707ff2f797f7aadb14932881f9b8805912",
+        "step_038_extract_3d_vectors.py": "c09e6f543cfeaa1547ffbc22f3124a7ada9972f205a20d39ab48ee1cebd81785",
+        "step_033_iri_trajectory_profile.py": "b607eb97fe3050fe34e2898e931efb3870afa80d92be6c1c07e65e8cb850fb8c",
+        "step_005_dsn_data_ingestion.py": "92c2f6ac97bcd9a90eedbf5dfd08a39ab6e17894d0fb35176be21c913ee0c2f0",
+        "step_006_dsn_framework.py": "db28970d29b66b58f5f74196ce82fc911fc46b6dc2265b02cb2c85191eafaaf4",
+        "step_007_tep_model.py": "e3bbc28832d50d27b22c4672bf73364ef6c0b34829949ad926cc6250d52de0bf",
+        "step_008_fitting.py": "316a834664ea2af821a3c69b1efb327d498819f937eb7e2b3c86b86cafdcb812",
+        "step_041_envelope_heuristic_sensitivity.py": "c0a6706448048c92911de4c97b1e99ecacf1a3e8ce1e752f730a052874232590",
+        "step_009_variance_analysis.py": "33c87d165af36a8e75384dfe032b8e1760520eb100c5da178a01413dc07484a7",
+        "step_010_tep_first_principles.py": "86d5e7700a25b4c1f885036f052db6db652c54f58d5b150dc0cfb81ad74e3d7a",
+        "step_011_trajectory_integration.py": "a6336e73b54074278b013364e4e34683055386ac08167c4069ff45ed9cd62043",
+        "step_012_od_filter_simulation.py": "65f4dea374843faef3fb31090b77dc19ba204c193a5cba72cfc0ac4baa5b5ecd",
+        "step_013_cross_validation.py": "f3f915d98763b8e2dd3d64c5d2297fcb71c82a75fe051a608ae0a658318fd482",
+        "step_014_sensitivity_analysis.py": "a4997fdb882083e41552a13488745abf0778af2d4469660224c1c88ab196ae47",
+        "step_015_hierarchical_bayesian.py": "1fcf07a6c0aea872d40a5e48e297bc16ebb390c233b945c8acceb8aa2a847be6",
+        "step_016_gnss_validation.py": "2a106381baa2d63fc9406044658eb59d3be50b08cd7e6d5bd006acacfbd19272",
+        "step_017_plasma_modulation.py": "db95721cc5baee2864bedbb68f9cedc7d6422decb209ab30fa1e034a418c0415",
+        "step_018_space_weather.py": "f0f7f2ba2acea0dae8be4b2cb20101cef037c28e3909b22ba89971cbacde30b3",
+        "step_019_3d_field_integration.py": "eccf87f3c8a095458db887e12e17bf167c46fc008416c90d57b5f5d949966a6f",
+        "step_020_plasma_environment_reconstruction.py": "9ac0cb818f84767b902b021508ccbe61f49fc7045c6640081470fb2df14313aa",
+        "step_021_mission_specific_od_absorption.py": "933ce1b010fe3df6c0833eca60cf11af95addc7c57332347f61015e38df7ca37",
+        "step_022_atmospheric_drag_simulation.py": "ae43a186ff7659009037d962d125a79119e4ad38551755265c4d4fb1d5b18ebf",
+        "step_023_thermal_recoil_modeling.py": "801a3bf3138624a56a16b8b33d4a8c1f77ec1e3b0b0522e3a43997fd155c4982",
+        "step_024_systematic_error_monte_carlo.py": "0e19ceef370396589663aa121ea038b82b7dbf5ec35f20e89c367be222a57bbd",
+        "step_025_corrected_uncertainty.py": "82a8e7feefb07d0be416735eebc716e5a0d0634aaea33c6666f7f224f75d51ee",
+        "step_026_stable_model_comparison.py": "b7865b5bff62760a5071a711a92f7ddd2f65b7ddd91c855017f5bc45715e1eb2",
+        "step_039_flyby_prediction_table.py": "066be2101d823747c21c64afd8f6f80b031483ccec13de0c2cb511ab1268ce4a",
+        "step_027_claim_consistency_audit.py": "a8319d413c6750f7c83405ff6d9a5cae8f7a883f3a0e17c6e7b811bc2b1fe5c1",
+        "step_028_dsn_processing.py": "9f328fe05fa99052adfdaa8806b7273147d228882117726001bb661def577f7a",
+        "step_029_read_trk234.py": "c4f0c7c6470b0be65db0f58af3efcba3dc7710ed6bf59a6ba6658236421a4a78",
+        "step_030_juno_reanalysis.py": "57dbeeb8b5ebabd018410f52ffa7b442ebf34ad3c507d8f14ab13e0baf9d0889",
+        "step_042_time_resolved_cosmography.py": "1611bb25815534e595382da36fead44933414e9075aeb5c6df58bcc53c90758a",
+        "step_031_pds_search.py": "514199f851770976b0ebf91ceccbe1ee93dbce96f2271b544fd730296a1fc7fb",
+        "step_032_tep_suppression.py": "a6194a37fd4ae4ee60b41d1e6f2eddcbe4e5372d8d6fcc7d2187966db230535a",
+        "step_034_covariant_holonomy.py": "a6de2cc37203b45a12d0347e395ac81b16492eb0202d7edeed665251adbad797",
+        "step_035_cross_corpus_export.py": "820a150b8d7f563164aef5abea12636840ca0c0c51b6a108f6f111e8d18276c7",
+        "step_040_cosmographic_shear.py": "43dfd7ea1a8e2dc5431f08f32a5ce3f48f6144752eb84a28607cdde5edab9560",
+        "step_036_final_report.py": "69f4c070d463bf2174916fe363d0dff116ea81ba239812cce6e4f02870c085c7",
+        "step_037_visualizations.py": "84a00c26a26d51f03ebfd1ea57fbb5e5849e8cf50c586bd3e94acb1cea74ca8a"
+    }
+}

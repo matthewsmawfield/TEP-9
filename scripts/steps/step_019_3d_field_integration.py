@@ -12,7 +12,7 @@ The matter-frame scalar acceleration used in the EFA pipeline matches
 Step 007 / Jakarta v0.8 conformal coupling:
 a_φ = β_eff c² ∇φ / M_Pl (vector form; sign from ∇φ and trajectory projection).
 
-∇φ is obtained numerically from the Temporal Shear Suppression field minimum
+∇φ is obtained numerically from the screened field minimum
 φ_min(ρ) with denominator 2βρ_GeV⁴ as in `TEPTemporalTopologyModel._phi_of_rho`.
 
 Key features:
@@ -57,8 +57,8 @@ class Field3DIntegrator:
         
         Args:
             beta: Coupling constant (dimensionless, defaults to BETA_BASELINE from physics.py)
-            Lambda_GeV: Temporal Shear Suppression field scale in GeV (default 0.01 = 10 MeV)
-            n: Temporal Shear Suppression field power-law index (default 3)
+            Lambda_GeV: screened field scale in GeV (default 0.01 = 10 MeV)
+            n: screened field power-law index (default 3)
         """
         self.logger = StepLogger("step_019_3d_field_integration", PROJECT_ROOT)
         self.beta = beta if beta is not None else BETA_BASELINE * 1e-4
@@ -102,7 +102,7 @@ class Field3DIntegrator:
     
     def compute_field_at_position(self, position, density_field):
         """
-        Compute scalar field value at given position using Temporal Shear Suppression formula.
+        Compute scalar field value at given position using screened-field formula.
 
         Field minimum (Jakarta v0.8 / Step 007 convention, matter density ρ in kg m⁻³
         converted to GeV⁴):
@@ -122,7 +122,7 @@ class Field3DIntegrator:
         if rho_gev4 <= 0 or self.beta <= 0:
             return self.Lambda * 1e6
         
-        # Temporal Shear Suppression field minimum: φ_min = Λ [ (n Λ^(n+4) M_Pl) / (2β ρ) ]^(1/(n+1))
+        # screened field minimum: φ_min = Λ [ (n Λ^(n+4) M_Pl) / (2β ρ) ]^(1/(n+1))
         numerator = self.n * self.M_PL * (self.Lambda ** (4 + self.n))
         denominator = 2.0 * rho_gev4 * self.beta
         

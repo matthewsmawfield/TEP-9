@@ -11,6 +11,7 @@ that may correlate with date/time and direction via cosmographic modulation.
 """
 
 import json
+import os
 import sys
 import math
 from pathlib import Path
@@ -44,13 +45,6 @@ except ImportError:
 CMB_DIPOLE_RA_DEG = 167.94   # J2000 equatorial
 CMB_DIPOLE_DEC_DEG = -6.93
 CMB_DIPOLE_VELOCITY_KM_S = 369.82  # km/s
-
-# Earth's orbital parameters
-EARTH_ORBITAL_ECCENTRICITY = 0.0167086
-EARTH_ORBITAL_SEMI_MAJOR_AU = 1.000001018
-EARTH_ORBITAL_PERIOD_DAYS = 365.256363004
-EARTH_ORBITAL_INCLINATION_DEG = 0.0  # ecliptic reference
-EARTH_ORBITAL_LONGITUDE_OF_PERIHELION_DEG = 102.937348  # J2000
 
 # TEP UCD parameters
 RHO_T_G_CM3 = 20.0  # g/cm^3
@@ -111,97 +105,83 @@ def load_tep_predictions(fitting_results_path: Path) -> dict:
 
 
 def load_3d_state_vectors(state_vectors_path: Path) -> dict:
-    """Load 3D spacecraft state vectors at perigee from step_040a."""
+    """Load 3D spacecraft state vectors at perigee from step_038."""
     if not state_vectors_path.exists():
         return {}
     with open(state_vectors_path) as f:
         return json.load(f)
 
 
-def julian_day(dt: datetime) -> float:
-    """Convert UTC datetime to Julian Day."""
-    y, m, d = dt.year, dt.month, dt.day
-    if m <= 2:
-        y -= 1
-        m += 12
-    A = y // 100
-    B = 2 - A + A // 4
-    JD = (int(365.25 * (y + 4716)) + int(30.6001 * (m + 1)) + d + B - 1524.5)
-    frac = (dt.hour + dt.minute / 60.0 + dt.second / 3600.0) / 24.0
-    return JD + frac
-
-
-def earth_heliocentric_state(dt: datetime) -> tuple:
+def icrs_cartesian_to_ecliptic_cartesian(x: float, y: float, z: float) -> np.ndarray:
     """
-    Compute Earth's heliocentric ecliptic longitude, latitude, distance (AU),
-    and orbital velocity vector (km/s) using proper elliptical orbit mechanics.
-
-    Returns:
-        (r_au, lon_deg, lat_deg, vx_kms, vy_kms, vz_kms)
-        where (vx, vy, vz) are in a heliocentric ecliptic frame:
-        x: toward vernal equinox
-        y: 90 deg ecliptic longitude
-        z: toward ecliptic north pole
+    Rotate ICRS / J2000 equatorial Cartesian components into ecliptic coordinates
+    using the same obliquity convention as `step_038_extract_3d_vectors.equatorial_to_ecliptic`.
     """
-    JD = julian_day(dt)
-    T = (JD - 2451545.0) / 36525.0  # Julian centuries from J2000.0
+    eps = math.radians(23.439281)
+    xe = x
+    ye = y * math.cos(eps) + z * math.sin(eps)
+    ze = -y * math.sin(eps) + z * math.cos(eps)
+    return np.array([xe, ye, ze], dtype=float)
 
-    # Mean longitude of the Sun (Earth's longitude + 180)
-    L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T  # deg
-    L0 = L0 % 360.0
 
-    # Mean anomaly of the Sun (Earth)
-    M = 357.52911 + 35999.05029 * T - 0.0001537 * T * T  # deg
-    M = math.radians(M % 360.0)
+def earth_sun_ephemeris_state(dt: datetime, logger, quiet: bool = False) -> dict:
+    """
+    Earth and Sun barycentric state in ICRS via Astropy, aligned with Horizons-grade
+    inner-planet ephemeris (default: `builtin`; override with TEP_SOLAR_SYSTEM_EPHEMERIS).
 
-    # Eccentricity
-    e = 0.016708634 - 0.000042037 * T - 0.0000001267 * T * T
+    Returns heliocentric distance and ecliptic longitude from (r_Earth − r_Sun),
+    heliocentric Earth velocity (v_Earth − v_Sun) in ecliptic km/s for solar modulation,
+    Earth barycentric velocity in ICRS km/s for adding to geocentric spacecraft
+    velocity from Horizons (consistent inertial chain), and Earth/Sun barycentric
+    positions in ICRS (AU) for trajectory mapping in Step 042.
+    """
+    from astropy.time import Time
+    from astropy.coordinates import solar_system_ephemeris, get_body_barycentric_posvel
+    import astropy.units as u
 
-    # Equation of center (simplified, first three terms)
-    C = (1.914602 - 0.004817 * T - 0.000014 * T * T) * math.sin(M)
-    C += (0.019993 - 0.000101 * T) * math.sin(2 * M)
-    C += 0.000289 * math.sin(3 * M)
+    t = Time(dt, scale="utc")
+    ephem = os.environ.get("TEP_SOLAR_SYSTEM_EPHEMERIS", "de440").strip()
+    if not ephem:
+        ephem = "de440"
 
-    # True longitude of the Sun
-    true_lon_sun = (L0 + C) % 360.0  # deg
-    # Earth's true heliocentric longitude (opposite the Sun)
-    true_lon_earth = (true_lon_sun + 180.0) % 360.0
-    true_lon_earth_rad = math.radians(true_lon_earth)
+    try:
+        with solar_system_ephemeris.set(ephem):
+            p_e, v_e = get_body_barycentric_posvel("earth", t)
+            p_s, v_s = get_body_barycentric_posvel("sun", t)
+    except Exception as exc:
+        raise RuntimeError(
+            f"Step 040 Earth/Sun ephemeris failed (TEP_SOLAR_SYSTEM_EPHEMERIS={ephem!r}). "
+            "Use 'builtin' (ships with Astropy) or another Astropy-supported ephemeris name."
+        ) from exc
 
-    # True anomaly of Earth
-    nu = (true_lon_earth - 102.937348) % 360.0
-    nu_rad = math.radians(nu)
+    pos_e = np.asarray(p_e.get_xyz().to(u.au).value, dtype=float).reshape(3)
+    pos_s = np.asarray(p_s.get_xyz().to(u.au).value, dtype=float).reshape(3)
+    vel_e = np.asarray(v_e.get_xyz().to(u.km / u.s).value, dtype=float).reshape(3)
+    vel_s = np.asarray(v_s.get_xyz().to(u.km / u.s).value, dtype=float).reshape(3)
 
-    # Distance (AU)
-    a = 1.000001018
-    r_au = a * (1 - e * e) / (1 + e * math.cos(nu_rad))
+    r_rel_icrs = pos_e - pos_s
+    r_rel_ecl = icrs_cartesian_to_ecliptic_cartesian(*r_rel_icrs)
+    r_au = float(np.linalg.norm(r_rel_ecl))
+    lon_deg = math.degrees(math.atan2(r_rel_ecl[1], r_rel_ecl[0])) % 360.0
 
-    # Proper elliptical velocity components (km/s)
-    mu_km3_s2 = 1.32712440018e11  # GM_sun in km^3/s^2
-    r_km = r_au * AU_M / 1000.0
-    # Semi-latus rectum
-    p_km = a * AU_M / 1000.0 * (1 - e * e)
-    # Specific angular momentum
-    h = math.sqrt(mu_km3_s2 * p_km)
+    v_rel_icrs = vel_e - vel_s
+    v_rel_ecl = icrs_cartesian_to_ecliptic_cartesian(*v_rel_icrs)
 
-    # Radial and transverse velocity components
-    v_r = (mu_km3_s2 / h) * e * math.sin(nu_rad)  # km/s, positive = moving away from Sun
-    v_t = (mu_km3_s2 / h) * (1 + e * math.cos(nu_rad))  # km/s, transverse
+    if not quiet:
+        logger.info(f"  Earth–Sun ephemeris ({ephem}): r = {r_au:.4f} AU, λ_ecl = {lon_deg:.2f} deg")
+        logger.info(f"  Earth barycentric speed (ICRS): {float(np.linalg.norm(vel_e)):.2f} km/s")
+        logger.info(f"  Earth helio-relative speed (ecliptic): {float(np.linalg.norm(v_rel_ecl)):.2f} km/s")
 
-    # Verify with vis-viva
-    v_visviva = math.sqrt(mu_km3_s2 * (2.0 / r_km - 1.0 / (a * AU_M / 1000.0)))
-    v_check = math.sqrt(v_r * v_r + v_t * v_t)
-    # They should agree within numerical precision
-
-    # Velocity vector in heliocentric ecliptic frame
-    # r_hat = (cos λ, sin λ, 0)  [Sun to Earth]
-    # theta_hat = (-sin λ, cos λ, 0)  [perpendicular, CCW]
-    # v = v_r * r_hat + v_t * theta_hat
-    vx = v_r * math.cos(true_lon_earth_rad) - v_t * math.sin(true_lon_earth_rad)
-    vy = v_r * math.sin(true_lon_earth_rad) + v_t * math.cos(true_lon_earth_rad)
-    vz = 0.0
-
-    return r_au, true_lon_earth, 0.0, vx, vy, vz
+    return {
+        "ephemeris": ephem,
+        "r_au": r_au,
+        "ecliptic_longitude_deg": lon_deg,
+        "earth_barycentric_vel_kms_icrs": vel_e,
+        "earth_helio_vel_kms_ecliptic": v_rel_ecl,
+        "sun_barycentric_vel_kms_icrs": vel_s,
+        "earth_barycentric_pos_au_icrs": pos_e.tolist(),
+        "sun_barycentric_pos_au_icrs": pos_s.tolist(),
+    }
 
 
 def unit_vector_equatorial(ra_deg: float, dec_deg: float) -> np.ndarray:
@@ -226,7 +206,7 @@ def ecliptic_to_equatorial(vx, vy, vz) -> np.ndarray:
 
 
 def get_spacecraft_velocity_unit_vector(mission: str, state_vectors: dict) -> np.ndarray:
-    """Return spacecraft velocity unit vector in ecliptic frame from step_040a."""
+    """Return spacecraft velocity unit vector in ecliptic frame from step_038."""
     vec = state_vectors.get(mission)
     if vec is None or "ux_ecl" not in vec:
         raise RuntimeError(
@@ -296,14 +276,17 @@ def compute_cmb_dipole_modulation(v_earth_equ: np.ndarray, v_sc_equ: np.ndarray)
     the ~370 km/s bulk motion modulates the effective coupling.
 
     With proper 3D vectors, we compute:
-    - Earth velocity toward CMB dipole apex (from orbital motion)
-    - Total spacecraft velocity in CMB rest frame
+    - Earth barycentric velocity projected onto the CMB dipole apex (ICRS, km/s;
+      added to Horizons geocentric spacecraft velocity for an inertial sum)
+    - Total Earth+spacecraft velocity projected onto the CMB dipole (without the
+      fixed Planck bulk template term; see bulk row in returned dict)
     - CMB-frame disformal enhancement factor: v_total^2 / v_sc^2
     - Sign of the projection (enhancement vs. suppression)
     """
     n_cmb = unit_vector_equatorial(CMB_DIPOLE_RA_DEG, CMB_DIPOLE_DEC_DEG)
 
-    # Earth's orbital velocity projected onto CMB dipole
+    # Earth's velocity projected onto CMB dipole (field name retained: historically
+    # analytic orbital velocity; now barycentric ICRS from Astropy when Step 040 runs).
     v_earth_cmb_proj = float(np.dot(v_earth_equ, n_cmb))  # km/s
 
     # Total Earth+spacecraft velocity projected onto CMB dipole
@@ -379,6 +362,114 @@ def safe_pearson(x, y):
     return float(r), float(p), n
 
 
+def _extract_geometry_arrays(rows: list) -> dict:
+    """Modulation factors aligned with `rows` order (for correlation y-vector)."""
+    return {
+        "helio_mods": [r["heliocentric_modulation"] for r in rows],
+        "radial_vs": [r["radial_velocity_kms"] for r in rows],
+        "cmb_factors": [r["cmb_modulation_factor"] for r in rows],
+        "cmb_solar": [r["cmb_solar_modulation"] for r in rows],
+        "distances": [r["heliocentric_distance_au"] for r in rows],
+        "orb_speeds": [r["earth_orbital_speed_kms"] for r in rows],
+        "cmb_proj_orb": [r["earth_orbital_cmb_proj_kms"] for r in rows],
+        "sc_orb_aligns": [r["sc_orbital_alignment"] for r in rows],
+        "sc_cmb_cos": [r["sc_cmb_cos_theta"] for r in rows],
+        "sc_cmb_projs": [r["sc_velocity_cmb_proj_kms"] for r in rows],
+        "cmb_enhancements": [r["cmb_disformal_enhancement"] for r in rows],
+    }
+
+
+def ratio_geometry_correlations(rows: list, y_values: list, y_label: str) -> list:
+    """
+    Pearson correlations between each cosmographic proxy and a per-flyby scalar y
+    (same length as rows). y_label prefixes each test name in outputs.
+    """
+    if len(rows) < 3 or len(rows) != len(y_values):
+        return []
+    g = _extract_geometry_arrays(rows)
+    correlations = []
+
+    def add_corr(name, x, y):
+        r, p, n = safe_pearson(x, y)
+        if r is not None:
+            correlations.append({
+                "test": f"{y_label} vs {name}",
+                "pearson_r": r,
+                "p_value": p,
+                "n": n,
+                "significant": p < 0.05 if p is not None else False,
+            })
+
+    y = y_values
+    add_corr("Heliocentric Distance", g["distances"], y)
+    add_corr("Heliocentric Modulation", g["helio_mods"], y)
+    add_corr("Radial Velocity", g["radial_vs"], y)
+    add_corr("CMB Modulation Factor", g["cmb_factors"], y)
+    add_corr("CMB Solar Modulation", g["cmb_solar"], y)
+    add_corr("Earth Orbital Speed", g["orb_speeds"], y)
+    add_corr("Earth CMB Projection", g["cmb_proj_orb"], y)
+    add_corr("SC-Orbital Alignment", g["sc_orb_aligns"], y)
+    add_corr("SC-CMB cos(theta)", g["sc_cmb_cos"], y)
+    add_corr("SC-CMB Projection", g["sc_cmb_projs"], y)
+    add_corr("CMB Disformal Enhancement", g["cmb_enhancements"], y)
+    return correlations
+
+
+def max_abs_pearson_weighted_E_vs_y(
+    sc_cmb_cos: list,
+    cmb_proj_orb: list,
+    y: np.ndarray,
+    w_min: float = -2.0,
+    w_max: float = 2.0,
+    n_w: int = 201,
+) -> tuple:
+    """Scan w in E = cos(theta) + w * (Earth_CMB_proj/30); return (max_abs_r, best_w, r_at_best_w)."""
+    sc = np.asarray(sc_cmb_cos, dtype=float)
+    ep = np.asarray(cmb_proj_orb, dtype=float)
+    yv = np.asarray(y, dtype=float)
+    mask = np.isfinite(sc) & np.isfinite(ep) & np.isfinite(yv)
+    sc, ep, yv = sc[mask], ep[mask], yv[mask]
+    if len(yv) < 3:
+        return 0.0, 0.0, 0.0
+    base = ep / 30.0
+    best_abs = 0.0
+    best_w = 0.0
+    best_r = 0.0
+    for w in np.linspace(w_min, w_max, n_w):
+        e_vec = sc + w * base
+        if not np.all(np.isfinite(e_vec)):
+            continue
+        r_w = float(np.corrcoef(e_vec, yv)[0, 1])
+        if abs(r_w) > best_abs:
+            best_abs = abs(r_w)
+            best_w = float(w)
+            best_r = r_w
+    return best_abs, best_w, best_r
+
+
+def permutation_pvalue_max_abs_r_weighted(
+    sc_cmb_cos: list,
+    cmb_proj_orb: list,
+    y: np.ndarray,
+    n_perm: int = 4000,
+    seed: int = 42,
+) -> float:
+    """
+    Permutation null: randomly reassign y across flybys (destroying geometry pairing).
+    p = (1 + #{|r_max_perm| >= |r_max_obs|}) / (n_perm + 1).
+    """
+    rng = np.random.default_rng(seed)
+    y_obs = np.asarray(y, dtype=float)
+    obs_max, _w0, _r0 = max_abs_pearson_weighted_E_vs_y(sc_cmb_cos, cmb_proj_orb, y_obs)
+    exceed = 0
+    for _ in range(n_perm):
+        yp = rng.permutation(y_obs)
+        m, _w, _r = max_abs_pearson_weighted_E_vs_y(sc_cmb_cos, cmb_proj_orb, yp)
+        if m >= obs_max - 1e-15:
+            exceed += 1
+    return (exceed + 1.0) / (n_perm + 1.0)
+
+
 def main():
     logger = StepLogger("step_040_cosmographic_shear", PROJECT_ROOT)
     logger.header("STEP 040: COSMOGRAPHIC TEMPORAL SHEAR MODULATION TEST")
@@ -388,16 +479,17 @@ def main():
     # Load data
     catalog_path = PROJECT_ROOT / "results" / "step003_archival_flyby_catalog.json"
     fitting_path = PROJECT_ROOT / "results" / "step008_fitting_results.json"
-    vectors_path = PROJECT_ROOT / "results" / "step040a_3d_state_vectors.json"
+    vectors_path = PROJECT_ROOT / "results" / "step038_3d_state_vectors.json"
 
     flybys = parse_flyby_dates(catalog_path)
     tep_preds = load_tep_predictions(fitting_path)
     state_vectors = load_3d_state_vectors(vectors_path)
 
     logger.info(f"Loaded {len(flybys)} flybys from catalog")
-    logger.info(f"Loaded {len(state_vectors)} 3D state vectors from step_040a")
+    logger.info(f"Loaded {len(state_vectors)} 3D state vectors from step_038")
 
     results = []
+    ephemeris_backend = os.environ.get("TEP_SOLAR_SYSTEM_EPHEMERIS", "builtin").strip() or "builtin"
     logger.section("COMPUTING COSMOGRAPHIC MODULATION FOR EACH FLYBY")
 
     for fb in flybys:
@@ -410,21 +502,21 @@ def main():
 
         if mission not in state_vectors:
             logger.warning(
-                f"Skipping {mission}: no JPL Horizons 3D state vector in step_040a output"
+                f"Skipping {mission}: no JPL Horizons 3D state vector in step_038 output"
             )
             continue
 
         logger.subsection(mission)
         logger.info(f"Date: {fb['date']}")
 
-        # Earth's heliocentric state
-        r_au, lon_deg, lat_deg, vx_ecl, vy_ecl, vz_ecl = earth_heliocentric_state(dt)
-        v_earth_ecl = np.array([vx_ecl, vy_ecl, vz_ecl])
-        v_earth_equ = ecliptic_to_equatorial(vx_ecl, vy_ecl, vz_ecl)
-
-        logger.info(f"  Heliocentric distance: {r_au:.4f} AU")
-        logger.info(f"  Ecliptic longitude: {lon_deg:.2f} deg")
-        logger.info(f"  Earth orbital speed: {np.linalg.norm(v_earth_ecl):.2f} km/s")
+        # Earth–Sun geometry and Earth velocity: Astropy JPL-grade ephemeris (ICRS),
+        # consistent with adding Horizons geocentric spacecraft velocity for CMB-frame sums.
+        ephem = earth_sun_ephemeris_state(dt, logger)
+        ephemeris_backend = str(ephem["ephemeris"])
+        r_au = ephem["r_au"]
+        lon_deg = ephem["ecliptic_longitude_deg"]
+        v_earth_ecl = np.asarray(ephem["earth_helio_vel_kms_ecliptic"], dtype=float)
+        v_earth_equ = np.asarray(ephem["earth_barycentric_vel_kms_icrs"], dtype=float)
 
         vec = state_vectors[mission]
         v_sc_hat_ecl = get_spacecraft_velocity_unit_vector(mission, state_vectors)
@@ -433,14 +525,14 @@ def main():
         logger.info(f"  Using 3D state vector: speed = {v_sc_mag:.2f} km/s")
         logger.info(f"    ecliptic velocity: [{v_sc_ecl[0]:+.2f}, {v_sc_ecl[1]:+.2f}, {v_sc_ecl[2]:+.2f}] km/s")
 
-        # Convert spacecraft velocity to equatorial for CMB analysis
-        # ecliptic_to_equatorial rotation inverse: x_eq = x_ec, y_eq = y_ec*cos(eps) + z_ec*sin(eps), z_eq = -y_ec*sin(eps) + z_ec*cos(eps)
-        eps = math.radians(23.439281)
-        v_sc_equ = np.array([
-            v_sc_ecl[0],
-            v_sc_ecl[1] * math.cos(eps) + v_sc_ecl[2] * math.sin(eps),
-            -v_sc_ecl[1] * math.sin(eps) + v_sc_ecl[2] * math.cos(eps)
-        ])
+        # Equatorial velocity for CMB dot products must match the same J2000
+        # obliquity rotation as Earth's velocity. step_038 already stores
+        # Horizons-derived (vx, vy, vz)_equatorial; use those to avoid applying
+        # the inverse rotation by mistake (which scrambled SC-CMB geometry).
+        if all(k in vec for k in ("vx_km_s", "vy_km_s", "vz_km_s")):
+            v_sc_equ = np.array([vec["vx_km_s"], vec["vy_km_s"], vec["vz_km_s"]])
+        else:
+            v_sc_equ = ecliptic_to_equatorial(float(v_sc_ecl[0]), float(v_sc_ecl[1]), float(v_sc_ecl[2]))
 
         # Solar scalar modulation
         solar_mod = compute_solar_scalar_modulation(r_au, lon_deg, v_earth_ecl, v_sc_ecl)
@@ -451,7 +543,7 @@ def main():
 
         # CMB dipole modulation
         cmb_mod = compute_cmb_dipole_modulation(v_earth_equ, v_sc_equ)
-        logger.info(f"  Earth orbital v along CMB dipole: {cmb_mod['earth_orbital_cmb_proj_kms']:.2f} km/s")
+        logger.info(f"  Earth barycentric v along CMB dipole: {cmb_mod['earth_orbital_cmb_proj_kms']:.2f} km/s")
         logger.info(f"  SC v along CMB dipole: {cmb_mod['sc_velocity_cmb_proj_kms']:.2f} km/s")
         logger.info(f"  Total v along CMB dipole: {cmb_mod['total_velocity_cmb_proj_kms']:.2f} km/s")
         logger.info(f"  CMB modulation factor: {cmb_mod['cmb_modulation_factor']:.4f}")
@@ -496,62 +588,24 @@ def main():
 
     logger.info(f"Usable flybys for correlation: {len(usable)}")
 
+    correlations = []
+    sensitivity = None
+    perm_p_optimal = None
+
     if len(usable) >= 3:
         ratios = [r["ratio_obs_pred"] for r in usable]
         diffs = [r["difference_mm_s"] for r in usable]
 
-        # Modulation factors
-        helio_mods = [r["heliocentric_modulation"] for r in usable]
-        radial_vs = [r["radial_velocity_kms"] for r in usable]
-        cmb_factors = [r["cmb_modulation_factor"] for r in usable]
-        cmb_solar = [r["cmb_solar_modulation"] for r in usable]
-        distances = [r["heliocentric_distance_au"] for r in usable]
-        orb_speeds = [r["earth_orbital_speed_kms"] for r in usable]
         cmb_proj_orb = [r["earth_orbital_cmb_proj_kms"] for r in usable]
-
-        correlations = []
-
-        def add_corr(name, x, y):
-            r, p, n = safe_pearson(x, y)
-            if r is not None:
-                correlations.append({
-                    "test": name,
-                    "pearson_r": r,
-                    "p_value": p,
-                    "n": n,
-                    "significant": p < 0.05 if p is not None else False,
-                })
-                sig_str = " ***" if p is not None and p < 0.05 else ""
-                logger.info(f"  {name}: r={r:+.3f}, p={p:.3f}, n={n}{sig_str}")
-            else:
-                logger.info(f"  {name}: insufficient data (n={n})")
-
-        add_corr("Ratio vs Heliocentric Distance", distances, ratios)
-        add_corr("Ratio vs Heliocentric Modulation", helio_mods, ratios)
-        add_corr("Ratio vs Radial Velocity", radial_vs, ratios)
-        add_corr("Ratio vs CMB Modulation Factor", cmb_factors, ratios)
-        add_corr("Ratio vs CMB Solar Modulation", cmb_solar, ratios)
-        add_corr("Ratio vs Earth Orbital Speed", orb_speeds, ratios)
-        add_corr("Ratio vs Earth CMB Projection", cmb_proj_orb, ratios)
-
-        # New 3D-vector-specific correlations
         sc_orb_aligns = [r["sc_orbital_alignment"] for r in usable]
         sc_cmb_cos = [r["sc_cmb_cos_theta"] for r in usable]
-        sc_cmb_projs = [r["sc_velocity_cmb_proj_kms"] for r in usable]
-        cmb_enhancements = [r["cmb_disformal_enhancement"] for r in usable]
 
-        add_corr("Ratio vs SC-Orbital Alignment", sc_orb_aligns, ratios)
-        add_corr("Ratio vs SC-CMB cos(theta)", sc_cmb_cos, ratios)
-        add_corr("Ratio vs SC-CMB Projection", sc_cmb_projs, ratios)
-        add_corr("Ratio vs CMB Disformal Enhancement", cmb_enhancements, ratios)
+        correlations = ratio_geometry_correlations(usable, ratios, "Ratio")
+        correlations.extend(ratio_geometry_correlations(usable, diffs, "Difference"))
 
-        add_corr("Difference vs Heliocentric Distance", distances, diffs)
-        add_corr("Difference vs CMB Modulation Factor", cmb_factors, diffs)
-        add_corr("Difference vs CMB Solar Modulation", cmb_solar, diffs)
-        add_corr("Difference vs Earth CMB Projection", cmb_proj_orb, diffs)
-        add_corr("Difference vs SC-Orbital Alignment", sc_orb_aligns, diffs)
-        add_corr("Difference vs SC-CMB cos(theta)", sc_cmb_cos, diffs)
-        add_corr("Difference vs CMB Disformal Enhancement", cmb_enhancements, diffs)
+        for c in correlations:
+            sig_str = " ***" if c.get("p_value") is not None and c["p_value"] < 0.05 else ""
+            logger.info(f"  {c['test']}: r={c['pearson_r']:+.3f}, p={c['p_value']:.3f}, n={c['n']}{sig_str}")
 
         # Multivariate geometric regression (with intercept)
         logger.section("MULTIVARIATE GEOMETRIC REGRESSION")
@@ -612,6 +666,7 @@ def main():
             r["both_aligned_flag"] = float(ba)
             r["same_direction_flag"] = float(sd)
 
+        r_ba = p_ba = r_sd = p_sd = mw_stat = mw_p = None
         if len(both_aligned) >= 3:
             r_ba, p_ba = stats.pearsonr(both_aligned, ratios)
             logger.info(f"Both-aligned flag correlation: r = {r_ba:+.3f}, p = {p_ba:.3f}")
@@ -632,21 +687,86 @@ def main():
 
         # Weighted combination: SC-CMB + w*Earth-CMB
         logger.section("OPTIMAL WEIGHTED COMBINATION")
-        best_r = 0.0
-        best_w = 0.0
-        best_p = 1.0
-        for w in np.linspace(-2.0, 2.0, 401):
-            E = sc_cmb_cos + w * (np.array(cmb_proj_orb) / 30.0)
-            mask = np.isfinite(E)
-            if mask.sum() < 3:
-                continue
-            r_w, p_w = stats.pearsonr(E[mask], np.array(ratios)[mask])
-            if abs(r_w) > abs(best_r):
-                best_r = r_w
-                best_w = w
-                best_p = p_w
+        _abs_max, best_w, best_r = max_abs_pearson_weighted_E_vs_y(
+            sc_cmb_cos, cmb_proj_orb, np.array(ratios, dtype=float)
+        )
+        e_best = np.asarray(sc_cmb_cos, dtype=float) + float(best_w) * (np.asarray(cmb_proj_orb, dtype=float) / 30.0)
+        y_arr = np.asarray(ratios, dtype=float)
+        mask_b = np.isfinite(e_best) & np.isfinite(y_arr)
+        if mask_b.sum() >= 3:
+            _rb, best_p = stats.pearsonr(e_best[mask_b], y_arr[mask_b])
+            best_p = float(best_p)
+        else:
+            best_p = 1.0
         logger.info(f"Optimal model: E = SC-CMB_cos(theta) + {best_w:.3f} * Earth-CMB_proj/30")
         logger.info(f"Correlation: r = {best_r:+.3f}, p = {best_p:.3f}")
+        perm_p_optimal = permutation_pvalue_max_abs_r_weighted(
+            sc_cmb_cos, cmb_proj_orb, y_arr, n_perm=4000, seed=42
+        )
+        logger.info(f"Permutation p (max |r| over w grid, exchangeable ratios, n_perm=4000): {perm_p_optimal:.4f}")
+
+        logger.section("SENSITIVITY CHECKS")
+        sensitivity = {
+            "ratio_excluding_missions": [],
+            "alternate_endpoints": [],
+            "notes": (
+                "Rosetta 2007 exclusion: near-zero TEP prediction inflates obs/pred ratio. "
+                "signed_log_ratio: |ratio|>0 only. sigma_z: published σ only."
+            ),
+        }
+        ex_rows = [r for r in usable if r["mission"] != "Rosetta_2007"]
+        if len(ex_rows) >= 3:
+            ry_ex = [float(r["ratio_obs_pred"]) for r in ex_rows]
+            cor_ex = ratio_geometry_correlations(ex_rows, ry_ex, "Ratio")
+            sensitivity["ratio_excluding_missions"].append({
+                "excluded": ["Rosetta_2007"],
+                "rationale": "Near-zero TEP prediction inflates obs/pred ratio",
+                "n": len(ex_rows),
+                "correlations": cor_ex,
+            })
+            enh = [c for c in cor_ex if c["test"] == "Ratio vs CMB Disformal Enhancement"]
+            if enh:
+                logger.info(
+                    f"  Excl. Rosetta 2007 (n={len(ex_rows)}): "
+                    f"CMB disformal enhancement vs ratio r={enh[0]['pearson_r']:+.3f}, p={enh[0]['p_value']:.3f}"
+                )
+
+        sl_rows = [
+            r for r in usable
+            if r.get("ratio_obs_pred") is not None
+            and float(r["ratio_obs_pred"]) != 0.0
+            and np.isfinite(float(r["ratio_obs_pred"]))
+        ]
+        sl_y = [
+            float(np.sign(float(r["ratio_obs_pred"])) * math.log10(max(abs(float(r["ratio_obs_pred"])), 1e-300)))
+            for r in sl_rows
+        ]
+        if len(sl_rows) >= 3:
+            cor_sl = ratio_geometry_correlations(sl_rows, sl_y, "signed_log_ratio")
+            sensitivity["alternate_endpoints"].append({
+                "name": "signed_log10_abs_ratio",
+                "definition": "sign(ratio)*log10(max(|ratio|,1e-300)); |ratio|>0 only",
+                "n": len(sl_rows),
+                "missions": [r["mission"] for r in sl_rows],
+                "correlations": cor_sl,
+            })
+            logger.info(f"  Signed log|ratio| endpoint: n={len(sl_rows)}")
+
+        sz_rows = [
+            r for r in usable
+            if r.get("sigma_difference") is not None and np.isfinite(float(r["sigma_difference"]))
+        ]
+        sz_y = [float(r["sigma_difference"]) for r in sz_rows]
+        if len(sz_rows) >= 3:
+            cor_sz = ratio_geometry_correlations(sz_rows, sz_y, "sigma_z")
+            sensitivity["alternate_endpoints"].append({
+                "name": "sigma_normalized_residual",
+                "definition": "(observed - predicted) / published σ where σ > 0",
+                "n": len(sz_rows),
+                "missions": [r["mission"] for r in sz_rows],
+                "correlations": cor_sz,
+            })
+            logger.info(f"  σ-normalized residual endpoint: n={len(sz_rows)}")
 
         # Summary table
         logger.section("SUMMARY TABLE")
@@ -680,6 +800,7 @@ def main():
         beta_hat = None
         r2_multi = None
         adj_r2_multi = None
+        std_orig = None
         std_resid = None
         reduction = None
         best_r = None
@@ -701,7 +822,8 @@ def main():
             "uncertainty_absolute": None,
             "status": "cosmographic_test",
             "calibration_status": "horizons_3d_vectors_and_catalog_dates",
-            "data_source": "step040a JPL Horizons raw responses and step003 flyby catalog",
+            "earth_sun_ephemeris": ephemeris_backend,
+            "data_source": "step038 JPL Horizons raw responses and step003 flyby catalog",
             "recommended_action": "Extend Horizons coverage before drawing cosmographic conclusions for skipped catalog flybys",
             "derivation": "Counts of catalog flybys with geocentric Horizons 3D vectors at perigee",
         },
@@ -718,23 +840,30 @@ def main():
             "r_squared": float(r2_multi) if r2_multi is not None else None,
             "adjusted_r_squared": float(adj_r2_multi) if adj_r2_multi is not None else None,
             "residual_std": float(std_resid) if std_resid is not None else None,
-            "original_std": float(std_orig) if 'std_orig' in dir() else None,
+            "original_std": float(std_orig) if std_orig is not None else None,
             "std_reduction_percent": float(reduction) if reduction is not None else None,
         } if beta_hat is not None else None,
         "directional_consistency": {
-            "both_aligned_correlation_r": float(r_ba) if 'r_ba' in dir() else None,
-            "both_aligned_correlation_p": float(p_ba) if 'p_ba' in dir() else None,
-            "same_direction_correlation_r": float(r_sd) if 'r_sd' in dir() else None,
-            "same_direction_correlation_p": float(p_sd) if 'p_sd' in dir() else None,
-            "mann_whitney_u_statistic": float(mw_stat) if 'mw_stat' in dir() else None,
-            "mann_whitney_u_pvalue": float(mw_p) if 'mw_p' in dir() else None,
-        } if 'r_ba' in dir() else None,
+            "both_aligned_correlation_r": float(r_ba) if r_ba is not None else None,
+            "both_aligned_correlation_p": float(p_ba) if p_ba is not None else None,
+            "same_direction_correlation_r": float(r_sd) if r_sd is not None else None,
+            "same_direction_correlation_p": float(p_sd) if p_sd is not None else None,
+            "mann_whitney_u_statistic": float(mw_stat) if mw_stat is not None else None,
+            "mann_whitney_u_pvalue": float(mw_p) if mw_p is not None else None,
+        } if r_ba is not None else None,
         "optimal_weighted_combination": {
             "model": "E = SC-CMB_cos(theta) + w * Earth-CMB_proj/30",
+            "w_grid_min": -2.0,
+            "w_grid_max": 2.0,
+            "w_grid_points": 201,
             "optimal_w": float(best_w) if best_w is not None else None,
             "pearson_r": float(best_r) if best_r is not None else None,
             "p_value": float(best_p) if best_p is not None else None,
+            "n_permutations_max_abs_r": 4000,
+            "permutation_random_seed": 42,
+            "permutation_p_value_max_abs_r": float(perm_p_optimal) if perm_p_optimal is not None else None,
         } if best_w is not None else None,
+        "sensitivity": sensitivity,
     }
 
     out_file = PROJECT_ROOT / "results" / "step040_cosmographic_shear.json"

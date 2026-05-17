@@ -15,6 +15,7 @@ UPDATE: Now uses continuous IRI electron density data from step_027 instead of
 Chapman layer approximation, removing the Chapman caveat entirely.
 """
 
+import copy
 import numpy as np
 import json
 from pathlib import Path
@@ -27,6 +28,10 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from scripts.utils.celestrak_space_weather import lookup_space_weather
 from scripts.utils.iri_mission_map import resolve_iri_mission
 from scripts.utils.plasma_screening import iri_reference_electron_density_cm3
+from scripts.utils.plasma_screening_ansatz import (
+    plasma_screening_for_ansatz,
+    screening_exponential,
+)
 from scripts.utils.step_logger import StepLogger
 
 
@@ -139,29 +144,19 @@ class PlasmaModulationModel:
         
         return n_total
     
-    def plasma_screening_factor(self, plasma_density):
+    def plasma_screening_factor(self, plasma_density, ansatz="exponential"):
         """
-        Calculate plasma attenuation factor using a phenomenological ansatz.
+        Plasma attenuation factor using a selectable phenomenological ansatz.
 
-        We adopt S = exp(-n_e / n_ref) as a smooth proxy for ionospheric
-        screening.  This replaces the numerically pathological Debye formula
-        exp(-lambda_TEP / lambda_D), which underflows to zero for all
-        realistic ionospheric densities and lacks a derivation from the TEP
-        action for a neutral scalar field.
-
-        Parameters:
-        - plasma_density: Electron density in cm⁻³
-
-        Returns:
-        - Screening factor (0 to 1)
+        ``ansatz`` ∈ {"exponential", "powerlaw", "none", "saturating"} — see
+        ``scripts/utils/plasma_screening_ansatz.py``.  A derivation from the TEP
+        action for a neutral scalar in a plasma remains outstanding.
         """
         if plasma_density <= 0:
             return 1.0
-
-        # Phenomenological ansatz: higher plasma density → stronger attenuation
-        screening_factor = np.exp(-plasma_density / self.n_ref)
-
-        return screening_factor
+        return plasma_screening_for_ansatz(
+            plasma_density, self.n_ref, ansatz, powerlaw_alpha=0.3
+        )
     
     def plasma_sign_factor(self, plasma_density, solar_activity=1.0):
         """
@@ -197,7 +192,7 @@ class PlasmaModulationModel:
         
         return max(min(sign_factor, 1.0), -1.0)  # Clamp to [-1, 1]
     
-    def calculate_plasma_effects(self, flyby_data):
+    def calculate_plasma_effects(self, flyby_data, plasma_ansatz="exponential"):
         """
         Calculate plasma modulation effects for a flyby.
         
@@ -222,7 +217,7 @@ class PlasmaModulationModel:
             raise RuntimeError(f"No IRI trajectory profile available for {mission_name}")
         
         # Calculate screening and sign factors
-        S_plasma = self.plasma_screening_factor(n_plasma)
+        S_plasma = self.plasma_screening_factor(n_plasma, ansatz=plasma_ansatz)
         sign_factor = self.plasma_sign_factor(n_plasma, solar_activity)
         
         return {
@@ -237,6 +232,7 @@ class PlasmaModulationModel:
                 f"({solar['f10_7_field']})"
             ),
             'source': solar["data_source"],
+            'plasma_ansatz': plasma_ansatz,
             'iri_data_source': 'step_033',
         }
 
@@ -308,19 +304,67 @@ def main():
         logger.info(f"  Plasma screening factor: {plasma_effects['plasma_screening_factor']:.3e}")
         logger.info(f"  Plasma sign factor: {plasma_effects['plasma_sign_factor']:.3f}")
         logger.info(f"  Solar activity: {plasma_effects['solar_activity']:.1f}")
-    
+
+    from scripts.steps.step_008_fitting import fit_beta_to_observation
+
+    ansatz_ids = ("exponential", "powerlaw", "none", "saturating")
+    ansatz_robustness = {
+        "ansatz_ids": list(ansatz_ids),
+        "per_flyby": {},
+        "method": (
+            "Counterfactual multiplicative rescale of Step 007 Δv_TEP by S_ansatz/S_exponential "
+            "at fixed IRI n_e (perigee), holding all geometry factors fixed; then re-run "
+            "Step 008 closed-form β mapping per ansatz."
+        ),
+    }
+    for name, pred in data["predictions"].items():
+        row = results.get(name)
+        if not isinstance(row, dict) or "plasma_density_cm3" not in row:
+            continue
+        ne = float(row["plasma_density_cm3"])
+        s_exp = screening_exponential(ne, model.n_ref)
+        if s_exp <= 0.0:
+            raise RuntimeError(f"Non-positive exponential screening reference for {name}")
+        baseline_dv = float(pred["tep_predictions"]["dv_tep_mm_s"])
+        per = {}
+        for aid in ansatz_ids:
+            s_a = plasma_screening_for_ansatz(ne, model.n_ref, aid, powerlaw_alpha=0.3)
+            scale = s_a / s_exp
+            dv_a = baseline_dv * scale
+            pred_a = copy.deepcopy(pred)
+            pred_a["tep_predictions"] = dict(pred_a["tep_predictions"])
+            pred_a["tep_predictions"]["dv_tep_mm_s"] = dv_a
+            fit_a = fit_beta_to_observation(pred_a, logger=None)
+            per[aid] = {
+                "S": float(s_a),
+                "dv_tep_mm_s": float(dv_a),
+                "scale_vs_exponential": float(scale),
+                "fit": {
+                    "beta_fitted": fit_a.get("beta_fitted"),
+                    "excluded": fit_a.get("excluded"),
+                    "exclusion_reason": fit_a.get("exclusion_reason"),
+                    "ppn_compliant": fit_a.get("ppn_compliant"),
+                    "snr": fit_a.get("snr"),
+                    "status": fit_a.get("status"),
+                },
+            }
+        ansatz_robustness["per_flyby"][name] = per
+    results["plasma_ansatz_robustness"] = ansatz_robustness
+
     # Special analysis for Cassini
     if 'Cassini' in results:
         logger.subsection("CASSINI PLASMA MODULATION ANALYSIS")
         cassini = results['Cassini']
         
         logger.info("Cassini observed: +0.11 mm/s")
-        # Pull actual prediction dynamically, which already has disformal coupling resolving the sign
+        # Pull actual prediction dynamically; disformal coupling produces partial
+        # cancellation in the mixed regime, but the literature geometry sign
+        # remains unresolved (independent DSN/OD reanalysis required).
         dv_tep = data['predictions']['Cassini']['tep_predictions']['dv_tep_mm_s']
-        logger.info(f"Cassini predicted (disformal coupling): {dv_tep:+.3f} mm/s")
+        logger.info(f"Cassini predicted (mixed disformal regime): {dv_tep:+.3f} mm/s")
         logger.info(f"Plasma sign factor: {cassini['plasma_sign_factor']:.3f}")
-        
-        logger.info("CONCLUSION: Disformal coupling mathematically dictates sign reversal; plasma is a secondary magnitude modulator.")
+
+        logger.info("CONCLUSION: Disformal coupling produces partial cancellation in the mixed regime; plasma modulates magnitude. The literature geometry sign remains an open stress test, not a resolved confirmation. Independent DSN/OD reanalysis is required.")
     
     # Save results
     results_dir = PROJECT_ROOT / 'results'

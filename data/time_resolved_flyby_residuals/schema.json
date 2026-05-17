@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "purpose": "Optional time-aligned measurements for Step 040b correlation with cosmographic geometry along Horizons arcs.",
+  "file_convention": "One JSON per pipeline mission key (e.g. Juno.json, NEAR.json) under this directory.",
+  "step030_archive": "When Step 030 ingests Juno 2013 TRK data with Doppler-derived pairwise mm/s, it writes results/step030_juno_pairwise_residual_series.json (proxy_kind doppler_pair_mm_s). When only ramp_freq_hz is available (typical NJPL TNF), Step 030 writes results/step030_juno_pairwise_ramp_freq_series.json (Hz deltas; not for materialize_040b). Regenerate Juno.json via scripts/utils/materialize_040b_residual_sidecars.py --juno-from-archive only from the Doppler archive.",
+  "required_fields": {
+    "mission": "string; must match results/step040a_trajectory_series.json mission keys (e.g. Juno, NEAR, Galileo_1990).",
+    "quantity": "string; short name of the measurement (e.g. pairwise_doppler_proxy_mm_s).",
+    "quantity_description": "string; human-readable definition and limits of interpretation.",
+    "reference": "string; data origin (e.g. NASA PDS, paper figure digitization, internal Step 030).",
+    "utc_iso": "array of ISO8601 UTC strings ending in Z, same length as value_mm_s.",
+    "value_mm_s": "array of numbers; signed scalar in mm/s (or same unit documented in quantity_description)."
+  },
+  "optional_fields": {
+    "sigma_mm_s": "array of 1-sigma uncertainties, same length as value_mm_s, or null for unknown."
+  },
+  "multi_epoch_anomaly": "When value_mm_s varies with utc_iso (e.g. digitized OD residuals or Doppler-derived series), Step 040b can correlate that curve with CMB-frame geometry along the Horizons arc. Repeating a single published aggregate at every epoch is not valid for that use.",
+  "derivative_tests": "When matches include enough consecutive Horizons minutes, Step 040b also forms d(value_mm_s)/dt along the trajectory and compares it to d(geometry)/dt (sequential_derivative_correlations in step040b_time_resolved_cosmography.json). Constant value_mm_s yields zero slope and empty derivative correlations.",
+  "alignment": "Step 040b matches each Horizons arc epoch to the nearest residual sample if |Δt| ≤ TEP_040B_RESIDUAL_MAX_DT_S (default 7200 s)."
+}

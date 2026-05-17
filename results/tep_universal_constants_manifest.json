@@ -5,13 +5,13 @@
     "status": "preliminary",
     "calibration_status": "needs_empirical_calibration",
     "data_source": "TEP-EFA pipeline analysis (Yogyakarta v0.1)",
-    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 1.240755e-03 +/- 5.688954e-05, beta_eff = 4.333198e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
+    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 1.732539e-03 +/- 7.850735e-04, beta_eff = 6.050698e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
     "recommended_action": "Replace with empirically calibrated values from dedicated fifth-force experiments",
     "efa_ensemble": {
-        "beta_weighted": 0.0012407553191405897,
-        "beta_uncertainty": 5.688953887294333e-05,
-        "beta_eff_weighted": 0.00043331982186278637,
-        "n_fits": 3,
+        "beta_weighted": 0.0017325390640540415,
+        "beta_uncertainty": 0.000785073472804859,
+        "beta_eff_weighted": 0.0006050697563208668,
+        "n_fits": 4,
         "source_step": "step008_fitting_results.json"
     },
     "tep_universal_constants": {
@@ -42,23 +42,23 @@
                 "derivation": "Conformal coupling parameters derived from ensemble weighted mean of flyby anomaly fits scaled by characteristic suppression; \u00b150% uncertainty accounts for systematic uncertainty in GNSS calibration",
                 "recommended_action": "Calibrate with laboratory fifth-force experiments",
                 "beta": {
-                    "value": 0.0012407553191405897,
-                    "uncertainty": 5.688953887294333e-05,
-                    "uncertainty_fraction": 0.045850731401536865,
-                    "uncertainty_absolute": 5.688953887294333e-05,
-                    "data_source": "step008_fitting_results.json weighted mean (universal conformal beta)",
-                    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 1.240755e-03 +/- 5.688954e-05, beta_eff = 4.333198e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
+                    "value": 0.0017325390640540415,
+                    "uncertainty": 0.000785073472804859,
+                    "uncertainty_fraction": 0.45313464446096374,
+                    "uncertainty_absolute": 0.000785073472804859,
+                    "data_source": "step008_fitting_results.json weighted mean (pooled conformal \u03b2, sign-gated restricted tier)",
+                    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 1.732539e-03 +/- 7.850735e-04, beta_eff = 6.050698e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
                     "status": "HEURISTIC",
                     "calibration_status": "NEEDS_LAB_MEASUREMENT",
                     "recommended_action": "Calibrate with laboratory fifth-force experiments or cosmological constraints"
                 },
                 "beta_eff": {
-                    "value": 0.00043331982186278637,
-                    "uncertainty": 1.986803076319242e-05,
-                    "uncertainty_fraction": 0.045850731401536865,
-                    "uncertainty_absolute": 1.986803076319242e-05,
+                    "value": 0.0006050697563208668,
+                    "uncertainty": 0.000274178068904538,
+                    "uncertainty_fraction": 0.45313464446096374,
+                    "uncertainty_absolute": 0.000274178068904538,
                     "data_source": "step008_fitting_results.json weighted mean screened by S_earth",
-                    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 1.240755e-03 +/- 5.688954e-05, beta_eff = 4.333198e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
+                    "derivation": "beta_eff = beta \u00d7 S_earth with beta = 1.732539e-03 +/- 7.850735e-04, beta_eff = 6.050698e-04, and S_earth = 0.349239 from UCD surface gradient suppression.",
                     "status": "HEURISTIC",
                     "calibration_status": "NEEDS_LAB_MEASUREMENT",
                     "recommended_action": "Use for PPN-screened solar-system and CLASS/CAMB export targets"
@@ -77,14 +77,14 @@
                     "recommended_action": "Refine with future multi-messenger gravitational wave observations"
                 }
             },
-            "Temporal Shear Suppression_screening": {
+            "screening": {
                 "uncertainty": null,
                 "uncertainty_fraction": 0.5,
                 "uncertainty_absolute": null,
                 "status": "preliminary",
                 "calibration_status": "from_wide_binary_analysis",
                 "data_source": "Wide binary R_s transition analysis (Paper 6, UCD)",
-                "derivation": "Temporal Shear Suppression screening parameters derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions; \u00b150% uncertainty accounts for galactic environment variations",
+                "derivation": "Temporal Topology screening parameters derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions; \u00b150% uncertainty accounts for galactic environment variations",
                 "recommended_action": "Refine with Gaia DR3 wide binary catalog and improved parallax measurements",
                 "n_index": {
                     "value": 3.0,
@@ -127,7 +127,7 @@
                 "class_camb_params": {
                     "Omega_phi": 0.69,
                     "w_phi_0": -0.98,
-                    "beta_phi": 0.00043331982186278637
+                    "beta_phi": 0.0006050697563208668
                 }
             },
             "wide_binaries": {

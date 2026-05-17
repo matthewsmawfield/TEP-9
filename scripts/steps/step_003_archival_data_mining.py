@@ -252,7 +252,8 @@ class ArchivalDataMiner:
             raw_dsn_data_location='NASA DSN Archives (1992)',
             processed_ephemeris_available=True,
             published_anomaly_mm_s=0.0,
-            published_anomaly_uncertainty_mm_s=None,
+            # Anderson et al. (2008) null; formal σ matches manuscript Table 1 (published null/bound).
+            published_anomaly_uncertainty_mm_s=0.05,
             anomaly_reference='Anderson et al. (2008)',
             anomaly_reference_doi='10.1103/PhysRevLett.100.091102',
             altitude_classification='low',
@@ -300,7 +301,8 @@ class ArchivalDataMiner:
             raw_dsn_data_location='ESA ESOC Archives (2007)',
             processed_ephemeris_available=True,
             published_anomaly_mm_s=0.02,
-            published_anomaly_uncertainty_mm_s=None,
+            # Manuscript Table 1 (published null/bound); same nominal precision class as other literature nulls.
+            published_anomaly_uncertainty_mm_s=0.05,
             anomaly_reference='Muller et al. (2008)',
             anomaly_reference_doi=None,
             altitude_classification='medium',
@@ -324,13 +326,13 @@ class ArchivalDataMiner:
             raw_dsn_data_location='ESA ESOC Archives (2009)',
             processed_ephemeris_available=True,
             published_anomaly_mm_s=0.0,
-            published_anomaly_uncertainty_mm_s=None,
+            published_anomaly_uncertainty_mm_s=0.05,
             anomaly_reference='Muller et al. (2010)',
             anomaly_reference_doi=None,
             altitude_classification='low',
             detection_significance='null',
             usable_for_analysis=True,
-            usability_notes='High altitude flyby; predicted null per TEP'
+            usability_notes='Third Earth flyby; published null (Muller et al. 2010); geometry from Horizons when catalog asymmetry absent',
         ))
         
         self._add_flyby(HistoricalFlyby(
@@ -345,7 +347,8 @@ class ArchivalDataMiner:
             raw_dsn_data_location='NASA DSN Archives (2005)',
             processed_ephemeris_available=True,
             published_anomaly_mm_s=0.0,
-            published_anomaly_uncertainty_mm_s=None,
+            # Anderson et al. (2008) null; σ matches manuscript Table 1 (published null/bound).
+            published_anomaly_uncertainty_mm_s=0.05,
             anomaly_reference='Anderson et al. (2008)',
             anomaly_reference_doi='10.1103/PhysRevLett.100.091102',
             altitude_classification='low',
@@ -393,12 +396,18 @@ class ArchivalDataMiner:
             processed_ephemeris_available=True,
             published_anomaly_mm_s=None,
             published_anomaly_uncertainty_mm_s=None,
-            anomaly_reference='No published detection',
+            anomaly_reference=(
+                "No peer-reviewed DSN-resolved Δv∞ with formal σ in flyby-anomaly "
+                "compendia (Anderson et al. 2008 and extensions); excluded from likelihood"
+            ),
             anomaly_reference_doi=None,
             altitude_classification='medium',
             detection_significance='predicted_null',
             usable_for_analysis=True,
-            usability_notes='High altitude (>5000 km); TEP predicts null'
+            usability_notes=(
+                "High-altitude GA (~6009 km); catalogue supports geometry and TEP "
+                "null-direction checks only until a citable (Δv, σ) exists"
+            ),
         ))
         
         self._add_flyby(HistoricalFlyby(
@@ -440,28 +449,10 @@ class ArchivalDataMiner:
             altitude_classification='high',
             detection_significance='predicted_null',
             usable_for_analysis=True,
-            usability_notes='High altitude; TEP predicts null'
-        ))
-        
-        self._add_flyby(HistoricalFlyby(
-            mission_name='BepiColombo_2021',
-            flyby_date='2021-08-10',
-            jpl_id='-121',
-            perigee_altitude_km=5525,
-            perigee_velocity_km_s=11.03,
-            dsn_tracking_available=True,
-            tracking_bands=['X-band', 'Ka-band'],
-            tracking_precision_mm_s=0.03,
-            raw_dsn_data_location='ESA ESOC Archives (2021)',
-            processed_ephemeris_available=True,
-            published_anomaly_mm_s=None,
-            published_anomaly_uncertainty_mm_s=0.03,
-            anomaly_reference='No published detection',
-            anomaly_reference_doi=None,
-            altitude_classification='medium',
-            detection_significance='predicted_null',
-            usable_for_analysis=True,
-            usability_notes='Medium altitude; marginal TEP signal predicted'
+            usability_notes=(
+                "Sole Earth gravity assist on cruise (2020-04-10); 2021-08-11 is Venus GA in "
+                "Horizons/ESA trajectory tables, not an additional Earth encounter. High altitude; TEP predicts null"
+            ),
         ))
         
         # Category 4: Future missions for targeted observation
@@ -621,7 +612,7 @@ Key Finding:
   - Model incompleteness contributes to scatter (see Step 004)
 
 What the Expansion Actually Achieved:
-  1. Consistent with: Temporal Shear Suppression screening threshold at ~2500 km
+  1. Consistent with: Temporal Topology screening threshold at ~2500 km
   2. Supported: Altitude dependence of TEP effects  
   3. CONSTRAINED: Upper bounds on coupling from null results
   4. DID NOT: Improve precision of β fitting (still n=3 effective)

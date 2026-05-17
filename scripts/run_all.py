@@ -33,6 +33,7 @@ CORE_STEPS: List[Tuple[str, str]] = [
     ('step_002_spice_to_json.py', 'Step 002: Convert SPICE to JSON'),
     ('step_003_archival_data_mining.py', 'Step 003: Archival Data Mining'),
     ('step_004_jpl_horizons_fetch.py', 'Step 004: JPL Horizons Data Fetch'),
+    ('step_038_extract_3d_vectors.py', 'Step 038: Extract 3D State Vectors from JPL Horizons'),
     ('step_033_iri_trajectory_profile.py', 'Step 033: Continuous IRI Trajectory Profiles'),
     ('step_005_dsn_data_ingestion.py', 'Step 005: DSN Data Ingestion'),
     ('step_006_dsn_framework.py', 'Step 006: DSN Framework (Resolves Horizons Circularity)'),
@@ -40,8 +41,9 @@ CORE_STEPS: List[Tuple[str, str]] = [
     # Phase 2: Core Physics (007-010)
     ('step_007_tep_model.py', 'Step 007: Enhanced TEP Model (WGS84, PREM, 3D)'),
     ('step_008_fitting.py', 'Step 008: Parameter Fitting'),
+    ('step_041_envelope_heuristic_sensitivity.py', 'Step 041: Geometry Envelope Heuristic Sensitivity'),
     ('step_009_variance_analysis.py', 'Step 009: Unified Variance Analysis (Four-Stage)'),
-    ('step_010_tep_first_principles.py', 'Step 010: Temporal Shear Suppression First-Principles'),
+    ('step_010_tep_first_principles.py', 'Step 010: First-Principles UCD Saturation Topology'),
     
     # Phase 3: Trajectory & Observational Pipeline (011-013)
     ('step_011_trajectory_integration.py', 'Step 011: Trajectory Integration'),
@@ -81,6 +83,7 @@ CORE_STEPS: List[Tuple[str, str]] = [
     
     # Phase 11: Mission-Specific Analysis (030-032)
     ('step_030_juno_reanalysis.py', 'Step 030: Juno 2013 Reanalysis'),
+    ('step_042_time_resolved_cosmography.py', 'Step 042: Time-Resolved Cosmography (after Horizons + optional Juno DSN sidecar)'),
     ('step_031_pds_search.py', 'Step 031: PDS Search'),
     ('step_032_tep_suppression.py', 'Step 032: TEP Suppression Analysis'),
     
@@ -88,8 +91,7 @@ CORE_STEPS: List[Tuple[str, str]] = [
     ('step_034_covariant_holonomy.py', 'Step 034: Covariant Temporal Shear Impulse'),
     ('step_035_cross_corpus_export.py', 'Step 035: Cross-Corpus Parameter Export'),
     
-    # Phase 13: Cosmographic Analysis (040a-040)
-    ('step_040a_extract_3d_vectors.py', 'Step 040a: Extract 3D State Vectors from JPL Horizons'),
+    # Phase 13: Cosmographic Analysis (040)
     ('step_040_cosmographic_shear.py', 'Step 040: Cosmographic Temporal Shear Modulation Test'),
     
     # Phase 14: Reporting (036-037)
@@ -101,6 +103,7 @@ DATA_INTEGRITY_REQUIRED_OUTPUTS = [
     'step003_archival_flyby_catalog.json',
     'step007_tep_predictions.json',
     'step008_fitting_results.json',
+    'step013_cross_validation.json',
     'step036_final_report.json',
 ]
 
@@ -217,10 +220,20 @@ class PipelineLogger:
             integrity[filename] = get_file_hash(path)
 
         # Final audit object
+        strict_sign_gate = None
+        try:
+            sys.path.insert(0, str(PROJECT_ROOT))
+            from scripts.utils.flyby_ensemble import strict_sign_gate_from_config
+
+            strict_sign_gate = strict_sign_gate_from_config()
+        except Exception:
+            pass
+
         audit_data = {
             "audit_type": "TEP-EFA Research-Grade Audit",
             "theory_version": "Jakarta v0.8.0",
             "telemetry": telemetry,
+            "strict_sign_gate": strict_sign_gate,
             "pipeline_results": self.step_results,
             "script_integrity": integrity
         }
@@ -370,6 +383,30 @@ def run_step(filename: str, description: str, step_num: int, total_steps: int,
         return False
 
 
+def _log_ensemble_policy(logger: PipelineLogger) -> None:
+    """Log frozen ensemble gates from config so every run states the active policy."""
+    sys.path.insert(0, str(PROJECT_ROOT))
+    from scripts.utils.flyby_ensemble import ENSEMBLE_GATE_POLICY, strict_sign_gate_from_config
+
+    strict_sg = strict_sign_gate_from_config()
+    logger.info(
+        f"Ensemble policy: strict_sign_gate={strict_sg} "
+        f"(config/pipeline_config.json; default false)"
+    )
+    if strict_sg:
+        logger.warning(
+            "strict_sign_gate=true: opposite-sign rows (e.g. Cassini at β_ref) are "
+            "excluded from Step 008 closed-form β fitting and the Step 026 primary ensemble."
+        )
+    else:
+        logger.info(
+            "strict_sign_gate=false: four S/N-qualified primary fits in Step 008/026; "
+            "sign-agreement n=3 reported as sign_agreement_model_comparison / "
+            "beta_statistics_sign_gated_diagnostic."
+        )
+    logger.info(f"Gate policy text: {ENSEMBLE_GATE_POLICY[:120]}...")
+
+
 def main():
     """Execute full pipeline with detailed logging."""
     logger = PipelineLogger()
@@ -379,6 +416,7 @@ def main():
     logger.info(f"Project root: {PROJECT_ROOT}")
     logger.info(f"Steps dir:     {STEPS_DIR}")
     logger.info(f"Log file:      {logger.log_file}")
+    _log_ensemble_policy(logger)
     
     total_steps = len(CORE_STEPS)
     

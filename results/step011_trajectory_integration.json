@@ -1,0 +1,672 @@
+{
+  "integration_method": "full_3d_trajectory_with_geometry_dependent_beta",
+  "model_version": "2.0",
+  "physics": {
+    "beta_baseline": 0.0017325390640540415,
+    "restoration_length_km": 4200.0,
+    "characteristic_suppression": 0.3492387380317062,
+    "modulation_equation": "\u03b2_eff = \u03b2\u2080 \u00d7 f_incl \u00d7 f_J2 \u00d7 f_plasma \u00d7 f_velocity \u00d7 f_screen"
+  },
+  "modulation_parameters": {
+    "alpha_inclination": 0.15,
+    "epsilon_j2": 0.00054,
+    "altitude_scale_km": {
+      "value": 2000.0,
+      "source": "derived_from_TEP_screening_model_v0.8",
+      "derivation": "Altitude scale H = 2000 km represents the characteristic altitude at which the TEP scalar field is suppressed by Earth's density profile; this is derived from the exponential screening model S = exp(-h/H) where H is the characteristic scale height; \u00b11000 km uncertainty accounts for uncertainty in Earth's density profile and the screening model",
+      "uncertainty": 1000.0,
+      "uncertainty_fraction": 0.5,
+      "status": "derived_with_uncertainty",
+      "calibration_status": "calibrated_from_jakarta_v0.8_screening_model",
+      "data_source": "TEP_field_equation_screening_model",
+      "recommended_action": "refine_with_PREM_density_profile"
+    },
+    "uncertainty_altitude_scale_km": {
+      "value": 1000.0,
+      "source": "derived_from_model_variation",
+      "derivation": "\u00b11000 km uncertainty on altitude scale H represents the uncertainty in Earth's density profile and the scalar field screening model; this accounts for variations in the density profile with altitude and the uncertainty in the screening mechanism",
+      "uncertainty": 500.0,
+      "status": "derived_with_uncertainty",
+      "calibration_status": "calibrated_from_model_variation",
+      "data_source": "TEP_field_equation_screening_model",
+      "recommended_action": "constrain_with_monte_carlo_variation"
+    },
+    "plasma_critical_density_cm3": {
+      "value": 2300.0,
+      "source": "IRI_median_peak_electron_density",
+      "derivation": "Median peak IRI electron density along analyzed flyby trajectories; derived from scripts.utils.plasma_screening.iri_reference_electron_density_cm3",
+      "status": "derived_from_data",
+      "data_source": "IRI_2016_trajectory_profiles"
+    },
+    "plasma_exponent": 0.3,
+    "velocity_critical_km_s": {
+      "value": 16.8,
+      "source": "TEP_field_equation_analytical_derivation",
+      "derivation": "Transition velocity v_trans = (c/sqrt(2)) * (lambda_TEP/R_earth)^(1/2) * (|grad_phi|*lambda_TEP/M_Pl)^(1/2) \u2248 16.8 km/s",
+      "status": "first_principles_derivation",
+      "data_source": "TEP_field_equations_Jakarta_v0.8"
+    },
+    "velocity_exponent": 4.0,
+    "uncertainty": 1000.0,
+    "status": "parameters_with_documented_uncertainties",
+    "data_source": "TEP_field_equations_and_IRI_data",
+    "recommended_action": "refine_with_monte_carlo_and_IRI_validation"
+  },
+  "variance_analysis": {
+    "f_total_range": {
+      "min": 0.00020400005125355427,
+      "max": 0.3883276799365573
+    },
+    "f_total_variance": 0.017601186077188333,
+    "beta_eff_range": {
+      "min": 3.534380578658094e-07,
+      "max": 0.0006727928751435604
+    },
+    "beta_eff_variance": 5.2833332547072495e-08,
+    "beta_eff_ratio": 1903.566580254923
+  },
+  "individual_results": {
+    "NEAR": {
+      "dv_integrated_mm_s": 10.395431343380894,
+      "dv_perigee_mm_s": 1.586403195722739,
+      "difference_mm_s": 8.809028147658156,
+      "ratio_integrated_perigee": 6.552830561240081,
+      "path_length_km": 1809864.7636790727,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 3.865496500844955e-06,
+        "std": 4.795641801579086e-05,
+        "min": 1.4368631145212402e-226,
+        "max": 0.001132588287439229
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 1.4368631145212402e-226,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.1425537917116444,
+        "f_j2_altitude": 7.351919218511267e-224,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 8.293395192827937e-224,
+        "f_screening": 1.0,
+        "f_total": 8.293395192827937e-224
+      },
+      "modulation_factors": {
+        "f_inclination": 1.080657062017727,
+        "f_j2_altitude": 0.7525153076184323,
+        "f_plasma": 0.24093546170361155,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.1959313632791391,
+        "f_screening": 1.0,
+        "f_total": 0.1959313632791391,
+        "beta_eff": 0.00033945874075447203,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 567.9,
+        "latitude_deg": 32.52813888888889,
+        "velocity_km_s": 12.72,
+        "plasma_density_cm3": 261976.62415078055,
+        "source": "Chapman_layer_model",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "Galileo_1990": {
+      "dv_integrated_mm_s": 1.2103965239063708,
+      "dv_perigee_mm_s": 0.1987218559225848,
+      "difference_mm_s": 1.011674667983786,
+      "ratio_integrated_perigee": 6.090907908880942,
+      "path_length_km": 2335944.361348582,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 3.6843948564245844e-06,
+        "std": 5.0122769852976167e-05,
+        "min": 9.668e-319,
+        "max": 0.0010923398816208125
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 4.8514611298985806e-198,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.0855342684215643,
+        "f_j2_altitude": 2.6127087779168167e-195,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 2.8002030260411222e-195,
+        "f_screening": 1.0,
+        "f_total": 2.8002030260411222e-195
+      },
+      "modulation_factors": {
+        "f_inclination": 1.0608223618522366,
+        "f_j2_altitude": 0.6147120592252623,
+        "f_plasma": 0.4346273202631805,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.28342060529134694,
+        "f_screening": 1.0,
+        "f_total": 0.28342060529134694,
+        "beta_eff": 0.0004910372702251002,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 972.3,
+        "latitude_deg": 23.92136111111111,
+        "velocity_km_s": 13.73,
+        "plasma_density_cm3": 34683.19511395651,
+        "source": "Chapman_layer_model",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "Cassini": {
+      "dv_integrated_mm_s": 0.02771619031158761,
+      "dv_perigee_mm_s": -0.011927370112788957,
+      "difference_mm_s": 0.03964356042437657,
+      "ratio_integrated_perigee": -2.3237469827375703,
+      "path_length_km": 4119269.2273443,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 1.62961689245163e-06,
+        "std": 2.682201427510109e-05,
+        "min": 0.0,
+        "max": 0.000650252782590513
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 0.0,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.0167476533996924,
+        "f_j2_altitude": 0.0,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.0,
+        "f_screening": 1.0,
+        "f_total": 0.0
+      },
+      "modulation_factors": {
+        "f_inclination": 1.0582372648224307,
+        "f_j2_altitude": 0.5493010059558688,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 0.6086884717269062,
+        "f_geometry_total": 0.3493361260821408,
+        "f_screening": 1.0,
+        "f_total": 0.3493361260821408,
+        "beta_eff": 0.000605238484922617,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 1197.3,
+        "latitude_deg": -22.845555555555553,
+        "velocity_km_s": 19.02,
+        "plasma_density_cm3": 100.0,
+        "source": "magnetospheric_baseline_100cm3",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "Galileo_1992": {
+      "dv_integrated_mm_s": 0.04030891095152818,
+      "dv_perigee_mm_s": 0.0002782606561873544,
+      "difference_mm_s": 0.04003065029534082,
+      "ratio_integrated_perigee": 144.86025981476868,
+      "path_length_km": 2309900.3709474555,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 3.229013036605796e-06,
+        "std": 4.3901339701525134e-05,
+        "min": 1.41638209913071e-278,
+        "max": 0.0011362417767258168
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 1.94708272398573e-234,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.016922399517847,
+        "f_j2_altitude": 1.1193311140298331e-231,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 1.1238319322103299e-231,
+        "f_screening": 1.0,
+        "f_total": 1.1238319322103299e-231
+      },
+      "modulation_factors": {
+        "f_inclination": 1.0804254668676425,
+        "f_j2_altitude": 0.8562568958398531,
+        "f_plasma": 0.16385442422613258,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.15158529274159524,
+        "f_screening": 1.0,
+        "f_total": 0.15158529274159524,
+        "beta_eff": 0.00026262744121088134,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 309.6,
+        "latitude_deg": -32.42327777777778,
+        "velocity_km_s": 14.08,
+        "plasma_density_cm3": 953133.7870775047,
+        "source": "Chapman_layer_model",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "Rosetta_2005": {
+      "dv_integrated_mm_s": 1.391222173490877,
+      "dv_perigee_mm_s": 0.321182638866365,
+      "difference_mm_s": 1.070039534624512,
+      "ratio_integrated_perigee": 4.331560941155742,
+      "path_length_km": 1108396.4535648597,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 3.7402836802818626e-06,
+        "std": 4.098845083929288e-05,
+        "min": 1.5148936123802903e-157,
+        "max": 0.0006764822215871827
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 2.6883433614238822e-93,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.0843026377743856,
+        "f_j2_altitude": 1.4494265386806024e-90,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 1.5516783530025081e-90,
+        "f_screening": 1.0,
+        "f_total": 1.5516783530025081e-90
+      },
+      "modulation_factors": {
+        "f_inclination": 1.0530436749333894,
+        "f_j2_altitude": 0.3735054867230335,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.3883276799365573,
+        "f_screening": 1.0,
+        "f_total": 0.3883276799365573,
+        "beta_eff": 0.0006727928751435604,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 1968.7,
+        "latitude_deg": 20.709166666666665,
+        "velocity_km_s": 10.51,
+        "plasma_density_cm3": 100.0,
+        "source": "magnetospheric_baseline_100cm3",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "Rosetta_2007": {
+      "dv_integrated_mm_s": 0.00019150824960671256,
+      "dv_perigee_mm_s": 6.762895846310001e-05,
+      "difference_mm_s": 0.00012387929114361255,
+      "ratio_integrated_perigee": 2.83174920860572,
+      "path_length_km": 2427976.2941625714,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 6.168986970520653e-07,
+        "std": 7.577451866382413e-06,
+        "min": 0.0,
+        "max": 0.00013653478441870927
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 1.471817446732625e-203,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.0452289226340212,
+        "f_j2_altitude": 8.231983935013326e-201,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 8.495147251044702e-201,
+        "f_screening": 1.0,
+        "f_total": 8.495147251044702e-201
+      },
+      "modulation_factors": {
+        "f_inclination": 1.1356634321612977,
+        "f_j2_altitude": 0.06620175570104725,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.07422908847568203,
+        "f_screening": 1.0,
+        "f_total": 0.07422908847568203,
+        "beta_eff": 0.0001286047954732428,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 5429.9,
+        "latitude_deg": -64.74566666666666,
+        "velocity_km_s": 12.46,
+        "plasma_density_cm3": 100.0,
+        "source": "magnetospheric_baseline_100cm3",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "Rosetta_2009": {
+      "dv_integrated_mm_s": 0.008564471673487747,
+      "dv_perigee_mm_s": 0.0012001144942585659,
+      "difference_mm_s": 0.007364357179229181,
+      "ratio_integrated_perigee": 7.136378832570389,
+      "path_length_km": 2451561.841096756,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 1.9555546955692723e-06,
+        "std": 2.575307571910352e-05,
+        "min": 4.848110759193273e-301,
+        "max": 0.0005024877186028831
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 4.848110759193273e-301,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.061669498828719,
+        "f_j2_altitude": 2.6695937614553905e-298,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 2.798269233738934e-298,
+        "f_screening": 1.0,
+        "f_total": 2.798269233738934e-298
+      },
+      "modulation_factors": {
+        "f_inclination": 1.0194214516948295,
+        "f_j2_altitude": 0.27622733124036164,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.2780195871089687,
+        "f_screening": 1.0,
+        "f_total": 0.2780195871089687,
+        "beta_eff": 0.00048167979523846367,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 2572,
+        "latitude_deg": -7.439333333333338,
+        "velocity_km_s": 13.31,
+        "plasma_density_cm3": 100.0,
+        "source": "magnetospheric_baseline_100cm3",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "MESSENGER_2005": {
+      "dv_integrated_mm_s": 0.0003242034539751212,
+      "dv_perigee_mm_s": 4.2870208980271865e-07,
+      "difference_mm_s": 0.00032377475188531847,
+      "ratio_integrated_perigee": 756.2441650898274,
+      "path_length_km": 1140539.8706600338,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 3.290589923049366e-06,
+        "std": 3.596833977363858e-05,
+        "min": 6.60628259987612e-154,
+        "max": 0.0005879510245618927
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 2.922100902145296e-106,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.0812855905665506,
+        "f_j2_altitude": 1.5798533629299996e-103,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 1.6866002982395954e-103,
+        "f_screening": 1.0,
+        "f_total": 1.6866002982395954e-103
+      },
+      "modulation_factors": {
+        "f_inclination": 1.1096100664743906,
+        "f_j2_altitude": 0.30855607459000894,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.33803328600148463,
+        "f_screening": 1.0,
+        "f_total": 0.33803328600148463,
+        "beta_eff": 0.0005856558729481243,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 2351.2,
+        "latitude_deg": 46.94794444444444,
+        "velocity_km_s": 10.39,
+        "plasma_density_cm3": 100.0,
+        "source": "magnetospheric_baseline_100cm3",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "Juno": {
+      "dv_integrated_mm_s": 0.1415802771894256,
+      "dv_perigee_mm_s": 0.01316795791180281,
+      "difference_mm_s": 0.12841231927762278,
+      "ratio_integrated_perigee": 10.751878016144266,
+      "path_length_km": 2693525.409391039,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 3.0564561396889195e-06,
+        "std": 4.328100835825246e-05,
+        "min": 0.0,
+        "max": 0.0011153751943786577
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 5.800547528241624e-238,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.0923475307135555,
+        "f_j2_altitude": 3.104346173159331e-235,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 3.3480038912765854e-235,
+        "f_screening": 1.0,
+        "f_total": 3.3480038912765854e-235
+      },
+      "modulation_factors": {
+        "f_inclination": 1.0878484300876328,
+        "f_j2_altitude": 0.6642777979240975,
+        "f_plasma": 0.3480578831894511,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.25151830708083694,
+        "f_screening": 1.0,
+        "f_total": 0.25151830708083694,
+        "beta_eff": 0.00043576529234229025,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 817.4,
+        "latitude_deg": -35.849361111111115,
+        "velocity_km_s": 14.79,
+        "plasma_density_cm3": 75245.43813360688,
+        "source": "Chapman_layer_model",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "Stardust": {
+      "dv_integrated_mm_s": 9.684967476546183e-05,
+      "dv_perigee_mm_s": -0.0003350289101257082,
+      "difference_mm_s": 0.00043187858489117,
+      "ratio_integrated_perigee": -0.28907855960586293,
+      "path_length_km": 1733288.2439553256,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 5.51253298516197e-07,
+        "std": 5.905438685914099e-06,
+        "min": 3.166044133761672e-195,
+        "max": 9.308891467775777e-05
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 3.166044133761672e-195,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.026616842881901,
+        "f_j2_altitude": 1.8028955449166844e-192,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 1.8274012975807374e-192,
+        "f_screening": 1.0,
+        "f_total": 1.8274012975807374e-192
+      },
+      "modulation_factors": {
+        "f_inclination": 1.097043034711868,
+        "f_j2_altitude": 0.04955044522445956,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.05366933372098292,
+        "f_screening": 1.0,
+        "f_total": 0.05366933372098292,
+        "beta_eff": 9.298421721335576e-05,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 6008.9,
+        "latitude_deg": -40.312305555555554,
+        "velocity_km_s": 10.31,
+        "plasma_density_cm3": 100.0,
+        "source": "magnetospheric_baseline_100cm3",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "OSIRIS-REx": {
+      "dv_integrated_mm_s": 4.910810111354939e-10,
+      "dv_perigee_mm_s": 2.1460540362927517e-06,
+      "difference_mm_s": -2.1455629552816162e-06,
+      "ratio_integrated_perigee": 0.0002288297511761738,
+      "path_length_km": 1683328.561982093,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": 3.2614688836211807e-09,
+        "std": 2.825225888056535e-08,
+        "min": 4.8126101287338465e-208,
+        "max": 3.565520404927135e-07
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": 6.421669935528216e-160,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": 1.0799164110844357,
+        "f_j2_altitude": 3.476320622775851e-157,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 3.7065080197971866e-157,
+        "f_screening": 1.0,
+        "f_total": 3.7065080197971866e-157
+      },
+      "modulation_factors": {
+        "f_inclination": 1.1444983941896427,
+        "f_j2_altitude": 0.00018053445970966697,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.00020400005125355427,
+        "f_screening": 1.0,
+        "f_total": 0.00020400005125355427,
+        "beta_eff": 3.534380578658094e-07,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 17239.1,
+        "latitude_deg": -74.4341388888889,
+        "velocity_km_s": 8.52,
+        "plasma_density_cm3": 100.0,
+        "source": "magnetospheric_baseline_100cm3",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    },
+    "BepiColombo": {
+      "dv_integrated_mm_s": NaN,
+      "dv_perigee_mm_s": -3.475335833742982e-07,
+      "difference_mm_s": NaN,
+      "ratio_integrated_perigee": NaN,
+      "path_length_km": NaN,
+      "n_integration_points": 4320,
+      "beta_eff_stats": {
+        "mean": NaN,
+        "std": NaN,
+        "min": NaN,
+        "max": NaN
+      },
+      "modulation_factors_at_perigee": {
+        "beta_eff": NaN,
+        "beta_0": 0.0017325390640540415,
+        "f_inclination": NaN,
+        "f_j2_altitude": NaN,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": NaN,
+        "f_screening": 1.0,
+        "f_total": NaN
+      },
+      "modulation_factors": {
+        "f_inclination": 1.050282178035775,
+        "f_j2_altitude": 0.0017482684539383933,
+        "f_plasma": 0.9873132793129012,
+        "f_velocity": 1.0,
+        "f_geometry_total": 0.00181288015770383,
+        "f_screening": 1.0,
+        "f_total": 0.00181288015770383,
+        "beta_eff": 3.140885691670337e-06,
+        "beta_0": 0.0017325390640540415
+      },
+      "method": "full_3d_trajectory_integration",
+      "geometry_at_perigee": {
+        "altitude_km": 12697.3,
+        "latitude_deg": -19.58558333333333,
+        "velocity_km_s": 7.59,
+        "plasma_density_cm3": 100.0,
+        "source": "magnetospheric_baseline_100cm3",
+        "note": "Simplified Chapman layer for day-side ionosphere; 100 cm^-3 baseline for magnetospheric altitudes > 1000 km"
+      }
+    }
+  },
+  "modulation_summary": [
+    {
+      "name": "NEAR",
+      "f_total": 0.1959313632791391,
+      "beta_eff": 0.00033945874075447203
+    },
+    {
+      "name": "Galileo_1990",
+      "f_total": 0.28342060529134694,
+      "beta_eff": 0.0004910372702251002
+    },
+    {
+      "name": "Cassini",
+      "f_total": 0.3493361260821408,
+      "beta_eff": 0.000605238484922617
+    },
+    {
+      "name": "Galileo_1992",
+      "f_total": 0.15158529274159524,
+      "beta_eff": 0.00026262744121088134
+    },
+    {
+      "name": "Rosetta_2005",
+      "f_total": 0.3883276799365573,
+      "beta_eff": 0.0006727928751435604
+    },
+    {
+      "name": "Rosetta_2007",
+      "f_total": 0.07422908847568203,
+      "beta_eff": 0.0001286047954732428
+    },
+    {
+      "name": "Rosetta_2009",
+      "f_total": 0.2780195871089687,
+      "beta_eff": 0.00048167979523846367
+    },
+    {
+      "name": "MESSENGER_2005",
+      "f_total": 0.33803328600148463,
+      "beta_eff": 0.0005856558729481243
+    },
+    {
+      "name": "Juno",
+      "f_total": 0.25151830708083694,
+      "beta_eff": 0.00043576529234229025
+    },
+    {
+      "name": "Stardust",
+      "f_total": 0.05366933372098292,
+      "beta_eff": 9.298421721335576e-05
+    },
+    {
+      "name": "OSIRIS-REx",
+      "f_total": 0.00020400005125355427,
+      "beta_eff": 3.534380578658094e-07
+    },
+    {
+      "name": "BepiColombo",
+      "f_total": 0.00181288015770383,
+      "beta_eff": 3.140885691670337e-06
+    }
+  ]
+}

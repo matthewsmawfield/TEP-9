@@ -3,7 +3,7 @@ Step 035: Cross-Corpus Parameter Export Manifest
 
 This script serves as the final synthesis node for the Earth Flyby Anomaly (EFA) pipeline.
 It extracts the rigorously verified parameters (conformal beta, disformal bounds, 
-Temporal Shear Suppression screening scales) and exports them into a universal manifest designed to
+Temporal Topology screening scales) and exports them into a universal manifest designed to
 be ingested directly by:
 1. CLASS/CAMB Solvers (for the Cosmological Tension paper)
 2. Gaia DR3 Wide Binary Analysis Pipeline (for the Gravity Screening paper)
@@ -69,7 +69,7 @@ be ingested directly by:
 - Step 034: Temporal shear impulse analysis details
 - GW170817 observation: Abbott et al. 2017, Phys. Rev. Lett. 119, 161101
 
-### 3. Temporal Shear Suppression Index (n)
+### 3. Temporal Topology Screening Index (n)
 
 **Source:** Wide binary R_s transition analysis (Paper 6, UCD)
 
@@ -323,7 +323,7 @@ def main():
                         "uncertainty": beta_uncertainty,
                         "uncertainty_fraction": beta_uncertainty_fraction,
                         "uncertainty_absolute": beta_uncertainty,
-                        "data_source": "step008_fitting_results.json weighted mean (universal conformal beta)",
+                        "data_source": "step008_fitting_results.json weighted mean (pooled conformal β, sign-gated restricted tier)",
                         "derivation": beta_derivation,
                         "status": "HEURISTIC",
                         "calibration_status": "NEEDS_LAB_MEASUREMENT",
@@ -354,14 +354,14 @@ def main():
                         "recommended_action": "Refine with future multi-messenger gravitational wave observations"
                     }
                 },
-                "Temporal Shear Suppression_screening": {
+                "screening": {
                     "uncertainty": None,
                     "uncertainty_fraction": 0.50,
                     "uncertainty_absolute": None,
                     "status": "preliminary",
                     "calibration_status": "from_wide_binary_analysis",
                     "data_source": "Wide binary R_s transition analysis (Paper 6, UCD)",
-                    "derivation": "Temporal Shear Suppression screening parameters derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions; ±50% uncertainty accounts for galactic environment variations",
+                    "derivation": "Temporal Topology screening parameters derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions; ±50% uncertainty accounts for galactic environment variations",
                     "recommended_action": "Refine with Gaia DR3 wide binary catalog and improved parallax measurements",
                     "n_index": {
                         "value": 3.0,

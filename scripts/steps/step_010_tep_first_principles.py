@@ -34,7 +34,7 @@ UCD Saturation Calculation:
 - Saturation radius: R_sol = (3M / 4πρ_T)^(1/3) ≈ 4146 km for Earth
 - Characteristic suppression: S_⊕ = (R_earth - R_sol) / R_earth ≈ 0.349
 
-This is distinct from standard Temporal Topology Temporal Shear Suppression
+This is distinct from standard screened Temporal Topology
 (V(φ) = Λ^(4+n)/φ^n with n=3, Λ=10 MeV, β=0.01), which would produce
 ΔR/R ≈ 1.0 (essentially no suppression) for Earth's density profile.
 
@@ -542,7 +542,7 @@ def main():
 
     logger.section("UCD PARAMETERS (from Paper 7)")
     logger.info(f"Universal Critical Density: ρ_T = {calculator.RHO_T} g/cm³")
-    logger.info(f"Empirical Temporal Shear Suppression Exponent: γ = {calculator.SUPPRESSION_EXPONENT}")
+    logger.info(f"Empirical screening exponent: γ = {calculator.SUPPRESSION_EXPONENT}")
 
     logger.section("CALCULATING SOLITON RADIUS")
 
@@ -554,7 +554,7 @@ def main():
 
     logger.section("CHARACTERISTIC SUPPRESSION - MULTI-METHOD ANALYSIS")
 
-    # Calculate geometric Temporal Shear Suppression factor using ALL TEP approaches
+    # Calculate geometric screening factor using ALL TEP approaches
     logger.subsection("Approach 1: UCD Saturation (Primary)")
     S_factor_1, R_sol_1 = calculator.calculate_characteristic_suppression()
     logger.info(f"Formula: R_sol = (3M/4πρ_T)^(1/3)")
@@ -665,7 +665,7 @@ def main():
             "rho_T_g_cm3": calculator.RHO_T,
             "M_earth_kg": calculator.M_EARTH,
             "R_earth_m": calculator.R_EARTH,
-            "Temporal Shear Suppression_exponent": calculator.SUPPRESSION_EXPONENT,
+            "screening_exponent": calculator.SUPPRESSION_EXPONENT,
         },
         "derived_values": {
             "R_sol_km": R_sol / 1000.0,
@@ -717,13 +717,6 @@ def main():
         },
         "verification_tests": tests,
         "sensitivity_analysis": sensitivity,
-        "reviewer_response": {
-            "concern": "Origin of 0.34 geometric Temporal Shear Suppression factor needs first-principles verification",
-            "resolution": "4 independent TEP methods corroborate S_⊕ ≈ 0.34 ± 0.09 (±25% from ρ_T = 20 ± 8 g/cm³, Paper 6 UCD)",
-            "key_finding": f"UCD Saturation: {S_factor_1:.3f}, GNSS Direct: {S_factor_2:.3f}, Compton λ: {S_factor_4:.3f}, Altitude: {S_factor_5:.3f}",
-            "audit_status": match_status,
-            "literature_consistency": "All methods consistent with Paper 5 (GTE), Paper 6 (UCD), Paper 15 (EFA)",
-        },
     }
 
     output_file = PROJECT_ROOT / "results" / "step010_ucd_saturation_results.json"

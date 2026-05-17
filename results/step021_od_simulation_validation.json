@@ -8,7 +8,7 @@
   "derivation": "F_OD is not computed without mission OD configuration files",
   "recommended_action": "Obtain real mission OD configuration files from JPL/ESA NAIF with research justification",
   "step": "021_mission_specific_od_absorption",
-  "timestamp": "2026-05-13T08:58:01.745043+00:00",
+  "timestamp": "2026-05-17T09:30:32.966811+00:00",
   "method": "not_computed",
   "disclaimer": "F_OD is not computed without real mission OD configuration data.",
   "od_simulation_reference": {
@@ -119,6 +119,21 @@
       "data_status": "LITERATURE_REFERENCE_ONLY",
       "notes": "Describes Rosetta navigation methodology but does not provide quantitative filter parameters. F_OD cannot be computed without real mission OD configuration data."
     },
+    "Rosetta_2009": {
+      "spacecraft": "Rosetta_2009",
+      "f_od_estimate": null,
+      "f_od_uncertainty": null,
+      "uncertainty_fraction": null,
+      "status": "not_computable_without_mission_od_configuration",
+      "calibration_status": "cannot_compute_without_real_data",
+      "data_source": "mission_not_in_literature",
+      "derivation": "F_OD is not computed without mission OD configuration files; published navigation papers do not provide quantitative filter parameters.",
+      "literature_citation": null,
+      "requires_mission_archive_access": true,
+      "recommended_action": "Obtain real mission OD configuration files from JPL/ESA NAIF with research justification",
+      "data_status": "NO_LITERATURE_DATA",
+      "notes": "Mission Rosetta_2009 not in published literature database. F_OD cannot be computed without real mission OD configuration data."
+    },
     "MESSENGER_2005": {
       "spacecraft": "MESSENGER_2005",
       "f_od_estimate": null,
@@ -148,6 +163,51 @@
       "recommended_action": "Obtain real mission OD configuration files from JPL/ESA NAIF with research justification",
       "data_status": "NO_LITERATURE_DATA",
       "notes": "Mission Juno not in published literature database. F_OD cannot be computed without real mission OD configuration data."
+    },
+    "Stardust": {
+      "spacecraft": "Stardust",
+      "f_od_estimate": null,
+      "f_od_uncertainty": null,
+      "uncertainty_fraction": null,
+      "status": "not_computable_without_mission_od_configuration",
+      "calibration_status": "cannot_compute_without_real_data",
+      "data_source": "literature_reference_only",
+      "derivation": "F_OD is not computed without mission OD configuration files; published navigation papers do not provide quantitative filter parameters.",
+      "literature_citation": "Carranza, Kennedy & Williams, Orbit Determination of Stardust from Annefrank Fly-By, DESCANSO bibliography",
+      "requires_mission_archive_access": true,
+      "recommended_action": "Obtain real mission OD configuration files from JPL/ESA NAIF with research justification",
+      "data_status": "LITERATURE_REFERENCE_ONLY",
+      "notes": "Describes Stardust OD methodology but does not provide quantitative filter parameters. F_OD cannot be computed without real mission OD configuration data."
+    },
+    "OSIRIS-REx": {
+      "spacecraft": "OSIRIS-REx",
+      "f_od_estimate": null,
+      "f_od_uncertainty": null,
+      "uncertainty_fraction": null,
+      "status": "not_computable_without_mission_od_configuration",
+      "calibration_status": "cannot_compute_without_real_data",
+      "data_source": "mission_not_in_literature",
+      "derivation": "F_OD is not computed without mission OD configuration files; published navigation papers do not provide quantitative filter parameters.",
+      "literature_citation": null,
+      "requires_mission_archive_access": true,
+      "recommended_action": "Obtain real mission OD configuration files from JPL/ESA NAIF with research justification",
+      "data_status": "NO_LITERATURE_DATA",
+      "notes": "Mission OSIRIS-REx not in published literature database. F_OD cannot be computed without real mission OD configuration data."
+    },
+    "BepiColombo": {
+      "spacecraft": "BepiColombo",
+      "f_od_estimate": null,
+      "f_od_uncertainty": null,
+      "uncertainty_fraction": null,
+      "status": "not_computable_without_mission_od_configuration",
+      "calibration_status": "cannot_compute_without_real_data",
+      "data_source": "mission_not_in_literature",
+      "derivation": "F_OD is not computed without mission OD configuration files; published navigation papers do not provide quantitative filter parameters.",
+      "literature_citation": null,
+      "requires_mission_archive_access": true,
+      "recommended_action": "Obtain real mission OD configuration files from JPL/ESA NAIF with research justification",
+      "data_status": "NO_LITERATURE_DATA",
+      "notes": "Mission BepiColombo not in published literature database. F_OD cannot be computed without real mission OD configuration data."
     }
   }
 }

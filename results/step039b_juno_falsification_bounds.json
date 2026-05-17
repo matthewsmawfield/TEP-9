@@ -1,0 +1,61 @@
+{
+  "spacecraft": "Juno",
+  "flyby_date": "2013-10-09",
+  "altitude_km": 817.4,
+  "perigee_radius_m": 7188400.0,
+  "observed": {
+    "dv_obs_mm_s": 0.0,
+    "sigma_mm_s": 0.02
+  },
+  "reference_prediction": {
+    "dv_tep_ref_mm_s": 0.013168,
+    "beta_ref": 0.0001
+  },
+  "current_fitted_beta": {
+    "beta_weighted": 0.001733,
+    "beta_uncertainty": 0.000785,
+    "dv_prediction_mm_s": 0.1118,
+    "tension_sigma": 5.59
+  },
+  "falsification_thresholds": {
+    "1sigma": {
+      "target_dv_mm_s": 0.02,
+      "beta_threshold": 0.000175,
+      "dv_at_threshold_mm_s": 0.02,
+      "current_beta_exceeds_threshold": true,
+      "tension_at_current_beta_sigma": 5.59
+    },
+    "2sigma": {
+      "target_dv_mm_s": 0.04,
+      "beta_threshold": 0.00044,
+      "dv_at_threshold_mm_s": 0.04,
+      "current_beta_exceeds_threshold": true,
+      "tension_at_current_beta_sigma": 5.59
+    },
+    "3sigma": {
+      "target_dv_mm_s": 0.06,
+      "beta_threshold": 0.000755,
+      "dv_at_threshold_mm_s": 0.06,
+      "current_beta_exceeds_threshold": true,
+      "tension_at_current_beta_sigma": 5.59
+    }
+  },
+  "falsification_assessment": {
+    "tep_falsified_by_juno_at_3sigma": true,
+    "beta_falsified_interval": {
+      "upper_bound": 0.000755,
+      "current_beta_fraction_of_threshold": 2.29
+    },
+    "beta_needed_to_explain_observation": {
+      "at_1sigma_mm_s": 0.000175,
+      "at_2sigma_mm_s": 0.00044
+    },
+    "interpretation": "At the current fitted \u03b2, the TEP model predicts a Juno anomaly 5.6\u03c3 above the published null. To drop below 3\u03c3 consistency, \u03b2 would need to be < 7.5500e-04. The current fitted \u03b2 (1.7325e-03) is 2.3x the 3\u03c3 threshold."
+  },
+  "notes": [
+    "Scaling law: dv_tep \u221d \u03b2^(3/4) (from Step 008 fitting).",
+    "Falsification requires independent minimal-OD reanalysis with TEP-inclusive force modeling.",
+    "OD survival factors (F_OD) are withheld until mission OD configuration data are available.",
+    "These bounds assume the published null (0.00 \u00b1 0.02 mm/s) is correct and systematic-free."
+  ]
+}

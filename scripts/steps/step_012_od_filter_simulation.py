@@ -1585,9 +1585,12 @@ def main():
             'n_stations': 1,
             'station_lat_lon_rad': [[0.0, 0.0]],
             'two_way_multiplier': 1.0,
+            'use_stacked': False,
             'note': (
                 'Baseline is one rotating station at equator, prime meridian; '
-                'two_way_multiplier scales the averaged observable for a toy sensitivity test.'
+                'two_way_multiplier scales the averaged observable for a toy sensitivity test. '
+                'When use_stacked is true, OD uses one independent measurement per station per epoch '
+                '(see sensitivity.runs entries with stacked: true).'
             ),
         },
         'sensitivity': {
