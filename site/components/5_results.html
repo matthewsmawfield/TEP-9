@@ -246,7 +246,7 @@
 <h3>4.2.1 Per-Flyby Geometry Factor Extraction</h3>
 
 <p>
-    The component-level analysis extracts the effective geometry factor $G_{i,\text{eff}} = \Delta v_{\text{obs}} / \Delta v_{\text{grad}}(\beta_0 = 10^{-4})$ for each flyby. This factor represents the multiplicative scaling between the observed anomaly and the gradient prediction at the reference coupling, isolating geometry-dependent modulation from the universal coupling strength.
+    The component-level analysis extracts the effective geometry factor $G_{i,\text{eff}} = \Delta v_{\text{obs}} / \Delta v_{\text{grad}}(\beta_{A,0} = 10^{-4})$ for each flyby. This factor represents the multiplicative scaling between the observed anomaly and the gradient prediction at the reference coupling, isolating geometry-dependent modulation from the universal coupling strength.
 </p>
 
 <table class="data-table">
@@ -298,7 +298,7 @@
 <h3>4.2.2 MCMC Hierarchical Inference</h3>
 
 <p>
-    The four-parameter hierarchical Bayesian model ($\beta_0$, $b_{\text{disf}}$, $\sigma$, $\alpha_{\text{res}}$) is sampled via MCMC with priors centered near the Step 008 weighted mean ($\beta_0 \sim \text{LogNormal}(\ln(1.73 \times 10^{-3}), 1.5)$). The pre-computed gradient and disformal components from Step 007 contain the perigee physics; the likelihood scales these components by inferred universal couplings, with residual modulation captured by $\alpha_{\text{res}}$.
+    The four-parameter hierarchical Bayesian model ($\beta_{A,0}$, $b_{\text{disf}}$, $\sigma$, $\alpha_{\text{res}}$) is sampled via MCMC with priors centered near the Step 008 weighted mean ($\beta_{A,0} \sim \text{LogNormal}(\ln(1.73 \times 10^{-3}), 1.5)$). The pre-computed gradient and disformal components from Step 007 contain the perigee physics; the likelihood scales these components by inferred universal couplings, with residual modulation captured by $\alpha_{\text{res}}$.
 </p>
 
 <p>
@@ -306,7 +306,7 @@
 </p>
 
 <ul>
-    <li>$\beta_0 = 6.30 \times 10^{-4} \pm 3.50 \times 10^{-4}$ (16th–84th: $3.82$–$9.67 \times 10^{-4}$)</li>
+    <li>$\beta_{A,0} = 6.30 \times 10^{-4} \pm 3.50 \times 10^{-4}$ (16th–84th: $3.82$–$9.67 \times 10^{-4}$)</li>
     <li>$b_{\text{disf}} = 0.038 \pm 0.048$</li>
     <li>$\sigma = 1.32 \pm 0.61$ mm/s (flyby-to-flyby scatter)</li>
     <li>$\alpha_{\text{res}} = 0.019 \pm 0.290$ (consistent with zero)</li>
@@ -351,7 +351,7 @@
 </table>
 
 <p>
-    The posterior median $\beta_0 = 6.30 \times 10^{-4}$ lies below the Step 008 inverse-variance weighted mean ($1.73 \times 10^{-3}$), with width driven by the three-anomaly hierarchical layer. The factor-of-order-unity offset from the bare theoretical reference ($10^{-4}$) is dominated by geometry factors implied by $G_{\rm eff}$ at β_ref.
+    The posterior median $\beta_{A,0} = 6.30 \times 10^{-4}$ lies below the Step 008 inverse-variance weighted mean ($1.73 \times 10^{-3}$), with width driven by the three-anomaly hierarchical layer. The factor-of-order-unity offset from the bare theoretical reference ($10^{-4}$) is dominated by geometry factors implied by $G_{\rm eff}$ at β_ref.
 </p>
 
 <h2>4.3 Deterministic Geometry Modulation Analysis</h2>
@@ -427,7 +427,7 @@
 <h2>4.4a Full-Catalog Raw Stress Test</h2>
 
 <p>
-    Before restricting attention to the three sign-gated detections, the universal-$\beta$
+    Before restricting attention to the three sign-gated detections, the universal-$\beta_A$
     prediction is tested against all published rows with explicit raw TEP predictions
     in Step 039. This raw-layer stress test includes NEAR, Galileo 1990,
     Rosetta 2005, Cassini, Galileo 1992, MESSENGER, Juno, and Rosetta 2007
@@ -435,7 +435,7 @@
     explicit geometry needed for the raw prediction is unavailable; flybys with
     no public anomaly report are also excluded. The uncertainty is
     $\sigma_{\rm tot}^2=\sigma_{\rm obs}^2+\sigma_{\rm raw}^2$, combining the
-    published measurement uncertainty with the propagated universal-$\beta$
+    published measurement uncertainty with the propagated universal-$\beta_A$
     prediction uncertainty.
 </p>
 
@@ -445,7 +445,7 @@
         <tr>
             <th>Quantity</th>
             <th>Null</th>
-            <th>Raw TEP universal-$\beta$</th>
+            <th>Raw TEP universal-$\beta_A$</th>
         </tr>
     </thead>
     <tbody>
@@ -471,7 +471,7 @@
 </table>
 
 <p>
-    This table is the headline full-catalog stress test: the raw universal-$\beta$
+    This table is the headline full-catalog stress test: the raw universal-$\beta_A$
     model greatly improves over the null because it captures the large NEAR,
     Galileo 1990, and Rosetta 2005 signals, while still exposing the remaining
     stress cases. Cassini contributes sign tension at sub-threshold amplitude,
@@ -513,15 +513,15 @@
         </tr>
         <tr>
             <td>TEP Restricted ($M_{\rm T}^{\rm res}$)</td>
-            <td>1 ($\beta$)</td>
+            <td>1 ($\beta_A$)</td>
             <td>$\lambda_{\rm TEP} \approx 4000$ km (GNSS Step 016); $S_\oplus \approx 0.35$ (UCD Step 010); $v_{\rm trans} \approx 16.8$ km/s (field equations); geometry from JPL Horizons</td>
-            <td>$\Delta v = dv_{\rm pred}^{\rm base}(\beta/\beta_{\rm ref})^{3/4}$. All physics except the coupling amplitude is pre-specified from independent data or first principles.</td>
+            <td>$\Delta v = dv_{\rm pred}^{\rm base}(\beta_A/\beta_{\rm ref})^{3/4}$. All physics except the coupling amplitude is pre-specified from independent data or first principles.</td>
         </tr>
         <tr>
             <td>TEP Flexible ($M_{\rm T}^{\rm flex}$)</td>
-            <td>3 ($\beta$, $b_{\rm disf}$, offset)</td>
+            <td>3 ($\beta_A$, $b_{\rm disf}$, offset)</td>
             <td>Same pre-specified quantities as restricted</td>
-            <td>$\Delta v = (\beta/\beta_{\rm ref})^{3/4}(dv_{\rm grad} + b_{\rm disf} \, dv_{\rm disf}) + \text{offset}$. Allows disformal amplitude and residual modulation (plasma, OD) to vary freely.</td>
+            <td>$\Delta v = (\beta_A/\beta_{\rm ref})^{3/4}(dv_{\rm grad} + b_{\rm disf} \, dv_{\rm disf}) + \text{offset}$. Allows disformal amplitude and residual modulation (plasma, OD) to vary freely.</td>
         </tr>
     </tbody>
 </table>
@@ -570,24 +570,24 @@
 </p>
 
 <p>
-    The restricted model is the scientifically important tier because every quantity except $\beta$ is pre-specified from independent measurements or first-principles theory. The large $\Delta$BIC separation on the full n = 9 catalog therefore reflects predictive compression relative to the Null, not an extra free parameter from Cassini.
+    The restricted model is the scientifically important tier because every quantity except $\beta_A$ is pre-specified from independent measurements or first-principles theory. The large $\Delta$BIC separation on the full n = 9 catalog therefore reflects predictive compression relative to the Null, not an extra free parameter from Cassini.
 </p>
 
 <div class="key-concept">
     <h4>Temporal Shear Impulse Consistency Verification</h4>
     <p>
-        The fitted $\beta$ values provide a direct probe of the TEP scalar
+        The fitted $\beta_A$ values provide a direct probe of the TEP scalar
         force structure through the temporal shear impulse diagnostic. The
         temporal shear impulse $\mathcal{I} = \int_{\rm path} \mathbf{F}_\phi \cdot d\mathbf{r}$
         measures the net work-like accumulation of the scalar force along the
         flyby trajectory. In the TEP framework, the predicted velocity shift
-        relates to the impulse via $\Delta v_{\rm TEP} \propto \beta_{\rm eff}
+        relates to the impulse via $\Delta v_{\rm TEP} \propto \beta_{A,\rm eff}
         \cdot \mathcal{I}$, modulated by trajectory geometry and disformal
-        coupling. The consistent mapping between fitted $\beta$ values
+        coupling. The consistent mapping between fitted $\beta_A$ values
         and the geometric impulse computed from each flyby's 3D trajectory
         (using JPL Horizons ephemerides) supports the conclusion that the scalar force model
         respects the fundamental field structure of the TEP
-        equations. The correlation between impulse magnitude and fitted $\beta$
+        equations. The correlation between impulse magnitude and fitted $\beta_A$
         ($r = 0.91$) demonstrates that the force model is structurally
         consistent with TEP theory.
     </p>
@@ -595,7 +595,7 @@
 
 <p>
     All gated fitted $β$ values satisfy the Cassini PPN bound ($|γ - 1| < 2.3
-    \times 10^{-5}$). The ensemble weighted mean yields $β = 1.73 \times 10^{-3} \pm 6.82 \times 10^{-5}$, with screened $\beta_{\rm eff}$ giving $|γ - 1| \approx 7.3 \times 10^{-7}$ for the weighted mean. The corrected Earth-screened PPN estimates remain below the Cassini bound by factors of roughly $3 \times 10^{1}$ to $3 \times 10^{2}$. The conservative solar-path check in Section 4.6.1a gives $|γ - 1|_{\odot} \approx 6.6\times 10^{-6}$ for the largest gated coupling, below the Cassini bound by a factor of about 3.5. Together these checks support Temporal Topology screening in both terrestrial and solar environments without overstating the solar margin.
+    \times 10^{-5}$). The ensemble weighted mean yields $β = 1.73 \times 10^{-3} \pm 6.82 \times 10^{-5}$, with screened $\beta_{A,\rm eff}$ giving $|γ - 1| \approx 7.3 \times 10^{-7}$ for the weighted mean. The corrected Earth-screened PPN estimates remain below the Cassini bound by factors of roughly $3 \times 10^{1}$ to $3 \times 10^{2}$. The conservative solar-path check in Section 4.6.1a gives $|γ - 1|_{\odot} \approx 6.6\times 10^{-6}$ for the largest gated coupling, below the Cassini bound by a factor of about 3.5. Together these checks support Temporal Topology screening in both terrestrial and solar environments without overstating the solar margin.
 </p>
 
 <h2>4.6 PPN Constraints and Validation</h2>
@@ -605,23 +605,23 @@
 <p>
     The PPN (Parametrized Post-Newtonian) formalism characterizes deviations
     from General Relativity. For scalar-tensor theories with conformal coupling
-    $A(\phi) = \exp(\beta \phi/M_{\rm Pl})$, the PPN parameter $\gamma$ relates
+    $A(\phi) = \exp(\beta_A \phi/M_{\rm Pl})$, the PPN parameter $\gamma$ relates
     to the coupling strength:
 </p>
 
 <div class="equation">
     \begin{equation}
-    |\gamma - 1| \approx 2\beta_{\rm eff}^2 \quad \text{(for small }
-    \beta_{\rm eff}\text{)}
+    |\gamma - 1| \approx 2\beta_{A,\rm eff}^2 \quad \text{(for small }
+    \beta_{A,\rm eff}\text{)}
     \end{equation}
 </div>
 
 <p>
     Derivation (Jakarta v0.8, Sec. 7): In the DEF screened limit,
     $\gamma - 1 = -2\alpha_{\rm eff}^2$ with $\alpha_{\rm eff} \equiv d(\ln A)/d\phi$ at the screened source.
-    For $A(\phi)=\exp(\beta\phi/M_{\rm Pl})$, use $\psi\equiv\phi/M_{\rm Pl}$ so $d(\ln A)/d\psi=\beta$.
-    Identifying the locally active dimensionless coupling with screened $\beta_{\rm eff}=\beta S_\oplus$
-    gives $|\gamma - 1| \approx 2\beta_{\rm eff}^2$ for magnitude comparisons to Cassini
+    For $A(\phi)=\exp(\beta_A\phi/M_{\rm Pl})$, use $\psi\equiv\phi/M_{\rm Pl}$ so $d(\ln A)/d\psi=\beta_A$.
+    Identifying the locally active dimensionless coupling with screened $\beta_{A,\rm eff}=\beta_A S_\oplus$
+    gives $|\gamma - 1| \approx 2\beta_{A,\rm eff}^2$ for magnitude comparisons to Cassini
     (the measured $\gamma - 1$ is negative in the DEF convention).
 </p>
 
@@ -667,12 +667,12 @@
 
 <div class="equation">
     \begin{equation}
-    \beta_{\rm eff,\odot}(r) = \beta \times S_{\odot}(r)
+    \beta_{\rm eff,\odot}(r) = \beta_A \times S_{\odot}(r)
     \end{equation}
 </div>
 
 <p>
-    Using the weighted mean $\beta \approx 1.73\times 10^{-3}$ as the population-level solar-system coupling:
+    Using the weighted mean $\beta_A \approx 1.73\times 10^{-3}$ as the population-level solar-system coupling:
 </p>
 
 <ul>
@@ -823,14 +823,14 @@
 
 <p>
     Connection to observations: Step 039 classifies
-    fixed-amplitude raw predictions (Step 008 pooled $\beta$) with the Step 007 geometry envelope
+    fixed-amplitude raw predictions (Step 008 pooled $\beta_A$) with the Step 007 geometry envelope
     (3 deterministic true positives, 5 deterministic true nulls, 1 deterministic fixed-amplitude warning case). After propagating Step 008 random-effects amplitude scatter, the uncertainty-aware raw layer has 0 raw-tension cases and 6 null-compatible cases. Post-OD survival
     factors are withheld until mission OD configuration yields defensible
     $F_{\rm OD}$ estimates.
 </p>
 
 <p>
-    Juno tension: The Juno non-detection (universal-$\beta$
+    Juno tension: The Juno non-detection (universal-$\beta_A$
     prediction $+0.11 \pm 0.04$ mm/s, observed $0.00 \pm 0.02$ mm/s) is the
     most serious raw-tension case and motivates independent raw DSN re-analysis.
     In the current pipeline run, the DSN ingestion layer emits mission discovery and request artifacts but does not yet provide indexed raw Doppler products for most missions (ingest status <code>no_indexed_products</code>), so this re-analysis remains a defined falsification pathway rather than a completed reprocessing result.
@@ -898,7 +898,7 @@
     velocity predictions integrate the field gradient along 3D trajectories
     while preserving the TEP metric structure. For each flyby,
     the predicted $\Delta v_{\rm TEP}$ is computed via path integration of
-    $\mathbf{F}_\phi = \beta_{\rm eff} c^2 \nabla\phi/M_{\rm Pl}$ along the
+    $\mathbf{F}_\phi = \beta_{A,\rm eff} c^2 \nabla\phi/M_{\rm Pl}$ along the
     actual spacecraft trajectory from JPL Horizons ephemeris. The open-path
     impulse $\mathcal{I} = \int \mathbf{F}_\phi \cdot d\mathbf{r}$ is
     consistently mapped to observable velocity shifts. This geometric
@@ -946,7 +946,7 @@
 <h3>4.6.7 Systematic Uncertainty Budget</h3>
 
 <p>
-    A comprehensive uncertainty budget quantifies the contribution of each uncertainty source to the fitted $\beta$ parameters. The corrected uncertainty analysis (Step 025) distinguishes between variance contributions and total relative uncertainty:
+    A comprehensive uncertainty budget quantifies the contribution of each uncertainty source to the fitted $\beta_A$ parameters. The corrected uncertainty analysis (Step 025) distinguishes between variance contributions and total relative uncertainty:
 </p>
 
 <p>
@@ -980,17 +980,17 @@
 </ul>
 
 <p>
-    Interpretation: The total relative uncertainty of 72.9% is dominated by heterogeneity (66.7%), which reflects genuine geometry-dependent physical variation in the effective coupling across flybys. This is expected in the TEP framework where $\beta_{\rm eff}$ varies with altitude, latitude, velocity, plasma environment, and trajectory asymmetry. The systematic uncertainty (29.2%) is dominated by characteristic suppression uncertainty (25.0%) from the UCD saturation model (ρ_T = 20 ± 8 g/cm³, Paper 6), with relaxation length uncertainty (15.0%) from the SCF theoretical prior as the second-largest source. Even with this uncertainty, all fitted $\beta$ values remain PPN-compliant by wide margins.
+    Interpretation: The total relative uncertainty of 72.9% is dominated by heterogeneity (66.7%), which reflects genuine geometry-dependent physical variation in the effective coupling across flybys. This is expected in the TEP framework where $\beta_{A,\rm eff}$ varies with altitude, latitude, velocity, plasma environment, and trajectory asymmetry. The systematic uncertainty (29.2%) is dominated by characteristic suppression uncertainty (25.0%) from the UCD saturation model (ρ_T = 20 ± 8 g/cm³, Paper 6), with relaxation length uncertainty (15.0%) from the SCF theoretical prior as the second-largest source. Even with this uncertainty, all fitted $\beta_A$ values remain PPN-compliant by wide margins.
 </p>
 
 <h2>4.7 Model Predictions for All Flybys</h2>
 
 <p>
     Table 4 presents the full prediction set evaluated at the universal
-    weighted-mean coupling constant ($\beta = 1.73 \times 10^{-3}$), scaled
-    from the reference predictions ($\beta_0 = 10^{-4}$) via the $3/4$ power
+    weighted-mean coupling constant ($\beta_A = 1.73 \times 10^{-3}$), scaled
+    from the reference predictions ($\beta_{A,0} = 10^{-4}$) via the $3/4$ power
     law established in Step 008. Each row reports the raw TEP prediction at
-    that universal coupling, the universal-$\beta$ residual
+    that universal coupling, the universal-$\beta_A$ residual
     $\Delta v_{\rm obs} - \Delta v_{\rm TEP}^{\rm raw}$, and the raw
     classification from Step 039. Mission-specific OD survival factors
   $F_{\rm OD}$ and post-OD predictions are emitted only when Step 021
@@ -1001,7 +1001,7 @@
 
 <table class="data-table">
     <caption>
-        Table 4: Per-Flyby Universal-$\beta$ Predictions and Classification (Step 039)
+        Table 4: Per-Flyby Universal-$\beta_A$ Predictions and Classification (Step 039)
     </caption>
     <thead>
         <tr>
@@ -1166,16 +1166,16 @@
 </table>
 
 <p>
-    Summary: At the universal weighted-mean $\beta$, Step 039
+    Summary: At the universal weighted-mean $\beta_A$, Step 039
     classifies three published anomalies as raw true positives (NEAR, Galileo
-    1990, Rosetta 2005). Four published null or bound cases are consistent with universal-$\beta$ predictions under the Step 007 geometry envelope; one raw-tension case remains (Juno). Cassini and Galileo 1992 are classified as raw true nulls at the refit weighted-mean $\beta$. Rosetta 2009 is a published null/bound case with insufficient explicit geometry for the universal-$\beta$ prediction table, while Stardust, OSIRIS-REx,
+    1990, Rosetta 2005). Four published null or bound cases are consistent with universal-$\beta_A$ predictions under the Step 007 geometry envelope; one raw-tension case remains (Juno). Cassini and Galileo 1992 are classified as raw true nulls at the refit weighted-mean $\beta_A$. Rosetta 2009 is a published null/bound case with insufficient explicit geometry for the universal-$\beta_A$ prediction table, while Stardust, OSIRIS-REx,
     and BepiColombo lack public anomaly reports and are not
     used in quantitative likelihood.
 </p>
 
 <p>
     Falsifiability criterion: Raw-tension cases define model
-    stress tests independent of era-based OD survival factors. Juno remains the sole deterministic fixed-amplitude warning case at the refit weighted-mean $\beta$ ($+0.11$ mm/s raw prediction vs. $0.00 \pm 0.02$ mm/s observed) with random-effects prediction uncertainty $\pm 0.04$ mm/s. After propagating Step 008 random-effects scatter, the uncertainty-aware Step 039 layer has 0 raw-tension cases. Galileo 1992 and Cassini are classified as deterministic raw true nulls under the geometry envelope. Post-OD
+    stress tests independent of era-based OD survival factors. Juno remains the sole deterministic fixed-amplitude warning case at the refit weighted-mean $\beta_A$ ($+0.11$ mm/s raw prediction vs. $0.00 \pm 0.02$ mm/s observed) with random-effects prediction uncertainty $\pm 0.04$ mm/s. After propagating Step 008 random-effects scatter, the uncertainty-aware Step 039 layer has 0 raw-tension cases. Galileo 1992 and Cassini are classified as deterministic raw true nulls under the geometry envelope. Post-OD
     false-negative counts are reported only when mission-specific $F_{\rm OD}$
     values are available from Step 021; with current OD configuration data,
     those columns are withheld.
@@ -1183,10 +1183,10 @@
 
 <p>
     Honest assessment: The scalar force model reproduces the
-    three largest published anomalies at universal $\beta$ with sub-millimetre
+    three largest published anomalies at universal $\beta_A$ with sub-millimetre
     to millimetre residuals, while high-altitude or symmetric trajectories
     remain consistent with null predictions. Galileo 1992 and Juno define the
-    priority raw DSN reanalysis targets. Cassini remains a sign-tension case at $\beta_{\rm ref}$ (negative predicted $\Delta v_{\rm TEP}$, positive published anomaly) and is excluded from the gated $\beta$ ensemble; resolving it requires independent DSN OD or envelope refinements, not only a universal rescaling of $\beta$.
+    priority raw DSN reanalysis targets. Cassini remains a sign-tension case at $\beta_{\rm ref}$ (negative predicted $\Delta v_{\rm TEP}$, positive published anomaly) and is excluded from the gated $\beta_A$ ensemble; resolving it requires independent DSN OD or envelope refinements, not only a universal rescaling of $\beta_A$.
 </p>
 
 <h2>4.8 Heterogeneity and Robustness Analysis</h2>
@@ -1239,7 +1239,7 @@
             <td>Formally extreme ($I^2 > 75\%$)</td>
         </tr>
         <tr>
-            <td>$\beta$ range (gated)</td>
+            <td>$\beta_A$ range (gated)</td>
             <td>$1.01 \times 10^{-3}$ – $5.33 \times 10^{-3}$</td>
             <td>
                 Factor $\approx 5.3$ across the four-gated ensemble
@@ -1254,7 +1254,7 @@
 </table>
 
 <p>
-    The elevated $I^2$ on the three gated $\beta$ fits reflects formal tension between sub-percent per-flyby uncertainties and a multiplicative spread of order unity in fitted coupling. The metric is designed for meta-analyses where true effects are identical; here, geometry, plasma, and velocity structure intentionally modulate $\beta_{\rm eff}$, so large $I^2$ is expected until additional physics is folded into a single generative curve or $n$ grows.
+    The elevated $I^2$ on the three gated $\beta_A$ fits reflects formal tension between sub-percent per-flyby uncertainties and a multiplicative spread of order unity in fitted coupling. The metric is designed for meta-analyses where true effects are identical; here, geometry, plasma, and velocity structure intentionally modulate $\beta_{A,\rm eff}$, so large $I^2$ is expected until additional physics is folded into a single generative curve or $n$ grows.
 </p>
 
 <p>
@@ -1265,10 +1265,10 @@
 
 <ul>
     <li>
-        <em>Bootstrap median:</em> $\beta \approx 1.73 \times 10^{-3}$ (tracks the inverse-variance weighted mean)
+        <em>Bootstrap median:</em> $\beta_A \approx 1.73 \times 10^{-3}$ (tracks the inverse-variance weighted mean)
     </li>
     <li>
-        <em>Bootstrap mean / std:</em> $\beta \approx 2.06 \times 10^{-3} \pm 9.55 \times 10^{-4}$
+        <em>Bootstrap mean / std:</em> $\beta_A \approx 2.06 \times 10^{-3} \pm 9.55 \times 10^{-4}$
     </li>
     <li>
         <em>95% confidence interval:</em> $[1.01 \times 10^{-3},\, 5.33 \times 10^{-3}]$
@@ -1276,22 +1276,22 @@
 </ul>
 
 <p>
-    The bootstrap distribution is broadened by Galileo 1990’s higher per-flyby $\beta$; the 95% interval therefore spans the gated range and underscores that the weighted mean is not an arbitrary midpoint of identical detections.
+    The bootstrap distribution is broadened by Galileo 1990’s higher per-flyby $\beta_A$; the 95% interval therefore spans the gated range and underscores that the weighted mean is not an arbitrary midpoint of identical detections.
 </p>
 
 <p>
-    Leave-one-out (Step 008): Inverse-variance $\beta$ is recomputed excluding each gated detection:
+    Leave-one-out (Step 008): Inverse-variance $\beta_A$ is recomputed excluding each gated detection:
 </p>
 
 <ul>
     <li>
-        <em>Exclude NEAR:</em> $\beta \approx 2.38 \times 10^{-3}$
+        <em>Exclude NEAR:</em> $\beta_A \approx 2.38 \times 10^{-3}$
     </li>
     <li>
-        <em>Exclude Galileo 1990:</em> $\beta \approx 1.73 \times 10^{-3}$
+        <em>Exclude Galileo 1990:</em> $\beta_A \approx 1.73 \times 10^{-3}$
     </li>
     <li>
-        <em>Exclude Rosetta 2005:</em> $\beta \approx 1.73 \times 10^{-3}$
+        <em>Exclude Rosetta 2005:</em> $\beta_A \approx 1.73 \times 10^{-3}$
     </li>
 </ul>
 
@@ -1322,13 +1322,13 @@
 </ul>
 
 <p>
-    NEAR and Galileo 1990 are strongly distinguishable from the null population ($d &gt; 0.8$).  Rosetta 2005 shows a medium effect, while Cassini — despite passing the S/N &gt; 2 threshold in the literature table — has a negligible effect size ($d \ll 0.2$), reflecting its proximity to the null-population mean.  The spread in $d$ values is consistent with the $\approx 4$-fold spread in gated fitted $\beta$ (coefficient of variation CV $\approx 68\%$ across the trio), confirming geometry-dependent modulation rather than a perfectly universal effective coupling at fixed envelope.
+    NEAR and Galileo 1990 are strongly distinguishable from the null population ($d &gt; 0.8$).  Rosetta 2005 shows a medium effect, while Cassini — despite passing the S/N &gt; 2 threshold in the literature table — has a negligible effect size ($d \ll 0.2$), reflecting its proximity to the null-population mean.  The spread in $d$ values is consistent with the $\approx 4$-fold spread in gated fitted $\beta_A$ (coefficient of variation CV $\approx 68\%$ across the trio), confirming geometry-dependent modulation rather than a perfectly universal effective coupling at fixed envelope.
 </p>
 
 <h2>4.9 Resolution of Beta Heterogeneity</h2>
 
 <p>
-    The multiplicative spread in gated fitted $\beta$ values is partially summarized
+    The multiplicative spread in gated fitted $\beta_A$ values is partially summarized
     through a four-stage decomposition (Step 009). This unified analysis
     consolidates structural physics modulation, observational pipeline effects,
     environmental modulation, and statistical limitations into a coherent
@@ -1420,7 +1420,7 @@
 </ul>
 
 <p>
-    The prediction intervals bracket the three gated fitted $\beta$ values and illustrate residual width driven largely by Galileo 1990’s high per-flyby coupling.
+    The prediction intervals bracket the three gated fitted $\beta_A$ values and illustrate residual width driven largely by Galileo 1990’s high per-flyby coupling.
 </p>
 
 <p>

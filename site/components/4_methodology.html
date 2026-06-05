@@ -1,7 +1,7 @@
 <h2>3. Methodology</h2>
 
 <p>
-    The analysis employs a four-step pipeline to test whether TEP with Temporal Topology explains observed flyby velocity anomalies as "Phantom Mass" artifacts. The pipeline retrieves spacecraft trajectories from JPL Horizons, computes TEP predictions for each flyby geometry using full 3D integration, fits the coupling parameter $\beta$ to match observed anomalies, and validates all parameters against solar system PPN constraints.
+    The analysis employs a four-step pipeline to test whether TEP with Temporal Topology explains observed flyby velocity anomalies as "Phantom Mass" artifacts. The pipeline retrieves spacecraft trajectories from JPL Horizons, computes TEP predictions for each flyby geometry using full 3D integration, fits the coupling parameter $\beta_A$ to match observed anomalies, and validates all parameters against solar system PPN constraints.
 </p>
 
 <h2>3.1 Data Acquisition</h2>
@@ -28,7 +28,7 @@
 
   <div class="equation">
     \begin{equation}
-    \mathbf{F}_\phi = \beta_{\rm eff} \, \frac{c^2 \nabla\phi}{M_{\rm Pl}}
+    \mathbf{F}_\phi = \beta_{A,\rm eff} \, \frac{c^2 \nabla\phi}{M_{\rm Pl}}
     \end{equation}
   </div>
 
@@ -38,7 +38,7 @@
 
   <div class="equation">
     \begin{equation}
-    \Delta \mathbf{v}_{\rm TEP} \approx \left. \frac{\beta_{\rm eff} \, c^2 \nabla\phi}{M_{\rm Pl}} \right|_{\rm peri} \Delta t_{\rm peri} + \left. \frac{b_{\rm disf}}{M_{\rm Pl}} (\nabla\phi \cdot \mathbf{v}) \mathbf{v} \right|_{\rm peri} \Delta t_{\rm peri}
+    \Delta \mathbf{v}_{\rm TEP} \approx \left. \frac{\beta_{A,\rm eff} \, c^2 \nabla\phi}{M_{\rm Pl}} \right|_{\rm peri} \Delta t_{\rm peri} + \left. \frac{b_{\rm disf}}{M_{\rm Pl}} (\nabla\phi \cdot \mathbf{v}) \mathbf{v} \right|_{\rm peri} \Delta t_{\rm peri}
     \end{equation}
   </div>
 
@@ -46,7 +46,7 @@
 
   <div class="equation">
     \begin{equation}
-    \Delta v_{\rm TEP} \approx \beta_{\rm eff} \, \frac{c^2}{M_{\rm Pl}} \left(\frac{d\phi}{dr}\right)_{r_p} \, \frac{r_p}{v_p} \, \left[J_2 + J_3 \sin(\lambda_p) + J_4 P_4(\sin\lambda_p)\right] \left(\frac{R_\oplus}{r_p}\right)^2 (\cos\delta_{\rm in} - \cos\delta_{\rm out})
+    \Delta v_{\rm TEP} \approx \beta_{A,\rm eff} \, \frac{c^2}{M_{\rm Pl}} \left(\frac{d\phi}{dr}\right)_{r_p} \, \frac{r_p}{v_p} \, \left[J_2 + J_3 \sin(\lambda_p) + J_4 P_4(\sin\lambda_p)\right] \left(\frac{R_\oplus}{r_p}\right)^2 (\cos\delta_{\rm in} - \cos\delta_{\rm out})
     \end{equation}
   </div>
 
@@ -67,7 +67,7 @@
 
   <div class="equation">
     \begin{equation}
-    \Delta v_{\rm TEP}^{(3D)} = \int_{t_{\rm in}}^{t_{\rm out}} \beta_{\rm eff}(r(t)) \, \frac{c^2}{M_{\rm Pl}} \, \left|\frac{d\phi}{dr}\right|_{r(t)} \, \mathcal{B}(\lambda(t), r(t)) \, \cos\delta_{\rm asym} \, \mathcal{E}(t) \, s_{\rm disf}(t) \, dt
+    \Delta v_{\rm TEP}^{(3D)} = \int_{t_{\rm in}}^{t_{\rm out}} \beta_{A,\rm eff}(r(t)) \, \frac{c^2}{M_{\rm Pl}} \, \left|\frac{d\phi}{dr}\right|_{r(t)} \, \mathcal{B}(\lambda(t), r(t)) \, \cos\delta_{\rm asym} \, \mathcal{E}(t) \, s_{\rm disf}(t) \, dt
     \end{equation}
   </div>
 
@@ -91,7 +91,7 @@
 
   <div class="equation">
     \begin{equation}
-    \beta_{\rm eff} = \beta \times S_{\oplus}(r)
+    \beta_{A,\rm eff} = \beta_A \times S_{\oplus}(r)
     \end{equation}
   </div>
 
@@ -99,7 +99,7 @@
 
   <div class="equation">
     \begin{equation}
-    \phi_{\rm min}(\rho) = \Lambda \left[ \frac{n \Lambda^{n+4} M_{\rm Pl}}{2\beta \rho} \right]^{1/(n+1)}
+    \phi_{\rm min}(\rho) = \Lambda \left[ \frac{n \Lambda^{n+4} M_{\rm Pl}}{2\beta_A \rho} \right]^{1/(n+1)}
     \end{equation}
   </div>
 
@@ -108,7 +108,7 @@
     <ul>
         <li>Inside Earth ($\rho = 5515$ kg/m$^3$): $\phi_{\rm earth} = 2.35 \times 10^{4}$ GeV</li>
         <li>At Earth's surface ($\rho = 2700$ kg/m$^3$): $\phi_{\rm surface} = 2.81 \times 10^{4}$ GeV</li>
-        <li>In vacuum ($\rho \approx 10^{-20}$ kg/m$^3$): $\phi_{\rm space} \approx 2.0 \times 10^{10}$ GeV (same closed form with $2\beta\rho$ as in Step 007; $\rho$ converted to GeV$^4$ via CODATA-based factors)</li>
+        <li>In vacuum ($\rho \approx 10^{-20}$ kg/m$^3$): $\phi_{\rm space} \approx 2.0 \times 10^{10}$ GeV (same closed form with $2\beta_A\rho$ as in Step 007; $\rho$ converted to GeV$^4$ via CODATA-based factors)</li>
         <li>TEP relaxation length: $\lambda_{\rm TEP} \approx 4000$ km (from GNSS / scalar field Compton wavelength)</li>
         <li>Characteristic suppression: $S_{\oplus} \approx 0.35$ (UCD-derived from Step 010)</li>
     </ul>
@@ -130,7 +130,7 @@
 
 <div class="equation">
     \begin{equation}
-    G_{i,\text{eff}} = \frac{\Delta v_{i,\text{obs}}}{\Delta v_{\text{grad},i}(\beta_0 = 10^{-4})}
+    G_{i,\text{eff}} = \frac{\Delta v_{i,\text{obs}}}{\Delta v_{\text{grad},i}(\beta_{A,0} = 10^{-4})}
     \end{equation}
 </div>
 
@@ -163,7 +163,7 @@
 </p>
 
 <p>
-    This approach is complemented by a four-parameter hierarchical Bayesian model ($\beta_0$, $b_{\text{disf}}$, $\sigma$, $\alpha_{\text{res}}$) sampled via MCMC. The pre-computed gradient and disformal components from the TEP scalar force model contain the full perigee physics; the likelihood scales these channels through population-level hyperparameters, with any residual unmodeled modulation captured by $\alpha_{\text{res}}$. Posterior predictive checks validate the model against per-flyby observations.
+    This approach is complemented by a four-parameter hierarchical Bayesian model ($\beta_{A,0}$, $b_{\text{disf}}$, $\sigma$, $\alpha_{\text{res}}$) sampled via MCMC. The pre-computed gradient and disformal components from the TEP scalar force model contain the full perigee physics; the likelihood scales these channels through population-level hyperparameters, with any residual unmodeled modulation captured by $\alpha_{\text{res}}$. Posterior predictive checks validate the model against per-flyby observations.
 </p>
 
 <h3>3.2c Parameter budget: fitted coupling versus envelope heuristics</h3>
@@ -296,7 +296,7 @@
 
 <div class="equation">
     \begin{equation}
-    \nabla^2\phi - \frac{1}{\lambda_{\rm TEP}^2}\phi = -\frac{\beta}{M_{\rm Pl}}\rho
+    \nabla^2\phi - \frac{1}{\lambda_{\rm TEP}^2}\phi = -\frac{\beta_A}{M_{\rm Pl}}\rho
     \end{equation}
 </div>
 
@@ -306,7 +306,7 @@
 
 <div class="equation">
     \begin{equation}
-    \phi(r) = \frac{\beta\rho\lambda_{\rm TEP}^2}{M_{\rm Pl}}\left[1 - \frac{R_\oplus}{\lambda_{\rm TEP}}\frac{e^{-R_\oplus/\lambda_{\rm TEP}}}{\sinh(R_\oplus/\lambda_{\rm TEP})}\frac{\sinh(r/\lambda_{\rm TEP})}{r/\lambda_{\rm TEP}}\right]
+    \phi(r) = \frac{\beta_A\rho\lambda_{\rm TEP}^2}{M_{\rm Pl}}\left[1 - \frac{R_\oplus}{\lambda_{\rm TEP}}\frac{e^{-R_\oplus/\lambda_{\rm TEP}}}{\sinh(R_\oplus/\lambda_{\rm TEP})}\frac{\sinh(r/\lambda_{\rm TEP})}{r/\lambda_{\rm TEP}}\right]
     \end{equation}
 </div>
 
@@ -316,7 +316,7 @@
 
 <div class="equation">
     \begin{equation}
-    |\nabla\phi_\oplus| \approx \frac{\beta\rho\lambda_{\rm TEP}}{M_{\rm Pl}}\,\mathcal{G}\left(\frac{R_\oplus}{\lambda_{\rm TEP}}\right)
+    |\nabla\phi_\oplus| \approx \frac{\beta_A\rho\lambda_{\rm TEP}}{M_{\rm Pl}}\,\mathcal{G}\left(\frac{R_\oplus}{\lambda_{\rm TEP}}\right)
     \end{equation}
 </div>
 
@@ -326,7 +326,7 @@
 
 <div class="equation">
     \begin{equation}
-    \frac{|\nabla\phi_\oplus|\,\lambda_{\rm TEP}}{M_{\rm Pl}} \approx \frac{\beta\rho\lambda_{\rm TEP}^2}{M_{\rm Pl}^2}\,\mathcal{G}(R_\oplus/\lambda_{\rm TEP})
+    \frac{|\nabla\phi_\oplus|\,\lambda_{\rm TEP}}{M_{\rm Pl}} \approx \frac{\beta_A\rho\lambda_{\rm TEP}^2}{M_{\rm Pl}^2}\,\mathcal{G}(R_\oplus/\lambda_{\rm TEP})
     \end{equation}
 </div>
 
@@ -361,7 +361,7 @@
 
 <div class="equation">
     \begin{equation}
-    \Delta v_{\rm TEP} = \frac{\beta_{\rm eff}\, c^2}{M_{\rm Pl}} \cdot \underbrace{\frac{d\phi}{dr}\bigg|_{r_p}}_{\text{field gradient}} \cdot \underbrace{\frac{r_p}{v_p}}_{\text{perigee time}} \cdot \underbrace{J_2 \!\left(\frac{R_\oplus}{r_p}\right)^{\!2}}_{\text{non-radial fraction}} \cdot \underbrace{(\cos\delta_{\rm in} - \cos\delta_{\rm out})}_{\text{trajectory asymmetry}}
+    \Delta v_{\rm TEP} = \frac{\beta_{A,\rm eff}\, c^2}{M_{\rm Pl}} \cdot \underbrace{\frac{d\phi}{dr}\bigg|_{r_p}}_{\text{field gradient}} \cdot \underbrace{\frac{r_p}{v_p}}_{\text{perigee time}} \cdot \underbrace{J_2 \!\left(\frac{R_\oplus}{r_p}\right)^{\!2}}_{\text{non-radial fraction}} \cdot \underbrace{(\cos\delta_{\rm in} - \cos\delta_{\rm out})}_{\text{trajectory asymmetry}}
     \end{equation}
 </div>
 
@@ -399,7 +399,7 @@
   </div>
 
   <p>
-    Auxiliary tail diagnostics. Cochran's $Q$, $I^2$, and Student-$t$ critical values are used only when summarising scatter among the per-flyby $\beta_i$ and when constructing heterogeneity-aware error bars in Step~008 (<code>analyze_fit_quality</code>); they do not replace the primary scaling law above.
+    Auxiliary tail diagnostics. Cochran's $Q$, $I^2$, and Student-$t$ critical values are used only when summarising scatter among the per-flyby $\beta_{A,i}$ and when constructing heterogeneity-aware error bars in Step~008 (<code>analyze_fit_quality</code>); they do not replace the primary scaling law above.
   </p>
 
   <p>
@@ -409,12 +409,12 @@
   <h2>3.7 Statistical Analysis</h2>
 
 <p>
-    The weighted mean $\beta$ across all detections is:
+    The weighted mean $\beta_A$ across all detections is:
 </p>
 
 <div class="equation">
     \begin{equation}
-    \bar{\beta} = \frac{\sum_i w_i \beta_i}{\sum_i w_i}, \quad w_i = \frac{1}{\sigma_{\beta,i}^2}
+    \bar{\beta_A}_A = \frac{\sum_i w_i \beta_{A,i}}{\sum_i w_i}, \quad w_i = \frac{1}{\sigma_{\beta_A,i}^2}
     \end{equation}
 </div>
 
@@ -424,7 +424,7 @@
 
 <div class="equation">
     \begin{equation}
-    \sigma_{\bar{\beta}} = \left(\sum_i w_i\right)^{-1/2}
+    \sigma_{\bar{\beta_A}_A} = \left(\sum_i w_i\right)^{-1/2}
     \end{equation}
 </div>
 
@@ -438,7 +438,7 @@
 
 <div class="equation">
     \begin{equation}
-    Q = \sum_i w_i (\beta_i - \bar{\beta})^2 \quad \text{(Cochran's Q)}
+    Q = \sum_i w_i (\beta_{A,i} - \bar{\beta_A}_A)^2 \quad \text{(Cochran's Q)}
     \end{equation}
 </div>
 
@@ -450,7 +450,7 @@
 
   <p>An $I^2 > 75\%$ indicates extreme heterogeneity, justifying uncertainty inflation by $\sqrt{Q/(n-1)}$ to account for model scatter beyond measurement error.</p>
 
-  <p>Robustness verification: Step 008 parametric bootstrap ($10^4$ draws) yields median $\beta \approx 1.73 \times 10^{-3}$ with 95% interval $[1.01 \times 10^{-3},\,5.33 \times 10^{-3}]$, and leave-one-out recomputations $2.38 \times 10^{-3}$ (without NEAR), $1.73 \times 10^{-3}$ (without Galileo 1990), and $1.73 \times 10^{-3}$ (without Rosetta 2005). The stability coefficient $\approx 0.148$ is below the 0.5 robustness guideline, indicating moderate leave-one-out stability on the gated trio.</p>
+  <p>Robustness verification: Step 008 parametric bootstrap ($10^4$ draws) yields median $\beta_A \approx 1.73 \times 10^{-3}$ with 95% interval $[1.01 \times 10^{-3},\,5.33 \times 10^{-3}]$, and leave-one-out recomputations $2.38 \times 10^{-3}$ (without NEAR), $1.73 \times 10^{-3}$ (without Galileo 1990), and $1.73 \times 10^{-3}$ (without Rosetta 2005). The stability coefficient $\approx 0.148$ is below the 0.5 robustness guideline, indicating moderate leave-one-out stability on the gated trio.</p>
 
   <ol>
     <li><em>Smooth bootstrap ($n = 10\,000$):</em> Resampling with replacement combined with Gaussian noise injection validates the weighted mean distribution and provides confidence intervals.</li>
@@ -509,12 +509,12 @@
 
 <div class="equation">
     \begin{equation}
-    |\gamma - 1| \approx 2\beta_{\rm eff}^2
+    |\gamma - 1| \approx 2\beta_{A,\rm eff}^2
     \end{equation}
 </div>
 
 <p>
-    where $\gamma$ is the PPN parameter and $\beta_{\rm eff} = \beta \times S_{\oplus}(r)$. The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector. It measured the gravitationally induced frequency shift of radio photons exchanged with the spacecraft and obtained $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$.
+    where $\gamma$ is the PPN parameter and $\beta_{A,\rm eff} = \beta_A \times S_{\oplus}(r)$. The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector. It measured the gravitationally induced frequency shift of radio photons exchanged with the spacecraft and obtained $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$.
 </p>
 
 <p>
