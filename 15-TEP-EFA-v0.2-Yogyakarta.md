@@ -1,7 +1,7 @@
 # Temporal Equivalence Principle: Temporal Shear in the Earth Flyby Anomaly
 **Matthew Lukin Smawfield**
-Version: v0.1 (Yogyakarta)
-First published: 7 June 2026
+Version: v0.2 (Yogyakarta)
+First published: 5 June 2026
 DOI: 10.5281/zenodo.19454863
 
 ---
@@ -26,7 +26,7 @@ The Equivalence Principle (EP) is a cornerstone of general relativity, stating t
 
 - *Proper time* ($\tau$) is the time measured by a clock following a specific trajectory through the causal metric.
 
-- *Temporal Topology* refers to the spatial structure of the field $\phi$, which exhibits continuous suppression in high-density environments.
+- *Temporal Topology* refers to the spatial structure of the field $\phi$, which exhibits continuous suppression in dense environments.
 
 - *Temporal Shear* ($\Sigma_\mu = \nabla_\mu \ln A = (\beta_A/M_{\rm Pl})\nabla_\mu\phi$) is the gradient of the conformal factor, which generates the observed scalar force.
 
