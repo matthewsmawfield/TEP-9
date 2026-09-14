@@ -1,1 +1,0 @@
-ensure everything has been incorporated into manuscript @site/components using appropriate scientific language and tone. the manuscript should flow beautifully and it should fit in the perfectly. restructure and rewrite as needed. 

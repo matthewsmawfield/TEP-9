@@ -1,6 +1,6 @@
 {
-  "status": "LOCAL_NJPL_OUTSIDE_PERIGEE_WINDOW",
-  "message": "NJPL TRK-2-34 on disk but no archive overlaps perigee window; perigee-matched PDS ingest still required",
+  "status": "NO_DATA_AVAILABLE",
+  "message": "Raw DSN data must be downloaded from NASA PDS first",
   "note": "DSN data is external and not included in repository",
   "available_missions_checked": 8,
   "missions_processed": 0,
@@ -154,18 +154,7 @@
         ],
         "exhaustive_lid_searches": []
       },
-      "status": "no_indexed_products_local_njpl_verified",
-      "local_njpl_trk234_artifacts": [
-        {
-          "path": "data/raw/dsn_tracking/Juno_2013/NASA_PDS/GRV_OCRU_2015041_0310X25MC001V01.TNF",
-          "bytes": 66491124,
-          "format_magic": "NJPL",
-          "note": "Verified on disk; TRK-2-34 SFDU archive (not from PDS API ingest row).",
-          "lbl_start_utc": "2015-02-10T03:10:30+00:00",
-          "lbl_stop_utc": "2015-02-10T13:24:49+00:00",
-          "overlaps_perigee_window": false
-        }
-      ],
+      "status": "no_indexed_products",
       "atmospheres_index_probe": {
         "index_url": "https://pds-atmospheres.nmsu.edu/PDS/data/jnogrv_0001/DATA/TNF/",
         "status": "complete",
@@ -213,18 +202,6 @@
       "status": "no_indexed_products"
     }
   },
-  "local_njpl_trk234_artifacts": {
-    "Juno_2013": [
-      {
-        "path": "data/raw/dsn_tracking/Juno_2013/NASA_PDS/GRV_OCRU_2015041_0310X25MC001V01.TNF",
-        "bytes": 66491124,
-        "format_magic": "NJPL",
-        "note": "Verified on disk; TRK-2-34 SFDU archive (not from PDS API ingest row).",
-        "lbl_start_utc": "2015-02-10T03:10:30+00:00",
-        "lbl_stop_utc": "2015-02-10T13:24:49+00:00",
-        "overlaps_perigee_window": false
-      }
-    ]
-  },
+  "local_njpl_trk234_artifacts": {},
   "parsing_failures": {}
 }

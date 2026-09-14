@@ -1,7 +1,7 @@
 <h2>3. Methodology</h2>
 
 <p>
-    The analysis employs a four-step pipeline to test whether TEP with Temporal Topology explains observed flyby velocity anomalies as "Phantom Mass" artifacts. The pipeline retrieves spacecraft trajectories from JPL Horizons, computes TEP predictions for each flyby geometry using full 3D integration, fits the coupling parameter $\beta_A$ to match observed anomalies, and validates all parameters against solar system PPN constraints.
+    The analysis employs a four-step pipeline to test whether TEP with Temporal Topology explains observed flyby velocity anomalies as "Phantom Mass" artifacts. The pipeline retrieves spacecraft trajectories from JPL Horizons, computes TEP predictions for each flyby geometry using full 3D integration, fits the coupling parameter $\beta_{\rm fit}$ to match observed anomalies, and validates all parameters against solar system PPN constraints.
 </p>
 
 <h2>3.1 Data Acquisition</h2>
@@ -24,7 +24,7 @@
 
   <h2>3.2 TEP Temporal Topology Model</h2>
 
-  <p>The TEP framework provides a quantitative model for the flyby anomaly through a scalar force arising from the Temporal Topology field φ. In scalar-tensor theories with conformal coupling A(φ) = exp(β φ/M_{\rm Pl}), the scalar field gradient produces an additional force on test masses:</p>
+  <p>The TEP framework provides a quantitative model for the flyby anomaly through a scalar force arising from the Temporal Topology field φ. In scalar-tensor theories with conformal coupling A(φ) = exp(β_A φ/M_{\rm Pl}), the scalar field gradient produces an additional force on test masses:</p>
 
   <div class="equation">
     \begin{equation}
@@ -32,7 +32,7 @@
     \end{equation}
   </div>
 
-  <p>where β_eff = β × S_⊕(r) is the effective coupling with geometric screening, where S_⊕(r) describes the continuous suppression of Temporal Shear. The characteristic surface ratio S_⊕ ≈ 0.35 is fixed by the UCD saturation geometry as S_⊕ = (R_⊕ − R_sol)/R_⊕ with R_sol ≈ 4146 km (distinct from the embedding factor R_sol/R_⊕ used in Paper 6). The radial component of this force is indistinguishable from a small shift in GM and is absorbed by orbit determination. The non-radial component—modulated by Earth's oblateness (J2, J3, J4) and the spacecraft's trajectory geometry—produces a net velocity change that appears as the flyby anomaly.</p>
+  <p>where β_{A,\rm eff} = β_A × S_⊕(r) is the effective coupling with geometric screening, where S_⊕(r) describes the continuous suppression of Temporal Shear. The characteristic surface ratio S_⊕ ≈ 0.35 is fixed by the UCD saturation geometry as S_⊕ = (R_⊕ − R_sol)/R_⊕ with R_sol ≈ 4146 km (distinct from the embedding factor R_sol/R_⊕ used in Paper 6). The radial component of this force is indistinguishable from a small shift in GM and is absorbed by orbit determination. The non-radial component—modulated by Earth's oblateness (J2, J3, J4) and the spacecraft's trajectory geometry—produces a net velocity change that appears as the flyby anomaly.</p>
 
   <p>The predicted velocity shift is resolved through rigorous numerical integration of the equations of motion (EOM) in the Earth-centered inertial (ECI) frame. This approach captures the dynamic evolution of the scalar force as the spacecraft traverses the varying field gradient, incorporating a 4th-order Spherical Harmonic Expansion (SHEX) for the geopotential to ensure that local gravitational perturbations are not conflated with the scalar force:</p>
 
@@ -75,9 +75,9 @@
 
   <p>Step 019 applies the same impulse integrator along idealized asymmetric flyby arcs (metadata: <code>idealized_analytic_hypoflyby</code>). On comparable rows of Table 3b (Section&nbsp;4.1.2), the ratio $\Delta v_{\rm 3D}/\Delta v_{\rm simplified}$ differs from unity by tens of percent for the three gated primaries—a consistency check inside the analytic path class—while ratios against the Step&nbsp;007 perigee impulse are deliberately not marketed as ±10% “agreement.” Symmetric/high-altitude cases remain perturbatively small in Step&nbsp;007, matching the qualitative null catalogue. Ensemble fitting continues to anchor on Step&nbsp;007 + Step&nbsp;008; Step&nbsp;019 is a diagnostic shim for the trajectory integrator, not a calibration of Anderson-scale residuals.</p>
 
-  <p>J3 contribution: The J3 term adds a latitude-dependent asymmetry to the non-radial force component. However, J3 is two orders of magnitude smaller than J2 ($|J_3/J_2| \approx 2.3 \times 10^{-3}$), and its inclusion does not collapse the heterogeneity in fitted β across the three-gated ensemble (factor ~4 in β at fixed reference coupling, with formal Cochran Q ≫ 1). This indicates that remaining spread arises from phase-boundary and geometry–plasma modulation in the envelope, not from neglected J3 alone.</p>
+  <p>J3 contribution: The J3 term adds a latitude-dependent asymmetry to the non-radial force component. However, J3 is two orders of magnitude smaller than J2 ($|J_3/J_2| \approx 2.3 \times 10^{-3}$), and its inclusion does not collapse the heterogeneity in fitted β<sub>fit</sub> across the three-gated ensemble (factor ~4 in β at fixed reference coupling, with formal Cochran Q ≫ 1). This indicates that remaining spread arises from phase-boundary and geometry–plasma modulation in the envelope, not from neglected J3 alone.</p>
 
-  <p>The scalar field φ relaxes outside Earth with a relaxation length λ_TEP ≈ 4000 km, established independently from GNSS atomic clock correlations and the scalar field mass inferred from the cosmological sound horizon.</p>
+  <p>The scalar field φ relaxes outside Earth with a relaxation length λ_TEP ≈ 4000 km, identified with the geometric saturation radius R_T(M_⊕) from the UCD model (Paper 6), not with the in-medium Compton wavelength of a candidate chameleon completion.</p>
 
   <p>The trajectory asymmetry factor $\cos\delta_{\rm in} - \cos\delta_{\rm out}$ is the dominant source of inter-flyby variation. Symmetric trajectories (e.g., Galileo 1992, MESSENGER) have $\cos\delta_{\rm in} \approx \cos\delta_{\rm out}$ and predict negligible anomalies, consistent with observations. Asymmetric trajectories (e.g., NEAR with $\cos\delta_{\rm in} - \cos\delta_{\rm out} = 0.625$) predict large anomalies. Cassini is a known outlier: its published Anderson et al. (2008) geometry factor is negative ($-0.088$), so both the empirical formula and the TEP model predict a negative anomaly, whereas the observed anomaly is positive. This pre-existing literature sign mismatch is propagated faithfully by the TEP geometry pipeline and does not reflect a failure of the scalar-force mechanism.</p>
 
@@ -87,7 +87,7 @@
     \end{equation}
   </div>
 
-  <p>Geometric screening: Critical to PPN compliance is the transition radius $R_{\rm sol} \approx 4146$ km from the UCD saturation model (Step 010), cross-validated by GNSS correlation length. This defines the characteristic suppression ratio $S_{\oplus} \approx 0.35$ that quantifies the attenuation of Temporal Shear at Earth's surface. $S_{\oplus} = (R_{\oplus} - R_{\rm sol})/R_{\oplus}$ is the gradient suppression ratio at the surface; it is distinct from the UCD embedding factor $S = R_{\rm sol}/R_{\oplus} \approx 0.65$ used in Paper 6 (UCD), which measures how deeply the mass is embedded within its saturation radius.</p>
+  <p>Geometric screening: Critical to the flyby amplitude and environmental response is the transition radius $R_{\rm sol} \approx 4146$ km from the UCD saturation model (Step 010), cross-validated by GNSS correlation length. This defines the characteristic suppression ratio $S_{\oplus} \approx 0.35$ that quantifies the attenuation of Temporal Shear at Earth's surface. $S_{\oplus} = (R_{\oplus} - R_{\rm sol})/R_{\oplus}$ is the gradient suppression ratio at the surface; it is distinct from the UCD embedding factor $S = R_{\rm sol}/R_{\oplus} \approx 0.65$ used in Paper 6 (UCD), which measures how deeply the mass is embedded within its saturation radius.</p>
 
   <div class="equation">
     \begin{equation}
@@ -99,7 +99,7 @@
 
   <div class="equation">
     \begin{equation}
-    \phi_{\rm min}(\rho) = \Lambda \left[ \frac{n \Lambda^{n+4} M_{\rm Pl}}{2\beta_A \rho} \right]^{1/(n+1)}
+    \phi_{\rm min}(\rho) = \left[ \frac{n \Lambda^{n+4} M_{\rm Pl}}{2\beta_A \rho} \right]^{1/(n+1)}
     \end{equation}
   </div>
 
@@ -109,19 +109,23 @@
         <li>Inside Earth ($\rho = 5515$ kg/m$^3$): $\phi_{\rm earth} = 2.35 \times 10^{4}$ GeV</li>
         <li>At Earth's surface ($\rho = 2700$ kg/m$^3$): $\phi_{\rm surface} = 2.81 \times 10^{4}$ GeV</li>
         <li>In vacuum ($\rho \approx 10^{-20}$ kg/m$^3$): $\phi_{\rm space} \approx 2.0 \times 10^{10}$ GeV (same closed form with $2\beta_A\rho$ as in Step 007; $\rho$ converted to GeV$^4$ via CODATA-based factors)</li>
-        <li>TEP relaxation length: $\lambda_{\rm TEP} \approx 4000$ km (from GNSS / scalar field Compton wavelength)</li>
+        <li>TEP relaxation length: $\lambda_{\rm TEP} \approx 4000$ km (from GNSS / geometric saturation radius R_T(M_⊕))</li>
         <li>Characteristic suppression: $S_{\oplus} \approx 0.35$ (UCD-derived from Step 010)</li>
     </ul>
 </div>
 
+<p>
+    Fundamental coupling: The bare conformal coupling is β_A = −1.0, established in Paper 0 (Jakarta) §2.2. The fitted values reported here (β_{\rm fit} ∼ 10⁻³) are the unscreened fitted amplitudes; the screened effective coupling β_{A,\rm eff} = S_Σ(ℰ) β_{\rm fit} is derived from these under the continuous Temporal Topology suppression operator S_Σ(ℰ). The sign of the scalar force contribution in the flyby geometry is determined by trajectory asymmetry; the reported β_{\rm fit} magnitudes should be compared to the absolute fundamental scale |β_A| = 1.0. The fitted flyby amplitude is a trajectory-response coefficient; Solar-System PPN bounds apply to the screened source-charge projection α_{\rm eff} = S_Σ α_0, not to the fitted flyby amplitude itself.
+</p>
+
 <p>Vacuum field value: The Temporal Topology field formula φ ∝ ρ^(-1/4) produces large but finite values in the interplanetary medium (ρ ≈ 10⁻²⁰ kg/m³). The self-consistent field equation yields φ_space ≈ 2.0×10¹⁰ GeV for the reference coupling β=10⁻⁴. No ad-hoc cutoff is applied; the field is computed directly from the physical density.</p>
 
-<p>Geometry modulation factors: Per-flyby fitted β in the three-gated ensemble spans roughly a factor of four, reflecting substantial geometry-, plasma-, and velocity-dependent modulation encoded in the Step 007 envelope. Four physical mechanisms are tracked in the analysis: (1) <em>inclination-dependent screening</em>—higher latitude trajectories sample less equatorial bulge; (2) <em>J2 oblateness</em>—altitude-dependent screening from Earth's shape; (3) <em>plasma environment</em>—ionospheric density modulates local screening (IRI at perigee, Step 033); and (4) <em>velocity effects</em>—disformal coupling in the high-velocity regime. These factors are incorporated into the scalar force calculation.</p>
+<p>Geometry modulation factors: Per-flyby fitted β<sub>fit</sub> in the three-gated ensemble spans roughly a factor of four, reflecting substantial geometry-, plasma-, and velocity-dependent modulation encoded in the Step 007 envelope. Four physical mechanisms are tracked in the analysis: (1) <em>inclination-dependent screening</em>—higher latitude trajectories sample less equatorial bulge; (2) <em>J2 oblateness</em>—altitude-dependent screening from Earth's shape; (3) <em>plasma environment</em>—ionospheric density modulates local screening (IRI at perigee, Step 033); and (4) <em>velocity effects</em>—disformal coupling in the high-velocity regime. These factors are incorporated into the scalar force calculation.</p>
 
 <h2>3.2d Component-Level Geometry Factor Analysis</h2>
 
 <p>
-    To address the extreme heterogeneity in fitted β values across flybys (see Section 4.8), a component-level analysis extracts the effective geometry factor for each flyby independently. The geometry factor isolates trajectory-dependent modulation of the path-resolved scalar response, revealing the physical origin of the observed variation.
+    To address the extreme heterogeneity in fitted β<sub>fit</sub> values across flybys (see Section 4.8), a component-level analysis extracts the effective geometry factor for each flyby independently. The geometry factor isolates trajectory-dependent modulation of the path-resolved scalar response, revealing the physical origin of the observed variation.
 </p>
 
 <p>
@@ -130,7 +134,7 @@
 
 <div class="equation">
     \begin{equation}
-    G_{i,\text{eff}} = \frac{\Delta v_{i,\text{obs}}}{\Delta v_{\text{grad},i}(\beta_{A,0} = 10^{-4})}
+    G_{i,\text{eff}} = \frac{\Delta v_{i,\text{obs}}}{\Delta v_{\text{grad},i}(\beta_{\rm fit,0} = 10^{-4})}
     \end{equation}
 </div>
 
@@ -163,18 +167,18 @@
 </p>
 
 <p>
-    This approach is complemented by a four-parameter hierarchical Bayesian model ($\beta_{A,0}$, $b_{\text{disf}}$, $\sigma$, $\alpha_{\text{res}}$) sampled via MCMC. The pre-computed gradient and disformal components from the TEP scalar force model contain the full perigee physics; the likelihood scales these channels through population-level hyperparameters, with any residual unmodeled modulation captured by $\alpha_{\text{res}}$. Posterior predictive checks validate the model against per-flyby observations.
+    This approach is complemented by a four-parameter hierarchical Bayesian model ($\beta_{\rm fit,0}$, $b_{\text{disf}}$, $\sigma$, $\alpha_{\text{res}}$) sampled via MCMC. The pre-computed gradient and disformal components from the TEP scalar force model contain the full perigee physics; the likelihood scales these channels through population-level hyperparameters, with any residual unmodeled modulation captured by $\alpha_{\text{res}}$. Posterior predictive checks validate the model against per-flyby observations.
 </p>
 
 <h3>3.2c Parameter budget: fitted coupling versus envelope heuristics</h3>
 
 <p>
-    The restricted Step&nbsp;008 tier fits a <em>single</em> amplitude parameter (shared β rescaling of the reference prediction at β<sub>ref</sub> = 10<sup>−4</sup>) on the sign-gated high-S/N ensemble. Separately, the Step&nbsp;007 geometry envelope carries seven <em>nominal</em> deterministic coefficients (inclination scale, J2/altitude modulation, plasma-density power-law parameters, velocity-screening exponent, and near-symmetry coherence threshold) documented in <code>scripts/utils/tep_geometry_envelope.py</code>. These coefficients are <em>not</em> varied by the nonlinear least-squares map in Step&nbsp;008; they are nevertheless physical knobs whose ±50% stress band must be machine-checked because skeptical readers will count them toward an “epicycle” budget.
+    The restricted Step&nbsp;008 tier fits a <em>single</em> amplitude parameter (shared β<sub>fit</sub> rescaling of the reference prediction at β<sub>A,ref</sub> = 10<sup>−4</sup>) on the sign-gated high-S/N ensemble. Separately, the Step&nbsp;007 geometry envelope carries seven <em>nominal</em> deterministic coefficients (inclination scale, J2/altitude modulation, plasma-density power-law parameters, velocity-screening exponent, and near-symmetry coherence threshold) documented in <code>scripts/utils/tep_geometry_envelope.py</code>. These coefficients are <em>not</em> varied by the nonlinear least-squares map in Step&nbsp;008; they are nevertheless physical knobs whose ±50% stress band must be machine-checked because skeptical readers will count them toward an “epicycle” budget.
 </p>
 
 <p>
-    The pipeline therefore emits an explicit parameter audit in <code>results/step008_fitting.json</code> (<code>parameter_budget_audit</code>), including a defensibility score
-    \(\mathrm{defensibility} = k_{\rm fit}/(k_{\rm fit}+k_{\rm heur})\) for the restricted tier, and a conservative BIC/AIC companion row that adds \(k_{\rm heur}\) to the effective parameter count as a stress test (<code>TEP_heuristic_pessimistic</code> inside <code>enhanced_validation.model_comparison</code>). Independent ±50% Monte Carlo sweeps over all seven coefficients are archived in <code>results/step041_envelope_heuristic_sensitivity.json</code> (Step&nbsp;041), including one-at-a-time leverage rankings for the inverse-variance pooled β.
+    The pipeline therefore emits an explicit parameter audit in <code>results/step008_fitting_results.json</code> (<code>parameter_budget_audit</code>), including a defensibility score
+    \(\mathrm{defensibility} = k_{\rm fit}/(k_{\rm fit}+k_{\rm heur})\) for the restricted tier, and a conservative BIC/AIC companion row that adds \(k_{\rm heur}\) to the effective parameter count as a stress test (<code>TEP_heuristic_pessimistic</code> inside <code>enhanced_validation.model_comparison</code>). Independent ±50% Monte Carlo sweeps over all seven coefficients are archived in <code>results/step041_envelope_heuristic_sensitivity.json</code> (Step&nbsp;041), including one-at-a-time leverage rankings for the inverse-variance pooled β<sub>fit</sub>.
 </p>
 
 <p>
@@ -184,14 +188,14 @@
 <h2>3.3 Ensemble Selection Protocol</h2>
 
 <p>
-    The gated ensemble for inverse-variance β fitting and Bayesian model comparison is constructed via two <em>a priori</em> criteria applied <em>before</em> any fitting. These criteria are encoded in <code>scripts/utils/flyby_ensemble.py</code> and contain no mission-specific exclusions.
+    The gated ensemble for inverse-variance β<sub>fit</sub> fitting and Bayesian model comparison is constructed via two <em>a priori</em> criteria applied <em>before</em> any fitting. These criteria are encoded in <code>scripts/utils/flyby_ensemble.py</code> and contain no mission-specific exclusions.
 </p>
 
 <div class="key-concept">
     <h4>A Priori Ensemble Gates</h4>
     <ol>
         <li>Signal-to-noise gate: The published anomaly must satisfy S/N = |Δv_obs| / σ > 2. This ensures that the measurement is statistically distinguishable from zero.</li>
-        <li>Sign-agreement gate (configurable): When <code>parameters.analysis.tep_physics.strict_sign_gate</code> is true, the observed anomaly must have the same sign as the TEP prediction at β_ref = 10⁻⁴. The pipeline default is <code>false</code>: opposite-sign rows still receive an amplitude-only reference fit and remain in the primary pool; the sign-agreement-restricted subset is reported as <code>recommended_beta_sign_gated_diagnostic</code> and <code>sign_agreement_model_comparison</code> in Step 026.</li>
+        <li>Sign-agreement gate (configurable): When <code>parameters.analysis.tep_physics.strict_sign_gate</code> is true, the observed anomaly must have the same sign as the TEP prediction at β_{A,ref} = 10⁻⁴. The pipeline default is <code>false</code>: opposite-sign rows still receive an amplitude-only reference fit and remain in the primary pool; the sign-agreement-restricted subset is reported as <code>recommended_beta_sign_gated_diagnostic</code> and <code>sign_agreement_model_comparison</code> in Step 026.</li>
     </ol>
 </div>
 
@@ -202,16 +206,16 @@
 <p>
     Application to the current dataset:</p>
 <ul>
-    <li><em>NEAR (1998):</em> S/N = 1346 > 2; sign agreement (+13.46 mm/s vs +1.59 mm/s predicted at β_ref). Passes both gates.</li>
-    <li><em>Galileo 1990:</em> S/N = 131 > 2; sign agreement (+3.92 mm/s vs +0.20 mm/s predicted at β_ref). Passes both gates.</li>
-    <li><em>Rosetta 2005:</em> S/N = 36 > 2; sign agreement (+1.82 mm/s vs +0.32 mm/s predicted at β_ref). Passes both gates.</li>
-    <li><em>Cassini (1999):</em> S/N = 2.2 > 2; fails sign agreement at β_ref (+0.11 mm/s observed vs −0.023 mm/s predicted, sign product < 0). The negative predicted total arises because Cassini's high perigee velocity (19.02 km/s > v_trans ≈ 16.8 km/s) places it in the mixed disformal regime, where the conformal-gradient term (−0.029 mm/s) and disformal term (+0.005 mm/s) partially cancel. With <code>strict_sign_gate</code> false, Cassini receives an amplitude-only closed-form β fit in the primary Step 008 pool and enters the Step 026 primary gated likelihood; the sign-agreement diagnostic excludes it.</li>
+    <li><em>NEAR (1998):</em> S/N = 1346 > 2; sign agreement (+13.46 mm/s vs +1.59 mm/s predicted at β_{A,ref}). Passes both gates.</li>
+    <li><em>Galileo 1990:</em> S/N = 131 > 2; sign agreement (+3.92 mm/s vs +0.20 mm/s predicted at β_{A,ref}). Passes both gates.</li>
+    <li><em>Rosetta 2005:</em> S/N = 36 > 2; sign agreement (+1.82 mm/s vs +0.32 mm/s predicted at β_{A,ref}). Passes both gates.</li>
+    <li><em>Cassini (1999):</em> S/N = 2.2 > 2; fails sign agreement at β_{A,ref} (+0.11 mm/s observed vs −0.023 mm/s predicted, sign product < 0). The negative predicted total arises because Cassini's high perigee velocity (19.02 km/s > v_trans ≈ 16.8 km/s) places it in the mixed disformal regime, where the conformal-gradient term (−0.029 mm/s) and disformal term (+0.005 mm/s) partially cancel. With <code>strict_sign_gate</code> false, Cassini receives an amplitude-only closed-form β<sub>fit</sub> fit in the primary Step 008 pool and enters the Step 026 primary gated likelihood; the sign-agreement diagnostic excludes it.</li>
     <li><em>Galileo 1992:</em> Δv = 0.00 mm/s (published null). Fails S/N gate (S/N = 0). Excluded as missing observation, not by a Galileo-specific rule.</li>
     <li><em>Juno (2013):</em> Δv = 0.00 mm/s. Fails S/N gate (S/N = 0). Excluded.</li>
 </ul>
 
 <p>
-    Distinction between caveat and exclusion. The manuscript acknowledges that Galileo 1990's high-gain antenna failure and spin-rate changes introduce additional spacecraft-specific uncertainty (<a href="#limitations">Section 5.4</a>). This is a <em>caveat</em>—a flag for cautious interpretation—not an <em>exclusion criterion</em>. Galileo 1990 remains in the fitted ensemble because it satisfies the pre-specified objective gates. Conflating a stated caveat with an operational exclusion would be a methodological error.
+    Distinction between caveat and exclusion. The manuscript acknowledges that Galileo 1990's high-gain antenna failure and spin-rate changes introduce additional spacecraft-specific uncertainty (<a href="#limitations">Section 5.13</a>). This is a <em>caveat</em>—a flag for cautious interpretation—not an <em>exclusion criterion</em>. Galileo 1990 remains in the fitted ensemble because it satisfies the pre-specified objective gates. Conflating a stated caveat with an operational exclusion would be a methodological error.
 </p>
 
 <h2>3.4 Deterministic Factor Computation</h2>
@@ -234,8 +238,8 @@
 </p>
 
 <ol>
-    <li>Beta scatter statistics. The raw span and log-standard deviation of fitted β are reported as descriptive statistics, with an explicit note that the Step 007 prediction already includes the geometry envelope, so residual scatter reflects genuine coupling heterogeneity or model incompleteness rather than unmodeled trajectory geometry.</li>
-    <li>Full-catalog detection pattern. Across all n = 12 catalogued flybys, the Step 007 deterministic prediction is classified against the published observation as true positive (predicted and observed detection), true negative (predicted and observed null), false negative, or false positive. This yields a classification accuracy that tests whether the model correctly identifies which flybys should show anomalies independent of the small fitted-β sample.</li>
+    <li>Beta scatter statistics. The raw span and log-standard deviation of fitted β<sub>fit</sub> are reported as descriptive statistics, with an explicit note that the Step 007 prediction already includes the geometry envelope, so residual scatter reflects genuine coupling heterogeneity or model incompleteness rather than unmodeled trajectory geometry.</li>
+    <li>Full-catalog detection pattern. Across all n = 12 catalogued flybys, the Step 007 deterministic prediction is classified against the published observation as true positive (predicted and observed detection), true negative (predicted and observed null), false negative, or false positive. This yields a classification accuracy that tests whether the model correctly identifies which flybys should show anomalies independent of the small fitted-β<sub>fit</sub> sample.</li>
     <li>Rank correlation. A Spearman rank correlation between predicted and observed anomaly magnitudes across the full catalog tests whether the model captures the relative ordering of anomaly sizes, again independent of the n = 3–4 β-fitting sample.</li>
 </ol>
 
@@ -271,22 +275,22 @@
 <h3>Analytical Derivation of v_trans</h3>
 
 <p>
-    The transition velocity v_trans is not an empirically-tuned parameter derived from the Earth Flyby Anomaly dataset, but rather a fundamental scale emerging from the TEP field equations. The disformal coupling term in the TEP metric has the form:
+    The transition velocity v_trans is not an empirically-tuned parameter derived from the Earth Flyby Anomaly dataset, but rather a fundamental scale emerging from the TEP field equations. The disformal coupling term in the TEP matter metric has the standard form:
 </p>
 
 <div class="equation">
     \begin{equation}
-    ds^2 = A(\phi)c^2dt^2 - B(\phi)\partial_\mu\phi\partial_\nu\phi dx^\mu dx^\nu - C(\phi)d\mathbf{x}^2
+    ds^2 = A^2(\phi)c^2dt^2 - A^2(\phi)d\mathbf{x}^2 + B(\phi)\partial_\mu\phi\partial_\nu\phi dx^\mu dx^\nu
     \end{equation}
 </div>
 
 <p>
-    where the disformal factor B(φ) couples to the kinetic term ∂μφ∂νφ. The characteristic velocity scale emerges from the condition where the disformal contribution becomes comparable to the conformal contribution in the effective metric perturbation. This occurs when:
+    where the conformal factor $A^2(\phi)$ rescales both time and space components isotropically, and the disformal factor B(φ) couples to the kinetic term ∂μφ∂νφ. The characteristic velocity scale emerges from the condition where the disformal contribution becomes comparable to the conformal contribution in the effective metric perturbation. This occurs when:
 </p>
 
 <div class="equation">
     \begin{equation}
-    B(\phi)v^2 \sim A(\phi) - 1
+    B(\phi)v^2 \sim A^2(\phi) - 1
     \end{equation}
 </div>
 
@@ -301,7 +305,7 @@
 </div>
 
 <p>
-    For a uniform sphere of radius $R_\oplus$ and density $\rho$, the spherically symmetric Yukawa solution gives the interior field:
+    For a uniform sphere of radius $R_\oplus$ and density $\rho$, the spherically symmetric TEP field solution (Helmholtz equation) gives the interior field:
 </p>
 
 <div class="equation">
@@ -331,7 +335,7 @@
 </div>
 
 <p>
-    The UCD-derived characteristic suppression $S_\oplus = (R_\oplus - R_{\rm sol})/R_\oplus \approx 0.35$ is connected to the same Yukawa solution through the surface-to-transition geometry, providing a cross-check on the field amplitude. Substituting the independently-determined TEP relaxation length $\lambda_{\rm TEP} \approx 4000$ km (from GNSS atomic clock correlations, Step 016), Earth's radius $R_\oplus = 6371$ km, and the dimensionless surface field combination $|\nabla\phi_\oplus|\,\lambda_{\rm TEP}/M_{\rm Pl} \approx 10^{-8}$ (consistent with the UCD saturation model and the geometric factor above), the transition velocity is obtained:
+    The UCD-derived characteristic suppression $S_\oplus = (R_\oplus - R_{\rm sol})/R_\oplus \approx 0.35$ is connected to the same TEP field solution through the surface-to-transition geometry, providing a cross-check on the field amplitude. Substituting the TEP relaxation length $\lambda_{\rm TEP} \approx 4000$ km (from GNSS atomic clock correlations, Step 016), Earth's radius $R_\oplus = 6371$ km, and the dimensionless surface field combination $|\nabla\phi_\oplus|\,\lambda_{\rm TEP}/M_{\rm Pl} \approx 10^{-8}$ (consistent with the UCD saturation model and the geometric factor above), the transition velocity is obtained:
 </p>
 
 <div class="equation">
@@ -341,7 +345,7 @@
 </div>
 
 <p>
-    This derivation demonstrates that $v_{\rm trans} \approx 16.8$ km/s is a field-theoretic prediction of the TEP framework, derived from the Yukawa solution with independently-measured parameters ($\lambda_{\rm TEP}$ from GNSS, $S_\oplus$ from UCD) and fundamental constants. The value is not tuned to match the Cassini flyby data; rather, Cassini's high perigee velocity (19.02 km/s > $v_{\rm trans}$) naturally places it in the disformal-dominated regime, explaining its sign reversal as a consequence of the underlying field dynamics.
+    This derivation demonstrates that $v_{\rm trans} \approx 16.8$ km/s is a field-theoretic prediction of the TEP framework, derived from the TEP field solution with independently-measured parameters ($\lambda_{\rm TEP}$ from GNSS, $S_\oplus$ from UCD) and fundamental constants. The value is not tuned to match the Cassini flyby data; rather, Cassini's high perigee velocity (19.02 km/s > $v_{\rm trans}$) naturally places it in the disformal-dominated regime, explaining its sign reversal as a consequence of the underlying field dynamics.
 </p>
 
 <p>
@@ -409,12 +413,12 @@
   <h2>3.7 Statistical Analysis</h2>
 
 <p>
-    The weighted mean $\beta_A$ across all detections is:
+    The weighted mean $\beta_{\rm fit}$ across all detections is:
 </p>
 
 <div class="equation">
     \begin{equation}
-    \bar{\beta_A}_A = \frac{\sum_i w_i \beta_{A,i}}{\sum_i w_i}, \quad w_i = \frac{1}{\sigma_{\beta_A,i}^2}
+    \bar{\beta}_{\rm fit} = \frac{\sum_i w_i \beta_{{\rm fit},i}}{\sum_i w_i}, \quad w_i = \frac{1}{\sigma_{\beta_{\rm fit},i}^2}
     \end{equation}
 </div>
 
@@ -424,7 +428,7 @@
 
 <div class="equation">
     \begin{equation}
-    \sigma_{\bar{\beta_A}_A} = \left(\sum_i w_i\right)^{-1/2}
+    \sigma_{\bar{\beta}_{\rm fit}} = \left(\sum_i w_i\right)^{-1/2}
     \end{equation}
 </div>
 
@@ -438,7 +442,7 @@
 
 <div class="equation">
     \begin{equation}
-    Q = \sum_i w_i (\beta_{A,i} - \bar{\beta_A}_A)^2 \quad \text{(Cochran's Q)}
+    Q = \sum_i w_i (\beta_{{\rm fit},i} - \bar{\beta}_{\rm fit})^2 \quad \text{(Cochran's Q)}
     \end{equation}
 </div>
 
@@ -450,7 +454,7 @@
 
   <p>An $I^2 > 75\%$ indicates extreme heterogeneity, justifying uncertainty inflation by $\sqrt{Q/(n-1)}$ to account for model scatter beyond measurement error.</p>
 
-  <p>Robustness verification: Step 008 parametric bootstrap ($10^4$ draws) yields median $\beta_A \approx 1.73 \times 10^{-3}$ with 95% interval $[1.01 \times 10^{-3},\,5.33 \times 10^{-3}]$, and leave-one-out recomputations $2.38 \times 10^{-3}$ (without NEAR), $1.73 \times 10^{-3}$ (without Galileo 1990), and $1.73 \times 10^{-3}$ (without Rosetta 2005). The stability coefficient $\approx 0.148$ is below the 0.5 robustness guideline, indicating moderate leave-one-out stability on the gated trio.</p>
+  <p>Robustness verification: Step 008 parametric bootstrap ($10^4$ draws) yields median $\beta \approx 1.73 \times 10^{-3}$ with 95% interval $[1.01 \times 10^{-3},\,5.33 \times 10^{-3}]$, and leave-one-out recomputations $2.38 \times 10^{-3}$ (without NEAR), $1.73 \times 10^{-3}$ (without Galileo 1990), and $1.73 \times 10^{-3}$ (without Rosetta 2005). The stability coefficient $\approx 0.148$ is below the 0.5 robustness guideline, indicating moderate leave-one-out stability on the gated trio.</p>
 
   <ol>
     <li><em>Smooth bootstrap ($n = 10\,000$):</em> Resampling with replacement combined with Gaussian noise injection validates the weighted mean distribution and provides confidence intervals.</li>
@@ -499,7 +503,7 @@
   <li>Fit only initial state and solar radiation pressure coefficient</li>
 </ul>
 
-<p>This minimal approach would preserve TEP signals while still providing adequate orbit determination for anomaly extraction. Where the pipeline reports perigee-window statistics from sequential pairwise Doppler differences (Steps 006 and 030), those quantities are explicitly <em>not</em> commensurate with published post-OD $\Delta v$ anomalies unless a batch OD residual chain is bound; model comparison for the flyby ensemble (Step 026) uses a geometry-spread systematic uncertainty (σ_geom ≈ 1.85 mm/s, the sample standard deviation of reference-scale TEP predictions across the gated ensemble) as the headline likelihood, because the tiny published per-flyby uncertainties (~0.01–0.05 mm/s) are inconsistent with the ~1–10 mm/s residuals of the single-β restricted scaling model and produce astronomically large, scientifically meaningless BIC values. A published-uncertainties-only sensitivity block (σ_sys = 0) is retained for transparency but is explicitly labelled as a consistency check, not the primary evidence claim.</p>
+<p>This minimal approach would preserve TEP signals while still providing adequate orbit determination for anomaly extraction. Where the pipeline reports perigee-window statistics from sequential pairwise Doppler differences (Steps 006 and 030), those quantities are explicitly <em>not</em> commensurate with published post-OD $\Delta v$ anomalies unless a batch OD residual chain is bound; model comparison for the flyby ensemble (Step 026) uses a geometry-spread systematic uncertainty as the headline likelihood, because the tiny published per-flyby uncertainties (~0.01–0.05 mm/s) are inconsistent with the ~1–10 mm/s residuals of the single-β<sub>fit</sub> restricted scaling model and produce astronomically large, scientifically meaningless BIC values. On the full n = 9 catalog, the geometry-spread term is σ_geom ≈ 0.520 mm/s (Step 026 full-catalog spread); for the pooled n = 4 detection layer it is σ_geom ≈ 0.722 mm/s. A published-uncertainties-only sensitivity block (σ_sys = 0) is retained for transparency but is explicitly labelled as a consistency check, not the primary evidence claim.</p>
 
 <h2>3.9 PPN Constraints and Cassini Solar Conjunction</h2>
 
@@ -509,12 +513,12 @@
 
 <div class="equation">
     \begin{equation}
-    |\gamma - 1| \approx 2\beta_{A,\rm eff}^2
+    \alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\,\alpha_0, \qquad |\gamma - 1| \approx 2\left(\alpha_{\rm eff}^{(\odot)}\right)^2
     \end{equation}
 </div>
 
 <p>
-    where $\gamma$ is the PPN parameter and $\beta_{A,\rm eff} = \beta_A \times S_{\oplus}(r)$. The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector. It measured the gravitationally induced frequency shift of radio photons exchanged with the spacecraft and obtained $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$.
+    where $\gamma$ is the PPN parameter, $\alpha_0 = \beta_A = -1$ is the frozen DEF coupling, and $S_\Sigma^{(\odot)}$ is the Solar-System source-charge screening factor. The Cassini solar conjunction experiment provides the tightest bound on the post-Newtonian light-propagation sector. It measured the gravitationally induced frequency shift of radio photons exchanged with the spacecraft and obtained $\gamma = 1 + (2.1 \pm 2.3) \times 10^{-5}$. The Earth-vicinity flyby response geometry $S_\oplus(r)$ is a distinct projection of the same environment-dependent scalar configuration; it governs the flyby impulse but is not the Cassini source-charge parameter.
 </p>
 
 <p>
@@ -579,7 +583,7 @@ S_{\rm plasma} = \exp\left(-\frac{n_e}{n_{\rm ref}}\right)\end{equation}
   </div>
 
   <p>
-    where $n_e$ is the electron density in cm$^{-3}$ and $n_{\rm ref} = 10^4$ cm$^{-3}$ is a reference density. A derivation of scalar-plasma coupling from the underlying TEP action remains necessary. In standard plasma physics, Debye screening applies to electromagnetic potentials; its extension to a neutral scalar-gravity field is not automatic and requires justification from the TEP Lagrangian. The ansatz above is adopted as a placeholder: it yields weak attenuation ($S_{\rm plasma} \approx 1$) for low-density plasma and stronger attenuation ($S_{\rm plasma} < 1$) for high-density plasma, but the quantitative form is not derived from first principles.
+    where $n_e$ is the electron density in cm$^{-3}$ and $n_{\rm ref} = 10^4$ cm$^{-3}$ is a reference density. Plasma attenuation is retained only as a heuristic sensitivity layer; the primary TEP prediction uses $S_{\rm plasma} = 1$, so the headline result does not depend on the phenomenological plasma ansatz.
   </p>
 
   <p>
@@ -591,17 +595,17 @@ S_{\rm plasma} = \exp\left(-\frac{n_e}{n_{\rm ref}}\right)\end{equation}
   </p>
 
   <p>
-    The IRI electron density and computed phenomenological screening factor at perigee show that the ansatz predicts stronger attenuation at lower altitudes (higher plasma density), which is physically intuitive. Rosetta 2007 at 5430 km has the weakest attenuation ($S_{\rm plasma} \approx 0.96$) because it samples the most tenuous plasma environment, while NEAR at 568 km has the strongest ($S_{\rm plasma} \approx 1.3 \times 10^{-6}$) due to the dense F-region ionosphere. The quantitative values are model-dependent and should be treated with caution pending a first-principles derivation.
+    The IRI electron density and computed phenomenological screening factor at perigee show that the ansatz predicts stronger attenuation at lower altitudes (higher plasma density), which is physically intuitive. Rosetta 2007 at 5430 km has the weakest attenuation ($S_{\rm plasma} \approx 0.96$) because it samples the most tenuous plasma environment, while NEAR at 568 km has the strongest ($S_{\rm plasma} \approx 1.3 \times 10^{-6}$) due to the dense F-region ionosphere.
   </p>
 
   <p>
-    Because the Debye ansatz is phenomenological and not derived from the TEP action, the primary predictions in Table 3 use $S_{\rm plasma} = 1$ (no plasma suppression). Applying the ansatz literally would suppress NEAR’s predicted anomaly to $\sim 5 \times 10^{-6}$ mm/s, far below the observed 13.46 mm/s and inconsistent with the detection. Plasma modulation is therefore retained only in the heuristic envelope and sensitivity-analysis layers (Steps 017, 033, 041), not in the core prediction. A first-principles scalar–plasma coupling is required before plasma suppression can be included in primary TEP predictions.
+    Because the Debye ansatz is phenomenological and not derived from the TEP action, the primary predictions in Table 3 use $S_{\rm plasma} = 1$ (no plasma suppression). Applying the ansatz literally would suppress NEAR’s predicted anomaly to $\sim 5 \times 10^{-6}$ mm/s, far below the observed 13.46 mm/s and inconsistent with the detection. Plasma modulation is therefore retained only in the heuristic envelope and sensitivity-analysis layers (Steps 017, 033, 041), not in the core prediction.
   </p>
 
   <h2>3.11 UCD-Motivated Temporal Topology Derivation</h2>
 
   <p>
-    To eliminate systematic bias from phenomenological suppression factors, $R_{\rm sol}$ and the characteristic suppression $S_{\oplus}$ are derived from the Universal Critical Density (UCD) saturation model. The saturation radius is calculated from the UCD ansatz using Earth's total mass and the universal critical density $\rho_T \approx 20$ g/cm³, a scale established across astrophysical systems from dwarf-galaxy soliton cores to galaxy-cluster halos (TEP-I through TEP-V preprint series; Schive et al. 2014; Mocz et al. 2018). Independent GNSS atomic-clock correlation analysis (Step 016) yields a transition radius of $\approx 4201$ km, corresponding to $\rho_T \approx 18.5$ g/cm³—within 7.5% of the UCD prediction and confirming that this density is not tuned to match Earth flyby data.
+    To eliminate systematic bias from phenomenological suppression factors, $R_{\rm sol}$ and the characteristic suppression $S_{\oplus}$ are derived from the Temporal Topology Saturation Scale (UCD) saturation model. The saturation radius is calculated from the UCD ansatz using Earth's total mass and the saturation scale $\rho_T \approx 20$ g/cm³, a scale established across astrophysical systems from dwarf-galaxy soliton cores to galaxy-cluster halos (TEP-I through TEP-V preprint series; Schive et al. 2014; Mocz et al. 2018). GNSS atomic-clock correlation analysis (Step 016) yields a transition radius of $\approx 4201$ km, corresponding to $\rho_T \approx 18.5$ g/cm³—within 7.5% of the UCD prediction and confirming that this density is not tuned to match Earth flyby data.
   </p>
 
   <div class="equation">
@@ -619,13 +623,11 @@ R_{\rm sol} = \left( \frac{3 M_{\oplus}}{4\pi\rho_T} \right)^{1/3} \approx 4146 
   </div>
 
   <p>
-    The systematic uncertainty on $\rho_T = 20 \pm 8$ g/cm³ (40%) from Paper 6 (UCD) propagates to $\Delta R_{\rm sol} \approx \pm 540$ km ($\sim$13%) and $\Delta S_{\oplus} \approx \pm 0.09$ ($\sim$25%). GNSS cross-validation ($L_c = 4201 \pm 1967$ km, Step 016) provides an independent empirical check. Together, these constraints establish $S_{\oplus} = 0.35^{+0.09}_{-0.09}$ as a rigorously derived prior.
+    The systematic uncertainty on $\rho_T = 20 \pm 7$ g/cm³ (35%) from Paper 6 (UCD) propagates to $\Delta R_{\rm sol} \approx \pm 540$ km ($\sim$13%) and $\Delta S_{\oplus} \approx \pm 0.09$ ($\sim$25%). GNSS cross-validation ($L_c = 4201 \pm 1967$ km, Step 016) provides a cross-consistency check with the GNSS/UCD terrestrial calibration. Together, these constraints establish $S_{\oplus} = 0.35^{+0.09}_{-0.09}$ as a rigorously derived prior.
   </p>
 
   <h2>3.12 Cosmographic Temporal Shear Modulation Analysis</h2>
 
   <p>
-    A deeper TEP prediction is that the disformal coupling term depends on the total velocity in the scalar-field rest frame. If the CMB dipole frame approximates this rest frame, the Solar System's ~370 km/s bulk motion toward (RA, Dec) = (167.94°, −6.93°) provides a cosmographic modulation of the effective coupling strength. Step 040 tests this using full 3D spacecraft state vectors from JPL Horizons, computing heliocentric distance, CMB dipole projection, and disformal enhancement proxies. With only n = 8 usable vectors in the historical sample, all cosmographic tests remain exploratory; the full extraction protocol is documented in the Step 040 pipeline output.
+    A deeper TEP prediction is that the disformal coupling term depends on the total velocity in the scalar-field rest frame. If the CMB dipole frame approximates this rest frame, the Solar System's ~370 km/s bulk motion toward (RA, Dec) = (167.94°, −6.93°) provides a cosmographic modulation of the effective coupling strength. Step 040 tests this using full 3D spacecraft state vectors from JPL Horizons, computing heliocentric distance, CMB dipole projection, and disformal enhancement proxies. With only n = 9 usable vectors in the historical sample, all cosmographic tests remain exploratory; the full extraction protocol is documented in the Step 040 pipeline output.
   </p>
-
-</section>

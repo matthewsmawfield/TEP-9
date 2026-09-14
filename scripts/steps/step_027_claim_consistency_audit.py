@@ -271,6 +271,8 @@ class ClaimConsistencyAuditor:
 
     @staticmethod
     def _mantissa_exponent_from_log10(log10_bf: float) -> Tuple[float, int]:
+        if log10_bf is None:
+            raise ValueError("log10 Bayes factor is None (excluded flyby); cannot format mantissa")
         lf = float(log10_bf)
         exp_i = int(math.floor(lf))
         mant = round(10 ** (lf - exp_i), 2)
@@ -341,19 +343,26 @@ class ClaimConsistencyAuditor:
         if not self._require_substrings(text, headline_delta_blocks, "Model comparison (headline ΔBIC)"):
             return False
 
-        # Section 4.5.4: σ_sys = 1.20 mm/s column must use n=9 headline log10 B, not n=3 gated.
+        # Section 4.5.4: σ_sys = 0.520 mm/s column must use n=9 headline log10 B, not n=3 gated.
         if (
-            "σ_sys = 1.20" in text
+            "σ_sys = 0.520" in text
             and f"log_{{10}} B = {b_gated['log10_tep_vs_null']}" in text
             and f"log_{{10}} B = {b_headline['log10_tep_vs_null']}" not in text
         ):
             self.violations.append(
                 "Uncertainty-treatment table appears to place gated n=3 log10 B values "
-                "in the headline n=9 (σ_geom = 1.20 mm/s) column."
+                "in the headline n=9 (σ_geom = 0.520 mm/s) column."
             )
             return False
 
-        w_tep = float(headline_block["model_selection"]["akaike_weights"]["TEP_restricted"])
+        akaike_weight_raw = headline_block["model_selection"]["akaike_weights"].get("TEP_restricted")
+        if akaike_weight_raw is None:
+            self.violations.append(
+                "Step 026 headline Akaike weight for TEP_restricted is None "
+                "(excluded flyby); skipping Akaike summary check."
+            )
+            return False
+        w_tep = float(akaike_weight_raw)
         w_fmt = self._format_percent(100.0 * w_tep, 1)
         akaike_ok = w_fmt in text or bool(
             re.search(r"TEP restricted[^\n]{0,48}\\approx\s*1\.0", text)
@@ -366,9 +375,15 @@ class ClaimConsistencyAuditor:
             return False
 
         # Sanity: audit JSON consumers should not confuse blocks
-        if float(bf_headline["log10_BF_TEP_restricted_vs_Null"]) <= float(
-            bf_gated["log10_BF_TEP_restricted_vs_Null"]
-        ):
+        headline_log10_bf = bf_headline.get("log10_BF_TEP_restricted_vs_Null")
+        gated_log10_bf = bf_gated.get("log10_BF_TEP_restricted_vs_Null")
+        if headline_log10_bf is None or gated_log10_bf is None:
+            self.violations.append(
+                "Step 026 log10 BF for TEP vs Null is None in headline or gated block "
+                "(excluded flyby); skipping headline-vs-gated sanity check."
+            )
+            return False
+        if float(headline_log10_bf) <= float(gated_log10_bf):
             self.violations.append(
                 "Step 026 full-catalog log10 BF should exceed primary gated log10 BF for TEP vs Null."
             )

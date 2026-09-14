@@ -26,7 +26,7 @@ IMPORTANT PHYSICS DISTINCTION:
 ==============================
 UCD Saturation Model for Earth Flyby Analysis
 
-The TEP-EFA pipeline uses the UCD (Universal Critical Density) saturation model
+The TEP-EFA pipeline uses the UCD (Temporal Topology Saturation Scale) saturation model
 to calculate the characteristic geometric suppression for Earth flybys.
 
 UCD Saturation Calculation:
@@ -82,7 +82,7 @@ class UCDSolitonCalculator:
     """
     Calculates characteristic geometric suppression using UCD saturation model.
 
-    Based on TEP Paper 6 (UCD): Universal Critical Density analysis establishes
+    Based on TEP Paper 6 (UCD): Temporal Topology Saturation Scale analysis establishes
     ρ_T ≈ 20 g/cm³ as the saturation density for scalar field configurations.
     A soliton interpretation is one candidate microscopic realization.
     Empirically calibrated from GNSS atomic clock correlations.
@@ -541,7 +541,7 @@ def main():
         gnss_empirical = None
 
     logger.section("UCD PARAMETERS (from Paper 7)")
-    logger.info(f"Universal Critical Density: ρ_T = {calculator.RHO_T} g/cm³")
+    logger.info(f"Temporal Topology Saturation Scale: ρ_T = {calculator.RHO_T} g/cm³")
     logger.info(f"Empirical screening exponent: γ = {calculator.SUPPRESSION_EXPONENT}")
 
     logger.section("CALCULATING SOLITON RADIUS")

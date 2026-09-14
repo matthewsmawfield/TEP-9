@@ -11,7 +11,7 @@
 <h3>Cross-corpus theory registry (TEP-EFA ↔ manuscript series)</h3>
 <p>
     The flyby pipeline fixes a single set of conventions so numerical results agree with the manuscript HTML in <code>site/components/</code>.
-    The following table is the authoritative map between this repository and the numbered theory papers under <code>manuscripts/</code> (Paper 0 = Jakarta v0.8, Paper 6 = UCD, Paper 10 = Caracas COS, Paper 12 = JWST Kos, etc.).
+    The following table is the authoritative map between this repository and the numbered theory papers under <code>manuscripts/</code> (Paper 0 = Jakarta, Paper 6 = UCD, Paper 10 = Caracas COS, Paper 12 = JWST Kos, etc.).
 </p>
 <table class="data-table">
     <caption>Canonical EFA quantities aligned to the manuscript corpus</caption>
@@ -25,22 +25,22 @@
     <tbody>
         <tr>
             <td>Matter metric / conformal factor</td>
-            <td><code>A(φ) = exp(β φ / M<sub>Pl</sub>)</code> (reduced Planck mass in GeV)</td>
+            <td><code>A(φ) = exp(β_A φ / M<sub>Pl</sub>)</code> (reduced Planck mass in GeV)</td>
             <td>Paper 0 (Jakarta) axioms; Papers 4–5, 8–9, 12 (notation)</td>
         </tr>
         <tr>
             <td>Scalar force (flyby sector)</td>
-            <td>F<sub>φ</sub> = β<sub>eff</sub> c² ∇φ / M<sub>Pl</sub>; β<sub>eff</sub> = β × S<sub>⊕</sub></td>
+            <td>F<sub>φ</sub> = β<sub>A,eff</sub> c² ∇φ / M<sub>Pl</sub>; β<sub>A,eff</sub> = β<sub>A</sub> × S<sub>⊕</sub></td>
             <td>Paper 0; Paper 4 (Phantom Mass); methodology §3.2</td>
         </tr>
         <tr>
             <td>Density minimum φ<sub>min</sub>(ρ)</td>
-            <td>φ = Λ [ n Λ<sup>n+4</sup> M<sub>Pl</sub> / (2 β ρ<sub>GeV4</sub>) ]<sup>1/(n+1)</sup> in <code>step_007_tep_model.py</code>, <code>step_011_trajectory_integration.py</code>, <code>step_019_3d_field_integration.py</code></td>
+            <td>φ = Λ [ n Λ<sup>n+4</sup> M<sub>Pl</sub> / (2 β_A ρ<sub>GeV4</sub>) ]<sup>1/(n+1)</sup> in <code>step_007_tep_model.py</code>, <code>step_011_trajectory_integration.py</code>, <code>step_019_3d_field_integration.py</code></td>
             <td>Paper 10 Appendix C (aligned to this form, May 2026); Paper 6 (scaling φ ∝ ρ<sup>−1/(n+1)</sup> only). Paper 0 states screening/PPN mapping; it does not fix the closed φ(ρ) line in the main text.</td>
         </tr>
         <tr>
             <td>PPN γ (magnitude checks)</td>
-            <td><code>ppn_gamma_deviation</code>: report |γ − 1| ≈ 2 β<sub>eff</sub>² vs Cassini</td>
+            <td><code>ppn_gamma_deviation</code>: report |γ − 1| ≈ 2 β<sub>A,eff</sub>² vs Cassini</td>
             <td>Paper 0 Sec. 7: γ − 1 = −2 α<sub>eff</sub>² (DEF); Papers 5, 11, 12 (screened limit narrative)</td>
         </tr>
         <tr>
@@ -50,7 +50,7 @@
         </tr>
         <tr>
             <td>Scalar field equation (sign reference)</td>
-            <td>Pipeline uses explicit <code>field_gradient</code> / Yukawa relaxation outside Earth; trace source uses β, M<sub>Pl</sub> as in Step 007 comments</td>
+            <td>Pipeline uses explicit <code>field_gradient</code> / TEP screening relaxation outside Earth; trace source uses β_A, M<sub>Pl</sub> as in Step 007 comments</td>
             <td>Paper 12 Appendix A.1.2: K(φ)□φ − V′ = −(β/M<sub>Pl</sub>)T<sup>(matter)</sup> (Einstein-frame convention; overall sign of T follows chosen action)</td>
         </tr>
     </tbody>
@@ -114,7 +114,12 @@ TEP-EFA/
 │   │   ├── step_034_covariant_holonomy.py
 │   │   ├── step_035_cross_corpus_export.py
 │   │   ├── step_036_final_report.py
-│   │   └── step_037_visualizations.py
+│   │   ├── step_037_visualizations.py
+│   │   ├── step_038_extract_3d_vectors.py
+│   │   ├── step_039_flyby_prediction_table.py
+│   │   ├── step_040_cosmographic_shear.py
+│   │   ├── step_041_envelope_heuristic_sensitivity.py
+│   │   └── step_042_time_resolved_cosmography.py
 │   ├── utils/                     # Utility functions
 │   └── build_markdown.js          # Manuscript builder
 ├── site/
@@ -173,7 +178,7 @@ TEP-EFA/
 
 <h3>Pipeline Architecture</h3>
 <p>
-    The analysis pipeline comprises 37 deterministic steps organized into logical groups.
+    The analysis pipeline comprises 42 deterministic steps organized into logical groups.
     Each step is a standalone Python script in <code>scripts/steps/</code> that produces JSON outputs and 
     detailed logs in <code>logs/step_*.log</code>.
 </p>
@@ -466,7 +471,7 @@ TEP-EFA/
             <td>~1s</td>
         </tr>
         <tr style="background-color: #f8f8ff;">
-            <td colspan="5">Phase 11: Reporting (036-037)</td>
+            <td colspan="5">Phase 11: Reporting & Extended Validation (036-042)</td>
         </tr>
         <tr>
             <td>Report</td>
@@ -481,6 +486,41 @@ TEP-EFA/
             <td><code>step_037_visualizations.py</code></td>
             <td>Publication-quality figure generation</td>
             <td>~3s</td>
+        </tr>
+        <tr>
+            <td>Vec</td>
+            <td>038</td>
+            <td><code>step_038_extract_3d_vectors.py</code></td>
+            <td>Extract 3D state vectors from JPL Horizons</td>
+            <td>~2s</td>
+        </tr>
+        <tr>
+            <td>Pred</td>
+            <td>039</td>
+            <td><code>step_039_flyby_prediction_table.py</code></td>
+            <td>Flyby prediction table with uncertainty-aware classification</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Cosmo</td>
+            <td>040</td>
+            <td><code>step_040_cosmographic_shear.py</code></td>
+            <td>Cosmographic temporal shear modulation test</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Env</td>
+            <td>041</td>
+            <td><code>step_041_envelope_heuristic_sensitivity.py</code></td>
+            <td>Geometry envelope heuristic sensitivity</td>
+            <td>~1s</td>
+        </tr>
+        <tr>
+            <td>Cosmo</td>
+            <td>042</td>
+            <td><code>step_042_time_resolved_cosmography.py</code></td>
+            <td>Time-resolved cosmography (after Horizons + optional Juno DSN sidecar)</td>
+            <td>~2s</td>
         </tr>
     </tbody>
 </table>
@@ -543,13 +583,13 @@ TEP-EFA/
         <td>~7s</td>
     </tr>
     <tr>
-        <td>Reporting (036-037)</td>
-        <td>2</td>
-        <td>~4s</td>
+        <td>Reporting & Extended Validation (036-042)</td>
+        <td>7</td>
+        <td>~11s</td>
     </tr>
     <tr style="font-weight: bold;">
         <td>Total</td>
-        <td>37</td>
+        <td>42</td>
         <td>~2 min</td>
     </tr>
 </table>
@@ -688,7 +728,7 @@ python scripts/run_all.py
     <li>Bootstrap Resampling: n=10,000 iterations for uncertainty quantification</li>
     <li>Leave-One-Out Cross-Validation: Tests robustness against single-flyby exclusion</li>
     <li>Heterogeneity Assessment: Cochran's Q and I² statistics for model scatter</li>
-    <li>GNSS clock correlation: The GNSS atomic clock correlation analysis provides an independent constraint on the transition radius ($R_{\rm sol} \approx 4146$ km). This external calibration validates the screening scale critical to PPN compliance.</li>
+    <li>GNSS clock correlation: The GNSS atomic clock correlation analysis provides a cross-consistency check with the GNSS/UCD terrestrial calibration on the transition radius ($R_{\rm sol} \approx 4146$ km). This shared-input dependency is disclosed explicitly to avoid circular claims of independent validation.</li>
     <li>Claim-consistency audit: Step 027 machine-checks manuscript claims against pipeline outputs, including model-comparison values, Table 3 fitted parameters, variance decomposition, Cassini exclusion status, Step 039 Juno classification, and evidence framing. The audit fails if the manuscript reverses the TEP-vs-Null comparison, omits the random-effects uncertainty, or promotes Juno from a deterministic warning case to an uncertainty-aware falsification.</li>
     <li>Uncertainty discipline: Formal inverse-variance summaries, random-effects scatter, geometry-spread model comparison, and published-uncertainty stress tests are reported as separate layers rather than blended into a single headline number.</li>
     <li>Automated smoke tests: <code>pytest</code> (see <code>tests/</code> and <code>pytest.ini</code>) checks repository layout and step logger conventions.</li>
@@ -701,12 +741,12 @@ python scripts/run_all.py
         <li>All configured pipeline steps complete with "SUCCESS" status</li>
         <li>Primary JSON products are present in <code>results/</code></li>
         <li>Figure files are present in <code>results/</code> (PNG)</li>
-        <li>Key result: gated inverse-variance $\beta_A$ span $1.01 \times 10^{-3}$ to $5.33 \times 10^{-3}$ (NEAR, Galileo 1990, Rosetta 2005; weighted mean $\approx 1.73 \times 10^{-3}$ from <code>results/step008_fitting_results.json</code>)</li>
-        <li>Key result: β_eff $\sim 6\times10^{-4}$ with Temporal Topology screening</li>
+        <li>Key result: gated inverse-variance $\beta_{\rm fit}$ span $1.01 \times 10^{-3}$ to $5.33 \times 10^{-3}$ (NEAR, Galileo 1990, Rosetta 2005; weighted mean $\approx 1.73 \times 10^{-3}$ from <code>results/step008_fitting_results.json</code>)</li>
+        <li>Key result: β_{A,eff} $\sim 6\times10^{-4}$ with Temporal Topology screening</li>
         <li>Key result: |γ-1| $\approx 7\times10^{-7}$ (safely below Cassini bound $2.3 \times 10^{-5}$)</li>
         <li>Key result: $I^2 \approx 100\%$ extreme heterogeneity (supports β scatter hypotheses)</li>
         <li>Key result: Altitude-anomaly correlation $\rho$ = -0.18 (not significant, $n$ = 9); the TEP envelope predicts near-zero for high-altitude null trajectories and large for low-altitude high-asymmetry encounters, which is the relevant test</li>
-        <li>Key result: 5 published null or bound cases are consistent with fixed-amplitude Step 039 predictions (Step 008 pooled $\beta_A$) under the Step 007 geometry envelope; 1 deterministic fixed-amplitude warning case remains (Juno, predicted $+0.11$ mm/s), but 0 raw-tension cases remain after random-effects prediction uncertainty; Rosetta 2009 is a published null/bound case with insufficient explicit geometry for the Step 039 table; 3 flybys (Stardust, OSIRIS-REx, BepiColombo) have no public anomaly report</li>
+        <li>Key result: 5 published null or bound cases are consistent with fixed-amplitude Step 039 predictions (Step 008 pooled $\beta_{\rm fit}$) under the Step 007 geometry envelope; 1 deterministic fixed-amplitude warning case remains (Juno, predicted $+0.11$ mm/s), but 0 raw-tension cases remain after random-effects prediction uncertainty; Rosetta 2009 is a published null/bound case with insufficient explicit geometry for the Step 039 table; 3 flybys (Stardust, OSIRIS-REx, BepiColombo) have no public anomaly report</li>
     </ol>
 </div>
 
@@ -715,7 +755,7 @@ python scripts/run_all.py
     Spacecraft trajectories are available through the <a href="https://ssd.jpl.nasa.gov/horizons/">NASA JPL Horizons ephemeris service</a>. 
     Literature anomaly values are from Anderson et al. (2008) and companion publications. 
     Analysis code and processed data products are available at <a href="https://github.com/matthewsmawfield/TEP-EFA">https://github.com/matthewsmawfield/TEP-EFA</a> 
-    with archived DOI at <a href="https://doi.org/10.5281/zenodo.19454863">10.5281/zenodo.19454863</a>.
+    with archived DOI at <a href="https://doi.org/10.5281/zenodo.19454862">10.5281/zenodo.19454862</a>.
 </p>
 
 <p>

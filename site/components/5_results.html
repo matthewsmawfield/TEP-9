@@ -6,25 +6,22 @@
     The TEP scalar force model with J2/J3/J4 multipole contributions,
     <em>disformal coupling</em>, perigee plasma factors (Step 017 / IRI, Step 033),
     and
-    <em>Temporal Topology screening</em> quantitatively reproduces the three gated primary detections as "Phantom Mass" artifacts at a reference coupling β_ref = 10⁻⁴, then rescales to a universal β by per-flyby fitting subject to pre-fit gates (S/N ≥ 2, sign agreement). Cassini (1999) remains a fourth published anomaly: at β_ref the total TEP prediction is negative while the published anomaly is positive, so Cassini is retained in the primary pool (n = 4) but excluded from the sign-gated ensemble (n = 3) on sign mismatch at β_ref; it is retained for diagnostics, universal-β table classification (Step 039), and hierarchical checks (Step 015).
-    Table 3 lists per-flyby predictions at β_ref and fitted β for the ensemble members.
+    <em>Temporal Topology screening</em> quantitatively reproduces the three gated primary detections as "Phantom Mass" artifacts at a reference coupling β_{A,ref} = 10⁻⁴, then rescales to a universal β<sub>fit</sub> by per-flyby fitting subject to pre-fit gates (S/N ≥ 2, sign agreement). Cassini (1999) remains a fourth published anomaly: at β_{A,ref} the total TEP prediction is negative while the published anomaly is positive, so Cassini is retained in the primary pool (n = 4) but excluded from the sign-gated ensemble (n = 3) on sign mismatch at β_{A,ref}; it is retained for diagnostics, universal-β<sub>fit</sub> table classification (Step 039), and hierarchical checks (Step 015).
+    Table 3 lists per-flyby predictions at β_{A,ref} and fitted β_{\rm fit} for the ensemble members.
 </p>
 
 <table class="data-table">
     <caption>
-        Table 3: TEP predictions at β_ref = 10⁻⁴ and Step 008 fitted β (three-gated ensemble)
+        Table 3: Step 008 fitted β<sub>fit</sub> and fitted Δv<sub>TEP,fit</sub> for the three-gated ensemble (reference-coupling predictions at β<sub>A,ref</sub> = 10⁻⁴ are shown in Table 3a)
     </caption>
     <thead>
         <tr>
             <th>Spacecraft</th>
             <th>Date</th>
-            <th>$Δv_{\rm TEP}$ (mm/s)</th>
+            <th>$Δv_{\rm TEP,fit}$ (mm/s)</th>
             <th>$Δv_{\rm obs}$ (mm/s)</th>
-            <th>$β_{\rm fitted}$</th>
+            <th>$β_{\rm fit}$</th>
             <th>$σ_{β}$</th>
-            <th>$β_{\rm eff}$</th>
-            <th>$|γ - 1|$</th>
-            <th>PPN</th>
         </tr>
     </thead>
     <tbody>
@@ -35,9 +32,6 @@
             <td>13.46</td>
             <td>$1.73 \times 10^{-3}$</td>
             <td>$1.71 \times 10^{-6}$</td>
-            <td>$6.04 \times 10^{-4}$</td>
-            <td>$7.31 \times 10^{-7}$</td>
-            <td>✓</td>
         </tr>
         <tr>
             <td>Galileo 1990</td>
@@ -46,9 +40,6 @@
             <td>3.92</td>
             <td>$5.33 \times 10^{-3}$</td>
             <td>$5.44 \times 10^{-5}$</td>
-            <td>$1.86 \times 10^{-3}$</td>
-            <td>$6.93 \times 10^{-6}$</td>
-            <td>✓</td>
         </tr>
         <tr>
             <td>Rosetta 2005</td>
@@ -57,19 +48,16 @@
             <td>1.82</td>
             <td>$1.01 \times 10^{-3}$</td>
             <td>$3.70 \times 10^{-5}$</td>
-            <td>$3.53 \times 10^{-4}$</td>
-            <td>$2.49 \times 10^{-7}$</td>
-            <td>✓</td>
         </tr>
     </tbody>
 </table>
 
 <p>
     The three gated fitted $β$ values span a factor of about 5.3 ($1.01 \times 10^{-3}$ to $5.33 \times 10^{-3}$), consistent with geometry- and plasma-dependent modulation of effective coupling.
-    The inverse-variance weighted mean is $β = 1.73 \times 10^{-3} \pm 6.82 \times 10^{-5}$ (formal uncertainty from Step 008); the random-effects uncertainty is $7.85 \times 10^{-4}$.
+    The inverse-variance weighted mean is $\beta_{\rm fit} = 1.73 \times 10^{-3} \pm 6.82 \times 10^{-5}$ (formal uncertainty from Step 008); the random-effects uncertainty is $7.85 \times 10^{-4}$.
     Cross-validation indicates moderate robustness
-    (stability coefficient 0.148 &lt; 0.5). Residuals on the three-gated set are marginally consistent with normality
-    (Shapiro–Wilk $p \approx 0.098$).
+    (stability coefficient 0.148 &lt; 0.5). Residuals on the three-gated set are consistent with normality
+    (Shapiro–Wilk $p \approx 0.50$).
 </p>
 
 <p>
@@ -135,7 +123,7 @@
 
 <table class="data-table">
     <caption>
-        Table 3b: 3D Trajectory Integration vs Perigee Approximation
+        Table 3b: 3D Trajectory Integration vs Perigee Approximation (Step 011)
     </caption>
     <thead>
         <tr>
@@ -147,98 +135,116 @@
             <th>Path length (km)</th>
         </tr>
     </thead>
-    <tbody><tr>
+    <tbody>
+        <tr>
             <td>NEAR</td>
             <td>+1.586</td>
-            <td>+6.892</td>
-            <td>+8.682</td>
-            <td>1.26</td>
-            <td>5.47</td>
-            <td>diagnostic</td>
-            <td>diagnostic</td>
+            <td>+10.395</td>
+            <td>6.55</td>
+            <td>4320</td>
+            <td>1,809,865</td>
         </tr>
-<tr>
+        <tr>
             <td>Galileo 1990</td>
             <td>+0.199</td>
-            <td>+6.360</td>
-            <td>+8.388</td>
-            <td>1.32</td>
-            <td>42.21</td>
-            <td>diagnostic</td>
-            <td>diagnostic</td>
+            <td>+1.210</td>
+            <td>6.09</td>
+            <td>4320</td>
+            <td>2,335,944</td>
         </tr>
-<tr>
+        <tr>
+            <td>Galileo 1992</td>
+            <td>+0.000</td>
+            <td>+0.040</td>
+            <td>—</td>
+            <td>4320</td>
+            <td>2,309,900</td>
+        </tr>
+        <tr>
             <td>Rosetta 2005</td>
             <td>+0.321</td>
-            <td>+5.295</td>
-            <td>+7.741</td>
-            <td>1.46</td>
-            <td>24.10</td>
-            <td>diagnostic</td>
-            <td>diagnostic</td>
+            <td>+1.391</td>
+            <td>4.33</td>
+            <td>4320</td>
+            <td>1,108,396</td>
         </tr>
-<tr>
-            <td>Cassini</td>
-            <td>-0.012</td>
-            <td>+6.092</td>
-            <td>+8.232</td>
-            <td>1.35</td>
-            <td>-690.20</td>
-            <td>diagnostic</td>
-            <td>diagnostic</td>
-        </tr>
-<tr>
+        <tr>
             <td>Rosetta 2007</td>
             <td>+0.000</td>
-            <td>+3.147</td>
-            <td>+6.105</td>
-            <td>1.94</td>
-            <td>90272.62</td>
-            <td>diagnostic</td>
-            <td>diagnostic</td>
+            <td>+0.000</td>
+            <td>—</td>
+            <td>4320</td>
+            <td>2,427,976</td>
         </tr>
-<tr>
+        <tr>
+            <td>Rosetta 2009</td>
+            <td>+0.001</td>
+            <td>+0.009</td>
+            <td>7.14</td>
+            <td>4320</td>
+            <td>2,451,562</td>
+        </tr>
+        <tr>
+            <td>MESSENGER 2005</td>
+            <td>+0.000</td>
+            <td>+0.000</td>
+            <td>—</td>
+            <td>4320</td>
+            <td>1,140,540</td>
+        </tr>
+        <tr>
+            <td>Cassini</td>
+            <td>-0.012</td>
+            <td>+0.028</td>
+            <td>-2.32</td>
+            <td>4320</td>
+            <td>4,119,269</td>
+        </tr>
+        <tr>
+            <td>Juno</td>
+            <td>+0.013</td>
+            <td>+0.142</td>
+            <td>10.75</td>
+            <td>4320</td>
+            <td>2,693,525</td>
+        </tr>
+        <tr>
             <td>Stardust</td>
             <td>-0.000</td>
-            <td>+2.922</td>
-            <td>+5.897</td>
-            <td>2.02</td>
-            <td>-17600.30</td>
-            <td>diagnostic</td>
-            <td>diagnostic</td>
+            <td>+0.000</td>
+            <td>—</td>
+            <td>4320</td>
+            <td>1,733,288</td>
         </tr>
-<tr>
+        <tr>
             <td>OSIRIS-REx</td>
             <td>+0.000</td>
-            <td>+1.019</td>
-            <td>+3.547</td>
-            <td>3.48</td>
-            <td>1653020.11</td>
-            <td>diagnostic</td>
-            <td>diagnostic</td>
+            <td>+0.000</td>
+            <td>—</td>
+            <td>4320</td>
+            <td>1,683,329</td>
         </tr>
-<tr>
+        <tr>
             <td>BepiColombo</td>
             <td>-0.000</td>
-            <td>+1.460</td>
-            <td>+4.229</td>
-            <td>2.90</td>
-            <td>-12168068.91</td>
-            <td>diagnostic</td>
-            <td>diagnostic</td>
-        </tr></tbody>
+            <td>failed</td>
+            <td>—</td>
+            <td>4320</td>
+            <td>—</td>
+        </tr>
+    </tbody>
 </table>
 
 <p>
-    For the three primary detections (NEAR, Galileo 1990, Rosetta 2005), the 3D integrated velocity shift is 4–6× the perigee estimate at β_ref = 10⁻⁴. This ratio reflects the use of the pooled β = 1.73×10⁻³ in the 3D integration (a factor of ~17.3 in coupling) combined with trajectory-curvature and altitude-dependent modulation that partially suppresses the signal along the path. NEAR shows the largest ratio (6.55), Galileo 1990 is intermediate (6.09), and Rosetta 2005 shows the smallest ratio (4.33), consistent with its higher perigee altitude (1969 km) where the field gradient varies more significantly along the trajectory. The perigee approximation therefore captures the dominant physics at β_ref but should not be naively rescaled to the fitted β without the geometry envelope.
+    For the three primary detections (NEAR, Galileo 1990, Rosetta 2005), the 3D integrated velocity shift is 4–6× the perigee estimate at β_{A,ref} = 10⁻⁴. This ratio reflects the use of the pooled β_{\rm fit} = 1.73×10⁻³ in the 3D integration (a factor of ~17.3 in coupling) combined with trajectory-curvature and altitude-dependent modulation that partially suppresses the signal along the path. NEAR shows the largest ratio (6.55), Galileo 1990 is intermediate (6.09), and Rosetta 2005 shows the smallest ratio (4.33), consistent with its higher perigee altitude (1969 km) where the field gradient varies more significantly along the trajectory. The perigee approximation therefore captures the dominant physics at β_{A,ref} but should not be naively rescaled to the fitted β_{\rm fit} without the geometry envelope.
 </p>
 
 <p>
-    Galileo 1992 and Rosetta 2007 predict negligible anomalies in both methods, consistent with their published null results. Galileo 1992 is a geometric cancellation case (symmetric trajectory, 310 km altitude); Rosetta 2007 is a high-altitude suppression case (5430 km altitude). MESSENGER 2005 predicts a negligible anomaly in both frameworks. BepiColombo's integration failed at high altitude (path length NaN), underscoring numerical limits for trajectories with negligible field gradient.
+    Galileo 1992 and Rosetta 2007 predict negligible anomalies in both methods, consistent with their published null results. Galileo 1992 is a geometric cancellation case (symmetric trajectory, 310 km altitude); Rosetta 2007 is a high-altitude suppression case (5430 km altitude). MESSENGER 2005 predicts a negligible anomaly in both frameworks. BepiColombo's 3D integration failed at high altitude (numerical overflow in the path-length accumulation), underscoring numerical limits for trajectories with negligible field gradient.
 </p>
 
 <p>
-    The overall conclusion is that the perigee approximation captures the dominant physics at the reference coupling β_ref = 10⁻⁴, while full 3D integration at the pooled β = 1.73×10⁻³ provides a cross-check that incorporates trajectory curvature, altitude-dependent field-gradient variation, and the complete geometry envelope. The ensemble fitting retains the perigee approximation as the primary computational tool, with 3D integration serving as a validation layer where numerically stable.
+    The overall conclusion is that the perigee approximation captures the dominant physics at the reference coupling β_{A,ref} = 10⁻⁴, while full 3D integration at the pooled β_{\rm fit} = 1.73×10⁻³ provides a cross-check that incorporates trajectory curvature, altitude-dependent field-gradient variation, and the complete geometry envelope. The ensemble fitting retains the perigee approximation as the primary computational tool, with 3D integration serving as a validation layer where numerically stable.
 </p>
 
 <h2>4.2 Hierarchical Bayesian Model Results</h2>
@@ -246,7 +252,7 @@
 <h3>4.2.1 Per-Flyby Geometry Factor Extraction</h3>
 
 <p>
-    The component-level analysis extracts the effective geometry factor $G_{i,\text{eff}} = \Delta v_{\text{obs}} / \Delta v_{\text{grad}}(\beta_{A,0} = 10^{-4})$ for each flyby. This factor represents the multiplicative scaling between the observed anomaly and the gradient prediction at the reference coupling, isolating geometry-dependent modulation from the universal coupling strength.
+    The component-level analysis extracts the effective geometry factor $G_{i,\text{eff}} = \Delta v_{\text{obs}} / \Delta v_{\text{grad}}(\beta_{\rm fit,0} = 10^{-4})$ for each flyby. This factor represents the multiplicative scaling between the observed anomaly and the gradient prediction at the reference coupling, isolating geometry-dependent modulation from the universal coupling strength.
 </p>
 
 <table class="data-table">
@@ -298,7 +304,7 @@
 <h3>4.2.2 MCMC Hierarchical Inference</h3>
 
 <p>
-    The four-parameter hierarchical Bayesian model ($\beta_{A,0}$, $b_{\text{disf}}$, $\sigma$, $\alpha_{\text{res}}$) is sampled via MCMC with priors centered near the Step 008 weighted mean ($\beta_{A,0} \sim \text{LogNormal}(\ln(1.73 \times 10^{-3}), 1.5)$). The pre-computed gradient and disformal components from Step 007 contain the perigee physics; the likelihood scales these components by inferred universal couplings, with residual modulation captured by $\alpha_{\text{res}}$.
+    The four-parameter hierarchical Bayesian model ($\beta_{\rm fit,0}$, $b_{\text{disf}}$, $\sigma$, $\alpha_{\text{res}}$) is sampled via MCMC with priors centered near the Step 008 weighted mean ($\beta_{\rm fit,0} \sim \text{LogNormal}(\ln(1.73 \times 10^{-3}), 1.5)$). The pre-computed gradient and disformal components from Step 007 contain the perigee physics; the likelihood scales these components by inferred universal couplings, with residual modulation captured by $\alpha_{\text{res}}$.
 </p>
 
 <p>
@@ -306,7 +312,7 @@
 </p>
 
 <ul>
-    <li>$\beta_{A,0} = 6.30 \times 10^{-4} \pm 3.50 \times 10^{-4}$ (16th–84th: $3.82$–$9.67 \times 10^{-4}$)</li>
+    <li>$\beta_{\rm fit,0} = 6.30 \times 10^{-4} \pm 3.50 \times 10^{-4}$ (16th–84th: $3.82$–$9.67 \times 10^{-4}$)</li>
     <li>$b_{\text{disf}} = 0.038 \pm 0.048$</li>
     <li>$\sigma = 1.32 \pm 0.61$ mm/s (flyby-to-flyby scatter)</li>
     <li>$\alpha_{\text{res}} = 0.019 \pm 0.290$ (consistent with zero)</li>
@@ -351,7 +357,7 @@
 </table>
 
 <p>
-    The posterior median $\beta_{A,0} = 6.30 \times 10^{-4}$ lies below the Step 008 inverse-variance weighted mean ($1.73 \times 10^{-3}$), with width driven by the three-anomaly hierarchical layer. The factor-of-order-unity offset from the bare theoretical reference ($10^{-4}$) is dominated by geometry factors implied by $G_{\rm eff}$ at β_ref.
+    The posterior median $\beta_{\rm fit,0} = 6.30 \times 10^{-4}$ lies below the Step 008 inverse-variance weighted mean ($1.73 \times 10^{-3}$), with width driven by the three-anomaly hierarchical layer. The factor-of-order-unity offset from the bare theoretical reference ($10^{-4}$) is dominated by geometry factors implied by $G_{\rm eff}$ at β_{A,ref}.
 </p>
 
 <h2>4.3 Deterministic Geometry Modulation Analysis</h2>
@@ -380,19 +386,19 @@
 
 <p>
     Across all n = 12 catalogued flybys, the Step 007 deterministic prediction
-    at β_ref = 10⁻⁴ correctly classifies 9/12 flybys (accuracy 75.0%): 1 true
+    at β_{A,ref} = 10⁻⁴ correctly classifies 9/12 flybys (accuracy 75.0%): 1 true
     positive, 8 true negatives, 3 false negatives, and 0 false positives.
     Only NEAR is predicted to exceed the 0.5 mm/s detection threshold at the
     reference coupling (predicted Δv = 1.59 mm/s, observed 13.46 mm/s).
     Galileo 1990 (predicted 0.20 mm/s, observed 3.92 mm/s), Rosetta 2005
     (predicted 0.32 mm/s, observed 1.82 mm/s), and Cassini (predicted
-    −0.012 mm/s, observed 0.11 mm/s) are false negatives at β_ref because their
+    −0.012 mm/s, observed 0.11 mm/s) are false negatives at β_{A,ref} because their
     predicted magnitudes fall below the detection threshold while the observed
     anomalies are published detections. This pattern is expected: the geometry
     envelope naturally produces order-of-magnitude variation in predicted anomaly
-    magnitude, and the reference coupling β_ref is not the fitted value. All
+    magnitude, and the reference coupling β_{A,ref} is not the fitted value. All
     published nulls (Galileo 1992, MESSENGER, Rosetta 2007, Juno, and others)
-    are correctly predicted as null at β_ref. No false positives are present:
+    are correctly predicted as null at β_{A,ref}. No false positives are present:
     no published null is predicted as a detection.
 </p>
 
@@ -421,21 +427,19 @@
 </p>
 
 <p>
-    Cassini, with its high perigee velocity (19.02 km/s) and negative asymmetry (cos_asymmetry = -0.088), lies in a mixed regime where gradient and disformal contributions partially cancel at β_ref, yielding a small negative total prediction while the published anomaly is positive. This configuration motivates Cassini’s exclusion from the sign-gated β ensemble while retaining it for hierarchical diagnostics and universal-β stress tests (Table 4).
+    Cassini, with its high perigee velocity (19.02 km/s) and negative asymmetry (cos_asymmetry = -0.088), lies in a mixed regime where gradient and disformal contributions partially cancel at β_{A,ref}, yielding a small negative total prediction while the published anomaly is positive. This configuration motivates Cassini’s exclusion from the sign-gated β<sub>fit</sub> ensemble while retaining it for hierarchical diagnostics and universal-β<sub>fit</sub> stress tests (Table 4).
 </p>
 
 <h2>4.4a Full-Catalog Raw Stress Test</h2>
 
 <p>
-    Before restricting attention to the three sign-gated detections, the universal-$\beta_A$
+    Before restricting attention to the three sign-gated detections, the universal-$\beta_{\rm fit}$
     prediction is tested against all published rows with explicit raw TEP predictions
     in Step 039. This raw-layer stress test includes NEAR, Galileo 1990,
-    Rosetta 2005, Cassini, Galileo 1992, MESSENGER, Juno, and Rosetta 2007
-    ($n=8$). Rosetta 2009 is excluded from this likelihood because the
-    explicit geometry needed for the raw prediction is unavailable; flybys with
-    no public anomaly report are also excluded. The uncertainty is
+    Rosetta 2005, Cassini, Galileo 1992, MESSENGER, Rosetta 2009, Juno, and Rosetta 2007
+    ($n=9$). Flybys with no public anomaly report are also excluded. The uncertainty is
     $\sigma_{\rm tot}^2=\sigma_{\rm obs}^2+\sigma_{\rm raw}^2$, combining the
-    published measurement uncertainty with the propagated universal-$\beta_A$
+    published measurement uncertainty with the propagated universal-$\beta_{\rm fit}$
     prediction uncertainty.
 </p>
 
@@ -445,34 +449,36 @@
         <tr>
             <th>Quantity</th>
             <th>Null</th>
-            <th>Raw TEP universal-$\beta_A$</th>
+            <th>Raw TEP universal-$\beta_{\rm fit}$</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>Included rows</td>
-            <td colspan="2">$n=8$ published rows with explicit raw predictions</td>
+            <td colspan="2">$n=9$ published rows with explicit raw predictions</td>
         </tr>
         <tr>
             <td>Log likelihood</td>
-            <td>$-2463.07$</td>
-            <td>$-730.05$</td>
+            <td>$-22.46$</td>
+            <td>$-8.83$</td>
         </tr>
         <tr>
             <td>$\chi^2$</td>
-            <td>$4954.91$</td>
-            <td>$1488.88$</td>
+            <td>$62.47$</td>
+            <td>$35.20$</td>
         </tr>
         <tr>
             <td>Improvement</td>
-            <td colspan="2">$\Delta\log L_{\rm TEP-null}=+1733.02$; $\Delta\chi^2_{\rm null-TEP}=3466.03$</td>
+            <td colspan="2">$\Delta\log L_{\rm TEP-null}\approx+13.63$; $\Delta\chi^2_{\rm null-TEP}\approx27.27$</td>
         </tr>
     </tbody>
 </table>
 
 <p>
-    This table is the headline full-catalog stress test: the raw universal-$\beta_A$
-    model greatly improves over the null because it captures the large NEAR,
+    This table is the headline full-catalog stress test: once the random-effects
+    prediction uncertainty is included, the raw universal-$\beta_{\rm fit}$
+    model improves over the null by a modest $\Delta\log L \approx 13.63$.
+    The improvement reflects the large NEAR,
     Galileo 1990, and Rosetta 2005 signals, while still exposing the remaining
     stress cases. Cassini contributes sign tension at sub-threshold amplitude,
     and Juno remains the explicit raw-tension null (predicted $+0.11$ mm/s). These results are therefore
@@ -484,7 +490,7 @@
 <h2>4.5 Bayesian Model Comparison</h2>
 
 <p>
-    The four-tier model comparison below evaluates Null, Anderson, TEP restricted, and TEP flexible models on the full catalog of nine flybys with published observations (n = 9), using Gaussian likelihoods and systematic uncertainty from the Step 026 heterogeneity budget. The TEP restricted amplitude β is fitted on the three sign-gated primary detections (NEAR, Galileo 1990, Rosetta 2005), then applied to the full n = 9 catalog for the model-comparison likelihood. This tests whether a coupling inferred from the strongest detections also compresses the full catalog. Cassini is excluded from the β-fitting ensemble on sign mismatch at β_ref but remains in the catalog likelihood as a stress case.
+    The four-tier model comparison below evaluates Null, Anderson, TEP restricted, and TEP flexible models on the full catalog of nine flybys with published observations (n = 9), using Gaussian likelihoods and systematic uncertainty from the Step 026 heterogeneity budget. The TEP restricted amplitude β_{\rm fit} is fitted on the three sign-gated primary detections (NEAR, Galileo 1990, Rosetta 2005), then applied to the full n = 9 catalog for the model-comparison likelihood. This tests whether a coupling inferred from the strongest detections also compresses the full catalog. Cassini is excluded from the β_{\rm fit}-fitting ensemble on sign mismatch at β_{A,ref} but remains in the catalog likelihood as a stress case.
 </p>
 
 <h3>4.5.1 Model Definitions and Parameter Status</h3>
@@ -513,15 +519,15 @@
         </tr>
         <tr>
             <td>TEP Restricted ($M_{\rm T}^{\rm res}$)</td>
-            <td>1 ($\beta_A$)</td>
+            <td>1 ($\beta_{\rm fit}$)</td>
             <td>$\lambda_{\rm TEP} \approx 4000$ km (GNSS Step 016); $S_\oplus \approx 0.35$ (UCD Step 010); $v_{\rm trans} \approx 16.8$ km/s (field equations); geometry from JPL Horizons</td>
-            <td>$\Delta v = dv_{\rm pred}^{\rm base}(\beta_A/\beta_{\rm ref})^{3/4}$. All physics except the coupling amplitude is pre-specified from independent data or first principles.</td>
+            <td>$\Delta v = dv_{\rm pred}^{\rm base}(\beta_{\rm fit}/\beta_{\rm ref})^{3/4}$. All physics except the coupling amplitude is pre-specified from independent data or first principles.</td>
         </tr>
         <tr>
             <td>TEP Flexible ($M_{\rm T}^{\rm flex}$)</td>
-            <td>3 ($\beta_A$, $b_{\rm disf}$, offset)</td>
+            <td>3 ($\beta_{\rm fit}$, $b_{\rm disf}$, offset)</td>
             <td>Same pre-specified quantities as restricted</td>
-            <td>$\Delta v = (\beta_A/\beta_{\rm ref})^{3/4}(dv_{\rm grad} + b_{\rm disf} \, dv_{\rm disf}) + \text{offset}$. Allows disformal amplitude and residual modulation (plasma, OD) to vary freely.</td>
+            <td>$\Delta v = (\beta_{\rm fit}/\beta_{\rm ref})^{3/4}(dv_{\rm grad} + b_{\rm disf} \, dv_{\rm disf}) + \text{offset}$. Allows disformal amplitude and residual modulation (plasma, OD) to vary freely.</td>
         </tr>
     </tbody>
 </table>
@@ -537,7 +543,7 @@
     <li>Anderson: log L = -50.97, AIC = 105.9, BIC = 106.3</li>
     <li>TEP restricted: log L = -13.2, AIC = 28.4, BIC = 28.6</li>
     <li>TEP flexible: log L = -12.53, AIC = 31.1, BIC = 31.7</li>
-    <li>TEP restricted (pessimistic): k_eff = 8 (1 fitted β + 7 heuristic envelope coefficients), AIC = 42.4, BIC = 44.0</li>
+    <li>TEP restricted (pessimistic): k_eff = 8 (1 fitted β<sub>fit</sub> + 7 heuristic envelope coefficients), AIC = 42.4, BIC = 44.0</li>
 </ul>
 
 <p>
@@ -570,32 +576,35 @@
 </p>
 
 <p>
-    The restricted model is the scientifically important tier because every quantity except $\beta_A$ is pre-specified from independent measurements or first-principles theory. The large $\Delta$BIC separation on the full n = 9 catalog therefore reflects predictive compression relative to the Null, not an extra free parameter from Cassini.
+    The restricted model is the scientifically important tier because every quantity except $\beta_{\rm fit}$ is pre-specified from independent measurements or first-principles theory. The large $\Delta$BIC separation on the full n = 9 catalog therefore reflects predictive compression relative to the Null, not an extra free parameter from Cassini.
 </p>
 
 <div class="key-concept">
     <h4>Temporal Shear Impulse Consistency Verification</h4>
     <p>
-        The fitted $\beta_A$ values provide a direct probe of the TEP scalar
+        The fitted $\beta_{\rm fit}$ values provide a direct probe of the TEP scalar
         force structure through the temporal shear impulse diagnostic. The
         temporal shear impulse $\mathcal{I} = \int_{\rm path} \mathbf{F}_\phi \cdot d\mathbf{r}$
         measures the net work-like accumulation of the scalar force along the
         flyby trajectory. In the TEP framework, the predicted velocity shift
         relates to the impulse via $\Delta v_{\rm TEP} \propto \beta_{A,\rm eff}
         \cdot \mathcal{I}$, modulated by trajectory geometry and disformal
-        coupling. The consistent mapping between fitted $\beta_A$ values
+        coupling. The consistent mapping between fitted $\beta_{\rm fit}$ values
         and the geometric impulse computed from each flyby's 3D trajectory
         (using JPL Horizons ephemerides) supports the conclusion that the scalar force model
         respects the fundamental field structure of the TEP
-        equations. The correlation between impulse magnitude and fitted $\beta_A$
+        equations. The correlation between impulse magnitude and fitted $\beta_{\rm fit}$
         ($r = 0.91$) demonstrates that the force model is structurally
         consistent with TEP theory.
     </p>
 </div>
 
 <p>
-    All gated fitted $β$ values satisfy the Cassini PPN bound ($|γ - 1| < 2.3
-    \times 10^{-5}$). The ensemble weighted mean yields $β = 1.73 \times 10^{-3} \pm 6.82 \times 10^{-5}$, with screened $\beta_{A,\rm eff}$ giving $|γ - 1| \approx 7.3 \times 10^{-7}$ for the weighted mean. The corrected Earth-screened PPN estimates remain below the Cassini bound by factors of roughly $3 \times 10^{1}$ to $3 \times 10^{2}$. The conservative solar-path check in Section 4.6.1a gives $|γ - 1|_{\odot} \approx 6.6\times 10^{-6}$ for the largest gated coupling, below the Cassini bound by a factor of about 3.5. Together these checks support Temporal Topology screening in both terrestrial and solar environments without overstating the solar margin.
+    The fitted $\beta_{\rm fit}$ values are flyby trajectory-response amplitudes,
+    not PPN $\gamma$ predictions. Cassini PPN compliance is evaluated through
+    the solar source-charge projection $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$
+    (Section 4.6.1a). The ensemble weighted mean yields $\beta_{\rm fit} = 1.73 \times 10^{-3} \pm 6.82 \times 10^{-5}$.
+    The conservative solar source-charge projection in Section 4.6.1a gives $S_\Sigma^{(\odot)} \le 10^{-8}$ from the Jakarta radial field solution for the screened quadratic benchmark, well inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 3.4\times 10^{-3}$. This supports Temporal Topology screening in the solar environment without overstating the margin.
 </p>
 
 <h2>4.6 PPN Constraints and Validation</h2>
@@ -611,81 +620,75 @@
 
 <div class="equation">
     \begin{equation}
-    |\gamma - 1| \approx 2\beta_{A,\rm eff}^2 \quad \text{(for small }
-    \beta_{A,\rm eff}\text{)}
+    |\gamma - 1| \approx 2\alpha_{\rm eff}^2 \quad \text{(for small }
+    \alpha_{\rm eff}\text{)}
     \end{equation}
 </div>
 
 <p>
-    Derivation (Jakarta v0.8, Sec. 7): In the DEF screened limit,
+    Derivation (Paper 0, Sec. 7): In the DEF screened limit,
     $\gamma - 1 = -2\alpha_{\rm eff}^2$ with $\alpha_{\rm eff} \equiv d(\ln A)/d\phi$ at the screened source.
     For $A(\phi)=\exp(\beta_A\phi/M_{\rm Pl})$, use $\psi\equiv\phi/M_{\rm Pl}$ so $d(\ln A)/d\psi=\beta_A$.
-    Identifying the locally active dimensionless coupling with screened $\beta_{A,\rm eff}=\beta_A S_\oplus$
-    gives $|\gamma - 1| \approx 2\beta_{A,\rm eff}^2$ for magnitude comparisons to Cassini
-    (the measured $\gamma - 1$ is negative in the DEF convention).
+    The Cassini source-charge parameter is $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$,
+    giving $|\gamma - 1| \approx 2(\alpha_{\rm eff}^{(\odot)})^2$ for magnitude comparisons to Cassini
+    (the measured $\gamma - 1$ is negative in the DEF convention). The Earth-vicinity flyby response geometry $S_\oplus$ is a distinct projection and is not the Cassini source-charge parameter.
 </p>
 
 <p>
-    Using the fitted $β$ values and UCD-derived characteristic suppression
-    $S_{\oplus} \approx 0.35$, the effective coupling is $β_{\rm eff} = β \times S_{\oplus}$:
+    The fitted $\beta_{\rm fit}$ values are flyby trajectory-response
+    amplitudes for Earth-vicinity geometry, distinct from the Cassini
+    source-charge parameter $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$.
+    The Earth-screened flyby response amplitudes $\beta_{\rm fit} \times S_\oplus$ are:
 </p>
 
 <ul>
     <li>
-        NEAR: $β_{\rm eff} = 6.04 \times 10^{-4}$ → $|γ - 1| \approx 7.31 \times 10^{-7}$
+        NEAR: $\beta_{\rm fit} \times S_\oplus = 6.04 \times 10^{-4}$
     </li>
     <li>
-        Galileo 1990: $β_{\rm eff} = 1.86 \times 10^{-3}$ → $|γ - 1| \approx 6.93 \times 10^{-6}$
+        Galileo 1990: $\beta_{\rm fit} \times S_\oplus = 1.86 \times 10^{-3}$
     </li>
     <li>
-        Rosetta 2005: $β_{\rm eff} = 3.53 \times 10^{-4}$ → $|γ - 1| \approx 2.49 \times 10^{-7}$
+        Rosetta 2005: $\beta_{\rm fit} \times S_\oplus = 3.53 \times 10^{-4}$
     </li>
     <li>
-        Cassini: no gated $\beta_{\rm fit}$ (sign mismatch at $\beta_{\rm ref}$); solar-path PPN illustrations use the weighted mean coupling as a population-level conservative estimate.
+        Cassini: no gated $\beta_{\rm fit}$ (sign mismatch at $\beta_{\rm ref}$); Cassini PPN compliance is evaluated through the solar source-charge projection $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$ (Section 4.6.1a), not through the flyby amplitudes.
     </li>
 </ul>
 
 <p>
-    The screened PPN deviations above apply the Earth-screening factor $S_{\oplus} \approx 0.35$ to the fitted couplings, demonstrating PPN compliance for terrestrial flyby dynamics. Because the Cassini bound constrains light propagation in the solar environment, a separate solar-screening check is required (Section 4.6.1a).
+    These are trajectory-response amplitudes, not PPN $\gamma$ predictions.
+    Cassini PPN compliance is evaluated through the solar source-charge
+    projection $\alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\alpha_0$
+    (Section 4.6.1a), not through the fitted flyby amplitudes.
 </p>
 
 <h3>4.6.1a Solar-Screening PPN Check for Cassini</h3>
 
 <p>
-    The Cassini Shapiro-delay measurement constrains the scalar field along the radio path during solar conjunction, not at Earth's surface. Applying the same UCD saturation model to the Sun:
+    The Cassini Shapiro-delay measurement constrains the scalar field along the radio path during solar conjunction, not at Earth's surface. Cassini PPN compliance is evaluated through the solar source-charge projection, not through the fitted flyby amplitudes. Following the Jakarta mapping (Paper 0, §3.4):
 </p>
 
 <div class="equation">
     \begin{equation}
-    R_{\rm sol,\odot} = \left(\frac{3M_{\odot}}{4\pi\rho_T}\right)^{1/3} \approx 2.87 \times 10^{5}\ {\rm km} \approx 0.41\,R_{\odot}
+    \alpha_{\rm eff}^{(\odot)} = S_\Sigma^{(\odot)}\,\alpha_0,
+    \qquad
+    |\gamma - 1| \simeq 2\left(\alpha_{\rm eff}^{(\odot)}\right)^2,
     \end{equation}
 </div>
 
 <p>
-    with $M_{\odot} = 1.989\times 10^{30}$ kg and $R_{\odot} = 6.96\times 10^{5}$ km. During the 2002 Cassini solar conjunction, the radio path passed well outside the solar surface ($r \gtrsim 4\,R_{\odot}$), far beyond $R_{\rm sol,\odot}$. Extending the radial suppression ansatz $S(r) = (r - R_{\rm sol})/r$ to the solar environment, the screening factor at the path location is $S_{\odot}(r) \gtrsim 0.90$. The effective solar coupling is therefore:
+    where $\alpha_0$ is the bare microscopic coupling and $S_\Sigma^{(\odot)}$ is the solar Temporal-Topology screening factor. With $|\alpha_0| = 1$ (Jakarta §2.2), the Cassini bound $|\gamma - 1| < 2.3\times 10^{-5}$ requires:
 </p>
 
 <div class="equation">
     \begin{equation}
-    \beta_{\rm eff,\odot}(r) = \beta_A \times S_{\odot}(r)
+    S_\Sigma^{(\odot)} \lesssim \sqrt{\frac{2.3\times 10^{-5}}{2}} \approx 3.4\times 10^{-3}.
     \end{equation}
 </div>
 
 <p>
-    Using the weighted mean $\beta_A \approx 1.73\times 10^{-3}$ as the population-level solar-system coupling:
-</p>
-
-<ul>
-    <li>
-        Solar surface ($S_{\odot} \approx 0.59$): $\beta_{\rm eff,\odot} \approx 1.02\times 10^{-3}$ $\rightarrow$ $|\gamma - 1|_{\odot} \approx 2.1\times 10^{-6}$
-    </li>
-    <li>
-        Cassini radio path ($S_{\odot}(r) \approx 0.90$): $\beta_{\rm eff,\odot} \approx 1.56\times 10^{-3}$ $\rightarrow$ $|\gamma - 1|_{\odot} \approx 4.8\times 10^{-6}$
-    </li>
-</ul>
-
-<p>
-    Both solar-screened estimates satisfy the Cassini bound ($|\gamma - 1| < 2.3\times 10^{-5}$). The solar-surface estimate has a margin of about 11, while the population-level radio-path estimate has a margin of about 4.8. The Earth-screened calculation (Section 4.6.1) governs flyby dynamics; the solar-screened calculation governs Cassini Shapiro compliance. Together they support PPN consistency across both environments.
+    Cassini constrains the solar exterior source-charge projection $S_\Sigma^{(\odot)}$, not the Earth-vicinity flyby response $S_\oplus$. The Jakarta radial field solution gives $S_\Sigma^{(\odot)} \le 10^{-8}$ for the screened quadratic benchmark ($V = \frac12 m^2 \phi^2$, $\mu_0 \ge 0.01$), well inside the Cassini requirement $S_\Sigma^{(\odot)} \lesssim 3.4\times 10^{-3}$. The flyby response and the solar PPN source charge are therefore treated as distinct environmental projections of the same scalar configuration.
 </p>
 
 <h3>4.6.2 Sensitivity Analysis</h3>
@@ -705,7 +708,7 @@
             <th>Parameter</th>
             <th>Nominal Value</th>
             <th>Tested Range</th>
-            <th>All PPN Compliant?</th>
+            <th>Fit stable?</th>
             <th>Impact on β</th>
         </tr>
     </thead>
@@ -749,12 +752,12 @@
 </table>
 
 <p>
-    Robustness conclusion: The TEP model maintains PPN
-    compliance across a broad range of parameter values. The phase-boundary
-    factor can vary by ±32% (0.25 to 0.45) and all fitted β values remain within
-    PPN bounds. This suggests that the PPN compliance is not fine-tuned but is a
+    Robustness conclusion: The TEP model maintains fit
+    stability across a broad range of parameter values. The phase-boundary
+    factor can vary by ±32% (0.25 to 0.45) and all fitted β<sub>fit</sub> values remain within
+    the fitted range. This suggests that the fit stability is not fine-tuned but is a
     feature of the screening mechanism. The relaxation length has moderate
-    impact on predicted Δv but does not affect PPN compliance because the fitted
+    impact on predicted Δv but does not affect fit stability because the fitted
     β values adjust to compensate.
 </p>
 
@@ -823,14 +826,14 @@
 
 <p>
     Connection to observations: Step 039 classifies
-    fixed-amplitude raw predictions (Step 008 pooled $\beta_A$) with the Step 007 geometry envelope
+    fixed-amplitude raw predictions (Step 008 pooled $\beta_{\rm fit}$) with the Step 007 geometry envelope
     (3 deterministic true positives, 5 deterministic true nulls, 1 deterministic fixed-amplitude warning case). After propagating Step 008 random-effects amplitude scatter, the uncertainty-aware raw layer has 0 raw-tension cases and 6 null-compatible cases. Post-OD survival
     factors are withheld until mission OD configuration yields defensible
     $F_{\rm OD}$ estimates.
 </p>
 
 <p>
-    Juno tension: The Juno non-detection (universal-$\beta_A$
+    Juno tension: The Juno non-detection (universal-$\beta_{\rm fit}$
     prediction $+0.11 \pm 0.04$ mm/s, observed $0.00 \pm 0.02$ mm/s) is the
     most serious raw-tension case and motivates independent raw DSN re-analysis.
     In the current pipeline run, the DSN ingestion layer emits mission discovery and request artifacts but does not yet provide indexed raw Doppler products for most missions (ingest status <code>no_indexed_products</code>), so this re-analysis remains a defined falsification pathway rather than a completed reprocessing result.
@@ -851,7 +854,6 @@
         <tr>
             <th>Excluded Flyby</th>
             <th>β without this flyby</th>
-            <th>PPN Compliant?</th>
             <th>Change from full sample</th>
         </tr>
     </thead>
@@ -859,25 +861,21 @@
         <tr>
             <td>None (full sample)</td>
             <td>1.73×10⁻³</td>
-            <td>✓ Yes</td>
             <td>—</td>
         </tr>
         <tr>
             <td>NEAR (1998)</td>
             <td>2.38×10⁻³</td>
-            <td>✓ Yes</td>
             <td>+38%</td>
         </tr>
         <tr>
             <td>Galileo (1990)</td>
             <td>1.73×10⁻³</td>
-            <td>✓ Yes</td>
             <td>+0.0%</td>
         </tr>
         <tr>
             <td>Rosetta (2005)</td>
             <td>1.73×10⁻³</td>
-            <td>✓ Yes</td>
             <td>+0.1%</td>
         </tr>
     </tbody>
@@ -887,7 +885,7 @@
     The stability coefficient (relative standard deviation of LOO estimates divided by their mean) is 0.148, indicating moderate robustness (values &lt; 0.5 are
     considered robust). Even when the high-S/N NEAR detection is excluded, the
     remaining two flybys yield β = 2.38×10⁻³, which is within the 95% confidence
-    interval and still PPN-compliant. This indicates that the TEP conclusion
+    interval. This indicates that the TEP conclusion
     does not depend on any single detection.
 </p>
 
@@ -913,12 +911,12 @@
 <ul>
     <li>NEAR: $d = (13.46 - 0.00) / 3.90 = 3.45$ — very large effect ($d \gg 0.8$)</li>
     <li>Galileo 1990: $d = (3.92 - 0.00) / 3.90 = 1.00$ — large effect ($d > 0.8$)</li>
-    <li>Rosetta 2005: $d = (1.82 - 0.00) / 3.90 = 0.47$ — medium effect ($0.5 < d < 0.8$)</li>
+    <li>Rosetta 2005: $d = (1.82 - 0.00) / 3.90 = 0.47$ — small-to-medium effect</li>
     <li>Cassini: $d = (0.11 - 0.00) / 3.90 = 0.03$ — negligible effect ($d \ll 0.2$)</li>
 </ul>
 
 <p>
-    NEAR and Galileo 1990 show large to very large effects, providing strong statistical separation from null results. Rosetta 2005 shows a medium effect. Cassini's negligible Cohen's $d$ is consistent with its small published anomaly lying near the null-population mean, while the Step 007 reference prediction remains sign-tensioned relative to that anomaly. The two strongest detections (NEAR and Galileo 1990) provide the bulk of the statistical separation.
+    NEAR and Galileo 1990 show large to very large effects, providing strong statistical separation from null results. Rosetta 2005 shows a small-to-medium effect. Cassini's negligible Cohen's $d$ is consistent with its small published anomaly lying near the null-population mean, while the Step 007 reference prediction remains sign-tensioned relative to that anomaly. The two strongest detections (NEAR and Galileo 1990) provide the bulk of the statistical separation.
 </p>
 
 <p>
@@ -926,17 +924,17 @@
 </p>
 
 <p>
-    Prediction accuracy: On the Step 008 primary comparison, $R^2 \approx 0.924$, Pearson $\rho \approx 0.979$, MAE $\approx 0.87$ mm/s, RMSE $\approx 1.40$ mm/s, and MAPE $\approx 23.6\%$. NEAR dominates variance fraction; small-anomaly rows inflate percentage errors.
+    Prediction accuracy: On the Step 008 primary comparison, $R^2 \approx 0.945$, Pearson $\rho \approx 0.976$, MAE $\approx 0.84$ mm/s, RMSE $\approx 1.21$ mm/s, and MAPE $\approx 74.7\%$. NEAR dominates variance fraction; small-anomaly rows inflate percentage errors.
 </p>
 
 <p>
-    Residual analysis: Shapiro–Wilk normality on the gated prediction residuals gives $p \approx 0.098$ (marginally consistent with Gaussian tails at $n=3$).
+    Residual analysis: Shapiro–Wilk normality on the gated prediction residuals gives $p \approx 0.50$ (consistent with Gaussian tails at $n=3$).
 </p>
 
 <h3>4.6.6 Characteristic Suppression from UCD Saturation Model</h3>
 
 <p>
-    The characteristic suppression $S_{\oplus} \approx 0.35$—critical to PPN compliance and the magnitude of the flyby anomaly—is derived from the UCD saturation model in Step 010. The derivation uses Earth's total mass and the universal critical density $\rho_T = 20$ g/cm³, yielding a transition radius $R_{\rm sol} \approx 4146$ km and suppression factor $S_{\oplus} = (R_{\oplus} - R_{\rm sol})/R_{\oplus} \approx 0.35$. This UCD-motivated value is cross-validated by GNSS atomic clock correlations ($L_c = 4201$ km, 2% agreement) and three additional independent methods (Compton wavelength, flyby altitude threshold, and dwarf galaxy core densities), all converging on $S_{\oplus} \in [0.34, 0.39]$. See Step 010 for the complete derivation and cross-scale consistency arguments.
+    The characteristic suppression $S_{\oplus} \approx 0.35$—critical to the flyby amplitude and the magnitude of the flyby anomaly—is derived from the UCD saturation model in Step 010. The derivation uses Earth's total mass and the saturation scale $\rho_T = 20$ g/cm³, yielding a transition radius $R_{\rm sol} \approx 4146$ km and suppression factor $S_{\oplus} = (R_{\oplus} - R_{\rm sol})/R_{\oplus} \approx 0.35$. This UCD-motivated value is cross-validated by GNSS atomic clock correlations ($L_c = 4201$ km, 2% agreement) and two additional independent methods (flyby altitude threshold and dwarf galaxy core densities), all converging on $S_{\oplus} \in [0.34, 0.39]$. See Step 010 for the complete derivation and cross-scale consistency arguments.
 </p>
 
 <p>
@@ -946,7 +944,7 @@
 <h3>4.6.7 Systematic Uncertainty Budget</h3>
 
 <p>
-    A comprehensive uncertainty budget quantifies the contribution of each uncertainty source to the fitted $\beta_A$ parameters. The corrected uncertainty analysis (Step 025) distinguishes between variance contributions and total relative uncertainty:
+    A comprehensive uncertainty budget quantifies the contribution of each uncertainty source to the fitted $\beta_{\rm fit}$ parameters. The corrected uncertainty analysis (Step 025) distinguishes between variance contributions and total relative uncertainty:
 </p>
 
 <p>
@@ -980,17 +978,17 @@
 </ul>
 
 <p>
-    Interpretation: The total relative uncertainty of 72.9% is dominated by heterogeneity (66.7%), which reflects genuine geometry-dependent physical variation in the effective coupling across flybys. This is expected in the TEP framework where $\beta_{A,\rm eff}$ varies with altitude, latitude, velocity, plasma environment, and trajectory asymmetry. The systematic uncertainty (29.2%) is dominated by characteristic suppression uncertainty (25.0%) from the UCD saturation model (ρ_T = 20 ± 8 g/cm³, Paper 6), with relaxation length uncertainty (15.0%) from the SCF theoretical prior as the second-largest source. Even with this uncertainty, all fitted $\beta_A$ values remain PPN-compliant by wide margins.
+    Interpretation: The total relative uncertainty of 72.9% is dominated by heterogeneity (66.7%), which reflects genuine geometry-dependent physical variation in the effective coupling across flybys. This is expected in the TEP framework where $\beta_{A,\rm eff}$ varies with altitude, latitude, velocity, plasma environment, and trajectory asymmetry. The systematic uncertainty (29.2%) is dominated by characteristic suppression uncertainty (25.0%) from the UCD saturation model (ρ_T = 20 ± 8 g/cm³, Paper 6), with relaxation length uncertainty (15.0%) from the SCF theoretical prior as the second-largest source.
 </p>
 
 <h2>4.7 Model Predictions for All Flybys</h2>
 
 <p>
     Table 4 presents the full prediction set evaluated at the universal
-    weighted-mean coupling constant ($\beta_A = 1.73 \times 10^{-3}$), scaled
-    from the reference predictions ($\beta_{A,0} = 10^{-4}$) via the $3/4$ power
+    weighted-mean coupling constant ($\beta_{\rm fit} = 1.73 \times 10^{-3}$), scaled
+    from the reference predictions ($\beta_{\rm fit,0} = 10^{-4}$) via the $3/4$ power
     law established in Step 008. Each row reports the raw TEP prediction at
-    that universal coupling, the universal-$\beta_A$ residual
+    that universal coupling, the universal-$\beta_{\rm fit}$ residual
     $\Delta v_{\rm obs} - \Delta v_{\rm TEP}^{\rm raw}$, and the raw
     classification from Step 039. Mission-specific OD survival factors
   $F_{\rm OD}$ and post-OD predictions are emitted only when Step 021
@@ -1001,7 +999,7 @@
 
 <table class="data-table">
     <caption>
-        Table 4: Per-Flyby Universal-$\beta_A$ Predictions and Classification (Step 039)
+        Table 4: Per-Flyby Universal-$\beta_{\rm fit}$ Predictions and Classification (Step 039)
     </caption>
     <thead>
         <tr>
@@ -1166,16 +1164,16 @@
 </table>
 
 <p>
-    Summary: At the universal weighted-mean $\beta_A$, Step 039
+    Summary: At the universal weighted-mean $\beta_{\rm fit}$, Step 039
     classifies three published anomalies as raw true positives (NEAR, Galileo
-    1990, Rosetta 2005). Four published null or bound cases are consistent with universal-$\beta_A$ predictions under the Step 007 geometry envelope; one raw-tension case remains (Juno). Cassini and Galileo 1992 are classified as raw true nulls at the refit weighted-mean $\beta_A$. Rosetta 2009 is a published null/bound case with insufficient explicit geometry for the universal-$\beta_A$ prediction table, while Stardust, OSIRIS-REx,
+    1990, Rosetta 2005). Four published null or bound cases are consistent with universal-$\beta_{\rm fit}$ predictions under the Step 007 geometry envelope; one raw-tension case remains (Juno). Cassini and Galileo 1992 are classified as raw true nulls at the refit weighted-mean $\beta_{\rm fit}$. Rosetta 2009 is a published null/bound case with insufficient explicit geometry for the universal-$\beta_{\rm fit}$ prediction table, while Stardust, OSIRIS-REx,
     and BepiColombo lack public anomaly reports and are not
     used in quantitative likelihood.
 </p>
 
 <p>
     Falsifiability criterion: Raw-tension cases define model
-    stress tests independent of era-based OD survival factors. Juno remains the sole deterministic fixed-amplitude warning case at the refit weighted-mean $\beta_A$ ($+0.11$ mm/s raw prediction vs. $0.00 \pm 0.02$ mm/s observed) with random-effects prediction uncertainty $\pm 0.04$ mm/s. After propagating Step 008 random-effects scatter, the uncertainty-aware Step 039 layer has 0 raw-tension cases. Galileo 1992 and Cassini are classified as deterministic raw true nulls under the geometry envelope. Post-OD
+    stress tests independent of era-based OD survival factors. Juno remains the sole deterministic fixed-amplitude warning case at the refit weighted-mean $\beta_{\rm fit}$ ($+0.11$ mm/s raw prediction vs. $0.00 \pm 0.02$ mm/s observed) with random-effects prediction uncertainty $\pm 0.04$ mm/s. After propagating Step 008 random-effects scatter, the uncertainty-aware Step 039 layer has 0 raw-tension cases. Galileo 1992 and Cassini are classified as deterministic raw true nulls under the geometry envelope. Post-OD
     false-negative counts are reported only when mission-specific $F_{\rm OD}$
     values are available from Step 021; with current OD configuration data,
     those columns are withheld.
@@ -1183,16 +1181,16 @@
 
 <p>
     Honest assessment: The scalar force model reproduces the
-    three largest published anomalies at universal $\beta_A$ with sub-millimetre
+    three largest published anomalies at universal $\beta_{\rm fit}$ with sub-millimetre
     to millimetre residuals, while high-altitude or symmetric trajectories
     remain consistent with null predictions. Galileo 1992 and Juno define the
-    priority raw DSN reanalysis targets. Cassini remains a sign-tension case at $\beta_{\rm ref}$ (negative predicted $\Delta v_{\rm TEP}$, positive published anomaly) and is excluded from the gated $\beta_A$ ensemble; resolving it requires independent DSN OD or envelope refinements, not only a universal rescaling of $\beta_A$.
+    priority raw DSN reanalysis targets. Cassini remains a sign-tension case at $\beta_{\rm ref}$ (negative predicted $\Delta v_{\rm TEP}$, positive published anomaly) and is excluded from the gated $\beta_{\rm fit}$ ensemble; resolving it requires independent DSN OD or envelope refinements, not only a universal rescaling of $\beta_{\rm fit}$.
 </p>
 
 <h2>4.8 Heterogeneity and Robustness Analysis</h2>
 
 <p>
-    Heterogeneity assessment: The four valid fitted β values
+    Heterogeneity assessment: The four valid fitted β<sub>fit</sub> values
     span a factor of 5.3 (Step 009). Step 009 does not perform a formal variance
     decomposition because n ≤ 4 renders ANOVA-style partitioning statistically
     meaningless: the standard error on a sample variance estimate with ddof = 1
@@ -1239,7 +1237,7 @@
             <td>Formally extreme ($I^2 > 75\%$)</td>
         </tr>
         <tr>
-            <td>$\beta_A$ range (gated)</td>
+            <td>$\beta_{\rm fit}$ range (gated)</td>
             <td>$1.01 \times 10^{-3}$ – $5.33 \times 10^{-3}$</td>
             <td>
                 Factor $\approx 5.3$ across the four-gated ensemble
@@ -1254,7 +1252,7 @@
 </table>
 
 <p>
-    The elevated $I^2$ on the three gated $\beta_A$ fits reflects formal tension between sub-percent per-flyby uncertainties and a multiplicative spread of order unity in fitted coupling. The metric is designed for meta-analyses where true effects are identical; here, geometry, plasma, and velocity structure intentionally modulate $\beta_{A,\rm eff}$, so large $I^2$ is expected until additional physics is folded into a single generative curve or $n$ grows.
+    The elevated $I^2$ on the three gated $\beta_{\rm fit}$ fits reflects formal tension between sub-percent per-flyby uncertainties and a multiplicative spread of order unity in fitted coupling. The metric is designed for meta-analyses where true effects are identical; here, geometry, plasma, and velocity structure intentionally modulate $\beta_{A,\rm eff}$, so large $I^2$ is expected until additional physics is folded into a single generative curve or $n$ grows.
 </p>
 
 <p>
@@ -1265,10 +1263,10 @@
 
 <ul>
     <li>
-        <em>Bootstrap median:</em> $\beta_A \approx 1.73 \times 10^{-3}$ (tracks the inverse-variance weighted mean)
+        <em>Bootstrap median:</em> $\beta_{\rm fit} \approx 1.73 \times 10^{-3}$ (tracks the inverse-variance weighted mean)
     </li>
     <li>
-        <em>Bootstrap mean / std:</em> $\beta_A \approx 2.06 \times 10^{-3} \pm 9.55 \times 10^{-4}$
+        <em>Bootstrap mean / std:</em> $\beta_{\rm fit} \approx 2.06 \times 10^{-3} \pm 9.55 \times 10^{-4}$
     </li>
     <li>
         <em>95% confidence interval:</em> $[1.01 \times 10^{-3},\, 5.33 \times 10^{-3}]$
@@ -1276,22 +1274,22 @@
 </ul>
 
 <p>
-    The bootstrap distribution is broadened by Galileo 1990’s higher per-flyby $\beta_A$; the 95% interval therefore spans the gated range and underscores that the weighted mean is not an arbitrary midpoint of identical detections.
+    The bootstrap distribution is broadened by Galileo 1990’s higher per-flyby $\beta_{\rm fit}$; the 95% interval therefore spans the gated range and underscores that the weighted mean is not an arbitrary midpoint of identical detections.
 </p>
 
 <p>
-    Leave-one-out (Step 008): Inverse-variance $\beta_A$ is recomputed excluding each gated detection:
+    Leave-one-out (Step 008): Inverse-variance $\beta_{\rm fit}$ is recomputed excluding each gated detection:
 </p>
 
 <ul>
     <li>
-        <em>Exclude NEAR:</em> $\beta_A \approx 2.38 \times 10^{-3}$
+        <em>Exclude NEAR:</em> $\beta_{\rm fit} \approx 2.38 \times 10^{-3}$
     </li>
     <li>
-        <em>Exclude Galileo 1990:</em> $\beta_A \approx 1.73 \times 10^{-3}$
+        <em>Exclude Galileo 1990:</em> $\beta_{\rm fit} \approx 1.73 \times 10^{-3}$
     </li>
     <li>
-        <em>Exclude Rosetta 2005:</em> $\beta_A \approx 1.73 \times 10^{-3}$
+        <em>Exclude Rosetta 2005:</em> $\beta_{\rm fit} \approx 1.73 \times 10^{-3}$
     </li>
 </ul>
 
@@ -1317,18 +1315,18 @@
 <ul>
     <li>NEAR: $d = 3.45$ (very large effect)</li>
     <li>Galileo 1990: $d = 1.00$ (large effect)</li>
-    <li>Rosetta 2005: $d = 0.47$ (medium effect)</li>
+    <li>Rosetta 2005: $d = 0.47$ (small-to-medium effect)</li>
     <li>Cassini: $d = 0.03$ (negligible effect)</li>
 </ul>
 
 <p>
-    NEAR and Galileo 1990 are strongly distinguishable from the null population ($d &gt; 0.8$).  Rosetta 2005 shows a medium effect, while Cassini — despite passing the S/N &gt; 2 threshold in the literature table — has a negligible effect size ($d \ll 0.2$), reflecting its proximity to the null-population mean.  The spread in $d$ values is consistent with the $\approx 4$-fold spread in gated fitted $\beta_A$ (coefficient of variation CV $\approx 68\%$ across the trio), confirming geometry-dependent modulation rather than a perfectly universal effective coupling at fixed envelope.
+    NEAR and Galileo 1990 are strongly distinguishable from the null population ($d &gt; 0.8$).  Rosetta 2005 shows a small-to-medium effect, while Cassini — despite passing the S/N &gt; 2 threshold in the literature table — has a negligible effect size ($d \ll 0.2$), reflecting its proximity to the null-population mean.  The spread in $d$ values is consistent with the $\approx 4$-fold spread in gated fitted $\beta_{\rm fit}$ (coefficient of variation CV $\approx 68\%$ across the trio), confirming geometry-dependent modulation rather than a perfectly universal effective coupling at fixed envelope.
 </p>
 
 <h2>4.9 Resolution of Beta Heterogeneity</h2>
 
 <p>
-    The multiplicative spread in gated fitted $\beta_A$ values is partially summarized
+    The multiplicative spread in gated fitted $\beta_{\rm fit}$ values is partially summarized
     through a four-stage decomposition (Step 009). This unified analysis
     consolidates structural physics modulation, observational pipeline effects,
     environmental modulation, and statistical limitations into a coherent
@@ -1346,7 +1344,7 @@
 
 <p>
     Formal correlation analysis: Pearson and Spearman
-    correlation tests quantify relationships between fitted β and physical
+    correlation tests quantify relationships between fitted β<sub>fit</sub> and physical
     parameters:
 </p>
 
@@ -1378,8 +1376,8 @@
             <td>+0.93</td>
             <td>0.23</td>
             <td>+1.00</td>
-            <td>0.00</td>
-            <td>Strong (monotonic relationship confirmed)</td>
+            <td>1/6</td>
+            <td>Perfect ordering in the three-object subset</td>
         </tr>
         <tr>
             <td>Trajectory asymmetry</td>
@@ -1404,8 +1402,8 @@
 <p>
     Robust regression: Theil-Sen estimator (median of pairwise
     slopes) provides outlier-resistant regression. The fitted slope of -2.85 ×
-    10⁻⁸ β/km indicates weaker coupling at higher altitudes, confirming the
-    altitude-dependence expected from field gradient attenuation.
+    10⁻⁸ β/km is directionally consistent with the expected altitude dependence
+    from field gradient attenuation.
 </p>
 
 <p>
@@ -1420,7 +1418,7 @@
 </ul>
 
 <p>
-    The prediction intervals bracket the three gated fitted $\beta_A$ values and illustrate residual width driven largely by Galileo 1990’s high per-flyby coupling.
+    The prediction intervals bracket the three gated fitted $\beta_{\rm fit}$ values and illustrate residual width driven largely by Galileo 1990’s high per-flyby coupling.
 </p>
 
 <p>
@@ -1443,7 +1441,7 @@
         <tr>
             <td>Phase-boundary factor ΔR/R</td>
             <td>0.25 – 0.45</td>
-            <td>Stable (all results PPN-compliant)</td>
+            <td>Stable (all results within fitted range)</td>
         </tr>
         <tr>
             <td>Relaxation length λ_TEP</td>
@@ -1459,7 +1457,7 @@
 </table>
 
 <p>
-    Model adequacy tests: Shapiro–Wilk on standardized residuals yields $p \approx 0.098$ for the gated comparison in Step 008 (small-$n$ caution). Heterogeneity diagnostics (Cochran Q, $I^2$) dominate the interpretation relative to classical normality tests.
+    Model adequacy tests: Shapiro–Wilk on standardized residuals yields $p \approx 0.50$ for the gated comparison in Step 008 (small-$n$ caution). Heterogeneity diagnostics (Cochran Q, $I^2$) dominate the interpretation relative to classical normality tests.
 </p>
 
 <p>
@@ -1567,8 +1565,8 @@
             <td>973</td>
             <td><strong>YES</strong></td>
             <td>13.46</td>
-            <td>3.676</td>
-            <td><strong>3.66</strong></td>
+            <td>1.586</td>
+            <td><strong>8.48</strong></td>
         </tr>
 <tr>
             <td>Galileo 1990</td>
@@ -1579,8 +1577,8 @@
             <td>866</td>
             <td><strong>YES</strong></td>
             <td>3.92</td>
-            <td>0.411</td>
-            <td><strong>9.54</strong></td>
+            <td>0.199</td>
+            <td><strong>19.73</strong></td>
         </tr>
 <tr>
             <td>Cassini</td>
@@ -1591,8 +1589,8 @@
             <td>324</td>
             <td>no</td>
             <td>0.11</td>
-            <td>-0.023</td>
-            <td><strong>-4.71</strong></td>
+            <td>-0.012</td>
+            <td><strong>-9.22</strong></td>
         </tr>
 <tr>
             <td>Galileo 1992</td>
@@ -1603,7 +1601,7 @@
             <td>861</td>
             <td><strong>YES</strong></td>
             <td>0.00</td>
-            <td>0.001</td>
+            <td>0.000</td>
             <td><strong>0.00</strong></td>
         </tr>
 <tr>
@@ -1615,8 +1613,8 @@
             <td>1243</td>
             <td>no</td>
             <td>1.82</td>
-            <td>0.542</td>
-            <td><strong>3.36</strong></td>
+            <td>0.321</td>
+            <td><strong>5.67</strong></td>
         </tr>
 <tr>
             <td>Rosetta 2007</td>
@@ -1628,7 +1626,7 @@
             <td><strong>YES</strong></td>
             <td>0.02</td>
             <td>0.000</td>
-            <td><strong>242.91</strong></td>
+            <td><strong>295.73</strong></td>
         </tr>
 <tr>
             <td>Rosetta 2009</td>
@@ -1639,7 +1637,7 @@
             <td>931</td>
             <td><strong>YES</strong></td>
             <td>0.00</td>
-            <td>0.002</td>
+            <td>0.001</td>
             <td><strong>0.00</strong></td>
         </tr>
 <tr>
@@ -1663,7 +1661,7 @@
             <td>645</td>
             <td>no</td>
             <td>0.00</td>
-            <td>0.028</td>
+            <td>0.013</td>
             <td><strong>0.00</strong></td>
         </tr>
 <tr>
@@ -1708,7 +1706,7 @@
 
 <p>
     Pearson correlation tests were performed between the observed-to-predicted
-    ratio and each cosmographic modulation factor (n = 8). The strongest
+    ratio and each cosmographic modulation factor (n = 9). The strongest
     individual correlations are:
 </p>
 
@@ -1729,37 +1727,37 @@
             <td>Ratio vs radial velocity</td>
             <td>+0.594</td>
             <td>0.121</td>
-            <td>Not significant at n = 8</td>
+            <td>Not significant at n = 9</td>
         </tr>
         <tr>
             <td>Ratio vs heliocentric modulation</td>
             <td>+0.540</td>
             <td>0.167</td>
-            <td>Not significant at n = 8</td>
+            <td>Not significant at n = 9</td>
         </tr>
         <tr>
             <td>Ratio vs Earth orbital speed</td>
             <td>+0.538</td>
             <td>0.169</td>
-            <td>Not significant at n = 8</td>
+            <td>Not significant at n = 9</td>
         </tr>
         <tr>
             <td>Ratio vs heliocentric distance</td>
             <td>−0.537</td>
             <td>0.170</td>
-            <td>Not significant at n = 8</td>
+            <td>Not significant at n = 9</td>
         </tr>
         <tr>
             <td>Ratio vs SC-CMB cos <em>θ</em></td>
             <td>−0.115</td>
             <td>0.787</td>
-            <td>Not significant at n = 8</td>
+            <td>Not significant at n = 9</td>
         </tr>
         <tr>
             <td>Ratio vs CMB modulation factor</td>
             <td>+0.277</td>
             <td>0.507</td>
-            <td>Not significant at n = 8</td>
+            <td>Not significant at n = 9</td>
         </tr>
     </tbody>
 </table>
@@ -1786,7 +1784,7 @@
 </p>
 
 <p class="key-concept">
-    Both-aligned flag: Pearson r = +0.37, p = 0.36 (n = 8)
+    Both-aligned flag: Pearson r = +0.37, p = 0.36 (n = 9)
     <br>
     Mann-Whitney U (aligned &gt; unaligned): U = 16, p = 0.095 (exact test)
 </p>
@@ -1794,7 +1792,7 @@
 <p>
     NEAR and Galileo 1990 retain the largest observed-to-predicted ratios in
     the sample, but the both-aligned flag does not reach conventional
-    significance at n = 8. The test remains exploratory pending additional
+    significance at n = 9. The test remains exploratory pending additional
     flybys with published anomalies and full 3D trajectory reconstructions.
 </p>
 
@@ -1814,18 +1812,18 @@
 </p>
 
 <p>
-    The fitted coefficients are <em>b</em><sub>0</sub> = +24.03,
-    <em>b</em><sub>1</sub> = −7.13, <em>b</em><sub>2</sub> = +81.49,
-    <em>b</em><sub>3</sub> = −80.91. The model achieves
-    <em>R</em><sup>2</sup> = 0.20 and reduces the residual standard
-    deviation from 75.96 to 67.89 mm/s, a 10.6% reduction. The adjusted
-    <em>R</em><sup>2</sup> = −0.28 indicates that with <em>n</em> = 8
+    The fitted coefficients are <em>b</em><sub>0</sub> = +29.25,
+    <em>b</em><sub>1</sub> = −12.68, <em>b</em><sub>2</sub> = +107.98,
+    <em>b</em><sub>3</sub> = −104.62. The model achieves
+    <em>R</em><sup>2</sup> = 0.22 and reduces the residual standard
+    deviation from 92.27 to 81.36 mm/s, an 11.8% reduction. The adjusted
+    <em>R</em><sup>2</sup> = −0.24 indicates that with <em>n</em> = 9
     and four parameters (including intercept), the regression does not
     explain residual variance at conventional significance.
 </p>
 
 <p>
-    Table 9b lists observed-to-predicted ratios for the eight flybys with
+    Table 9b lists observed-to-predicted ratios for the nine flybys with
     usable 3D vectors. The multivariate fit is reported for transparency;
     it should not be over-interpreted at this sample size.
 </p>
@@ -1845,57 +1843,57 @@
     <tbody>
 <tr>
             <td>NEAR</td>
-            <td>3.66</td>
-            <td>28.80</td>
-            <td>-25.14</td>
+            <td>8.48</td>
+            <td>36.52</td>
+            <td>-28.04</td>
         </tr>
 <tr>
             <td>Galileo 1990</td>
-            <td>9.54</td>
-            <td>89.54</td>
-            <td>-80.00</td>
+            <td>19.73</td>
+            <td>115.61</td>
+            <td>-95.89</td>
         </tr>
 <tr>
             <td>Cassini</td>
-            <td>-4.71</td>
-            <td>-25.59</td>
-            <td>+20.88</td>
+            <td>-9.22</td>
+            <td>-32.74</td>
+            <td>+23.51</td>
         </tr>
 <tr>
             <td>Galileo 1992</td>
             <td>0.00</td>
-            <td>34.39</td>
-            <td>-34.39</td>
+            <td>42.22</td>
+            <td>-42.22</td>
         </tr>
 <tr>
             <td>Rosetta 2005</td>
-            <td>3.36</td>
-            <td>-14.19</td>
-            <td>+17.55</td>
+            <td>5.67</td>
+            <td>-17.81</td>
+            <td>+23.47</td>
         </tr>
 <tr>
             <td>Rosetta 2007</td>
-            <td>242.91</td>
-            <td>68.46</td>
-            <td>+174.44</td>
+            <td>295.73</td>
+            <td>86.79</td>
+            <td>+208.94</td>
         </tr>
 <tr>
             <td>Rosetta 2009</td>
             <td>0.00</td>
-            <td>30.77</td>
-            <td>-30.77</td>
+            <td>37.42</td>
+            <td>-37.42</td>
         </tr>
 <tr>
             <td>MESSENGER 2005</td>
             <td>0.00</td>
-            <td>32.16</td>
-            <td>-32.16</td>
+            <td>38.08</td>
+            <td>-38.08</td>
         </tr>
 <tr>
             <td>Juno</td>
             <td>0.00</td>
-            <td>10.42</td>
-            <td>-10.42</td>
+            <td>14.28</td>
+            <td>-14.28</td>
         </tr>
 </tbody>
 </table>
@@ -1915,11 +1913,11 @@
     Optimal combination: E = cos <em>θ</em><sub>SC-CMB</sub> − 1.21
     (v<sub>Earth</sub> · n<sub>CMB</sub> / 30)
     <br>
-    Pearson <em>r</em> = −0.61, <em>p</em> = 0.11 (n = 8)
+    Pearson <em>r</em> = −0.61, <em>p</em> = 0.11 (n = 9)
 </p>
 
 <p>
-    The scan does not yield a conventionally significant correlation at n = 8.
+    The scan does not yield a conventionally significant correlation at n = 9.
     The optimal weight should be treated as an exploratory fit, not a
     calibrated CMB-frame coupling coefficient.
 </p>
@@ -1934,20 +1932,20 @@
 <ol>
     <li>Both-aligned flag (r = +0.37, p = 0.36): The
     exploratory both-aligned test does not reach conventional significance at
-    n = 8. NEAR and Galileo 1990 retain the largest observed-to-predicted
+    n = 9. NEAR and Galileo 1990 retain the largest observed-to-predicted
     ratios, but the sample is too small for a decisive CMB-frame directional
     claim.</li>
 
-    <li>Multivariate regression (R² = 0.20, adjusted R² = −0.28):    A linear combination of SC-CMB direction, Earth-CMB projection, and
-    SC-orbital alignment reduces residual scatter by 10.6% but does not yield
+    <li>Multivariate regression (R² = 0.22, adjusted R² = −0.24):    A linear combination of SC-CMB direction, Earth-CMB projection, and
+    SC-orbital alignment reduces residual scatter by 11.8% but does not yield
   a significant adjusted fit at this sample size.</li>
 
-    <li>Optimal weighted combination (r = +0.33, p = 0.39):    Scanning the Earth/spacecraft CMB projection weights does not produce a
+    <li>Optimal weighted combination (r = −0.61, p = 0.11):    Scanning the Earth/spacecraft CMB projection weights does not produce a
     conventionally significant correlation with the residual ratio.</li>
 </ol>
 
 <p>
-    Caveats: With <em>n</em> = 8 flybys, cosmographic
+    Caveats: With <em>n</em> = 9 flybys, cosmographic
     modulation remains exploratory. The both-aligned test (p = 0.095) and
     individual ratio correlations (all p &gt; 0.05) do not currently support
     a decisive CMB-rest-frame claim. Additional flybys with published anomalies

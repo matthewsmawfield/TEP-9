@@ -368,7 +368,7 @@ def main():
                         "uncertainty": 0.5,
                         "uncertainty_fraction": 0.5,
                         "data_source": "Wide binary R_s transition analysis (Paper 6, UCD)",
-                        "derivation": "Density threshold index n = 3.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions",
+                        "derivation": "Density scale index n = 3.0 represents the power-law dependence of scalar force suppression on ambient density; derived from wide binary R_s transitions where orbital period ratios deviate from Newtonian predictions",
                         "status": "HEURISTIC",
                         "calibration_status": "FROM_WIDE_BINARY_ANALYSIS",
                         "recommended_action": "Refine with Gaia DR3 wide binary catalog and improved parallax measurements"

@@ -352,11 +352,11 @@ class EarthDensityModel:
         
         # Temporal Topology suppression length: λ_rest ∝ 1/√rho
         # Derived from the continuous screening regime of the TEP scalar field
-        rho_threshold = 1e-3  # kg/m^3 (approximate transition density)
+        rho_scale = 1e-3  # kg/m^3 (approximate transition density)
         
-        if rho > rho_threshold:
+        if rho > rho_scale:
             # Shielded regime: short range suppression of Temporal Shear
-            return 1000.0 * (rho_threshold / rho)**0.5  # meters
+            return 1000.0 * (rho_scale / rho)**0.5  # meters
         else:
             # Unscreened regime: long range active field (interplanetary space)
             return 1e6  # 1000 km scale
