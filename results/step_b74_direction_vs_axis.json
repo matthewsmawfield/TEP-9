@@ -1,0 +1,106 @@
+{
+ "step": "step_110_aphelion_direction_vs_axis",
+ "description": "directional vs axisymmetric decomposition of the aphelion asymmetry under the tide-aware null (cos, |cos|, cos2 moments)",
+ "inputs": [
+  "data/raw/warsaw/warsaw_tablec.dat",
+  "data/raw/code/code_original.html",
+  "data/raw/lpc/lpc_orig_2006_2010.vot",
+  "data/raw/mpc/CometEls.txt"
+ ],
+ "seed": 20261011,
+ "n_mc": 20000,
+ "samples": {
+  "warsaw_spike": {
+   "n": 110,
+   "moments": {
+    "cos": 0.134,
+    "abs_cos": 0.4728,
+    "cos2": -0.3614
+   },
+   "p_tide_null": {
+    "cos": 0.005949702514874256,
+    "abs_cos": 0.5860706964651767,
+    "cos2": 0.4841257937103145
+   }
+  },
+  "code_matched": {
+   "n": 98,
+   "moments": {
+    "cos": 0.1932,
+    "abs_cos": 0.4836,
+    "cos2": -0.3445
+   },
+   "p_tide_null": {
+    "cos": 0.00024998750062496874,
+    "abs_cos": 0.40667966601669914,
+    "cos2": 0.3167341632918354
+   }
+  },
+  "code_only": {
+   "n": 63,
+   "moments": {
+    "cos": 0.2152,
+    "abs_cos": 0.4726,
+    "cos2": -0.3682
+   },
+   "p_tide_null": {
+    "cos": 0.000999950002499875,
+    "abs_cos": 0.4249287535623219,
+    "cos2": 0.35693215339233036
+   }
+  },
+  "lpc_one_apparition": {
+   "n": 30,
+   "moments": {
+    "cos": 0.3055,
+    "abs_cos": 0.4052,
+    "cos2": -0.5157
+   },
+   "p_tide_null": {
+    "cos": 0.000599970001499925,
+    "abs_cos": 0.8031098445077746,
+    "cos2": 0.7814109294535273
+   }
+  },
+  "cometels_broad": {
+   "n": 254,
+   "moments": {
+    "cos": 0.1025,
+    "abs_cos": 0.4506,
+    "cos2": -0.4206
+   },
+   "p_tide_null": {
+    "cos": 0.0016999150042497876,
+    "abs_cos": 0.8865556722163892,
+    "cos2": 0.8431078446077697
+   }
+  },
+  "cometels_spike": {
+   "n": 108,
+   "moments": {
+    "cos": 0.1849,
+    "abs_cos": 0.437,
+    "cos2": -0.442
+   },
+   "p_tide_null": {
+    "cos": 0.00014999250037498125,
+    "abs_cos": 0.8753562321883905,
+    "cos2": 0.8185590720463977
+   }
+  },
+  "cometels_broad_detached_axis": {
+   "n": 254,
+   "moments": {
+    "cos": 0.0995,
+    "abs_cos": 0.4771,
+    "cos2": -0.3823
+   },
+   "p_tide_null": {
+    "cos": 0.0018499075046247689,
+    "abs_cos": 0.6466676666166692,
+    "cos2": 0.776561171941403
+   }
+  }
+ },
+ "verdict": "Decomposed across all 6 comet samples, the aphelion asymmetry is directional, not axial: mean cos(theta) is significantly positive in 6/6 samples while the unsigned axis concentration (|cos|) and quadrupole (cos2) moments are null in 6/6 and 6/6 respectively.  The spatial channel is therefore one-ended -- comet aphelia lean toward the cap pole specifically, with no excess concentration about the axis line -- while the slip channel measured in step 089 is two-ended.  The same structure operates as a direction for the orbit distribution and as an axis for the clock-sector field."
+}

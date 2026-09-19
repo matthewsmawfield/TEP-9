@@ -1,0 +1,30 @@
+[2026-09-19 21:13:47 UTC] [INFO    ] [STEP 001] LOGGER INITIALIZED: step_001_download_sbdb (Step 001)
+[2026-09-19 21:13:47 UTC] [DEBUG   ] [STEP 001] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_001_download_sbdb.log
+[2026-09-19 21:13:47 UTC] [DEBUG   ] [STEP 001] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-19 21:13:47 UTC] [INFO    ] [STEP 001] ================================================================================
+[2026-09-19 21:13:47 UTC] [INFO    ] [STEP 001] JPL SBDB catalogue download
+[2026-09-19 21:13:47 UTC] [INFO    ] [STEP 001] ================================================================================
+[2026-09-19 21:13:47 UTC] [DEBUG   ] [STEP 001] 
+[2026-09-19 21:13:47 UTC] [DEBUG   ] [STEP 001] --- outer solar system asteroids (a>=30 AU) ---
+[2026-09-19 21:13:47 UTC] [INFO    ] [STEP 001]   → GET https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Cconditi...
+[2026-09-19 21:13:53 UTC] [INFO    ] [STEP 001] METRIC: rows = 7300 objects returned
+[2026-09-19 21:13:53 UTC] [INFO    ] [STEP 001] METRIC: count = 7300 catalogue count field
+[2026-09-19 21:13:53 UTC] [INFO    ] [STEP 001] Saving data: sbdb_outer_ss.json
+[2026-09-19 21:13:53 UTC] [DEBUG   ] [STEP 001]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/sbdb/sbdb_outer_ss.json
+[2026-09-19 21:13:54 UTC] [DEBUG   ] [STEP 001] 
+[2026-09-19 21:13:54 UTC] [DEBUG   ] [STEP 001] --- Centaurs (class CEN) ---
+[2026-09-19 21:13:54 UTC] [INFO    ] [STEP 001]   → GET https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Cconditi...
+[2026-09-19 21:13:55 UTC] [INFO    ] [STEP 001] METRIC: rows = 1050 objects returned
+[2026-09-19 21:13:55 UTC] [INFO    ] [STEP 001] METRIC: count = 1050 catalogue count field
+[2026-09-19 21:13:55 UTC] [INFO    ] [STEP 001] Saving data: sbdb_centaurs.json
+[2026-09-19 21:13:55 UTC] [DEBUG   ] [STEP 001]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/sbdb/sbdb_centaurs.json
+[2026-09-19 21:13:56 UTC] [DEBUG   ] [STEP 001] 
+[2026-09-19 21:13:56 UTC] [DEBUG   ] [STEP 001] --- outer-reaching comets (q>=5 AU) ---
+[2026-09-19 21:13:56 UTC] [INFO    ] [STEP 001]   → GET https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Cconditi...
+[2026-09-19 21:13:57 UTC] [INFO    ] [STEP 001] METRIC: rows = 268 objects returned
+[2026-09-19 21:13:57 UTC] [INFO    ] [STEP 001] METRIC: count = 268 catalogue count field
+[2026-09-19 21:13:57 UTC] [INFO    ] [STEP 001] Saving data: sbdb_comets_ext.json
+[2026-09-19 21:13:57 UTC] [DEBUG   ] [STEP 001]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/sbdb/sbdb_comets_ext.json
+[2026-09-19 21:13:57 UTC] [INFO    ] [STEP 001] Saving data: provenance.json
+[2026-09-19 21:13:57 UTC] [DEBUG   ] [STEP 001]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/sbdb/provenance.json
+[2026-09-19 21:13:57 UTC] [INFO    ] [STEP 001]   → SBDB download complete -> data/raw/sbdb/

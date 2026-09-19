@@ -1,0 +1,122 @@
+{
+ "step": "step_135_cross_channel",
+ "result": "b99",
+ "verdict": "CONVERGENT CROSS-CHANNEL GEOMETRY: 4 of 4 independent measurement classes resolve the frame-anchored bipolar structure at p<0.05 (nominal Fisher p=1.7e-08; GNSS-II direction epoch coincides with the comet era boundary at p=0.002 block-permutation).  No calibrated joint significance is claimed: GNSS overlap, directional sensitivity and the retrospective choice of geometric relation remain uncalibrated.",
+ "T1_ledger": [
+  {
+   "channel": "comet-declared",
+   "source": "TEP-9 step_101/b52",
+   "kind": "internal-frame-defining",
+   "recovered": true,
+   "cone_deg": 131.5421030471562,
+   "meridian_dist_deg": 1.5902773407317584e-15,
+   "azimuth_deg": 208.7541042904594,
+   "bipolar_dist_deg": 48.45789695284384,
+   "note": ""
+  },
+  {
+   "channel": "comet-displaced",
+   "source": "TEP-9 step_128",
+   "kind": "internal-recovered",
+   "recovered": true,
+   "cone_deg": 53.80733307048544,
+   "meridian_dist_deg": 10.558063062756027,
+   "azimuth_deg": 221.87714758861333,
+   "bipolar_dist_deg": 53.80733307048544,
+   "note": ""
+  },
+  {
+   "channel": "comet-detached",
+   "source": "TEP-9 step_b77",
+   "kind": "internal-recovered",
+   "recovered": true,
+   "cone_deg": 115.93742313227393,
+   "meridian_dist_deg": 3.10971513290457,
+   "azimuth_deg": 205.295666958701,
+   "bipolar_dist_deg": 64.06257686772608,
+   "note": ""
+  },
+  {
+   "channel": "clock-GNSS-II",
+   "source": "TEP-GNSS-II step_2_5",
+   "kind": "free-recovery",
+   "recovered": true,
+   "cone_deg": 22.024166883940797,
+   "meridian_dist_deg": 0.5814620897602811,
+   "azimuth_deg": 27.203366246251214,
+   "bipolar_dist_deg": 22.024166883940804,
+   "note": "r=0.744, 2701-dir search"
+  },
+  {
+   "channel": "clock-MGEX",
+   "source": "TEP-GNSS-MGEX step_2_4",
+   "kind": "free-recovery",
+   "recovered": true,
+   "cone_deg": 82.65672366193108,
+   "meridian_dist_deg": 57.40865344221928,
+   "azimuth_deg": 86.91156385116389,
+   "bipolar_dist_deg": 82.65672366193108,
+   "note": "identifiable=False, cmb_p=0.004975124378109453",
+   "t2_excluded": "axis flagged non-identifiable by source"
+  },
+  {
+   "channel": "lunar-LLR-best",
+   "source": "TEP-LLR step_076",
+   "kind": "free-recovery",
+   "recovered": true,
+   "cone_deg": 87.84390652664146,
+   "meridian_dist_deg": 65.03171284335272,
+   "azimuth_deg": 273.8731355105335,
+   "bipolar_dist_deg": 87.84390652664146,
+   "note": "Planck rank 226/2664, LEE p=0.000999000999000999"
+  }
+ ],
+ "T2_meridian": {
+  "hits": [
+   {
+    "channel": "clock-GNSS-II",
+    "meridian_dist_deg": 0.5814620897602811,
+    "p_plane": 0.010148253743977724
+   },
+   {
+    "channel": "lunar-LLR-best",
+    "meridian_dist_deg": 65.03171284335272,
+    "p_plane": 0.9065415646729491
+   }
+  ],
+  "joint_p_nominal": 0.052333803633273265,
+  "product_statistic": 0.00919981382776368,
+  "interpretation": "Isotropic independent-direction reference only; product alone is not a p-value."
+ },
+ "T3_fisher": {
+  "channel_p": {
+   "comet-bipolar-J": 9.99950002499875e-05,
+   "clock-GNSS-II-meridian": 0.010148253743977724,
+   "clock-MGEX-cmb-proj": 0.004975124378109453,
+   "lunar-LLR-Planck": 0.000999000999000999
+  },
+  "chi2": 52.025807382649184,
+  "df": 8,
+  "fisher_p_nominal": 1.6639020795634774e-08,
+  "excluded_duplicate_GNSS_pole_p": 0.07297423385523527,
+  "interpretation": "One term per channel; GNSS overlap, sky sensitivity, and retrospective choice of geometry are not calibrated."
+ },
+ "T4_epoch": {
+  "available": true,
+  "n_windows": 104,
+  "boundary_day": 6570.0,
+  "boundary_year": 2017.987679671458,
+  "t_at_boundary": 6.671503111581662,
+  "p_at_boundary": 1.3405909653192693e-09,
+  "p_at_boundary_blockperm": 0.001999000499750125,
+  "block_len_windows": 4,
+  "extremeness_rank": 53,
+  "n_changepoints": 84,
+  "p_extremeness": 0.6235294117647059,
+  "best_changepoint_day": 3330.0,
+  "best_changepoint_year": 2009.11704312115,
+  "best_t": 10.165524455031685
+ },
+ "evidence_status": "convergent geometry; joint significance uncalibrated",
+ "registration_status": "No timestamped pre-analysis registration established by this script"
+}

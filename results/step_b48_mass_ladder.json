@@ -1,0 +1,151 @@
+{
+ "meta": {
+  "n": 131,
+  "n_failed": 0,
+  "failed": [],
+  "models": {
+   "bb21_med_m20": {
+    "m9": 20.0,
+    "a9": 461.0,
+    "e9": 0.3,
+    "i9": 15.6,
+    "varpi9": 246.7,
+    "Om9": 96.9,
+    "note": "BB21 median geometry, mass ladder rung"
+   },
+   "bb21_med_m50": {
+    "m9": 50.0,
+    "a9": 461.0,
+    "e9": 0.3,
+    "i9": 15.6,
+    "varpi9": 246.7,
+    "Om9": 96.9,
+    "note": "BB21 median geometry, mass ladder rung"
+   },
+   "bb21_med_m150": {
+    "m9": 150.0,
+    "a9": 461.0,
+    "e9": 0.3,
+    "i9": 15.6,
+    "varpi9": 246.7,
+    "Om9": 96.9,
+    "note": "BB21 median geometry, mass ladder rung"
+   },
+   "sct25_px": {
+    "m9": 4.4,
+    "a9": 290.0,
+    "e9": 0.29,
+    "i9": 6.8,
+    "varpi9": 246.7,
+    "Om9": 96.9,
+    "note": "Siraj, Chyba & Tremaine 2025 ApJ 978 139 quadrivariate best fit (m,a,e,i); apsidal geometry set to the anti-aligned shepherding configuration"
+   }
+  },
+  "anchor": "bb21_med m9=6.9 M9=180 drot taken from step_b27_planet_nine_insertion.csv (deterministic run)",
+  "M9_deg": 180.0,
+  "integrator": "ias15",
+  "boundary_AU": 255.0,
+  "references": [
+   "Brown & Batygin 2021, AJ, 162, 219",
+   "Siraj, Chyba & Tremaine 2025, ApJ, 978, 139",
+   "Brown, Holman & Batygin 2024, AJ, 167, 146 (PS1: ~78% of BB21 space excluded by PS1+ZTF+DES)",
+   "Phan et al. 2025, PASA (IRAS+AKARI far-IR search)"
+  ],
+  "ephemeris": "data/raw/spice/de440s.bsp (provenance pinned)"
+ },
+ "scaling": {
+  "alpha_median": 0.9998686114904776,
+  "alpha_i16": 0.9998631465213845,
+  "alpha_i84": 0.9998719670425256,
+  "note": "per-comet log-log slope of boundary rotation vs perturber mass across the bb21_med ladder (4 rungs); ~1 = linear impulse scaling"
+ },
+ "required_mass": {
+  "n": 131,
+  "m_req_median_all": 3228.1533705486618,
+  "m_req_median_in": 4293.701171087398,
+  "m_req_median_out": 2540.4542342613104,
+  "m_req_p05_in": 793.7705070457047,
+  "m_req_min": 37.223405272205994,
+  "frac_in_req_gt_1000": 0.8604651162790697,
+  "frac_in_req_gt_100": 1.0,
+  "m_req_gen_median_in": 3068.78769547509,
+  "m_req_gen_p05_in": 655.8124739034205,
+  "frac_in_gen_gt_1000": 0.7906976744186046,
+  "frac_in_gen_gt_100": 1.0,
+  "note": "m_req [M_earth] = 6.9 * (d_of/drot)^(1/alpha): the point mass at the BB21 median location that would reproduce each comet's observed rotation; m_req uses the residence-weighted M9=180 anchor, m_req_gen the most favourable of the four M9 placements -- the conservative bound"
+ },
+ "cells": {
+  "bb21_med_m20": {
+   "m9": 20.0,
+   "all_c1": {
+    "n": 131,
+    "n_in": 43,
+    "med_drot": 0.0008118817275710958,
+    "med_drot_in": 0.0007206982455124554,
+    "med_drot_out": 0.000844694547337142,
+    "max_drot": 0.0015403865424176047,
+    "obs_med_dof_in": 0.14434842433250053,
+    "rotation_shortfall": 177.79489232298317,
+    "drot_in_gt_out_p": 0.8118458673518789,
+    "spearman_drot_dof": {
+     "rho": -0.4371376714888165,
+     "p_2sided": 1.785290086718968e-07
+    }
+   }
+  },
+  "bb21_med_m50": {
+   "m9": 50.0,
+   "all_c1": {
+    "n": 131,
+    "n_in": 43,
+    "med_drot": 0.00202952070506419,
+    "med_drot_in": 0.0018015916689697162,
+    "med_drot_out": 0.0021115518004415842,
+    "max_drot": 0.0038506568635500375,
+    "obs_med_dof_in": 0.14434842433250053,
+    "rotation_shortfall": 71.1243910802748,
+    "drot_in_gt_out_p": 0.8118458673518789,
+    "spearman_drot_dof": {
+     "rho": -0.4371376714888165,
+     "p_2sided": 1.785290086718968e-07
+    }
+   }
+  },
+  "bb21_med_m150": {
+   "m9": 150.0,
+   "all_c1": {
+    "n": 131,
+    "n_in": 43,
+    "med_drot": 0.006086739450122945,
+    "med_drot_in": 0.005403233453623076,
+    "med_drot_out": 0.006332819230866588,
+    "max_drot": 0.011548877599451859,
+    "obs_med_dof_in": 0.14434842433250053,
+    "rotation_shortfall": 23.715229724443827,
+    "drot_in_gt_out_p": 0.8118458673518789,
+    "spearman_drot_dof": {
+     "rho": -0.4371376714888165,
+     "p_2sided": 1.785290086718968e-07
+    }
+   }
+  },
+  "sct25_px": {
+   "m9": 4.4,
+   "all_c1": {
+    "n": 131,
+    "n_in": 43,
+    "med_drot": 0.00020468499807740648,
+    "med_drot_in": 0.0002148678754028489,
+    "med_drot_out": 0.00019474706474432443,
+    "max_drot": 0.0004742802899674251,
+    "obs_med_dof_in": 0.14434842433250053,
+    "rotation_shortfall": 705.2222961543657,
+    "drot_in_gt_out_p": 0.12418842976551603,
+    "spearman_drot_dof": {
+     "rho": -0.16223242406448513,
+     "p_2sided": 0.06412311385956983
+    }
+   }
+  }
+ }
+}

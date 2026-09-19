@@ -1,0 +1,361 @@
+{
+ "step": "step_139_frozen_geometry",
+ "result": "b103",
+ "description": "Retrospective geometric sensitivity audit with orbit-block rotations",
+ "evidence_status": "measured retrospective concordance; no prospective confirmation",
+ "frozen_inputs": {
+  "cmb_apex_gal_lb": [
+   264.02,
+   48.25
+  ],
+  "declared_axis_ecl_lb": [
+   34.0,
+   -13.0
+  ],
+  "hypothesis": "one frame-anchored bipolar lapse field"
+ },
+ "n_shuffle": 20000,
+ "seed": 20260919,
+ "direction_ledger": [
+  {
+   "channel": "comet-displaced",
+   "tier": "post2017-recovered",
+   "note": "free-scan axis, independent-refit confirmed",
+   "cone_deg": 53.8073,
+   "meridian_dist_deg": 10.5581,
+   "azimuth_deg": 221.8771
+  },
+  {
+   "channel": "comet-detached-resident",
+   "tier": "training-related",
+   "note": "resident population motivated the transit sector; exclude from combined score",
+   "cone_deg": 115.9374,
+   "meridian_dist_deg": 3.1097,
+   "azimuth_deg": 205.2957
+  },
+  {
+   "channel": "ISO-1I-arrival",
+   "tier": "retrospective",
+   "note": "ISO 1I arrival axis",
+   "cone_deg": 111.7712,
+   "meridian_dist_deg": 26.2244,
+   "azimuth_deg": 57.1673
+  },
+  {
+   "channel": "ISO-1I-periapsis",
+   "tier": "retrospective",
+   "note": "ISO 1I periapsis axis",
+   "cone_deg": 38.1267,
+   "meridian_dist_deg": 27.2309,
+   "azimuth_deg": 256.5821
+  },
+  {
+   "channel": "ISO-1I-departure",
+   "tier": "retrospective",
+   "note": "ISO 1I departure axis",
+   "cone_deg": 159.8747,
+   "meridian_dist_deg": 18.6609,
+   "azimuth_deg": 140.3296
+  },
+  {
+   "channel": "ISO-2I-arrival",
+   "tier": "retrospective",
+   "note": "ISO 2I arrival axis",
+   "cone_deg": 117.4942,
+   "meridian_dist_deg": 57.2953,
+   "azimuth_deg": 137.2034
+  },
+  {
+   "channel": "ISO-2I-periapsis",
+   "tier": "retrospective",
+   "note": "ISO 2I periapsis axis",
+   "cone_deg": 22.5893,
+   "meridian_dist_deg": 1.4078,
+   "azimuth_deg": 205.087
+  },
+  {
+   "channel": "ISO-2I-departure",
+   "tier": "retrospective",
+   "note": "ISO 2I departure axis",
+   "cone_deg": 95.0769,
+   "meridian_dist_deg": 58.8865,
+   "azimuth_deg": 329.4917
+  },
+  {
+   "channel": "ISO-3I-arrival",
+   "tier": "retrospective",
+   "note": "ISO 3I arrival axis",
+   "cone_deg": 121.7723,
+   "meridian_dist_deg": 27.5427,
+   "azimuth_deg": 355.8034
+  },
+  {
+   "channel": "ISO-3I-periapsis",
+   "tier": "retrospective",
+   "note": "ISO 3I periapsis axis",
+   "cone_deg": 26.8549,
+   "meridian_dist_deg": 1.8028,
+   "azimuth_deg": 32.7476
+  },
+  {
+   "channel": "ISO-3I-departure",
+   "tier": "retrospective",
+   "note": "ISO 3I departure axis",
+   "cone_deg": 76.3538,
+   "meridian_dist_deg": 26.8869,
+   "azimuth_deg": 181.0201
+  },
+  {
+   "channel": "clock-GNSS-II",
+   "tier": "retrospective",
+   "note": "2701-dir free search, r=0.744",
+   "cone_deg": 22.0242,
+   "meridian_dist_deg": 0.5815,
+   "azimuth_deg": 27.2034
+  },
+  {
+   "channel": "clock-MGEX",
+   "tier": "non-identifiable",
+   "note": "identifiable=False",
+   "cone_deg": 82.6567,
+   "meridian_dist_deg": 57.4087,
+   "azimuth_deg": 86.9116
+  },
+  {
+   "channel": "lunar-LLR",
+   "tier": "retrospective",
+   "note": "free sky-scan axis",
+   "cone_deg": 87.8439,
+   "meridian_dist_deg": 65.0317,
+   "azimuth_deg": 273.8731
+  }
+ ],
+ "T1_mirror_prediction": {
+  "predicted_mirror_cone_deg": 48.45789695284382,
+  "predicted_mirror_az_deg": 208.75410429045937,
+  "recovered_displaced_cone_deg": 53.80733307048544,
+  "recovered_displaced_az_deg": 221.87714758861333,
+  "sep_deg": 11.515729265349892,
+  "p_azimuth_shuffle": 0.07334633268336584,
+  "p_fixed_target": 0.010065032139573993,
+  "note": "Retrospective mirror comparison: parameter-free after choosing the mirror rule, but the rule was examined on these directions. Neither target-selection history nor survey sensitivity is calibrated."
+ },
+ "T2_frozen_meridian": {
+  "plane_definition": "normal = CMB x declared (frozen inputs only)",
+  "per_direction": [
+   {
+    "channel": "comet-displaced",
+    "tier": "post2017-recovered",
+    "meridian_dist_deg": 10.558063062756027,
+    "p_plane": 0.18323185402962794
+   },
+   {
+    "channel": "ISO-1I-arrival",
+    "tier": "retrospective",
+    "meridian_dist_deg": 26.224368984172276,
+    "p_plane": 0.4418874338876232
+   },
+   {
+    "channel": "ISO-1I-periapsis",
+    "tier": "retrospective",
+    "meridian_dist_deg": 27.23086361156484,
+    "p_plane": 0.45757696409533866
+   },
+   {
+    "channel": "ISO-1I-departure",
+    "tier": "retrospective",
+    "meridian_dist_deg": 18.660918012822098,
+    "p_plane": 0.319966815058363
+   },
+   {
+    "channel": "ISO-2I-arrival",
+    "tier": "retrospective",
+    "meridian_dist_deg": 57.295329841528535,
+    "p_plane": 0.8414667443548599
+   },
+   {
+    "channel": "ISO-2I-periapsis",
+    "tier": "retrospective",
+    "meridian_dist_deg": 1.407817665809763,
+    "p_plane": 0.02456858120307359
+   },
+   {
+    "channel": "ISO-2I-departure",
+    "tier": "retrospective",
+    "meridian_dist_deg": 58.88647059587345,
+    "p_plane": 0.8561450903466795
+   },
+   {
+    "channel": "ISO-3I-arrival",
+    "tier": "retrospective",
+    "meridian_dist_deg": 27.542715799894953,
+    "p_plane": 0.46240977923454146
+   },
+   {
+    "channel": "ISO-3I-periapsis",
+    "tier": "retrospective",
+    "meridian_dist_deg": 1.8028227537329835,
+    "p_plane": 0.03146000107663417
+   },
+   {
+    "channel": "ISO-3I-departure",
+    "tier": "retrospective",
+    "meridian_dist_deg": 26.88690126126953,
+    "p_plane": 0.45223081820034483
+   },
+   {
+    "channel": "clock-GNSS-II",
+    "tier": "retrospective",
+    "meridian_dist_deg": 0.581462089760282,
+    "p_plane": 0.01014825374397774
+   },
+   {
+    "channel": "lunar-LLR",
+    "tier": "retrospective",
+    "meridian_dist_deg": 65.03171284335274,
+    "p_plane": 0.9065415646729492
+   }
+  ],
+  "joint_score": 36.36347809483712,
+  "n_rotation_blocks": 6,
+  "n_shuffle": 20000,
+  "interpretation": "Retrospective conditional-azimuth reference, preserving ISO orbit geometry; no global selection calibration.",
+  "joint_p_azimuth_shuffle": 0.07754612269386531,
+  "excluded": [
+   {
+    "channel": "comet-detached-resident",
+    "note": "resident population motivated the transit sector; exclude from combined score"
+   },
+   {
+    "channel": "clock-MGEX",
+    "note": "identifiable=False"
+   }
+  ]
+ },
+ "T3_frozen_cone": {
+  "comet_lobe_cones_deg": {
+   "declared": 48.45789695284381,
+   "displaced": 53.80733307048544
+  },
+  "per_direction": [
+   {
+    "channel": "ISO-1I-arrival",
+    "tier": "retrospective",
+    "folded_cone_deg": 68.22882306359851,
+    "nearest_lobe_deg": 53.80733307048544,
+    "delta_deg": 14.42148999311307,
+    "p_cone": 0.457781375170675
+   },
+   {
+    "channel": "ISO-1I-periapsis",
+    "tier": "retrospective",
+    "folded_cone_deg": 38.12668754059634,
+    "nearest_lobe_deg": 48.45789695284381,
+    "delta_deg": 10.331209412247468,
+    "p_cone": 0.35045096711266194
+   },
+   {
+    "channel": "ISO-1I-departure",
+    "tier": "retrospective",
+    "folded_cone_deg": 20.125324114211423,
+    "nearest_lobe_deg": 48.45789695284381,
+    "delta_deg": 28.332572838632387,
+    "p_cone": 0.8021876331972364
+   },
+   {
+    "channel": "ISO-2I-arrival",
+    "tier": "retrospective",
+    "folded_cone_deg": 62.505841405259815,
+    "nearest_lobe_deg": 53.80733307048544,
+    "delta_deg": 8.698508334774374,
+    "p_cone": 0.3070788632833666
+   },
+   {
+    "channel": "ISO-2I-periapsis",
+    "tier": "retrospective",
+    "folded_cone_deg": 22.589342621224635,
+    "nearest_lobe_deg": 48.45789695284381,
+    "delta_deg": 25.868554331619176,
+    "p_cone": 0.7440654209057145
+   },
+   {
+    "channel": "ISO-2I-departure",
+    "tier": "retrospective",
+    "folded_cone_deg": 84.92314216377419,
+    "nearest_lobe_deg": 53.80733307048544,
+    "delta_deg": 31.115809093288746,
+    "p_cone": 0.8660501170425006
+   },
+   {
+    "channel": "ISO-3I-arrival",
+    "tier": "retrospective",
+    "folded_cone_deg": 58.22774638214467,
+    "nearest_lobe_deg": 53.80733307048544,
+    "delta_deg": 4.420413311659232,
+    "p_cone": 0.19234103210607567
+   },
+   {
+    "channel": "ISO-3I-periapsis",
+    "tier": "retrospective",
+    "folded_cone_deg": 26.85487440916993,
+    "nearest_lobe_deg": 48.45789695284381,
+    "delta_deg": 21.60302254367388,
+    "p_cone": 0.6402591352986278
+   },
+   {
+    "channel": "ISO-3I-departure",
+    "tier": "retrospective",
+    "folded_cone_deg": 76.35382746618153,
+    "nearest_lobe_deg": 53.80733307048544,
+    "delta_deg": 22.546494395696087,
+    "p_cone": 0.6635455284524574
+   },
+   {
+    "channel": "clock-GNSS-II",
+    "tier": "retrospective",
+    "folded_cone_deg": 22.024166883940783,
+    "nearest_lobe_deg": 48.45789695284381,
+    "delta_deg": 26.433730068903028,
+    "p_cone": 0.7575225396458107
+   },
+   {
+    "channel": "lunar-LLR",
+    "tier": "retrospective",
+    "folded_cone_deg": 87.84390652664146,
+    "nearest_lobe_deg": 53.80733307048544,
+    "delta_deg": 34.03657345615602,
+    "p_cone": 0.9308684910499736
+   }
+  ],
+  "note": "Retrospective folded cone angle, scoring the union of both lobe bands; isotropic null per direction -- polar directions (GNSS-II, LLR) are honestly off-band"
+ },
+ "T4_provenance": {
+  "partition": {
+   "post2017-recovered": [
+    "comet-displaced"
+   ],
+   "training-related": [
+    "comet-detached-resident"
+   ],
+   "retrospective": [
+    "ISO-1I-arrival",
+    "ISO-1I-periapsis",
+    "ISO-1I-departure",
+    "ISO-2I-arrival",
+    "ISO-2I-periapsis",
+    "ISO-2I-departure",
+    "ISO-3I-arrival",
+    "ISO-3I-periapsis",
+    "ISO-3I-departure",
+    "clock-GNSS-II",
+    "lunar-LLR"
+   ],
+   "non-identifiable": [
+    "clock-MGEX"
+   ]
+  },
+  "prospectively_held_out_channels": [],
+  "note": "All directions were available during geometry exploration. The resident sample informed the axis; the displaced direction defines one cone; three legs of each ISO share one orbit. A future test must freeze hypotheses, cuts, nulls and outcomes before data inspection."
+ },
+ "verdict": "RETROSPECTIVE GEOMETRY ONLY; prospective confirmation not established"
+}

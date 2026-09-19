@@ -1,0 +1,130 @@
+{
+ "axis_deg": 49.0,
+ "anti_deg": 229.0,
+ "n_jfc": 575,
+ "I1_q_progression": {
+  "rows": [
+   {
+    "q_bin": "0-1",
+    "N": 28,
+    "R_varpi": 0.337,
+    "mu_varpi": 36.2,
+    "R_om": 0.127,
+    "mu_om": 233.4,
+    "R_w": 0.409,
+    "mu_w": 192.8
+   },
+   {
+    "q_bin": "1-2",
+    "N": 154,
+    "R_varpi": 0.323,
+    "mu_varpi": 42.9,
+    "R_om": 0.128,
+    "mu_om": 63.7,
+    "R_w": 0.061,
+    "mu_w": 349.8
+   },
+   {
+    "q_bin": "2-3",
+    "N": 196,
+    "R_varpi": 0.254,
+    "mu_varpi": 40.3,
+    "R_om": 0.102,
+    "mu_om": 94.1,
+    "R_w": 0.08,
+    "mu_w": 62.3
+   },
+   {
+    "q_bin": "3-4",
+    "N": 102,
+    "R_varpi": 0.229,
+    "mu_varpi": 76.5,
+    "R_om": 0.126,
+    "mu_om": 161.7,
+    "R_w": 0.057,
+    "mu_w": 249.6
+   },
+   {
+    "q_bin": "4-5",
+    "N": 60,
+    "R_varpi": 0.25,
+    "mu_varpi": 123.8,
+    "R_om": 0.221,
+    "mu_om": 101.2,
+    "R_w": 0.15,
+    "mu_w": 71.3
+   },
+   {
+    "q_bin": "5-6",
+    "N": 26,
+    "R_varpi": 0.152,
+    "mu_varpi": 172.2,
+    "R_om": 0.097,
+    "mu_om": 180.1,
+    "R_w": 0.078,
+    "mu_w": 30.9
+   }
+  ],
+  "note": "mean varpi rotates ~180 deg across the JFC q range: ~+40 deg deep (aligned with the detached-TNO axis) to ~230 deg shallow (the anti-axis).  Neither Om nor w alone carries the progression"
+ },
+ "I2_footprints": {
+  "rows": [
+   {
+    "q_bin": "0-3",
+    "N": 76,
+    "R_opp": 0.163,
+    "mu_opp": 15.7,
+    "R_varpi": 0.232,
+    "mu_varpi": 37.9
+   },
+   {
+    "q_bin": "3-5",
+    "N": 83,
+    "R_opp": 0.294,
+    "mu_opp": 82.4,
+    "R_varpi": 0.246,
+    "mu_varpi": 118.4
+   },
+   {
+    "q_bin": "5-15",
+    "N": 30,
+    "R_opp": 0.045,
+    "mu_opp": 275.8,
+    "R_varpi": 0.223,
+    "mu_varpi": 195.7
+   }
+  ],
+  "note": "the discovery footprints are weak and their means do not track the varpi progression -- pointing does not reproduce the 180 deg rotation"
+ },
+ "I3_pairing_test_q<3": {
+  "N": 76,
+  "R_obs": 0.232,
+  "mu_obs": 37.9,
+  "null_mean_R": 0.114,
+  "p": 0.025548722563871806,
+  "note": "deep injected JFCs: does the observed (lam_opp, Delta) pairing beat the sample's own marginals?"
+ },
+ "I4_chain": {
+  "detached_TNO": {
+   "N": 44,
+   "R": 0.332,
+   "mu": 49.1
+  },
+  "centaur": {
+   "N": 1044,
+   "R": 0.086,
+   "mu": 95.3
+  },
+  "JFC_q<3": {
+   "N": 378,
+   "R": 0.288,
+   "mu": 41.2
+  },
+  "JFC_q>5": {
+   "N": 35,
+   "R": 0.19,
+   "mu": 189.7
+  },
+  "note": "the injection chain endpoints land on both ends of the measured axis: detached TNOs at +49, deep injected JFCs at ~+40, shallow transitional JFCs at ~230; the transit population (centaurs) is isotropic -- scrambled between the two organized ends"
+ }
+}

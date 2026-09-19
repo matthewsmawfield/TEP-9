@@ -1,0 +1,1014 @@
+{
+    "audit_type": "TEP-9 Research-Grade Audit",
+    "project": "TEP-9 (outer solar system temporal boundary)",
+    "telemetry": {
+        "os": "Darwin 25.5.0",
+        "python_version": "3.13.5",
+        "processor": "arm",
+        "timestamp_utc": "2026-09-19T13:22:54.741239+00:00",
+        "project_root": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9"
+    },
+    "pipeline_results": [
+        {
+            "step": "Step 001",
+            "description": "Step 001: JPL SBDB download",
+            "status": "SUCCESS",
+            "duration_seconds": 11.662513732910156,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:06:41.232433+00:00"
+        },
+        {
+            "step": "Step 002",
+            "description": "Step 002: CDS download (OSSOS + Warsaw)",
+            "status": "SUCCESS",
+            "duration_seconds": 8.501286745071411,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:06:49.734433+00:00"
+        },
+        {
+            "step": "Step 003",
+            "description": "Step 003: CODE catalogue acquisition",
+            "status": "SUCCESS",
+            "duration_seconds": 1.1087470054626465,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:06:50.843825+00:00"
+        },
+        {
+            "step": "Step 004",
+            "description": "Step 004: MPC / JPL element files",
+            "status": "SUCCESS",
+            "duration_seconds": 112.36594080924988,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:08:43.214180+00:00"
+        },
+        {
+            "step": "Step 005",
+            "description": "Step 010: Detached-TNO orientation clustering",
+            "status": "SUCCESS",
+            "duration_seconds": 1.552865743637085,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:08:44.771171+00:00"
+        },
+        {
+            "step": "Step 006",
+            "description": "Step 011: Field-wall vs point-mass discriminators",
+            "status": "SUCCESS",
+            "duration_seconds": 5.848104953765869,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:08:50.621703+00:00"
+        },
+        {
+            "step": "Step 007",
+            "description": "Step 012: Radial turn-on profile",
+            "status": "SUCCESS",
+            "duration_seconds": 3.432797908782959,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:08:54.055332+00:00"
+        },
+        {
+            "step": "Step 008",
+            "description": "Step 013: Empirical discovery-filter null",
+            "status": "SUCCESS",
+            "duration_seconds": 3.4038069248199463,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:08:57.460675+00:00"
+        },
+        {
+            "step": "Step 009",
+            "description": "Step 014: Per-object discovery footprint",
+            "status": "SUCCESS",
+            "duration_seconds": 1.6382060050964355,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:08:59.100487+00:00"
+        },
+        {
+            "step": "Step 010",
+            "description": "Step 015: Footprint proxy validation",
+            "status": "SUCCESS",
+            "duration_seconds": 0.8962290287017822,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:08:59.997645+00:00"
+        },
+        {
+            "step": "Step 011",
+            "description": "Step 016: Distance-aware conditional null",
+            "status": "SUCCESS",
+            "duration_seconds": 2.461867094039917,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:09:02.460403+00:00"
+        },
+        {
+            "step": "Step 012",
+            "description": "Step 017: Axis-footprint decorrelation radius",
+            "status": "SUCCESS",
+            "duration_seconds": 2.00569224357605,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:09:04.466925+00:00"
+        },
+        {
+            "step": "Step 013",
+            "description": "Step 018: Coherent mean-plane warp",
+            "status": "SUCCESS",
+            "duration_seconds": 1.7004311084747314,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:09:06.168192+00:00"
+        },
+        {
+            "step": "Step 014",
+            "description": "Step 019: Orbit-pole eigenstructure",
+            "status": "SUCCESS",
+            "duration_seconds": 1.2456881999969482,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:09:07.414497+00:00"
+        },
+        {
+            "step": "Step 015",
+            "description": "Step 020: Axis-element coupling",
+            "status": "SUCCESS",
+            "duration_seconds": 3.184105157852173,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:09:10.599499+00:00"
+        },
+        {
+            "step": "Step 016",
+            "description": "Step 021: Galactic-tide and omega decomposition",
+            "status": "SUCCESS",
+            "duration_seconds": 0.8598330020904541,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:09:11.460114+00:00"
+        },
+        {
+            "step": "Step 017",
+            "description": "Step 022: Radial edge structure",
+            "status": "SUCCESS",
+            "duration_seconds": 0.8755860328674316,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:09:12.336482+00:00"
+        },
+        {
+            "step": "Step 018",
+            "description": "Step 023: Jackknife/era/quality robustness",
+            "status": "SUCCESS",
+            "duration_seconds": 0.7515609264373779,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:09:13.088877+00:00"
+        },
+        {
+            "step": "Step 019",
+            "description": "Step 024: Resident-vs-transit selectivity",
+            "status": "SUCCESS",
+            "duration_seconds": 1.6061739921569824,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:09:14.695922+00:00"
+        },
+        {
+            "step": "Step 020",
+            "description": "Step 025: Intrinsic patch scale",
+            "status": "SUCCESS",
+            "duration_seconds": 98.59511423110962,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:10:53.295462+00:00"
+        },
+        {
+            "step": "Step 021",
+            "description": "Step 026: Anti-axis deficit",
+            "status": "SUCCESS",
+            "duration_seconds": 1.3172500133514404,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:10:54.616173+00:00"
+        },
+        {
+            "step": "Step 022",
+            "description": "Step 027: JFC bipolar population",
+            "status": "SUCCESS",
+            "duration_seconds": 1.643554925918579,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:10:56.260945+00:00"
+        },
+        {
+            "step": "Step 023",
+            "description": "Step 028: OSSOS pointing coupling",
+            "status": "SUCCESS",
+            "duration_seconds": 1.574099063873291,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:10:57.838153+00:00"
+        },
+        {
+            "step": "Step 024",
+            "description": "Step 030: Warsaw comet directional test",
+            "status": "SUCCESS",
+            "duration_seconds": 29.591859340667725,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:11:27.437855+00:00"
+        },
+        {
+            "step": "Step 025",
+            "description": "Step 031: Orbit-reconstruction clock channel",
+            "status": "SUCCESS",
+            "duration_seconds": 77.54026174545288,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:12:44.979877+00:00"
+        },
+        {
+            "step": "Step 026",
+            "description": "Step 032: Nested-field multi-axis test",
+            "status": "SUCCESS",
+            "duration_seconds": 0.7433652877807617,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:12:45.725972+00:00"
+        },
+        {
+            "step": "Step 027",
+            "description": "Step 033: Three-leg orbit decomposition",
+            "status": "SUCCESS",
+            "duration_seconds": 1.0739500522613525,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:12:46.808696+00:00"
+        },
+        {
+            "step": "Step 028",
+            "description": "Step 034: CODE independent confirmation",
+            "status": "SUCCESS",
+            "duration_seconds": 0.7733938694000244,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:12:47.583195+00:00"
+        },
+        {
+            "step": "Step 029",
+            "description": "Step 035: Confirmation consolidation",
+            "status": "SUCCESS",
+            "duration_seconds": 0.73921799659729,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:12:48.323922+00:00"
+        },
+        {
+            "step": "Step 030",
+            "description": "Step 036: Independent axis recovery",
+            "status": "SUCCESS",
+            "duration_seconds": 0.9966440200805664,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:12:49.322199+00:00"
+        },
+        {
+            "step": "Step 031",
+            "description": "Step 037: Blind validation battery",
+            "status": "SUCCESS",
+            "duration_seconds": 31.638479948043823,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:13:20.962954+00:00"
+        },
+        {
+            "step": "Step 032",
+            "description": "Step 038: Model comparison and controls",
+            "status": "SUCCESS",
+            "duration_seconds": 0.6935667991638184,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:13:21.658162+00:00"
+        },
+        {
+            "step": "Step 033",
+            "description": "Step 039: Signed channels and matched control",
+            "status": "SUCCESS",
+            "duration_seconds": 1.1213560104370117,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:13:22.783836+00:00"
+        },
+        {
+            "step": "Step 034",
+            "description": "Step 040: Planetary baseline residual",
+            "status": "SUCCESS",
+            "duration_seconds": 0.6004941463470459,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:13:23.386078+00:00"
+        },
+        {
+            "step": "Step 035",
+            "description": "Step 041: Conventional alternatives dismantled",
+            "status": "SUCCESS",
+            "duration_seconds": 0.4857053756713867,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:13:23.873244+00:00"
+        },
+        {
+            "step": "Step 036",
+            "description": "Step 042: N-body planetary baseline (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 95.74482202529907,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:14:59.619872+00:00"
+        },
+        {
+            "step": "Step 037",
+            "description": "Step 050: One-map axis coincidence",
+            "status": "SUCCESS",
+            "duration_seconds": 1.3451721668243408,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:00.966040+00:00"
+        },
+        {
+            "step": "Step 038",
+            "description": "Step 051: Multiple-testing evidence summary",
+            "status": "SUCCESS",
+            "duration_seconds": 0.9225151538848877,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:01.890366+00:00"
+        },
+        {
+            "step": "Step 039",
+            "description": "Step 052: Injected-population depth chain",
+            "status": "SUCCESS",
+            "duration_seconds": 1.2777080535888672,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:03.169335+00:00"
+        },
+        {
+            "step": "Step 040",
+            "description": "Step 053: MPC catalogue concordance",
+            "status": "SUCCESS",
+            "duration_seconds": 2.9707961082458496,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:06.141242+00:00"
+        },
+        {
+            "step": "Step 041",
+            "description": "Step 054: Dated falsifiable predictions",
+            "status": "SUCCESS",
+            "duration_seconds": 1.749882698059082,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:07.892976+00:00"
+        },
+        {
+            "step": "Step 042",
+            "description": "Step 055: Cluster threshold morphology",
+            "status": "SUCCESS",
+            "duration_seconds": 1.0556328296661377,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:08.950092+00:00"
+        },
+        {
+            "step": "Step 043",
+            "description": "Step 056: Morphology vs footprint null",
+            "status": "SUCCESS",
+            "duration_seconds": 17.747010946273804,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:26.702164+00:00"
+        },
+        {
+            "step": "Step 044",
+            "description": "Step 057: In-cap property audit and synthesis map",
+            "status": "SUCCESS",
+            "duration_seconds": 1.2046079635620117,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:27.907831+00:00"
+        },
+        {
+            "step": "Step 045",
+            "description": "Step 058: Comet observational-leverage audit",
+            "status": "SUCCESS",
+            "duration_seconds": 1.0872347354888916,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:28.996254+00:00"
+        },
+        {
+            "step": "Step 046",
+            "description": "Step 059: Axis-consistency test",
+            "status": "SUCCESS",
+            "duration_seconds": 0.9355068206787109,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:29.932819+00:00"
+        },
+        {
+            "step": "Step 047",
+            "description": "Step 060: Uncertainty channel and MW08 third lineage",
+            "status": "SUCCESS",
+            "duration_seconds": 0.9742100238800049,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:30.908131+00:00"
+        },
+        {
+            "step": "Step 048",
+            "description": "Step 061: Aphelion-sky dipole and tide calibration",
+            "status": "SUCCESS",
+            "duration_seconds": 11.831671953201294,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:15:42.741822+00:00"
+        },
+        {
+            "step": "Step 049",
+            "description": "Step 062: Planet Nine insertion test (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 997.6246929168701,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:32:20.373446+00:00"
+        },
+        {
+            "step": "Step 050",
+            "description": "Step 063: Bidirectional rotation residual (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 171.73565125465393,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:35:12.119673+00:00"
+        },
+        {
+            "step": "Step 051",
+            "description": "Step 064: Warsaw bidirectional validation (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 121.46851301193237,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:37:13.594682+00:00"
+        },
+        {
+            "step": "Step 052",
+            "description": "Step 065: Implied proper-time slip",
+            "status": "SUCCESS",
+            "duration_seconds": 1.1719779968261719,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:37:14.770132+00:00"
+        },
+        {
+            "step": "Step 053",
+            "description": "Step 066: Detached-cluster secular stability +/- P9 (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 936.9452750682831,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:52:51.721538+00:00"
+        },
+        {
+            "step": "Step 054",
+            "description": "Step 067: Prospective detection power",
+            "status": "SUCCESS",
+            "duration_seconds": 3.7696590423583984,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:52:55.493942+00:00"
+        },
+        {
+            "step": "Step 055",
+            "description": "Step 068: Wall-vs-field slip scaling discriminator",
+            "status": "SUCCESS",
+            "duration_seconds": 6.249220848083496,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:53:01.744869+00:00"
+        },
+        {
+            "step": "Step 056",
+            "description": "Step 069: Joint axis-permutation global test",
+            "status": "SUCCESS",
+            "duration_seconds": 2.7201309204101562,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:53:04.469063+00:00"
+        },
+        {
+            "step": "Step 057",
+            "description": "Step 070: Galactic-tide insertion control (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 5.926506996154785,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:53:10.397554+00:00"
+        },
+        {
+            "step": "Step 058",
+            "description": "Step 071: Radial slip profile, multi-shell legs (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 309.02024006843567,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:58:19.421866+00:00"
+        },
+        {
+            "step": "Step 059",
+            "description": "Step 072: Epoch stability of the implied slip",
+            "status": "SUCCESS",
+            "duration_seconds": 0.7987551689147949,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T11:58:20.223076+00:00"
+        },
+        {
+            "step": "Step 060",
+            "description": "Step 073: Boundary edge width, logistic fit",
+            "status": "SUCCESS",
+            "duration_seconds": 456.88541173934937,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:05:57.114478+00:00"
+        },
+        {
+            "step": "Step 061",
+            "description": "Step 074: Leave-one-channel-out joint axis test",
+            "status": "SUCCESS",
+            "duration_seconds": 2.414405107498169,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:05:59.532072+00:00"
+        },
+        {
+            "step": "Step 062",
+            "description": "Step 075: Signed slip direction, lag vs advance",
+            "status": "SUCCESS",
+            "duration_seconds": 0.672515869140625,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:06:00.205690+00:00"
+        },
+        {
+            "step": "Step 063",
+            "description": "Step 076: Inner-region slip profile 8-100 AU (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 45.828083992004395,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:06:46.035709+00:00"
+        },
+        {
+            "step": "Step 064",
+            "description": "Step 077: Era stability of the aphelion dipole",
+            "status": "SUCCESS",
+            "duration_seconds": 0.8012826442718506,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:06:46.839884+00:00"
+        },
+        {
+            "step": "Step 065",
+            "description": "Step 078: Discovery-era stability of the TNO cluster",
+            "status": "SUCCESS",
+            "duration_seconds": 0.6800441741943359,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:06:47.521688+00:00"
+        },
+        {
+            "step": "Step 066",
+            "description": "Step 079: Cross-fitter element audit, MPC vs CODE/Warsaw",
+            "status": "SUCCESS",
+            "duration_seconds": 0.8344457149505615,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:06:48.357401+00:00"
+        },
+        {
+            "step": "Step 067",
+            "description": "Step 080: Signed residual coherence, planets subtracted (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 662.4531829357147,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:17:50.817209+00:00"
+        },
+        {
+            "step": "Step 068",
+            "description": "Step 081: Geocentric observation-direction null",
+            "status": "SUCCESS",
+            "duration_seconds": 1.1825919151306152,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:17:52.008231+00:00"
+        },
+        {
+            "step": "Step 069",
+            "description": "Step 082: Same-patch geocentric control",
+            "status": "SUCCESS",
+            "duration_seconds": 1.0912692546844482,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:17:53.101009+00:00"
+        },
+        {
+            "step": "Step 070",
+            "description": "Step 083: Perturber mass ladder, required-mass bound (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 485.0243389606476,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:25:58.133403+00:00"
+        },
+        {
+            "step": "Step 071",
+            "description": "Step 084: Newest detached-cohort audit and Ammonite jackknife",
+            "status": "SUCCESS",
+            "duration_seconds": 1.9237916469573975,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:26:00.063707+00:00"
+        },
+        {
+            "step": "Step 072",
+            "description": "Step 085: DES independent resident-cohort audit (Bernardinelli+ catalogue)",
+            "status": "SUCCESS",
+            "duration_seconds": 1.9646141529083252,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:26:02.029082+00:00"
+        },
+        {
+            "step": "Step 073",
+            "description": "Step 086: Slip-physics discriminator, angular vs boundary vs arc-epoch",
+            "status": "SUCCESS",
+            "duration_seconds": 9.220003843307495,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:26:11.249829+00:00"
+        },
+        {
+            "step": "Step 074",
+            "description": "Step 087: Perturber distance ladder, required-mass map (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 664.262610912323,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:37:15.517846+00:00"
+        },
+        {
+            "step": "Step 075",
+            "description": "Step 088: Resident-side galactic-tide insertion, maintenance + regeneration (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 967.2550911903381,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:53:22.779732+00:00"
+        },
+        {
+            "step": "Step 076",
+            "description": "Step 089: Bipolar morphology audit, mirror-cap second-lobe test",
+            "status": "SUCCESS",
+            "duration_seconds": 1.1660881042480469,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:53:23.949646+00:00"
+        },
+        {
+            "step": "Step 077",
+            "description": "Step 090: Bias-free mean-plane warp (SCT25 estimator, MPCORB lineage)",
+            "status": "SUCCESS",
+            "duration_seconds": 77.28487014770508,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T12:54:41.236083+00:00"
+        },
+        {
+            "step": "Step 078",
+            "description": "Step 091: Inner-perturber (Planet-Y) ladder vs ephemeris bound (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 1115.749336719513,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:13:16.990510+00:00"
+        },
+        {
+            "step": "Step 079",
+            "description": "Step 092: MPCORB-lineage replication of detached-TNO clustering",
+            "status": "SUCCESS",
+            "duration_seconds": 9.094738006591797,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:13:26.088483+00:00"
+        },
+        {
+            "step": "Step 080",
+            "description": "Step 093: Perturber-zoo closure, candidates vs required-mass map (REBOUND/DE440s)",
+            "status": "SUCCESS",
+            "duration_seconds": 231.04247093200684,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:17:17.137382+00:00"
+        },
+        {
+            "step": "Step 081",
+            "description": "Step 094: Six-channel joint axis-permutation test (mean-plane channel)",
+            "status": "SUCCESS",
+            "duration_seconds": 2.772308826446533,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:17:19.911801+00:00"
+        },
+        {
+            "step": "Step 082",
+            "description": "Step 095: Spacecraft clock/plasma/power data acquisition (NAIF SCLK+SPK+LSK, PDS PPI VLISM)",
+            "status": "SUCCESS",
+            "duration_seconds": 135.1031517982483,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:19:35.019709+00:00"
+        },
+        {
+            "step": "Step 083",
+            "description": "Step 096: Voyager SCLK clock-correction audit (resync/rate history vs crossings and radius)",
+            "status": "SUCCESS",
+            "duration_seconds": 2.953352928161621,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:19:37.976103+00:00"
+        },
+        {
+            "step": "Step 084",
+            "description": "Step 097: Voyager PWS plasma-frequency channel (density structure vs lapse-equivalent)",
+            "status": "SUCCESS",
+            "duration_seconds": 0.4531412124633789,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:19:38.431202+00:00"
+        },
+        {
+            "step": "Step 085",
+            "description": "Step 098: RTG nuclear-decay channel (Pu-238 clock, Gamow-amplified constants bound)",
+            "status": "SUCCESS",
+            "duration_seconds": 0.9169490337371826,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:19:39.351776+00:00"
+        },
+        {
+            "step": "Step 086",
+            "description": "Step 099: Heliospheric geometry (probe/ISO asymptotes vs axis and caps)",
+            "status": "SUCCESS",
+            "duration_seconds": 11.586925268173218,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:19:50.940501+00:00"
+        },
+        {
+            "step": "Step 087",
+            "description": "Step 100: Cross-channel clock-consistency synthesis (orbital/electronic/plasma/nuclear)",
+            "status": "SUCCESS",
+            "duration_seconds": 0.521751880645752,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:19:51.464513+00:00"
+        },
+        {
+            "step": "Step 088",
+            "description": "Step 101: Interstellar-object non-gravitational channel (SBDB NG solutions vs cap-transit geometry)",
+            "status": "SUCCESS",
+            "duration_seconds": 3.5019309520721436,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:19:54.967967+00:00"
+        },
+        {
+            "step": "Step 089",
+            "description": "Step 102: Out-of-sample validation of the bipolar slip map (5-fold CV + CODE<->Warsaw transfer)",
+            "status": "SUCCESS",
+            "duration_seconds": 8.49280571937561,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:20:03.462072+00:00"
+        },
+        {
+            "step": "Step 090",
+            "description": "Step 103: RTG mid-life degradation control (placebo-epoch ramp scan + vintage-matched V2 reference)",
+            "status": "SUCCESS",
+            "duration_seconds": 0.4687778949737549,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:20:03.931479+00:00"
+        },
+        {
+            "step": "Step 091",
+            "description": "Step 104: Spatial holdout and axis localization of the slip map (azimuthal halves, band extrapolation, displacement curve)",
+            "status": "SUCCESS",
+            "duration_seconds": 1.3963251113891602,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:20:05.328735+00:00"
+        },
+        {
+            "step": "Step 092",
+            "description": "Step 105: Third-catalogue bidirectional replication (one-apparition J/A+A/571/A63) and out-of-sample slip-map transfer",
+            "status": "SUCCESS",
+            "duration_seconds": 34.278661251068115,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:20:39.609372+00:00"
+        },
+        {
+            "step": "Step 093",
+            "description": "Step 106: Harmonic-order out-of-sample discrimination, third-cohort axis recovery, amplitude transfer, and cross-solution concordance",
+            "status": "SUCCESS",
+            "duration_seconds": 7.583611965179443,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:20:47.195444+00:00"
+        },
+        {
+            "step": "Step 094",
+            "description": "Step 107: Named-direction audit of the recovered axes (galactic/solar-apex/CMB/ecliptic/P9 separations + coincidence null)",
+            "status": "SUCCESS",
+            "duration_seconds": 0.38219594955444336,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:20:47.578604+00:00"
+        },
+        {
+            "step": "Step 095",
+            "description": "Step 108: Full-population aphelion dipole on the MPC CometEls near-parabolic census (tide-aware null, membership split, free dipole recovery)",
+            "status": "SUCCESS",
+            "duration_seconds": 11.065462112426758,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:20:58.645574+00:00"
+        },
+        {
+            "step": "Step 096",
+            "description": "Step 109: Discovery-bias audit of the CometEls census dipole (ecliptic-footprint null, magnitude/era/q stability, heterogeneity test)",
+            "status": "SUCCESS",
+            "duration_seconds": 5.831136226654053,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:21:04.477878+00:00"
+        },
+        {
+            "step": "Step 097",
+            "description": "Step 110: Directional vs axisymmetric decomposition of the aphelion asymmetry (cos, |cos|, cos2 moments under the tide-aware null, all comet samples)",
+            "status": "SUCCESS",
+            "duration_seconds": 3.9240260124206543,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:21:08.403456+00:00"
+        },
+        {
+            "step": "Step 098",
+            "description": "Step 111: Detachment-cut coherence map of the resident axis (varpi significance + recovered direction across the a_min x q_min plane, conditioned null)",
+            "status": "SUCCESS",
+            "duration_seconds": 1.6321651935577393,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:21:10.036540+00:00"
+        },
+        {
+            "step": "Step 099",
+            "description": "Step 112: OSSOS characterized-ensemble audit (class-aware footprint baselines, selectivity profile, inter-fitter floor, plutino positive control)",
+            "status": "SUCCESS",
+            "duration_seconds": 2.297074317932129,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:21:12.334301+00:00"
+        },
+        {
+            "step": "Step 100",
+            "description": "Step 113: Independent-survey resident ledger (SBDB+DES+OSSOS vs own baselines, Fisher combination, deduplicated union)",
+            "status": "SUCCESS",
+            "duration_seconds": 1.1844618320465088,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:21:13.519413+00:00"
+        },
+        {
+            "step": "Step 101",
+            "description": "Step 114: Manuscript claims-trace audit (every cited step/result/figure/number traced to results/)",
+            "status": "SUCCESS",
+            "duration_seconds": 0.9932107925415039,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:21:14.513825+00:00"
+        },
+        {
+            "step": "Step 102",
+            "description": "Step 115: Mixture posterior-predictive audit (each resident cohort scored vs footprint-only and TEP-mixture posteriors on its own discovery longitude)",
+            "status": "SUCCESS",
+            "duration_seconds": 3.3095760345458984,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:21:17.828208+00:00"
+        },
+        {
+            "step": "Step 103",
+            "description": "Step 116: Empirical discovery-coupling kernel and closed-channel audit (LOO measured varpi-lam kernel replaces assumed WN50; decisive-window split; cross-fitter instability; forward predictions)",
+            "status": "SUCCESS",
+            "duration_seconds": 9.530864953994751,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:21:27.360878+00:00"
+        },
+        {
+            "step": "Step 104",
+            "description": "Step 117: Prospective post-2017 SBDB LPC cohort through the identical bidirectional instrument (out-of-time, out-of-lineage replication)",
+            "status": "SUCCESS",
+            "duration_seconds": 4.419156789779663,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:21:31.780694+00:00"
+        },
+        {
+            "step": "Step 105",
+            "description": "Step 118: Displaced-dipole audit of the prospective cohort (free axis recovery, global nulls, longitude harmonics, cross-cohort coverage)",
+            "status": "SUCCESS",
+            "duration_seconds": 44.301191091537476,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:22:16.082892+00:00"
+        },
+        {
+            "step": "Step 106",
+            "description": "Step 119: Mechanism identification for the post-2017 displaced dipole (observing-geometry covariates, survey lineage, quality stratification)",
+            "status": "SUCCESS",
+            "duration_seconds": 1.1511199474334717,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:22:17.235476+00:00"
+        },
+        {
+            "step": "Step 107",
+            "description": "Step 120: Era x lineage factorial -- pre-2018 SBDB LPC cohort (declared vs displaced axis recovery, fit-vintage split, CODE overlap)",
+            "status": "SUCCESS",
+            "duration_seconds": 1.0506160259246826,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:22:18.287102+00:00"
+        },
+        {
+            "step": "Step 108",
+            "description": "Step 121: Masked-signal discrimination -- joint declared-cap + private-dipole decomposition of the post-2017 cohort (Freedman-Lane added-term null, dipole-placement scan, clean strata, CODE/pre-2018 controls)",
+            "status": "SUCCESS",
+            "duration_seconds": 1.5532939434051514,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:22:19.842681+00:00"
+        },
+        {
+            "step": "Step 109",
+            "description": "Step 122: Anomaly localization on the pre-2018 record -- CODE-membership lock vs broad-population readings, era decomposition, fat-tail audit",
+            "status": "SUCCESS",
+            "duration_seconds": 0.86773681640625,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:22:20.711118+00:00"
+        },
+        {
+            "step": "Step 110",
+            "description": "Step 123: Leg-coherence decomposition -- is the overlap anomaly a single-leg reconstruction floor or an azimuthally-twisted inter-leg mismatch; noise-floor audit, cross-fitter concordance, class-constraint gradient",
+            "status": "SUCCESS",
+            "duration_seconds": 0.9069299697875977,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:22:21.619250+00:00"
+        },
+        {
+            "step": "Step 111",
+            "description": "Step 124: Lineage-independent aphelion dipole -- reconstruction-free spatial channel on the post-2017 and pre-2018 SBDB cohorts (tide-aware + ecliptic nulls, quality strata, displaced-axis control)",
+            "status": "SUCCESS",
+            "duration_seconds": 33.09191679954529,
+            "exit_code": 0,
+            "timestamp": "2026-09-19T13:22:54.713047+00:00"
+        }
+    ],
+    "script_integrity": {
+        "step_001_download_sbdb.py": "04bf49da64c650cf0fa49f44e2a3dba6ce38c1b30085e2ee8d14c23067f7319e",
+        "step_002_download_cds.py": "59b069ae0e4295bafabbaedbac068acaf515a0d2059ef4ad79b9c623467c0f60",
+        "step_003_download_code.py": "b4a27669cf45a404a48f71f85324560ba4418cca7dd952ee1f05970a1cfa3f4b",
+        "step_004_download_mpc.py": "40a1c46ff13a83a01e3db4252fbe5a7db144c1ab74804e2093690b19637e2466",
+        "step_010_tno_clustering.py": "fc74f424d6e8f00274462b6450e23d50368ae305852ee218149da6d1eb4537d9",
+        "step_011_discriminators.py": "af6f60cc7ecf2f64ca171bbd3f43e0bf3717f2c6bb78cd8c26a5214d513884d9",
+        "step_012_radial_profile.py": "a5866812d86cead2b0c6a37229a2537fc5b29d7f63126759236b852cb7fb9b82",
+        "step_013_empirical_null.py": "cd53026ba9deacb5360323cb3b02c43a56d2884b50baeb3d855a62822b8b3ad9",
+        "step_014_discovery_footprint.py": "e1985c0b3499de02a810056e2af599293487d6d0fddf9ef311a0aa1801197041",
+        "step_015_proxy_validation.py": "f55280e3a51e45a1e3c5db8e14b025048f177bbacde543c81d36b99d742b25ec",
+        "step_016_footprint_conditional.py": "49abeb477d491a26e49abf64410ff5874d58162881dcc4d5e8b516b518fc4f25",
+        "step_017_decorrelation_radius.py": "8d604cb4d9dfe9ead3464433c68ff8417979666b9a6f0719963912a4b07bfc22",
+        "step_018_plane_warp.py": "8183d15f40f13c640d7104d88c548d8bb45c630a96542c8b0653eeb33270daca",
+        "step_019_pole_geometry.py": "c06e3726d31aacc62301162b7f2f8b436878ce35343c2fb3fcf69cfa76ef4392",
+        "step_020_axis_coupling.py": "3443834138a32803a6faa20ca26e0cbcff30f67434289238a0f4df81d497259b",
+        "step_021_environment_checks.py": "d129c6ed73631d973e088da6d98d618dd7b5c3a051f4f38704801fa8ac177760",
+        "step_022_edges.py": "c643209818ce213ba2a6ca02654d56c8fa83de0cb8d17ba52d26c951cbdcbb4b",
+        "step_023_robustness.py": "b561af806ae947d89d0e925c7d15bd448e29ff8cee46098b2e591f3dfb981256",
+        "step_024_population_selectivity.py": "4ef7ac9746ca792aeed2d704072eeb7c282b9a2ae4ea62b0d342783bb8024262",
+        "step_025_patch_scale.py": "5b8d69f6cdd424692e4e8251f5c15b4057c756c894cdc1222b5aad468a217d0f",
+        "step_026_antipode_deficit.py": "372b23563e7e0f4d758ac995a21bc46f7f67fb9407904f6fb407dd235b2a1419",
+        "step_027_antipodal_populations.py": "1e3c296b56bcd5c7c3e81b203aedfc3a70372561b2e54f1b63bcf6ec7d9425b3",
+        "step_028_ossos_bias.py": "56c4b2352745723a3e18e36f76b291119d6f031ab7c229e38e0ea7c45cf70c7a",
+        "step_030_warsaw_direction.py": "87666360323d2ceaf3575f8f9c073a23f4c0bd22449a3760316c93ba0b47d812",
+        "step_031_clock_channel.py": "be7729991c62c6819ea0de35717f854458eeb7e600f749227b0482c5aed1521a",
+        "step_032_nested_field.py": "77e063072f08f32e1dfe1c67efd42620bcd8172fc107310bc9282dd251490f67",
+        "step_033_three_leg.py": "ef179e1e74afe04766c3550bb78607062aec399f88f9cd929bb95f77aab17c4d",
+        "step_034_code_confirm.py": "58b05e7e155a0ab68f230409150a8c92e1ae74db36451af2f51268b4ba0f84d1",
+        "step_035_consolidation.py": "781edbc146b492db63263b681d2bc586c26bb8ca6735261e0798aec667984074",
+        "step_036_axis_convergence.py": "8cedfbaf0a5c66098d6ed4e2b1586c1969183d3e22042e44effcf73bfc4f7a83",
+        "step_037_blind_validation.py": "2776c8578df90deabb3520c46469cb336f2f6272f45bff3fbe5bfaef1ed7e1f3",
+        "step_038_model_comparison.py": "49a1f4a30eb751c6a10941d3dbd994599b2586885cb0bedcd7e98157c51acb9d",
+        "step_039_signed_channels.py": "2a26aeff9628dabe34a003d6dc258da4ce0fa235b48e415d9e7cda7041d5bbb8",
+        "step_040_planetary_baseline.py": "0588935fbb8db52285fe9423bba8313ea3e188820b2f4a0370b264b35ed9effd",
+        "step_041_alternatives.py": "035cbc95a0eef527bd806f65ba54cd9dfddfd07afec66790f17a871af80f23e9",
+        "step_042_nbody_planetary_baseline.py": "d593f95150b3831b5e983b6c7d2124e5e4f3ca2511517b5069af4897e9443deb",
+        "step_050_one_map.py": "be2587c0c57475fb005ef9083bc960dfa2ac5503d37ade161ce3bc10850e7108",
+        "step_051_evidence_summary.py": "c82e22a84ff906f1984f2b8e8447ea0b0c682caafbf873c2136ed4cff977bbd9",
+        "step_052_injection_chain.py": "5e46a09af107fbaa59f15c83d71debefb1d6517fe8bf6c045c5196eba705bca2",
+        "step_053_catalog_concordance.py": "b2109fbc27c3b6bdcea148bd4e41846321f22788b6a4b10f1881b78e0c495eeb",
+        "step_054_prospective_predictions.py": "e5b87e0c0665c37f39c1727ac81a4f5c38efd92587b375415910d2bc277508b7",
+        "step_055_morphology.py": "37eafd0fef9b657a792390c197f59367ebb49ad262a6aedee1e55496e998131c",
+        "step_056_morphology_conditional.py": "5093c00d7478b6fc335f89cdb25629d8c17060fe723632d51eb6043f66d07f43",
+        "step_057_incap_audit.py": "205d0b670b1c3d4de6a3be933b8f9bf9576c0277b38feec31bc49d25b29aea56",
+        "step_058_comet_obs_audit.py": "5aeeeec53f0e6b527126b0fbf91373cb90c7387208c614fad40c57271441d93a",
+        "step_059_axis_consistency.py": "8d9d29f3b5633c7f924081734086ac63de19ca23409fc8963478569b8d846877",
+        "step_060_uncertainty_channel.py": "a7de90b1fce6197f36c3cd3b64631ed4019a1f01c5f2283ebae9412b014c6a1c",
+        "step_061_aphelion_dipole.py": "ef4ab21c6fe1fefbf17d8a7f61465fb2dbb9047c3b64eabe55dd0feb63a11f29",
+        "step_062_planet_nine_insertion.py": "02d82c44bf02633d992b4cf6373a994130758e370c70ee7cc27ad29a52a4c90b",
+        "step_063_bidirectional_rotation.py": "8020c3e26278b4be62556096abf94952b8edb2351df5f817156398a006dfda43",
+        "step_064_warsaw_bidirectional.py": "c354195e20b257c20fa01f16148f5366b0326c3bda1995af5b88ec8f7834a54e",
+        "step_065_proper_time_slip.py": "57243cdea8819989e1b6c81fb90bf986866cfb4152d1d1cf5280c47e81167314",
+        "step_066_tno_secular_stability.py": "d552dcf6b9fe7637cd6f83837bfd8bbd89c3302a19aede98364b9c82cc90d009",
+        "step_067_detection_power.py": "267660bc9b92bc8885b1777e742b715103a6a1424acdbb59e82c11a024a11be7",
+        "step_068_wall_vs_field.py": "04593eb194f23e36c0aacd3a74f1fa201fb55339cf5d322bacc43e3fbe2646a5",
+        "step_069_joint_axis_test.py": "0a76a4891314a94afb5536d936f9f2ec5aa9383b05107e2a9076e162e9ee9e53",
+        "step_070_galactic_tide.py": "eb880b24d109f690fef922e2224fbd030189709df911faebc555dcfc93ec9713",
+        "step_071_radial_slip_profile.py": "6a136d256c3ad7a23d648fe345e6f9144ee09a5fba53b0c33fd96d2fedaf80c1",
+        "step_072_epoch_stability.py": "dd515f93304f448a7101d6fc9d17ec6b27d47002cec9231888b843b8c6dee747",
+        "step_073_edge_width.py": "fb607f670d10ba14482094d0b61993910510126539affd27df54af7ec730e228",
+        "step_074_loco_joint.py": "abcd706ce915f46fd3bfa5a3812080c28057533338476f6728e6e3a723c02205",
+        "step_075_signed_slip.py": "2a024aa49ab88378497c3e8a4f3e26c07d2b0a765da42ee9c5db722654495a69",
+        "step_076_inner_slip_profile.py": "093516894f1e314538d8b9134532a4af753f39fdd9b183a35cdd87abc331db7c",
+        "step_077_dipole_era.py": "6aa5f24d2705eb95847b16192a6ce1009317d9afa86fd6a27c4878880188b371",
+        "step_078_tno_era.py": "178fd897b04b82962e308fcdba6aefe0c62690d53a9acc6a447e7dfa2df86f33",
+        "step_079_cross_fitter.py": "ced38848f5b6ab7591f2e1802c287f874582f1634e265ed90a07a1f9f0e7ab38",
+        "step_080_signed_residual.py": "7e669645a23201eaa12e1ecae68a612c5a1e48f3402eec23115a8662df8b0390",
+        "step_081_geocentric_null.py": "b90d9f5b86dd9940c2d58dc06147a317c1baf4f5eddd5177d172ec714d3fe28c",
+        "step_082_sky_matched.py": "67c46e6473522ede6f4d96954de6e2ec8a591b7985ea9258975fc5aa07463531",
+        "step_083_mass_ladder.py": "815027f6b75ef3543a4b2f9a01b8778c8cd11e248e9ec97f324c553c06212b2e",
+        "step_084_newest_cohort.py": "636ea4ae76ce6538123a6d451df81215112ff655a2b36b0d9c7c20c595ddd053",
+        "step_085_des_resident.py": "f81495be269fffaa1c59b7f8237f15209b0b296f9e92ef7c474f443322e03361",
+        "step_086_slip_physics.py": "0861781750d8d3e25a14e4ce20b87fb1ff84f2ec0d4a273be9618498bb5d7bc3",
+        "step_087_distance_ladder.py": "263cc228bc44ebe6cea123c9927990df61d60fe7dd1ebd41ac900814208a319f",
+        "step_088_tide_resident.py": "d245bccec8c9c71441a59d9ba447c9f7514dbde885373eebee24d3d6e26d0282",
+        "step_089_bipolar_morphology.py": "a33b53a1e094734fa153cae4bdf71b7ff1339744d74a19015217fa223f38b4a8",
+        "step_090_mean_plane.py": "bc0216116a8be59e6026701c6574715b94164b37524122cb6187e48fa16a6b79",
+        "step_091_inner_perturber.py": "0aeba4b0d838ad9150b5ad14718e6aee8d41cb09f7c0960a7508699874089a21",
+        "step_092_mpcorb_clustering.py": "c4d9fa2344efd0654be3d15b07fdfb315da368927982947f478e6b2507bd1b31",
+        "step_093_perturber_zoo.py": "f1fae33d4cb4b0ab35bf4390cbcdd481ee857e2c46973e86da81e09eddaf2835",
+        "step_094_joint_axis_mp.py": "a4954905b45e1bbecab134031dc64b05182d634d9c324b1414450efa0fc8ccc3",
+        "step_095_download_spacecraft.py": "79000aaca2beceb10eb3552e7ea231478642125dee5068bfbbb471e80cc4a678",
+        "step_096_sclk_clock_audit.py": "349807c45a6667beaa5e6ccbe2cfeb067401e33e29b3f4f15ccf467d2bb99310",
+        "step_097_pws_plasma_channel.py": "74350a6129e81af6d5528e6803ef74adb80be07d678e36a4209bb3c26c246c8f",
+        "step_098_rtg_nuclear_channel.py": "be63b96e4c4f55457866b536f0c26e950a5c7243c845688aa9fed446668f5d66",
+        "step_099_heliospheric_geometry.py": "3315e839de83a4022249ea96d41d82cdc240ff618800610a18f820ef18873f45",
+        "step_100_clock_consistency.py": "fffbeb56018b4a4dbe78ca5481f6210331d392d660efa1b45574bb2afa48a717",
+        "step_101_iso_ng_channel.py": "a6829feb8243adda2f66b5eccf5ec48789d640141299634d82bb7a2eb015642d",
+        "step_102_slip_map_validation.py": "36b2476fa03aff88471f85565ee0c9e90bdf17f2a581ccd9058c0cbe830bffce",
+        "step_103_rtg_midlife_control.py": "2fcf79d0c9ffa2dacf6c137a28bb1926635bf2720e3709961cb8ede13ad251cb",
+        "step_104_spatial_holdout.py": "ea9841200031252dbe5b06797fafc6c9aa9457bad53841cf11d94510f63c2f08",
+        "step_105_lpc_bidirectional.py": "d256874200120176303f85c5dfee3c8456510fd3bdad4a23c366777d02495cde",
+        "step_106_harmonic_axis_transfer.py": "937ac7ac1dd7702f6406d84aaedb45c732ddc8e2e0aa67f9de21a1f6cfb01576",
+        "step_107_named_directions.py": "4abd28b385e4617da3ff84e96338b11d60b9e83a80521baa7df3e5b6c7906da6",
+        "step_108_cometels_dipole.py": "2a75494b95b62407d369d0ea018fe44146f224a8b71c90f91cef073888b1c771",
+        "step_109_census_bias_audit.py": "23419de86940b22a7836b93b45f6fdbecbc1bde421af42ca76ac65cf9deb8691",
+        "step_110_aphelion_direction_vs_axis.py": "9f1bb14f951b38fd48c66eaea8adb3210e48dfd7f2e3ce9dfdc2b7ae8bc9a0e1",
+        "step_111_detachment_coherence.py": "d770eb5f7ced8b5e1a5a4de55712a995aaca646d35142ab6f220e6f271a548a1",
+        "step_112_ossos_ensemble.py": "f0b9208da9d061d5ea770721a3e9cf5ee483a88bd37d833a1ad7d748e2cf5d03",
+        "step_113_resident_ledger.py": "6656d0c1ba2761e599223092abbc6ba4b67dba282856bf6f158c1ea9378ed94a",
+        "step_114_claims_trace.py": "2bc076893e5b9fc4614af0e6a04a7d8eed3634b791e95e5e24bddafc09e3b2f7",
+        "step_115_mixture_posterior.py": "e2551964d167339b3ce83fd33e91a95739599d620d64bc008405bbf1dc56c4eb",
+        "step_116_discovery_coupling.py": "a4b3d3c6c8f28883172d9208ceb1b71b064d114bb7787ad2c97d8b410d1adca9",
+        "step_117_prospective_lpc.py": "af50156fce64391e45c7714d47180c622a57de9a7fe7b2e0b414072b2a58683d",
+        "step_118_prospective_axis_audit.py": "3158a1e4ecfac108f2d2581ad3fbc7be15890db1358b43e4692133485b981165",
+        "step_119_dipole_mechanism.py": "43a7a10234f75da4d0a8f3c2d34e018d1144d69aa209f673bc50813610997ad3",
+        "step_120_pre2018_sbdb_factorial.py": "3c8e41e2ae5fccca145366b8155612dcb140e7994deacd09bc378a168be3c224",
+        "step_121_masked_signal.py": "34a2b2ea764fd0282feff7a3f9ecc11d38a193831b7effdc4f232313efeeea66",
+        "step_122_pre2018_localization.py": "89e3cce6903e2d0249756dcf9a6c1614ce6fc66a773f677f2908903b6d07479a",
+        "step_123_leg_coherence.py": "7390161d0576af6d84565f91bff47dcbc469a291c03aca3b2c9c39d698206e8a",
+        "step_124_lineage_aphelion.py": "defe75429d692b847d88809866d919bf49088b6cb9113497f4f612067877b0f1"
+    }
+}

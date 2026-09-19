@@ -1,0 +1,183 @@
+{
+ "step": "step_108_cometels_dipole",
+ "description": "Aphelion-dipole test of step_061 extended to the full MPC CometEls near-parabolic census: tide calibration, tide-aware-null d_par on both TNO axes + controls, eccentricity gradient, training-membership split, and free dipole recovery.",
+ "inputs": [
+  "data/raw/mpc/CometEls.txt",
+  "results/step_b30_proper_time_slip.csv"
+ ],
+ "seed": 20261008,
+ "n_mc": 20000,
+ "n_total": 941,
+ "n_broad": 254,
+ "n_spike": 108,
+ "n_shared": 61,
+ "n_new": 193,
+ "samples": {
+  "broad_census": {
+   "label": "CometEls broad e in [0.90,1.02)",
+   "n": 254,
+   "T1_tide_calibration": {
+    "mean_abs_bgal": 29.781247787481835,
+    "isotropic_mean": 32.71781145473078,
+    "ks_p_vs_isotropic": 0.005534316914082035
+   },
+   "T2_dipole_tide_null": {
+    "tno_extreme_34_-13": {
+     "d_par": 0.1025,
+     "p_tide_null": 0.0021498925053747312
+    },
+    "tno_detached_50_-17": {
+     "d_par": 0.0995,
+     "p_tide_null": 0.0025498725063746812
+    },
+    "anti_extreme": {
+     "d_par": -0.1025,
+     "p_tide_null": 0.9982500874956253
+    },
+    "gal_pole": {
+     "d_par": -0.0977,
+     "p_tide_null": 0.9987500624968751
+    },
+    "gal_antictr_180_0": {
+     "d_par": 0.0445,
+     "p_tide_null": 0.11889405529723514
+    }
+   }
+  },
+  "spike_proxy": {
+   "label": "CometEls spike a_osc>250AU",
+   "n": 108,
+   "T1_tide_calibration": {
+    "mean_abs_bgal": 28.918084577976703,
+    "isotropic_mean": 32.66392857300532,
+    "ks_p_vs_isotropic": 0.07420255415972743
+   },
+   "T2_dipole_tide_null": {
+    "tno_extreme_34_-13": {
+     "d_par": 0.1849,
+     "p_tide_null": 0.00034998250087495624
+    },
+    "tno_detached_50_-17": {
+     "d_par": 0.1713,
+     "p_tide_null": 0.0008499575021248938
+    },
+    "anti_extreme": {
+     "d_par": -0.1849,
+     "p_tide_null": 0.9994000299985001
+    },
+    "gal_pole": {
+     "d_par": -0.0754,
+     "p_tide_null": 0.9339533023348833
+    },
+    "gal_antictr_180_0": {
+     "d_par": 0.1712,
+     "p_tide_null": 0.0018499075046247689
+    }
+   }
+  },
+  "T3_eccentricity_gradient": [
+   {
+    "e_bin": "[0.9,0.95)",
+    "n": 11,
+    "d_par": 0.0279,
+    "p_tide_null": 0.4262786860656967
+   },
+   {
+    "e_bin": "[0.95,0.985)",
+    "n": 17,
+    "d_par": -0.1524,
+    "p_tide_null": 0.8720563971801409
+   },
+   {
+    "e_bin": "[0.985,1.0)",
+    "n": 119,
+    "d_par": 0.1789,
+    "p_tide_null": 0.00034998250087495624
+   },
+   {
+    "e_bin": "[1.0,1.02)",
+    "n": 112,
+    "d_par": 0.0831,
+    "p_tide_null": 0.059197040147992604
+   }
+  ],
+  "T4_shared_with_training": {
+   "label": "broad shared with 229 (n=61)",
+   "n": 61,
+   "T1_tide_calibration": {
+    "mean_abs_bgal": 31.856427631747618,
+    "isotropic_mean": 32.72282989505195,
+    "ks_p_vs_isotropic": 0.4814562033175629
+   },
+   "T2_dipole_tide_null": {
+    "tno_extreme_34_-13": {
+     "d_par": 0.2226,
+     "p_tide_null": 0.0007999600019999
+    },
+    "tno_detached_50_-17": {
+     "d_par": 0.2082,
+     "p_tide_null": 0.0016499175041247937
+    },
+    "anti_extreme": {
+     "d_par": -0.2226,
+     "p_tide_null": 0.99930003499825
+    },
+    "gal_pole": {
+     "d_par": -0.1822,
+     "p_tide_null": 0.9938503074846258
+    },
+    "gal_antictr_180_0": {
+     "d_par": 0.1173,
+     "p_tide_null": 0.059747012649367534
+    }
+   }
+  },
+  "T4_new_to_training": {
+   "label": "broad not in 229 (n=193)",
+   "n": 193,
+   "T1_tide_calibration": {
+    "mean_abs_bgal": 29.125361929967777,
+    "isotropic_mean": 32.744060724926875,
+    "ks_p_vs_isotropic": 0.007062342193411393
+   },
+   "T2_dipole_tide_null": {
+    "tno_extreme_34_-13": {
+     "d_par": 0.0646,
+     "p_tide_null": 0.052447377631118446
+    },
+    "tno_detached_50_-17": {
+     "d_par": 0.0651,
+     "p_tide_null": 0.055347232638368084
+    },
+    "anti_extreme": {
+     "d_par": -0.0646,
+     "p_tide_null": 0.9472026398680066
+    },
+    "gal_pole": {
+     "d_par": -0.071,
+     "p_tide_null": 0.9692515374231289
+    },
+    "gal_antictr_180_0": {
+     "d_par": 0.0215,
+     "p_tide_null": 0.311934403279836
+    }
+   }
+  },
+  "T5_free_dipole": {
+   "n": 254,
+   "R": 0.1083,
+   "lam": 29.69,
+   "bet": -31.28,
+   "sep_from_cap": 18.71,
+   "sep_from_det": 23.25,
+   "sep_from_anti": 161.29,
+   "sep_from_galpole": 154.48
+  }
+ },
+ "verdict": "On the full CometEls near-parabolic census (n=254), the aphelia lean toward the cap-declaration axis at d_par=+0.102 under the identical tide-aware null (p=0.00215); the spike-proxy subset (n=108) leans at +0.185 (p=0.00035).  The 193 comets absent from the 229-comet training set -- the genuinely new information -- lean at +0.065 (p=0.0524).  The census's own free dipole recovers (30,-31), 19 deg from the cap axis and 161 deg from the anti-axis -- the broadest discovered population self-organizes toward the measured sector without being told where it is.",
+ "caveats": [
+  "CometEls carries osculating elements at the catalogue epoch; the spike proxy uses a_osc>250 AU rather than the catalogues' original-orbit 1/a criterion -- a broader, noisier membership definition.",
+  "The tide-aware null preserves |b_gal| and isotropizes galactic longitude, as in step_061; the discovery footprint is a separate confound, bounded elsewhere in the pipeline -- the geocentric observation-direction null (step_081) shows the observed-sky footprint clustering toward the ANTI-axis (R=0.73), the opposite direction from the aphelion lean measured here.",
+  "Poorly determined orbits (single-apparition, parabolic-assumed) dilute any real dipole; they cannot manufacture one toward a pre-declared direction."
+ ]
+}

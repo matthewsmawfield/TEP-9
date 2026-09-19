@@ -1,0 +1,120 @@
+[2026-09-19 21:26:59 UTC] [INFO    ] [STEP 042] LOGGER INITIALIZED: step_042_nbody_planetary_baseline (Step 042)
+[2026-09-19 21:26:59 UTC] [DEBUG   ] [STEP 042] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_042_nbody_planetary_baseline.log
+[2026-09-19 21:26:59 UTC] [DEBUG   ] [STEP 042] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-19 21:26:59 UTC] [INFO    ] [STEP 042] ================================================================================
+[2026-09-19 21:26:59 UTC] [INFO    ] [STEP 042] N-body planetary baseline (REBOUND/IAS15 + DE440s)
+[2026-09-19 21:26:59 UTC] [INFO    ] [STEP 042] ================================================================================
+[2026-09-19 21:27:00 UTC] [INFO    ] [STEP 042] sample: 131 class-1 CODE comets (skipped 0 w/o osculating, 0 w/o epoch)
+[2026-09-19 21:29:18 UTC] [INFO    ] [STEP 042] integrated 131 comets; 0 failed
+{
+ "method": "REBOUND N-body: osculating elements at CODE perihelion epoch, backward integration to 255 AU under Sun + planetary-system barycentres (DE440s), IAS15 primary + MERCURIUS cross-check",
+ "n_all_c1": 131,
+ "n_failed": 0,
+ "failed": [],
+ "ephemeris": {
+  "file": "data/raw/spice/de440s.bsp",
+  "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+  "frame": "SSB barycentric ICRF -> ecliptic J2000",
+  "planets": "system barycentres 1-9 + Sun"
+ },
+ "integrator": {
+  "primary": "ias15",
+  "crosscheck": "mercurius",
+  "boundary_AU": 255.0,
+  "G": "4*pi^2 (AU, yr, Msun)"
+ },
+ "validation": {
+  "spearman_nb_vs_catalogue": {
+   "rho": 0.9789569209416538,
+   "p": 6.540169301679544e-91
+  },
+  "spearman_nb_vs_catalogue_trimmed": {
+   "rho": 0.9107271130976137,
+   "p": 1.1761005917710936e-26,
+   "n": 67,
+   "trim": "|cat_kick| < 400e-6 AU^-1"
+  },
+  "median_signed_diff": -0.4092382647834256,
+  "median_abs_diff": 4.70466652307465,
+  "abs_diff_iqr": [
+   1.1606683020075934,
+   18.699030575368056
+  ],
+  "frac_within_50e-6": 0.8778625954198473,
+  "mercurius_crosscheck": {
+   "n": 131,
+   "spearman_aa_out": {
+    "rho": 0.9252495596007047,
+    "p": 3.7712902662916167e-56
+   },
+   "median_abs_aa_out_diff": 0.3567778913360229
+  }
+ },
+ "matched": {
+  "n": 54,
+  "n_in": 19,
+  "kick_e_p_2s": 0.9278369065565704,
+  "denc_p_2s": 0.01121692901124405,
+  "q_p_2s": 0.6120331415229909,
+  "i_p_2s": 0.7171527174670546,
+  "spearman_dof_kick_e": {
+   "rho": 0.39797979797979793,
+   "p": 0.002879777575014324
+  },
+  "spearman_dof_denc": {
+   "rho": -0.18947970268724984,
+   "p": 0.169978353477405
+  },
+  "residual_cap": {
+   "med_in": 0.24825913176655923,
+   "med_out": -0.15528242238782042,
+   "p": 0.0021055011257245623
+  },
+  "residual_continuous": {
+   "rho": -0.38189441585667994,
+   "p_2sided": 0.004378169209876641
+  },
+  "residual_cap_2cov": {
+   "p": 0.004549386467684184
+  },
+  "residual_continuous_2cov": {
+   "rho": -0.36260720411663805,
+   "p_2sided": 0.007046465882846374
+  }
+ },
+ "all_c1": {
+  "n": 131,
+  "n_in": 43,
+  "kick_e_p_2s": 0.5679836799770813,
+  "denc_p_2s": 0.008184708277729656,
+  "q_p_2s": 0.8695737761661341,
+  "i_p_2s": 0.0686215392059113,
+  "spearman_dof_kick_e": {
+   "rho": 0.32416591042545245,
+   "p": 0.00015859448366713973
+  },
+  "spearman_dof_denc": {
+   "rho": -0.3254257193188491,
+   "p": 0.00014899290588284034
+  },
+  "residual_cap": {
+   "med_in": 0.2038717314318388,
+   "med_out": -0.021094093547617376,
+   "p": 0.0007525080551056618
+  },
+  "residual_continuous": {
+   "rho": -0.27200661933486364,
+   "p_2sided": 0.0016728351190204071
+  },
+  "residual_cap_2cov": {
+   "p": 0.0023951482945060096
+  },
+  "residual_continuous_2cov": {
+   "rho": -0.24155234078898202,
+   "p_2sided": 0.005444624785886096
+  }
+ }
+}
+wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_19_nbody_planetary_baseline.json
+wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_19_nbody_kicks.csv
+wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_19_rotation_vs_energy.png

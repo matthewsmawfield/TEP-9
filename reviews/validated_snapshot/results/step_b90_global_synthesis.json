@@ -1,0 +1,147 @@
+{
+ "step": "step_126_global_cross_survey_synthesis",
+ "description": "Ten-channel descriptive directional landscape on overlapping catalogues",
+ "evidence_status": "descriptive directional landscape",
+ "calibration": "Fixed observed catalogues, random test direction. Not a null-data maximum-statistic test and not a global discovery p-value. Resident scores select an angular cap before applying an unrestricted Rayleigh reference and are not valid component p-values. Catalogue overlap is retained in the observed landscape but resampled-object bootstrap uncertainty does not preserve cross-catalogue identities.",
+ "legacy_field_note": "p_global and channel_p are retained for compatibility; interpret as sky-area rank and descriptive weights only.",
+ "seed": 20261031,
+ "n_axes_permuted": 20000,
+ "cap_deg": 60.0,
+ "axes": {
+  "tno_axis_deg": [
+   49.0,
+   -17.0
+  ],
+  "comet_axis_deg": [
+   34.0,
+   -13.0
+  ]
+ },
+ "eval_at_tno_axis": {
+  "S_stat": 191.36117989759742,
+  "p_global": 0.008899555022248887,
+  "channel_p": [
+   5.6996649005101004e-09,
+   4.959891828051937e-05,
+   2.778857139016634e-10,
+   0.0199501246882793,
+   0.008736431325865402,
+   0.00533951023764481,
+   3.4737254580784554e-07,
+   0.000662009959252335,
+   0.0037884739536970065,
+   0.04388888888888892
+  ]
+ },
+ "eval_at_comet_axis": {
+  "S_stat": 188.89600531379676,
+  "p_global": 0.01224938753062347,
+  "channel_p": [
+   7.56627639243129e-09,
+   4.959891828051937e-05,
+   2.6588484446277617e-10,
+   0.06733167082294264,
+   0.005188047766861907,
+   0.007831676821448794,
+   5.268185803627722e-07,
+   0.0006306362055898739,
+   0.002680412819667582,
+   0.039444444444444456
+  ]
+ },
+ "per_channel": {
+  "C1_sbdb_tno_varpi": {
+   "p_at_tno_axis": 5.6996649005101004e-09,
+   "frac_random_axes_better": 0.0154
+  },
+  "C2_des_tno_cluster": {
+   "p_at_tno_axis": 4.959891828051937e-05,
+   "frac_random_axes_better": 0.07925
+  },
+  "C3_mpcorb_tno_cluster": {
+   "p_at_tno_axis": 2.778857139016634e-10,
+   "frac_random_axes_better": 0.0338
+  },
+  "C4_mean_plane_lean": {
+   "p_at_tno_axis": 0.0199501246882793,
+   "frac_random_axes_better": 0.02495
+  },
+  "C5_code_comet_slip": {
+   "p_at_tno_axis": 0.008736431325865402,
+   "frac_random_axes_better": 0.0139
+  },
+  "C6_warsaw_inbound_slip": {
+   "p_at_tno_axis": 0.00533951023764481,
+   "frac_random_axes_better": 0.01085
+  },
+  "C7_pooled_comet_dipole": {
+   "p_at_tno_axis": 3.4737254580784554e-07,
+   "frac_random_axes_better": 0.00555
+  },
+  "C8_cometels_census_dipole": {
+   "p_at_tno_axis": 0.000662009959252335,
+   "frac_random_axes_better": 0.02815
+  },
+  "C9_post2017_sbdb_dipole": {
+   "p_at_tno_axis": 0.0037884739536970065,
+   "frac_random_axes_better": 0.0887
+  },
+  "C10_jfc_injection_chain": {
+   "p_at_tno_axis": 0.04388888888888892,
+   "frac_random_axes_better": 0.0421
+  }
+ },
+ "best_random_axis": {
+  "S_max": 204.94868052088702,
+  "sep_to_tno_deg": 14.911430521873214
+ },
+ "null_quantiles": {
+  "q50": 46.15918546975517,
+  "q95": 166.90981068369922,
+  "q99": 190.43705870922813,
+  "q999": 198.49568322223766
+ },
+ "axis_localization": {
+  "argmax_lon_lat_deg": [
+   41.160339702835685,
+   -30.078971640591842
+  ],
+  "argmax_sep_to_tno_deg": 14.911430521873214,
+  "argmax_sep_to_comet_deg": 18.318276278948865,
+  "declared_axes_sep_deg": 15.024754310550334,
+  "frac_sphere_ge_declared": 0.00885,
+  "s_profile_vs_dist": {
+   "0-15deg": {
+    "n": 337,
+    "med_S": 187.6949848991017
+   },
+   "15-30deg": {
+    "n": 1002,
+    "med_S": 169.39488745299738
+   },
+   "30-45deg": {
+    "n": 1642,
+    "med_S": 145.56239759980105
+   },
+   "45-60deg": {
+    "n": 2007,
+    "med_S": 111.1277862584809
+   },
+   "60-90deg": {
+    "n": 4971,
+    "med_S": 60.75524815501537
+   },
+   "90-180deg": {
+    "n": 10041,
+    "med_S": 33.302087720195885
+   }
+  },
+  "bootstrap": {
+   "n": 150,
+   "r68_deg": 17.198999468997844,
+   "r95_deg": 20.93284387702335,
+   "argmax_within_r68": true,
+   "med_sep_deg": 10.324730440300623
+  }
+ }
+}

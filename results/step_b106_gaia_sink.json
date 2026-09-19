@@ -1,0 +1,549 @@
+{
+ "step": "step_142_gaia_sink",
+ "result": "b106",
+ "description": "Does the displaced-anomaly attenuation on uniform-Gaia legs reflect an erased signal or a signal relocated into the fit's time-domain channels (cross-arc misfit, leg disagreement, NG parameters, time-element sigmas)?",
+ "seed": 20260919,
+ "cap_deg": 60.0,
+ "gaia_hi": 0.7,
+ "displaced_axis": [
+  120.0,
+  -40.0
+ ],
+ "n_post2017": 186,
+ "n_pre2018": 489,
+ "strata": {
+  "uniform_gaia": 109,
+  "sub_threshold": 77
+ },
+ "T1_displaced_resid_by_stratum": {
+  "uniform_gaia": {
+   "n": 109,
+   "n_in": 30,
+   "n_out": 79,
+   "median_in": 0.09410370076520536,
+   "median_out": 0.025161248346712073,
+   "p": 0.28322308284490794
+  },
+  "sub_threshold": {
+   "n": 77,
+   "n_in": 27,
+   "n_out": 50,
+   "median_in": 0.25330847376684396,
+   "median_out": -0.1324318852062411,
+   "p": 6.452615034300114e-07
+  }
+ },
+ "T2_misfit_channels": {
+  "uniform_gaia": {
+   "label": "uniform-Gaia legs",
+   "n": 109,
+   "xarc_rms_in2out": {
+    "n_in": 26,
+    "n_out": 72,
+    "median_in": 3.5031674050730084,
+    "median_out": 2.356113938072361,
+    "p": 0.23323634230663198
+   },
+   "ddirf": {
+    "n_in": 26,
+    "n_out": 72,
+    "median_in": 0.11305410256568763,
+    "median_out": 0.08889436902391444,
+    "p": 0.2825299810360341
+   },
+   "d_out_leg": {
+    "n_in": 26,
+    "n_out": 72,
+    "median_in": 0.10367756848124862,
+    "median_out": 0.07959267364548969,
+    "p": 0.07207858347111872
+   }
+  },
+  "sub_threshold": {
+   "label": "sub-threshold legs",
+   "n": 77,
+   "xarc_rms_in2out": {
+    "n_in": 21,
+    "n_out": 40,
+    "median_in": 4.01359064225107,
+    "median_out": 6.8408488994352386,
+    "p": 0.945358994723362
+   },
+   "ddirf": {
+    "n_in": 21,
+    "n_out": 40,
+    "median_in": 0.25807280882438977,
+    "median_out": 0.11099345574667296,
+    "p": 0.0007756579426962262
+   },
+   "d_out_leg": {
+    "n_in": 21,
+    "n_out": 40,
+    "median_in": 0.11811020164220219,
+    "median_out": 0.09699846791680379,
+    "p": 0.08014510059643437
+   }
+  },
+  "spearman_xarc_vs_gaia_in_cap": {
+   "n": 47,
+   "rho": -0.2171600370027752,
+   "p": 0.14258099424466056
+  },
+  "spearman_xarc_vs_gaia_out_cap": {
+   "n": 112,
+   "rho": -0.2844036893173049,
+   "p": 0.0023728742626226676
+  }
+ },
+ "T3_ng_solution_rate": {
+  "uniform_gaia": {
+   "n_in": 30,
+   "n_out": 79,
+   "rate_in": 0.16666666666666666,
+   "rate_out": 0.24050632911392406,
+   "p": 0.8631767401286087,
+   "table": [
+    5,
+    25,
+    19,
+    60
+   ]
+  },
+  "sub_threshold": {
+   "n_in": 27,
+   "n_out": 50,
+   "rate_in": 0.07407407407407407,
+   "rate_out": 0.2,
+   "p": 0.9692524417360225,
+   "table": [
+    2,
+    25,
+    10,
+    40
+   ]
+  },
+  "all": {
+   "n_in": 57,
+   "n_out": 129,
+   "rate_in": 0.12280701754385964,
+   "rate_out": 0.2248062015503876,
+   "p": 0.9696406205758576,
+   "table": [
+    7,
+    50,
+    29,
+    100
+   ]
+  }
+ },
+ "T4_ng_parameter_magnitudes": {
+  "abs_A1": {
+   "n": 31,
+   "n_in": 7,
+   "n_out": 24,
+   "median_in": 2.68845020714355e-08,
+   "median_out": 2.856452476206874e-08,
+   "p": 0.527595143701929
+  },
+  "z_A1": {
+   "n": 31,
+   "n_in": 7,
+   "n_out": 24,
+   "median_in": 12.837869363481685,
+   "median_out": 16.132014008459777,
+   "p": 0.5641729176768109
+  },
+  "abs_A2": {
+   "n": 33,
+   "n_in": 4,
+   "n_out": 29,
+   "median_in": null,
+   "median_out": null,
+   "p": null
+  },
+  "z_A2": {
+   "n": 33,
+   "n_in": 4,
+   "n_out": 29,
+   "median_in": null,
+   "median_out": null,
+   "p": null
+  },
+  "abs_DT": {
+   "n": 6,
+   "n_in": 1,
+   "n_out": 5,
+   "median_in": null,
+   "median_out": null,
+   "p": null
+  },
+  "z_DT": {
+   "n": 6,
+   "n_in": 1,
+   "n_out": 5,
+   "median_in": null,
+   "median_out": null,
+   "p": null
+  }
+ },
+ "T5_sigma_channels": {
+  "uniform_gaia": {
+   "sig_tp": {
+    "n": 109,
+    "n_in": 30,
+    "n_out": 79,
+    "median_in": -3.1925572606250388,
+    "median_out": -3.2589114611863543,
+    "p": 0.15684643967151712
+   },
+   "sig_ma": {
+    "n": 109,
+    "n_in": 30,
+    "n_out": 79,
+    "median_in": -5.238536552602678,
+    "median_out": -5.251494123732318,
+    "p": 0.6108588582421149
+   },
+   "sig_w": {
+    "n": 109,
+    "n_in": 30,
+    "n_out": 79,
+    "median_in": -3.9355572193585635,
+    "median_out": -3.9391511269611925,
+    "p": 0.23706716039796571
+   },
+   "sig_om": {
+    "n": 109,
+    "n_in": 30,
+    "n_out": 79,
+    "median_in": -4.479167752757016,
+    "median_out": -4.571136591700744,
+    "p": 0.10166872957925016
+   },
+   "ratio_tp_over_w": {
+    "n": 109,
+    "n_in": 30,
+    "n_out": 79,
+    "median_in": -1.7094128121747305,
+    "median_out": -1.85521664612817,
+    "p": 0.2010462114768703
+   }
+  },
+  "sub_threshold": {
+   "sig_tp": {
+    "n": 77,
+    "n_in": 27,
+    "n_out": 50,
+    "median_in": -2.8942174021855585,
+    "median_out": -3.470522229607198,
+    "p": 0.0016929281377313736
+   },
+   "sig_ma": {
+    "n": 77,
+    "n_in": 27,
+    "n_out": 50,
+    "median_in": -5.074703382451143,
+    "median_out": -4.890592662912576,
+    "p": 0.7510747936649351
+   },
+   "sig_w": {
+    "n": 77,
+    "n_in": 27,
+    "n_out": 50,
+    "median_in": -3.4635299402983497,
+    "median_out": -3.8624588868829317,
+    "p": 0.004816410926915346
+   },
+   "sig_om": {
+    "n": 77,
+    "n_in": 27,
+    "n_out": 50,
+    "median_in": -4.246233151649461,
+    "median_out": -4.388573541759975,
+    "p": 0.08506837820818208
+   },
+   "ratio_tp_over_w": {
+    "n": 77,
+    "n_in": 27,
+    "n_out": 50,
+    "median_in": -2.1231664616783865,
+    "median_out": -2.1642305995926776,
+    "p": 0.10879034742829463
+   }
+  }
+ },
+ "T6_matched_controls_uniform_gaia": {
+  "n_obs": {
+   "n_in": 30,
+   "n_out": 79,
+   "med_in": 473.0,
+   "med_out": 818.0,
+   "p": 0.11626757599476499
+  },
+  "gaia_min": {
+   "n_in": 30,
+   "n_out": 79,
+   "med_in": 0.7887537993920972,
+   "med_out": 0.8311970979443772,
+   "p": 0.03664564402479081
+  },
+  "gaia_contrast": {
+   "n_in": 30,
+   "n_out": 79,
+   "med_in": 0.0916774670067032,
+   "med_out": 0.05891187769883788,
+   "p": 0.0639940868377273
+  },
+  "perihelion_year": {
+   "n_in": 30,
+   "n_out": 79,
+   "med_in": 2022.0,
+   "med_out": 2022.0,
+   "p": 0.7887112119815448
+  },
+  "q": {
+   "n_in": 30,
+   "n_out": 79,
+   "med_in": 4.433919069465087,
+   "med_out": 3.511091421543957,
+   "p": 0.5126559938066992
+  },
+  "i": {
+   "n_in": 30,
+   "n_out": 79,
+   "med_in": 116.21031823004385,
+   "med_out": 88.59523237509845,
+   "p": 0.004240664936707988
+  }
+ },
+ "T7_pre2018_declared_axis_misfit": {
+  "xarc_rms_in2out": {
+   "n": 398,
+   "n_in": 105,
+   "n_out": 293,
+   "median_in": 5.3835190236593355,
+   "median_out": 7.008732471436074,
+   "p": 0.9568677711323073
+  },
+  "ddirf": {
+   "n": 398,
+   "n_in": 105,
+   "n_out": 293,
+   "median_in": 0.156117755548507,
+   "median_out": 0.12244499141854241,
+   "p": 0.040742296368684455
+  }
+ },
+ "T8_seed_lock_and_adjusted_sigma": {
+  "del_pdeg": {
+   "in_cap": {
+    "n": 57,
+    "rho": 0.30878921441534873,
+    "p": 0.0194345603928012
+   },
+   "out_cap": {
+    "n": 129,
+    "rho": 0.16353992700358186,
+    "p": 0.0640451510898174
+   }
+  },
+  "del_q": {
+   "in_cap": {
+    "n": 57,
+    "rho": 0.37341197822141564,
+    "p": 0.004222810152610996
+   },
+   "out_cap": {
+    "n": 129,
+    "rho": 0.13512044117571093,
+    "p": 0.12682411918601694
+   }
+  },
+  "del_e": {
+   "in_cap": {
+    "n": 57,
+    "rho": 0.06183562354161266,
+    "p": 0.6477116005069856
+   },
+   "out_cap": {
+    "n": 129,
+    "rho": 0.10019916287851494,
+    "p": 0.25855518354372153
+   }
+  },
+  "del_i": {
+   "in_cap": {
+    "n": 57,
+    "rho": 0.08704952035260564,
+    "p": 0.5196576396956436
+   },
+   "out_cap": {
+    "n": 129,
+    "rho": 0.04587593207504847,
+    "p": 0.6056792725920308
+   }
+  },
+  "sig_tp_adj_nobs_sub": {
+   "n": 77,
+   "n_in": 27,
+   "n_out": 50,
+   "median_in": 0.17737448193354943,
+   "median_out": -0.09605411717743007,
+   "p": 0.025693971242681045
+  }
+ },
+ "T9_epoch_composition": {
+  "epoch_median_in_cap": 2021.9808401475245,
+  "epoch_median_out_cap": 2022.4591339879964,
+  "resid_vs_epoch_in_cap": {
+   "n": 57,
+   "rho": -0.5412237490277418,
+   "p": 1.3801572225835164e-05
+  },
+  "resid_vs_epoch_all": {
+   "n": 186,
+   "rho": -0.06379534614828732,
+   "p": 0.3870010062211855
+  },
+  "resid_vs_gmin_in_cap": {
+   "n": 57,
+   "rho": -0.5451775991703397,
+   "p": 1.1596013935738145e-05
+  },
+  "resid_vs_leg_asymmetry": {
+   "n": 186,
+   "rho": 0.06067099324969897,
+   "p": 0.4107229003251974
+  },
+  "partial_gmin_given_epoch_in_cap": {
+   "n": 57,
+   "rho": -0.220961887477314,
+   "p": 0.09858484444139909
+  },
+  "epoch_split_at": 2022.3776411473204,
+  "epoch_matched_early_uniform_gaia": {
+   "n_in": 9,
+   "n_out": 22,
+   "med_in": 0.23874157147181863,
+   "med_out": -0.1962378399470569,
+   "p": 0.004232657565537813
+  },
+  "epoch_matched_late_uniform_gaia": {
+   "n_in": 21,
+   "n_out": 57,
+   "med_in": 0.011527678868257896,
+   "med_out": 0.06840768760777904,
+   "p": 0.6899323627660023
+  }
+ },
+ "T10_inclination_and_power": {
+  "uniform_gaia": {
+   "ddirf_vs_i": {
+    "n": 98,
+    "rho": 0.14378797442125865,
+    "p": 0.15779792087298167
+   },
+   "ddirf_i_adjusted": {
+    "n_in": 26,
+    "n_out": 72,
+    "med_in": -0.01816061849387019,
+    "med_out": -0.045954636932494415,
+    "p": 0.31604715393733845
+   },
+   "auc": 0.5384615384615384,
+   "raw_p": 0.2825299810360341,
+   "i_terciles": {
+    "i_0_60": {
+     "n_in": 4,
+     "n_out": 23,
+     "med_in": 0.07393343594892468,
+     "med_out": 0.0989375050427901,
+     "sign_pos": false
+    },
+    "i_60_105": {
+     "n_in": 6,
+     "n_out": 26,
+     "med_in": 0.08523385616827717,
+     "med_out": 0.06789362540410845,
+     "sign_pos": true
+    },
+    "i_105_180": {
+     "n_in": 16,
+     "n_out": 23,
+     "med_in": 0.135858891781866,
+     "med_out": 0.09325705845392655,
+     "sign_pos": true
+    }
+   }
+  },
+  "sub_threshold": {
+   "ddirf_vs_i": {
+    "n": 61,
+    "rho": -0.1336329984135378,
+    "p": 0.30454808924175747
+   },
+   "ddirf_i_adjusted": {
+    "n_in": 21,
+    "n_out": 40,
+    "med_in": 0.07449368151755847,
+    "med_out": -0.08801356357344722,
+    "p": 0.000480806348153754
+   },
+   "auc": 0.7488095238095238,
+   "raw_p": 0.0007756579426962262,
+   "i_terciles": {
+    "i_0_60": {
+     "n_in": 4,
+     "n_out": 13,
+     "med_in": 0.6962871656788203,
+     "med_out": 0.11353165360123542,
+     "sign_pos": true
+    },
+    "i_60_105": {
+     "n_in": 12,
+     "n_out": 11,
+     "med_in": 0.23484698073537036,
+     "med_out": 0.07530701909014194,
+     "sign_pos": true
+    },
+    "i_105_180": {
+     "n_in": 5,
+     "n_out": 16,
+     "med_in": 0.2006668681725504,
+     "med_out": 0.15748354451802005,
+     "sign_pos": true
+    }
+   }
+  },
+  "power_check": {
+   "n_in": 26,
+   "n_out": 72,
+   "p_detect": 0.984,
+   "median_p": 7.359660940537733e-05,
+   "note": "P(p<0.05) resampling the sub-threshold in/out ddirf pools at uniform-Gaia sample sizes"
+  }
+ },
+ "test_summary": {
+  "attenuation_replicated": true,
+  "sink_channels": [],
+  "n_sink_channels": 0,
+  "ddirf_carrier_sub": true,
+  "sig_tp_adj_hit": true,
+  "seed_lock": false,
+  "i_mediation": false,
+  "attenuation_is_amplitude_loss": true
+ },
+ "verdict": "ATTENUATED WITH TIME-DOMAIN LOADING: the displaced residual attenuates on uniform-Gaia legs (p=0.283 vs 6.45e-07 sub-threshold) while retaining the same positive sign on every channel.  Three mechanism results sharpen the reading: (1) the anomaly's full-strength carrier on sub-threshold legs is the leg-disagreement channel (p=0.000776), and in-cap perihelion-time uncertainty stays elevated after controlling for observation count (p=0.0257) -- the signature is already expressed as a time-domain disagreement, not only a spatial rotation; (2) the seed-lock account fails -- in-cap element displacement from the catalogue seed grows with Gaia fraction (del_pdeg rho=0.31), so the attenuation is not the fit being pinned to an absorbed solution; (3) the attenuation decomposes predominantly into transit epoch rather than reduction system -- the in-cap amplitude declines with perihelion epoch (rho=-0.54, p=1.38e-05), the residual shows no leg-system-asymmetry dependence that stitching requires (rho=0.06, p=0.411), and the composition correlation partialled on epoch drops to rho=-0.22 (p=0.0986): uniform-Gaia legs are the latest-transiting cohort, and the displaced lobe is intrinsically weakest there.  The epoch gradient is itself a registered measurement (the displaced structure was strongest nearest the transition); (4) the in-cap inclination imbalance flagged by T6 does not mediate the carrier -- ddirf is i-robust (in/out sign preserved in every inclination tercile, i-adjusted contrast unchanged) -- and the uniform-Gaia flatness is genuine amplitude loss rather than underpowering: at the stratum's own sample sizes a sub-threshold-strength effect is detected with 98 per cent power.  What remains open is the residual composition term at late epochs, and the NG-parameter channel is underpowered (n_in=4 in-cap members).",
+ "evidence_status": "mechanism audit",
+ "inputs": [
+  "results/step_b92_refit.jsonl (post-2017 dual-leg refit)",
+  "results/step_b91_refit.jsonl (pre-2018 refit)",
+  "data/raw/mpc/obs/*.json (per-observation astcat labels)",
+  "data/raw/mpc/sbdb_fp/*.json (NG model_pars + element sigmas)"
+ ],
+ "caveats": [
+  "Cross-arc RMS couples leg-fit quality to leg disagreement; the in-cap/out-cap contrast isolates the directional term only if fit-quality floors are composition-matched -- T6 provides that match.",
+  "NG solutions exist for a minority of comets and are not randomly assigned: a rate contrast tests whether the catalogue *needed* the parameters, not whether the parameters are real forces.",
+  "Element sigmas are catalogue self-reports with heterogeneous fitting conventions; sigma ratios within one record are more comparable than sigmas across records."
+ ]
+}

@@ -1,0 +1,308 @@
+{
+ "step": "step_122_pre2018_localization",
+ "description": "localization of the weak positive declared-axis term on the pre-2018 SBDB cohort: CODE-membership lock vs broad-population readings, era decomposition, and fat-tail audit",
+ "inputs": [
+  "results/step_b84_pre2018_sbdb.csv"
+ ],
+ "seed": 20260919,
+ "n_perm": 2000,
+ "cap_deg": 60.0,
+ "n_cohort": 738,
+ "n_overlap": 288,
+ "n_non_overlap": 450,
+ "T1_membership_decomposition": {
+  "overlap": {
+   "n": 288,
+   "n_in": 87,
+   "med_gap": 0.007570038877020124,
+   "mean_gap": 0.039637594171724896,
+   "mwu_greater_p": 0.24790637305991492,
+   "rho": -0.05292540258571148,
+   "rho_p": 0.37084316720467225
+  },
+  "non_overlap": {
+   "n": 450,
+   "n_in": 107,
+   "med_gap": -0.013100236397687759,
+   "mean_gap": 0.00429495805296797,
+   "mwu_greater_p": 0.5742954557617512,
+   "rho": -0.03504484795809692,
+   "rho_p": 0.4583457114156654
+  },
+  "membership_x_cap_interaction": {
+   "k": 0.023845105394045482,
+   "p_perm": 0.657671164417791
+  }
+ },
+ "T2_overlap_cap_and_axis": {
+  "cap_widths": {
+   "cap_45": {
+    "n": 288,
+    "n_in": 57,
+    "med_gap": 0.011344046710220601,
+    "mean_gap": 0.047061701580958605,
+    "mwu_greater_p": 0.26712348908863487,
+    "rho": -0.05292540258571148,
+    "rho_p": 0.37084316720467225
+   },
+   "cap_60": {
+    "n": 288,
+    "n_in": 87,
+    "med_gap": 0.007570038877020124,
+    "mean_gap": 0.039637594171724896,
+    "mwu_greater_p": 0.24790637305991492,
+    "rho": -0.05292540258571148,
+    "rho_p": 0.37084316720467225
+   },
+   "cap_75": {
+    "n": 288,
+    "n_in": 129,
+    "med_gap": 0.007570038877020124,
+    "mean_gap": 0.03828468094700024,
+    "mwu_greater_p": 0.30624513730986735,
+    "rho": -0.05292540258571148,
+    "rho_p": 0.37084316720467225
+   }
+  },
+  "axis_controls": {
+   "anti_axis": {
+    "n": 288,
+    "n_in": 42,
+    "med_gap": -0.06726638810416524,
+    "mean_gap": -0.030098011804349466,
+    "mwu_greater_p": 0.7582370292804014,
+    "rho": 0.05292540258571148,
+    "rho_p": 0.37084316720467225
+   },
+   "post2017_displaced": {
+    "n": 288,
+    "n_in": 101,
+    "med_gap": 0.01366317320952215,
+    "mean_gap": -0.041642554575830625,
+    "mwu_greater_p": 0.7926063459180408,
+    "rho": 0.026734223101005112,
+    "rho_p": 0.6514112888309538
+   }
+  }
+ },
+ "T3_era_membership_grid": {
+  "pre_1990": {
+   "overlap": {
+    "n": 70,
+    "n_in": 23,
+    "med_gap": 0.08923170734891839,
+    "mean_gap": 0.03659967603257379,
+    "mwu_greater_p": 0.37255128376718194,
+    "rho": -0.020733094217478786,
+    "rho_p": 0.8647266974268879
+   },
+   "non_overlap": {
+    "n": 185,
+    "n_in": 35,
+    "med_gap": -0.026794413513138715,
+    "mean_gap": 0.019474834766840515,
+    "mwu_greater_p": 0.5048946507991472,
+    "rho": 0.026202570031462036,
+    "rho_p": 0.723309879698089
+   }
+  },
+  "y1990_2009": {
+   "overlap": {
+    "n": 114,
+    "n_in": 33,
+    "med_gap": -0.082114101258563,
+    "mean_gap": -0.005201983523922879,
+    "mwu_greater_p": 0.522421567436412,
+    "rho": 0.006638180676778518,
+    "rho_p": 0.944117219856413
+   },
+   "non_overlap": {
+    "n": 156,
+    "n_in": 38,
+    "med_gap": -0.011129074796432104,
+    "mean_gap": 0.02192460215838701,
+    "mwu_greater_p": 0.48764877803396073,
+    "rho": -0.07456496657236332,
+    "rho_p": 0.3549062679582484
+   }
+  },
+  "y2010_2017": {
+   "overlap": {
+    "n": 104,
+    "n_in": 31,
+    "med_gap": 0.04971897161574079,
+    "mean_gap": 0.11184518711110605,
+    "mwu_greater_p": 0.1148769985658184,
+    "rho": -0.16082364237704044,
+    "rho_p": 0.10291184298811731
+   },
+   "non_overlap": {
+    "n": 109,
+    "n_in": 34,
+    "med_gap": -0.04445794986735918,
+    "mean_gap": -0.029935781308332507,
+    "mwu_greater_p": 0.6752937863639087,
+    "rho": -0.005087572977481235,
+    "rho_p": 0.9581272748372407
+   }
+  }
+ },
+ "T4_pre1990_fat_tail_audit": {
+  "n": 185,
+  "n_in": 35,
+  "med_gap": -0.026794413513138715,
+  "mean_gap": 0.019474834766840515,
+  "trim10_mean_gap": 0.005144340455496305,
+  "winsor95_mean_gap": 0.020197422992236983,
+  "top5_incap_resid_share": 0.29362916516985715,
+  "loo_med_gap_after_dropping_top": {
+   "C/1981 H1 (Bus)": -0.030954426604074547,
+   "C/1922 W1 (Skjellerup)": -0.030954426604074547,
+   "C/1958 D1 (Burnham)": -0.030954426604074547,
+   "C/1887 J1 (Barnard)": -0.030954426604074547,
+   "C/1983 O2 (IRAS)": -0.030954426604074547
+  },
+  "top10_incap_members": [
+   {
+    "desig": "C/1981 H1 (Bus)",
+    "yr": 1981.0,
+    "resid": 0.43003327111340117,
+    "arc": 265.0,
+    "nobs": 26.0,
+    "cc": null
+   },
+   {
+    "desig": "C/1922 W1 (Skjellerup)",
+    "yr": 1922.0,
+    "resid": 0.42508336691044935,
+    "arc": 78.0,
+    "nobs": 65.0,
+    "cc": null
+   },
+   {
+    "desig": "C/1958 D1 (Burnham)",
+    "yr": 1958.0,
+    "resid": 0.4068068178312402,
+    "arc": 205.0,
+    "nobs": 22.0,
+    "cc": null
+   },
+   {
+    "desig": "C/1887 J1 (Barnard)",
+    "yr": 1887.0,
+    "resid": 0.40351561156346094,
+    "arc": 91.0,
+    "nobs": 313.0,
+    "cc": null
+   },
+   {
+    "desig": "C/1983 O2 (IRAS)",
+    "yr": 1983.0,
+    "resid": 0.2978005157644755,
+    "arc": 306.0,
+    "nobs": 35.0,
+    "cc": null
+   },
+   {
+    "desig": "C/1861 Y1 (Tuttle)",
+    "yr": 1861.0,
+    "resid": 0.23763657129524052,
+    "arc": 35.0,
+    "nobs": 30.0,
+    "cc": null
+   },
+   {
+    "desig": "C/1863 G2 (Respighi)",
+    "yr": 1863.0,
+    "resid": 0.23503813871088342,
+    "arc": 48.0,
+    "nobs": 160.0,
+    "cc": null
+   },
+   {
+    "desig": "C/1863 G1 (Klinkerfues)",
+    "yr": 1863.0,
+    "resid": 0.2076464494474659,
+    "arc": 170.0,
+    "nobs": 49.0,
+    "cc": null
+   },
+   {
+    "desig": "C/1967 Y1 (Ikeya-Seki)",
+    "yr": 1967.0,
+    "resid": 0.1505999034621638,
+    "arc": 676.0,
+    "nobs": 197.0,
+    "cc": null
+   },
+   {
+    "desig": "C/1913 J1 (Schaumasse)",
+    "yr": 1913.0,
+    "resid": 0.14556773590336414,
+    "arc": 41.0,
+    "nobs": 34.0,
+    "cc": null
+   }
+  ],
+  "median_cc_incap_top10": null,
+  "median_cc_all": null,
+  "note": "condition codes are unpopulated for most pre-1990 designations; arc/nobs are the usable quality proxies in this stratum"
+ },
+ "T5_non_overlap_quality_cells": {
+  "q_lt_3p1": {
+   "n": 350,
+   "n_in": 77,
+   "med_gap": -0.028984885506736835,
+   "mean_gap": -0.016219022602399737,
+   "mwu_greater_p": 0.793532291355092,
+   "rho": 0.0014253177576959812,
+   "rho_p": 0.9788027993539863
+  },
+  "q_lt_3p1_bound": {
+   "n": 237,
+   "n_in": 55,
+   "med_gap": -0.034415789324917845,
+   "mean_gap": -0.02275689844501047,
+   "mwu_greater_p": 0.7449584857596917,
+   "rho": 0.017064538752639007,
+   "rho_p": 0.7938339344212764
+  },
+  "q_lt_3p1_span_arc": {
+   "n": 254,
+   "n_in": 57,
+   "med_gap": -0.031130727782560874,
+   "mean_gap": -0.03773565680694497,
+   "mwu_greater_p": 0.8469821524092265,
+   "rho": -0.026168241408791582,
+   "rho_p": 0.6780927514275367
+  },
+  "arc_gt_365_nobs_gt_300": {
+   "n": 89,
+   "n_in": 25,
+   "med_gap": 0.046117654918609974,
+   "mean_gap": 0.07815396790405514,
+   "mwu_greater_p": 0.18185813496159903,
+   "rho": -0.26893088185223024,
+   "rho_p": 0.01082319255135697
+  },
+  "post_1990_only": {
+   "n": 265,
+   "n_in": 72,
+   "med_gap": -0.023205713488946234,
+   "mean_gap": -0.005314278338831365,
+   "mwu_greater_p": 0.6185978611622168,
+   "rho": -0.06307019693315623,
+   "rho_p": 0.306367602581608
+  },
+  "q_lt_3p1_post_1990": {
+   "n": 172,
+   "n_in": 43,
+   "med_gap": -0.07995079061631372,
+   "mean_gap": -0.0536950527767598,
+   "mwu_greater_p": 0.8946821985540948,
+   "rho": -0.011662103234966028,
+   "rho_p": 0.8793155433967279
+  }
+ },
+ "verdict": "AMBIGUOUS: overlap p=0.2479, non-overlap p=0.5743 -- neither a clean membership lock nor a broad anomaly."
+}

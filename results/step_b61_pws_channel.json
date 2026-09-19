@@ -1,0 +1,233 @@
+{
+ "step": "step_097_pws_plasma_channel",
+ "description": "PWS VLISM plasma-frequency channel: density profile across the heliopause, step detection, lapse-equivalent constants-shift analysis, trajectory geometry vs the TNO axis.",
+ "inputs": {
+  "pws_vlism": [
+   "data/raw/voyager_pws/vg1-vlism-density-2012-2025.csv",
+   "data/raw/voyager_pws/vg2-vlism-density-2019-2025.csv"
+  ],
+  "pds4_bundle": "urn:nasa:pds:voyager-pws-vlism-density",
+  "literature_anchors": "data/raw/literature/literature_anchors.json"
+ },
+ "craft": {
+  "VG1": {
+   "n_events": 755,
+   "ne_range": [
+    0.054064,
+    0.15477
+   ],
+   "fpe_range_hz": [
+    2088.0,
+    3532.8
+   ],
+   "radius_range_au": [
+    122.173,
+    164.928
+   ],
+   "d_hp_range_au": [
+    0.573,
+    43.328
+   ],
+   "fpe_channel_hz": 2.0,
+   "top_steps": [
+    {
+     "i0": 11,
+     "i1": 12,
+     "utc0": "2012-11-30T14:20:37.489Z",
+     "utc1": "2013-04-09T00:07:19.643Z",
+     "ne0": 0.058825,
+     "ne1": 0.079879,
+     "frac_change": 0.3579090522736932,
+     "ddhp_au": 1.2680000000000002
+    },
+    {
+     "i0": 549,
+     "i1": 550,
+     "utc0": "2020-05-11T18:41:21.389Z",
+     "utc1": "2020-06-01T17:28:32.442Z",
+     "ne0": 0.11345,
+     "ne1": 0.14607,
+     "frac_change": 0.2875275451740855,
+     "ddhp_au": 0.20400000000000063
+    },
+    {
+     "i0": 291,
+     "i1": 292,
+     "utc0": "2017-08-30T20:07:31.207Z",
+     "utc1": "2017-08-30T21:55:25.726Z",
+     "ne0": 0.12217,
+     "ne1": 0.1405,
+     "frac_change": 0.15003683391994782,
+     "ddhp_au": 0.0010000000000012221
+    },
+    {
+     "i0": 68,
+     "i1": 69,
+     "utc0": "2014-08-20T06:02:35.611Z",
+     "utc1": "2014-08-25T18:31:10.545Z",
+     "ne0": 0.086821,
+     "ne1": 0.099036,
+     "frac_change": 0.14069176812061612,
+     "ddhp_au": 0.05400000000000027
+    },
+    {
+     "i0": 289,
+     "i1": 290,
+     "utc0": "2017-08-28T13:53:07.272Z",
+     "utc1": "2017-08-28T20:14:42.626Z",
+     "ne0": 0.1227,
+     "ne1": 0.13751,
+     "frac_change": 0.1207008964955174,
+     "ddhp_au": 0.0030000000000001137
+    },
+    {
+     "i0": 292,
+     "i1": 293,
+     "utc0": "2017-08-30T21:55:25.726Z",
+     "utc1": "2017-09-01T23:07:31.146Z",
+     "ne0": 0.1405,
+     "ne1": 0.12357,
+     "frac_change": -0.12049822064056948,
+     "ddhp_au": 0.019999999999999574
+    },
+    {
+     "i0": 290,
+     "i1": 291,
+     "utc0": "2017-08-28T20:14:42.626Z",
+     "utc1": "2017-08-30T20:07:31.207Z",
+     "ne0": 0.13751,
+     "ne1": 0.12217,
+     "frac_change": -0.11155552323467377,
+     "ddhp_au": 0.01899999999999835
+    },
+    {
+     "i0": 288,
+     "i1": 289,
+     "utc0": "2017-08-26T02:00:25.159Z",
+     "utc1": "2017-08-28T13:53:07.272Z",
+     "ne0": 0.13751,
+     "ne1": 0.1227,
+     "frac_change": -0.1077012580903206,
+     "ddhp_au": 0.02400000000000091
+    }
+   ],
+   "smooth_drift": {
+    "median_frac_per_au": 0.0,
+    "p95_abs_frac_per_au": 0.3321789069225023
+   },
+   "lapse_equiv": {
+    "ne_ratio": 2.862718259840189,
+    "fpe_ratio": 1.6919540229885057,
+    "deltaX_constant_density": 1.0517681752803842,
+    "comet_channel_dA_over_A": 0.011610564254773604,
+    "ratio_vs_comet": 90.58717149323358,
+    "note": "deltaX is the combined exponent shift in e_eff^2/(m_e,eff eps0,eff) that would be required to attribute the full observed f_pe rise to a constants shift at constant density."
+   },
+   "geometry": {
+    "median_pos_lon_deg": 255.815,
+    "median_pos_lat_deg": 35.0534,
+    "sep_to_axis_deg": 150.06,
+    "sep_to_antiaxis_deg": 29.94,
+    "sep_to_ism_inflow_deg": 29.89,
+    "inside_60deg_mirror_cap": true
+   },
+   "density_gradient": {
+    "log_linear_scale_au": 65.24254419023623,
+    "slope_per_au": 0.015327421890295526,
+    "resid_rms_log": 0.09849716463488141
+   }
+  },
+  "VG2": {
+   "n_events": 5,
+   "ne_range": [
+    0.039,
+    0.12
+   ],
+   "fpe_range_hz": [
+    1780.0,
+    3110.0
+   ],
+   "radius_range_au": [
+    119.934,
+    140.659
+   ],
+   "d_hp_range_au": [
+    0.934,
+    21.659
+   ],
+   "fpe_channel_hz": null,
+   "top_steps": [
+    {
+     "i0": 0,
+     "i1": 1,
+     "utc0": "2019-02-18T11:22:00.000Z",
+     "utc1": "2020-06-26T21:16:00.000Z",
+     "ne0": 0.039,
+     "ne1": 0.087,
+     "frac_change": 1.2307692307692308,
+     "ddhp_au": 4.293
+    },
+    {
+     "i0": 1,
+     "i1": 2,
+     "utc0": "2020-06-26T21:16:00.000Z",
+     "utc1": "2021-05-23T23:26:00.000Z",
+     "ne0": 0.087,
+     "ne1": 0.12,
+     "frac_change": 0.3793103448275863,
+     "ddhp_au": 2.875
+    },
+    {
+     "i0": 2,
+     "i1": 3,
+     "utc0": "2021-05-23T23:26:00.000Z",
+     "utc1": "2022-11-10T04:45:00.000Z",
+     "ne0": 0.12,
+     "ne1": 0.12,
+     "frac_change": 0.0,
+     "ddhp_au": 4.645999999999999
+    },
+    {
+     "i0": 3,
+     "i1": 4,
+     "utc0": "2022-11-10T04:45:00.000Z",
+     "utc1": "2025-09-01T13:29:00.000Z",
+     "ne0": 0.12,
+     "ne1": 0.12,
+     "frac_change": 0.0,
+     "ddhp_au": 8.911
+    }
+   ],
+   "smooth_drift": {
+    "note": "insufficient segments (4) for a drift-rate bound"
+   },
+   "lapse_equiv": {
+    "ne_ratio": 3.0769230769230766,
+    "fpe_ratio": 1.747191011235955,
+    "deltaX_constant_density": 1.116018723774298,
+    "comet_channel_dA_over_A": 0.011610564254773604,
+    "ratio_vs_comet": 96.12097218405682,
+    "note": "deltaX is the combined exponent shift in e_eff^2/(m_e,eff eps0,eff) that would be required to attribute the full observed f_pe rise to a constants shift at constant density."
+   },
+   "geometry": {
+    "median_pos_lon_deg": 218.643,
+    "median_pos_lat_deg": -32.9029,
+    "sep_to_axis_deg": 129.12,
+    "sep_to_antiaxis_deg": 50.88,
+    "sep_to_ism_inflow_deg": 51.86,
+    "inside_60deg_mirror_cap": true
+   },
+   "density_gradient": {
+    "note": "insufficient events for gradient fit"
+   }
+  }
+ },
+ "caveats": [
+  "f_pe is referenced to the onboard frequency scale; a uniform lapse shifts all onboard-referenced frequencies together and cannot selectively move f_pe -- the SCLK channel independently bounds the onboard-vs-ground rate ratio at ~5e-5.",
+  "A constants-shift reading (e_eff, m_e,eff, eps0,eff scaling with A(phi)) could in principle mimic density structure; the required combined shift deltaX for the observed f_pe rise is computed and compared with the comet-channel lapse contrast.",
+  "The PWS series samples a single trajectory per spacecraft; direction-dependence is tested by geometry fields, not by a second line of sight.",
+  "V2 PWS has very few detections (5 events); its PLS instrument provides the denser V2 density record in the literature (Richardson et al. 2019-2023).",
+  "N_e min/max bounds reflect spectral-feature width, not full systematic uncertainty."
+ ],
+ "tep_interpretation": "If the observed f_pe structure were a lapse/constant-shift artifact at constant density, the combined exponent shift deltaX reported in lapse_equiv would be required; it exceeds the comet-channel lapse contrast by orders of magnitude, so the structure is confirmed as real plasma structure.  A plasma-coupled screening transition would use exactly such a measured density discontinuity as its trigger (co-location rather than illusion).  The smooth-segment drift rates bound any residual constants-shift along the Voyager path at the percent level."
+}

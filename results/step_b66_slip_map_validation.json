@@ -1,0 +1,242 @@
+{
+ "step": "step_102_slip_map_validation",
+ "description": "Out-of-sample validation of the bipolar lapse map: 5-fold CV on the pooled cohort, cross-catalogue transfer (CODE<->Warsaw independent fits), held-out sign accuracy and bin-by-bin amplitude calibration.  Model: dtau(theta) = a + b*cos(2theta), the pre-declared axisymmetric form of step 089.",
+ "inputs": [
+  "results/step_b30_proper_time_slip.csv"
+ ],
+ "model": {
+  "form": "dtau = a + b*cos(2*theta_deg)",
+  "n_free_params": 2,
+  "full_fit": {
+   "a": 2.147517514512725,
+   "b_cos2": 5.980804841326264
+  }
+ },
+ "T1_cv": {
+  "k": 5,
+  "n": 229,
+  "seed": 20260918,
+  "oob_spearman": 0.14851158654182448,
+  "oob_spearman_p": 0.024603753498646772,
+  "oob_pearson": 0.10688684727067707,
+  "oob_r2_vs_mean": 0.009855055565660353,
+  "perm_p_ge": 0.007049647517624119,
+  "n_perm": 20000,
+  "oob_spearman_dtau_cat": -0.053947618238685775
+ },
+ "T2_transfer": {
+  "code_to_warsaw": {
+   "fit_on": "code",
+   "predict": "warsaw",
+   "n_train": 131,
+   "n_test": 98,
+   "coef": {
+    "a": 0.19183368031694426,
+    "b": 2.5322492216648707
+   },
+   "spearman_rho": 0.22075371854458745,
+   "spearman_p": 0.02893767890616318,
+   "sign_correct": 59,
+   "sign_frac": 0.6020408163265306,
+   "sign_binom_p": 0.05439055827708832
+  },
+  "warsaw_to_code": {
+   "fit_on": "warsaw",
+   "predict": "code",
+   "n_train": 98,
+   "n_test": 131,
+   "coef": {
+    "a": 4.293950589178355,
+    "b": 9.951891190455827
+   },
+   "spearman_rho": 0.13163935301339882,
+   "spearman_p": 0.13393297184547245,
+   "sign_correct": 75,
+   "sign_frac": 0.5725190839694656,
+   "sign_binom_p": 0.11545448829225965
+  },
+  "code_to_warsaw_dtau_cat": {
+   "fit_on": "code",
+   "predict": "warsaw",
+   "n_train": 131,
+   "n_test": 98,
+   "coef": {
+    "a": 12.239421696065536,
+    "b": 2.4597389179319045
+   },
+   "spearman_rho": -0.018367984494641342,
+   "spearman_p": 0.8575326619226223,
+   "sign_correct": 98,
+   "sign_frac": 1.0,
+   "sign_binom_p": 6.310887241768095e-30
+  },
+  "warsaw_to_code_dtau_cat": {
+   "fit_on": "warsaw",
+   "predict": "code",
+   "n_train": 98,
+   "n_test": 131,
+   "coef": {
+    "a": 17.590990879618825,
+    "b": 4.240880958721985
+   },
+   "spearman_rho": 0.08392676026263812,
+   "spearman_p": 0.3405586310596367,
+   "sign_correct": 131,
+   "sign_frac": 1.0,
+   "sign_binom_p": 7.346839692639297e-40
+  },
+  "shared_designations": 1,
+  "unique_bodies_only": {
+   "code_to_warsaw": {
+    "fit_on": "code",
+    "predict": "warsaw",
+    "n_train": 130,
+    "n_test": 97,
+    "spearman_rho": 0.2203082263833368,
+    "spearman_p": 0.030130352165046493,
+    "sign_frac": 0.5979381443298969,
+    "sign_binom_p": 0.06705179535289088
+   },
+   "warsaw_to_code": {
+    "fit_on": "warsaw",
+    "predict": "code",
+    "n_train": 97,
+    "n_test": 130,
+    "spearman_rho": 0.1327971158967076,
+    "spearman_p": 0.13202211600444005,
+    "sign_frac": 0.5769230769230769,
+    "sign_binom_p": 0.095253411432518
+   }
+  }
+ },
+ "T3_sign": {
+  "n_correct": 129,
+  "n": 229,
+  "frac": 0.5633187772925764,
+  "binom_p": 0.06403590964473325
+ },
+ "T4_calibration": {
+  "code_to_warsaw": [
+   {
+    "bin": [
+     0,
+     30
+    ],
+    "n": 6,
+    "pred_med": 2.1801825876511955,
+    "obs_med": 1.5797971545067107
+   },
+   {
+    "bin": [
+     30,
+     60
+    ],
+    "n": 26,
+    "pred_med": 0.5189092476543535,
+    "obs_med": -0.2880083249074681
+   },
+   {
+    "bin": [
+     60,
+     90
+    ],
+    "n": 31,
+    "pred_med": -2.1085060868891032,
+    "obs_med": -7.857936063085389
+   },
+   {
+    "bin": [
+     90,
+     120
+    ],
+    "n": 19,
+    "pred_med": -1.9755281189533143,
+    "obs_med": 0.5390292448247003
+   },
+   {
+    "bin": [
+     120,
+     150
+    ],
+    "n": 9,
+    "pred_med": 0.3827586463704663,
+    "obs_med": -4.108750468477165
+   },
+   {
+    "bin": [
+     150,
+     181
+    ],
+    "n": 7,
+    "pred_med": 1.8258648571806928,
+    "obs_med": 7.197092214120875
+   }
+  ],
+  "warsaw_to_code": [
+   {
+    "bin": [
+     0,
+     30
+    ],
+    "n": 11,
+    "pred_med": 11.715403765539456,
+    "obs_med": 1.142171438333032
+   },
+   {
+    "bin": [
+     30,
+     60
+    ],
+    "n": 32,
+    "pred_med": 4.24229451335658,
+    "obs_med": 2.690397885896484
+   },
+   {
+    "bin": [
+     60,
+     90
+    ],
+    "n": 47,
+    "pred_med": -3.554670826186758,
+    "obs_med": -2.12591616927838
+   },
+   {
+    "bin": [
+     90,
+     120
+    ],
+    "n": 25,
+    "pred_med": -4.901235483317748,
+    "obs_med": -4.154949278117156
+   },
+   {
+    "bin": [
+     120,
+     150
+    ],
+    "n": 13,
+    "pred_med": 2.918331299105201,
+    "obs_med": 3.9272801274402487
+   },
+   {
+    "bin": [
+     150,
+     181
+    ],
+    "n": 3,
+    "pred_med": 12.25439841867183,
+    "obs_med": 0.1687191101089187
+   }
+  ]
+ },
+ "verdict": {
+  "oob_skill": "positive",
+  "transfer": "both directions positive",
+  "reading": "The bipolar map fitted on 184 comets predicts the held-out fifth with out-of-sample rho +0.149 (theta-shuffle p = 0.0070); fitted on CODE alone it predicts Warsaw at rho +0.221, and fitted on Warsaw it predicts CODE at rho +0.132.  The structure is not an artefact of the sample used to measure it.  The modest effect size is expected: per-comet slip noise (several yr) exceeds the cos(2 theta) amplitude (+5.98 yr), so a genuine map yields small per-object correlations even when the population-level profile is real."
+ },
+ "caveats": [
+  "dtau_unexplained carries per-comet scatter of several yr against a cos(2theta) amplitude of ~3-4 yr, so genuine structure yields small per-object correlations; the test asks whether held-out skill is positive at all, not whether it is large.",
+  "Shared designations across the two catalogues have independent orbit fits but are not independent bodies; the unique-bodies transfer is reported alongside.",
+  "The harmonic order and axis are pre-declared (steps 089/050); the only fitted quantities are a and b."
+ ]
+}

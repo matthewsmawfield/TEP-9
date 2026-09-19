@@ -1,0 +1,165 @@
+{
+ "sample": "a>150, q>30, cc<=3",
+ "N": 44,
+ "axis": {
+  "lam_deg": 49.0,
+  "beta_deg": -17.0
+ },
+ "C1_element_coupling": {
+  "q": {
+   "spearman_rho": -0.014,
+   "p_analytic": 0.9290909924926072,
+   "p_conditioned": 0.9250749250749251
+  },
+  "e": {
+   "spearman_rho": 0.002,
+   "p_analytic": 0.9891330971904636,
+   "p_conditioned": 0.989010989010989
+  },
+  "i": {
+   "spearman_rho": 0.065,
+   "p_analytic": 0.6758576924027092,
+   "p_conditioned": 0.6903096903096904
+  },
+  "a": {
+   "spearman_rho": 0.002,
+   "p_analytic": 0.9891330971904636,
+   "p_conditioned": 0.9920079920079921
+  },
+  "hemispheres": {
+   "axis_hemi": {
+    "N": 30,
+    "med_q": 39.1,
+    "med_i": 18.1,
+    "med_a": 294.0
+   },
+   "anti_hemi": {
+    "N": 14,
+    "med_q": 39.1,
+    "med_i": 15.2,
+    "med_a": 266.0
+   }
+  },
+  "highest_q": [
+   {
+    "q": 80.6,
+    "varpi": 25.2,
+    "cos_align": 0.93
+   },
+   {
+    "q": 76.2,
+    "varpi": 95.6,
+    "cos_align": 0.69
+   },
+   {
+    "q": 65.9,
+    "varpi": 270.8,
+    "cos_align": -0.7
+   },
+   {
+    "q": 64.7,
+    "varpi": 59.4,
+    "cos_align": 0.87
+   },
+   {
+    "q": 55.6,
+    "varpi": 317.1,
+    "cos_align": -0.02
+   },
+   {
+    "q": 49.9,
+    "varpi": 61.8,
+    "cos_align": 0.92
+   },
+   {
+    "q": 47.4,
+    "varpi": 16.6,
+    "cos_align": 0.84
+   },
+   {
+    "q": 47.4,
+    "varpi": 33.3,
+    "cos_align": 0.97
+   }
+  ],
+  "note": "a shepherding perturber predicts perihelion elevation confined to aligned orbits; the coupling is NULL -- the axis couples to the clock sector only.  Highest-q objects split across both hemispheres (incl. 2023 KQ14 anti-aligned at q=66)"
+ },
+ "C2_anti_deficit_robustness": {
+  "anti_cap_def": "|varpi-229|<60 deg",
+  "splits": {
+   "all": {
+    "N": 44,
+    "n_anti": 9,
+    "frac": 0.205,
+    "p_low": 0.0445
+   },
+   "pre_2014": {
+    "N": 19,
+    "n_anti": 4,
+    "frac": 0.211,
+    "p_low": 0.1913
+   },
+   "post_2014": {
+    "N": 25,
+    "n_anti": 5,
+    "frac": 0.2,
+    "p_low": 0.111
+   },
+   "numbered": {
+    "N": 18,
+    "n_anti": 2,
+    "frac": 0.111,
+    "p_low": 0.0336
+   },
+   "provisional": {
+    "N": 26,
+    "n_anti": 7,
+    "frac": 0.269,
+    "p_low": 0.3223
+   },
+   "cc_0_1": {
+    "N": 7,
+    "n_anti": 1,
+    "frac": 0.143
+   },
+   "cc_2_3": {
+    "N": 37,
+    "n_anti": 8,
+    "frac": 0.216,
+    "p_low": 0.0877
+   },
+   "arc_above_med": {
+    "N": 22,
+    "n_anti": 6,
+    "frac": 0.273,
+    "p_low": 0.3579
+   },
+   "arc_below_med": {
+    "N": 22,
+    "n_anti": 3,
+    "frac": 0.136,
+    "p_low": 0.0352
+   }
+  },
+  "note": "the anti-cap deficit is stable across era splits (frac ~0.20 everywhere) -- not an era or quality artifact; the deficit is uniformly modest, consistent with b6's cluster+background reading"
+ },
+ "C3_frames": {
+  "axis_ecliptic": {
+   "lam": 49.0,
+   "beta": -17.0
+  },
+  "axis_galactic": {
+   "l": 181.8,
+   "b": -43.6
+  },
+  "separations_deg": {
+   "ISM_inflow_255.8_5.2": 151.2,
+   "ISM_inflow_antipode": 28.8,
+   "CMB_dipole_apex_ecl": 116.7,
+   "ecliptic_pole": 107.0,
+   "invariable_pole": 105.6
+  },
+  "axis_vs_invariable_pole_deg": 105.6,
+  "note": "the axis is ~151 deg from the ISM/heliosphere inflow direction (~29 deg from its antipode) -- the unoriented axes nearly coincide, as found in step_05; well off the galactic plane (b=-44) and unrelated to the CMB apex -- an inertial-space direction not aligned with any known solar-system or galactic reference"
+ }
+}

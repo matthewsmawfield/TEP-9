@@ -1,0 +1,96 @@
+{
+ "axis_deg": 49.0,
+ "cap_deg": 60,
+ "n": 1250,
+ "R1_axis_vs_footprint": {
+  "rows": [
+   {
+    "bin": "30-40",
+    "a_mid": 39.4,
+    "N": 196,
+    "frac_closer_to_axis": 0.444,
+    "frac_closer_to_fp": 0.556,
+    "med_d_axis": 80.0,
+    "med_d_fp": 62.0
+   },
+   {
+    "bin": "40-50",
+    "a_mid": 43.9,
+    "N": 655,
+    "frac_closer_to_axis": 0.392,
+    "frac_closer_to_fp": 0.608,
+    "med_d_axis": 88.0,
+    "med_d_fp": 58.0
+   },
+   {
+    "bin": "50-70",
+    "a_mid": 56.0,
+    "N": 213,
+    "frac_closer_to_axis": 0.225,
+    "frac_closer_to_fp": 0.775,
+    "med_d_axis": 88.0,
+    "med_d_fp": 38.0
+   },
+   {
+    "bin": "70-100",
+    "a_mid": 80.5,
+    "N": 97,
+    "frac_closer_to_axis": 0.227,
+    "frac_closer_to_fp": 0.773,
+    "med_d_axis": 91.0,
+    "med_d_fp": 31.0
+   },
+   {
+    "bin": "100-150",
+    "a_mid": 113.6,
+    "N": 45,
+    "frac_closer_to_axis": 0.289,
+    "frac_closer_to_fp": 0.711,
+    "med_d_axis": 73.0,
+    "med_d_fp": 38.0
+   },
+   {
+    "bin": "150-300",
+    "a_mid": 205.2,
+    "N": 24,
+    "frac_closer_to_axis": 0.417,
+    "frac_closer_to_fp": 0.583,
+    "med_d_axis": 48.0,
+    "med_d_fp": 29.0
+   },
+   {
+    "bin": "300-inf",
+    "a_mid": 463.1,
+    "N": 20,
+    "frac_closer_to_axis": 0.4,
+    "frac_closer_to_fp": 0.6,
+    "med_d_axis": 44.0,
+    "med_d_fp": 24.0
+   }
+  ],
+  "note": "fraction of objects whose varpi is closer to the axis than to their own discovery longitude.  The mid-belt dips to ~0.23 -- footprint coupling genuinely dominates there (med|varpi-lam_opp| ~ 31-38 deg).  Beyond 150 AU the fraction rises to ~0.40-0.42 even though detached objects have the TIGHTEST coupling of all (med 24-29 deg) -- the axis beats the footprint more often exactly where pointing is strongest.  The turnover at ~150 AU is the decorrelation signature: perihelion directions decouple from discovery geometry at the boundary"
+ },
+ "R2_resonant_control": {
+  "plutino": {
+   "N": 148,
+   "axis_frac": 0.392
+  },
+  "twotino": {
+   "N": 72,
+   "axis_frac": 0.333
+  },
+  "inner_nonresonant": {
+   "N": 133,
+   "axis_frac": 0.398
+  },
+  "note": "resonance-locked perihelia are pinned by Neptune, not by footprint or external axis -- their axis-fraction is the control for the inner belt's weak offset"
+ },
+ "R3_sednoids": {
+  "N": 5,
+  "R_varpi": 0.43,
+  "mean_varpi_deg": 16.2,
+  "axis_frac": 0.6,
+  "detached_axis_frac": 0.591,
+  "note": "the deepest boundary-residents: their clustering strength and direction vs the wider detached sample"
+ }
+}

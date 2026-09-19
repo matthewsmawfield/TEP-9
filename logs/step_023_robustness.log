@@ -1,0 +1,18 @@
+[2026-09-19 21:17:12 UTC] [INFO    ] [STEP 023] LOGGER INITIALIZED: step_023_robustness (Step 023)
+[2026-09-19 21:17:12 UTC] [DEBUG   ] [STEP 023] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_023_robustness.log
+[2026-09-19 21:17:12 UTC] [DEBUG   ] [STEP 023] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-19 21:17:12 UTC] [INFO    ] [STEP 023] ================================================================================
+[2026-09-19 21:17:12 UTC] [INFO    ] [STEP 023] Jackknife/era/quality robustness
+[2026-09-19 21:17:12 UTC] [INFO    ] [STEP 023] ================================================================================
+J1 LOO: p in [0.0025,0.0175], mean 45-53, leave-outs p>0.05: 0
+J2 2014: pre N=32 mu=54.2 p=0.04323919020244939 | post N=12 mu=38.4 p=0.15696075981004748
+J2 2016: pre N=43 mu=53.0 p=0.0069982504373906525 | post N=1 mu=317.1 p=None
+J3 numbered        N= 18 mu=69.5 R=0.592 p=0.0017495626093476631
+J3 provisional     N= 26 mu=10.2 R=0.227 p=0.2711822044488878
+J3 arc_gt_median   N= 22 mu=60.2 R=0.335 p=0.09372656835791052
+J3 arc_le_median   N= 22 mu=38.2 R=0.341 p=0.07673081729567609
+J3 cc_le2          N= 16 mu=59.6 R=0.527 p=0.009997500624843789
+J3 cc_3            N= 28 mu=35.5 R=0.231 p=0.22619345163709073
+J4 detached epochs: [2461200.5] (catalog total: 827)
+J5: 1886 p-values harvested; 945 survive BH q<0.05, 168 survive Bonferroni; primary family of 7 --> 6 survive within-family BH
+wrote results/step_b3_robustness.json, figures/step_b3_robustness.png

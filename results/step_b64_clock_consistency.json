@@ -1,0 +1,107 @@
+{
+ "step": "step_100_clock_consistency",
+ "description": "Cross-channel clock-consistency ledger: orbital (comet/TNO), electronic (SCLK), plasma (PWS) and nuclear (RTG) clock channels evaluated against the TEP conformal-lapse framework.",
+ "ledger": [
+  {
+   "channel": "comet transit (orbital dynamics)",
+   "observable": "aphelion-direction slip / leg duration",
+   "value": "dA/A ~ 1.2e-02",
+   "kind": "detection (cumulative)",
+   "note": "integrated slip accrued along the transit leg through the boundary sector"
+  },
+  {
+   "channel": "Voyager SCLK (electronic quartz)",
+   "observable": "onboard-vs-ground clock-rate ratio",
+   "value": "|step| < 1.1e-06 sustained post-crossing offset (p99 resid 1.4e-05)",
+   "kind": "bound (instantaneous)",
+   "note": "signed-offset step tests at all four crossings are null (p = 0.16-0.85); bounds the local lapse contrast along the Voyager paths, not the cumulative transit integral"
+  },
+  {
+   "channel": "Voyager SCLK phase (segment boundaries)",
+   "observable": "calibration-segment phase residuals",
+   "value": "|phase jump| < 0.16 s at all four crossings (vs comet slip ~10^7-10^8 s)",
+   "kind": "bound (phase slip)",
+   "note": "tests the discrete-jump signature type the rate channel cannot see; bounded at the sub-second level within +-90 d of every crossing"
+  },
+  {
+   "channel": "New Horizons SCLK (interior control)",
+   "observable": "correction-interval drift + phase residuals",
+   "value": "median |drift| 0.0002 ppm, phase floor ~20 us; 3 resyncs, all documented MET events",
+   "kind": "control (no crossing)",
+   "note": "same clock class on an interior, out-of-cap trajectory (r < 60 AU); its three flagged resets (2009, 2017 software-MET resyncs, launch anchor) are documented engineering events -- validates the reset classifier on a craft with a fully documented correction history"
+  },
+  {
+   "channel": "Voyager SCLK drift intervals",
+   "observable": "per-correction-interval oscillator drift",
+   "value": "|drift offset| < 0.003 ppm across all four crossings",
+   "kind": "bound (correction history)",
+   "note": "each SCLK coefficient record is a clock recalibration; the implied inter-correction drift rates show no crossing-localized change -- the corrections are ordinary quartz aging plus flagged engineering resyncs"
+  },
+  {
+   "channel": "Voyager SCLK journey drift",
+   "observable": "per-boundary phase residual vs trajectory",
+   "value": "heliosheath resid 3.5 ms = 8.7x post-92 inner baseline (p=1e-08); 96% of long-interval residuals negative in shell (p=2e-14); VLISM relaxes to 2.0x",
+   "kind": "monitored pattern (trajectory-organized)",
+   "note": "the correction-interval drift peaks inside the low-density heliosheath shell on both independent clocks and relaxes in the VLISM -- the bounded-shell profile of a density-triggered unscreening; the accumulation is coherent (slope ~1.05, 96-97% negative sign vs ~50% inner) and position-organized (matched-radius rho 0.62 vs matched-epoch 0.18, maximal at zero radial shift; NH shows no radial growth over 1-62 AU on the same record class) -- but at ms-scale amplitude, kernel-fit provenance, and null inside planetary wells down to phi/c^2 ~ 4e-9; registered as a pattern, not a detection"
+  },
+  {
+   "channel": "Voyager PWS (plasma oscillation)",
+   "observable": "f_pe structure vs lapse-equivalent",
+   "value": "deltaX = 1.05 (91x comet channel)",
+   "kind": "discriminant",
+   "note": "structure confirmed as real plasma; a constants-shift reading requires ~91x the comet-channel contrast"
+  },
+  {
+   "channel": "Voyager RTG (nuclear alpha decay)",
+   "observable": "power-decline slope at crossings",
+   "value": "|dalpha_eff/alpha_eff| < 9.9e-05; V1 units coherently -0.39% at HP, V2 unit spread 0.9%",
+   "kind": "bound + candidate signature (nuclear sector)",
+   "note": "Gamow amplification ~150x; V1's three units decline coherently across the heliopause window (V1 is inside the mirror cap); V2's two surviving units diverge (V2 is outside both caps). Candidate field-linked excursion, but sign-unstable across baseline windows (+1.6% to -0.5%) and matched in amplitude by an out-of-cap V2 unit; degenerate with undocumented MHW-RTG aging"
+  },
+  {
+   "channel": "trajectory geometry",
+   "observable": "probe/ISO asymptotes vs caps",
+   "value": "1/5 probe velocities in cap; 1 in mirror; 1/3 ISOs in a cap",
+   "kind": "geometric datum",
+   "note": "V1's position and velocity asymptote sit inside the mirror cap; V2 crossed in the intervening band (80-93 deg from the antiaxis, outside both caps)"
+  },
+  {
+   "channel": "bipolar slip field (mirror cap)",
+   "observable": "median residual in the mirror-cap lobe",
+   "value": "dtau median +2.05 yr, drot median 0.080 deg (second-lobe amplitude upper95 0.007)",
+   "kind": "geometric datum",
+   "note": "the cos(2theta) morphology places a positive slip lobe at both axis poles; both Voyager paths sample the mirror-cap lobe, so the spacecraft channels sit inside the second lobe of the slip field"
+  }
+ ],
+ "comet_channel": {
+  "n": 229,
+  "column": "frac_slip",
+  "median_frac_slip": 0.011610564254773604,
+  "p16": 0.0036497437735661,
+  "p84": 0.03605333197394942,
+  "median_slip_yr": 7.105665323921445,
+  "implied_dA_over_A": 0.011610564254773604
+ },
+ "consistency": {
+  "reading": "The ledger is internally consistent under the TEP lapse framework: (i) the comet channel measures a cumulative transit-integrated slip of ~1e-2; (ii) the SCLK channel shows no signed rate step at any of the four boundary crossings (all p > 0.16, sustained offsets < ~1e-6) and no segment-boundary phase jump above ~0.2 s within +-90 d of any crossing -- a different observable of the same field, not a contradiction; (iii) the PWS channel confirms the heliopause structure is real plasma rather than a lapse artifact, consistent with a plasma-coupled screening trigger; (iv) the RTG channel shows a coherent negative excursion across V1's three nuclear clocks at the heliopause -- the only craft inside a field lobe -- with the out-of-cap V2 unit-incoherent, consistent with a directional process-dependent nuclear coupling; the excursion remains formally a bound-level candidate degenerate with undocumented MHW-RTG aging.",
+  "falsifiable_discriminators": [
+   "If the boundary transition is sharp (edge-width bound from step 073) AND the oscillator couples like orbital dynamics, the SCLK record should show a signed post-crossing rate offset of order the integrated slip; the signed-offset step tests are null at all four crossings (< ~1e-6), disfavouring that specific combination (sharp edge + universal coupling).",
+   "A discrete proper-time jump at a crossing (the comet-channel signature type) is bounded to < ~0.2 s within +-90 d by the SCLK segment-phase channel -- any domain-wall slip must either be sub-second, accumulate smoothly below the calibration cadence, or couple differently to electronic clocks than to orbital dynamics.",
+   "A future per-cycle RTG telemetry set would tighten the nuclear bound by ~2 orders of magnitude.",
+   "New Horizons (asymptote outside both caps) offers the control path; an ISO arriving inside the cap with a measured NG excess would extend the transit channel."
+  ]
+ },
+ "inputs": [
+  "results/step_b30_proper_time_slip.csv",
+  "results/step_b60_sclk_audit.json",
+  "results/step_b61_pws_channel.json",
+  "results/step_b62_rtg_nuclear.json",
+  "results/step_b63_heliospheric_geometry.json",
+  "results/step_b54_bipolar_morphology.json"
+ ],
+ "caveats": [
+  "Channels measure different field functionals (cumulative slip vs instantaneous rate ratio vs constants-shift); they are mutually consistent, not redundant.",
+  "The SCLK and RTG bounds apply along the Voyager paths specifically; they do not bound the cap-direction contrast the comet channel measures.",
+  "Process-dependent coupling (electronic vs plasma vs nuclear vs orbital) is part of the TEP framework; the ledger tests consistency, not universality."
+ ]
+}

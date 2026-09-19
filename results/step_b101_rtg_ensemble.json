@@ -1,0 +1,409 @@
+{
+ "step": "step_137_rtg_ensemble_regression",
+ "result": "b101",
+ "verdict": "WEAK COHERENT DECLINE: V1's three nuclear clocks decline together -0.55% across the heliopause window -- a common-mode excursion at 5.98% raw / 12.0% family-wise (over 2 craft tests) against the fleet's common-mode wander (n=117), while the out-of-cap V2 common-mode is flat at -0.01% (40% tail) -- the cap-geometry contrast points the predicted way but the excursion does not clear the family-wise line; the nuclear channel remains an upper bound with a resolved directional carrier",
+ "inputs": {
+  "xlsx": "All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx",
+  "telemetry_note": "per-sensor thermal telemetry is not publicly archived; the ensemble degradation distribution is the thermal-regression surrogate"
+ },
+ "T1_ensemble": {
+  "LES 8": {
+   "family": "MHW-RTG",
+   "n": 540,
+   "t_max_yr": 12.3583
+  },
+  "LES 9": {
+   "family": "MHW-RTG",
+   "n": 542,
+   "t_max_yr": 12.3514
+  },
+  "Voyager 1 RTG #1 (F-8)": {
+   "family": "MHW-RTG",
+   "n": 52,
+   "t_max_yr": 43.474318256488885
+  },
+  "Voyager 1 RTG #2 (F-6)": {
+   "family": "MHW-RTG",
+   "n": 52,
+   "t_max_yr": 43.91512430182893
+  },
+  "Voyager 1 RTG #3 (F-9)": {
+   "family": "MHW-RTG",
+   "n": 53,
+   "t_max_yr": 43.682400613295364
+  },
+  "Voyager 1": {
+   "family": "MHW-RTG",
+   "n": 129,
+   "t_max_yr": 43.91512430182893
+  },
+  "Voyager 2 RTG #1 (F-10)": {
+   "family": "MHW-RTG",
+   "n": 53,
+   "t_max_yr": 43.5263388456905
+  },
+  "Voyager 2 RTG #2 (F-12)": {
+   "family": "MHW-RTG",
+   "n": 52,
+   "t_max_yr": 43.46336655349907
+  },
+  "Voyager 2": {
+   "family": "MHW-RTG",
+   "n": 89,
+   "t_max_yr": 43.5263388456905
+  },
+  "Galileo -RTG (F-1)": {
+   "family": "GPHS-RTG",
+   "n": 342,
+   "t_max_yr": 13.945708801754868
+  },
+  "Galileo +RTG (F-4)": {
+   "family": "GPHS-RTG",
+   "n": 342,
+   "t_max_yr": 13.945708801754868
+  },
+  "Galileo": {
+   "family": "GPHS-RTG",
+   "n": 418,
+   "t_max_yr": 13.934246575342469
+  },
+  "Ulysses (F-3)": {
+   "family": "GPHS-RTG",
+   "n": 9459,
+   "t_max_yr": 18.7078705604989
+  },
+  "Cassini RTG #1": {
+   "family": "GPHS-RTG",
+   "n": 1024,
+   "t_max_yr": 19.951264921695323
+  },
+  "Cassini RTG #2": {
+   "family": "GPHS-RTG",
+   "n": 1023,
+   "t_max_yr": 19.951264921695323
+  },
+  "Cassini RTG #3": {
+   "family": "GPHS-RTG",
+   "n": 1023,
+   "t_max_yr": 19.951264921695323
+  },
+  "Cassini": {
+   "family": "GPHS-RTG",
+   "n": 6362,
+   "t_max_yr": 19.458333333333332
+  },
+  "New Horizons (F-8)": {
+   "family": "GPHS-RTG",
+   "n": 5306,
+   "t_max_yr": 17.423512348934548
+  },
+  "Curiosity": {
+   "family": "MMRTG",
+   "n": 4088,
+   "t_max_yr": 11.18990252984339
+  },
+  "Perseverance": {
+   "family": "MMRTG",
+   "n": 986,
+   "t_max_yr": 2.696856861241923
+  },
+  "Nimbus III RTG #1": {
+   "family": "SNAP-19",
+   "n": 692,
+   "t_max_yr": 2.5607
+  },
+  "Nimbus III RTG #2": {
+   "family": "SNAP-19",
+   "n": 705,
+   "t_max_yr": 2.5681
+  },
+  "Nimbus III": {
+   "family": "SNAP-19",
+   "n": 73,
+   "t_max_yr": 2.5528291666666667
+  },
+  "Pioneer 10": {
+   "family": "SNAP-19",
+   "n": 1168,
+   "t_max_yr": 23.983953586856188
+  },
+  "Pioneer 11": {
+   "family": "SNAP-19",
+   "n": 1133,
+   "t_max_yr": 21.929553098882074
+  },
+  "Viking 1": {
+   "family": "SNAP-19",
+   "n": 655,
+   "t_max_yr": 5.994
+  },
+  "Viking 2": {
+   "family": "SNAP-19",
+   "n": 643,
+   "t_max_yr": 3.3406
+  },
+  "Apollo 12": {
+   "family": "SNAP-27",
+   "n": 617,
+   "t_max_yr": 7.8896
+  },
+  "Apollo 14": {
+   "family": "SNAP-27",
+   "n": 461,
+   "t_max_yr": 6.8127
+  },
+  "Apollo 15": {
+   "family": "SNAP-27",
+   "n": 639,
+   "t_max_yr": 6.087
+  },
+  "Apollo 16": {
+   "family": "SNAP-27",
+   "n": 433,
+   "t_max_yr": 5.1388
+  },
+  "Apollo 17": {
+   "family": "SNAP-27",
+   "n": 396,
+   "t_max_yr": 4.4247
+  },
+  "Transit 5BN-1": {
+   "family": "SNAP-9A",
+   "n": 721,
+   "t_max_yr": 0.7156416666666666
+  },
+  "Transit 5BN-2": {
+   "family": "SNAP-9A",
+   "n": 635,
+   "t_max_yr": 0.6213916666666667
+  }
+ },
+ "T3_wander_null": {
+  "n_windows": 509,
+  "std_pct": 0.7890051536366645,
+  "pctiles_pct": {
+   "5": -0.675098685154696,
+   "25": -0.1635691186913507,
+   "50": 0.3142278722363889,
+   "75": 0.6064790053701807,
+   "95": 1.1085580296713304
+  }
+ },
+ "T4_crossing_windows": {
+  "VG1_rtg1": {
+   "window_yr": [
+    [
+     33.47,
+     34.97
+    ],
+    [
+     40.474318256488885,
+     43.474318256488885
+    ]
+   ],
+   "delta_resid_pct": -0.5594987226095416,
+   "n_a": 2,
+   "n_b": 4,
+   "one_sided_tail": 0.07387387387387387,
+   "abs_exceedance_frac": 0.3261261261261261,
+   "tail_note": "one-sided decline tail vs the geometry-matched leave-own-window-out wander null (n=555)"
+  },
+  "VG1_rtg2": {
+   "window_yr": [
+    [
+     33.47,
+     34.97
+    ],
+    [
+     40.91512430182893,
+     43.91512430182893
+    ]
+   ],
+   "delta_resid_pct": -0.5479641943694491,
+   "n_a": 2,
+   "n_b": 4,
+   "one_sided_tail": 0.08118081180811808,
+   "abs_exceedance_frac": 0.35977859778597787,
+   "tail_note": "one-sided decline tail vs the geometry-matched leave-own-window-out wander null (n=542)"
+  },
+  "VG1_rtg3": {
+   "window_yr": [
+    [
+     33.47,
+     34.97
+    ],
+    [
+     40.682400613295364,
+     43.682400613295364
+    ]
+   ],
+   "delta_resid_pct": -0.5604171619520981,
+   "n_a": 2,
+   "n_b": 4,
+   "one_sided_tail": 0.07468123861566485,
+   "abs_exceedance_frac": 0.32786885245901637,
+   "tail_note": "one-sided decline tail vs the geometry-matched leave-own-window-out wander null (n=549)"
+  },
+  "VG1_total": {
+   "window_yr": [
+    [
+     33.47,
+     34.97
+    ],
+    [
+     40.91512430182893,
+     43.91512430182893
+    ]
+   ],
+   "delta_resid_pct": -0.38269150527165396,
+   "n_a": 6,
+   "n_b": 11,
+   "one_sided_tail": 0.16512059369202226,
+   "abs_exceedance_frac": 0.5825602968460112,
+   "tail_note": "one-sided decline tail vs the geometry-matched leave-own-window-out wander null (n=539)"
+  },
+  "VG2_rtg1": {
+   "window_yr": [
+    [
+     39.76,
+     41.26
+    ],
+    [
+     41.26,
+     43.5263388456905
+    ]
+   ],
+   "delta_resid_pct": -0.6298368572790092,
+   "n_a": 2,
+   "n_b": 3,
+   "one_sided_tail": 0.061611374407582936,
+   "abs_exceedance_frac": 0.09360189573459715,
+   "tail_note": "one-sided decline tail vs the geometry-matched leave-own-window-out wander null (n=844)"
+  },
+  "VG2_rtg2": {
+   "window_yr": [
+    [
+     39.76,
+     41.26
+    ],
+    [
+     41.26,
+     43.46336655349907
+    ]
+   ],
+   "delta_resid_pct": 0.3596718140788435,
+   "n_a": 2,
+   "n_b": 3,
+   "one_sided_tail": 0.91725768321513,
+   "abs_exceedance_frac": 0.17612293144208038,
+   "tail_note": "one-sided decline tail vs the geometry-matched leave-own-window-out wander null (n=846)"
+  },
+  "VG2_total": {
+   "window_yr": [
+    [
+     39.76,
+     41.26
+    ],
+    [
+     41.26,
+     43.5263388456905
+    ]
+   ],
+   "delta_resid_pct": -0.42388029978168706,
+   "n_a": 4,
+   "n_b": 4,
+   "one_sided_tail": 0.08432304038004751,
+   "abs_exceedance_frac": 0.14726840855106887,
+   "tail_note": "one-sided decline tail vs the geometry-matched leave-own-window-out wander null (n=842)"
+  }
+ },
+ "T4B_common_mode": {
+  "V1": {
+   "window_yr": [
+    [
+     33.47,
+     34.97
+    ],
+    [
+     40.474318256488885,
+     43.474318256488885
+    ]
+   ],
+   "per_unit_dr_pct": [
+    -0.5594987226095416,
+    -0.5361419483356056,
+    -0.5423309340032434
+   ],
+   "common_mode_dr_pct": -0.5459905349827969,
+   "one_sided_tail": 0.05982905982905983,
+   "n_null": 117,
+   "n_bins": [
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "note": "a-priori channel: mean sibling-unit drift at the heliopause vs the fleet common-mode wander null"
+  },
+  "V2": {
+   "window_yr": [
+    [
+     39.76,
+     41.26
+    ],
+    [
+     41.26,
+     43.46336655349907
+    ]
+   ],
+   "per_unit_dr_pct": [
+    -0.3859533813489413,
+    0.3596718140788435
+   ],
+   "common_mode_dr_pct": -0.013140783635048892,
+   "one_sided_tail": 0.4011299435028249,
+   "n_null": 177,
+   "n_bins": [
+    [
+     2,
+     2
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "note": "a-priori channel: mean sibling-unit drift at the heliopause vs the fleet common-mode wander null"
+  }
+ },
+ "T5_sibling_coherence": {
+  "within_pct": {
+   "25": 0.022097717040125975,
+   "50": 0.0441729613363695,
+   "75": 0.09312458815869534
+  },
+  "across_pct": {
+   "25": 0.11681140890656355,
+   "50": 0.3917286053921429,
+   "75": 0.7413800083327069
+  },
+  "n_within": 173,
+  "n_across": 400,
+  "mwu_p": 4.138423519387148e-39,
+  "note": "sibling units share the spacecraft thermal/bus environment; the within-mission residual coherence prices the common-mode wander the shared thermal state can supply"
+ },
+ "T6_bound": {
+  "v1_crossing_excess_frac": 0.0038269150527165396,
+  "dlambda_frac_1s": 0.0038269150527165396,
+  "bound_dalpha_frac_1s": 2.506592512619398e-05,
+  "note": "residual crossing-window power change mapped to a decay-rate shift, then to effective-alpha through the step_098 Gamow factor"
+ }
+}

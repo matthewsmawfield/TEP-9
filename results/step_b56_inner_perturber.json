@@ -1,0 +1,195 @@
+{
+ "meta": {
+  "n": 131,
+  "n_failed": 0,
+  "failed": [],
+  "geometries": {
+   "anti-aligned": {
+    "e9": 0.3,
+    "i9": 15.6,
+    "varpi9": 246.7,
+    "Om9": 96.9,
+    "M9_deg": 180.0
+   },
+   "warp-plane": {
+    "e9": 0.3,
+    "i9": 15.0,
+    "varpi9": 229.0,
+    "Om9": 120.0,
+    "M9_deg": 180.0
+   }
+  },
+  "a9_ladder_AU": [
+   100.0,
+   125.0,
+   150.0,
+   175.0,
+   200.0,
+   250.0
+  ],
+  "anchor_scaling": "alpha = 1.00 measured on the mass ladder (step 083) -- m_req(a9) = 6.9*d_of/drot_6.9(a9)",
+  "integrator": "ias15",
+  "boundary_AU": 255.0,
+  "ephemeris": "data/raw/spice/de440s.bsp (provenance pinned)",
+  "eph_bound": "5-sigma tidal detection line, sigma_M = 0.22 M_earth (d/400 AU)^3 (Gomes, Murray, Gomes, Holman & Bernstein 2023, PSJ 4:66, median over sky)",
+  "planetY_box": "SCT25 warp-producing range ~0.06-1 M_earth, a=100-200 AU, i>~10 deg"
+ },
+ "rungs": {
+  "anti_a100": {
+   "geometry": "anti-aligned",
+   "a9_AU": 100.0,
+   "med_drot": 0.0018692675492419477,
+   "m_req_median_in": 605.534139897819,
+   "m_req_p05_in": 88.64500334761767,
+   "m_req_min_in": 13.33167267780971,
+   "m_req_median_out": 370.88038826020033,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.0171875,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "anti_a125": {
+   "geometry": "anti-aligned",
+   "a9_AU": 125.0,
+   "med_drot": 0.0009555390251405278,
+   "m_req_median_in": 940.1523713629008,
+   "m_req_p05_in": 103.79036062794286,
+   "m_req_min_in": 3.7486854612000275,
+   "m_req_median_out": 700.8186131341558,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.0335693359375,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "anti_a150": {
+   "geometry": "anti-aligned",
+   "a9_AU": 150.0,
+   "med_drot": 0.0006554313017567792,
+   "m_req_median_in": 876.7656997923547,
+   "m_req_p05_in": 119.40303572431885,
+   "m_req_min_in": 9.75564225290181,
+   "m_req_median_out": 1217.5389265817994,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.058007812500000006,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "anti_a175": {
+   "geometry": "anti-aligned",
+   "a9_AU": 175.0,
+   "med_drot": 0.000517280449204799,
+   "m_req_median_in": 923.683522768024,
+   "m_req_p05_in": 143.45145869103936,
+   "m_req_min_in": 17.360670684864346,
+   "m_req_median_out": 1656.974227223365,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.0921142578125,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "anti_a200": {
+   "geometry": "anti-aligned",
+   "a9_AU": 200.0,
+   "med_drot": 0.0004475810116759935,
+   "m_req_median_in": 1235.0605926979201,
+   "m_req_p05_in": 215.4151132838759,
+   "m_req_min_in": 35.9949598721647,
+   "m_req_median_out": 1952.3464583236691,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.1375,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "anti_a250": {
+   "geometry": "anti-aligned",
+   "a9_AU": 250.0,
+   "med_drot": 0.0003627925236690088,
+   "m_req_median_in": 2185.772828530318,
+   "m_req_p05_in": 529.4714307243687,
+   "m_req_min_in": 366.58962034736436,
+   "m_req_median_out": 2093.767682857432,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.2685546875,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "warp_a100": {
+   "geometry": "warp-plane",
+   "a9_AU": 100.0,
+   "med_drot": 0.0019321133411113911,
+   "m_req_median_in": 514.5663557202818,
+   "m_req_p05_in": 53.00983096479822,
+   "m_req_min_in": 20.976205140140102,
+   "m_req_median_out": 380.0184597474044,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.0171875,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "warp_a125": {
+   "geometry": "warp-plane",
+   "a9_AU": 125.0,
+   "med_drot": 0.0009991216558463128,
+   "m_req_median_in": 820.1053335093291,
+   "m_req_p05_in": 59.767767420210255,
+   "m_req_min_in": 21.917382018863204,
+   "m_req_median_out": 708.1947795064705,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.0335693359375,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "warp_a150": {
+   "geometry": "warp-plane",
+   "a9_AU": 150.0,
+   "med_drot": 0.0006778269159117239,
+   "m_req_median_in": 926.7950910204341,
+   "m_req_p05_in": 70.45475017445365,
+   "m_req_min_in": 24.52624237063232,
+   "m_req_median_out": 1108.7027943358119,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.058007812500000006,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "warp_a175": {
+   "geometry": "warp-plane",
+   "a9_AU": 175.0,
+   "med_drot": 0.0005590581287261042,
+   "m_req_median_in": 970.5710702966593,
+   "m_req_p05_in": 87.05658428094422,
+   "m_req_min_in": 20.830579509195758,
+   "m_req_median_out": 1506.5993089024,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.0921142578125,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "warp_a200": {
+   "geometry": "warp-plane",
+   "a9_AU": 200.0,
+   "med_drot": 0.0004899783078695814,
+   "m_req_median_in": 1115.1756768053021,
+   "m_req_p05_in": 116.60250305898187,
+   "m_req_min_in": 32.52907523857843,
+   "m_req_median_out": 2032.8577470005366,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.1375,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  },
+  "warp_a250": {
+   "geometry": "warp-plane",
+   "a9_AU": 250.0,
+   "med_drot": 0.0003798899394011179,
+   "m_req_median_in": 2107.6370867483784,
+   "m_req_p05_in": 339.1536670168098,
+   "m_req_min_in": 251.9509685445785,
+   "m_req_median_out": 2142.0520868418685,
+   "frac_in_within_planetY_box": 0.0,
+   "frac_in_below_eph_bound": 0.0,
+   "eph_bound_5sig_earth": 0.2685546875,
+   "note": "frac_within_planetY_box: share of in-cap comets whose required mass falls inside the SCT25 0.06-1 M_earth box; frac_below_eph_bound: share whose required mass would escape the Gomes+23 5-sigma tidal detection line"
+  }
+ }
+}

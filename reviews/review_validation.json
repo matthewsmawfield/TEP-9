@@ -1,0 +1,1029 @@
+{
+  "timestamp_utc": "2026-09-19T16:20:19.400502+00:00",
+  "scope": "Frozen reviewed publication inputs and source; not a complete raw-data archive or full-pipeline numerical reproduction.",
+  "audit_summary": {
+    "registered_steps": 128,
+    "python_sources": 148,
+    "bound_claim_occurrences": 43,
+    "unique_bound_claims": 34,
+    "result_files": 122,
+    "hard_errors": 0,
+    "legacy_files_with_nonfinite_values": 0
+  },
+  "runtime": {
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+    "executable": "/Users/matthewsmawfield/opt/miniconda3/bin/python3",
+    "packages": {
+      "numpy": "2.1.3",
+      "scipy": "1.14.1",
+      "astropy": "7.1.1",
+      "matplotlib": "3.9.2",
+      "rebound": "5.1.1",
+      "spiceypy": "8.0.2",
+      "requests": "2.32.4",
+      "pytest": "9.0.1",
+      "PyYAML": "6.0.2",
+      "playwright": "1.62.0"
+    }
+  },
+  "regression_tests": {
+    "passed": 14,
+    "log": "validation_logs/tep9-tests-final.log"
+  },
+  "fresh_real_refits": {
+    "n": 9,
+    "unchanged_to_1e_9": 9,
+    "source_hash_verified": true
+  },
+  "pdf": {
+    "pages": 15,
+    "metadata": {
+      "format": "PDF 1.3",
+      "title": "Temporal Equivalence Principle: A Proper-Time Domain Boundary in the Outer Solar System",
+      "author": "Matthew Lukin Smawfield",
+      "subject": "Outer-Solar-System catalogue tests and TEP domain-boundary hypothesis",
+      "keywords": "TEP, trans-Neptunian objects, comet orbits, spatial selection, numerical audit",
+      "creator": "Chromium",
+      "producer": "Skia/PDF m151",
+      "creationDate": "D:20260919162127+00'00'",
+      "modDate": "D:20260919162127+00'00'",
+      "trapped": "",
+      "encryption": null
+    },
+    "synchronized_copy_count": 5,
+    "sha256": "a19c83834e65a8f6763d01fa336bc57194efadc694ed39ab1104feb859d47363",
+    "visual_inspection": "All 15 pages inspected in latest rendered contact sheet; title, numerical table, figures, equations, references and data-availability page inspected at enlarged scale. No clipped content, missing glyphs or unresolved placeholders found."
+  },
+  "concurrent_work": "Separate Devin --redo runs for steps 127 and 128 were active. The review duplicate run was stopped; their eventual outputs are outside this frozen validation snapshot.",
+  "frozen_files": [
+    {
+      "path": "36-TEP-9-v0.1-Addis-Ababa.md",
+      "sha256": "67a92393e8ea13b867936c340bd4e04e538e8e58148ff00d849ede8de52b4120",
+      "bytes": 47977
+    },
+    {
+      "path": "36-TEP-9-v0.1-Addis-Ababa.pdf",
+      "sha256": "a19c83834e65a8f6763d01fa336bc57194efadc694ed39ab1104feb859d47363",
+      "bytes": 4524001
+    },
+    {
+      "path": "CITATION.cff",
+      "sha256": "1c3de46599840fa41908c3d253d5672cb5ebba4f3f79b29cf6241aa6199ab53d",
+      "bytes": 2600
+    },
+    {
+      "path": "README.md",
+      "sha256": "afb352e7f486f8a4a1c04e4a09ed200cc733388c5706d5a38e820d82995ca7af",
+      "bytes": 3632
+    },
+    {
+      "path": "config/pipeline_config.json",
+      "sha256": "23ff2631eca243707d6f598959c4228bd183a76cd95785e84bd119e1c3bf2be9",
+      "bytes": 1895
+    },
+    {
+      "path": "core/__init__.py",
+      "sha256": "f024684805f66e406059e82c0759dcddacb69686c126b9ebec44b26fbb84cdcf",
+      "bytes": 2087
+    },
+    {
+      "path": "core/conformal_scaling.py",
+      "sha256": "88f5a33905391b97c7cde96bf93e4a42807c0c8ae6b0f3bb90eef16a6233a36a",
+      "bytes": 8791
+    },
+    {
+      "path": "core/constants.py",
+      "sha256": "15770ff987e146b993c145e7306c97f725f126772a8f2e5e547c718c0b2a6665",
+      "bytes": 5675
+    },
+    {
+      "path": "core/cosmology.py",
+      "sha256": "5f42aa02abbe26251350f7ec048e123e60dab7e7da0ef164aa1909c525ed44bb",
+      "bytes": 29616
+    },
+    {
+      "path": "core/evidence.py",
+      "sha256": "6bf4b5f3ad021813a65e2b0645a2e6ce358e7d311abdfd609430142ca8302b5e",
+      "bytes": 3412
+    },
+    {
+      "path": "core/scalar_field.py",
+      "sha256": "dbd36c92ce32da269480370ba57e34a015967c97295ca0fbcc1b7f6747296b00",
+      "bytes": 8720
+    },
+    {
+      "path": "core/screening.py",
+      "sha256": "cf2e8b249167dec1bc9fc1fac417f2350aae8410cae26b9f66ff00d4795b15bf",
+      "bytes": 3733
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "7183be8c96bd64b45797a2ace423e5b64cfc6cd88330953f57c23561dbc7c8ce",
+      "bytes": 852
+    },
+    {
+      "path": "results/audits/REFIT_REPLAY_20260919.json",
+      "sha256": "34c65c4a26140fad65af1374f8844951edf94043c94ecf9d4b4f2c39c69d6308",
+      "bytes": 3389
+    },
+    {
+      "path": "results/audits/TEP9_OBSERVABLE_AUDIT_20260919.json",
+      "sha256": "7826288c01d97ad4121ddf7b9a4034ceb8d3faa3cdafe0c9fd355e32582c2cf9",
+      "bytes": 8992
+    },
+    {
+      "path": "results/figures/step_b103_frozen_geometry.png",
+      "sha256": "2376ecae536b78a41f857475334db6cef470abbe246609015c60ed9e425fa017",
+      "bytes": 97197
+    },
+    {
+      "path": "results/figures/step_b28_rotation_residual.png",
+      "sha256": "cf058f1c86a3cba935726a9ba9b22e0a7fc88cf1c4119d58bbc10cea86982b6a",
+      "bytes": 79189
+    },
+    {
+      "path": "results/figures/step_b77_resident_ledger.png",
+      "sha256": "3ab174741e37ee30ddd88f4aa2b08704032cec2179510c6ffe43dfdb9a672215",
+      "bytes": 75557
+    },
+    {
+      "path": "results/step_02_clustering.json",
+      "sha256": "64794d64b149a9eb639a292ae6465af9a2a460b521d4533ffc69c69fd92d9cd1",
+      "bytes": 12931
+    },
+    {
+      "path": "results/step_11_code_confirm.json",
+      "sha256": "36bb6d258509c4a911af7687d879f25ec9524581eee53a5fecbebd8ce7841f6c",
+      "bytes": 7432
+    },
+    {
+      "path": "results/step_b103_frozen_geometry.json",
+      "sha256": "c6cacc7c0b853846dca469d55b9fb414c83cb776ae363d1d169c00c880ed71a4",
+      "bytes": 9945
+    },
+    {
+      "path": "results/step_b104_astcat_stratification.json",
+      "sha256": "8acb1c870a1f66541694daac8d4791043538511e00df1df6d154f27c87397dd9",
+      "bytes": 6476
+    },
+    {
+      "path": "results/step_b15_evidence_summary.json",
+      "sha256": "dc8461a6010b0b18f56d63acb5094e037ea47094198b6c9f711582e6b3565cdd",
+      "bytes": 4686
+    },
+    {
+      "path": "results/step_b77_resident_ledger.json",
+      "sha256": "5c84833c94588814d7f2b803cad8bcca196658818eb0e02875ac28d2822b0560",
+      "bytes": 3817
+    },
+    {
+      "path": "results/step_b78_claims_trace.csv",
+      "sha256": "5cdd55ccbca1c2813cf72674c455acbfe937e5a6a7ce22858a42c4d3492447b8",
+      "bytes": 7930
+    },
+    {
+      "path": "results/step_b78_claims_trace.json",
+      "sha256": "22da1c222bce7870b5be5da5ff424ba9f31934dbc308fcfea4eae37a5d7a46ed",
+      "bytes": 74080
+    },
+    {
+      "path": "results/step_b81_prospective_lpc.json",
+      "sha256": "9c27d35e4fc981762863e7eaa083ae1f4e8b8b5003ba6822cc7768abdc3b58fd",
+      "bytes": 46280
+    },
+    {
+      "path": "results/step_b88_lineage_aphelion.json",
+      "sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e",
+      "bytes": 8525
+    },
+    {
+      "path": "results/step_b90_global_synthesis.json",
+      "sha256": "f79903b56fb14d279ad1a76f33076030548f120c8abbfda939c7623dd9e18b63",
+      "bytes": 3951
+    },
+    {
+      "path": "results/step_b91_nonwarsaw_refit.json",
+      "sha256": "21ccc8becaaec4a2e676a68f1d292748adbc636b8bcb7906deb3b81d46da888f",
+      "bytes": 5167
+    },
+    {
+      "path": "results/step_b98_lpc_signature_refit.json",
+      "sha256": "46d618c7bfd48a6dc961b28f615c4812b280e6ccccc6700ab5be7e29ce23f4fa",
+      "bytes": 2290
+    },
+    {
+      "path": "results/step_b99_cross_channel.json",
+      "sha256": "dda39f3d827235d074ada785b552cc51cdca2d8aceaf70191b6c0a71a2f5b9c6",
+      "bytes": 3727
+    },
+    {
+      "path": "scripts/audits/audit_publication.py",
+      "sha256": "591aff04a123ae618d46e18a17ca579c15d4eeec099ae7961a9b00b128ef2314",
+      "bytes": 7310
+    },
+    {
+      "path": "scripts/audits/audit_refit_replay.py",
+      "sha256": "7c19cdb36b92ac409d5069095aaefae80a959bc2ce6a08c6263a202d8f0f3a57",
+      "bytes": 2614
+    },
+    {
+      "path": "scripts/audits/audit_tep9_observables.py",
+      "sha256": "2db29adfde5730aff5807f33b448faae3a4ddafe07d7f4d979c2166f6932ef2a",
+      "bytes": 14702
+    },
+    {
+      "path": "scripts/generate_site_pdf.py",
+      "sha256": "16f96aea668e8c0550398769f232f7480967cbec0702194c741116dca7e3f498",
+      "bytes": 12623
+    },
+    {
+      "path": "scripts/recover_leg_channels.py",
+      "sha256": "f1dae674dfd8077258c9a878eb3f6edc326e2d298fb86b057ce4449c939f115c",
+      "bytes": 2040
+    },
+    {
+      "path": "scripts/run_all.py",
+      "sha256": "9fd88f3a8364cb894dffdfa779b2679822e244777d18e69bc67cdc1829bcc08f",
+      "bytes": 29023
+    },
+    {
+      "path": "scripts/steps/step_001_download_sbdb.py",
+      "sha256": "04bf49da64c650cf0fa49f44e2a3dba6ce38c1b30085e2ee8d14c23067f7319e",
+      "bytes": 4303
+    },
+    {
+      "path": "scripts/steps/step_002_download_cds.py",
+      "sha256": "59b069ae0e4295bafabbaedbac068acaf515a0d2059ef4ad79b9c623467c0f60",
+      "bytes": 5894
+    },
+    {
+      "path": "scripts/steps/step_003_download_code.py",
+      "sha256": "b4a27669cf45a404a48f71f85324560ba4418cca7dd952ee1f05970a1cfa3f4b",
+      "bytes": 5653
+    },
+    {
+      "path": "scripts/steps/step_004_download_mpc.py",
+      "sha256": "40a1c46ff13a83a01e3db4252fbe5a7db144c1ab74804e2093690b19637e2466",
+      "bytes": 6364
+    },
+    {
+      "path": "scripts/steps/step_010_tno_clustering.py",
+      "sha256": "fc74f424d6e8f00274462b6450e23d50368ae305852ee218149da6d1eb4537d9",
+      "bytes": 11527
+    },
+    {
+      "path": "scripts/steps/step_011_discriminators.py",
+      "sha256": "af6f60cc7ecf2f64ca171bbd3f43e0bf3717f2c6bb78cd8c26a5214d513884d9",
+      "bytes": 18989
+    },
+    {
+      "path": "scripts/steps/step_012_radial_profile.py",
+      "sha256": "a5866812d86cead2b0c6a37229a2537fc5b29d7f63126759236b852cb7fb9b82",
+      "bytes": 13805
+    },
+    {
+      "path": "scripts/steps/step_013_empirical_null.py",
+      "sha256": "cd53026ba9deacb5360323cb3b02c43a56d2884b50baeb3d855a62822b8b3ad9",
+      "bytes": 15964
+    },
+    {
+      "path": "scripts/steps/step_014_discovery_footprint.py",
+      "sha256": "e1985c0b3499de02a810056e2af599293487d6d0fddf9ef311a0aa1801197041",
+      "bytes": 14195
+    },
+    {
+      "path": "scripts/steps/step_015_proxy_validation.py",
+      "sha256": "f55280e3a51e45a1e3c5db8e14b025048f177bbacde543c81d36b99d742b25ec",
+      "bytes": 12339
+    },
+    {
+      "path": "scripts/steps/step_016_footprint_conditional.py",
+      "sha256": "49abeb477d491a26e49abf64410ff5874d58162881dcc4d5e8b516b518fc4f25",
+      "bytes": 15430
+    },
+    {
+      "path": "scripts/steps/step_017_decorrelation_radius.py",
+      "sha256": "8d604cb4d9dfe9ead3464433c68ff8417979666b9a6f0719963912a4b07bfc22",
+      "bytes": 9983
+    },
+    {
+      "path": "scripts/steps/step_018_plane_warp.py",
+      "sha256": "8183d15f40f13c640d7104d88c548d8bb45c630a96542c8b0653eeb33270daca",
+      "bytes": 11603
+    },
+    {
+      "path": "scripts/steps/step_019_pole_geometry.py",
+      "sha256": "c06e3726d31aacc62301162b7f2f8b436878ce35343c2fb3fcf69cfa76ef4392",
+      "bytes": 10585
+    },
+    {
+      "path": "scripts/steps/step_020_axis_coupling.py",
+      "sha256": "7e5153ad9388f3d021a49a574a4d36ed8f3428522e80cb6103e6db214ebd0d71",
+      "bytes": 13478
+    },
+    {
+      "path": "scripts/steps/step_021_environment_checks.py",
+      "sha256": "d129c6ed73631d973e088da6d98d618dd7b5c3a051f4f38704801fa8ac177760",
+      "bytes": 8344
+    },
+    {
+      "path": "scripts/steps/step_022_edges.py",
+      "sha256": "c643209818ce213ba2a6ca02654d56c8fa83de0cb8d17ba52d26c951cbdcbb4b",
+      "bytes": 10219
+    },
+    {
+      "path": "scripts/steps/step_023_robustness.py",
+      "sha256": "b561af806ae947d89d0e925c7d15bd448e29ff8cee46098b2e591f3dfb981256",
+      "bytes": 14068
+    },
+    {
+      "path": "scripts/steps/step_024_population_selectivity.py",
+      "sha256": "4ef7ac9746ca792aeed2d704072eeb7c282b9a2ae4ea62b0d342783bb8024262",
+      "bytes": 12146
+    },
+    {
+      "path": "scripts/steps/step_025_patch_scale.py",
+      "sha256": "5b8d69f6cdd424692e4e8251f5c15b4057c756c894cdc1222b5aad468a217d0f",
+      "bytes": 10543
+    },
+    {
+      "path": "scripts/steps/step_026_antipode_deficit.py",
+      "sha256": "372b23563e7e0f4d758ac995a21bc46f7f67fb9407904f6fb407dd235b2a1419",
+      "bytes": 12895
+    },
+    {
+      "path": "scripts/steps/step_027_antipodal_populations.py",
+      "sha256": "1e3c296b56bcd5c7c3e81b203aedfc3a70372561b2e54f1b63bcf6ec7d9425b3",
+      "bytes": 8945
+    },
+    {
+      "path": "scripts/steps/step_028_ossos_bias.py",
+      "sha256": "56c4b2352745723a3e18e36f76b291119d6f031ab7c229e38e0ea7c45cf70c7a",
+      "bytes": 11175
+    },
+    {
+      "path": "scripts/steps/step_030_warsaw_direction.py",
+      "sha256": "87666360323d2ceaf3575f8f9c073a23f4c0bd22449a3760316c93ba0b47d812",
+      "bytes": 7387
+    },
+    {
+      "path": "scripts/steps/step_031_clock_channel.py",
+      "sha256": "be7729991c62c6819ea0de35717f854458eeb7e600f749227b0482c5aed1521a",
+      "bytes": 9070
+    },
+    {
+      "path": "scripts/steps/step_032_nested_field.py",
+      "sha256": "eae717bd38f59897d07d9a8066fd9a58b238b639d402324fdbd446386247f29a",
+      "bytes": 9830
+    },
+    {
+      "path": "scripts/steps/step_033_three_leg.py",
+      "sha256": "5e5f32c1ab8411ee8087b32a65274f7f9d430c7062da15a525703538687071be",
+      "bytes": 12100
+    },
+    {
+      "path": "scripts/steps/step_034_code_confirm.py",
+      "sha256": "e21a74f8ae74862e5f9c14bcc99e24bd5a2e5cd62c15b5581e2c702a940ceff5",
+      "bytes": 6330
+    },
+    {
+      "path": "scripts/steps/step_035_consolidation.py",
+      "sha256": "781edbc146b492db63263b681d2bc586c26bb8ca6735261e0798aec667984074",
+      "bytes": 9480
+    },
+    {
+      "path": "scripts/steps/step_036_axis_convergence.py",
+      "sha256": "8cedfbaf0a5c66098d6ed4e2b1586c1969183d3e22042e44effcf73bfc4f7a83",
+      "bytes": 4534
+    },
+    {
+      "path": "scripts/steps/step_037_blind_validation.py",
+      "sha256": "2776c8578df90deabb3520c46469cb336f2f6272f45bff3fbe5bfaef1ed7e1f3",
+      "bytes": 10411
+    },
+    {
+      "path": "scripts/steps/step_038_model_comparison.py",
+      "sha256": "49a1f4a30eb751c6a10941d3dbd994599b2586885cb0bedcd7e98157c51acb9d",
+      "bytes": 7738
+    },
+    {
+      "path": "scripts/steps/step_039_signed_channels.py",
+      "sha256": "2a26aeff9628dabe34a003d6dc258da4ce0fa235b48e415d9e7cda7041d5bbb8",
+      "bytes": 9441
+    },
+    {
+      "path": "scripts/steps/step_040_planetary_baseline.py",
+      "sha256": "0588935fbb8db52285fe9423bba8313ea3e188820b2f4a0370b264b35ed9effd",
+      "bytes": 6005
+    },
+    {
+      "path": "scripts/steps/step_041_alternatives.py",
+      "sha256": "035cbc95a0eef527bd806f65ba54cd9dfddfd07afec66790f17a871af80f23e9",
+      "bytes": 7031
+    },
+    {
+      "path": "scripts/steps/step_042_nbody_planetary_baseline.py",
+      "sha256": "d593f95150b3831b5e983b6c7d2124e5e4f3ca2511517b5069af4897e9443deb",
+      "bytes": 17100
+    },
+    {
+      "path": "scripts/steps/step_050_one_map.py",
+      "sha256": "a034a49262e29b51240e859e0a3cc83fb7d36c633c245f3f024258d43839f124",
+      "bytes": 16262
+    },
+    {
+      "path": "scripts/steps/step_051_evidence_summary.py",
+      "sha256": "cd1dfb3d93ff3b4f7e8042c1a5526920ced1a16a42b297cb8492ddd9b7dc6d1b",
+      "bytes": 11410
+    },
+    {
+      "path": "scripts/steps/step_052_injection_chain.py",
+      "sha256": "5e46a09af107fbaa59f15c83d71debefb1d6517fe8bf6c045c5196eba705bca2",
+      "bytes": 11999
+    },
+    {
+      "path": "scripts/steps/step_053_catalog_concordance.py",
+      "sha256": "b2109fbc27c3b6bdcea148bd4e41846321f22788b6a4b10f1881b78e0c495eeb",
+      "bytes": 8727
+    },
+    {
+      "path": "scripts/steps/step_054_prospective_predictions.py",
+      "sha256": "e5b87e0c0665c37f39c1727ac81a4f5c38efd92587b375415910d2bc277508b7",
+      "bytes": 12144
+    },
+    {
+      "path": "scripts/steps/step_055_morphology.py",
+      "sha256": "37eafd0fef9b657a792390c197f59367ebb49ad262a6aedee1e55496e998131c",
+      "bytes": 9115
+    },
+    {
+      "path": "scripts/steps/step_056_morphology_conditional.py",
+      "sha256": "5093c00d7478b6fc335f89cdb25629d8c17060fe723632d51eb6043f66d07f43",
+      "bytes": 10692
+    },
+    {
+      "path": "scripts/steps/step_057_incap_audit.py",
+      "sha256": "01e67006abab80055419f8951c140563ad58ed23d1298c0ebad1acce85b7ff9e",
+      "bytes": 7985
+    },
+    {
+      "path": "scripts/steps/step_058_comet_obs_audit.py",
+      "sha256": "5aeeeec53f0e6b527126b0fbf91373cb90c7387208c614fad40c57271441d93a",
+      "bytes": 19400
+    },
+    {
+      "path": "scripts/steps/step_059_axis_consistency.py",
+      "sha256": "8d9d29f3b5633c7f924081734086ac63de19ca23409fc8963478569b8d846877",
+      "bytes": 9991
+    },
+    {
+      "path": "scripts/steps/step_060_uncertainty_channel.py",
+      "sha256": "a7de90b1fce6197f36c3cd3b64631ed4019a1f01c5f2283ebae9412b014c6a1c",
+      "bytes": 11220
+    },
+    {
+      "path": "scripts/steps/step_061_aphelion_dipole.py",
+      "sha256": "ef4ab21c6fe1fefbf17d8a7f61465fb2dbb9047c3b64eabe55dd0feb63a11f29",
+      "bytes": 11496
+    },
+    {
+      "path": "scripts/steps/step_062_planet_nine_insertion.py",
+      "sha256": "02d82c44bf02633d992b4cf6373a994130758e370c70ee7cc27ad29a52a4c90b",
+      "bytes": 17760
+    },
+    {
+      "path": "scripts/steps/step_063_bidirectional_rotation.py",
+      "sha256": "8020c3e26278b4be62556096abf94952b8edb2351df5f817156398a006dfda43",
+      "bytes": 17329
+    },
+    {
+      "path": "scripts/steps/step_064_warsaw_bidirectional.py",
+      "sha256": "c354195e20b257c20fa01f16148f5366b0326c3bda1995af5b88ec8f7834a54e",
+      "bytes": 17898
+    },
+    {
+      "path": "scripts/steps/step_065_proper_time_slip.py",
+      "sha256": "57243cdea8819989e1b6c81fb90bf986866cfb4152d1d1cf5280c47e81167314",
+      "bytes": 13709
+    },
+    {
+      "path": "scripts/steps/step_066_tno_secular_stability.py",
+      "sha256": "d552dcf6b9fe7637cd6f83837bfd8bbd89c3302a19aede98364b9c82cc90d009",
+      "bytes": 15460
+    },
+    {
+      "path": "scripts/steps/step_067_detection_power.py",
+      "sha256": "267660bc9b92bc8885b1777e742b715103a6a1424acdbb59e82c11a024a11be7",
+      "bytes": 11034
+    },
+    {
+      "path": "scripts/steps/step_068_wall_vs_field.py",
+      "sha256": "04593eb194f23e36c0aacd3a74f1fa201fb55339cf5d322bacc43e3fbe2646a5",
+      "bytes": 13199
+    },
+    {
+      "path": "scripts/steps/step_069_joint_axis_test.py",
+      "sha256": "0a76a4891314a94afb5536d936f9f2ec5aa9383b05107e2a9076e162e9ee9e53",
+      "bytes": 12199
+    },
+    {
+      "path": "scripts/steps/step_070_galactic_tide.py",
+      "sha256": "eb880b24d109f690fef922e2224fbd030189709df911faebc555dcfc93ec9713",
+      "bytes": 15932
+    },
+    {
+      "path": "scripts/steps/step_071_radial_slip_profile.py",
+      "sha256": "6a136d256c3ad7a23d648fe345e6f9144ee09a5fba53b0c33fd96d2fedaf80c1",
+      "bytes": 16017
+    },
+    {
+      "path": "scripts/steps/step_072_epoch_stability.py",
+      "sha256": "dd515f93304f448a7101d6fc9d17ec6b27d47002cec9231888b843b8c6dee747",
+      "bytes": 8186
+    },
+    {
+      "path": "scripts/steps/step_073_edge_width.py",
+      "sha256": "fb607f670d10ba14482094d0b61993910510126539affd27df54af7ec730e228",
+      "bytes": 6211
+    },
+    {
+      "path": "scripts/steps/step_074_loco_joint.py",
+      "sha256": "abcd706ce915f46fd3bfa5a3812080c28057533338476f6728e6e3a723c02205",
+      "bytes": 8679
+    },
+    {
+      "path": "scripts/steps/step_075_signed_slip.py",
+      "sha256": "2a024aa49ab88378497c3e8a4f3e26c07d2b0a765da42ee9c5db722654495a69",
+      "bytes": 11212
+    },
+    {
+      "path": "scripts/steps/step_076_inner_slip_profile.py",
+      "sha256": "093516894f1e314538d8b9134532a4af753f39fdd9b183a35cdd87abc331db7c",
+      "bytes": 13770
+    },
+    {
+      "path": "scripts/steps/step_077_dipole_era.py",
+      "sha256": "6aa5f24d2705eb95847b16192a6ce1009317d9afa86fd6a27c4878880188b371",
+      "bytes": 8319
+    },
+    {
+      "path": "scripts/steps/step_078_tno_era.py",
+      "sha256": "178fd897b04b82962e308fcdba6aefe0c62690d53a9acc6a447e7dfa2df86f33",
+      "bytes": 5387
+    },
+    {
+      "path": "scripts/steps/step_079_cross_fitter.py",
+      "sha256": "ced38848f5b6ab7591f2e1802c287f874582f1634e265ed90a07a1f9f0e7ab38",
+      "bytes": 11076
+    },
+    {
+      "path": "scripts/steps/step_080_signed_residual.py",
+      "sha256": "7e669645a23201eaa12e1ecae68a612c5a1e48f3402eec23115a8662df8b0390",
+      "bytes": 12215
+    },
+    {
+      "path": "scripts/steps/step_081_geocentric_null.py",
+      "sha256": "b90d9f5b86dd9940c2d58dc06147a317c1baf4f5eddd5177d172ec714d3fe28c",
+      "bytes": 8409
+    },
+    {
+      "path": "scripts/steps/step_082_sky_matched.py",
+      "sha256": "67c46e6473522ede6f4d96954de6e2ec8a591b7985ea9258975fc5aa07463531",
+      "bytes": 16897
+    },
+    {
+      "path": "scripts/steps/step_083_mass_ladder.py",
+      "sha256": "815027f6b75ef3543a4b2f9a01b8778c8cd11e248e9ec97f324c553c06212b2e",
+      "bytes": 22341
+    },
+    {
+      "path": "scripts/steps/step_084_newest_cohort.py",
+      "sha256": "636ea4ae76ce6538123a6d451df81215112ff655a2b36b0d9c7c20c595ddd053",
+      "bytes": 14465
+    },
+    {
+      "path": "scripts/steps/step_085_des_resident.py",
+      "sha256": "f81495be269fffaa1c59b7f8237f15209b0b296f9e92ef7c474f443322e03361",
+      "bytes": 14744
+    },
+    {
+      "path": "scripts/steps/step_086_slip_physics.py",
+      "sha256": "0861781750d8d3e25a14e4ce20b87fb1ff84f2ec0d4a273be9618498bb5d7bc3",
+      "bytes": 13481
+    },
+    {
+      "path": "scripts/steps/step_087_distance_ladder.py",
+      "sha256": "263cc228bc44ebe6cea123c9927990df61d60fe7dd1ebd41ac900814208a319f",
+      "bytes": 16013
+    },
+    {
+      "path": "scripts/steps/step_088_tide_resident.py",
+      "sha256": "d245bccec8c9c71441a59d9ba447c9f7514dbde885373eebee24d3d6e26d0282",
+      "bytes": 15998
+    },
+    {
+      "path": "scripts/steps/step_089_bipolar_morphology.py",
+      "sha256": "a33b53a1e094734fa153cae4bdf71b7ff1339744d74a19015217fa223f38b4a8",
+      "bytes": 14669
+    },
+    {
+      "path": "scripts/steps/step_090_mean_plane.py",
+      "sha256": "bc0216116a8be59e6026701c6574715b94164b37524122cb6187e48fa16a6b79",
+      "bytes": 25514
+    },
+    {
+      "path": "scripts/steps/step_091_inner_perturber.py",
+      "sha256": "0aeba4b0d838ad9150b5ad14718e6aee8d41cb09f7c0960a7508699874089a21",
+      "bytes": 17190
+    },
+    {
+      "path": "scripts/steps/step_092_mpcorb_clustering.py",
+      "sha256": "c4d9fa2344efd0654be3d15b07fdfb315da368927982947f478e6b2507bd1b31",
+      "bytes": 13981
+    },
+    {
+      "path": "scripts/steps/step_093_perturber_zoo.py",
+      "sha256": "f1fae33d4cb4b0ab35bf4390cbcdd481ee857e2c46973e86da81e09eddaf2835",
+      "bytes": 18477
+    },
+    {
+      "path": "scripts/steps/step_094_joint_axis_mp.py",
+      "sha256": "a4954905b45e1bbecab134031dc64b05182d634d9c324b1414450efa0fc8ccc3",
+      "bytes": 13731
+    },
+    {
+      "path": "scripts/steps/step_095_download_spacecraft.py",
+      "sha256": "79000aaca2beceb10eb3552e7ea231478642125dee5068bfbbb471e80cc4a678",
+      "bytes": 20631
+    },
+    {
+      "path": "scripts/steps/step_096_sclk_clock_audit.py",
+      "sha256": "349807c45a6667beaa5e6ccbe2cfeb067401e33e29b3f4f15ccf467d2bb99310",
+      "bytes": 86700
+    },
+    {
+      "path": "scripts/steps/step_097_pws_plasma_channel.py",
+      "sha256": "74350a6129e81af6d5528e6803ef74adb80be07d678e36a4209bb3c26c246c8f",
+      "bytes": 15504
+    },
+    {
+      "path": "scripts/steps/step_098_rtg_nuclear_channel.py",
+      "sha256": "be63b96e4c4f55457866b536f0c26e950a5c7243c845688aa9fed446668f5d66",
+      "bytes": 42773
+    },
+    {
+      "path": "scripts/steps/step_099_heliospheric_geometry.py",
+      "sha256": "3315e839de83a4022249ea96d41d82cdc240ff618800610a18f820ef18873f45",
+      "bytes": 15231
+    },
+    {
+      "path": "scripts/steps/step_100_clock_consistency.py",
+      "sha256": "fffbeb56018b4a4dbe78ca5481f6210331d392d660efa1b45574bb2afa48a717",
+      "bytes": 19717
+    },
+    {
+      "path": "scripts/steps/step_101_iso_ng_channel.py",
+      "sha256": "a6829feb8243adda2f66b5eccf5ec48789d640141299634d82bb7a2eb015642d",
+      "bytes": 34036
+    },
+    {
+      "path": "scripts/steps/step_102_slip_map_validation.py",
+      "sha256": "36b2476fa03aff88471f85565ee0c9e90bdf17f2a581ccd9058c0cbe830bffce",
+      "bytes": 17476
+    },
+    {
+      "path": "scripts/steps/step_103_rtg_midlife_control.py",
+      "sha256": "2fcf79d0c9ffa2dacf6c137a28bb1926635bf2720e3709961cb8ede13ad251cb",
+      "bytes": 19996
+    },
+    {
+      "path": "scripts/steps/step_104_spatial_holdout.py",
+      "sha256": "ea9841200031252dbe5b06797fafc6c9aa9457bad53841cf11d94510f63c2f08",
+      "bytes": 21538
+    },
+    {
+      "path": "scripts/steps/step_105_lpc_bidirectional.py",
+      "sha256": "d256874200120176303f85c5dfee3c8456510fd3bdad4a23c366777d02495cde",
+      "bytes": 24066
+    },
+    {
+      "path": "scripts/steps/step_106_harmonic_axis_transfer.py",
+      "sha256": "937ac7ac1dd7702f6406d84aaedb45c732ddc8e2e0aa67f9de21a1f6cfb01576",
+      "bytes": 15694
+    },
+    {
+      "path": "scripts/steps/step_107_named_directions.py",
+      "sha256": "4aa694d4aa79aba11b9d7696ff84f7eb59cc9d2a48461b78df1d156d306f3c82",
+      "bytes": 12339
+    },
+    {
+      "path": "scripts/steps/step_108_cometels_dipole.py",
+      "sha256": "2a75494b95b62407d369d0ea018fe44146f224a8b71c90f91cef073888b1c771",
+      "bytes": 15117
+    },
+    {
+      "path": "scripts/steps/step_109_census_bias_audit.py",
+      "sha256": "23419de86940b22a7836b93b45f6fdbecbc1bde421af42ca76ac65cf9deb8691",
+      "bytes": 13455
+    },
+    {
+      "path": "scripts/steps/step_110_aphelion_direction_vs_axis.py",
+      "sha256": "9f1bb14f951b38fd48c66eaea8adb3210e48dfd7f2e3ce9dfdc2b7ae8bc9a0e1",
+      "bytes": 13444
+    },
+    {
+      "path": "scripts/steps/step_111_detachment_coherence.py",
+      "sha256": "d770eb5f7ced8b5e1a5a4de55712a995aaca646d35142ab6f220e6f271a548a1",
+      "bytes": 12150
+    },
+    {
+      "path": "scripts/steps/step_112_ossos_ensemble.py",
+      "sha256": "f0b9208da9d061d5ea770721a3e9cf5ee483a88bd37d833a1ad7d748e2cf5d03",
+      "bytes": 24368
+    },
+    {
+      "path": "scripts/steps/step_113_resident_ledger.py",
+      "sha256": "6656d0c1ba2761e599223092abbc6ba4b67dba282856bf6f158c1ea9378ed94a",
+      "bytes": 15839
+    },
+    {
+      "path": "scripts/steps/step_114_claims_trace.py",
+      "sha256": "b63f1593efb6d858c71ee2654afcdadf7533773dac91fd67ed57ebf3dc2fc00b",
+      "bytes": 444
+    },
+    {
+      "path": "scripts/steps/step_115_mixture_posterior.py",
+      "sha256": "e2551964d167339b3ce83fd33e91a95739599d620d64bc008405bbf1dc56c4eb",
+      "bytes": 28902
+    },
+    {
+      "path": "scripts/steps/step_116_discovery_coupling.py",
+      "sha256": "a4b3d3c6c8f28883172d9208ceb1b71b064d114bb7787ad2c97d8b410d1adca9",
+      "bytes": 48176
+    },
+    {
+      "path": "scripts/steps/step_117_prospective_lpc.py",
+      "sha256": "8d8cb03ba27d4d5d99d02a587f1a9f632f22da10196ef95a01d5f6e32e0fbcc9",
+      "bytes": 50437
+    },
+    {
+      "path": "scripts/steps/step_118_prospective_axis_audit.py",
+      "sha256": "3158a1e4ecfac108f2d2581ad3fbc7be15890db1358b43e4692133485b981165",
+      "bytes": 32453
+    },
+    {
+      "path": "scripts/steps/step_119_dipole_mechanism.py",
+      "sha256": "43a7a10234f75da4d0a8f3c2d34e018d1144d69aa209f673bc50813610997ad3",
+      "bytes": 20652
+    },
+    {
+      "path": "scripts/steps/step_120_pre2018_sbdb_factorial.py",
+      "sha256": "3c8e41e2ae5fccca145366b8155612dcb140e7994deacd09bc378a168be3c224",
+      "bytes": 28279
+    },
+    {
+      "path": "scripts/steps/step_121_masked_signal.py",
+      "sha256": "34a2b2ea764fd0282feff7a3f9ecc11d38a193831b7effdc4f232313efeeea66",
+      "bytes": 25712
+    },
+    {
+      "path": "scripts/steps/step_122_pre2018_localization.py",
+      "sha256": "89e3cce6903e2d0249756dcf9a6c1614ce6fc66a773f677f2908903b6d07479a",
+      "bytes": 18354
+    },
+    {
+      "path": "scripts/steps/step_123_leg_coherence.py",
+      "sha256": "7390161d0576af6d84565f91bff47dcbc469a291c03aca3b2c9c39d698206e8a",
+      "bytes": 25181
+    },
+    {
+      "path": "scripts/steps/step_124_lineage_aphelion.py",
+      "sha256": "defe75429d692b847d88809866d919bf49088b6cb9113497f4f612067877b0f1",
+      "bytes": 20663
+    },
+    {
+      "path": "scripts/steps/step_125_displaced_temporal.py",
+      "sha256": "d214249121c96af287418658ea7c8d9de51640c47ae60f81f6e54142a79a932f",
+      "bytes": 41423
+    },
+    {
+      "path": "scripts/steps/step_126_global_cross_survey_synthesis.py",
+      "sha256": "d491802e70f84384342c9700bb02b0bff0728291cd69fd705c9700c65c9ddba7",
+      "bytes": 28177
+    },
+    {
+      "path": "scripts/steps/step_127_nonwarsaw_refit.py",
+      "sha256": "7236880cd2aeb5de11e802ecfb98903caf5a8a34d484ea6845b794d7f6d48ee9",
+      "bytes": 27873
+    },
+    {
+      "path": "scripts/steps/step_128_post2017_refit.py",
+      "sha256": "97e499693706746bbae5a16cfff1997030b48e89e3bb777265535962b5e010be",
+      "bytes": 27347
+    },
+    {
+      "path": "scripts/steps/step_129_bipolar_unification.py",
+      "sha256": "cf7c1c75dc500fc6cf7b53eacc15bab1ad13a9f40c5d7b1db2d956d677d8d883",
+      "bytes": 14389
+    },
+    {
+      "path": "scripts/steps/step_130_epoch_axis_trajectory.py",
+      "sha256": "eab7d0f6053d2c9a3544befde275a5864772059e85e6a8b7700871f1699db6f9",
+      "bytes": 19908
+    },
+    {
+      "path": "scripts/steps/step_131_cone_shell_coherence.py",
+      "sha256": "cc4efa4e5056d660a238a24ae6c4cef51996b109f9e1277a81afca5ced2d46cf",
+      "bytes": 15449
+    },
+    {
+      "path": "scripts/steps/step_132_bipolar_meridian.py",
+      "sha256": "3de1d3beb0a03e5a2458854386f7ab3926d75a405c01f8cd241089fc1cf2e55f",
+      "bytes": 10814
+    },
+    {
+      "path": "scripts/steps/step_133_harmonic_bipolar.py",
+      "sha256": "c872a9569924d2952e7409f5cc02dc634c4e4438bebe660bdb5e01a51553b58b",
+      "bytes": 12469
+    },
+    {
+      "path": "scripts/steps/step_134_lpc_signature_refit.py",
+      "sha256": "595026f54b1d90e6d113b9eb11f49b5550103565428063e3944f4d6c855254bb",
+      "bytes": 13525
+    },
+    {
+      "path": "scripts/steps/step_135_cross_channel.py",
+      "sha256": "b87dd4ac73c479074a1dcd0a89dd92c8cc02f4aac21738ce6d2000596f55446b",
+      "bytes": 16075
+    },
+    {
+      "path": "scripts/steps/step_136_solar_wind_screening.py",
+      "sha256": "65aeecd005cde607f7bb08fbb5af28716c9e0f345cba7848040e1d29cda73bc4",
+      "bytes": 10867
+    },
+    {
+      "path": "scripts/steps/step_137_rtg_ensemble_regression.py",
+      "sha256": "7a0e832c4c6a24ed968f65c4d33043b25b6f9daa2e21f7f9933ddd5c7d719731",
+      "bytes": 13354
+    },
+    {
+      "path": "scripts/steps/step_138_oneway_downlink_channel.py",
+      "sha256": "27efac323e67d62ad75c58998a2243d9f2c03f559eef2c875123d82415d06972",
+      "bytes": 9300
+    },
+    {
+      "path": "scripts/steps/step_139_frozen_geometry.py",
+      "sha256": "24b897b5c743cac14430ee39b47d850bba50235bb84e9766ade33bd7b9c4b0f1",
+      "bytes": 15152
+    },
+    {
+      "path": "scripts/steps/step_140_astcat_stratification.py",
+      "sha256": "bb3875bea55b2f75061c4c932330e100a96a3dc5d04796e2b213c2e6b3391a77",
+      "bytes": 18730
+    },
+    {
+      "path": "scripts/steps/step_141_sclk_signed_drift.py",
+      "sha256": "9d2b9ebc6bc4d0d61b25280f6c22f52e4423a96d2bb1ef636eac3127a81d3510",
+      "bytes": 8877
+    },
+    {
+      "path": "scripts/utils/coordinates.py",
+      "sha256": "c6785439b3bb6dbb61b17c2f978b670c42b1ef22a4eab12b63bebdac7cf253e5",
+      "bytes": 2255
+    },
+    {
+      "path": "scripts/utils/html_to_pdf.py",
+      "sha256": "0e679548d9b20ce2cce255bb6da9b30df51fd75ce09429cfe3e36c99a9186095",
+      "bytes": 19075
+    },
+    {
+      "path": "scripts/utils/lpc_boundary.py",
+      "sha256": "bad647b3ee79e2249c060864c4d148a744443ef40ea206719b70eb6935efe51a",
+      "bytes": 6820
+    },
+    {
+      "path": "scripts/utils/mpc_refit.py",
+      "sha256": "1a671fb11d51a54bfcae6e1d2cb62486b21e1881bb85402f70c1094350afa39e",
+      "bytes": 22315
+    },
+    {
+      "path": "scripts/utils/statistics.py",
+      "sha256": "b9826b83bfcb4ebea8c14a6257946401dbebeef196112c0cf33d790aba790513",
+      "bytes": 3712
+    },
+    {
+      "path": "scripts/utils/step_logger.py",
+      "sha256": "764432456addb66df9f5f5ef2f42949734be193f82edf50cf78a1388cf8cbf6c",
+      "bytes": 17353
+    },
+    {
+      "path": "scripts/utils/tep9_common.py",
+      "sha256": "6ed5279e10a63c2a44125a57beace2434d822aa4213b4ed1f6485dd7918c4dd2",
+      "bytes": 8296
+    },
+    {
+      "path": "site/build.js",
+      "sha256": "a223a7107009b56bb6b91c45703a704f768c243f0264769f005a52f303953a5b",
+      "bytes": 11947
+    },
+    {
+      "path": "site/claims.js",
+      "sha256": "131326f7638b2b0d85d74053d91916dd241baf4ad77fbdbf9b0e77e5e49c4d4c",
+      "bytes": 1163
+    },
+    {
+      "path": "site/claims.json",
+      "sha256": "de3ef89f1626099d1e2301f14f16981cce90e1706d7d7784c616201384999ad2",
+      "bytes": 6732
+    },
+    {
+      "path": "site/components/10_data_availability.html",
+      "sha256": "8d77d16b487c6a2e1feed12db64d97e0353b59dad3a835c98cbd73d632698803",
+      "bytes": 3423
+    },
+    {
+      "path": "site/components/1_abstract.html",
+      "sha256": "976efb1fc61e3d5f881c40f84a8021c0fff63178c1c998e3854eb5b81b5cb587",
+      "bytes": 2107
+    },
+    {
+      "path": "site/components/2_introduction.html",
+      "sha256": "5aa0d80cd6fed98ca9c655ff46fc78fdc0a0b0dd582b36fdeda30b7619ca33a3",
+      "bytes": 4367
+    },
+    {
+      "path": "site/components/3_data.html",
+      "sha256": "188610f3e9a55f06a41e97edf18987bb0d7411bb6f9f16f0c22b6e60a93f0325",
+      "bytes": 5643
+    },
+    {
+      "path": "site/components/4_resident.html",
+      "sha256": "70e93268907e6cfb2fa4e924f37465df1f8ef24513dec221f5db4bf60f9b991e",
+      "bytes": 5254
+    },
+    {
+      "path": "site/components/5_transit.html",
+      "sha256": "c0e5b92a5acbd9f339583b044bb456c24aad4f5f9f15788b84388d80fef5744e",
+      "bytes": 10054
+    },
+    {
+      "path": "site/components/6_synthesis.html",
+      "sha256": "e1c37864eb89b2a2349cc65f318859251b981251d14cedc37cc038e19dc2dedf",
+      "bytes": 8041
+    },
+    {
+      "path": "site/components/7_discussion.html",
+      "sha256": "043357af3d95ecc438eadf8557b0d4af5f7a9f8e64ea65ede180215eac0385eb",
+      "bytes": 7317
+    },
+    {
+      "path": "site/components/8_conclusions.html",
+      "sha256": "365ab948be22e85c20d8fd357919645d0aea9d57fd7512ed41b7ed1cc063664f",
+      "bytes": 1372
+    },
+    {
+      "path": "site/components/9_references.html",
+      "sha256": "b9dfafa7c94893a98fbecde11b55d8ccc440dd0021598f39bca15acca58879d9",
+      "bytes": 3437
+    },
+    {
+      "path": "site/dev-server.js",
+      "sha256": "959e1ec30f747c74a5209877354d6bd5da0ee6161b929bd5031a17f0b9a3f722",
+      "bytes": 3917
+    },
+    {
+      "path": "site/dist/index.html",
+      "sha256": "6ca0a81943fd7e412c6381d3f423d566320c23589cf949a3b68db4cb4fc01009",
+      "bytes": 84603
+    },
+    {
+      "path": "site/html-to-markdown.js",
+      "sha256": "31bd6a3fdf4c8c0a6bb3f979e06619910e4e18272674cfa2026526dc257b8f7f",
+      "bytes": 10509
+    },
+    {
+      "path": "site/index.html",
+      "sha256": "3fd0f981c6044174f32d55f450c2bb89356f2177d91010aeb505e52bb3fedceb",
+      "bytes": 36029
+    },
+    {
+      "path": "site/manifest.json",
+      "sha256": "a0863ca8b59fc87e72986673a176480afcec3fbfc88c7c3717ec3c5a2ea86a3f",
+      "bytes": 1775
+    },
+    {
+      "path": "site/package-lock.json",
+      "sha256": "fcfe7709685b945c3226bb8c34b20f350ad5907c61441b82f55c79582e6e84a3",
+      "bytes": 2288
+    },
+    {
+      "path": "site/package.json",
+      "sha256": "c89ea9c35379e9130e1672edf01a15301d021d3d77a1d605d91231f59b6c4aac",
+      "bytes": 1037
+    }
+  ],
+  "diff_check": {
+    "source_paths": "passed",
+    "generated_pipeline_log": "Contains trailing whitespace from log formatting; log content preserved."
+  }
+}

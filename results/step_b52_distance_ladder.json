@@ -1,0 +1,89 @@
+{
+ "meta": {
+  "n": 131,
+  "n_failed": 0,
+  "failed": [],
+  "geometry": {
+   "e9": 0.3,
+   "i9": 15.6,
+   "varpi9": 246.7,
+   "Om9": 96.9,
+   "M9_deg": 180.0,
+   "m9_earth": 6.9,
+   "note": "BB21 median apsidal geometry; residence-weighted most probable phase"
+  },
+  "a9_ladder_AU": [
+   250.0,
+   300.0,
+   461.0,
+   700.0,
+   1000.0
+  ],
+  "anchor_scaling": "alpha = 1.00 measured on the mass ladder (step 083) -- m_req(a9) = 6.9*d_of/drot_6.9(a9)",
+  "integrator": "ias15",
+  "boundary_AU": 255.0,
+  "ephemeris": "data/raw/spice/de440s.bsp (provenance pinned)"
+ },
+ "rungs": {
+  "a250": {
+   "a9_AU": 250.0,
+   "med_drot": 0.0003627925236690088,
+   "m_req_median_in": 2185.772828530318,
+   "m_req_p05_in": 529.4714307243687,
+   "m_req_median_out": 2093.767682857432,
+   "frac_in_req_gt_1000": 0.7441860465116279,
+   "frac_in_req_gt_100": 1.0,
+   "frac_in_req_gt_318": 1.0,
+   "note": "frac>318 = fraction of in-cap comets requiring more than a Jupiter mass at this distance -- the IRAS/WISE all-sky exclusion scale"
+  },
+  "a300": {
+   "a9_AU": 300.0,
+   "med_drot": 0.0003095268014560821,
+   "m_req_median_in": 3712.444102924351,
+   "m_req_p05_in": 723.9493621339303,
+   "m_req_median_out": 2441.729174980093,
+   "frac_in_req_gt_1000": 0.8372093023255814,
+   "frac_in_req_gt_100": 1.0,
+   "frac_in_req_gt_318": 1.0,
+   "note": "frac>318 = fraction of in-cap comets requiring more than a Jupiter mass at this distance -- the IRAS/WISE all-sky exclusion scale"
+  },
+  "a461": {
+   "a9_AU": 461.0,
+   "med_drot": 0.00028011323188422625,
+   "m_req_median_in": 4290.123057974776,
+   "m_req_p05_in": 793.2882256534508,
+   "m_req_median_out": 2538.475391469783,
+   "frac_in_req_gt_1000": 0.8604651162790697,
+   "frac_in_req_gt_100": 1.0,
+   "frac_in_req_gt_318": 1.0,
+   "note": "frac>318 = fraction of in-cap comets requiring more than a Jupiter mass at this distance -- the IRAS/WISE all-sky exclusion scale"
+  },
+  "a700": {
+   "a9_AU": 700.0,
+   "med_drot": 0.00028559972728986385,
+   "m_req_median_in": 3524.6224578200913,
+   "m_req_p05_in": 709.7559468214793,
+   "m_req_median_out": 2551.5636328382834,
+   "frac_in_req_gt_1000": 0.8372093023255814,
+   "frac_in_req_gt_100": 1.0,
+   "frac_in_req_gt_318": 1.0,
+   "note": "frac>318 = fraction of in-cap comets requiring more than a Jupiter mass at this distance -- the IRAS/WISE all-sky exclusion scale"
+  },
+  "a1000": {
+   "a9_AU": 1000.0,
+   "med_drot": 0.00028547080823562655,
+   "m_req_median_in": 3490.145020103511,
+   "m_req_p05_in": 694.022889325781,
+   "m_req_median_out": 2551.1597251785606,
+   "frac_in_req_gt_1000": 0.7906976744186046,
+   "frac_in_req_gt_100": 1.0,
+   "frac_in_req_gt_318": 1.0,
+   "note": "frac>318 = fraction of in-cap comets requiring more than a Jupiter mass at this distance -- the IRAS/WISE all-sky exclusion scale"
+  }
+ },
+ "distance_scaling": {
+  "gamma_mreq_vs_a9": 0.20297238530813608,
+  "beta_drot_vs_a9": -0.14326256652522107,
+  "note": "gamma: required mass ~ a9^gamma on in-cap medians; beta: injected rotation ~ a9^beta on the 6.9 M_earth rungs; gamma ~ -beta by construction under linear mass scaling"
+ }
+}

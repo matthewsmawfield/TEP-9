@@ -1,0 +1,107 @@
+{
+ "step": "step_113_resident_ledger",
+ "description": "Three-survey resident ledger: SBDB secure detached, DES detached, and OSSOS 'det' cohorts scored identically against the pre-declared axis and each cohort's own footprint baseline; Fisher combination, deduplicated union, and in-cap direction concordance.",
+ "inputs": [
+  "data/raw/sbdb/sbdb_outer_ss.json",
+  "data/raw/des/y6_des_tnos_color.fits",
+  "data/raw/ossos/ossos_t3char.vot"
+ ],
+ "seed": 20261012,
+ "axis_deg": [
+  49.0,
+  -17.0
+ ],
+ "cap_deg": 60.0,
+ "per_survey": [
+  {
+   "survey": "SBDB",
+   "cohort": "a>150, q>30, cc<=3",
+   "fit_lineage": "JPL SBDB",
+   "n": 44,
+   "n_in": 26,
+   "frac_in": 0.5909090909090909,
+   "baseline": 0.4172989347836771,
+   "lam_kind": "designation-proxy",
+   "p_vs_baseline": 0.021841861265511603,
+   "p_vs_uniform": 0.0005890235385094436,
+   "R_varpi": 0.33155293029838523,
+   "mean_varpi": 49.13098145859292,
+   "incap_mean_varpi": 43.13700602073878,
+   "role": "detection"
+  },
+  {
+   "survey": "DES",
+   "cohort": "a>150, q>30",
+   "fit_lineage": "DES team (Bernardinelli+ 2022)",
+   "n": 16,
+   "n_in": 13,
+   "frac_in": 0.8125,
+   "baseline": 0.5524732644369246,
+   "lam_kind": "designation-proxy",
+   "p_vs_baseline": 0.04360413130751597,
+   "p_vs_uniform": 0.0001159902516152159,
+   "R_varpi": 0.7453429043407505,
+   "mean_varpi": 23.291436194255446,
+   "incap_mean_varpi": 27.52853078720541,
+   "role": "detection"
+  },
+  {
+   "survey": "OSSOS",
+   "cohort": "Gladman 'det' class (a>47.7, e>0.24, non-resonant, non-scattering)",
+   "fit_lineage": "OSSOS team (Petit et al. orbit pipeline)",
+   "n": 31,
+   "n_in": 13,
+   "frac_in": 0.41935483870967744,
+   "baseline": 0.40145562887928893,
+   "lam_kind": "exact discovery astrometry",
+   "p_vs_baseline": 0.8560964623633822,
+   "p_vs_uniform": 0.34185397327774636,
+   "R_varpi": 0.10837109411160556,
+   "mean_varpi": 329.12231988314545,
+   "incap_mean_varpi": 44.781336806697354,
+   "role": "selection-function bound (interior cohort)"
+  }
+ ],
+ "overlap": {
+  "n_objects_in_multiple_surveys": 15,
+  "shared_keys": [
+   "2003SS422",
+   "2013RA109",
+   "2013SL102",
+   "2013UT15",
+   "2014SX403",
+   "2014TS115",
+   "2014TU115",
+   "2014WB556",
+   "2015BP519",
+   "2015SO20",
+   "2016QU89",
+   "2016QV89",
+   "2016SA59",
+   "2016SD106",
+   "2016SG58"
+  ],
+  "note": "survey selections are independent though memberships overlap; DES 14/16 in SBDB secure detached, OSSOS-det 1/31 in SBDB secure detached (its Gladman-detached members are mostly interior to the a>150 cut; 9 OSSOS-det objects share SBDB catalogue membership overall)"
+ },
+ "union": {
+  "n": 76,
+  "n_in": 39,
+  "frac_in": 0.5131578947368421,
+  "baseline": 0.41142687448207177,
+  "p_vs_baseline": 0.08026876576947967,
+  "p_vs_uniform": 0.0013953243726314377,
+  "note": "each distinct object counted once; baseline assigned by primary survey (OSSOS > DES > SBDB precedence)"
+ },
+ "combined": {
+  "fisher_X2": 14.22380501365192,
+  "fisher_p": 0.02723364116625213,
+  "fisher_p_vs_uniform": 4.039792243525982e-06,
+  "incap_direction_concordance": {
+   "R": 0.9908151986236589,
+   "p": 0.06014699265036748,
+   "note": "R of the three surveys' in-cap mean varpi directions against the null of three directions drawn uniformly inside the cap"
+  },
+  "interpretation": "two detections against own-footprint baselines (SBDB, DES) plus one selection-function bound (OSSOS interior-detached cohort); Fisher combination is dominated by the detection cohorts -- reported transparently, not as a three-fold replication"
+ },
+ "caveat": "The OSSOS 'det' class median semimajor axis is ~60 AU -- inside the ~150 AU boundary -- so its baseline-consistency is the expected selectivity outcome, not a failed replication.  The Fisher combination should be read as 'two detections + one bound', not three detections."
+}

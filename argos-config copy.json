@@ -1,0 +1,29 @@
+{
+  "project_name": "TEP-9",
+  "engines": [
+    {
+      "engine": "devin",
+      "model": "swe-2-high"
+    }
+  ],
+  "prompts": [
+    "Continue researching the TEP-9 outer-solar-system paper. Improve the analysis pipeline and raise the standard of evidence for TEP using only real published data; never fabricate.",
+    "Review the TEP-9 manuscript (site/components/*.html) with a referee's eye. Check that every number and claim in the text traces to a named field in results/*.json produced by the pipeline. Flag anything that does not trace, is overstated, or cannot be verified, and fix what is clearly wrong.",
+    "Look for bugs and methodological weaknesses in the pipeline (scripts/steps/, scripts/utils/). If any result looks weak or contradictory, treat it as a debugging signal first and investigate the root cause rather than weakening the claim. Fix confirmed problems.",
+    "Ensure the manuscript is consistent with the core TEP theory (../TEP, Paper 0) and the wider corpus (../TEP-*). Check that the scalar-field/lapse formalism, screening mechanism, notation, paper numbering, and interpretations follow correctly from the corpus framework; fix any mismatches.",
+    "Strengthen the plasma-wall channel: develop the Voyager 1/2 Plasma Wave Subsystem (PWS) evidence for the proper-time boundary. The PWS measures the electron plasma frequency f_p, a microscopic clock; test whether a lapse shift at the heliopause could produce the observed f_p jumps (Gurnett et al.) without a physical density discontinuity, including the anomalous non-rotation of the magnetic field across the boundary and Voyager 2's PLS in-situ densities. If raw PWS/PLS data are publicly retrievable, build a real pipeline step with provenance; if not, document published values explicitly as literature inputs — no fabricated data.",
+    "Test the heliospheric-interface geometry against the measured axis: evaluate whether the termination shock, heliopause, heliotail, and ISM-inflow geometry predicts or correlates with the resident axis (lambda~50 deg) and the 60 deg cap. Quantify what a density-triggered screening transition (the TEP-C0 mechanism) would imply for the boundary's location, orientation, and edge morphology, and whether the observed sector and sharp edge are consistent with a plasma-density-mediated interface versus a primordial defect.",
+    "Check the internal consistency of the three-clock story: resident orbital clocks (TNO alignment), macroscopic transiting clocks (the ~5 yr comet slip, fractional lapse contrast ~1e-3 to 1e-2), and microscopic clocks (electron plasma frequency) must all be manifestations of one boundary with a mutually compatible lapse amplitude. Verify the implied lapse contrast the Voyager frequency shift requires is consistent with the comet-inferred value, and reconcile or honestly report any tension.",
+    "Find weaknesses in the manuscript that could be overcome with better analysis of data already available — missing diagnostics, unaddressed systematics, robustness checks never run. Improve what you can and update the manuscript only where the analysis supports it.",
+    "Deep scan and fix all issues. Ensure strong evidence for TEP; treat weak results as debug signals, investigate root causes, and keep every manuscript number traceable to real pipeline outputs."
+  ],
+  "template_prompts": [],
+  "loops_per_engine": 1,
+  "rotate_mode": "no-repeat",
+  "max_loops": 0,
+  "interval": 360,
+  "run_timeout": 1800,
+  "permission_mode": "dangerous",
+  "session_continuation": 10,
+  "fallback_model": ""
+}

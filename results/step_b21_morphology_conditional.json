@@ -1,0 +1,96 @@
+{
+ "axis_deg": 49.0,
+ "n": 44,
+ "n_mc": 4000,
+ "window_deg": 30.0,
+ "K1_profile_vs_null": [
+  {
+   "bin": "0-15",
+   "obs": 0.159,
+   "null_mean": 0.128,
+   "null_p16": 0.091,
+   "null_p84": 0.182,
+   "tail_p": 0.8145463634091478
+  },
+  {
+   "bin": "15-30",
+   "obs": 0.159,
+   "null_mean": 0.1,
+   "null_p16": 0.045,
+   "null_p84": 0.136,
+   "tail_p": 0.9357660584853786
+  },
+  {
+   "bin": "30-45",
+   "obs": 0.136,
+   "null_mean": 0.116,
+   "null_p16": 0.068,
+   "null_p84": 0.159,
+   "tail_p": 0.7585603599100225
+  },
+  {
+   "bin": "45-60",
+   "obs": 0.136,
+   "null_mean": 0.077,
+   "null_p16": 0.045,
+   "null_p84": 0.114,
+   "tail_p": 0.9542614346413396
+  },
+  {
+   "bin": "60-75",
+   "obs": 0.068,
+   "null_mean": 0.096,
+   "null_p16": 0.045,
+   "null_p84": 0.136,
+   "tail_p": 0.8007998000499875
+  },
+  {
+   "bin": "75-90",
+   "obs": 0.023,
+   "null_mean": 0.058,
+   "null_p16": 0.023,
+   "null_p84": 0.091,
+   "tail_p": 0.931267183204199
+  },
+  {
+   "bin": "90-120",
+   "obs": 0.114,
+   "null_mean": 0.153,
+   "null_p16": 0.091,
+   "null_p84": 0.205,
+   "tail_p": 0.8240439890027493
+  },
+  {
+   "bin": "120-150",
+   "obs": 0.091,
+   "null_mean": 0.147,
+   "null_p16": 0.091,
+   "null_p84": 0.205,
+   "tail_p": 0.9135216195951013
+  },
+  {
+   "bin": "150-180",
+   "obs": 0.114,
+   "null_mean": 0.125,
+   "null_p16": 0.068,
+   "null_p84": 0.182,
+   "tail_p": 0.6798300424893776
+  }
+ ],
+ "K2_morphology_null": {
+  "observed_deltaAIC_th_minus_vm": -1.92,
+  "null_median": -1.59,
+  "null_p16_p84": [
+   -3.28,
+   -0.32
+  ],
+  "frac_null_prefers_tophat": 0.871,
+  "note": "negative delta = top-hat preferred.  If the conditional null also prefers top-hat, the morphology is footprint-consistent; if the null prefers von Mises, the plateau is an independent datum"
+ },
+ "K3_ring_deficit": {
+  "observed_n": 4,
+  "null_median": 7.0,
+  "p": 0.1702074481379655,
+  "note": "does the measured footprint produce the 60-90 deg deficit ring on its own?"
+ }
+}

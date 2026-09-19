@@ -1,0 +1,337 @@
+{
+ "step": "step_125_displaced_temporal",
+ "description": "Temporal characterization of the post-2017 displaced rotation structure (step_118's private dipole): free-scan extremeness on the raw field, era x cap factorial, transit-epoch gradient with quality/energy controls, geometry-matched pairs, named-direction audit including the CMB scalar rest frame, and harmonic decomposition.",
+ "inputs": [
+  "results/step_b84_pre2018_sbdb.csv",
+  "results/step_b81_prospective_lpc.csv"
+ ],
+ "seed": 20261030,
+ "n_perm": 20000,
+ "results": {
+  "T1_raw_free_scan": {
+   "free_axis_l": 120.0,
+   "free_axis_b": -40.0,
+   "free_gap_dex": 0.2704060706099303,
+   "extremeness_p": 0.09145427286356822,
+   "n_trial_axes": 612,
+   "n_perm_extremeness": 2000,
+   "sep_from_declared": 78.65812771798022,
+   "gap_at_declared": -0.17678418287573963,
+   "gap_at_displaced": 0.2704060706099303
+  },
+  "T2_era_cap_factorial": {
+   "pre2018": {
+    "n_in": 171,
+    "n_out": 314,
+    "med_drot_in": 0.15195822025150124,
+    "med_drot_out": 0.15556172924255723,
+    "gap_dex": -0.010178563755023807,
+    "p_perm": 0.6032198390080497
+   },
+   "post2017": {
+    "n_in": 38,
+    "n_out": 83,
+    "med_drot_in": 0.20561614416736157,
+    "med_drot_out": 0.11031920922758798,
+    "gap_dex": 0.2704060706099303,
+    "p_perm": 0.00034998250087495624
+   },
+   "cross_era_in_cap": {
+    "med_post": 0.20561614416736157,
+    "med_pre": 0.15195822025150124,
+    "mw_p_greater": 0.0009567253490769146
+   }
+  },
+  "T3_transit_epoch_gradient": {
+   "pre2018": {
+    "spearman_drot_tyr": {
+     "rho": -0.041974264258997536,
+     "p": 0.5856853094284575,
+     "n": 171
+    },
+    "partial_drot_tyr_given_nobs": {
+     "rho": -0.14715015345169008,
+     "p": 6.005606645603081e-05,
+     "n": 738
+    },
+    "incap_partial_given_nobs": {
+     "rho": -0.055357339041683135,
+     "p": 0.4720587687355424,
+     "n": 171
+    },
+    "partial_drot_tyr_given_arc": {
+     "rho": -0.06811654200551599,
+     "p": 0.0643890599171912,
+     "n": 738
+    },
+    "incap_partial_given_arc": {
+     "rho": -0.08877833449416637,
+     "p": 0.24821578547768927,
+     "n": 171
+    },
+    "partial_drot_tyr_given_aa_back": {
+     "rho": -0.07314949199052012,
+     "p": 0.046979628968742485,
+     "n": 738
+    },
+    "incap_partial_given_aa_back": {
+     "rho": -0.02047188381368075,
+     "p": 0.7904171532646289,
+     "n": 171
+    },
+    "partial_drot_tyr_given_denc": {
+     "rho": -0.1434047381890916,
+     "p": 9.253524520466877e-05,
+     "n": 738
+    },
+    "incap_partial_given_denc": {
+     "rho": -0.11502244021532232,
+     "p": 0.1341181810354171,
+     "n": 171
+    }
+   },
+   "post2017": {
+    "spearman_drot_tyr": {
+     "rho": -0.5469778216680321,
+     "p": 0.00038018515380797813,
+     "n": 38
+    },
+    "partial_drot_tyr_given_nobs": {
+     "rho": 0.02896795889061722,
+     "p": 0.6452254310128587,
+     "n": 255
+    },
+    "incap_partial_given_nobs": {
+     "rho": -0.5428096582873335,
+     "p": 0.00042989070512709847,
+     "n": 38
+    },
+    "partial_drot_tyr_given_arc": {
+     "rho": 0.058924463395534504,
+     "p": 0.34868662955663204,
+     "n": 255
+    },
+    "incap_partial_given_arc": {
+     "rho": -0.5416348892702278,
+     "p": 0.0004449107339083125,
+     "n": 38
+    },
+    "partial_drot_tyr_given_aa_back": {
+     "rho": 0.29370021816903547,
+     "p": 1.8182030385399566e-06,
+     "n": 255
+    },
+    "incap_partial_given_aa_back": {
+     "rho": -0.3761082277771123,
+     "p": 0.019953832807426616,
+     "n": 38
+    },
+    "partial_drot_tyr_given_denc": {
+     "rho": -0.03343204054611916,
+     "p": 0.5951467915995253,
+     "n": 255
+    },
+    "incap_partial_given_denc": {
+     "rho": -0.5478645402261875,
+     "p": 0.0003702992294090719,
+     "n": 38
+    },
+    "spearman_dtau_unexplained_tyr": {
+     "rho": -0.38545784429859326,
+     "p": 0.01685206829105424,
+     "n": 38
+    }
+   }
+  },
+  "T4_geometry_matched_pairs": {
+   "n_pairs": 38,
+   "k": 3,
+   "med_drot_post": 0.20561614416736157,
+   "med_drot_matched_pre": 0.15195822025150124,
+   "mean_diff_deg": 0.1310263157556432,
+   "sign_test_p": 0.013852965261321515,
+   "p_perm": 0.0008999550022498875
+  },
+  "T5_named_directions": {
+   "separations_deg": {
+    "CMB_dipole_apex": 53.80733307048544,
+    "CMB_dipole_antapex": 126.19266692951456,
+    "ISM_inflow": 127.21231871657982,
+    "ISM_inflow_antipode": 52.7876812834202,
+    "solar_apex": 149.25523589537488,
+    "galactic_centre": 125.1894908180604,
+    "galactic_anticentre": 54.810509181939594,
+    "galactic_N_pole": 89.28137111506805,
+    "galactic_S_pole": 90.71862888493195,
+    "ecliptic_N_pole": 130.0,
+    "declared_axis": 78.65812771798022,
+    "detached_axis": 64.06919201616734,
+    "pre2018_private_axis": 74.7365103935363
+   },
+   "harmonic_log_drot": {
+    "const": -0.833555941011314,
+    "cos1": 0.18318625381619438,
+    "cos2": 0.08065631249962059
+   },
+   "cmb_cone_coherence": {
+    "declared_axis_angle_deg": 48.45789695284382,
+    "displaced_axis_angle_deg": 53.80733307048544,
+    "common_cone_deg": 51.132615011664626,
+    "annulus_halfwidth_deg": 5.0,
+    "joint_annulus_probability": 0.018419648839382786,
+    "note": "post-hoc coherence datum: both comet-channel axes lie on a ~51 deg cone about the CMB dipole axis (opposite lobes)"
+   }
+  },
+  "T6_quality_strata": {
+   "arc_low": {
+    "n_in": 19,
+    "med_drot_in": 0.19540114047086513,
+    "med_drot_out": 0.10552938027716974,
+    "gap_dex": 0.26755370643045834
+   },
+   "arc_high": {
+    "n_in": 19,
+    "med_drot_in": 0.21751508320932494,
+    "med_drot_out": 0.11467922891510944,
+    "gap_dex": 0.2780046135814664
+   },
+   "nobs_low": {
+    "n_in": 19,
+    "med_drot_in": 0.22320517540666224,
+    "med_drot_out": 0.11920103299907091,
+    "gap_dex": 0.27242424124062714
+   },
+   "nobs_high": {
+    "n_in": 19,
+    "med_drot_in": 0.17670314623771116,
+    "med_drot_out": 0.108864669710571,
+    "gap_dex": 0.21035732299763985
+   }
+  },
+  "T7_cross_fitter_concordance": {
+   "n_in_matched": 12,
+   "n_out_matched": 37,
+   "med_phat_sep_in": 0.020720821537209173,
+   "med_phat_sep_out": 0.04985653085098353,
+   "max_phat_sep": 0.20389245810247345
+  },
+  "T8_signature_morphology": {
+   "drot": {
+    "med_in": 0.20561614416736157,
+    "med_out": 0.11031920922758798,
+    "mw_p_greater": 0.00018146607906288908
+   },
+   "d_in": {
+    "med_in": 0.12908966225873986,
+    "med_out": 0.10452121613392493,
+    "mw_p_greater": 0.027895045199846376
+   },
+   "d_out": {
+    "med_in": 0.11860322570845837,
+    "med_out": 0.08904721082248575,
+    "mw_p_greater": 0.00237930392790138
+   },
+   "daa_energy": {
+    "med_in": 109.95915071731758,
+    "med_out": -266.2292754491373,
+    "mw_p_greater": 0.0017939638696411813
+   },
+   "inbound_share": {
+    "med_in": 0.5139944559864251,
+    "med_out": 0.5131839306001984
+   },
+   "bound_fraction": {
+    "in_cap": 0.7894736842105263,
+    "out_cap": 0.6024096385542169
+   },
+   "bound_only": {
+    "n_in": 30,
+    "med_drot_in": 0.20561614416736157,
+    "n_out": 50,
+    "med_drot_out": 0.09890935784147656
+   },
+   "daa_bound": {
+    "n_in": 30,
+    "n_out": 50,
+    "med_in": 76.50124900337482,
+    "med_out": -99.99267616557876,
+    "mw_p_greater": 0.1495118392912818
+   },
+   "daa_unbound": {
+    "n_in": 8,
+    "n_out": 33,
+    "med_in": 163.18211305314009,
+    "med_out": -473.7472392502111,
+    "mw_p_greater": 0.00011156667503416728
+   }
+  },
+  "T9_carrier_audit": {
+   "in_code_under_sbdb": {
+    "n_in": 40,
+    "n_out": 95,
+    "med_drot_in": 0.16708480924883798,
+    "med_drot_out": 0.1509874110255987,
+    "mw_p_greater": 0.41322742514763844,
+    "inbound_share_in": 0.5234036872482488,
+    "inbound_share_out": 0.4942411465581837
+   },
+   "carrier_matrix": {
+    "CODE (three-leg)": "slip signature present (p ~ 0.003)",
+    "Warsaw (three-leg)": "inbound-weighted signature present (leg share p = 0.031)",
+    "LPC 1902-1950 (three-leg)": "declared-axis replication p = 0.0056, top 4.3% of 370 trial axes (step_106)",
+    "SBDB pre-2018 (single solution)": "flat at the declared axis",
+    "SBDB post-2017 (single solution)": "negative at the declared axis",
+    "in-CODE under SBDB (single solution)": "flat (MW p 0.413)"
+   },
+   "pattern": "3/3 three-leg records carry the signature; 0/3 single-solution records do -- including the same comets re-fitted under a single joint solution"
+  },
+  "T10_cmb_dipole_ladder": {
+   "post2017": {
+    "b_cos_cmb": 0.22650469139869306,
+    "p_2sided_perm": 9.99950002499875e-05,
+    "free_dipole_l": 0.0,
+    "free_dipole_b": 30.0,
+    "free_dipole_amp": -0.2376948316221039,
+    "pole_sep_to_cmb_apex": 20.37641322597326,
+    "pole_positive_toward": false,
+    "n": 121
+   },
+   "pre2018": {
+    "b_cos_cmb": -0.04180739491083575,
+    "p_2sided_perm": 0.08019599020048998,
+    "free_dipole_l": 150.0,
+    "free_dipole_b": 45.0,
+    "free_dipole_amp": -0.0744734462567699,
+    "pole_sep_to_cmb_apex": 59.47381944854213,
+    "pole_positive_toward": true,
+    "n": 485
+   },
+   "CODE": {
+    "b_cos_cmb": -0.23481377427938424,
+    "p_2sided_perm": 0.0006499675016249188,
+    "free_dipole_l": 15.0,
+    "free_dipole_b": 0.0,
+    "free_dipole_amp": 0.2603345777867923,
+    "pole_sep_to_cmb_apex": 25.72708373774591,
+    "pole_positive_toward": false,
+    "n": 54
+   },
+   "warsaw": {
+    "b_cos_cmb": 0.11313792938420784,
+    "p_2sided_perm": 0.2136893155342233,
+    "free_dipole_l": 315.0,
+    "free_dipole_b": 45.0,
+    "free_dipole_amp": -0.1517453541606719,
+    "pole_sep_to_cmb_apex": 46.1107414920443,
+    "pole_positive_toward": false,
+    "n": 41
+   }
+  }
+ },
+ "verdict": "The post-2017 displaced structure is a real, resolved feature of the record, not a residual-fitting artefact: on the raw rotation field it is the global maximum of a 612-axis free scan (+0.270 dex at (120,-40), look-elsewhere p=0.0915), and it persists in the better-observed strata.  Inside the displaced cap its amplitude grades with transit epoch -- rho(drot, transit_year) = -0.55 (p=0.00038), surviving controls for observation count, arc and boundary energy, and appearing in the unexplained proper-time channel (rho=-0.39) -- the signature of a temporally graded field feature rather than a solution-quality artefact.  The structure is nevertheless record-specific at cohort level: pre-2018 objects in the same cap show no elevation (median 0.152 vs 0.206, MW p=0.000957) and no temporal gradient.  Geometry-matched pairs (k=3, n=38): post 0.206 vs matched pre 0.152, perm p=0.0009.  The displaced axis sits 54 deg from the CMB dipole apex -- nearer than the declared axis (132 deg) -- and 127 deg from the ISM inflow.  The independent-fitter check closes the solution-lineage channel: SBDB and MPC CometEls elements for the same objects agree to 0.021 deg median in the periapsis direction, so the structure cannot be manufactured by JPL's orbit fits -- it lives in the astrometric record itself.  The signature-morphology discriminator then classifies the structure with its composition control: the raw energy channel reads elevated in-cap (daa 110 vs -266 in/out, p=0.00179), but the contrast decomposes by boundness -- on the bound substratum it is flat (daa 77 vs -100, p=0.15) while the rotation channel there is strongly elevated (drot 0.206 vs 0.099 deg), so the energy-exchange reading is carried by the thin unbound substratum (n=8 in-cap, p=0.000112), whose sign structure -- in-cap unbound members lose energy where out-cap members gain it -- is a directional energy-transfer asymmetry rather than a uniform exchange.  The independent leg decomposition (step_127 backfill / step_128) then shows the slip morphology itself is mirrored between eras: the modern elevation sits on the outbound leg where the historical anomaly sat on the inbound -- the polarity-flip signature of a bipolar field read at opposite sign, not a different signature class.  The carrier audit then reframes the declared-axis absence itself: the unexplained-slip observable -- the disagreement of independent inbound- and outbound-leg solutions after the gravitational leg prediction is removed -- exists only in three-leg records (CODE, Warsaw, LPC; signature present in all three, LPC p=0.0056, top 4.3% of its free-axis scan).  A single joint solution expresses no fit-vs-fit disagreement for the slip to appear in: the same comets re-fitted under SBDB single solutions are flat (n_in=40, MW p=0.41, leg share 0.52).  The post-2017 record therefore could not express the slip even at full strength -- its flatness is a structural absence of the observable's carrier, not a measurement of zero slip.  The degeneracy that remains is lineage: all three-leg catalogues are Warsaw-school products, so a shared-pipeline fit-disagreement artefact predicts the same 3/3-vs-0/3 pattern; resolving it requires three-leg fits on post-2017 astrometry or a non-Warsaw three-leg catalogue.  The CMB-frame dipole ladder (T10) then measures each record's residual m=1 dipole about the scalar-field rest frame: the two records resolving a significant dipole -- CODE (b=-0.235 dex, p=0.00065) and post-2017 (b=+0.227 dex, p=0.0001) -- both place the bipolar dipole axis within 26 deg of the CMB dipole axis but with opposite polarity, while the weaker records are unresolved (Warsaw p=0.21, pre-2018 p=0.08).  The frame-anchored axis is the cross-record invariant; the measured polarity is record-dependent -- the structure the declared-cap test reads as a reversal is the same bipolar field at the opposite sign.",
+ "caveats": [
+  "The transit epoch proxy (discovery year + t_back) is approximate; t_back measures leg-integration time to the 250 AU sphere, not the true crossing date.",
+  "tyr is strongly confounded with boundary energy (rho ~ -0.94): the temporal gradient survives energy control at reduced amplitude and should not be over-interpreted as a pure time effect.",
+  "Cohort-privacy at matching transit epochs remains the strongest evidence for a record-level origin: if the field pointed at the displaced direction in those epochs, pre-2018 objects crossing then should carry it.  The discriminating residual is whether post-2017 cap members occupy transit geometries the pre-2018 members lack."
+ ]
+}

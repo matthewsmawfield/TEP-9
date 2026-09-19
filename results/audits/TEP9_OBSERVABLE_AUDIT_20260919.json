@@ -1,0 +1,217 @@
+{
+  "scope": "Focused audit; original pipeline and manuscript are unmodified.",
+  "provenance": {
+    "scripts/steps/step_124_lineage_aphelion.py": "defe75429d692b847d88809866d919bf49088b6cb9113497f4f612067877b0f1",
+    "scripts/steps/step_123_leg_coherence.py": "7390161d0576af6d84565f91bff47dcbc469a291c03aca3b2c9c39d698206e8a",
+    "scripts/steps/step_063_bidirectional_rotation.py": "8020c3e26278b4be62556096abf94952b8edb2351df5f817156398a006dfda43",
+    "scripts/steps/step_065_proper_time_slip.py": "57243cdea8819989e1b6c81fb90bf986866cfb4152d1d1cf5280c47e81167314",
+    "scripts/utils/tep9_common.py": "6ed5279e10a63c2a44125a57beace2434d822aa4213b4ed1f6485dd7918c4dd2",
+    "data/raw/sbdb/sbdb_comets_all.json": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
+    "results/step_b84_pre2018_sbdb.csv": "e0e3d1f433ac33bc6060fd519da710d11cde8557df678a45e9cd36d226270957",
+    "results/step_b28_bidirectional_rotation.csv": "b7bf37f2794e0c3805376dd6fba1826385f5c13e982b95f1a90c9b8cfab77a4a",
+    "results/step_b88_lineage_aphelion.json": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+  },
+  "frames": {
+    "reference": "Astropy 7.1.1, BarycentricMeanEcliptic J2000",
+    "corrected_ecl_to_gal": [
+      [
+        -0.05487563486628252,
+        -0.993821352389173,
+        -0.09647685853808471
+      ],
+      [
+        0.4941095288578969,
+        -0.11099097203832717,
+        0.8622857865103742
+      ],
+      [
+        -0.8676660868040479,
+        -0.0003516551470140042,
+        0.49714730025296094
+      ]
+    ],
+    "explicit_obliquity_composition_max_difference": 2.3862088616155575e-07,
+    "targets": {
+      "galactic_center": {
+        "current_ecliptic_deg": [
+          266.40499479769096,
+          -28.93617396051064
+        ],
+        "corrected_ecliptic_deg": [
+          266.8395197843476,
+          -5.536328064711704
+        ],
+        "displacement_deg": 23.403459578731198
+      },
+      "galactic_north": {
+        "current_ecliptic_deg": [
+          192.85948000035322,
+          27.128250000615296
+        ],
+        "corrected_ecliptic_deg": [
+          180.02322132323854,
+          29.811445689869146
+        ],
+        "displacement_deg": 11.591448472784837
+      }
+    },
+    "duplicate_definitions": [
+      "scripts/utils/coordinates.py"
+    ],
+    "direct_matrix_consumers": [
+      "scripts/audits/audit_post2017_discovery_footprint.py",
+      "scripts/steps/step_030_warsaw_direction.py",
+      "scripts/steps/step_031_clock_channel.py",
+      "scripts/steps/step_032_nested_field.py",
+      "scripts/steps/step_033_three_leg.py",
+      "scripts/steps/step_034_code_confirm.py",
+      "scripts/steps/step_035_consolidation.py",
+      "scripts/steps/step_058_comet_obs_audit.py",
+      "scripts/steps/step_059_axis_consistency.py",
+      "scripts/steps/step_060_uncertainty_channel.py",
+      "scripts/steps/step_061_aphelion_dipole.py",
+      "scripts/steps/step_070_galactic_tide.py",
+      "scripts/steps/step_082_sky_matched.py",
+      "scripts/steps/step_088_tide_resident.py",
+      "scripts/steps/step_108_cometels_dipole.py",
+      "scripts/steps/step_109_census_bias_audit.py",
+      "scripts/steps/step_110_aphelion_direction_vs_axis.py",
+      "scripts/steps/step_124_lineage_aphelion.py",
+      "scripts/steps/step_125_displaced_temporal.py",
+      "scripts/steps/step_129_bipolar_unification.py",
+      "scripts/steps/step_131_cone_shell_coherence.py",
+      "scripts/steps/step_132_bipolar_meridian.py",
+      "scripts/steps/step_133_harmonic_bipolar.py",
+      "scripts/steps/step_135_cross_channel.py",
+      "scripts/steps/step_136_solar_wind_screening.py",
+      "scripts/steps/step_139_frozen_geometry.py",
+      "scripts/utils/coordinates.py",
+      "scripts/utils/tep9_common.py"
+    ],
+    "limitation": "The consumer list omits indirect dependencies and cached downstream results."
+  },
+  "twist": {
+    "n": 738,
+    "old_retained": 0,
+    "numerically_recovered": 738,
+    "denominator_min": 3.360666298812667e-08,
+    "denominator_max": 0.0006683215643223525,
+    "max_error_against_longdouble_arithmetic": 1.5090705907105928e-09,
+    "cohorts": {
+      "overlap": {
+        "n": 288,
+        "n_in": 87,
+        "n_out": 201,
+        "median_cos_in": 0.23595309686058127,
+        "median_cos_out": 0.3897659441157869,
+        "p_less": 0.382492454497444
+      },
+      "non_overlap": {
+        "n": 450,
+        "n_in": 107,
+        "n_out": 343,
+        "median_cos_in": 0.06771202712829948,
+        "median_cos_out": 0.07192829753243057,
+        "p_less": 0.3783067766666417
+      }
+    },
+    "limitation": "Numerical recoverability does not establish precision of the fitted orbital geometry; orbit covariance is still required."
+  },
+  "residual_definition": {
+    "q_lt_3p1": {
+      "n": 54,
+      "cat_sim_rho": 0.9990851915380216,
+      "median_absolute_cat_minus_sim_deg": 0.0006394876265222865,
+      "direct_delta_median_in_deg": 0.00016056842294873142,
+      "direct_delta_median_out_deg": 0.000367423347454765,
+      "direct_delta_p_greater": 0.817443886728158,
+      "proxy_residual_p_greater": 0.0018769517711514636
+    },
+    "all_class1": {
+      "n": 131,
+      "cat_sim_rho": 0.999183259488603,
+      "median_absolute_cat_minus_sim_deg": 0.000489665917670197,
+      "direct_delta_median_in_deg": 0.00021100206257229637,
+      "direct_delta_median_out_deg": 0.00023895460986804104,
+      "direct_delta_p_greater": 0.512708024691678,
+      "proxy_residual_p_greater": 0.012153728036697972
+    },
+    "interpretation": "The regression outcome is log(drot_sim), generated by the standard dynamics model. Its residual is not an observed-minus-dynamical-model discrepancy. The direct difference is an integrator/catalogue consistency check, not an independent TEP exclusion: catalogue boundary legs also depend on standard-dynamics propagation. Population anisotropy needs a separately calibrated population and selection model."
+  },
+  "time_conversion": {
+    "phase_advance_deg": 17.188733853924695,
+    "periapsis_direction_rotation_deg": 0.0,
+    "statement": "h/r^2 is the true-anomaly sweep rate. Dividing a periapsis-direction rotation by it defines an equivalent time scale, not a derived proper-time measurement. A TEP field and observation/fit response are needed to relate them."
+  },
+  "log_units": {
+    "source": "steps 117-123 residual models use np.log10",
+    "statement": "Residual amplitudes are now expressed in true dex. The earlier natural-log labels were a unit error; rank p-values are unchanged by this unit correction.",
+    "published_0p3532556112920151_in_dex": 0.1534169626854822
+  },
+  "eras": {
+    "legacy_frame_full_precision": {
+      "post2017": {
+        "n": 287,
+        "d_parallel": 0.0948957802616453,
+        "exceedances": 35,
+        "p_galactic": 0.001799910004499775,
+        "p_ecliptic": 0.0022498875056247186
+      },
+      "pre2018": {
+        "n": 880,
+        "d_parallel": 0.11013594234911857,
+        "exceedances": 0,
+        "p_galactic": 4.999750012499375e-05,
+        "p_ecliptic": 4.999750012499375e-05
+      },
+      "fisher": {
+        "statistic": 32.447112328232464,
+        "df": 4,
+        "p_nominal": 1.5499650543901057e-06,
+        "inputs": [
+          0.001799910004499775,
+          4.999750012499375e-05
+        ]
+      }
+    },
+    "corrected_frame_full_precision": {
+      "post2017": {
+        "n": 287,
+        "d_parallel": 0.0948957802616453,
+        "exceedances": 42,
+        "p_galactic": 0.0021498925053747312,
+        "p_ecliptic": 0.0022498875056247186
+      },
+      "pre2018": {
+        "n": 880,
+        "d_parallel": 0.11013594234911857,
+        "exceedances": 0,
+        "p_galactic": 4.999750012499375e-05,
+        "p_ecliptic": 4.999750012499375e-05
+      },
+      "fisher": {
+        "statistic": 32.09174997375756,
+        "df": 4,
+        "p_nominal": 1.832248331675678e-06,
+        "inputs": [
+          0.0021498925053747312,
+          4.999750012499375e-05
+        ]
+      }
+    },
+    "saved_era_combination": {
+      "p_post2017": 0.0021498925053747312,
+      "p_pre2018": 4.999750012499375e-05,
+      "fisher_stat": 32.09174997375756,
+      "df": 4,
+      "p_combined": 1.832248331675678e-06,
+      "mc_draws_per_test": 20000,
+      "mc_p_floor": 4.999750012499375e-05,
+      "interpretation": "Nominal under independent valid null p-values; not a TEP posterior probability.",
+      "limitation": "Shared selection effects are not removed by disjoint eras. Zero Monte Carlo exceedances indicate finite resolution."
+    },
+    "mc_draws_per_test": 20000,
+    "mc_p_floor": 4.999750012499375e-05,
+    "interpretation": "Fisher p-values here are nominal under independent, valid component nulls. Disjoint objects do not remove shared catalogue selection or null-model misspecification. A zero exceedance count is Monte Carlo resolution, not a measurement of an arbitrarily small true tail probability. The original |latitude| resampling and hemisphere randomization are retained; neither is a complete discovery-selection function."
+  }
+}

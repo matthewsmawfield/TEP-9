@@ -1,0 +1,121 @@
+{
+ "method": "matched observed-patch design: within comets seen from the same geocentric sky region at perihelion epoch, a sky-localized systematic predicts the discrepancy tracks observed direction, while a boundary at the resident axis predicts it tracks aphelion direction.",
+ "cap_deg": 60.0,
+ "axis": "49,-17",
+ "anti_axis": "229,+17",
+ "seed": 20260918,
+ "n": 131,
+ "matched_patch_radii": {
+  "30deg": {
+   "n_in": 14,
+   "n_out": 1,
+   "med_d_of_in": 0.14399984041618086,
+   "med_d_of_out": 0.12229071678467134
+  },
+  "40deg": {
+   "n_in": 28,
+   "n_out": 3,
+   "med_d_of_in": 0.14399984041618086,
+   "med_d_of_out": 0.1540025296642529,
+   "p_mwu_in_greater": 0.788876529477197
+  },
+  "50deg": {
+   "n_in": 34,
+   "n_out": 5,
+   "med_d_of_in": 0.14147569018871556,
+   "med_d_of_out": 0.12229071678467134,
+   "p_mwu_in_greater": 0.6354521091363198
+  },
+  "60deg": {
+   "n_in": 42,
+   "n_out": 8,
+   "med_d_of_in": 0.13502277416321207,
+   "med_d_of_out": 0.11508487808925769,
+   "p_mwu_in_greater": 0.32467792675309404
+  },
+  "note": "same observed sky patch: a zonal systematic acts on patch members irrespective of aphelion direction; a boundary predicts the in-cap members remain discrepant and the out-of-cap members do not"
+ },
+ "gradients": {
+  "patch_theta_vs_d": {
+   "n": 50,
+   "rho": -0.09714285714285714,
+   "p_2sided": 0.5021441256454878,
+   "note": "within the observed patch: systematic predicts ~0; boundary predicts d_of growing toward the axis (negative rho)"
+  },
+  "incap_geosep_vs_d": {
+   "n": 48,
+   "rho": 0.07783326096396005,
+   "p_2sided": 0.599006928452257,
+   "note": "does the observed position within the affected region modulate the anomaly? a patch systematic requires it; measured flat"
+  },
+  "outcap_theta_vs_d": {
+   "n": 83,
+   "rho": -0.183682465051845,
+   "p_2sided": 0.09646795155457713,
+   "note": "does the aphelion-direction gradient continue beyond the cap edge? a sharp boundary predicts a continuous slope, not a step"
+  }
+ },
+ "partial_spearman": {
+  "d_of_vs_axis_align": {
+   "rho": 0.2790957134468585,
+   "p_2sided": 0.0012458159770577335
+  },
+  "d_of_vs_observed_align": {
+   "rho": 0.2410612288474884,
+   "p_2sided": 0.005543049949507407
+  },
+  "axis_given_observed": {
+   "rho": 0.14746169860673677,
+   "p_2sided": 0.09280135440542789
+  },
+  "observed_given_axis": {
+   "rho": -0.0569476325201516,
+   "p_2sided": 0.5182319810445606
+  },
+  "note": "rank-residualized partial Spearman; the surviving partial correlation identifies which direction the anomaly tracks"
+ },
+ "geometry_channels": {
+  "elong_vs_d_of_all": {
+   "rho": -0.15433726578764745,
+   "p_2sided": 0.07839042120043502
+  },
+  "elong_vs_d_of_incap": {
+   "n": 48,
+   "rho": 0.08706035605731655,
+   "p_2sided": 0.5562696217546086
+  },
+  "bgal_vs_d_of_all": {
+   "rho": 0.11417818822398976,
+   "p_2sided": 0.19409657000064412
+  },
+  "elong_in_vs_out": {
+   "med_in": 73.91317909957846,
+   "med_out": 72.21628994481705,
+   "p_2sided": 0.2922029609147483
+  },
+  "abs_bgal_in_vs_out": {
+   "med_in": 31.167304329083464,
+   "med_out": 28.58015752977209,
+   "p_2sided": 0.34790729473015247
+  },
+  "note": "solar elongation at perihelion epoch and galactic latitude of the observed direction -- the two classic crowding/twilight systematic channels"
+ },
+ "dissociation": {
+  "in_cap__in_patch": {
+   "n": 42,
+   "med_d_of": 0.13502277416321207
+  },
+  "in_cap__out_patch": {
+   "n": 6,
+   "med_d_of": 0.1692245531108859
+  },
+  "out_cap__in_patch": {
+   "n": 8,
+   "med_d_of": 0.11508487808925769
+  },
+  "out_cap__out_patch": {
+   "n": 75,
+   "med_d_of": 0.08298246076469291
+  }
+ }
+}

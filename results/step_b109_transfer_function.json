@@ -1,0 +1,164 @@
+{
+ "step": "step_145_transfer_function",
+ "result": "b109",
+ "description": "Impulse versus crossing-holonomy realization of the measured slip: velocity scaling of dtau, the energy-channel transverse bound, and the implied conformal-step scale.",
+ "seed": 20260919,
+ "cap_deg": 60.0,
+ "axes": {
+  "pre2018_declared": [
+   34.0,
+   -13.0
+  ],
+  "post2017_displaced": [
+   120.0,
+   -40.0
+  ]
+ },
+ "T1_velocity_scaling": {
+  "pre2018": {
+   "r60au": {
+    "in_cap": {
+     "n": 172,
+     "rho": -0.0020494412973034166,
+     "p": 0.9787132055038348
+    },
+    "out_cap": {
+     "n": 458,
+     "rho": -0.005746047855107537,
+     "p": 0.9023955315883998
+    }
+   },
+   "r100au": {
+    "in_cap": {
+     "n": 172,
+     "rho": -0.0020494412973034166,
+     "p": 0.9787132055038348
+    },
+    "out_cap": {
+     "n": 458,
+     "rho": -0.005746047855107537,
+     "p": 0.9023955315883998
+    }
+   },
+   "r250au": {
+    "in_cap": {
+     "n": 172,
+     "rho": -0.0020494412973034166,
+     "p": 0.9787132055038348
+    },
+    "out_cap": {
+     "n": 457,
+     "rho": 0.0007951105479008214,
+     "p": 0.9864757271966724
+    }
+   },
+   "in_cap_partial_v60_given_epoch": {
+    "n": 172,
+    "rho": 0.0011839120037356904,
+    "p": 0.9877021770211685
+   }
+  },
+  "post2017": {
+   "r60au": {
+    "in_cap": {
+     "n": 75,
+     "rho": -0.37123755334281644,
+     "p": 0.001041633534113438
+    },
+    "out_cap": {
+     "n": 173,
+     "rho": 0.06157436807876478,
+     "p": 0.42094834162851713
+    }
+   },
+   "r100au": {
+    "in_cap": {
+     "n": 75,
+     "rho": -0.37123755334281644,
+     "p": 0.001041633534113438
+    },
+    "out_cap": {
+     "n": 173,
+     "rho": 0.06157436807876478,
+     "p": 0.42094834162851713
+    }
+   },
+   "r250au": {
+    "in_cap": {
+     "n": 75,
+     "rho": -0.37123755334281644,
+     "p": 0.001041633534113438
+    },
+    "out_cap": {
+     "n": 173,
+     "rho": 0.06157436807876478,
+     "p": 0.42094834162851713
+    }
+   },
+   "in_cap_partial_v60_given_epoch": {
+    "n": 75,
+    "rho": -0.4459174964438122,
+    "p": 6.086623681259472e-05
+   }
+  }
+ },
+ "T2_transverse_bound": {
+  "pre2018": {
+   "in_cap": {
+    "n": 172,
+    "med_dv_perp_m_s": 10.74713853073435,
+    "med_dv_par_bound_m_s": 0.29295503650913335,
+    "med_transverse_frac": 0.9752912724922329
+   },
+   "out_cap": {
+    "n": 458,
+    "med_dv_perp_m_s": 11.47391803001419,
+    "med_dv_par_bound_m_s": 0.2815216742856127,
+    "med_transverse_frac": 0.9760830267559037
+   }
+  },
+  "post2017": {
+   "in_cap": {
+    "n": 75,
+    "med_dv_perp_m_s": 14.007760325006446,
+    "med_dv_par_bound_m_s": 0.2985200394560114,
+    "med_transverse_frac": 0.9806810456304582
+   },
+   "out_cap": {
+    "n": 173,
+    "med_dv_perp_m_s": 8.796637667041864,
+    "med_dv_par_bound_m_s": 0.27499529597237166,
+    "med_transverse_frac": 0.9680276646069427
+   }
+  }
+ },
+ "T3_conformal_step_scale": {
+  "pre2018": {
+   "n": 172,
+   "med_dalpha": 6.130242096544649e-13,
+   "p16": 2.7876204044604013e-13,
+   "p84": 1.501985425350604e-12
+  },
+  "post2017": {
+   "n": 75,
+   "med_dalpha": 8.506187617597072e-13,
+   "p16": 3.0564518185884957e-13,
+   "p84": 1.4883898661221173e-12
+  }
+ },
+ "test_summary": {
+  "velocity_flat": false,
+  "min_transverse_frac": 0.9752912724922329
+ },
+ "verdict": "ERA-ASYMMETRIC VELOCITY SCALING: the pre-2018 declared-axis slip is velocity-flat (rho=-0.002, p=0.979) -- the holonomy signature -- while the post-2017 displaced slip anticorrelates with crossing speed (rho=-0.371, p=0.00104; partialled on transit epoch rho=-0.446, p=6.09e-05).  The energy channel still bounds any mechanical kick to >98 per cent transverse, so the eras do not share a single realization: the older record carries the universal-amplitude (holonomy) signature, the modern record's residual carries an additional velocity- or epoch-dependent term -- the same heterogeneity the epoch-decomposition audit (step_142 T9) measures independently.  The equivalent conformal step on the older record is ~6.1e-13.",
+ "evidence_status": "mechanism discriminator",
+ "inputs": [
+  "results/step_b91_refit.jsonl (pre-2018 dual-leg refit)",
+  "results/step_b92_refit.jsonl (post-2017 dual-leg refit)"
+ ],
+ "caveats": [
+  "The transverse bound uses |D(1/a)| as a noise floor on the along-track impulse; it bounds the median kick, not the per-object tail.",
+  "v_n is approximated by the total crossing speed; a strongly grazing wall geometry lowers the implied conformal step.",
+  "The discriminator compares realizations of the measured observable; it does not derive dtau from a specific scalar potential, which remains the open microscopic problem."
+ ]
+}

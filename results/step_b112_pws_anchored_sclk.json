@@ -1,0 +1,90 @@
+{
+ "w_yr": 3.0,
+ "half_win_yr": 2.0,
+ "seed": 20260919,
+ "n_null": 2000,
+ "test_summary": {
+  "joint_epoch_lock_fisher_p": 0.10765890722550787,
+  "per_crossing_offsets_yr": {
+   "VG1_TS": 1.2999999999969987,
+   "VG1_HP": 0.1999999999979991,
+   "VG2_TS": 0.8000000000010914,
+   "VG2_HP": 0.3999999999978172
+  },
+  "per_crossing_tails": {
+   "VG1_TS": 0.477,
+   "VG1_HP": 0.0695,
+   "VG2_TS": 0.289,
+   "VG2_HP": 0.1475
+  },
+  "pws_coincidence_p": 0.0
+ },
+ "T1_epoch_lock": {
+  "VG1_TS": {
+   "crossing_epoch": 2004.96,
+   "radius_au": 94.0,
+   "best_neg_step_ppm": -3.1491471222661023,
+   "offset_from_crossing_yr": 1.2999999999969987,
+   "offset_tail_frac": 0.477
+  },
+  "VG1_HP": {
+   "crossing_epoch": 2012.65,
+   "radius_au": 121.6,
+   "best_neg_step_ppm": -1.566211113833318,
+   "offset_from_crossing_yr": 0.1999999999979991,
+   "offset_tail_frac": 0.0695
+  },
+  "VG2_TS": {
+   "crossing_epoch": 2007.66,
+   "radius_au": 84.0,
+   "best_neg_step_ppm": -4.419712623579603,
+   "offset_from_crossing_yr": 0.8000000000010914,
+   "offset_tail_frac": 0.289
+  },
+  "VG2_HP": {
+   "crossing_epoch": 2018.9,
+   "radius_au": 119.0,
+   "best_neg_step_ppm": -3.4224449094606717,
+   "offset_from_crossing_yr": 0.3999999999978172,
+   "offset_tail_frac": 0.1475
+  }
+ },
+ "T2_joint": {
+  "tail_fracs": [
+   0.477,
+   0.0695,
+   0.289,
+   0.1475
+  ],
+  "fisher_p": 0.10765890722550787
+ },
+ "T3_pws_coincidence": {
+  "pws_step_epochs": [
+   2012.875,
+   2020.375,
+   2017.625,
+   2014.625,
+   2017.625,
+   2017.625,
+   2017.625,
+   2017.625
+  ],
+  "n_strong_neg_changepoints": 2,
+  "mean_dist_yr": 10.571449926483638,
+  "per_step_dist_yr": [
+   6.446449926483638,
+   13.946449926483638,
+   11.196449926483638,
+   8.196449926483638,
+   11.196449926483638,
+   11.196449926483638,
+   11.196449926483638,
+   11.196449926483638
+  ],
+  "null_mean_dist_yr": 10.652947960919912,
+  "p_closer_than_random": 0.0,
+  "direction": "anticoincident",
+  "note": "p is the fraction of random-changepoint null draws at least as close as observed; p~0 means the real negative changepoints sit FARTHER from the plasma steps than random placements -- consistent with changepoints clustered in kernel-calibration segments rather than at plasma events"
+ },
+ "verdict": "EPOCH-LOCK NOT ESTABLISHED: strongest negative steps near the four crossings land at offsets [1.2999999999969987, 0.1999999999979991, 0.8000000000010914, 0.3999999999978172] yr from the canonical epochs (joint Fisher p=0.1077); V1 PWS plasma steps sit 10.57 yr from the nearest strong negative SCLK changepoints (p=0.0000). The step amplitude evidence (step 141) and the epoch evidence (this step) are registered separately; kernel segmentation remains the standing caveat."
+}

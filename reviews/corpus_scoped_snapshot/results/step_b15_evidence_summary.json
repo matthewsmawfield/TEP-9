@@ -1,0 +1,207 @@
+{
+ "n_primary_tests": 22,
+ "tests": [
+  {
+   "name": "varpi conditioned-null R (step_02)",
+   "p": 0.0073,
+   "family": "F1",
+   "src": "step_02_clustering.json"
+  },
+  {
+   "name": "3-D perihelion-vector alignment (b11)",
+   "p": 0.0001,
+   "family": "F1",
+   "src": "step_b11_population_selectivity.json"
+  },
+  {
+   "name": "omega conditioned-null R (b1)",
+   "p": 0.008,
+   "family": "F1",
+   "src": "step_b1_empirical_null.json"
+  },
+  {
+   "name": "varpi empirical-null R (b1)",
+   "p": 0.013,
+   "family": "F1",
+   "src": "step_b1_empirical_null.json"
+  },
+  {
+   "name": "numbered-orbits R=0.59 (b3)",
+   "p": 0.0015,
+   "family": "F1",
+   "src": "step_b3_robustness.json"
+  },
+  {
+   "name": "pre-2014 subsample (b3)",
+   "p": 0.043,
+   "family": "F1",
+   "src": "step_b3_robustness.json"
+  },
+  {
+   "name": "cap-profile peak, 3-D (b13)",
+   "p": 0.0001,
+   "family": "F1",
+   "src": "step_b13_patch_scale.json"
+  },
+  {
+   "name": "maximal-pointing ceiling (b5)",
+   "p": 0.0527,
+   "family": "F2",
+   "src": "step_b5_discovery_footprint.json"
+  },
+  {
+   "name": "footprint-conditional null (b8)",
+   "p": 0.035,
+   "family": "F2",
+   "src": "step_b8_footprint_conditional.json"
+  },
+  {
+   "name": "OSSOS-calibrated real coupling (b10)",
+   "p": 0.02,
+   "family": "F2",
+   "src": "step_b10_proxy_validation.json"
+  },
+  {
+   "name": "pairing/shuffle test (b8)",
+   "p": 0.056,
+   "family": "F2",
+   "src": "step_b8_footprint_conditional.json"
+  },
+  {
+   "name": "plane-warp excess 60-150 AU (b7)",
+   "p": 0.031,
+   "family": "F3",
+   "src": "step_b7_plane_warp.json"
+  },
+  {
+   "name": "conditional pole-tilt (b8)",
+   "p": 0.044,
+   "family": "F3",
+   "src": "step_b8_footprint_conditional.json"
+  },
+  {
+   "name": "anti-cap deficit (b6)",
+   "p": 0.045,
+   "family": "F3",
+   "src": "step_b6_antipode_deficit.json"
+  },
+  {
+   "name": "pole point-concentration (b4)",
+   "p": 0.08,
+   "family": "F3",
+   "src": "step_b4_pole_geometry.json"
+  },
+  {
+   "name": "Warsaw full-arc in-cap excess (32)",
+   "p": 0.0089,
+   "family": "F4",
+   "src": "step_09_nested_field.json"
+  },
+  {
+   "name": "CODE-only confirmation (11)",
+   "p": 0.003,
+   "family": "F4",
+   "src": "step_11_code_confirm.json"
+  },
+  {
+   "name": "continuous no-cap statistic (14)",
+   "p": 0.005,
+   "family": "F4",
+   "src": "step_14_blind_validation.json"
+  },
+  {
+   "name": "doubly-matched pairs (16)",
+   "p": 0.0019,
+   "family": "F4",
+   "src": "step_16_signed_channels.json"
+  },
+  {
+   "name": "triple-axis concentration (05)",
+   "p": 0.031,
+   "family": "F5",
+   "src": "step_05_one_map.json"
+  },
+  {
+   "name": "JFC pairing test (b12)",
+   "p": 0.0001,
+   "family": "F5",
+   "src": "step_b12_antipodal_populations.json"
+  },
+  {
+   "name": "split-half axis recovery (b11)",
+   "p": 0.0001,
+   "family": "F5",
+   "src": "step_b11_population_selectivity.json"
+  }
+ ],
+ "nulls": [
+  [
+   "element coupling q,e,i,a (b9)",
+   "no axis->elements coupling -- disfavours shepherding"
+  ],
+  [
+   "resonant substructure (03)",
+   "no MMR substructure -- disfavours shepherding"
+  ],
+  [
+   "plunging population (b11)",
+   "isotropic -- boundary-resident selectivity"
+  ],
+  [
+   "signed repulsion channel (16)",
+   "no per-orbit push -- population asymmetry only"
+  ],
+  [
+   "rotation-axis coherence (16)",
+   "distributed perturbation, not coherent torque"
+  ],
+  [
+   "galactic-tide orientation (b14)",
+   "no equatorial organization -- tide disfavoured"
+  ]
+ ],
+ "staleness_audit": {
+  "n_checked": 24,
+  "n_mismatched": 0,
+  "mismatches": []
+ },
+ "family_bh": {
+  "F1": {
+   "n": 7,
+   "n_below_raw05": 7,
+   "bh_threshold": 0.05,
+   "n_surviving_bh": 7
+  },
+  "F2": {
+   "n": 4,
+   "n_below_raw05": 2,
+   "bh_threshold": 0.0,
+   "n_surviving_bh": 0
+  },
+  "F3": {
+   "n": 4,
+   "n_below_raw05": 3,
+   "bh_threshold": 0.0,
+   "n_surviving_bh": 0
+  },
+  "F4": {
+   "n": 4,
+   "n_below_raw05": 4,
+   "bh_threshold": 0.05,
+   "n_surviving_bh": 4
+  },
+  "F5": {
+   "n": 3,
+   "n_below_raw05": 3,
+   "bh_threshold": 0.05,
+   "n_surviving_bh": 3
+  }
+ },
+ "family_bh_note": "Historical selected-test ledger; within-family BH does not control the complete adaptive search. Correlation does not excuse a failed test. The hardcoded secondary entries are archival descriptive values, not a current confirmatory multiplicity correction.",
+ "combined_two_populations": {
+  "tno_conditioned_p": 0.0073496325183740815,
+  "comet_code_confirm_p": 0.0029505468290258216,
+  "fisher_p": 0.00025456249546467613,
+  "note": "Nominal under independent valid null p-values. Different populations share selection assumptions and a selected sector; this is not a global significance or a TEP model probability."
+ }
+}

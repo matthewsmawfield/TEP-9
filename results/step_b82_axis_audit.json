@@ -1,0 +1,504 @@
+{
+ "step": "step_118_prospective_axis_audit",
+ "description": "forensic decomposition of the post-2017 prospective cohort's discrepancy field: displaced-dipole vs longitude-systematic vs look-elsewhere readings of the step_117 rotated-axis signal",
+ "inputs": [
+  "results/step_b81_prospective_lpc.csv / step_b81_legs.jsonl",
+  "results/step_b28_bidirectional_rotation.csv",
+  "data/raw/code/code_osculating.html",
+  "data/raw/sbdb/sbdb_comets_all.json",
+  "results/step_b71_named_directions.json"
+ ],
+ "seed": 20260919,
+ "n_perm": 2000,
+ "cap_deg": 60.0,
+ "n_prospective": 255,
+ "n_code": 131,
+ "T1_free_axis_raw_drot": {
+  "prospective": {
+   "n": 255,
+   "n_grid": 468,
+   "best": {
+    "lam": 160.0,
+    "beta": -10.0,
+    "p": 0.0005850059724487498,
+    "n_better": 1,
+    "sep_from_declared": 121.6653556031801,
+    "sep_from_detached": 105.83576072020163,
+    "sep_from_ctrl90": 35.376184574058236
+   },
+   "declared": {
+    "p": 0.9125238487636065,
+    "rank_frac": 0.7718550106609808,
+    "n_in": 68,
+    "med_in": 0.09503353529913251,
+    "med_out": 0.12254129567186628
+   },
+   "ctrl90": {
+    "p": 0.0020699861900710546,
+    "n_in": 60,
+    "med_in": 0.1492675028368139,
+    "med_out": 0.09402382803225755
+   }
+  },
+  "code": {
+   "n": 131,
+   "n_grid": 468,
+   "best": {
+    "lam": 60.0,
+    "beta": -10.0,
+    "p": 0.00015438440242570333,
+    "n_better": 1,
+    "sep_from_declared": 25.641990335295315,
+    "sep_from_detached": 12.05389051724113,
+    "sep_from_ctrl90": 62.63167428092287
+   },
+   "declared": {
+    "p": 0.008549437286431002,
+    "rank_frac": 0.04051172707889126,
+    "n_in": 43,
+    "med_in": 0.14702894574927305,
+    "med_out": 0.09432288545151497
+   },
+   "ctrl90": {
+    "p": 0.2631366792985658,
+    "n_in": 42,
+    "med_in": 0.12366585126288296,
+    "med_out": 0.10064764636760516
+   }
+  }
+ },
+ "T2_global_perm_max_gap": {
+  "prospective_drot": {
+   "obs_gap": 0.07966702653218678,
+   "p_global": 0.10494752623688156
+  },
+  "code_drot": {
+   "obs_gap": 0.07545686776437077,
+   "p_global": 0.45577211394302847
+  },
+  "prospective_resid": {
+   "obs_gap": 0.2104425455470153,
+   "p_global": 0.026986506746626688
+  }
+ },
+ "T3_free_axis_resid": {
+  "prospective": {
+   "n": 255,
+   "n_grid": 468,
+   "best": {
+    "lam": 120.0,
+    "beta": -40.0,
+    "p": 2.529857980697806e-05,
+    "n_better": 1,
+    "sep_from_declared": 78.65812771798022,
+    "sep_from_detached": 64.06919201616734,
+    "sep_from_ctrl90": 27.22857376923132
+   },
+   "declared": {
+    "p": 0.9517173030867121,
+    "rank_frac": 0.7782515991471215,
+    "n_in": 68,
+    "med_in": -0.01669670513244781,
+    "med_out": 0.050084310479329264
+   },
+   "ctrl90": {
+    "p": 4.1055824592084324e-05,
+    "n_in": 60,
+    "med_in": 0.15305470671679494,
+    "med_out": -0.02088757740580749
+   }
+  },
+  "code": {
+   "n": 131,
+   "n_grid": 468,
+   "best": {
+    "lam": 10.0,
+    "beta": 0.0,
+    "p": 0.0003161243346106256,
+    "n_better": 1,
+    "sep_from_declared": 27.11024350529295,
+    "sep_from_detached": 42.80726697304636,
+    "sep_from_ctrl90": 113.34782587232684
+   },
+   "declared": {
+    "p": 0.012153728036697972,
+    "rank_frac": 0.03411513859275053,
+    "n_in": 43,
+    "med_in": 0.15101948031415813,
+    "med_out": 0.02656615231024162
+   },
+   "ctrl90": {
+    "p": 0.36775257747135554,
+    "n_in": 42,
+    "med_in": 0.05045450096831955,
+    "med_out": 0.041870392361098796
+   }
+  }
+ },
+ "T4_longitude_harmonics": {
+  "prospective": {
+   "order_1": {
+    "amplitude": 0.16219188099193893,
+    "phase_deg": 182.42279811680973,
+    "p_perm": 0.0004997501249375312
+   },
+   "order_2": {
+    "amplitude": 0.09604724184089397,
+    "phase_deg": 101.51209702654228,
+    "p_perm": 0.0239880059970015
+   },
+   "order_3": {
+    "amplitude": 0.045315865836630956,
+    "phase_deg": 6.507297447514881,
+    "p_perm": 0.4047976011994003
+   },
+   "order_4": {
+    "amplitude": 0.028265111111824833,
+    "phase_deg": 5.090842904337373,
+    "p_perm": 0.6956521739130435
+   }
+  },
+  "code": {
+   "order_1": {
+    "amplitude": 0.11919726423445247,
+    "phase_deg": 25.878574336892594,
+    "p_perm": 0.022488755622188907
+   },
+   "order_2": {
+    "amplitude": 0.0527306971931574,
+    "phase_deg": 179.80187596392847,
+    "p_perm": 0.4702648675662169
+   },
+   "order_3": {
+    "amplitude": 0.06410119889300558,
+    "phase_deg": 3.70378544415868,
+    "p_perm": 0.3103448275862069
+   },
+   "order_4": {
+    "amplitude": 0.011678778148658893,
+    "phase_deg": 77.32621693090063,
+    "p_perm": 0.9645177411294353
+   }
+  }
+ },
+ "T5_declared_axis_sign_flip": {
+  "gap_code": 0.12445332800391651,
+  "gap_prospective": -0.06678101561177707,
+  "gap_difference": 0.19123434361569358,
+  "interaction_k": -0.2517373548174952,
+  "p_cohort_perm": 0.004997501249375313,
+  "note": "pooled interaction model resid ~ cohort*incap; cohort labels permuted over comets, each keeping its own declared-axis incap flag"
+ },
+ "T6_code_era_stability": {
+  "early_tercile": {
+   "n": 46,
+   "n_in": 16,
+   "year_range": [
+    1890,
+    2011
+   ],
+   "resid_gap": 0.09210924625429517,
+   "rho": -0.17545482577860003,
+   "p_2sided": 0.24348604616030797
+  },
+  "mid_tercile": {
+   "n": 45,
+   "n_in": 14,
+   "year_range": [
+    2012,
+    2017
+   ],
+   "resid_gap": -0.016005110210189577,
+   "rho": -0.30289855072463767,
+   "p_2sided": 0.04312318660844696
+  },
+  "late_tercile": {
+   "n": 40,
+   "n_in": 13,
+   "year_range": [
+    2018,
+    2031
+   ],
+   "resid_gap": 0.3106152139115411,
+   "rho": -0.2283302063789869,
+   "p_2sided": 0.15645549155746521
+  }
+ },
+ "T7_confound_at_recovered_axis": {
+  "at_recovered_axis_base": {
+   "n": 255,
+   "n_in": 48,
+   "med_in": 0.17999018453958526,
+   "med_out": 0.0014153844835598228,
+   "mwu_greater_p": 0.0004864990161832742,
+   "rho": -0.29535230430754983,
+   "p_2sided": 1.5806985842538925e-06
+  },
+  "at_recovered_axis_plus_quality": {
+   "n": 255,
+   "n_in": 48,
+   "med_in": 0.15521372340850562,
+   "med_out": -0.005611268033909211,
+   "mwu_greater_p": 0.0006123604069450137,
+   "rho": -0.29072125405280225,
+   "p_2sided": 2.335094524971129e-06
+  },
+  "at_recovered_axis_pure_gravity": {
+   "n": 214,
+   "n_in": 40,
+   "med_in": 0.17313841170228614,
+   "med_out": -0.009141371709410595,
+   "mwu_greater_p": 0.00044503614376383336,
+   "rho": -0.28196870857835554,
+   "p_2sided": 2.8398885574881708e-05
+  },
+  "at_recovered_axis_bound_only": {
+   "n": 141,
+   "n_in": 33,
+   "med_in": 0.12136749354594523,
+   "med_out": -0.012352951918621291,
+   "mwu_greater_p": 0.019135520125011227,
+   "rho": -0.3178817586369279,
+   "p_2sided": 0.00012245524402353363
+  },
+  "at_recovered_axis_arc_above_median": {
+   "n": 127,
+   "n_in": 20,
+   "med_in": 0.13771893922701817,
+   "med_out": 0.030903694377986346,
+   "mwu_greater_p": 0.01780001575044895,
+   "rho": -0.2603346456692913,
+   "p_2sided": 0.003116968716817647
+  },
+  "at_recovered_axis_arc_below_median": {
+   "n": 128,
+   "n_in": 28,
+   "med_in": 0.22855589673298674,
+   "med_out": -0.03697683524669665,
+   "mwu_greater_p": 0.00425391882009726,
+   "rho": -0.30408807910639074,
+   "p_2sided": 0.0004836879923208516
+  },
+  "at_recovered_axis_post_peri_epoch": {
+   "n": 92,
+   "n_in": 23,
+   "med_in": 0.16792588519235752,
+   "med_out": -0.007900972099202375,
+   "mwu_greater_p": 0.030984809957019358,
+   "rho": -0.32019172972889665,
+   "p_2sided": 0.0018611946877434766
+  },
+  "at_recovered_axis_pre_peri_epoch": {
+   "n": 163,
+   "n_in": 25,
+   "med_in": 0.2196076294110373,
+   "med_out": -0.020474452314091784,
+   "mwu_greater_p": 0.006238078306776483,
+   "rho": -0.2555516761711585,
+   "p_2sided": 0.0009933631059005606
+  }
+ },
+ "T8_named_directions": [
+  {
+   "named": "CMB dipole apex",
+   "sep_axis": 11.52599621636603,
+   "sep_bipolar": 11.52599621636603
+  },
+  {
+   "named": "ctrl90 (step_117)",
+   "sep_axis": 35.376184574058236,
+   "sep_bipolar": 35.376184574058236
+  },
+  {
+   "named": "N galactic pole",
+   "sep_axis": 44.23328250328998,
+   "sep_bipolar": 44.23328250328998
+  },
+  {
+   "named": "S galactic pole",
+   "sep_axis": 135.76671749671002,
+   "sep_bipolar": 44.23328250328998
+  },
+  {
+   "named": "galactic rotation dir",
+   "sep_axis": 130.11888968833847,
+   "sep_bipolar": 49.88111031166153
+  },
+  {
+   "named": "cap-declaration",
+   "sep_axis": 121.6653556031801,
+   "sep_bipolar": 58.3346443968199
+  },
+  {
+   "named": "solar antapex",
+   "sep_axis": 69.30386315118048,
+   "sep_bipolar": 69.30386315118048
+  },
+  {
+   "named": "solar apex (DB98)",
+   "sep_axis": 110.69613684881952,
+   "sep_bipolar": 69.3038631511805
+  },
+  {
+   "named": "detached-sample",
+   "sep_axis": 105.83576072020163,
+   "sep_bipolar": 74.16423927979838
+  },
+  {
+   "named": "Galactic anticentre",
+   "sep_axis": 74.50185147908088,
+   "sep_bipolar": 74.50185147908088
+  },
+  {
+   "named": "Galactic centre",
+   "sep_axis": 105.49814852091909,
+   "sep_bipolar": 74.50185147908093
+  },
+  {
+   "named": "N ecliptic pole",
+   "sep_axis": 100.0,
+   "sep_bipolar": 80.0
+  },
+  {
+   "named": "S ecliptic pole",
+   "sep_axis": 80.00000000000001,
+   "sep_bipolar": 80.00000000000001
+  },
+  {
+   "named": "lpc free-scan",
+   "sep_axis": 94.78886203659134,
+   "sep_bipolar": 85.21113796340866
+  },
+  {
+   "named": "P9 perihelion (BB21)",
+   "sep_axis": 87.64313843758632,
+   "sep_bipolar": 87.64313843758632
+  }
+ ],
+ "T9_bipolar_morphology": {
+  "b_cos1": 0.17826238591391388,
+  "b_cos1_ci": [
+   0.10544679220085636,
+   0.26028797542353954
+  ],
+  "b_cos2": -0.008644945516209238,
+  "b_cos2_ci": [
+   -0.07549020904289065,
+   0.06364248377349346
+  ]
+ },
+ "T10_rotated_cap_membership": {
+  "q": {
+   "med_in": 3.7175000000000002,
+   "med_out": 3.132,
+   "mwu_p": 0.3212980582825401
+  },
+  "i": {
+   "med_in": 97.18,
+   "med_out": 88.35,
+   "mwu_p": 0.5037916581726919
+  },
+  "e": {
+   "med_in": 0.9994,
+   "med_out": 0.9996,
+   "mwu_p": 0.9704577964214485
+  },
+  "arc": {
+   "med_in": 405.0,
+   "med_out": 591.0,
+   "mwu_p": 0.39217051042274287
+  },
+  "nobs": {
+   "med_in": 266.5,
+   "med_out": 422.0,
+   "mwu_p": 0.30876345698444685
+  },
+  "yr": {
+   "med_in": 2021.0,
+   "med_out": 2021.0,
+   "mwu_p": 0.7683132790077445
+  },
+  "ng_fraction_in_vs_out": {
+   "in_cap": 0.18333333333333332,
+   "out_cap": 0.15384615384615385
+  },
+  "post_peri_fraction_in_vs_out": {
+   "in_cap": 0.5,
+   "out_cap": 0.31794871794871793
+  }
+ },
+ "T11_cross_cohort_coverage": {
+  "prospective_at_prospective_axis": {
+   "n_in": 48,
+   "med_in": 0.17999018453958526,
+   "med_out": 0.0014153844835598228,
+   "mwu_greater_p": 0.0004864990161832742,
+   "rho": -0.29535230430754983,
+   "p_2sided": 1.5806985842538925e-06
+  },
+  "code_at_prospective_axis": {
+   "n_in": 23,
+   "med_in": 0.023516770346585947,
+   "med_out": 0.044424690420030444,
+   "mwu_greater_p": 0.5012067221084961,
+   "rho": 0.07452089894837986,
+   "p_2sided": 0.3975900497432361
+  },
+  "code_at_code_axis": {
+   "n_in": 50,
+   "med_in": 0.12070388015777234,
+   "med_out": 0.018280969699856264,
+   "mwu_greater_p": 0.007588675583331634,
+   "rho": -0.24369828644637806,
+   "p_2sided": 0.005032597457587599
+  },
+  "prospective_at_code_axis": {
+   "n_in": 81,
+   "med_in": 0.03169974428329814,
+   "med_out": 0.022243702428353662,
+   "mwu_greater_p": 0.4778211249626151,
+   "rho": 0.04361177049559982,
+   "p_2sided": 0.48810089749602403
+  },
+  "note": "a physical boundary feature inside either cap is visible to every cohort covering that sky; a cohort-private dipole indicates a catalogue systematic"
+ },
+ "T12_strict_quality_strata": {
+  "arc_gt730_nobs_gt500": {
+   "n_in": 13,
+   "med_in": 0.12686210631750028,
+   "med_out": -0.025722057570925272,
+   "mwu_greater_p": 0.018795320260017675,
+   "rho": -0.3755571793934966,
+   "p_2sided": 0.0014733217870176833,
+   "n": 69
+  },
+  "arc_gt365_nobs_gt300": {
+   "n_in": 20,
+   "med_in": 0.07751979184108776,
+   "med_out": -0.017212838568225586,
+   "mwu_greater_p": 0.1100342164200625,
+   "rho": -0.2411012660375118,
+   "p_2sided": 0.014641816429129503,
+   "n": 102
+  },
+  "top_quartile_arc": {
+   "n_in": 12,
+   "med_in": 0.2065727347082046,
+   "med_out": 0.006037652998212628,
+   "mwu_greater_p": 0.048472269797068,
+   "rho": -0.2648351648351648,
+   "p_2sided": 0.034443148101611656,
+   "n": 64
+  },
+  "nobs_gt1000": {
+   "n_in": 17,
+   "med_in": -0.016251089019186038,
+   "med_out": 0.002353534122534473,
+   "mwu_greater_p": 0.39938674897092585,
+   "rho": -0.23525594533725233,
+   "p_2sided": 0.053457994868622585,
+   "n": 68
+  }
+ },
+ "verdict": "The post-2017 cohort carries a measured sign reversal at the pre-declared axis (declared cap-gap -0.067 dex versus CODE +0.124; cohort x cap interaction p=0.0050) -- the polarity flip the frame-anchored bipolar field predicts, not a featureless null.  Its own discrepancy field resolves a dipole at (160,-10) -- 122 deg off the declared axis -- with global permutation p=0.027 on the residual field, and the structure is unipolar (cos1 dominant, cos2 null), organised primarily in ecliptic longitude, and era-specific: it is invisible to the CODE cohort's covered members at the same sky direction (p=0.501). The recovered-axis anomaly survives the measured-confound battery -- quality, pure-gravity, bound-only and arc/epoch strata all retain the in-cap excess (base p=1.6e-06) -- and the compositional account is excluded by the step 140 audit while the step 130 era-switch test favours a moving boundary.  The CODE anomaly is era-stable at the declared axis across perihelion-year terciles, so the declared-axis reversal is cohort-level polarity structure, not a global axis drift."
+}

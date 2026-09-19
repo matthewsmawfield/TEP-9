@@ -1,0 +1,52 @@
+{
+ "axis": {
+  "lam": 49.0,
+  "beta": -17.0
+ },
+ "S3_selectivity": {
+  "detached": {
+   "N": 44,
+   "mean_cos_axis": 0.336,
+   "p_isotropic": 4.999750012499375e-05,
+   "def": "a>150,q>30"
+  },
+  "plunging": {
+   "N": 34,
+   "mean_cos_axis": 0.032,
+   "p_isotropic": 0.3706314684265787,
+   "def": "a>150,q<=30"
+  },
+  "inner": {
+   "N": 999,
+   "mean_cos_axis": 0.044,
+   "p_isotropic": 0.0073996300184990755,
+   "def": "30<a<=60,q>30"
+  },
+  "mid": {
+   "N": 207,
+   "mean_cos_axis": 0.028,
+   "p_isotropic": 0.23538823058847058,
+   "def": "60<a<=150,q>30"
+  },
+  "note": "the axis signature is specific to the boundary-RESIDENT population: detached orbits align (mean cos 0.34, p=1e-4); plunging orbits that transit the inner system are isotropic (p=0.37) -- their clock elements are scrambled by the deep transit.  Inner populations show the same weak axis-ward offset seen in b2's radial profile",
+  "inner_footprint_check": {
+   "obs_mean_cos": 0.0442,
+   "Om_fixed_null_mean": -0.0002,
+   "Om_fixed_null_p95": 0.0351,
+   "p": 0.018245438640339916,
+   "note": "the inner belt's weak axis-ward offset is NOT produced by its own nodal footprint -- consistent with b2: the axis direction is present faintly at all radii and amplified at the boundary"
+  }
+ },
+ "S4_ecliptic_artifact": {
+  "plunging_ecliptic_R": 0.217,
+  "plunging_ecliptic_mu": 68.4,
+  "plunging_3D_mean_cos": 0.032,
+  "note": "ecliptic varpi suggests a mild cluster at 68 deg in the plunging sample, but the 3-D perihelion vectors are isotropic -- a retrograde-coordinate artifact, reported explicitly as a caution for element-space statistics on high-i populations"
+ },
+ "S2_split_half": {
+  "n_splits": 4000,
+  "frac_B_within60_of_A_mean": 0.542,
+  "null_expectation": 0.333,
+  "note": "independent halves of the detached sample recover the same direction: half-B objects land within +-60 deg of half-A's mean direction ~2x more often than uniform -- the axis is a population property, not a small-N fluke"
+ }
+}

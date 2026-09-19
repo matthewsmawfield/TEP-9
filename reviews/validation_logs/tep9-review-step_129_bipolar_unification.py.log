@@ -1,0 +1,25 @@
+[INFO] [STEP 129] LOGGER INITIALIZED: step_129_bipolar_unification (Step 129)
+[INFO] [STEP 129] ================================================================================
+[INFO] [STEP 129] Frame-anchored bipolar unification test
+[INFO] [STEP 129] ================================================================================
+[INFO] [STEP 129] loaded: pre-2018 587, post-2017 248
+[INFO] [STEP 129] T1  per-era CMB-frame dipoles (independent + catalogue)
+[INFO] [STEP 129]   pre2018   independent b=-0.0582 dex  p_2sided=0.022  n=586
+[INFO] [STEP 129]   pre2018   catalogue   b=-0.0582 dex  p_2sided=0.0213  n=586
+[INFO] [STEP 129]   post2017  independent b=+0.1717 dex  p_2sided=5e-05  n=248
+[INFO] [STEP 129]   post2017  catalogue   b=+0.2031 dex  p_2sided=5e-05  n=248
+[INFO] [STEP 129] T2  joint opposite-polarity statistic J = -b_pre*b_post
+[INFO] [STEP 129]   b_pre=-0.0582  b_post=+0.1717  J=0.00999  p_J=5e-05  p_fisher=1.619e-05
+[INFO] [STEP 129] T3  direction shuffle: J(u) on 500 random bipolar axes
+[INFO] [STEP 129]   J(CMB)=0.00999  frac random axes >= CMB: 25/500 (0.050)
+[INFO] [STEP 129] T4  bipolar-cap audit (60-deg caps about CMB axis)
+[INFO] [STEP 129]   pre2018   apex-cap res=0.03345195380127097 (n=122)  antapex res=0.052241193236282735 (n=130)
+[INFO] [STEP 129]   post2017  apex-cap res=0.20064710138722786 (n=45)  antapex res=-0.09836071759693144 (n=67)
+[INFO] [STEP 129] T5  controls
+[INFO] [STEP 129]   NG-clean post-2017: b=+0.1381 p=0.0012 n=211
+[INFO] [STEP 129]   CODE-overlap pre-2018: b=-0.0495 p=0.209 n=252
+[INFO] [STEP 129]   pre2018 n_obs>=med (232): b=-0.0824 p=0.0189 n=293
+[INFO] [STEP 129]   post2017 n_obs>=med (397): b=+0.1486 p=0.0035 n=125
+[INFO] [STEP 129] verdict: BIPOLAR-CONSISTENT: opposite-signed CMB-frame dipoles on the independent record (J extremal), same-axis reading supported
+[INFO] [STEP 129] wrote results/step_b93_bipolar_unification.json
+[INFO] [STEP 129] wrote results/figures/step_b93_bipolar_unification.png

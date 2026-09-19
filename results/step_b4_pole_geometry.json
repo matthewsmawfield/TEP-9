@@ -1,0 +1,43 @@
+{
+ "sample": "a>150, q>30, cc<=3",
+ "N": 44,
+ "P1_pole_eigenstructure": {
+  "eigenvalues_obs": [
+   0.8956,
+   0.0662,
+   0.0381
+  ],
+  "eigenvalue_1_null_p95": 0.8925,
+  "C_point_index_obs": 0.8294,
+  "C_null_mean": 0.8206,
+  "C_null_p95": 0.831,
+  "p_C": 0.07984600769961502,
+  "G_girdle_index_obs": 0.0281,
+  "G_null_mean": 0.0225,
+  "G_null_p95": 0.0422,
+  "p_G": 0.29808509574521275,
+  "note": "C high => poles share one direction (common tilted plane / shepherd or fixed frame); G high => poles on a great circle (warped disk / inclination instability). Null holds i fixed, om uniform -- the ecliptic ring it produces is itself girdle-like."
+ },
+ "P2_common_plane": {
+  "mean_pole_ecliptic": [
+   50.5,
+   83.7
+  ],
+  "plane_tilt_deg": 6.3,
+  "pole_axis_azimuth_deg": 50.5,
+  "varpi_axis_deg": 49.1,
+  "note": "pole azimuth = mean(Omega) - 90 deg, so this largely restates the node clustering; the new information is the eigenstructure (P1): a point excess, no girdle -- a common tilted plane, not a warped disk"
+ },
+ "P3_perihelion_eigenstructure": {
+  "eigenvalues_obs": [
+   0.5992,
+   0.3715,
+   0.0293
+  ],
+  "C_obs": 0.2277,
+  "C_null_mean": 0.1259,
+  "p_C": 0.07539623018849058,
+  "R_phat": 0.3355,
+  "note": "perihelion vectors are point-like not axial; C tests extra point-concentration beyond the conditioned null"
+ }
+}

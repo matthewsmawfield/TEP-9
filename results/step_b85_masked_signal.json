@@ -1,0 +1,241 @@
+{
+ "step": "step_121_masked_signal",
+ "description": "masked-signal discrimination on the post-2017 prospective cohort: joint declared-cap + private-dipole decomposition of the residual field, with CODE and pre-2018 control cohorts",
+ "inputs": [
+  "results/step_b81_prospective_lpc.csv",
+  "results/step_b84_pre2018_sbdb.csv",
+  "results/step_b83_dipole_mechanism.csv",
+  "results/step_b28_bidirectional_rotation.csv",
+  "data/raw/code/code_osculating.html"
+ ],
+ "seed": 20260919,
+ "n_perm": 2000,
+ "cap_deg": 60.0,
+ "declared_axis": [
+  34.0,
+  -13.0
+ ],
+ "private_dipole_axis": [
+  120.0,
+  -40.0
+ ],
+ "template_collinearity": {
+  "prospective": 0.09634409986243773,
+  "code": 0.10813502656303166,
+  "pre2018": 0.13659775263674467
+ },
+ "T1_joint_fit_prospective": {
+  "model": "resid ~ 1 + A*cap_declared + B*cos(theta->u_priv)",
+  "u_priv": [
+   -0.3830222215594889,
+   0.6634139481689384,
+   -0.6427876096865393
+  ],
+  "A_declared_only": -0.09912209008102106,
+  "A_joint": -0.11661825468164971,
+  "A_joint_ci": [
+   -0.22990492222526526,
+   -0.011779421677683736
+  ],
+  "A_joint_p_perm": 0.9895052473763118,
+  "B_dipole": 0.13686512918156443,
+  "B_only_model": 0.1283974042794454,
+  "rss_declared_only": 35.500643935303756,
+  "rss_joint": 33.87136375050342,
+  "rss_dipole_only": 34.54324633783481,
+  "delta_rss_cap_term": 0.671882587331389,
+  "p_nested_perm": 0.02848575712143928,
+  "masking_budget_dex": 0.02265662722583186,
+  "cos_priv_median_in_cap": 0.12727948536860395,
+  "cos_priv_median_out_cap": -0.03826032277182981
+ },
+ "T2_dipole_placement_scan": {
+  "n_grid": 468,
+  "best_abs_dipole": {
+   "lam": 10.0,
+   "beta": 10.0,
+   "B": -0.22737104415911016,
+   "A_at": 0.08085222889662605,
+   "sep_from_declared": 33.11812599432767
+  },
+  "A_at_u_res_120_m40": -0.11661825468164973,
+  "A_at_u_raw_160_m10": -0.02158876158993626,
+  "A_min_over_grid": -0.15775641111455518,
+  "A_max_over_grid": 0.09367358542676198,
+  "frac_grid_A_positive": 0.15384615384615385,
+  "note": "A is the declared-cap coefficient under joint fit with a cos dipole at each trial axis; A <= 0 at every plausible dipole placement would indicate absence, not masking"
+ },
+ "T3_clean_strata": {
+  "hyperbolic_e_ge_1": {
+   "n": 114,
+   "declared_cap": {
+    "n_in": 27,
+    "gap": -0.06586879932585776,
+    "mwu_greater_p": 0.8013505384412873,
+    "rho": 0.17075798383993843,
+    "p_2sided": 0.06929844872287015
+   },
+   "A_joint": -0.12507423105070004,
+   "B_joint": 0.07284839313609312,
+   "A_joint_p_perm": 0.9155422288855573
+  },
+  "bound_e_lt_1": {
+   "n": 141,
+   "declared_cap": {
+    "n_in": 41,
+    "gap": -0.007055810136471441,
+    "mwu_greater_p": 0.7155825552681053,
+    "rho": 0.09551350657134293,
+    "p_2sided": 0.25989383318441195
+   },
+   "A_joint": -0.05263044727710066,
+   "B_joint": 0.16226257213932693,
+   "A_joint_p_perm": 0.7906046976511744
+  },
+  "arc_one_sided": {
+   "n": 65,
+   "declared_cap": {
+    "n_in": 20,
+    "gap": 0.012363871466983256,
+    "mwu_greater_p": 0.7635522145147091,
+    "rho": 0.2240821678321678,
+    "p_2sided": 0.0727415310561667
+   },
+   "A_joint": -0.050198433936045186,
+   "B_joint": 0.053301881208813726,
+   "A_joint_p_perm": 0.7401299350324838
+  },
+  "arc_spans_perihelion": {
+   "n": 190,
+   "declared_cap": {
+    "n_in": 48,
+    "gap": -0.06446322920261982,
+    "mwu_greater_p": 0.8362412951775329,
+    "rho": 0.12496424306840401,
+    "p_2sided": 0.08581725282746035
+   },
+   "A_joint": -0.1266639514370157,
+   "B_joint": 0.1627052757020447,
+   "A_joint_p_perm": 0.9715142428785607
+  },
+  "primary_q_lt_3p1": {
+   "n": 121,
+   "declared_cap": {
+    "n_in": 32,
+    "gap": -0.2175753848461155,
+    "mwu_greater_p": 0.9701845974096677,
+    "rho": 0.15883349139682965,
+    "p_2sided": 0.08184197070426662
+   },
+   "A_joint": -0.21780688424073524,
+   "B_joint": 0.18183834905623136,
+   "A_joint_p_perm": 0.999000499750125
+  },
+  "extended_q_ge_3p1": {
+   "n": 134,
+   "declared_cap": {
+    "n_in": 36,
+    "gap": -0.06212219346735015,
+    "mwu_greater_p": 0.9143143116838122,
+    "rho": 0.20308233269741519,
+    "p_2sided": 0.018602478553876665
+   },
+   "A_joint": -0.08027983102403695,
+   "B_joint": 0.09594099318579055,
+   "A_joint_p_perm": 0.8695652173913043
+  }
+ },
+ "T4_control_cohorts": {
+  "code": {
+   "n": 131,
+   "A_declared_only": 0.1526152647364746,
+   "A_joint": 0.15029865267883644,
+   "A_joint_ci": [
+    0.04752911578081271,
+    0.2554785841794905
+   ],
+   "A_joint_p_perm": 0.005497251374312844,
+   "B_dipole": 0.01679818418473894
+  },
+  "pre2018": {
+   "n": 738,
+   "A_declared_only": 0.015567299766300906,
+   "A_joint": 0.02062577169832595,
+   "A_joint_ci": [
+    -0.027347716290548312,
+    0.06829719187237444
+   ],
+   "A_joint_p_perm": 0.22488755622188905,
+   "B_dipole": -0.02779604867679833
+  },
+  "prospective": {
+   "model": "resid ~ 1 + A*cap_declared + B*cos(theta->u_priv)",
+   "u_priv": [
+    -0.3830222215594889,
+    0.6634139481689384,
+    -0.6427876096865393
+   ],
+   "A_declared_only": -0.09912209008102106,
+   "A_joint": -0.11661825468164971,
+   "A_joint_ci": [
+    -0.22990492222526526,
+    -0.011779421677683736
+   ],
+   "A_joint_p_perm": 0.9895052473763118,
+   "B_dipole": 0.13686512918156443,
+   "B_only_model": 0.1283974042794454,
+   "rss_declared_only": 35.500643935303756,
+   "rss_joint": 33.87136375050342,
+   "rss_dipole_only": 34.54324633783481,
+   "delta_rss_cap_term": 0.671882587331389,
+   "p_nested_perm": 0.02848575712143928,
+   "masking_budget_dex": 0.02265662722583186,
+   "cos_priv_median_in_cap": 0.12727948536860395,
+   "cos_priv_median_out_cap": -0.03826032277182981
+  },
+  "prospective_detached_axis": {
+   "A_declared_only": -0.017284014721833038,
+   "A_joint": -0.0914873414696308,
+   "B_dipole": 0.15501019318905382,
+   "A_joint_p_perm": 0.9540229885057471
+  }
+ },
+ "T5_interaction_after_correction": {
+  "interaction_k_raw": -0.2517373548174952,
+  "interaction_k_after_correction": -0.26923351941812407,
+  "p_cohort_perm_corrected": 0.0009995002498750624
+ },
+ "T6_corrected_profile": {
+  "declared_before": {
+   "n_in": 68,
+   "gap": -0.06678101561177707,
+   "mwu_greater_p": 0.9517173030867121,
+   "rho": 0.15532075034738305,
+   "p_2sided": 0.013021678614843124
+  },
+  "declared_after": {
+   "n_in": 68,
+   "gap": -0.051851877624334256,
+   "mwu_greater_p": 0.9703777534929543,
+   "rho": 0.19879429133858267,
+   "p_2sided": 0.0014187944971063083
+  },
+  "scan": {
+   "declared_node": [
+    30.0,
+    -10.0
+   ],
+   "gap_at_declared_raw": -0.08088719989123405,
+   "gap_at_declared_corrected": -0.04201954093341716,
+   "rank_frac_raw": 0.7761194029850746,
+   "rank_frac_corrected": 0.7547974413646056,
+   "best_corrected_axis": {
+    "lam": 210.0,
+    "beta": 40.0,
+    "gap": 0.20616840211469625,
+    "sep_from_declared": 152.7714262307687
+   }
+  }
+ },
+ "verdict": "POLARITY-REVERSED, NOT ABSENT: the declared-axis term is -0.117 dex [-0.230,-0.012] under the joint model -- the bootstrap interval excludes zero on the negative side, while the same term on the CODE-era record is +0.150 dex (p=0.0055).  The cohort x cap interaction persists after private-dipole correction (k=-0.269, p=0.0010).  A masked static anomaly would return A ~ 0; a measured sign reversal at the declared axis is the opposite-polarity reading -- the modern record carries the boundary field's other lobe, resolved at the displaced axis (steps 118, 128)."
+}

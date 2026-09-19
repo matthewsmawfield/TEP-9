@@ -1,0 +1,148 @@
+{
+ "step": "step_133_harmonic_bipolar",
+ "description": "Bipolar harmonic decomposition: per-era Legendre power spectrum, free-dipole mirror-pair test, ISO meridian ledger, and resident radial-gradient control on the independent refit record",
+ "seed": 20260921,
+ "n_perm": 20000,
+ "cmb_apex_gal_lb": [
+  264.02,
+  48.25
+ ],
+ "T1_harmonic_power": {
+  "pre2018": {
+   "l1": {
+    "amp": -0.058140679854982176,
+    "var_expl": 0.009001681001983064,
+    "p_perm": 0.02279886005699715
+   },
+   "l2": {
+    "amp": 0.044301736564750636,
+    "var_expl": 0.003854255100155135,
+    "p_perm": 0.13809309534523273
+   },
+   "l3": {
+    "amp": 0.030408677683403978,
+    "var_expl": 0.00109382427560345,
+    "p_perm": 0.42762861856907153
+   }
+  },
+  "post2017": {
+   "l1": {
+    "amp": 0.1686291611623936,
+    "var_expl": 0.06472435625124107,
+    "p_perm": 4.999750012499375e-05
+   },
+   "l2": {
+    "amp": -0.10583355162978285,
+    "var_expl": 0.017720039305985424,
+    "p_perm": 0.03644817759112044
+   },
+   "l3": {
+    "amp": -0.08009184618789349,
+    "var_expl": 0.006759581476542542,
+    "p_perm": 0.1983900804959752
+   }
+  }
+ },
+ "T2_dipole_mirror": {
+  "pre_dipole": {
+   "theta": 131.57349087618658,
+   "phi": 286.5406022181595
+  },
+  "post_dipole": {
+   "theta": 22.287867278132463,
+   "phi": 288.6762001864911
+  },
+  "joint_stat": 28.27423981401253,
+  "dev_supplementary": 26.13864184568095,
+  "dphi": 2.135597968331581,
+  "p_perm": 0.03144842757862107
+ },
+ "T3_iso_meridian": {
+  "legs": [
+   {
+    "des": "1I",
+    "leg": "arrival",
+    "theta": 111.77117693640147,
+    "phi": 57.16731180656823,
+    "dist_to_meridian_plane": 26.22436898417227,
+    "on_meridian": true
+   },
+   {
+    "des": "1I",
+    "leg": "periapsis",
+    "theta": 38.126687540596365,
+    "phi": 256.58208327159804,
+    "dist_to_meridian_plane": 27.230863611564846,
+    "on_meridian": true
+   },
+   {
+    "des": "1I",
+    "leg": "departure",
+    "theta": 159.87467588578855,
+    "phi": 140.32956400475948,
+    "dist_to_meridian_plane": 18.660918012822115,
+    "on_meridian": true
+   },
+   {
+    "des": "2I",
+    "leg": "arrival",
+    "theta": 117.49415859474018,
+    "phi": 137.20340151112347,
+    "dist_to_meridian_plane": 57.29532984152856,
+    "on_meridian": false
+   },
+   {
+    "des": "2I",
+    "leg": "periapsis",
+    "theta": 22.589342621224684,
+    "phi": 205.08695761244095,
+    "dist_to_meridian_plane": 1.4078176658097565,
+    "on_meridian": true
+   },
+   {
+    "des": "2I",
+    "leg": "departure",
+    "theta": 95.07685783622581,
+    "phi": 329.4917014637881,
+    "dist_to_meridian_plane": 58.88647059587343,
+    "on_meridian": false
+   },
+   {
+    "des": "3I",
+    "leg": "arrival",
+    "theta": 121.7722536178553,
+    "phi": 355.80342213794825,
+    "dist_to_meridian_plane": 27.542715799894925,
+    "on_meridian": true
+   },
+   {
+    "des": "3I",
+    "leg": "periapsis",
+    "theta": 26.85487440916996,
+    "phi": 32.747588857375334,
+    "dist_to_meridian_plane": 1.8028227537329784,
+    "on_meridian": true
+   },
+   {
+    "des": "3I",
+    "leg": "departure",
+    "theta": 76.35382746618154,
+    "phi": 181.02008984147375,
+    "dist_to_meridian_plane": 26.88690126126953,
+    "on_meridian": true
+   }
+  ],
+  "periapsides_on_meridian": 3,
+  "n_periapsides": 3,
+  "band_fraction": 0.49999999999999994,
+  "p_binomial": 0.12499999999999996,
+  "note": "periapsis = boundary-transit proxy; binomial on a registered 30-deg plane width; n=3, ledger datum"
+ },
+ "T4_resident_gradient": {
+  "n": 91,
+  "rho_cone_vs_q": 0.07397880975826146,
+  "p": 0.485857237853755,
+  "interpretation": "per-object cone angle is flat against perihelion distance -- the nested-cell gradient does not survive; the resident axis offset from the transit band is consistent with a wider/averaged reading"
+ },
+ "verdict": "HARMONIC-BIPOLAR CONSISTENT: l=1 leads the residual spectrum in both eras at opposite sign, the free dipoles form a mirror pair, and the resident gradient control is flat"
+}

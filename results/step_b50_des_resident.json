@@ -1,0 +1,94 @@
+{
+ "method": "DES (Bernardinelli et al. 2022, ApJS 258, 41) detached cohort scored against the pre-declared axis; the cohort's own designation-derived footprint baseline is the honest comparison -- DES opposition fields sit in the axis sector, so an elevated in-cap rate is partly geometric.",
+ "axis_deg": 49.0,
+ "axis_beta": -17.0,
+ "cap_deg": 60.0,
+ "catalogue": {
+  "n_total": 814,
+  "detached_n": 16,
+  "file": "data/raw/des/y6_des_tnos_color.fits",
+  "sha256": "4f2153f8726485bb661cbf9027a840c69e11c6d87c925d386055b3fdff4ea6e8",
+  "survey_area_deg2": 5000
+ },
+ "detached": {
+  "n": 16,
+  "varpi_cap": {
+   "n_in": 13,
+   "frac": 0.8125,
+   "p_vs_uniform_1_3": 0.0001159902516152159,
+   "p_vs_baseline_0p42": 0.0017828552490114116,
+   "p_vs_prediction_0p59": 0.07902038484282196,
+   "p_vs_own_footprint": 0.04360413130751597
+  },
+  "peri_cap_3d": {
+   "n_in": 13,
+   "frac": 0.8125
+  },
+  "footprint": {
+   "baseline_frac": 0.5524732644369246,
+   "lam_opp": [
+    359.50817125228536,
+    345.3167249819116,
+    345.3167249819116,
+    359.9344344256434,
+    359.6874198828212,
+    14.42707187589599,
+    14.42707187589599,
+    60.39193280414037,
+    122.42586963932786,
+    359.43634824577634,
+    29.038495217529828,
+    330.0602513362759,
+    330.0602513362759,
+    0.15748001258646127,
+    0.15748001258646127,
+    0.15748001258646127
+   ]
+  },
+  "R_varpi": 0.7453429043407505,
+  "mean_varpi_deg": 23.291436194255446,
+  "p_rayleigh": 0.00013795586803267248,
+  "note": "Bernardinelli et al. report azimuthal isotropy for this cohort; the pre-declared directional cap is a different statistic -- membership against a fixed registered direction, not uniformity of the 2-D distribution."
+ },
+ "sbdb_overlap": {
+  "n_matched": 14,
+  "matched_names": [
+   "2003 SS422",
+   "2013 RA109",
+   "2013 SL102",
+   "2014 SX403",
+   "2014 TS115",
+   "2014 TU115",
+   "2014 WB556",
+   "2015 BP519",
+   "2015 SO20",
+   "2016 QU89",
+   "2016 QV89",
+   "2016 SA59",
+   "2016 SD106",
+   "2016 SG58"
+  ],
+  "n_des_only": 2,
+  "des_only_names": [
+   "2013 RC156",
+   "2015 UN105"
+  ],
+  "dvarpi_median_deg": 0.24941185000000132,
+  "dvarpi_max_deg": 0.3583454399999937,
+  "cap_membership_agreement": [
+   "2003 SS422",
+   "2013 RA109",
+   "2013 SL102",
+   "2014 TS115",
+   "2014 TU115",
+   "2014 WB556",
+   "2015 SO20",
+   "2016 QU89",
+   "2016 QV89",
+   "2016 SA59",
+   "2016 SD106",
+   "2016 SG58"
+  ],
+  "note": "per-object |dvarpi| between DES and SBDB orbit determinations -- the resident-side inter-catalogue floor, analogous to the step_079 comet fitter audit"
+ }
+}

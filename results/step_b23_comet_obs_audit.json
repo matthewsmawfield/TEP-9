@@ -1,0 +1,166 @@
+{
+ "n_code_only": 54,
+ "cap_def": {
+  "axis": "(34,-13) pre-declared extreme-TNO",
+  "cap_deg": 60,
+  "n_in": 19,
+  "n_out": 35,
+  "dof_p": 0.0029505468290258216
+ },
+ "A1_circumstance_audit": {
+  "rows": {
+   "nobs": {
+    "n_in": 19,
+    "n_out": 35,
+    "med_in": 328.0,
+    "med_out": 598.0,
+    "p_2sided": 0.21804982557989916
+   },
+   "arc_days": {
+    "n_in": 19,
+    "n_out": 35,
+    "med_in": 495.01,
+    "med_out": 495.41999999999996,
+    "p_2sided": 0.7858486826072333
+   },
+   "arc_frac": {
+    "n_in": 19,
+    "n_out": 35,
+    "med_in": 0.3767408507815764,
+    "med_out": 0.4436241452487387,
+    "p_2sided": 0.057184185532914024
+   },
+   "t_year": {
+    "n_in": 19,
+    "n_out": 35,
+    "med_in": 1959.8729034907597,
+    "med_out": 2011.8353990417522,
+    "p_2sided": 0.4468003502275597
+   },
+   "q": {
+    "n_in": 19,
+    "n_out": 35,
+    "med_in": 1.7354,
+    "med_out": 1.6921,
+    "p_2sided": 0.6120331415229909
+   },
+   "i": {
+    "n_in": 19,
+    "n_out": 35,
+    "med_in": 92.926,
+    "med_out": 79.847,
+    "p_2sided": 0.7171527174670546
+   },
+   "aa": {
+    "n_in": 19,
+    "n_out": 35,
+    "med_in": 44.83,
+    "med_out": 32.86,
+    "p_2sided": 0.031120530053240333
+   }
+  },
+  "note": "if the cap selected poorly-observed comets (fewer nobs, shorter or one-sided arcs), the d_of excess would be an observational artifact; all p_2sided should be non-significant for the claim to stand"
+ },
+ "A2_balanced_arc": {
+  "n": 37,
+  "n_in": 12,
+  "n_out": 25,
+  "med_in": 0.184196744476968,
+  "med_out": 0.13074542444885423,
+  "p": 0.03851260988277311
+ },
+ "A3_regression_control": {
+  "n": 54,
+  "coefficients": {
+   "nobs": 1.1324557291313635e-05,
+   "arc_days": -8.02957604496879e-05,
+   "arc_frac": -0.009800881162436534
+  },
+  "residual_cap": {
+   "med_in": 0.04765247343890969,
+   "med_out": -0.06251107455241214,
+   "p": 0.0016711787107087641
+  },
+  "residual_spearman": {
+   "rho": -0.3719839908519153,
+   "p": 0.005610692963823509
+  }
+ },
+ "A4_matched_circumstance": {
+  "n_pairs": 19,
+  "med_in": 0.21202382273464052,
+  "med_out": 0.13216591174484943,
+  "p_wilcoxon": 0.027286529541015625
+ },
+ "warsaw": {
+  "n_spike": 106,
+  "A5_circumstance_audit": {
+   "nobs": {
+    "n_in": 32,
+    "n_out": 74,
+    "med_in": 376.5,
+    "med_out": 220.5,
+    "p_2sided": 0.019113294010952075
+   },
+   "arcy": {
+    "n_in": 32,
+    "n_out": 74,
+    "med_in": 2.3499999999999996,
+    "med_out": 2.0,
+    "p_2sided": 0.14255920344282808
+   },
+   "rms": {
+    "n_in": 32,
+    "n_out": 74,
+    "med_in": 0.535,
+    "med_out": 0.535,
+    "p_2sided": 0.6594471937066234
+   },
+   "nres": {
+    "n_in": 32,
+    "n_out": 74,
+    "med_in": 728.5,
+    "med_out": 416.0,
+    "p_2sided": 0.016468232243441742
+   },
+   "dh1": {
+    "n_in": 32,
+    "n_out": 74,
+    "med_in": 5.845000000000001,
+    "med_out": 5.135,
+    "p_2sided": 0.6226749829463384
+   },
+   "dh2": {
+    "n_in": 32,
+    "n_out": 74,
+    "med_in": 7.395,
+    "med_out": 6.41,
+    "p_2sided": 0.30678228163345156
+   }
+  },
+  "A6_datat_composition": {
+   "full_in_cap": [
+    18,
+    14
+   ],
+   "full_out_cap": [
+    44,
+    30
+   ],
+   "fisher_p_2sided": 0.8311956541943704,
+   "note": "'full' = data both sides of perihelion; if in-cap comets were preferentially one-sided (pre/post), the reconstruction gap would be leverage-driven"
+  },
+  "A7_full_arc_only": {
+   "n_in": 18,
+   "n_out": 44,
+   "med_in": 0.08227541083903933,
+   "med_out": 0.0806424625267498,
+   "p_dof": 0.4110413642077561,
+   "d_so_n_in": 17,
+   "d_so_n_out": 37,
+   "d_so_med_in": 0.09639442908037443,
+   "d_so_med_out": 0.06476007430142847,
+   "p_dso": 0.06811767762891373
+  }
+ }
+}

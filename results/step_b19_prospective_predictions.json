@@ -1,0 +1,42 @@
+{
+ "axis_deg": 49.0,
+ "cap_deg": 60.0,
+ "n_detached": 44,
+ "P1_next_detached": {
+  "sample": "next a>150, q>30 discoveries (any cc)",
+  "predicted_frac_in_cap": 0.59,
+  "observed_current": 0.59,
+  "footprint_only_baseline": 0.42,
+  "falsifier": "if the next ~20 detached discoveries land in-cap at the baseline rate (~42%) or below, the intrinsic-axis interpretation loses its strongest prospective support",
+  "note": "mixture prediction = f*P_vm(cap) + (1-f)*uniform; baseline = each object's footprint position smeared by the OSSOS-measured coupling at 100%"
+ },
+ "P2_direction": {
+  "predicted_mean_varpi_deg": 49.0,
+  "ci_95_deg": [
+   17.0,
+   88.0
+  ],
+  "footprint_only_baseline_deg": 10.5,
+  "falsifier": "a future detached subsample whose mean varpi lands outside the CI while its footprint stays near ~10 deg would contradict the axis being a fixed inertial structure"
+ },
+ "P3_perturber_crosscheck": {
+  "if_point_mass": "anti-aligned confinement places the perturber's perihelion near ~229 deg -- coincident with the shallow-JFC concentration found in b17",
+  "discriminator": "deep surveys covering lam ~ 229 deg, beta ~ +17 deg either find the mass or they do not; under the field interpretation that region is the outflow end of the boundary, under the mass interpretation it is the perturber's own apsidal direction",
+  "note": "the two hypotheses make different predictions for that sky region: a detectable moving point source vs nothing"
+ },
+ "P4_comet_channel": {
+  "sample": "fresh long-period comets entering catalog",
+  "predeclared_cap_deg": 60,
+  "predeclared_axis": "lam ~ 34, beta ~ -13 (comet-side)",
+  "n_code_only_class1": 54,
+  "n_in": 19,
+  "n_out": 35,
+  "frac_cap_of_sample": 0.35185185185185186,
+  "rate_gt_0p2_in": 0.5789473684210527,
+  "rate_gt_0p2_out": 0.22857142857142856,
+  "med_in_deg": 0.21202382273464052,
+  "med_out_deg": 0.13074542444885423,
+  "expected": "reconstruction discrepancies concentrated in the cap: the CODE-measured rate of d(orig->fut) > 0.2 deg is 58% in-cap vs 23% out-cap, energy channel flat",
+  "falsifier": "a fresh comet cohort with flat rotation-channel vs the cap would undercut the clock-channel claim"
+ }
+}

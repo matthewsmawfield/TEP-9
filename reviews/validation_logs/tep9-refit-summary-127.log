@@ -1,0 +1,197 @@
+[INFO] [STEP 127] LOGGER INITIALIZED: step_127_nonwarsaw_refit (Step 127)
+[INFO] [STEP 127] ================================================================================
+[INFO] [STEP 127] Non-Warsaw two-leg refit on raw MPC astrometry
+[INFO] [STEP 127] ================================================================================
+[INFO] [STEP 127] refit cohort: 600 comets with perihelion >= 1950
+[INFO] [STEP 127] 587 checkpointed, 13 failed, 0 to process
+[INFO] [STEP 127] fitted cohort: 587 comets (13 failed/skipped)
+{
+ "step": "step_127_nonwarsaw_refit",
+ "description": "independent non-Warsaw two-leg LM refit on raw MPC astrometry; boundary propagation identical to the catalogue record",
+ "min_year": 1950.0,
+ "min_obs_per_leg": 12,
+ "n_attempted": 600,
+ "n_fitted": 587,
+ "n_failed": 13,
+ "n_full_arc": 586,
+ "n_dual_leg": 374,
+ "T1_validity": {
+  "drot_concordance": {
+   "n": 586,
+   "rho": 0.9978499173108192,
+   "p": 0.0
+  },
+  "element_diffs_vs_sbdb": {
+   "med_dq_au": 2.0607799888106015e-05,
+   "med_di_deg": 3.4415671073873e-05,
+   "med_pdir_deg": 0.003295825456023843,
+   "p95_pdir_deg": 0.045756744702685
+  }
+ },
+ "T2_replication": {
+  "our_record": {
+   "n_in": 162,
+   "n_out": 424,
+   "med_gap": 0.010447260164984318,
+   "p_mwu": 0.18380247476879413,
+   "obs_med_diff": 0.010447260164984318,
+   "p_perm": 0.38552289542091583
+  },
+  "catalogue_same_members": {
+   "n_in": 162,
+   "n_out": 424,
+   "med_gap": -0.016983273257364484,
+   "p_mwu": 0.4150114364119598
+  },
+  "our_record_code_overlap": {
+   "n_in": 77,
+   "n_out": 175,
+   "med_gap": 0.039494635338525264,
+   "p_mwu": 0.11420129828728015
+  },
+  "d_in_carrier": {
+   "full": {
+    "our": {
+     "n_in": 162,
+     "med_in": 0.09805112930216761,
+     "med_out": 0.08509456396575538,
+     "p": 0.033991224588975265
+    },
+    "cat": {
+     "n_in": 162,
+     "med_in": 0.09539301937332184,
+     "med_out": 0.0838157699776806,
+     "p": 0.02650878273998777
+    },
+    "per_comet_rho": 0.9547658501510735,
+    "per_comet_p": 8.5988879158585e-310
+   },
+   "code_overlap": {
+    "our": {
+     "n_in": 77,
+     "med_in": 0.10119297805915865,
+     "med_out": 0.07611297989945817,
+     "p": 0.00695413813540966
+    },
+    "cat": {
+     "n_in": 77,
+     "med_in": 0.09402308165483048,
+     "med_out": 0.07643680184744361,
+     "p": 0.004971278539277095
+    },
+    "per_comet_rho": 0.9353138921820717,
+    "per_comet_p": 8.44571463481608e-115
+   }
+  }
+ },
+ "T3_leg_disagreement": {
+  "our_ddirf_cap": {
+   "n": 374,
+   "n_in": 99,
+   "med_in": 0.14843100229618267,
+   "med_out": 0.12294939762351244,
+   "p": 0.10663775741951131
+  },
+  "ddirf_vs_cat_drot": {
+   "rho": 0.9468208914567534,
+   "p": 2.7697869129831332e-185
+  },
+  "leg_vs_osc": {
+   "all_inbound": {
+    "n_in": 99,
+    "med_in": 0.1080794548379425,
+    "med_out": 0.08206204049690824,
+    "p": 0.002765602296490572
+   },
+   "all_outbound": {
+    "n_in": 99,
+    "med_in": 0.09641779240228103,
+    "med_out": 0.09897883485999712,
+    "p": 0.5887847114053215
+   },
+   "code_inbound": {
+    "n_in": 48,
+    "med_in": 0.11469993868764315,
+    "med_out": 0.07269052259802447,
+    "p": 1.119675640290468e-05
+   },
+   "code_outbound": {
+    "n_in": 48,
+    "med_in": 0.09590510310536365,
+    "med_out": 0.08802361356400765,
+    "p": 0.16934446689856242
+   }
+  }
+ },
+ "T4_cross_arc": {
+  "xarc_rms": {
+   "n": 374,
+   "n_in": 99,
+   "med_in_arcsec": 5.3835190236593355,
+   "med_out_arcsec": 6.2571409365529655,
+   "p": 0.9264029709068745
+  }
+ },
+ "T5_audit": {
+  "rms_all_median": 0.7619929265753325,
+  "rms_all_p95": 2.1945647230596483,
+  "n_failed_examples": [
+   "C/1951 P1 (Wilson-Harrington)",
+   "C/1956 E1 (Mrkos)",
+   "C/1958 D1 (Burnham)",
+   "C/1959 O1 (Bester-Hoffmeister)",
+   "C/1959 Q1 (Alcock)",
+   "C/1973 W1 (Gibson)",
+   "C/1981 M1 (Gonzalez)",
+   "C/1986 P1 (Wilson)",
+   "C/1996 R1 (Hergenrother-Spahr)",
+   "C/2010 E3 (WISE)"
+  ]
+ },
+ "T6_ng_stratification": {
+  "ng_clean_d_in": {
+   "n_in": 85,
+   "n_out": 245,
+   "med_in": 0.10260685658628521,
+   "med_out": 0.08220844243494572,
+   "p": 0.005778727455498161
+  },
+  "q_strata_d_in": {
+   "q>2.0": {
+    "n_in": 66,
+    "med_in": 0.10522776523996677,
+    "med_out": 0.07704533961010296,
+    "p": 0.0037278567308288236
+   },
+   "q>2.5": {
+    "n_in": 58,
+    "med_in": 0.10522776523996677,
+    "med_out": 0.07232226814570238,
+    "p": 0.0025980907702954294
+   },
+   "q>3.0": {
+    "n_in": 47,
+    "med_in": 0.1097374014189382,
+    "med_out": 0.06621264237201507,
+    "p": 9.257626843967807e-05
+   }
+  }
+ },
+ "verdict": "EXPLORATORY REFIT COMPARISON: catalogue concordance and inbound carrier contrasts are recorded in T1-T3. Shared astrometry, common force model, nuisance absorption, and observation-level covariance remain unresolved. This is not a measured lapse or proof that catalogue systematics are absent.",
+ "inputs": [
+  "results/step_b84_pre2018_sbdb.csv",
+  "data/raw/mpc/obs/*.json (MPC get-obs ADES_DF, cached)",
+  "data/raw/mpc/sbdb_fp/*.json (SBDB full-prec seeds, cached)",
+  "data/raw/mpc/obscodes.json",
+  "data/raw/spice/de440s.bsp",
+  "data/raw/naif/naif0012.tls"
+ ],
+ "caveats": [
+  "The refit is pure-gravity: cometary non-gravitational terms are absorbed into both leg solutions; the residual leg disagreement therefore carries the NG floor as well as any systematic. The registered tests are population contrasts (in-cap vs out-cap) on identical machinery, so a uniform NG floor cancels in the median gap but a cap-asymmetric term does not.",
+  "Leg fits are unweighted (no astrometric uncertainties); MAD clipping substitutes for catalogue rejection flags.",
+  "MPC coverage before ~1950 is sparse; the cohort floor is set by observability, not by the anomaly."
+ ]
+}
+[INFO] [STEP 127] Saving data: step_b91_nonwarsaw_refit.json
+[INFO] [STEP 127] Saving data: step_b91_nonwarsaw_refit.csv
+[INFO] [STEP 127] Saving data: step_b91_nonwarsaw_refit.png

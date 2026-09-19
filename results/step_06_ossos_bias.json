@@ -1,0 +1,409 @@
+{
+ "catalog": "VizieR J/ApJS/236/18 OSSOS t3char",
+ "n_total": 840,
+ "n_detached": 31,
+ "B1_pointing_coupling": {
+  "mean_abs_dphi_deg": 50.8,
+  "R_coupling": 0.513,
+  "R_null_mean": 0.16,
+  "p_vs_shuffled": 0.00024998750062496874,
+  "note": "R~1 => objects found at their own perihelion direction (full pointing bias); R~null => discovery longitude independent of varpi"
+ },
+ "B2_ossos_axis": {
+  "varpi_mean_deg": 329.1,
+  "R": 0.108,
+  "p_rayleigh": 0.6981778479502588,
+  "sbdb_cluster_axis_deg": 49.9,
+  "note": "OSSOS deep blocks concentrated near lam~210-240, the anti-cluster side"
+ },
+ "B2_footprint": {
+  "lam_d_hist_edges": [
+   0,
+   30,
+   60,
+   90,
+   120,
+   150,
+   180,
+   210,
+   240,
+   270,
+   300,
+   330,
+   360
+  ],
+  "lam_d_hist": [
+   267,
+   254,
+   0,
+   0,
+   0,
+   0,
+   147,
+   161,
+   11,
+   0,
+   0,
+   0
+  ]
+ },
+ "B3_clustered_discoveries": {
+  "n_within60": 13,
+  "lam_d_deg": [
+   7.9,
+   9.5,
+   9.5,
+   9.8,
+   12.9,
+   14.5,
+   24.4,
+   27.4,
+   48.4,
+   49.8,
+   50.2,
+   50.3,
+   51.3
+  ],
+  "lam_d_spread_deg": 43.5
+ },
+ "B4_distance": {
+  "r_over_q_median": 1.1,
+  "r_over_q_p84": 1.42,
+  "note": "r/q~1 means found near perihelion; >>1 means found far from perihelion (bias-immune direction)"
+ },
+ "B5_nodal_audit": {
+  "a30_40": {
+   "N": 193,
+   "p_Omega": 7.397165787946316e-05,
+   "p_varpi": 0.3296827755212167
+  },
+  "a40_60": {
+   "N": 793,
+   "p_Omega": 1.542334978228471e-12,
+   "p_varpi": 0.18459049405901296
+  },
+  "a60_150": {
+   "N": 195,
+   "p_Omega": 2.4364107243298186e-06,
+   "p_varpi": 0.44415508499148854
+  },
+  "a150_detached": {
+   "N": 44,
+   "p_Omega": 0.008536237204167,
+   "p_varpi": 0.00731395956699955
+  }
+ },
+ "B5_note": "Omega is non-uniform at EVERY a (nodal discovery bias); varpi is uniform for a<150 in the same catalog under the same footprint -- the a>150 varpi cluster is population-specific, not a generic artifact",
+ "detached_table": [
+  {
+   "id": "o3e01",
+   "a": 150.2,
+   "q": 41.0,
+   "varpi": 253.3,
+   "lam_d": 213.5,
+   "dphi": 39.8,
+   "dist_AU": 45.4,
+   "r_over_q": 1.11
+  },
+  {
+   "id": "o3e02",
+   "a": 61.9,
+   "q": 45.5,
+   "varpi": 28.9,
+   "lam_d": 12.9,
+   "dphi": 16.0,
+   "dist_AU": 45.9,
+   "r_over_q": 1.01
+  },
+  {
+   "id": "o3e03",
+   "a": 200.2,
+   "q": 43.9,
+   "varpi": 84.1,
+   "lam_d": 14.5,
+   "dphi": 69.6,
+   "dist_AU": 61.2,
+   "r_over_q": 1.39
+  },
+  {
+   "id": "o3e04",
+   "a": 56.8,
+   "q": 35.9,
+   "varpi": 177.4,
+   "lam_d": 239.3,
+   "dphi": -61.9,
+   "dist_AU": 41.5,
+   "r_over_q": 1.15
+  },
+  {
+   "id": "o3e05",
+   "a": 72.3,
+   "q": 42.6,
+   "varpi": 245.6,
+   "lam_d": 240.9,
+   "dphi": 4.7,
+   "dist_AU": 42.7,
+   "r_over_q": 1.0
+  },
+  {
+   "id": "o3e06",
+   "a": 55.0,
+   "q": 37.9,
+   "varpi": 30.6,
+   "lam_d": 27.4,
+   "dphi": 3.2,
+   "dist_AU": 37.9,
+   "r_over_q": 1.0
+  },
+  {
+   "id": "o3e07",
+   "a": 54.9,
+   "q": 36.7,
+   "varpi": 246.7,
+   "lam_d": 27.0,
+   "dphi": -140.3,
+   "dist_AU": 65.5,
+   "r_over_q": 1.78
+  },
+  {
+   "id": "o3e08",
+   "a": 49.7,
+   "q": 35.9,
+   "varpi": 49.9,
+   "lam_d": 24.4,
+   "dphi": 25.4,
+   "dist_AU": 36.7,
+   "r_over_q": 1.02
+  },
+  {
+   "id": "o3e09",
+   "a": 48.8,
+   "q": 36.5,
+   "varpi": 38.3,
+   "lam_d": 48.4,
+   "dphi": -10.0,
+   "dist_AU": 36.6,
+   "r_over_q": 1.0
+  },
+  {
+   "id": "o3e10",
+   "a": 58.8,
+   "q": 38.5,
+   "varpi": 44.1,
+   "lam_d": 51.3,
+   "dphi": -7.2,
+   "dist_AU": 38.6,
+   "r_over_q": 1.0
+  },
+  {
+   "id": "o3e11",
+   "a": 59.5,
+   "q": 37.8,
+   "varpi": 270.6,
+   "lam_d": 52.5,
+   "dphi": -141.9,
+   "dist_AU": 72.3,
+   "r_over_q": 1.91
+  },
+  {
+   "id": "o3e12",
+   "a": 63.4,
+   "q": 37.5,
+   "varpi": 49.0,
+   "lam_d": 50.3,
+   "dphi": -1.4,
+   "dist_AU": 37.5,
+   "r_over_q": 1.0
+  },
+  {
+   "id": "o3e13",
+   "a": 53.7,
+   "q": 38.2,
+   "varpi": 83.4,
+   "lam_d": 49.8,
+   "dphi": 33.6,
+   "dist_AU": 39.7,
+   "r_over_q": 1.04
+  },
+  {
+   "id": "o3e15",
+   "a": 75.2,
+   "q": 35.8,
+   "varpi": 351.2,
+   "lam_d": 50.2,
+   "dphi": -59.0,
+   "dist_AU": 42.9,
+   "r_over_q": 1.2
+  },
+  {
+   "id": "o3e16",
+   "a": 65.0,
+   "q": 34.4,
+   "varpi": 306.1,
+   "lam_d": 49.2,
+   "dphi": -103.1,
+   "dist_AU": 56.5,
+   "r_over_q": 1.64
+  },
+  {
+   "id": "o3e17",
+   "a": 61.4,
+   "q": 36.7,
+   "varpi": 305.7,
+   "lam_d": 49.9,
+   "dphi": -104.2,
+   "dist_AU": 57.1,
+   "r_over_q": 1.56
+  },
+  {
+   "id": "o3e18",
+   "a": 79.4,
+   "q": 36.9,
+   "varpi": 246.5,
+   "lam_d": 234.9,
+   "dphi": 11.6,
+   "dist_AU": 37.2,
+   "r_over_q": 1.01
+  },
+  {
+   "id": "o3e19",
+   "a": 48.4,
+   "q": 34.0,
+   "varpi": 183.1,
+   "lam_d": 234.6,
+   "dphi": -51.5,
+   "dist_AU": 37.4,
+   "r_over_q": 1.1
+  },
+  {
+   "id": "o3e20PD",
+   "a": 52.0,
+   "q": 36.4,
+   "varpi": 268.3,
+   "lam_d": 235.2,
+   "dphi": 33.1,
+   "dist_AU": 38.0,
+   "r_over_q": 1.04
+  },
+  {
+   "id": "o3e21",
+   "a": 48.8,
+   "q": 35.2,
+   "varpi": 320.5,
+   "lam_d": 236.0,
+   "dphi": 84.4,
+   "dist_AU": 43.7,
+   "r_over_q": 1.24
+  },
+  {
+   "id": "o3e22",
+   "a": 51.9,
+   "q": 37.7,
+   "varpi": 165.5,
+   "lam_d": 236.0,
+   "dphi": -70.5,
+   "dist_AU": 43.9,
+   "r_over_q": 1.16
+  },
+  {
+   "id": "o3e23PD",
+   "a": 54.1,
+   "q": 35.9,
+   "varpi": 137.6,
+   "lam_d": 235.9,
+   "dphi": -98.2,
+   "dist_AU": 50.0,
+   "r_over_q": 1.4
+  },
+  {
+   "id": "o3e24",
+   "a": 70.4,
+   "q": 37.7,
+   "varpi": 214.9,
+   "lam_d": 202.3,
+   "dphi": 12.6,
+   "dist_AU": 38.0,
+   "r_over_q": 1.01
+  },
+  {
+   "id": "o3e25",
+   "a": 64.8,
+   "q": 37.6,
+   "varpi": 166.7,
+   "lam_d": 206.5,
+   "dphi": -39.9,
+   "dist_AU": 40.3,
+   "r_over_q": 1.07
+  },
+  {
+   "id": "o3e26",
+   "a": 91.1,
+   "q": 41.5,
+   "varpi": 216.5,
+   "lam_d": 202.1,
+   "dphi": 14.4,
+   "dist_AU": 42.1,
+   "r_over_q": 1.01
+  },
+  {
+   "id": "o3e27PD",
+   "a": 62.0,
+   "q": 36.6,
+   "varpi": 271.4,
+   "lam_d": 205.8,
+   "dphi": 65.6,
+   "dist_AU": 44.1,
+   "r_over_q": 1.2
+  },
+  {
+   "id": "o3e28",
+   "a": 51.4,
+   "q": 35.7,
+   "varpi": 312.0,
+   "lam_d": 201.7,
+   "dphi": 110.2,
+   "dist_AU": 52.0,
+   "r_over_q": 1.46
+  },
+  {
+   "id": "o3e29",
+   "a": 56.5,
+   "q": 37.7,
+   "varpi": 28.9,
+   "lam_d": 9.5,
+   "dphi": 19.4,
+   "dist_AU": 38.3,
+   "r_over_q": 1.02
+  },
+  {
+   "id": "o3e30PD",
+   "a": 70.8,
+   "q": 37.9,
+   "varpi": 54.6,
+   "lam_d": 7.9,
+   "dphi": 46.8,
+   "dist_AU": 42.3,
+   "r_over_q": 1.11
+  },
+  {
+   "id": "o3e31",
+   "a": 57.7,
+   "q": 33.0,
+   "varpi": 97.8,
+   "lam_d": 9.5,
+   "dphi": 88.3,
+   "dist_AU": 46.6,
+   "r_over_q": 1.41
+  },
+  {
+   "id": "o3e32",
+   "a": 67.8,
+   "q": 36.7,
+   "varpi": 2.9,
+   "lam_d": 9.8,
+   "dphi": -7.0,
+   "dist_AU": 36.8,
+   "r_over_q": 1.0
+  }
+ ]
+}

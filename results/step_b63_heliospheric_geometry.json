@@ -1,0 +1,285 @@
+{
+ "step": "step_099_heliospheric_geometry",
+ "description": "Score the TEP axis and 60-deg caps against heliospheric reference directions, escaping-probe asymptotes (Horizons vectors), and ISO inbound asymptotes (SBDB hyperbolic elements).",
+ "epoch": "2026-01-01",
+ "axis": {
+  "ecl_lon": 49.0,
+  "ecl_lat": -17.0,
+  "cap_deg": 60.0
+ },
+ "axis_geometry": {
+  "ISM inflow (upwind)": {
+   "sep_deg": 151.21,
+   "uniform_p": 0.9382
+  },
+  "heliotail apex (downwind)": {
+   "sep_deg": 28.79,
+   "uniform_p": 0.0618
+  },
+  "IBEX ribbon centre": {
+   "sep_deg": 156.92,
+   "uniform_p": 0.96
+  },
+  "pristine ISMF": {
+   "sep_deg": 162.31,
+   "uniform_p": 0.9764
+  }
+ },
+ "directions_table": [
+  {
+   "kind": "reference",
+   "label": "ISM inflow (upwind)",
+   "ecl_lon": 255.8,
+   "ecl_lat": 5.16,
+   "sep_axis_deg": 151.21,
+   "sep_antiaxis_deg": 28.79,
+   "in_cap": false,
+   "in_mirror_cap": true
+  },
+  {
+   "kind": "reference",
+   "label": "heliotail apex (downwind)",
+   "ecl_lon": 75.8,
+   "ecl_lat": -5.16,
+   "sep_axis_deg": 28.79,
+   "sep_antiaxis_deg": 151.21,
+   "in_cap": true,
+   "in_mirror_cap": false
+  },
+  {
+   "kind": "reference",
+   "label": "IBEX ribbon centre",
+   "ecl_lon": 221.0,
+   "ecl_lat": 39.0,
+   "sep_axis_deg": 156.92,
+   "sep_antiaxis_deg": 23.08,
+   "in_cap": false,
+   "in_mirror_cap": true
+  },
+  {
+   "kind": "reference",
+   "label": "pristine ISMF",
+   "ecl_lon": 227.28,
+   "ecl_lat": 34.62,
+   "sep_axis_deg": 162.31,
+   "sep_antiaxis_deg": 17.69,
+   "in_cap": false,
+   "in_mirror_cap": true
+  },
+  {
+   "kind": "probe_velocity",
+   "r_au": 169.25525635962933,
+   "label": "Voyager 1",
+   "ecl_lon": 261.34,
+   "ecl_lat": 35.54,
+   "sep_axis_deg": 145.83,
+   "sep_antiaxis_deg": 34.17,
+   "in_cap": false,
+   "in_mirror_cap": true
+  },
+  {
+   "kind": "probe_position",
+   "r_au": 169.25525635962933,
+   "label": "Voyager 1",
+   "ecl_lon": 256.7,
+   "ecl_lat": 35.15,
+   "sep_axis_deg": 149.39,
+   "sep_antiaxis_deg": 30.61,
+   "in_cap": false,
+   "in_mirror_cap": true
+  },
+  {
+   "kind": "probe_velocity",
+   "r_au": 141.71355657163764,
+   "label": "Voyager 2",
+   "ecl_lon": 294.23,
+   "ecl_lat": -47.86,
+   "sep_axis_deg": 92.98,
+   "sep_antiaxis_deg": 87.02,
+   "in_cap": false,
+   "in_mirror_cap": false
+  },
+  {
+   "kind": "probe_position",
+   "r_au": 141.71355657163764,
+   "label": "Voyager 2",
+   "ecl_lon": 290.67,
+   "ecl_lat": -38.35,
+   "sep_axis_deg": 100.05,
+   "sep_antiaxis_deg": 79.95,
+   "in_cap": false,
+   "in_mirror_cap": false
+  },
+  {
+   "kind": "probe_velocity",
+   "r_au": 140.06377961914467,
+   "label": "Pioneer 10",
+   "ecl_lon": 84.06,
+   "ecl_lat": 2.92,
+   "sep_axis_deg": 39.92,
+   "sep_antiaxis_deg": 140.08,
+   "in_cap": true,
+   "in_mirror_cap": false
+  },
+  {
+   "kind": "probe_position",
+   "r_au": 140.06377961914467,
+   "label": "Pioneer 10",
+   "ecl_lon": 80.17,
+   "ecl_lat": 2.99,
+   "sep_axis_deg": 36.69,
+   "sep_antiaxis_deg": 143.31,
+   "in_cap": true,
+   "in_mirror_cap": false
+  },
+  {
+   "kind": "probe_velocity",
+   "r_au": 116.20776835624004,
+   "label": "Pioneer 11",
+   "ecl_lon": 291.79,
+   "ecl_lat": 12.61,
+   "sep_axis_deg": 119.38,
+   "sep_antiaxis_deg": 60.62,
+   "in_cap": false,
+   "in_mirror_cap": false
+  },
+  {
+   "kind": "probe_position",
+   "r_au": 116.20776835624004,
+   "label": "Pioneer 11",
+   "ecl_lon": 284.61,
+   "ecl_lat": 13.86,
+   "sep_axis_deg": 126.48,
+   "sep_antiaxis_deg": 53.52,
+   "in_cap": false,
+   "in_mirror_cap": true
+  },
+  {
+   "kind": "probe_velocity",
+   "r_au": 63.576012011531084,
+   "label": "New Horizons",
+   "ecl_lon": 293.01,
+   "ecl_lat": 2.07,
+   "sep_axis_deg": 115.43,
+   "sep_antiaxis_deg": 64.57,
+   "in_cap": false,
+   "in_mirror_cap": false
+  },
+  {
+   "kind": "probe_position",
+   "r_au": 63.576012011531084,
+   "label": "New Horizons",
+   "ecl_lon": 288.36,
+   "ecl_lat": 1.99,
+   "sep_axis_deg": 119.82,
+   "sep_antiaxis_deg": 60.18,
+   "in_cap": false,
+   "in_mirror_cap": false
+  },
+  {
+   "kind": "iso_arrival",
+   "e": 1.2,
+   "q_au": 0.256,
+   "i_deg": 123.0,
+   "label": "1I/'Oumuamua",
+   "ecl_lon": 284.47,
+   "ecl_lat": 56.59,
+   "sep_axis_deg": 122.86,
+   "sep_antiaxis_deg": 57.14,
+   "in_cap": false,
+   "in_mirror_cap": true
+  },
+  {
+   "kind": "iso_arrival",
+   "e": 3.36,
+   "q_au": 2.01,
+   "i_deg": 44.1,
+   "label": "2I/Borisov",
+   "ecl_lon": 54.07,
+   "ecl_lat": 42.96,
+   "sep_axis_deg": 60.14,
+   "sep_antiaxis_deg": 119.86,
+   "in_cap": false,
+   "in_mirror_cap": false
+  },
+  {
+   "kind": "iso_arrival",
+   "e": 6.14,
+   "q_au": 1.36,
+   "i_deg": 175.0,
+   "label": "3I/ATLAS",
+   "ecl_lon": 293.47,
+   "ecl_lat": 2.39,
+   "sep_axis_deg": 115.09,
+   "sep_antiaxis_deg": 64.91,
+   "in_cap": false,
+   "in_mirror_cap": false
+  }
+ ],
+ "probe_alibi": {
+  "n_probes": 5,
+  "n_velocity_in_cap": 1,
+  "n_velocity_in_mirror": 1,
+  "uniform_cap_fraction": 0.25,
+  "n_iso": 3,
+  "n_iso_in_cap": 0,
+  "n_iso_in_mirror": 1,
+  "note": "Probe directions are mission-constrained, not a random draw; reported as a geometric datum, not an inferential statistic."
+ },
+ "provenance": {
+  "horizons_-31": {
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND=%27-31%27&OBJ_DATA=%27YES%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27VECTORS%27&CENTER=%27%4010%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-01-02%27&STEP_SIZE=%271d%27&OUT_UNITS=%27AU-D%27&VEC_TABLE=%272%27",
+   "retrieved_utc": "2026-09-19T21:33:25.879080+00:00",
+   "bytes": 7656,
+   "sha256": "bc8b8b47cb42e7a340231c92e5b7cd0c84f335f098b4df337382cc8dad7d0004"
+  },
+  "horizons_-32": {
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND=%27-32%27&OBJ_DATA=%27YES%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27VECTORS%27&CENTER=%27%4010%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-01-02%27&STEP_SIZE=%271d%27&OUT_UNITS=%27AU-D%27&VEC_TABLE=%272%27",
+   "retrieved_utc": "2026-09-19T21:33:27.581568+00:00",
+   "bytes": 7842,
+   "sha256": "42245e5b447ae03f1eb6f93e97b4e02a9562f3105a0de93ed2d5b04b91c2fee6"
+  },
+  "horizons_-23": {
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND=%27-23%27&OBJ_DATA=%27YES%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27VECTORS%27&CENTER=%27%4010%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-01-02%27&STEP_SIZE=%271d%27&OUT_UNITS=%27AU-D%27&VEC_TABLE=%272%27",
+   "retrieved_utc": "2026-09-19T21:33:29.228363+00:00",
+   "bytes": 7155,
+   "sha256": "01dfcc7ca4095c749f82723c68dd2f027f425ac74a45a97c02fd759f57739d3e"
+  },
+  "horizons_-24": {
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND=%27-24%27&OBJ_DATA=%27YES%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27VECTORS%27&CENTER=%27%4010%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-01-02%27&STEP_SIZE=%271d%27&OUT_UNITS=%27AU-D%27&VEC_TABLE=%272%27",
+   "retrieved_utc": "2026-09-19T21:33:32.370541+00:00",
+   "bytes": 7154,
+   "sha256": "5127743753577bf9ddfaefc533fd84ba0b79d579e5b8af7b22283c3fac88ff47"
+  },
+  "horizons_-98": {
+   "url": "https://ssd.jpl.nasa.gov/api/horizons.api?format=text&COMMAND=%27-98%27&OBJ_DATA=%27YES%27&MAKE_EPHEM=%27YES%27&EPHEM_TYPE=%27VECTORS%27&CENTER=%27%4010%27&START_TIME=%272026-01-01%27&STOP_TIME=%272026-01-02%27&STEP_SIZE=%271d%27&OUT_UNITS=%27AU-D%27&VEC_TABLE=%272%27",
+   "retrieved_utc": "2026-09-19T21:33:34.257611+00:00",
+   "bytes": 7720,
+   "sha256": "0530b0011d18a1ef6edcdd75cd039446a23ff7aa0131ceec5efff7d6a76fdd71"
+  },
+  "sbdb_1I": {
+   "url": "https://ssd-api.jpl.nasa.gov/sbdb.api?des=1I",
+   "retrieved_utc": "2026-09-19T21:33:36.247012+00:00",
+   "bytes": 3366,
+   "sha256": "c91cda9e8960784914a09edf71cbcbf27984c8dbfa76cdcb33f79989085dbb92"
+  },
+  "sbdb_2I": {
+   "url": "https://ssd-api.jpl.nasa.gov/sbdb.api?des=2I",
+   "retrieved_utc": "2026-09-19T21:33:37.264101+00:00",
+   "bytes": 3487,
+   "sha256": "c732f48f98a9dfd0ab2823e820e80971a1fe32207d208e498f90112a3fa32e5d"
+  },
+  "sbdb_3I": {
+   "url": "https://ssd-api.jpl.nasa.gov/sbdb.api?des=3I",
+   "retrieved_utc": "2026-09-19T21:33:38.254264+00:00",
+   "bytes": 3537,
+   "sha256": "5a0827e0a0c3501e17cdba6dacdab74b66759422d9ade2678564d795603903a7"
+  }
+ },
+ "caveats": [
+  "Probe directions are mission-constrained (Jupiter-assist and escape geometry), not a random draw; the probe-alibi counts are a geometric datum, not an inferential test.",
+  "ISO inbound asymptotes are computed from SBDB osculating hyperbolic elements at their reference epochs; planetary perturbations shift the asymptote direction by <~1 deg for these solutions.",
+  "Velocity asymptote != position direction: a probe can sit inside the mirror cap by position while its velocity asymptote lies outside it (V2 case).",
+  "Reference directions are literature values with published uncertainties; the ISMF direction has +/-0.7 deg quoted errors."
+ ]
+}

@@ -1,0 +1,332 @@
+{
+ "step": "step_124_lineage_aphelion",
+ "description": "Aphelion-dipole channel on the SBDB record split by designation era: the reconstruction-independent spatial datum applied to the same cohorts where the residual channel was tested (steps_117-120).  Tide-aware and ecliptic-footprint nulls, quality strata matching the diagnosed residual systematic, free-dipole recovery, and era combination.",
+ "inputs": [
+  "data/raw/sbdb/sbdb_comets_all.json",
+  "results/step_b30_proper_time_slip.csv",
+  "results/step_b84_pre2018_sbdb.csv"
+ ],
+ "seed": 20261030,
+ "n_mc": 20000,
+ "n_post2017": 287,
+ "n_pre2018": 880,
+ "results": {
+  "post2017_near_parabolic": {
+   "label": "SBDB post-2017",
+   "n": 287,
+   "T1_tide_aware": {
+    "cap_34_-13": {
+     "d_par": 0.0949,
+     "p_tide_null": 0.0021498925053747312
+    },
+    "detached_50_-17": {
+     "d_par": 0.0904,
+     "p_tide_null": 0.0029498525073746312
+    },
+    "anti_214_13": {
+     "d_par": -0.0949,
+     "p_tide_null": 0.9982500874956253
+    },
+    "gal_antictr": {
+     "d_par": 0.0253,
+     "p_tide_null": 0.23653817309134542
+    },
+    "displaced_120_-40": {
+     "d_par": 0.0373,
+     "p_tide_null": 0.1464426778661067
+    }
+   },
+   "T2_ecliptic_null_cap": {
+    "d_par": 0.0949,
+    "p_ecl_null": 0.0022498875056247186
+   }
+  },
+  "pre2018_near_parabolic": {
+   "label": "SBDB pre-2018",
+   "n": 880,
+   "T1_tide_aware": {
+    "cap_34_-13": {
+     "d_par": 0.1101,
+     "p_tide_null": 4.999750012499375e-05
+    },
+    "detached_50_-17": {
+     "d_par": 0.1242,
+     "p_tide_null": 4.999750012499375e-05
+    },
+    "anti_214_13": {
+     "d_par": -0.1101,
+     "p_tide_null": 1.0
+    },
+    "gal_antictr": {
+     "d_par": 0.0756,
+     "p_tide_null": 0.00024998750062496874
+    },
+    "displaced_120_-40": {
+     "d_par": 0.1098,
+     "p_tide_null": 4.999750012499375e-05
+    }
+   },
+   "T2_ecliptic_null_cap": {
+    "d_par": 0.1101,
+    "p_ecl_null": 4.999750012499375e-05
+   }
+  },
+  "post2017_deep_plunger_q_lt_3p1": {
+   "label": "post2017 q<3.1",
+   "n": 148,
+   "T1_tide_aware": {
+    "cap_34_-13": {
+     "d_par": 0.0637,
+     "p_tide_null": 0.08384580770961451
+    },
+    "detached_50_-17": {
+     "d_par": 0.0638,
+     "p_tide_null": 0.08754562271886406
+    },
+    "anti_214_13": {
+     "d_par": -0.0637,
+     "p_tide_null": 0.9172541372931353
+    },
+    "gal_antictr": {
+     "d_par": 0.0036,
+     "p_tide_null": 0.46887655617219137
+    },
+    "displaced_120_-40": {
+     "d_par": 0.0534,
+     "p_tide_null": 0.13669316534173293
+    }
+   },
+   "T2_ecliptic_null_cap": {
+    "d_par": 0.0637,
+    "p_ecl_null": 0.09259537023148842
+   }
+  },
+  "pre2018_deep_plunger_q_lt_3p1": {
+   "label": "pre2018 q<3.1",
+   "n": 627,
+   "T1_tide_aware": {
+    "cap_34_-13": {
+     "d_par": 0.1127,
+     "p_tide_null": 4.999750012499375e-05
+    },
+    "detached_50_-17": {
+     "d_par": 0.1243,
+     "p_tide_null": 4.999750012499375e-05
+    },
+    "anti_214_13": {
+     "d_par": -0.1127,
+     "p_tide_null": 1.0
+    },
+    "gal_antictr": {
+     "d_par": 0.0705,
+     "p_tide_null": 0.0018499075046247689
+    },
+    "displaced_120_-40": {
+     "d_par": 0.1028,
+     "p_tide_null": 4.999750012499375e-05
+    }
+   },
+   "T2_ecliptic_null_cap": {
+    "d_par": 0.1127,
+    "p_ecl_null": 4.999750012499375e-05
+   }
+  },
+  "T3_strata": {
+   "post2017": {
+    "bound_e_lt_1": {
+     "n": 172,
+     "d_par": 0.1028,
+     "p_tide_null": 0.007499625018749062
+    },
+    "hyperbolic_e_ge_1": {
+     "n": 115,
+     "d_par": 0.083,
+     "p_tide_null": 0.05209739513024349
+    },
+    "arc_lt_365d": {
+     "n": 119,
+     "d_par": 0.0907,
+     "p_tide_null": 0.0359982000899955
+    },
+    "arc_ge_365d": {
+     "n": 168,
+     "d_par": 0.0979,
+     "p_tide_null": 0.011449427528623568
+    },
+    "nobs_lt_300": {
+     "n": 128,
+     "d_par": 0.0974,
+     "p_tide_null": 0.02134893255337233
+    },
+    "nobs_ge_300": {
+     "n": 159,
+     "d_par": 0.0929,
+     "p_tide_null": 0.01744912754362282
+    },
+    "cc_le_2": {
+     "n": 5
+    },
+    "span_arc": {
+     "n": 0
+    },
+    "one_sided_arc": {
+     "n": 0
+    },
+    "in_training": {
+     "n": 30,
+     "d_par": 0.1997,
+     "p_tide_null": 0.023148842557872105
+    },
+    "not_in_training": {
+     "n": 257,
+     "d_par": 0.0827,
+     "p_tide_null": 0.008449577521123944
+    }
+   },
+   "pre2018": {
+    "bound_e_lt_1": {
+     "n": 466,
+     "d_par": 0.1089,
+     "p_tide_null": 4.999750012499375e-05
+    },
+    "hyperbolic_e_ge_1": {
+     "n": 414,
+     "d_par": 0.1115,
+     "p_tide_null": 4.999750012499375e-05
+    },
+    "arc_lt_365d": {
+     "n": 514,
+     "d_par": 0.1112,
+     "p_tide_null": 4.999750012499375e-05
+    },
+    "arc_ge_365d": {
+     "n": 366,
+     "d_par": 0.1087,
+     "p_tide_null": 0.000199990000499975
+    },
+    "nobs_lt_300": {
+     "n": 588,
+     "d_par": 0.1005,
+     "p_tide_null": 9.99950002499875e-05
+    },
+    "nobs_ge_300": {
+     "n": 292,
+     "d_par": 0.1295,
+     "p_tide_null": 4.999750012499375e-05
+    },
+    "cc_le_2": {
+     "n": 5
+    },
+    "span_arc": {
+     "n": 300,
+     "d_par": 0.103,
+     "p_tide_null": 0.0007499625018749063
+    },
+    "one_sided_arc": {
+     "n": 185,
+     "d_par": 0.1286,
+     "p_tide_null": 0.0006499675016249188
+    },
+    "in_training": {
+     "n": 187,
+     "d_par": 0.1647,
+     "p_tide_null": 4.999750012499375e-05
+    },
+    "not_in_training": {
+     "n": 693,
+     "d_par": 0.0954,
+     "p_tide_null": 4.999750012499375e-05
+    }
+   }
+  },
+  "T4_e_gradient": {
+   "post2017": [
+    {
+     "e_bin": "[0.9,0.95)",
+     "n": 29,
+     "d_par": -0.0645,
+     "p_tide_null": 0.7400129993500325
+    },
+    {
+     "e_bin": "[0.95,0.985)",
+     "n": 28,
+     "d_par": -0.0559,
+     "p_tide_null": 0.6997150142492875
+    },
+    {
+     "e_bin": "[0.985,1.0)",
+     "n": 148,
+     "d_par": 0.1255,
+     "p_tide_null": 0.0024998750062496873
+    },
+    {
+     "e_bin": "[1.0,1.02)",
+     "n": 119,
+     "d_par": 0.0726,
+     "p_tide_null": 0.07189640517974101
+    }
+   ],
+   "pre2018": [
+    {
+     "e_bin": "[0.9,0.95)",
+     "n": 38,
+     "d_par": 0.012,
+     "p_tide_null": 0.45167741612919354
+    },
+    {
+     "e_bin": "[0.95,0.985)",
+     "n": 92,
+     "d_par": 0.1333,
+     "p_tide_null": 0.011899405029748513
+    },
+    {
+     "e_bin": "[0.985,1.0)",
+     "n": 422,
+     "d_par": 0.1077,
+     "p_tide_null": 4.999750012499375e-05
+    },
+    {
+     "e_bin": "[1.0,1.02)",
+     "n": 646,
+     "d_par": 0.0857,
+     "p_tide_null": 9.99950002499875e-05
+    }
+   ]
+  },
+  "T5_free_dipole": {
+   "post2017": {
+    "R": 0.1114,
+    "lam": 20.17,
+    "bet": -42.22,
+    "sep_cap": 31.59,
+    "sep_det": 35.76,
+    "sep_displ": 70.42
+   },
+   "pre2018": {
+    "R": 0.1486,
+    "lam": 60.29,
+    "bet": -49.16,
+    "sep_cap": 42.15,
+    "sep_det": 33.25,
+    "sep_displ": 42.35
+   }
+  },
+  "T6_era_combination": {
+   "p_post2017": 0.0021498925053747312,
+   "p_pre2018": 4.999750012499375e-05,
+   "fisher_stat": 32.09174997375756,
+   "df": 4,
+   "p_combined": 1.832248331675678e-06,
+   "mc_draws_per_test": 20000,
+   "mc_p_floor": 4.999750012499375e-05,
+   "interpretation": "Nominal under independent valid null p-values; not a TEP posterior probability.",
+   "limitation": "Shared selection effects are not removed by disjoint eras. Zero Monte Carlo exceedances indicate finite resolution."
+  }
+ },
+ "verdict": "On the reconstruction-free aphelion channel, the post-2017 SBDB holdout cohort (n=287) leans toward the cap axis at d_par=+0.095 (tide-aware p=0.00215) and toward the detached-TNO axis at +0.090 (p=0.00295); the pre-2018 cohort (n=880) leans at +0.110 (p=5e-05) / +0.124 (p=5e-05).  Combined era Fisher p=1.83e-06.  This channel uses published osculating elements only -- no three-leg reconstruction -- so it adjudicates whether the spatial anomaly lives in the discovered population or only in the Poznan-lineage fit record.",
+ "caveats": [
+  "Aphelion directions derive from SBDB osculating elements; the discovered population itself may carry survey footprint structure, which the tide-aware and ecliptic-band nulls only partially absorb (step_109 bounds the residual footprint at the few-percent level on the same channel).",
+  "The post-2017 and pre-2018 cohorts share no objects by construction (designation-era split), so their dipoles are compositionally independent; each is still a discovered-population sample, not an injected recovery.",
+  "A flat post-2017 dipole would not isolate which side fails -- the anomaly could be confined to the older population (survival bias: comets seen repeatedly before 2018) rather than to a fitting lineage."
+ ]
+}

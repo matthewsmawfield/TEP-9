@@ -1,0 +1,175 @@
+{
+ "step": "step_103_rtg_midlife_control",
+ "description": "Placebo-epoch and vintage-matched control for the Voyager-1 coherent RTG excess decline: the named mid-life degradation control left pending in step 098.  The telemetry record's own wander supplies the null for undocumented MHW aging.",
+ "inputs": [
+  "results/step_b62_rtg_nuclear.csv",
+  "results/step_b62_rtg_nuclear.json"
+ ],
+ "crossings_yr": {
+  "v1_ts": 27.28,
+  "v1_hp": 34.97,
+  "v2_ts": 30.03,
+  "v2_hp": 41.22
+ },
+ "baseline_window_yr": [
+  13.0,
+  26.0
+ ],
+ "T1_ramp_placebo": {
+  "v1_boundary_best": {
+   "onset": 38.0,
+   "width": 9.0,
+   "amp_pct": -0.7704251118556289
+  },
+  "v1_crossing_aligned": {
+   "onset": 34.75,
+   "width": 9.0,
+   "amp_pct": -0.5265903239244301,
+   "placebo_frac": 0.1703056768558952
+  },
+  "placebo_frac_deeper": 0.056768558951965066,
+  "placebo_pool": "onsets >= 26 yr (post-baseline only)",
+  "n_onset_width_grid": 420,
+  "per_unit": {
+   "VG1_rtg1": {
+    "boundary_best": {
+     "onset": 38.0,
+     "width": 9.0,
+     "amp_pct": -0.6196923644993837
+    },
+    "placebo_frac_deeper": 0.0611353711790393,
+    "min_anywhere": -0.9384602600894568
+   },
+   "VG1_rtg2": {
+    "boundary_best": {
+     "onset": 38.0,
+     "width": 9.0,
+     "amp_pct": -0.9071771680040407
+    },
+    "placebo_frac_deeper": 0.056768558951965066,
+    "min_anywhere": -1.3519380681742637
+   },
+   "VG1_rtg3": {
+    "boundary_best": {
+     "onset": 38.0,
+     "width": 9.0,
+     "amp_pct": -0.7844058030634624
+    },
+    "placebo_frac_deeper": 0.056768558951965066,
+    "min_anywhere": -1.181660373877965
+   },
+   "VG2_rtg1": {
+    "boundary_best": {
+     "onset": 28.0,
+     "width": 3.0,
+     "amp_pct": 0.3429947716802438
+    },
+    "placebo_frac_deeper": 0.008733624454148471,
+    "min_anywhere": 0.3429947716802438
+   },
+   "VG2_rtg2": {
+    "boundary_best": {
+     "onset": 38.0,
+     "width": 9.0,
+     "amp_pct": -1.4973793142584042
+    },
+    "placebo_frac_deeper": 0.048034934497816595,
+    "min_anywhere": -1.928517171093467
+   }
+  }
+ },
+ "T2_coherence": {
+  "v1_allneg_hp_window_frac": 1.0,
+  "v1_allneg_placebo_p": 0.46938775510204084,
+  "v2_allneg_hp_window_frac": 0.0,
+  "v2_allneg_placebo_p": 1.0
+ },
+ "T3_vintage_matched": {
+  "same_window": {
+   "t0": 38.0,
+   "w": 9.0,
+   "v2_amp_pct": -0.3085926505507096
+  },
+  "v2_own_boundary": {
+   "onset": 38.0,
+   "width": 9.0,
+   "amp_pct": -0.3085926505507096
+  }
+ },
+ "T4_leave_one_unit_out": {
+  "drop_VG1_rtg1": {
+   "onset": 38.0,
+   "width": 9.0,
+   "amp_pct": -0.8457914855337517
+  },
+  "drop_VG1_rtg2": {
+   "onset": 38.0,
+   "width": 9.0,
+   "amp_pct": -0.7020490837814231
+  },
+  "drop_VG1_rtg3": {
+   "onset": 38.0,
+   "width": 9.0,
+   "amp_pct": -0.7634347662517122
+  }
+ },
+ "T5_spread": {
+  "excursion_median_pct": 0.05773771003994656,
+  "frac_record_tighter": 0.8688524590163934
+ },
+ "verdict": {
+  "ramp_at_crossing": {
+   "onset": 38.0,
+   "width": 9.0,
+   "amp_pct": -0.7704251118556289,
+   "hp_yr": 34.97,
+   "note": "deepest-in-window ramp centre 42.5 yr vs V1 heliopause 35.0 yr -- the best-fit transition is centred post-crossing"
+  },
+  "crossing_aligned_ramp": {
+   "onset": 34.75,
+   "width": 9.0,
+   "amp_pct": -0.5265903239244301,
+   "hp_yr": 34.97,
+   "note": "deepest ramp whose window contains the HP; the crossing-aligned statistic"
+  },
+  "midlife_control": {
+   "placebo_frac_deeper_postbaseline": 0.056768558951965066,
+   "crossing_aligned_placebo_frac": 0.1703056768558952,
+   "all_neg_hp_window_frac": 1.0,
+   "all_neg_placebo_p": 0.46938775510204084,
+   "v2_same_vintage_amp_pct": -0.3085926505507096,
+   "v2_own_boundary_amp_pct": -0.3085926505507096,
+   "v2_allneg_hp_window_frac": 0.0,
+   "v2_allneg_placebo_p": 1.0
+  },
+  "leave_one_unit_out": {
+   "drop_VG1_rtg1": {
+    "onset": 38.0,
+    "width": 9.0,
+    "amp_pct": -0.8457914855337517
+   },
+   "drop_VG1_rtg2": {
+    "onset": 38.0,
+    "width": 9.0,
+    "amp_pct": -0.7020490837814231
+   },
+   "drop_VG1_rtg3": {
+    "onset": 38.0,
+    "width": 9.0,
+    "amp_pct": -0.7634347662517122
+   }
+  },
+  "unit_spread": {
+   "during_excursion_med": 0.05773771003994656,
+   "frac_of_record_tighter": 0.8688524590163934
+  },
+  "reading": "The V1 mean-unit excess decline is a broad post-shock accumulation.  The deepest saturating-ramp fit sits at onset 38.0 yr / width 9 yr (A = -0.77%) -- centred 42.5 yr, 7.5 yr AFTER the heliopause -- and 5.7% of post-baseline onset/width choices reach a ramp that deep.  The genuinely crossing-aligned statistic is weaker still: the deepest ramp whose window contains the HP is -0.53% (onset 34.8, width 9), matched or beaten by 17% of post-baseline placebo placements.  The three units stay within 0.06% of each other through the excursion and the ramp survives leave-one-unit-out (-0.85% to -0.70%), but the all-negative coherence window at the HP is unremarkable (placebo p = 0.47).  V2's units at the identical mission years carry a mean ramp of -0.31%, same sign and within ~2.5x of V1's.  Net: the excursion is real coherence but sits well inside the record's own aging wander -- the crossing-aligned ramp is a ~16th-percentile event, not an extreme one, and the result stays a bound."
+ },
+ "caveats": [
+  "The control is internal to the published telemetry record; it cannot exclude a genuinely craft-common external driver other than the field (e.g., a shared thermal event), which is why the result is framed as a control on undocumented aging specifically.",
+  "V2's two surviving units diverge by ~2% post-year-37, so the vintage-matched comparison uses the mean-unit curve and the identical window, not a per-unit match.",
+  "Post-13.3 yr telemetry is bit-drop quantized at ~0.04 A; quantization steps shared across a craft's units are part of what the placebo scan absorbs.",
+  "The placebo pool is restricted to post-baseline onsets (t0 >= 26 yr): onsets inside the baseline window sit where the excess is ~0 by construction and cannot produce a deep ramp, so including them inflates the significance.",
+  "The deepest ramp in the crossing search window is centred ~7.5 yr after the heliopause; the ramp whose window actually contains the crossing is weaker (-0.53%) and matched by ~17% of post-baseline placebo placements.  The unit-spread during the excursion is also unremarkable -- ~87% of the record is tighter -- so the coherence is absolute-scale (0.06%) rather than record-extreme."
+ ]
+}

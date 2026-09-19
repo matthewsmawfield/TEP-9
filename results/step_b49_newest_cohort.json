@@ -1,0 +1,73 @@
+{
+ "method": "newest-cohort audit on the live SBDB snapshot: the 2025+ designation cohort scored against the step_054 registered predictions on its own designation-derived footprint, plus the single-object jackknife of 2023 KQ14 inside the secure sample.",
+ "axis_deg": 49.0,
+ "axis_beta": -17.0,
+ "cap_deg": 60.0,
+ "n_detached_all_cc": 90,
+ "n_secure_cc3": 44,
+ "seed": 20260918,
+ "ammonite": {
+  "name": "(2023 KQ14)",
+  "a": 247.4,
+  "q": 65.923,
+  "i": 11.0,
+  "varpi": 270.78,
+  "theta_to_axis": 134.2225262039066,
+  "theta_aphelion_to_axis": 45.77747379609341,
+  "in_cap": false,
+  "cc": 3,
+  "first_obs": "2005-04-11",
+  "note": "Chen et al. 2025, Nat Astron (FOSSIL II): varpi anti-aligned with the clustered sednoids; already inside the secure sample via 2005 precovery",
+  "R_varpi_with": 0.33155293029838523,
+  "p_with": 0.007499625018749062,
+  "R_varpi_without": 0.3569756150455117,
+  "p_without": 0.004349782510874456,
+  "R3_with": 0.33554761874981653,
+  "R3_without": 0.3601629176425868,
+  "n_with": 44,
+  "n_without": 43
+ },
+ "newest_cohort": {
+  "definition": "a>150 & q>30, designation year >= 2025, any condition code",
+  "n": 21,
+  "cc_median": 8.0,
+  "cc_range": [
+   5,
+   9
+  ],
+  "n_cc3": 0,
+  "varpi_cap": {
+   "n_in": 2,
+   "frac": 0.09523809523809523,
+   "p_vs_footprint_baseline": 1.0,
+   "p_vs_prediction_0p59": 3.442918445573815e-06
+  },
+  "peri_cap_3d": {
+   "n_in": 2,
+   "frac": 0.09523809523809523,
+   "note": "perihelion direction within 60 deg of the axis -- the resident-signature convention"
+  },
+  "footprint": {
+   "baseline_frac": 0.1175514058670287,
+   "lam_opp_R": 0.5618468943076632,
+   "lam_opp_mean_deg": 232.33261015390994,
+   "n_with_lam": 21
+  },
+  "mean_varpi_deg": 276.2864894776797,
+  "P2_check": {
+   "predicted_mean": 49.0,
+   "ci_95": [
+    17.0,
+    88.0
+   ],
+   "footprint_mean_baseline": 10.5,
+   "cohort_mean_in_CI": false
+  },
+  "caveat": "2025-26 designations carry provisional orbits (median cc ~ 7-8); a diagnostic read, not a confirmation"
+ },
+ "newest_secure": {
+  "n": 0,
+  "objects": []
+ },
+ "note": "The cohort's own footprint baseline (its discovery opposition longitudes smeared by the measured coupling) is the honest comparison set by step_054; the mixture prediction 0.59 is the registered TEP expectation; uniform would give 0.33."
+}

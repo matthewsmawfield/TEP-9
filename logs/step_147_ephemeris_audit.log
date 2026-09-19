@@ -1,0 +1,18 @@
+[2026-09-19 20:34:32 UTC] [INFO    ] [STEP 147] LOGGER INITIALIZED: step_147_ephemeris_audit (Step 147)
+[2026-09-19 20:34:32 UTC] [DEBUG   ] [STEP 147] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_147_ephemeris_audit.log
+[2026-09-19 20:34:32 UTC] [DEBUG   ] [STEP 147] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-19 20:34:32 UTC] [INFO    ] [STEP 147] sample: 131 class-1 CODE comets
+[2026-09-19 20:37:15 UTC] [INFO    ] [STEP 147] de440s: 131 comets x2 legs; 0 failed
+[2026-09-19 20:39:49 UTC] [INFO    ] [STEP 147] de430: 131 comets x2 legs; 0 failed
+[2026-09-19 20:39:49 UTC] [INFO    ] [STEP 147] 131 comets integrated under both kernels
+[2026-09-19 20:39:49 UTC] [INFO    ] [STEP 147] T1 ephemeris leg displacement: median 3.36e-09 deg, max 5.4e-07 deg
+[2026-09-19 20:39:49 UTC] [INFO    ] [STEP 147] T2 de440s: in-cap residual gap +0.1234 dex, p=0.01185
+[2026-09-19 20:39:49 UTC] [INFO    ] [STEP 147] T2 de430: in-cap residual gap +0.1234 dex, p=0.01185
+[2026-09-19 20:39:49 UTC] [INFO    ] [STEP 147] wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b111_ephemeris_audit.json
+[2026-09-19 20:39:50 UTC] [INFO    ] [STEP 147] wrote figure
+{
+ "legs_ephemeris_stable": true,
+ "gap_ephemeris_stable": true,
+ "gap_significant_both": true
+}
+EPHEMERIS-INVARIANT: the DE440s/DE430 boundary periapsis directions agree to a median of 3.36e-09 deg per leg (p95 1.75e-08, max 5.4e-07), and the kick-and-geometry-regressed in-cap gap is +0.1234 dex (p=0.0118) under DE440s versus +0.1234 dex (p=0.0118) under DE430 -- the ephemeris generation does not perturb the cometary boundary reconstruction or the in-cap excess.

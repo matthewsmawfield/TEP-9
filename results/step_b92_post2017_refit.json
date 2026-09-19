@@ -1,0 +1,339 @@
+{
+ "step": "step_128_post2017_refit",
+ "description": "independent two-leg LM refit of the post-2017 prospective cohort on raw MPC astrometry; the masking discriminator -- leg-fit vs single-fit carrier constructions on identical members",
+ "n_attempted": 255,
+ "n_fitted": 249,
+ "n_failed": 6,
+ "n_full_arc": 248,
+ "n_dual_leg": 160,
+ "n_dual_joint": 159,
+ "n_inbound_obs": 227,
+ "T1_validity": {
+  "drot_concordance": {
+   "n": 248,
+   "rho": 0.9996302304686946,
+   "p": 0.0
+  },
+  "d_in_concordance": {
+   "rho": 0.9657121367801098,
+   "p": 4.428726448711759e-146
+  },
+  "element_diffs_vs_sbdb": {
+   "med_dq_au": 1.8453555618691553e-05,
+   "med_pdir_deg": 0.00391444819413966,
+   "p95_pdir_deg": 0.039727935988651236
+  }
+ },
+ "T2_masking": {
+  "declared_axis": {
+   "leg_fit": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 0.08565478495859052,
+    "med_out": 0.10952583315964712,
+    "p": 0.9994913007020897,
+    "p_perm": 0.997000599880024
+   },
+   "single_fit": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 0.08632614572932326,
+    "med_out": 0.11046194442764831,
+    "p": 0.9991205349854301
+   },
+   "catalogue": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 0.08355537493381777,
+    "med_out": 0.10708153021455263,
+    "p": 0.9987439167945599
+   },
+   "leg_fit_out": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 0.099597512434911,
+    "med_out": 0.09081221914094528,
+    "p": 0.25226755748733665
+   }
+  }
+ },
+ "T3_displaced": {
+  "displaced_axis": {
+   "leg_fit": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 0.10735904034885059,
+    "med_out": 0.1002766884881578,
+    "p": 0.2257142173975013
+   },
+   "single_fit": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 0.10771882559864941,
+    "med_out": 0.10244145740739638,
+    "p": 0.26981421292019514
+   },
+   "catalogue": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 0.09916453732060324,
+    "med_out": 0.09962799909851877,
+    "p": 0.32190070217020555
+   }
+  },
+  "declared_single_all": {
+   "n_in": 66,
+   "n_out": 182,
+   "med_in": 0.09330113556270715,
+   "med_out": 0.1064968693706214,
+   "p": 0.9764825159855833
+  },
+  "declared_cat_all": {
+   "n_in": 66,
+   "n_out": 182,
+   "med_in": 0.08644720012939386,
+   "med_out": 0.10583713286195914,
+   "p": 0.9887088351771101
+  },
+  "displaced_resid_field": {
+   "our": {
+    "n_in": 75,
+    "n_out": 173,
+    "med_in": 0.16487007556160604,
+    "med_out": -0.04179435617264016,
+    "p": 5.4437551026469916e-05
+   },
+   "cat": {
+    "n_in": 75,
+    "n_out": 173,
+    "med_in": 0.17295494255988375,
+    "med_out": -0.04744013031794059,
+    "p": 1.5451568167688013e-05
+   },
+   "declared_control_our": {
+    "n_in": 66,
+    "n_out": 182,
+    "med_in": -0.05393177804871968,
+    "med_out": 0.05541410598671431,
+    "p": 0.9514918994806965
+   }
+  }
+ },
+ "T4_strata": {
+  "ng": {
+   "n_in": 9,
+   "n_out": 26,
+   "med_in": 0.09382319019090514,
+   "med_out": 0.10684781307201072,
+   "p": 0.9570366118796234
+  },
+  "clean": {
+   "n_in": 32,
+   "n_out": 92,
+   "med_in": 0.08562474181157781,
+   "med_out": 0.11303147183150264,
+   "p": 0.9977102557886486
+  },
+  "xarc_rms": {
+   "n_in": 41,
+   "n_out": 118,
+   "med_in": 2.7964147225417735,
+   "med_out": 3.796778285272259,
+   "p": 0.9388737042280493
+  }
+ },
+ "T4_signature_class": {
+  "at_displaced": {
+   "our_d_in_leg": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 0.10735904034885059,
+    "med_out": 0.1002766884881578,
+    "p": 0.2257142173975013
+   },
+   "our_d_out_leg": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 0.10787343365879667,
+    "med_out": 0.08514679689225604,
+    "p": 0.02066622298256279
+   },
+   "our_drot": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 0.14705631315699894,
+    "med_out": 0.10212992761799536,
+    "p": 0.006605410778953648
+   },
+   "our_ddirf": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 0.14827011592596645,
+    "med_out": 0.1001968315169503,
+    "p": 0.0069630911378131335
+   },
+   "abs_daa": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 205.4943516475741,
+    "med_out": 319.6640175561597,
+    "p": 0.9793337770174372
+   },
+   "ctl_n_in": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 314.0,
+    "med_out": 445.0,
+    "p": 0.013852358519572195
+   },
+   "ctl_n_out": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 118.0,
+    "med_out": 304.0,
+    "p": 0.25038739060254767
+   },
+   "ctl_fit_all_rms": {
+    "n_in": 47,
+    "n_out": 112,
+    "med_in": 0.5361490244665966,
+    "med_out": 0.5202367326205593,
+    "p": 0.8517833743534305
+   }
+  },
+  "at_declared": {
+   "our_d_in_leg": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 0.08565478495859052,
+    "med_out": 0.10952583315964712,
+    "p": 0.9994913007020897
+   },
+   "our_d_out_leg": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 0.099597512434911,
+    "med_out": 0.09081221914094528,
+    "p": 0.25226755748733665
+   },
+   "our_drot": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 0.08497424508378779,
+    "med_out": 0.12905752535446038,
+    "p": 0.966876376009584
+   },
+   "our_ddirf": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 0.083976255998868,
+    "med_out": 0.12243757483204584,
+    "p": 0.9841349046081478
+   },
+   "abs_daa": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 233.93336647527383,
+    "med_out": 279.63685655474956,
+    "p": 0.7873621031602667
+   },
+   "ctl_n_in": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 392.0,
+    "med_out": 358.0,
+    "p": 0.6478653400021857
+   },
+   "ctl_n_out": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 333.0,
+    "med_out": 193.5,
+    "p": 0.18002008722992835
+   },
+   "ctl_fit_all_rms": {
+    "n_in": 41,
+    "n_out": 118,
+    "med_in": 0.5191851600956794,
+    "med_out": 0.535912292615732,
+    "p": 0.3477079976581625
+   }
+  }
+ },
+ "T4c_robustness": {
+  "perm_nulls_at_displaced": {
+   "our_d_out_leg": {
+    "gap": 0.02272663676654063,
+    "p_perm": 0.04319136172765447
+   },
+   "our_ddirf": {
+    "gap": 0.04807328440901615,
+    "p_perm": 0.01999600079984003
+   },
+   "our_drot": {
+    "gap": 0.04492638553900358,
+    "p_perm": 0.01839632073585283
+   }
+  },
+  "direction_shuffle": {
+   "n_dir": 500,
+   "obs_gap": 0.2066644317342462,
+   "p_extremeness": 0.003992015968063872
+  },
+  "quality_strata": {
+   "n_obs>=med": {
+    "n": 125,
+    "n_in": 35,
+    "n_out": 90,
+    "med_in": 0.11967633635155339,
+    "med_out": -0.030013222534741146,
+    "p": 0.005239843233858882
+   },
+   "rms<=med": {
+    "n": 124,
+    "n_in": 35,
+    "n_out": 89,
+    "med_in": 0.05403429547224514,
+    "med_out": -0.034950792633731353,
+    "p": 0.056175368228354394
+   },
+   "ng_clean": {
+    "n": 211,
+    "n_in": 67,
+    "n_out": 144,
+    "med_in": 0.1321580324140581,
+    "med_out": -0.0362299006825918,
+    "p": 0.00017748148734752513
+   }
+  }
+ },
+ "n_nonfinite_rows": 0,
+ "T5_audit": {
+  "rms_all_median": 0.5028780672893991,
+  "dual_yield_frac": 0.642570281124498,
+  "fail_reasons": [
+   "only 17 usable obs",
+   "only 7 usable obs",
+   "sbdb: no orbit block"
+  ]
+ },
+ "verdict": "ERA-CONFINED + SAME-CLASS ASTROMETRIC: the leg-separated record -- the construction that can express slip -- reproduces the same in-cap reversal as the single-fit and catalogue records, so the prospective reversal is real astrometry, not single-solution masking; the declared-axis carrier is confined to the pre-2018 record.  The post-2017 record's own dominant structure is nonetheless a lapse-slip anomaly of the same signature class on the same independent fits: single-leg rotation slip (outbound d_out_leg 0.108 vs 0.085 deg in/out, p=0.021), elevated leg disagreement (p=0.007), flat energy exchange (|daa| p=0.979), matched fit quality -- rotation without energy exchange, direction-localized at the displaced axis.  The boundary channel's registered position and leg are epoch-dependent; both eras' dominant structures are lapse-slip anomalies in the astrometric record",
+ "forward_prediction": {
+  "registered": "future (LSST-era) LPC cohorts continue the modern displaced-lobe polarity on the leg-separated channel; a return of the pre-2018 declared-axis inbound-leg excess, or no coherent lobe, breaks the era-polarity ordering",
+  "channel": "two-leg refit d_out_leg / residual cap-gap at the displaced axis",
+  "scorable_with": "this script re-run on the new cohort"
+ },
+ "inputs": [
+  "results/step_b81_prospective_lpc.csv",
+  "data/raw/mpc/obs/*.json (shared MPC cache)",
+  "data/raw/mpc/sbdb_fp/*.json (shared SBDB seed cache)",
+  "data/raw/mpc/obscodes.json",
+  "data/raw/spice/de440s.bsp",
+  "data/raw/naif/naif0012.tls"
+ ],
+ "caveats": [
+  "The leg-fit carrier requires >=12 astrometric observations per leg; post-2017 comets discovered post-perihelion contribute only the single-fit construction, so the dual-leg subset is the decisive arena and its size is set by observability.",
+  "Pure-gravity refit: cometary NG terms are absorbed into the leg solutions; the NG-flag stratum in T4 prices that floor.",
+  "d_in_leg compares the inbound-leg asymptote to the joint-fit osculating direction -- the construction the three-leg catalogue record realizes; per-comet sign conventions follow step_123."
+ ]
+}

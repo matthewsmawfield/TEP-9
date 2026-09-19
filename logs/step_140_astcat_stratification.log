@@ -1,0 +1,23 @@
+[2026-09-19 21:43:13 UTC] [INFO    ] [STEP 140] LOGGER INITIALIZED: step_140_astcat_stratification (Step 140)
+[2026-09-19 21:43:13 UTC] [DEBUG   ] [STEP 140] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_140_astcat_stratification.log
+[2026-09-19 21:43:13 UTC] [DEBUG   ] [STEP 140] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-19 21:43:13 UTC] [INFO    ] [STEP 140] loading dual-leg records and per-leg astcat composition
+[2026-09-19 21:43:16 UTC] [INFO    ] [STEP 140]   pre2018: 489 fitted records with composition (398 dual-leg)
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   post2017: 186 fitted records with composition (159 dual-leg)
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   pre2018: leg Gaia in=0.00 out=0.00; uniform-modern 0.00, uniform-legacy 0.90, mixed 0.03
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   post2017: leg Gaia in=0.78 out=0.85; uniform-modern 0.59, uniform-legacy 0.02, mixed 0.02
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] T2 uniform-modern-legs control (post-2017 cohort)
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   uniform_ge70 n=109 (98 dual): d_out_leg p=0.07207858347111872, ddirf p=0.2825299810360341, resid p=0.28322308284490794
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   mixed n=77 (61 dual): d_out_leg p=0.08014510059643437, ddirf p=0.0007756579426962262, resid p=6.452615034300114e-07
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] T3 uniform-legacy-legs control (pre-2018 cohort)
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   uniform_le30 n=441 (365 dual): d_in_leg p=0.0012391978118810403, ddirf p=0.14006701747685485
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   gaia_rich n=48 (33 dual): d_in_leg p=0.2788948311730717, ddirf p=0.012433759386620374
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] T4 composition vs signal association
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   pre2018: rho(ddirf, min-leg Gaia) = -0.103 (p=0.0391), n=398
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   post2017: rho(ddirf, min-leg Gaia) = -0.221 (p=0.00503), n=159
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] T5 era crossers (pre-2018 table, post-2018 perihelia)
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   20 crossers: d_out_leg p=None, median min-leg Gaia 0.17
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] T6 matched-composition audit of the mixed stratum
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   pooled-resid cap gap: uniform p=0.20875406084068815, mixed p=8.889566133867382e-07; contrast-regressed p=9.37e-07
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] verdict: LEGACY CARRIER SURVIVES; DISPLACED CARRIER ATTENUATED, NOT COMPOSITION-EXPLAINED: the declared-cap inbound-leg signal survives on uniform-legacy legs (p=0.00124).  The displaced-cap residual is nonsignificant on uniformly-high-Gaia legs (p=0.209) and strong on sub-threshold legs (p=8.89e-07); however the sub-threshold stratum is composition-homogeneous (only ~2% of post-2017 legs are truly stitch-mixed), in-cap members match out-of-cap on leg composition, leg contrast and perihelion epoch (T6), and the cap gap persists after regressing out absolute leg contrast.  The attenuation is therefore not explained as a catalogue-stitching systematic: it admits a composition-modulated signal amplitude or a reduction-quality dependence, while catalogue-by-sky interactions remain unresolved.
+[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b104_astcat_stratification.json

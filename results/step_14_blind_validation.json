@@ -1,0 +1,90 @@
+{
+ "n_all_c1": 131,
+ "n_matched": 54,
+ "B1_spearman": {
+  "all_c1": {
+   "rho": -0.24310041103934235,
+   "p_2sided": 0.005144495232842704,
+   "n": 131
+  },
+  "matched": {
+   "rho": -0.3143510577472841,
+   "p_2sided": 0.020614445873721257,
+   "n": 54
+  },
+  "matched_codeaxis": {
+   "rho": -0.2925481227368019,
+   "p_2sided": 0.03181827947212569,
+   "n": 54
+  }
+ },
+ "B2_perm": {
+  "obs_meddiff": 0.08127839828578629,
+  "p_perm": 0.0063996800159992,
+  "n_perm": 20000
+ },
+ "B3_look_elsewhere": {
+  "n_grid": 2232,
+  "n_axes_p_le_obs": 6,
+  "fraction": 0.002688172043010753,
+  "best": [
+   [
+    0.0013484176236670147,
+    15.0,
+    -15.0
+   ],
+   [
+    0.001908759829179218,
+    20.0,
+    -25.0
+   ],
+   [
+    0.002426502543859529,
+    20.0,
+    -5.0
+   ],
+   [
+    0.002426502543859529,
+    25.0,
+    -5.0
+   ],
+   [
+    0.0024594669684765255,
+    5.0,
+    -20.0
+   ]
+  ],
+  "note": "nearby grid points are correlated; the effective number of independent sky directions is ~n_grid/(cap solid-angle factor) -- the raw fraction is the honest upper bound on trials"
+ },
+ "B4_split_half": {
+  "heldout_p_median": 0.21691941173201357,
+  "heldout_p_lt_0.05_frac": 0.218,
+  "heldout_p_lt_0.10_frac": 0.334,
+  "recovered_axis_to_tno_med_deg": 29.436114386152603,
+  "recovered_within_45deg_frac": 0.696,
+  "note": "axis derived on half A, tested on held-out half B, 500 reps"
+ },
+ "B5_reverse_warsaw": {
+  "tno": {
+   "n": 60,
+   "n_in": 21,
+   "med_in": 0.10518563754764582,
+   "med_out": 0.06337932566157782,
+   "p": 0.008864300328535015
+  },
+  "code_recovered": {
+   "n": 60,
+   "n_in": 22,
+   "med_in": 0.08446903670223094,
+   "med_out": 0.06768259704676818,
+   "p": 0.35924123339562863
+  }
+ },
+ "B6_no_qcut": {
+  "n": 131,
+  "n_in": 43,
+  "med_in": 0.14434842433250053,
+  "med_out": 0.09858890272439819,
+  "p": 0.010015762665330209
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "method": "axis permutation: all six channels recomputed about each of N random sky directions; Fisher S = -2 sum ln p; global p = fraction of random axes matching the observed combined statistic.  Null preserves cross-channel dependence (same data, only the axis varies).  Channel 6 is the MPCORB mean-plane lean azimuth under the position-conditioned unwarped-disk null of step_090 (80-400 AU non-resonant bin).",
+ "cap_deg": 60.0,
+ "seed": 20260918,
+ "n_axes": 20000,
+ "n_comets": 229,
+ "n_warsaw": 98,
+ "n_tno": 44,
+ "n_mc_mean_plane": 400,
+ "mean_plane_obs_az_deg": 38.931007457095745,
+ "eval_at_tno_axis_49m17": {
+  "S": 112.71506796405794,
+  "channel_p": [
+   0.008736431325865402,
+   3.4737254580784554e-07,
+   0.00533951023764481,
+   5.792601536335611e-05,
+   5.6996649005101004e-09,
+   0.0625
+  ],
+  "p_global": 0.006599670016499175
+ },
+ "eval_at_comet_axis_34m13": {
+  "S": 111.43958470228318,
+  "channel_p": [
+   0.005188047766861907,
+   5.268185803627722e-07,
+   0.007831676821448794,
+   0.00010417616649379667,
+   7.56627639243129e-09,
+   0.0375
+  ],
+  "p_global": 0.009499525023748812
+ },
+ "per_channel_look_elsewhere": {
+  "rotation_slip": {
+   "p_at_tno_axis": 0.008736431325865402,
+   "frac_axes_better": 0.012699365031748412
+  },
+  "aphelion_dipole": {
+   "p_at_tno_axis": 3.4737254580784554e-07,
+   "frac_axes_better": 0.0058997050147492625
+  },
+  "warsaw_inbound": {
+   "p_at_tno_axis": 0.00533951023764481,
+   "frac_axes_better": 0.0103994800259987
+  },
+  "tno_aphelion": {
+   "p_at_tno_axis": 5.792601536335611e-05,
+   "frac_axes_better": 0.00014999250037498125
+  },
+  "tno_varpi": {
+   "p_at_tno_axis": 5.6996649005101004e-09,
+   "frac_axes_better": 0.016449177541122944
+  },
+  "mean_plane_lean": {
+   "p_at_tno_axis": 0.0625,
+   "frac_axes_better": 0.05704714764261787
+  }
+ },
+ "best_random_axis": {
+  "S": 119.06920124081671,
+  "sep_from_tno_deg": 11.14730047596612
+ },
+ "S_rand_quantiles": {
+  "q50": 19.757645871141627,
+  "q95": 94.42864771799016,
+  "q99": 111.15864438191585,
+  "q999": 116.4605699256221
+ }
+}

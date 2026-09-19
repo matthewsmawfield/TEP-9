@@ -1,0 +1,1 @@
+Historical manuscript source saved before the full review of 19 September 2026. Contains superseded numerical and interpretive claims. Not part of the current publication. The current source is site/components/.

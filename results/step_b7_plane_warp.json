@@ -1,0 +1,133 @@
+{
+ "sample": "a>30, q>30, cc<=3, arc>200",
+ "caveat": "the empirical null assumes the detached population shares the generic (30-150 AU) discovery footprint; if the true footprint narrows with a -- plausible, since distant objects are found by fewer, deeper surveys -- part of the tilt excess at 60-150 AU could be deeper selection rather than a physical warp.  The radial GROWTH of the coherent tilt (T2) is the datum either interpretation must explain.",
+ "T1_pole_offset_per_bin": [
+  {
+   "a_range": [
+    30,
+    60
+   ],
+   "N": 986,
+   "tilt_deg": 2.5,
+   "azimuth_deg": 33.5,
+   "null_tilt_median": 2.69,
+   "null_tilt_p95": 3.29,
+   "p_tilt": 0.7076584683063387
+  },
+  {
+   "a_range": [
+    60,
+    150
+   ],
+   "N": 195,
+   "tilt_deg": 6.91,
+   "azimuth_deg": 41.9,
+   "null_tilt_median": 4.71,
+   "null_tilt_p95": 6.64,
+   "p_tilt": 0.03139372125574885
+  },
+  {
+   "a_range": [
+    150,
+    "inf"
+   ],
+   "N": 44,
+   "tilt_deg": 6.43,
+   "azimuth_deg": 49.9,
+   "null_tilt_median": 4.36,
+   "null_tilt_p95": 7.52,
+   "p_tilt": 0.14637072585482905
+  }
+ ],
+ "T2_warp_profile": [
+  {
+   "a_mid": 55.5,
+   "N": 1102,
+   "tilt_deg": 2.94,
+   "azimuth_deg": 36.0,
+   "null_p95_tilt": 3.47
+  },
+  {
+   "a_mid": 69.8,
+   "N": 604,
+   "tilt_deg": 3.6,
+   "azimuth_deg": 41.0,
+   "null_p95_tilt": 4.17
+  },
+  {
+   "a_mid": 87.9,
+   "N": 253,
+   "tilt_deg": 6.09,
+   "azimuth_deg": 41.5,
+   "null_p95_tilt": 5.99
+  },
+  {
+   "a_mid": 110.7,
+   "N": 141,
+   "tilt_deg": 7.13,
+   "azimuth_deg": 50.2,
+   "null_p95_tilt": 7.29
+  },
+  {
+   "a_mid": 139.3,
+   "N": 86,
+   "tilt_deg": 6.92,
+   "azimuth_deg": 46.2,
+   "null_p95_tilt": 7.84
+  },
+  {
+   "a_mid": 175.4,
+   "N": 45,
+   "tilt_deg": 9.29,
+   "azimuth_deg": 45.5,
+   "null_p95_tilt": 9.11
+  },
+  {
+   "a_mid": 220.8,
+   "N": 34,
+   "tilt_deg": 8.77,
+   "azimuth_deg": 63.1,
+   "null_p95_tilt": 8.44
+  },
+  {
+   "a_mid": 278.0,
+   "N": 27,
+   "tilt_deg": 10.44,
+   "azimuth_deg": 52.7,
+   "null_p95_tilt": 8.39
+  },
+  {
+   "a_mid": 350.0,
+   "N": 22,
+   "tilt_deg": 11.12,
+   "azimuth_deg": 35.8,
+   "null_p95_tilt": 10.24
+  },
+  {
+   "a_mid": 440.6,
+   "N": 18,
+   "tilt_deg": 9.49,
+   "azimuth_deg": 38.8,
+   "null_p95_tilt": 10.85
+  },
+  {
+   "a_mid": 554.7,
+   "N": 13,
+   "tilt_deg": 9.2,
+   "azimuth_deg": 44.3,
+   "null_p95_tilt": 12.76
+  }
+ ],
+ "T3_detached_vs_classical_plane": {
+  "n_classical": 281,
+  "n_detached": 44,
+  "separation_deg": 6.08,
+  "boot_ci68_deg": [
+   4.1,
+   8.61
+  ],
+  "uniform_om_null_median_deg": 2.63,
+  "p_vs_uniform": 0.0239880059970015,
+  "note": "angular distance between the mean poles of the classical belt (40-47 AU, i<10) and the detached population -- the physical warp between planes"
+ }
+}

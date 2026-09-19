@@ -1,0 +1,94 @@
+{
+ "sample": "secure a>30, q>30, cc<=3 with parseable provisional designations",
+ "n_total": 1250,
+ "n_detached": 44,
+ "n_control": 1206,
+ "matching_window_deg": 30.0,
+ "n_mc": 20000,
+ "D1_footprint_vs_a": {
+  "rows": [
+   {
+    "bin": "30-45",
+    "N": 627,
+    "R_lam_opp": 0.154,
+    "mean_lam_opp_deg": 5.5,
+    "R_Omega": 0.233,
+    "R_varpi": 0.051,
+    "mean_varpi_deg": 39.4
+   },
+   {
+    "bin": "45-60",
+    "N": 372,
+    "R_lam_opp": 0.112,
+    "mean_lam_opp_deg": 59.8,
+    "R_Omega": 0.155,
+    "R_varpi": 0.043,
+    "mean_varpi_deg": 72.7
+   },
+   {
+    "bin": "60-100",
+    "N": 162,
+    "R_lam_opp": 0.1,
+    "mean_lam_opp_deg": 15.8,
+    "R_Omega": 0.254,
+    "R_varpi": 0.01,
+    "mean_varpi_deg": 32.8
+   },
+   {
+    "bin": "100-150",
+    "N": 45,
+    "R_lam_opp": 0.281,
+    "mean_lam_opp_deg": 342.3,
+    "R_Omega": 0.384,
+    "R_varpi": 0.112,
+    "mean_varpi_deg": 346.0
+   },
+   {
+    "bin": "150-inf",
+    "N": 44,
+    "R_lam_opp": 0.295,
+    "mean_lam_opp_deg": 10.5,
+    "R_Omega": 0.326,
+    "R_varpi": 0.332,
+    "mean_varpi_deg": 49.1
+   }
+  ],
+  "note": "the discovery footprint IS distance-dependent: R(lam_opp) ~0.10-0.15 in the inner belt rising to ~0.28-0.30 beyond 100 AU -- the caveat b7 flagged is real and must be conditioned on"
+ },
+ "D2_convolution": {
+  "R_lam_opp": 0.295,
+  "mean_lam_opp_deg": 10.5,
+  "R_Delta": 0.754,
+  "mean_Delta_deg": 17.4,
+  "R_varpi_obs": 0.332,
+  "mean_varpi_obs_deg": 49.1,
+  "R_varpi_indep_conv": 0.223,
+  "mean_varpi_indep_deg": 27.9,
+  "shuffle_null_R_mean": 0.236,
+  "shuffle_null_mu_mean": 27.8,
+  "p_pairing": 0.055897205139743014,
+  "direction_offset_vs_shuffle_deg": -122.4,
+  "note": "if varpi were pure footprint smear, the observed pairing is a typical shuffle.  Observed R sits ABOVE the shuffle null and ~20 deg away in direction -- the per-object pairing adds clustering the marginals do not allow"
+ },
+ "D3_conditional_null": {
+  "window_deg": 30.0,
+  "min_pool": 132,
+  "median_pool": 246,
+  "null_R_mean": 0.181,
+  "null_R_p95": 0.317,
+  "null_mu_mean": 27.8,
+  "observed_R": 0.332,
+  "observed_mu_deg": 49.1,
+  "p": 0.03464826758662067,
+  "note": "each detached object draws (Om,w) from controls found within +-30 deg of ITS OWN discovery opposition longitude -- the null inherits the measured detached footprint AND the empirical footprint->elements map.  Caveat: the map is estimated at a<150 AU where perihelion-proximity coupling is weaker, so the null understates the achievable footprint-only R; the D2 pairing test carries no such assumption"
+ },
+ "D4_conditional_pole_tilt": {
+  "observed_tilt_deg": 6.43,
+  "observed_az_deg": 49.9,
+  "null_tilt_mean": 3.53,
+  "null_tilt_p95": 6.33,
+  "null_az_mean": 26.3,
+  "p": 0.04389780510974451,
+  "note": "resolves the b7 caveat: conditioned on each object's own measured footprint position, does the narrow distant footprint alone produce the detached sample's coherent pole tilt?"
+ }
+}

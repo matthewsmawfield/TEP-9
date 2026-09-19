@@ -1,0 +1,58 @@
+{
+ "step": "step_147_ephemeris_audit",
+ "result": "b111",
+ "seed": 20260919,
+ "kernels": [
+  "de440s",
+  "de430"
+ ],
+ "n_common": 131,
+ "n_failed": {
+  "de440s": 0,
+  "de430": 0
+ },
+ "T1_ephemeris_displacement": {
+  "n_legs": 262,
+  "median_deg_back": 2.9705931669827955e-09,
+  "median_deg_fwd": 3.837766113403087e-09,
+  "median_deg_all": 3.361719550771372e-09,
+  "p95_deg_all": 1.7535458090330513e-08,
+  "max_deg_all": 5.396980160005896e-07,
+  "frac_legs_within_1e-4_deg": 1.0,
+  "frac_legs_within_1e-3_deg": 1.0
+ },
+ "T2_incap_gap_by_kernel": {
+  "de440s": {
+   "n": 131,
+   "n_in": 43,
+   "gap_dex": 0.12340929911962373,
+   "med_resid_in": 0.15050002378600447,
+   "med_resid_out": 0.02709072466638074,
+   "p": 0.011847543484561632
+  },
+  "de430": {
+   "n": 131,
+   "n_in": 43,
+   "gap_dex": 0.12340935979921042,
+   "med_resid_in": 0.15050003327921735,
+   "med_resid_out": 0.027090673480006933,
+   "p": 0.011847543484561632
+  }
+ },
+ "test_summary": {
+  "legs_ephemeris_stable": true,
+  "gap_ephemeris_stable": true,
+  "gap_significant_both": true
+ },
+ "verdict": "EPHEMERIS-INVARIANT: the DE440s/DE430 boundary periapsis directions agree to a median of 3.36e-09 deg per leg (p95 1.75e-08, max 5.4e-07), and the kick-and-geometry-regressed in-cap gap is +0.1234 dex (p=0.0118) under DE440s versus +0.1234 dex (p=0.0118) under DE430 -- the ephemeris generation does not perturb the cometary boundary reconstruction or the in-cap excess.",
+ "evidence_status": "reduction-control audit",
+ "inputs": [
+  "data/raw/code/code_{osculating,original,future}.html",
+  "data/raw/warsaw/warsaw_tablec.dat (exclusion list)",
+  "data/raw/spice/de440s.bsp, de430.bsp, naif0012.tls"
+ ],
+ "caveats": [
+  "Tests the two planetary-ephemeris generations against each other on the catalogue's own osculating elements; a common-mode ephemeris error shared by both kernels is not probed.",
+  "The in-cap gap is the standard-dynamics residual instrument; its ephemeris stability bounds reduction-level contamination, not the anomaly's interpretation."
+ ]
+}

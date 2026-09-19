@@ -1,0 +1,61 @@
+{
+ "step": "step_138_oneway_downlink_channel",
+ "result": "b102",
+ "verdict": "CHANNEL SCOPED: the non-cancelling one-way transport requirement is already realized in the corpus through the GNSS downlink clock channel (step 135/b99 axis hit); deep-space public one-way archives (Voyager delta-VLBI 1979-81, Cassini VLBA, PRIDE VEX/MEX) are inner-system or not publicly reduced at observable level; no public one-way dataset covers the boundary-distance regime -- registered as an identified, open channel with named holdings, not a tested one",
+ "T1_transport_class": {
+  "requirement": "onboard-oscillator-referenced one-way carrier transport across the lapse gradient; the lapse term cannot cancel as in two-way links",
+  "realized_in_corpus": {
+   "channel": "GNSS satellite->receiver downlink clocks",
+   "reference": "onboard atomic clocks (Rb/Cs/H-maser)",
+   "result": "step 135 / b99: free 2701-direction clock axis 0.6 deg from the comet meridian plane, 22.0 deg from the CMB apex (out-of-sample p=0.010)"
+  },
+  "note": "GNSS downlink is the same photon-transport class as VLBI spacecraft downlink: one-way, uplink-free, onboard-oscillator referenced.  The non-cancelling channel the cancellation theorem demands is therefore already realized in the corpus and returns the programme's strongest cross-channel directional hit."
+ },
+ "T2_archives": {
+  "voyager_delta_vlbi": {
+   "epochs": "1979 Jupiter approach; Saturn-era delta-DOR",
+   "mode": "downlink-only delta-VLBI / delta-DOR (360 kHz telemetry subcarrier harmonics)",
+   "passes": "22 of 25 scheduled usable (1979 demo)",
+   "achieved_accuracy": "~0.5 urad scatter vs 50 nrad goal",
+   "references": [
+    "AIAA 82-1471 (1982)",
+    "IPN Progress Report 42-60",
+    "Border 2009 ISSFD review"
+   ],
+   "distance_au": "5-10",
+   "public_observables": false,
+   "note": "observables not in a public machine-readable archive; pre-interstellar distances only"
+  },
+  "cassini_vlba": {
+   "epochs": "published astrometric campaigns",
+   "mode": "one-way downlink, phase-referenced to ICRF quasars",
+   "distance_au": "8-10",
+   "public_observables": false,
+   "note": "position solutions published; raw delay observables not publicly archived"
+  },
+  "pride_vex_mex": {
+   "epochs": "VEX 2009-2014; MEX campaigns",
+   "mode": "open-loop one-way X-band, USO-referenced, EVN/AuScope/NICT",
+   "sensitivity": "mHz-level open-loop Doppler (Bocanegra Bahamon et al. 2019; Duev et al. 2012)",
+   "distance_au": "<1.5",
+   "public_observables": "raw correlator-level data at the EVN archive; processed Doppler products in the published record",
+   "note": "inner-system downlink paths only"
+  }
+ },
+ "T3_boundary_coverage": {
+  "boundary_distance_au": ">=100 (heliopause class distances)",
+  "max_public_oneway_au": 10.0,
+  "voyager_at_150au": "carrier receivable only by 70-m-class apertures; no public VLBI record exists at boundary distances",
+  "conclusion": "no public one-way dataset covers the boundary-distance regime; the deep-space one-way channel is identified and scoped but not populated at the relevant distance"
+ },
+ "T4_sensitivity": {
+  "delta_vlbi_1979": {
+   "scatter_urad": 0.5,
+   "note": "~few-ns differential-delay class per pass"
+  },
+  "gnss_clock_channel": {
+   "note": "sub-ns carrier-phase clock comparisons over a global network, 25 yr baseline -- the realized highest-sensitivity one-way channel in the corpus"
+  },
+  "ordering": "GNSS clock network >> PRIDE open-loop Doppler > 1979 delta-VLBI demonstration, in realized one-way sensitivity"
+ }
+}

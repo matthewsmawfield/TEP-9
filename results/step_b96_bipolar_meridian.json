@@ -1,0 +1,55 @@
+{
+ "step": "step_132_bipolar_meridian",
+ "description": "Bipolar meridian and polarity-mirror coherence: equator-mirror pair of the era axes, azimuthal coplanarity of the measured axes about the CMB bipolar axis, and meridian-resident residual cells on the independent refit record",
+ "seed": 20260920,
+ "n_axes": 20000,
+ "n_perm": 20000,
+ "cmb_apex_gal_lb": [
+  264.02,
+  48.25
+ ],
+ "axes_used": {
+  "declared": "measured",
+  "displaced": "measured",
+  "detached": "measured"
+ },
+ "T1_mirror_pair": {
+  "mirror_sep_deg": 11.515729265349892,
+  "p_fixed_target": 0.010065032139573993,
+  "p_axis_shuffle": 0.007049647517624119,
+  "n_axes": 20000
+ },
+ "T2_meridian_coplanarity": {
+  "azimuths_deg": {
+   "declared": 208.7541042904594,
+   "displaced": 221.87714758861333,
+   "detached": 205.295666958701
+  },
+  "circular_R": 0.9922453124151877,
+  "p_isotropic_dirs": 0.005799710014499275,
+  "p_axis_shuffle": 0.05485
+ },
+ "T3_meridian_resident": {
+  "pre2018": {
+   "side": "antapex",
+   "plane_deg": 30.0,
+   "n_cell": 137,
+   "med_in": 0.03432423898519432,
+   "med_out": 0.03311918729664365,
+   "gap": 0.0012050516885506735,
+   "mw_p": 0.4027795160123231,
+   "p_perm": 0.4993750312484376
+  },
+  "post2017": {
+   "side": "apex",
+   "plane_deg": 30.0,
+   "n_cell": 50,
+   "med_in": 0.20849450074974812,
+   "med_out": -0.03306903844149922,
+   "gap": 0.24156353919124735,
+   "mw_p": 0.0001793357178341421,
+   "p_perm": 0.0015499225038748063
+  }
+ },
+ "verdict": "MERIDIAN-MIRROR COHERENT: the era structures form a polarity-mirror pair about the bipolar equator and the measured axes share one meridian about the CMB axis"
+}

@@ -1,0 +1,550 @@
+{
+ "sample": "a>150, q>30, cc<=3",
+ "N": 44,
+ "D1_element_selectivity": {
+  "om": {
+   "R_obs": 0.3265,
+   "R_null_mean": 0.133,
+   "p_conditioned": 0.008699565021748913
+  },
+  "w": {
+   "R_obs": 0.3476,
+   "R_null_mean": 0.1339,
+   "p_conditioned": 0.004899755012249388
+  },
+  "varpi": {
+   "R_obs": 0.3316,
+   "R_null_mean": 0.1341,
+   "p_conditioned": 0.0073496325183740815
+  },
+  "phat": {
+   "R_obs": 0.3355,
+   "R_null_mean": 0.1363,
+   "p_conditioned": 0.00519974001299935
+  },
+  "nhat": {
+   "R_obs": 0.944,
+   "R_null_mean": 0.9395,
+   "p_conditioned": 0.011749412529373532
+  }
+ },
+ "D2_mixture": {
+  "mu_deg": 41.0,
+  "kappa": 2.93,
+  "sigma_deg": 37.8,
+  "f_clustered": 0.43,
+  "nll": 74.7
+ },
+ "D3_membership": {
+  "a": {
+   "spearman_rho": 0.033,
+   "p": 0.8331110659149815,
+   "AUC_aligned_vs_not": 0.453
+  },
+  "q": {
+   "spearman_rho": -0.002,
+   "p": 0.9898575184251405,
+   "AUC_aligned_vs_not": 0.59
+  },
+  "ad": {
+   "spearman_rho": 0.029,
+   "p": 0.8515914896356344,
+   "AUC_aligned_vs_not": 0.449
+  },
+  "i": {
+   "spearman_rho": 0.025,
+   "p": 0.8744438939462743
+  },
+  "log_a": {
+   "spearman_rho": 0.033,
+   "p": 0.8331110659149815
+  }
+ },
+ "D4_resonances": {
+  "a9_best_AU": 1500.0,
+  "z_max": 0.0,
+  "p_global_vs_loguniform": 0.9400299850074962,
+  "resonance_set": "p/q, 1<=q<=8, p<q+9, 1<r<20",
+  "note": "shepherding predicts a values concentrated at mean-motion resonances; a smooth a-set (low z) is the field-wall expectation"
+ },
+ "D5_max_gap": {
+  "max_gap_deg": 37.2,
+  "gap_edges_deg": [
+   213.9,
+   251.1
+  ],
+  "p_vs_fitted_mixture": 0.7403149212696826
+ },
+ "D6_cross_population": {
+  "centaurs_a>30": {
+   "N": 6,
+   "R": 0.228,
+   "p_rayleigh_approx": 0.7325887284972019,
+   "varpi_mean_deg": 272.7
+  },
+  "comets_q>=5": {
+   "N": 268,
+   "R": 0.193,
+   "p_sphere_approx": 3.0823606842695314e-07,
+   "mean_lam_deg": 219.5,
+   "mean_beta_deg": 30.8
+  },
+  "comets_by_class": {
+   "COM": {
+    "N": 61,
+    "R": 0.241,
+    "p_sphere_approx": 0.004947164294374687,
+    "mean_lam_deg": 267.9,
+    "mean_beta_deg": 41.1
+   },
+   "CTc": {
+    "N": 22,
+    "R": 0.28,
+    "p_sphere_approx": 0.07492536191926663,
+    "mean_lam_deg": 64.1,
+    "mean_beta_deg": 10.6
+   },
+   "HTC": {
+    "N": 4,
+    "R": 0.572,
+    "p_sphere_approx": 0.14062019503623602,
+    "mean_lam_deg": 161.3,
+    "mean_beta_deg": -39.8
+   },
+   "HYP": {
+    "N": 115,
+    "R": 0.185,
+    "p_sphere_approx": 0.0028103672947487114,
+    "mean_lam_deg": 200.5,
+    "mean_beta_deg": 48.2
+   },
+   "JFc": {
+    "N": 65,
+    "R": 0.445,
+    "p_sphere_approx": 4.2300538074297944e-09,
+    "mean_lam_deg": 219.3,
+    "mean_beta_deg": 1.4
+   }
+  },
+  "comets_note": "q>=5 comets: JFc perihelion longitudes are known to be non-uniform from capture/discovery geometry; HYP are hyperbolic (Oort/inbound) objects. Discovery bias is not modeled here -- axes are descriptive."
+ },
+ "D7_harmonic_decomp": {
+  "m1": {
+   "R": 0.3316,
+   "z": 4.84,
+   "p_rayleigh": 0.007423820585887634,
+   "mean_dir_deg": 49.1
+  },
+  "m2": {
+   "R": 0.2387,
+   "z": 2.51,
+   "p_rayleigh": 0.08134310125023034,
+   "mean_dir_deg": 32.1
+  },
+  "m3": {
+   "R": 0.0648,
+   "z": 0.18,
+   "p_rayleigh": 0.8330613529872202,
+   "mean_dir_deg": 55.1
+  }
+ },
+ "D7_note": "m=1 dominance => directed (vector) anomaly: consistent with a lapse gradient OR a point mass; an axial/quadrupolar field (e.g. galactic tide) would peak at m=2",
+ "object_alignment": [
+  {
+   "name": "594337 (2016 QU89)",
+   "varpi": 46.5,
+   "align_cos": 0.999,
+   "a": 177.0,
+   "q": 35.266,
+   "ad": 318.79,
+   "i": 16.96
+  },
+  {
+   "name": "(2014 TS115)",
+   "varpi": 53.3,
+   "align_cos": 0.997,
+   "a": 183.4,
+   "q": 34.85,
+   "ad": 332.02,
+   "i": 18.25
+  },
+  {
+   "name": "(2016 SG58)",
+   "varpi": 55.4,
+   "align_cos": 0.994,
+   "a": 244.4,
+   "q": 35.114,
+   "ad": 453.65,
+   "i": 13.21
+  },
+  {
+   "name": "(2014 TU115)",
+   "varpi": 57.8,
+   "align_cos": 0.988,
+   "a": 360.2,
+   "q": 34.993,
+   "ad": 685.37,
+   "i": 23.53
+  },
+  {
+   "name": "523622 (2007 TG422)",
+   "varpi": 38.9,
+   "align_cos": 0.984,
+   "a": 555.3,
+   "q": 35.622,
+   "ad": 1074.9,
+   "i": 18.57
+  },
+  {
+   "name": "541132 Leleakuhonua (2015 TG387)",
+   "varpi": 59.4,
+   "align_cos": 0.984,
+   "a": 1346.0,
+   "q": 64.681,
+   "ad": 2627.27,
+   "i": 11.68
+  },
+  {
+   "name": "(2013 SY99)",
+   "varpi": 61.8,
+   "align_cos": 0.976,
+   "a": 812.9,
+   "q": 49.906,
+   "ad": 1575.87,
+   "i": 4.23
+  },
+  {
+   "name": "474640 Alicanto (2004 VN112)",
+   "varpi": 33.3,
+   "align_cos": 0.962,
+   "a": 342.1,
+   "q": 47.371,
+   "ad": 636.93,
+   "i": 25.51
+  },
+  {
+   "name": "508338 (2015 SO20)",
+   "varpi": 28.7,
+   "align_cos": 0.937,
+   "a": 169.1,
+   "q": 33.197,
+   "ad": 305.0,
+   "i": 23.4
+  },
+  {
+   "name": "445473 (2010 VZ98)",
+   "varpi": 71.2,
+   "align_cos": 0.927,
+   "a": 158.9,
+   "q": 34.355,
+   "ad": 283.5,
+   "i": 4.51
+  },
+  {
+   "name": "(2012 VP113)",
+   "varpi": 25.2,
+   "align_cos": 0.914,
+   "a": 267.5,
+   "q": 80.642,
+   "ad": 454.4,
+   "i": 24.0
+  },
+  {
+   "name": "(2015 RX245)",
+   "varpi": 73.8,
+   "align_cos": 0.909,
+   "a": 446.1,
+   "q": 45.508,
+   "ad": 846.7,
+   "i": 12.14
+  },
+  {
+   "name": "(2016 SD106)",
+   "varpi": 22.5,
+   "align_cos": 0.894,
+   "a": 357.5,
+   "q": 42.686,
+   "ad": 672.22,
+   "i": 4.81
+  },
+  {
+   "name": "(2013 RF98)",
+   "varpi": 19.9,
+   "align_cos": 0.873,
+   "a": 375.8,
+   "q": 36.161,
+   "ad": 715.49,
+   "i": 29.5
+  },
+  {
+   "name": "(2014 SR349)",
+   "varpi": 16.6,
+   "align_cos": 0.843,
+   "a": 304.1,
+   "q": 47.392,
+   "ad": 560.83,
+   "i": 17.96
+  },
+  {
+   "name": "(2016 SA59)",
+   "varpi": 15.4,
+   "align_cos": 0.831,
+   "a": 252.6,
+   "q": 39.164,
+   "ad": 466.1,
+   "i": 21.53
+  },
+  {
+   "name": "505478 (2013 UT15)",
+   "varpi": 84.1,
+   "align_cos": 0.82,
+   "a": 205.4,
+   "q": 43.901,
+   "ad": 366.83,
+   "i": 10.65
+  },
+  {
+   "name": "148209 (2000 CR105)",
+   "varpi": 85.2,
+   "align_cos": 0.808,
+   "a": 229.3,
+   "q": 44.169,
+   "ad": 414.34,
+   "i": 22.71
+  },
+  {
+   "name": "543735 (2014 OS394)",
+   "varpi": 86.0,
+   "align_cos": 0.8,
+   "a": 154.8,
+   "q": 37.083,
+   "ad": 272.54,
+   "i": 14.12
+  },
+  {
+   "name": "765047 (2013 RA109)",
+   "varpi": 8.0,
+   "align_cos": 0.753,
+   "a": 480.1,
+   "q": 46.067,
+   "ad": 914.15,
+   "i": 12.39
+  },
+  {
+   "name": "771740 (2016 QV89)",
+   "varpi": 94.2,
+   "align_cos": 0.706,
+   "a": 177.3,
+   "q": 39.955,
+   "ad": 314.72,
+   "i": 21.39
+  },
+  {
+   "name": "527603 (2007 VJ305)",
+   "varpi": 3.1,
+   "align_cos": 0.694,
+   "a": 195.8,
+   "q": 35.25,
+   "ad": 356.37,
+   "i": 11.98
+  },
+  {
+   "name": "90377 Sedna (2003 VB12)",
+   "varpi": 95.6,
+   "align_cos": 0.689,
+   "a": 543.7,
+   "q": 76.185,
+   "ad": 1011.25,
+   "i": 11.93
+  },
+  {
+   "name": "765133 (2013 SL102)",
+   "varpi": 0.5,
+   "align_cos": 0.661,
+   "a": 321.8,
+   "q": 38.176,
+   "ad": 605.42,
+   "i": 6.5
+  },
+  {
+   "name": "(2003 SS422)",
+   "varpi": 358.2,
+   "align_cos": 0.63,
+   "a": 192.9,
+   "q": 39.642,
+   "ad": 346.22,
+   "i": 16.8
+  },
+  {
+   "name": "(2014 WB556)",
+   "varpi": 350.5,
+   "align_cos": 0.521,
+   "a": 284.5,
+   "q": 42.772,
+   "ad": 526.31,
+   "i": 24.15
+  },
+  {
+   "name": "(2014 FE72)",
+   "varpi": 110.8,
+   "align_cos": 0.475,
+   "a": 2687.0,
+   "q": 36.051,
+   "ad": 5337.66,
+   "i": 20.6
+  },
+  {
+   "name": "(2005 RH52)",
+   "varpi": 338.9,
+   "align_cos": 0.338,
+   "a": 154.3,
+   "q": 39.053,
+   "ad": 269.49,
+   "i": 20.45
+  },
+  {
+   "name": "768325 (2015 BP519)",
+   "varpi": 123.1,
+   "align_cos": 0.277,
+   "a": 486.2,
+   "q": 35.296,
+   "ad": 937.1,
+   "i": 54.08
+  },
+  {
+   "name": "(2014 SX403)",
+   "varpi": 324.2,
+   "align_cos": 0.088,
+   "a": 376.9,
+   "q": 35.601,
+   "ad": 718.29,
+   "i": 42.96
+  },
+  {
+   "name": "(2021 RR205)",
+   "varpi": 317.1,
+   "align_cos": -0.036,
+   "a": 949.0,
+   "q": 55.604,
+   "ad": 1842.47,
+   "i": 7.65
+  },
+  {
+   "name": "(2017 OF201)",
+   "varpi": 306.6,
+   "align_cos": -0.217,
+   "a": 823.6,
+   "q": 45.145,
+   "ad": 1602.13,
+   "i": 16.22
+  },
+  {
+   "name": "(2017 CL54)",
+   "varpi": 157.0,
+   "align_cos": -0.307,
+   "a": 217.8,
+   "q": 35.997,
+   "ad": 399.63,
+   "i": 14.9
+  },
+  {
+   "name": "(2015 DY248)",
+   "varpi": 157.6,
+   "align_cos": -0.316,
+   "a": 324.8,
+   "q": 33.943,
+   "ad": 615.67,
+   "i": 12.92
+  },
+  {
+   "name": "689335 (2013 FL28)",
+   "varpi": 159.4,
+   "align_cos": -0.346,
+   "a": 374.2,
+   "q": 32.151,
+   "ad": 716.28,
+   "i": 15.82
+  },
+  {
+   "name": "(2016 EC366)",
+   "varpi": 171.7,
+   "align_cos": -0.538,
+   "a": 161.3,
+   "q": 38.746,
+   "ad": 283.81,
+   "i": 37.34
+  },
+  {
+   "name": "82158 (2001 FP185)",
+   "varpi": 186.0,
+   "align_cos": -0.73,
+   "a": 215.4,
+   "q": 34.194,
+   "ad": 396.66,
+   "i": 30.79
+  },
+  {
+   "name": "(2023 KQ14)",
+   "varpi": 270.8,
+   "align_cos": -0.747,
+   "a": 247.4,
+   "q": 65.923,
+   "ad": 428.93,
+   "i": 11.0
+  },
+  {
+   "name": "(2024 FX26)",
+   "varpi": 192.9,
+   "align_cos": -0.806,
+   "a": 253.7,
+   "q": 40.914,
+   "ad": 466.54,
+   "i": 15.67
+  },
+  {
+   "name": "(2013 FT28)",
+   "varpi": 258.2,
+   "align_cos": -0.874,
+   "a": 288.3,
+   "q": 43.558,
+   "ad": 533.11,
+   "i": 17.39
+  },
+  {
+   "name": "(2015 KG163)",
+   "varpi": 251.1,
+   "align_cos": -0.928,
+   "a": 640.2,
+   "q": 40.482,
+   "ad": 1239.84,
+   "i": 14.0
+  },
+  {
+   "name": "506479 (2003 HB57)",
+   "varpi": 208.5,
+   "align_cos": -0.936,
+   "a": 158.6,
+   "q": 38.053,
+   "ad": 279.17,
+   "i": 15.5
+  },
+  {
+   "name": "(2015 DM319)",
+   "varpi": 209.0,
+   "align_cos": -0.939,
+   "a": 278.7,
+   "q": 39.421,
+   "ad": 517.9,
+   "i": 6.84
+  },
+  {
+   "name": "(2002 GB32)",
+   "varpi": 213.9,
+   "align_cos": -0.965,
+   "a": 205.1,
+   "q": 35.31,
+   "ad": 374.86,
+   "i": 14.19
+  }
+ ]
+}

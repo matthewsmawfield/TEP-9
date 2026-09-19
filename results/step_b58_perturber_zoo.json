@@ -1,0 +1,196 @@
+{
+ "meta": {
+  "purpose": "single-map closure of all proposed point-mass explanations against the required-mass ladder",
+  "axes": {
+   "tno_axis": "(lam,beta)=(49,-17)",
+   "antipode": "(229,17)",
+   "bb21_perih": "(241,-15)",
+   "transit_axis": "(34,-13)"
+  },
+  "references": [
+   "Phan et al. 2025, arXiv:2504.17288 (IRAS-AKARI)",
+   "Gomes et al. 2023, PSJ 4:66 (ephemeris bound)",
+   "Siraj, Chyba & Tremaine 2025, MNRAS Lett slaf091",
+   "Brown & Batygin 2021, AJ 161:27"
+  ]
+ },
+ "iras_akari_geometry": {
+  "candidate_eq": {
+   "ra_deg": 35.5,
+   "dec_deg": -48.9
+  },
+  "candidate_ecl": {
+   "lam_deg": 5.4,
+   "bet_deg": -57.5
+  },
+  "dist_range_AU": [
+   500,
+   700
+  ],
+  "mass_range_earth": [
+   7,
+   17
+  ],
+  "sep_vs_tno_axis_deg": 51.8,
+  "sep_vs_antipode_deg": 128.2,
+  "sep_vs_bb21_perih_deg": 94.3,
+  "sep_vs_transit_axis_deg": 49.5,
+  "note": "IRAS/AKARI slow-mover pair (Phan+25); not confirmed -- the AKARI-epoch counterpart was absent at the predicted position in follow-up inspection"
+ },
+ "iras_akari_capacity": {
+  "m7": {
+   "med_drot": 0.0002960563991326116,
+   "m_req_median_in": 3366.5116856696413,
+   "m_req_p05_in": 653.6890057274903,
+   "frac_in_req_gt_318": 1.0
+  },
+  "m17": {
+   "med_drot": 0.0007189706905282599,
+   "m_req_median_in": 3366.6142055705564,
+   "m_req_p05_in": 653.707384049497,
+   "frac_in_req_gt_318": 1.0
+  }
+ },
+ "closure": [
+  {
+   "hypothesis": "BB21 Planet Nine (a=461 AU, nominal 6.9 M_earth)",
+   "source": "step_b48_mass_ladder",
+   "required_mass_earth": 4293.701171087398,
+   "bound": "IRAS/WISE all-sky ~1 M_Jup = 318 M_earth",
+   "excluded": null
+  },
+  {
+   "hypothesis": "anti-aligned perturber a=250 AU",
+   "source": "step_b52_distance_ladder",
+   "required_mass_earth": 2185.772828530318,
+   "bound": "IRAS/WISE all-sky ~1 M_Jup = 318 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "anti-aligned perturber a=300 AU",
+   "source": "step_b52_distance_ladder",
+   "required_mass_earth": 3712.444102924351,
+   "bound": "IRAS/WISE all-sky ~1 M_Jup = 318 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "anti-aligned perturber a=461 AU",
+   "source": "step_b52_distance_ladder",
+   "required_mass_earth": 4290.123057974776,
+   "bound": "IRAS/WISE all-sky ~1 M_Jup = 318 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "anti-aligned perturber a=700 AU",
+   "source": "step_b52_distance_ladder",
+   "required_mass_earth": 3524.6224578200913,
+   "bound": "IRAS/WISE all-sky ~1 M_Jup = 318 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "anti-aligned perturber a=1000 AU",
+   "source": "step_b52_distance_ladder",
+   "required_mass_earth": 3490.145020103511,
+   "bound": "IRAS/WISE all-sky ~1 M_Jup = 318 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "anti-aligned inner perturber a=100 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 605.534139897819,
+   "bound": "ephemeris 5-sigma 0.017 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "anti-aligned inner perturber a=125 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 940.1523713629008,
+   "bound": "ephemeris 5-sigma 0.034 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "anti-aligned inner perturber a=150 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 876.7656997923547,
+   "bound": "ephemeris 5-sigma 0.058 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "anti-aligned inner perturber a=175 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 923.683522768024,
+   "bound": "ephemeris 5-sigma 0.092 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "anti-aligned inner perturber a=200 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 1235.0605926979201,
+   "bound": "ephemeris 5-sigma 0.138 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "anti-aligned inner perturber a=250 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 2185.772828530318,
+   "bound": "ephemeris 5-sigma 0.269 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "warp-plane inner perturber a=100 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 514.5663557202818,
+   "bound": "ephemeris 5-sigma 0.017 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "warp-plane inner perturber a=125 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 820.1053335093291,
+   "bound": "ephemeris 5-sigma 0.034 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "warp-plane inner perturber a=150 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 926.7950910204341,
+   "bound": "ephemeris 5-sigma 0.058 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "warp-plane inner perturber a=175 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 970.5710702966593,
+   "bound": "ephemeris 5-sigma 0.092 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "warp-plane inner perturber a=200 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 1115.1756768053021,
+   "bound": "ephemeris 5-sigma 0.138 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "warp-plane inner perturber a=250 AU",
+   "source": "step_b56_inner_perturber",
+   "required_mass_earth": 2107.6370867483784,
+   "bound": "ephemeris 5-sigma 0.269 M_earth (Gomes+23); SCT25 box 0.06-1 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "IRAS-AKARI candidate (7 M_earth, 600 AU, lam~5 bet~-57)",
+   "source": "this step",
+   "required_mass_earth": 3366.5116856696413,
+   "bound": "candidate's own mass estimate 7-17 M_earth",
+   "excluded": true
+  },
+  {
+   "hypothesis": "IRAS-AKARI candidate (17 M_earth, 600 AU, lam~5 bet~-57)",
+   "source": "this step",
+   "required_mass_earth": 3366.6142055705564,
+   "bound": "candidate's own mass estimate 7-17 M_earth",
+   "excluded": true
+  }
+ ]
+}

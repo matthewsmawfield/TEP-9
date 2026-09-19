@@ -1,0 +1,208 @@
+{
+ "step": "step_131_cone_shell_coherence",
+ "description": "Bipolar cone-shell coherence: per-era cone-angle profiles, common-cone joint test, ring-vs-pole morphology and band-resident contrasts on the independent refit record",
+ "seed": 20260919,
+ "n_perm": 20000,
+ "cone_bin_deg": 15.0,
+ "cmb_apex_gal_lb": [
+  264.02,
+  48.25
+ ],
+ "cohorts": {
+  "pre2018": 586,
+  "post2017": 249
+ },
+ "measured_axes": {
+  "declared": {
+   "cone_deg": 48.45789695284381,
+   "side": "antapex"
+  },
+  "displaced": {
+   "cone_deg": 53.80733307048544,
+   "side": "apex"
+  },
+  "resident_detached": {
+   "cone_deg": 64.06257686772607,
+   "side": "antapex"
+  }
+ },
+ "T1_cone_side_profiles": {
+  "pre2018": {
+   "cells": {
+    "0-15_apex": {
+     "n": 10,
+     "med": -0.04404247050662691
+    },
+    "0-15_antapex": {
+     "n": 10,
+     "med": 0.1891412390942403
+    },
+    "15-30_apex": {
+     "n": 21,
+     "med": 0.05281771416928782
+    },
+    "15-30_antapex": {
+     "n": 32,
+     "med": 0.0045565828960191235
+    },
+    "30-45_apex": {
+     "n": 41,
+     "med": -0.06514335289364259
+    },
+    "30-45_antapex": {
+     "n": 34,
+     "med": 0.0437577448247114
+    },
+    "45-60_apex": {
+     "n": 50,
+     "med": 0.09834238509518001
+    },
+    "45-60_antapex": {
+     "n": 54,
+     "med": 0.0720678715605721
+    },
+    "60-75_apex": {
+     "n": 60,
+     "med": -0.02085389586256431
+    },
+    "60-75_antapex": {
+     "n": 60,
+     "med": 0.05947679468352024
+    },
+    "75-90_apex": {
+     "n": 107,
+     "med": -0.07978253340925989
+    },
+    "75-90_antapex": {
+     "n": 107,
+     "med": 0.050728765723531605
+    }
+   },
+   "modal_cell": "0-15_antapex",
+   "modal_med": 0.1891412390942403,
+   "modal_n": 10,
+   "p_maxcell": 0.2904854757262137
+  },
+  "post2017": {
+   "cells": {
+    "0-15_apex": {
+     "n": 4,
+     "med": -0.0353773865731955
+    },
+    "0-15_antapex": {
+     "n": 6,
+     "med": -0.0434005576846091
+    },
+    "15-30_apex": {
+     "n": 4,
+     "med": 0.20736385451310219
+    },
+    "15-30_antapex": {
+     "n": 16,
+     "med": -0.2291211525829696
+    },
+    "30-45_apex": {
+     "n": 16,
+     "med": 0.03108259954490475
+    },
+    "30-45_antapex": {
+     "n": 25,
+     "med": -0.02950073412903431
+    },
+    "45-60_apex": {
+     "n": 21,
+     "med": 0.3338602175864589
+    },
+    "45-60_antapex": {
+     "n": 20,
+     "med": -0.08273814488842957
+    },
+    "60-75_apex": {
+     "n": 25,
+     "med": 0.0002725247086396987
+    },
+    "60-75_antapex": {
+     "n": 24,
+     "med": -0.1188401447096904
+    },
+    "75-90_apex": {
+     "n": 48,
+     "med": 0.19883245572459263
+    },
+    "75-90_antapex": {
+     "n": 39,
+     "med": -0.029052488047308977
+    }
+   },
+   "modal_cell": "45-60_apex",
+   "modal_med": 0.3338602175864589,
+   "modal_n": 21,
+   "p_maxcell": 0.19704014799260036
+  }
+ },
+ "T2_common_cone": {
+  "band_deg": [
+   45.0,
+   60.0
+  ],
+  "band_fraction": 0.20710678118654746,
+  "declared": {
+   "cone_deg": 48.45789695284381,
+   "side": "antapex"
+  },
+  "displaced": {
+   "cone_deg": 53.80733307048544,
+   "side": "apex"
+  },
+  "resident": {
+   "cone_deg": 64.06257686772607,
+   "side": "antapex"
+  },
+  "observed_config": true,
+  "p_isotropic_analytic": 0.021446609406726224,
+  "p_isotropic_mc": 0.021698915054247286,
+  "note": "resident detached axis sits at 64.1 deg cone -- outside the 45-60 band; reported honestly"
+ },
+ "T3_ring_morphology": {
+  "pre2018": {
+   "ring_amp": 0.08556808597376726,
+   "ring_theta0": 50.0,
+   "pole_med": 0.1891412390942403,
+   "pole_n": 10,
+   "n_side": 297,
+   "p_ring": 0.3391330433478326,
+   "ring_away_from_pole": true
+  },
+  "post2017": {
+   "ring_amp": 0.19474396847876665,
+   "ring_theta0": 55.0,
+   "pole_med": -0.0353773865731955,
+   "pole_n": 4,
+   "n_side": 118,
+   "p_ring": 0.2735863206839658,
+   "ring_away_from_pole": true
+  }
+ },
+ "T4_band_contrast": {
+  "pre2018": {
+   "side": "antapex",
+   "n_in": 54,
+   "med_in": 0.0720678715605721,
+   "med_out": 0.01967152972360897,
+   "gap": 0.05239634183696312,
+   "mw_p": 0.017750929158321868,
+   "p_perm": 0.18214089295535224
+  },
+  "post2017": {
+   "side": "apex",
+   "n_in": 21,
+   "med_in": 0.3338602175864589,
+   "med_out": -0.025567203459879728,
+   "gap": 0.3594274210463386,
+   "mw_p": 0.00012470524505709521,
+   "p_perm": 0.000199990000499975
+  },
+  "joint_product": 0.01883268201872203
+ },
+ "verdict": "CONE-SHELL PARTIAL on the independent record"
+}

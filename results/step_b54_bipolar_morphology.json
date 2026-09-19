@@ -1,0 +1,192 @@
+{
+ "method": "full-theta profile of catalogue rotation drot_cat and planetary-subtracted proper-time residual dtau_unexplained (step_b30 per-comet products) in 30-deg bins; mirror-cap (theta>120) elevation tested against the 60-120 background by Mann-Whitney with a 95% bootstrap upper bound on the second-lobe amplitude; cap/anti contrast and full-range Spearman for monotonicity.",
+ "cap_deg": 60,
+ "mid_deg": [
+  60,
+  120
+ ],
+ "anti_deg": [
+  120,
+  180
+ ],
+ "n": {
+  "cap": 75,
+  "mid": 122,
+  "anti": 32
+ },
+ "profile": [
+  {
+   "bin": [
+    0,
+    30
+   ],
+   "n": 17,
+   "drot_med": 0.1008082147905539,
+   "drot_ci68": [
+    0.08395943395198363,
+    0.1436512564958488
+   ],
+   "dtau_med": 1.142171438333032,
+   "dtau_ci68": [
+    0.19544142768068617,
+    4.602128336860245
+   ],
+   "dtau_frac_pos": 0.6470588235294118
+  },
+  {
+   "bin": [
+    30,
+    60
+   ],
+   "n": 58,
+   "drot_med": 0.11316491219680501,
+   "drot_ci68": [
+    0.08920347728120548,
+    0.1514890328258815
+   ],
+   "dtau_med": 2.1278699343356764,
+   "dtau_ci68": [
+    -1.3647423983785405,
+    3.918495672220942
+   ],
+   "dtau_frac_pos": 0.5344827586206896
+  },
+  {
+   "bin": [
+    60,
+    90
+   ],
+   "n": 78,
+   "drot_med": 0.0916935621795601,
+   "drot_ci68": [
+    0.07938691488753907,
+    0.10787903940032023
+   ],
+   "dtau_med": -4.019006466374867,
+   "dtau_ci68": [
+    -5.486297477948799,
+    -2.4421270288725916
+   ],
+   "dtau_frac_pos": 0.358974358974359
+  },
+  {
+   "bin": [
+    90,
+    120
+   ],
+   "n": 44,
+   "drot_med": 0.1303059067228201,
+   "drot_ci68": [
+    0.11292581442755344,
+    0.15282344236328788
+   ],
+   "dtau_med": -2.7196216440656524,
+   "dtau_ci68": [
+    -6.0777166037301225,
+    0.7232376593550134
+   ],
+   "dtau_frac_pos": 0.45454545454545453
+  },
+  {
+   "bin": [
+    120,
+    150
+   ],
+   "n": 22,
+   "drot_med": 0.0796231656860002,
+   "drot_ci68": [
+    0.067888094951962,
+    0.0965959512052392
+   ],
+   "dtau_med": 1.4782206034681098,
+   "dtau_ci68": [
+    -4.690816662728533,
+    4.587074660970358
+   ],
+   "dtau_frac_pos": 0.5
+  },
+  {
+   "bin": [
+    150,
+    181
+   ],
+   "n": 10,
+   "drot_med": 0.06893788649852094,
+   "drot_ci68": [
+    0.04134172277110909,
+    0.16006287836310135
+   ],
+   "dtau_med": 3.682905662114897,
+   "dtau_ci68": [
+    -1.9311262181250566,
+    12.689485109346817
+   ],
+   "dtau_frac_pos": 0.6
+  }
+ ],
+ "T1_mirror_cap": {
+  "drot_anti_med": 0.0796231656860002,
+  "drot_mid_med": 0.1053791385824301,
+  "mw_p_anti_gt_mid": 0.889221202993059,
+  "second_lobe_amp_ci95": [
+   -0.0664071805604495,
+   0.013954957242722556
+  ],
+  "second_lobe_amp_upper95": 0.007477822401807596,
+  "incap_elevation_deg": 0.00012254761374907996,
+  "dtau_anti_med": 2.0479996187745835,
+  "dtau_mid_med": -3.8890836581788504
+ },
+ "T2_cap_vs_anti": {
+  "drot_mw_p": 0.029049348659970185,
+  "dtau_mw_p": 0.6111707568503629
+ },
+ "T3_monotonicity": {
+  "rho_theta_drot": -0.0917060545801565,
+  "p": 0.1666383866926714,
+  "rho_theta_dtau": -0.06890869665144446,
+  "p_dtau": 0.2991275391559111
+ },
+ "T4_sign_structure": {
+  "cap_frac_pos": 0.56,
+  "cap_binom_p": 0.3556992390814873,
+  "mid_frac_pos": 0.39344262295081966,
+  "mid_binom_p": 0.023216360221353663,
+  "anti_frac_pos": 0.53125,
+  "anti_binom_p": 0.860050065908581,
+  "dtau_anti_vs_mid_mw_p": 0.01600826068890147,
+  "dtau_cap_vs_mid_mw_p": 0.003564701048801474
+ },
+ "T6_harmonic": {
+  "rho_cos1_dtau": 0.06890869665144446,
+  "p_cos1_dtau": 0.2991275391559111,
+  "rho_cos2_dtau": 0.16936836109639966,
+  "p_cos2_dtau": 0.01024173041343742,
+  "rho_cos1_drot": 0.0917060545801565,
+  "p_cos1_drot": 0.1666383866926714,
+  "rho_cos2_drot": 0.037039960828595134,
+  "p_cos2_drot": 0.57708994619407,
+  "note": "cos(theta): one-sided dipolar defect; cos(2theta): axisymmetric field positive at both axis poles"
+ },
+ "per_catalogue": {
+  "code": {
+   "drot_cap_med": 0.14434842433323902,
+   "drot_mid_med": 0.11619996621446835,
+   "drot_anti_med": 0.06547502611815739,
+   "dtau_cap_med": 2.200498208232262,
+   "dtau_mid_med": -3.5245942534359456,
+   "dtau_anti_med": 2.0479996187745835,
+   "n_anti": 16
+  },
+  "warsaw": {
+   "drot_cap_med": 0.08920347728120548,
+   "drot_mid_med": 0.09576122477624992,
+   "drot_anti_med": 0.09970400680001704,
+   "dtau_cap_med": 0.6568500526909857,
+   "dtau_mid_med": -6.209966708133734,
+   "dtau_anti_med": 1.3279742214226506,
+   "n_anti": 16
+  }
+ },
+ "note": "The injected JFC chain is bipolar in aphelion direction (steps 052/056): the underlying structure is an axis, not a pair of independent patches.  The mirror cap carries the lowest rotation median of the profile -- no second rotation lobe -- while the residual proper-time channel is positive at BOTH axis poles and significantly negative in the intervening region: an axisymmetric (cos-2-theta) slip structure rather than a one-sided patch, the morphology an axisymmetric proper-time field produces and the bipolar injection chain already implied."
+}

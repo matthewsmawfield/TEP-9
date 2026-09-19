@@ -1,0 +1,201 @@
+{
+ "sample": "a>150, q>30, cc<=3",
+ "N": 44,
+ "axis_deg": 49.1,
+ "anti_deg": 229.1,
+ "C1_anti_deficit": {
+  "n_in_anti_cap": 9,
+  "null_median": 15.0,
+  "null_p10": 11.0,
+  "p_lower": 0.0447977601119944,
+  "n_in_cluster_cap": 26,
+  "p_upper_cluster": 0.000199990000499975,
+  "note": "lower-tail test of the count within +-60 deg of the anti-axis vs conditioned null"
+ },
+ "C2_shape": {
+  "models": {
+   "uniform_plus_bump": {
+    "f": 0.431,
+    "kappa": 2.76,
+    "loglik": -74.91
+   },
+   "uniform_plus_bump_plus_dip": {
+    "f_bump": 0.431,
+    "k_bump": 2.76,
+    "f_dip": 0.0,
+    "k_dip": 2.73,
+    "loglik": -74.91
+   },
+   "repulsion_fixed_axis": {
+    "a": 0.559,
+    "loglik": -76.62
+   },
+   "repulsion_free_axis": {
+    "a": 0.579,
+    "mu_deg": 239.1,
+    "loglik": -76.52
+   }
+  },
+  "AIC": {
+   "uniform_plus_bump": 153.82,
+   "uniform_plus_bump_plus_dip": 157.82,
+   "repulsion_fixed_axis": 155.25,
+   "repulsion_free_axis": 157.04
+  },
+  "best_AIC": "uniform_plus_bump",
+  "note": "AIC prefers the model that needs a dip/repulsion component opposite the axis, if any"
+ },
+ "C3_far_side": {
+  "anti_cap_objects": [
+   {
+    "name": "82158 (2001 FP185)",
+    "a": 215.4,
+    "q": 34.194,
+    "i": 30.79,
+    "varpi": 186.0,
+    "first_year": 1999.0,
+    "cc": 1,
+    "arc": 9597.0
+   },
+   {
+    "name": "506479 (2003 HB57)",
+    "a": 158.6,
+    "q": 38.053,
+    "i": 15.5,
+    "varpi": 208.5,
+    "first_year": 2003.0,
+    "cc": 3,
+    "arc": 7355.0
+   },
+   {
+    "name": "(2002 GB32)",
+    "a": 205.1,
+    "q": 35.31,
+    "i": 14.19,
+    "varpi": 213.9,
+    "first_year": 2002.0,
+    "cc": 3,
+    "arc": 7739.0
+   },
+   {
+    "name": "(2013 FT28)",
+    "a": 288.3,
+    "q": 43.558,
+    "i": 17.39,
+    "varpi": 258.2,
+    "first_year": 2013.0,
+    "cc": 3,
+    "arc": 2926.0
+   },
+   {
+    "name": "(2015 DM319)",
+    "a": 278.7,
+    "q": 39.421,
+    "i": 6.84,
+    "varpi": 209.0,
+    "first_year": 2011.0,
+    "cc": 3,
+    "arc": 2158.0
+   },
+   {
+    "name": "(2015 KG163)",
+    "a": 640.2,
+    "q": 40.482,
+    "i": 14.0,
+    "varpi": 251.1,
+    "first_year": 2015.0,
+    "cc": 3,
+    "arc": 739.0
+   },
+   {
+    "name": "(2016 EC366)",
+    "a": 161.3,
+    "q": 38.746,
+    "i": 37.34,
+    "varpi": 171.7,
+    "first_year": 2006.0,
+    "cc": 3,
+    "arc": 6908.0
+   },
+   {
+    "name": "(2023 KQ14)",
+    "a": 247.4,
+    "q": 65.923,
+    "i": 11.0,
+    "varpi": 270.8,
+    "first_year": 2005.0,
+    "cc": 3,
+    "arc": 7323.0
+   },
+   {
+    "name": "(2024 FX26)",
+    "a": 253.7,
+    "q": 40.914,
+    "i": 15.67,
+    "varpi": 192.9,
+    "first_year": 2013.0,
+    "cc": 3,
+    "arc": 4414.0
+   }
+  ],
+  "compare": {
+   "a": {
+    "anti": {
+     "N": 9,
+     "median": 247.4,
+     "lo": 158.6,
+     "hi": 640.2
+    },
+    "cluster": {
+     "N": 26,
+     "median": 276.0,
+     "lo": 154.8,
+     "hi": 1346.0
+    }
+   },
+   "i": {
+    "anti": {
+     "N": 9,
+     "median": 15.5,
+     "lo": 6.8,
+     "hi": 37.3
+    },
+    "cluster": {
+     "N": 26,
+     "median": 16.9,
+     "lo": 4.2,
+     "hi": 29.5
+    }
+   },
+   "q": {
+    "anti": {
+     "N": 9,
+     "median": 39.4,
+     "lo": 34.2,
+     "hi": 65.9
+    },
+    "cluster": {
+     "N": 26,
+     "median": 39.8,
+     "lo": 33.2,
+     "hi": 80.6
+    }
+   },
+   "first_year": {
+    "anti": {
+     "N": 9,
+     "median": 2006.0,
+     "lo": 1999.0,
+     "hi": 2015.0
+    },
+    "cluster": {
+     "N": 26,
+     "median": 2012.5,
+     "lo": 1990.0,
+     "hi": 2015.0
+    }
+   }
+  },
+  "note": "are anti-axis objects a different population?"
+ }
+}

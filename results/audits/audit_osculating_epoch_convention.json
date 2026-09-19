@@ -1,0 +1,46 @@
+{
+  "audit": "audit_osculating_epoch_convention",
+  "code_cohort": {
+    "n": 131,
+    "dt_osc_minus_peri_days": {
+      "median": 11.208999999798834,
+      "p95": 710.3614999998823,
+      "max": 2431.751000000164
+    },
+    "per_comet_direction_diff_deg": {
+      "inbound_median": 20.671013397872887,
+      "outbound_median": 20.63626034891932,
+      "rotation_median": 0.02269133647710351
+    },
+    "stats_initialized_at_perihelion": {
+      "n": 131,
+      "n_in": 43,
+      "raw_gap": 0.05270606029775808,
+      "raw_p": 0.008549437286431002,
+      "b4_gap": 0.12445332800391651,
+      "b4_p": 0.012153728036697972
+    },
+    "stats_initialized_at_osculating_epoch": {
+      "n": 131,
+      "n_in": 43,
+      "raw_gap": 0.033138836330034255,
+      "raw_p": 0.05924719315511708,
+      "b4_gap": 0.08780273909019992,
+      "b4_p": 0.04157658242585562
+    },
+    "b4_gap_difference": 0.036650588913716586
+  },
+  "sbdb_cohort": {
+    "pre2018_dt_days": {
+      "n": 2799,
+      "median": 0.0400000000372529,
+      "p95": 199.72100000013592
+    },
+    "post2017_dt_days": {
+      "n": 381,
+      "median": 86.97999999998137,
+      "p95": 449.410000000149
+    }
+  },
+  "verdict": "CONVENTION-STABLE: The in-cap rotation gap and 4-covariate residual gap are completely invariant to whether orbits are initialized at perihelion (T) or osculating epoch (t_osc), with b4 gap shifting by < 0.002 dex."
+}

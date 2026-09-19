@@ -1,0 +1,109 @@
+{
+ "method": "REBOUND/IAS15 bidirectional: osculating elements at CODE perihelion epoch integrated to the +/-250 AU barycentric sphere under Sun + planetary-system barycentres (DE440s). Boundary solutions evaluated relative to the system barycentre, matching the catalogue's original/future convention.",
+ "finding": "drot_sim reproduces drot_cat per comet -- the catalogue's orig->fut rotation is reproduced by standard planetary dynamics. The cap statistic below is therefore a population contrast in model-predicted rotation per encounter budget; it is not, by itself, an independent observed-minus-dynamics residual or a TEP detection.",
+ "n_all_c1": 131,
+ "n_failed": 0,
+ "failed": [],
+ "boundary_AU_barycentric": 250.0,
+ "ephemeris": "data/raw/spice/de440s.bsp (provenance pinned)",
+ "matched": {
+  "n": 54,
+  "n_in": 19,
+  "leg_offset_med": 0.0009156272153082352,
+  "leg_offset_p95": 0.005343655524005087,
+  "leg_offset_max": 0.011223629578299758,
+  "frac_legs_within_0p01": 0.9814814814814815,
+  "frac_legs_within_0p1": 1.0,
+  "med_drot_cat_in": 0.21202382273638032,
+  "med_drot_cat_out": 0.1307454244504798,
+  "med_drot_sim_in": 0.2120079664108379,
+  "med_drot_sim_out": 0.1280292636927709,
+  "med_abs_drot_diff": 0.0006394876265222865,
+  "frac_comets_drot_within_0p02": 1.0,
+  "drot_sim_vs_cat": {
+   "rho": 0.9990851915380216,
+   "p_2sided": 7.218245774613564e-73
+  },
+  "energy_validation": {
+   "rho": 0.9881837240327805,
+   "p_2sided": 4.911172775182155e-44,
+   "med_abs_diff": 0.5134343351055008
+  },
+  "drot_sim_in_vs_out_p": 0.004718029831433835,
+  "drot_sim_vs_theta": {
+   "rho": -0.31679054697922615,
+   "p_2sided": 0.019599956647684817
+  },
+  "rot_per_kick_resid_kick": {
+   "p": 0.0029505468290258216,
+   "rho": -0.3157232704402515,
+   "p_2sided": 0.02003846331930758,
+   "med_resid_in": 0.17019467927828968,
+   "med_resid_out": -0.05471319395595864
+  },
+  "rot_per_kick_resid_kick_denc": {
+   "p": 0.0019882465346402977,
+   "rho": -0.40415475509815124,
+   "p_2sided": 0.002438460520848616,
+   "med_resid_in": 0.16697402158190477,
+   "med_resid_out": -0.041718703654058054
+  },
+  "rot_per_kick_resid_full": {
+   "p": 0.0018769517711514636,
+   "rho": -0.40773775490756614,
+   "p_2sided": 0.0022109089076690945,
+   "med_resid_in": 0.16354376356021194,
+   "med_resid_out": -0.05285526499582782
+  }
+ },
+ "all_c1": {
+  "n": 131,
+  "n_in": 43,
+  "leg_offset_med": 0.001242039284737289,
+  "leg_offset_p95": 0.03966698817181015,
+  "leg_offset_max": 0.2282019593891222,
+  "frac_legs_within_0p01": 0.9083969465648855,
+  "frac_legs_within_0p1": 0.9618320610687023,
+  "med_drot_cat_in": 0.14434842433323902,
+  "med_drot_cat_out": 0.09858890272674065,
+  "med_drot_sim_in": 0.14702894574927305,
+  "med_drot_sim_out": 0.09432288545151497,
+  "med_abs_drot_diff": 0.000489665917670197,
+  "frac_comets_drot_within_0p02": 1.0,
+  "drot_sim_vs_cat": {
+   "rho": 0.999183259488603,
+   "p_2sided": 1.2038445417592088e-181
+  },
+  "energy_validation": {
+   "rho": 0.9890514066086585,
+   "p_2sided": 4.485289845914079e-109,
+   "med_abs_diff": 0.018638075745712968
+  },
+  "drot_sim_in_vs_out_p": 0.017098874572862004,
+  "drot_sim_vs_theta": {
+   "rho": -0.24439758714567877,
+   "p_2sided": 0.004904480204539137
+  },
+  "rot_per_kick_resid_kick": {
+   "p": 0.010688768751336966,
+   "rho": -0.2325628569903379,
+   "p_2sided": 0.007516580648326625,
+   "med_resid_in": 0.07664285796230486,
+   "med_resid_out": 0.007125137117100777
+  },
+  "rot_per_kick_resid_kick_denc": {
+   "p": 0.02316054828323576,
+   "rho": -0.23495969679175785,
+   "p_2sided": 0.006905052582277491,
+   "med_resid_in": 0.13538146101358306,
+   "med_resid_out": 0.02360658442222141
+  },
+  "rot_per_kick_resid_full": {
+   "p": 0.012153728036697972,
+   "rho": -0.2520952330112635,
+   "p_2sided": 0.003675168575259304,
+   "med_resid_in": 0.15101948031415813,
+   "med_resid_out": 0.02656615231024162
+  }
+ }
+}

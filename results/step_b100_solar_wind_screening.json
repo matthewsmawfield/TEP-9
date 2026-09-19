@@ -1,0 +1,71 @@
+{
+ "step": "step_136_solar_wind_screening",
+ "result": "b100",
+ "verdict": "SCREENING NOT SUPPORTED: pooled correlation is an era-proxy artefact; within-era coupling is flat",
+ "omni": {
+  "url": "https://spdf.gsfc.nasa.gov/pub/data/omni/low_res_omni/omni_m_daily.dat",
+  "n_months": 721,
+  "span": [
+   "(1963, 11)",
+   "(2026, 9)"
+  ],
+  "p_dyn_median_npa": 1.7520747932720002
+ },
+ "T1_pooled": {
+  "pooled": {
+   "n": 797,
+   "rho": 0.011412559070244082,
+   "p": 0.74768384190316
+  },
+  "apex_band": {
+   "n": 67,
+   "rho": -0.2455625732649466,
+   "p": 0.045180190747399006
+  }
+ },
+ "T2_within_era": {
+  "pre2018": {
+   "apex_band": {
+    "n": 49,
+    "rho": -0.22297056001266974,
+    "p": 0.12356998939697171
+   },
+   "pooled": {
+    "n": 49,
+    "rho": 0.03758738803355817,
+    "p": 0.37081720562760523
+   }
+  },
+  "post2017": {
+   "apex_band": {
+    "n": 18,
+    "rho": -0.029974196231253223,
+    "p": 0.9060155047930557
+   },
+   "pooled": {
+    "n": 18,
+    "rho": -0.05040185675164866,
+    "p": 0.44884028445482305
+   }
+  }
+ },
+ "T3_era_contrast": {
+  "pre_median": 1.8229289507751725,
+  "post_median": 1.6641743584322584,
+  "mw_p": 0.00021635038065743206,
+  "note": "post-2017 perihelia sample the SC24 decline/minimum"
+ },
+ "T4_regime_split": {
+  "p_split_npa": 1.7520747932720002,
+  "regimes": {
+   "high": {
+    "n": 398,
+    "dipole_dex": -0.021981403927639514
+   },
+   "low": {
+    "n": 399,
+    "dipole_dex": 0.04773836113220052
+   }
+  }
+ }
+}

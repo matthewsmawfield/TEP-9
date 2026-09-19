@@ -1,0 +1,34 @@
+[2026-09-19 21:29:19 UTC] [INFO    ] [STEP 050] LOGGER INITIALIZED: step_050_one_map (Step 050)
+[2026-09-19 21:29:19 UTC] [DEBUG   ] [STEP 050] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_050_one_map.log
+[2026-09-19 21:29:19 UTC] [DEBUG   ] [STEP 050] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-19 21:29:19 UTC] [INFO    ] [STEP 050] ================================================================================
+[2026-09-19 21:29:19 UTC] [INFO    ] [STEP 050] One-map axis coincidence
+[2026-09-19 21:29:19 UTC] [INFO    ] [STEP 050] ================================================================================
+T1 separations from TNO perihelion axis (49.9,-17.0):
+  ism_inflow      ( 255.8,   5.2) sep= 28.0  vs anti-axis  28.0
+  heliotail       (  75.8,  -5.2) sep= 28.0  vs anti-axis  28.0
+  v1_hp           ( 255.0,  35.0) sep=151.3  vs anti-axis  28.7
+  v2_hp           ( 290.0, -32.0) sep=104.4  vs anti-axis  75.6
+  comet_peri      ( 219.5,  30.8) sep= 16.7  vs anti-axis  16.7
+  oumuamua        ( 284.5,  56.8) sep=123.2  vs anti-axis  56.8
+  cmb_dipole      ( 171.7, -11.2) sep= 64.1  vs anti-axis  64.1
+  axis_of_evil    ( 167.2,   2.4) sep= 63.3  vs anti-axis  63.3
+  radio_dipole    ( 171.7, -11.2) sep= 64.0  vs anti-axis  64.0
+  alpha_dipole    ( 264.2, -34.7) sep= 61.2  vs anti-axis  61.2
+  qso_pol         (   2.2,  -1.9) sep= 49.3  vs anti-axis  49.3
+  galactic_pole   ( 180.0,  29.8) sep= 47.2  vs anti-axis  47.2
+
+T2 folded concentration R=0.742 p=4.09e-03; axial |cos|=0.488 p=5.27e-01
+T3 local subset R=0.290 p=1.00e+00
+T3b triple axis |cos|=0.859 p=3.10e-02 {'tno_comet': 16.7, 'tno_ism': 28.0, 'comet_ism': 42.6}
+T3c plane pole (50,84) vs peri axis (50,-17)
+   separation matrix (deg):
+   tno_peri comet_pe ism_infl    v1_hp    v2_hp oumuamua
+   tno_peri      0.0     16.7     28.0    151.3    104.4    123.2
+   comet_pe     16.7      0.0     42.6     29.9     91.6     51.1
+   ism_infl     28.0     42.6      0.0     29.8     49.4     56.4
+      v1_hp    151.3     29.9     29.8      0.0     74.6     29.5
+      v2_hp    104.4     91.6     49.4     74.6      0.0     88.9
+   oumuamua    123.2     51.1     56.4     29.5     88.9      0.0
+
+wrote results/step_05_one_map.json, figures/step_05_one_map.png

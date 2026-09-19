@@ -1,0 +1,273 @@
+{
+ "method": "operational time-equivalent dt_equiv = d_th * r_b^2 / h; boundary rotation converted to the time an unperturbed comet on the same orbit needs to sweep the angle.  Residuals regressed on the measured encounter budget (|kick|, min planet approach, q, i).",
+ "definition": "dtau is the time-equivalent that a standard-clock reconstruction would associate with the measured phase error; it is not a derived proper-time measurement without an explicit field/clock response model; no model amplitude assumed",
+ "r_b_AU": 250.0,
+ "cap_deg": 60.0,
+ "seed": 20260918,
+ "nboot": 20000,
+ "code": {
+  "n": 131,
+  "matched": {
+   "n": 54,
+   "n_in": 19,
+   "med_dtau_total_in": 20.30924524022313,
+   "med_dtau_total_out": 13.269621217823788,
+   "med_transit_yr": 601.0,
+   "dtau_in_gt_out_p": 0.00926799084434059,
+   "dtau_vs_theta": {
+    "rho": -0.23689727463312363,
+    "p_2sided": 0.08457356680971448
+   },
+   "dtau_resid_log_cap": {
+    "p": 0.001243464910736851,
+    "med_resid_in": 0.35082492520636155,
+    "med_resid_out": -0.15603760314680093
+   },
+   "dtau_resid_log_vs_theta": {
+    "rho": -0.4072041166380788,
+    "p_2sided": 0.0022435549733941006
+   },
+   "dtau_unexplained": {
+    "med_in": 4.914493512987352,
+    "ci68_in": [
+     4.0659867674978365,
+     6.047864982511605
+    ],
+    "med_out": -3.8509221658717756,
+    "p_in_gt_out": 0.005324961824809417
+   },
+   "dtau_unexplained_vs_theta": {
+    "rho": -0.3526205450733752,
+    "p_2sided": 0.008918048713114876
+   },
+   "frac_slip": {
+    "med_in": 0.0334583941354582,
+    "med_out": 0.022452827779735684,
+    "resid_cap_p": 0.0013200068163171054
+   }
+  },
+  "all": {
+   "n": 131,
+   "n_in": 43,
+   "med_dtau_total_in": 9.338790511973388,
+   "med_dtau_total_out": 6.656044487722342,
+   "med_transit_yr": 610.0,
+   "dtau_in_gt_out_p": 0.02627873822198016,
+   "dtau_vs_theta": {
+    "rho": -0.19233438317407783,
+    "p_2sided": 0.027745899765438373
+   },
+   "dtau_resid_log_cap": {
+    "p": 0.013617916053112035,
+    "med_resid_in": 0.3639459172725281,
+    "med_resid_out": 0.05981024722014561
+   },
+   "dtau_resid_log_vs_theta": {
+    "rho": -0.2369828644637805,
+    "p_2sided": 0.0064236752688759165
+   },
+   "dtau_unexplained": {
+    "med_in": 0.5402286721344165,
+    "ci68_in": [
+     -0.7320247919355132,
+     1.1715849639574207
+    ],
+    "med_out": -1.5391974963580526,
+    "p_in_gt_out": 0.03944322115371795
+   },
+   "dtau_unexplained_vs_theta": {
+    "rho": -0.15348849623658783,
+    "p_2sided": 0.08006548423410476
+   },
+   "frac_slip": {
+    "med_in": 0.015359852815745704,
+    "med_out": 0.011010810216137609,
+    "resid_cap_p": 0.011999788915865638
+   }
+  }
+ },
+ "warsaw": {
+  "n": 98,
+  "matched": {
+   "n": 41,
+   "n_in": 12,
+   "med_dtau_total_in": 16.601777644793966,
+   "med_dtau_total_out": 14.550583967730338,
+   "med_transit_yr": 600.0,
+   "dtau_in_gt_out_p": 0.5171413090784421,
+   "dtau_vs_theta": {
+    "rho": -0.00853658536585366,
+    "p_2sided": 0.9577547598063445
+   },
+   "dtau_resid_log_cap": {
+    "p": 0.3817603086778724,
+    "med_resid_in": 0.20808862399407024,
+    "med_resid_out": 0.0930022807477191
+   },
+   "dtau_resid_log_vs_theta": {
+    "rho": -0.016027874564459935,
+    "p_2sided": 0.9207722994407067
+   },
+   "dtau_unexplained": {
+    "med_in": -0.6799671663895928,
+    "ci68_in": [
+     -1.4411184393438101,
+     3.5961521205335476
+    ],
+    "med_out": -1.8215492228960137,
+    "p_in_gt_out": 0.39273126798232666
+   },
+   "dtau_unexplained_vs_theta": {
+    "rho": 0.005226480836236935,
+    "p_2sided": 0.974128301535268
+   },
+   "frac_slip": {
+    "med_in": 0.0276129531719699,
+    "med_out": 0.024050552012777417,
+    "resid_cap_p": 0.37088351370214506
+   },
+   "dtau_inbound_unexplained": {
+    "med_in": 2.391830117483204,
+    "ci68_in": [
+     -0.8855287389584463,
+     4.48176801746799
+    ],
+    "med_out": -2.211019443396083,
+    "p_in_gt_out": 0.03901903257114656,
+    "med_total_in": 12.90764270977768,
+    "med_total_out": 7.9488397800060175
+   }
+  },
+  "all": {
+   "n": 98,
+   "n_in": 32,
+   "med_dtau_total_in": 6.118643862510986,
+   "med_dtau_total_out": 6.261440196737617,
+   "med_transit_yr": 608.0,
+   "dtau_in_gt_out_p": 0.7511237600548668,
+   "dtau_vs_theta": {
+    "rho": 0.08991450375839181,
+    "p_2sided": 0.3786032492723719
+   },
+   "dtau_resid_log_cap": {
+    "p": 0.3370767142135757,
+    "med_resid_in": 0.08775516040026121,
+    "med_resid_out": 0.09018577144185702
+   },
+   "dtau_resid_log_vs_theta": {
+    "rho": 0.02360869371178649,
+    "p_2sided": 0.8175108878088447
+   },
+   "dtau_unexplained": {
+    "med_in": 4.460273543934494,
+    "ci68_in": [
+     1.6284968345182924,
+     6.288263520900561
+    ],
+    "med_out": -2.033808063974581,
+    "p_in_gt_out": 0.037204447125761486
+   },
+   "dtau_unexplained_vs_theta": {
+    "rho": -0.04454602834573378,
+    "p_2sided": 0.6631694790054974
+   },
+   "frac_slip": {
+    "med_in": 0.009976220794684314,
+    "med_out": 0.010324331351902458,
+    "resid_cap_p": 0.31793365408749996
+   },
+   "dtau_inbound_unexplained": {
+    "med_in": 5.044200459549487,
+    "ci68_in": [
+     2.589970277213931,
+     7.224157209451667
+    ],
+    "med_out": -1.7824388891309018,
+    "p_in_gt_out": 0.007913541051802047,
+    "med_total_in": 5.16301783243488,
+    "med_total_out": 4.3386468915030445
+   }
+  }
+ },
+ "pooled": {
+  "n": 229,
+  "matched": {
+   "n": 95,
+   "n_in": 31,
+   "med_dtau_total_in": 17.850672788182646,
+   "med_dtau_total_out": 13.385649542775202,
+   "med_transit_yr": 601.0,
+   "dtau_in_gt_out_p": 0.039360313962289846,
+   "dtau_vs_theta": {
+    "rho": -0.13449048152295634,
+    "p_2sided": 0.1938032854593753
+   },
+   "dtau_resid_log_cap": {
+    "p": 0.010559617870248336,
+    "med_resid_in": 0.3237694718044435,
+    "med_resid_out": -0.03529463615874362
+   },
+   "dtau_resid_log_vs_theta": {
+    "rho": -0.21124020156774917,
+    "p_2sided": 0.039887855589873476
+   },
+   "dtau_unexplained": {
+    "med_in": 4.055638141751444,
+    "ci68_in": [
+     3.196249473358243,
+     4.915183062811483
+    ],
+    "med_out": -4.045401831594272,
+    "p_in_gt_out": 0.01496904783188409
+   },
+   "dtau_unexplained_vs_theta": {
+    "rho": -0.20582306830907057,
+    "p_2sided": 0.0453883856657573
+   },
+   "frac_slip": {
+    "med_in": 0.029456555756076974,
+    "med_out": 0.02251547145091555,
+    "resid_cap_p": 0.011011497748823278
+   }
+  },
+  "all": {
+   "n": 229,
+   "n_in": 75,
+   "med_dtau_total_in": 8.460097427133984,
+   "med_dtau_total_out": 6.60474317042225,
+   "med_transit_yr": 609.0,
+   "dtau_in_gt_out_p": 0.13338991726382793,
+   "dtau_vs_theta": {
+    "rho": -0.07293675616799737,
+    "p_2sided": 0.27169911558642307
+   },
+   "dtau_resid_log_cap": {
+    "p": 0.03370835907585519,
+    "med_resid_in": 0.23035831099138915,
+    "med_resid_out": 0.06871038187091658
+   },
+   "dtau_resid_log_vs_theta": {
+    "rho": -0.1175481898214304,
+    "p_2sided": 0.0758562486709913
+   },
+   "dtau_unexplained": {
+    "med_in": 2.0552416604390906,
+    "ci68_in": [
+     0.19544142768068617,
+     3.180297563560706
+    ],
+    "med_out": -2.7037356141394735,
+    "p_in_gt_out": 0.01638295977887144
+   },
+   "dtau_unexplained_vs_theta": {
+    "rho": -0.06890869665144446,
+    "p_2sided": 0.2991275391559111
+   },
+   "frac_slip": {
+    "med_in": 0.013801137727787903,
+    "med_out": 0.010944220757861424,
+    "resid_cap_p": 0.03323344480764032
+   }
+  }
+ }
+}

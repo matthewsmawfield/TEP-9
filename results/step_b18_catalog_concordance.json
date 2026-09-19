@@ -1,0 +1,32 @@
+{
+ "n_jpl": 44,
+ "n_mpc_outer": 91,
+ "n_matched": 44,
+ "C1_concordance": {
+  "med_abs_d_varpi_deg": 0.0032,
+  "p90_abs_d_varpi_deg": 0.0092,
+  "med_da_au": -0.003,
+  "med_abs_da_au": 0.048,
+  "med_dq_au": 0.0,
+  "note": "element concordance between JPL and MPC orbit solutions for the same objects"
+ },
+ "C2_clustering_mpc": {
+  "jpl": {
+   "R": 0.332,
+   "mu": 49.1,
+   "rayleigh_p": "7.93e-03"
+  },
+  "mpc": {
+   "R": 0.332,
+   "mu": 49.1,
+   "rayleigh_p": "7.93e-03"
+  },
+  "axis_offset_deg": 0.0,
+  "note": "the anomaly recomputed on MPC orbit solutions for the identical object list.  Caveat: element-for-element identity to printed precision indicates the catalogs share fitted solutions (JPL ingests MPC fits) rather than being independent fits -- this excludes solver/parse systematics on our side but is not a fully independent orbit determination"
+ },
+ "C3_systematic_offset": {
+  "mean_d_varpi_deg": 360.0,
+  "R_of_offsets": 1.0,
+  "note": "if orbit-solver systematics displaced varpi coherently, the offset distribution would be narrow and nonzero"
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "step": "step_106_harmonic_axis_transfer",
+ "description": "Out-of-sample harmonic-order discrimination on the 229 (identical step-102 folds), free axis recovery scan on the third (one-apparition) cohort, lpc amplitude transfer, and per-comet cross-solution concordance on shared members.",
+ "inputs": [
+  "results/step_b30_proper_time_slip.csv",
+  "results/step_b69_lpc_bidirectional.csv",
+  "data/raw/lpc/lpc_orig_2006_2010.vot"
+ ],
+ "seed": 20260920,
+ "n_boot": 10000,
+ "T1_axis_recovery": {
+  "n_grid": 370,
+  "best": {
+   "lam": 50.0,
+   "beta": -50.0,
+   "p": 0.0006007932840382226,
+   "sep_from_cap": 39.251760179152356,
+   "sep_from_det": 33.000098492176505
+  },
+  "predeclared": {
+   "p": 0.005632778346332447,
+   "rank_frac": 0.04582210242587601,
+   "n_in": 9
+  }
+ },
+ "T2_harmonic_oob": {
+  "const": {
+   "oob_rho": -0.07260295961861529
+  },
+  "cos1": {
+   "oob_rho": -0.02541344818282654
+  },
+  "cos2": {
+   "oob_rho": 0.14851158654182448
+  },
+  "cos3": {
+   "oob_rho": -0.08556253934627724
+  },
+  "linear": {
+   "oob_rho": -0.024407182756587698
+  },
+  "cos2_minus_cos1": {
+   "median": 0.17298470042103756,
+   "ci68": [
+    0.09207975922294083,
+    0.2558574500661628
+   ],
+   "frac_positive": 0.9842
+  }
+ },
+ "T3_amplitude": {
+  "b_229": 5.980804841326264,
+  "all": {
+   "n": 30,
+   "b": 2.2887914872692976,
+   "ci68": [
+    -1.0752733057027053,
+    6.353916475413124
+   ],
+   "frac_b_pos": 0.7455
+  },
+  "shared": {
+   "n": 23,
+   "b": 3.252496524923641,
+   "ci68": [
+    -0.4691268639933928,
+    7.4893680125394475
+   ],
+   "frac_b_pos": 0.8057
+  },
+  "nonshared": {
+   "n": 7,
+   "b": 15.642802758528475,
+   "ci68": [
+    1.393320823487973,
+    24.93232531927995
+   ],
+   "frac_b_pos": 0.8546
+  }
+ },
+ "T4_cross_solution": {
+  "n": 23,
+  "drot_rho": 0.9990118577075099,
+  "drot_p": 6.921818204844189e-30,
+  "dtau_rho": 0.7025691699604744,
+  "dtau_p": 0.00018553117065647645,
+  "med_abs_drot_diff": 0.0004871066436915594
+ },
+ "verdict": "On the third cohort (n=30) the free scan's strongest axis sits at (50,-50) deg, 39 deg from the cap-declaration axis, and the pre-declared axis ranks in the top 4.6 per cent of 370 trial directions (p=0.0056).  Out-of-sample, the cos2theta profile retains the best held-out skill of the tested families (rho=+0.149; cos2-cos1 +0.173 [+0.092,+0.256]).  The lpc cohort's own amplitude fit returns b=+2.29 yr [-1.08,+6.35] against the training amplitude +5.98 yr.  On the 23 shared bodies the two solutions' per-comet discrepancies correlate at rho=+0.999."
+}

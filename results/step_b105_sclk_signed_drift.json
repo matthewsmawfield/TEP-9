@@ -1,0 +1,261 @@
+{
+ "step": "step_141_sclk_signed_drift",
+ "result": "b105",
+ "verdict": "SCLK CALIBRATION DIAGNOSTIC: 4/4 negative three-year-window steps. Same-craft correlation and kernel segmentation prevent an independent-crossing detection claim; compare window sensitivity and empirical epoch ranks.",
+ "observable": "Signed fractional rate in SCLK clock-correlation coefficients; oscillator and operational contributions are not separated",
+ "T1_crossing_steps": {
+  "VG1": {
+   "TS": {
+    "epoch": 2004.96,
+    "radius_au": 94.0,
+    "w2": {
+     "raw_ppm": -1.8615471706989237,
+     "detrended_ppm": -1.8985208069096557,
+     "neg_frac_raw": 0.03508771929824561,
+     "neg_frac_det": 0.03508771929824561,
+     "abs_frac_det": 0.11695906432748537,
+     "n_changepoints": 171
+    },
+    "w3": {
+     "raw_ppm": -1.6911184176245206,
+     "detrended_ppm": -1.7380854003145072,
+     "neg_frac_raw": 0.03680981595092025,
+     "neg_frac_det": 0.03680981595092025,
+     "abs_frac_det": 0.12269938650306748,
+     "n_changepoints": 163
+    },
+    "w5": {
+     "raw_ppm": -0.03944282051282055,
+     "detrended_ppm": -0.12235619572328876,
+     "neg_frac_raw": 0.3469387755102041,
+     "neg_frac_det": 0.6258503401360545,
+     "abs_frac_det": 0.9727891156462585,
+     "n_changepoints": 147
+    }
+   },
+   "HP": {
+    "epoch": 2012.65,
+    "radius_au": 121.6,
+    "w2": {
+     "raw_ppm": -0.9908938541666665,
+     "detrended_ppm": -1.0060498536216316,
+     "neg_frac_raw": 0.14619883040935672,
+     "neg_frac_det": 0.14619883040935672,
+     "abs_frac_det": 0.2807017543859649,
+     "n_changepoints": 171
+    },
+    "w3": {
+     "raw_ppm": -0.9062382551594745,
+     "detrended_ppm": -0.9303596026255653,
+     "neg_frac_raw": 0.11042944785276074,
+     "neg_frac_det": 0.11042944785276074,
+     "abs_frac_det": 0.2331288343558282,
+     "n_changepoints": 163
+    },
+    "w5": {
+     "raw_ppm": -0.4506257623007621,
+     "detrended_ppm": -0.4993892679275288,
+     "neg_frac_raw": 0.16326530612244897,
+     "neg_frac_det": 0.20408163265306123,
+     "abs_frac_det": 0.4489795918367347,
+     "n_changepoints": 147
+    }
+   }
+  },
+  "VG2": {
+   "TS": {
+    "epoch": 2007.66,
+    "radius_au": 84.0,
+    "w2": {
+     "raw_ppm": -2.4340434908041835,
+     "detrended_ppm": -2.478193565452739,
+     "neg_frac_raw": 0.06285714285714286,
+     "neg_frac_det": 0.06285714285714286,
+     "abs_frac_det": 0.13714285714285715,
+     "n_changepoints": 175
+    },
+    "w3": {
+     "raw_ppm": -3.8501015760869564,
+     "detrended_ppm": -3.9115164493126198,
+     "neg_frac_raw": 0.017964071856287425,
+     "neg_frac_det": 0.017964071856287425,
+     "abs_frac_det": 0.05389221556886228,
+     "n_changepoints": 167
+    },
+    "w5": {
+     "raw_ppm": -2.458715310210064,
+     "detrended_ppm": -2.5448334775597825,
+     "neg_frac_raw": 0.033112582781456956,
+     "neg_frac_det": 0.033112582781456956,
+     "abs_frac_det": 0.1390728476821192,
+     "n_changepoints": 151
+    }
+   },
+   "HP": {
+    "epoch": 2018.9,
+    "radius_au": 119.0,
+    "w2": {
+     "raw_ppm": -2.513969696969697,
+     "detrended_ppm": -2.5479944125401,
+     "neg_frac_raw": 0.05142857142857143,
+     "neg_frac_det": 0.05142857142857143,
+     "abs_frac_det": 0.12571428571428572,
+     "n_changepoints": 175
+    },
+    "w3": {
+     "raw_ppm": -2.4301055555555546,
+     "detrended_ppm": -2.483758417990895,
+     "neg_frac_raw": 0.08982035928143713,
+     "neg_frac_det": 0.08982035928143713,
+     "abs_frac_det": 0.18562874251497005,
+     "n_changepoints": 167
+    },
+    "w5": {
+     "raw_ppm": -1.7582031963470315,
+     "detrended_ppm": -1.8468461759963135,
+     "neg_frac_raw": 0.11920529801324503,
+     "neg_frac_det": 0.11920529801324503,
+     "abs_frac_det": 0.25165562913907286,
+     "n_changepoints": 151
+    }
+   }
+  }
+ },
+ "T2_changepoint_nulls": {
+  "VG1": {
+   "TS": {
+    "w2": {
+     "null_median_ppm": -0.14573026241913892,
+     "null_neg_base_rate": 0.6432748538011696
+    },
+    "w3": {
+     "null_median_ppm": -0.1879771235286653,
+     "null_neg_base_rate": 0.7055214723926381
+    },
+    "w5": {
+     "null_median_ppm": -0.24551661488684848,
+     "null_neg_base_rate": 0.6394557823129252
+    }
+   },
+   "HP": {
+    "w2": {
+     "null_median_ppm": -0.14573026241913892,
+     "null_neg_base_rate": 0.6432748538011696
+    },
+    "w3": {
+     "null_median_ppm": -0.1879771235286653,
+     "null_neg_base_rate": 0.7055214723926381
+    },
+    "w5": {
+     "null_median_ppm": -0.24551661488684848,
+     "null_neg_base_rate": 0.6394557823129252
+    }
+   }
+  },
+  "VG2": {
+   "TS": {
+    "w2": {
+     "null_median_ppm": -0.0923017868318142,
+     "null_neg_base_rate": 0.5828571428571429
+    },
+    "w3": {
+     "null_median_ppm": -0.15017716634236047,
+     "null_neg_base_rate": 0.6227544910179641
+    },
+    "w5": {
+     "null_median_ppm": -0.18981138307176698,
+     "null_neg_base_rate": 0.6490066225165563
+    }
+   },
+   "HP": {
+    "w2": {
+     "null_median_ppm": -0.0923017868318142,
+     "null_neg_base_rate": 0.5828571428571429
+    },
+    "w3": {
+     "null_median_ppm": -0.15017716634236047,
+     "null_neg_base_rate": 0.6227544910179641
+    },
+    "w5": {
+     "null_median_ppm": -0.18981138307176698,
+     "null_neg_base_rate": 0.6490066225165563
+    }
+   }
+  }
+ },
+ "T3_joint": {
+  "all_negative": true,
+  "n_negative_w3": 4,
+  "n_crossings": 4,
+  "interpretation": "Nominal independent-crossing references only; same-craft dependence, overlapping windows, and epoch selection are not calibrated.",
+  "neg_base_rate": 0.6641379817053011,
+  "binom_p_4of4": 0.3079225319431734,
+  "fisher_chi2": 23.86938861910499,
+  "fisher_p": 0.0024102268243450416,
+  "tails_w3": [
+   0.03680981595092025,
+   0.11042944785276074,
+   0.017964071856287425,
+   0.08982035928143713
+  ]
+ },
+ "T4_cadence": {
+  "VG1": {
+   "n": 1144,
+   "median_gap_d": 2.8333344907408105,
+   "dnu_range_ppm": [
+    -164.1,
+    33.46
+   ],
+   "TS_nearby_gaps_d": [
+    115.66665856485241,
+    0.3333310184670495,
+    24.333332175954126,
+    0.3333310185500977,
+    50.33332870370646,
+    0.33333564815700356
+   ],
+   "HP_nearby_gaps_d": [
+    9.666667824031833,
+    0.3333310185500977,
+    27.666662036993785,
+    0.3333344907968012,
+    12.666667824047693,
+    0.33332986110684715
+   ]
+  },
+  "VG2": {
+   "n": 1407,
+   "median_gap_d": 1.933331018497654,
+   "dnu_range_ppm": [
+    -52.120000000000005,
+    78.75
+   ],
+   "TS_nearby_gaps_d": [
+    82.66653240743301,
+    0.33332986110684715,
+    30.99994791660174,
+    0.3333344907968012,
+    14.333309027728319,
+    0.3333310185500977
+   ],
+   "HP_nearby_gaps_d": [
+    0.0005555555692922098,
+    89.85171874999895,
+    74.00000000000364,
+    112.99999999996066,
+    38.174451388912075,
+    25.82554861114943
+   ]
+  },
+  "NH1": {
+   "n": 3382,
+   "median_gap_d": 1.0000462962958068,
+   "dnu_range_ppm": [
+    -0.08807,
+    0.06584999999999999
+   ],
+   "note": "dnu frozen at sub-0.1 ppm -- NH unusable for the signed channel"
+  }
+ }
+}

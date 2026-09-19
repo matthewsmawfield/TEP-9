@@ -1,0 +1,120 @@
+{
+ "t_end_yr": 5000000.0,
+ "dt_yr": 0.5,
+ "snap_yr": 1000.0,
+ "seed": 20260919,
+ "axis_lon_deg": 49.0,
+ "epoch_jd": 2461200.5,
+ "T1_forced_apsidal": {
+  "Jupiter": {
+   "forced_azimuth_deg": 99.05919511051347,
+   "sep_from_axis_deg": 50.059195110513485,
+   "forced_amp": 0.0008052335279821345,
+   "free_amp": 0.04575216787734297,
+   "forced_over_free": 0.017599898875631112,
+   "e_mean": 0.04576229408358362
+  },
+  "Saturn": {
+   "forced_azimuth_deg": 98.93441893859357,
+   "sep_from_axis_deg": 49.93441893859358,
+   "forced_amp": 0.0005273352678705232,
+   "free_amp": 0.0535585835504975,
+   "forced_over_free": 0.009845952467606377,
+   "e_mean": 0.05355995685405177
+  },
+  "Uranus": {
+   "forced_azimuth_deg": 267.8842790995071,
+   "sep_from_axis_deg": 141.11572090049287,
+   "forced_amp": 0.0008942127478861739,
+   "free_amp": 0.04198139683463574,
+   "forced_over_free": 0.02130021426891697,
+   "e_mean": 0.04199638459966625
+  },
+  "Neptune": {
+   "forced_azimuth_deg": 178.84092000945188,
+   "sep_from_axis_deg": 129.8409200094519,
+   "forced_amp": 0.0010709427293076146,
+   "free_amp": 0.010061132027286309,
+   "forced_over_free": 0.10644356185796615,
+   "e_mean": 0.01013479931082162
+  }
+ },
+ "T2_joint": {
+  "weighted_mean_forced_azimuth_deg": 161.30170774184376,
+  "weighted_resultant": 0.4201536072380671,
+  "sep_from_axis_deg": 112.30170774184376,
+  "uniform_p_axis_this_close": 0.62,
+  "unweighted_mean_azimuth_deg": 143.56188103225256,
+  "note": "forced directions are secular-eigenmode driven and internally coherent by construction; the measured quantity is whether the common forced direction lands on the resident axis"
+ },
+ "T3_dwell": {
+  "Jupiter": {
+   "frac_within_15deg": 0.08638272345530894,
+   "uniform_expectation": 0.08333333333333333,
+   "ratio": 1.0365926814637074
+  },
+  "Saturn": {
+   "frac_within_15deg": 0.08318336332733453,
+   "uniform_expectation": 0.08333333333333333,
+   "ratio": 0.9982003599280144
+  },
+  "Uranus": {
+   "frac_within_15deg": 0.07918416316736653,
+   "uniform_expectation": 0.08333333333333333,
+   "ratio": 0.9502099580083984
+  },
+  "Neptune": {
+   "frac_within_15deg": 0.07198560287942411,
+   "uniform_expectation": 0.08333333333333333,
+   "ratio": 0.8638272345530894
+  }
+ },
+ "T4_present_3d": {
+  "Jupiter": {
+   "periapsis_sep_from_axis_deg": 132.2394183761334
+  },
+  "Saturn": {
+   "periapsis_sep_from_axis_deg": 57.799862550084676
+  },
+  "Uranus": {
+   "periapsis_sep_from_axis_deg": 27.157590383529012
+  },
+  "Neptune": {
+   "periapsis_sep_from_axis_deg": 137.7971966445571
+  },
+  "registered_mean_element_coincidence": {
+   "neptune_mean_varpi_deg": 44.965,
+   "sep_deg": 4.035,
+   "p_a_priori": 0.0224,
+   "source": "step_112 resonant control; mean element (Standish 2006)"
+  }
+ },
+ "T5_inter_giant": {
+  "Jupiter-Saturn": {
+   "forced_sep_deg": 0.12477617191990475
+  },
+  "Jupiter-Uranus": {
+   "forced_sep_deg": 168.82508398899364
+  },
+  "Jupiter-Neptune": {
+   "forced_sep_deg": 79.7817248989384
+  },
+  "Saturn-Uranus": {
+   "forced_sep_deg": 168.94986016091354
+  },
+  "Saturn-Neptune": {
+   "forced_sep_deg": 79.90650107085831
+  },
+  "Uranus-Neptune": {
+   "forced_sep_deg": 89.04335909005522
+  }
+ },
+ "verdict": "GIANT-APSIDAL CHANNEL QUIET: weighted mean forced apsidal azimuth 161.3 deg (112.3 deg from the resident axis, uniform p=0.6200); Neptune forced azimuth 178.8 deg (129.8 deg off), forced/free ratio 0.11.  The mean-element coincidence (Neptune varpi 4.0 deg, p~0.02) is registered with its secular context: whether the alignment survives as a fixed forced direction or is a circulating coincidence is decided here by the 5 Myr integration.",
+ "test_summary": {
+  "joint_sep_from_axis_deg": 112.30170774184376,
+  "joint_uniform_p": 0.62,
+  "neptune_forced_sep_deg": 129.8409200094519,
+  "neptune_dwell_ratio": 0.8638272345530894,
+  "axis_aligned": false
+ }
+}

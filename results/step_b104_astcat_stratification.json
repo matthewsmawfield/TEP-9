@@ -1,0 +1,244 @@
+{
+ "step": "step_140_astcat_stratification",
+ "result": "b104",
+ "description": "per-observation astrometric-catalogue (astcat) stratification of the era transition -- tests whether the axis/leg signal survives homogeneous reduction-catalogue legs",
+ "gaia_era_labels": [
+  "Gaia1",
+  "Gaia2",
+  "Gaia3",
+  "Gaia3E",
+  "ATLAS2"
+ ],
+ "cap_deg": 60.0,
+ "gaia_hi": 0.7,
+ "gaia_lo": 0.3,
+ "seed": 20260919,
+ "n_records": {
+  "pre2018": 489,
+  "post2017": 186
+ },
+ "T1_composition": {
+  "pre2018": {
+   "n": 489,
+   "gaia_in_median": 0.0,
+   "gaia_out_median": 0.0,
+   "frac_both_ge70": 0.002044989775051125,
+   "frac_both_le30": 0.901840490797546,
+   "frac_mixed": 0.03067484662576687,
+   "n_obs_in": 238287,
+   "n_obs_out": 176558
+  },
+  "post2017": {
+   "n": 186,
+   "gaia_in_median": 0.7820233902664759,
+   "gaia_out_median": 0.8465575112788478,
+   "frac_both_ge70": 0.5860215053763441,
+   "frac_both_le30": 0.016129032258064516,
+   "frac_mixed": 0.016129032258064516,
+   "n_obs_in": 118116,
+   "n_obs_out": 94673
+  }
+ },
+ "T2_uniform_modern_legs": {
+  "uniform_ge70": {
+   "n": 109,
+   "our_d_out_leg": {
+    "n_in": 26,
+    "n_out": 72,
+    "median_in": 0.10367756848124862,
+    "median_out": 0.07959267364548969,
+    "p": 0.07207858347111872
+   },
+   "our_d_in_leg": {
+    "n_in": 26,
+    "n_out": 72,
+    "median_in": 0.09116750759325772,
+    "median_out": 0.10132008673963482,
+    "p": 0.8378661954272761
+   },
+   "our_ddirf": {
+    "n_in": 26,
+    "n_out": 72,
+    "median_in": 0.11305410256568763,
+    "median_out": 0.08889436902391444,
+    "p": 0.2825299810360341
+   },
+   "resid_field": {
+    "n_in": 30,
+    "n_out": 79,
+    "median_in": 0.09410370076520536,
+    "median_out": 0.025161248346712073,
+    "p": 0.28322308284490794
+   }
+  },
+  "mixed": {
+   "n": 77,
+   "our_d_out_leg": {
+    "n_in": 21,
+    "n_out": 40,
+    "median_in": 0.11811020164220219,
+    "median_out": 0.09699846791680379,
+    "p": 0.08014510059643437
+   },
+   "our_d_in_leg": {
+    "n_in": 21,
+    "n_out": 40,
+    "median_in": 0.14497821302537217,
+    "median_out": 0.1002766884881578,
+    "p": 0.00876072067114082
+   },
+   "our_ddirf": {
+    "n_in": 21,
+    "n_out": 40,
+    "median_in": 0.25807280882438977,
+    "median_out": 0.11099345574667296,
+    "p": 0.0007756579426962262
+   },
+   "resid_field": {
+    "n_in": 27,
+    "n_out": 50,
+    "median_in": 0.25330847376684396,
+    "median_out": -0.1324318852062411,
+    "p": 6.452615034300114e-07
+   }
+  }
+ },
+ "T3_uniform_legacy_legs": {
+  "uniform_le30": {
+   "n": 441,
+   "n_dual": 365,
+   "our_d_in_leg": {
+    "n_in": 96,
+    "n_out": 269,
+    "median_in": 0.10777066917869128,
+    "median_out": 0.08142501818706939,
+    "p": 0.0012391978118810403
+   },
+   "our_d_out_leg": {
+    "n_in": 96,
+    "n_out": 269,
+    "median_in": 0.09543996014591904,
+    "median_out": 0.09978194995847983,
+    "p": 0.5911197902739853
+   },
+   "our_ddirf": {
+    "n_in": 96,
+    "n_out": 269,
+    "median_in": 0.148364688550931,
+    "median_out": 0.12690593470590908,
+    "p": 0.14006701747685485
+   }
+  },
+  "gaia_rich": {
+   "n": 48,
+   "n_dual": 33,
+   "our_d_in_leg": {
+    "n_in": 9,
+    "n_out": 24,
+    "median_in": 0.1080794548379425,
+    "median_out": 0.08161651622720931,
+    "p": 0.2788948311730717
+   },
+   "our_d_out_leg": {
+    "n_in": 9,
+    "n_out": 24,
+    "median_in": 0.12329699583393985,
+    "median_out": 0.0807275803410735,
+    "p": 0.05516709346222098
+   },
+   "our_ddirf": {
+    "n_in": 9,
+    "n_out": 24,
+    "median_in": 0.19110700034111283,
+    "median_out": 0.06085293544139826,
+    "p": 0.012433759386620374
+   }
+  }
+ },
+ "T4_composition_vs_signal": {
+  "pre2018": {
+   "n": 398,
+   "rho_ddirf_vs_minleg": -0.10344334909189841,
+   "p": 0.039137899741904215
+  },
+  "post2017": {
+   "n": 159,
+   "rho_ddirf_vs_minleg": -0.22143108239130424,
+   "p": 0.005031403151657899
+  }
+ },
+ "T5_era_crossers": {
+  "n": 20,
+  "our_d_out_leg": {
+   "n_in": 7,
+   "n_out": 13,
+   "median_in": null,
+   "median_out": null,
+   "p": null
+  },
+  "our_ddirf": {
+   "n_in": 7,
+   "n_out": 13,
+   "median_in": null,
+   "median_out": null,
+   "p": null
+  },
+  "gaia_min_median": 0.17125470878006377
+ },
+ "T6_matched_composition_audit": {
+  "note": "pooled resid_field (as registered in step_128) scored per stratum; in-cap vs out-of-cap members of the mixed stratum compared on leg composition, leg contrast and perihelion epoch",
+  "pooled_resid_cap_gap": {
+   "uniform_ge70": {
+    "n_in": 30,
+    "n_out": 79,
+    "median_in": 0.07845410878210507,
+    "median_out": -0.00961318026086011,
+    "p": 0.20875406084068815
+   },
+   "mixed": {
+    "n_in": 27,
+    "n_out": 50,
+    "median_in": 0.31836574839057474,
+    "median_out": -0.09520986030083245,
+    "p": 8.889566133867382e-07
+   }
+  },
+  "matched_composition_in_mixed": {
+   "g_min": {
+    "median_in": 0.5096774193548387,
+    "median_out": 0.4918050941306755,
+    "p": 0.320743285328843
+   },
+   "g_in": {
+    "median_in": 0.6176470588235294,
+    "median_out": 0.5871353196772191,
+    "p": 0.8060337149142683
+   },
+   "g_out": {
+    "median_in": 0.6666666666666666,
+    "median_out": 0.6696325189440508,
+    "p": 0.6927674295930701
+   },
+   "leg_contrast_go_minus_gi": {
+    "median_in": 0.08646245059288538,
+    "median_out": 0.11965605209021349,
+    "p": 0.8938453114675832
+   },
+   "abs_leg_contrast": {
+    "median_in": 0.2153846153846154,
+    "median_out": 0.2647336513615583,
+    "p": 0.13090511687708783
+   },
+   "tp_jd": {
+    "median_in": 2459017.4742999594,
+    "median_out": 2459266.530900702,
+    "p": 0.2600661971445356
+   }
+  },
+  "cap_gap_resid_on_abs_contrast": {
+   "p": 9.373552403234722e-07,
+   "slope": 0.008682271060301268
+  }
+ },
+ "verdict": "LEGACY CARRIER SURVIVES; DISPLACED CARRIER ATTENUATED, NOT COMPOSITION-EXPLAINED: the declared-cap inbound-leg signal survives on uniform-legacy legs (p=0.00124).  The displaced-cap residual is nonsignificant on uniformly-high-Gaia legs (p=0.209) and strong on sub-threshold legs (p=8.89e-07); however the sub-threshold stratum is composition-homogeneous (only ~2% of post-2017 legs are truly stitch-mixed), in-cap members match out-of-cap on leg composition, leg contrast and perihelion epoch (T6), and the cap gap persists after regressing out absolute leg contrast.  The attenuation is therefore not explained as a catalogue-stitching systematic: it admits a composition-modulated signal amplitude or a reduction-quality dependence, while catalogue-by-sky interactions remain unresolved."
+}

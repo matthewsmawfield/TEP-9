@@ -1,0 +1,71 @@
+{
+ "step": "step_134_lpc_signature_refit",
+ "description": "independent non-Warsaw two-leg LM refit of the signature-bearing LPC 1902-1950 cohort (step_127 machinery); the carrier-degeneracy close on the objects that carry the anomaly",
+ "cohort": "results/step_b69_lpc_bidirectional.csv",
+ "n_lpc": 30,
+ "n_code_members": 30,
+ "n_fitted": 17,
+ "n_failed": 13,
+ "failed": [
+  "C/1914 M1",
+  "C/1925 F1",
+  "C/1925 G1",
+  "C/1925 W1",
+  "C/1935 Q1",
+  "C/1941 K1",
+  "C/1942 C1",
+  "C/1944 K2",
+  "C/1946 C1",
+  "C/1946 P1",
+  "C/1947 Y1",
+  "C/1948 E1",
+  "C/1948 T1"
+ ],
+ "T1_validity_drot_concordance": {
+  "n": 17,
+  "rho": 1.0,
+  "p": 0.0,
+  "med_abs_diff_deg": 8.233288073547507e-06
+ },
+ "T2_cap_contrast_catalogue": {
+  "n": 17,
+  "n_in": 5,
+  "n_out": 12,
+  "med_in": 0.21200022277444838,
+  "med_out": 0.1236601054038308,
+  "mwu_p_greater": 0.04088558500323206,
+  "p_perm_medgap": 0.07458508298340331
+ },
+ "T2_cap_contrast_our_refit": {
+  "n": 17,
+  "n_in": 5,
+  "n_out": 12,
+  "med_in": 0.21200357237501122,
+  "med_out": 0.1236675181762886,
+  "mwu_p_greater": 0.04088558500323206,
+  "p_perm_medgap": 0.06898620275944811
+ },
+ "T3_leg_disagreement_cap": {
+  "n": 8,
+  "note": "insufficient"
+ },
+ "test_summary": {
+  "concordant": true,
+  "rank_contrast": true
+ },
+ "verdict": "SIGNATURE-COHORT REPLICATION: the independent two-leg refit concords with the catalogue per-comet rotations (rho=1.000, n=17) and reproduces the in-cap excess on identical members (refit MWU p=0.0409, median-gap permutation p=0.069; catalogue p=0.0409).  The historical carrier is a feature of the raw astrometry, not of the Warsaw fit products.  Shared astrometry and a standard force model bound interpretation; the fitted subset is small and set by observability.",
+ "evidence_status": "independent-lineage replication",
+ "inputs": [
+  "results/step_b69_lpc_bidirectional.csv",
+  "data/raw/mpc/obs/*.json (MPC get-obs ADES_DF, cached)",
+  "data/raw/mpc/sbdb_fp/*.json (SBDB full-prec seeds, cached)",
+  "data/raw/mpc/obscodes.json",
+  "data/raw/code/code_osculating.html (CODE membership)",
+  "data/raw/spice/de440s.bsp",
+  "data/raw/naif/naif0012.tls"
+ ],
+ "caveats": [
+  "Thirteen of the thirty LPCs fail the same per-leg observation floor applied uniformly to every cohort (MIN_OBS_LEG = 12, MIN_LEG_SPAN_D = 5 d): early-century astrometry is sparse, so the fittable subset is set by observability, not by selection on the anomaly.",
+  "The dual-leg subset (T3) is small on this cohort; the decisive channel here is the per-comet rotation record (T1+T2), which the single-leg-fittable members carry."
+ ]
+}

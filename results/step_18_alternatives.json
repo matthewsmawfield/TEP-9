@@ -1,0 +1,62 @@
+{
+ "n": 54,
+ "n_in": 19,
+ "threshold_morphology": {
+  "bins": {
+   "0-30": {
+    "n": 6,
+    "med": 0.2346522313585619
+   },
+   "30-45": {
+    "n": 6,
+    "med": 0.16495331902244037
+   },
+   "45-60": {
+    "n": 7,
+    "med": 0.24444631049638593
+   },
+   "60-75": {
+    "n": 11,
+    "med": 0.13216591174484943
+   },
+   "75-180": {
+    "n": 24,
+    "med": 0.11625007921602537
+   }
+  },
+  "within_cap_spearman": {
+   "rho": 0.09649122807017543,
+   "p": 0.6943484389585837
+  },
+  "note": "point mass predicts strong negative gradient (1/b impulse); observed is flat plateau then step -- boundary-crossing threshold"
+ },
+ "model_split": {
+  "NG_fitted": {
+   "n_in": 7,
+   "n_out": 19,
+   "med_in": 0.20976384763320013,
+   "med_out": 0.13216591174484943,
+   "p": 0.08460322286409241
+  },
+  "GR_only": {
+   "n_in": 12,
+   "n_out": 16,
+   "med_in": 0.21456327673585165,
+   "med_out": 0.12356481305960673,
+   "p": 0.007399694955076438
+  }
+ },
+ "point_mass_budget": {
+  "10_Mearth": {
+   "dv_ms": 0.11311966707483243,
+   "dv_needed_ms": 4.931644166192133,
+   "shortfall": 43.59669979341158
+  },
+  "318_Mearth": {
+   "dv_ms": 3.5972054129796707,
+   "dv_needed_ms": 4.931644166192133,
+   "shortfall": 1.3709654023085405
+  },
+  "note": "impulse at r_p=500 AU, impact parameter r_p sin(30 deg); a 10 M_earth perturber falls ~30x short of the observed rotation; a Jupiter-mass object at 500 AU is excluded by WISE; and any gravitational impulse couples rotation to energy -- the energy channel is flat (p=0.69)"
+ }
+}

@@ -1,0 +1,97 @@
+{
+ "axis_deg": 49.0,
+ "n": 44,
+ "M1_profile": [
+  {
+   "bin": "0-15",
+   "N": 7,
+   "frac": 0.159,
+   "uniform": 0.083
+  },
+  {
+   "bin": "15-30",
+   "N": 7,
+   "frac": 0.159,
+   "uniform": 0.083
+  },
+  {
+   "bin": "30-45",
+   "N": 6,
+   "frac": 0.136,
+   "uniform": 0.083
+  },
+  {
+   "bin": "45-60",
+   "N": 6,
+   "frac": 0.136,
+   "uniform": 0.083
+  },
+  {
+   "bin": "60-75",
+   "N": 3,
+   "frac": 0.068,
+   "uniform": 0.083
+  },
+  {
+   "bin": "75-90",
+   "N": 1,
+   "frac": 0.023,
+   "uniform": 0.083
+  },
+  {
+   "bin": "90-120",
+   "N": 5,
+   "frac": 0.114,
+   "uniform": 0.167
+  },
+  {
+   "bin": "120-150",
+   "N": 4,
+   "frac": 0.091,
+   "uniform": 0.167
+  },
+  {
+   "bin": "150-180",
+   "N": 5,
+   "frac": 0.114,
+   "uniform": 0.167
+  }
+ ],
+ "M2_model_comparison": {
+  "von_mises": {
+   "f": 0.41,
+   "sigma_deg": 34.9,
+   "logL": -252.95,
+   "AIC": 509.91
+  },
+  "top_hat": {
+   "f": 0.4,
+   "halfwidth_deg": 52.1,
+   "logL": -251.6,
+   "AIC": 507.2
+  },
+  "uniform": {
+   "logL": -258.99,
+   "AIC": 517.98
+  },
+  "winner": "top_hat",
+  "delta_AIC_th_minus_vm": -2.7
+ },
+ "M3_deficit_ring": {
+  "n_in_ring_60_90": 4,
+  "expected_uniform": 7.3,
+  "binom_p": 0.12166268685669165,
+  "note": "a real boundary sector has an outside as well as an inside: objects that should statistically occupy the 60-90 deg ring are absent -- the cap edge is a step, not a tail"
+ },
+ "M4_incap_flatness": {
+  "bin_counts": [
+   7,
+   7,
+   6,
+   6
+  ],
+  "chi2": 0.15,
+  "p_flat": 0.9846717450194384,
+  "note": "the in-cap distribution is consistent with FLAT -- no central peak inside the cap; the excess is a plateau"
+ }
+}

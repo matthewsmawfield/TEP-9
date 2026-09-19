@@ -1,0 +1,63 @@
+{
+ "method": "axis permutation: all five channels recomputed about each of N random sky directions; Fisher S = -2 sum ln p; global p = fraction of random axes matching the observed combined statistic.  Null preserves cross-channel dependence (same data, only the axis varies).",
+ "cap_deg": 60.0,
+ "seed": 20260918,
+ "n_axes": 20000,
+ "n_comets": 229,
+ "n_warsaw": 98,
+ "n_tno": 44,
+ "eval_at_tno_axis_49m17": {
+  "S": 107.16989051957837,
+  "channel_p": [
+   0.008736431325865402,
+   3.4737254580784554e-07,
+   0.00533951023764481,
+   5.792601536335611e-05,
+   5.6996649005101004e-09
+  ],
+  "p_global": 0.0021498925053747312
+ },
+ "eval_at_comet_axis_34m13": {
+  "S": 104.87275601027164,
+  "channel_p": [
+   0.005188047766861907,
+   5.268185803627722e-07,
+   0.007831676821448794,
+   0.00010417616649379667,
+   7.56627639243129e-09
+  ],
+  "p_global": 0.0087995600219989
+ },
+ "per_channel_look_elsewhere": {
+  "rotation_slip": {
+   "p_at_tno_axis": 0.008736431325865402,
+   "frac_axes_better": 0.012699365031748412
+  },
+  "aphelion_dipole": {
+   "p_at_tno_axis": 3.4737254580784554e-07,
+   "frac_axes_better": 0.0058997050147492625
+  },
+  "warsaw_inbound": {
+   "p_at_tno_axis": 0.00533951023764481,
+   "frac_axes_better": 0.0103994800259987
+  },
+  "tno_aphelion": {
+   "p_at_tno_axis": 5.792601536335611e-05,
+   "frac_axes_better": 0.00014999250037498125
+  },
+  "tno_varpi": {
+   "p_at_tno_axis": 5.6996649005101004e-09,
+   "frac_axes_better": 0.016449177541122944
+  }
+ },
+ "best_random_axis": {
+  "S": 108.75649900708733,
+  "sep_from_tno_deg": 2.826172513080847
+ },
+ "S_rand_quantiles": {
+  "q50": 18.935752997508857,
+  "q95": 89.43816303333902,
+  "q99": 104.38364880265347,
+  "q999": 108.05367678685535
+ }
+}

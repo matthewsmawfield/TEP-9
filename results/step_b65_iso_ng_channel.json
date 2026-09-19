@@ -1,0 +1,536 @@
+{
+ "step": "step_101_iso_ng_channel",
+ "description": "Fitted non-gravitational acceleration ledger of the three interstellar objects (JPL SBDB solutions, provenance-pinned) tested against the boundary-sector transit geometry: arrival, departure and periapsis directions vs the 60-deg caps and the bipolar slip morphology.",
+ "axis": {
+  "ecl_lon": 49.0,
+  "ecl_lat": -17.0,
+  "anti_lon": 229.0,
+  "anti_lat": 17.0,
+  "cap_deg": 60.0,
+  "edge_band_deg": [
+   60.0,
+   75.0
+  ]
+ },
+ "iso_ledger": [
+  {
+   "des": "1I",
+   "label": "1I/'Oumuamua",
+   "orbit_id": "16",
+   "soln_date": "2018-06-26 12:17:57",
+   "data_arc_d": "80",
+   "n_obs_used": 207,
+   "rms_arcsec": ".43612",
+   "e": 1.201133796102373,
+   "q_au": 0.2559115812959116,
+   "i_deg": 122.7417062847286,
+   "geometry": {
+    "arrival": {
+     "ecl_lon": 284.59,
+     "ecl_lat": 56.86,
+     "sep_axis_deg": 122.7,
+     "sep_antiaxis_deg": 57.3,
+     "in_cap": false,
+     "in_mirror_cap": true,
+     "sector": "lobe",
+     "bipolar_band": "pole_lobe",
+     "near_pole": "antiaxis"
+    },
+    "departure": {
+     "ecl_lon": 8.44,
+     "ecl_lat": 23.4,
+     "sep_axis_deg": 56.58,
+     "sep_antiaxis_deg": 123.42,
+     "in_cap": true,
+     "in_mirror_cap": false,
+     "sector": "lobe",
+     "bipolar_band": "pole_lobe",
+     "near_pole": "axis"
+    },
+    "periapsis": {
+     "ecl_lon": 159.34,
+     "ecl_lat": -47.85,
+     "sep_axis_deg": 90.36,
+     "sep_antiaxis_deg": 89.64,
+     "in_cap": false,
+     "in_mirror_cap": false,
+     "sector": "field",
+     "bipolar_band": "mid_band",
+     "near_pole": "antiaxis"
+    }
+   },
+   "double_lobe_transit": true,
+   "any_lobe_leg": true,
+   "ng": {
+    "n_model_pars": 8,
+    "a1": 2.790193364334668e-07,
+    "a1_sig": 3.574e-08,
+    "a2": 1.441264159911234e-08,
+    "a2_sig": 2.445e-08,
+    "a3": 1.57392261588653e-08,
+    "a3_sig": 2.249e-08,
+    "law": {
+     "ALN": 0.0408373333128795,
+     "R0": 5.0,
+     "NM": 2.0,
+     "NN": 3.0,
+     "NK": 2.6
+    },
+    "radial_profile": {
+     "r_0.256": {
+      "r_au": 0.2559115812959116,
+      "g_of_r": 15.583539848226446,
+      "a_ng_au_d2": 4.34810894773663e-06,
+      "frac_of_gravity": 0.0009623153539778253,
+      "sign": "outward"
+     },
+     "r_1": {
+      "r_au": 1.0,
+      "g_of_r": 1.0000000000000002,
+      "a_ng_au_d2": 2.7901933643346683e-07,
+      "frac_of_gravity": 0.0009429125552136038,
+      "sign": "outward"
+     },
+     "r_2": {
+      "r_au": 2.0,
+      "g_of_r": 0.2172146733329648,
+      "a_ng_au_d2": 6.060709401697608e-08,
+      "frac_of_gravity": 0.0008192577706490961,
+      "sign": "outward"
+     }
+    },
+    "a1_significance": 7.806920437422126,
+    "transverse_frac_a2": 0.05165463362984196,
+    "normal_frac_a3": 0.05640908748493988,
+    "dt_present": false
+   },
+   "volatile_status": "unexplained",
+   "volatile_note": "required mass loss ~25 kg/s for outgassing recoil; detected limits are ~3 orders of magnitude below (CO < 0.04 kg/s).  No coma, CN, CO, CO2 or dust detected to deep limits.  Alternative published accounts (H2-ice, N2-ice, radiation-pressure on a low-column-density body) remain unconfirmed models, not detected volatiles.",
+   "volatile_citations": [
+    "Micheli et al. 2018, Nature 558, 223",
+    "Meech et al. 2017, Nature 552, 378 (no detected coma)",
+    "Ye et al. 2017, ApJL 851, L5 (dust production limits)",
+    "Trilling et al. 2018, AJ 156, 261 (Spitzer CO/CO2 limits)",
+    "Seligman et al. 2021 (CO production upper limit)",
+    "Jewitt & Seligman 2023, ARAA 61 (review synthesis)"
+   ]
+  },
+  {
+   "des": "2I",
+   "label": "2I/Borisov",
+   "orbit_id": "54",
+   "soln_date": "2024-06-24 15:49:04",
+   "data_arc_d": "584",
+   "n_obs_used": 964,
+   "rms_arcsec": ".39958",
+   "e": 3.356475782676596,
+   "q_au": 2.006520878500843,
+   "i_deg": 44.05264247909138,
+   "geometry": {
+    "arrival": {
+     "ecl_lon": 54.34,
+     "ecl_lat": 42.89,
+     "sep_axis_deg": 60.1,
+     "sep_antiaxis_deg": 119.9,
+     "in_cap": false,
+     "in_mirror_cap": false,
+     "sector": "edge",
+     "bipolar_band": "mid_band",
+     "near_pole": "axis"
+    },
+    "departure": {
+     "ecl_lon": 273.81,
+     "ecl_lat": -28.62,
+     "sep_axis_deg": 117.1,
+     "sep_antiaxis_deg": 62.9,
+     "in_cap": false,
+     "in_mirror_cap": false,
+     "sector": "edge",
+     "bipolar_band": "mid_band",
+     "near_pole": "antiaxis"
+    },
+    "periapsis": {
+     "ecl_lon": 149.97,
+     "ecl_lat": -19.78,
+     "sep_axis_deg": 94.15,
+     "sep_antiaxis_deg": 85.85,
+     "in_cap": false,
+     "in_mirror_cap": false,
+     "sector": "field",
+     "bipolar_band": "mid_band",
+     "near_pole": "antiaxis"
+    }
+   },
+   "double_lobe_transit": false,
+   "any_lobe_leg": false,
+   "ng": {
+    "n_model_pars": 9,
+    "a1": 4.859588264027485e-08,
+    "a1_sig": 4.051e-09,
+    "a2": 1.879898690951361e-08,
+    "a2_sig": 5.999e-09,
+    "a3": 2.835503220128475e-09,
+    "a3_sig": 7.186e-10,
+    "dt": -65.13009704907404,
+    "dt_sig": 10.96,
+    "law": {
+     "ALN": 1.0,
+     "R0": 1.0,
+     "NM": 2.0,
+     "NN": 0.0,
+     "NK": 0.0
+    },
+    "radial_profile": {
+     "r_2.01": {
+      "r_au": 2.006520878500843,
+      "g_of_r": 0.248377718703594,
+      "a_ng_au_d2": 1.2070134468579054e-08,
+      "frac_of_gravity": 0.0001642239869785093,
+      "sign": "outward"
+     },
+     "r_1": {
+      "r_au": 1.0,
+      "g_of_r": 1.0,
+      "a_ng_au_d2": 4.859588264027485e-08,
+      "frac_of_gravity": 0.00016422398697850933,
+      "sign": "outward"
+     },
+     "r_2": {
+      "r_au": 2.0,
+      "g_of_r": 0.25,
+      "a_ng_au_d2": 1.2148970660068712e-08,
+      "frac_of_gravity": 0.00016422398697850933,
+      "sign": "outward"
+     }
+    },
+    "a1_significance": 11.99602138737962,
+    "transverse_frac_a2": 0.3868432033361929,
+    "normal_frac_a3": 0.05834863091422673,
+    "dt_present": true
+   },
+   "volatile_status": "explained",
+   "volatile_note": "measured H2O and CO production rates are sufficient to account for the measured non-gravitational acceleration within uncertainties; the object is a normal outgassing comet dynamically",
+   "volatile_citations": [
+    "Hui et al. 2020, ApJ 889, 114",
+    "Bodewits et al. 2020, Nat. Astron. 4, 867 (CO production)",
+    "Cordiner et al. 2020, Nat. Astron. 4, 861 (HCN/ALMA)",
+    "Xing et al. 2020, ApJ 893, L48 (H2O production)",
+    "Jewitt & Seligman 2023, ARAA 61 (review synthesis)"
+   ]
+  },
+  {
+   "des": "3I",
+   "label": "3I/ATLAS",
+   "orbit_id": "54",
+   "soln_date": "2026-02-19 09:10:47",
+   "data_arc_d": "280",
+   "n_obs_used": 782,
+   "rms_arcsec": ".425",
+   "e": 6.141351449317625,
+   "q_au": 1.356481057231181,
+   "i_deg": 175.1164570850441,
+   "geometry": {
+    "arrival": {
+     "ecl_lon": 293.61,
+     "ecl_lat": 2.34,
+     "sep_axis_deg": 114.94,
+     "sep_antiaxis_deg": 65.06,
+     "in_cap": false,
+     "in_mirror_cap": false,
+     "sector": "edge",
+     "bipolar_band": "mid_band",
+     "near_pole": "antiaxis"
+    },
+    "departure": {
+     "ecl_lon": 94.88,
+     "ecl_lat": -3.59,
+     "sep_axis_deg": 46.94,
+     "sep_antiaxis_deg": 133.06,
+     "in_cap": true,
+     "in_mirror_cap": false,
+     "sector": "lobe",
+     "bipolar_band": "pole_lobe",
+     "near_pole": "axis"
+    },
+    "periapsis": {
+     "ecl_lon": 194.05,
+     "ecl_lat": 3.85,
+     "sep_axis_deg": 143.29,
+     "sep_antiaxis_deg": 36.71,
+     "in_cap": false,
+     "in_mirror_cap": true,
+     "sector": "lobe",
+     "bipolar_band": "pole_lobe",
+     "near_pole": "antiaxis"
+    }
+   },
+   "double_lobe_transit": false,
+   "any_lobe_leg": true,
+   "ng": {
+    "n_model_pars": 9,
+    "a1": 5.320206310958365e-08,
+    "a1_sig": 1.22e-09,
+    "a2": 1.148166024648843e-08,
+    "a2_sig": 2.139e-09,
+    "a3": -6.854491622221589e-09,
+    "a3_sig": 1.776e-10,
+    "dt": 9.47881547776126,
+    "dt_sig": 1.426,
+    "law": {
+     "ALN": 1.0,
+     "R0": 1.0,
+     "NM": 2.0,
+     "NN": 0.0,
+     "NK": 0.0
+    },
+    "radial_profile": {
+     "r_1.36": {
+      "r_au": 1.356481057231181,
+      "g_of_r": 0.5434661927812662,
+      "a_ng_au_d2": 2.8913522686274078e-08,
+      "frac_of_gravity": 0.00017979002427043233,
+      "sign": "outward"
+     },
+     "r_1": {
+      "r_au": 1.0,
+      "g_of_r": 1.0,
+      "a_ng_au_d2": 5.320206310958365e-08,
+      "frac_of_gravity": 0.00017979002427043233,
+      "sign": "outward"
+     },
+     "r_2": {
+      "r_au": 2.0,
+      "g_of_r": 0.25,
+      "a_ng_au_d2": 1.3300515777395912e-08,
+      "frac_of_gravity": 0.00017979002427043233,
+      "sign": "outward"
+     }
+    },
+    "a1_significance": 43.608248450478406,
+    "transverse_frac_a2": 0.21581231206840473,
+    "normal_frac_a3": 0.1288388310826022,
+    "dt_present": true
+   },
+   "volatile_status": "explained",
+   "volatile_note": "CO2-dominated coma with measured gas and dust production; fitted NG (g(r) ~ 1/r^2 appropriate to CO2) is consistent with the observed outgassing and mass estimates.  Post-perihelion work converges on the same verdict: systematic-uncertainty NG solutions (gravity-only vs symmetric/asymmetric NG families) and the NG-inferred nucleus mass/size are consistent with volatile-driven recoil and with the HST nucleus measurement",
+   "volatile_citations": [
+    "Cordiner et al. 2025 (JWST, CO2-dominated coma)",
+    "Lisse et al. 2025 (multi-wavelength activity)",
+    "Eubanks et al. 2026, Res. Notes AAS (NG solution, interplanetary astrometry)",
+    "Forbes & Butler 2026, Res. Notes AAS 10, 12 (mass-loss consistency)",
+    "Spada et al. 2026, A&A (systematic/statistical NG uncertainties; arc to 2026-02-19)",
+    "Hui et al. 2026, ApJL 999, L37 (HST nucleus radius 1.3+/-0.2 km consistent with NG-inferred size)",
+    "Thoss, Loeb & Burkert 2026, arXiv:2603.15735 (NG-inferred nucleus mass ~1.6e11-3.2e12 kg, radius ~0.4-1.2 km)"
+   ]
+  }
+ ],
+ "T1_sector_concordance": {
+  "n_iso": 3,
+  "n_unexplained_ng": 1,
+  "n_double_lobe": 1,
+  "all_three_classified": true,
+  "exchangeability_p": 0.3333333333333333,
+  "note": "descriptive concordance at n=3; the inferential weight is carried by the magnitude sign consistency and the preregistered T5 predictions, not by the retrospective coincidence alone"
+ },
+ "T2_magnitude": {
+  "comet_contrast_dA_over_A": 0.011610564254773604,
+  "per_iso_frac_1au": {
+   "1I/'Oumuamua": 0.000943,
+   "2I/Borisov": 0.000164,
+   "3I/ATLAS": 0.00018
+  },
+  "oumuamua_over_comet": 0.081,
+  "oumuamua_over_explained_max": 5.24,
+  "note": "f(r) = |a_ng(r)|/g_sun(r) under each solution's own g(r) law.  'Oumuamua's unexplained fractional offset sits at ~1e-3 -- a factor 12 below the comet-channel lapse-contrast scale (1.2e-02) if the two channels couple identically -- while the volatile-explained objects carry ~1.6-1.8e-4, ~65-71x below the comet scale.  The sector coincidence is exact, but the amplitude match requires a channel-dependent (attenuated) ISO coupling or a partial-slip interpretation."
+ },
+ "T3_vector_morphology": {
+  "per_iso": {
+   "1I/'Oumuamua": {
+    "transverse_frac_a2": 0.05165463362984196,
+    "normal_frac_a3": 0.05640908748493988,
+    "dt_d": null,
+    "dt_present": false,
+    "law": {
+     "ALN": 0.0408373333128795,
+     "R0": 5.0,
+     "NM": 2.0,
+     "NN": 3.0,
+     "NK": 2.6
+    }
+   },
+   "2I/Borisov": {
+    "transverse_frac_a2": 0.3868432033361929,
+    "normal_frac_a3": 0.05834863091422673,
+    "dt_d": -65.13009704907404,
+    "dt_present": true,
+    "law": {
+     "ALN": 1.0,
+     "R0": 1.0,
+     "NM": 2.0,
+     "NN": 0.0,
+     "NK": 0.0
+    }
+   },
+   "3I/ATLAS": {
+    "transverse_frac_a2": 0.21581231206840473,
+    "normal_frac_a3": 0.1288388310826022,
+    "dt_d": 9.47881547776126,
+    "dt_present": true,
+    "law": {
+     "ALN": 1.0,
+     "R0": 1.0,
+     "NM": 2.0,
+     "NN": 0.0,
+     "NK": 0.0
+    }
+   }
+  },
+  "note": "radial dominance |A2/A1| -> 0 and absence of a perihelion-time offset characterize a directed (gradient-like) term; rotational-jet outgassing loads power into A2 and asymmetric activity requires DT."
+ },
+ "T4_inner_arc_sector": {
+  "periapsis_sector": {
+   "1I/'Oumuamua": {
+    "ecl_lon": 159.34,
+    "ecl_lat": -47.85,
+    "sep_axis_deg": 90.36,
+    "sep_antiaxis_deg": 89.64,
+    "in_cap": false,
+    "in_mirror_cap": false,
+    "sector": "field",
+    "bipolar_band": "mid_band",
+    "near_pole": "antiaxis"
+   },
+   "2I/Borisov": {
+    "ecl_lon": 149.97,
+    "ecl_lat": -19.78,
+    "sep_axis_deg": 94.15,
+    "sep_antiaxis_deg": 85.85,
+    "in_cap": false,
+    "in_mirror_cap": false,
+    "sector": "field",
+    "bipolar_band": "mid_band",
+    "near_pole": "antiaxis"
+   },
+   "3I/ATLAS": {
+    "ecl_lon": 194.05,
+    "ecl_lat": 3.85,
+    "sep_axis_deg": 143.29,
+    "sep_antiaxis_deg": 36.71,
+    "in_cap": false,
+    "in_mirror_cap": true,
+    "sector": "lobe",
+    "bipolar_band": "pole_lobe",
+    "near_pole": "antiaxis"
+   }
+  },
+  "midband_negative_slip": "step 089: dtau significantly negative for theta in [60,120] deg",
+  "borisov_interior_bound": {
+   "f_1au": 0.00016422398697850933,
+   "below_comet_contrast": true,
+   "factor_below": 70.7,
+   "note": "2I's periapsis sector is mid-band like 1I's, yet its fitted NG is fully volatile-explained at ~1.6e-4 of gravity: a universal interior lapse gradient at comet-channel strength on a mid-band inner arc is excluded by a factor 71.  The lapse structure therefore does not extend into the inner system as a distributed sector field -- the wall-over-field verdict of step 068 extended inward."
+  },
+  "atlas_interior_bound": {
+   "f_1au": 0.00017979002427043233,
+   "sector": "mirror-lobe inner arc",
+   "note": "3I's periapsis sector sits inside the mirror lobe; an interior positive-lapse term would have added an inward residual on top of outgassing, demanding ~6x the measured volatile production to stay fitted-flat.  Its NG is consistent with the measured CO2-driven outgassing at ~1.8e-4, extending the interior bound to the lobe sector."
+  },
+  "interior_bound_summary": "universal interior sector-gradient bounded at ~1.8e-04 of gravity (65x below the comet-channel contrast) across both the negative-slip mid-band and the positive-slip lobe sector",
+  "sign_reading": "1I's periapsis direction sits in the measured negative-dtau mid-band; its unexplained term is outward -- an effective-attraction shortfall -- the sign a lapse deficit produces.  Reported as sign-consistency, interpretation level: the wall model alone does not predict in-arc terms."
+ },
+ "T5_prospective_registration": {
+  "rule": "pre-declared NG-class prediction for future ISOs by transit geometry computed at discovery from the SBDB orbit solution",
+  "predictions": [
+   {
+    "transit": "bipolar double-lobe (arrival in one 60-deg lobe, departure in the other)",
+    "predicted_ng_class": "unexplained-fraction candidate",
+    "predicted_frac": "~1e-3 of gravity if volatile-free"
+   },
+   {
+    "transit": "edge-band leg (60-75 deg) or single-lobe",
+    "predicted_ng_class": "volatile-explained dominant",
+    "predicted_frac": "lapse term at/below ~1e-4, masked by any measured outgassing"
+   },
+   {
+    "transit": "field (both asymptotes >75 deg)",
+    "predicted_ng_class": "volatile-explained",
+    "predicted_frac": "no lapse contribution"
+   }
+  ],
+  "falsifier": "the next ISO executing a bipolar double-lobe transit with a fully volatile-explained NG, or a field-transit ISO requiring unexplained NG at ~1e-3, breaks the concordance",
+  "note": "n is small and arrival directions are not a designed draw; this table registers the prediction so the fourth ISO tests it prospectively"
+ },
+ "T6_classification_stability": {
+  "rule": "single-member reclassification audit: for each ISO, flip its volatile class and re-evaluate the T1 concordance (unexplained == double-lobe for all three)",
+  "per_iso_reclassification": {
+   "1I/'Oumuamua": {
+    "current_status": "unexplained",
+    "hypothetical": "explained",
+    "concordance_survives": false,
+    "consequence": "anomaly dissolves: no unexplained member remains, and the ISO channel carries no datum"
+   },
+   "2I/Borisov": {
+    "current_status": "explained",
+    "hypothetical": "unexplained",
+    "concordance_survives": false,
+    "consequence": "concordance broken: an unexplained member without a bipolar double-lobe transit"
+   },
+   "3I/ATLAS": {
+    "current_status": "explained",
+    "hypothetical": "unexplained",
+    "concordance_survives": false,
+    "consequence": "concordance broken: an unexplained member without a bipolar double-lobe transit"
+   }
+  },
+  "load_bearing": "the concordance requires the explained status of Borisov and ATLAS as much as the unexplained status of 'Oumuamua -- the explained objects are controls, not failed detections, and their reclassification is a registered concordance-break channel",
+  "reported_anomaly_triage": {
+   "atlas_status": "explained",
+   "note": "3I's publicly discussed oddities -- the retrograde trajectory within ~5 deg of the ecliptic, the sunward anti-tail/jet morphology, the extreme polarization -- are kinematic and compositional channels, not lapse channels; they carry no discriminating weight in this test.  The only lapse-relevant datum is the fitted NG accounting, on which ATLAS is an ordinary outgassing body.  Were its term genuinely unexplained it would sit in the concordance-break column of this audit, not the support column."
+  },
+  "monitoring": {
+   "channel": "SBDB solution evolution; records re-fetched live each run, provenance-pinned under data/raw/iso/",
+   "soln_dates": {
+    "1I/'Oumuamua": "2018-06-26 12:17:57",
+    "2I/Borisov": "2024-06-24 15:49:04",
+    "3I/ATLAS": "2026-02-19 09:10:47"
+   },
+   "mass_accounting_caveat": "ATLAS's explained status rests on the nucleus mass/production accounting; post-perihelion systematic-uncertainty NG solutions (Spada et al. 2026), NG-inferred mass/size (Thoss, Loeb & Burkert 2026) and HST nucleus sizing (Hui et al. 2026, ApJL 999, L37) concur, while a minority large-nucleus claim is registered in iso_literature.json:disputed_claim.  An upgrade of either explained object to unexplained status breaks T1; a detected volatile driver for 'Oumuamua would dissolve the datum itself."
+  }
+ },
+ "provenance": {
+  "sbdb_iso_1I": {
+   "url": "https://ssd-api.jpl.nasa.gov/sbdb.api?des=1I&full-prec=true",
+   "retrieved_utc": "2026-09-19T21:33:39.677454+00:00",
+   "http_status": 200,
+   "bytes": 3537,
+   "sha256": "193b64c30fe642c124283a91126928f8aac2a2e37969ac73576b22e45ce1110a"
+  },
+  "sbdb_iso_2I": {
+   "url": "https://ssd-api.jpl.nasa.gov/sbdb.api?des=2I&full-prec=true",
+   "retrieved_utc": "2026-09-19T21:33:40.692910+00:00",
+   "http_status": 200,
+   "bytes": 3675,
+   "sha256": "8225d109777cad1433c58c596e41d8be103a9d1877b79b49988a364931b779b4"
+  },
+  "sbdb_iso_3I": {
+   "url": "https://ssd-api.jpl.nasa.gov/sbdb.api?des=3I&full-prec=true",
+   "retrieved_utc": "2026-09-19T21:33:41.661818+00:00",
+   "http_status": 200,
+   "bytes": 3720,
+   "sha256": "2ee5db32e0f1c5395a268d754c498cf718843a8dd7ab35d7273bc06589b625d6"
+  }
+ },
+ "inputs": [
+  "data/raw/iso/sbdb_iso_*.json (this step, live)",
+  "data/raw/literature/iso_literature.json",
+  "results/step_b64_clock_consistency.json"
+ ],
+ "caveats": [
+  "n = 3 and ISO arrival directions are not a designed draw; the concordance is a registered datum whose weight is prospective (T5), not a stand-alone detection.",
+  "Unexplained-NG status is a literature anchor (transcribed published values, iso_literature.json); 'Oumuamua's volatile-free status could in principle change if a detected driver is ever identified.",
+  "f(r) profiles use each solution's own Marsden-Sekanina g(r); different NG law choices move the implied fraction at fixed astrometry (reported per-solution).",
+  "The wall model places the slip at the boundary crossing; an in-arc NG term is a different field functional.  The channel therefore tests interior-field extension (bounded by 2I) and records the asymptote- geometry concordance -- it does not claim the wall itself generates 'Oumuamua's in-arc term.",
+  "Sector classifications use the pre-declared 60-deg cap; the measured edge band (step 073) is reported separately.",
+  "The T1 concordance is load-bearing on the volatile classes (T6): 'Oumuamua's unexplained status requires Borisov's and ATLAS's explained status to hold, and vice versa -- a reclassification of any member either breaks the concordance or dissolves the datum.  ATLAS's explained verdict rests on the mass/production accounting, where a minority claim is disputed (iso_literature.json:disputed_claim); the channel is monitored through live SBDB re-fetches."
+ ]
+}

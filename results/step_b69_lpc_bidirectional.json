@@ -1,0 +1,103 @@
+{
+ "step": "step_105_lpc_bidirectional",
+ "description": "Bidirectional REBOUND/DE440s replication of the transit channel on the third (one-apparition, J/A+A/571/A63) catalogue, with the bipolar slip map fitted on the 229 Warsaw+CODE comets applied out-of-sample.  Axis: cap-declaration (34,-13); detached-sample (49.9,-17) scored as second anchor.  MW08 comparison is 1/a-only (energy channel) by construction of the MW08 record.",
+ "inputs": [
+  "data/raw/lpc/lpc_{osc,orig,fut,aaori}_2006_2010.vot",
+  "results/step_b30_proper_time_slip.csv",
+  "data/raw/spice/de440s.bsp",
+  "data/raw/naif/naif0012.tls"
+ ],
+ "seed": 20260919,
+ "n_all_legs": 38,
+ "n_spike": 30,
+ "n_integrated": 30,
+ "failed": [],
+ "T1_leg_validation": {
+  "med_back_deg": 4.967613130877442e-05,
+  "med_fwd_deg": 4.8730110759374114e-05,
+  "p95_deg": 0.0014605507529470226
+ },
+ "T2_channel_replication": {
+  "cap_contrast": {
+   "n_in": 9,
+   "n_out": 21,
+   "med_in": 3.69159945584677,
+   "med_out": -3.951071634858941,
+   "p_in_gt_out": 0.04273997268075792
+  },
+  "vs_theta": {
+   "rho": -0.3668520578420467,
+   "p_2sided": 0.046142102592444716
+  },
+  "vs_theta_cat_channel": {
+   "rho": -0.3668520578420467,
+   "p_2sided": 0.046142102592444716
+  }
+ },
+ "T2_detached_axis": {
+  "rho": -0.3815350389321468,
+  "p_2sided": 0.0374895847970571
+ },
+ "T3_map_transfer": {
+  "map_coef": {
+   "a": 2.147517514512725,
+   "b": 5.980804841326264
+  },
+  "spearman_rho": 0.11546162402669634,
+  "spearman_p": 0.5434694510154613,
+  "sign_correct": 17,
+  "n": 30,
+  "sign_frac": 0.5666666666666667,
+  "sign_binom_p": 0.5846647117286922,
+  "med_pred": -2.0222524790528675,
+  "med_obs": 1.247935121177827
+ },
+ "T3b_membership_split": {
+  "shared": {
+   "n": 23,
+   "vs_theta_rho": -0.41798418972332013,
+   "vs_theta_p": 0.04717485486789243,
+   "transfer_rho": 0.16403162055335968,
+   "transfer_p": 0.45452868560296966,
+   "sign_correct": 14,
+   "med_dtau": -0.12705599678091417
+  },
+  "nonshared": {
+   "n": 7,
+   "vs_theta_rho": -0.3571428571428572,
+   "vs_theta_p": 0.4316113520383278,
+   "transfer_rho": 0.14285714285714288,
+   "transfer_p": 0.7599453002180929,
+   "sign_correct": 3,
+   "med_dtau": 5.736169490788345
+  },
+  "nonshared_desigs": [
+   "C/1903 M1",
+   "C/1906 E1",
+   "C/1907 E1",
+   "C/1914 F1",
+   "C/1919 Q2",
+   "C/1937 N1",
+   "C/1946 C1"
+  ]
+ },
+ "T4_mw08_energy": {
+  "xline_vs_theta": {
+   "rho": 0.17799532872407722,
+   "p_2sided": 0.3466849470759107
+  },
+  "mw_jump_med": 330.5,
+  "mw_jump_incap_med": 285.0,
+  "mw_jump_outcap_med": 346.0
+ },
+ "verdict": {
+  "replication": "TEP-direction",
+  "transfer": "weak-positive",
+  "reading": "The third catalogue (one-apparition, n=30) was run through the identical bidirectional instrument: simulated boundary legs reproduce the catalogue's own original/future solutions to 0.0000 deg median (p95 0.0015 deg).  Its unexplained slip decreases with transit angle at rho -0.367 (p=0.046; negative rho is the TEP direction, matching the -0.32 of the CODE cohort), with in-cap vs out-cap medians +3.69 vs -3.95 yr (p=0.043).  23 members also carry near-identical Warsaw/CODE solutions (the same orbit record); on that subset the decline persists at rho -0.418.  The bipolar map fitted on the 229 Warsaw+CODE comets predicts this cohort at rho +0.115 (p=0.543), sign 17/30 -- positive but unresolved at n=30."
+ },
+ "caveats": [
+  "The lpc cohort is not disjoint in membership or in solution: 23 of 30 members also carry Warsaw/CODE entries inside the 229-comet training set, and on shared members the two catalogues' three-leg rotations agree to ~0.001 deg (measured at rho=0.999 in step 106) -- the same underlying orbit record republished with uncertainties and the MW08 comparison, not an independent re-fit.  The genuinely new information is the 7 members absent from the training set plus the instrument validation itself.  The cohort shares the Poznan orbit-determination lineage; the MW08 lineage contributes only the 1/a energy channel (no angular elements published).",
+  "n=30 after the spike cut; the transfer test is powered for consistency, not detection.",
+  "dtau_unexplained here is detrended within the lpc cohort itself (same covariates as step 065); the map prediction uses the 229-fitted coefficients, so the two detrendings are independent."
+ ]
+}

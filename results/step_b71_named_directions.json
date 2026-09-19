@@ -1,0 +1,432 @@
+{
+ "step": "step_107_named_directions",
+ "description": "Angular separations between the three recovered boundary axes (cap-declaration, detached-sample, lpc free-scan; bipolar) and named astrophysical directions, plus a uniform-direction coincidence null.",
+ "inputs": [
+  "results/step_b70_harmonic_axis_transfer.json (lpc axis)",
+  "published direction coordinates (in-code constants)"
+ ],
+ "seed": 20261007,
+ "n_mc": 20000,
+ "n_named": 11,
+ "named_directions": {
+  "Galactic centre": [
+   266.8395241481454,
+   -5.5363146861773
+  ],
+  "Galactic anticentre": [
+   86.83952414814541,
+   5.536314686177306
+  ],
+  "N galactic pole": [
+   180.02321701334836,
+   29.81143852269823
+  ],
+  "S galactic pole": [
+   0.023217013348351977,
+   -29.81143852269823
+  ],
+  "solar apex (DB98)": [
+   271.4142740672064,
+   53.51607340531982
+  ],
+  "solar antapex": [
+   91.4142740672064,
+   -53.51607340531982
+  ],
+  "galactic rotation dir": [
+   347.3399138611412,
+   59.574217849416
+  ],
+  "CMB dipole apex": [
+   171.66712392950188,
+   -11.154933052950762
+  ],
+  "N ecliptic pole": [
+   0.0,
+   90.0
+  ],
+  "S ecliptic pole": [
+   0.0,
+   -90.0
+  ],
+  "P9 perihelion (BB21)": [
+   244.64644790411955,
+   15.80233839423454
+  ]
+ },
+ "axes": {
+  "cap-declaration": [
+   34.0,
+   -13.0
+  ],
+  "detached-sample": [
+   49.9,
+   -17.0
+  ],
+  "lpc free-scan": [
+   50.0,
+   -50.0
+  ]
+ },
+ "separations": [
+  {
+   "axis": "cap-declaration",
+   "named": "Galactic centre",
+   "named_lam": 266.84,
+   "named_bet": -5.54,
+   "sep_axis": 124.34,
+   "sep_antipode": 55.66,
+   "sep_bipolar": 55.66
+  },
+  {
+   "axis": "cap-declaration",
+   "named": "Galactic anticentre",
+   "named_lam": 86.84,
+   "named_bet": 5.54,
+   "sep_axis": 55.66,
+   "sep_antipode": 124.34,
+   "sep_bipolar": 55.66
+  },
+  {
+   "axis": "cap-declaration",
+   "named": "N galactic pole",
+   "named_lam": 180.02,
+   "named_bet": 29.81,
+   "sep_axis": 144.38,
+   "sep_antipode": 35.62,
+   "sep_bipolar": 35.62
+  },
+  {
+   "axis": "cap-declaration",
+   "named": "S galactic pole",
+   "named_lam": 0.02,
+   "named_bet": -29.81,
+   "sep_axis": 35.62,
+   "sep_antipode": 144.38,
+   "sep_bipolar": 35.62
+  },
+  {
+   "axis": "cap-declaration",
+   "named": "solar apex (DB98)",
+   "named_lam": 271.41,
+   "named_bet": 53.52,
+   "sep_axis": 119.53,
+   "sep_antipode": 60.47,
+   "sep_bipolar": 60.47
+  },
+  {
+   "axis": "cap-declaration",
+   "named": "solar antapex",
+   "named_lam": 91.41,
+   "named_bet": -53.52,
+   "sep_axis": 60.47,
+   "sep_antipode": 119.53,
+   "sep_bipolar": 60.47
+  },
+  {
+   "axis": "cap-declaration",
+   "named": "galactic rotation dir",
+   "named_lam": 347.34,
+   "named_bet": 59.57,
+   "sep_axis": 81.68,
+   "sep_antipode": 98.32,
+   "sep_bipolar": 81.68
+  },
+  {
+   "axis": "cap-declaration",
+   "named": "CMB dipole apex",
+   "named_lam": 171.67,
+   "named_bet": -11.15,
+   "sep_axis": 131.54,
+   "sep_antipode": 48.46,
+   "sep_bipolar": 48.46
+  },
+  {
+   "axis": "cap-declaration",
+   "named": "N ecliptic pole",
+   "named_lam": 0.0,
+   "named_bet": 90.0,
+   "sep_axis": 103.0,
+   "sep_antipode": 77.0,
+   "sep_bipolar": 77.0
+  },
+  {
+   "axis": "cap-declaration",
+   "named": "S ecliptic pole",
+   "named_lam": 0.0,
+   "named_bet": -90.0,
+   "sep_axis": 77.0,
+   "sep_antipode": 103.0,
+   "sep_bipolar": 77.0
+  },
+  {
+   "axis": "cap-declaration",
+   "named": "P9 perihelion (BB21)",
+   "named_lam": 244.65,
+   "named_bet": 15.8,
+   "sep_axis": 150.21,
+   "sep_antipode": 29.79,
+   "sep_bipolar": 29.79,
+   "nearest_direct_named": "S galactic pole",
+   "nearest_direct_sep": 35.62,
+   "p_coincidence": 0.7084645767711615
+  },
+  {
+   "axis": "detached-sample",
+   "named": "Galactic centre",
+   "named_lam": 266.84,
+   "named_bet": -5.54,
+   "sep_axis": 137.1,
+   "sep_antipode": 42.9,
+   "sep_bipolar": 42.9
+  },
+  {
+   "axis": "detached-sample",
+   "named": "Galactic anticentre",
+   "named_lam": 86.84,
+   "named_bet": 5.54,
+   "sep_axis": 42.9,
+   "sep_antipode": 137.1,
+   "sep_bipolar": 42.9
+  },
+  {
+   "axis": "detached-sample",
+   "named": "N galactic pole",
+   "named_lam": 180.02,
+   "named_bet": 29.81,
+   "sep_axis": 132.85,
+   "sep_antipode": 47.15,
+   "sep_bipolar": 47.15
+  },
+  {
+   "axis": "detached-sample",
+   "named": "S galactic pole",
+   "named_lam": 0.02,
+   "named_bet": -29.81,
+   "sep_axis": 47.15,
+   "sep_antipode": 132.85,
+   "sep_bipolar": 47.15
+  },
+  {
+   "axis": "detached-sample",
+   "named": "solar apex (DB98)",
+   "named_lam": 271.41,
+   "named_bet": 53.52,
+   "sep_axis": 131.36,
+   "sep_antipode": 48.64,
+   "sep_bipolar": 48.64
+  },
+  {
+   "axis": "detached-sample",
+   "named": "solar antapex",
+   "named_lam": 91.41,
+   "named_bet": -53.52,
+   "sep_axis": 48.64,
+   "sep_antipode": 131.36,
+   "sep_bipolar": 48.64
+  },
+  {
+   "axis": "detached-sample",
+   "named": "galactic rotation dir",
+   "named_lam": 347.34,
+   "named_bet": 59.57,
+   "sep_axis": 91.66,
+   "sep_antipode": 88.34,
+   "sep_bipolar": 88.34
+  },
+  {
+   "axis": "detached-sample",
+   "named": "CMB dipole apex",
+   "named_lam": 171.67,
+   "named_bet": -11.15,
+   "sep_axis": 115.94,
+   "sep_antipode": 64.06,
+   "sep_bipolar": 64.06
+  },
+  {
+   "axis": "detached-sample",
+   "named": "N ecliptic pole",
+   "named_lam": 0.0,
+   "named_bet": 90.0,
+   "sep_axis": 107.0,
+   "sep_antipode": 73.0,
+   "sep_bipolar": 73.0
+  },
+  {
+   "axis": "detached-sample",
+   "named": "S ecliptic pole",
+   "named_lam": 0.0,
+   "named_bet": -90.0,
+   "sep_axis": 73.0,
+   "sep_antipode": 107.0,
+   "sep_bipolar": 73.0
+  },
+  {
+   "axis": "detached-sample",
+   "named": "P9 perihelion (BB21)",
+   "named_lam": 244.65,
+   "named_bet": 15.8,
+   "sep_axis": 165.81,
+   "sep_antipode": 14.19,
+   "sep_bipolar": 14.19,
+   "nearest_direct_named": "Galactic anticentre",
+   "nearest_direct_sep": 42.9,
+   "p_coincidence": 0.21618919054047298
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "Galactic centre",
+   "named_lam": 266.84,
+   "named_bet": -5.54,
+   "sep_axis": 115.98,
+   "sep_antipode": 64.02,
+   "sep_bipolar": 64.02
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "Galactic anticentre",
+   "named_lam": 86.84,
+   "named_bet": 5.54,
+   "sep_axis": 64.02,
+   "sep_antipode": 115.98,
+   "sep_bipolar": 64.02
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "N galactic pole",
+   "named_lam": 180.02,
+   "named_bet": 29.81,
+   "sep_axis": 137.69,
+   "sep_antipode": 42.31,
+   "sep_bipolar": 42.31
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "S galactic pole",
+   "named_lam": 0.02,
+   "named_bet": -29.81,
+   "sep_axis": 42.31,
+   "sep_antipode": 137.69,
+   "sep_bipolar": 42.31
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "solar apex (DB98)",
+   "named_lam": 271.41,
+   "named_bet": 53.52,
+   "sep_axis": 154.49,
+   "sep_antipode": 25.51,
+   "sep_bipolar": 25.51,
+   "nearest_direct_named": "solar antapex",
+   "nearest_direct_sep": 25.51,
+   "p_coincidence": 0.5806709664516774
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "solar antapex",
+   "named_lam": 91.41,
+   "named_bet": -53.52,
+   "sep_axis": 25.51,
+   "sep_antipode": 154.49,
+   "sep_bipolar": 25.51
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "galactic rotation dir",
+   "named_lam": 347.34,
+   "named_bet": 59.57,
+   "sep_axis": 120.73,
+   "sep_antipode": 59.27,
+   "sep_bipolar": 59.27
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "CMB dipole apex",
+   "named_lam": 171.67,
+   "named_bet": -11.15,
+   "sep_axis": 100.54,
+   "sep_antipode": 79.46,
+   "sep_bipolar": 79.46
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "N ecliptic pole",
+   "named_lam": 0.0,
+   "named_bet": 90.0,
+   "sep_axis": 140.0,
+   "sep_antipode": 40.0,
+   "sep_bipolar": 40.0
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "S ecliptic pole",
+   "named_lam": 0.0,
+   "named_bet": -90.0,
+   "sep_axis": 40.0,
+   "sep_antipode": 140.0,
+   "sep_bipolar": 40.0
+  },
+  {
+   "axis": "lpc free-scan",
+   "named": "P9 perihelion (BB21)",
+   "named_lam": 244.65,
+   "named_bet": 15.8,
+   "sep_axis": 143.8,
+   "sep_antipode": 36.2,
+   "sep_bipolar": 36.2
+  }
+ ],
+ "nearest_per_axis": {
+  "cap-declaration": {
+   "axis": "cap-declaration",
+   "named": "P9 perihelion (BB21)",
+   "named_lam": 244.65,
+   "named_bet": 15.8,
+   "sep_axis": 150.21,
+   "sep_antipode": 29.79,
+   "sep_bipolar": 29.79,
+   "nearest_direct_named": "S galactic pole",
+   "nearest_direct_sep": 35.62,
+   "p_coincidence": 0.7084645767711615
+  },
+  "detached-sample": {
+   "axis": "detached-sample",
+   "named": "P9 perihelion (BB21)",
+   "named_lam": 244.65,
+   "named_bet": 15.8,
+   "sep_axis": 165.81,
+   "sep_antipode": 14.19,
+   "sep_bipolar": 14.19,
+   "nearest_direct_named": "Galactic anticentre",
+   "nearest_direct_sep": 42.9,
+   "p_coincidence": 0.21618919054047298
+  },
+  "lpc free-scan": {
+   "axis": "lpc free-scan",
+   "named": "solar apex (DB98)",
+   "named_lam": 271.41,
+   "named_bet": 53.52,
+   "sep_axis": 154.49,
+   "sep_antipode": 25.51,
+   "sep_bipolar": 25.51,
+   "nearest_direct_named": "solar antapex",
+   "nearest_direct_sep": 25.51,
+   "p_coincidence": 0.5806709664516774
+  }
+ },
+ "p9_perihelion_vs_antipodes": {
+  "cap-declaration": 29.79,
+  "detached-sample": 14.19,
+  "lpc free-scan": 36.2
+ },
+ "mutual_axis_separations": {
+  "cap-declaration vs detached-sample": 15.86,
+  "cap-declaration vs lpc free-scan": 39.25,
+  "detached-sample vs lpc free-scan": 33.0
+ },
+ "verdict": "No named astrophysical direction lies within the ~30-40 deg localization radius of any recovered axis.  Nearest to the cap-declaration axis is the south galactic pole at 35.6 deg, and the closest approach in the bipolar sense is the published Planet Nine perihelion direction (244.6,+15.8): 150 deg from the primary axis but 29.8 deg from its antipode (14.2 deg from the detached axis antipode) -- inside the bipolar field's mirror lobe, the location the anti-aligned shepherding picture itself predicts for the perturber.  For the detached axis that antipodal consistency is expected rather than coincidental -- the axis and the P9 direction derive from the same TNO clustering under the anti-aligned convention -- while for the comet-side cap axis the closest named approach is consistent with chance (p=0.71 under a uniform-direction null): the axis is a measured structure, not a named direction of the coordinate sky.",
+ "caveats": [
+  "Separations are geometric only: proximity to a named direction would not by itself convict that mechanism (the galactic-tide insertion controls in steps 070/085 already bound the tide's dynamical effect at ~1e-8 deg per comet).",
+  "The coincidence null treats the named set as fixed; the choice of which directions count as 'named' is itself a mild look-elsewhere factor and is reported as such."
+ ]
+}

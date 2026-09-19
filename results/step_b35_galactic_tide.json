@@ -1,0 +1,34 @@
+{
+ "method": "step_063 bidirectional legs rerun as WHFast with the Heisler-Tremaine tidal tensor added by Strang splitting (epoch-fixed inertial approximation; A=-B=13 km/s/kpc, rho=0.1 Msun/pc^3).  Per-leg boundary periapsis offset and orig->fut rotation change measured tide-on vs off.",
+ "tide_coeffs_yr2": {
+  "Kx": 7.060870488416298e-16,
+  "Ky": -7.060870488416298e-16,
+  "Kz": -5.653198079786919e-15
+ },
+ "dt_yr": 0.05,
+ "n": 131,
+ "n_in": 43,
+ "n_failed": 0,
+ "failed": [],
+ "per_leg_tide_offset_deg": {
+  "median": 0.0,
+  "p95": 1.2074182697257333e-06,
+  "max": 2.1843182467825772
+ },
+ "rotation_change_deg": {
+  "median_abs": 9.475386981983025e-09,
+  "p95_abs": 2.7217996596134997e-08,
+  "max_abs": 1.7799071109346802,
+  "median_signed_in": 2.916497252036798e-10,
+  "median_signed_out": 1.379202620166442e-10
+ },
+ "cap_contrast": {
+  "leg_offset_in_gt_out_p": 0.20307076615719089,
+  "abs_ddrot_in_gt_out_p": 0.32867139242999655
+ },
+ "validation": {
+  "drot_plain_median": 0.11183371257247611,
+  "drot_tide_median": 0.11183371935117511,
+  "observed_incap_median_deg": 0.14
+ }
+}

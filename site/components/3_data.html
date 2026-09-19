@@ -1,0 +1,116 @@
+<h2>2. Data and catalogues</h2>
+
+<p>
+    The analysis uses only published, public orbit catalogues; no synthetic data enter any test. Three independent data lineages are used — the JPL Small-Body Database for resident and injected populations, the Warsaw catalogue of near-parabolic comets, and the independent CODE cometary catalogue — plus the characterized Outer Solar System Origins Survey (OSSOS) ensemble for discovery-bias calibration. Every acquisition is scripted and provenance-stamped (source URL, retrieval timestamp, byte count, and SHA-256 checksum) by pipeline steps 001–004.
+</p>
+
+<h2>2.1 The resident population: JPL SBDB outer solar system</h2>
+
+<p>
+    The JPL Small-Body Database (SBDB) query API supplies the complete asteroid orbit catalogue with heliocentric semimajor axis $a \geq 30$ AU (7,299 objects at retrieval), the class-CEN Centaur population (1,050 objects), and comets reaching perihelia $q \geq 5$ AU (268 objects). The fields retrieved are designation, $a$, $e$, $i$, $\Omega$, $\omega$, $q$, aphelion, absolute magnitude $H$, element epoch, orbit class, condition code, data arc, observation counts, and first/last observation dates.
+</p>
+
+<p>
+    The primary resident sample follows the literature convention for the detached population: $a > 150$ AU, $q > 30$ AU, and orbit condition code $\leq 3$ (secure, multi-opposition solutions). This yields $N = 44$ objects, among them 2023 KQ14 ('Ammonite'), the newest Sedna-like body, which enters the secure sample through a 2005 precovery rather than its 2023 discovery arc. Sensitivity to the cuts is mapped throughout: the extreme subsample ($a > 250$ AU; $N = 26$), a relaxed-quality control (all condition codes; $N = 90$), a sednoid subset ($q > 50$ AU; $N = 5$), and a plunging-transit control ($a > 150$ AU, $q \leq 30$ AU; $N = 34$) are analysed in parallel. A further prospective cohort — all objects with $a > 150$ AU, $q > 30$ AU, and designation year 2025 or later, at any condition code ($N = 21$; median condition code 8) — is scored separately against the registered predictions and its own discovery footprint in the newest-cohort audit (Section 5.5).
+</p>
+
+<h2>2.2 The transit population: Warsaw and CODE comet catalogues</h2>
+
+<p>
+    The Warsaw catalogue of cometary orbits (Królikowska 2014; VizieR J/A+A/567/A126) provides homogeneous orbit solutions for 119 near-parabolic comets at three epochs: osculating heliocentric elements (table B), original barycentric elements reconstructed backward to 250 AU (table C), and future barycentric elements propagated forward to 250 AU (table D), together with observational material and quality assessment (table A1) and an extended sample (table B4). The three-leg structure — osculating, original, future — is the raw material of the transit test, since the discrepancy between legs measures the failure of a standard-dynamics clock to reproduce a single physical trajectory.
+</p>
+
+<p>
+    The CODE catalogue (Catalogue of Orbits and their Dynamical Evolution; Królikowska &amp; Dybczyński 2020) provides the same three-leg structure for an independent comet set served by the Poznań comet-dynamics server. In the matched deep-plunger, class-1 regime the independent CODE-only sample contains $N = 54$ comets, 19 of which have original-orbit aphelion directions inside the TNO-defined 60° cap. The CODE acquisition is an archival snapshot of the published catalogue, hash-pinned in <code>data/raw/code/provenance.json</code>; the live pad2 export interface did not return a machine-readable table at retrieval, a limitation recorded in the provenance metadata.
+</p>
+
+<p>
+    A fourth catalogue completes the transit record. The one-apparition comet catalogue (Królikowska et al. 2014; VizieR J/A+A/571/A63) publishes osculating, original, and future barycentric solutions for 51 comets observed at a single apparition, together with formal uncertainties on every element and the corresponding Marsden–Williams (2008) catalogue values. It supplies two channels unavailable elsewhere: a discrepancy statistic normalized by each orbit's own published error budget, and a partial third-lineage comparison against the MW08 determinations.
+</p>
+
+<h2>2.3 Bias calibration: the OSSOS characterized ensemble</h2>
+
+<p>
+    Discovery-geometry control uses the OSSOS characterized ensemble (Bannister et al. 2018; VizieR J/ApJS/236/18, table t3char): 840 detection events with measured survey pointing, magnitude limits, and detection efficiencies. This is the standard bias-calibration resource in this literature. The measured per-object discovery footprint — each TNO's opposition longitude at discovery — is taken directly from SBDB observation-date metadata rather than modelled, so the footprint null is built from the survey's own data.
+</p>
+
+<h2>2.4 Auxiliary catalogues</h2>
+
+<p>
+    Three further public resources support the concordance and injection-chain analyses: the Minor Planet Center's full orbit catalogue MPCORB.DAT (1.56 million orbits), used to recompute the TNO cluster on MPC orbit solutions and to carry the catalogue-lineage replications of Sections 3.6 and 5.1 — the detached-clustering reproduction and the bias-free mean-plane audit; the JPL comet elements file (CometEls.txt), used to select the Jupiter-family population by Tisserand class; and the Dark Energy Survey six-year TNO catalogue (Bernardinelli et al. 2022; 814 objects discovered in a contiguous 5000 deg$^2$ of southern sky with independently fitted orbits), used as the independent resident-lineage cohort in Section 5.5. The N-body planetary baseline additionally uses the JPL DE440s planetary ephemeris (NAIF generic kernel, coverage 1849–2150) for solar-system barycentric planet states at each comet's perihelion epoch.
+</p>
+
+<table class="data-table">
+    <caption>Table 1: Data catalogues and their roles</caption>
+    <thead>
+        <tr>
+            <th>Catalogue</th>
+            <th>Source</th>
+            <th>Content</th>
+            <th>Role</th>
+            <th>Pipeline step</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>JPL SBDB</td>
+            <td>ssd-api.jpl.nasa.gov</td>
+            <td>7,299 outer asteroids; 1,050 Centaurs; 268 comets</td>
+            <td>Resident + injected populations</td>
+            <td>001</td>
+        </tr>
+        <tr>
+            <td>Warsaw</td>
+            <td>VizieR J/A+A/567/A126</td>
+            <td>119 near-parabolic comets, 3-leg solutions</td>
+            <td>Transit signature (primary)</td>
+            <td>002</td>
+        </tr>
+        <tr>
+            <td>CODE</td>
+            <td>pad2.astro.amu.edu.pl</td>
+            <td>Independent comet set, 3-leg solutions</td>
+            <td>Transit signature (confirmation)</td>
+            <td>003</td>
+        </tr>
+        <tr>
+            <td>One-apparition</td>
+            <td>VizieR J/A+A/571/A63</td>
+            <td>51 comets, 3-leg + uncertainties + MW08</td>
+            <td>Normalized channel; third lineage</td>
+            <td>002</td>
+        </tr>
+        <tr>
+            <td>OSSOS</td>
+            <td>VizieR J/ApJS/236/18</td>
+            <td>840 characterized detections</td>
+            <td>Discovery-bias calibration</td>
+            <td>002</td>
+        </tr>
+        <tr>
+            <td>MPCORB</td>
+            <td>minorplanetcenter.net</td>
+            <td>Full MPC orbit catalogue (1.56M orbits)</td>
+            <td>Catalogue concordance; clustering + mean-plane replication</td>
+            <td>004</td>
+        </tr>
+        <tr>
+            <td>CometEls</td>
+            <td>ssd.jpl.nasa.gov</td>
+            <td>JPL comet elements</td>
+            <td>JFC injection chain</td>
+            <td>004</td>
+        </tr>
+        <tr>
+            <td>DES TNOs</td>
+            <td>bernardinelli/des_tno_catalog</td>
+            <td>814 southern-sky TNOs, independent orbit fits</td>
+            <td>Resident-lineage replication</td>
+            <td>085</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    A known structural caveat is stated at the outset: the Warsaw, CODE, and one-apparition catalogues share methodological lineage (the same orbit-determination group), so the replications are independent in sample but not in pipeline. A fully independent three-leg lineage does not exist in public form — the JPL SBDB API exposes osculating elements and non-gravitational parameters but not original/future barycentric solutions. The nearest approach is the Marsden–Williams (2008) comparison embedded in the one-apparition catalogue: an independently determined $1/a$ series whose cross-lineage agreement with the Warsaw values can itself be tested for direction dependence (Section 4.7). This limitation is carried explicitly through the interpretation.
+</p>

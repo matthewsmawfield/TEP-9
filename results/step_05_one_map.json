@@ -1,0 +1,261 @@
+{
+ "tno_peri_ecliptic": [
+  49.9,
+  -17.0
+ ],
+ "axes": {
+  "tno_peri": {
+   "lam": 49.9,
+   "beta": -17.0,
+   "axial": true,
+   "src": "this work (SBDB)"
+  },
+  "ism_inflow": {
+   "lam": 255.8,
+   "beta": 5.2,
+   "axial": true,
+   "src": "Bzowski+2015 IBEX"
+  },
+  "heliotail": {
+   "lam": 75.8,
+   "beta": -5.2,
+   "axial": true,
+   "src": "anti-ISM"
+  },
+  "v1_hp": {
+   "lam": 255.0,
+   "beta": 35.0,
+   "axial": false,
+   "src": "Stone+2013 (121.6 AU)"
+  },
+  "v2_hp": {
+   "lam": 290.0,
+   "beta": -32.0,
+   "axial": false,
+   "src": "Burlaga+2019 (119 AU)"
+  },
+  "comet_peri": {
+   "lam": 219.5,
+   "beta": 30.8,
+   "axial": true,
+   "src": "this work (SBDB comets q>=5)"
+  },
+  "oumuamua": {
+   "lam": 284.5,
+   "beta": 56.8,
+   "axial": false,
+   "src": "JPL sol.15"
+  },
+  "cmb_dipole": {
+   "lam": 171.7,
+   "beta": -11.2,
+   "axial": true,
+   "src": "Planck"
+  },
+  "axis_of_evil": {
+   "lam": 167.2,
+   "beta": 2.4,
+   "axial": true,
+   "src": "de Oliveira-Costa+2004"
+  },
+  "radio_dipole": {
+   "lam": 171.7,
+   "beta": -11.2,
+   "axial": true,
+   "src": "NVSS/TGSS/LoTSS"
+  },
+  "alpha_dipole": {
+   "lam": 264.2,
+   "beta": -34.7,
+   "axial": true,
+   "src": "Webb+2011"
+  },
+  "qso_pol": {
+   "lam": 2.2,
+   "beta": -1.9,
+   "axial": true,
+   "src": "Hutsemekers/Ralston-Jain"
+  },
+  "galactic_pole": {
+   "lam": 180.0,
+   "beta": 29.8,
+   "axial": true,
+   "src": "definition"
+  }
+ },
+ "T1_separations": {
+  "ism_inflow": {
+   "sep_deg": 28.0,
+   "sep_from_anti_deg": 28.0,
+   "axial": true
+  },
+  "heliotail": {
+   "sep_deg": 28.0,
+   "sep_from_anti_deg": 28.0,
+   "axial": true
+  },
+  "v1_hp": {
+   "sep_deg": 151.3,
+   "sep_from_anti_deg": 28.7,
+   "axial": false
+  },
+  "v2_hp": {
+   "sep_deg": 104.4,
+   "sep_from_anti_deg": 75.6,
+   "axial": false
+  },
+  "comet_peri": {
+   "sep_deg": 16.7,
+   "sep_from_anti_deg": 16.7,
+   "axial": true
+  },
+  "oumuamua": {
+   "sep_deg": 123.2,
+   "sep_from_anti_deg": 56.8,
+   "axial": false
+  },
+  "cmb_dipole": {
+   "sep_deg": 64.1,
+   "sep_from_anti_deg": 64.1,
+   "axial": true
+  },
+  "axis_of_evil": {
+   "sep_deg": 63.3,
+   "sep_from_anti_deg": 63.3,
+   "axial": true
+  },
+  "radio_dipole": {
+   "sep_deg": 64.0,
+   "sep_from_anti_deg": 64.0,
+   "axial": true
+  },
+  "alpha_dipole": {
+   "sep_deg": 61.2,
+   "sep_from_anti_deg": 61.2,
+   "axial": true
+  },
+  "qso_pol": {
+   "sep_deg": 49.3,
+   "sep_from_anti_deg": 49.3,
+   "axial": true
+  },
+  "galactic_pole": {
+   "sep_deg": 47.2,
+   "sep_from_anti_deg": 47.2,
+   "axial": true
+  }
+ },
+ "T2_concentration": {
+  "axes_used": [
+   "tno_peri",
+   "comet_peri",
+   "ism_inflow",
+   "cmb_dipole",
+   "axis_of_evil",
+   "alpha_dipole",
+   "radio_dipole"
+  ],
+  "N": 7,
+  "R_folded": 0.742,
+  "p_vs_isotropic": 0.00408997955010225,
+  "note": "axes folded into the TNO-axis hemisphere; null is isotropic directions"
+ },
+ "T2_axial_concentration": {
+  "mean_abs_cos": 0.4876,
+  "p_vs_isotropic": 0.5267123664381678
+ },
+ "T3_local": {
+  "axes_used": [
+   "tno_peri",
+   "comet_peri",
+   "ism_inflow",
+   "v1_hp",
+   "v2_hp",
+   "oumuamua"
+  ],
+  "N": 6,
+  "R_folded": 0.2904,
+  "p_vs_isotropic": 0.9999050004749976
+ },
+ "T3b_triple_axis": {
+  "axes_used": [
+   "tno_peri",
+   "comet_peri",
+   "ism_inflow"
+  ],
+  "mean_abs_cos": 0.8587,
+  "p_vs_isotropic": 0.031019844900775497,
+  "pairwise_separations_deg": {
+   "tno_comet": 16.7,
+   "tno_ism": 28.0,
+   "comet_ism": 42.6
+  }
+ },
+ "T3c_plane_tilt": {
+  "nhat_ecliptic_lam": 49.9,
+  "nhat_ecliptic_beta": 83.6,
+  "phat_ecliptic_lam": 49.9,
+  "phat_ecliptic_beta": -17.0,
+  "note": "common-plane pole tilted ~6 deg off ecliptic pole toward lam~50 -- the same azimuth as the perihelion clustering axis; one coherent 3D structure"
+ },
+ "T3_separation_matrix": {
+  "order": [
+   "tno_peri",
+   "comet_peri",
+   "ism_inflow",
+   "v1_hp",
+   "v2_hp",
+   "oumuamua"
+  ],
+  "deg": [
+   [
+    0.0,
+    16.7,
+    28.0,
+    151.3,
+    104.4,
+    123.2
+   ],
+   [
+    16.7,
+    0.0,
+    42.6,
+    29.9,
+    91.6,
+    51.1
+   ],
+   [
+    28.0,
+    42.6,
+    0.0,
+    29.8,
+    49.4,
+    56.4
+   ],
+   [
+    151.3,
+    29.9,
+    29.8,
+    0.0,
+    74.6,
+    29.5
+   ],
+   [
+    104.4,
+    91.6,
+    49.4,
+    74.6,
+    0.0,
+    88.9
+   ],
+   [
+    123.2,
+    51.1,
+    56.4,
+    29.5,
+    88.9,
+    0.0
+   ]
+  ]
+ }
+}

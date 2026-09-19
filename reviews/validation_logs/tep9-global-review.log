@@ -1,0 +1,39 @@
+[INFO] [STEP 126] LOGGER INITIALIZED: step_126_global_cross_survey_synthesis (Step 126)
+[INFO] [STEP 126] ================================================================================
+[INFO] [STEP 126] Ten-channel global cross-survey and multi-lineage synthesis
+[INFO] [STEP 126] ================================================================================
+[INFO] [STEP 126] C1 SBDB secure detached TNOs: 44
+[INFO] [STEP 126] C2 DES detached TNOs (N=16): p_vs_baseline = 0.04360
+[INFO] [STEP 126] C2 DES objects matched in FITS: 16
+[INFO] [STEP 126] C3 MPCORB detached TNOs (N=63): p = 0.02435
+[INFO] [STEP 126] C3 MPCORB detached TNOs loaded: 63
+[INFO] [STEP 126] Loaded 229 comets with aphelion directions from step_b30 (CODE & Warsaw)
+[INFO] [STEP 126] C8 MPC CometEls near-parabolic census: 274 comets
+[INFO] [STEP 126] C9 SBDB post-2017 near-parabolic holdout: 287 comets
+[INFO] [STEP 126] C10 Deep JFC mean varpi: 40.6 deg (p = 0.0272)
+[INFO] [STEP 126] S10 at TNO axis (49,-17)   = 191.36
+[INFO] [STEP 126]   Channel p-values: [0.0000e+00 5.0000e-05 0.0000e+00 1.9950e-02 8.7360e-03 5.3400e-03
+ 0.0000e+00 6.6200e-04 3.7880e-03 4.3889e-02]
+[INFO] [STEP 126] S10 at Comet axis (34,-13) = 188.90
+[INFO] [STEP 126]   Channel p-values: [0.0000e+00 5.0000e-05 0.0000e+00 6.7332e-02 5.1880e-03 7.8320e-03
+ 1.0000e-06 6.3100e-04 2.6800e-03 3.9444e-02]
+[INFO] [STEP 126]   Processed 5000/20000 random axes
+[INFO] [STEP 126]   Processed 10000/20000 random axes
+[INFO] [STEP 126]   Processed 15000/20000 random axes
+[INFO] [STEP 126]   Processed 20000/20000 random axes
+[INFO] [STEP 126] Conditional sky-area rank at TNO axis:   0.008900
+[INFO] [STEP 126] Conditional sky-area rank at Comet axis: 0.012249
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/scripts/steps/step_126_global_cross_survey_synthesis.py:481: RuntimeWarning: divide by zero encountered in matmul
+  np.clip(rand_axes @ AX_TNO, -1, 1)))
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/scripts/steps/step_126_global_cross_survey_synthesis.py:481: RuntimeWarning: overflow encountered in matmul
+  np.clip(rand_axes @ AX_TNO, -1, 1)))
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/scripts/steps/step_126_global_cross_survey_synthesis.py:481: RuntimeWarning: invalid value encountered in matmul
+  np.clip(rand_axes @ AX_TNO, -1, 1)))
+[INFO] [STEP 126]   bootstrap 50/150
+[INFO] [STEP 126]   bootstrap 100/150
+[INFO] [STEP 126]   bootstrap 150/150
+[INFO] [STEP 126] axis localization: argmax at (41,-30), 14.9 deg off TNO axis, 18.3 deg off comet axis; declared axes are 15.0 deg apart; bootstrap r68=17.2 deg
+[INFO] [STEP 126] Wrote JSON: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b90_global_synthesis.json
+[INFO] [STEP 126] Wrote CSV: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b90_global_synthesis.csv
+[INFO] [STEP 126] Saved figure: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b90_global_synthesis.png
+[INFO] [STEP 126] ✓ Step 126 completed successfully.

@@ -1,0 +1,107 @@
+{
+ "r_outer_au": 60.0,
+ "seed": 20260919,
+ "test_summary": {
+  "v1_outer_slope_ppm_per_yr": -0.03090346085065754,
+  "v2_outer_slope_ppm_per_yr": 0.029614540553684288,
+  "v1_cos_cmb": 0.002397463084851545,
+  "v2_cos_cmb": -0.27427185715884034,
+  "v1_cos_comet": -0.8807785407925961,
+  "v2_cos_comet": -0.24591509082333,
+  "slopes_opposite_signed": true,
+  "bipolar_sign_agreement": false,
+  "v1_rho_outer": 0.2429748065864616,
+  "v2_rho_outer": 0.27763299207276915
+ },
+ "T1_radial": {
+  "VG1": {
+   "n": 1144,
+   "rho_full": 0.23803158976109345,
+   "p_full": 3.3581109626881485e-16,
+   "n_outer": 488,
+   "rho_outer": 0.2429748065864616,
+   "p_outer": 5.467772968000878e-08,
+   "slope_ppm_per_yr_outer": -0.03090346085065754,
+   "slope_ppm_per_au_outer": -0.008561969158562216
+  },
+  "VG2": {
+   "n": 1407,
+   "rho_full": 0.2944780286221224,
+   "p_full": 1.5168799698234078e-29,
+   "n_outer": 424,
+   "rho_outer": 0.27763299207276915,
+   "p_outer": 6.07660226220679e-09,
+   "slope_ppm_per_yr_outer": 0.029614540553684288,
+   "slope_ppm_per_au_outer": 0.009309065283867171
+  },
+  "NH1": {
+   "n": 3381,
+   "rho_full": 0.024363896470160833,
+   "p_full": 0.15667058424062502,
+   "n_outer": 110,
+   "rho_outer": -0.3037936799686176,
+   "p_outer": 0.0012534592762081308,
+   "slope_ppm_per_yr_outer": -0.001840249285893817,
+   "slope_ppm_per_au_outer": -0.0006417877729640015
+  }
+ },
+ "T2_bipolar_sign": {
+  "VG1": {
+   "outer_slope_ppm_per_yr": -0.03090346085065754,
+   "asymptote_lon_deg": 253.6205,
+   "asymptote_lat_deg": 34.791,
+   "sep_from_axis_deg": 151.73642139473114,
+   "sep_from_antiaxis_deg": 28.263578605268876,
+   "sep_from_cmb_apex_deg": 89.86263535210796,
+   "sep_from_cmb_antapex_deg": 90.13736464789206,
+   "cos_to_cmb_axis": 0.002397463084851545,
+   "cos_to_comet_axis": -0.8807785407925961
+  },
+  "VG2": {
+   "outer_slope_ppm_per_yr": 0.029614540553684288,
+   "asymptote_lon_deg": 288.9335,
+   "asymptote_lat_deg": -32.622,
+   "sep_from_axis_deg": 104.23591919102526,
+   "sep_from_antiaxis_deg": 75.76408080897474,
+   "sep_from_cmb_apex_deg": 105.91862631273116,
+   "sep_from_cmb_antapex_deg": 74.08137368726884,
+   "cos_to_cmb_axis": -0.27427185715884034,
+   "cos_to_comet_axis": -0.24591509082333
+  },
+  "prediction": "bipolar lapse: sign(drift) tracks the sign of the trajectory's projection on the bipolar axis; tested against both the CMB-frame axis and the comet-measured axis",
+  "observed": {
+   "VG1_slope": -0.03090346085065754,
+   "VG1_cos_cmb": 0.002397463084851545,
+   "VG1_cos_comet": -0.8807785407925961,
+   "VG2_slope": 0.029614540553684288,
+   "VG2_cos_cmb": -0.27427185715884034,
+   "VG2_cos_comet": -0.24591509082333,
+   "slopes_opposite_signed": true,
+   "sign_agreement_with_cmb_bipolar": false,
+   "sign_agreement_with_comet_bipolar": false,
+   "note": "V1's asymptote is nearly perpendicular to the CMB axis (cos~0) and strongly antapex-projected on the comet axis; V2 projects weakly antapex on both -- the opposite-sign drift is a real structural feature but does not lock to either measured bipolar axis"
+  }
+ },
+ "T3_radius_vs_ageing": {
+  "VG1": {
+   "slope_ppm_per_yr": 0.05275148668423686,
+   "slope_ppm_per_au": 0.014156003210140062,
+   "collinear_et_r": 0.9996166937602224,
+   "partial_dnu_r_given_t": -0.1268945894726296,
+   "note": "radius and mission age are ~99.9 per cent collinear outbound; the registered discriminator is the outer-region sign split, not the full-record correlation"
+  },
+  "VG2": {
+   "slope_ppm_per_yr": 0.07702200693107758,
+   "slope_ppm_per_au": 0.02641717820316294,
+   "collinear_et_r": 0.9981746167271358,
+   "partial_dnu_r_given_t": 0.011900048385876867,
+   "note": "radius and mission age are ~99.9 per cent collinear outbound; the registered discriminator is the outer-region sign split, not the full-record correlation"
+  }
+ },
+ "T4_nh_control": {
+  "outer_slope_ppm_per_yr": -0.001840249285893817,
+  "rho_outer": -0.3037936799686176,
+  "note": "NH1 dnu is kernel-frozen below 0.1 ppm (step_141 audit); its flat outer slope is the interior/control reading"
+ },
+ "verdict": "SCLK RADIAL CHANNEL SPLIT-SIGN, AXIS-UNRESOLVED: outer-region (r>60 AU) signed drift is opposite-signed between the craft -- V1 -0.0309 ppm/yr (cos to CMB axis +0.00, comet axis -0.88), V2 +0.0296 ppm/yr (CMB -0.27, comet -0.25) -- and locks to neither measured bipolar axis; NH1 interior control flat.  Radius and age are ~99.9 per cent collinear outbound, so the registered evidence is the directional sign structure, with kernel segmentation the standing caveat."
+}

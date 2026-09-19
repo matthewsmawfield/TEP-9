@@ -1,0 +1,162 @@
+<h2>9. Data availability and reproducibility</h2>
+
+<h2>9.1 Data availability</h2>
+
+<p>
+    All catalogues used are public. The JPL Small-Body Database is queried live through <code>https://ssd-api.jpl.nasa.gov/sbdb_query.api</code>. The OSSOS characterized ensemble, the Warsaw comet-orbit tables, and the one-apparition comet catalogue are obtained from the CDS/VizieR archives (J/ApJS/236/18, J/A+A/567/A126, and J/A+A/571/A63). The CODE catalogue is distributed through the Poznań comet-dynamics server at pad2.astro.amu.edu.pl; the copy analysed here is an archival snapshot of the published table, integrity-pinned by SHA-256 in <code>data/raw/code/provenance.json</code>. MPCORB and the JPL CometEls file complete the auxiliary data; the N-body baseline draws planet states from the JPL DE440s ephemeris kernel (<code>data/raw/spice/de440s.bsp</code>, SHA-256 pinned in provenance). No synthetic or simulated data enter any reported statistic.
+</p>
+
+<h2>9.2 The pipeline</h2>
+
+<p>
+    The full analysis is a single-command pipeline, archived at <a href="https://github.com/matthewsmawfield/TEP-9">github.com/matthewsmawfield/TEP-9</a> (Zenodo DOI pending). From the repository root:
+</p>
+
+<pre><code>cd TEP-9
+python3 scripts/run_all.py</code></pre>
+
+<p>
+        One hundred and twenty-eight registered steps execute in order under <code>scripts/run_all.py</code> (CORE_STEPS), organized in nine phases.
+</p>
+
+<ol>
+    <li>Data acquisition with per-file provenance (steps 001–004).</li>
+    <li>The resident-signature battery (010–028).</li>
+    <li>The transit-signature battery (030–042).</li>
+    <li>The synthesis and falsification record (050–057).</li>
+    <li>The extended transit-evidence battery — observational-leverage audit, axis-definition consistency, uncertainty-normalized and third-lineage channels, the tide-aware aphelion-dipole test, the Planet Nine insertion test, and the bidirectional boundary validation (058–063).</li>
+    <li>The replication-and-observables battery — the second-catalogue bidirectional validation on Warsaw, the implied proper-time offset, the secular stability of the detached population with and without the published perturber, the prospective detection-power analysis, the wall-versus-field slip-scaling discriminator, the joint axis-permutation global test, the galactic-tide insertion control, the multi-shell radial slip profile, the epoch-stability test, the boundary edge-width fit, the leave-one-channel-out robustness analysis, the signed slip direction, the inner-region radial profile, and the era stability of both the dipole and the resident cluster, the cross-fitter element audit, the signed residual coherence, the geocentric observation-direction null, the matched observed-patch control, the perturber mass ladder with the third published realization, the newest detached-cohort audit with the Ammonite jackknife, the independent DES resident-cohort audit, the slip-physics mechanism discriminator, the perturber distance ladder, the resident-side galactic-tide insertion, the bipolar morphology audit, the bias-free mean-plane warp audit on the MPCORB lineage, the inner-perturber ladder against the ephemeris bound, the MPCORB detached-clustering replication, the perturber-zoo closure, and the six-channel joint axis-permutation extension (064–094).</li>
+    <li>The spacecraft clock and nuclear-process battery — NAIF Voyager and New Horizons SCLK/SPK/LSK and PDS PPI VLISM acquisition, the SCLK clock-correction audit with signed-offset step tests at the termination-shock and heliopause crossings plus the correction-interval drift channel, the PWS plasma-frequency channel, the RTG nuclear-decay channel, heliospheric probe and interstellar-object geometry, and the cross-channel clock-consistency synthesis (095–100).</li>
+    <li>The interstellar-object non-gravitational channel — the SBDB NG solutions of all three ISOs tested against their cap-transit geometry (101).</li>
+    <li>The predictive-validation battery — five-fold cross-validation and CODE↔Warsaw cross-catalogue transfer of the bipolar slip map, spatial holdout and axis localization of the map (azimuthal half-sky splits, mirror-cap extrapolation, displacement skill curve), the RTG mid-life degradation control (placebo-epoch ramp scan plus vintage-matched Voyager-2 reference), the third-catalogue bidirectional replication on the one-apparition cohort with out-of-sample slip-map transfer, and the harmonic-order out-of-sample discrimination with third-cohort axis recovery, amplitude transfer, and cross-solution concordance, the named-direction audit of the recovered axes, the full-population aphelion-dipole census on CometEls, the census discovery-bias audit under the ecliptic-footprint null, and the directional-versus-axisymmetric decomposition of the aphelion asymmetry, and the detachment-cut coherence map of the resident axis, the OSSOS characterized-ensemble audit, the independent-survey resident ledger, the mechanical claims-trace audit, the mixture posterior-predictive audit, the empirical discovery-coupling and closed-channel audit, the prospective post-2017 SBDB long-period-comet holdout, the displaced-dipole axis audit, the dipole-mechanism identification, the era-by-lineage factorial on the pre-2018 SBDB cohort, the masked-signal discrimination, the pre-2018 anomaly localization, the leg-coherence decomposition and cross-fitter audit, and the lineage-independent aphelion dipole on the SBDB eras, the displaced-structure temporal characterization, the ten-channel global cross-survey synthesis, and the non-Warsaw two-leg refit of the transit record on raw MPC astrometry, the post-2017 two-leg refit masking discriminator on the prospective cohort, the frame-anchored bipolar unification test on the independent refit record, and the epoch-resolved axis trajectory on the pooled independent record, and the bipolar cone-shell coherence test on the independent refit record, the bipolar meridian and polarity-mirror coherence test on the measured axes and independent refit record, and the bipolar harmonic decomposition with free-dipole mirror pair, ISO meridian ledger, and resident radial-gradient control, and the signature-cohort independent refit of the LPC 1902–1950 sample on the identical zero-lineage machinery, and the cross-channel axis-convergence test against the independent TEP-programme clock and lunar channels, the OMNI solar-wind screening-epoch test matching monthly dynamic pressure to per-comet perihelion epochs, the RTG cross-generator degradation regression pricing the Voyager crossing windows against all documented aging trajectories, and the one-way downlink channel audit, the frozen-geometry predictive battery scoring the parameter-free mirror prediction and frozen meridian on held-out directions, and the astrometric-catalogue leg-composition stratification of the era transition, and the SCLK signed-drift crossing-channel test (102–141).</li>
+</ol>
+
+<p>
+    Every step writes a verbose timestamped log to <code>logs/</code>, a machine-readable JSON result to <code>results/</code>, and figures to <code>results/figures/</code>. Monte-Carlo nulls use fixed recorded seeds; every download records its URL, retrieval timestamp, byte count, and SHA-256 checksum; and a research audit with script-integrity hashes is written to <code>results/audits/</code> at the end of each run. The pipeline fails loudly if any required catalogue is absent.
+</p>
+
+<p>
+    The single exception to repository self-containment is steps 135 and 139, which read registered result leaves — not raw data — from the sibling TEP-GNSS-II, TEP-GNSS-MGEX, and TEP-LLR pipelines in the local corpus; each is itself a provenance-pinned public pipeline, and the steps fail loudly if those outputs are absent.
+</p>
+
+<table class="data-table">
+    <caption>Table 7: Pipeline phases</caption>
+    <thead>
+        <tr><th>Phase</th><th>Steps</th><th>Content</th><th>Result files</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>1. Acquisition</td><td>001–004</td><td>SBDB, CDS (OSSOS+Warsaw), CODE, MPC downloads with provenance</td><td><code>data/raw/*/provenance.json</code></td></tr>
+        <tr><td>2. Resident signature</td><td>010–028</td><td>TNO clustering, footprint nulls, structure diagnostics, OSSOS bias</td><td><code>step_02</code>–<code>step_04</code>, <code>step_06</code>; <code>step_b1</code>–<code>step_b14</code>, <code>step_b16</code></td></tr>
+        <tr><td>3. Transit signature</td><td>030–042</td><td>Warsaw/CODE comets, three-leg decomposition, analytic + N-body baselines, alternatives</td><td><code>step_07</code>–<code>step_19</code></td></tr>
+        <tr><td>4. Synthesis</td><td>050–057</td><td>Axis convergence, evidence ledger, injection chain, concordance, predictions, morphology</td><td><code>step_05</code>; <code>step_b15</code>, <code>step_b17</code>–<code>step_b22</code></td></tr>
+        <tr><td>5. Extended transit evidence</td><td>058–063</td><td>Leverage audit, axis consistency, uncertainty-normalized + MW08 channels, aphelion dipole, Planet Nine insertion, bidirectional boundary validation</td><td><code>step_b23</code>–<code>step_b28</code></td></tr>
+        <tr><td>6. Replication and TEP observables</td><td>064–094</td><td>Warsaw bidirectional validation, implied proper-time offset, detached-cluster secular stability ± Planet Nine, prospective detection power, wall-vs-field discriminator, joint axis-permutation test, galactic-tide insertion control, radial slip profile, epoch stability, edge width, leave-one-channel-out robustness, signed slip direction, inner-region radial profile, dipole and resident-cluster era stability, cross-fitter element audit, signed residual coherence, geocentric observation-direction null, matched observed-patch control, perturber mass ladder, newest-cohort audit and Ammonite jackknife, DES resident-cohort audit, slip-physics discriminator, perturber distance ladder, resident-side tide insertion, bipolar morphology audit, mean-plane warp audit, inner-perturber ladder, MPCORB clustering replication, perturber-zoo closure, six-channel joint axis-permutation extension</td><td><code>step_b29</code>–<code>step_b59</code></td></tr>
+        <tr><td>7. Spacecraft clock and nuclear channels</td><td>095–100</td><td>NAIF SCLK/SPK/LSK (Voyager + New Horizons) + PDS PPI VLISM acquisition, SCLK clock-correction audit with signed-offset step tests and the correction-interval drift channel, PWS plasma-frequency channel, RTG nuclear-decay channel, heliospheric probe/ISO geometry, cross-channel clock consistency</td><td><code>step_b60</code>–<code>step_b64</code></td></tr>
+        <tr><td>8. Interstellar-object channel</td><td>101</td><td>SBDB NG orbit solutions vs cap-transit geometry, magnitude/morphology/interior-bound tests, prospective registration</td><td><code>step_b65</code></td></tr>
+        <tr><td>9. Predictive validation</td><td>102–141</td><td>Slip-map out-of-sample validation (5-fold CV + CODE↔Warsaw transfer), spatial holdout + axis localization, RTG mid-life degradation control (placebo-epoch ramp scan + vintage-matched reference), third-catalogue bidirectional replication + map transfer, harmonic-order discrimination + third-cohort axis recovery + amplitude transfer, named-direction audit, CometEls full-population dipole, census discovery-bias audit, direction-vs-axis decomposition, detachment-cut coherence map, OSSOS characterized-ensemble audit, independent-survey resident ledger, mechanical claims-trace audit, mixture posterior-predictive audit, empirical discovery-coupling + closed-channel audit, prospective post-2017 SBDB LPC holdout + sky scan, displaced-dipole axis audit, dipole-mechanism identification, era-by-lineage factorial on the pre-2018 SBDB cohort, masked-signal discrimination, pre-2018 anomaly localization, leg-coherence decomposition + cross-fitter audit, lineage-independent aphelion dipole on the SBDB eras, displaced-structure temporal characterization, ten-channel global cross-survey synthesis + axis-localization bootstrap, non-Warsaw two-leg refit of raw MPC astrometry, post-2017 two-leg refit masking discriminator, frame-anchored bipolar unification test, epoch-resolved axis trajectory on the pooled independent record, bipolar cone-shell coherence test, bipolar meridian and polarity-mirror coherence test, bipolar harmonic decomposition and cross-population geometry, signature-cohort independent refit of the LPC 1902–1950 sample, cross-channel axis-convergence test across independent TEP channels, the OMNI solar-wind screening-epoch test, the RTG cross-generator degradation regression, the one-way downlink channel audit, the frozen-geometry predictive battery, the astrometric-catalogue leg-composition stratification, and the SCLK signed-drift crossing-channel test</td><td><code>step_b66</code>–<code>step_b105</code></td></tr>
+    </tbody>
+</table>
+
+<p>
+    Script names (<code>step_0NN_*</code>) and the result files they write (<code>step_NN_*.json</code> and <code>step_bN_*.json</code>) follow independent numbering; the mapping in Table 7 is exact, so every artefact cited below can be located unambiguously.
+</p>
+
+<h2>9.3 Result traceability</h2>
+
+<p>
+    Every number quoted in this manuscript traces to a named field in a <code>results/*.json</code> file produced by the pipeline — Tables 2–6 list the source step beside each statistic. The headline values:
+</p>
+
+<ul>
+    <li>detached-sample clustering <code>step_02_clustering.json</code></li>
+    <li>footprint ceiling and direction offset <code>step_b5_discovery_footprint.json</code></li>
+    <li>conditional null <code>step_b8_footprint_conditional.json</code></li>
+    <li>CODE confirmation <code>step_11_code_confirm.json</code></li>
+    <li>planetary-baseline residual <code>step_17_planetary_baseline.json</code></li>
+    <li>N-body baseline <code>step_19_nbody_planetary_baseline.json</code> with per-comet kicks <code>step_19_nbody_kicks.csv</code></li>
+    <li>Planet Nine insertion <code>step_b27_planet_nine_insertion.json</code></li>
+    <li>bidirectional boundary validation <code>step_b28_bidirectional_rotation.json</code> with per-comet legs <code>step_b28_bidirectional_rotation.csv</code></li>
+    <li>Warsaw bidirectional validation <code>step_b29_warsaw_bidirectional.json</code> with per-comet legs <code>step_b29_warsaw_bidirectional.csv</code></li>
+    <li>implied proper-time offset <code>step_b30_proper_time_slip.json</code> with per-comet offsets <code>step_b30_proper_time_slip.csv</code></li>
+    <li>detached-cluster secular stability <code>step_b31_tno_secular.json</code></li>
+    <li>prospective detection power <code>step_b32_detection_power.json</code></li>
+    <li>slip-scaling discriminator <code>step_b33_wall_vs_field.json</code> (derived from the per-comet <code>step_b30_proper_time_slip.csv</code> offsets)</li>
+    <li>joint axis-permutation test <code>step_b34_joint_axis.json</code></li>
+    <li>galactic-tide insertion control <code>step_b35_galactic_tide.json</code> with per-comet legs <code>step_b35_galactic_tide.csv</code></li>
+    <li>radial slip profile <code>step_b36_radial_slip.json</code> with per-comet per-shell legs <code>step_b36_radial_slip.csv</code></li>
+    <li>epoch stability <code>step_b37_epoch_stability.json</code></li>
+    <li>edge width <code>step_b38_edge_width.json</code></li>
+    <li>leave-one-channel-out <code>step_b39_loco_joint.json</code></li>
+    <li>signed slip direction <code>step_b40_signed_slip.json</code> with per-comet signed rotations <code>step_b40_signed_slip.csv</code></li>
+    <li>inner-region radial profile <code>step_b41_inner_slip.json</code> with per-shell legs <code>step_b41_inner_slip.csv</code></li>
+    <li>dipole era stability <code>step_b42_dipole_era.json</code></li>
+    <li>resident-cluster era stability <code>step_b43_tno_era.json</code></li>
+    <li>cross-fitter element audit <code>step_b44_cross_fitter.json</code> with per-comet differences <code>step_b44_cross_fitter.csv</code></li>
+    <li>signed residual coherence <code>step_b45_signed_residual.json</code> with per-comet signed residuals <code>step_b45_signed_residual.csv</code></li>
+    <li>geocentric observation-direction null <code>step_b46_geocentric_null.json</code> with per-comet directions <code>step_b46_geocentric_null.csv</code></li>
+    <li>matched observed-patch control <code>step_b47_sky_matched.json</code> with per-comet sky metrics <code>step_b47_sky_matched.csv</code></li>
+    <li>perturber mass ladder <code>step_b48_mass_ladder.json</code> with per-comet rotations and required masses <code>step_b48_mass_ladder.csv</code></li>
+    <li>newest-cohort audit and Ammonite jackknife <code>step_b49_newest_cohort.json</code></li>
+    <li>DES resident-cohort audit <code>step_b50_des_resident.json</code> with per-object scores <code>step_b50_des_resident.csv</code></li>
+    <li>slip-physics discriminator <code>step_b51_slip_physics.json</code> with per-comet residual channels <code>step_b51_slip_physics.csv</code></li>
+    <li>perturber distance ladder <code>step_b52_distance_ladder.json</code> with per-rung required masses <code>step_b52_distance_ladder.csv</code></li>
+    <li>resident-side galactic-tide insertion <code>step_b53_tide_resident.json</code> with per-run snapshots <code>step_b53_tide_resident.csv</code></li>
+    <li>bipolar morphology audit <code>step_b54_bipolar_morphology.json</code> with per-comet axis separations <code>step_b54_bipolar_morphology.csv</code></li>
+    <li>mean-plane warp audit <code>step_b55_mean_plane.json</code></li>
+    <li>inner-perturber ladder <code>step_b56_inner_perturber.json</code> with per-comet required masses <code>step_b56_inner_perturber.csv</code></li>
+    <li>MPCORB detached replication <code>step_b57_mpcorb_clustering.json</code></li>
+    <li>perturber-zoo closure <code>step_b58_perturber_zoo.json</code> with per-comet legs <code>step_b58_perturber_zoo.csv</code></li>
+    <li>six-channel joint axis-permutation extension <code>step_b59_joint_axis_mp.json</code></li>
+    <li>spacecraft acquisition provenance <code>data/raw/provenance_spacecraft.json</code></li>
+    <li>SCLK clock-correction audit <code>step_b60_sclk_audit.json</code> with per-record rates <code>step_b60_sclk_rates.csv</code>, segment phase boundaries <code>step_b60_sclk_phase_boundaries.csv</code>, and the correction-interval drift staircase <code>step_b60_sclk_drift.csv</code>, and the per-interval journey context (radius, speed, direction, region, planetary-well distances) <code>step_b60_sclk_journey.csv</code></li>
+    <li>PWS plasma channel <code>step_b61_pws_channel.json</code></li>
+    <li>RTG nuclear channel <code>step_b62_rtg_nuclear.json</code></li>
+    <li>heliospheric geometry <code>step_b63_heliospheric_geometry.json</code></li>
+    <li>cross-channel clock consistency <code>step_b64_clock_consistency.json</code></li>
+    <li>interstellar-object NG channel <code>step_b65_iso_ng_channel.json</code> with per-object ledger <code>step_b65_iso_ng_channel.csv</code> and SBDB record provenance <code>data/raw/iso/provenance.json</code></li>
+    <li>slip-map out-of-sample validation <code>step_b66_slip_map_validation.json</code> with per-comet predictions <code>step_b66_slip_map_validation.csv</code></li>
+    <li>RTG mid-life degradation control <code>step_b67_rtg_midlife_control.json</code> with the full ramp scan <code>step_b67_rtg_midlife_control.csv</code></li>
+    <li>slip-map spatial holdout and axis localization <code>step_b68_spatial_holdout.json</code> with per-comet azimuths <code>step_b68_spatial_holdout.csv</code></li>
+    <li>third-catalogue bidirectional replication and map transfer <code>step_b69_lpc_bidirectional.json</code> with per-comet legs and slips <code>step_b69_lpc_bidirectional.csv</code></li>
+    <li>harmonic-order discrimination, third-cohort axis recovery, amplitude transfer, and cross-solution concordance <code>step_b70_harmonic_axis_transfer.json</code> with the full axis-scan grid <code>step_b70_harmonic_axis_transfer.csv</code></li>
+    <li>named-direction audit <code>step_b71_named_directions.json</code> with the full separation table <code>step_b71_named_directions.csv</code></li>
+    <li>CometEls full-population dipole <code>step_b72_cometels_dipole.json</code> with the per-comet census <code>step_b72_cometels_dipole.csv</code></li>
+    <li>census discovery-bias audit <code>step_b73_census_bias_audit.json</code> with the per-comet projections <code>step_b73_census_bias_audit.csv</code></li>
+    <li>direction-vs-axis decomposition <code>step_b74_direction_vs_axis.json</code> with the per-sample moments <code>step_b74_direction_vs_axis.csv</code></li>
+    <li>detachment-cut coherence <code>step_b75_detachment_coherence.json</code> with the per-cell scan <code>step_b75_detachment_coherence.csv</code></li>
+    <li>OSSOS characterized-ensemble audit <code>step_b76_ossos_ensemble.json</code> with the per-object ensemble ledger <code>step_b76_ossos_ensemble.csv</code></li>
+    <li>three-survey resident ledger <code>step_b77_resident_ledger.json</code> with the per-object scoring <code>step_b77_resident_ledger.csv</code></li>
+    <li>claims-trace audit <code>step_b78_claims_trace.json</code> with the per-literal ledger <code>step_b78_claims_trace.csv</code></li>
+    <li>prospective post-2017 SBDB holdout <code>step_b81_prospective_lpc.json</code> with the per-comet integration table <code>step_b81_prospective_lpc.csv</code></li>
+    <li>displaced-dipole axis audit <code>step_b82_axis_audit.json</code></li>
+    <li>era-by-lineage factorial <code>step_b84_pre2018_sbdb.json</code> with the per-comet integration table <code>step_b84_pre2018_sbdb.csv</code></li>
+    <li>masked-signal discrimination <code>step_b85_masked_signal.json</code></li>
+    <li>pre-2018 anomaly localization <code>step_b86_pre2018_localization.json</code></li>
+    <li>leg-coherence decomposition and cross-fitter audit <code>step_b87_leg_coherence.json</code></li>
+    <li>lineage-independent aphelion dipole <code>step_b88_lineage_aphelion.json</code> with the per-comet aphelion table <code>step_b88_lineage_aphelion.csv</code></li>
+    <li>displaced-structure temporal characterization <code>step_b89_displaced_temporal.json</code> with the per-comet ledger <code>step_b89_displaced_temporal.csv</code></li>
+    <li>ten-channel global synthesis <code>step_b90_global_synthesis.json</code> with the channel ledger <code>step_b90_global_synthesis.csv</code> and figure <code>results/figures/step_b90_global_synthesis.png</code></li>
+    <li>non-Warsaw two-leg refit <code>step_b91_nonwarsaw_refit.json</code> with the per-comet refit table <code>step_b91_refit.jsonl</code> and figure <code>results/figures/step_b91_nonwarsaw_refit.png</code></li>
+    <li>post-2017 leg-fit masking discriminator <code>step_b92_post2017_refit.json</code> with the per-comet refit table <code>step_b92_post2017_refit.csv</code> and figure <code>results/figures/step_b92_post2017_refit.png</code></li>
+    <li>frame-anchored bipolar unification test <code>step_b93_bipolar_unification.json</code> with figure <code>results/figures/step_b93_bipolar_unification.png</code></li>
+    <li>epoch-resolved axis trajectory <code>step_b94_epoch_trajectory.json</code> with the per-bin table <code>step_b94_epoch_trajectory.csv</code> and figure <code>results/figures/step_b94_epoch_trajectory.png</code></li>
+    <li>bipolar cone-shell coherence <code>step_b95_cone_shell.json</code> with figure <code>results/figures/step_b95_cone_shell.png</code></li>
+    <li>bipolar meridian and polarity-mirror coherence <code>step_b96_bipolar_meridian.json</code> with figure <code>results/figures/step_b96_bipolar_meridian.png</code></li>
+    <li>bipolar harmonic decomposition <code>step_b97_harmonic_bipolar.json</code> with figure <code>results/figures/step_b97_harmonic_bipolar.png</code></li>
+    <li>signature-cohort independent refit <code>step_b98_lpc_signature_refit.json</code> with the per-comet table <code>step_b98_lpc_signature_refit.csv</code>, per-comet checkpoint <code>step_b98_lpc_refit.jsonl</code> and figure <code>results/figures/step_b98_lpc_signature_refit.png</code></li>
+    <li>cross-channel axis convergence <code>step_b99_cross_channel.json</code> with figure <code>results/figures/step_b99_cross_channel.png</code></li>
+    <li>evidence ledger <code>step_b15_evidence_summary.json</code></li>
+    <li>injection chain <code>step_b17_injection_chain.json</code></li>
+    <li>falsifiable predictions <code>step_b19_prospective_predictions.json</code></li>
+</ul>
+</p>
+
+<p>
+    The traceability claim is itself audited mechanically (step 114): a registered pipeline step parses these components, resolves every cited step, result handle, and figure file, and matches every numeric literal in step-citing paragraphs against the numeric leaves of the results files. On the present manuscript, 2,943 literals are checked: 1,712 trace to a numeric leaf inside the cited steps' own result files (strict provenance), a further 1,171 match only against the full results universe — a coincidence-prone pool enumerated separately and not counted as provenance — and 60 match neither and are enumerated in the audit ledger for review (years, section numbers, isotope labels, order-of-magnitude anchors, and literature values). Zero cited steps, result handles, or figures are unresolvable, and no result file is stale. The audit is re-run on every pipeline execution, so any number that drifts from its source is flagged, not silently inherited.
+</p>
+
+<h2>9.4 Known limitations of the data record</h2>
+
+<p>
+    Three limitations are carried explicitly. The CODE acquisition is an archival snapshot rather than a live export — the pad2 interface did not return a machine-readable table at retrieval — though its content is the published catalogue and its hash is pinned. Warsaw, CODE, and the one-apparition catalogue share orbit-determination lineage, so the transit replications are independent in sample, not method; no fully independent three-leg lineage exists in public form, the nearest approach being the embedded Marsden–Williams (2008) comparison series tested in step 060. And the N-body planetary baseline, though validated end-to-end against the catalogue's own energy kicks, is a nominal-element integration: in the deeply chaotic encounter tail, individual kicks are unstable and the baseline functions as a statistical control rather than a per-comet reconstruction.
+</p>
