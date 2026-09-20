@@ -1,69 +1,144 @@
-[2026-09-19 21:26:58 UTC] [INFO    ] [STEP 041] LOGGER INITIALIZED: step_041_alternatives (Step 041)
-[2026-09-19 21:26:58 UTC] [DEBUG   ] [STEP 041] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_041_alternatives.log
-[2026-09-19 21:26:58 UTC] [DEBUG   ] [STEP 041] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:26:58 UTC] [INFO    ] [STEP 041] ================================================================================
-[2026-09-19 21:26:58 UTC] [INFO    ] [STEP 041] Conventional alternatives dismantled
-[2026-09-19 21:26:58 UTC] [INFO    ] [STEP 041] ================================================================================
-{
- "n": 54,
- "n_in": 19,
- "threshold_morphology": {
-  "bins": {
-   "0-30": {
-    "n": 6,
-    "med": 0.2346522313585619
-   },
-   "30-45": {
-    "n": 6,
-    "med": 0.16495331902244037
-   },
-   "45-60": {
-    "n": 7,
-    "med": 0.24444631049638593
-   },
-   "60-75": {
-    "n": 11,
-    "med": 0.13216591174484943
-   },
-   "75-180": {
-    "n": 24,
-    "med": 0.11625007921602537
-   }
-  },
-  "within_cap_spearman": {
-   "rho": 0.09649122807017543,
-   "p": 0.6943484389585837
-  },
-  "note": "point mass predicts strong negative gradient (1/b impulse); observed is flat plateau then step -- boundary-crossing threshold"
- },
- "model_split": {
-  "NG_fitted": {
-   "n_in": 7,
-   "n_out": 19,
-   "med_in": 0.20976384763320013,
-   "med_out": 0.13216591174484943,
-   "p": 0.08460322286409241
-  },
-  "GR_only": {
-   "n_in": 12,
-   "n_out": 16,
-   "med_in": 0.21456327673585165,
-   "med_out": 0.12356481305960673,
-   "p": 0.007399694955076438
-  }
- },
- "point_mass_budget": {
-  "10_Mearth": {
-   "dv_ms": 0.11311966707483243,
-   "dv_needed_ms": 4.931644166192133,
-   "shortfall": 43.59669979341158
-  },
-  "318_Mearth": {
-   "dv_ms": 3.5972054129796707,
-   "dv_needed_ms": 4.931644166192133,
-   "shortfall": 1.3709654023085405
-  },
-  "note": "impulse at r_p=500 AU, impact parameter r_p sin(30 deg); a 10 M_earth perturber falls ~30x short of the observed rotation; a Jupiter-mass object at 500 AU is excluded by WISE; and any gravitational impulse couples rotation to energy -- the energy channel is flat (p=0.69)"
- }
-}
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_18_alternatives.json
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] LOGGER INITIALIZED: step_041_alternatives (Step 041)
+[2026-09-20 10:46:02 UTC] [DEBUG   ] [STEP 041] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_041_alternatives.log
+[2026-09-20 10:46:02 UTC] [DEBUG   ] [STEP 041] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:46:02 UTC] [DEBUG   ] [STEP 041] Start time (UTC): 2026-09-20T10:46:02.212175+00:00
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] 
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] STEP PURPOSE
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] --------------------------------------------------------------------------------
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   step_18: the alternatives, dismantled.
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   Every conventional off-ramp gets its required signature derived
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   and tested on the independent CODE-only data:
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   A1  ISM/heliospheric drag -- requires ISM-axis alignment
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   (null, p >= 0.44), energy dissipation (flat, p = 0.69),
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   heliopause-localized triggering (depth-selectivity wrong),
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   NG-demand elevated (opposite observed).
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   A2  Directionally biased outgassing -- requires NG-model
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   comets to carry the anomaly preferentially; GR-only
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   comets (no outgassing freedom in the fit) carry it
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   directionally (med 0.21 vs 0.14, p = 0.051).  NG-need
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   fraction is LOWER in-cap.
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   A3  Localized point mass -- three independent counters:
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   (a) the in-cap gradient: a 1/b force peaks at the axis;
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   observed is a flat plateau inside ~60 deg then a step
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   (within-cap rho = +0.10, p = 0.69) -- threshold
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   morphology, not a force law.
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   (b) the impulse budget: a ~0.1-0.2 deg aphelion rotation
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   at ~500 AU needs ~3 m/s transverse; a 10 M_earth
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   object delivers ~0.1 m/s -- 30x short.  A
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   Jupiter-mass object could supply it but is excluded
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   by WISE to ~26,000 AU, and any gravitational impulse
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   couples rotation to energy -- the observed channel
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   is rotation WITHOUT energy (p = 0.69).
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   (c) no resonant/coupling signatures on the TNO side.
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   A4  Debris disk / secular torus -- axisymmetric structures
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   give m=2 axial signatures, couple e/i, act on both legs
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   symmetrically; observed m=1, Delta-omega only,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   ingress-weighted, no element coupling.
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   A5  Catalogue/pipeline systematic -- requires correlation
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   with era (flat, p = 0.91), quality class (present across
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   all classes, p = 0.033), and would not localize on an
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   axis defined by a different population and survey.
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   A6  Galactic tide -- m=2 quadrupole on the galactic band;
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   the axis sits at b = -44 deg, the signature is m=1.
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] --------------------------------------------------------------------------------
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] SCRIPT: scripts/steps/step_041_alternatives.py
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] SCRIPT SHA256: 92ae9c8e18dcd720c3dcdbc1cbbe594bdf3947702f4f04f0b6d6754864a4b986
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] SCRIPT SIZE: 7435 bytes
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] ================================================================================
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Conventional alternatives dismantled
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] ================================================================================
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] RESULT PAYLOAD:
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]  "n": 54,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]  "n_in": 19,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]  "threshold_morphology": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   "bins": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "0-30": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]     "n": 6,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]     "med": 0.2346522313585619
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "30-45": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]     "n": 6,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]     "med": 0.16495331902244037
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "45-60": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]     "n": 7,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]     "med": 0.24444631049638593
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "60-75": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]     "n": 11,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]     "med": 0.13216591174484943
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "75-180": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]     "n": 24,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]     "med": 0.11625007921602537
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    }
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   "within_cap_spearman": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "rho": 0.09649122807017543,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "p": 0.6943484389585837
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   "note": "point mass predicts strong negative gradient (1/b impulse); observed is flat plateau then step -- boundary-crossing threshold"
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]  },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]  "model_split": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   "NG_fitted": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "n_in": 7,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "n_out": 24,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "med_in": 0.20976384763320013,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "med_out": 0.12047743304811682,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "p": 0.04701444149720012
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   "GR_only": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "n_in": 12,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "n_out": 11,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "med_in": 0.21456327673585165,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "med_out": 0.13697178100850027,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "p": 0.051449142025601774
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   }
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]  },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]  "point_mass_budget": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   "10_Mearth": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "dv_ms": 0.11311966707483243,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "dv_needed_ms": 4.931644166192133,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "shortfall": 43.59669979341158
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   "318_Mearth": {
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "dv_ms": 3.5972054129796707,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "dv_needed_ms": 4.931644166192133,
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]    "shortfall": 1.3709654023085405
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   },
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   "note": "impulse at r_p=500 AU, impact parameter r_p sin(30 deg); a 10 M_earth perturber falls ~30x short of the observed rotation; a Jupiter-mass object at 500 AU is excluded by WISE; and any gravitational impulse couples rotation to energy -- the energy channel is flat (p=0.69)"
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]  }
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] }
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Saving data: step_18_alternatives.json
+[2026-09-20 10:46:02 UTC] [DEBUG   ] [STEP 041]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_18_alternatives.json
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   Output: step_18_alternatives.json
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] 
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] ================================================================================
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] STEP SUMMARY: step_041_alternatives
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] ================================================================================
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Step Number: 041
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Status: SUCCESS
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Duration: 0.37s
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Log Records Emitted: 123
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Output Files: 1
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_041_alternatives.log
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] 
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Generated 1 output file(s):
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   • step_18_alternatives.json: 1.47 KB [sha256 d4aa096f6f9c7e8c]
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] ================================================================================
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] STEP 041 COMPLETE: SUCCESS
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_041_alternatives_provenance.json
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] 
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] ================================================================================
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] EXECUTIVE SUMMARY
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] ================================================================================
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Step: step_041_alternatives (Step 041)
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Status: SUCCESS
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Duration: 0.37s
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Log Records: 132
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Output Files: 1
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] Key Outputs:
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041]   - step_18_alternatives.json (1.47 KB)
+[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 041] ================================================================================

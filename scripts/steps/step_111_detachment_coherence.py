@@ -44,7 +44,7 @@ Outputs
 -------
 results/step_b75_detachment_coherence.json
 results/step_b75_detachment_coherence.csv
-results/figures/step_b75_detachment_coherence.png
+results/figures/supplementary/step_b75_detachment_coherence.png
 """
 
 import sys as _sys
@@ -244,9 +244,9 @@ fig.colorbar(im2, ax=axes[2], fraction=0.046)
 fig.suptitle("Detachment-cut coherence of the resident axis "
              "(star = declared a>150, q>30 cell)", fontsize=11)
 fig.tight_layout(rect=[0, 0, 1, 0.94])
-fig.savefig(RESULTS / "figures" / "step_b75_detachment_coherence.png",
-            dpi=160)
-logger.info("Saving data: step_b75_detachment_coherence.png")
+fig.savefig(RESULTS / "figures" / "supplementary" / "step_b75_detachment_coherence.png",
+            dpi=300)
+logger.info("Saving data: supplementary/step_b75_detachment_coherence.png")
 
 with open(RESULTS / "step_b75_detachment_coherence.json", "w") as f:
     json.dump(out, f, indent=1)

@@ -20,7 +20,7 @@ Specifically:
 Outputs
 -------
 results/audits/audit_post2017_discovery_footprint.json
-results/figures/audit_post2017_discovery_footprint.png
+results/figures/supplementary/audit_post2017_discovery_footprint.png
 """
 
 import sys as _sys
@@ -213,7 +213,7 @@ def main():
     ax2.legend(loc="upper right", fontsize=8)
 
     plt.tight_layout()
-    fig_path = FIG_DIR / "audit_post2017_discovery_footprint.png"
+    fig_path = FIG_DIR / "supplementary" / "audit_post2017_discovery_footprint.png"
     plt.savefig(fig_path, dpi=200)
     plt.close()
     logger.info(f"Saved figure to {fig_path}")

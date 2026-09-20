@@ -297,33 +297,73 @@ logger.info(f"sample: {len(sample)} class-1 CODE comets")
 # ------------------------------------------------------------------
 
 cells = [(mname, m9deg) for mname in P9_MODELS for m9deg in M9_GRID]
+
+
+def _run_comet(k, ro, oo, et):
+    base = integrate(oo, et, None)
+    if base is None:
+        return None
+    po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]), math.radians(ro["i"]))
+    pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]), math.radians(fut[k]["i"]))
+    rec = dict(desig=k, q=ro["q"], cls=ro["cls"],
+               theta=sep(-po, TNO), d_of=sep(-po, -pf),
+               aa_base=base["aa_out"], kick_e=oo["aa"] - base["aa_out"])
+    for mname, m9deg in cells:
+        model = P9_MODELS[mname]
+        ps9, vs9 = p9_state(model, m9deg, et)
+        rp = integrate(oo, et, (ps9, vs9, model["m9"] * M_EARTH_SUN))
+        if rp is None:
+            rec[f"{mname}_M{int(m9deg)}_drot"] = float("nan")
+            rec[f"{mname}_M{int(m9deg)}_dk"] = float("nan")
+            rec[f"{mname}_M{int(m9deg)}_denc"] = float("nan")
+            continue
+        rec[f"{mname}_M{int(m9deg)}_drot"] = sep(base["phat"], rp["phat"])
+        rec[f"{mname}_M{int(m9deg)}_dk"] = abs(rp["aa_out"] - base["aa_out"])
+        rec[f"{mname}_M{int(m9deg)}_denc"] = rp["denc_p9"]
+    return rec
+
+
+def _work_comet(job):
+    k, ro, oo, et = job
+    try:
+        return _run_comet(k, ro, oo, et)
+    except Exception as e:
+        return ("__error__", k, str(e))
+
+
+from scripts.utils.parallel import default_workers as _default_workers
+
+if "--workers" in _sys.argv:
+    N_WORK = max(1, int(_sys.argv[_sys.argv.index("--workers") + 1]))
+else:
+    N_WORK = _default_workers()
+
+if N_WORK > 1 and len(sample) > 1:
+    import multiprocessing as mp
+    ctx = mp.get_context("fork") if _sys.platform != "win32" \
+        else mp.get_context("spawn")
+
+    def _init():
+        # forked children inherit the parent's BSP fd; concurrent spkezr
+        # reads through a shared descriptor corrupt each other -- reopen
+        # the kernel so each worker holds its own file handle.
+        sp.kclear()
+        sp.furnsh(str(SPK))
+
+    with ctx.Pool(min(N_WORK, len(sample)), initializer=_init) as pool:
+        recs = pool.map(_work_comet, sample)
+else:
+    recs = [_work_comet(s) for s in sample]
+
 rows = []
 failed = []
-for k, ro, oo, et in sample:
-    try:
-        base = integrate(oo, et, None)
-        if base is None:
-            failed.append(k); continue
-        po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]), math.radians(ro["i"]))
-        pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]), math.radians(fut[k]["i"]))
-        rec = dict(desig=k, q=ro["q"], cls=ro["cls"],
-                   theta=sep(-po, TNO), d_of=sep(-po, -pf),
-                   aa_base=base["aa_out"], kick_e=oo["aa"] - base["aa_out"])
-        for mname, m9deg in cells:
-            model = P9_MODELS[mname]
-            ps9, vs9 = p9_state(model, m9deg, et)
-            rp = integrate(oo, et, (ps9, vs9, model["m9"] * M_EARTH_SUN))
-            if rp is None:
-                rec[f"{mname}_M{int(m9deg)}_drot"] = float("nan")
-                rec[f"{mname}_M{int(m9deg)}_dk"] = float("nan")
-                rec[f"{mname}_M{int(m9deg)}_denc"] = float("nan")
-                continue
-            rec[f"{mname}_M{int(m9deg)}_drot"] = sep(base["phat"], rp["phat"])
-            rec[f"{mname}_M{int(m9deg)}_dk"] = abs(rp["aa_out"] - base["aa_out"])
-            rec[f"{mname}_M{int(m9deg)}_denc"] = rp["denc_p9"]
+for s, rec in zip(sample, recs):
+    if rec is None:
+        failed.append(s[0])
+    elif isinstance(rec, tuple) and rec[0] == "__error__":
+        failed.append(rec[1]); logger.warning(f"{rec[1]}: {rec[2]}")
+    else:
         rows.append(rec)
-    except Exception as e:
-        failed.append(k); logger.warning(f"{k}: {e}")
 
 logger.info(f"integrated {len(rows)} comets x {1 + len(cells)} runs; {len(failed)} failed")
 
@@ -408,5 +448,5 @@ for cell, d in results["cells"].items():
 p = results["pooled"]["all_c1"]
 logger.info(f"pooled max: med drot={p['med_drot']:.5f} deg, max {p['max_drot']:.4f}, "
             f"shortfall x{p['rotation_shortfall']:.0f}, resid p={p['residual_cap_after_p9']['p']:.4f}")
-print("wrote", out)
-print("wrote", csv_out)
+logger.data_save(out)
+logger.data_save(csv_out)

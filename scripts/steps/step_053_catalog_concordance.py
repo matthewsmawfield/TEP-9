@@ -23,7 +23,7 @@ C3  Any systematic direction offset JPL-vs-MPC.
 Data: data/sbdb_outer_ss.json (JPL), data/MPCORB.DAT.gz.
 
 Outputs: results/step_b18_catalog_concordance.json,
-         figures/step_b18_catalog_concordance.png
+         figures/supplementary/step_b18_catalog_concordance.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -222,10 +222,10 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b18_catalog_concordance.png",
-                dpi=150)
-    print("wrote results/step_b18_catalog_concordance.json, "
-          "figures/step_b18_catalog_concordance.png")
+    fig.savefig(FIG / "supplementary" / "step_b18_catalog_concordance.png",
+                dpi=300)
+    logger.data_save(RESULTS / "step_b18_catalog_concordance.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b18_catalog_concordance.png")
 
 
 if __name__ == "__main__":

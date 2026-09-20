@@ -17,7 +17,7 @@ Inputs : data/raw/code/code_*.html, data/raw/warsaw/warsaw_tablec.dat,
          data/raw/spice/de440s.bsp
 Outputs: results/step_b46_geocentric_null.json
          results/step_b46_geocentric_null.csv
-         results/figures/step_b46_geocentric_null.png
+         results/figures/supplementary/step_b46_geocentric_null.png
 """
 
 import sys
@@ -105,7 +105,7 @@ def lv(l,b):
 def sep(a,b):
     return float(np.degrees(np.arccos(np.clip(np.dot(a,b),-1,1))))
 
-TNO=lv(49.0,-17.0)
+TNO=lv(34.0,-13.0)   # transit-axis convention (comet cap, steps 030-086)
 CAP=60.0
 
 osc  = parse_code(str(DATA_RAW/"code"/"code_osculating.html"))
@@ -140,7 +140,7 @@ res={"method":"geocentric comet direction at perihelion epoch "
        "resultant length and isotropic p-value per cohort.  A sky-"
        "localized systematic requires clustered observed directions; "
        "Earth-orbit smearing scatters them.",
-     "cap_deg":CAP,"axis":"49,-17","seed":SEED}
+     "cap_deg":CAP,"axis":"34,-13","seed":SEED}
 
 def cohort_stats(sub,tag):
     dirs=np.array([[r["gx"],r["gy"],r["gz"]] for r in sub])
@@ -178,9 +178,8 @@ with open(RESULTS/"step_b46_geocentric_null.csv","w",newline="") as f:
     w=csv.DictWriter(f,fieldnames=["desig","theta","gx","gy","gz"])
     w.writeheader()
     for r in rows: w.writerow(r)
-print(f"wrote {RESULTS/'step_b46_geocentric_null.json'}")
-print(f"wrote {RESULTS/'step_b46_geocentric_null.csv'}")
-
+logger.data_save(RESULTS/'step_b46_geocentric_null.json')
+logger.data_save(RESULTS/'step_b46_geocentric_null.csv')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -195,8 +194,8 @@ for sub,col,lab in ((inn,"crimson","in-cap"),(outt,"0.6","out-of-cap")):
     lam=[math.degrees(math.atan2(r["gy"],r["gx"]))%360 for r in sub]
     bet=[math.degrees(math.asin(r["gz"])) for r in sub]
     ax.scatter(lam,bet,s=10,c=col,alpha=0.7,label=lab)
-ax.scatter([49],[-17],marker="*",s=160,c="crimson",edgecolors="k",label="axis")
-ax.scatter([229],[17],marker="*",s=160,facecolors="none",edgecolors="k",label="anti-axis")
+ax.scatter([34],[-13],marker="*",s=160,c="crimson",edgecolors="k",label="axis")
+ax.scatter([214],[13],marker="*",s=160,facecolors="none",edgecolors="k",label="anti-axis")
 ax.set_xlim(0,360); ax.set_xlabel("geocentric ecliptic longitude (deg)")
 ax.set_ylabel("geocentric ecliptic latitude (deg)")
 ax.legend(frameon=False,fontsize=8)
@@ -209,5 +208,5 @@ ax.set_ylabel("count"); ax.legend(frameon=False,fontsize=8)
 ax.set_title("in-cap observed-direction clustering",fontsize=10)
 fig.tight_layout()
 FIG=RESULTS/"figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG/"step_b46_geocentric_null.png",dpi=150)
-print(f"wrote {FIG/'step_b46_geocentric_null.png'}")
+fig.savefig(FIG/"supplementary" / "step_b46_geocentric_null.png",dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b46_geocentric_null.png')

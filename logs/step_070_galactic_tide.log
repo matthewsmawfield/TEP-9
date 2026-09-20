@@ -1,21 +1,98 @@
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 070] LOGGER INITIALIZED: step_070_galactic_tide (Step 070)
-[2026-09-19 22:14:09 UTC] [DEBUG   ] [STEP 070] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_070_galactic_tide.log
-[2026-09-19 22:14:09 UTC] [DEBUG   ] [STEP 070] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 070] ================================================================================
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 070] Galactic-tide insertion control (REBOUND/DE440s)
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 070] ================================================================================
-[2026-09-19 22:14:10 UTC] [INFO    ] [STEP 070] tide coefficients: Kx=7.061e-16 Ky=-7.061e-16 Kz=-5.653e-15 yr^-2 (z/radial ratio 8.0)
-[2026-09-19 22:14:10 UTC] [INFO    ] [STEP 070] sample: 131 class-1 CODE comets
-[2026-09-19 22:14:11 UTC] [INFO    ] [STEP 070]   20/131
-[2026-09-19 22:14:11 UTC] [INFO    ] [STEP 070]   40/131
-[2026-09-19 22:14:12 UTC] [INFO    ] [STEP 070]   60/131
-[2026-09-19 22:14:13 UTC] [INFO    ] [STEP 070]   80/131
-[2026-09-19 22:14:14 UTC] [INFO    ] [STEP 070]   100/131
-[2026-09-19 22:14:14 UTC] [INFO    ] [STEP 070]   120/131
-[2026-09-19 22:14:15 UTC] [INFO    ] [STEP 070] integrated 131 comets, 0 failures
-[2026-09-19 22:14:15 UTC] [INFO    ] [STEP 070] per-leg tide offset: med 0.00e+00 deg, max 2.18e+00 deg
-[2026-09-19 22:14:15 UTC] [INFO    ] [STEP 070] rotation change: med |ddrot| 9.48e-09, max 1.78e+00 deg
-[2026-09-19 22:14:15 UTC] [INFO    ] [STEP 070] cap contrast: leg p=0.203, ddrot p=0.329
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b35_galactic_tide.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b35_galactic_tide.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b35_galactic_tide.png
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] LOGGER INITIALIZED: step_070_galactic_tide (Step 070)
+[2026-09-20 11:22:51 UTC] [DEBUG   ] [STEP 070] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_070_galactic_tide.log
+[2026-09-20 11:22:51 UTC] [DEBUG   ] [STEP 070] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 11:22:51 UTC] [DEBUG   ] [STEP 070] Start time (UTC): 2026-09-20T11:22:51.545681+00:00
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] 
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] STEP PURPOSE
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] --------------------------------------------------------------------------------
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   step_070: Galactic-tide insertion -- the last unsubtracted Newtonian
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   channel.
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   The planetary baseline (steps 040/042/063/064) subtracts the measured
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   kick budget of the Solar system, and the Planet Nine insertion (step
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   062) shows the published perturber cannot rotate the catalogued
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   trajectories.  One Newtonian channel remains unevaluated on the real
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   trajectories: the Galactic tide, the dominant long-term perturber of
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   Oort-cloud comets.  Its strength at the 250 AU boundary sphere is small
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   -- the vertical tide coefficient 4 pi G rho ~ 5.6e-15 yr^-2 against
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   the solar GM/r^2 ~ 6.3e-4 AU yr^-2 -- but the anomaly itself is also
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   small (~0.1 deg), so the tide's actual contribution is measured here
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   directly rather than asserted negligible.
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   Method
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   The identical bidirectional integration of step_063 is rerun with the
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   Heisler & Tremaine (1986) tidal tensor added as an external potential
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   via Strang splitting (kick-drift-kick on WHFast).  In the
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   epoch-fixed approximation -- each leg spans ~600 yr, vastly less than
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   the ~240 Myr galactic period -- the inertial-frame tensor is
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   a_gal = ( +OmG^2 x,  -OmG^2 y,  -4 pi G rho z )
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   in galactic coordinates (x toward the Galactic centre, z toward the
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   north Galactic pole), with OmG = A - B = 26 km/s/kpc (A = -B = 13,
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   delta = 0) and rho = 0.1 Msun/pc^3 (Levison et al. 2001 convention).
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   Each comet's two legs are integrated with and without the tide; the
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   per-leg boundary periapsis-direction offset and the change in the
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   orig->fut rotation are measured on the catalogued trajectories, and
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   the cap contrast of the tide-induced contribution is tested.
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   Outputs
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   results/step_b35_galactic_tide.json
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   results/step_b35_galactic_tide.csv
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070]   results/figures/supplementary/step_b35_galactic_tide.png
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] --------------------------------------------------------------------------------
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] SCRIPT: scripts/steps/step_070_galactic_tide.py
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] SCRIPT SHA256: 85a2f6f8c947b6c0bd760c9b1026388219569f7e851bbd3991d47936b3be6060
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] SCRIPT SIZE: 15987 bytes
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] ================================================================================
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] Galactic-tide insertion control (REBOUND/DE440s)
+[2026-09-20 11:22:51 UTC] [INFO    ] [STEP 070] ================================================================================
+[2026-09-20 11:22:52 UTC] [INFO    ] [STEP 070] tide coefficients: Kx=7.061e-16 Ky=-7.061e-16 Kz=-5.653e-15 yr^-2 (z/radial ratio 8.0)
+[2026-09-20 11:22:52 UTC] [INFO    ] [STEP 070] sample: 131 class-1 CODE comets
+[2026-09-20 11:22:54 UTC] [INFO    ] [STEP 070]   20/131
+[2026-09-20 11:22:55 UTC] [INFO    ] [STEP 070]   40/131
+[2026-09-20 11:22:56 UTC] [INFO    ] [STEP 070]   60/131
+[2026-09-20 11:22:57 UTC] [INFO    ] [STEP 070]   80/131
+[2026-09-20 11:22:58 UTC] [INFO    ] [STEP 070]   100/131
+[2026-09-20 11:22:59 UTC] [INFO    ] [STEP 070]   120/131
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] integrated 131 comets, 0 failures
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] per-leg tide offset: med 0.00e+00 deg, max 2.18e+00 deg
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] rotation change: med |ddrot| 9.48e-09, max 1.78e+00 deg
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] cap contrast: leg p=0.203, ddrot p=0.329
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Saving data: step_b35_galactic_tide.json
+[2026-09-20 11:23:00 UTC] [DEBUG   ] [STEP 070]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b35_galactic_tide.json
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070]   Output: step_b35_galactic_tide.json
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Saving data: step_b35_galactic_tide.csv
+[2026-09-20 11:23:00 UTC] [DEBUG   ] [STEP 070]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b35_galactic_tide.csv
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070]   Output: step_b35_galactic_tide.csv
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Saving data: step_b35_galactic_tide.png
+[2026-09-20 11:23:00 UTC] [DEBUG   ] [STEP 070]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b35_galactic_tide.png
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070]   Output: step_b35_galactic_tide.png
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] 
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] ================================================================================
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] STEP SUMMARY: step_070_galactic_tide
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] ================================================================================
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Step Number: 070
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Status: SUCCESS
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Duration: 9.39s
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Log Records Emitted: 73
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Output Files: 3
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_070_galactic_tide.log
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] 
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Generated 3 output file(s):
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070]   • step_b35_galactic_tide.json: 1.06 KB [sha256 fca84472b30a740b]
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070]   • step_b35_galactic_tide.csv: 15.62 KB [sha256 25f2163c42c01939]
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070]   • step_b35_galactic_tide.png: 197.03 KB [sha256 e560b96b7e232246]
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] ================================================================================
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] STEP 070 COMPLETE: SUCCESS
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_070_galactic_tide_provenance.json
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] 
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] ================================================================================
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] EXECUTIVE SUMMARY
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] ================================================================================
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Step: step_070_galactic_tide (Step 070)
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Status: SUCCESS
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Duration: 9.39s
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Log Records: 84
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Output Files: 3
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] Key Outputs:
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070]   - step_b35_galactic_tide.json (1.06 KB)
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070]   - step_b35_galactic_tide.csv (15.62 KB)
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070]   - step_b35_galactic_tide.png (197.03 KB)
+[2026-09-20 11:23:00 UTC] [INFO    ] [STEP 070] ================================================================================

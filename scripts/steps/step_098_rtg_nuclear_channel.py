@@ -80,7 +80,7 @@ Outputs
 -------
 results/step_b62_rtg_nuclear.json
 results/step_b62_rtg_nuclear.csv  (per-epoch power series)
-results/figures/step_b62_rtg_nuclear.png
+results/figures/supplementary/step_b62_rtg_nuclear.png
 """
 
 import sys
@@ -95,6 +95,7 @@ from scipy.stats import t as tdist
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.statistics import monte_carlo_tail
 from scripts.utils.tep9_common import DATA_RAW, RESULTS, tee_stdout
 
 logger = StepLogger("step_098_rtg_nuclear_channel")
@@ -296,8 +297,8 @@ for k in ("VG1_total", "VG2_total"):
     emp = {}
     for key in CRAFT_CX[s["craft"]]:
         obs = abs(step_tests[k][key]["step_frac"])
-        emp[key] = float(np.mean(
-            [abs(p["step_frac"]) >= obs for p in pts]))
+        emp[key] = float(monte_carlo_tail(
+            [abs(p["step_frac"]) for p in pts], obs))
         step_tests[k][key]["empirical_p_vs_placebo"] = emp[key]
     placebo[k] = dict(
         n_placebo=len(pts), envelope_abs_frac=env,
@@ -751,8 +752,8 @@ ax.set_title("Cumulative excess decline (baseline 13-26 yr); "
 ax.legend(fontsize=8)
 
 fig.tight_layout()
-figp = RESULTS / "figures" / "step_b62_rtg_nuclear.png"
-fig.savefig(figp, dpi=150)
+figp = RESULTS / "figures" / "supplementary" / "step_b62_rtg_nuclear.png"
+fig.savefig(figp, dpi=300)
 logger.data_save(figp)
 
 # CSV of the power series

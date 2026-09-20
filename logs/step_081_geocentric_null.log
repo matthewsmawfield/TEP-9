@@ -1,14 +1,78 @@
-[2026-09-19 19:51:03 UTC] [INFO    ] [STEP 081] LOGGER INITIALIZED: step_081_geocentric_null (Step 081)
-[2026-09-19 19:51:03 UTC] [DEBUG   ] [STEP 081] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_081_geocentric_null.log
-[2026-09-19 19:51:03 UTC] [DEBUG   ] [STEP 081] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 19:51:03 UTC] [INFO    ] [STEP 081] ================================================================================
-[2026-09-19 19:51:03 UTC] [INFO    ] [STEP 081] Geocentric observation-direction null
-[2026-09-19 19:51:03 UTC] [INFO    ] [STEP 081] ================================================================================
-[2026-09-19 19:51:03 UTC] [INFO    ] [STEP 081] comets: 131
-[2026-09-19 19:51:03 UTC] [INFO    ] [STEP 081] in_cap: n=48 R=0.731 p=0.0000 proj(axis)=-0.725 proj(anti)=+0.725
-[2026-09-19 19:51:03 UTC] [INFO    ] [STEP 081] out_cap: n=83 R=0.170 p=0.0897 proj(axis)=+0.075 proj(anti)=-0.075
-[2026-09-19 19:51:03 UTC] [INFO    ] [STEP 081] all: n=131 R=0.232 p=0.0009 proj(axis)=-0.218 proj(anti)=+0.218
-[2026-09-19 19:51:03 UTC] [INFO    ] [STEP 081] in-cap R=0.731 vs resampled null p=0.0000
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b46_geocentric_null.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b46_geocentric_null.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b46_geocentric_null.png
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] LOGGER INITIALIZED: step_081_geocentric_null (Step 081)
+[2026-09-20 11:46:20 UTC] [DEBUG   ] [STEP 081] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_081_geocentric_null.log
+[2026-09-20 11:46:20 UTC] [DEBUG   ] [STEP 081] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 11:46:20 UTC] [DEBUG   ] [STEP 081] Start time (UTC): 2026-09-20T11:46:20.573175+00:00
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] 
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] STEP PURPOSE
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] --------------------------------------------------------------------------------
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   Step 081 -- geocentric observation-direction null.
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   Any astrometric or observational systematic localized on the sky
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   (zonal catalogue errors, galactic-plane crowding, twilight geometry)
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   must act on the direction from which the comet is actually seen --
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   its geocentric direction near perihelion.  For Oort-spike comets that
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   direction is dominated by Earth's position at the perihelion epoch,
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   not by the comet's aphelion: in-cap membership and observed-sky
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   position are geometrically decoupled.  This step computes each
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   class-1 CODE comet's geocentric direction at perihelion epoch from
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   DE440s and tests whether the in-cap cohort's observed directions
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   cluster -- the necessary condition for a sky-position systematic to
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   manufacture the cap-correlated anomaly.
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   Inputs : data/raw/code/code_*.html, data/raw/warsaw/warsaw_tablec.dat,
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   data/raw/spice/de440s.bsp
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   Outputs: results/step_b46_geocentric_null.json
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   results/step_b46_geocentric_null.csv
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081]   results/figures/supplementary/step_b46_geocentric_null.png
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] --------------------------------------------------------------------------------
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] SCRIPT: scripts/steps/step_081_geocentric_null.py
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] SCRIPT SHA256: 76c85c899abe694fcb35fab28706f2784b7509b79d05fd25fdea16e2a6ce5925
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] SCRIPT SIZE: 8514 bytes
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] ================================================================================
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] Geocentric observation-direction null
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] ================================================================================
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] comets: 131
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] in_cap: n=43 R=0.710 p=0.0000 proj(axis)=-0.705 proj(anti)=+0.705
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] out_cap: n=88 R=0.129 p=0.2315 proj(axis)=+0.017 proj(anti)=-0.017
+[2026-09-20 11:46:20 UTC] [INFO    ] [STEP 081] all: n=131 R=0.232 p=0.0009 proj(axis)=-0.220 proj(anti)=+0.220
+[2026-09-20 11:46:21 UTC] [INFO    ] [STEP 081] in-cap R=0.710 vs resampled null p=0.0000
+[2026-09-20 11:46:21 UTC] [INFO    ] [STEP 081] Saving data: step_b46_geocentric_null.json
+[2026-09-20 11:46:21 UTC] [DEBUG   ] [STEP 081]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b46_geocentric_null.json
+[2026-09-20 11:46:21 UTC] [INFO    ] [STEP 081]   Output: step_b46_geocentric_null.json
+[2026-09-20 11:46:21 UTC] [INFO    ] [STEP 081] Saving data: step_b46_geocentric_null.csv
+[2026-09-20 11:46:21 UTC] [DEBUG   ] [STEP 081]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b46_geocentric_null.csv
+[2026-09-20 11:46:21 UTC] [INFO    ] [STEP 081]   Output: step_b46_geocentric_null.csv
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Saving data: step_b46_geocentric_null.png
+[2026-09-20 11:46:22 UTC] [DEBUG   ] [STEP 081]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b46_geocentric_null.png
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081]   Output: step_b46_geocentric_null.png
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] 
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] ================================================================================
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] STEP SUMMARY: step_081_geocentric_null
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] ================================================================================
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Step Number: 081
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Status: SUCCESS
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Duration: 1.94s
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Log Records Emitted: 53
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Output Files: 3
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_081_geocentric_null.log
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] 
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Generated 3 output file(s):
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081]   • step_b46_geocentric_null.json: 0.96 KB [sha256 9c478363f974b835]
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081]   • step_b46_geocentric_null.csv: 11.39 KB [sha256 4c29e67815d1f730]
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081]   • step_b46_geocentric_null.png: 236.36 KB [sha256 fc38857633c93468]
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] ================================================================================
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] STEP 081 COMPLETE: SUCCESS
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_081_geocentric_null_provenance.json
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] 
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] ================================================================================
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] EXECUTIVE SUMMARY
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] ================================================================================
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Step: step_081_geocentric_null (Step 081)
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Status: SUCCESS
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Duration: 1.94s
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Log Records: 64
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Output Files: 3
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] Key Outputs:
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081]   - step_b46_geocentric_null.json (0.96 KB)
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081]   - step_b46_geocentric_null.csv (11.39 KB)
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081]   - step_b46_geocentric_null.png (236.36 KB)
+[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 081] ================================================================================

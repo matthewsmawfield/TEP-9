@@ -32,7 +32,7 @@ V4  The OSSOS a>150 micro-sample with true discovery
     longitudes listed explicitly.
 
 Outputs: results/step_b10_proxy_validation.json,
-         figures/step_b10_proxy_validation.png
+         figures/supplementary/step_b10_proxy_validation.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -283,9 +283,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b10_proxy_validation.png", dpi=150)
-    print("wrote results/step_b10_proxy_validation.json, "
-          "figures/step_b10_proxy_validation.png")
+    fig.savefig(FIG / "supplementary" / "step_b10_proxy_validation.png", dpi=300)
+    logger.data_save(RESULTS / "step_b10_proxy_validation.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b10_proxy_validation.png")
 
 
 if __name__ == "__main__":

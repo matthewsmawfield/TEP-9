@@ -1,21 +1,115 @@
-[2026-09-19 21:37:42 UTC] [INFO    ] [STEP 121] LOGGER INITIALIZED: step_121_masked_signal (Step 121)
-[2026-09-19 21:37:42 UTC] [DEBUG   ] [STEP 121] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_121_masked_signal.log
-[2026-09-19 21:37:42 UTC] [DEBUG   ] [STEP 121] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:37:43 UTC] [INFO    ] [STEP 121] ================================================================================
-[2026-09-19 21:37:43 UTC] [INFO    ] [STEP 121] Masked-signal discrimination: joint two-component fit
-[2026-09-19 21:37:43 UTC] [INFO    ] [STEP 121] ================================================================================
-[2026-09-19 21:37:44 UTC] [INFO    ] [STEP 121] cohorts: prospective n=255, pre-2018 n=738, CODE n=131
-[2026-09-19 21:37:44 UTC] [INFO    ] [STEP 121] template collinearity corr(cap, cos_priv): prospective +0.10, code +0.11, pre2018 +0.14
-[2026-09-19 21:37:44 UTC] [INFO    ] [STEP 121] T1 prospective: A declared-only -0.099 -> joint -0.117 dex [-0.230,-0.012] p=0.9895; B_dipole +0.137; masking budget +0.023 dex; nested dRSS 0.672 p=0.0285
-[2026-09-19 21:37:44 UTC] [INFO    ] [STEP 121] T2 scan: best |B| axis (10,10) B=-0.227 -> A=+0.081; A range [-0.158,+0.094], A>0 on 15% of dipole placements
-[2026-09-19 21:37:44 UTC] [INFO    ] [STEP 121] T3 hyperbolic_e_ge_1 (n=114): declared gap -0.066 (MWU p=0.8014); joint A -0.125 p=0.9155
-[2026-09-19 21:37:44 UTC] [INFO    ] [STEP 121] T3 bound_e_lt_1 (n=141): declared gap -0.007 (MWU p=0.7156); joint A -0.053 p=0.7906
-[2026-09-19 21:37:44 UTC] [INFO    ] [STEP 121] T3 arc_one_sided (n=65): declared gap +0.012 (MWU p=0.7636); joint A -0.050 p=0.7401
-[2026-09-19 21:37:44 UTC] [INFO    ] [STEP 121] T3 arc_spans_perihelion (n=190): declared gap -0.064 (MWU p=0.8362); joint A -0.127 p=0.9715
-[2026-09-19 21:37:44 UTC] [INFO    ] [STEP 121] T3 primary_q_lt_3p1 (n=121): declared gap -0.218 (MWU p=0.9702); joint A -0.218 p=0.9990
-[2026-09-19 21:37:44 UTC] [INFO    ] [STEP 121] T3 extended_q_ge_3p1 (n=134): declared gap -0.062 (MWU p=0.9143); joint A -0.080 p=0.8696
-[2026-09-19 21:37:45 UTC] [INFO    ] [STEP 121] T4 code: A declared-only +0.153 -> joint +0.150 p=0.0055; B +0.017
-[2026-09-19 21:37:45 UTC] [INFO    ] [STEP 121] T4 pre2018: A declared-only +0.016 -> joint +0.021 p=0.2249; B -0.028
-[2026-09-19 21:37:45 UTC] [INFO    ] [STEP 121] T4 prospective at detached axis: A -0.017 -> -0.091 p=0.9540
-[2026-09-19 21:37:45 UTC] [INFO    ] [STEP 121] T5 cohort x cap interaction: raw k -0.252 -> corrected -0.269 (p=0.0010)
-[2026-09-19 21:37:45 UTC] [INFO    ] [STEP 121] T6 declared cap-gap: -0.081 raw -> -0.042 corrected (rank 0.78 -> 0.75); best corrected axis (np.int64(210), np.int64(40)) sep 153 deg
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121] LOGGER INITIALIZED: step_121_masked_signal (Step 121)
+[2026-09-20 12:22:20 UTC] [DEBUG   ] [STEP 121] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_121_masked_signal.log
+[2026-09-20 12:22:20 UTC] [DEBUG   ] [STEP 121] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:22:20 UTC] [DEBUG   ] [STEP 121] Start time (UTC): 2026-09-20T12:22:20.816949+00:00
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121] 
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121] STEP PURPOSE
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121] --------------------------------------------------------------------------------
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   step_121: Masked-signal discrimination on the post-2017 cohort.
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   Steps 117-120 established the prospective failure and its anatomy: the
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   post-2017 SBDB cohort does not replicate the declared-axis anomaly and
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   carries instead a cohort-private, unipolar dipole at (120,-40) whose
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   amplitude (0.48 dex maximum cap-gap) is comparable to the anomaly
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   itself.  Section 4.12 registers the remaining discrimination: is the
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   declared-axis signal ABSENT in this cohort, or PRESENT BUT MASKED by
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   the additive private structure?  A private dipole of that size,
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   displaced ~79 deg from the declared axis, mechanically depresses the
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   in-cap contrast whether or not a boundary signal sits underneath.
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   This step resolves the discrimination by joint two-component
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   decomposition.  The residual field of every cohort is modelled as
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   y_i = a + A * s_i(declared cap) + B * cos(theta_i -> u_priv) + e_i
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   where s_i is the 60-deg cap indicator about the declared transit axis
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   (34,-13) -- the template the CODE rotation anomaly follows (one-ended,
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   threshold at 60-75 deg) -- and cos(theta -> u_priv) is the unipolar
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   basis step_118 established for the private structure (cos1 dominant,
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   cos2 null).  The masked-signal hypothesis predicts A > 0 once B is
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   fitted; the absent-signal hypothesis predicts A ~ 0 at every dipole
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   placement.
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   Tests
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   T1  joint fit on the prospective cohort: declared-cap coefficient A
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   before vs after absorbing the private dipole; bootstrap CI and
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   label-permutation null on A_joint; masking budget
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   B * (median cos_priv in-cap - out-cap).
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   T2  dipole-direction robustness scan: the joint fit repeated at
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   every grid axis u_priv -- the range of A over all dipole
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   placements, the best-fit dipole, and whether ANY placement
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   simultaneously fits the private structure and drives A <= 0.
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   Nested-model evidence: delta-RSS of the joint model over the
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   dipole-only model, permutation-tested.
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   T3  clean-stratum declared-axis tests: the strata step_119 found
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   dipole-free (hyperbolic e >= 1; one-sided arcs) are scored at
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   the declared axis directly -- if the anomaly is object-
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   associated, the least-masked members should carry it.
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   T4  identical joint fit on the two control cohorts: CODE (A > 0,
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   B ~ 0 expected) and pre-2018 SBDB (both ~ 0 expected).
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   T5  cohort x cap interaction after dipole correction: the step_118
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   interaction (p = 0.005) re-measured on the dipole-subtracted
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   prospective field -- how much of the CODE-vs-prospective
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   inconsistency the masking accounts for.
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   T6  declared-axis profile before vs after dipole subtraction:
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   cap gap, Spearman vs theta, and the declared axis's rank in the
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   free scan of the corrected field.
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   Inputs
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   results/step_b81_prospective_lpc.csv       (post-2017 per-comet legs)
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   results/step_b84_pre2018_sbdb.csv          (pre-2018 per-comet legs)
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   results/step_b83_dipole_mechanism.csv      (arc-topology flags)
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   results/step_b28_bidirectional_rotation.csv (CODE per-comet legs)
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   data/raw/code/code_osculating.html          (CODE elements)
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   Outputs
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   results/step_b85_masked_signal.json
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   results/step_b85_masked_signal.csv   (per-comet decomposition record)
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121]   results/figures/supplementary/step_b85_masked_signal.png
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121] --------------------------------------------------------------------------------
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121] SCRIPT: scripts/steps/step_121_masked_signal.py
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121] SCRIPT SHA256: 8f264715de22bca5a4d706e5d7976e2d7a14081394cd3907126cf41cd482e822
+[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 121] SCRIPT SIZE: 27050 bytes
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] ================================================================================
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] Masked-signal discrimination: joint two-component fit
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] ================================================================================
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] cohorts: prospective n=255, pre-2018 n=738, CODE n=131
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] template collinearity corr(cap, cos_priv): prospective +0.10, code +0.11, pre2018 +0.14
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] T1 prospective: A declared-only -0.099 -> joint -0.117 dex [-0.230,-0.012] p=0.9895; B_dipole +0.137; masking budget +0.023 dex; nested dRSS 0.672 p=0.0285
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] T2 scan: best |B| axis (10,10) B=-0.227 -> A=+0.081; A range [-0.158,+0.094], A>0 on 15% of dipole placements
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] T3 hyperbolic_e_ge_1 (n=114): declared gap -0.066 (MWU p=0.8014); joint A -0.125 p=0.9155
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] T3 bound_e_lt_1 (n=141): declared gap -0.007 (MWU p=0.7156); joint A -0.053 p=0.7906
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] T3 arc_one_sided (n=65): declared gap +0.012 (MWU p=0.7636); joint A -0.050 p=0.7401
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] T3 arc_spans_perihelion (n=190): declared gap -0.064 (MWU p=0.8362); joint A -0.127 p=0.9715
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] T3 primary_q_lt_3p1 (n=121): declared gap -0.218 (MWU p=0.9702); joint A -0.218 p=0.9990
+[2026-09-20 12:22:21 UTC] [INFO    ] [STEP 121] T3 extended_q_ge_3p1 (n=134): declared gap -0.062 (MWU p=0.9143); joint A -0.080 p=0.8696
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] T4 code: A declared-only +0.153 -> joint +0.150 p=0.0055; B +0.017
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] T4 pre2018: A declared-only +0.016 -> joint +0.021 p=0.2249; B -0.028
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] T4 prospective at detached axis: A -0.017 -> -0.091 p=0.9540
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] T5 cohort x cap interaction: raw k -0.252 -> corrected -0.269 (p=0.0010)
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] T6 declared cap-gap: -0.081 raw -> -0.042 corrected (rank 0.78 -> 0.75); best corrected axis (np.int64(210), np.int64(40)) sep 153 deg
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Saving data: step_b85_masked_signal.json
+[2026-09-20 12:22:22 UTC] [DEBUG   ] [STEP 121]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b85_masked_signal.json
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121]   Output: step_b85_masked_signal.json
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] 
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] ================================================================================
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] STEP SUMMARY: step_121_masked_signal
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] ================================================================================
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Step Number: 121
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Status: SUCCESS
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Duration: 2.00s
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Log Records Emitted: 94
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Output Files: 1
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_121_masked_signal.log
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] 
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Generated 1 output file(s):
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121]   • step_b85_masked_signal.json: 7.15 KB [sha256 a3c3a1a979860b5a]
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] ================================================================================
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] STEP 121 COMPLETE: SUCCESS
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_121_masked_signal_provenance.json
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] 
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] ================================================================================
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] EXECUTIVE SUMMARY
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] ================================================================================
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Step: step_121_masked_signal (Step 121)
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Status: SUCCESS
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Duration: 2.00s
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Log Records: 103
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Output Files: 1
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] Key Outputs:
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121]   - step_b85_masked_signal.json (7.15 KB)
+[2026-09-20 12:22:22 UTC] [INFO    ] [STEP 121] ================================================================================

@@ -34,7 +34,7 @@ catalogues:
       residual channels audited the same way
 
 Outputs: results/step_b23_comet_obs_audit.json,
-         figures/step_b23_comet_obs_audit.png
+         figures/supplementary/step_b23_comet_obs_audit.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -170,7 +170,12 @@ def parse_warsaw_orbits(path):
 
 
 def parse_warsaw_a1(path):
-    """tablea1: observational material per designation."""
+    """tablea1: observational material per designation.
+
+    The table lists several rows per comet -- the canonical full-arc
+    solution (datat contains "full") plus PRE/POST/DIST subset rows.
+    The full-arc row carries the observational material this audit
+    needs; prefer it over any subset row seen earlier."""
     out = {}
     for line in open(path):
         if len(line) < 160:
@@ -179,7 +184,7 @@ def parse_warsaw_a1(path):
         if not d:
             continue
         try:
-            out[d] = dict(
+            rec = dict(
                 nobs=int(line[88:93]), arcy=float(line[97:102]),
                 dh1=float(line[106:111]), dh2=float(line[112:117]),
                 datat=line[122:132].strip(), model=line[132:140].strip(),
@@ -187,6 +192,10 @@ def parse_warsaw_a1(path):
                 qnew=line[156:159].strip())
         except (ValueError, IndexError):
             continue
+        if "full" in rec["datat"]:
+            out[d] = rec
+        elif d not in out:
+            out[d] = rec
     return out
 
 
@@ -336,6 +345,7 @@ def main():
     orows = parse_warsaw_orbits(DATA_RAW / "warsaw" / "warsaw_tablec.dat")
     frows = parse_warsaw_orbits(DATA_RAW / "warsaw" / "warsaw_tabled.dat")
     PREF = {"a": 0, "h": 0, "e": 1, "b": 2}
+    PREF_FUT = {"i": 0, "l": 0, "j": 2, "k": 2}
     o_dedup, f_dedup = {}, {}
     for r in orows:
         k = r["desig"]
@@ -344,7 +354,7 @@ def main():
             o_dedup[k] = r
     for r in frows:
         k = r["desig"]
-        if k not in f_dedup or PREF.get(r["com"], 9) < PREF.get(
+        if k not in f_dedup or PREF_FUT.get(r["com"], 9) < PREF_FUT.get(
                 f_dedup[k]["com"], 9):
             f_dedup[k] = r
 
@@ -473,10 +483,10 @@ def main():
               title="discrepancy vs axis distance")
     ax[2].legend(fontsize=7)
     fig.tight_layout()
-    fig.savefig(RESULTS / "figures" / "step_b23_comet_obs_audit.png",
-                dpi=150)
-    print("wrote results/step_b23_comet_obs_audit.json, "
-          "figures/step_b23_comet_obs_audit.png")
+    fig.savefig(RESULTS / "figures" / "supplementary" / "step_b23_comet_obs_audit.png",
+                dpi=300)
+    logger.data_save(RESULTS / "step_b23_comet_obs_audit.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b23_comet_obs_audit.png")
 
 
 if __name__ == "__main__":

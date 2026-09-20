@@ -49,7 +49,7 @@ Outputs
 -------
 results/step_b51_slip_physics.json
 results/step_b51_slip_physics.csv   (per-comet inputs used)
-results/figures/step_b51_slip_physics.png
+results/figures/supplementary/step_b51_slip_physics.png
 """
 
 import sys as _sys
@@ -208,9 +208,8 @@ csv_out = str(RESULTS / "step_b51_slip_physics.csv")
 with open(csv_out, "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
     w.writeheader(); w.writerows(rows)
-print("wrote", out)
-print("wrote", csv_out)
-
+logger.data_save(out)
+logger.data_save(csv_out)
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -291,5 +290,5 @@ ax.grid(alpha=0.2)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b51_slip_physics.png", dpi=150)
-print(f"wrote {FIG / 'step_b51_slip_physics.png'}")
+fig.savefig(FIG / "supplementary" / "step_b51_slip_physics.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b51_slip_physics.png')

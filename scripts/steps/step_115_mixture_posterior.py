@@ -52,7 +52,7 @@ Outputs
 -------
 results/step_b79_mixture_posterior.json
 results/step_b79_mixture_posterior.csv   (per-object posterior scoring)
-results/figures/step_b79_mixture_posterior.png
+results/figures/supplementary/step_b79_mixture_posterior.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -570,8 +570,7 @@ def finite_json(value):
 
 with open(out, "w") as stream:
     json.dump(finite_json(res), stream, indent=1, allow_nan=False)
-print("wrote", out)
-
+logger.data_save(out)
 csv_out = RESULTS / "step_b79_mixture_posterior.csv"
 with open(csv_out, "w", newline="") as f:
     w = csv.writer(f)
@@ -580,8 +579,7 @@ with open(csv_out, "w", newline="") as f:
     for o in all_obj:
         w.writerow([o["cohort"], o["name"], f"{o['varpi']:.3f}",
                     f"{o['lam']:.2f}", o["in_cap"], o["p_H0"], o["p_H1"]])
-print("wrote", csv_out)
-
+logger.data_save(csv_out)
 # ------------------------------------------------------------------
 # figure
 # ------------------------------------------------------------------
@@ -666,6 +664,6 @@ ax.legend(frameon=False, fontsize=7)
 ax.set_title("Discovery-longitude lever arm", fontsize=10)
 
 fig.tight_layout()
-fig.savefig(RESULTS / "figures" / "step_b79_mixture_posterior.png",
-            dpi=150)
-print(f"wrote {RESULTS / 'figures' / 'step_b79_mixture_posterior.png'}")
+fig.savefig(RESULTS / "figures" / "supplementary" / "step_b79_mixture_posterior.png",
+            dpi=300)
+logger.data_save(RESULTS / 'figures' / 'supplementary' / 'step_b79_mixture_posterior.png')

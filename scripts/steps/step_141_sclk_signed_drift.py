@@ -135,7 +135,10 @@ base = np.mean([T2[c][x]["w3"]["null_neg_base_rate"]
 n_crossings = sum(len(T1[c]) for c in ("VG1", "VG2"))
 n_negative_w3 = sum(T1[c][x]["w3"]["detrended_ppm"] < 0
                     for c in ("VG1", "VG2") for x in T1[c])
-binom = float(_st.binomtest(n_negative_w3, n_crossings, base).pvalue)
+# declared direction: more negative-level-step crossings than the
+# null base rate -> greater tail on the negative count
+binom = float(_st.binomtest(n_negative_w3, n_crossings, base,
+                            alternative="greater").pvalue)
 tails = [T1[c][x]["w3"]["neg_frac_det"]
          for c in ("VG1", "VG2") for x in T1[c]]
 chi2 = float(-2 * np.sum(np.log(np.clip(tails, 1e-12, 1))))
@@ -183,7 +186,7 @@ out = dict(step="step_141_sclk_signed_drift", result="b105",
            T3_joint=T3, T4_cadence=T4)
 with open(RESULTS / "step_b105_sclk_signed_drift.json", "w") as f:
     json.dump(out, f, indent=1, default=float)
-logger.info("wrote results/step_b105_sclk_signed_drift.json")
+logger.data_save(RESULTS / "step_b105_sclk_signed_drift.json")
 
 import matplotlib
 matplotlib.use("Agg")
@@ -204,6 +207,6 @@ ax[0].set_ylabel("signed clock offset dnu (ppm)")
 fig.suptitle("SCLK signed oscillator offset vs epoch; boundary "
              "crossings marked (step 141)")
 fig.tight_layout()
-fig.savefig(RESULTS / "figures" / "step_b105_sclk_drift.png",
-            dpi=150)
-logger.info("wrote results/figures/step_b105_sclk_drift.png")
+fig.savefig(RESULTS / "figures" / "supplementary" / "step_b105_sclk_drift.png",
+            dpi=300)
+logger.data_save(RESULTS / "figures/supplementary/step_b105_sclk_drift.png")

@@ -54,7 +54,7 @@ Outputs
 -------
 results/step_b48_mass_ladder.json
 results/step_b48_mass_ladder.csv   (per-comet ladder)
-results/figures/step_b48_mass_ladder.png
+results/figures/supplementary/step_b48_mass_ladder.png
 """
 
 import sys as _sys
@@ -309,32 +309,72 @@ with open(RESULTS / "step_b27_planet_nine_insertion.csv") as f:
 # ------------------------------------------------------------------
 
 cells = list(P9_MODELS.keys())
+
+
+def _run_comet(k, ro, oo, et):
+    base = integrate(oo, et, None)
+    if base is None:
+        return None
+    po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]), math.radians(ro["i"]))
+    pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]), math.radians(fut[k]["i"]))
+    rec = dict(desig=k, q=ro["q"], cls=ro["cls"],
+               theta=sep(-po, TNO), d_of=sep(-po, -pf),
+               drot_6p9=anchor.get(k, {}).get("drot_6p9", float("nan")),
+               drot_gen=anchor.get(k, {}).get("drot_gen", float("nan")))
+    for mname in cells:
+        model = P9_MODELS[mname]
+        ps9, vs9 = p9_state(model, M9_USE, et)
+        rp = integrate(oo, et, (ps9, vs9, model["m9"] * M_EARTH_SUN))
+        if rp is None:
+            rec[f"{mname}_drot"] = float("nan")
+            rec[f"{mname}_denc"] = float("nan")
+            continue
+        rec[f"{mname}_drot"] = sep(base["phat"], rp["phat"])
+        rec[f"{mname}_denc"] = rp["denc_p9"]
+    return rec
+
+
+def _work_comet(job):
+    k, ro, oo, et = job
+    try:
+        return _run_comet(k, ro, oo, et)
+    except Exception as e:
+        return ("__error__", k, str(e))
+
+
+from scripts.utils.parallel import default_workers as _default_workers
+
+if "--workers" in _sys.argv:
+    N_WORK = max(1, int(_sys.argv[_sys.argv.index("--workers") + 1]))
+else:
+    N_WORK = _default_workers()
+
+if N_WORK > 1 and len(sample) > 1:
+    import multiprocessing as mp
+    ctx = mp.get_context("fork") if _sys.platform != "win32" \
+        else mp.get_context("spawn")
+
+    def _init():
+        # forked children inherit the parent's BSP fd; concurrent spkezr
+        # reads through a shared descriptor corrupt each other -- reopen
+        # the kernel so each worker holds its own file handle.
+        sp.kclear()
+        sp.furnsh(str(SPK))
+
+    with ctx.Pool(min(N_WORK, len(sample)), initializer=_init) as pool:
+        recs = pool.map(_work_comet, sample)
+else:
+    recs = [_work_comet(s) for s in sample]
+
 rows = []
 failed = []
-for k, ro, oo, et in sample:
-    try:
-        base = integrate(oo, et, None)
-        if base is None:
-            failed.append(k); continue
-        po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]), math.radians(ro["i"]))
-        pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]), math.radians(fut[k]["i"]))
-        rec = dict(desig=k, q=ro["q"], cls=ro["cls"],
-                   theta=sep(-po, TNO), d_of=sep(-po, -pf),
-                   drot_6p9=anchor.get(k, {}).get("drot_6p9", float("nan")),
-                   drot_gen=anchor.get(k, {}).get("drot_gen", float("nan")))
-        for mname in cells:
-            model = P9_MODELS[mname]
-            ps9, vs9 = p9_state(model, M9_USE, et)
-            rp = integrate(oo, et, (ps9, vs9, model["m9"] * M_EARTH_SUN))
-            if rp is None:
-                rec[f"{mname}_drot"] = float("nan")
-                rec[f"{mname}_denc"] = float("nan")
-                continue
-            rec[f"{mname}_drot"] = sep(base["phat"], rp["phat"])
-            rec[f"{mname}_denc"] = rp["denc_p9"]
+for s, rec in zip(sample, recs):
+    if rec is None:
+        failed.append(s[0])
+    elif isinstance(rec, tuple) and rec[0] == "__error__":
+        failed.append(rec[1]); logger.warning(f"{rec[1]}: {rec[2]}")
+    else:
         rows.append(rec)
-    except Exception as e:
-        failed.append(k); logger.warning(f"{k}: {e}")
 
 logger.info(f"integrated {len(rows)} comets x {1 + len(cells)} runs; {len(failed)} failed")
 
@@ -467,9 +507,8 @@ csv_out = str(RESULTS / "step_b48_mass_ladder.csv")
 with open(csv_out, "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
     w.writeheader(); w.writerows(rows)
-print("wrote", out)
-print("wrote", csv_out)
-
+logger.data_save(out)
+logger.data_save(csv_out)
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -522,5 +561,5 @@ ax.set_title("targeting: the perturber misses the discrepant comets", fontsize=1
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b48_mass_ladder.png", dpi=150)
-print(f"wrote {FIG/'step_b48_mass_ladder.png'}")
+fig.savefig(FIG / "supplementary" / "step_b48_mass_ladder.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b48_mass_ladder.png')

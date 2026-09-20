@@ -50,7 +50,7 @@ discoveries -- the D2 pairing test uses only the detached
 sample's own marginals and carries no such assumption.
 
 Outputs: results/step_b8_footprint_conditional.json,
-         figures/step_b8_footprint_conditional.png
+         figures/supplementary/step_b8_footprint_conditional.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -364,9 +364,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b8_footprint_conditional.png", dpi=150)
-    print("wrote results/step_b8_footprint_conditional.json, "
-          "figures/step_b8_footprint_conditional.png")
+    fig.savefig(FIG / "supplementary" / "step_b8_footprint_conditional.png", dpi=300)
+    logger.data_save(RESULTS / "step_b8_footprint_conditional.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b8_footprint_conditional.png")
 
 
 if __name__ == "__main__":

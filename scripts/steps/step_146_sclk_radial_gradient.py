@@ -28,7 +28,7 @@ T4  Directional coupling: each craft's post-60 AU drift slope
     predicts to reverse between the two asymptotes.
 
 Outputs: results/step_b110_sclk_radial_gradient.json/.csv and
-results/figures/step_b110_sclk_radial_gradient.png.
+results/figures/supplementary/step_b110_sclk_radial_gradient.png.
 """
 
 import sys as _sys
@@ -251,11 +251,11 @@ ax.set_title("bipolar sign test")
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b110_sclk_radial_gradient.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b110_sclk_radial_gradient.png", dpi=300)
 
 logger.info("verdict: " + res["verdict"])
 logger.data_save(out)
 logger.data_save(RESULTS / "step_b110_sclk_radial_gradient.csv")
-logger.data_save(FIG / "step_b110_sclk_radial_gradient.png")
-print(json.dumps(res["test_summary"], indent=1))
-print(res["verdict"])
+logger.data_save(FIG / "supplementary" / "step_b110_sclk_radial_gradient.png")
+print("TEST SUMMARY:\n" + json.dumps(res["test_summary"], indent=1))
+print(f"VERDICT: {res['verdict']}")

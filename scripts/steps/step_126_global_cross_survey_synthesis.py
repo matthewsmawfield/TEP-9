@@ -16,11 +16,11 @@ convergence on the declared outer solar system proper-time domain boundary:
     C5: CODE comets orig->fut rotation without energy exchange (N=131, class-1)
     C6: Warsaw comets inbound-leg rotation discrepancy (N=98, near-parabolic)
     C7: One-apparition comets uncertainty-normalized rotation (N=30)
-    C8: MPC CometEls census near-parabolic aphelion dipole (N=268)
+    C8: MPC CometEls census near-parabolic aphelion dipole (fragment-merged census, as step_108)
     C9: SBDB post-2017 prospective comets aphelion dipole (N=287, 2018-2026)
 
   Inflow / Outflow bipolar channel:
-    C10: Jupiter-family comets (JFCs) antipodal perihelion concentration (N=379)
+    C10: Jupiter-family comets (JFCs) antipodal perihelion concentration (N=378)
 
 A 20,000-draw random-axis comparison evaluates a conditional sky-area rank: the fraction of random sky directions whose joint Fisher statistic
 S = -2 sum ln p reaches or exceeds the value measured at the declared boundary axis.
@@ -251,7 +251,12 @@ for r in slip_rows:
 logger.info(f"Loaded {len(comets_slip)} comets with aphelion directions from step_b30 (CODE & Warsaw)")
 
 # C8: MPC CometEls Census Aphelion Dipole
+# Same construction as step_108 (b72): fragment records are merged to
+# their parent designation so split-comet fragments are not counted as
+# independent draws.
+import re
 cometels_aph = []
+seen_desig = set()
 for line in open(DATA_RAW / "mpc" / "CometEls.txt"):
     p = line.split()
     if len(p) < 12:
@@ -267,6 +272,13 @@ for line in open(DATA_RAW / "mpc" / "CometEls.txt"):
                           float(p[8 + off]))
     except (ValueError, IndexError):
         continue
+    name = " ".join(p[11 + off:])
+    m = re.search(r'([CPD]/\d{4}[A-Z]+\d*|\d{4}[A-Z]+\d*)',
+                  name.replace(' ', ''))
+    desig = m.group(1).split('-')[0] if m else p[0]
+    if desig in seen_desig:
+        continue
+    seen_desig.add(desig)
     if 0.90 <= e < 1.02:
         ph = perih_dir(math.radians(w), math.radians(Om), math.radians(i))
         cometels_aph.append(-ph)
@@ -383,8 +395,9 @@ def eval_channels(axis):
     z9 = proj9.mean() * math.sqrt(3 * len(proj9))
     p9 = norm.sf(z9)
 
-    # C10: Inward-injected JFC antipodal alignment (deep JFC mean varpi 41.1 deg vs axis lon)
-    d_jfc = min(abs(41.1 - ax_lon), 360.0 - abs(41.1 - ax_lon))
+    # C10: Inward-injected JFC antipodal alignment (deep JFC mean varpi vs axis lon)
+    d_jfc = min(abs(deep_jfc_mean_varpi - ax_lon),
+                360.0 - abs(deep_jfc_mean_varpi - ax_lon))
     p10 = min(1.0, max(1e-10, 2.0 * d_jfc / 360.0))
 
     p_vec = np.array([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10])
@@ -545,7 +558,8 @@ def eval_channels_res(axis, idx):
     proj = post2017_aph[idx["c9"]] @ axis
     p9 = norm.sf(proj.mean() * math.sqrt(3 * len(proj)))
     # C10: deterministic JFC chain (no members to resample)
-    d_jfc = min(abs(41.1 - lam), 360.0 - abs(41.1 - lam))
+    d_jfc = min(abs(deep_jfc_mean_varpi - lam),
+                360.0 - abs(deep_jfc_mean_varpi - lam))
     p10 = min(1.0, max(1e-10, 2.0 * d_jfc / 360.0))
     return np.clip(np.array([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]),
                    1e-300, 1.0)
@@ -607,6 +621,12 @@ logger.info(
 
 results_payload = {
     "step": "step_126_global_cross_survey_synthesis",
+    "inputs": ["data/raw/sbdb/sbdb_outer_ss.json",
+               "data/raw/des/y6_des_tnos_color.fits",
+               "data/raw/mpc/MPCORB.DAT.gz",
+               "data/raw/mpc/CometEls.txt",
+               "data/raw/code/code_original.html",
+               "data/raw/warsaw/warsaw_tablec.dat"],
     "description": "Ten-channel directional localization on overlapping catalogues, evaluated against random test directions",
     "evidence_status": "fixed-catalogue directional localization",
     "calibration": "Fixed observed catalogues, random test direction. Not a null-data maximum-statistic test and not a global discovery p-value. Resident scores select an angular cap before applying an unrestricted Rayleigh reference and are not valid component p-values. Catalogue overlap is retained in the observed landscape but resampled-object bootstrap uncertainty does not preserve cross-catalogue identities.",
@@ -668,13 +688,15 @@ fig, axes_plot = plt.subplots(1, 2, figsize=(13, 5.5), gridspec_kw={"width_ratio
 
 # Left: Histogram of S over 20,000 random axes
 ax0 = axes_plot[0]
-ax0.hist(S_rand, bins=60, color="#4a5568", alpha=0.75, density=True, label=f"20,000 random sky axes")
-ax0.axvline(S_tno_obs, color="#e53e3e", lw=2.5, ls="-", label=f"Detached-TNO axis (S={S_tno_obs:.1f}, p={p_global_tno:.4f})")
-ax0.axvline(S_com_obs, color="#3182ce", lw=2.0, ls="--", label=f"Comet transit axis (S={S_com_obs:.1f}, p={p_global_com:.4f})")
-ax0.set_xlabel("Descriptive score $S = -2 \\sum_{i=1}^{10} \\ln p_i$", fontsize=11)
-ax0.set_ylabel("Probability density", fontsize=11)
-ax0.set_title("Ten-channel conditional directional landscape", fontsize=12, fontweight="medium")
-ax0.legend(frameon=True, facecolor="white", edgecolor="#cbd5e0", fontsize=9.5)
+ax0.hist(S_rand, bins=60, color="#566573", alpha=0.75, density=True, label=f"20,000 random sky axes")
+ax0.axvline(S_tno_obs, color="#1C2E4A", lw=4.0, ls="-", alpha=0.45,
+            zorder=3,
+            label=f"Detached-TNO axis (S={S_tno_obs:.1f}, p={p_global_tno:.4f})")
+ax0.axvline(S_com_obs, color="#b43b4e", lw=1.6, ls="--", zorder=4,
+            label=f"Comet transit axis (S={S_com_obs:.1f}, p={p_global_com:.4f})")
+ax0.set_xlabel("Descriptive score $S = -2 \\sum_{i=1}^{10} \\ln p_i$")
+ax0.set_ylabel("Probability density")
+ax0.legend()
 ax0.grid(True, ls=":", alpha=0.5)
 
 # Right: Forest plot of 10 channels at the declared axis
@@ -694,16 +716,23 @@ labels = [
     "C10: JFC Injection Chain"
 ]
 
-colors = ["#2b6cb0", "#2b6cb0", "#2b6cb0", "#2c7a7b", "#c53030", "#c53030", "#c53030", "#dd6b20", "#dd6b20", "#805ad5"]
-ax1.barh(y_pos, minus_log_p, color=colors, alpha=0.85, height=0.65)
-ax1.axvline(-np.log10(0.05), color="#e53e3e", ls=":", lw=1.5, label="$p = 0.05$ threshold")
+# Channels grouped by population: TNO channels C1-C4 navy,
+# comet channels C5-C10 accent red.
+colors = ["#1C2E4A"] * 4 + ["#b43b4e"] * 6
+ax1.barh(y_pos, minus_log_p, color=colors, alpha=0.9, height=0.65)
+ax1.axvline(-np.log10(0.05), color="#b43b4e", ls=":", lw=1.5,
+            label="$p = 0.05$ threshold")
 ax1.set_yticks(y_pos)
-ax1.set_yticklabels(labels, fontsize=9.5)
+ax1.set_yticklabels(labels)
 ax1.invert_yaxis()
-ax1.set_xlabel("$-\\log_{10}(p)$ at declared boundary axis", fontsize=11)
-ax1.set_title("Evidence Strength Across Independent Channels", fontsize=12, fontweight="medium")
+ax1.set_xlabel("$-\\log_{10}(p)$ at declared boundary axis")
 ax1.grid(True, ls=":", alpha=0.5, axis="x")
-ax1.legend(frameon=True, facecolor="white", edgecolor="#cbd5e0", fontsize=9.5)
+import matplotlib.patches as mpatches
+ax1.legend(handles=[
+    mpatches.Patch(color="#1C2E4A", label="TNO channels"),
+    mpatches.Patch(color="#b43b4e", label="comet channels"),
+    plt.Line2D([0], [0], color="#b43b4e", ls=":", lw=1.5,
+               label="$p = 0.05$ threshold")])
 
 plt.tight_layout()
 out_fig = RESULTS / "figures" / "step_b90_global_synthesis.png"

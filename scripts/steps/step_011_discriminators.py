@@ -51,7 +51,7 @@ D6  Cross-population: Centaurs (class CEN) -- the Neptune-coupled
     preferred perihelion axis for comparison with the TNO axis.
 
 Outputs: results/step_03_discriminators.json,
-         figures/step_03_discriminators.png
+         figures/supplementary/step_03_discriminators.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -440,9 +440,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_03_discriminators.png", dpi=150)
-    print("\nwrote results/step_03_discriminators.json, "
-          "figures/step_03_discriminators.png")
+    fig.savefig(FIG / "supplementary" / "step_03_discriminators.png", dpi=300)
+    logger.data_save(RESULTS / "step_03_discriminators.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_03_discriminators.png")
 
 
 if __name__ == "__main__":

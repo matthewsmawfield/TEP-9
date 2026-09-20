@@ -17,7 +17,7 @@ Inputs : data/raw/code/code_*.html, data/raw/warsaw/warsaw_tablec.dat,
          data/raw/spice/de440s.bsp, results/step_b40_signed_slip.csv
 Outputs: results/step_b45_signed_residual.json
          results/step_b45_signed_residual.csv
-         results/figures/step_b45_signed_residual.png
+         results/figures/supplementary/step_b45_signed_residual.png
 """
 
 import sys
@@ -194,7 +194,7 @@ def perih_dir(om,Om,inc):
     co,so,cO,sO,ci,si=np.cos(om),np.sin(om),np.cos(Om),np.sin(Om),np.cos(inc),np.sin(inc)
     return np.array([cO*co-sO*so*ci, sO*co+cO*so*ci, so*si])
 
-TNO=lv(49.0,-17.0)
+TNO=lv(34.0,-13.0)
 CAP=60.0
 
 # ------------------------------------------------------------------
@@ -222,23 +222,63 @@ for k,ro in orig.items():
 
 logger.info(f"sample: {len(sample)} class-1 CODE comets")
 
-rows=[]; failed=[]
-for idx,(k,ro,oo,et) in enumerate(sample):
-    try:
-        pb=integrate_leg(oo,et,-1)
-        pf_=integrate_leg(oo,et,+1)
-    except Exception as e:
-        failed.append(k); logger.warning(f"{k}: {e}"); continue
+def _run_comet(k,ro,oo,et,pb,pf_):
     if pb is None or pf_ is None:
-        failed.append(k); logger.warning(f"{k}: shell not reached"); continue
+        return None
     Om_,i_=math.radians(oo["Om"]),math.radians(oo["i"])
     h=pole(Om_,i_)
     srot_sim=signed_rot(pb,pf_,h)          # back -> fwd, same sense as orig->fut
     srot_cat=cat_srot[k]
-    rows.append(dict(desig=k,
-                     theta=sep(-perih_dir(math.radians(ro["w"]),math.radians(ro["Om"]),i_),TNO),
-                     srot_cat=srot_cat,srot_sim=srot_sim,
-                     resid=srot_cat-srot_sim))
+    return dict(desig=k,
+                theta=sep(-perih_dir(math.radians(ro["w"]),math.radians(ro["Om"]),i_),TNO),
+                srot_cat=srot_cat,srot_sim=srot_sim,
+                resid=srot_cat-srot_sim)
+
+def _work_leg(job):
+    # one leg per job: a few comets integrate far longer than the rest,
+    # so splitting back/fwd legs keeps the pool balanced
+    k,oo,et,direction=job
+    try:
+        return integrate_leg(oo,et,direction)
+    except Exception as e:
+        return ("__error__",k,str(e))
+
+from scripts.utils.parallel import default_workers as _default_workers
+
+if "--workers" in sys.argv:
+    N_WORK=max(1,int(sys.argv[sys.argv.index("--workers")+1]))
+else:
+    N_WORK=_default_workers()
+
+leg_jobs=[(k,oo,et,d) for (k,ro,oo,et) in sample for d in (-1,+1)]
+if N_WORK>1 and len(leg_jobs)>1:
+    import multiprocessing as mp
+    ctx=mp.get_context("fork") if sys.platform!="win32" \
+        else mp.get_context("spawn")
+
+    def _init():
+        # forked children inherit the parent's BSP fd; concurrent spkezr
+        # reads through a shared descriptor corrupt each other -- reopen
+        # the kernel so each worker holds its own file handle.
+        sp.kclear()
+        sp.furnsh(str(SPK))
+
+    with ctx.Pool(min(N_WORK,len(leg_jobs)),initializer=_init) as pool:
+        legs=pool.map(_work_leg,leg_jobs,chunksize=1)
+else:
+    legs=[_work_leg(j) for j in leg_jobs]
+
+rows=[]; failed=[]
+for idx,(k,ro,oo,et) in enumerate(sample):
+    pb,pf_=legs[2*idx],legs[2*idx+1]
+    for rec in (pb,pf_):
+        if isinstance(rec,tuple) and rec[0]=="__error__":
+            failed.append(rec[1]); logger.warning(f"{rec[1]}: {rec[2]}")
+    if k in failed:
+        continue
+    if pb is None or pf_ is None:
+        failed.append(k); logger.warning(f"{k}: shell not reached"); continue
+    rows.append(_run_comet(k,ro,oo,et,pb,pf_))
     if (idx+1)%25==0: logger.info(f"  {idx+1}/{len(sample)}")
 
 logger.info(f"integrated {len(rows)}, failed {len(failed)}")
@@ -251,14 +291,18 @@ res={"method":"signed simulated orig->fut rotation (250 AU shell, "
        "about the osculating pole) subtracted from the catalogue "
        "signed rotation of step_075; residual sign coherence tested "
        "in and out of the 60-deg cap.",
-     "cap_deg":CAP,"axis":"49,-17"}
+     "cap_deg":CAP,"axis":"34,-13"}
 
 def signstats(sub,tag):
     x=np.array([r["resid"] for r in sub])
     npos=int((x>0).sum())
     bt=binomtest(npos,len(x),0.5)
+    # declared direction: the boundary slip leaves a positive residual
+    # (a lapse) once the planetary rotation is subtracted -> greater tail
+    btg=binomtest(npos,len(x),0.5,alternative="greater")
     res[tag]={"n":len(x),"n_pos":npos,"frac_pos":npos/len(x),
               "median_resid":float(np.median(x)),
+              "p_binom":float(btg.pvalue),
               "p_binom_2sided":float(bt.pvalue),
               "median_srot_sim":float(np.median([r["srot_sim"] for r in sub])),
               "median_srot_cat":float(np.median([r["srot_cat"] for r in sub]))}
@@ -283,9 +327,8 @@ with open(RESULTS/"step_b45_signed_residual.csv","w",newline="") as f:
     w=csv.DictWriter(f,fieldnames=["desig","theta","srot_cat","srot_sim","resid"])
     w.writeheader()
     for r in rows: w.writerow(r)
-print(f"wrote {RESULTS/'step_b45_signed_residual.json'}")
-print(f"wrote {RESULTS/'step_b45_signed_residual.csv'}")
-
+logger.data_save(RESULTS/'step_b45_signed_residual.json')
+logger.data_save(RESULTS/'step_b45_signed_residual.csv')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -314,5 +357,5 @@ ax.set_ylabel("CDF"); ax.legend(frameon=False,fontsize=8)
 ax.set_title("residual sign coherence",fontsize=10)
 fig.tight_layout()
 FIG=RESULTS/"figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG/"step_b45_signed_residual.png",dpi=150)
-print(f"wrote {FIG/'step_b45_signed_residual.png'}")
+fig.savefig(FIG/"supplementary" / "step_b45_signed_residual.png",dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b45_signed_residual.png')

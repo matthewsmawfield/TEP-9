@@ -75,7 +75,7 @@ Outputs
 -------
 results/step_b89_displaced_temporal.json
 results/step_b89_displaced_temporal.csv
-results/figures/step_b89_displaced_temporal.png
+results/figures/supplementary/step_b89_displaced_temporal.png
 """
 
 import sys as _sys
@@ -356,7 +356,8 @@ T4 = dict(n_pairs=int(good.sum()), k=K,
           med_drot_matched_pre=float(np.nanmedian(pre_d[good])),
           mean_diff_deg=obs_diff,
           sign_test_p=float(stats.binomtest(
-              int((diff > 0).sum()), int(good.sum()), 0.5).pvalue),
+              int((diff > 0).sum()), int(good.sum()), 0.5,
+              alternative="greater").pvalue),
           p_perm=float((cnt + 1) / (N_PERM + 1)))
 logger.info("T4: matched pairs n=%d post %.3f vs pre %.3f, "
             "perm p=%.4f" % (T4["n_pairs"], T4["med_drot_post"],
@@ -759,9 +760,9 @@ ax[2].set(xlabel="matched pre-2018 $d_{\\rm rot}$ (deg)",
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b89_displaced_temporal.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b89_displaced_temporal.png", dpi=300)
 plt.close(fig)
-logger.data_save(FIG / "step_b89_displaced_temporal.png")
+logger.data_save(FIG / "supplementary" / "step_b89_displaced_temporal.png")
 
 
 # ------------------------------------------------------------------ verdict
@@ -877,7 +878,8 @@ res_full = dict(
                  "geometry-matched pairs, named-direction audit "
                  "including the CMB scalar rest frame, and "
                  "harmonic decomposition."),
-    inputs=["results/step_b84_pre2018_sbdb.csv",
+    inputs=["data/raw/mpc/CometEls.txt",
+            "results/step_b84_pre2018_sbdb.csv",
             "results/step_b81_prospective_lpc.csv"],
     seed=SEED, n_perm=N_PERM,
     results=dict(T1_raw_free_scan=T1, T2_era_cap_factorial=T2,

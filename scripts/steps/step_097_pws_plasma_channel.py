@@ -52,7 +52,7 @@ Outputs
 -------
 results/step_b61_pws_channel.json
 results/step_b61_pws_events.csv
-results/figures/step_b61_pws_channel.png
+results/figures/supplementary/step_b61_pws_channel.png
 """
 
 import sys
@@ -283,8 +283,8 @@ def main():
     axes[1].set_ylabel("$N_e$ (cm$^{-3}$, log)")
     axes[1].legend()
     fig.tight_layout()
-    figp = RESULTS / "figures" / "step_b61_pws_channel.png"
-    fig.savefig(figp, dpi=150)
+    figp = RESULTS / "figures" / "supplementary" / "step_b61_pws_channel.png"
+    fig.savefig(figp, dpi=300)
     logger.data_save(figp)
 
     out = dict(

@@ -34,6 +34,7 @@ data/raw/{ossos,warsaw,lpc}/provenance.json
 
 import sys
 import json
+import time
 import hashlib
 import urllib.request
 from datetime import datetime, timezone
@@ -89,9 +90,22 @@ def fetch(url, dest, note, prov):
     logger.progress(f"GET {url[:120]}")
     req = urllib.request.Request(url, headers={"User-Agent": "tep9/1.0"})
     t0 = datetime.now(timezone.utc)
-    with urllib.request.urlopen(req, timeout=180) as r:
-        body = r.read()
-        status = r.status
+    body = status = None
+    for attempt in range(1, 6):
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                body = r.read()
+                status = r.status
+            if status == 200:
+                break
+            raise RuntimeError(f"download failed: HTTP {status} for {url}")
+        except Exception as exc:
+            if attempt == 5:
+                raise
+            wait = 5 * 2 ** (attempt - 1)
+            logger.progress(f"attempt {attempt} failed ({exc}); "
+                            f"retrying in {wait}s")
+            time.sleep(wait)
     if status != 200:
         raise RuntimeError(f"download failed: HTTP {status} for {url}")
     dest.parent.mkdir(parents=True, exist_ok=True)

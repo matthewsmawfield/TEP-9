@@ -1,13 +1,82 @@
-[2026-09-19 22:17:06 UTC] [INFO    ] [STEP 018] LOGGER INITIALIZED: step_018_plane_warp (Step 018)
-[2026-09-19 22:17:06 UTC] [DEBUG   ] [STEP 018] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_018_plane_warp.log
-[2026-09-19 22:17:06 UTC] [DEBUG   ] [STEP 018] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 22:17:06 UTC] [INFO    ] [STEP 018] ================================================================================
-[2026-09-19 22:17:06 UTC] [INFO    ] [STEP 018] Coherent mean-plane warp
-[2026-09-19 22:17:06 UTC] [INFO    ] [STEP 018] ================================================================================
-secure catalog N=1225, control pool 1181
-T1 a 30-60: N=986 tilt=2.50 az=33 (null 2.69, p=0.7077)
-T1 a 60-150: N=195 tilt=6.91 az=42 (null 4.71, p=0.0314)
-T1 a 150-inf: N=44 tilt=6.43 az=50 (null 4.36, p=0.1464)
-T2 window profile: [(55.5, 2.94, 36.0), (69.8, 3.6, 41.0), (87.9, 6.09, 41.5), (110.7, 7.13, 50.2), (139.3, 6.92, 46.2), (175.4, 9.29, 45.5), (220.8, 8.77, 63.1), (278.0, 10.44, 52.7), (350.0, 11.12, 35.8), (440.6, 9.49, 38.8), (554.7, 9.2, 44.3)]
-T3 planes separated by 6.08 deg (CI68 [4.1, 8.61])
-wrote results/step_b7_plane_warp.json, figures/step_b7_plane_warp.png
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] LOGGER INITIALIZED: step_018_plane_warp (Step 018)
+[2026-09-20 10:42:18 UTC] [DEBUG   ] [STEP 018] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_018_plane_warp.log
+[2026-09-20 10:42:18 UTC] [DEBUG   ] [STEP 018] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:42:18 UTC] [DEBUG   ] [STEP 018] Start time (UTC): 2026-09-20T10:42:18.181713+00:00
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] 
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] STEP PURPOSE
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] --------------------------------------------------------------------------------
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   TEP / Planet-9 -- step b7: is the disk warped with radius?
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   The mean plane of a population is read from its mean orbit pole.
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   A coherent offset of the mean pole from the ecliptic pole is the
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   signature of a shared tilted plane; an offset whose direction or
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   magnitude changes with semimajor axis is a WARP -- the prediction
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   of the inclination-instability picture (Madigan & McCourt) and
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   also of a radially-structured field boundary, but NOT of simple
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   shepherding by a single perturber's plane.
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   The subtlety: the pole azimuth equals Omega - 90 deg, so the
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   measured footprint (nodal discovery bias) imprints a coherent
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   pole offset at EVERY radius even for an unwarped disk.  The
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   calibration must therefore be against the empirical null --
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   control-pool (Om, w) resampling (step b1), which carries the
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   footprint -- not against isotropy.
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   T1  mean pole per a-bin: offset direction (ecliptic longitude
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   of the mean pole) and magnitude (tilt of the mean plane),
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   with the empirical-null band -- is the detached mean pole
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   offset larger than the footprint alone predicts?
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   T2  warp profile: offset magnitude and direction in sliding
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   a-windows -- a coherent drift of the tilt direction with
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   radius is the warp signature.
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   T3  detached vs classical-belt planes: angular separation of the
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   two populations' mean poles, bootstrap significance.
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   Outputs: results/step_b7_plane_warp.json,
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018]   figures/supplementary/step_b7_plane_warp.png
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] --------------------------------------------------------------------------------
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] SCRIPT: scripts/steps/step_018_plane_warp.py
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] SCRIPT SHA256: 5969a4171873ac07880a9e4897bd1760234804a29dee26d3e1c7929fad902b83
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] SCRIPT SIZE: 11676 bytes
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] ================================================================================
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] Coherent mean-plane warp
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] ================================================================================
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] secure catalog N=1225, control pool 1181
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] T1 a 30-60: N=986 tilt=2.50 az=33 (null 2.69, p=0.7077)
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] T1 a 60-150: N=195 tilt=6.91 az=42 (null 4.71, p=0.0314)
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] T1 a 150-inf: N=44 tilt=6.43 az=50 (null 4.36, p=0.1464)
+[2026-09-20 10:42:18 UTC] [INFO    ] [STEP 018] T2 window profile: [(55.5, 2.94, 36.0), (69.8, 3.6, 41.0), (87.9, 6.09, 41.5), (110.7, 7.13, 50.2), (139.3, 6.92, 46.2), (175.4, 9.29, 45.5), (220.8, 8.77, 63.1), (278.0, 10.44, 52.7), (350.0, 11.12, 35.8), (440.6, 9.49, 38.8), (554.7, 9.2, 44.3)]
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] T3 planes separated by 6.08 deg (CI68 [4.1, 8.61])
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Saving data: step_b7_plane_warp.json
+[2026-09-20 10:42:19 UTC] [DEBUG   ] [STEP 018]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b7_plane_warp.json
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018]   Output: step_b7_plane_warp.json
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Saving data: step_b7_plane_warp.png
+[2026-09-20 10:42:19 UTC] [DEBUG   ] [STEP 018]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b7_plane_warp.png
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018]   Output: step_b7_plane_warp.png
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] 
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] ================================================================================
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] STEP SUMMARY: step_018_plane_warp
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] ================================================================================
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Step Number: 018
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Status: SUCCESS
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Duration: 1.38s
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Log Records Emitted: 59
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Output Files: 2
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_018_plane_warp.log
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] 
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Generated 2 output file(s):
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018]   • step_b7_plane_warp.json: 2.63 KB [sha256 c286f3cb5531be7f]
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018]   • step_b7_plane_warp.png: 292.99 KB [sha256 eb9be31088663422]
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] ================================================================================
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] STEP 018 COMPLETE: SUCCESS
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_018_plane_warp_provenance.json
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] 
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] ================================================================================
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] EXECUTIVE SUMMARY
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] ================================================================================
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Step: step_018_plane_warp (Step 018)
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Status: SUCCESS
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Duration: 1.38s
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Log Records: 69
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Output Files: 2
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] Key Outputs:
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018]   - step_b7_plane_warp.json (2.63 KB)
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018]   - step_b7_plane_warp.png (292.99 KB)
+[2026-09-20 10:42:19 UTC] [INFO    ] [STEP 018] ================================================================================

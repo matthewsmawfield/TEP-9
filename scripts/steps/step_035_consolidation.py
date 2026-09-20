@@ -86,6 +86,19 @@ orig = parse(str(DATA_RAW / "code" / "code_original.html"))
 fut  = parse(str(DATA_RAW / "code" / "code_future.html"))
 warsaw = {l[5:17].strip() for l in open(str(DATA_RAW / "warsaw" / "warsaw_tablec.dat")) if len(l) > 115}
 
+# CODE model nomenclature: the two-character solution code alone is
+# ambiguous ('d5', 'bn', 'm1' are NG; 'b5', 'da' are GR).  The orbit
+# class is carried by each row's abbr tooltip, which prefixes the
+# class ('GR - gravitational orbit' vs 'NS/NT/NC/CT/NI - non-grav').
+_MODEL_CLASS = {}
+for _t, _c in re.findall(
+        r"<abbr title=[\"']([^\"'>]+)[\"'][^>]*>([^<]+)</abbr>",
+        open(str(DATA_RAW / "code" / "code_original.html"),
+             encoding="utf-8", errors="replace").read()):
+    _MODEL_CLASS[_c.strip()] = _t.strip().split(" ")[0]
+def _is_ng(model):
+    return _MODEL_CLASS.get(model, "GR") != "GR"
+
 rows = []
 for k, ro in orig.items():
     if k not in fut: continue
@@ -117,7 +130,7 @@ res["S1_cap_sensitivity"] = s1
 
 # S2 NG-model need in/out cap
 th = np.array([r["theta"] for r in co])
-ng = np.array([1 if r["model"].startswith("n") else 0 for r in co])
+ng = np.array([1 if _is_ng(r["model"]) else 0 for r in co])
 inc60 = th < 60
 tab = [[int(ng[inc60].sum()), int(inc60.sum() - ng[inc60].sum())],
        [int(ng[~inc60].sum()), int((~inc60).sum() - ng[~inc60].sum())]]
@@ -207,5 +220,5 @@ res["S7_combined"] = {
 
 out = str(RESULTS / "step_12_consolidate.json")
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)

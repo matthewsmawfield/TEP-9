@@ -76,6 +76,8 @@ def main():
     vp = np.array([r["vp"] for r in rows])
     inc = np.abs((vp - AXIS + 180) % 360 - 180) < CAP
     out = {"axis_deg": AXIS, "cap_deg": CAP,
+           "inputs": ["data/raw/sbdb/sbdb_outer_ss.json",
+                      "data/raw/mpc/CometEls.txt"],
            "n_in": int(inc.sum()), "n_out": int((~inc).sum())}
 
     # ---------- A1 property audit ----------
@@ -169,36 +171,33 @@ def main():
     cq = np.array(cq)
     jvp = (np.array(co) + np.array(cw)) % 360
     for m, lbl, col in [(cq < 3, "JFCs q<3", "steelblue"),
-                        (cq > 5, "JFCs q>5", "purple")]:
+                        (cq > 5, "JFCs q>5", "#CC79A7")]:
         lo_, la_ = to_aitoff(jvp[m], np.zeros(m.sum()))
         axm.scatter(lo_, la_ + 0.08, s=8, color=col, alpha=0.5,
                     label=lbl)
 
     # axes
     for lon, lat, col, lbl, mk in [
-            (AXIS, -17, "red", "TNO axis", "*"),
-            (229, 17, "purple", "anti-axis", "*"),
-            (255, -5, "green", "ISM inflow", "^"),
-            (264, 48, "orange", "CMB apex", "v")]:
+            (AXIS, -17, "#b43b4e", "TNO axis", "*"),
+            (229, 17, "#4a2650", "anti-axis", "*"),
+            (255, -5, "#0072B2", "ISM inflow", "^"),
+            (264, 48, "#E69F00", "CMB apex", "v")]:
         lo_, la_ = to_aitoff(np.array([lon]), np.array([lat]))
         axm.scatter(lo_, la_, s=180, color=col, marker=mk,
                     label=lbl, zorder=5)
     # comet anomaly patch centre (step_11/13: ~lam 10-34,
     # beta -13/-20)
     lo_, la_ = to_aitoff(np.array([20]), np.array([-17]))
-    axm.scatter(lo_, la_, s=180, color="teal", marker="D",
+    axm.scatter(lo_, la_, s=180, color="#84a3aa", marker="D",
                 label="comet patch centre", zorder=5)
 
-    axm.legend(fontsize=7, loc="lower right",
-               bbox_to_anchor=(1.0, -0.15), ncol=4)
-    axm.set_title("one map: every measured anomaly on one "
-                  "axis (ecliptic lon/lat, varpi at beta=0)",
-                  fontsize=10)
+    axm.legend(loc="upper center",
+               bbox_to_anchor=(0.5, -0.08), ncol=4)
     FIG.mkdir(exist_ok=True)
-    fig.savefig(FIG / "step_b22_one_map.png", dpi=150,
+    fig.savefig(FIG / "step_b22_one_map.png", dpi=300,
                 bbox_inches="tight")
-    print("wrote results/step_b22_incap_audit.json, "
-          "figures/step_b22_one_map.png")
+    logger.data_save(RESULTS / "step_b22_incap_audit.json")
+    logger.data_save(RESULTS / "figures/step_b22_one_map.png")
 
 
 if __name__ == "__main__":

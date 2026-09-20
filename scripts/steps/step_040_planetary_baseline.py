@@ -132,5 +132,5 @@ res["all_c1"]  = run(rows, "all_c1")
 
 out = str(RESULTS / "step_17_planetary_baseline.json")
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)

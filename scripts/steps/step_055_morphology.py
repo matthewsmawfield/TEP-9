@@ -28,7 +28,7 @@ M4  In-cap flatness: chi2 uniformity of the 26 in-cap
     objects' internal distribution.
 
 Outputs: results/step_b20_morphology.json,
-         figures/step_b20_morphology.png
+         figures/supplementary/step_b20_morphology.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -234,9 +234,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b20_morphology.png", dpi=150)
-    print("wrote results/step_b20_morphology.json, "
-          "figures/step_b20_morphology.png")
+    fig.savefig(FIG / "supplementary" / "step_b20_morphology.png", dpi=300)
+    logger.data_save(RESULTS / "step_b20_morphology.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b20_morphology.png")
 
 
 if __name__ == "__main__":

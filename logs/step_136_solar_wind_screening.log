@@ -1,21 +1,85 @@
-[2026-09-19 21:43:09 UTC] [INFO    ] [STEP 136] LOGGER INITIALIZED: step_136_solar_wind_screening (Step 136)
-[2026-09-19 21:43:09 UTC] [DEBUG   ] [STEP 136] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_136_solar_wind_screening.log
-[2026-09-19 21:43:09 UTC] [DEBUG   ] [STEP 136] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:43:09 UTC] [INFO    ] [STEP 136] ================================================================================
-[2026-09-19 21:43:09 UTC] [INFO    ] [STEP 136] Solar-wind screening-epoch test
-[2026-09-19 21:43:09 UTC] [INFO    ] [STEP 136] ================================================================================
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136] OMNI cache present: omni_m_daily.dat
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136] OMNI monthly P_dyn: 721 months, (1963, 11) to (2026, 9)
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136] T1 pooled residual ~ P_dyn
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136]   pooled n=797: rho=+0.011 p=0.748; apex-band n=67: rho=-0.246 p=0.0452
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136] T2 within-era decomposition (era-proxy control)
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136]   pre2018: apex-band n=49 rho=-0.223 p=0.124; pooled rho=+0.038 p=0.371
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136]   post2017: apex-band n=18 rho=-0.030 p=0.906; pooled rho=-0.050 p=0.449
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136] T3 era P_dyn contrast (the confound)
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136]   pre 1.82 vs post 1.66 nPa, MWU p=0.000216
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136] T4 regime-split axis test (median P_dyn split)
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136]   high-P_dyn regime: n=398, bipolar dipole b=-0.022 dex
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136]   low-P_dyn regime: n=399, bipolar dipole b=+0.048 dex
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136] verdict: SCREENING NOT SUPPORTED: pooled correlation is an era-proxy artefact; within-era coupling is flat
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136] wrote results/step_b100_solar_wind_screening.json
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 136] wrote results/figures/step_b100_solar_wind_screening.png
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136] LOGGER INITIALIZED: step_136_solar_wind_screening (Step 136)
+[2026-09-20 12:25:25 UTC] [DEBUG   ] [STEP 136] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_136_solar_wind_screening.log
+[2026-09-20 12:25:25 UTC] [DEBUG   ] [STEP 136] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:25:25 UTC] [DEBUG   ] [STEP 136] Start time (UTC): 2026-09-20T12:25:25.996670+00:00
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136] 
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136] STEP PURPOSE
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136] --------------------------------------------------------------------------------
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   Step 136: Solar-wind screening-epoch test (step_b100).
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   Tests the plasma-breathing remediation hypothesis for the era
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   polarity structure: if the proper-time boundary is screened by
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   local heliospheric plasma density, the comet transit structure
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   should track the contemporaneous solar-wind dynamic pressure at
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   each perihelion epoch.  Solar Cycle 24 peaked in 2014 and declined
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   through the 2018-2021 minimum -- the same window in which the
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   declared/displaced polarity transition sits (step 130).
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   Data: NASA/GSFC OMNIWeb COHO daily merged dataset
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   (omni_m_daily.dat), provenance-pinned into data/raw/omni/.
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   Dynamic pressure P_dyn = m_p * n * v^2 in nPa, monthly averaged.
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   T1  Pooled per-comet residual ~ P_dyn Spearman correlation.
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   T2  Within-era decomposition of the apex-side shell-band
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   correlation -- the era-proxy control: if the pooled
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   correlation is only the era contrast restated, within-era
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   coupling vanishes.
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   T3  Era P_dyn contrast -- documents the confound directly:
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   post-2017 perihelia sample the cycle-24 decline/minimum.
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   T4  Regime-split axis test: dipole polarity of the residual
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   field about the bipolar axis in high- versus low-pressure
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136]   perihelion subsets (median split), the direct screen test.
+[2026-09-20 12:25:25 UTC] [INFO    ] [STEP 136] --------------------------------------------------------------------------------
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] SCRIPT: scripts/steps/step_136_solar_wind_screening.py
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] SCRIPT SHA256: beb39974c0eb412f763d4b3975a44c1361100b881cb360ace62025e6096dd86c
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] SCRIPT SIZE: 11517 bytes
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] ================================================================================
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Solar-wind screening-epoch test
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] ================================================================================
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] OMNI cache present: omni_m_daily.dat
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] OMNI monthly P_dyn: 721 months, (1963, 11) to (2026, 9)
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] T1 pooled residual ~ P_dyn
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   pooled n=797: rho=+0.011 p=0.748; apex-band n=67: rho=-0.246 p=0.0452
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] T2 within-era decomposition (era-proxy control)
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   pre2018: apex-band n=49 rho=-0.223 p=0.124; pooled rho=+0.038 p=0.371
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   post2017: apex-band n=18 rho=-0.030 p=0.906; pooled rho=-0.050 p=0.449
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] T3 era P_dyn contrast (the confound)
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   pre 1.82 vs post 1.66 nPa, MWU p=0.000216
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] T4 regime-split axis test (median P_dyn split)
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   high-P_dyn regime: n=398, bipolar dipole b=-0.022 dex
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   low-P_dyn regime: n=399, bipolar dipole b=+0.048 dex
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] verdict: SCREENING NOT SUPPORTED: pooled correlation is an era-proxy artefact; within-era coupling is flat
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Saving data: step_b100_solar_wind_screening.json
+[2026-09-20 12:25:26 UTC] [DEBUG   ] [STEP 136]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b100_solar_wind_screening.json
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   Output: step_b100_solar_wind_screening.json
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Saving data: step_b100_solar_wind_screening.png
+[2026-09-20 12:25:26 UTC] [DEBUG   ] [STEP 136]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b100_solar_wind_screening.png
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   Output: step_b100_solar_wind_screening.png
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] 
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] ================================================================================
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] STEP SUMMARY: step_136_solar_wind_screening
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] ================================================================================
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Step Number: 136
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Status: SUCCESS
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Duration: 0.70s
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Log Records Emitted: 62
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Output Files: 2
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_136_solar_wind_screening.log
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] 
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Generated 2 output file(s):
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   • step_b100_solar_wind_screening.json: 1.42 KB [sha256 75213c38c985e499]
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   • step_b100_solar_wind_screening.png: 473.74 KB [sha256 d5671c903db39e85]
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] ================================================================================
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] STEP 136 COMPLETE: SUCCESS
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_136_solar_wind_screening_provenance.json
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] 
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] ================================================================================
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] EXECUTIVE SUMMARY
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] ================================================================================
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Step: step_136_solar_wind_screening (Step 136)
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Status: SUCCESS
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Duration: 0.70s
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Log Records: 72
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Output Files: 2
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] Key Outputs:
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   - step_b100_solar_wind_screening.json (1.42 KB)
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136]   - step_b100_solar_wind_screening.png (473.74 KB)
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 136] ================================================================================

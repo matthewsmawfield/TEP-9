@@ -1,16 +1,105 @@
-[2026-09-19 21:56:05 UTC] [INFO    ] [STEP 113] LOGGER INITIALIZED: step_113_resident_ledger (Step 113)
-[2026-09-19 21:56:05 UTC] [DEBUG   ] [STEP 113] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_113_resident_ledger.log
-[2026-09-19 21:56:05 UTC] [DEBUG   ] [STEP 113] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:56:05 UTC] [INFO    ] [STEP 113] ================================================================================
-[2026-09-19 21:56:05 UTC] [INFO    ] [STEP 113] Independent-survey resident ledger
-[2026-09-19 21:56:05 UTC] [INFO    ] [STEP 113] ================================================================================
-[2026-09-19 21:56:06 UTC] [INFO    ] [STEP 113] --------------------------------------------------------------------------------
-[2026-09-19 21:56:06 UTC] [INFO    ] [STEP 113] Per-survey scoring
-[2026-09-19 21:56:06 UTC] [INFO    ] [STEP 113] --------------------------------------------------------------------------------
-[2026-09-19 21:56:06 UTC] [INFO    ] [STEP 113] SBDB: n=44 in-cap=26 (0.591) baseline=0.417 p=0.0218 in-cap mean=43.1
-[2026-09-19 21:56:06 UTC] [INFO    ] [STEP 113] DES: n=16 in-cap=13 (0.812) baseline=0.552 p=0.0436 in-cap mean=27.5
-[2026-09-19 21:56:06 UTC] [INFO    ] [STEP 113] OSSOS: n=31 in-cap=13 (0.419) baseline=0.401 p=0.856 in-cap mean=44.8
-[2026-09-19 21:56:06 UTC] [INFO    ] [STEP 113] union n=76 in-cap=39 (0.513) pooled baseline=0.411 p=0.0803
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b77_resident_ledger.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b77_resident_ledger.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b77_resident_ledger.png
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] LOGGER INITIALIZED: step_113_resident_ledger (Step 113)
+[2026-09-20 13:01:39 UTC] [DEBUG   ] [STEP 113] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_113_resident_ledger.log
+[2026-09-20 13:01:39 UTC] [DEBUG   ] [STEP 113] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 13:01:39 UTC] [DEBUG   ] [STEP 113] Start time (UTC): 2026-09-20T13:01:39.613554+00:00
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] 
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] STEP PURPOSE
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] --------------------------------------------------------------------------------
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   Step 113 -- Independent-survey resident ledger.
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   The resident signature now stands on three detached-TNO cohorts drawn
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   by three independent survey selections and three independent orbit
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   determinations:
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   SBDB (JPL):      the 44-object secure detached cohort (a>150, q>30,
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   condition code <=3); orbit lineage JPL/MPC;
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   designation-proxy footprint baseline.
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   DES (Bernardinelli et al. 2022): the 16-object detached cohort from
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   a single 5000 deg^2 southern survey; DES-team orbit
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   fits; designation-proxy footprint baseline
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   (step_085).
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   OSSOS (Bannister et al. 2018): the 31-object 'det' cohort from the
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   only fully characterized TNO survey; OSSOS-team
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   fits; EXACT discovery astrometry -- the footprint
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   baseline here is measured from the table's own
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   discovery RA/Dec, not proxied (step_112).
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   This step scores each cohort identically against the pre-declared
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   axis (lam,beta) = (49,-17) deg, cap 60 deg, against each cohort's own
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   footprint baseline, and combines them three ways:
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   1.  Fisher's method on the per-cohort p_vs_baseline values -- the
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   honest combination when the cohorts share members (their
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   selection functions, not their memberships, are independent).
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   2.  A deduplicated union pool: each distinct object counted once,
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   assigned the baseline of its primary survey; a single binomial
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   test of the union in-cap count, reported for the full pool and
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   for the boundary-resident subset (a>150) on which the resident
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   anomaly is defined.
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   3.  Direction concordance: the in-cap members' mean varpi per
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   survey, tested for mutual consistency against the footprint
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   null (does each survey's in-cap population point at the same
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   place?).
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   Membership overlap is handled explicitly: DES has 14/16 objects in
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   SBDB, OSSOS-det has 9 named designations of which 9 match SBDB; the
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   ledger reports the overlap so no independence is overclaimed.  The
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   OSSOS 'det' class is dominated by a ~50-90 AU orbits -- interior to
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   the ~150 AU boundary -- so its role in the ledger is a selection-
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   function bound, not a high-leverage replication.
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   Outputs
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   results/step_b77_resident_ledger.json
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   results/step_b77_resident_ledger.csv
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113]   results/figures/supplementary/step_b77_resident_ledger.png
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] --------------------------------------------------------------------------------
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] SCRIPT: scripts/steps/step_113_resident_ledger.py
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] SCRIPT SHA256: 4901ab9504d388fcb07fb73e21a332a94199be98a5a3f82c872eff25cf58bc9e
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] SCRIPT SIZE: 17571 bytes
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] ================================================================================
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] Independent-survey resident ledger
+[2026-09-20 13:01:39 UTC] [INFO    ] [STEP 113] ================================================================================
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113] --------------------------------------------------------------------------------
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113] Per-survey scoring
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113] --------------------------------------------------------------------------------
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113] SBDB: n=44 in-cap=26 (0.591) baseline=0.417 p=0.0151 in-cap mean=43.1
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113] DES: n=16 in-cap=13 (0.812) baseline=0.552 p=0.0294 in-cap mean=27.5
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113] OSSOS: n=31 in-cap=13 (0.419) baseline=0.401 p=0.487 in-cap mean=44.8
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113] union[all] n=76 in-cap=39 (0.513) pooled baseline=0.411 p=0.0468
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113] union[a>150] n=47 in-cap=27 (0.574) pooled baseline=0.415 p=0.0199
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113] Saving data: step_b77_resident_ledger.json
+[2026-09-20 13:01:40 UTC] [DEBUG   ] [STEP 113]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b77_resident_ledger.json
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113]   Output: step_b77_resident_ledger.json
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113] Saving data: step_b77_resident_ledger.csv
+[2026-09-20 13:01:40 UTC] [DEBUG   ] [STEP 113]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b77_resident_ledger.csv
+[2026-09-20 13:01:40 UTC] [INFO    ] [STEP 113]   Output: step_b77_resident_ledger.csv
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Saving data: step_b77_resident_ledger.png
+[2026-09-20 13:01:41 UTC] [DEBUG   ] [STEP 113]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b77_resident_ledger.png
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113]   Output: step_b77_resident_ledger.png
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] 
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] ================================================================================
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] STEP SUMMARY: step_113_resident_ledger
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] ================================================================================
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Step Number: 113
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Status: SUCCESS
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Duration: 1.44s
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Log Records Emitted: 80
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Output Files: 3
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_113_resident_ledger.log
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] 
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Generated 3 output file(s):
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113]   • step_b77_resident_ledger.json: 4.19 KB [sha256 3c9bd3b94184f4be]
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113]   • step_b77_resident_ledger.csv: 4.45 KB [sha256 1ffc87b0ff41303b]
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113]   • step_b77_resident_ledger.png: 205.59 KB [sha256 2018131a63d5cb1a]
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] ================================================================================
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] STEP 113 COMPLETE: SUCCESS
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_113_resident_ledger_provenance.json
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] 
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] ================================================================================
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] EXECUTIVE SUMMARY
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] ================================================================================
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Step: step_113_resident_ledger (Step 113)
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Status: SUCCESS
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Duration: 1.44s
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Log Records: 91
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Output Files: 3
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] Key Outputs:
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113]   - step_b77_resident_ledger.json (4.19 KB)
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113]   - step_b77_resident_ledger.csv (4.45 KB)
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113]   - step_b77_resident_ledger.png (205.59 KB)
+[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 113] ================================================================================

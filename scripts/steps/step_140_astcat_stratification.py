@@ -58,9 +58,11 @@ import numpy as np
 from scipy import stats as _st
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import DATA_RAW, RESULTS, lv, sep
 
 logger = StepLogger("step_140_astcat_stratification")
+tee_stdout(logger)
 
 OBS_DIR = DATA_RAW / "mpc" / "obs"
 SEED = 20260919
@@ -445,7 +447,7 @@ def _finite(o):
 
 
 json.dump(_finite(res), open(out, "w"), indent=1, default=float)
-logger.info(f"wrote {out}")
+logger.data_save(out)
 print(json.dumps({"T1": res["T1_composition"],
                   "T2": res["T2_uniform_modern_legs"],
                   "T3": res["T3_uniform_legacy_legs"],

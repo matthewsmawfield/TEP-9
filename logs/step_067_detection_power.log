@@ -1,19 +1,97 @@
-[2026-09-19 22:13:57 UTC] [INFO    ] [STEP 067] LOGGER INITIALIZED: step_067_detection_power (Step 067)
-[2026-09-19 22:13:57 UTC] [DEBUG   ] [STEP 067] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_067_detection_power.log
-[2026-09-19 22:13:57 UTC] [DEBUG   ] [STEP 067] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 22:13:57 UTC] [INFO    ] [STEP 067] ================================================================================
-[2026-09-19 22:13:57 UTC] [INFO    ] [STEP 067] Prospective detection power (Monte-Carlo)
-[2026-09-19 22:13:57 UTC] [INFO    ] [STEP 067] ================================================================================
-[2026-09-19 22:13:57 UTC] [INFO    ] [STEP 067] rates: wall p=0.59, footprint p=0.42; mixture f=0.43, sigma=34.4 deg
-[2026-09-19 22:14:00 UTC] [INFO    ] [STEP 067] N=20: C1 z=1.09 power@1%=0.22 | C2 power@1%=0.17 | C3 power@1%=0.23
-[2026-09-19 22:14:00 UTC] [INFO    ] [STEP 067] N=30: C1 z=1.34 power@1%=0.39 | C2 power@1%=0.30 | C3 power@1%=0.36
-[2026-09-19 22:14:00 UTC] [INFO    ] [STEP 067] N=50: C1 z=1.73 power@1%=0.62 | C2 power@1%=0.47 | C3 power@1%=0.57
-[2026-09-19 22:14:00 UTC] [INFO    ] [STEP 067] N=75: C1 z=2.11 power@1%=0.74 | C2 power@1%=0.69 | C3 power@1%=0.77
-[2026-09-19 22:14:00 UTC] [INFO    ] [STEP 067] N=100: C1 z=2.44 power@1%=0.87 | C2 power@1%=0.84 | C3 power@1%=0.89
-[2026-09-19 22:14:00 UTC] [INFO    ] [STEP 067] N=150: C1 z=2.99 power@1%=0.98 | C2 power@1%=0.96 | C3 power@1%=0.98
-[2026-09-19 22:14:00 UTC] [INFO    ] [STEP 067] N=200: C1 z=3.45 power@1%=1.00 | C2 power@1%=0.99 | C3 power@1%=1.00
-[2026-09-19 22:14:00 UTC] [INFO    ] [STEP 067] N=300: C1 z=4.23 power@1%=1.00 | C2 power@1%=1.00 | C3 power@1%=1.00
-[2026-09-19 22:14:00 UTC] [INFO    ] [STEP 067] N=500: C1 z=5.46 power@1%=1.00 | C2 power@1%=1.00 | C3 power@1%=1.00
-[2026-09-19 22:14:00 UTC] [INFO    ] [STEP 067] N needed: {'C1_95pct_at_1pct': 150, 'C1_95pct_at_0p1pct': 200, 'C2_95pct_at_1pct': 150, 'C3_95pct_at_5pct': 100, 'C3_95pct_at_1pct': 150}
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b32_detection_power.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b32_detection_power.png
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067] LOGGER INITIALIZED: step_067_detection_power (Step 067)
+[2026-09-20 11:22:25 UTC] [DEBUG   ] [STEP 067] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_067_detection_power.log
+[2026-09-20 11:22:25 UTC] [DEBUG   ] [STEP 067] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 11:22:25 UTC] [DEBUG   ] [STEP 067] Start time (UTC): 2026-09-20T11:22:25.944484+00:00
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067] 
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067] STEP PURPOSE
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067] --------------------------------------------------------------------------------
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   step_067: Prospective detection power -- how many future detached-TNO
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   discoveries separate the domain-boundary prediction from the
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   footprint-only null?
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   step_054 issued the dated falsifiable predictions: the intrinsic-axis
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   model expects ~59 per cent of future detached discoveries inside the
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   pre-declared 60 deg cap (mean varpi 49 deg), against a footprint-only
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   baseline of ~42 per cent (mean 10.5 deg).  This step turns those rates
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   into a power statement by Monte-Carlo: for each candidate future sample
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   size N, draw realizations of the discovery count under both models and
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   measure how decisively a future observation separates them.
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   Channels
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   C1 cap fraction   : in-cap count ~ Binomial(N, p) with p_wall = 0.59
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   (mixture prediction, step_b13/b19) vs p_fp = 0.42
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   (footprint-convolved baseline).  The discriminator is
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   the one-sided binomial test of the observed count
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   against p_fp; power = fraction of wall realizations
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   rejecting at alpha.
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   C2 mean direction : per-object varpi drawn from the measured mixture
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   (clustered fraction f = 0.43, von Mises
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   sigma = 34.4 deg about 49 deg + footprint remainder)
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   vs the footprint-only distribution centred on
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   10.5 deg.  Discriminator: circular mean resultant
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   length R; power estimated against the footprint
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   null's R distribution.
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   C3 comet channel  : fresh class-1-like comet cohort; in-cap fraction
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   0.352 of the sample (CODE-measured); rate of
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   rotation > 0.2 deg = 0.579 in-cap vs 0.229 out-cap.
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   Power of the in/out rate contrast vs cohort size.
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   Inputs (all measured in earlier steps, no new assumptions)
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   results/step_b19_prospective_predictions.json   (rates, caps, baselines)
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   results/step_b13_patch_scale.json               (mixture f, sigma)
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   results/step_b15_evidence_summary.json          (context)
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   Outputs
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   results/step_b32_detection_power.json
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067]   results/figures/supplementary/step_b32_detection_power.png
+[2026-09-20 11:22:25 UTC] [INFO    ] [STEP 067] --------------------------------------------------------------------------------
+[2026-09-20 11:22:26 UTC] [INFO    ] [STEP 067] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 11:22:26 UTC] [INFO    ] [STEP 067] SCRIPT: scripts/steps/step_067_detection_power.py
+[2026-09-20 11:22:26 UTC] [INFO    ] [STEP 067] SCRIPT SHA256: d0958cd0969264c547d3a8a88b86fca7c10b087bb00384ff84f778a14369b1a6
+[2026-09-20 11:22:26 UTC] [INFO    ] [STEP 067] SCRIPT SIZE: 11826 bytes
+[2026-09-20 11:22:26 UTC] [INFO    ] [STEP 067] ================================================================================
+[2026-09-20 11:22:26 UTC] [INFO    ] [STEP 067] Prospective detection power (Monte-Carlo)
+[2026-09-20 11:22:26 UTC] [INFO    ] [STEP 067] ================================================================================
+[2026-09-20 11:22:27 UTC] [INFO    ] [STEP 067] rates: wall p=0.59, footprint p=0.42; mixture f=0.43, sigma=34.4 deg
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] N=20: C1 z=1.09 power@1%=0.22 | C2 power@1%=0.17 | C3 power@1%=0.23
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] N=30: C1 z=1.34 power@1%=0.39 | C2 power@1%=0.30 | C3 power@1%=0.36
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] N=50: C1 z=1.73 power@1%=0.62 | C2 power@1%=0.47 | C3 power@1%=0.57
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] N=75: C1 z=2.11 power@1%=0.74 | C2 power@1%=0.69 | C3 power@1%=0.77
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] N=100: C1 z=2.44 power@1%=0.87 | C2 power@1%=0.84 | C3 power@1%=0.89
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] N=150: C1 z=2.99 power@1%=0.98 | C2 power@1%=0.96 | C3 power@1%=0.98
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] N=200: C1 z=3.45 power@1%=1.00 | C2 power@1%=0.99 | C3 power@1%=1.00
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] N=300: C1 z=4.23 power@1%=1.00 | C2 power@1%=1.00 | C3 power@1%=1.00
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] N=500: C1 z=5.46 power@1%=1.00 | C2 power@1%=1.00 | C3 power@1%=1.00
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] N needed: {'C1_95pct_at_1pct': 150, 'C1_95pct_at_0p1pct': 200, 'C2_95pct_at_1pct': 150, 'C3_95pct_at_5pct': 100, 'C3_95pct_at_1pct': 150}
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Saving data: step_b32_detection_power.json
+[2026-09-20 11:22:33 UTC] [DEBUG   ] [STEP 067]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b32_detection_power.json
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067]   Output: step_b32_detection_power.json
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Saving data: step_b32_detection_power.png
+[2026-09-20 11:22:33 UTC] [DEBUG   ] [STEP 067]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b32_detection_power.png
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067]   Output: step_b32_detection_power.png
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] 
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] ================================================================================
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] STEP SUMMARY: step_067_detection_power
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] ================================================================================
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Step Number: 067
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Status: SUCCESS
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Duration: 7.20s
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Log Records Emitted: 74
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Output Files: 2
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_067_detection_power.log
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] 
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Generated 2 output file(s):
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067]   • step_b32_detection_power.json: 6.39 KB [sha256 e34a6f7f26f0a932]
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067]   • step_b32_detection_power.png: 271.94 KB [sha256 975e8e80cd89fa10]
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] ================================================================================
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] STEP 067 COMPLETE: SUCCESS
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_067_detection_power_provenance.json
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] 
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] ================================================================================
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] EXECUTIVE SUMMARY
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] ================================================================================
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Step: step_067_detection_power (Step 067)
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Status: SUCCESS
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Duration: 7.20s
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Log Records: 84
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Output Files: 2
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] Key Outputs:
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067]   - step_b32_detection_power.json (6.39 KB)
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067]   - step_b32_detection_power.png (271.94 KB)
+[2026-09-20 11:22:33 UTC] [INFO    ] [STEP 067] ================================================================================

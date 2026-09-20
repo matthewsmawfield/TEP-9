@@ -1,24 +1,96 @@
-[2026-09-19 21:42:46 UTC] [INFO    ] [STEP 131] LOGGER INITIALIZED: step_131_cone_shell_coherence (Step 131)
-[2026-09-19 21:42:46 UTC] [DEBUG   ] [STEP 131] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_131_cone_shell_coherence.log
-[2026-09-19 21:42:46 UTC] [DEBUG   ] [STEP 131] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:42:46 UTC] [INFO    ] [STEP 131] ================================================================================
-[2026-09-19 21:42:46 UTC] [INFO    ] [STEP 131] Bipolar cone-shell coherence
-[2026-09-19 21:42:46 UTC] [INFO    ] [STEP 131] ================================================================================
-[2026-09-19 21:42:46 UTC] [INFO    ] [STEP 131] loaded: pre-2018 586, post-2017 249
-[2026-09-19 21:42:46 UTC] [INFO    ] [STEP 131]   declared: cone 48.5 deg (antapex)
-[2026-09-19 21:42:46 UTC] [INFO    ] [STEP 131]   displaced: cone 53.8 deg (apex)
-[2026-09-19 21:42:46 UTC] [INFO    ] [STEP 131]   resident_detached: cone 64.1 deg (antapex)
-[2026-09-19 21:42:46 UTC] [INFO    ] [STEP 131] T1  per-era cone x side profile
-[2026-09-19 21:42:50 UTC] [INFO    ] [STEP 131]   pre2018: modal cell 0-15_antapex med=+0.189 n=10 p_max=0.2905
-[2026-09-19 21:42:53 UTC] [INFO    ] [STEP 131]   post2017: modal cell 45-60_apex med=+0.334 n=21 p_max=0.197
-[2026-09-19 21:42:53 UTC] [INFO    ] [STEP 131] T2  common-cone joint test on the measured anomaly axes
-[2026-09-19 21:42:53 UTC] [INFO    ] [STEP 131]   band 45-60 deg: declared 48.5 (antapex), displaced 53.8 (apex)  p_iso=0.0214 (mc 0.0217)
-[2026-09-19 21:42:53 UTC] [INFO    ] [STEP 131] T3  ring-versus-pole morphology per era
-[2026-09-19 21:42:55 UTC] [INFO    ] [STEP 131]   pre2018 (antapex): ring amp=+0.086 at theta0=50 deg (pole med 0.1891412390942403)  p=0.3391
-[2026-09-19 21:42:58 UTC] [INFO    ] [STEP 131]   post2017 (apex): ring amp=+0.195 at theta0=55 deg (pole med -0.0353773865731955)  p=0.2736
-[2026-09-19 21:42:58 UTC] [INFO    ] [STEP 131] T4  band-resident amplitude contrast per era
-[2026-09-19 21:42:58 UTC] [INFO    ] [STEP 131]   pre2018 antapex band: +0.072 vs +0.020 (n_in=54)  perm p=0.1821
-[2026-09-19 21:42:59 UTC] [INFO    ] [STEP 131]   post2017 apex band: +0.334 vs -0.026 (n_in=21)  perm p=0.0002
-[2026-09-19 21:42:59 UTC] [INFO    ] [STEP 131] verdict: CONE-SHELL PARTIAL on the independent record
-[2026-09-19 21:42:59 UTC] [INFO    ] [STEP 131] wrote results/step_b95_cone_shell.json
-[2026-09-19 21:42:59 UTC] [INFO    ] [STEP 131] wrote results/figures/step_b95_cone_shell.png
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] LOGGER INITIALIZED: step_131_cone_shell_coherence (Step 131)
+[2026-09-20 12:25:07 UTC] [DEBUG   ] [STEP 131] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_131_cone_shell_coherence.log
+[2026-09-20 12:25:07 UTC] [DEBUG   ] [STEP 131] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:25:07 UTC] [DEBUG   ] [STEP 131] Start time (UTC): 2026-09-20T12:25:07.375775+00:00
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] 
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] STEP PURPOSE
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] --------------------------------------------------------------------------------
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   Step 131: Bipolar cone-shell coherence (step_b95).
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   Follow-on to step_129's bipolar unification test.  If the two eras'
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   transit structures are segments of one shell-like boundary at fixed
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   angular radius about the CMB-anchored bipolar axis, the slip residual
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   should organize by bipolar cone angle and peak on a ring at a shared
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   cone radius rather than at the axis pole.
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   Runs entirely on the independent two-leg refit checkpoints (step_b91,
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   step_b92); the CMB bipolar axis is the externally declared frame axis
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   (step_125 convention).  Look-elsewhere is priced inside every
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   permutation null by re-maximizing the same cell grid / ring scan on
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   each draw.
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   T1  Per-era cone x side profile (15-deg cone bands x apex/antapex)
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   of the kick-regressed log-rotation residual.  Extremeness of the
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   modal cell under a max-statistic permutation null.
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   T2  Common-cone joint test on the two measured anomaly axes: the
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   declared axis (48.5 deg, antapex side) and the displaced axis
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   (53.8 deg, apex side) lie in the same 45-60 deg cone band on
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   opposite sides of the bipolar axis.  Null: independent isotropic
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   direction pairs; reports the joint probability of the observed
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   band-membership-plus-opposite-side configuration.  The resident
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   detached axis (64.1 deg) is reported alongside honestly.
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   T3  Ring-versus-pole morphology: per era a Gaussian ring profile
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   centred at cone angle theta0 is scanned over theta0 and the best
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   ring amplitude compared against the pole (theta0 = 0) contrast;
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   a shell peaks away from the pole.  Permutation null re-scans.
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   T4  Band-resident amplitude contrast: per era, residual inside the
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   union band (45-60 deg, era-correct side) versus the rest of the
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   sphere -- Mann-Whitney and permutation p, plus the cross-era
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   product extremeness.
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] --------------------------------------------------------------------------------
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] SCRIPT: scripts/steps/step_131_cone_shell_coherence.py
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] SCRIPT SHA256: dceaa707f0404228d0fa3842f5625094c94f9c660f3feb5dac0d2bb0f42700b7
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] SCRIPT SIZE: 15483 bytes
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] ================================================================================
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] Bipolar cone-shell coherence
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] ================================================================================
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] loaded: pre-2018 586, post-2017 249
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   declared: cone 48.5 deg (antapex)
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   displaced: cone 53.8 deg (apex)
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131]   resident_detached: cone 64.1 deg (antapex)
+[2026-09-20 12:25:07 UTC] [INFO    ] [STEP 131] T1  per-era cone x side profile
+[2026-09-20 12:25:10 UTC] [INFO    ] [STEP 131]   pre2018: modal cell 0-15_antapex med=+0.189 n=10 p_max=0.2905
+[2026-09-20 12:25:12 UTC] [INFO    ] [STEP 131]   post2017: modal cell 45-60_apex med=+0.334 n=21 p_max=0.197
+[2026-09-20 12:25:12 UTC] [INFO    ] [STEP 131] T2  common-cone joint test on the measured anomaly axes
+[2026-09-20 12:25:12 UTC] [INFO    ] [STEP 131]   band 45-60 deg: declared 48.5 (antapex), displaced 53.8 (apex)  p_iso=0.0214 (mc 0.0217)
+[2026-09-20 12:25:12 UTC] [INFO    ] [STEP 131] T3  ring-versus-pole morphology per era
+[2026-09-20 12:25:14 UTC] [INFO    ] [STEP 131]   pre2018 (antapex): ring amp=+0.086 at theta0=50 deg (pole med 0.1891412390942403)  p=0.3391
+[2026-09-20 12:25:16 UTC] [INFO    ] [STEP 131]   post2017 (apex): ring amp=+0.195 at theta0=55 deg (pole med -0.0353773865731955)  p=0.2736
+[2026-09-20 12:25:16 UTC] [INFO    ] [STEP 131] T4  band-resident amplitude contrast per era
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131]   pre2018 antapex band: +0.072 vs +0.020 (n_in=54)  perm p=0.1821
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131]   post2017 apex band: +0.334 vs -0.026 (n_in=21)  perm p=0.0002
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] verdict: CONE-SHELL PARTIAL on the independent record
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Saving data: step_b95_cone_shell.json
+[2026-09-20 12:25:17 UTC] [DEBUG   ] [STEP 131]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b95_cone_shell.json
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131]   Output: step_b95_cone_shell.json
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Saving data: step_b95_cone_shell.png
+[2026-09-20 12:25:17 UTC] [DEBUG   ] [STEP 131]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b95_cone_shell.png
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131]   Output: step_b95_cone_shell.png
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] 
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] ================================================================================
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] STEP SUMMARY: step_131_cone_shell_coherence
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] ================================================================================
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Step Number: 131
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Status: SUCCESS
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Duration: 10.54s
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Log Records Emitted: 73
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Output Files: 2
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_131_cone_shell_coherence.log
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] 
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Generated 2 output file(s):
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131]   • step_b95_cone_shell.json: 4.27 KB [sha256 176cb3421887bc91]
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131]   • step_b95_cone_shell.png: 340.33 KB [sha256 99cfc82dde33c18f]
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] ================================================================================
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] STEP 131 COMPLETE: SUCCESS
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_131_cone_shell_coherence_provenance.json
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] 
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] ================================================================================
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] EXECUTIVE SUMMARY
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] ================================================================================
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Step: step_131_cone_shell_coherence (Step 131)
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Status: SUCCESS
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Duration: 10.54s
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Log Records: 83
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Output Files: 2
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] Key Outputs:
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131]   - step_b95_cone_shell.json (4.27 KB)
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131]   - step_b95_cone_shell.png (340.33 KB)
+[2026-09-20 12:25:17 UTC] [INFO    ] [STEP 131] ================================================================================

@@ -28,7 +28,7 @@ B4  Era and quality stability: designation-era splits,
     and cross-checks in the CTc and HYP classes.
 
 Outputs: results/step_b12_antipodal_populations.json,
-         figures/step_b12_antipodal_populations.png
+         figures/supplementary/step_b12_antipodal_populations.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -228,10 +228,10 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b12_antipodal_populations.png",
-                dpi=150)
-    print("wrote results/step_b12_antipodal_populations.json, "
-          "figures/step_b12_antipodal_populations.png")
+    fig.savefig(FIG / "supplementary" / "step_b12_antipodal_populations.png",
+                dpi=300)
+    logger.data_save(RESULTS / "step_b12_antipodal_populations.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b12_antipodal_populations.png")
 
 
 if __name__ == "__main__":

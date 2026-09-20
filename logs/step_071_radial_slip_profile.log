@@ -1,30 +1,93 @@
-[2026-09-19 22:14:15 UTC] [INFO    ] [STEP 071] LOGGER INITIALIZED: step_071_radial_slip_profile (Step 071)
-[2026-09-19 22:14:15 UTC] [DEBUG   ] [STEP 071] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_071_radial_slip_profile.log
-[2026-09-19 22:14:15 UTC] [DEBUG   ] [STEP 071] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 22:14:15 UTC] [INFO    ] [STEP 071] ================================================================================
-[2026-09-19 22:14:15 UTC] [INFO    ] [STEP 071] Radial slip profile: multi-shell bidirectional legs (REBOUND/DE440s)
-[2026-09-19 22:14:15 UTC] [INFO    ] [STEP 071] ================================================================================
-[2026-09-19 22:14:16 UTC] [INFO    ] [STEP 071] sample: 131 class-1 CODE comets; shells 60-400 AU
-[2026-09-19 22:15:00 UTC] [INFO    ] [STEP 071]   20/131
-[2026-09-19 22:15:44 UTC] [INFO    ] [STEP 071]   40/131
-[2026-09-19 22:16:26 UTC] [INFO    ] [STEP 071]   60/131
-[2026-09-19 22:17:12 UTC] [INFO    ] [STEP 071]   80/131
-[2026-09-19 22:17:55 UTC] [INFO    ] [STEP 071]   100/131
-[2026-09-19 22:18:39 UTC] [INFO    ] [STEP 071]   120/131
-[2026-09-19 22:19:02 UTC] [INFO    ] [STEP 071] integrated 131 comets x 12 shells, 0 failures
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=    60 AU  drot in/out = 0.1478/0.0936 deg  excess dtau = +0.16 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=    75 AU  drot in/out = 0.1474/0.0940 deg  excess dtau = +0.24 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=   100 AU  drot in/out = 0.1473/0.0942 deg  excess dtau = +0.43 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=   125 AU  drot in/out = 0.1471/0.0942 deg  excess dtau = +0.67 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=   150 AU  drot in/out = 0.1471/0.0943 deg  excess dtau = +0.97 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=   175 AU  drot in/out = 0.1471/0.0943 deg  excess dtau = +1.31 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=   200 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +1.72 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=   225 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +2.17 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=   250 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +2.68 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=   300 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +3.86 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=   350 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +5.26 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] s=   400 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +6.86 yr
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 071] onset shell: None
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b36_radial_slip.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b36_radial_slip.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b36_radial_slip.png
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071] LOGGER INITIALIZED: step_071_radial_slip_profile (Step 071)
+[2026-09-20 12:38:10 UTC] [DEBUG   ] [STEP 071] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_071_radial_slip_profile.log
+[2026-09-20 12:38:10 UTC] [DEBUG   ] [STEP 071] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:38:10 UTC] [DEBUG   ] [STEP 071] Start time (UTC): 2026-09-20T12:38:10.955260+00:00
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071] 
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071] STEP PURPOSE
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071] --------------------------------------------------------------------------------
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   Step 071 -- radial slip profile: where does the anomalous rotation
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   accumulate?
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   The step-063 bidirectional legs are extended to a set of boundary shells
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   (60-400 AU).  On each leg the osculating barycentric periapsis direction
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   is recorded at every shell crossing, so the inbound/outbound rotation
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   delta_theta(s) is measured as a function of radius rather than only at
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   250 AU.  For a discrete phase slip applied at a crossing radius r*,
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   delta_theta(s) is flat inside r* (baseline only) and offsets by the slip
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   angle for s > r* -- the kink radius localizes the boundary; for a
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   distributed field delta_theta(s) grows continuously.  The implied
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   proper-time profile delta_tau(s) = delta_theta(s) * s^2 / h converts
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   each shell measurement to time units.
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   Outputs:
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   results/step_b36_radial_slip.json
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   results/step_b36_radial_slip.csv      (per comet per shell)
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071]   results/figures/supplementary/step_b36_radial_slip.png
+[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 071] --------------------------------------------------------------------------------
+[2026-09-20 12:38:11 UTC] [INFO    ] [STEP 071] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:38:11 UTC] [INFO    ] [STEP 071] SCRIPT: scripts/steps/step_071_radial_slip_profile.py
+[2026-09-20 12:38:11 UTC] [INFO    ] [STEP 071] SCRIPT SHA256: 8d30114a1517dd4d4ca738a4c3b7cb47f27c437924c8e37373ba4e8ca5997e5b
+[2026-09-20 12:38:11 UTC] [INFO    ] [STEP 071] SCRIPT SIZE: 17181 bytes
+[2026-09-20 12:38:11 UTC] [INFO    ] [STEP 071] ================================================================================
+[2026-09-20 12:38:11 UTC] [INFO    ] [STEP 071] Radial slip profile: multi-shell bidirectional legs (REBOUND/DE440s)
+[2026-09-20 12:38:11 UTC] [INFO    ] [STEP 071] ================================================================================
+[2026-09-20 12:38:12 UTC] [INFO    ] [STEP 071] sample: 131 class-1 CODE comets; shells 60-400 AU
+[2026-09-20 12:41:49 UTC] [INFO    ] [STEP 071]   20/131
+[2026-09-20 12:41:49 UTC] [INFO    ] [STEP 071]   40/131
+[2026-09-20 12:41:49 UTC] [INFO    ] [STEP 071]   60/131
+[2026-09-20 12:41:49 UTC] [INFO    ] [STEP 071]   80/131
+[2026-09-20 12:41:49 UTC] [INFO    ] [STEP 071]   100/131
+[2026-09-20 12:41:49 UTC] [INFO    ] [STEP 071]   120/131
+[2026-09-20 12:41:49 UTC] [INFO    ] [STEP 071] integrated 131 comets x 12 shells, 0 failures
+[2026-09-20 12:41:52 UTC] [INFO    ] [STEP 071] Saving data: step_b36_radial_slip.json
+[2026-09-20 12:41:52 UTC] [DEBUG   ] [STEP 071]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b36_radial_slip.json
+[2026-09-20 12:41:52 UTC] [INFO    ] [STEP 071]   Output: step_b36_radial_slip.json
+[2026-09-20 12:41:52 UTC] [INFO    ] [STEP 071] Saving data: step_b36_radial_slip.csv
+[2026-09-20 12:41:52 UTC] [DEBUG   ] [STEP 071]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b36_radial_slip.csv
+[2026-09-20 12:41:52 UTC] [INFO    ] [STEP 071]   Output: step_b36_radial_slip.csv
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] Saving data: step_b36_radial_slip.png
+[2026-09-20 12:41:54 UTC] [DEBUG   ] [STEP 071]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b36_radial_slip.png
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071]   Output: step_b36_radial_slip.png
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=    60 AU  drot in/out = 0.1478/0.0936 deg  excess dtau = +0.16 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=    75 AU  drot in/out = 0.1474/0.0940 deg  excess dtau = +0.24 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=   100 AU  drot in/out = 0.1473/0.0942 deg  excess dtau = +0.43 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=   125 AU  drot in/out = 0.1471/0.0942 deg  excess dtau = +0.67 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=   150 AU  drot in/out = 0.1471/0.0943 deg  excess dtau = +0.97 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=   175 AU  drot in/out = 0.1471/0.0943 deg  excess dtau = +1.31 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=   200 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +1.72 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=   225 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +2.17 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=   250 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +2.68 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=   300 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +3.86 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=   350 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +5.26 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] s=   400 AU  drot in/out = 0.1470/0.0943 deg  excess dtau = +6.86 yr
+[2026-09-20 12:41:54 UTC] [INFO    ] [STEP 071] onset shell: None
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] 
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] ================================================================================
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] STEP SUMMARY: step_071_radial_slip_profile
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] ================================================================================
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Step Number: 071
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Status: SUCCESS
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Duration: 3.73m
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Log Records Emitted: 68
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Output Files: 3
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_071_radial_slip_profile.log
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] 
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Generated 3 output file(s):
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071]   • step_b36_radial_slip.json: 3.70 KB [sha256 d7e2fffe6ded2c44]
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071]   • step_b36_radial_slip.csv: 69.78 KB [sha256 3c596bc8cb20ac0e]
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071]   • step_b36_radial_slip.png: 213.22 KB [sha256 675e947c6bcb2880]
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] ================================================================================
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] STEP 071 COMPLETE: SUCCESS
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_071_radial_slip_profile_provenance.json
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] 
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] ================================================================================
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] EXECUTIVE SUMMARY
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] ================================================================================
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Step: step_071_radial_slip_profile (Step 071)
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Status: SUCCESS
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Duration: 3.73m
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Log Records: 79
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Output Files: 3
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] Key Outputs:
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071]   - step_b36_radial_slip.json (3.70 KB)
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071]   - step_b36_radial_slip.csv (69.78 KB)
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071]   - step_b36_radial_slip.png (213.22 KB)
+[2026-09-20 12:41:55 UTC] [INFO    ] [STEP 071] ================================================================================

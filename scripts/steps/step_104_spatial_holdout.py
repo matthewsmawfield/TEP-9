@@ -55,7 +55,7 @@ Outputs
 -------
 results/step_b68_spatial_holdout.json
 results/step_b68_spatial_holdout.csv    (per-comet azimuth + band flags)
-results/figures/step_b68_spatial_holdout.png
+results/figures/supplementary/step_b68_spatial_holdout.png
 """
 
 import sys as _sys
@@ -256,7 +256,8 @@ def skill(tr_idx, te_idx, feat, yy):
     n = int(len(te_idx))
     return dict(rho=float(rho), rho_p=float(p), n=n,
                 sign_correct=n_ok, sign_frac=n_ok / n,
-                sign_binom_p=float(binomtest(n_ok, n, 0.5).pvalue))
+                sign_binom_p=float(binomtest(n_ok, n, 0.5,
+                                             alternative="greater").pvalue))
 
 
 def oob_cv(feat, yy, k=K_FOLD, rng_local=None):
@@ -539,6 +540,6 @@ ax.legend(frameon=False, fontsize=8)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b68_spatial_holdout.png", dpi=150)
-logger.data_save(FIG / "step_b68_spatial_holdout.png")
+fig.savefig(FIG / "supplementary" / "step_b68_spatial_holdout.png", dpi=300)
+logger.data_save(FIG / "supplementary" / "step_b68_spatial_holdout.png")
 logger.success("Spatial holdout and axis localization complete")

@@ -1,19 +1,102 @@
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138] LOGGER INITIALIZED: step_138_oneway_downlink_channel (Step 138)
-[2026-09-19 21:43:12 UTC] [DEBUG   ] [STEP 138] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_138_oneway_downlink_channel.log
-[2026-09-19 21:43:12 UTC] [DEBUG   ] [STEP 138] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138] ================================================================================
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138] One-way downlink channel audit
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138] ================================================================================
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138] T1 transport-class mapping
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138]   GNSS downlink = same transport class; the realized one-way test is the GNSS-II axis (b99)
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138] T2 deep-space archive inventory
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138]   voyager_delta_vlbi: 5-10 AU, public=False
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138]   cassini_vlba: 8-10 AU, public=False
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138]   pride_vex_mex: <1.5 AU, public=raw correlator-level data at the EVN archive; processed Doppler products in the published record
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138] T3 boundary-distance coverage
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138]   no public one-way archive reaches >10 AU
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138] T4 sensitivity ordering
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138]   GNSS clock channel is the realized deepest one-way channel
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138] verdict: CHANNEL SCOPED: the non-cancelling one-way transport requirement is already realized in the corpus through the GNSS downlink clock channel (step 135/b99 axis hit); deep-space public one-way archives (Voyager delta-VLBI 1979-81, Cassini VLBA, PRIDE VEX/MEX) are inner-system or not publicly reduced at observable level; no public one-way dataset covers the boundary-distance regime -- registered as an identified, open channel with named holdings, not a tested one
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 138] wrote results/step_b102_oneway_channel.json
-[2026-09-19 21:43:13 UTC] [INFO    ] [STEP 138] wrote results/figures/step_b102_oneway_channel.png
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] LOGGER INITIALIZED: step_138_oneway_downlink_channel (Step 138)
+[2026-09-20 12:25:28 UTC] [DEBUG   ] [STEP 138] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_138_oneway_downlink_channel.log
+[2026-09-20 12:25:28 UTC] [DEBUG   ] [STEP 138] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:25:28 UTC] [DEBUG   ] [STEP 138] Start time (UTC): 2026-09-20T12:25:28.270940+00:00
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] 
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] STEP PURPOSE
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] --------------------------------------------------------------------------------
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   Step 138: One-way downlink channel audit (step_b102).
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   Registers the one-way-transport channel the two-way cancellation
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   theorem requires.  In a two-way radio link traversing a
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   proper-time (lapse) gradient, the round trip traverses the same
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   gradient twice with opposite sign in the observable transport and
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   the lapse term cancels; a one-way downlink referenced to an
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   onboard oscillator does not cancel.  This step audits which
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   one-way deep-space datasets exist, what distances they cover, and
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   whether a TEP-sensitive residual product can be built from them.
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   T1  Transport-class mapping: the onboard-oscillator-referenced
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   one-way carrier is the required observable class.  The GNSS
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   satellite-to-receiver downlink is the same class -- atomic-
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   clock referenced, uplink-free -- so the corpus already
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   realizes the one-way test through the GNSS-II clock
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   correlation channel (step 135 / b99: free axis 0.6 deg from
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   the comet meridian plane).
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   T2  Deep-space archive inventory:
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   - Voyager delta-VLBI demonstration, 1979 Jupiter approach
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   (22 of 25 scheduled passes usable; goal 50 nrad, achieved
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   ~0.5 urad scatter; AIAA 82-1471; IPN PR 42-60) and the
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   Saturn-era delta-DOR measurements via the 360 kHz telemetry
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   subcarrier.  Downlink-only mode, 5-10 AU.  Observables not
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   in a public machine-readable archive.
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   - Cassini VLBA astrometry (published position solutions;
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   raw delay observables not publicly archived).
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   - PRIDE Venus Express / Mars Express open-loop one-way
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   tracking (EVN, AuScope, NICT; X-band USO-referenced;
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   mHz-level Doppler products; raw correlator-level data at
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   the EVN archive; processed products in the published
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   record).  Inner-system paths (<<2 AU).
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   T3  Boundary-distance coverage: the candidate lapse boundary sits
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   at heliospheric distances and beyond (>=100 AU).  None of the
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   public one-way archives reaches beyond ~10 AU; at 150+ AU the
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   Voyager carrier is receivable only by 70-m-class apertures and
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   no public VLBI record exists there.  Registered: no public
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   one-way dataset covers the boundary-distance regime.
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   T4  Sensitivity ordering: the 1979 delta-VLBI pass scatter
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   (~0.5 urad, ~few ns differential delay) against the
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   GNSS-class one-way clock sensitivity already exploited in the
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   corpus -- ordering the channels by realized reach.
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] --------------------------------------------------------------------------------
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] SCRIPT: scripts/steps/step_138_oneway_downlink_channel.py
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] SCRIPT SHA256: 355ad2a981c88d8891e00a7f94d6e01b7943b9d88a6319a1b716179670fa05e1
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] SCRIPT SIZE: 9334 bytes
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] One-way downlink channel audit
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] T1 transport-class mapping
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   GNSS downlink = same transport class; the realized one-way test is the GNSS-II axis (b99)
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] T2 deep-space archive inventory
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   voyager_delta_vlbi: 5-10 AU, public=False
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   cassini_vlba: 8-10 AU, public=False
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   pride_vex_mex: <1.5 AU, public=raw correlator-level data at the EVN archive; processed Doppler products in the published record
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] T3 boundary-distance coverage
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   no public one-way archive reaches >10 AU
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] T4 sensitivity ordering
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   GNSS clock channel is the realized deepest one-way channel
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] verdict: CHANNEL SCOPED: the non-cancelling one-way transport requirement is already realized in the corpus through the GNSS downlink clock channel (step 135/b99 axis hit); deep-space public one-way archives (Voyager delta-VLBI 1979-81, Cassini VLBA, PRIDE VEX/MEX) are inner-system or not publicly reduced at observable level; no public one-way dataset covers the boundary-distance regime -- registered as an identified, open channel with named holdings, not a tested one
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Saving data: step_b102_oneway_channel.json
+[2026-09-20 12:25:28 UTC] [DEBUG   ] [STEP 138]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b102_oneway_channel.json
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   Output: step_b102_oneway_channel.json
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Saving data: step_b102_oneway_channel.png
+[2026-09-20 12:25:28 UTC] [DEBUG   ] [STEP 138]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b102_oneway_channel.png
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   Output: step_b102_oneway_channel.png
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] 
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] STEP SUMMARY: step_138_oneway_downlink_channel
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Step Number: 138
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Status: SUCCESS
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Duration: 0.27s
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Log Records Emitted: 79
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Output Files: 2
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_138_oneway_downlink_channel.log
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] 
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Generated 2 output file(s):
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   • step_b102_oneway_channel.json: 3.45 KB [sha256 108fdd851ffd865a]
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   • step_b102_oneway_channel.png: 153.16 KB [sha256 3f555733f24909f3]
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] STEP 138 COMPLETE: SUCCESS
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_138_oneway_downlink_channel_provenance.json
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] 
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] EXECUTIVE SUMMARY
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Step: step_138_oneway_downlink_channel (Step 138)
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Status: SUCCESS
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Duration: 0.27s
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Log Records: 89
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Output Files: 2
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] Key Outputs:
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   - step_b102_oneway_channel.json (3.45 KB)
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138]   - step_b102_oneway_channel.png (153.16 KB)
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 138] ================================================================================

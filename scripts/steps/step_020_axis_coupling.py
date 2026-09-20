@@ -31,7 +31,7 @@ C3  Frame check.  If the structure is external/inertial the
     dipole apex and galactic poles for the one-map context.
 
 Outputs: results/step_b9_axis_coupling.json,
-         figures/step_b9_axis_coupling.png
+         figures/supplementary/step_b9_axis_coupling.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -310,9 +310,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b9_axis_coupling.png", dpi=150)
-    print("wrote results/step_b9_axis_coupling.json, "
-          "figures/step_b9_axis_coupling.png")
+    fig.savefig(FIG / "supplementary" / "step_b9_axis_coupling.png", dpi=300)
+    logger.data_save(RESULTS / "step_b9_axis_coupling.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b9_axis_coupling.png")
 
 
 if __name__ == "__main__":

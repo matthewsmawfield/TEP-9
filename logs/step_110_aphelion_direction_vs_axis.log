@@ -1,24 +1,93 @@
-[2026-09-19 21:35:56 UTC] [INFO    ] [STEP 110] LOGGER INITIALIZED: step_110_aphelion_direction_vs_axis (Step 110)
-[2026-09-19 21:35:56 UTC] [DEBUG   ] [STEP 110] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_110_aphelion_direction_vs_axis.log
-[2026-09-19 21:35:56 UTC] [DEBUG   ] [STEP 110] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:35:56 UTC] [INFO    ] [STEP 110] ================================================================================
-[2026-09-19 21:35:56 UTC] [INFO    ] [STEP 110] Direction versus axis: aphelion asymmetry decomposition
-[2026-09-19 21:35:56 UTC] [INFO    ] [STEP 110] ================================================================================
-[2026-09-19 21:35:56 UTC] [INFO    ] [STEP 110] warsaw_spike: n=110
-[2026-09-19 21:35:56 UTC] [INFO    ] [STEP 110] code_matched: n=98
-[2026-09-19 21:35:56 UTC] [INFO    ] [STEP 110] code_only: n=63
-[2026-09-19 21:35:56 UTC] [INFO    ] [STEP 110] lpc_one_apparition: n=30
-[2026-09-19 21:35:56 UTC] [INFO    ] [STEP 110] cometels_broad: n=254
-[2026-09-19 21:35:56 UTC] [INFO    ] [STEP 110] cometels_spike: n=108
-[2026-09-19 21:35:57 UTC] [INFO    ] [STEP 110] METRIC: moments[warsaw_spike] = n=110 cos=+0.1340 (p=0.00595) |cos|=0.4728 (p=0.586) cos2=-0.3614 (p=0.484)
-[2026-09-19 21:35:59 UTC] [INFO    ] [STEP 110] METRIC: moments[code_matched] = n=98 cos=+0.1932 (p=0.00025) |cos|=0.4836 (p=0.407) cos2=-0.3445 (p=0.317)
-[2026-09-19 21:36:00 UTC] [INFO    ] [STEP 110] METRIC: moments[code_only] = n=63 cos=+0.2152 (p=0.001) |cos|=0.4726 (p=0.425) cos2=-0.3682 (p=0.357)
-[2026-09-19 21:36:02 UTC] [INFO    ] [STEP 110] METRIC: moments[lpc_one_apparition] = n=30 cos=+0.3055 (p=0.0006) |cos|=0.4052 (p=0.803) cos2=-0.5157 (p=0.781)
-[2026-09-19 21:36:03 UTC] [INFO    ] [STEP 110] METRIC: moments[cometels_broad] = n=254 cos=+0.1025 (p=0.0017) |cos|=0.4506 (p=0.887) cos2=-0.4206 (p=0.843)
-[2026-09-19 21:36:05 UTC] [INFO    ] [STEP 110] METRIC: moments[cometels_spike] = n=108 cos=+0.1849 (p=0.00015) |cos|=0.4370 (p=0.875) cos2=-0.4420 (p=0.819)
-[2026-09-19 21:36:07 UTC] [INFO    ] [STEP 110] METRIC: moments[census vs detached axis] = cos=+0.0995 (p=0.00185) |cos|=0.4771 (p=0.647) cos2=-0.3823 (p=0.777)
-[2026-09-19 21:36:08 UTC] [INFO    ] [STEP 110] Saving data: step_b74_direction_vs_axis.png
-[2026-09-19 21:36:08 UTC] [INFO    ] [STEP 110] Saving data: step_b74_direction_vs_axis.json
-[2026-09-19 21:36:08 UTC] [INFO    ] [STEP 110] Saving data: step_b74_direction_vs_axis.csv
-[2026-09-19 21:36:08 UTC] [INFO    ] [STEP 110] verdict: Decomposed across all 6 comet samples, the aphelion asymmetry is directional, not axial: mean cos(theta) is significantly positive in 6/6 samples while the unsigned axis concentration (|cos|) and quadrupole (cos2) moments are null in 6/6 and 6/6 respectively.  The spatial channel is therefore one-ended -- comet aphelia lean toward the cap pole specifically, with no excess concentration about the axis line -- while the slip channel measured in step 089 is two-ended.  The same structure operates as a direction for the orbit distribution and as an axis for the clock-sector field.
-[2026-09-19 21:36:08 UTC] [INFO    ] [STEP 110] Direction-vs-axis decomposition complete
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] LOGGER INITIALIZED: step_110_aphelion_direction_vs_axis (Step 110)
+[2026-09-20 12:20:55 UTC] [DEBUG   ] [STEP 110] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_110_aphelion_direction_vs_axis.log
+[2026-09-20 12:20:55 UTC] [DEBUG   ] [STEP 110] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:20:55 UTC] [DEBUG   ] [STEP 110] Start time (UTC): 2026-09-20T12:20:55.960901+00:00
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] 
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] STEP PURPOSE
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] --------------------------------------------------------------------------------
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   Step 110 -- direction versus axis: decomposition of the
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   aphelion asymmetry.
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   Steps 061 and 108 measure the aphelion dipole as a DIRECTIONAL
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   statistic -- mean cos(theta) about the cap-declaration axis -- and
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   find it positive in every comet sample.  The slip field, by
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   contrast, is bipolar: step 089 found the residual proper-time
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   offset elevated toward BOTH ends of the axis (cos(2theta) basis).
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   These are different geometries.  A one-sided asymmetry (a flux, a
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   drift, a directional clustering) contributes to cos(theta); a
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   two-ended concentration about the axis line contributes to
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   |cos(theta)| and to cos(2theta) = 2 cos^2(theta) - 1.  This step
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   decomposes every comet sample's aphelion distribution into the
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   three moments under the identical tide-aware null:
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   T1  mean cos(theta)   -- the directional dipole (reproduces the
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   step-061/108 statistics as a machinery check)
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   T2  mean |cos(theta)| -- unsigned concentration about the axis
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   line: the signature a two-ended (bipolar) population would
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   carry
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   T3  mean cos(2theta)  -- the quadrupole moment: excess toward the
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   axis line over the equator
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   If the aphelion asymmetry is directional (one pole) while the
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   slip field is axisymmetric (two poles), the two channels measure
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   different aspects of the same structure: the direction of
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   approach versus the clock-sector field encountered in transit.
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   Samples: Warsaw spike, CODE class-1 matched, CODE-only, lpc
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   one-apparition, and the CometEls broad census + spike proxy --
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   all reconstructed with the identical perih_dir machinery.
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   Inputs
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   data/raw/warsaw/warsaw_tablec.dat
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   data/raw/code/code_original.html
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   data/raw/lpc/lpc_orig_2006_2010.vot
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   data/raw/mpc/CometEls.txt
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   Outputs
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   results/step_b74_direction_vs_axis.json
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   results/step_b74_direction_vs_axis.csv
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110]   results/figures/supplementary/step_b74_direction_vs_axis.png
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] --------------------------------------------------------------------------------
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] SCRIPT: scripts/steps/step_110_aphelion_direction_vs_axis.py
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] SCRIPT SHA256: 30f77d314720d77cf3528c223e6c7364c29ef79a4d910ce16543bbd02a6f92d9
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] SCRIPT SIZE: 13490 bytes
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] ================================================================================
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] Direction versus axis: aphelion asymmetry decomposition
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 110] ================================================================================
+[2026-09-20 12:20:56 UTC] [INFO    ] [STEP 110] warsaw_spike: n=110
+[2026-09-20 12:20:56 UTC] [INFO    ] [STEP 110] code_matched: n=98
+[2026-09-20 12:20:56 UTC] [INFO    ] [STEP 110] code_only: n=63
+[2026-09-20 12:20:56 UTC] [INFO    ] [STEP 110] lpc_one_apparition: n=30
+[2026-09-20 12:20:56 UTC] [INFO    ] [STEP 110] cometels_broad: n=268
+[2026-09-20 12:20:56 UTC] [INFO    ] [STEP 110] cometels_spike: n=115
+[2026-09-20 12:20:56 UTC] [INFO    ] [STEP 110] METRIC: moments[warsaw_spike] = n=110 cos=+0.1340 (p=0.00595) |cos|=0.4728 (p=0.586) cos2=-0.3614 (p=0.484)
+[2026-09-20 12:20:56 UTC] [INFO    ] [STEP 110] METRIC: moments[code_matched] = n=98 cos=+0.1932 (p=0.00025) |cos|=0.4836 (p=0.407) cos2=-0.3445 (p=0.317)
+[2026-09-20 12:20:57 UTC] [INFO    ] [STEP 110] METRIC: moments[code_only] = n=63 cos=+0.2152 (p=0.001) |cos|=0.4726 (p=0.425) cos2=-0.3682 (p=0.357)
+[2026-09-20 12:20:57 UTC] [INFO    ] [STEP 110] METRIC: moments[lpc_one_apparition] = n=30 cos=+0.3055 (p=0.0006) |cos|=0.4052 (p=0.803) cos2=-0.5157 (p=0.781)
+[2026-09-20 12:20:58 UTC] [INFO    ] [STEP 110] METRIC: moments[cometels_broad] = n=268 cos=+0.1045 (p=0.00115) |cos|=0.4460 (p=0.912) cos2=-0.4333 (p=0.898)
+[2026-09-20 12:20:59 UTC] [INFO    ] [STEP 110] METRIC: moments[cometels_spike] = n=115 cos=+0.1779 (p=0.0003) |cos|=0.4332 (p=0.896) cos2=-0.4493 (p=0.839)
+[2026-09-20 12:20:59 UTC] [INFO    ] [STEP 110] METRIC: moments[census vs detached axis] = cos=+0.1043 (p=0.00135) |cos|=0.4728 (p=0.72) cos2=-0.3905 (p=0.827)
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Saving data: supplementary/step_b74_direction_vs_axis.png
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Saving data: step_b74_direction_vs_axis.json
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Saving data: step_b74_direction_vs_axis.csv
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] verdict: Decomposed across all 6 comet samples, the aphelion asymmetry is directional, not axial: mean cos(theta) is significantly positive in 6/6 samples while the unsigned axis concentration (|cos|) and quadrupole (cos2) moments are null in 6/6 and 6/6 respectively.  The spatial channel is therefore one-ended -- comet aphelia lean toward the cap pole specifically, with no excess concentration about the axis line -- while the slip channel measured in step 089 is two-ended.  The same structure operates as a direction for the orbit distribution and as an axis for the clock-sector field.
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Direction-vs-axis decomposition complete
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] 
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] ================================================================================
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] STEP SUMMARY: step_110_aphelion_direction_vs_axis
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] ================================================================================
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Step Number: 110
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Status: SUCCESS
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Duration: 4.14s
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Log Records Emitted: 76
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Output Files: 0
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_110_aphelion_direction_vs_axis.log
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] No output files generated
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] ================================================================================
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] STEP 110 COMPLETE: SUCCESS
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_110_aphelion_direction_vs_axis_provenance.json
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] 
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] ================================================================================
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] EXECUTIVE SUMMARY
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] ================================================================================
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Step: step_110_aphelion_direction_vs_axis (Step 110)
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Status: SUCCESS
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Duration: 4.14s
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Log Records: 83
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] Output Files: 0
+[2026-09-20 12:21:00 UTC] [INFO    ] [STEP 110] ================================================================================

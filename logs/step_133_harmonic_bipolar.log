@@ -1,29 +1,96 @@
-[2026-09-19 21:43:03 UTC] [INFO    ] [STEP 133] LOGGER INITIALIZED: step_133_harmonic_bipolar (Step 133)
-[2026-09-19 21:43:03 UTC] [DEBUG   ] [STEP 133] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_133_harmonic_bipolar.log
-[2026-09-19 21:43:03 UTC] [DEBUG   ] [STEP 133] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:43:03 UTC] [INFO    ] [STEP 133] ================================================================================
-[2026-09-19 21:43:03 UTC] [INFO    ] [STEP 133] Bipolar harmonic decomposition and cross-population geometry
-[2026-09-19 21:43:03 UTC] [INFO    ] [STEP 133] ================================================================================
-[2026-09-19 21:43:04 UTC] [INFO    ] [STEP 133]   pre2018: n=586
-[2026-09-19 21:43:04 UTC] [INFO    ] [STEP 133]   post2017: n=248
-[2026-09-19 21:43:04 UTC] [INFO    ] [STEP 133] T1  axisymmetric harmonic power per era
-[2026-09-19 21:43:04 UTC] [INFO    ] [STEP 133]   pre2018: l1 amp=-0.058 p=0.0228  l2 amp=+0.044 p=0.138  l3 amp=+0.030 p=0.428
-[2026-09-19 21:43:04 UTC] [INFO    ] [STEP 133]   post2017: l1 amp=+0.169 p=5e-05  l2 amp=-0.106 p=0.0364  l3 amp=-0.080 p=0.198
-[2026-09-19 21:43:04 UTC] [INFO    ] [STEP 133] T2  free-dipole mirror pair
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   pre dipole (th=131.6, ph=286.5); post (th=22.3, ph=288.7); joint=28.3 p=0.03145
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133] T3  ISO meridian ledger
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   1I arrival: th=111.8 ph=57.2 d_plane=26.2 ON
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   1I periapsis: th=38.1 ph=256.6 d_plane=27.2 ON
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   1I departure: th=159.9 ph=140.3 d_plane=18.7 ON
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   2I arrival: th=117.5 ph=137.2 d_plane=57.3 
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   2I periapsis: th=22.6 ph=205.1 d_plane=1.4 ON
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   2I departure: th=95.1 ph=329.5 d_plane=58.9 
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   3I arrival: th=121.8 ph=355.8 d_plane=27.5 ON
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   3I periapsis: th=26.9 ph=32.7 d_plane=1.8 ON
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   3I departure: th=76.4 ph=181.0 d_plane=26.9 ON
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   periapsides on meridian: 3/3 (binomial p=0.125)
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133] T4  resident radial-gradient control
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133]   per-object cone vs q: rho=+0.074 p=0.486 (n=91) -- flat
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133] verdict: HARMONIC-BIPOLAR CONSISTENT: l=1 leads the residual spectrum in both eras at opposite sign, the free dipoles form a mirror pair, and the resident gradient control is flat
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133] wrote results/step_b97_harmonic_bipolar.json
-[2026-09-19 21:43:05 UTC] [INFO    ] [STEP 133] wrote results/figures/step_b97_harmonic_bipolar.png
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] LOGGER INITIALIZED: step_133_harmonic_bipolar (Step 133)
+[2026-09-20 12:25:21 UTC] [DEBUG   ] [STEP 133] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_133_harmonic_bipolar.log
+[2026-09-20 12:25:21 UTC] [DEBUG   ] [STEP 133] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:25:21 UTC] [DEBUG   ] [STEP 133] Start time (UTC): 2026-09-20T12:25:21.017382+00:00
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] 
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] STEP PURPOSE
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] --------------------------------------------------------------------------------
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   Step 133: Bipolar harmonic decomposition and cross-population
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   geometry (step_b97).
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   Closing probes on the frame-anchored bipolar reading of steps
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   129-132.
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   T1  Axisymmetric harmonic power: the per-era kick-regressed residual
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   is expanded in Legendre modes (l = 1, 2, 3) of the bipolar polar
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   angle.  A bipolar field should put its leading power in l = 1
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   with opposite signs across eras.  Extremeness of each era's l = 1
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   amplitude is priced by residual shuffle.
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   T2  Free-dipole mirror pair: the residual-weighted dipole vector is
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   fitted freely per era (no declared direction).  The joint
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   mirror-pair statistic -- deviation of the two bipolar polar
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   angles from supplementary plus the azimuth separation -- is
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   compared against within-era shuffles that preserve the coverage
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   geometry.
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   T3  ISO meridian ledger: bipolar-frame (theta, phi) of every leg of
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   the three interstellar objects (arrival, periapsis, departure)
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   against the measured meridian plane and cone band.  Descriptive
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   plus binomial occupancy -- n = 9 leg directions, so weight is
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   registered as a ledger datum, not a detection.
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   T4  Resident radial-gradient control: per-object bipolar cone angle
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   of the detached-resident varpi directions versus perihelion
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   distance.  The nested detachment-cell map shows a cone gradient;
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   this tests whether it survives at per-object level.
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] --------------------------------------------------------------------------------
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] SCRIPT: scripts/steps/step_133_harmonic_bipolar.py
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] SCRIPT SHA256: 0f53fbfa5cb94cc35e33722ebcc4949079e23d5685bad509974d91c670c99b6b
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] SCRIPT SIZE: 12503 bytes
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] ================================================================================
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] Bipolar harmonic decomposition and cross-population geometry
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] ================================================================================
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   pre2018: n=586
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   post2017: n=248
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] T1  axisymmetric harmonic power per era
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   pre2018: l1 amp=-0.058 p=0.0228  l2 amp=+0.044 p=0.138  l3 amp=+0.030 p=0.428
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133]   post2017: l1 amp=+0.169 p=5e-05  l2 amp=-0.106 p=0.0364  l3 amp=-0.080 p=0.198
+[2026-09-20 12:25:21 UTC] [INFO    ] [STEP 133] T2  free-dipole mirror pair
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   pre dipole (th=131.6, ph=286.5); post (th=22.3, ph=288.7); joint=28.3 p=0.03145
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] T3  ISO meridian ledger
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   1I arrival: th=111.8 ph=57.2 d_plane=26.2 ON
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   1I periapsis: th=38.1 ph=256.6 d_plane=27.2 ON
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   1I departure: th=159.9 ph=140.3 d_plane=18.7 ON
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   2I arrival: th=117.5 ph=137.2 d_plane=57.3 
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   2I periapsis: th=22.6 ph=205.1 d_plane=1.4 ON
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   2I departure: th=95.1 ph=329.5 d_plane=58.9 
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   3I arrival: th=121.8 ph=355.8 d_plane=27.5 ON
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   3I periapsis: th=26.9 ph=32.7 d_plane=1.8 ON
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   3I departure: th=76.4 ph=181.0 d_plane=26.9 ON
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   periapsides on meridian: 3/3 (binomial p=0.125)
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] T4  resident radial-gradient control
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   per-object cone vs q: rho=+0.074 p=0.486 (n=91) -- flat
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] verdict: HARMONIC-BIPOLAR CONSISTENT: l=1 leads the residual spectrum in both eras at opposite sign, the free dipoles form a mirror pair, and the resident gradient control is flat
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Saving data: step_b97_harmonic_bipolar.json
+[2026-09-20 12:25:22 UTC] [DEBUG   ] [STEP 133]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b97_harmonic_bipolar.json
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   Output: step_b97_harmonic_bipolar.json
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Saving data: step_b97_harmonic_bipolar.png
+[2026-09-20 12:25:22 UTC] [DEBUG   ] [STEP 133]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b97_harmonic_bipolar.png
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   Output: step_b97_harmonic_bipolar.png
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] 
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] ================================================================================
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] STEP SUMMARY: step_133_harmonic_bipolar
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] ================================================================================
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Step Number: 133
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Status: SUCCESS
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Duration: 1.68s
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Log Records Emitted: 73
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Output Files: 2
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_133_harmonic_bipolar.log
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] 
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Generated 2 output file(s):
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   • step_b97_harmonic_bipolar.json: 3.85 KB [sha256 fc93b0822a4491d1]
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   • step_b97_harmonic_bipolar.png: 214.88 KB [sha256 18c51e9128451fd9]
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] ================================================================================
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] STEP 133 COMPLETE: SUCCESS
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_133_harmonic_bipolar_provenance.json
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] 
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] ================================================================================
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] EXECUTIVE SUMMARY
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] ================================================================================
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Step: step_133_harmonic_bipolar (Step 133)
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Status: SUCCESS
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Duration: 1.68s
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Log Records: 83
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Output Files: 2
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] Key Outputs:
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   - step_b97_harmonic_bipolar.json (3.85 KB)
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133]   - step_b97_harmonic_bipolar.png (214.88 KB)
+[2026-09-20 12:25:22 UTC] [INFO    ] [STEP 133] ================================================================================

@@ -1,26 +1,99 @@
-[2026-09-19 21:29:46 UTC] [INFO    ] [STEP 058] LOGGER INITIALIZED: step_058_comet_obs_audit (Step 058)
-[2026-09-19 21:29:46 UTC] [DEBUG   ] [STEP 058] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_058_comet_obs_audit.log
-[2026-09-19 21:29:46 UTC] [DEBUG   ] [STEP 058] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:29:46 UTC] [INFO    ] [STEP 058] ================================================================================
-[2026-09-19 21:29:46 UTC] [INFO    ] [STEP 058] Comet observational-leverage audit
-[2026-09-19 21:29:46 UTC] [INFO    ] [STEP 058] ================================================================================
-CODE-only matched: 54
-  nobs      in=328 out=598 p=0.218
-  arc_days  in=495 out=495 p=0.786
-  arc_frac  in=0.377 out=0.444 p=0.057
-  t_year    in=1.96e+03 out=2.01e+03 p=0.447
-  q         in=1.74 out=1.69 p=0.612
-  i         in=92.9 out=79.8 p=0.717
-  aa        in=44.8 out=32.9 p=0.031
-A2 balanced-arc: {'n': 37, 'n_in': 12, 'n_out': 25, 'med_in': 0.184196744476968, 'med_out': 0.13074542444885423, 'p': 0.03851260988277311}
-A3 regression residual cap p=0.0017 rho=-0.372 p=0.0056
-A4 matched pairs: {'n_pairs': 19, 'med_in': 0.21202382273464052, 'med_out': 0.13216591174484943, 'p_wilcoxon': 0.027286529541015625}
-  W nobs   in=376 out=220 p=0.019
-  W arcy   in=2.35 out=2 p=0.143
-  W rms    in=0.535 out=0.535 p=0.659
-  W nres   in=728 out=416 p=0.016
-  W dh1    in=5.85 out=5.13 p=0.623
-  W dh2    in=7.39 out=6.41 p=0.307
-  W datat full: 18/32 in vs 44/74 out, fisher p=0.831
-  W full-arc-only: {'n_in': 18, 'n_out': 44, 'med_in': 0.08227541083903933, 'med_out': 0.0806424625267498, 'p_dof': 0.4110413642077561, 'd_so_n_in': 17, 'd_so_n_out': 37, 'd_so_med_in': 0.09639442908037443, 'd_so_med_out': 0.06476007430142847, 'p_dso': 0.06811767762891373}
-wrote results/step_b23_comet_obs_audit.json, figures/step_b23_comet_obs_audit.png
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] LOGGER INITIALIZED: step_058_comet_obs_audit (Step 058)
+[2026-09-20 10:47:44 UTC] [DEBUG   ] [STEP 058] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_058_comet_obs_audit.log
+[2026-09-20 10:47:44 UTC] [DEBUG   ] [STEP 058] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:47:44 UTC] [DEBUG   ] [STEP 058] Start time (UTC): 2026-09-20T10:47:44.627686+00:00
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] 
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] STEP PURPOSE
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] --------------------------------------------------------------------------------
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   TEP-9 step 058 -- comet observational-leverage audit
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   The transit signature (steps 030-041) rests on the three-leg orbit
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   reconstruction discrepancy d_of being larger for comets whose original
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   aphelia fall inside the boundary cap.  The dangerous confound is
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   observational leverage: if in-cap comets happened to be worse
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   observed -- fewer observations, shorter arcs, or arcs concentrated on
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   one side of perihelion -- a standard orbit fit would reconstruct them
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   worse regardless of any boundary, manufacturing a directional signal
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   from nothing.
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   This step measures the observing circumstances directly, on both
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   catalogues:
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   CODE (class-1 matched sample, N=54):
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   - nobs, arc length, perihelion year, q, i in-cap vs out-cap
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   - arc_frac = (T_peri - arc_start)/(arc_end - arc_start):
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   the fraction of the observed arc lying BEFORE perihelion.
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   frac ~ 0 or 1 means a one-sided arc (maximal leverage);
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   ~0.5 means symmetric data around perihelion.
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   - d_of retested on the balanced-arc subset (0.15<frac<0.85)
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   - regression control: d_of residualized on (nobs, arc, arc_frac),
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   then re-tested against the axis
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   - matched-pairs control on (nobs, arc, q)
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   Warsaw (spike sample, N=99):
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   - tablea1 supplies datat (pre/post/full arc symmetry), Nobs,
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   arc years, RMS, Nres, and the heliocentric distances of the
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   first/last observations (dh1/dh2)
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   - datat composition in-cap vs out-cap; the orbit-quality and
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   residual channels audited the same way
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   Outputs: results/step_b23_comet_obs_audit.json,
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058]   figures/supplementary/step_b23_comet_obs_audit.png
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] --------------------------------------------------------------------------------
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] SCRIPT: scripts/steps/step_058_comet_obs_audit.py
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] SCRIPT SHA256: e710f0baec9f979edef01938768a5ad73344e2bcbc921a0a3e48d918cbeebfda
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] SCRIPT SIZE: 19899 bytes
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] ================================================================================
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] Comet observational-leverage audit
+[2026-09-20 10:47:44 UTC] [INFO    ] [STEP 058] ================================================================================
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] CODE-only matched: 54
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   nobs      in=328 out=598 p=0.218
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   arc_days  in=495 out=495 p=0.786
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   arc_frac  in=0.377 out=0.444 p=0.057
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   t_year    in=1.96e+03 out=2.01e+03 p=0.447
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   q         in=1.74 out=1.69 p=0.612
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   i         in=92.9 out=79.8 p=0.717
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   aa        in=44.8 out=32.9 p=0.031
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] A2 balanced-arc: {'n': 37, 'n_in': 12, 'n_out': 25, 'med_in': 0.184196744476968, 'med_out': 0.13074542444885423, 'p': 0.03851260988277311}
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] A3 regression residual cap p=0.0017 rho=-0.372 p=0.0056
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] A4 matched pairs: {'n_pairs': 19, 'med_in': 0.21202382273464052, 'med_out': 0.13216591174484943, 'p_wilcoxon': 0.027286529541015625}
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   W nobs   in=376 out=232 p=0.019
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   W arcy   in=2.4 out=2.05 p=0.133
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   W rms    in=0.55 out=0.525 p=0.561
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   W nres   in=728 out=434 p=0.017
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   W dh1    in=6.25 out=5.29 p=0.459
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   W dh2    in=7.39 out=6.41 p=0.307
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   W datat full: 22/32 in vs 46/74 out, fisher p=0.660
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   W full-arc-only: {'n_in': 22, 'n_out': 46, 'med_in': 0.10023929380901916, 'med_out': 0.0806424625267498, 'p_dof': 0.2215741881661522, 'd_so_n_in': 21, 'd_so_n_out': 39, 'd_so_med_in': 0.10518563754764582, 'd_so_med_out': 0.06337932566157782, 'p_dso': 0.008864300328535015}
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Saving data: step_b23_comet_obs_audit.json
+[2026-09-20 10:47:45 UTC] [DEBUG   ] [STEP 058]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b23_comet_obs_audit.json
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   Output: step_b23_comet_obs_audit.json
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Saving data: step_b23_comet_obs_audit.png
+[2026-09-20 10:47:45 UTC] [DEBUG   ] [STEP 058]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b23_comet_obs_audit.png
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   Output: step_b23_comet_obs_audit.png
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] 
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] ================================================================================
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] STEP SUMMARY: step_058_comet_obs_audit
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] ================================================================================
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Step Number: 058
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Status: SUCCESS
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Duration: 0.72s
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Log Records Emitted: 76
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Output Files: 2
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_058_comet_obs_audit.log
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] 
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Generated 2 output file(s):
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   • step_b23_comet_obs_audit.json: 3.50 KB [sha256 64a4df1749d2524f]
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   • step_b23_comet_obs_audit.png: 151.08 KB [sha256 e9296ebdd360386a]
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] ================================================================================
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] STEP 058 COMPLETE: SUCCESS
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_058_comet_obs_audit_provenance.json
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] 
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] ================================================================================
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] EXECUTIVE SUMMARY
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] ================================================================================
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Step: step_058_comet_obs_audit (Step 058)
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Status: SUCCESS
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Duration: 0.72s
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Log Records: 86
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Output Files: 2
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] Key Outputs:
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   - step_b23_comet_obs_audit.json (3.50 KB)
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058]   - step_b23_comet_obs_audit.png (151.08 KB)
+[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 058] ================================================================================

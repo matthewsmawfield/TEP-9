@@ -71,7 +71,7 @@ Registered tests
 Outputs
   results/step_b91_nonwarsaw_refit.json
   results/step_b91_nonwarsaw_refit.csv
-  results/figures/step_b91_nonwarsaw_refit.png
+  results/figures/supplementary/step_b91_nonwarsaw_refit.png
   results/step_b91_refit.jsonl            (per-comet checkpoint)
   data/raw/mpc/obs/<desig>.json           (MPC astrometry cache)
   data/raw/mpc/sbdb_fp/<desig>.json       (SBDB full-prec seeds)
@@ -93,6 +93,7 @@ import numpy as np
 from scipy.stats import mannwhitneyu, spearmanr
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import (
     DATA_RAW, RESULTS, perih_dir, sep)
 
@@ -100,6 +101,7 @@ FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
 
 logger = StepLogger("step_127_nonwarsaw_refit")
+tee_stdout(logger)
 
 SPK = DATA_RAW / "spice" / "de440s.bsp"
 LSK = DATA_RAW / "naif" / "naif0012.tls"
@@ -385,7 +387,8 @@ if len(fit_all) > 15:
     rho, p = spearmanr([r["our_drot"] for r in fit_all],
                        [r["cat_drot"] for r in fit_all])
     t1["drot_concordance"] = {"n": len(fit_all),
-                              "rho": float(rho), "p": float(p)}
+                              "rho": float(rho),
+                              "p": float(max(p, np.nextafter(0.0, 1.0)))}
     t1["element_diffs_vs_sbdb"] = {
         "med_dq_au": float(np.median([r["del_q"] for r in fit_all])),
         "med_di_deg": float(np.median([r["del_i"] for r in fit_all])),
@@ -630,6 +633,7 @@ res["evidence_status"] = "independent-lineage replication"
 
 res["inputs"] = [
     "results/step_b84_pre2018_sbdb.csv",
+    "data/raw/mpc/CometEls.txt",
     "data/raw/mpc/obs/*.json (MPC get-obs ADES_DF, cached)",
     "data/raw/mpc/sbdb_fp/*.json (SBDB full-prec seeds, cached)",
     "data/raw/mpc/obscodes.json",
@@ -648,7 +652,7 @@ res["caveats"] = [
 
 out = RESULTS / "step_b91_nonwarsaw_refit.json"
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
 
 with open(RESULTS / "step_b91_nonwarsaw_refit.csv", "w",
           newline="") as f:
@@ -700,7 +704,7 @@ if len(dual) > 30:
     ax.set_title(f"T3 in/out med {t3['our_ddirf_cap']['med_in']:.3f}"
                  f"/{t3['our_ddirf_cap']['med_out']:.3f}")
 fig.tight_layout()
-fig.savefig(FIG / "step_b91_nonwarsaw_refit.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b91_nonwarsaw_refit.png", dpi=300)
 logger.data_save(out)
 logger.data_save(RESULTS / "step_b91_nonwarsaw_refit.csv")
-logger.data_save(FIG / "step_b91_nonwarsaw_refit.png")
+logger.data_save(FIG / "supplementary" / "step_b91_nonwarsaw_refit.png")

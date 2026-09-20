@@ -415,7 +415,7 @@ out = dict(step="step_137_rtg_ensemble_regression", result="b101",
            T5_sibling_coherence=T5, T6_bound=T6)
 with open(RESULTS / "step_b101_rtg_ensemble.json", "w") as f:
     json.dump(out, f, indent=1, default=float)
-logger.info("wrote results/step_b101_rtg_ensemble.json")
+logger.data_save(RESULTS / "step_b101_rtg_ensemble.json")
 
 import matplotlib
 matplotlib.use("Agg")
@@ -455,6 +455,6 @@ ax[2].set_title("T2 residual trajectories (crossings marked)")
 ax[2].legend(fontsize=7)
 
 fig.tight_layout()
-fig.savefig(RESULTS / "figures" / "step_b101_rtg_ensemble.png",
-            dpi=150)
-logger.info("wrote results/figures/step_b101_rtg_ensemble.png")
+fig.savefig(RESULTS / "figures" / "supplementary" / "step_b101_rtg_ensemble.png",
+            dpi=300)
+logger.data_save(RESULTS / "figures/supplementary/step_b101_rtg_ensemble.png")

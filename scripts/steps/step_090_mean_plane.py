@@ -56,7 +56,7 @@ at +/-1.0 and +/-2.0 per cent as sensitivity checks.
 Outputs
 -------
 results/step_b55_mean_plane.json
-results/figures/step_b55_mean_plane.png
+results/figures/supplementary/step_b55_mean_plane.png
 """
 
 import sys as _sys
@@ -560,8 +560,7 @@ out = dict(meta=dict(
 RES = RESULTS
 json.dump(out, open(RES / "step_b55_mean_plane.json", "w"), indent=1,
           default=float)
-print("wrote", RES / "step_b55_mean_plane.json")
-
+logger.data_save(RES / "step_b55_mean_plane.json")
 # ------------------------------------------------------------------
 # figure
 # ------------------------------------------------------------------
@@ -614,5 +613,5 @@ ax.legend(fontsize=7)
 
 fig.tight_layout()
 FIG = RES / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b55_mean_plane.png", dpi=150)
-print(f"wrote {FIG / 'step_b55_mean_plane.png'}")
+fig.savefig(FIG / "supplementary" / "step_b55_mean_plane.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b55_mean_plane.png')

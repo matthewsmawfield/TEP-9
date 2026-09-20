@@ -33,7 +33,7 @@ signal.
 Outputs
 -------
 results/step_b57_mpcorb_clustering.json
-results/figures/step_b57_mpcorb_clustering.png
+results/figures/supplementary/step_b57_mpcorb_clustering.png
 """
 
 import sys as _sys
@@ -322,8 +322,7 @@ if len(both) >= 5:
 RES = RESULTS
 json.dump(out, open(RES / "step_b57_mpcorb_clustering.json", "w"),
           indent=1, default=float)
-print("wrote", RES / "step_b57_mpcorb_clustering.json")
-
+logger.data_save(RES / "step_b57_mpcorb_clustering.json")
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -368,5 +367,5 @@ ax3.set_title("MPCORB $\\varpi$ histograms by sample", fontsize=9)
 
 fig.tight_layout()
 FIG = RES / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b57_mpcorb_clustering.png", dpi=150)
-print(f"wrote {FIG / 'step_b57_mpcorb_clustering.png'}")
+fig.savefig(FIG / "supplementary" / "step_b57_mpcorb_clustering.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b57_mpcorb_clustering.png')

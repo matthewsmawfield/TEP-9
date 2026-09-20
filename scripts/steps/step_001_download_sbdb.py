@@ -55,22 +55,39 @@ def sbdb_query(params, label, outname, provenance):
     logger.progress(f"GET {url[:120]}...")
     req = urllib.request.Request(url, headers={"User-Agent": "tep9/1.0"})
     t0 = datetime.now(timezone.utc)
-    with urllib.request.urlopen(req, timeout=180) as r:
-        body = r.read()
-        status = r.status
+    body = status = None
+    for attempt in range(1, 6):
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                body = r.read()
+                status = r.status
+            if status == 200:
+                break
+            raise RuntimeError(f"SBDB query failed: HTTP {status}")
+        except Exception as exc:
+            if attempt == 5:
+                raise
+            wait = 5 * 2 ** (attempt - 1)
+            logger.progress(f"attempt {attempt} failed ({exc}); "
+                            f"retrying in {wait}s")
+            time.sleep(wait)
     if status != 200:
         raise RuntimeError(f"SBDB query failed: HTTP {status}")
     d = json.loads(body.decode())
     n = d.get("count", len(d.get("data", [])))
-    sha = hashlib.sha256(body).hexdigest()
+    text = json.dumps(d, indent=1)
     out = OUT / outname
-    out.write_text(json.dumps(d, indent=1))
+    out.write_text(text)
+    sha = hashlib.sha256(out.read_bytes()).hexdigest()
     logger.metric("rows", len(d.get("data", [])), "objects returned")
     logger.metric("count", n, "catalogue count field")
     logger.data_save(out)
     provenance[outname] = {
         "url": url, "retrieved_utc": t0.isoformat(),
-        "http_status": status, "bytes": len(body), "sha256": sha,
+        "http_status": status, "bytes": out.stat().st_size,
+        "wire_bytes": len(body),
+        "wire_sha256": hashlib.sha256(body).hexdigest(),
+        "sha256": sha,
         "rows": len(d.get("data", [])), "count_field": n,
         "api": "JPL SBDB sbdb_query.api",
     }

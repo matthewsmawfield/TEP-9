@@ -1,23 +1,105 @@
-[2026-09-19 21:34:53 UTC] [INFO    ] [STEP 106] LOGGER INITIALIZED: step_106_harmonic_axis_transfer (Step 106)
-[2026-09-19 21:34:53 UTC] [DEBUG   ] [STEP 106] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_106_harmonic_axis_transfer.log
-[2026-09-19 21:34:53 UTC] [DEBUG   ] [STEP 106] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:34:53 UTC] [INFO    ] [STEP 106] ================================================================================
-[2026-09-19 21:34:53 UTC] [INFO    ] [STEP 106] Harmonic-order transfer + third-cohort axis recovery
-[2026-09-19 21:34:53 UTC] [INFO    ] [STEP 106] ================================================================================
-[2026-09-19 21:34:54 UTC] [INFO    ] [STEP 106] loaded 229 training + 30 lpc comets
-[2026-09-19 21:34:55 UTC] [INFO    ] [STEP 106] METRIC: lpc_axis_recovery = best (50,-50) p=0.0006; predeclared p=0.0056 top 4.6%
-[2026-09-19 21:34:55 UTC] [INFO    ] [STEP 106]   OOB skill const: rho=-0.0726
-[2026-09-19 21:34:55 UTC] [INFO    ] [STEP 106]   OOB skill cos1: rho=-0.0254
-[2026-09-19 21:34:55 UTC] [INFO    ] [STEP 106]   OOB skill cos2: rho=+0.1485
-[2026-09-19 21:34:55 UTC] [INFO    ] [STEP 106]   OOB skill cos3: rho=-0.0856
-[2026-09-19 21:34:55 UTC] [INFO    ] [STEP 106]   OOB skill linear: rho=-0.0244
-[2026-09-19 21:35:10 UTC] [INFO    ] [STEP 106] METRIC: harmonic_oob = cos2-cos1 = +0.1730 [+0.0921,+0.2559]
-[2026-09-19 21:35:10 UTC] [INFO    ] [STEP 106] METRIC: amplitude_transfer = b_lpc=+2.29 [-1.08,+6.35] vs b_229=+5.98
-[2026-09-19 21:35:10 UTC] [INFO    ] [STEP 106] METRIC: cross_solution = drot rho=+0.999 (p=0.000), dtau rho=+0.703
-[2026-09-19 21:35:10 UTC] [INFO    ] [STEP 106] Saving data: step_b70_harmonic_axis_transfer.json
-[2026-09-19 21:35:10 UTC] [DEBUG   ] [STEP 106]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b70_harmonic_axis_transfer.json
-[2026-09-19 21:35:10 UTC] [INFO    ] [STEP 106] Saving data: step_b70_harmonic_axis_transfer.csv
-[2026-09-19 21:35:10 UTC] [DEBUG   ] [STEP 106]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b70_harmonic_axis_transfer.csv
-[2026-09-19 21:35:12 UTC] [INFO    ] [STEP 106] Saving data: step_b70_harmonic_axis_transfer.png
-[2026-09-19 21:35:12 UTC] [DEBUG   ] [STEP 106]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b70_harmonic_axis_transfer.png
-[2026-09-19 21:35:12 UTC] [INFO    ] [STEP 106] ✓ Harmonic/axis transfer analysis complete
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] LOGGER INITIALIZED: step_106_harmonic_axis_transfer (Step 106)
+[2026-09-20 12:20:28 UTC] [DEBUG   ] [STEP 106] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_106_harmonic_axis_transfer.log
+[2026-09-20 12:20:28 UTC] [DEBUG   ] [STEP 106] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:20:28 UTC] [DEBUG   ] [STEP 106] Start time (UTC): 2026-09-20T12:20:28.147751+00:00
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] 
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] STEP PURPOSE
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] --------------------------------------------------------------------------------
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   Step 106 -- harmonic-order transfer, third-cohort axis recovery,
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   and cross-solution per-comet concordance.
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   Three remaining questions on the slip map are closed out here,
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   using only existing per-comet products (no new integrations).
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   T1  Third-cohort axis recovery.  The original convergence test
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   (step_036) let the CODE cohort recover its own axis by a free
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   sky scan; it landed 24 deg off the TNO axis.  The identical
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   scan is run on the one-apparition cohort (step 105 products):
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   a 10-deg grid of trial axes, Mann-Whitney in-cap vs out-cap
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   on the catalogue rotation d_of, best axis and the rank of the
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   pre-declared axis among all trial directions.
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   T2  Harmonic-order out-of-sample discrimination.  The bipolar
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   cos(2 theta) morphology was selected in-sample (step 089:
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   cos2 beats cos1 at p=0.010 vs 0.30), so the predictive
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   tests inherit a selection on the same data.  The five-fold
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   CV of step 102 is therefore rerun with alternative profile
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   families -- constant, cos(theta), cos(2theta), cos(3theta),
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   and a linear theta term -- under identical folds.  If
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   cos(2theta) retains the best held-out skill, the bipolar
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   form is confirmed predictively, not just descriptively.
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   T3  Amplitude transfer.  The lpc cohort's own free fit
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   dtau = a + b cos(2theta) returns b_lpc with a bootstrap
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   interval, compared against the 229-fitted b = +5.98 yr --
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   an amplitude consistency check that per-object rho cannot
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   deliver.
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   T4  Cross-solution per-comet concordance.  On the 23 members
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   shared between the lpc cohort and the training set, the
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   same bodies carry two different orbit solutions.  If the
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   anomaly is an object property, the per-comet discrepancies
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   should correlate across solutions; if it is a fit artefact,
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   they should not.
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   Inputs
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   results/step_b30_proper_time_slip.csv     (229-comet training set)
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   results/step_b69_lpc_bidirectional.csv    (30-comet lpc cohort)
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   Outputs
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   results/step_b70_harmonic_axis_transfer.json
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   results/step_b70_harmonic_axis_transfer.csv
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   results/figures/supplementary/step_b70_harmonic_axis_transfer.png
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] --------------------------------------------------------------------------------
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] SCRIPT: scripts/steps/step_106_harmonic_axis_transfer.py
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] SCRIPT SHA256: d0333afd118db472a981aa84712f24fc2b8671dc4a8b79c97dcba6cc8b5197d6
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] SCRIPT SIZE: 15744 bytes
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] ================================================================================
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] Harmonic-order transfer + third-cohort axis recovery
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] ================================================================================
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] loaded 229 training + 30 lpc comets
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106] METRIC: lpc_axis_recovery = best (50,-50) p=0.0006; predeclared p=0.0056 top 4.6%
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   OOB skill const: rho=-0.0726
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   OOB skill cos1: rho=-0.0254
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   OOB skill cos2: rho=+0.1485
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   OOB skill cos3: rho=-0.0856
+[2026-09-20 12:20:28 UTC] [INFO    ] [STEP 106]   OOB skill linear: rho=-0.0244
+[2026-09-20 12:20:35 UTC] [INFO    ] [STEP 106] METRIC: harmonic_oob = cos2-cos1 = +0.1730 [+0.0921,+0.2559]
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] METRIC: amplitude_transfer = b_lpc=+2.29 [-1.08,+6.35] vs b_229=+5.98
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] METRIC: cross_solution = drot rho=+0.999 (p=0.000), dtau rho=+0.703
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Saving data: step_b70_harmonic_axis_transfer.json
+[2026-09-20 12:20:36 UTC] [DEBUG   ] [STEP 106]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b70_harmonic_axis_transfer.json
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106]   Output: step_b70_harmonic_axis_transfer.json
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Saving data: step_b70_harmonic_axis_transfer.csv
+[2026-09-20 12:20:36 UTC] [DEBUG   ] [STEP 106]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b70_harmonic_axis_transfer.csv
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106]   Output: step_b70_harmonic_axis_transfer.csv
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Saving data: step_b70_harmonic_axis_transfer.png
+[2026-09-20 12:20:36 UTC] [DEBUG   ] [STEP 106]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b70_harmonic_axis_transfer.png
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106]   Output: step_b70_harmonic_axis_transfer.png
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] ✓ Harmonic/axis transfer analysis complete
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] 
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] ================================================================================
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] STEP SUMMARY: step_106_harmonic_axis_transfer
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] ================================================================================
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Step Number: 106
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Status: SUCCESS
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Duration: 8.35s
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Log Records Emitted: 80
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Output Files: 3
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_106_harmonic_axis_transfer.log
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] 
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Generated 3 output file(s):
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106]   • step_b70_harmonic_axis_transfer.json: 2.45 KB [sha256 b9468900dab61786]
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106]   • step_b70_harmonic_axis_transfer.csv: 11.43 KB [sha256 b96facb0b1ab224a]
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106]   • step_b70_harmonic_axis_transfer.png: 248.83 KB [sha256 b36d392df316c5b3]
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] ================================================================================
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] STEP 106 COMPLETE: SUCCESS
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_106_harmonic_axis_transfer_provenance.json
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] 
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] ================================================================================
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] EXECUTIVE SUMMARY
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] ================================================================================
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Step: step_106_harmonic_axis_transfer (Step 106)
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Status: SUCCESS
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Duration: 8.35s
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Log Records: 91
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Output Files: 3
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] Key Outputs:
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106]   - step_b70_harmonic_axis_transfer.json (2.45 KB)
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106]   - step_b70_harmonic_axis_transfer.csv (11.43 KB)
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106]   - step_b70_harmonic_axis_transfer.png (248.83 KB)
+[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 106] ================================================================================

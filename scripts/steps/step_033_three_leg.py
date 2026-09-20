@@ -118,7 +118,8 @@ def dedup(rows, pref):
             out[k] = r
     return out
 orig = dedup(orig_r, PREF)
-fut  = dedup(fut_r, PREF)
+PREF_FUT = {"i": 0, "l": 0, "j": 2, "k": 2}
+fut  = dedup(fut_r, PREF_FUT)
 PREF_OSC = {"a": 0, "g": 0, "d": 1, "e": 2, "f": 2, "b": 3, "c": 3}
 osc  = dedup(osc_r, PREF_OSC)
 
@@ -270,5 +271,5 @@ res["P6_epoch_trend"] = p6
 
 out = str(RESULTS / "step_10_proper_clock.json")
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)

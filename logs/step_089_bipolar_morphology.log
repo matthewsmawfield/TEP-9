@@ -1,21 +1,95 @@
-[2026-09-19 20:53:56 UTC] [INFO    ] [STEP 089] LOGGER INITIALIZED: step_089_bipolar_morphology (Step 089)
-[2026-09-19 20:53:56 UTC] [DEBUG   ] [STEP 089] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_089_bipolar_morphology.log
-[2026-09-19 20:53:56 UTC] [DEBUG   ] [STEP 089] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 20:53:56 UTC] [INFO    ] [STEP 089] ================================================================================
-[2026-09-19 20:53:56 UTC] [INFO    ] [STEP 089] Bipolar morphology audit -- mirror-cap second-lobe test
-[2026-09-19 20:53:56 UTC] [INFO    ] [STEP 089] ================================================================================
-[2026-09-19 20:53:56 UTC] [INFO    ] [STEP 089] pooled cohorts: 229 comets (code=131, warsaw=98)
-[2026-09-19 20:53:56 UTC] [INFO    ] [STEP 089] theta   0- 30: n= 17 drot_med=0.1008 dtau_med=+1.14 yr frac>0=0.65
-[2026-09-19 20:53:56 UTC] [INFO    ] [STEP 089] theta  30- 60: n= 58 drot_med=0.1132 dtau_med=+2.13 yr frac>0=0.53
-[2026-09-19 20:53:56 UTC] [INFO    ] [STEP 089] theta  60- 90: n= 78 drot_med=0.0917 dtau_med=-4.02 yr frac>0=0.36
-[2026-09-19 20:53:56 UTC] [INFO    ] [STEP 089] theta  90-120: n= 44 drot_med=0.1303 dtau_med=-2.72 yr frac>0=0.45
-[2026-09-19 20:53:57 UTC] [INFO    ] [STEP 089] theta 120-150: n= 22 drot_med=0.0796 dtau_med=+1.48 yr frac>0=0.50
-[2026-09-19 20:53:57 UTC] [INFO    ] [STEP 089] theta 150-181: n= 10 drot_med=0.0689 dtau_med=+3.68 yr frac>0=0.60
-[2026-09-19 20:53:57 UTC] [INFO    ] [STEP 089] T1: anti-cap drot median 0.0796 vs mid 0.1054 (MW p=0.889); second-lobe 95% upper bound 0.0075 deg vs in-cap elevation 0.0001 deg
-[2026-09-19 20:53:57 UTC] [INFO    ] [STEP 089] T2: cap vs anti drot MW p=0.0290, dtau MW p=0.6112
-[2026-09-19 20:53:57 UTC] [INFO    ] [STEP 089] T3: spearman theta-drot rho=-0.092 p=0.1666; theta-dtau rho=-0.069 p=0.2991
-[2026-09-19 20:53:57 UTC] [INFO    ] [STEP 089] T4: frac pos cap/mid/anti = 0.56/0.39/0.53 (binom p 0.356/0.023/0.860)
-[2026-09-19 20:53:57 UTC] [INFO    ] [STEP 089] T6: dtau vs cos(theta) rho=+0.069 p=0.2991; vs cos(2theta) rho=+0.169 p=0.0102 | drot vs cos(2theta) rho=+0.037 p=0.5771
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b54_bipolar_morphology.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b54_bipolar_morphology.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b54_bipolar_morphology.png
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089] LOGGER INITIALIZED: step_089_bipolar_morphology (Step 089)
+[2026-09-20 12:04:07 UTC] [DEBUG   ] [STEP 089] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_089_bipolar_morphology.log
+[2026-09-20 12:04:07 UTC] [DEBUG   ] [STEP 089] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:04:07 UTC] [DEBUG   ] [STEP 089] Start time (UTC): 2026-09-20T12:04:07.955392+00:00
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089] 
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089] STEP PURPOSE
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089] --------------------------------------------------------------------------------
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   step_089: Bipolar morphology audit -- is the boundary single-faced?
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   The injected JFC chain terminates on BOTH poles of the measured axis
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   (steps 052/056), so the underlying structure is axisymmetric in
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   aphelion direction.  The transit channel has so far been scored only
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   against the +axis cap (theta < 60 deg).  If the boundary were a
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   two-sided sheet or a symmetric pair of structures, comets whose
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   aphelia point near the anti-axis (theta > 120 deg, the mirror cap)
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   should carry a second slip lobe of comparable amplitude.  This step
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   measures the full theta profile of the catalogue rotation and the
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   planetary-subtracted proper-time residual, and tests:
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   T1  mirror-cap elevation: median(drot_cat, theta>120) vs the
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   mid-region (60-120) background -- Mann-Whitney + bootstrap bound
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   on any second-lobe amplitude;
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   T2  cap/anti-cap contrast: median(drot_cat, theta<60) vs theta>120
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   -- expected significant if the anomaly is localized to +axis;
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   T3  monotonic decay: Spearman of the residuals against theta over
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   the full range -- a localized single structure decays
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   monotonically, a bipolar structure is non-monotone;
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   T4  sign structure: the mid-region (60-120) residual median and the
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   fraction of positive residuals -- the bins adjoining the cap
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   carry a systematically negative median that a two-lobe reading
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   would not predict;
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   T5  per-catalogue replication of all medians (CODE, Warsaw).
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   Outputs
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   results/step_b54_bipolar_morphology.json
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   results/step_b54_bipolar_morphology.csv
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089]   results/figures/supplementary/step_b54_bipolar_morphology.png
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 089] --------------------------------------------------------------------------------
+[2026-09-20 12:04:08 UTC] [INFO    ] [STEP 089] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:04:08 UTC] [INFO    ] [STEP 089] SCRIPT: scripts/steps/step_089_bipolar_morphology.py
+[2026-09-20 12:04:08 UTC] [INFO    ] [STEP 089] SCRIPT SHA256: 8f793330e2947dce59b07682bef9db0d7d67c9f8584343421f69be73bceecd25
+[2026-09-20 12:04:08 UTC] [INFO    ] [STEP 089] SCRIPT SIZE: 15403 bytes
+[2026-09-20 12:04:08 UTC] [INFO    ] [STEP 089] ================================================================================
+[2026-09-20 12:04:08 UTC] [INFO    ] [STEP 089] Bipolar morphology audit -- mirror-cap second-lobe test
+[2026-09-20 12:04:08 UTC] [INFO    ] [STEP 089] ================================================================================
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] pooled cohorts: 229 comets (code=131, warsaw=98)
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] theta   0- 30: n= 17 drot_med=0.1008 dtau_med=+1.14 yr frac>0=0.65
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] theta  30- 60: n= 58 drot_med=0.1132 dtau_med=+2.13 yr frac>0=0.53
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] theta  60- 90: n= 78 drot_med=0.0917 dtau_med=-4.02 yr frac>0=0.36
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] theta  90-120: n= 44 drot_med=0.1303 dtau_med=-2.72 yr frac>0=0.45
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] theta 120-150: n= 22 drot_med=0.0796 dtau_med=+1.48 yr frac>0=0.50
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] theta 150-181: n= 10 drot_med=0.0689 dtau_med=+3.68 yr frac>0=0.60
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] T1: anti-cap drot median 0.0796 vs mid 0.1054 (MW p=0.889); second-lobe 95% upper bound 0.0075 deg vs in-cap elevation 0.0001 deg
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] T2: cap vs anti drot MW p=0.0290, dtau MW p=0.6112
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] T3: spearman theta-drot rho=-0.092 p=0.1666; theta-dtau rho=-0.069 p=0.2991
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] T4: frac pos cap/mid/anti = 0.56/0.39/0.53 (binom p 0.356/0.023/0.860)
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] T6: dtau vs cos(theta) rho=+0.069 p=0.2991; vs cos(2theta) rho=+0.169 p=0.0102 | drot vs cos(2theta) rho=+0.037 p=0.5771
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Saving data: step_b54_bipolar_morphology.json
+[2026-09-20 12:04:09 UTC] [DEBUG   ] [STEP 089]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b54_bipolar_morphology.json
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089]   Output: step_b54_bipolar_morphology.json
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Saving data: step_b54_bipolar_morphology.csv
+[2026-09-20 12:04:09 UTC] [DEBUG   ] [STEP 089]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b54_bipolar_morphology.csv
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089]   Output: step_b54_bipolar_morphology.csv
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Saving data: step_b54_bipolar_morphology.png
+[2026-09-20 12:04:09 UTC] [DEBUG   ] [STEP 089]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b54_bipolar_morphology.png
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089]   Output: step_b54_bipolar_morphology.png
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] 
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] ================================================================================
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] STEP SUMMARY: step_089_bipolar_morphology
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] ================================================================================
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Step Number: 089
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Status: SUCCESS
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Duration: 1.97s
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Log Records Emitted: 70
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Output Files: 3
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_089_bipolar_morphology.log
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] 
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Generated 3 output file(s):
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089]   • step_b54_bipolar_morphology.json: 4.92 KB [sha256 bbd5e5c3255ec36f]
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089]   • step_b54_bipolar_morphology.csv: 17.54 KB [sha256 d5f30a4edbe76fa5]
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089]   • step_b54_bipolar_morphology.png: 297.49 KB [sha256 03d37e3c85e6d8de]
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] ================================================================================
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] STEP 089 COMPLETE: SUCCESS
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_089_bipolar_morphology_provenance.json
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] 
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] ================================================================================
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] EXECUTIVE SUMMARY
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] ================================================================================
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Step: step_089_bipolar_morphology (Step 089)
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Status: SUCCESS
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Duration: 1.97s
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Log Records: 81
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Output Files: 3
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] Key Outputs:
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089]   - step_b54_bipolar_morphology.json (4.92 KB)
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089]   - step_b54_bipolar_morphology.csv (17.54 KB)
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089]   - step_b54_bipolar_morphology.png (297.49 KB)
+[2026-09-20 12:04:09 UTC] [INFO    ] [STEP 089] ================================================================================

@@ -42,7 +42,7 @@ Outputs
 -------
 results/step_b74_direction_vs_axis.json
 results/step_b74_direction_vs_axis.csv
-results/figures/step_b74_direction_vs_axis.png
+results/figures/supplementary/step_b74_direction_vs_axis.png
 """
 
 import sys as _sys
@@ -301,9 +301,9 @@ fig.suptitle("Aphelion asymmetry decomposed: directional, unsigned-axis, "
              "and quadrupole moments under the tide-aware null",
              fontsize=11)
 fig.tight_layout(rect=[0, 0, 1, 0.93])
-fig.savefig(RESULTS / "figures" / "step_b74_direction_vs_axis.png",
-            dpi=160)
-logger.info("Saving data: step_b74_direction_vs_axis.png")
+fig.savefig(RESULTS / "figures" / "supplementary" / "step_b74_direction_vs_axis.png",
+            dpi=300)
+logger.info("Saving data: supplementary/step_b74_direction_vs_axis.png")
 
 # --------------------------------------------------------------- outputs
 with open(RESULTS / "step_b74_direction_vs_axis.json", "w") as f:

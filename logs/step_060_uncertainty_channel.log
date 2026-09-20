@@ -1,12 +1,87 @@
-[2026-09-19 21:29:48 UTC] [INFO    ] [STEP 060] LOGGER INITIALIZED: step_060_uncertainty_channel (Step 060)
-[2026-09-19 21:29:48 UTC] [DEBUG   ] [STEP 060] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_060_uncertainty_channel.log
-[2026-09-19 21:29:48 UTC] [DEBUG   ] [STEP 060] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:29:48 UTC] [INFO    ] [STEP 060] ================================================================================
-[2026-09-19 21:29:48 UTC] [INFO    ] [STEP 060] Uncertainty channel and third-lineage check
-[2026-09-19 21:29:48 UTC] [INFO    ] [STEP 060] ================================================================================
-one-apparition cohort: 38 comets, 38 with all four legs
-  tno_extreme_34_-13: U2 zrot p=0.012372336023199475, U3 ze med-in=19.01334945216258
-  tno_detached_50_-17: U2 zrot p=0.05673411003791198, U3 ze med-in=9.841541339596892
-  anti_extreme: U2 zrot p=None, U3 ze med-in=None
-  gal_pole: U2 zrot p=None, U3 ze med-in=None
-wrote results/step_b25_uncertainty_channel.json, figures/step_b25_uncertainty_channel.png
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] LOGGER INITIALIZED: step_060_uncertainty_channel (Step 060)
+[2026-09-20 10:47:46 UTC] [DEBUG   ] [STEP 060] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_060_uncertainty_channel.log
+[2026-09-20 10:47:46 UTC] [DEBUG   ] [STEP 060] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:47:46 UTC] [DEBUG   ] [STEP 060] Start time (UTC): 2026-09-20T10:47:46.505489+00:00
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] 
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] STEP PURPOSE
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] --------------------------------------------------------------------------------
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   TEP-9 step 060 -- the uncertainty channel and third-lineage energy check
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   The one-apparition comet catalogue (Krolikowska 2014, A&A 571, A63;
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   VizieR J/A+A/571/A63) adds two pieces of information the Warsaw and
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   CODE samples lack:
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   1. per-element formal uncertainties on the osculating, original and
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   future orbit solutions (tables b1, d1, e1), and
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   2. the original / osculating / future inverse semimajor axes as
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   catalogued independently by Marsden & Williams (2008) -- a third
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   orbit-determination lineage (tablec1, MW08 columns).
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   With uncertainties, the reconstruction discrepancy can be NORMALIZED:
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   z_rot = d_of / sigma_dir asks whether the angular mismatch exceeds
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   what the catalogues themselves admit as error.  With MW08, the
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   question becomes whether two independent pipelines disagree more for
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   comets crossing the boundary direction.
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   Tests (n=38 unique comets, 1901-1950 one-apparition cohort; GR rows
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   preferred where a comet has multiple solutions):
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   U1  the quality confound: published uncertainties (e_arg, e_long,
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   e_i, e_aa, rms, Nres) in-cap vs out-cap.  If the cap selected
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   poorly-determined orbits, its discrepancies are catalogued-
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   error artifacts.
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   U2  normalized rotation |d_of|/sigma_dir in-cap vs out-cap and vs
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   angular distance to the axis.
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   U3  normalized energy z_E = (aaori - aafut)/sigma(1/a): direction
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   selectivity of the ENERGY leg, in units of the published
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   uncertainty.
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   U4  MW08 third lineage: |MWori - MWfut| energy-history jump and
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   cross-catalogue |aaori - MWori| disagreement vs the axis.
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   Axes: the same candidate directions as step_059 (both TNO axes plus
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   controls).
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   Outputs: results/step_b25_uncertainty_channel.json,
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   figures/supplementary/step_b25_uncertainty_channel.png
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] --------------------------------------------------------------------------------
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] SCRIPT: scripts/steps/step_060_uncertainty_channel.py
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] SCRIPT SHA256: ba39ab21b147fd3146af93662eb2f7fea42237c7b3598be79be9ba02a0273a5f
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] SCRIPT SIZE: 11293 bytes
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] ================================================================================
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] Uncertainty channel and third-lineage check
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] ================================================================================
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060] one-apparition cohort: 38 comets, 38 with all four legs
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   tno_extreme_34_-13: U2 zrot p=0.012372336023199475, U3 ze med-in=19.01334945216258
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   tno_detached_50_-17: U2 zrot p=0.05673411003791198, U3 ze med-in=9.841541339596892
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   anti_extreme: U2 zrot p=None, U3 ze med-in=None
+[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 060]   gal_pole: U2 zrot p=None, U3 ze med-in=None
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Saving data: step_b25_uncertainty_channel.json
+[2026-09-20 10:47:47 UTC] [DEBUG   ] [STEP 060]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b25_uncertainty_channel.json
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060]   Output: step_b25_uncertainty_channel.json
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Saving data: step_b25_uncertainty_channel.png
+[2026-09-20 10:47:47 UTC] [DEBUG   ] [STEP 060]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b25_uncertainty_channel.png
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060]   Output: step_b25_uncertainty_channel.png
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] 
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] ================================================================================
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] STEP SUMMARY: step_060_uncertainty_channel
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] ================================================================================
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Step Number: 060
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Status: SUCCESS
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Duration: 0.55s
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Log Records Emitted: 64
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Output Files: 2
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_060_uncertainty_channel.log
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] 
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Generated 2 output file(s):
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060]   • step_b25_uncertainty_channel.json: 4.41 KB [sha256 15ed506639139505]
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060]   • step_b25_uncertainty_channel.png: 176.40 KB [sha256 f4075288d1462788]
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] ================================================================================
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] STEP 060 COMPLETE: SUCCESS
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_060_uncertainty_channel_provenance.json
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] 
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] ================================================================================
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] EXECUTIVE SUMMARY
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] ================================================================================
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Step: step_060_uncertainty_channel (Step 060)
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Status: SUCCESS
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Duration: 0.55s
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Log Records: 74
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Output Files: 2
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] Key Outputs:
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060]   - step_b25_uncertainty_channel.json (4.41 KB)
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060]   - step_b25_uncertainty_channel.png (176.40 KB)
+[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 060] ================================================================================

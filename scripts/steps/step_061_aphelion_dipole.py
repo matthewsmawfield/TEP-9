@@ -39,7 +39,7 @@ independent draws of the same population.
 Axes: both TNO axes plus the antipode and galactic-pole control.
 
 Outputs: results/step_b26_aphelion_dipole.json,
-         figures/step_b26_aphelion_dipole.png
+         figures/supplementary/step_b26_aphelion_dipole.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -314,10 +314,10 @@ def main():
               title="T2: m=1 dipole along axis")
     ax[1].legend(fontsize=7)
     fig.tight_layout()
-    fig.savefig(RESULTS / "figures" / "step_b26_aphelion_dipole.png",
-                dpi=150)
-    print("wrote results/step_b26_aphelion_dipole.json, "
-          "figures/step_b26_aphelion_dipole.png")
+    fig.savefig(RESULTS / "figures" / "supplementary" / "step_b26_aphelion_dipole.png",
+                dpi=300)
+    logger.data_save(RESULTS / "step_b26_aphelion_dipole.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b26_aphelion_dipole.png")
 
 
 if __name__ == "__main__":

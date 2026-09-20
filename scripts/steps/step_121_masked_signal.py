@@ -62,16 +62,18 @@ Outputs
 -------
 results/step_b85_masked_signal.json
 results/step_b85_masked_signal.csv   (per-comet decomposition record)
-results/figures/step_b85_masked_signal.png
+results/figures/supplementary/step_b85_masked_signal.png
 """
 
 import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import (
     DATA_RAW, RESULTS, perih_dir, sep, lv, parse_code)
 logger = StepLogger("step_121_masked_signal")
+tee_stdout(logger)
 
 import csv
 import json
@@ -644,5 +646,5 @@ ax.set_title("declared-axis profile before/after subtraction",
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b85_masked_signal.png", dpi=150)
-print("wrote", out)
+fig.savefig(FIG / "supplementary" / "step_b85_masked_signal.png", dpi=300)
+logger.data_save(out)

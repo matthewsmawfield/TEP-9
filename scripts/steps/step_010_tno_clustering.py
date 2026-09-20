@@ -36,7 +36,7 @@ poles nhat; each calibrated against 20000 conditioned Monte-Carlo
 realizations.  Bootstrap 68% intervals on the mean direction.
 
 Outputs: results/step_02_clustering.json,
-         figures/step_02_clustering.png
+         figures/supplementary/step_02_clustering.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -291,9 +291,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_02_clustering.png", dpi=150)
-    print("\nwrote results/step_02_clustering.json, "
-          "figures/step_02_clustering.png")
+    fig.savefig(FIG / "supplementary" / "step_02_clustering.png", dpi=300)
+    logger.data_save(RESULTS / "step_02_clustering.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_02_clustering.png")
 
 
 if __name__ == "__main__":

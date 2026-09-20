@@ -1,0 +1,111 @@
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] LOGGER INITIALIZED: step_144_giant_planet_apsidal (Step 144)
+[2026-09-20 12:25:42 UTC] [DEBUG   ] [STEP 144] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_144_giant_planet_apsidal.log
+[2026-09-20 12:25:42 UTC] [DEBUG   ] [STEP 144] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:25:42 UTC] [DEBUG   ] [STEP 144] Start time (UTC): 2026-09-20T12:25:42.279920+00:00
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] 
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] STEP PURPOSE
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] --------------------------------------------------------------------------------
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   Step 144: Giant-planet secular apsidal channel (step_b108).
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   The resident axis (azimuth 49 deg) sits 4.0 deg from Neptune's mean
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   longitude of perihelion (~45 deg; step_112 registered the coincidence
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   at p ~ 0.02 a priori).  A mean-element coincidence is only one slice
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   of the secular structure: osculating apsidal longitudes circulate and
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   oscillate under the giant planets' mutual perturbations, and the
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   time-averaged eccentricity vector -- the forced apsidal direction of
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   each planet -- is the quantity a fixed external boundary could shape.
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   If the outer-system field configuration fixes a preferred direction,
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   the outermost planets (deepest coupling to the boundary region)
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   should carry the strongest alignment.
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   This step integrates Sun + Jupiter..Neptune under DE440s/REBOUND
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   (WHFAST) for 5 Myr and reads each giant's apsidal vector.
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   T1  Forced apsidal azimuth per giant: arg of the time-averaged
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   complex eccentricity vector <e exp(i varpi)>, its separation from
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   the resident-axis azimuth, and the forced/free amplitude ratio.
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   T2  Joint test: the four forced azimuths' circular mean and the
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   axis's proximity to it, priced against 20,000 random target
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   longitudes (uniform a priori null).
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   T3  Dwell fraction: the fraction of the integration each giant's
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   instantaneous apsidal longitude spends within +/-15 deg of the
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   axis azimuth, against the 15/180 uniform expectation.
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   T4  Present-epoch 3-D geometry: each giant's osculating periapsis
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   unit vector separation from the 3-D axis, alongside the
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   mean-element coincidences (Neptune 4.0 deg) for the record.
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   T5  Inter-giant apsidal coherence: pairwise forced-direction
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   separations -- the internal apsidal architecture the axis
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   coincidence sits inside.
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   Outputs: results/step_b108_giant_apsidal.json/.csv and
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144]   results/figures/supplementary/step_b108_giant_apsidal.png.
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] --------------------------------------------------------------------------------
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] SCRIPT: scripts/steps/step_144_giant_planet_apsidal.py
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] SCRIPT SHA256: 56af4ef4274357190b8fd62a97da88369a885c749d9b66ebab09d74b1142a65d
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] SCRIPT SIZE: 12041 bytes
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] ================================================================================
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] Giant-planet secular apsidal channel
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] ================================================================================
+[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 144] integrating 5 Myr, 5001 snapshots...
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] integration done.
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Jupiter  forced apsidal az=  99.06 deg sep= 50.06 deg  e_forced=0.0008 e_free=0.0458
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Saturn   forced apsidal az=  98.93 deg sep= 49.93 deg  e_forced=0.0005 e_free=0.0536
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Uranus   forced apsidal az= 267.88 deg sep=141.12 deg  e_forced=0.0009 e_free=0.0420
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Neptune  forced apsidal az= 178.84 deg sep=129.84 deg  e_forced=0.0011 e_free=0.0101
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] T2 weighted forced azimuth=161.30 (R=0.420), sep from axis=112.30, uniform p=0.6200
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Jupiter  dwell within 15 deg of axis: 0.086 (uniform 0.083)
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Saturn   dwell within 15 deg of axis: 0.083 (uniform 0.083)
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Uranus   dwell within 15 deg of axis: 0.079 (uniform 0.083)
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Neptune  dwell within 15 deg of axis: 0.072 (uniform 0.083)
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Jupiter  3-D periapsis sep from axis: 132.24 deg
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Saturn   3-D periapsis sep from axis: 57.80 deg
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Uranus   3-D periapsis sep from axis: 27.16 deg
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Neptune  3-D periapsis sep from axis: 137.80 deg
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] verdict: GIANT-APSIDAL CHANNEL QUIET: weighted mean forced apsidal azimuth 161.3 deg (112.3 deg from the resident axis, uniform p=0.6200); Neptune forced azimuth 178.8 deg (129.8 deg off), forced/free ratio 0.11.  The mean-element coincidence (Neptune varpi 4.0 deg, p~0.02) is registered with its secular context: whether the alignment survives as a fixed forced direction or is a circulating coincidence is decided here by the 5 Myr integration.
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Saving data: step_b108_giant_apsidal.json
+[2026-09-20 12:25:47 UTC] [DEBUG   ] [STEP 144]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b108_giant_apsidal.json
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]   Output: step_b108_giant_apsidal.json
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Saving data: step_b108_giant_apsidal.csv
+[2026-09-20 12:25:47 UTC] [DEBUG   ] [STEP 144]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b108_giant_apsidal.csv
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]   Output: step_b108_giant_apsidal.csv
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Saving data: step_b108_giant_apsidal.png
+[2026-09-20 12:25:47 UTC] [DEBUG   ] [STEP 144]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b108_giant_apsidal.png
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]   Output: step_b108_giant_apsidal.png
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] TEST SUMMARY:
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] {
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]  "joint_sep_from_axis_deg": 112.30170774184376,
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]  "joint_uniform_p": 0.62,
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]  "neptune_forced_sep_deg": 129.8409200094519,
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]  "neptune_dwell_ratio": 0.8638272345530894,
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]  "axis_aligned": false
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] }
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] VERDICT: GIANT-APSIDAL CHANNEL QUIET: weighted mean forced apsidal azimuth 161.3 deg (112.3 deg from the resident axis, uniform p=0.6200); Neptune forced azimuth 178.8 deg (129.8 deg off), forced/free ratio 0.11.  The mean-element coincidence (Neptune varpi 4.0 deg, p~0.02) is registered with its secular context: whether the alignment survives as a fixed forced direction or is a circulating coincidence is decided here by the 5 Myr integration.
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] 
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] ================================================================================
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] STEP SUMMARY: step_144_giant_planet_apsidal
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] ================================================================================
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Step Number: 144
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Status: SUCCESS
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Duration: 5.47s
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Log Records Emitted: 86
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Output Files: 3
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_144_giant_planet_apsidal.log
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] 
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Generated 3 output file(s):
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]   • step_b108_giant_apsidal.json: 3.74 KB [sha256 7ba837981c48e559]
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]   • step_b108_giant_apsidal.csv: 20.81 KB [sha256 1dd14ee17a16549c]
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]   • step_b108_giant_apsidal.png: 724.11 KB [sha256 1ec82ec3c651f4f3]
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] ================================================================================
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] STEP 144 COMPLETE: SUCCESS
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_144_giant_planet_apsidal_provenance.json
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] 
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] ================================================================================
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] EXECUTIVE SUMMARY
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] ================================================================================
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Step: step_144_giant_planet_apsidal (Step 144)
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Status: SUCCESS
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Duration: 5.47s
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Log Records: 97
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Output Files: 3
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] Key Outputs:
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]   - step_b108_giant_apsidal.json (3.74 KB)
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]   - step_b108_giant_apsidal.csv (20.81 KB)
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144]   - step_b108_giant_apsidal.png (724.11 KB)
+[2026-09-20 12:25:47 UTC] [INFO    ] [STEP 144] ================================================================================

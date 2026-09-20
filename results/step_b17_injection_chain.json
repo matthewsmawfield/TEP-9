@@ -1,7 +1,12 @@
 {
  "axis_deg": 49.0,
  "anti_deg": 229.0,
- "n_jfc": 575,
+ "n_jfc": 579,
+ "inputs": [
+  "data/raw/mpc/CometEls.txt",
+  "data/raw/sbdb/sbdb_outer_ss.json",
+  "data/raw/sbdb/sbdb_centaurs.json"
+ ],
  "I1_q_progression": {
   "rows": [
    {
@@ -16,13 +21,13 @@
    },
    {
     "q_bin": "1-2",
-    "N": 154,
-    "R_varpi": 0.323,
-    "mu_varpi": 42.9,
-    "R_om": 0.128,
-    "mu_om": 63.7,
-    "R_w": 0.061,
-    "mu_w": 349.8
+    "N": 156,
+    "R_varpi": 0.327,
+    "mu_varpi": 41.7,
+    "R_om": 0.132,
+    "mu_om": 62.3,
+    "R_w": 0.06,
+    "mu_w": 350.1
    },
    {
     "q_bin": "2-3",
@@ -36,13 +41,13 @@
    },
    {
     "q_bin": "3-4",
-    "N": 102,
-    "R_varpi": 0.229,
-    "mu_varpi": 76.5,
-    "R_om": 0.126,
-    "mu_om": 161.7,
-    "R_w": 0.057,
-    "mu_w": 249.6
+    "N": 103,
+    "R_varpi": 0.228,
+    "mu_varpi": 74.1,
+    "R_om": 0.117,
+    "mu_om": 158.8,
+    "R_w": 0.058,
+    "mu_w": 259.2
    },
    {
     "q_bin": "4-5",
@@ -63,45 +68,55 @@
     "mu_om": 180.1,
     "R_w": 0.078,
     "mu_w": 30.9
+   },
+   {
+    "q_bin": "6-15",
+    "N": 10,
+    "R_varpi": 0.332,
+    "mu_varpi": 229.7,
+    "R_om": 0.153,
+    "mu_om": 296.6,
+    "R_w": 0.045,
+    "mu_w": 35.2
    }
   ],
-  "note": "mean varpi rotates ~180 deg across the JFC q range: ~+40 deg deep (aligned with the detached-TNO axis) to ~230 deg shallow (the anti-axis).  Neither Om nor w alone carries the progression"
+  "note": "mean varpi rotates ~150 deg across the JFC q range: ~+40 deg deep (aligned with the detached-TNO axis) to ~190 deg shallow (approaching the anti-axis sector; the dated JFc subset of step_b12 sits at ~220 deg).  Neither Om nor w alone carries the progression"
  },
  "I2_footprints": {
   "rows": [
    {
     "q_bin": "0-3",
-    "N": 76,
-    "R_opp": 0.163,
-    "mu_opp": 15.7,
-    "R_varpi": 0.232,
-    "mu_varpi": 37.9
+    "N": 77,
+    "R_opp": 0.172,
+    "mu_opp": 13.5,
+    "R_varpi": 0.234,
+    "mu_varpi": 35.0
    },
    {
     "q_bin": "3-5",
-    "N": 83,
-    "R_opp": 0.294,
-    "mu_opp": 82.4,
-    "R_varpi": 0.246,
-    "mu_varpi": 118.4
+    "N": 84,
+    "R_opp": 0.283,
+    "mu_opp": 80.4,
+    "R_varpi": 0.237,
+    "mu_varpi": 116.0
    },
    {
     "q_bin": "5-15",
-    "N": 30,
-    "R_opp": 0.045,
-    "mu_opp": 275.8,
-    "R_varpi": 0.223,
-    "mu_varpi": 195.7
+    "N": 31,
+    "R_opp": 0.071,
+    "mu_opp": 292.5,
+    "R_varpi": 0.211,
+    "mu_varpi": 204.3
    }
   ],
   "note": "the discovery footprints are weak and their means do not track the varpi progression -- pointing does not reproduce the 180 deg rotation"
  },
  "I3_pairing_test_q<3": {
-  "N": 76,
-  "R_obs": 0.232,
-  "mu_obs": 37.9,
-  "null_mean_R": 0.114,
-  "p": 0.025548722563871806,
+  "N": 77,
+  "R_obs": 0.234,
+  "mu_obs": 35.0,
+  "null_mean_R": 0.118,
+  "p": 0.0271986400679966,
   "note": "deep injected JFCs: does the observed (lam_opp, Delta) pairing beat the sample's own marginals?"
  },
  "I4_chain": {
@@ -116,15 +131,15 @@
    "mu": 95.3
   },
   "JFC_q<3": {
-   "N": 378,
-   "R": 0.288,
-   "mu": 41.2
+   "N": 380,
+   "R": 0.29,
+   "mu": 40.6
   },
   "JFC_q>5": {
-   "N": 35,
-   "R": 0.19,
-   "mu": 189.7
+   "N": 36,
+   "R": 0.177,
+   "mu": 198.2
   },
-  "note": "the injection chain endpoints land on both ends of the measured axis: detached TNOs at +49, deep injected JFCs at ~+40, shallow transitional JFCs at ~230; the transit population (centaurs) is isotropic -- scrambled between the two organized ends"
+  "note": "the injection chain endpoints land on both ends of the measured axis: detached TNOs at +49, deep injected JFCs at ~+40, shallow transitional JFCs at ~+190-225; the transit population (centaurs) is isotropic -- scrambled between the two organized ends"
  }
 }

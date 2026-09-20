@@ -148,3 +148,53 @@ fetch. scripts/audits/audit_lpc_independent_refit.py is written to
 run the identical machinery on the b69 cohort when API access
 recovers; it is a strengthening pass, not a blocker -- the carrier
 question is resolved on the registered channel.
+
+## Addendum (2026-09-20): statistical-convention and cohort sweep
+
+Deep-scan pass over directional-probability conventions and cohort
+definitions, followed by full regeneration of affected outputs:
+
+- Directional binomial tails. Tests whose registered hypothesis is a
+  declared direction (in-cap excess, negative signed rotation, sign
+  transfer, bipolar sign structure) now use `alternative="greater"`
+  (or the declared-sign equivalent) with the two-sided value retained
+  alongside: steps 039 (R1 repulsion), 068 (dw signed handedness),
+  078 (era cap fractions), 080 (signed residual), 084 (newest cohort),
+  085 (DES own-footprint), 089 (T4 bipolar sign structure), 096 (SCLK
+  long-interval negative drift), 102 (held-out sign accuracy in the
+  transfer tests), 104 (half-sky sign tests), 105 (LPC map transfer),
+  112/113 (OSSOS/ledger cap excess), 125 (matched-pair sign test),
+  141 (crossing-channel negative-drift count), 149 (T6 arrival
+  geometry). Descriptive scans where no direction was declared remain
+  two-sided by design.
+- Resident-union cohort correction (step_113). The deduplicated union
+  previously pooled all OSSOS 'det' objects, 29 of which sit interior
+  to the boundary (a < 150 AU) and cannot carry a boundary-resident
+  signal. The union now also reports the boundary-resident subset:
+  N = 47, 27 in-cap, pooled footprint baseline 0.415, one-sided
+  p = 0.0199 (two-sided 0.037); the all-object union (N = 76,
+  p = 0.047 one-sided) is retained as a descriptive entry. Fisher
+  over the three cohorts: p = 0.0098.
+- Monte Carlo convention (steps 098, 130). Two remaining raw
+  np.mean exceedance estimates replaced by the project-wide
+  finite-rank convention (exceedances + 1)/(draws + 1): the RTG
+  placebo-epoch empirical p-values and the epoch-trajectory
+  permutation p-values (perm_p_switch_vs_fixed = 0.0419,
+  perm_p_drift_vs_fixed = 0.0200, perm_p_advantage = 0.0220).
+- Stale axis rerun (step_088). The resident-side galactic-tide
+  insertion was re-integrated at the resident axis (49, -17) after the
+  axis edit: observed R(20 Myr) = 0.275 vs scrambled 0.133, in-cap
+  dispersal 151 Myr, restoring-torque null (rho = +0.135, p = 0.38).
+- Manuscript/claims sync. claims.json: resident_union_p now binds the
+  boundary-resident union path; union_all_p added for the all-object
+  union. Component prose updated for every statistic whose tail
+  changed (dw-sign p = 0.016/0.083, signed residual p = 3e-4/0.025,
+  bipolar mid-sign p = 0.012, LPC transfer sign p = 0.29, mirror-cap
+  sign skill p = 0.70, drift-vs-fixed p = 0.020). Site rebuilt,
+  markdown and PDF regenerated.
+
+Verification state: 14/14 tests pass; publication audit reports 139
+registered steps, 164 Python sources, 203 bound claim occurrences,
+127 unique bound claims, 133 result files, 0 hard errors, 0 nonfinite
+values; step_114 claims trace clean; step_051 staleness audit clean
+(no claimed p absent from its source).

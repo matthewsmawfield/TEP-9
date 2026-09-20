@@ -1,26 +1,96 @@
-[2026-09-19 21:35:41 UTC] [INFO    ] [STEP 109] LOGGER INITIALIZED: step_109_census_bias_audit (Step 109)
-[2026-09-19 21:35:41 UTC] [DEBUG   ] [STEP 109] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_109_census_bias_audit.log
-[2026-09-19 21:35:41 UTC] [DEBUG   ] [STEP 109] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:35:41 UTC] [INFO    ] [STEP 109] ================================================================================
-[2026-09-19 21:35:41 UTC] [INFO    ] [STEP 109] Discovery-bias audit of the CometEls census dipole
-[2026-09-19 21:35:41 UTC] [INFO    ] [STEP 109] ================================================================================
-[2026-09-19 21:35:41 UTC] [INFO    ] [STEP 109] CometEls parsed: 941 comets
-[2026-09-19 21:35:41 UTC] [INFO    ] [STEP 109] broad census n=254 (H -2.0..20.0 on 254 comets, years 1997..2061)
-[2026-09-19 21:35:45 UTC] [INFO    ] [STEP 109] METRIC: T1 footprint null = d_par=+0.1025 p_gal=0.0026 p_ecl=0.0022
-[2026-09-19 21:35:46 UTC] [INFO    ] [STEP 109] METRIC: H-tercile[-inf,6.5) = n=83 d_par=+0.1212 p=0.0257
-[2026-09-19 21:35:46 UTC] [INFO    ] [STEP 109] METRIC: H-tercile[6.5,9) = n=77 d_par=+0.1003 p=0.0653
-[2026-09-19 21:35:47 UTC] [INFO    ] [STEP 109] METRIC: H-tercile[9,inf) = n=94 d_par=+0.0880 p=0.0689
-[2026-09-19 21:35:49 UTC] [INFO    ] [STEP 109] METRIC: H half H < 7.5 = n=119 d_par=+0.0750 p=0.0785
-[2026-09-19 21:35:50 UTC] [INFO    ] [STEP 109] METRIC: H half H >= 7.5 = n=135 d_par=+0.1268 p=0.00565
-[2026-09-19 21:35:50 UTC] [INFO    ] [STEP 109] METRIC: era-tercile[-inf,2021) = n=75 d_par=+0.1403 p=0.0187
-[2026-09-19 21:35:51 UTC] [INFO    ] [STEP 109] METRIC: era-tercile[2021,2024) = n=66 d_par=+0.1181 p=0.0456
-[2026-09-19 21:35:52 UTC] [INFO    ] [STEP 109] METRIC: era-tercile[2024,inf) = n=113 d_par=+0.0684 p=0.106
-[2026-09-19 21:35:53 UTC] [INFO    ] [STEP 109] METRIC: q-tercile[-inf,2.95003) = n=85 d_par=+0.0682 p=0.145
-[2026-09-19 21:35:54 UTC] [INFO    ] [STEP 109] METRIC: q-tercile[2.95003,5.38779) = n=84 d_par=+0.0751 p=0.117
-[2026-09-19 21:35:54 UTC] [INFO    ] [STEP 109] METRIC: q-tercile[5.38779,inf) = n=85 d_par=+0.1640 p=0.004
-[2026-09-19 21:35:54 UTC] [INFO    ] [STEP 109] METRIC: T5 heterogeneity p = H=0.929 year=0.683 q=0.483
-[2026-09-19 21:35:55 UTC] [INFO    ] [STEP 109] Saving data: step_b73_census_bias_audit.png
-[2026-09-19 21:35:55 UTC] [INFO    ] [STEP 109] Saving data: step_b73_census_bias_audit.json
-[2026-09-19 21:35:55 UTC] [INFO    ] [STEP 109] Saving data: step_b73_census_bias_audit.csv
-[2026-09-19 21:35:55 UTC] [INFO    ] [STEP 109] verdict: The CometEls census dipole (n=254, d_par=+0.103) survives the discovery-footprint null -- preserving each aphelion's ecliptic latitude while isotropizing ecliptic longitude (p=0.0022) as it did the galactic-tide null (p=0.0026).  Under magnitude terciles, era terciles, and perihelion-distance terciles the lean stays positive in 9/9 bins, and a single common amplitude is consistent with every variable's partition (H p=0.929, era p=0.683, q p=0.483) -- the dipole is a population property, not a brightness, epoch, or perihelion-selection artefact.
-[2026-09-19 21:35:55 UTC] [INFO    ] [STEP 109] Census bias audit complete
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109] LOGGER INITIALIZED: step_109_census_bias_audit (Step 109)
+[2026-09-20 12:20:48 UTC] [DEBUG   ] [STEP 109] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_109_census_bias_audit.log
+[2026-09-20 12:20:48 UTC] [DEBUG   ] [STEP 109] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:20:48 UTC] [DEBUG   ] [STEP 109] Start time (UTC): 2026-09-20T12:20:48.965453+00:00
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109] 
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109] STEP PURPOSE
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109] --------------------------------------------------------------------------------
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   Step 109 -- discovery-bias audit of the CometEls census dipole.
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   Step 108 found the full CometEls near-parabolic census (n=266)
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   leans toward the cap-declaration axis at d_par=+0.11 under a
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   galactic-tide-aware null.  The n=266 census is far more
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   heterogeneous than the three-leg elite samples -- it mixes
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   photographic-era and survey-era discoveries, bright and faint
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   comets, shallow and deep perihelia -- so the sharpest remaining
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   conventional explanation is discovery selection: comets are
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   catalogued preferentially through discovery windows organized in
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   ECLIPTIC coordinates (surveys scan the ecliptic plane), whereas
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   the tide-aware null is organized in GALACTIC coordinates.  This
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   step audits the census dipole against that hypothesis directly.
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   T1  ecliptic-footprint null: the dipole statistic re-evaluated
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   under a null that preserves the observed |beta_ecl| of each
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   aphelion while isotropizing ecliptic longitude and hemisphere
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   sign -- the survey-footprint-aware analogue of the step-061
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   tide null.  If the dipole were a discovery-window artefact
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   this is the null it should fail.
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   T2  magnitude stability: d_par in the bright and faint halves
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   and in H-terciles of the census.  Discovery selection is
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   magnitude-dependent; a selection artefact should scale with
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   H, a spatial structure should not.
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   T3  era stability: d_par in perihelion-year terciles -- the
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   photographic, early-CCD, and survey-era catalogues carry
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   different footprints.
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   T4  perihelion-distance stability: d_par in q-terciles --
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   shallow-perihelion comets are discovered at larger distances
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   and through different windows.
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   T5  heterogeneity summary: chi-square test of a single common
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   d_par across each variable's bins -- the formal test that
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   the lean is a population property, not a subsample artefact.
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   Inputs
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   data/raw/mpc/CometEls.txt
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   Outputs
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   results/step_b73_census_bias_audit.json
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   results/step_b73_census_bias_audit.csv
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109]   results/figures/supplementary/step_b73_census_bias_audit.png
+[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 109] --------------------------------------------------------------------------------
+[2026-09-20 12:20:49 UTC] [INFO    ] [STEP 109] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:20:49 UTC] [INFO    ] [STEP 109] SCRIPT: scripts/steps/step_109_census_bias_audit.py
+[2026-09-20 12:20:49 UTC] [INFO    ] [STEP 109] SCRIPT SHA256: b8cad3bbd6829dee4329e0a54e670989ad694c583f17c5564a7a012f7c8e0cc6
+[2026-09-20 12:20:49 UTC] [INFO    ] [STEP 109] SCRIPT SIZE: 13501 bytes
+[2026-09-20 12:20:49 UTC] [INFO    ] [STEP 109] ================================================================================
+[2026-09-20 12:20:49 UTC] [INFO    ] [STEP 109] Discovery-bias audit of the CometEls census dipole
+[2026-09-20 12:20:49 UTC] [INFO    ] [STEP 109] ================================================================================
+[2026-09-20 12:20:49 UTC] [INFO    ] [STEP 109] CometEls parsed: 959 comets
+[2026-09-20 12:20:49 UTC] [INFO    ] [STEP 109] broad census n=268 (H -2.0..20.0 on 268 comets, years 1947..2061)
+[2026-09-20 12:20:50 UTC] [INFO    ] [STEP 109] METRIC: T1 footprint null = d_par=+0.1045 p_gal=0.00195 p_ecl=0.0017
+[2026-09-20 12:20:50 UTC] [INFO    ] [STEP 109] METRIC: H-tercile[-inf,6.5) = n=85 d_par=+0.1239 p=0.0244
+[2026-09-20 12:20:51 UTC] [INFO    ] [STEP 109] METRIC: H-tercile[6.5,9) = n=78 d_par=+0.0806 p=0.107
+[2026-09-20 12:20:51 UTC] [INFO    ] [STEP 109] METRIC: H-tercile[9,inf) = n=105 d_par=+0.1066 p=0.0294
+[2026-09-20 12:20:52 UTC] [INFO    ] [STEP 109] METRIC: H half H < 8.0 = n=132 d_par=+0.0832 p=0.0508
+[2026-09-20 12:20:53 UTC] [INFO    ] [STEP 109] METRIC: H half H >= 8.0 = n=136 d_par=+0.1252 p=0.00555
+[2026-09-20 12:20:53 UTC] [INFO    ] [STEP 109] METRIC: era-tercile[-inf,2021) = n=79 d_par=+0.1257 p=0.0298
+[2026-09-20 12:20:53 UTC] [INFO    ] [STEP 109] METRIC: era-tercile[2021,2025) = n=99 d_par=+0.0897 p=0.0594
+[2026-09-20 12:20:54 UTC] [INFO    ] [STEP 109] METRIC: era-tercile[2025,inf) = n=90 d_par=+0.1022 p=0.0451
+[2026-09-20 12:20:54 UTC] [INFO    ] [STEP 109] METRIC: q-tercile[-inf,2.90215) = n=90 d_par=+0.0853 p=0.0837
+[2026-09-20 12:20:54 UTC] [INFO    ] [STEP 109] METRIC: q-tercile[2.90215,5.3412) = n=88 d_par=+0.0691 p=0.132
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] METRIC: q-tercile[5.3412,inf) = n=90 d_par=+0.1584 p=0.00415
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] METRIC: T5 heterogeneity p = H=0.891 year=0.917 q=0.545
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Saving data: supplementary/step_b73_census_bias_audit.png
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Saving data: step_b73_census_bias_audit.json
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Saving data: step_b73_census_bias_audit.csv
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] verdict: The CometEls census dipole (n=268, d_par=+0.105) survives the discovery-footprint null -- preserving each aphelion's ecliptic latitude while isotropizing ecliptic longitude (p=0.0017) as it did the galactic-tide null (p=0.00195).  Under magnitude terciles, era terciles, and perihelion-distance terciles the lean stays positive in 9/9 bins, and a single common amplitude is consistent with every variable's partition (H p=0.891, era p=0.917, q p=0.545) -- the dipole is a population property, not a brightness, epoch, or perihelion-selection artefact.
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Census bias audit complete
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] 
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] ================================================================================
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] STEP SUMMARY: step_109_census_bias_audit
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] ================================================================================
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Step Number: 109
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Status: SUCCESS
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Duration: 6.74s
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Log Records Emitted: 79
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Output Files: 0
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_109_census_bias_audit.log
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] No output files generated
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] ================================================================================
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] STEP 109 COMPLETE: SUCCESS
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_109_census_bias_audit_provenance.json
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] 
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] ================================================================================
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] EXECUTIVE SUMMARY
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] ================================================================================
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Step: step_109_census_bias_audit (Step 109)
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Status: SUCCESS
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Duration: 6.74s
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Log Records: 86
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] Output Files: 0
+[2026-09-20 12:20:55 UTC] [INFO    ] [STEP 109] ================================================================================

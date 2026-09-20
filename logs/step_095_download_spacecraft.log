@@ -1,120 +1,279 @@
-[2026-09-19 20:49:51 UTC] [INFO    ] [STEP 095] LOGGER INITIALIZED: step_095_download_spacecraft (Step 095)
-[2026-09-19 20:49:51 UTC] [DEBUG   ] [STEP 095] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_095_download_spacecraft.log
-[2026-09-19 20:49:51 UTC] [DEBUG   ] [STEP 095] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 20:49:51 UTC] [INFO    ] [STEP 095] ================================================================================
-[2026-09-19 20:49:51 UTC] [INFO    ] [STEP 095] Step 095: spacecraft clock / plasma / power acquisition
-[2026-09-19 20:49:51 UTC] [INFO    ] [STEP 095] ================================================================================
-[2026-09-19 20:49:51 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:49:51 UTC] [DEBUG   ] [STEP 095] --- Voyager 1 SCLK kernel v00051 (clock-correlation reconstruction) ---
-[2026-09-19 20:49:51 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/VOYAGER/kernels/sclk/vg100051.tsc
-[2026-09-19 20:49:52 UTC] [INFO    ] [STEP 095] METRIC: bytes = 90650 vg100051.tsc
-[2026-09-19 20:49:52 UTC] [INFO    ] [STEP 095] Saving data: vg100051.tsc
-[2026-09-19 20:49:52 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/vg100051.tsc
-[2026-09-19 20:49:53 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:49:53 UTC] [DEBUG   ] [STEP 095] --- Voyager 2 SCLK kernel v00051 (clock-correlation reconstruction) ---
-[2026-09-19 20:49:53 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/VOYAGER/kernels/sclk/vg200051.tsc
-[2026-09-19 20:49:54 UTC] [INFO    ] [STEP 095] METRIC: bytes = 108191 vg200051.tsc
-[2026-09-19 20:49:54 UTC] [INFO    ] [STEP 095] Saving data: vg200051.tsc
-[2026-09-19 20:49:54 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/vg200051.tsc
-[2026-09-19 20:49:54 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:49:54 UTC] [DEBUG   ] [STEP 095] --- Voyager 1 merged mission SPK ephemeris ---
-[2026-09-19 20:49:54 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/VOYAGER/kernels/spk/Voyager_1.a54206u_V0.2_merged.bsp
-[2026-09-19 20:50:01 UTC] [INFO    ] [STEP 095] METRIC: bytes = 6374400 Voyager_1.a54206u_V0.2_merged.bsp
-[2026-09-19 20:50:01 UTC] [INFO    ] [STEP 095] Saving data: Voyager_1.a54206u_V0.2_merged.bsp
-[2026-09-19 20:50:01 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/Voyager_1.a54206u_V0.2_merged.bsp
-[2026-09-19 20:50:02 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:02 UTC] [DEBUG   ] [STEP 095] --- Voyager 2 merged mission SPK ephemeris ---
-[2026-09-19 20:50:02 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/VOYAGER/kernels/spk/Voyager_2.m05016u.merged.bsp
-[2026-09-19 20:50:08 UTC] [INFO    ] [STEP 095] METRIC: bytes = 6447104 Voyager_2.m05016u.merged.bsp
-[2026-09-19 20:50:08 UTC] [INFO    ] [STEP 095] Saving data: Voyager_2.m05016u.merged.bsp
-[2026-09-19 20:50:08 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/Voyager_2.m05016u.merged.bsp
-[2026-09-19 20:50:08 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:08 UTC] [DEBUG   ] [STEP 095] --- New Horizons SCLK kernel v3381 (clock-correlation reconstruction through 2025-08, PDS nhsp_1000 archive) ---
-[2026-09-19 20:50:08 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/sclk/new_horizons_3381.tsc
-[2026-09-19 20:50:10 UTC] [INFO    ] [STEP 095] METRIC: bytes = 276281 new_horizons_3381.tsc
-[2026-09-19 20:50:10 UTC] [INFO    ] [STEP 095] Saving data: new_horizons_3381.tsc
-[2026-09-19 20:50:10 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/new_horizons_3381.tsc
-[2026-09-19 20:50:11 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:11 UTC] [DEBUG   ] [STEP 095] --- New Horizons reconstructed trajectory SPK (2006 launch-Jupiter) ---
-[2026-09-19 20:50:11 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_recon_e2j_v1.bsp
-[2026-09-19 20:50:13 UTC] [INFO    ] [STEP 095] METRIC: bytes = 2531328 nh_recon_e2j_v1.bsp
-[2026-09-19 20:50:13 UTC] [INFO    ] [STEP 095] Saving data: nh_recon_e2j_v1.bsp
-[2026-09-19 20:50:13 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_recon_e2j_v1.bsp
-[2026-09-19 20:50:14 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:14 UTC] [DEBUG   ] [STEP 095] --- New Horizons reconstructed trajectory SPK (2007 Jupiter-Sep07) ---
-[2026-09-19 20:50:14 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_recon_j2sep07_prelimv1.bsp
-[2026-09-19 20:50:15 UTC] [INFO    ] [STEP 095] METRIC: bytes = 359424 nh_recon_j2sep07_prelimv1.bsp
-[2026-09-19 20:50:15 UTC] [INFO    ] [STEP 095] Saving data: nh_recon_j2sep07_prelimv1.bsp
-[2026-09-19 20:50:15 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_recon_j2sep07_prelimv1.bsp
-[2026-09-19 20:50:16 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:16 UTC] [DEBUG   ] [STEP 095] --- New Horizons predicted trajectory SPK (2007-2015) ---
-[2026-09-19 20:50:16 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_pred_od077.bsp
-[2026-09-19 20:50:18 UTC] [INFO    ] [STEP 095] METRIC: bytes = 5641216 nh_pred_od077.bsp
-[2026-09-19 20:50:18 UTC] [INFO    ] [STEP 095] Saving data: nh_pred_od077.bsp
-[2026-09-19 20:50:18 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_pred_od077.bsp
-[2026-09-19 20:50:19 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:19 UTC] [DEBUG   ] [STEP 095] --- New Horizons reconstructed trajectory SPK (2012-2014) ---
-[2026-09-19 20:50:19 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_recon_od117_v01.bsp
-[2026-09-19 20:50:22 UTC] [INFO    ] [STEP 095] METRIC: bytes = 2447360 nh_recon_od117_v01.bsp
-[2026-09-19 20:50:22 UTC] [INFO    ] [STEP 095] Saving data: nh_recon_od117_v01.bsp
-[2026-09-19 20:50:22 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_recon_od117_v01.bsp
-[2026-09-19 20:50:22 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:22 UTC] [DEBUG   ] [STEP 095] --- New Horizons reconstructed trajectory SPK (Pluto encounter) ---
-[2026-09-19 20:50:22 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_recon_pluto_od122_v01.bsp
-[2026-09-19 20:50:25 UTC] [INFO    ] [STEP 095] METRIC: bytes = 1724416 nh_recon_pluto_od122_v01.bsp
-[2026-09-19 20:50:25 UTC] [INFO    ] [STEP 095] Saving data: nh_recon_pluto_od122_v01.bsp
-[2026-09-19 20:50:25 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_recon_pluto_od122_v01.bsp
-[2026-09-19 20:50:26 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:26 UTC] [DEBUG   ] [STEP 095] --- New Horizons reconstructed trajectory SPK (2015-2019 Arrokoth) ---
-[2026-09-19 20:50:26 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_recon_arrokoth_od147_v01.bsp
-[2026-09-19 20:50:31 UTC] [INFO    ] [STEP 095] METRIC: bytes = 4668416 nh_recon_arrokoth_od147_v01.bsp
-[2026-09-19 20:50:31 UTC] [INFO    ] [STEP 095] Saving data: nh_recon_arrokoth_od147_v01.bsp
-[2026-09-19 20:50:31 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_recon_arrokoth_od147_v01.bsp
-[2026-09-19 20:50:32 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:32 UTC] [DEBUG   ] [STEP 095] --- New Horizons all-ephemeris predicted trajectory SPK (2019-2033) ---
-[2026-09-19 20:50:32 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_pred_alleph_od164.bsp
-[2026-09-19 20:50:42 UTC] [INFO    ] [STEP 095]   →   partial 8015854/13074432 bytes; resuming (2/6)
-[2026-09-19 20:50:47 UTC] [INFO    ] [STEP 095] METRIC: bytes = 13074432 nh_pred_alleph_od164.bsp
-[2026-09-19 20:50:47 UTC] [INFO    ] [STEP 095] Saving data: nh_pred_alleph_od164.bsp
-[2026-09-19 20:50:47 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_pred_alleph_od164.bsp
-[2026-09-19 20:50:48 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:48 UTC] [DEBUG   ] [STEP 095] --- NAIF leapseconds kernel ---
-[2026-09-19 20:50:48 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls
-[2026-09-19 20:50:48 UTC] [INFO    ] [STEP 095] METRIC: bytes = 5257 naif0012.tls
-[2026-09-19 20:50:48 UTC] [INFO    ] [STEP 095] Saving data: naif0012.tls
-[2026-09-19 20:50:48 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/naif0012.tls
-[2026-09-19 20:50:49 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:49 UTC] [DEBUG   ] [STEP 095] --- Voyager 1 PWS VLISM electron density 2012-2025 (PDS4) ---
-[2026-09-19 20:50:49 UTC] [INFO    ] [STEP 095]   → GET https://pds-ppi.igpp.ucla.edu/data/voyager-pws-vlism-density/data/vg1-vlism-density-2012-2025.csv
-[2026-09-19 20:50:50 UTC] [INFO    ] [STEP 095] METRIC: bytes = 128955 vg1-vlism-density-2012-2025.csv
-[2026-09-19 20:50:50 UTC] [INFO    ] [STEP 095] Saving data: vg1-vlism-density-2012-2025.csv
-[2026-09-19 20:50:50 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/voyager_pws/vg1-vlism-density-2012-2025.csv
-[2026-09-19 20:50:51 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:51 UTC] [DEBUG   ] [STEP 095] --- Voyager 1 PWS VLISM density PDS4 label ---
-[2026-09-19 20:50:51 UTC] [INFO    ] [STEP 095]   → GET https://pds-ppi.igpp.ucla.edu/data/voyager-pws-vlism-density/data/vg1-vlism-density-2012-2025.lblx
-[2026-09-19 20:50:52 UTC] [INFO    ] [STEP 095] METRIC: bytes = 18119 vg1-vlism-density-2012-2025.lblx
-[2026-09-19 20:50:52 UTC] [INFO    ] [STEP 095] Saving data: vg1-vlism-density-2012-2025.lblx
-[2026-09-19 20:50:52 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/voyager_pws/vg1-vlism-density-2012-2025.lblx
-[2026-09-19 20:50:52 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:52 UTC] [DEBUG   ] [STEP 095] --- Voyager 2 PWS VLISM electron density 2019-2025 (PDS4) ---
-[2026-09-19 20:50:52 UTC] [INFO    ] [STEP 095]   → GET https://pds-ppi.igpp.ucla.edu/data/voyager-pws-vlism-density/data/vg2-vlism-density-2019-2025.csv
-[2026-09-19 20:50:53 UTC] [INFO    ] [STEP 095] METRIC: bytes = 1171 vg2-vlism-density-2019-2025.csv
-[2026-09-19 20:50:53 UTC] [INFO    ] [STEP 095] Saving data: vg2-vlism-density-2019-2025.csv
-[2026-09-19 20:50:53 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/voyager_pws/vg2-vlism-density-2019-2025.csv
-[2026-09-19 20:50:54 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:54 UTC] [DEBUG   ] [STEP 095] --- Voyager 2 PWS VLISM density PDS4 label ---
-[2026-09-19 20:50:54 UTC] [INFO    ] [STEP 095]   → GET https://pds-ppi.igpp.ucla.edu/data/voyager-pws-vlism-density/data/vg2-vlism-density-2019-2025.lblx
-[2026-09-19 20:50:54 UTC] [INFO    ] [STEP 095] METRIC: bytes = 16440 vg2-vlism-density-2019-2025.lblx
-[2026-09-19 20:50:54 UTC] [INFO    ] [STEP 095] Saving data: vg2-vlism-density-2019-2025.lblx
-[2026-09-19 20:50:54 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/voyager_pws/vg2-vlism-density-2019-2025.lblx
-[2026-09-19 20:50:55 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:50:55 UTC] [DEBUG   ] [STEP 095] --- Dryad doi:10.5061/dryad.1zcrjdfw2 -- Whiting & Woerner 2023 historical RTG performance data (Voyager MHW-RTG telemetry through 2021-08, per-RTG and total-mission normalized power) ---
-[2026-09-19 20:50:55 UTC] [INFO    ] [STEP 095]   → GET https://datadryad.org/stash/downloads/file_stream/2917296 (via Dryad/Anubis gate)
-[2026-09-19 20:50:56 UTC] [INFO    ] [STEP 095]   → anubis PoW solved: nonce=90377 (50 ms)
-[2026-09-19 20:51:03 UTC] [INFO    ] [STEP 095] METRIC: bytes = 2250808 All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx
-[2026-09-19 20:51:03 UTC] [INFO    ] [STEP 095] Saving data: All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx
-[2026-09-19 20:51:03 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/rtg/All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx
-[2026-09-19 20:51:03 UTC] [DEBUG   ] [STEP 095] 
-[2026-09-19 20:51:03 UTC] [DEBUG   ] [STEP 095] --- Dryad RTG dataset README (pedigree and usage terms) ---
-[2026-09-19 20:51:03 UTC] [INFO    ] [STEP 095]   → GET https://datadryad.org/stash/downloads/file_stream/2917298 (via Dryad/Anubis gate)
-[2026-09-19 20:51:04 UTC] [INFO    ] [STEP 095]   → anubis PoW solved: nonce=62105 (50 ms)
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] LOGGER INITIALIZED: step_095_download_spacecraft (Step 095)
+[2026-09-20 12:18:04 UTC] [DEBUG   ] [STEP 095] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_095_download_spacecraft.log
+[2026-09-20 12:18:04 UTC] [DEBUG   ] [STEP 095] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:18:04 UTC] [DEBUG   ] [STEP 095] Start time (UTC): 2026-09-20T12:18:04.572229+00:00
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] 
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] STEP PURPOSE
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] --------------------------------------------------------------------------------
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   TEP-9 step 095 -- Spacecraft clock / plasma / power data acquisition
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   Downloads the real, archival data products needed by the spacecraft
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   clock and nuclear-process channels of the TEP-9 analysis:
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   1. NAIF Voyager spacecraft-clock (SCLK) kernels.  These text kernels
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   encode the full reconstructed SCLK -> ephemeris-time correlation
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   history (SCLK_COEFFICIENTS triplets per partition) built by JPL
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   from the SCLKvSCET clock-calibration record.  Every coefficient
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   record is a ground calibration of the onboard oscillator rate;
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   partition boundaries and rate-mode records document every resync,
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   re-rate and rollover event across the mission.
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   2. NAIF Voyager SPK ephemeris kernels (merged mission trajectories)
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   so that each clock-calibration epoch can be placed at the correct
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   heliocentric radius and sky direction.
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   3. NAIF leapseconds kernel (naif0012.tls) for ET <-> UTC conversion.
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   4. NAIF New Horizons SCLK kernel and predicted-trajectory SPK
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   (PDS nhsp_1000 archive): the interior control craft -- a third
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   long-lived outer-trajectory clock, still inside the heliosphere,
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   whose asymptote lies outside both field caps.
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   5. PDS/PPI Voyager PWS VLISM electron-density collections
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   (urn:nasa:pds:voyager-pws-vlism-density): per-event electron plasma
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   frequency and derived density with uncertainty bounds, spacecraft
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   radius and heliocentric direction, and distance past the
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   heliopause, for Voyager 1 (2012-2025) and Voyager 2 (2019-2025).
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   6. The Dryad historical RTG performance dataset (Whiting & Woerner
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   2023, doi:10.5061/dryad.1zcrjdfw2): the published archive of
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   spaceborne RTG power telemetry, including the Voyager 1 and
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   Voyager 2 MHW-RTG records obtained from JPL mission telemetry
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   (per-RTG and total-mission normalized power versus time, through
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   August 2021).  Dryad serves file downloads behind an Anubis
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   Hashcash proof-of-work gate; the download function below solves
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   that challenge in exactly the way a standards-compliant browser
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   does (SHA-256 over the issued randomData + nonce until the digest
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   carries the required leading zeros, then the documented
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   pass-challenge API), so the acquisition remains scripted and
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   reproducible rather than manual.
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   7. A literature-anchor file for quantities that are not publicly
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   retrievable as raw telemetry but are documented in primary
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   references: termination-shock and heliopause crossing epochs and
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   radii, RTG electrical power anchor points (retained as an
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   independent cross-check on the telemetry record), the Pu-238
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   half-life and MHW-RTG degradation rate, and the heliospheric
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   reference directions (ISM inflow, IBEX ribbon centre, pristine
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   ISMF direction).  Every value carries its citation; these are
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   literature inputs, not fabricated measurements.
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   Outputs
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   data/raw/naif/vg100051.tsc, vg200051.tsc,
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   Voyager_1.a54206u_V0.2_merged.bsp, Voyager_2.m05016u.merged.bsp,
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   naif0012.tls
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   data/raw/voyager_pws/vg1-vlism-density-2012-2025.csv (+ .lblx)
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   data/raw/voyager_pws/vg2-vlism-density-2019-2025.csv (+ .lblx)
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   data/raw/rtg/All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   data/raw/rtg/README_dryad.md
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   data/raw/literature/literature_anchors.json
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   data/raw/provenance_spacecraft.json -- URL, timestamp, bytes, sha256
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] --------------------------------------------------------------------------------
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] SCRIPT: scripts/steps/step_095_download_spacecraft.py
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] SCRIPT SHA256: 6157437a5547c0a924c6bb7ff1a6982928ebb244b3b684c812bd3da0141251f1
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] SCRIPT SIZE: 22530 bytes
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] ================================================================================
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] Step 095: spacecraft clock / plasma / power acquisition
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095] ================================================================================
+[2026-09-20 12:18:04 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:04 UTC] [DEBUG   ] [STEP 095] --- Voyager 1 SCLK kernel v00051 (clock-correlation reconstruction) ---
+[2026-09-20 12:18:04 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/VOYAGER/kernels/sclk/vg100051.tsc
+[2026-09-20 12:18:06 UTC] [INFO    ] [STEP 095] METRIC: bytes = 90650 vg100051.tsc
+[2026-09-20 12:18:06 UTC] [INFO    ] [STEP 095] Saving data: vg100051.tsc
+[2026-09-20 12:18:06 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/vg100051.tsc
+[2026-09-20 12:18:06 UTC] [INFO    ] [STEP 095]   Output: vg100051.tsc
+[2026-09-20 12:18:06 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:06 UTC] [DEBUG   ] [STEP 095] --- Voyager 2 SCLK kernel v00051 (clock-correlation reconstruction) ---
+[2026-09-20 12:18:06 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/VOYAGER/kernels/sclk/vg200051.tsc
+[2026-09-20 12:18:07 UTC] [INFO    ] [STEP 095] METRIC: bytes = 108191 vg200051.tsc
+[2026-09-20 12:18:07 UTC] [INFO    ] [STEP 095] Saving data: vg200051.tsc
+[2026-09-20 12:18:07 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/vg200051.tsc
+[2026-09-20 12:18:07 UTC] [INFO    ] [STEP 095]   Output: vg200051.tsc
+[2026-09-20 12:18:08 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:08 UTC] [DEBUG   ] [STEP 095] --- Voyager 1 merged mission SPK ephemeris ---
+[2026-09-20 12:18:08 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/VOYAGER/kernels/spk/Voyager_1.a54206u_V0.2_merged.bsp
+[2026-09-20 12:18:16 UTC] [INFO    ] [STEP 095] METRIC: bytes = 6374400 Voyager_1.a54206u_V0.2_merged.bsp
+[2026-09-20 12:18:16 UTC] [INFO    ] [STEP 095] Saving data: Voyager_1.a54206u_V0.2_merged.bsp
+[2026-09-20 12:18:16 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/Voyager_1.a54206u_V0.2_merged.bsp
+[2026-09-20 12:18:16 UTC] [INFO    ] [STEP 095]   Output: Voyager_1.a54206u_V0.2_merged.bsp
+[2026-09-20 12:18:16 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:16 UTC] [DEBUG   ] [STEP 095] --- Voyager 2 merged mission SPK ephemeris ---
+[2026-09-20 12:18:16 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/VOYAGER/kernels/spk/Voyager_2.m05016u.merged.bsp
+[2026-09-20 12:18:24 UTC] [INFO    ] [STEP 095] METRIC: bytes = 6447104 Voyager_2.m05016u.merged.bsp
+[2026-09-20 12:18:24 UTC] [INFO    ] [STEP 095] Saving data: Voyager_2.m05016u.merged.bsp
+[2026-09-20 12:18:24 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/Voyager_2.m05016u.merged.bsp
+[2026-09-20 12:18:24 UTC] [INFO    ] [STEP 095]   Output: Voyager_2.m05016u.merged.bsp
+[2026-09-20 12:18:24 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:24 UTC] [DEBUG   ] [STEP 095] --- New Horizons SCLK kernel v3381 (clock-correlation reconstruction through 2025-08, PDS nhsp_1000 archive) ---
+[2026-09-20 12:18:24 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/sclk/new_horizons_3381.tsc
+[2026-09-20 12:18:26 UTC] [INFO    ] [STEP 095] METRIC: bytes = 276281 new_horizons_3381.tsc
+[2026-09-20 12:18:26 UTC] [INFO    ] [STEP 095] Saving data: new_horizons_3381.tsc
+[2026-09-20 12:18:26 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/new_horizons_3381.tsc
+[2026-09-20 12:18:26 UTC] [INFO    ] [STEP 095]   Output: new_horizons_3381.tsc
+[2026-09-20 12:18:27 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:27 UTC] [DEBUG   ] [STEP 095] --- New Horizons reconstructed trajectory SPK (2006 launch-Jupiter) ---
+[2026-09-20 12:18:27 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_recon_e2j_v1.bsp
+[2026-09-20 12:18:29 UTC] [INFO    ] [STEP 095] METRIC: bytes = 2531328 nh_recon_e2j_v1.bsp
+[2026-09-20 12:18:29 UTC] [INFO    ] [STEP 095] Saving data: nh_recon_e2j_v1.bsp
+[2026-09-20 12:18:29 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_recon_e2j_v1.bsp
+[2026-09-20 12:18:29 UTC] [INFO    ] [STEP 095]   Output: nh_recon_e2j_v1.bsp
+[2026-09-20 12:18:30 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:30 UTC] [DEBUG   ] [STEP 095] --- New Horizons reconstructed trajectory SPK (2007 Jupiter-Sep07) ---
+[2026-09-20 12:18:30 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_recon_j2sep07_prelimv1.bsp
+[2026-09-20 12:18:31 UTC] [INFO    ] [STEP 095] METRIC: bytes = 359424 nh_recon_j2sep07_prelimv1.bsp
+[2026-09-20 12:18:31 UTC] [INFO    ] [STEP 095] Saving data: nh_recon_j2sep07_prelimv1.bsp
+[2026-09-20 12:18:31 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_recon_j2sep07_prelimv1.bsp
+[2026-09-20 12:18:31 UTC] [INFO    ] [STEP 095]   Output: nh_recon_j2sep07_prelimv1.bsp
+[2026-09-20 12:18:32 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:32 UTC] [DEBUG   ] [STEP 095] --- New Horizons predicted trajectory SPK (2007-2015) ---
+[2026-09-20 12:18:32 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_pred_od077.bsp
+[2026-09-20 12:18:38 UTC] [INFO    ] [STEP 095] METRIC: bytes = 5641216 nh_pred_od077.bsp
+[2026-09-20 12:18:38 UTC] [INFO    ] [STEP 095] Saving data: nh_pred_od077.bsp
+[2026-09-20 12:18:38 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_pred_od077.bsp
+[2026-09-20 12:18:38 UTC] [INFO    ] [STEP 095]   Output: nh_pred_od077.bsp
+[2026-09-20 12:18:38 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:38 UTC] [DEBUG   ] [STEP 095] --- New Horizons reconstructed trajectory SPK (2012-2014) ---
+[2026-09-20 12:18:38 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_recon_od117_v01.bsp
+[2026-09-20 12:18:42 UTC] [INFO    ] [STEP 095] METRIC: bytes = 2447360 nh_recon_od117_v01.bsp
+[2026-09-20 12:18:42 UTC] [INFO    ] [STEP 095] Saving data: nh_recon_od117_v01.bsp
+[2026-09-20 12:18:42 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_recon_od117_v01.bsp
+[2026-09-20 12:18:42 UTC] [INFO    ] [STEP 095]   Output: nh_recon_od117_v01.bsp
+[2026-09-20 12:18:43 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:43 UTC] [DEBUG   ] [STEP 095] --- New Horizons reconstructed trajectory SPK (Pluto encounter) ---
+[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_recon_pluto_od122_v01.bsp
+[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 095] METRIC: bytes = 1724416 nh_recon_pluto_od122_v01.bsp
+[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 095] Saving data: nh_recon_pluto_od122_v01.bsp
+[2026-09-20 12:18:45 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_recon_pluto_od122_v01.bsp
+[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 095]   Output: nh_recon_pluto_od122_v01.bsp
+[2026-09-20 12:18:46 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:46 UTC] [DEBUG   ] [STEP 095] --- New Horizons reconstructed trajectory SPK (2015-2019 Arrokoth) ---
+[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_recon_arrokoth_od147_v01.bsp
+[2026-09-20 12:18:51 UTC] [INFO    ] [STEP 095] METRIC: bytes = 4668416 nh_recon_arrokoth_od147_v01.bsp
+[2026-09-20 12:18:51 UTC] [INFO    ] [STEP 095] Saving data: nh_recon_arrokoth_od147_v01.bsp
+[2026-09-20 12:18:51 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_recon_arrokoth_od147_v01.bsp
+[2026-09-20 12:18:51 UTC] [INFO    ] [STEP 095]   Output: nh_recon_arrokoth_od147_v01.bsp
+[2026-09-20 12:18:52 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:18:52 UTC] [DEBUG   ] [STEP 095] --- New Horizons all-ephemeris predicted trajectory SPK (2019-2033) ---
+[2026-09-20 12:18:52 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/pds/data/nh-j_p_ss-spice-6-v1.0/nhsp_1000/data/spk/nh_pred_alleph_od164.bsp
+[2026-09-20 12:18:57 UTC] [INFO    ] [STEP 095]   →   partial 8159854/13074432 bytes; resuming (2/6)
+[2026-09-20 12:19:06 UTC] [INFO    ] [STEP 095] METRIC: bytes = 13074432 nh_pred_alleph_od164.bsp
+[2026-09-20 12:19:06 UTC] [INFO    ] [STEP 095] Saving data: nh_pred_alleph_od164.bsp
+[2026-09-20 12:19:06 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/nh_pred_alleph_od164.bsp
+[2026-09-20 12:19:06 UTC] [INFO    ] [STEP 095]   Output: nh_pred_alleph_od164.bsp
+[2026-09-20 12:19:06 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:19:06 UTC] [DEBUG   ] [STEP 095] --- NAIF leapseconds kernel ---
+[2026-09-20 12:19:06 UTC] [INFO    ] [STEP 095]   → GET https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls
+[2026-09-20 12:19:07 UTC] [INFO    ] [STEP 095] METRIC: bytes = 5257 naif0012.tls
+[2026-09-20 12:19:07 UTC] [INFO    ] [STEP 095] Saving data: naif0012.tls
+[2026-09-20 12:19:07 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/naif/naif0012.tls
+[2026-09-20 12:19:07 UTC] [INFO    ] [STEP 095]   Output: naif0012.tls
+[2026-09-20 12:19:08 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:19:08 UTC] [DEBUG   ] [STEP 095] --- Voyager 1 PWS VLISM electron density 2012-2025 (PDS4) ---
+[2026-09-20 12:19:08 UTC] [INFO    ] [STEP 095]   → GET https://pds-ppi.igpp.ucla.edu/data/voyager-pws-vlism-density/data/vg1-vlism-density-2012-2025.csv
+[2026-09-20 12:19:10 UTC] [INFO    ] [STEP 095] METRIC: bytes = 128955 vg1-vlism-density-2012-2025.csv
+[2026-09-20 12:19:10 UTC] [INFO    ] [STEP 095] Saving data: vg1-vlism-density-2012-2025.csv
+[2026-09-20 12:19:10 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/voyager_pws/vg1-vlism-density-2012-2025.csv
+[2026-09-20 12:19:10 UTC] [INFO    ] [STEP 095]   Output: vg1-vlism-density-2012-2025.csv
+[2026-09-20 12:19:10 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:19:10 UTC] [DEBUG   ] [STEP 095] --- Voyager 1 PWS VLISM density PDS4 label ---
+[2026-09-20 12:19:10 UTC] [INFO    ] [STEP 095]   → GET https://pds-ppi.igpp.ucla.edu/data/voyager-pws-vlism-density/data/vg1-vlism-density-2012-2025.lblx
+[2026-09-20 12:19:12 UTC] [INFO    ] [STEP 095] METRIC: bytes = 18119 vg1-vlism-density-2012-2025.lblx
+[2026-09-20 12:19:12 UTC] [INFO    ] [STEP 095] Saving data: vg1-vlism-density-2012-2025.lblx
+[2026-09-20 12:19:12 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/voyager_pws/vg1-vlism-density-2012-2025.lblx
+[2026-09-20 12:19:12 UTC] [INFO    ] [STEP 095]   Output: vg1-vlism-density-2012-2025.lblx
+[2026-09-20 12:19:12 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:19:12 UTC] [DEBUG   ] [STEP 095] --- Voyager 2 PWS VLISM electron density 2019-2025 (PDS4) ---
+[2026-09-20 12:19:12 UTC] [INFO    ] [STEP 095]   → GET https://pds-ppi.igpp.ucla.edu/data/voyager-pws-vlism-density/data/vg2-vlism-density-2019-2025.csv
+[2026-09-20 12:19:13 UTC] [INFO    ] [STEP 095] METRIC: bytes = 1171 vg2-vlism-density-2019-2025.csv
+[2026-09-20 12:19:13 UTC] [INFO    ] [STEP 095] Saving data: vg2-vlism-density-2019-2025.csv
+[2026-09-20 12:19:13 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/voyager_pws/vg2-vlism-density-2019-2025.csv
+[2026-09-20 12:19:13 UTC] [INFO    ] [STEP 095]   Output: vg2-vlism-density-2019-2025.csv
+[2026-09-20 12:19:13 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:19:13 UTC] [DEBUG   ] [STEP 095] --- Voyager 2 PWS VLISM density PDS4 label ---
+[2026-09-20 12:19:13 UTC] [INFO    ] [STEP 095]   → GET https://pds-ppi.igpp.ucla.edu/data/voyager-pws-vlism-density/data/vg2-vlism-density-2019-2025.lblx
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] METRIC: bytes = 16440 vg2-vlism-density-2019-2025.lblx
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Saving data: vg2-vlism-density-2019-2025.lblx
+[2026-09-20 12:19:15 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/voyager_pws/vg2-vlism-density-2019-2025.lblx
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   Output: vg2-vlism-density-2019-2025.lblx
+[2026-09-20 12:19:15 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:19:15 UTC] [DEBUG   ] [STEP 095] --- Dryad doi:10.5061/dryad.1zcrjdfw2 -- Whiting & Woerner 2023 historical RTG performance data (Voyager MHW-RTG telemetry through 2021-08, per-RTG and total-mission normalized power) ---
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   → cached All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx: 2250808 bytes; sha256 matches recorded provenance -- reusing
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Saving data: All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx
+[2026-09-20 12:19:15 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/rtg/All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   Output: All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx
+[2026-09-20 12:19:15 UTC] [DEBUG   ] [STEP 095] 
+[2026-09-20 12:19:15 UTC] [DEBUG   ] [STEP 095] --- Dryad RTG dataset README (pedigree and usage terms) ---
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   → cached README_dryad.md: 5536 bytes; sha256 matches recorded provenance -- reusing
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Saving data: README_dryad.md
+[2026-09-20 12:19:15 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/rtg/README_dryad.md
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   Output: README_dryad.md
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Saving data: literature_anchors.json
+[2026-09-20 12:19:15 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/literature/literature_anchors.json
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   Output: literature_anchors.json
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Saving data: provenance_spacecraft.json
+[2026-09-20 12:19:15 UTC] [DEBUG   ] [STEP 095]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/provenance_spacecraft.json
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   Output: provenance_spacecraft.json
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] METRIC: n_files = 20 files registered
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] ✓ Spacecraft data acquisition complete
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] 
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] ================================================================================
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] STEP SUMMARY: step_095_download_spacecraft
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] ================================================================================
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Step Number: 095
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Status: SUCCESS
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Duration: 1.18m
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Log Records Emitted: 216
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Output Files: 21
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_095_download_spacecraft.log
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] 
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Generated 21 output file(s):
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • vg100051.tsc: 88.53 KB [sha256 036f5eeee519b6ab]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • vg200051.tsc: 105.66 KB [sha256 bf8ae3b237a4f753]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • Voyager_1.a54206u_V0.2_merged.bsp: 6225.00 KB [sha256 47c6f2be03668b50]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • Voyager_2.m05016u.merged.bsp: 6296.00 KB [sha256 ce66cba12cf77bf3]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • new_horizons_3381.tsc: 269.81 KB [sha256 2d6c43adf1ecf46b]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • nh_recon_e2j_v1.bsp: 2472.00 KB [sha256 cf8e3713785f04f6]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • nh_recon_j2sep07_prelimv1.bsp: 351.00 KB [sha256 56f843180d4e60e5]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • nh_pred_od077.bsp: 5509.00 KB [sha256 28a68c63c443d4b6]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • nh_recon_od117_v01.bsp: 2390.00 KB [sha256 add442ff6bb4b043]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • nh_recon_pluto_od122_v01.bsp: 1684.00 KB [sha256 9c4186d6e444a55e]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • nh_recon_arrokoth_od147_v01.bsp: 4559.00 KB [sha256 3595162b808bfd7e]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • nh_pred_alleph_od164.bsp: 12768.00 KB [sha256 b676f0053ee02f6e]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • naif0012.tls: 5.13 KB [sha256 678e32bdb5a74411]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • vg1-vlism-density-2012-2025.csv: 125.93 KB [sha256 2c870bc5ea8ef95a]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • vg1-vlism-density-2012-2025.lblx: 17.69 KB [sha256 825716fed9fafd56]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • vg2-vlism-density-2019-2025.csv: 1.14 KB [sha256 fd85e2468ac07c41]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • vg2-vlism-density-2019-2025.lblx: 16.05 KB [sha256 995b054b7ae6d2e0]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx: 2198.05 KB [sha256 fd1e3d83970a48f9]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • README_dryad.md: 5.41 KB [sha256 8a7d51ae37721646]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • literature_anchors.json: 3.63 KB [sha256 ec42167de23c8015]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   • provenance_spacecraft.json: 8.02 KB [sha256 41643faa25b1dc1c]
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] ================================================================================
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] STEP 095 COMPLETE: SUCCESS
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_095_download_spacecraft_provenance.json
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] 
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] ================================================================================
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] EXECUTIVE SUMMARY
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] ================================================================================
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Step: step_095_download_spacecraft (Step 095)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Status: SUCCESS
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Duration: 1.18m
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Log Records: 245
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Output Files: 21
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] Key Outputs:
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - vg100051.tsc (88.53 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - vg200051.tsc (105.66 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - Voyager_1.a54206u_V0.2_merged.bsp (6225.00 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - Voyager_2.m05016u.merged.bsp (6296.00 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - new_horizons_3381.tsc (269.81 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - nh_recon_e2j_v1.bsp (2472.00 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - nh_recon_j2sep07_prelimv1.bsp (351.00 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - nh_pred_od077.bsp (5509.00 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - nh_recon_od117_v01.bsp (2390.00 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - nh_recon_pluto_od122_v01.bsp (1684.00 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - nh_recon_arrokoth_od147_v01.bsp (4559.00 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - nh_pred_alleph_od164.bsp (12768.00 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - naif0012.tls (5.13 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - vg1-vlism-density-2012-2025.csv (125.93 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - vg1-vlism-density-2012-2025.lblx (17.69 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - vg2-vlism-density-2019-2025.csv (1.14 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - vg2-vlism-density-2019-2025.lblx (16.05 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx (2198.05 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - README_dryad.md (5.41 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - literature_anchors.json (3.63 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095]   - provenance_spacecraft.json (8.02 KB)
+[2026-09-20 12:19:15 UTC] [INFO    ] [STEP 095] ================================================================================
+8:40 UTC] [INFO    ] [STEP 095]   - provenance_spacecraft.json (8.02 KB)
+[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 095] ================================================================================

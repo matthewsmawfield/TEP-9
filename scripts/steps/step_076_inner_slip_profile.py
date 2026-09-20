@@ -15,7 +15,7 @@ to a pre-encounter (inbound-passage or observed-arc) origin.
 Outputs:
     results/step_b41_inner_slip.json
     results/step_b41_inner_slip.csv      (per comet per shell)
-    results/figures/step_b41_inner_slip.png
+    results/figures/supplementary/step_b41_inner_slip.png
 """
 
 import sys
@@ -310,9 +310,8 @@ with open(RESULTS / "step_b41_inner_slip.csv", "w", newline="") as f:
 
 with open(RESULTS / "step_b41_inner_slip.json", "w") as f:
     json.dump(res, f, indent=1)
-print(f"wrote {RESULTS / 'step_b41_inner_slip.json'}")
-print(f"wrote {RESULTS / 'step_b41_inner_slip.csv'}")
-
+logger.data_save(RESULTS / 'step_b41_inner_slip.json')
+logger.data_save(RESULTS / 'step_b41_inner_slip.csv')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -350,9 +349,8 @@ ax.set_title("where the excess develops", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b41_inner_slip.png", dpi=150)
-print(f"wrote {FIG / 'step_b41_inner_slip.png'}")
-
+fig.savefig(FIG / "supplementary" / "step_b41_inner_slip.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b41_inner_slip.png')
 for j, s in enumerate(SHELLS):
     logger.info(f"s={s:6.1f} AU  drot in/out = {prof['median_drot_in'][j]:.4f}/"
                 f"{prof['median_drot_out'][j]:.4f} deg  excess = "

@@ -53,7 +53,7 @@ Outputs
 -------
 results/step_b88_lineage_aphelion.json
 results/step_b88_lineage_aphelion.csv
-results/figures/step_b88_lineage_aphelion.png
+results/figures/supplementary/step_b88_lineage_aphelion.png
 """
 
 import sys as _sys
@@ -445,9 +445,9 @@ ax[2].legend(fontsize=8)
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b88_lineage_aphelion.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b88_lineage_aphelion.png", dpi=300)
 plt.close(fig)
-logger.data_save(FIG / "step_b88_lineage_aphelion.png")
+logger.data_save(FIG / "supplementary" / "step_b88_lineage_aphelion.png")
 
 # ------------------------------------------------------------------ output
 d_post = res["post2017_near_parabolic"]["T1_tide_aware"]["cap_34_-13"]
@@ -483,6 +483,7 @@ res_full = dict(
                  "diagnosed residual systematic, free-dipole "
                  "recovery, and era combination."),
     inputs=["data/raw/sbdb/sbdb_comets_all.json",
+            "data/raw/mpc/CometEls.txt",
             "results/step_b30_proper_time_slip.csv",
             "results/step_b84_pre2018_sbdb.csv"],
     seed=SEED, n_mc=N_MC,

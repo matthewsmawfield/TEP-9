@@ -32,7 +32,7 @@ K3  How often does the null produce a 60-90 deg ring as
     depleted as observed (<= 4 objects)?
 
 Outputs: results/step_b21_morphology_conditional.json,
-         figures/step_b21_morphology_conditional.png
+         figures/supplementary/step_b21_morphology_conditional.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -263,10 +263,10 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b21_morphology_conditional.png",
-                dpi=150)
-    print("wrote results/step_b21_morphology_conditional.json, "
-          "figures/step_b21_morphology_conditional.png")
+    fig.savefig(FIG / "supplementary" / "step_b21_morphology_conditional.png",
+                dpi=300)
+    logger.data_save(RESULTS / "step_b21_morphology_conditional.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b21_morphology_conditional.png")
 
 
 if __name__ == "__main__":

@@ -1,31 +1,94 @@
-[2026-09-19 21:17:18 UTC] [INFO    ] [STEP 025] LOGGER INITIALIZED: step_025_patch_scale (Step 025)
-[2026-09-19 21:17:18 UTC] [DEBUG   ] [STEP 025] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_025_patch_scale.log
-[2026-09-19 21:17:18 UTC] [DEBUG   ] [STEP 025] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:17:18 UTC] [INFO    ] [STEP 025] ================================================================================
-[2026-09-19 21:17:18 UTC] [INFO    ] [STEP 025] Intrinsic patch scale
-[2026-09-19 21:17:18 UTC] [INFO    ] [STEP 025] ================================================================================
-P1 cap  20:  8/44 p=0.1080
-P1 cap  30: 14/44 p=0.0100
-P1 cap  40: 19/44 p=0.0013
-P1 cap  50: 24/44 p=0.0002
-P1 cap  60: 26/44 p=0.0004
-P1 cap  70: 27/44 p=0.0022
-P1 cap  80: 29/44 p=0.0033
-P1 cap  90: 30/44 p=0.0114
-P1 cap 100: 31/44 p=0.0317
-P1 cap 110: 34/44 p=0.0191
-P1 cap 120: 35/44 p=0.0428
-P2 f=0.43 k=2.77 sigma=34 deg CI[27,48]
-P3 bootstrap mu [33,67] med|dmu|=11
-P4 cap  20:  6/44 p=0.0018
-P4 cap  30: 12/44 p=0.0001
-P4 cap  40: 19/44 p=0.0000
-P4 cap  50: 24/44 p=0.0000
-P4 cap  60: 26/44 p=0.0000
-P4 cap  70: 26/44 p=0.0003
-P4 cap  80: 29/44 p=0.0009
-P4 cap  90: 30/44 p=0.0122
-P4 cap 100: 32/44 p=0.0386
-P4 cap 110: 36/44 p=0.0231
-P4 cap 120: 36/44 p=0.1927
-wrote results/step_b13_patch_scale.json, figures/step_b13_patch_scale.png
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] LOGGER INITIALIZED: step_025_patch_scale (Step 025)
+[2026-09-20 10:42:27 UTC] [DEBUG   ] [STEP 025] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_025_patch_scale.log
+[2026-09-20 10:42:27 UTC] [DEBUG   ] [STEP 025] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:42:27 UTC] [DEBUG   ] [STEP 025] Start time (UTC): 2026-09-20T10:42:27.880971+00:00
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] 
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] STEP PURPOSE
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] --------------------------------------------------------------------------------
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   TEP / Planet-9 -- step b13: the angular scale of the structure
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   The comet-side analysis (steps 12-16) found the clock-channel
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   anomaly is a broad ~60-70 deg patch, not a point.  This step
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   measures the angular scale of the detached-TNO cluster on the
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   same footing, so the two populations can be compared.
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   P1  Cap-radius significance profile: in-cap counts vs the
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   conditioned null for caps 20-120 deg.  The radius of peak
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   significance is the detection-optimal angular scale.
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   P2  Intrinsic width: refit the uniform + von-Mises mixture;
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   the cluster component's kappa -> sigma_cluster = 1/sqrt(k).
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   Bootstrap CI on both f and sigma.
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   P3  Direction wandering: bootstrap the cluster-centre estimate
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   -- does the recovered direction wander like the comet
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   patch's (~24-55 deg between catalogues)?
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   P4  3-D check: the same cap profile on perihelion vectors in
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   3-D (angular distance from the 3-D axis), verifying the
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   scale is not an ecliptic-projection artifact.
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   Outputs: results/step_b13_patch_scale.json,
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025]   figures/supplementary/step_b13_patch_scale.png
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] --------------------------------------------------------------------------------
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] SCRIPT: scripts/steps/step_025_patch_scale.py
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] SCRIPT SHA256: bc71aa00f3d1117e652932c319de3499bb4b9a4e7c0fa18e7aaa3b6e59821834
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] SCRIPT SIZE: 10616 bytes
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] ================================================================================
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] Intrinsic patch scale
+[2026-09-20 10:42:27 UTC] [INFO    ] [STEP 025] ================================================================================
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap  20:  8/44 p=0.1080
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap  30: 14/44 p=0.0100
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap  40: 19/44 p=0.0013
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap  50: 24/44 p=0.0002
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap  60: 26/44 p=0.0004
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap  70: 27/44 p=0.0022
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap  80: 29/44 p=0.0033
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap  90: 30/44 p=0.0114
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap 100: 31/44 p=0.0317
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap 110: 34/44 p=0.0191
+[2026-09-20 10:42:28 UTC] [INFO    ] [STEP 025] P1 cap 120: 35/44 p=0.0428
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P2 f=0.43 k=2.77 sigma=34 deg CI[27,48]
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P3 bootstrap mu [33,67] med|dmu|=11
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap  20:  6/44 p=0.0018
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap  30: 12/44 p=0.0001
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap  40: 19/44 p=0.0000
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap  50: 24/44 p=0.0000
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap  60: 26/44 p=0.0000
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap  70: 26/44 p=0.0003
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap  80: 29/44 p=0.0009
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap  90: 30/44 p=0.0122
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap 100: 32/44 p=0.0386
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap 110: 36/44 p=0.0231
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] P4 cap 120: 36/44 p=0.1927
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Saving data: step_b13_patch_scale.json
+[2026-09-20 10:43:51 UTC] [DEBUG   ] [STEP 025]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b13_patch_scale.json
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025]   Output: step_b13_patch_scale.json
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Saving data: step_b13_patch_scale.png
+[2026-09-20 10:43:51 UTC] [DEBUG   ] [STEP 025]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b13_patch_scale.png
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025]   Output: step_b13_patch_scale.png
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] 
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] ================================================================================
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] STEP SUMMARY: step_025_patch_scale
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] ================================================================================
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Step Number: 025
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Status: SUCCESS
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Duration: 1.40m
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Log Records Emitted: 71
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Output Files: 2
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_025_patch_scale.log
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] 
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Generated 2 output file(s):
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025]   • step_b13_patch_scale.json: 3.17 KB [sha256 4bd154e1dd2048be]
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025]   • step_b13_patch_scale.png: 276.94 KB [sha256 a3109e42f568095f]
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] ================================================================================
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] STEP 025 COMPLETE: SUCCESS
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_025_patch_scale_provenance.json
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] 
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] ================================================================================
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] EXECUTIVE SUMMARY
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] ================================================================================
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Step: step_025_patch_scale (Step 025)
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Status: SUCCESS
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Duration: 1.40m
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Log Records: 81
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Output Files: 2
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] Key Outputs:
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025]   - step_b13_patch_scale.json (3.17 KB)
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025]   - step_b13_patch_scale.png (276.94 KB)
+[2026-09-20 10:43:51 UTC] [INFO    ] [STEP 025] ================================================================================

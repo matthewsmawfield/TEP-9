@@ -51,7 +51,7 @@ Outputs
 -------
 results/step_b47_sky_matched.json
 results/step_b47_sky_matched.csv   (per-comet geometry + channels)
-results/figures/step_b47_sky_matched.png
+results/figures/supplementary/step_b47_sky_matched.png
 """
 
 import sys as _sys
@@ -150,9 +150,9 @@ oscT = parse_code(str(DATA_RAW/"code"/"code_osculating.html"))
 def sep(a,b):
     return float(np.degrees(np.arccos(np.clip(np.dot(a,b),-1,1))))
 
-ANTI = np.array([math.cos(math.radians(17.0))*math.cos(math.radians(229.0)),
-                 math.cos(math.radians(17.0))*math.sin(math.radians(229.0)),
-                 math.sin(math.radians(17.0))])
+ANTI = np.array([math.cos(math.radians(13.0))*math.cos(math.radians(214.0)),
+                 math.cos(math.radians(13.0))*math.sin(math.radians(214.0)),
+                 math.sin(math.radians(13.0))])
 CAP = 60.0
 
 rows=[]
@@ -181,8 +181,8 @@ logger.info(f"in-patch members: {sum(r['in_patch'] for r in rows)} "
 res = {"method":"matched observed-patch design: within comets seen from "
        "the same geocentric sky region at perihelion epoch, a sky-localized "
        "systematic predicts the discrepancy tracks observed direction, while "
-       "a boundary at the resident axis predicts it tracks aphelion direction.",
-       "cap_deg":CAP, "axis":"49,-17", "anti_axis":"229,+17", "seed":SEED,
+       "a boundary at the declared axis predicts it tracks aphelion direction.",
+       "cap_deg":CAP, "axis":"34,-13", "anti_axis":"214,+13", "seed":SEED,
        "n":len(rows)}
 
 # ------------------------------------------------------------------
@@ -328,9 +328,8 @@ with open(RESULTS/"step_b47_sky_matched.csv","w",newline="") as f:
                                    "b_gal","d_of","q","in_cap","in_patch"])
     w.writeheader()
     for r in rows: w.writerow(r)
-print(f"wrote {RESULTS/'step_b47_sky_matched.json'}")
-print(f"wrote {RESULTS/'step_b47_sky_matched.csv'}")
-
+logger.data_save(RESULTS/'step_b47_sky_matched.json')
+logger.data_save(RESULTS/'step_b47_sky_matched.csv')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -376,5 +375,5 @@ ax.set_xlabel("partial Spearman $\\rho$ with $d_{of}$")
 ax.set_title("which direction carries the signal",fontsize=10)
 fig.tight_layout()
 FIG=RESULTS/"figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG/"step_b47_sky_matched.png",dpi=150)
-print(f"wrote {FIG/'step_b47_sky_matched.png'}")
+fig.savefig(FIG/"supplementary" / "step_b47_sky_matched.png",dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b47_sky_matched.png')

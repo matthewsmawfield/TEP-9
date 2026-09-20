@@ -60,7 +60,7 @@ Outputs
 -------
 results/step_b76_ossos_ensemble.json
 results/step_b76_ossos_ensemble.csv   (per-class + per-object det scoring)
-results/figures/step_b76_ossos_ensemble.png
+results/figures/supplementary/step_b76_ossos_ensemble.png
 """
 
 import sys as _sys
@@ -238,8 +238,11 @@ det_audit = dict(
         source="Gladman et al. 2008 criterion as applied in the "
                "t3char classification (Bannister et al. 2018)"),
     baseline_coupled=det_base,
-    p_vs_coupled=float(binomtest(n_det_in, n_det, det_base).pvalue),
-    p_vs_uniform=float(binomtest(n_det_in, n_det, UNIFORM).pvalue),
+    # declared directional prediction (in-cap excess) -> greater tail
+    p_vs_coupled=float(binomtest(n_det_in, n_det, det_base,
+                                 alternative="greater").pvalue),
+    p_vs_uniform=float(binomtest(n_det_in, n_det, UNIFORM,
+                                 alternative="greater").pvalue),
     p_vs_prediction_0p59=float(binomtest(n_det_in, n_det, 0.59).pvalue),
     R_varpi=circ_R(np.deg2rad(det_vps)),
     mean_varpi_deg=circ_mean(np.deg2rad(det_vps)),
@@ -256,9 +259,12 @@ vpsS = np.array([o["varpi"] for o in det_S])
 nS, nS_in = len(det_S), int(np.sum(d_ax(vpsS) < CAP))
 det_audit["secure_subset"] = dict(
     n=nS, n_in=nS_in, frac_in=nS_in / nS if nS else np.nan,
-    p_vs_uniform=float(binomtest(nS_in, nS, UNIFORM).pvalue) if nS else np.nan,
+    p_vs_uniform=float(binomtest(nS_in, nS, UNIFORM,
+                                 alternative="greater").pvalue)
+    if nS else np.nan,
     p_vs_coupled=float(binomtest(
-        nS_in, nS, coupled_baseline([o["lam_disc"] for o in det_S])).pvalue)
+        nS_in, nS, coupled_baseline([o["lam_disc"] for o in det_S]),
+        alternative="greater").pvalue)
     if nS else np.nan)
 
 # discovery-sector split
@@ -482,8 +488,7 @@ res = dict(
 
 out = RESULTS / "step_b76_ossos_ensemble.json"
 json.dump(res, open(out, "w"), indent=1, default=float)
-print("wrote", out)
-
+logger.data_save(out)
 csv_out = RESULTS / "step_b76_ossos_ensemble.csv"
 with open(csv_out, "w", newline="") as f:
     w = csv.writer(f)
@@ -496,8 +501,7 @@ with open(csv_out, "w", newline="") as f:
                     f"{o['lam_disc']:.3f}", f"{d_ax(o['varpi']):.2f}",
                     int(d_ax(o["varpi"]) < CAP),
                     f"{((o['varpi'] - o['lam_disc'] + 180) % 360 - 180):.2f}"])
-print("wrote", csv_out)
-
+logger.data_save(csv_out)
 # ------------------------------------------------------------------
 # 6. Figure
 # ------------------------------------------------------------------
@@ -554,5 +558,5 @@ ax.set_xlim(0, 360); ax.set_ylim(0, 360)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"
-fig.savefig(FIG / "step_b76_ossos_ensemble.png", dpi=150)
-print(f"wrote {FIG / 'step_b76_ossos_ensemble.png'}")
+fig.savefig(FIG / "supplementary" / "step_b76_ossos_ensemble.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b76_ossos_ensemble.png')

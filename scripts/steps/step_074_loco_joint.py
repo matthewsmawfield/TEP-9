@@ -12,7 +12,7 @@ largest contributor -- a weight statement, not a significance claim.
 
 Inputs : same data stack as step_069
 Outputs: results/step_b39_loco_joint.json
-         results/figures/step_b39_loco_joint.png
+         results/figures/supplementary/step_b39_loco_joint.png
 """
 
 import sys as _sys
@@ -203,8 +203,7 @@ for lab, obs_ln in (("tno_axis_49m17", ln_tno), ("comet_axis_34m13", ln_com)):
 
 with open(RESULTS / "step_b39_loco_joint.json", "w") as f:
     json.dump(res, f, indent=1)
-print(f"wrote {RESULTS / 'step_b39_loco_joint.json'}")
-
+logger.data_save(RESULTS / 'step_b39_loco_joint.json')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -229,5 +228,5 @@ ax.set_title("joint significance survives every leave-one-out set",
              fontsize=10)
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b39_loco_joint.png", dpi=150)
-print(f"wrote {FIG / 'step_b39_loco_joint.png'}")
+fig.savefig(FIG / "supplementary" / "step_b39_loco_joint.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b39_loco_joint.png')

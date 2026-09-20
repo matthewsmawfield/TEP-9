@@ -1,212 +1,269 @@
-[2026-09-19 21:25:57 UTC] [INFO    ] [STEP 032] LOGGER INITIALIZED: step_032_nested_field (Step 032)
-[2026-09-19 21:25:57 UTC] [DEBUG   ] [STEP 032] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_032_nested_field.log
-[2026-09-19 21:25:57 UTC] [DEBUG   ] [STEP 032] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:25:57 UTC] [INFO    ] [STEP 032] ================================================================================
-[2026-09-19 21:25:57 UTC] [INFO    ] [STEP 032] Nested-field multi-axis test
-[2026-09-19 21:25:57 UTC] [INFO    ] [STEP 032] ================================================================================
-107 matched; spike n=99, full-arc n=60
-{
- "n_matched": 107,
- "n_spike": 99,
- "n_full": 60,
- "axis_scan_ddir_full": {
-  "tno": {
-   "n_in": 21,
-   "med_in": 0.10518563754764582,
-   "med_out": 0.06337932566157782,
-   "p": 0.008864300328535015
-  },
-  "anti_tno": {
-   "n_in": 11,
-   "med_in": 0.06337932566157782,
-   "med_out": 0.07530744678480443,
-   "p": 0.5832236817742218
-  },
-  "ism": {
-   "n_in": 10,
-   "med_in": 0.05995278007871687,
-   "med_out": 0.07706125785896045,
-   "p": 0.44086937240558244
-  },
-  "cmb_apex": {
-   "n_in": 12,
-   "med_in": 0.07576766708894739,
-   "med_out": 0.07272204964294206,
-   "p": 0.40149197857069285
-  },
-  "cmb_anti": {
-   "n_in": 13,
-   "med_in": 0.09873755088138675,
-   "med_out": 0.06522854159245667,
-   "p": 0.11464132008951106
-  },
-  "gal_ctr": {
-   "n_in": 12,
-   "med_in": 0.07109719729734715,
-   "med_out": 0.0728837949036191,
-   "p": 0.3943620865844608
-  },
-  "gal_pole": {
-   "n_in": 11,
-   "med_in": 0.06476007430142847,
-   "med_out": 0.07881506893311647,
-   "p": 0.6558600549410476
-  },
-  "ecl_pole": {
-   "n_in": 12,
-   "med_in": 0.05502172201251871,
-   "med_out": 0.08446903670223094,
-   "p": 0.9721090094157281
-  }
- },
- "depth_L1": {
-  "in60": {
-   "n": 32,
-   "spearman_ddir_vs_aa": {
-    "rho": 0.06231671554252198,
-    "p": 0.7347446274882852
-   }
-  },
-  "out60": {
-   "n": 67,
-   "spearman_ddir_vs_aa": {
-    "rho": 0.03192593183813553,
-    "p": 0.7975860063121274
-   }
-  },
-  "global": {
-   "rho": 0.06494743351886208,
-   "p": 0.5230268833504471
-  }
- },
- "element_decomp_L2": {
-  "dir": {
-   "med_in": 0.09241478690236163,
-   "med_out": 0.06522854159245667,
-   "p_cap_greater": 0.034250150811914015,
-   "rho_vs_theta": -0.015955473098330238,
-   "p_spearman": 0.8754429109908457
-  },
-  "omega": {
-   "med_in": 0.06782099999999502,
-   "med_out": 0.05002799999999752,
-   "p_cap_greater": 0.16260850762182105,
-   "rho_vs_theta": 0.029721706864564008,
-   "p_spearman": 0.7702591214709315
-  },
-  "Omega": {
-   "med_in": 0.03768300000000124,
-   "med_out": 0.0382979999999975,
-   "p_cap_greater": 0.3227217981165619,
-   "rho_vs_theta": 0.028534322820037105,
-   "p_spearman": 0.7791980547157364
-  },
-  "incl": {
-   "med_in": 0.03958149999999705,
-   "med_out": 0.031123000000008005,
-   "p_cap_greater": 0.15895639876916362,
-   "rho_vs_theta": -0.07191094619666048,
-   "p_spearman": 0.4793587449362853
-  },
-  "inv_a": {
-   "med_in": 469.235,
-   "med_out": 282.71000000000004,
-   "p_cap_greater": 0.20847523307914456,
-   "rho_vs_theta": 0.015534941249226962,
-   "p_spearman": 0.8787004560381582
-  },
-  "ecc": {
-   "med_in": 0.001206615000000022,
-   "med_out": 0.0010049600000000547,
-   "p_cap_greater": 0.21279504594720278,
-   "rho_vs_theta": 0.04760667903525046,
-   "p_spearman": 0.6398345837289122
-  },
-  "q": {
-   "med_in": 0.0038249750000003413,
-   "med_out": 0.0028690399999993232,
-   "p_cap_greater": 0.16631477266724531,
-   "rho_vs_theta": -0.033234384662956085,
-   "p_spearman": 0.7439942699341282
-  }
- },
- "dynamics_L4": {
-  "retro_i>90": {
-   "n_in": 12,
-   "n_out": 20,
-   "med_in": 0.10985189888123575,
-   "med_out": 0.06430393362701725,
-   "p": 0.022501052735731105
-  },
-  "prog_i<90": {
-   "n_in": 9,
-   "n_out": 19,
-   "med_in": 0.09873755088138675,
-   "med_out": 0.05527739124071683,
-   "p": 0.05772746282896802
-  }
- },
- "shells_L1b": {
-  "aa_0_20": {
-   "n": 10,
-   "n_in": 4,
-   "med_in": 0.08708581812068299,
-   "med_out": 0.07034804905178572,
-   "p": 0.23809523809523808
-  },
-  "aa_20_50": {
-   "n": 36,
-   "n_in": 8,
-   "med_in": 0.10196159421451628,
-   "med_out": 0.06374214653365418,
-   "p": 0.09019036137730112
-  },
-  "aa_50_100": {
-   "n": 14,
-   "n_in": 9,
-   "med_in": 0.11493177317188259,
-   "med_out": 0.06337932566157782,
-   "p": 0.11988011988011989
-  }
- },
- "nested_axes": {
-  "ism_45": {
-   "n_in": 8,
-   "med_in": 0.07288942027861982,
-   "med_out": 0.07194963970003163,
-   "p": 0.4723872254970028
-  },
-  "ism_60": {
-   "n_in": 17,
-   "med_in": 0.06337932566157782,
-   "med_out": 0.07286919560143398,
-   "p": 0.4245757620795051
-  },
-  "cmb_apex_45": {
-   "n_in": 9,
-   "med_in": 0.08107519115546101,
-   "med_out": 0.0715339171748568,
-   "p": 0.47815995195775174
-  },
-  "cmb_apex_60": {
-   "n_in": 20,
-   "med_in": 0.07646386094641952,
-   "med_out": 0.07194963970003163,
-   "p": 0.3918428475121901
-  },
-  "cmb_anti_45": {
-   "n_in": 18,
-   "med_in": 0.04872847741756662,
-   "med_out": 0.07378875150283633,
-   "p": 0.7863487566966807
-  },
-  "cmb_anti_60": {
-   "n_in": 22,
-   "med_in": 0.07261734236567646,
-   "med_out": 0.07194963970003163,
-   "p": 0.535210182695565
-  }
- },
- "note_epoch": "perihelion-year trend not implemented (year not parsed in this step)"
-}
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_09_nested_field.json
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] LOGGER INITIALIZED: step_032_nested_field (Step 032)
+[2026-09-20 10:45:30 UTC] [DEBUG   ] [STEP 032] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_032_nested_field.log
+[2026-09-20 10:45:30 UTC] [DEBUG   ] [STEP 032] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:45:30 UTC] [DEBUG   ] [STEP 032] Start time (UTC): 2026-09-20T10:45:30.228457+00:00
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] 
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] STEP PURPOSE
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] --------------------------------------------------------------------------------
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   step_09: nested-field comet test -- layered depth, element decomposition,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   multi-axis structure, and orbital-dynamics discriminators.
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   The proper-time field is layered: Solar-System domain nested inside the
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   galactic domain, nested inside cosmological structure (TEP-C0: the same
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   suppression operator propagates across environments).  A comet inbound
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   from the Oort cloud crosses multiple boundaries -- the accumulated
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   reconstruction discrepancy should therefore:
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   L1. scale with traversal depth (1/a_orig = which shell it came from),
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   L2. decompose into specific elements -- a temporal field couples
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   primarily to ENERGY (1/a) and orientation, not uniformly,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   L3. appear on each physically-motivated axis separately (TNO boundary
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   axis, heliosphere/ISM inflow axis, CMB dipole apex = field rest
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   frame, galactic axes as controls),
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   L4. survive the orbital-dynamics confound: retrograde comets feel
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   weaker planetary impulse (faster relative velocity), so a cap
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   excess among retrograde comets is non-planetary.
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   Data: Warsaw catalogue tables a1/b/c (Krolikowska 2014), all real.
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] --------------------------------------------------------------------------------
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] SCRIPT: scripts/steps/step_032_nested_field.py
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] SCRIPT SHA256: f341bd72767225197002eb5124eb12a4ddbc7cd079d2e26406b8ddcc75cba78a
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] SCRIPT SIZE: 9853 bytes
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Nested-field multi-axis test
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] 107 matched; spike n=99, full-arc n=60
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] RESULT PAYLOAD:
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  "n_matched": 107,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  "n_spike": 99,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  "n_full": 60,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  "axis_scan_ddir_full": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "tno": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 21,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.10518563754764582,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.06337932566157782,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.008864300328535015
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "anti_tno": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 11,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.06337932566157782,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.07530744678480443,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.5832236817742218
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "ism": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 10,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.05995278007871687,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.07706125785896045,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.44086937240558244
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "cmb_apex": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 12,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.07576766708894739,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.07272204964294206,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.40149197857069285
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "cmb_anti": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 13,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.09873755088138675,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.06522854159245667,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.11464132008951106
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "gal_ctr": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 12,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.07109719729734715,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.0728837949036191,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.3943620865844608
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "gal_pole": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 11,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.06476007430142847,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.07881506893311647,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.6558600549410476
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "ecl_pole": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 12,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.05502172201251871,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.08446903670223094,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.9721090094157281
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   }
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  "depth_L1": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "in60": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n": 32,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "spearman_ddir_vs_aa": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]     "rho": 0.06231671554252198,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]     "p": 0.7347446274882852
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    }
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "out60": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n": 67,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "spearman_ddir_vs_aa": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]     "rho": 0.03192593183813553,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]     "p": 0.7975860063121274
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    }
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "global": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "rho": 0.06494743351886208,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.5230268833504471
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   }
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  "element_decomp_L2": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "dir": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.09241478690236163,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.06522854159245667,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_cap_greater": 0.034250150811914015,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "rho_vs_theta": -0.015955473098330238,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_spearman": 0.8754429109908457
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "omega": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.06782099999999502,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.05002799999999752,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_cap_greater": 0.16260850762182105,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "rho_vs_theta": 0.029721706864564008,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_spearman": 0.7702591214709315
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "Omega": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.03768300000000124,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.0382979999999975,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_cap_greater": 0.3227217981165619,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "rho_vs_theta": 0.028534322820037105,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_spearman": 0.7791980547157364
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "incl": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.03958149999999705,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.031123000000008005,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_cap_greater": 0.15895639876916362,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "rho_vs_theta": -0.07191094619666048,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_spearman": 0.4793587449362853
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "inv_a": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 469.235,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 282.71000000000004,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_cap_greater": 0.20847523307914456,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "rho_vs_theta": 0.015534941249226962,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_spearman": 0.8787004560381582
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "ecc": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.001206615000000022,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.0010049600000000547,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_cap_greater": 0.21279504594720278,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "rho_vs_theta": 0.04760667903525046,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_spearman": 0.6398345837289122
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "q": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.0038249750000003413,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.0028690399999993232,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_cap_greater": 0.16631477266724531,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "rho_vs_theta": -0.033234384662956085,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p_spearman": 0.7439942699341282
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   }
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  "dynamics_L4": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "retro_i>90": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 12,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_out": 20,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.10985189888123575,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.06430393362701725,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.022501052735731105
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "prog_i<90": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 9,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_out": 19,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.09873755088138675,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.05527739124071683,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.05772746282896802
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   }
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  "shells_L1b": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "aa_0_20": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n": 10,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 4,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.08708581812068299,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.07034804905178572,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.23809523809523808
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "aa_20_50": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n": 36,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 8,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.10196159421451628,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.06374214653365418,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.09019036137730112
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "aa_50_100": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n": 14,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 9,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.11493177317188259,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.06337932566157782,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.11988011988011989
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   }
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  "nested_axes": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "ism_45": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 8,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.07288942027861982,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.07194963970003163,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.4723872254970028
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "ism_60": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 17,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.06337932566157782,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.07286919560143398,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.4245757620795051
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "cmb_apex_45": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 9,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.08107519115546101,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.0715339171748568,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.47815995195775174
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "cmb_apex_60": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 20,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.07646386094641952,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.07194963970003163,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.3918428475121901
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "cmb_anti_45": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 18,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.04872847741756662,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.07378875150283633,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.7863487566966807
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   "cmb_anti_60": {
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "n_in": 22,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_in": 0.07261734236567646,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "med_out": 0.07194963970003163,
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]    "p": 0.535210182695565
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   }
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  },
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]  "note_epoch": "perihelion-year trend not implemented (year not parsed in this step)"
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] }
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Saving data: step_09_nested_field.json
+[2026-09-20 10:45:30 UTC] [DEBUG   ] [STEP 032]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_09_nested_field.json
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   Output: step_09_nested_field.json
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] 
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] STEP SUMMARY: step_032_nested_field
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Step Number: 032
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Status: SUCCESS
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Duration: 0.41s
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Log Records Emitted: 248
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Output Files: 1
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_032_nested_field.log
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] 
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Generated 1 output file(s):
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   • step_09_nested_field.json: 4.49 KB [sha256 13aab3e8532b8b75]
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] STEP 032 COMPLETE: SUCCESS
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_032_nested_field_provenance.json
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] 
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] EXECUTIVE SUMMARY
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] ================================================================================
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Step: step_032_nested_field (Step 032)
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Status: SUCCESS
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Duration: 0.41s
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Log Records: 257
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Output Files: 1
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] Key Outputs:
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032]   - step_09_nested_field.json (4.49 KB)
+[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 032] ================================================================================

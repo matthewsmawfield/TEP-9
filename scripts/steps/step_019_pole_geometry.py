@@ -39,7 +39,7 @@ cluster axis -- whether the pole structure and the perihelion
 structure point at the same inertial frame.
 
 Outputs: results/step_b4_pole_geometry.json,
-         figures/step_b4_pole_geometry.png
+         figures/supplementary/step_b4_pole_geometry.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -271,9 +271,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b4_pole_geometry.png", dpi=150)
-    print("wrote results/step_b4_pole_geometry.json, "
-          "figures/step_b4_pole_geometry.png")
+    fig.savefig(FIG / "supplementary" / "step_b4_pole_geometry.png", dpi=300)
+    logger.data_save(RESULTS / "step_b4_pole_geometry.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b4_pole_geometry.png")
 
 
 if __name__ == "__main__":

@@ -1,18 +1,85 @@
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] LOGGER INITIALIZED: step_075_signed_slip (Step 075)
-[2026-09-19 20:44:29 UTC] [DEBUG   ] [STEP 075] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_075_signed_slip.log
-[2026-09-19 20:44:29 UTC] [DEBUG   ] [STEP 075] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] ================================================================================
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] Signed slip direction: lag vs advance
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] ================================================================================
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] signed rotations: code 131, warsaw 98
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] code/in: n=43 pos=7 (0.16) p=0.0000 med=-0.1373 deg
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] code/out: n=88 pos=26 (0.30) p=0.0002 med=-0.0751 deg
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] warsaw/in: n=32 pos=23 (0.72) p=0.0201 med=+0.0479 deg
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] warsaw/out: n=66 pos=49 (0.74) p=0.0001 med=+0.0356 deg
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] pooled/in: n=75 pos=30 (0.40) p=0.1053 med=-0.0347 deg
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] pooled/out: n=154 pos=75 (0.49) p=0.8091 med=-0.0054 deg
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] in-cap prograde: n=31 pos=15 med=-0.0249 p=1.0000
-[2026-09-19 20:44:29 UTC] [INFO    ] [STEP 075] in-cap retrograde: n=44 pos=15 med=-0.0362 p=0.0488
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b40_signed_slip.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b40_signed_slip.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b40_signed_slip.png
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] LOGGER INITIALIZED: step_075_signed_slip (Step 075)
+[2026-09-20 11:36:50 UTC] [DEBUG   ] [STEP 075] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_075_signed_slip.log
+[2026-09-20 11:36:50 UTC] [DEBUG   ] [STEP 075] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 11:36:50 UTC] [DEBUG   ] [STEP 075] Start time (UTC): 2026-09-20T11:36:50.275353+00:00
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] 
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] STEP PURPOSE
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] --------------------------------------------------------------------------------
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   Step 075 -- signed direction of the slip: lag or advance?
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   A proper-time lapse is not a random torque: a comet that loses proper
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   time during the inside passage arrives at each observed position late
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   in orbital phase, and a standard-clock reconstruction absorbs the
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   delay as a systematic rotation of the fitted orbit -- always in the
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   same signed sense relative to the comet's own direction of motion.
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   A stray gravitational perturbation, by contrast, rotates the orbit
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   either way depending on encounter geometry.
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   For every comet the signed rotation from the original-leg to the
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   future-leg periapsis direction is measured about the comet's own
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   orbit pole:  positive = periapsis advanced along the direction of
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   orbital motion.  CODE uses the orig->fut pair (its anomaly channel);
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   Warsaw uses osc->orig (the catalogue's inbound channel, where its
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   anomaly lives).  Sign coherence is tested in and out of the cap,
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   pooled and per cohort, and split by prograde/retrograde orientation
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   to separate a universal phase sign from a sky-fixed direction kick.
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   Outputs:
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   results/step_b40_signed_slip.json
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   results/step_b40_signed_slip.csv
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075]   results/figures/supplementary/step_b40_signed_slip.png
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] --------------------------------------------------------------------------------
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] SCRIPT: scripts/steps/step_075_signed_slip.py
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] SCRIPT SHA256: c9bf278ae15a99f9444ca0f77ae00ada3f93e50dd2741068d045f9410adc5681
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] SCRIPT SIZE: 11308 bytes
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] ================================================================================
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] Signed slip direction: lag vs advance
+[2026-09-20 11:36:50 UTC] [INFO    ] [STEP 075] ================================================================================
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] signed rotations: code 131, warsaw 98
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] code/in: n=43 pos=7 (0.16) p=0.0000 med=-0.1373 deg
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] code/out: n=88 pos=26 (0.30) p=0.0002 med=-0.0751 deg
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] warsaw/in: n=32 pos=23 (0.72) p=0.0201 med=+0.0479 deg
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] warsaw/out: n=66 pos=49 (0.74) p=0.0001 med=+0.0356 deg
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] pooled/in: n=75 pos=30 (0.40) p=0.1053 med=-0.0347 deg
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] pooled/out: n=154 pos=75 (0.49) p=0.8091 med=-0.0054 deg
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] in-cap prograde: n=31 pos=15 med=-0.0249 p=1.0000
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] in-cap retrograde: n=44 pos=15 med=-0.0362 p=0.0488
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Saving data: step_b40_signed_slip.json
+[2026-09-20 11:36:51 UTC] [DEBUG   ] [STEP 075]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b40_signed_slip.json
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075]   Output: step_b40_signed_slip.json
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Saving data: step_b40_signed_slip.csv
+[2026-09-20 11:36:51 UTC] [DEBUG   ] [STEP 075]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b40_signed_slip.csv
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075]   Output: step_b40_signed_slip.csv
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Saving data: step_b40_signed_slip.png
+[2026-09-20 11:36:51 UTC] [DEBUG   ] [STEP 075]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b40_signed_slip.png
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075]   Output: step_b40_signed_slip.png
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] 
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] ================================================================================
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] STEP SUMMARY: step_075_signed_slip
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] ================================================================================
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Step Number: 075
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Status: SUCCESS
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Duration: 1.52s
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Log Records Emitted: 60
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Output Files: 3
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_075_signed_slip.log
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] 
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Generated 3 output file(s):
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075]   • step_b40_signed_slip.json: 1.99 KB [sha256 56ffc95fc6b0878b]
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075]   • step_b40_signed_slip.csv: 15.69 KB [sha256 9990115bc26d5d84]
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075]   • step_b40_signed_slip.png: 112.32 KB [sha256 0e12a2b8bb2e869c]
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] ================================================================================
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] STEP 075 COMPLETE: SUCCESS
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_075_signed_slip_provenance.json
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] 
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] ================================================================================
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] EXECUTIVE SUMMARY
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] ================================================================================
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Step: step_075_signed_slip (Step 075)
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Status: SUCCESS
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Duration: 1.52s
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Log Records: 71
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Output Files: 3
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] Key Outputs:
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075]   - step_b40_signed_slip.json (1.99 KB)
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075]   - step_b40_signed_slip.csv (15.69 KB)
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075]   - step_b40_signed_slip.png (112.32 KB)
+[2026-09-20 11:36:51 UTC] [INFO    ] [STEP 075] ================================================================================

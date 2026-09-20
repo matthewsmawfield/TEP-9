@@ -31,7 +31,7 @@ T5  Inter-giant apsidal coherence: pairwise forced-direction
     coincidence sits inside.
 
 Outputs: results/step_b108_giant_apsidal.json/.csv and
-results/figures/step_b108_giant_apsidal.png.
+results/figures/supplementary/step_b108_giant_apsidal.png.
 """
 
 import sys as _sys
@@ -39,7 +39,7 @@ from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.tep9_common import DATA_RAW, RESULTS, tee_stdout, lv, sep
-logger = StepLogger("step_144_giant_apsidal")
+logger = StepLogger("step_144_giant_planet_apsidal")
 tee_stdout(logger)
 logger.header("Giant-planet secular apsidal channel")
 
@@ -284,11 +284,11 @@ ax.set_title("per-giant axis proximity")
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b108_giant_apsidal.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b108_giant_apsidal.png", dpi=300)
 
 logger.info("verdict: " + res["verdict"])
 logger.data_save(out)
 logger.data_save(RESULTS / "step_b108_giant_apsidal.csv")
-logger.data_save(FIG / "step_b108_giant_apsidal.png")
-print(json.dumps(res["test_summary"], indent=1))
-print(res["verdict"])
+logger.data_save(FIG / "supplementary" / "step_b108_giant_apsidal.png")
+print("TEST SUMMARY:\n" + json.dumps(res["test_summary"], indent=1))
+print(f"VERDICT: {res['verdict']}")

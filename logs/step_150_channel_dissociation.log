@@ -1,7 +1,140 @@
-[2026-09-19 21:48:56 UTC] [INFO    ] [STEP 150] LOGGER INITIALIZED: step_150_channel_dissociation (Step 150)
-[2026-09-19 21:48:56 UTC] [DEBUG   ] [STEP 150] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_150_channel_dissociation.log
-[2026-09-19 21:48:56 UTC] [DEBUG   ] [STEP 150] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:48:57 UTC] [INFO    ] [STEP 150] candidates with full SBDB sigmas: 249 of 249 refit rows
-[2026-09-19 21:48:57 UTC] [INFO    ] [STEP 150] sample: 60 comets ([83, 83, 83] per tercile), 16+10+10 draws each
-[2026-09-19 22:08:04 UTC] [INFO    ] [STEP 150] completed perturbation runs: 60
-[2026-09-19 22:08:04 UTC] [INFO    ] [STEP 150] verdict: DISSOCIATION IS NOT AN ORBIT-ERROR ARTEFACT -- REVERSED SENSITIVITY ORDERING: the leg-rotation observable cancels common-mode element error (differential construction: inbound and outbound asymptotes 
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150] LOGGER INITIALIZED: step_150_channel_dissociation (Step 150)
+[2026-09-20 12:36:33 UTC] [DEBUG   ] [STEP 150] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_150_channel_dissociation.log
+[2026-09-20 12:36:33 UTC] [DEBUG   ] [STEP 150] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:36:33 UTC] [DEBUG   ] [STEP 150] Start time (UTC): 2026-09-20T12:36:33.838959+00:00
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150] 
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150] STEP PURPOSE
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150] --------------------------------------------------------------------------------
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   step_150_channel_dissociation — reconstruction-error sensitivity audit of
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   the two post-2017 transit channels.
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   The post-2017 cohort dissociates the transit instrument's two channels on
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   the SAME members: the reconstruction-dependent periapsis-rotation channel
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   fails to transfer the declared-axis contrast (step_117: perm p = 0.92, sign
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   reversed) and its catalogue-discrepancy residual field attenuates in the
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   densest-observation stratum (step_118 T12: gap +0.10 to +0.20 dex on the
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   moderate-quality strata, -0.02 dex at n_obs > 1000), while the
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   reconstruction-insensitive aphelion-dipole channel replicates the declared
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   axis on the identical cohort (step_124: d_par = +0.095, tide-aware
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   p = 0.0021) flat across the same quality strata (+0.091 / +0.098 / +0.093
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   dex).
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   This step tests the mechanistic premise of that dissociation: that
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   realistic short-arc orbit-solution errors move the leg-to-leg boundary
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   rotation strongly but move the aphelion direction negligibly.  If the
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   rotation channel is orders of magnitude more sensitive to the element
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   errors that short-arc fits inflate, the observed dissociation is the
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   predicted signature of a reconstruction systematic — it can only enter
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   the channel that passes through an orbit solution at leg resolution.
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   Method: for each comet of a quality-stratified post-2017 sample, inject
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   Monte-Carlo perturbations of the fitted elements drawn from the object's
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   own SBDB element sigmas (data/raw/mpc/sbdb_fp/), rebuild the osculating
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   state, and propagate BOTH legs to the +/-250 AU barycentric sphere with
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   the identical REBOUND/IAS15 + DE440s machinery the boundary record uses
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   (scripts/utils/lpc_boundary.integrate_leg).  Per draw the displacement of
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   the rotation observable (drot = sep(inbound, outbound asymptote)) and of
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   the aphelion observable (aph = -inbound asymptote) is recorded.
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   T1  per-comet sensitivity: RMS sigma_drot vs sigma_aph per object; the
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   median and distribution of the ratio sigma_drot / sigma_aph.
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   T2  element-group attribution: perturbations restricted to the
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   weakly-constrained (short-arc-dominated) directions tp, e, q versus
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   the angular directions om, i, w — which error budget drives each
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   channel.
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   T3  quality gradient: Spearman of sigma_drot and of sigma_aph against
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   n_obs and data_arc — the predicted noise stratification, compared to
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   the OBSERVED stratification of the residual field (b82 T12) and of
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   the aphelion lean (b88 T3).
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   T4  matched-error-scale: the aphelion displacement at the perturbation
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   scale that reproduces the observed short-arc rotation-residual
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   inflation (gap ~0.27 dex, i.e. drot inflated ~1.9x).
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   Products:
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   results/step_b114_channel_dissociation.json
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   results/step_b114_channel_dissociation.csv
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150]   results/figures/supplementary/step_b114_channel_dissociation.png
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150] --------------------------------------------------------------------------------
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150] SCRIPT: scripts/steps/step_150_channel_dissociation.py
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150] SCRIPT SHA256: 29e70b666a45f945647cffd182b50d4f47cb6e476aa106889fe50857b97c8539
+[2026-09-20 12:36:33 UTC] [INFO    ] [STEP 150] SCRIPT SIZE: 18318 bytes
+[2026-09-20 12:36:34 UTC] [INFO    ] [STEP 150] candidates with full SBDB sigmas: 249 of 249 refit rows
+[2026-09-20 12:36:34 UTC] [INFO    ] [STEP 150] sample: 60 comets ([83, 83, 83] per tercile), 16+10+10 draws each
+[2026-09-20 12:57:27 UTC] [INFO    ] [STEP 150] completed perturbation runs: 60
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] verdict: DISSOCIATION IS NOT AN ORBIT-ERROR ARTEFACT -- REVERSED SENSITIVITY ORDERING: the leg-rotation observable cancels common-mode element error (differential construction: inbound and outbound asymptotes 
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]  "T1_sensitivity": {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "n": 60,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "med_sigma_drot_deg": 1.7531073881385408e-06,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "med_sigma_aph_deg": 0.00020667963333915698,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "med_ratio": 0.006119264509524055,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "ratio_q10": 0.0016347217851999168,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "ratio_q90": 0.027631248186827717,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "frac_ratio_gt_1": 0.0
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]  },
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]  "T2_group_attribution": {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "med_sdrot_weakgroup": 1.0582411845707672e-06,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "med_sdrot_anggroup": 4.844894470454214e-07,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "med_saph_weakgroup": 9.834791439399995e-07,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "med_saph_anggroup": 0.00019250874457790197
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]  },
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]  "T3_noise_gradient": {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "sigma_drot": {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "rho_vs_nobs": -0.712707873198444,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "p_vs_nobs": 1.6861193871684516e-10,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "rho_vs_arc": -0.6308228789561121,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "p_vs_arc": 6.572014261088978e-08
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   },
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "sigma_aph": {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "rho_vs_nobs": -0.8024562720456555,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "p_vs_nobs": 1.2715312622576704e-14,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "rho_vs_arc": -0.6535517304288735,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "p_vs_arc": 1.5047698675366993e-08
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   }
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]  },
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]  "T3b_stratified_noise": {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "low": {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "n": 55,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "med_sdrot": 2.4241299173155806e-06,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "med_saph": 0.00030952135551748475
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   },
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "mid": {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "n": 1,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "med_sdrot": 4.451335514898439e-07,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "med_saph": 3.295334022220807e-05
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   },
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "high": {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "n": 4,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "med_sdrot": 1.0839056699931178e-07,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]    "med_saph": 2.634849184509887e-05
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   }
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]  },
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]  "T4_matched_scale": {
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "med_base_drot_deg": 0.10662016031501081,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "target_added_rot_deg": 0.09191586871650358,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "n_objects_at_target": 1,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "med_saph_at_target_deg": 0.6076261029797314,
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]   "med_sdrot_at_target_deg": 0.5818567125018597
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150]  }
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] }
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] VERDICT: DISSOCIATION IS NOT AN ORBIT-ERROR ARTEFACT -- REVERSED SENSITIVITY ORDERING: the leg-rotation observable cancels common-mode element error (differential construction: inbound and outbound asymptotes move together), median sigma_drot 1.75e-06 deg versus sigma_aph 2.07e-04 deg -- the aphelion direction is ~163x MORE exposed to orbit-solution error, not less.  Nominal SBDB element covariances reach the observed rotation-residual scale for only 1 of 60 objects, so neither channel's post-2017 structure is producible by orbit-solution noise.  The residual field's quality gradient (b82 T12) is therefore an absorption/expressibility feature of the fit, not error noise, and the aphelion lean (+0.095, p=0.0021) replicates on the channel that is the MORE error-exposed of the two -- its quality-flatness is probative, not protected.
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] 
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] ================================================================================
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] STEP SUMMARY: step_150_channel_dissociation
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] ================================================================================
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Step Number: 150
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Status: SUCCESS
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Duration: 20.91m
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Log Records Emitted: 123
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Output Files: 0
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_150_channel_dissociation.log
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] No output files generated
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] ================================================================================
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] STEP 150 COMPLETE: SUCCESS
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_150_channel_dissociation_provenance.json
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] 
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] ================================================================================
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] EXECUTIVE SUMMARY
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] ================================================================================
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Step: step_150_channel_dissociation (Step 150)
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Status: SUCCESS
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Duration: 20.91m
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Log Records: 130
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] Output Files: 0
+[2026-09-20 12:57:28 UTC] [INFO    ] [STEP 150] ================================================================================

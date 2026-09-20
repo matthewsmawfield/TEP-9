@@ -16,7 +16,7 @@ each shell measurement to time units.
 Outputs:
     results/step_b36_radial_slip.json
     results/step_b36_radial_slip.csv      (per comet per shell)
-    results/figures/step_b36_radial_slip.png
+    results/figures/supplementary/step_b36_radial_slip.png
 """
 
 import sys
@@ -234,16 +234,11 @@ logger.info(f"sample: {len(sample)} class-1 CODE comets; shells {SHELLS[0]:.0f}-
 # Integrate both legs, all shells
 # ------------------------------------------------------------------
 
-rows = []
-failed = []
-for idx, (k, ro, oo, et) in enumerate(sample):
-    try:
-        rb = integrate_leg(oo, et, -1)
-        rf = integrate_leg(oo, et, +1)
-    except Exception as e:
-        failed.append(k); logger.warning(f"{k}: {e}"); continue
+def _run_comet(k, ro, oo, et):
+    rb = integrate_leg(oo, et, -1)
+    rf = integrate_leg(oo, et, +1)
     if rb is None or rf is None:
-        failed.append(k); logger.warning(f"{k}: outer shell not reached"); continue
+        return None
     po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]), math.radians(ro["i"]))
     pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]), math.radians(fut[k]["i"]))
     rec = dict(desig=k, q=ro["q"], i=ro["i"],
@@ -255,7 +250,50 @@ for idx, (k, ro, oo, et) in enumerate(sample):
         pf_, hf, af_, tf = rf["hits"][s]
         rec[f"drot_{int(s)}"] = sep(pb, pf_)
         rec[f"h_{int(s)}"] = 0.5 * (hb + hf)
-    rows.append(rec)
+    return rec
+
+
+def _work_comet(job):
+    k, ro, oo, et = job
+    try:
+        return _run_comet(k, ro, oo, et)
+    except Exception as e:
+        return ("__error__", k, str(e))
+
+
+from scripts.utils.parallel import default_workers as _default_workers
+
+if "--workers" in sys.argv:
+    N_WORK = max(1, int(sys.argv[sys.argv.index("--workers") + 1]))
+else:
+    N_WORK = _default_workers()
+
+if N_WORK > 1 and len(sample) > 1:
+    import multiprocessing as mp
+    ctx = mp.get_context("fork") if sys.platform != "win32" \
+        else mp.get_context("spawn")
+
+    def _init():
+        # forked children inherit the parent's BSP fd; concurrent spkezr
+        # reads through a shared descriptor corrupt each other -- reopen
+        # the kernel so each worker holds its own file handle.
+        sp.kclear()
+        sp.furnsh(str(SPK))
+
+    with ctx.Pool(min(N_WORK, len(sample)), initializer=_init) as pool:
+        recs = pool.map(_work_comet, sample)
+else:
+    recs = [_work_comet(s) for s in sample]
+
+rows = []
+failed = []
+for idx, ((k, ro, oo, et), rec) in enumerate(zip(sample, recs)):
+    if rec is None:
+        failed.append(k); logger.warning(f"{k}: outer shell not reached")
+    elif isinstance(rec, tuple) and rec[0] == "__error__":
+        failed.append(rec[1]); logger.warning(f"{rec[1]}: {rec[2]}")
+    else:
+        rows.append(rec)
     if (idx + 1) % 20 == 0:
         logger.info(f"  {idx+1}/{len(sample)}")
 
@@ -351,9 +389,8 @@ with open(RESULTS / "step_b36_radial_slip.csv", "w", newline="") as f:
 
 with open(RESULTS / "step_b36_radial_slip.json", "w") as f:
     json.dump(res, f, indent=1)
-print(f"wrote {RESULTS / 'step_b36_radial_slip.json'}")
-print(f"wrote {RESULTS / 'step_b36_radial_slip.csv'}")
-
+logger.data_save(RESULTS / 'step_b36_radial_slip.json')
+logger.data_save(RESULTS / 'step_b36_radial_slip.csv')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -365,31 +402,31 @@ import matplotlib.pyplot as plt
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.4))
 
 ax = axes[0]
-ax.plot(SHELLS, prof["median_drot_in"], "o-", color="crimson",
+ax.plot(SHELLS, prof["median_drot_in"], "o-", color="#b43b4e",
         label=f"inside cap ($n={int(inc.sum())}$)")
-ax.plot(SHELLS, prof["median_drot_out"], "o-", color="0.55",
+ax.plot(SHELLS, prof["median_drot_out"], "o-", color="#566573",
         label=f"outside ($n={int((~inc).sum())}$)")
 if onset:
     ax.axvline(onset, color="k", ls=":", lw=1, label=f"onset {onset:.0f} AU")
 ax.set_xlabel("shell radius $s$ (AU)")
 ax.set_ylabel(r"median $\delta\theta(s)$ (deg)")
 ax.legend(frameon=False, fontsize=8)
-ax.set_title("inbound/outbound rotation vs radius", fontsize=10)
 
 ax = axes[1]
 ci = np.array(prof["excess_dtau_ci"])
-ax.fill_between(SHELLS, ci[:, 0], ci[:, 1], color="crimson", alpha=0.15)
-ax.plot(SHELLS, prof["excess_dtau"], "o-", color="crimson")
+ax.fill_between(SHELLS, ci[:, 0], ci[:, 1], color="#b43b4e", alpha=0.15,
+                label="bootstrap 16–84% CI on median")
+ax.plot(SHELLS, prof["excess_dtau"], "o-", color="#b43b4e",
+        label="in-cap excess")
 ax.axhline(0, color="k", ls=":", lw=1)
 ax.set_xlabel("shell radius $s$ (AU)")
 ax.set_ylabel(r"in-cap excess $\delta\tau(s)$ (yr)")
-ax.set_title("implied proper-time excess vs radius", fontsize=10)
+ax.legend(frameon=False, loc="upper left")
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b36_radial_slip.png", dpi=150)
-print(f"wrote {FIG / 'step_b36_radial_slip.png'}")
-
+fig.savefig(FIG / "supplementary" / "step_b36_radial_slip.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b36_radial_slip.png')
 for j, s in enumerate(SHELLS):
     logger.info(f"s={s:6.0f} AU  drot in/out = {prof['median_drot_in'][j]:.4f}/"
                 f"{prof['median_drot_out'][j]:.4f} deg  excess dtau = "

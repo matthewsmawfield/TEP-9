@@ -135,5 +135,5 @@ res["note"] = ("matched regime: 0<1/a_orig<100e-6 AU, q<3.1, class 1. "
 
 out = str(RESULTS / "step_11_code_confirm.json")
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float)[:6000])
-print("wrote", out)
+print("RESULT PAYLOAD (truncated):\n" + json.dumps(res, indent=1, default=float)[:6000])
+logger.data_save(out)

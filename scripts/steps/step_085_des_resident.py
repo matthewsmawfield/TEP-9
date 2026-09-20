@@ -52,6 +52,7 @@ tee_stdout(logger)
 logger.header("DES independent resident-cohort audit")
 
 import csv
+import time
 import hashlib
 import json
 import math
@@ -80,8 +81,19 @@ DES_DIR.mkdir(exist_ok=True)
 FIT = DES_DIR / "y6_des_tnos_color.fits"
 
 req = urllib.request.Request(DES_URL, headers={"User-Agent": "TEP9-pipeline"})
-with urllib.request.urlopen(req, timeout=120) as r:
-    blob = r.read()
+blob = None
+for attempt in range(1, 6):
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            blob = r.read()
+        break
+    except Exception as exc:
+        if attempt == 5:
+            raise
+        wait = 5 * 2 ** (attempt - 1)
+        logger.progress(f"DES fetch attempt {attempt} failed ({exc}); "
+                        f"retrying in {wait}s")
+        time.sleep(wait)
 FIT.write_bytes(blob)
 sha = hashlib.sha256(blob).hexdigest()
 prov = {"step": "step_085_des_resident",
@@ -194,13 +206,16 @@ res = {"method": "DES (Bernardinelli et al. 2022, ApJS 258, 41) "
            "n": n,
            "varpi_cap": {"n_in": n_cap_v, "frac": n_cap_v / n,
                          "p_vs_uniform_1_3": float(
-                             binomtest(n_cap_v, n, 1 / 3).pvalue),
+                             binomtest(n_cap_v, n, 1 / 3,
+                                       alternative="greater").pvalue),
                          "p_vs_baseline_0p42": float(
-                             binomtest(n_cap_v, n, 0.42).pvalue),
+                             binomtest(n_cap_v, n, 0.42,
+                                       alternative="greater").pvalue),
                          "p_vs_prediction_0p59": float(
                              binomtest(n_cap_v, n, 0.59).pvalue),
                          "p_vs_own_footprint": float(
-                             binomtest(n_cap_v, n, base).pvalue)
+                             binomtest(n_cap_v, n, base,
+                                       alternative="greater").pvalue)
                          if np.isfinite(base) else float("nan")},
            "peri_cap_3d": {"n_in": n_cap_3d, "frac": n_cap_3d / n},
            "footprint": {"baseline_frac": base,
@@ -281,9 +296,8 @@ csv_out = str(RESULTS / "step_b50_des_resident.csv")
 with open(csv_out, "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(d_objs[0].keys()))
     w.writeheader(); w.writerows(d_objs)
-print("wrote", out)
-print("wrote", csv_out)
-
+logger.data_save(out)
+logger.data_save(csv_out)
 # ------------------------------------------------------------------
 # 6. Figure
 # ------------------------------------------------------------------
@@ -305,37 +319,39 @@ for rec in dsec["data"]:
             vp_all.append((float(o["om"]) + float(o["w"])) % 360)
     except (TypeError, ValueError):
         continue
-ax.hist(vp_all, bins=np.arange(0, 361, 20), color="0.75",
+ax.hist(vp_all, bins=np.arange(0, 361, 20), color="#566573",
         label=f"SBDB secure (n={len(vp_all)})")
-ax.hist(vps, bins=np.arange(0, 361, 20), color="teal", alpha=0.7,
+ax.hist(vps, bins=np.arange(0, 361, 20), color="#1A5276", alpha=0.7,
         label=f"DES detached (n={n})")
-ax.axvspan(AXIS - CAP, AXIS + CAP, color="crimson", alpha=0.08)
+ax.axvspan(AXIS - CAP, AXIS + CAP, color="#b43b4e", alpha=0.10)
 ax.axvline(AXIS, color="k", ls="--", lw=1, label="axis 49 deg")
 ax.set_xlabel("longitude of perihelion $\\varpi$ (deg)")
-ax.set_ylabel("count"); ax.legend(frameon=False, fontsize=8)
-ax.set_title("DES cohort vs the registered axis", fontsize=10)
+ax.set_ylabel("count"); ax.legend(frameon=False)
 
 ax = axes[1]
-names = ["uniform", "SBDB-sample\nbaseline", "own footprint\nbaseline",
-         "registered\nP1", "observed\nDES"]
+names = ["uniform", "SBDB\nbaseline", "footprint\nbaseline",
+         "registered\nP1", "DES\nobserved"]
 vals = [1 / 3, 0.42, base, 0.59, n_cap_v / n]
-ax.bar(names, vals, color=["0.6", "steelblue", "teal", "0.35", "crimson"])
+# Binomial 1-sigma errors on sample-backed fractions; the uniform,
+# footprint-model and registered-P1 entries are fixed expectations.
+def _bin_se(p, nn):
+    return float(np.sqrt(p * (1 - p) / nn)) if nn > 0 else 0.0
+errs = [0.0, _bin_se(0.42, len(vp_all)), 0.0, 0.0,
+        _bin_se(n_cap_v / n, n)]
+ax.bar(names, vals, yerr=errs, capsize=4,
+       error_kw=dict(ecolor="#17202A", elinewidth=1.2),
+       color=["#566573", "#84a3aa", "#1A5276", "#9ca6b0", "#b43b4e"])
 for i, v in enumerate(vals):
-    ax.text(i, v + 0.015, f"{v:.2f}", ha="center", fontsize=9)
-ax.set_ylabel("fraction within 60 deg of axis")
+    ax.text(i, v + errs[i] + 0.02, f"{v:.2f}", ha="center", fontsize=9)
+ax.set_ylabel("fraction within 60 deg of axis", labelpad=4)
 ax.set_ylim(0, 1)
-ax.set_title("P1 score on the DES cohort", fontsize=10)
+ax.tick_params(axis="x", labelsize=9)
 
 ax = axes[2]
 lam = np.array([o["lam_opp"] for o in d_objs])
 ok = np.isfinite(lam)
 ax.scatter(np.deg2rad(vps[ok]), np.deg2rad(lam[ok]), s=40,
-           c="teal", zorder=3)
-for o in d_objs:
-    if np.isfinite(o["lam_opp"]):
-        ax.annotate(o["name"].split()[-1],
-                    (np.deg2rad(o["varpi"]), np.deg2rad(o["lam_opp"])),
-                    fontsize=6, alpha=0.7)
+           c="#1A5276", zorder=3)
 ax.axvline(np.deg2rad(AXIS), color="k", ls="--", lw=1)
 ax.set_xlim(0, 2 * np.pi); ax.set_ylim(0, 2 * np.pi)
 ax.set_xticks(np.deg2rad([0, 90, 180, 270, 360]))
@@ -343,9 +359,9 @@ ax.set_xticklabels(["0", "90", "180", "270", "360"])
 ax.set_yticks(np.deg2rad([0, 90, 180, 270, 360]))
 ax.set_yticklabels(["0", "90", "180", "270", "360"])
 ax.set_xlabel("$\\varpi$ (deg)"); ax.set_ylabel("opposition longitude (deg)")
-ax.set_title("perihelion vs discovery longitude", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b50_des_resident.png", dpi=150)
-print(f"wrote {FIG / 'step_b50_des_resident.png'}")
+fig.savefig(FIG / "step_b50_des_resident.png", dpi=300,
+            bbox_inches="tight")
+logger.data_save(FIG / 'step_b50_des_resident.png')

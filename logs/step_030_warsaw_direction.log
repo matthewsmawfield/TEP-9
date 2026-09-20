@@ -1,62 +1,124 @@
-[2026-09-19 21:21:31 UTC] [INFO    ] [STEP 030] LOGGER INITIALIZED: step_030_warsaw_direction (Step 030)
-[2026-09-19 21:21:31 UTC] [DEBUG   ] [STEP 030] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_030_warsaw_direction.log
-[2026-09-19 21:21:31 UTC] [DEBUG   ] [STEP 030] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:21:31 UTC] [INFO    ] [STEP 030] ================================================================================
-[2026-09-19 21:21:31 UTC] [INFO    ] [STEP 030] Warsaw comet directional test
-[2026-09-19 21:21:31 UTC] [INFO    ] [STEP 030] ================================================================================
-parsed 128 original-orbit rows
-119 unique comets
-spike (0<1/a<100e-6): 110   dynamically new (0<1/a<35e-6): 47
-{
- "n_rows": 128,
- "n_unique": 119,
- "spike": {
-  "n": 110,
-  "Rbar": 0.14266513692738061,
-  "p_isotropy": 0.08150067596911867,
-  "mean_dir_ecl": {
-   "lon": 54.65248887948532,
-   "lat": -14.228931607567624
-  },
-  "dir_ang68_deg": 32.969197468791016,
-  "angle_to_tno_axis": 20.103236298426683,
-  "mean_abs_gal_b": 31.638384232571422,
-  "frac_galb_gt30": 0.5272727272727272,
-  "frac_within_60deg_axis": 0.3,
-  "p_vs_isotropic": 0.13934303284835758,
-  "p_vs_tide_weighted": 0.24678766061696916
- },
- "new": {
-  "n": 47,
-  "Rbar": 0.13294506577685686,
-  "p_isotropy": 0.4767224635569205,
-  "mean_dir_ecl": {
-   "lon": 86.01613858751502,
-   "lat": -15.065407550744695
-  },
-  "dir_ang68_deg": 49.45592045994196,
-  "angle_to_tno_axis": 50.39250542180959,
-  "mean_abs_gal_b": 29.764963051007314,
-  "frac_galb_gt30": 0.5106382978723404,
-  "frac_within_60deg_axis": 0.23404255319148937,
-  "p_vs_isotropic": 0.6535673216339183,
-  "p_vs_tide_weighted": 0.5389230538473077
- },
- "all_bound": {
-  "n": 114,
-  "Rbar": 0.1490793690943451,
-  "p_isotropy": 0.055023442004058135,
-  "mean_dir_ecl": {
-   "lon": 60.50331933392979,
-   "lat": -13.830709021846117
-  },
-  "dir_ang68_deg": 30.939844823122264,
-  "angle_to_tno_axis": 25.780638627052262,
-  "mean_abs_gal_b": 31.648959522162357,
-  "frac_galb_gt30": 0.5263157894736842,
-  "frac_within_60deg_axis": 0.2982456140350877,
-  "p_vs_isotropic": 0.14104294785260738,
-  "p_vs_tide_weighted": 0.23228838558072096
- }
-}
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_07_warsaw_comets.json
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030] LOGGER INITIALIZED: step_030_warsaw_direction (Step 030)
+[2026-09-20 10:43:55 UTC] [DEBUG   ] [STEP 030] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_030_warsaw_direction.log
+[2026-09-20 10:43:55 UTC] [DEBUG   ] [STEP 030] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:43:55 UTC] [DEBUG   ] [STEP 030] Start time (UTC): 2026-09-20T10:43:55.986328+00:00
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030] 
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030] STEP PURPOSE
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030] --------------------------------------------------------------------------------
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   step_07: decisive comet test -- Warsaw Catalogue original barycentric orbits.
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   Data: J/A+A/567/A126 tablec.dat (Krolikowska 2014) -- original barycentric
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   orbital elements at 250 AU inbound for 128 near-parabolic comets, with
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   formal uncertainties propagated through full dynamical swarms. This is the
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   proper Oort-spike dataset: comets whose aphelia have *not* yet been
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   perturbed into the observable region, so their aphelion directions trace
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   where the Oort cloud material actually sits.
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   TEP discriminator: if a proper-time field boundary exists near the
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   confined-TNO axis (lam~34 deg, beta~-13 deg ecliptic), comets arriving
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   from that direction crossed the boundary -- their aphelia may show an
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   excess along the axis *beyond* what the galactic tide predicts. The
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   galactic tide alone predicts aphelion avoidance of the galactic equator
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   (|b| structure) but is axisymmetric about the galactic pole -- it cannot
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   produce a concentration toward one specific ecliptic direction.
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   Tests:
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   W1  isotropy of aphelion unit vectors (Rayleigh, 3D)
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   W2  galactic-latitude structure vs uniform and vs tide prediction
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   W3  angle between mean aphelion direction and the TNO cluster axis,
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   with bootstrap direction uncertainty and tide-aware null
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   W4  direct excess: fraction of aphelia within 60 deg of the TNO axis
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   vs Monte Carlo nulls (uniform, and galactic-tide-weighted)
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030]   W5  ecliptic-plane direction test on dynamically-new subset
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 030] --------------------------------------------------------------------------------
+[2026-09-20 10:43:56 UTC] [INFO    ] [STEP 030] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:43:56 UTC] [INFO    ] [STEP 030] SCRIPT: scripts/steps/step_030_warsaw_direction.py
+[2026-09-20 10:43:56 UTC] [INFO    ] [STEP 030] SCRIPT SHA256: b3956521f6d3c48cd3b3019246545e410634112a77c0a48827b6b5dbc55da254
+[2026-09-20 10:43:56 UTC] [INFO    ] [STEP 030] SCRIPT SIZE: 7410 bytes
+[2026-09-20 10:43:56 UTC] [INFO    ] [STEP 030] ================================================================================
+[2026-09-20 10:43:56 UTC] [INFO    ] [STEP 030] Warsaw comet directional test
+[2026-09-20 10:43:56 UTC] [INFO    ] [STEP 030] ================================================================================
+[2026-09-20 10:43:56 UTC] [INFO    ] [STEP 030] parsed 128 original-orbit rows
+[2026-09-20 10:43:56 UTC] [INFO    ] [STEP 030] 119 unique comets
+[2026-09-20 10:43:56 UTC] [INFO    ] [STEP 030] spike (0<1/a<100e-6): 110   dynamically new (0<1/a<35e-6): 47
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] RESULT PAYLOAD:
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] {
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]  "n_rows": 128,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]  "n_unique": 119,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]  "spike": {
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "n": 110,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "Rbar": 0.14266513692738061,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "p_isotropy": 0.08150067596911867,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "mean_dir_ecl": {
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]    "lon": 54.65248887948532,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]    "lat": -14.228931607567624
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   },
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "dir_ang68_deg": 32.969197468791016,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "angle_to_tno_axis": 20.103236298426683,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "mean_abs_gal_b": 31.638384232571422,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "frac_galb_gt30": 0.5272727272727272,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "frac_within_60deg_axis": 0.3,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "p_vs_isotropic": 0.13934303284835758,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "p_vs_tide_weighted": 0.24678766061696916
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]  },
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]  "new": {
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "n": 47,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "Rbar": 0.13294506577685686,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "p_isotropy": 0.4767224635569205,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "mean_dir_ecl": {
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]    "lon": 86.01613858751502,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]    "lat": -15.065407550744695
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   },
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "dir_ang68_deg": 49.45592045994196,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "angle_to_tno_axis": 50.39250542180959,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "mean_abs_gal_b": 29.764963051007314,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "frac_galb_gt30": 0.5106382978723404,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "frac_within_60deg_axis": 0.23404255319148937,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "p_vs_isotropic": 0.6535673216339183,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "p_vs_tide_weighted": 0.5389230538473077
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]  },
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]  "all_bound": {
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "n": 114,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "Rbar": 0.1490793690943451,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "p_isotropy": 0.055023442004058135,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "mean_dir_ecl": {
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]    "lon": 60.50331933392979,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]    "lat": -13.830709021846117
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   },
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "dir_ang68_deg": 30.939844823122264,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "angle_to_tno_axis": 25.780638627052262,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "mean_abs_gal_b": 31.648959522162357,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "frac_galb_gt30": 0.5263157894736842,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "frac_within_60deg_axis": 0.2982456140350877,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "p_vs_isotropic": 0.14104294785260738,
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   "p_vs_tide_weighted": 0.23228838558072096
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]  }
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] }
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Saving data: step_07_warsaw_comets.json
+[2026-09-20 10:44:19 UTC] [DEBUG   ] [STEP 030]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_07_warsaw_comets.json
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   Output: step_07_warsaw_comets.json
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] 
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] ================================================================================
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] STEP SUMMARY: step_030_warsaw_direction
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] ================================================================================
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Step Number: 030
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Status: SUCCESS
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Duration: 23.87s
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Log Records Emitted: 103
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Output Files: 1
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_030_warsaw_direction.log
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] 
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Generated 1 output file(s):
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   • step_07_warsaw_comets.json: 1.41 KB [sha256 04b6e152c2157b92]
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] ================================================================================
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] STEP 030 COMPLETE: SUCCESS
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_030_warsaw_direction_provenance.json
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] 
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] ================================================================================
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] EXECUTIVE SUMMARY
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] ================================================================================
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Step: step_030_warsaw_direction (Step 030)
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Status: SUCCESS
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Duration: 23.87s
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Log Records: 112
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Output Files: 1
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] Key Outputs:
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030]   - step_07_warsaw_comets.json (1.41 KB)
+[2026-09-20 10:44:19 UTC] [INFO    ] [STEP 030] ================================================================================

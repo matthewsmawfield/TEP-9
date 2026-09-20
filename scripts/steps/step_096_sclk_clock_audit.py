@@ -116,8 +116,8 @@ results/step_b60_sclk_rates.csv
 results/step_b60_sclk_phase_boundaries.csv
 results/step_b60_sclk_drift.csv
 results/step_b60_sclk_journey.csv
-results/figures/step_b60_sclk_audit.png
-results/figures/step_b60_sclk_journey.png
+results/figures/supplementary/step_b60_sclk_audit.png
+results/figures/supplementary/step_b60_sclk_journey.png
 """
 
 import sys
@@ -783,7 +783,8 @@ def audit_craft(name, cfg):
             entry.update(
                 long_interval_neg_frac=round(neg / tot, 3),
                 long_interval_neg_binom_p=float(
-                    binomtest(neg, tot, 0.5).pvalue),
+                    binomtest(neg, tot, 0.5,
+                              alternative="greater").pvalue),
                 long_interval_median_signed_ms=round(
                     float(np.median(jres_s[lg])) * 1e3, 3))
         entry["region_cum_excursion_ms"] = round(
@@ -1411,8 +1412,8 @@ def main():
                       "dotted = NH flybys")
     axes[4].legend()
     fig.tight_layout()
-    figp = RESULTS / "figures" / "step_b60_sclk_audit.png"
-    fig.savefig(figp, dpi=150)
+    figp = RESULTS / "figures" / "supplementary" / "step_b60_sclk_audit.png"
+    fig.savefig(figp, dpi=300)
     logger.data_save(figp)
 
     # ---- journey figure -------------------------------------------------
@@ -1636,8 +1637,8 @@ def main():
                   "(shell peak ~105 AU shared; NH flat inside)")
     axp.legend()
     jfig.tight_layout()
-    jfigp = RESULTS / "figures" / "step_b60_sclk_journey.png"
-    jfig.savefig(jfigp, dpi=150)
+    jfigp = RESULTS / "figures" / "supplementary" / "step_b60_sclk_journey.png"
+    jfig.savefig(jfigp, dpi=300)
     logger.data_save(jfigp)
 
     out = dict(

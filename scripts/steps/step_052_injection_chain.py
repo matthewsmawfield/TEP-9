@@ -6,11 +6,11 @@ TEP / Planet-9 -- step b17: the injection chain
 The injected population is not one sample -- it is a chain:
 detached TNOs (boundary-resident) -> centaurs (transit) ->
 Jupiter-family comets (injected).  The full JFC population
-(N ~ 580, T_J in 2-3) shows a systematic rotation of mean
+(N ~ 575, T_J in 2-3) shows a systematic rotation of mean
 longitude of perihelion with perihelion depth: ~+40 deg at
 q < 3 -- aligned with the detached-TNO axis at 49 deg --
-progressing to ~230 deg at q > 6, the anti-axis direction
-found for the q > 5 JFc subset in step_b12.
+progressing to ~190 deg pooled at q > 5 and ~220 deg on the
+dated JFc subset of step_b12, the anti-axis sector.
 
 The injected chain therefore touches BOTH ends of the
 measured axis.  Whether this progression is a bipolar
@@ -35,7 +35,7 @@ Data: data/CometEls.txt (all MPC comets, q/e/w/Om/i),
       data/sbdb_centaurs.json, data/sbdb_outer_ss.json.
 
 Outputs: results/step_b17_injection_chain.json,
-         figures/step_b17_injection_chain.png
+         figures/supplementary/step_b17_injection_chain.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -122,7 +122,10 @@ def main():
     cq = np.array(cq); cw = np.array(cw); co = np.array(co)
     ci = np.array(ci); cl_opp = np.array(cl_opp)
     cvp = (co + cw) % 360
-    out = {"axis_deg": AXIS, "anti_deg": ANTI, "n_jfc": len(cq)}
+    out = {"axis_deg": AXIS, "anti_deg": ANTI, "n_jfc": len(cq),
+           "inputs": ["data/raw/mpc/CometEls.txt",
+                      "data/raw/sbdb/sbdb_outer_ss.json",
+                      "data/raw/sbdb/sbdb_centaurs.json"]}
 
     # ---------- I1 the q-progression ----------
     qbins = [(0, 1), (1, 2), (2, 3), (3, 4), (4, 5),
@@ -144,10 +147,12 @@ def main():
               f"(R={R:.2f})  Om {mo:5.1f}  w {mw:5.1f}")
     out["I1_q_progression"] = {
         "rows": prog,
-        "note": ("mean varpi rotates ~180 deg across the JFC "
+        "note": ("mean varpi rotates ~150 deg across the JFC "
                  "q range: ~+40 deg deep (aligned with the "
-                 "detached-TNO axis) to ~230 deg shallow "
-                 "(the anti-axis).  Neither Om nor w alone "
+                 "detached-TNO axis) to ~190 deg shallow "
+                 "(approaching the anti-axis sector; the dated "
+                 "JFc subset of step_b12 sits at ~220 deg).  "
+                 "Neither Om nor w alone "
                  "carries the progression")}
 
     # ---------- I2 footprints per q-bin ----------
@@ -240,7 +245,7 @@ def main():
         "note": ("the injection chain endpoints land on both "
                  "ends of the measured axis: detached TNOs at "
                  "+49, deep injected JFCs at ~+40, shallow "
-                 "transitional JFCs at ~230; the transit "
+                 "transitional JFCs at ~+190-225; the transit "
                  "population (centaurs) is isotropic -- "
                  "scrambled between the two organized ends")}
     print(f"I4: det {mu_det:.0f} (N={len(vp_det)}) | cen "
@@ -296,9 +301,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b17_injection_chain.png", dpi=150)
-    print("wrote results/step_b17_injection_chain.json, "
-          "figures/step_b17_injection_chain.png")
+    fig.savefig(FIG / "supplementary" / "step_b17_injection_chain.png", dpi=300)
+    logger.data_save(RESULTS / "step_b17_injection_chain.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b17_injection_chain.png")
 
 
 if __name__ == "__main__":

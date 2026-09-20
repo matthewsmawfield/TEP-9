@@ -1,34 +1,101 @@
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 004] LOGGER INITIALIZED: step_004_download_mpc (Step 004)
-[2026-09-19 21:14:05 UTC] [DEBUG   ] [STEP 004] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_004_download_mpc.log
-[2026-09-19 21:14:05 UTC] [DEBUG   ] [STEP 004] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 004] ================================================================================
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 004] MPC / JPL element-file download
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 004] ================================================================================
-[2026-09-19 21:14:05 UTC] [DEBUG   ] [STEP 004] 
-[2026-09-19 21:14:05 UTC] [DEBUG   ] [STEP 004] --- MPC full orbit catalogue (gzipped fixed-width) ---
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 004]   → GET https://minorplanetcenter.net/iau/MPCORB/MPCORB.DAT.gz
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 004]   → attempt 1 failed at 0 bytes: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)>
-[2026-09-19 21:15:09 UTC] [INFO    ] [STEP 004]   → attempt 2: truncated at 84583793 of 93841116 bytes; resuming
-[2026-09-19 21:15:15 UTC] [INFO    ] [STEP 004] METRIC: bytes = 93841116 MPCORB.DAT.gz
-[2026-09-19 21:15:15 UTC] [INFO    ] [STEP 004] Saving data: MPCORB.DAT.gz
-[2026-09-19 21:15:15 UTC] [DEBUG   ] [STEP 004]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/mpc/MPCORB.DAT.gz
-[2026-09-19 21:15:15 UTC] [DEBUG   ] [STEP 004] 
-[2026-09-19 21:15:15 UTC] [DEBUG   ] [STEP 004] --- MPC comet elements file (MPCAT format) ---
-[2026-09-19 21:15:15 UTC] [INFO    ] [STEP 004]   → GET https://minorplanetcenter.net/iau/MPCORB/CometEls.txt
-[2026-09-19 21:15:15 UTC] [INFO    ] [STEP 004] METRIC: bytes = 159139 CometEls.txt
-[2026-09-19 21:15:15 UTC] [INFO    ] [STEP 004] Saving data: CometEls.txt
-[2026-09-19 21:15:15 UTC] [DEBUG   ] [STEP 004]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/mpc/CometEls.txt
-[2026-09-19 21:15:15 UTC] [INFO    ] [STEP 004] Saving data: provenance.json
-[2026-09-19 21:15:15 UTC] [DEBUG   ] [STEP 004]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/mpc/provenance.json
-[2026-09-19 21:15:15 UTC] [INFO    ] [STEP 004]   → MPC download complete -> data/raw/mpc/
-[2026-09-19 21:15:15 UTC] [DEBUG   ] [STEP 004] 
-[2026-09-19 21:15:15 UTC] [DEBUG   ] [STEP 004] --- JPL DE440s ephemeris, coverage 1849-2150 ---
-[2026-09-19 21:15:15 UTC] [INFO    ] [STEP 004]   → GET https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp
-[2026-09-19 21:15:34 UTC] [INFO    ] [STEP 004]   → attempt 1: truncated at 25031854 of 32726016 bytes; resuming
-[2026-09-19 21:15:38 UTC] [INFO    ] [STEP 004]   → attempt 2: truncated at 30311647 of 32726016 bytes; resuming
-[2026-09-19 21:15:40 UTC] [INFO    ] [STEP 004] METRIC: bytes = 32726016 de440s.bsp
-[2026-09-19 21:15:40 UTC] [INFO    ] [STEP 004] Saving data: de440s.bsp
-[2026-09-19 21:15:40 UTC] [DEBUG   ] [STEP 004]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/spice/de440s.bsp
-[2026-09-19 21:15:40 UTC] [INFO    ] [STEP 004] Saving data: provenance.json
-[2026-09-19 21:15:40 UTC] [DEBUG   ] [STEP 004]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/spice/provenance.json
-[2026-09-19 21:15:40 UTC] [INFO    ] [STEP 004]   → SPICE kernel download complete -> data/raw/spice/
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] LOGGER INITIALIZED: step_004_download_mpc (Step 004)
+[2026-09-20 10:40:39 UTC] [DEBUG   ] [STEP 004] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_004_download_mpc.log
+[2026-09-20 10:40:39 UTC] [DEBUG   ] [STEP 004] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:40:39 UTC] [DEBUG   ] [STEP 004] Start time (UTC): 2026-09-20T10:40:39.221580+00:00
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] 
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] STEP PURPOSE
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] --------------------------------------------------------------------------------
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   TEP-9 step 004 -- MPC / JPL element files
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   Downloads the two public element files used by the injection-chain
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   and catalogue-concordance steps:
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   1. MPCORB.DAT.gz -- the Minor Planet Center's full orbit catalogue
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   (all numbered and multi-opposition minor planets).  Used to
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   recompute the TNO cluster on MPC orbit solutions.
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   2. CometEls.txt -- the JPL comet elements file used for the
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   injected-population (JFC) depth chain.
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   3. de440s.bsp -- the JPL DE440s planetary ephemeris (NAIF generic
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   kernel, coverage 1849-2150).  Used by step_042 to draw
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   solar-system barycentric planet states at each comet's
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   perihelion epoch.
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   Outputs
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   data/raw/mpc/MPCORB.DAT.gz
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   data/raw/mpc/CometEls.txt
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   data/raw/mpc/provenance.json
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   data/raw/spice/de440s.bsp
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   data/raw/spice/provenance.json
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] --------------------------------------------------------------------------------
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] SCRIPT: scripts/steps/step_004_download_mpc.py
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] SCRIPT SHA256: 40a1c46ff13a83a01e3db4252fbe5a7db144c1ab74804e2093690b19637e2466
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] SCRIPT SIZE: 6364 bytes
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] ================================================================================
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] MPC / JPL element-file download
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004] ================================================================================
+[2026-09-20 10:40:39 UTC] [DEBUG   ] [STEP 004] 
+[2026-09-20 10:40:39 UTC] [DEBUG   ] [STEP 004] --- MPC full orbit catalogue (gzipped fixed-width) ---
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 004]   → GET https://minorplanetcenter.net/iau/MPCORB/MPCORB.DAT.gz
+[2026-09-20 10:41:30 UTC] [INFO    ] [STEP 004]   → attempt 1: truncated at 91615793 of 93841116 bytes; resuming
+[2026-09-20 10:41:32 UTC] [INFO    ] [STEP 004] METRIC: bytes = 93841116 MPCORB.DAT.gz
+[2026-09-20 10:41:32 UTC] [INFO    ] [STEP 004] Saving data: MPCORB.DAT.gz
+[2026-09-20 10:41:32 UTC] [DEBUG   ] [STEP 004]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/mpc/MPCORB.DAT.gz
+[2026-09-20 10:41:32 UTC] [INFO    ] [STEP 004]   Output: MPCORB.DAT.gz
+[2026-09-20 10:41:32 UTC] [DEBUG   ] [STEP 004] 
+[2026-09-20 10:41:32 UTC] [DEBUG   ] [STEP 004] --- MPC comet elements file (MPCAT format) ---
+[2026-09-20 10:41:32 UTC] [INFO    ] [STEP 004]   → GET https://minorplanetcenter.net/iau/MPCORB/CometEls.txt
+[2026-09-20 10:41:33 UTC] [INFO    ] [STEP 004] METRIC: bytes = 162923 CometEls.txt
+[2026-09-20 10:41:33 UTC] [INFO    ] [STEP 004] Saving data: CometEls.txt
+[2026-09-20 10:41:33 UTC] [DEBUG   ] [STEP 004]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/mpc/CometEls.txt
+[2026-09-20 10:41:33 UTC] [INFO    ] [STEP 004]   Output: CometEls.txt
+[2026-09-20 10:41:33 UTC] [INFO    ] [STEP 004] Saving data: provenance.json
+[2026-09-20 10:41:33 UTC] [DEBUG   ] [STEP 004]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/mpc/provenance.json
+[2026-09-20 10:41:33 UTC] [INFO    ] [STEP 004]   Output: provenance.json
+[2026-09-20 10:41:33 UTC] [INFO    ] [STEP 004]   → MPC download complete -> data/raw/mpc/
+[2026-09-20 10:41:33 UTC] [DEBUG   ] [STEP 004] 
+[2026-09-20 10:41:33 UTC] [DEBUG   ] [STEP 004] --- JPL DE440s ephemeris, coverage 1849-2150 ---
+[2026-09-20 10:41:33 UTC] [INFO    ] [STEP 004]   → GET https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp
+[2026-09-20 10:41:49 UTC] [INFO    ] [STEP 004]   → attempt 1: truncated at 24559854 of 32726016 bytes; resuming
+[2026-09-20 10:41:55 UTC] [INFO    ] [STEP 004]   → attempt 2: truncated at 29719647 of 32726016 bytes; resuming
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] METRIC: bytes = 32726016 de440s.bsp
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Saving data: de440s.bsp
+[2026-09-20 10:41:59 UTC] [DEBUG   ] [STEP 004]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/spice/de440s.bsp
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   Output: de440s.bsp
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Saving data: provenance.json
+[2026-09-20 10:41:59 UTC] [DEBUG   ] [STEP 004]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/spice/provenance.json
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   Output: provenance.json
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   → SPICE kernel download complete -> data/raw/spice/
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] 
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] ================================================================================
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] STEP SUMMARY: step_004_download_mpc
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] ================================================================================
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Step Number: 004
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Status: SUCCESS
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Duration: 1.34m
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Log Records Emitted: 72
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Output Files: 5
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_004_download_mpc.log
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] 
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Generated 5 output file(s):
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   • MPCORB.DAT.gz: 91641.71 KB [sha256 11be812eda4c0982]
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   • CometEls.txt: 159.10 KB [sha256 f450102b3bc5e163]
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   • provenance.json: 0.74 KB [sha256 f3d25056fcf9b8f7]
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   • de440s.bsp: 31959.00 KB [sha256 c1c7feeab882263f]
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   • provenance.json: 0.44 KB [sha256 e8ca3bae1ddac370]
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] ================================================================================
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] STEP 004 COMPLETE: SUCCESS
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_004_download_mpc_provenance.json
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] 
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] ================================================================================
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] EXECUTIVE SUMMARY
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] ================================================================================
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Step: step_004_download_mpc (Step 004)
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Status: SUCCESS
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Duration: 1.34m
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Log Records: 85
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Output Files: 5
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] Key Outputs:
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   - MPCORB.DAT.gz (91641.71 KB)
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   - CometEls.txt (159.10 KB)
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   - provenance.json (0.74 KB)
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   - de440s.bsp (31959.00 KB)
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004]   - provenance.json (0.44 KB)
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 004] ================================================================================

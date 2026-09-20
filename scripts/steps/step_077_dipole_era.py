@@ -12,7 +12,7 @@ galactic-anticenter control is measured in the same three era bins.
 Inputs : data/raw/code/code_original.html,
          data/raw/warsaw/warsaw_table[cd].dat
 Outputs: results/step_b42_dipole_era.json
-         results/figures/step_b42_dipole_era.png
+         results/figures/supplementary/step_b42_dipole_era.png
 """
 
 import sys
@@ -175,8 +175,7 @@ for co in ("code", "warsaw", "pooled"):
 
 with open(RESULTS / "step_b42_dipole_era.json", "w") as f:
     json.dump(res, f, indent=1)
-print(f"wrote {RESULTS / 'step_b42_dipole_era.json'}")
-
+logger.data_save(RESULTS / 'step_b42_dipole_era.json')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -207,5 +206,5 @@ ax.set_title("dipole vs era -- reconstruction-independent channel",
              fontsize=10)
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b42_dipole_era.png", dpi=150)
-print(f"wrote {FIG / 'step_b42_dipole_era.png'}")
+fig.savefig(FIG / "supplementary" / "step_b42_dipole_era.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b42_dipole_era.png')

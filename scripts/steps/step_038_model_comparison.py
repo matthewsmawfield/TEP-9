@@ -167,5 +167,5 @@ res["M4_era"] = {"rho_dof_vs_year": float(rho_y), "p": float(p_y)}
 
 out = str(RESULTS / "step_15_model_comparison.json")
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)

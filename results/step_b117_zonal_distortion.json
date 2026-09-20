@@ -1,0 +1,86 @@
+{
+ "n_comets": 47,
+ "n_draws": 178,
+ "dropouts": {
+  "sampled": 48,
+  "nominal_fit_ok": 47,
+  "draws_by_tag": {
+   "zonal_07": 47,
+   "tiles_07": 47,
+   "frame_07": 47,
+   "tiles_30": 37
+  },
+  "draws_expected_by_tag": {
+   "zonal_07": 47,
+   "tiles_07": 47,
+   "frame_07": 47,
+   "tiles_30": 47
+  }
+ },
+ "warp_models": [
+  "zonal",
+  "tiles",
+  "frame"
+ ],
+ "realistic_amp_arcsec": 0.7,
+ "observed_excesses_deg": {
+  "d_in_leg": 0.026037788726810132,
+  "ddirf": 0.025733807769045436,
+  "drot": -0.005070047624224833
+ },
+ "T1_element_selectivity": {
+  "wshare_median": 0.7799484132063237,
+  "wshare_p90": 0.940289906996634,
+  "wshare_max": 0.9936378742879066,
+  "isotropy_expectation": 0.3333333333333333,
+  "n": 141,
+  "median_abs_deg": {
+   "dw": 0.0008029565262290816,
+   "dom": 0.00016863790051502292,
+   "di": 0.0001451027029073515
+  }
+ },
+ "T2_energy_leakage": {
+  "warp_dd1a_median": 1.2569519390646602e-05,
+  "warp_dd1a_p90": 0.00025628908924515124,
+  "nominal_d1a_median": 0.00010134644473514063,
+  "n": 141
+ },
+ "T3_axis_organization": {
+  "ddrot_in_median": 4.2775851920667796e-05,
+  "ddrot_out_median": 8.172548733334506e-05,
+  "n_in": 45,
+  "n_out": 96,
+  "contrast": -3.8949635412677264e-05,
+  "mwu_p": 0.8396292416320106,
+  "rho_dleg_vs_negtheta": -0.0838817707946883,
+  "p_dleg_vs_negtheta": 0.3227029724225985,
+  "rho_ddrot_vs_negtheta": -0.03298750189904434,
+  "p_ddrot_vs_negtheta": 0.6977764313501514
+ },
+ "T4_amplitude_scaling": {
+  "induced_dleg_median_07": 0.000786930340617572,
+  "induced_dleg_median_30": 0.05329497554004384,
+  "induced_ddrot_median_07": 0.0008591218947793383,
+  "gain_deg_per_arcsec": 0.0011241862008822458,
+  "gain_deg_per_arcsec_at30": 0.001776499184668128,
+  "observed_excesses_deg": {
+   "d_in_leg": 0.026037788726810132,
+   "ddirf": 0.025733807769045436,
+   "drot": -0.005070047624224833
+  },
+  "observed_incap_level_deg": 0.1080794548379425,
+  "observed_carrier": "d_in_leg",
+  "required_warp_arcsec": 23.161455554583426,
+  "required_warp_arcsec_for_incap_level": 96.14017211127768
+ },
+ "T5_verdict": {
+  "all_four_required": {
+   "omega_isolated": true,
+   "energy_flat": true,
+   "axis_organized": false,
+   "realistic_amplitude": false
+  },
+  "catalogue_warp_can_fake": false
+ }
+}

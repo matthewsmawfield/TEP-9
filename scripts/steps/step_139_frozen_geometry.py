@@ -21,12 +21,14 @@ import numpy as np
 from scipy.stats import combine_pvalues, mannwhitneyu
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import (
     DATA_RAW, RESULTS, lv, sep)
 from scripts.utils.coordinates import GAL2ECL, EQ2ECL
 from scripts.utils.statistics import monte_carlo_tail, nearest_cone_probability
 
 logger = StepLogger("step_139_frozen_geometry")
+tee_stdout(logger)
 
 CORPUS = RESULTS.parent.parent
 GNSS2 = CORPUS / "TEP-GNSS-II" / "results" / "outputs"
@@ -294,7 +296,7 @@ logger.info("verdict: " + res["verdict"])
 
 out = RESULTS / "step_b103_frozen_geometry.json"
 json.dump(res, open(out, "w"), indent=1, default=float)
-logger.info(f"wrote {out}")
+logger.data_save(out)
 
 # ------------------------------------------------------------------
 # figure
@@ -337,6 +339,6 @@ ax.invert_yaxis()
 ax.set_xlabel("distance to frozen meridian plane (deg)")
 ax.set_title(f"orbit-block meridian reference (p={p_joint:.3g})")
 fig.tight_layout()
-fig.savefig(FIG / "step_b103_frozen_geometry.png", dpi=150)
-logger.info("wrote results/figures/step_b103_frozen_geometry.png")
+fig.savefig(FIG / "supplementary" / "step_b103_frozen_geometry.png", dpi=300)
+logger.data_save(RESULTS / "figures/supplementary/step_b103_frozen_geometry.png")
 print(json.dumps(res["T1_mirror_prediction"], indent=1))

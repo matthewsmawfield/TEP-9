@@ -79,13 +79,17 @@ def test_propagation_returns_requested_order(monkeypatch):
 
 def test_failed_damping_keeps_last_accepted_orbit(monkeypatch):
     seed = np.zeros(3)
-    def artificial_residual(r, v, epoch, obs):
+    def artificial_residual(r, v, epoch, obs, geom=None):
         # Positive finite-difference derivative proposes a negative step;
         # every negative trial is deliberately worse than the initial orbit.
         delta = float(np.sum(r) + np.sum(v))
         value = 1 + delta if delta >= 0 else 2 - delta
         return np.full((len(obs), 2), value)
+    fake_geom = {"ets": np.zeros(8), "robs": np.zeros((8, 3)),
+                 "bad": np.zeros(8, bool), "ra": np.zeros(8),
+                 "dec": np.zeros(8), "cosdec": np.ones(8)}
     monkeypatch.setattr(mpc_refit, 'residuals', artificial_residual)
+    monkeypatch.setattr(mpc_refit, 'observer_geom', lambda obs: fake_geom)
     r, v, rms, keep, _ = mpc_refit.fit(seed, seed, 0, [{}]*8)
     assert r == pytest.approx(seed)
     assert v == pytest.approx(seed)

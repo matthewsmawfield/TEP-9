@@ -6,12 +6,14 @@ All orbital-geometry helpers and catalogue readers used across the
 TEP-9 pipeline live here so every step consumes identical parsing
 and axis definitions.
 """
+import atexit
 import io
 import json
 import math
 import os
 import re
 import sys
+from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -22,7 +24,23 @@ DATA_RAW = PROJECT_ROOT / "data" / "raw"
 DATA_PROC = PROJECT_ROOT / "data" / "processed"
 RESULTS = PROJECT_ROOT / "results"
 RESULTS.mkdir(parents=True, exist_ok=True)
-(RESULTS / "figures").mkdir(parents=True, exist_ok=True)
+(RESULTS / "figures" / "supplementary").mkdir(parents=True, exist_ok=True)
+
+
+def _apply_pub_style():
+    """Apply the shared TEP-9 publication figure style.
+
+    Every step imports this module, so applying here gives all figures
+    consistent colours, fonts, sizes and DPI with no per-file boilerplate.
+    """
+    try:
+        from scripts.utils.tep9_style import apply_style
+        apply_style()
+    except Exception:
+        pass
+
+
+_apply_pub_style()
 
 # ------------------------------------------------------------------
 # Coordinate frames
@@ -237,24 +255,64 @@ def load_ossos(name="ossos_t3char.vot"):
 # ------------------------------------------------------------------
 
 class _Tee(io.TextIOBase):
-    def __init__(self, *streams):
-        self.streams = streams
+    """Mirror stdout to the console and into the step logger.
+
+    The console receives the raw stream unchanged.  Each completed line
+    is additionally routed through the step logger's own handlers, so
+    print() output carries the identical timestamp/level/step prefix as
+    logger records and is written by the same file handle — preserving
+    exact interleaving order with logger output.  Partial writes are
+    buffered until a newline arrives; any residual fragment is emitted
+    on close.
+    """
+
+    def __init__(self, console, emit):
+        self.console = console
+        self._emit = emit
+        self._buf = ""
+
     def write(self, s):
-        for st in self.streams:
+        try:
+            self.console.write(s)
+        except Exception:
+            pass
+        self._buf += s
+        while "\n" in self._buf:
+            line, self._buf = self._buf.split("\n", 1)
             try:
-                st.write(s)
+                self._emit(line)
             except Exception:
                 pass
         return len(s)
+
     def flush(self):
-        for st in self.streams:
+        try:
+            self.console.flush()
+        except Exception:
+            pass
+
+    def close(self):
+        if self._buf:
             try:
-                st.flush()
+                self._emit(self._buf)
             except Exception:
                 pass
+            self._buf = ""
+        self.flush()
 
 
 def tee_stdout(logger):
-    """Send all print() output to the step log file as well as console."""
-    sys.stdout = _Tee(sys.__stdout__, open(logger.get_log_file(), "a"))
+    """Send all print() output to the step log file as well as console.
+
+    Returns the logger unchanged so the call chains naturally after
+    StepLogger construction.  Printed lines are routed through the
+    logger's file handler at INFO level, so they carry the standard
+    [timestamp UTC] [INFO] [STEP NNN] prefix and interleave correctly
+    with logger records.
+    """
+    if isinstance(sys.stdout, _Tee):
+        return logger  # already teed (e.g. exec'd donor machinery)
+    inner = getattr(logger, "logger", logger)  # StepLogger or raw Logger
+    sys.stdout = _Tee(sys.__stdout__, inner.info)
+    atexit.register(sys.stdout.close)
     return logger

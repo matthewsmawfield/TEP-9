@@ -157,8 +157,9 @@
   ],
   "N": 7,
   "R_folded": 0.742,
-  "p_vs_isotropic": 0.00408997955010225,
-  "note": "axes folded into the TNO-axis hemisphere; null is isotropic directions"
+  "p_vs_isotropic": 0.15623921880390598,
+  "p_fixed_anchor": 0.15407422962885187,
+  "note": "all members axial, folded into the hemisphere of the anchor member (the TNO axis).  Null is convention-matched: random draws undergo the same fold toward their own anchor member (p_vs_isotropic) or toward the fixed measured TNO direction with member 0 held at the anchor (p_fixed_anchor)"
  },
  "T2_axial_concentration": {
   "mean_abs_cos": 0.4876,
@@ -175,7 +176,9 @@
   ],
   "N": 6,
   "R_folded": 0.2904,
-  "p_vs_isotropic": 0.9999050004749976
+  "p_vs_isotropic": 0.8519007404962975,
+  "p_fixed_anchor": 0.8522857385713072,
+  "note": "axial members folded toward the anchor (TNO) hemisphere; directional members (v1_hp, v2_hp, oumuamua) are oriented quantities and are not folded in either the observed statistic or the null"
  },
  "T3b_triple_axis": {
   "axes_used": [
@@ -190,6 +193,26 @@
    "tno_ism": 28.0,
    "comet_ism": 42.6
   }
+ },
+ "T3d_self_clustering": {
+  "axes_used": [
+   "comet_peri",
+   "ism_inflow",
+   "v1_hp",
+   "v2_hp",
+   "oumuamua"
+  ],
+  "N": 5,
+  "R": 0.7963,
+  "p_vs_isotropic": 0.011674941625291873,
+  "resultant_ecliptic": [
+   259.2,
+   21.9
+  ],
+  "sep_resultant_from_tno_deg": 152.0,
+  "sep_resultant_from_anti_deg": 28.0,
+  "sep_resultant_from_ism_deg": 17.0,
+  "note": "raw-direction resultant of the five non-TNO local directions; no folding in statistic or null.  Resultant lies on the mirror-cap hemisphere near the ISM inflow sector"
  },
  "T3c_plane_tilt": {
   "nhat_ecliptic_lam": 49.9,

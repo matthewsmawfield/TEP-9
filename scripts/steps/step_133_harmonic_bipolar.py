@@ -272,7 +272,7 @@ out = dict(
 with open(RESULTS / "step_b97_harmonic_bipolar.json", "w") as f:
     json.dump(out, f, indent=1, default=float)
 logger.info(f"verdict: {verdict}")
-logger.info("wrote results/step_b97_harmonic_bipolar.json")
+logger.data_save(RESULTS / "step_b97_harmonic_bipolar.json")
 
 # ------------------------------------------------------------------ fig
 FIG = RESULTS / "figures"
@@ -324,5 +324,5 @@ ax[2].set_title("T3 ISO legs vs meridian")
 ax[2].set_xlim(0, 360); ax[2].set_ylim(0, 180)
 
 fig.tight_layout()
-fig.savefig(FIG / "step_b97_harmonic_bipolar.png", dpi=150)
-logger.info("wrote results/figures/step_b97_harmonic_bipolar.png")
+fig.savefig(FIG / "supplementary" / "step_b97_harmonic_bipolar.png", dpi=300)
+logger.data_save(RESULTS / "figures/supplementary/step_b97_harmonic_bipolar.png")

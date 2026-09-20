@@ -45,7 +45,7 @@ Outputs
 -------
 results/step_b70_harmonic_axis_transfer.json
 results/step_b70_harmonic_axis_transfer.csv
-results/figures/step_b70_harmonic_axis_transfer.png
+results/figures/supplementary/step_b70_harmonic_axis_transfer.png
 """
 
 import sys as _sys
@@ -407,6 +407,6 @@ ax.set_title(f"cross-solution concordance "
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b70_harmonic_axis_transfer.png", dpi=150)
-logger.data_save(FIG / "step_b70_harmonic_axis_transfer.png")
+fig.savefig(FIG / "supplementary" / "step_b70_harmonic_axis_transfer.png", dpi=300)
+logger.data_save(FIG / "supplementary" / "step_b70_harmonic_axis_transfer.png")
 logger.success("Harmonic/axis transfer analysis complete")

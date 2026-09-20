@@ -1,51 +1,53 @@
 {
  "method": "44 catalogued detached TNOs (a>150,q>30,cc<=3) as test particles under Sun+giants (DE440s, WHFAST dt=0.5 yr) for 20 Myr; BB21 Planet Nine added in two realizations.  Per-object apsidal drift dvarpi/dt from unwrapped osculating varpi; dispersal time = circular-std(varpi)/sigma(dv).",
  "n_tno": 44,
- "n_incap": 25,
+ "n_incap": 26,
+ "cap_deg": 60.0,
+ "axis": "49,-17",
  "T0_JD": 2461200.5,
  "T_end_yr": 20000000.0,
  "dt_yr": 0.5,
  "snap_yr": 50000.0,
- "sig_varpi_incap_deg": 30.874694843008484,
+ "sig_varpi_incap_deg": 32.13471747013997,
  "sig_varpi_all_deg": 85.13650858254982,
  "models": {
   "giants": {
    "sigma_dv_all_deg_Myr": 0.16485666146304975,
-   "sigma_dv_incap_deg_Myr": 0.2034524331656731,
+   "sigma_dv_incap_deg_Myr": 0.19964380749189048,
    "t_disp_all_Myr": 516.4274699426201,
-   "t_disp_incap_Myr": 151.75387368243932,
-   "med_dv_incap": 0.007269647360350761,
-   "med_dv_outcap": 0.011057225540374952
+   "t_disp_incap_Myr": 160.96025152919046,
+   "med_dv_incap": 0.006908222455988735,
+   "med_dv_outcap": 0.01200080841581039
   },
   "giants_bb21ml": {
    "sigma_dv_all_deg_Myr": 0.1855636263930732,
-   "sigma_dv_incap_deg_Myr": 0.20044040682976044,
+   "sigma_dv_incap_deg_Myr": 0.1965489118876567,
    "t_disp_all_Myr": 458.7995516007432,
-   "t_disp_incap_Myr": 154.03428545837673,
-   "med_dv_incap": 0.006597441856839023,
-   "med_dv_outcap": 0.006513696038917068
+   "t_disp_incap_Myr": 163.49476148973804,
+   "med_dv_incap": 0.005847272427886597,
+   "med_dv_outcap": 0.006900040407891588
   },
   "giants_bb21med": {
    "sigma_dv_all_deg_Myr": 0.1814132032825808,
-   "sigma_dv_incap_deg_Myr": 0.1934259588856779,
+   "sigma_dv_incap_deg_Myr": 0.19033323382241568,
    "t_disp_all_Myr": 469.29609886186597,
-   "t_disp_incap_Myr": 159.62022378421608,
-   "med_dv_incap": -0.00016056713345419645,
-   "med_dv_outcap": 0.010891285128888262
+   "t_disp_incap_Myr": 168.8339804078684,
+   "med_dv_incap": -0.00023974591841955485,
+   "med_dv_outcap": 0.012910228989134883
   }
  },
  "p9_restoring": {
   "bb21_ml": {
    "rho": 0.27850599013389704,
    "p_2sided": 0.06715672580116955,
-   "med_delta_incap": -0.0014496945526925363,
-   "med_delta_outcap": 0.0002446903577127493
+   "med_delta_incap": -0.001329276874473042,
+   "med_delta_outcap": -0.00013086895072658808
   },
   "bb21_med": {
    "rho": 0.0865398167723749,
    "p_2sided": 0.5764591892086606,
-   "med_delta_incap": -0.0019660016596247144,
-   "med_delta_outcap": 6.103324787275281e-05
+   "med_delta_incap": -0.0018266269287923343,
+   "med_delta_outcap": -0.00040154844655076614
   }
  },
  "R_varpi_t": {

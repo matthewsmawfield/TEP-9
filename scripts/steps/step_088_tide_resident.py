@@ -31,7 +31,7 @@ Outputs
 -------
 results/step_b53_tide_resident.json
 results/step_b53_tide_resident.csv
-results/figures/step_b53_tide_resident.png
+results/figures/supplementary/step_b53_tide_resident.png
 """
 
 import sys as _sys
@@ -135,7 +135,7 @@ DT    = 0.5
 SNAP  = 5.0e4
 KICK  = 1000.0          # Strang kick cadence (yr) << tide periods ~1e8 yr
 
-def build_sim(scramble=False, p9=None):
+def build_sim(scramble_w0=None, m_arr=None, p9=None):
     sim = rebound.Simulation()
     sim.G = MU
     ps, vs = body_state("10", ET0)
@@ -154,13 +154,13 @@ def build_sim(scramble=False, p9=None):
         sim.particles[i9].z += ps[2]
         sim.particles[i9].vx += vs[0]; sim.particles[i9].vy += vs[1]
         sim.particles[i9].vz += vs[2]
-    for t in tnos:
+    for j, t in enumerate(tnos):
         w0 = t["w"]
-        if scramble:
-            w0 = (float(rng.uniform(0.0, 360.0)) - t["Om"]) % 360.0
+        if scramble_w0 is not None:
+            w0 = (float(scramble_w0[j]) - t["Om"]) % 360.0
         sim.add(a=t["a"], e=t["e"], inc=math.radians(t["i"]),
                 Omega=math.radians(t["Om"]), omega=math.radians(w0),
-                M=float(rng.uniform(0, 2 * math.pi)))
+                M=float(m_arr[j]))
         i = sim.N - 1
         sim.particles[i].x += ps[0]; sim.particles[i].y += ps[1]
         sim.particles[i].z += ps[2]
@@ -182,8 +182,8 @@ def kick_all(sim, i0, n_tno, dtk):
         pt.vy += ae[1] * dtk
         pt.vz += ae[2] * dtk
 
-def run_model(label, scramble=False, p9=None):
-    sim = build_sim(scramble=scramble, p9=p9)
+def run_model(label, scramble_w0=None, m_arr=None, p9=None):
+    sim = build_sim(scramble_w0=scramble_w0, m_arr=m_arr, p9=p9)
     n_tno = len(tnos)
     i0 = sim.N - n_tno
     n_snap = int(T_END / SNAP) + 1
@@ -205,9 +205,46 @@ def run_model(label, scramble=False, p9=None):
                 f"({n_kick} tide kicks per snapshot)")
     return ts, varpi_t
 
-ts, vw_obs  = run_model("tide_observed")
-ts, vw_scr  = run_model("tide_scrambled", scramble=True)
-ts, vw_p9   = run_model("tide_p9_med", p9=P9_MED)
+# Pre-draw every random variate in the parent's rng, in exactly the order
+# the serial calls consumed them, so the parallel runs are bit-identical:
+# observed: n_tno M-draws; scrambled: interleaved (w0, M) per TNO;
+# p9 model: n_tno M-draws.
+_n = len(tnos)
+m_obs = np.array([rng.uniform(0, 2 * math.pi) for _ in range(_n)])
+w_scr = np.empty(_n); m_scr = np.empty(_n)
+for _j in range(_n):
+    w_scr[_j] = rng.uniform(0.0, 360.0)
+    m_scr[_j] = rng.uniform(0, 2 * math.pi)
+m_p9 = np.array([rng.uniform(0, 2 * math.pi) for _ in range(_n)])
+
+jobs = [("tide_observed",  None,  m_obs, None),
+        ("tide_scrambled", w_scr, m_scr, None),
+        ("tide_p9_med",    None,  m_p9,  P9_MED)]
+
+def _work_model(job):
+    label, sw, ma, p9 = job
+    return label, run_model(label, scramble_w0=sw, m_arr=ma, p9=p9)
+
+if len(jobs) > 1:
+    import multiprocessing as mp
+    ctx = mp.get_context("fork") if _sys.platform != "win32" \
+        else mp.get_context("spawn")
+
+    def _init():
+        # forked children inherit the parent's BSP fd; concurrent spkezr
+        # reads through a shared descriptor corrupt each other -- reopen
+        # the kernel so each worker holds its own file handle.
+        sp.kclear()
+        sp.furnsh(str(SPK))
+
+    with ctx.Pool(len(jobs), initializer=_init) as pool:
+        results = dict(pool.map(_work_model, jobs))
+else:
+    results = dict([_work_model(j) for j in jobs])
+
+ts, vw_obs = results["tide_observed"]
+_,  vw_scr = results["tide_scrambled"]
+_,  vw_p9  = results["tide_p9_med"]
 
 # ------------------------------------------------------------------
 # Analysis
@@ -234,8 +271,8 @@ def circ_std(deg):
     R = np.abs(z.mean())
     return math.degrees(math.sqrt(-2 * math.log(max(R, 1e-12))))
 
-# cap membership on the real catalogue geometry (pre-declared axis)
-TNO_AXIS = lv(34, -13)
+# cap membership on the real catalogue geometry (pre-declared resident axis)
+TNO_AXIS = lv(49.0, -17.0)
 
 def perih_dir_deg(om, Om, inc):
     om, Om, inc = map(math.radians, (om, Om, inc))
@@ -298,6 +335,7 @@ res = {
               "real varpi (maintenance), scrambled varpi (regeneration), "
               "real varpi + BB21 median P9 (joint confinement).",
     "n_tno": len(tnos), "n_incap": int(incap.sum()),
+    "cap_deg": 60.0, "axis": "49,-17",
     "T0_JD": T0_JD, "T_end_yr": T_END, "dt_yr": DT,
     "snap_yr": SNAP, "kick_yr": KICK,
     "tide_coeffs_yr2": {"Kx": KX, "Ky": KY, "Kz": KZ},
@@ -398,7 +436,7 @@ ax.set_title(f"tide restoring test ($\\rho$={rho_r:+.2f})", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b53_tide_resident.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b53_tide_resident.png", dpi=300)
 
 for m in ("tide_observed", "tide_scrambled", "tide_p9_med"):
     d = res["models"][m]
@@ -411,6 +449,6 @@ logger.info(f"endpoints: R20 obs={e['tide_observed_R20']:.3f} "
             f"(mean {e['tide_scrambled_meanvarpi20']:.0f} deg) "
             f"p9={e['tide_p9_R20']:.3f}")
 logger.info(f"tide restoring: rho={rho_r:+.3f} p={p_r:.4f}")
-print("wrote", out)
-print("wrote", csv_out)
-print("wrote", FIG / "step_b53_tide_resident.png")
+logger.data_save(out)
+logger.data_save(csv_out)
+logger.data_save(FIG / "supplementary" / "step_b53_tide_resident.png")

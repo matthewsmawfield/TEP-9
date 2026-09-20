@@ -65,7 +65,7 @@ Registered tests
 Outputs
   results/step_b92_post2017_refit.json
   results/step_b92_post2017_refit.csv
-  results/figures/step_b92_post2017_refit.png
+  results/figures/supplementary/step_b92_post2017_refit.png
   results/step_b92_refit.jsonl            (per-comet checkpoint)
   (obs/sbdb caches shared with step_127 under data/raw/mpc/)
 """
@@ -85,6 +85,7 @@ import numpy as np
 from scipy.stats import mannwhitneyu, spearmanr
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import DATA_RAW, RESULTS, sep
 from scripts.utils.lpc_boundary import TNO
 
@@ -92,6 +93,7 @@ FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
 
 logger = StepLogger("step_128_post2017_refit")
+tee_stdout(logger)
 
 SPK = DATA_RAW / "spice" / "de440s.bsp"
 LSK = DATA_RAW / "naif" / "naif0012.tls"
@@ -298,7 +300,8 @@ if len(fit_all) > 15:
     rho, p = spearmanr([r["our_drot"] for r in fit_all],
                        [r["cat_drot"] for r in fit_all])
     t1["drot_concordance"] = {"n": len(fit_all),
-                              "rho": float(rho), "p": float(p)}
+                              "rho": float(rho),
+                              "p": float(max(p, np.nextafter(0.0, 1.0)))}
     rho, p = spearmanr([r["our_d_in"] for r in fit_all],
                        [r["cat_d_in"] for r in fit_all])
     t1["d_in_concordance"] = {"rho": float(rho), "p": float(p)}
@@ -608,7 +611,7 @@ res["caveats"] = [
 
 out = RESULTS / "step_b92_post2017_refit.json"
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
 
 with open(RESULTS / "step_b92_post2017_refit.csv", "w",
           newline="") as f:
@@ -674,7 +677,7 @@ if t3.get("displaced_resid_field") and t3["displaced_resid_field"].get("our"):
     ax.set_title(f"displaced field replicates: {d3['med_in']:+.3f}/"
                  f"{d3['med_out']:+.3f} dex (p={d3['p']:.4f})")
 fig.tight_layout()
-fig.savefig(FIG / "step_b92_post2017_refit.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b92_post2017_refit.png", dpi=300)
 logger.data_save(out)
 logger.data_save(RESULTS / "step_b92_post2017_refit.csv")
-logger.data_save(FIG / "step_b92_post2017_refit.png")
+logger.data_save(FIG / "supplementary" / "step_b92_post2017_refit.png")

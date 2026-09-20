@@ -82,10 +82,13 @@ import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import DATA_RAW, RESULTS, perih_dir, sep, lv, gv
 logger = StepLogger("step_117_prospective_lpc")
+tee_stdout(logger)
 
 import csv
+import time
 import hashlib
 import json
 import math
@@ -146,9 +149,22 @@ PROV_PATH = DATA_RAW / "sbdb" / "provenance.json"
 def download_sbdb():
     req = urllib.request.Request(SBDB_URL,
                                  headers={"User-Agent": "TEP-9-pipeline"})
-    with urllib.request.urlopen(req, timeout=300) as r:
-        body = r.read()
-        status = r.status
+    body = status = None
+    for attempt in range(1, 6):
+        try:
+            with urllib.request.urlopen(req, timeout=300) as r:
+                body = r.read()
+                status = r.status
+            if status == 200:
+                break
+            raise RuntimeError(f"SBDB download failed: HTTP {status}")
+        except Exception as exc:
+            if attempt == 5:
+                raise
+            wait = 5 * 2 ** (attempt - 1)
+            logger.progress(f"SBDB fetch attempt {attempt} failed ({exc}); "
+                            f"retrying in {wait}s")
+            time.sleep(wait)
     if status != 200:
         raise RuntimeError(f"SBDB download failed: HTTP {status}")
     COMETS_JSON.write_bytes(body)
@@ -1117,48 +1133,45 @@ inc = th < CAP
 
 fig, axes = plt.subplots(1, 3, figsize=(14, 4.2))
 ax = axes[0]
-ax.scatter(th[~inc], v[~inc], s=22, c="0.55", alpha=0.7,
+ax.scatter(th[~inc], v[~inc], s=22, c="#566573", alpha=0.7,
            label=f"outside cap ($n={int((~inc).sum())}$)")
-ax.scatter(th[inc], v[inc], s=26, c="crimson", alpha=0.85,
+ax.scatter(th[inc], v[inc], s=26, c="#b43b4e", alpha=0.85,
            label=f"inside cap ($n={int(inc.sum())}$)")
 ax.axvline(CAP, color="k", ls=":", lw=1)
 if ref.get("code_matched"):
-    ax.axhline(ref["code_matched"]["med_drot_sim_in"], color="crimson",
+    ax.axhline(ref["code_matched"]["med_drot_sim_in"], color="#b43b4e",
                ls="--", lw=1, alpha=0.6,
                label="CODE in-cap median")
-    ax.axhline(ref["code_matched"]["med_drot_sim_out"], color="0.55",
+    ax.axhline(ref["code_matched"]["med_drot_sim_out"], color="#566573",
                ls="--", lw=1, alpha=0.6,
                label="CODE out-cap median")
 ax.set_yscale("log")
 ax.set_xlabel(r"$\theta$ from axis (deg)")
-ax.set_ylabel(r"rotation $d_{\rm rot}$ (deg)")
-ax.legend(frameon=False, fontsize=8, loc="upper left")
-ax.set_title("post-2017 SBDB cohort, full-pass rotation", fontsize=10)
+ax.set_ylabel(r"rotation $d_{\rm rot}$ (deg)", labelpad=6)
+ax.legend(frameon=False, loc="upper left")
 
 ax = axes[1]
 res_arr = np.array([r.get("dtau_unexplained", np.nan) for r in prows])
-ax.scatter(th[~inc], res_arr[~inc], s=22, c="0.55", alpha=0.7)
-ax.scatter(th[inc], res_arr[inc], s=26, c="crimson", alpha=0.85)
+ax.scatter(th[~inc], res_arr[~inc], s=22, c="#566573", alpha=0.7)
+ax.scatter(th[inc], res_arr[inc], s=26, c="#b43b4e", alpha=0.85)
 ax.axvline(CAP, color="k", ls=":", lw=1)
 ax.axhline(0, color="k", lw=0.5)
 ax.set_xlabel(r"$\theta$ from axis (deg)")
-ax.set_ylabel(r"unexplained $\delta\tau$ (yr)")
-ax.set_title("kick-regressed slip residual", fontsize=10)
+ax.set_ylabel(r"unexplained $\delta\tau$ (yr)", labelpad=6)
 
 ax = axes[2]
 bins = np.linspace(0, 180, 19)
-ax.hist(th[inc], bins=bins, color="crimson", alpha=0.75,
+ax.hist(th[inc], bins=bins, color="#b43b4e", alpha=0.75,
         label="in-cap")
-ax.hist(th[~inc], bins=bins, color="0.55", alpha=0.5,
+ax.hist(th[~inc], bins=bins, color="#566573", alpha=0.5,
         label="out-cap")
 ax.set_xlabel(r"$\theta$ from axis (deg)")
 ax.set_ylabel("comets")
-ax.legend(frameon=False, fontsize=8)
-ax.set_title("inbound-aphelion dipole", fontsize=10)
+ax.legend(frameon=False)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b81_prospective_lpc.png", dpi=150)
+fig.savefig(FIG / "step_b81_prospective_lpc.png", dpi=300)
 
 for tag, d in [("primary(q<3.1)", res_primary),
                ("primary pure-gravity", res_primary_pure),
@@ -1181,6 +1194,6 @@ for tag, d in [("primary(q<3.1)", res_primary),
                 f"perm p={d['drot_perm_contrast']['p_perm']:.4f} | "
                 f"resid cap p={d['rot_per_kick_resid_full']['p']:.4f} | "
                 f"dtau med_in={d['dtau_unexplained']['med_in']:.2f} yr")
-print("wrote", out)
-print("wrote", csv_out)
-print("wrote", FIG / "step_b81_prospective_lpc.png")
+logger.data_save(out)
+logger.data_save(csv_out)
+logger.data_save(FIG / "step_b81_prospective_lpc.png")

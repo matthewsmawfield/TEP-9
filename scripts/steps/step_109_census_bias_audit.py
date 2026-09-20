@@ -45,7 +45,7 @@ Outputs
 -------
 results/step_b73_census_bias_audit.json
 results/step_b73_census_bias_audit.csv
-results/figures/step_b73_census_bias_audit.png
+results/figures/supplementary/step_b73_census_bias_audit.png
 """
 
 import sys as _sys
@@ -294,9 +294,9 @@ for ax, (ttl, blk) in zip(axes, panels):
 fig.suptitle("CometEls census dipole stability under discovery "
              "selection (ecliptic-footprint null)", fontsize=11)
 fig.tight_layout(rect=[0, 0, 1, 0.94])
-fig.savefig(RESULTS / "figures" / "step_b73_census_bias_audit.png",
-            dpi=160)
-logger.info("Saving data: step_b73_census_bias_audit.png")
+fig.savefig(RESULTS / "figures" / "supplementary" / "step_b73_census_bias_audit.png",
+            dpi=300)
+logger.info("Saving data: supplementary/step_b73_census_bias_audit.png")
 
 # --------------------------------------------------------------- outputs
 with open(RESULTS / "step_b73_census_bias_audit.json", "w") as f:

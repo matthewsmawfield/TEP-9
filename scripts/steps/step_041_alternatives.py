@@ -9,8 +9,9 @@ and tested on the independent CODE-only data:
       NG-demand elevated (opposite observed).
   A2  Directionally biased outgassing -- requires NG-model
       comets to carry the anomaly preferentially; GR-only
-      comets (no outgassing freedom in the fit) carry it at
-      p = 0.0074.  NG-need fraction is LOWER in-cap.
+      comets (no outgassing freedom in the fit) carry it
+      directionally (med 0.21 vs 0.14, p = 0.051).  NG-need
+      fraction is LOWER in-cap.
   A3  Localized point mass -- three independent counters:
       (a) the in-cap gradient: a 1/b force peaks at the axis;
           observed is a flat plateau inside ~60 deg then a step
@@ -93,13 +94,23 @@ orig = parse_code(str(DATA_RAW / "code" / "code_original.html"))
 fut  = parse_code(str(DATA_RAW / "code" / "code_future.html"))
 warsaw = {l[5:17].strip() for l in open(str(DATA_RAW / "warsaw" / "warsaw_tablec.dat")) if len(l) > 115}
 
+_MODEL_CLASS = {}
+for _t, _c in re.findall(
+        r"<abbr title=[\"']([^\"'>]+)[\"'][^>]*>([^<]+)</abbr>",
+        open(str(DATA_RAW / "code" / "code_original.html"),
+             encoding="utf-8", errors="replace").read()):
+    _MODEL_CLASS[_c.strip()] = _t.strip().split(" ")[0]
+
+def _is_ng(model):
+    return _MODEL_CLASS.get(model, "GR") != "GR"
+
 mat = []
 for k, ro in orig.items():
     if k not in fut: continue
     if not (0 < ro["aa"] < 100 and ro["q"] < 3.1 and ro["cls"] in ("1a", "1a+", "1b")) or k in warsaw: continue
     po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]), math.radians(ro["i"]))
     pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]), math.radians(fut[k]["i"]))
-    mat.append(dict(theta=sep(-po, TNO), d_of=sep(-po, -pf), ng=ro["model"].startswith("n")))
+    mat.append(dict(theta=sep(-po, TNO), d_of=sep(-po, -pf), ng=_is_ng(ro["model"])))
 
 th = np.array([r["theta"] for r in mat]); v = np.array([r["d_of"] for r in mat])
 inc = th < 60
@@ -152,5 +163,5 @@ res["point_mass_budget"]["note"] = (
 
 out = str(RESULTS / "step_18_alternatives.json")
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)

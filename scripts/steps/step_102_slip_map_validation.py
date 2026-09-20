@@ -54,7 +54,7 @@ Outputs
 -------
 results/step_b66_slip_map_validation.json
 results/step_b66_slip_map_validation.csv   (per-comet OOB predictions)
-results/figures/step_b66_slip_map_validation.png
+results/figures/supplementary/step_b66_slip_map_validation.png
 """
 
 import sys as _sys
@@ -171,7 +171,9 @@ def transfer(train_co, test_co, yy):
     pr = predict(c, c2[te])
     rho, pr_p = spearmanr(pr, yy[te])
     n_pos = int(np.sum((pr > 0) == (yy[te] > 0)))
-    p_bin = float(binomtest(n_pos, int(te.sum()), 0.5).pvalue)
+    # declared prediction: sign accuracy above chance -> greater tail
+    p_bin = float(binomtest(n_pos, int(te.sum()), 0.5,
+                            alternative="greater").pvalue)
     return dict(fit_on=train_co, predict=test_co,
                 n_train=int(tr.sum()), n_test=int(te.sum()),
                 coef=dict(a=float(c[0]), b=float(c[1])),
@@ -226,7 +228,8 @@ def transfer_uniq(train_co, test_co, yy):
                 n_train=int(tr.sum()), n_test=int(te.sum()),
                 spearman_rho=float(rho), spearman_p=float(pr_p),
                 sign_frac=n_pos / int(te.sum()),
-                sign_binom_p=float(binomtest(n_pos, int(te.sum()), 0.5).pvalue))
+                sign_binom_p=float(binomtest(n_pos, int(te.sum()), 0.5,
+                                             alternative="greater").pvalue))
 
 
 t2u_code_to_warsaw = transfer_uniq("code", "warsaw", y)
@@ -237,7 +240,8 @@ t2u_warsaw_to_code = transfer_uniq("warsaw", "code", y)
 # ------------------------------------------------------------------
 
 n_sign = int(np.sum((pred_oob > 0) == (y > 0)))
-p_sign = float(binomtest(n_sign, n_all, 0.5).pvalue)
+p_sign = float(binomtest(n_sign, n_all, 0.5,
+                         alternative="greater").pvalue)
 logger.metric("oob_sign_accuracy",
               f"{n_sign}/{n_all} = {n_sign/n_all:.3f} (p={p_sign:.4f})")
 
@@ -416,6 +420,6 @@ ax.set_title(f"5-fold CV null (p={p_oob:.4f})", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b66_slip_map_validation.png", dpi=150)
-logger.data_save(FIG / "step_b66_slip_map_validation.png")
+fig.savefig(FIG / "supplementary" / "step_b66_slip_map_validation.png", dpi=300)
+logger.data_save(FIG / "supplementary" / "step_b66_slip_map_validation.png")
 logger.success("Slip-map out-of-sample validation complete")

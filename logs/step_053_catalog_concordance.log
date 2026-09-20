@@ -1,13 +1,76 @@
-[2026-09-19 21:29:23 UTC] [INFO    ] [STEP 053] LOGGER INITIALIZED: step_053_catalog_concordance (Step 053)
-[2026-09-19 21:29:23 UTC] [DEBUG   ] [STEP 053] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_053_catalog_concordance.log
-[2026-09-19 21:29:23 UTC] [DEBUG   ] [STEP 053] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:29:23 UTC] [INFO    ] [STEP 053] ================================================================================
-[2026-09-19 21:29:23 UTC] [INFO    ] [STEP 053] MPC catalogue concordance
-[2026-09-19 21:29:23 UTC] [INFO    ] [STEP 053] ================================================================================
-JPL detached sample: 44
-MPCORB outer detached (a>150,q>30): 91
-matched: 44
-C1: med|d varpi|=0.00 p90=0.0 med|da|=0.048 AU
-C2: JPL R=0.332@49 | MPC R=0.332@49 (offset 0.0 deg)
-C3: mean d varpi = 360.00 deg (R=1.000)
-wrote results/step_b18_catalog_concordance.json, figures/step_b18_catalog_concordance.png
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] LOGGER INITIALIZED: step_053_catalog_concordance (Step 053)
+[2026-09-20 10:47:25 UTC] [DEBUG   ] [STEP 053] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_053_catalog_concordance.log
+[2026-09-20 10:47:25 UTC] [DEBUG   ] [STEP 053] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:47:25 UTC] [DEBUG   ] [STEP 053] Start time (UTC): 2026-09-20T10:47:25.841065+00:00
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] 
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] STEP PURPOSE
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] --------------------------------------------------------------------------------
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   TEP / Planet-9 -- step b18: catalog concordance
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   Every clustering result so far uses JPL Small-Body Database
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   orbit solutions.  An independent orbit pipeline exists: the
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   Minor Planet Center's MPCORB.DAT -- the same objects, fitted
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   by a different group with different software and different
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   arc weighting.  If the perihelion cluster were an orbit-
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   solver systematic (epoch handling, planetary-ephemeris
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   version, outlier rejection), it need not reproduce on the
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   MPC solutions.
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   C1  Match the 44 detached objects to MPCORB by readable
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   designation; element-by-element concordance (a, q, om,
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   w, varpi).
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   C2  Clustering on the MPC elements alone: R(varpi), mean
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   direction, Rayleigh p -- does the anomaly survive the
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   change of orbit solver?
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   C3  Any systematic direction offset JPL-vs-MPC.
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   Data: data/sbdb_outer_ss.json (JPL), data/MPCORB.DAT.gz.
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   Outputs: results/step_b18_catalog_concordance.json,
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053]   figures/supplementary/step_b18_catalog_concordance.png
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] --------------------------------------------------------------------------------
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] SCRIPT: scripts/steps/step_053_catalog_concordance.py
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] SCRIPT SHA256: 5f725cf5afb00cf57e2c1c1be767353c690f29906fd7074e2d1e2b8f6648bc47
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] SCRIPT SIZE: 8800 bytes
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] ================================================================================
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] MPC catalogue concordance
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] ================================================================================
+[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 053] JPL detached sample: 44
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] MPCORB outer detached (a>150,q>30): 91
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] matched: 44
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] C1: med|d varpi|=0.00 p90=0.0 med|da|=0.048 AU
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] C2: JPL R=0.332@49 | MPC R=0.332@49 (offset 0.0 deg)
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] C3: mean d varpi = 360.00 deg (R=1.000)
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Saving data: step_b18_catalog_concordance.json
+[2026-09-20 10:47:28 UTC] [DEBUG   ] [STEP 053]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b18_catalog_concordance.json
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053]   Output: step_b18_catalog_concordance.json
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Saving data: step_b18_catalog_concordance.png
+[2026-09-20 10:47:28 UTC] [DEBUG   ] [STEP 053]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b18_catalog_concordance.png
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053]   Output: step_b18_catalog_concordance.png
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] 
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] ================================================================================
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] STEP SUMMARY: step_053_catalog_concordance
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] ================================================================================
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Step Number: 053
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Status: SUCCESS
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Duration: 2.50s
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Log Records Emitted: 53
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Output Files: 2
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_053_catalog_concordance.log
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] 
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Generated 2 output file(s):
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053]   • step_b18_catalog_concordance.json: 1.04 KB [sha256 2b1ca7aabc516519]
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053]   • step_b18_catalog_concordance.png: 158.00 KB [sha256 0bcf00502e8385f2]
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] ================================================================================
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] STEP 053 COMPLETE: SUCCESS
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_053_catalog_concordance_provenance.json
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] 
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] ================================================================================
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] EXECUTIVE SUMMARY
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] ================================================================================
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Step: step_053_catalog_concordance (Step 053)
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Status: SUCCESS
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Duration: 2.50s
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Log Records: 63
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Output Files: 2
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] Key Outputs:
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053]   - step_b18_catalog_concordance.json (1.04 KB)
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053]   - step_b18_catalog_concordance.png (158.00 KB)
+[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 053] ================================================================================

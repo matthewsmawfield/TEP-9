@@ -220,6 +220,8 @@ CORE_STEPS: List[Tuple[str, str]] = [
     ('step_150_channel_dissociation.py', 'Step 150: Channel-dissociation sensitivity audit -- per-comet Monte-Carlo element perturbations from SBDB sigmas propagated through the boundary machinery; rotation-channel vs aphelion-channel noise sensitivity, element-group attribution and quality-gradient comparison to the observed stratification'),
     ('step_151_injection_transfer.py', 'Step 151: Slip-injection transfer function -- synthesized astrometry on the real observing chain (epochs, stations, noise) with injected slip realizations (integrable control, position/velocity translations, transverse kick, within-apparition holonomy) refit by the standard LM/DE440s machinery; measures which realizations survive standard orbit fitting into the record'),
     ('step_152_arrival_latitude_null.py', 'Step 152: Arrival-anisotropy conditioned nulls -- ecliptic- and Galactic-latitude-conditioned longitude shuffles and axis-longitude specificity scan for the in-cap arrival excess, replacing the uniform-sky binomial null of step 149 T6'),
+    ('step_153_zonal_distortion.py', 'Step 153: Zonal-distortion null -- legacy star-catalogue warp classes (zonal bands, regional tiles, rigid frame rotation) injected into real MPC astrometry, refit by the identical LM/DE440s machinery and propagated to the boundary sphere; tests whether a catalogue error field can reproduce the anomaly simultaneously in element selectivity, energy flatness, axis organization and amplitude'),
+    ('step_154_sclk_plasma_geometry.py', 'Step 154: SCLK link-plasma and solar-activity regression -- per-boundary phase residuals and drift vs interval-matched OMNI P_dyn/|B|/Vsw/Tp/SSN/F10.7/ap and Sun-Earth-probe elongation; partial radius-vs-plasma correlations and heliosheath activity stratification'),
     # Publication validation depends on every upstream result.
     ('step_114_claims_trace.py', 'Step 114: Manuscript claims-trace audit (every cited step/result/figure/number traced to results/)'),
 
@@ -357,15 +359,18 @@ class PipelineLogger:
             self.info(f"{result['step']:<10} {desc:<58} {symbol} {result['status']:<8} {result['duration_seconds']:.2f}s")
 
         self.subheader("Statistics")
+        attempted = len(self.step_results)
         self.info(f"Total steps:     {total_steps}")
+        self.info(f"Attempted:       {attempted}")
         self.info(f"Successful:      {success_count}")
         self.info(f"Failed:          {fail_count}")
-        self.info(f"Success rate:    {100*success_count/total_steps:.1f}%")
+        if attempted:
+            self.info(f"Success rate:    {100*success_count/attempted:.1f}%")
 
         self.subheader("Research Accountability & Reproducibility")
         self.generate_research_audit()
 
-        if success_count == total_steps:
+        if fail_count == 0 and attempted == total_steps:
             self.subheader("Output Locations")
             self.info(f"Log file:         {self.log_file}")
             self.info(f"Results:          {PROJECT_ROOT / 'results'}")
@@ -374,8 +379,46 @@ class PipelineLogger:
             self.success("PIPELINE COMPLETED SUCCESSFULLY")
             return True
         self._write("")
-        self.error(f"PIPELINE FAILED - {fail_count} step(s) did not complete")
+        if fail_count:
+            self.error(f"PIPELINE FAILED - {fail_count} step(s) did not complete")
+        else:
+            self.success(
+                f"PARTIAL RUN COMPLETED - {success_count}/{total_steps} "
+                f"positions ran, none failed")
+        return fail_count == 0
+
+
+def step_outputs(step_path: Path) -> List[Path]:
+    """Result JSONs a step declares it writes (RESULTS / "name.json")."""
+    import re
+    src = step_path.read_text(errors='ignore')
+    names = set(re.findall(
+        r'["\'](step_[A-Za-z0-9_]+\.json)["\']', src))
+    return [PROJECT_ROOT / 'results' / n for n in sorted(names)]
+
+
+def step_is_fresh(filename: str, logger: PipelineLogger) -> bool:
+    """True when every declared output exists, is newer than its declared
+    inputs, and is newer than the producing script itself."""
+    step_path = STEPS_DIR / filename
+    outs = [p for p in step_outputs(step_path) if p.exists()]
+    if not outs:
         return False
+    script_m = step_path.stat().st_mtime
+    for out in outs:
+        try:
+            rec = json.loads(out.read_text())
+        except Exception:
+            return False
+        out_m = out.stat().st_mtime
+        if out_m < script_m:
+            return False
+        for rel in (rec.get('inputs') or []):
+            inp = PROJECT_ROOT / rel
+            if not inp.exists() or inp.stat().st_mtime > out_m:
+                return False
+    logger.info(f"skip {filename}: outputs fresh")
+    return True
 
 
 def run_step(filename: str, description: str, step_num: int, total_steps: int,
@@ -410,8 +453,23 @@ def run_step(filename: str, description: str, step_num: int, total_steps: int,
 
 
 def main():
+    # Optional positional slicing: ``--from N`` (1-based first position)
+    # and ``--to M`` (inclusive last position) run a contiguous subset,
+    # e.g. resuming after an acquisition failure without re-downloading.
+    first, last = 1, len(CORE_STEPS)
+    argv = sys.argv[1:]
+    if "--from" in argv:
+        i = argv.index("--from")
+        first = max(1, int(argv[i + 1]))
+    if "--to" in argv:
+        i = argv.index("--to")
+        last = min(len(CORE_STEPS), int(argv[i + 1]))
+    skip_fresh = "--skip-fresh" in argv
+
     logger = PipelineLogger()
-    logger.header("TEP-9 PIPELINE - FULL EXECUTION", 80)
+    title = ("TEP-9 PIPELINE - FULL EXECUTION" if (first, last) == (1, len(CORE_STEPS))
+             else f"TEP-9 PIPELINE - RESUME (positions {first}-{last})")
+    logger.header(title, 80)
     logger.info(f"Project root: {PROJECT_ROOT}")
     logger.info(f"Steps dir:     {STEPS_DIR}")
     logger.info(f"Log file:      {logger.log_file}")
@@ -420,6 +478,10 @@ def main():
     logger.subheader("EXECUTING PIPELINE STEPS", 80)
 
     for i, (filename, description) in enumerate(CORE_STEPS, 1):
+        if not (first <= i <= last):
+            continue
+        if skip_fresh and step_is_fresh(filename, logger):
+            continue
         if not run_step(filename, description, i, total_steps, logger):
             logger.error("Stopping pipeline due to failure")
             break

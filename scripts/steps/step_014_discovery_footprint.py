@@ -50,7 +50,7 @@ first_observation precoveries are not discovery events; the
 designation date is the discovery epoch.
 
 Outputs: results/step_b5_discovery_footprint.json,
-         figures/step_b5_discovery_footprint.png
+         figures/supplementary/step_b5_discovery_footprint.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -335,9 +335,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b5_discovery_footprint.png", dpi=150)
-    print("wrote results/step_b5_discovery_footprint.json, "
-          "figures/step_b5_discovery_footprint.png")
+    fig.savefig(FIG / "supplementary" / "step_b5_discovery_footprint.png", dpi=300)
+    logger.data_save(RESULTS / "step_b5_discovery_footprint.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b5_discovery_footprint.png")
 
 
 if __name__ == "__main__":

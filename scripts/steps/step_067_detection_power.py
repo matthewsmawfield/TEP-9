@@ -39,7 +39,7 @@ results/step_b15_evidence_summary.json          (context)
 Outputs
 -------
 results/step_b32_detection_power.json
-results/figures/step_b32_detection_power.png
+results/figures/supplementary/step_b32_detection_power.png
 """
 
 import sys as _sys
@@ -265,7 +265,7 @@ ax.set_title("C3: comet channel", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b32_detection_power.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b32_detection_power.png", dpi=300)
 
 for N in N_GRID:
     logger.info(f"N={N}: C1 z={c1[N]['z_sep']:.2f} "
@@ -273,5 +273,5 @@ for N in N_GRID:
                 f"C2 power@1%={c2[N]['power']['0.01']:.2f} | "
                 f"C3 power@1%={c3[N]['power']['0.01']:.2f}")
 logger.info(f"N needed: {res['N_needed']}")
-print("wrote", out)
-print("wrote", FIG / "step_b32_detection_power.png")
+logger.data_save(out)
+logger.data_save(FIG / "supplementary" / "step_b32_detection_power.png")

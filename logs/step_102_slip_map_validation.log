@@ -1,22 +1,112 @@
-[2026-09-19 21:33:43 UTC] [INFO    ] [STEP 102] LOGGER INITIALIZED: step_102_slip_map_validation (Step 102)
-[2026-09-19 21:33:43 UTC] [DEBUG   ] [STEP 102] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_102_slip_map_validation.log
-[2026-09-19 21:33:43 UTC] [DEBUG   ] [STEP 102] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:33:43 UTC] [INFO    ] [STEP 102] ================================================================================
-[2026-09-19 21:33:43 UTC] [INFO    ] [STEP 102] Out-of-sample validation of the bipolar slip map
-[2026-09-19 21:33:43 UTC] [INFO    ] [STEP 102] ================================================================================
-[2026-09-19 21:33:43 UTC] [INFO    ] [STEP 102] loaded 229 comets (code 131, warsaw 98)
-[2026-09-19 21:33:43 UTC] [INFO    ] [STEP 102] METRIC: oob_spearman = 0.1485 out-of-sample rho(pred, dtau_unexplained)
-[2026-09-19 21:33:43 UTC] [INFO    ] [STEP 102] METRIC: oob_r2 = 0.0099 out-of-sample R^2 vs predicting the mean
-[2026-09-19 21:33:54 UTC] [INFO    ] [STEP 102] METRIC: oob_perm_p = 0.007049647517624119 20000 theta-shuffle permutations
-[2026-09-19 21:33:54 UTC] [INFO    ] [STEP 102] METRIC: transfer_code_to_warsaw = rho=+0.221 (p=0.0289), sign 59/98 (p=0.0544)
-[2026-09-19 21:33:54 UTC] [INFO    ] [STEP 102] METRIC: transfer_warsaw_to_code = rho=+0.132 (p=0.1339), sign 75/131 (p=0.1155)
-[2026-09-19 21:33:54 UTC] [INFO    ] [STEP 102] METRIC: shared_designations = 1 objects present in both catalogues (independent fits)
-[2026-09-19 21:33:54 UTC] [INFO    ] [STEP 102] METRIC: oob_sign_accuracy = 129/229 = 0.563 (p=0.0640)
-[2026-09-19 21:33:54 UTC] [INFO    ] [STEP 102] METRIC: full_fit = a=+2.148 yr, b(cos2theta)=+5.981 yr
-[2026-09-19 21:33:54 UTC] [INFO    ] [STEP 102] Saving data: step_b66_slip_map_validation.json
-[2026-09-19 21:33:54 UTC] [DEBUG   ] [STEP 102]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b66_slip_map_validation.json
-[2026-09-19 21:33:54 UTC] [INFO    ] [STEP 102] Saving data: step_b66_slip_map_validation.csv
-[2026-09-19 21:33:54 UTC] [DEBUG   ] [STEP 102]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b66_slip_map_validation.csv
-[2026-09-19 21:33:55 UTC] [INFO    ] [STEP 102] Saving data: step_b66_slip_map_validation.png
-[2026-09-19 21:33:55 UTC] [DEBUG   ] [STEP 102]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b66_slip_map_validation.png
-[2026-09-19 21:33:55 UTC] [INFO    ] [STEP 102] ✓ Slip-map out-of-sample validation complete
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] LOGGER INITIALIZED: step_102_slip_map_validation (Step 102)
+[2026-09-20 12:19:37 UTC] [DEBUG   ] [STEP 102] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_102_slip_map_validation.log
+[2026-09-20 12:19:37 UTC] [DEBUG   ] [STEP 102] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:19:37 UTC] [DEBUG   ] [STEP 102] Start time (UTC): 2026-09-20T12:19:37.277021+00:00
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] 
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] STEP PURPOSE
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] --------------------------------------------------------------------------------
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   Step 102 -- out-of-sample validation of the bipolar slip map.
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   Every slip-map result so far (steps 086, 089) is an in-sample
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   statement: the same 229 comets both define and evaluate the
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   cos(2*theta) lapse profile.  A referee can therefore ask whether
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   the map is real spatial structure or a fitted noise pattern.  This
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   step converts the claim into a predictive one by testing the map
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   on data it was not fitted to:
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   T1  five-fold cross-validation on the pooled sample.  The map
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   dtau(theta) = a + b*cos(2*theta) -- the pre-declared
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   axisymmetric bipolar form measured in step 089, positive in
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   both 60-deg lobes, negative in the 60-120 deg mid-band -- is
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   fitted on each training fold and used to predict the signed
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   planetary-subtracted slip dtau_unexplained of the held-out
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   fold.  Skill is the out-of-sample Spearman correlation; the
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   null is a theta-shuffle of the training labels (20000
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   permutations, fixed seed).
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   T2  cross-catalogue transfer.  The map fitted on the CODE cohort
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   alone predicts the signed slips of the Warsaw cohort, and
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   vice versa.  The two catalogues are independent orbit fits
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   (different fitters, arcs and weightings), so a map that is a
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   fitter artefact cannot transfer; a map that is sky structure
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   must.
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   T3  held-out sign accuracy.  The fitted map predicts the SIGN of
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   each held-out slip; accuracy is scored against the binomial
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   0.5 floor.  The sign pattern is the morphology the field
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   actually predicts (positive in the lobes, negative in the
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   mid-band), so this is the sharpest out-of-sample check.
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   T4  amplitude calibration.  With the map fitted on one
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   catalogue, predicted and observed median slips are compared
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   bin-by-bin on the other -- a check that the transferred
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   structure carries the right amplitude, not only the right
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   ranking.
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   The target channel throughout is dtau_unexplained (the catalogue
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   slip with the REBOUND planetary baseline subtracted, step 065);
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   the raw catalogue slip dtau_cat is reported as a secondary
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   channel.  Nothing in this step re-tunes the axis, the cap width,
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   or the harmonic order: the model has exactly two fitted
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   coefficients (a, b) and one input angle.
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   Inputs
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   results/step_b30_proper_time_slip.csv   (229 comets: theta,
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   dtau_cat, dtau_unexplained,
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   cohort)
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   Outputs
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   results/step_b66_slip_map_validation.json
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   results/step_b66_slip_map_validation.csv   (per-comet OOB predictions)
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102]   results/figures/supplementary/step_b66_slip_map_validation.png
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] --------------------------------------------------------------------------------
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] SCRIPT: scripts/steps/step_102_slip_map_validation.py
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] SCRIPT SHA256: 68381a6164044803a107c6e1bf38d8d0615b1c03c9f0555341a50113d3423088
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] SCRIPT SIZE: 17763 bytes
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] ================================================================================
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] Out-of-sample validation of the bipolar slip map
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] ================================================================================
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] loaded 229 comets (code 131, warsaw 98)
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] METRIC: oob_spearman = 0.1485 out-of-sample rho(pred, dtau_unexplained)
+[2026-09-20 12:19:37 UTC] [INFO    ] [STEP 102] METRIC: oob_r2 = 0.0099 out-of-sample R^2 vs predicting the mean
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] METRIC: oob_perm_p = 0.007049647517624119 20000 theta-shuffle permutations
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] METRIC: transfer_code_to_warsaw = rho=+0.221 (p=0.0289), sign 59/98 (p=0.0272)
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] METRIC: transfer_warsaw_to_code = rho=+0.132 (p=0.1339), sign 75/131 (p=0.0577)
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] METRIC: shared_designations = 1 objects present in both catalogues (independent fits)
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] METRIC: oob_sign_accuracy = 129/229 = 0.563 (p=0.0320)
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] METRIC: full_fit = a=+2.148 yr, b(cos2theta)=+5.981 yr
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Saving data: step_b66_slip_map_validation.json
+[2026-09-20 12:19:46 UTC] [DEBUG   ] [STEP 102]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b66_slip_map_validation.json
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102]   Output: step_b66_slip_map_validation.json
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Saving data: step_b66_slip_map_validation.csv
+[2026-09-20 12:19:46 UTC] [DEBUG   ] [STEP 102]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b66_slip_map_validation.csv
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102]   Output: step_b66_slip_map_validation.csv
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Saving data: step_b66_slip_map_validation.png
+[2026-09-20 12:19:46 UTC] [DEBUG   ] [STEP 102]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b66_slip_map_validation.png
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102]   Output: step_b66_slip_map_validation.png
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] ✓ Slip-map out-of-sample validation complete
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] 
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] ================================================================================
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] STEP SUMMARY: step_102_slip_map_validation
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] ================================================================================
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Step Number: 102
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Status: SUCCESS
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Duration: 9.67s
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Log Records Emitted: 87
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Output Files: 3
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_102_slip_map_validation.log
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] 
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Generated 3 output file(s):
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102]   • step_b66_slip_map_validation.json: 5.72 KB [sha256 895a5022eca169d4]
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102]   • step_b66_slip_map_validation.csv: 24.82 KB [sha256 c87bedaa495304ec]
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102]   • step_b66_slip_map_validation.png: 370.99 KB [sha256 0b42f80fdde020ba]
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] ================================================================================
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] STEP 102 COMPLETE: SUCCESS
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_102_slip_map_validation_provenance.json
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] 
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] ================================================================================
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] EXECUTIVE SUMMARY
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] ================================================================================
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Step: step_102_slip_map_validation (Step 102)
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Status: SUCCESS
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Duration: 9.67s
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Log Records: 98
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Output Files: 3
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] Key Outputs:
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102]   - step_b66_slip_map_validation.json (5.72 KB)
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102]   - step_b66_slip_map_validation.csv (24.82 KB)
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102]   - step_b66_slip_map_validation.png (370.99 KB)
+[2026-09-20 12:19:46 UTC] [INFO    ] [STEP 102] ================================================================================

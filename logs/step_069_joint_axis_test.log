@@ -1,25 +1,104 @@
-[2026-09-19 22:14:06 UTC] [INFO    ] [STEP 069] LOGGER INITIALIZED: step_069_joint_axis_test (Step 069)
-[2026-09-19 22:14:06 UTC] [DEBUG   ] [STEP 069] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_069_joint_axis_test.log
-[2026-09-19 22:14:06 UTC] [DEBUG   ] [STEP 069] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 22:14:06 UTC] [INFO    ] [STEP 069] ================================================================================
-[2026-09-19 22:14:06 UTC] [INFO    ] [STEP 069] Joint axis-permutation global significance
-[2026-09-19 22:14:06 UTC] [INFO    ] [STEP 069] ================================================================================
-[2026-09-19 22:14:07 UTC] [INFO    ] [STEP 069] comets with aphelion dirs: 229 (missed 0)
-[2026-09-19 22:14:07 UTC] [INFO    ] [STEP 069] detached TNOs: 44
-[2026-09-19 22:14:07 UTC] [INFO    ] [STEP 069] S(TNO axis 49,-17)   = 107.17  channels=[8.73643133e-03 3.47372546e-07 5.33951024e-03 5.79260154e-05
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] LOGGER INITIALIZED: step_069_joint_axis_test (Step 069)
+[2026-09-20 11:22:45 UTC] [DEBUG   ] [STEP 069] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_069_joint_axis_test.log
+[2026-09-20 11:22:45 UTC] [DEBUG   ] [STEP 069] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 11:22:45 UTC] [DEBUG   ] [STEP 069] Start time (UTC): 2026-09-20T11:22:45.357336+00:00
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] 
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] STEP PURPOSE
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] --------------------------------------------------------------------------------
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   step_069: Joint axis-permutation global significance.
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   Every channel in this paper is conditioned on a direction on the sky:
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   the TNO cluster, the comet rotation residual, the implied proper-time
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   slip, the Warsaw inbound leg, and the aphelion dipole are each
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   significant about their pre-declared axes.  What has not been computed
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   is the probability that a single arbitrary direction reproduces the
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   JOINT anomaly across all populations and catalogues at once.
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   This step permutes the axis -- the one variable common to every
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   channel.  For each of N random sky directions the full battery is
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   recomputed about that direction:
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   C1  rotation channel : Mann-Whitney contrast of the CODE matched
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   unexplained slip (dtau residual, in-cap vs out-of-cap)
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   C2  dipole channel   : mean projection of pooled comet aphelia onto
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   the trial direction
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   C3  inbound channel  : Mann-Whitney contrast of the Warsaw
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   inbound-leg unexplained slip
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   C4  resident channel : mean projection of detached-TNO aphelia onto
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   the trial direction
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   C5  cluster channel  : Rayleigh test of the detached-TNO varpi
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   directions inside the trial cap
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   The five channel p-values are combined by Fisher's statistic
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   S = -2 sum ln p.  Because every draw uses the same data and changes
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   only the axis, the null distribution of S is exact for the combined
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   statistic and requires no independence assumption between channels.
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   The global p is the fraction of random directions whose combined
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   statistic reaches the value measured at the observed axis.
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   Evaluated at both pre-declared axes: the TNO cluster axis
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   (49,-17) and the Warsaw-discovery comet axis (34,-13).
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   Inputs
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   results/step_b30_proper_time_slip.csv      (per-comet slip, step_065)
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   data/raw/code/code_original.html           (CODE aphelion dirs)
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   data/raw/warsaw/warsaw_tablec.dat          (Warsaw aphelion dirs)
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   data/raw/sbdb/sbdb_outer_ss.json           (detached TNOs)
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   Outputs
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   results/step_b34_joint_axis.json
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069]   results/figures/supplementary/step_b34_joint_axis.png
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] --------------------------------------------------------------------------------
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] SCRIPT: scripts/steps/step_069_joint_axis_test.py
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] SCRIPT SHA256: 63e54a521747183bcf2a9678c11fc9b45af79a3b529a60e864857c89d274435d
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] SCRIPT SIZE: 12252 bytes
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] ================================================================================
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] Joint axis-permutation global significance
+[2026-09-20 11:22:45 UTC] [INFO    ] [STEP 069] ================================================================================
+[2026-09-20 11:22:46 UTC] [INFO    ] [STEP 069] comets with aphelion dirs: 229 (missed 0)
+[2026-09-20 11:22:46 UTC] [INFO    ] [STEP 069] detached TNOs: 44
+[2026-09-20 11:22:46 UTC] [INFO    ] [STEP 069] S(TNO axis 49,-17)   = 107.17  channels=[8.73643133e-03 3.47372546e-07 5.33951024e-03 5.79260154e-05
  5.69966490e-09]
-[2026-09-19 22:14:07 UTC] [INFO    ] [STEP 069] S(comet axis 34,-13) = 104.87  channels=[5.18804777e-03 5.26818580e-07 7.83167682e-03 1.04176166e-04
+[2026-09-20 11:22:46 UTC] [INFO    ] [STEP 069] S(comet axis 34,-13) = 104.87  channels=[5.18804777e-03 5.26818580e-07 7.83167682e-03 1.04176166e-04
  7.56627639e-09]
-[2026-09-19 22:14:07 UTC] [INFO    ] [STEP 069]   5000/20000 axes
-[2026-09-19 22:14:08 UTC] [INFO    ] [STEP 069]   10000/20000 axes
-[2026-09-19 22:14:08 UTC] [INFO    ] [STEP 069]   15000/20000 axes
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 069]   20000/20000 axes
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 069] p_global at TNO axis   = 0.00215
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 069] p_global at comet axis = 0.00880
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 069]   rotation_slip: p=0.0087 frac_axes_better=0.0127
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 069]   aphelion_dipole: p=0.0000 frac_axes_better=0.0059
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 069]   warsaw_inbound: p=0.0053 frac_axes_better=0.0104
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 069]   tno_aphelion: p=0.0001 frac_axes_better=0.0001
-[2026-09-19 22:14:09 UTC] [INFO    ] [STEP 069]   tno_varpi: p=0.0000 frac_axes_better=0.0164
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b34_joint_axis.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b34_joint_axis.png
+[2026-09-20 11:22:47 UTC] [INFO    ] [STEP 069]   5000/20000 axes
+[2026-09-20 11:22:48 UTC] [INFO    ] [STEP 069]   10000/20000 axes
+[2026-09-20 11:22:49 UTC] [INFO    ] [STEP 069]   15000/20000 axes
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   20000/20000 axes
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] p_global at TNO axis   = 0.00215
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] p_global at comet axis = 0.00880
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   rotation_slip: p=0.0087 frac_axes_better=0.0127
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   aphelion_dipole: p=0.0000 frac_axes_better=0.0059
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   warsaw_inbound: p=0.0053 frac_axes_better=0.0104
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   tno_aphelion: p=0.0001 frac_axes_better=0.0001
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   tno_varpi: p=0.0000 frac_axes_better=0.0164
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Saving data: step_b34_joint_axis.json
+[2026-09-20 11:22:50 UTC] [DEBUG   ] [STEP 069]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b34_joint_axis.json
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   Output: step_b34_joint_axis.json
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Saving data: step_b34_joint_axis.png
+[2026-09-20 11:22:50 UTC] [DEBUG   ] [STEP 069]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b34_joint_axis.png
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   Output: step_b34_joint_axis.png
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] 
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] ================================================================================
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] STEP SUMMARY: step_069_joint_axis_test
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] ================================================================================
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Step Number: 069
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Status: SUCCESS
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Duration: 5.54s
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Log Records Emitted: 79
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Output Files: 2
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_069_joint_axis_test.log
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] 
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Generated 2 output file(s):
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   • step_b34_joint_axis.json: 1.67 KB [sha256 8ee0ba89f66909e9]
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   • step_b34_joint_axis.png: 108.16 KB [sha256 18c5f3aa94f015c2]
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] ================================================================================
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] STEP 069 COMPLETE: SUCCESS
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_069_joint_axis_test_provenance.json
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] 
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] ================================================================================
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] EXECUTIVE SUMMARY
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] ================================================================================
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Step: step_069_joint_axis_test (Step 069)
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Status: SUCCESS
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Duration: 5.54s
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Log Records: 89
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Output Files: 2
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] Key Outputs:
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   - step_b34_joint_axis.json (1.67 KB)
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069]   - step_b34_joint_axis.png (108.16 KB)
+[2026-09-20 11:22:50 UTC] [INFO    ] [STEP 069] ================================================================================

@@ -1,22 +1,28 @@
 {
-  "timestamp_utc": "2026-09-19T22:11:52.346649+00:00",
+  "timestamp_utc": "2026-09-20T13:15:41.132736+00:00",
   "scope": "Repository syntax/inventory and exact publication bindings. Not a complete numerical rerun or a proof of TEP.",
   "summary": {
-    "registered_steps": 139,
-    "python_sources": 164,
-    "bound_claim_occurrences": 196,
-    "unique_bound_claims": 120,
-    "result_files": 133,
+    "registered_steps": 141,
+    "python_sources": 167,
+    "bound_claim_occurrences": 249,
+    "unique_bound_claims": 154,
+    "result_files": 135,
     "hard_errors": 0,
-    "legacy_files_with_nonfinite_values": 0
+    "legacy_files_with_nonfinite_values": 0,
+    "results_with_newer_inputs": 0,
+    "provenance_hash_mismatches": 0
   },
   "errors": [],
   "unused_claims": [
+    "audit_bindings",
+    "audit_errors",
+    "audit_results",
+    "audit_sources",
+    "audit_steps",
+    "audit_unique",
     "bh_primary_q",
     "block_geometry_p",
     "census_dpar",
-    "census_footprint_p",
-    "census_n",
     "census_p",
     "cone_post_gap",
     "confound_base_p",
@@ -73,10 +79,65 @@
     "slipmap_oob_p",
     "slipmap_w2c_rho",
     "strict_strata_p",
+    "union_all_p",
     "warsaw_slip_coupling_p",
-    "warsaw_slip_coupling_rho"
+    "warsaw_slip_coupling_rho",
+    "zonal_induced",
+    "zonal_n"
   ],
   "bindings": [
+    {
+      "claim": "dtau_code",
+      "component": "1_abstract.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "code",
+        "matched",
+        "dtau_unexplained",
+        "med_in"
+      ],
+      "value": 4.914493512987352,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_warsaw_all_in",
+      "component": "1_abstract.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "all",
+        "dtau_inbound_unexplained",
+        "med_in"
+      ],
+      "value": 5.044200459549487,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_code_p",
+      "component": "1_abstract.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "code",
+        "matched",
+        "dtau_unexplained",
+        "p_in_gt_out"
+      ],
+      "value": 0.005324961824809417,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_warsaw_all_p",
+      "component": "1_abstract.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "all",
+        "dtau_inbound_unexplained",
+        "p_in_gt_out"
+      ],
+      "value": 0.007913541051802047,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
     {
       "claim": "refit_rho",
       "component": "1_abstract.html",
@@ -87,7 +148,7 @@
         "rho"
       ],
       "value": 0.9978499173108192,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_in_p",
@@ -101,7 +162,7 @@
         "p"
       ],
       "value": 0.03407361372998079,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_code_p",
@@ -115,7 +176,7 @@
         "p"
       ],
       "value": 0.00695413813540966,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "bipolar_joint_p",
@@ -126,91 +187,7 @@
         "p_J"
       ],
       "value": 9.99950002499875e-05,
-      "source_sha256": "dfde86b025d8125514247960f75123fb2b9c0cd8f82e1b27e4185df8ec8d6141"
-    },
-    {
-      "claim": "post2017_dpar_bound",
-      "component": "1_abstract.html",
-      "result": "step_b88_lineage_aphelion.json",
-      "path": [
-        "results",
-        "T3_strata",
-        "post2017",
-        "bound_e_lt_1",
-        "d_par"
-      ],
-      "value": 0.1028,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
-    },
-    {
-      "claim": "post2017_dpar_hyperbolic",
-      "component": "1_abstract.html",
-      "result": "step_b88_lineage_aphelion.json",
-      "path": [
-        "results",
-        "T3_strata",
-        "post2017",
-        "hyperbolic_e_ge_1",
-        "d_par"
-      ],
-      "value": 0.083,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
-    },
-    {
-      "claim": "post2017_dpar_shortarc",
-      "component": "1_abstract.html",
-      "result": "step_b88_lineage_aphelion.json",
-      "path": [
-        "results",
-        "T3_strata",
-        "post2017",
-        "arc_lt_365d",
-        "d_par"
-      ],
-      "value": 0.0907,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
-    },
-    {
-      "claim": "post2017_dpar_longarc",
-      "component": "1_abstract.html",
-      "result": "step_b88_lineage_aphelion.json",
-      "path": [
-        "results",
-        "T3_strata",
-        "post2017",
-        "arc_ge_365d",
-        "d_par"
-      ],
-      "value": 0.0979,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
-    },
-    {
-      "claim": "post2017_dpar_sparse",
-      "component": "1_abstract.html",
-      "result": "step_b88_lineage_aphelion.json",
-      "path": [
-        "results",
-        "T3_strata",
-        "post2017",
-        "nobs_lt_300",
-        "d_par"
-      ],
-      "value": 0.0974,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
-    },
-    {
-      "claim": "post2017_dpar_dense",
-      "component": "1_abstract.html",
-      "result": "step_b88_lineage_aphelion.json",
-      "path": [
-        "results",
-        "T3_strata",
-        "post2017",
-        "nobs_ge_300",
-        "d_par"
-      ],
-      "value": 0.0929,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "037e8e575178bb4136706845bb2fac5f9da0a98357602a82f79633cc8bf633c8"
     },
     {
       "claim": "post2017_dipole",
@@ -224,7 +201,7 @@
         "d_par"
       ],
       "value": 0.0949,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_p",
@@ -238,7 +215,7 @@
         "p_tide_null"
       ],
       "value": 0.0021498925053747312,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post_ecliptic_p",
@@ -251,7 +228,21 @@
         "p_ecl_null"
       ],
       "value": 0.0022498875056247186,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
+    },
+    {
+      "claim": "post2017_n_nontraining",
+      "component": "1_abstract.html",
+      "result": "step_b88_lineage_aphelion.json",
+      "path": [
+        "results",
+        "T3_strata",
+        "post2017",
+        "not_in_training",
+        "n"
+      ],
+      "value": 257,
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_nontraining",
@@ -265,7 +256,7 @@
         "d_par"
       ],
       "value": 0.0827,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_nontraining_p",
@@ -279,7 +270,35 @@
         "p_tide_null"
       ],
       "value": 0.008449577521123944,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
+    },
+    {
+      "claim": "census_dpar_2",
+      "component": "1_abstract.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "d_par"
+      ],
+      "value": 0.1045,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_p_sci",
+      "component": "1_abstract.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "p_tide_null"
+      ],
+      "value": 0.0006999650017499125,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
     },
     {
       "claim": "pre2018_dipole",
@@ -293,7 +312,7 @@
         "d_par"
       ],
       "value": 0.1101,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "pre2018_p",
@@ -307,7 +326,7 @@
         "p_tide_null"
       ],
       "value": 4.999750012499375e-05,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "global_score",
@@ -317,8 +336,8 @@
         "eval_at_tno_axis",
         "S_stat"
       ],
-      "value": 187.17647192219982,
-      "source_sha256": "535552b94b02ec819ed5e44c3d5be03be65738626961d0155d315723a5049fb1"
+      "value": 187.2391056573336,
+      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
     },
     {
       "claim": "global_rank",
@@ -328,8 +347,8 @@
         "eval_at_tno_axis",
         "p_global"
       ],
-      "value": 0.012149392530373481,
-      "source_sha256": "535552b94b02ec819ed5e44c3d5be03be65738626961d0155d315723a5049fb1"
+      "value": 0.011799410029498525,
+      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
     },
     {
       "claim": "resident_r",
@@ -428,6 +447,315 @@
       "source_sha256": "36bb6d258509c4a911af7687d879f25ec9524581eee53a5fecbebd8ce7841f6c"
     },
     {
+      "claim": "census_n",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "n_broad"
+      ],
+      "value": 268,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_dpar_2",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "d_par"
+      ],
+      "value": 0.1045,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_p_sci",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "p_tide_null"
+      ],
+      "value": 0.0006999650017499125,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_spike_d",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "spike_proxy",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "d_par"
+      ],
+      "value": 0.1779,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_spike_p",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "spike_proxy",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "p_tide_null"
+      ],
+      "value": 0.0004999750012499375,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_ebin985_d",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T3_eccentricity_gradient",
+        "2",
+        "d_par"
+      ],
+      "value": 0.1758,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_ebin985_p",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T3_eccentricity_gradient",
+        "2",
+        "p_tide_null"
+      ],
+      "value": 4.999750012499375e-05,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_ebin10_d",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T3_eccentricity_gradient",
+        "3",
+        "d_par"
+      ],
+      "value": 0.0885,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_ebin10_p",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T3_eccentricity_gradient",
+        "3",
+        "p_tide_null"
+      ],
+      "value": 0.044547772611369434,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_n_shared",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "n_shared"
+      ],
+      "value": 62,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_n",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "n_broad"
+      ],
+      "value": 268,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_n_new",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "n_new"
+      ],
+      "value": 206,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_new_d",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T4_new_to_training",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "d_par"
+      ],
+      "value": 0.0712,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_new_p",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T4_new_to_training",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "p_tide_null"
+      ],
+      "value": 0.03094845257737113,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_free_lam",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T5_free_dipole",
+        "lam"
+      ],
+      "value": 35.28,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_free_bet",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T5_free_dipole",
+        "bet"
+      ],
+      "value": -34.41,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_free_sep_cap",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T5_free_dipole",
+        "sep_from_cap"
+      ],
+      "value": 21.44,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_free_sep_anti",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T5_free_dipole",
+        "sep_from_anti"
+      ],
+      "value": 158.56,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_footprint_p",
+      "component": "5_transit.html",
+      "result": "step_b73_census_bias_audit.json",
+      "path": [
+        "T1_footprint_null",
+        "p_ecliptic_footprint_null"
+      ],
+      "value": 0.0016999150042497876,
+      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+    },
+    {
+      "claim": "census_chi2_lo",
+      "component": "5_transit.html",
+      "result": "step_b73_census_bias_audit.json",
+      "path": [
+        "T5_summary",
+        "q"
+      ],
+      "value": 0.5447727577769262,
+      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+    },
+    {
+      "claim": "census_chi2_hi",
+      "component": "5_transit.html",
+      "result": "step_b73_census_bias_audit.json",
+      "path": [
+        "T5_summary",
+        "H"
+      ],
+      "value": 0.8909099812324028,
+      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+    },
+    {
+      "claim": "dir_mom_p_lo",
+      "component": "5_transit.html",
+      "result": "step_b74_direction_vs_axis.json",
+      "path": [
+        "samples",
+        "cometels_spike",
+        "p_tide_null",
+        "cos"
+      ],
+      "value": 0.0002999850007499625,
+      "source_sha256": "a85e2d456e53df50f829a5cf31330dc46f117d57914cce9c498407f00f612e8e"
+    },
+    {
+      "claim": "dir_mom_p_hi",
+      "component": "5_transit.html",
+      "result": "step_b74_direction_vs_axis.json",
+      "path": [
+        "samples",
+        "warsaw_spike",
+        "p_tide_null",
+        "cos"
+      ],
+      "value": 0.005949702514874256,
+      "source_sha256": "a85e2d456e53df50f829a5cf31330dc46f117d57914cce9c498407f00f612e8e"
+    },
+    {
+      "claim": "axis_mom_p_lo",
+      "component": "5_transit.html",
+      "result": "step_b74_direction_vs_axis.json",
+      "path": [
+        "samples",
+        "code_matched",
+        "p_tide_null",
+        "cos2"
+      ],
+      "value": 0.3167341632918354,
+      "source_sha256": "a85e2d456e53df50f829a5cf31330dc46f117d57914cce9c498407f00f612e8e"
+    },
+    {
+      "claim": "axis_mom_p_hi",
+      "component": "5_transit.html",
+      "result": "step_b74_direction_vs_axis.json",
+      "path": [
+        "samples",
+        "cometels_broad",
+        "p_tide_null",
+        "abs_cos"
+      ],
+      "value": 0.912454377281136,
+      "source_sha256": "a85e2d456e53df50f829a5cf31330dc46f117d57914cce9c498407f00f612e8e"
+    },
+    {
       "claim": "dtau_warsaw_in",
       "component": "5_transit.html",
       "result": "step_b30_proper_time_slip.json",
@@ -501,7 +829,7 @@
         "oob_spearman"
       ],
       "value": 0.14851158654182448,
-      "source_sha256": "41d130cf9ea38883170c334a406fe06f79fec0d7d8acd135f7c0a9ce9ad8d1c5"
+      "source_sha256": "895a5022eca169d45e04a423d0d8db850fa43b75eae3cd97d53ecba3d49395a5"
     },
     {
       "claim": "holdout_in",
@@ -561,7 +889,7 @@
         "d_par"
       ],
       "value": 0.0949,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_p",
@@ -575,7 +903,7 @@
         "p_tide_null"
       ],
       "value": 0.0021498925053747312,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "holdout_din_p",
@@ -662,7 +990,7 @@
         "p"
       ],
       "value": 0.9793337770174372,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_dout_p",
@@ -675,7 +1003,7 @@
         "p"
       ],
       "value": 0.02066622298256279,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "harmonic_axis_p",
@@ -697,7 +1025,7 @@
         "n_full_arc"
       ],
       "value": 248,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "post2017_refit_rho",
@@ -709,7 +1037,7 @@
         "rho"
       ],
       "value": 0.9996302304686946,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_dout_p",
@@ -722,7 +1050,7 @@
         "p"
       ],
       "value": 0.02066622298256279,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_energy_p",
@@ -735,7 +1063,7 @@
         "p"
       ],
       "value": 0.9793337770174372,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "rev_a_post",
@@ -852,7 +1180,7 @@
         "p"
       ],
       "value": 0.03407361372998079,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_in_cat_p",
@@ -866,7 +1194,7 @@
         "p"
       ],
       "value": 0.02650878273998777,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_code_p",
@@ -880,7 +1208,7 @@
         "p"
       ],
       "value": 0.00695413813540966,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_code_cat_p",
@@ -894,7 +1222,7 @@
         "p"
       ],
       "value": 0.004971278539277095,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_legosc_p",
@@ -907,7 +1235,7 @@
         "p"
       ],
       "value": 0.0022928480118939855,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_legcode_p",
@@ -920,7 +1248,7 @@
         "p"
       ],
       "value": 1.119675640290468e-05,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_leg_p",
@@ -932,7 +1260,7 @@
         "p"
       ],
       "value": 0.09639338766847294,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_ngq2_p",
@@ -945,7 +1273,7 @@
         "p"
       ],
       "value": 0.0037278567308288236,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_ngq25_p",
@@ -958,7 +1286,7 @@
         "p"
       ],
       "value": 0.0025980907702954294,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_ngq3_p",
@@ -971,7 +1299,7 @@
         "p"
       ],
       "value": 9.257626843967807e-05,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_ngclean_p",
@@ -983,7 +1311,7 @@
         "p"
       ],
       "value": 0.005778727455498161,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "lpc_refit_p",
@@ -994,7 +1322,7 @@
         "mwu_p_greater"
       ],
       "value": 0.04088558500323206,
-      "source_sha256": "8af4d1ab3e55cbdc8875837c7764081504e5dfc14fa8d5540c733999a6e82c6e"
+      "source_sha256": "7e1147d46624f54cf036854e8c893e4e6768e43d554def9f13a062494ce2d37b"
     },
     {
       "claim": "lpc_permutation_p",
@@ -1005,7 +1333,49 @@
         "p_perm_medgap"
       ],
       "value": 0.06898620275944811,
-      "source_sha256": "8af4d1ab3e55cbdc8875837c7764081504e5dfc14fa8d5540c733999a6e82c6e"
+      "source_sha256": "7e1147d46624f54cf036854e8c893e4e6768e43d554def9f13a062494ce2d37b"
+    },
+    {
+      "claim": "census_dpar_2",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "d_par"
+      ],
+      "value": 0.1045,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_p_sci",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "p_tide_null"
+      ],
+      "value": 0.0006999650017499125,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_dpar_2",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "d_par"
+      ],
+      "value": 0.1045,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
     },
     {
       "claim": "dissoc_sdrot",
@@ -1017,7 +1387,7 @@
         "med_sigma_drot_deg"
       ],
       "value": 1.7531073881385408e-06,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
       "claim": "dissoc_saph",
@@ -1029,7 +1399,7 @@
         "med_sigma_aph_deg"
       ],
       "value": 0.00020667963333915698,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
       "claim": "dissoc_n_target",
@@ -1041,7 +1411,7 @@
         "n_objects_at_target"
       ],
       "value": 1,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
       "claim": "post2017_refit_n",
@@ -1051,7 +1421,7 @@
         "n_full_arc"
       ],
       "value": 248,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "post2017_refit_rho",
@@ -1063,7 +1433,7 @@
         "rho"
       ],
       "value": 0.9996302304686946,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_resid_p",
@@ -1076,7 +1446,7 @@
         "p"
       ],
       "value": 5.4437551026469916e-05,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_resid_cat_p",
@@ -1089,7 +1459,7 @@
         "p"
       ],
       "value": 1.5451568167688013e-05,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_extreme_p",
@@ -1101,7 +1471,7 @@
         "p_extremeness"
       ],
       "value": 0.003992015968063872,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_ngclean_p",
@@ -1114,7 +1484,7 @@
         "p"
       ],
       "value": 0.00017748148734752513,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_dout_p",
@@ -1127,7 +1497,7 @@
         "p"
       ],
       "value": 0.02066622298256279,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_energy_p",
@@ -1140,7 +1510,7 @@
         "p"
       ],
       "value": 0.9793337770174372,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "bipolar_b_pre",
@@ -1153,7 +1523,7 @@
         "b"
       ],
       "value": -0.05819114722175039,
-      "source_sha256": "dfde86b025d8125514247960f75123fb2b9c0cd8f82e1b27e4185df8ec8d6141"
+      "source_sha256": "037e8e575178bb4136706845bb2fac5f9da0a98357602a82f79633cc8bf633c8"
     },
     {
       "claim": "bipolar_pre_p",
@@ -1166,7 +1536,7 @@
         "p_2sided"
       ],
       "value": 0.020998950052497377,
-      "source_sha256": "dfde86b025d8125514247960f75123fb2b9c0cd8f82e1b27e4185df8ec8d6141"
+      "source_sha256": "037e8e575178bb4136706845bb2fac5f9da0a98357602a82f79633cc8bf633c8"
     },
     {
       "claim": "bipolar_b_post",
@@ -1179,7 +1549,7 @@
         "b"
       ],
       "value": 0.1716732345547909,
-      "source_sha256": "dfde86b025d8125514247960f75123fb2b9c0cd8f82e1b27e4185df8ec8d6141"
+      "source_sha256": "037e8e575178bb4136706845bb2fac5f9da0a98357602a82f79633cc8bf633c8"
     },
     {
       "claim": "bipolar_post_p",
@@ -1192,7 +1562,7 @@
         "p_2sided"
       ],
       "value": 4.999750012499375e-05,
-      "source_sha256": "dfde86b025d8125514247960f75123fb2b9c0cd8f82e1b27e4185df8ec8d6141"
+      "source_sha256": "037e8e575178bb4136706845bb2fac5f9da0a98357602a82f79633cc8bf633c8"
     },
     {
       "claim": "bipolar_joint_p",
@@ -1203,7 +1573,7 @@
         "p_J"
       ],
       "value": 9.99950002499875e-05,
-      "source_sha256": "dfde86b025d8125514247960f75123fb2b9c0cd8f82e1b27e4185df8ec8d6141"
+      "source_sha256": "037e8e575178bb4136706845bb2fac5f9da0a98357602a82f79633cc8bf633c8"
     },
     {
       "claim": "bipolar_fisher_p",
@@ -1214,30 +1584,7 @@
         "p_fisher"
       ],
       "value": 1.550361101099954e-05,
-      "source_sha256": "dfde86b025d8125514247960f75123fb2b9c0cd8f82e1b27e4185df8ec8d6141"
-    },
-    {
-      "claim": "epoch_year",
-      "component": "5_transit.html",
-      "result": "step_b94_epoch_trajectory.json",
-      "path": [
-        "T3_drift_vs_switch",
-        "best_switch",
-        "T_switch"
-      ],
-      "value": 2018.0,
-      "source_sha256": "e413dba7527ab2463ea082772c3826a53bd524a18a5fdda5e74ccaa6531e5f6b"
-    },
-    {
-      "claim": "epoch_switch_p",
-      "component": "5_transit.html",
-      "result": "step_b94_epoch_trajectory.json",
-      "path": [
-        "T3_drift_vs_switch",
-        "perm_p_switch_vs_fixed"
-      ],
-      "value": 0.04,
-      "source_sha256": "e413dba7527ab2463ea082772c3826a53bd524a18a5fdda5e74ccaa6531e5f6b"
+      "source_sha256": "037e8e575178bb4136706845bb2fac5f9da0a98357602a82f79633cc8bf633c8"
     },
     {
       "claim": "cone_post_p",
@@ -1354,6 +1701,96 @@
       "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
     },
     {
+      "claim": "epoch_year",
+      "component": "5_transit.html",
+      "result": "step_b94_epoch_trajectory.json",
+      "path": [
+        "T3_drift_vs_switch",
+        "best_switch",
+        "T_switch"
+      ],
+      "value": 2018.0,
+      "source_sha256": "3749d0e50984eb76f179363d2736bc7d88847d320fe5c3c8551fea03bdacf483"
+    },
+    {
+      "claim": "epoch_switch_p",
+      "component": "5_transit.html",
+      "result": "step_b94_epoch_trajectory.json",
+      "path": [
+        "T3_drift_vs_switch",
+        "perm_p_switch_vs_fixed"
+      ],
+      "value": 0.041916167664670656,
+      "source_sha256": "3749d0e50984eb76f179363d2736bc7d88847d320fe5c3c8551fea03bdacf483"
+    },
+    {
+      "claim": "zonal_wshare",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T1_element_selectivity",
+        "wshare_median"
+      ],
+      "value": 0.7799484132063237,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
+      "claim": "zonal_dd1a",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T2_energy_leakage",
+        "warp_dd1a_median"
+      ],
+      "value": 1.2569519390646602e-05,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
+      "claim": "zonal_org_p",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T3_axis_organization",
+        "mwu_p"
+      ],
+      "value": 0.8396292416320106,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
+      "claim": "zonal_obs_excess",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T4_amplitude_scaling",
+        "observed_excesses_deg",
+        "d_in_leg"
+      ],
+      "value": 0.026037788726810132,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
+      "claim": "zonal_req_arcsec",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T4_amplitude_scaling",
+        "required_warp_arcsec"
+      ],
+      "value": 23.161455554583426,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
+      "claim": "zonal_req_level",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T4_amplitude_scaling",
+        "required_warp_arcsec_for_incap_level"
+      ],
+      "value": 96.14017211127768,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
       "claim": "code_in",
       "component": "5_transit.html",
       "result": "step_11_code_confirm.json",
@@ -1390,6 +1827,151 @@
       "source_sha256": "36bb6d258509c4a911af7687d879f25ec9524581eee53a5fecbebd8ce7841f6c"
     },
     {
+      "claim": "census_n",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "n_broad"
+      ],
+      "value": 268,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_dpar_2",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "d_par"
+      ],
+      "value": 0.1045,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_p_sci",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "p_tide_null"
+      ],
+      "value": 0.0006999650017499125,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_n_new",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "n_new"
+      ],
+      "value": 206,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_new_d",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T4_new_to_training",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "d_par"
+      ],
+      "value": 0.0712,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_new_p",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T4_new_to_training",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "p_tide_null"
+      ],
+      "value": 0.03094845257737113,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_free_lam",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T5_free_dipole",
+        "lam"
+      ],
+      "value": 35.28,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_free_bet",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T5_free_dipole",
+        "bet"
+      ],
+      "value": -34.41,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_free_sep_cap",
+      "component": "5_transit.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "T5_free_dipole",
+        "sep_from_cap"
+      ],
+      "value": 21.44,
+      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+    },
+    {
+      "claim": "census_footprint_p",
+      "component": "5_transit.html",
+      "result": "step_b73_census_bias_audit.json",
+      "path": [
+        "T1_footprint_null",
+        "p_ecliptic_footprint_null"
+      ],
+      "value": 0.0016999150042497876,
+      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+    },
+    {
+      "claim": "census_chi2_lo",
+      "component": "5_transit.html",
+      "result": "step_b73_census_bias_audit.json",
+      "path": [
+        "T5_summary",
+        "q"
+      ],
+      "value": 0.5447727577769262,
+      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+    },
+    {
+      "claim": "census_chi2_hi",
+      "component": "5_transit.html",
+      "result": "step_b73_census_bias_audit.json",
+      "path": [
+        "T5_summary",
+        "H"
+      ],
+      "value": 0.8909099812324028,
+      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+    },
+    {
       "claim": "post2017_refit_n",
       "component": "5_transit.html",
       "result": "step_b92_post2017_refit.json",
@@ -1397,7 +1979,7 @@
         "n_full_arc"
       ],
       "value": 248,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "post2017_refit_rho",
@@ -1409,7 +1991,7 @@
         "rho"
       ],
       "value": 0.9996302304686946,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_resid_p",
@@ -1422,7 +2004,7 @@
         "p"
       ],
       "value": 5.4437551026469916e-05,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_resid_cat_p",
@@ -1435,7 +2017,7 @@
         "p"
       ],
       "value": 1.5451568167688013e-05,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_extreme_p",
@@ -1447,7 +2029,7 @@
         "p_extremeness"
       ],
       "value": 0.003992015968063872,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_ngclean_p",
@@ -1460,7 +2042,7 @@
         "p"
       ],
       "value": 0.00017748148734752513,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_energy_p",
@@ -1473,7 +2055,7 @@
         "p"
       ],
       "value": 0.9793337770174372,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "lpc_refit_p",
@@ -1484,7 +2066,7 @@
         "mwu_p_greater"
       ],
       "value": 0.04088558500323206,
-      "source_sha256": "8af4d1ab3e55cbdc8875837c7764081504e5dfc14fa8d5540c733999a6e82c6e"
+      "source_sha256": "7e1147d46624f54cf036854e8c893e4e6768e43d554def9f13a062494ce2d37b"
     },
     {
       "claim": "lpc_permutation_p",
@@ -1495,7 +2077,7 @@
         "p_perm_medgap"
       ],
       "value": 0.06898620275944811,
-      "source_sha256": "8af4d1ab3e55cbdc8875837c7764081504e5dfc14fa8d5540c733999a6e82c6e"
+      "source_sha256": "7e1147d46624f54cf036854e8c893e4e6768e43d554def9f13a062494ce2d37b"
     },
     {
       "claim": "dissoc_sdrot",
@@ -1507,7 +2089,7 @@
         "med_sigma_drot_deg"
       ],
       "value": 1.7531073881385408e-06,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
       "claim": "dissoc_saph",
@@ -1519,7 +2101,7 @@
         "med_sigma_aph_deg"
       ],
       "value": 0.00020667963333915698,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
       "claim": "dissoc_ratio",
@@ -1531,7 +2113,7 @@
         "med_ratio"
       ],
       "value": 0.006119264509524055,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
       "claim": "dissoc_saph_target",
@@ -1542,8 +2124,8 @@
         "T4_matched_scale",
         "med_saph_at_target_deg"
       ],
-      "value": 1.9389744376335665,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "value": 0.6076261029797314,
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
       "claim": "arr_tno_frac",
@@ -1556,7 +2138,7 @@
         "f_obs"
       ],
       "value": 0.366412213740458,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_tno_nullmed",
@@ -1569,7 +2151,7 @@
         "null_med"
       ],
       "value": 0.2824427480916031,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_tno_pcond",
@@ -1582,7 +2164,7 @@
         "p_cond"
       ],
       "value": 0.022959540809183818,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_tno_pgal",
@@ -1595,7 +2177,7 @@
         "p_cond"
       ],
       "value": 0.06931861362772744,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_m_tno_frac",
@@ -1608,7 +2190,7 @@
         "f_obs"
       ],
       "value": 0.4074074074074074,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_m_tno_pcond",
@@ -1621,7 +2203,7 @@
         "p_cond"
       ],
       "value": 0.011579768404631907,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_m_tno_pgal",
@@ -1634,7 +2216,7 @@
         "p_cond"
       ],
       "value": 0.027959440811183775,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_lon_rank",
@@ -1647,7 +2229,193 @@
         "frac_rank"
       ],
       "value": 0.16666666666666666,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
+    },
+    {
+      "claim": "zonal_wshare",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T1_element_selectivity",
+        "wshare_median"
+      ],
+      "value": 0.7799484132063237,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
+      "claim": "zonal_dd1a",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T2_energy_leakage",
+        "warp_dd1a_median"
+      ],
+      "value": 1.2569519390646602e-05,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
+      "claim": "zonal_org_p",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T3_axis_organization",
+        "mwu_p"
+      ],
+      "value": 0.8396292416320106,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
+      "claim": "zonal_req_arcsec",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T4_amplitude_scaling",
+        "required_warp_arcsec"
+      ],
+      "value": 23.161455554583426,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
+      "claim": "zonal_req_level",
+      "component": "5_transit.html",
+      "result": "step_b117_zonal_distortion.json",
+      "path": [
+        "T4_amplitude_scaling",
+        "required_warp_arcsec_for_incap_level"
+      ],
+      "value": 96.14017211127768,
+      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+    },
+    {
+      "claim": "inj_full_din",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T_full",
+        "d_true_in",
+        "med"
+      ],
+      "value": 0.010136231805644491,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
+    },
+    {
+      "claim": "inj_pos_din",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T_pos",
+        "d_true_in",
+        "med"
+      ],
+      "value": 0.14264375988040479,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
+    },
+    {
+      "claim": "inj_pos_dw",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T_pos",
+        "dw",
+        "med"
+      ],
+      "value": 0.11130635894188856,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
+    },
+    {
+      "claim": "inj_vel_din",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T_vel",
+        "d_true_in",
+        "med"
+      ],
+      "value": 0.13724429011719358,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
+    },
+    {
+      "claim": "inj_kick_din",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T_kick",
+        "d_true_in",
+        "med"
+      ],
+      "value": 0.27400567494888395,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
+    },
+    {
+      "claim": "inj_ctrl_drot",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T_ctrl",
+        "drot",
+        "med"
+      ],
+      "value": 0.13935028049285064,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
+    },
+    {
+      "claim": "inj_obs_ddirf",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T3_leg_disagreement",
+        "observed_ddirf_med"
+      ],
+      "value": 0.14311680814460198,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
+    },
+    {
+      "claim": "inj_ctrl_ddirf",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T3_leg_disagreement",
+        "predicted",
+        "ctrl"
+      ],
+      "value": 0.13894054422049018,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
+    },
+    {
+      "claim": "inj_mid_ddirf",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T3_leg_disagreement",
+        "predicted",
+        "mid"
+      ],
+      "value": 27.8987802431869,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
+    },
+    {
+      "claim": "inj_track_rho",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T5_amplitude",
+        "pos",
+        "rho"
+      ],
+      "value": 0.9609022556390976,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
+    },
+    {
+      "claim": "inj_track_p",
+      "component": "5_transit.html",
+      "result": "step_b115_injection_transfer.json",
+      "path": [
+        "T5_amplitude",
+        "pos",
+        "p"
+      ],
+      "value": 1.7590493583431903e-11,
+      "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
     },
     {
       "claim": "fisher_two_pop",
@@ -1672,7 +2440,7 @@
         "d_par"
       ],
       "value": 0.0949,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_p",
@@ -1686,35 +2454,7 @@
         "p_tide_null"
       ],
       "value": 0.0021498925053747312,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
-    },
-    {
-      "claim": "post2017_dipole",
-      "component": "6_synthesis.html",
-      "result": "step_b88_lineage_aphelion.json",
-      "path": [
-        "results",
-        "post2017_near_parabolic",
-        "T1_tide_aware",
-        "cap_34_-13",
-        "d_par"
-      ],
-      "value": 0.0949,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
-    },
-    {
-      "claim": "post2017_p",
-      "component": "6_synthesis.html",
-      "result": "step_b88_lineage_aphelion.json",
-      "path": [
-        "results",
-        "post2017_near_parabolic",
-        "T1_tide_aware",
-        "cap_34_-13",
-        "p_tide_null"
-      ],
-      "value": 0.0021498925053747312,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "pre2018_dipole",
@@ -1728,7 +2468,7 @@
         "d_par"
       ],
       "value": 0.1101,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "pre2018_p",
@@ -1742,7 +2482,7 @@
         "p_tide_null"
       ],
       "value": 4.999750012499375e-05,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "gnss_meridian_p",
@@ -1791,7 +2531,7 @@
         "d_par"
       ],
       "value": 0.0949,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_p",
@@ -1805,7 +2545,7 @@
         "p_tide_null"
       ],
       "value": 0.0021498925053747312,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_bound",
@@ -1819,7 +2559,7 @@
         "d_par"
       ],
       "value": 0.1028,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_hyperbolic",
@@ -1833,7 +2573,7 @@
         "d_par"
       ],
       "value": 0.083,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_shortarc",
@@ -1847,7 +2587,7 @@
         "d_par"
       ],
       "value": 0.0907,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_longarc",
@@ -1861,7 +2601,7 @@
         "d_par"
       ],
       "value": 0.0979,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_sparse",
@@ -1875,7 +2615,7 @@
         "d_par"
       ],
       "value": 0.0974,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_dense",
@@ -1889,7 +2629,7 @@
         "d_par"
       ],
       "value": 0.0929,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_nontraining",
@@ -1903,7 +2643,7 @@
         "d_par"
       ],
       "value": 0.0827,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_nontraining_p",
@@ -1917,7 +2657,7 @@
         "p_tide_null"
       ],
       "value": 0.008449577521123944,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "disp_ngclean_p",
@@ -1930,7 +2670,7 @@
         "p"
       ],
       "value": 0.00017748148734752513,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_dout_p",
@@ -1943,7 +2683,7 @@
         "p"
       ],
       "value": 0.02066622298256279,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "disp_energy_p",
@@ -1956,7 +2696,30 @@
         "p"
       ],
       "value": 0.9793337770174372,
-      "source_sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af"
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "p9_mass_req",
+      "component": "7_discussion.html",
+      "result": "step_b48_mass_ladder.json",
+      "path": [
+        "required_mass",
+        "m_req_median_in"
+      ],
+      "value": 4293.701171087398,
+      "source_sha256": "18784792b3fd5963b8baa4cb48d5eadf31dab54120cb45453b90cb790df0bb38"
+    },
+    {
+      "claim": "energy_p",
+      "component": "7_discussion.html",
+      "result": "step_11_code_confirm.json",
+      "path": [
+        "code_only",
+        "daa_of",
+        "p"
+      ],
+      "value": 0.6876004207969093,
+      "source_sha256": "36bb6d258509c4a911af7687d879f25ec9524581eee53a5fecbebd8ce7841f6c"
     },
     {
       "claim": "p9_mass_req",
@@ -2002,7 +2765,20 @@
         "f_obs"
       ],
       "value": 0.366412213740458,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
+    },
+    {
+      "claim": "arr_tno_pbinom",
+      "component": "7_discussion.html",
+      "result": "step_b116_arrival_latitude_null.json",
+      "path": [
+        "results",
+        "all_c1",
+        "T1_ecl_lat_tno",
+        "p_binom"
+      ],
+      "value": 0.0020481960761844103,
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_tno_nullmed",
@@ -2015,7 +2791,7 @@
         "null_med"
       ],
       "value": 0.2824427480916031,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_tno_pcond",
@@ -2028,7 +2804,7 @@
         "p_cond"
       ],
       "value": 0.022959540809183818,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_tno_pgal",
@@ -2041,7 +2817,7 @@
         "p_cond"
       ],
       "value": 0.06931861362772744,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_m_tno_frac",
@@ -2054,7 +2830,7 @@
         "f_obs"
       ],
       "value": 0.4074074074074074,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_m_tno_pcond",
@@ -2067,7 +2843,7 @@
         "p_cond"
       ],
       "value": 0.011579768404631907,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "arr_m_tno_pgal",
@@ -2080,7 +2856,7 @@
         "p_cond"
       ],
       "value": 0.027959440811183775,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
       "claim": "dissoc_sdrot",
@@ -2092,7 +2868,7 @@
         "med_sigma_drot_deg"
       ],
       "value": 1.7531073881385408e-06,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
       "claim": "dissoc_saph",
@@ -2104,7 +2880,7 @@
         "med_sigma_aph_deg"
       ],
       "value": 0.00020667963333915698,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
       "claim": "dissoc_n_target",
@@ -2116,7 +2892,7 @@
         "n_objects_at_target"
       ],
       "value": 1,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
       "claim": "dissoc_saph_target",
@@ -2127,236 +2903,107 @@
         "T4_matched_scale",
         "med_saph_at_target_deg"
       ],
-      "value": 1.9389744376335665,
-      "source_sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4"
+      "value": 0.6076261029797314,
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
-      "claim": "arr_tno_pcond",
-      "component": "7_discussion.html",
-      "result": "step_b116_arrival_latitude_null.json",
+      "claim": "post2017_dipole",
+      "component": "8_falsification.html",
+      "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
-        "all_c1",
-        "T1_ecl_lat_tno",
-        "p_cond"
+        "post2017_near_parabolic",
+        "T1_tide_aware",
+        "cap_34_-13",
+        "d_par"
       ],
-      "value": 0.022959540809183818,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
+      "value": 0.0949,
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
-      "claim": "arr_lon_rank",
-      "component": "7_discussion.html",
-      "result": "step_b116_arrival_latitude_null.json",
+      "claim": "post2017_p",
+      "component": "8_falsification.html",
+      "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
-        "all_c1",
-        "T3_axis_lon_tno",
-        "frac_rank"
+        "post2017_near_parabolic",
+        "T1_tide_aware",
+        "cap_34_-13",
+        "p_tide_null"
       ],
-      "value": 0.16666666666666666,
-      "source_sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10"
-    },
-    {
-      "claim": "inj_full_din",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T_full",
-        "d_true_in",
-        "med"
-      ],
-      "value": 0.010136231805644491,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
-    },
-    {
-      "claim": "inj_pos_din",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T_pos",
-        "d_true_in",
-        "med"
-      ],
-      "value": 0.14264375988040479,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
-    },
-    {
-      "claim": "inj_pos_dw",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T_pos",
-        "dw",
-        "med"
-      ],
-      "value": 0.11130635894188856,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
-    },
-    {
-      "claim": "inj_vel_din",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T_vel",
-        "d_true_in",
-        "med"
-      ],
-      "value": 0.13724429011719358,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
-    },
-    {
-      "claim": "inj_kick_din",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T_kick",
-        "d_true_in",
-        "med"
-      ],
-      "value": 0.27400567494888395,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
-    },
-    {
-      "claim": "inj_ctrl_drot",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T_ctrl",
-        "drot",
-        "med"
-      ],
-      "value": 0.13935028049285064,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
-    },
-    {
-      "claim": "inj_obs_ddirf",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T3_leg_disagreement",
-        "observed_ddirf_med"
-      ],
-      "value": 0.14311680814460198,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
-    },
-    {
-      "claim": "inj_ctrl_ddirf",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T3_leg_disagreement",
-        "predicted",
-        "ctrl"
-      ],
-      "value": 0.13894054422049018,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
-    },
-    {
-      "claim": "inj_mid_ddirf",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T3_leg_disagreement",
-        "predicted",
-        "mid"
-      ],
-      "value": 27.8987802431869,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
-    },
-    {
-      "claim": "inj_track_rho",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T5_amplitude",
-        "pos",
-        "rho"
-      ],
-      "value": 0.9609022556390976,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
-    },
-    {
-      "claim": "inj_track_p",
-      "component": "7_discussion.html",
-      "result": "step_b115_injection_transfer.json",
-      "path": [
-        "T5_amplitude",
-        "pos",
-        "p"
-      ],
-      "value": 1.7590493583431903e-11,
-      "source_sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2"
+      "value": 0.0021498925053747312,
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "global_score",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b90_global_synthesis.json",
       "path": [
         "eval_at_tno_axis",
         "S_stat"
       ],
-      "value": 187.17647192219982,
-      "source_sha256": "535552b94b02ec819ed5e44c3d5be03be65738626961d0155d315723a5049fb1"
+      "value": 187.2391056573336,
+      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
     },
     {
       "claim": "global_rank",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b90_global_synthesis.json",
       "path": [
         "eval_at_tno_axis",
         "p_global"
       ],
-      "value": 0.012149392530373481,
-      "source_sha256": "535552b94b02ec819ed5e44c3d5be03be65738626961d0155d315723a5049fb1"
+      "value": 0.011799410029498525,
+      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
     },
     {
       "claim": "global_score_comet",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b90_global_synthesis.json",
       "path": [
         "eval_at_comet_axis",
         "S_stat"
       ],
-      "value": 188.7394411590442,
-      "source_sha256": "535552b94b02ec819ed5e44c3d5be03be65738626961d0155d315723a5049fb1"
+      "value": 188.331003898701,
+      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
     },
     {
       "claim": "global_rank_comet",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b90_global_synthesis.json",
       "path": [
         "eval_at_comet_axis",
         "p_global"
       ],
-      "value": 0.00974951252437378,
-      "source_sha256": "535552b94b02ec819ed5e44c3d5be03be65738626961d0155d315723a5049fb1"
+      "value": 0.0103994800259987,
+      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
     },
     {
       "claim": "best_axis_sep",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b90_global_synthesis.json",
       "path": [
         "best_random_axis",
         "sep_to_tno_deg"
       ],
-      "value": 14.911430521873214,
-      "source_sha256": "535552b94b02ec819ed5e44c3d5be03be65738626961d0155d315723a5049fb1"
+      "value": 8.038002023550387,
+      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
     },
     {
       "claim": "axis_loc_r68",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b90_global_synthesis.json",
       "path": [
         "axis_localization",
         "bootstrap",
         "r68_deg"
       ],
-      "value": 17.198999468997844,
-      "source_sha256": "535552b94b02ec819ed5e44c3d5be03be65738626961d0155d315723a5049fb1"
+      "value": 18.821858827456765,
+      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
     },
     {
       "claim": "cross_nominal_p",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b99_cross_channel.json",
       "path": [
         "T3_fisher",
@@ -2367,7 +3014,7 @@
     },
     {
       "claim": "post2017_dpar_bound",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
@@ -2377,11 +3024,11 @@
         "d_par"
       ],
       "value": 0.1028,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_hyperbolic",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
@@ -2391,11 +3038,11 @@
         "d_par"
       ],
       "value": 0.083,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_shortarc",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
@@ -2405,11 +3052,11 @@
         "d_par"
       ],
       "value": 0.0907,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_longarc",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
@@ -2419,11 +3066,11 @@
         "d_par"
       ],
       "value": 0.0979,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_sparse",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
@@ -2433,11 +3080,11 @@
         "d_par"
       ],
       "value": 0.0974,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_dense",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
@@ -2447,11 +3094,11 @@
         "d_par"
       ],
       "value": 0.0929,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dpar_nontraining",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
@@ -2461,11 +3108,11 @@
         "d_par"
       ],
       "value": 0.0827,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_nontraining_p",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
@@ -2475,11 +3122,11 @@
         "p_tide_null"
       ],
       "value": 0.008449577521123944,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_dipole",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
@@ -2489,11 +3136,11 @@
         "d_par"
       ],
       "value": 0.0949,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "post2017_p",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
       "path": [
         "results",
@@ -2503,11 +3150,11 @@
         "p_tide_null"
       ],
       "value": 0.0021498925053747312,
-      "source_sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e"
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
       "claim": "refit_rho",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b91_nonwarsaw_refit.json",
       "path": [
         "T1_validity",
@@ -2515,11 +3162,11 @@
         "rho"
       ],
       "value": 0.9978499173108192,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_in_p",
-      "component": "8_conclusions.html",
+      "component": "9_conclusions.html",
       "result": "step_b91_nonwarsaw_refit.json",
       "path": [
         "T2_replication",
@@ -2529,9 +3176,11 @@
         "p"
       ],
       "value": 0.03407361372998079,
-      "source_sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603"
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     }
   ],
+  "stale_inputs": [],
+  "provenance_mismatches": [],
   "script_inventory": [
     {
       "file": "core/__init__.py",
@@ -2571,11 +3220,11 @@
     },
     {
       "file": "scripts/audits/audit_post2017_discovery_footprint.py",
-      "sha256": "d57636d11a906fb2e1dc8d22c20e1d1058c3d68202a3dea3aeb7f771928c28b5"
+      "sha256": "99e14e3fca86c66b9731af4e8788f8f19df4954f9a5d5debd502c55cca3e09d3"
     },
     {
       "file": "scripts/audits/audit_publication.py",
-      "sha256": "591aff04a123ae618d46e18a17ca579c15d4eeec099ae7961a9b00b128ef2314"
+      "sha256": "25c083ccb09e34e252799ab303c454abb3cd8aed349e7ace981fd7ef16ea8741"
     },
     {
       "file": "scripts/audits/audit_refit_replay.py",
@@ -2591,7 +3240,7 @@
     },
     {
       "file": "scripts/generate_site_pdf.py",
-      "sha256": "389cfadd3215716da6137b74d2d13317e392ba07039b6a75141f894cf5ab717d"
+      "sha256": "49b5cd85c3f1b35d9f96d7ef0862437650fef556fd900a513fe84d4a638fa6fb"
     },
     {
       "file": "scripts/recover_leg_channels.py",
@@ -2599,15 +3248,15 @@
     },
     {
       "file": "scripts/run_all.py",
-      "sha256": "0d11b0f1153868f794336d6cd3d43f0e40ae539d0113dff36820caec65f23e9a"
+      "sha256": "f56d44af47cfb4604b04084d57d0652c6459daecc480cb6d90fd367692c8c73a"
     },
     {
       "file": "scripts/steps/step_001_download_sbdb.py",
-      "sha256": "04bf49da64c650cf0fa49f44e2a3dba6ce38c1b30085e2ee8d14c23067f7319e"
+      "sha256": "e6718dd493da24e9131dfdfd6c32dc226d4d045a68d3f70e3f90b86dc09229cd"
     },
     {
       "file": "scripts/steps/step_002_download_cds.py",
-      "sha256": "59b069ae0e4295bafabbaedbac068acaf515a0d2059ef4ad79b9c623467c0f60"
+      "sha256": "35916c331f6743d68c6336504dc948d046d640ec56e009f7ae79811871f0a2a3"
     },
     {
       "file": "scripts/steps/step_003_download_code.py",
@@ -2619,543 +3268,551 @@
     },
     {
       "file": "scripts/steps/step_010_tno_clustering.py",
-      "sha256": "fc74f424d6e8f00274462b6450e23d50368ae305852ee218149da6d1eb4537d9"
+      "sha256": "82a400c303721bdaba9497ce0c5e181b477e4fdca61f6ac98e73bd1725478bfc"
     },
     {
       "file": "scripts/steps/step_011_discriminators.py",
-      "sha256": "af6f60cc7ecf2f64ca171bbd3f43e0bf3717f2c6bb78cd8c26a5214d513884d9"
+      "sha256": "ce502a548e859b9b00834953f5b390b316a4f8a20a31b3442744dcf830c4fede"
     },
     {
       "file": "scripts/steps/step_012_radial_profile.py",
-      "sha256": "a5866812d86cead2b0c6a37229a2537fc5b29d7f63126759236b852cb7fb9b82"
+      "sha256": "91f01cdedb19e90c001412b37416284473d6cd461fe765b9aa4c74b7354b90c1"
     },
     {
       "file": "scripts/steps/step_013_empirical_null.py",
-      "sha256": "cd53026ba9deacb5360323cb3b02c43a56d2884b50baeb3d855a62822b8b3ad9"
+      "sha256": "1285e962ab0920ad82e7813bf539692f6dfa853090fe473b5ee8debf710922ec"
     },
     {
       "file": "scripts/steps/step_014_discovery_footprint.py",
-      "sha256": "e1985c0b3499de02a810056e2af599293487d6d0fddf9ef311a0aa1801197041"
+      "sha256": "c67c7511fc8ab3d810c91fd2378c49f1522bb33ccd1ac15b822803cf2a070011"
     },
     {
       "file": "scripts/steps/step_015_proxy_validation.py",
-      "sha256": "f55280e3a51e45a1e3c5db8e14b025048f177bbacde543c81d36b99d742b25ec"
+      "sha256": "f4c7670e640d3d1cef5320be464b9cc581b1d35e4431ce02a46e90ab4c9ebd5a"
     },
     {
       "file": "scripts/steps/step_016_footprint_conditional.py",
-      "sha256": "49abeb477d491a26e49abf64410ff5874d58162881dcc4d5e8b516b518fc4f25"
+      "sha256": "ced092b20d6a7124400e89c23ad68f48e4a2775821add438ff2316b264fe1a1e"
     },
     {
       "file": "scripts/steps/step_017_decorrelation_radius.py",
-      "sha256": "8d604cb4d9dfe9ead3464433c68ff8417979666b9a6f0719963912a4b07bfc22"
+      "sha256": "cb46d070773270eebc5f7ac62fa24750da275233da4f4097964fa2beb69c18e8"
     },
     {
       "file": "scripts/steps/step_018_plane_warp.py",
-      "sha256": "8183d15f40f13c640d7104d88c548d8bb45c630a96542c8b0653eeb33270daca"
+      "sha256": "5969a4171873ac07880a9e4897bd1760234804a29dee26d3e1c7929fad902b83"
     },
     {
       "file": "scripts/steps/step_019_pole_geometry.py",
-      "sha256": "c06e3726d31aacc62301162b7f2f8b436878ce35343c2fb3fcf69cfa76ef4392"
+      "sha256": "f9e30891f13dc654f9f15660a704f48841b1e12fa791a274fe22be642799a577"
     },
     {
       "file": "scripts/steps/step_020_axis_coupling.py",
-      "sha256": "7e5153ad9388f3d021a49a574a4d36ed8f3428522e80cb6103e6db214ebd0d71"
+      "sha256": "b605caca16e0b49d1ba46d0a414234ff10c036efd04309a538898d259e9f3a43"
     },
     {
       "file": "scripts/steps/step_021_environment_checks.py",
-      "sha256": "d129c6ed73631d973e088da6d98d618dd7b5c3a051f4f38704801fa8ac177760"
+      "sha256": "9cfa5e78c0cbfb7724d512b6ad66be5b83760df517fb253dcf1cd4f0d61acc88"
     },
     {
       "file": "scripts/steps/step_022_edges.py",
-      "sha256": "c643209818ce213ba2a6ca02654d56c8fa83de0cb8d17ba52d26c951cbdcbb4b"
+      "sha256": "4730de2c3b220316bf20fa96773201575e5e291e6ae088c7f2465154ee22610d"
     },
     {
       "file": "scripts/steps/step_023_robustness.py",
-      "sha256": "b561af806ae947d89d0e925c7d15bd448e29ff8cee46098b2e591f3dfb981256"
+      "sha256": "f2fe0c7a33494f254f1eb6dbfd7283d408c41fe240c47b04aeef796bfa087f3d"
     },
     {
       "file": "scripts/steps/step_024_population_selectivity.py",
-      "sha256": "4ef7ac9746ca792aeed2d704072eeb7c282b9a2ae4ea62b0d342783bb8024262"
+      "sha256": "74bcaf9cf08745bfc9d13ce552f649a04a893c4d5aa50c20835cf5bf20db84a4"
     },
     {
       "file": "scripts/steps/step_025_patch_scale.py",
-      "sha256": "5b8d69f6cdd424692e4e8251f5c15b4057c756c894cdc1222b5aad468a217d0f"
+      "sha256": "bc71aa00f3d1117e652932c319de3499bb4b9a4e7c0fa18e7aaa3b6e59821834"
     },
     {
       "file": "scripts/steps/step_026_antipode_deficit.py",
-      "sha256": "372b23563e7e0f4d758ac995a21bc46f7f67fb9407904f6fb407dd235b2a1419"
+      "sha256": "e4cc9c436a2ccac4d9d021cf78f36feff76dfce80e4c00bb75bfc0a0f7d79a5b"
     },
     {
       "file": "scripts/steps/step_027_antipodal_populations.py",
-      "sha256": "1e3c296b56bcd5c7c3e81b203aedfc3a70372561b2e54f1b63bcf6ec7d9425b3"
+      "sha256": "1b7a631a87992c8a2ab7a94b406413365f623720ee25ba53c332987d1ed6cef1"
     },
     {
       "file": "scripts/steps/step_028_ossos_bias.py",
-      "sha256": "56c4b2352745723a3e18e36f76b291119d6f031ab7c229e38e0ea7c45cf70c7a"
+      "sha256": "1c7ced419d16e1fac7bfc73fa816169bdccc27e14f4c5a8b9ca18e0f343a8090"
     },
     {
       "file": "scripts/steps/step_030_warsaw_direction.py",
-      "sha256": "87666360323d2ceaf3575f8f9c073a23f4c0bd22449a3760316c93ba0b47d812"
+      "sha256": "b3956521f6d3c48cd3b3019246545e410634112a77c0a48827b6b5dbc55da254"
     },
     {
       "file": "scripts/steps/step_031_clock_channel.py",
-      "sha256": "be7729991c62c6819ea0de35717f854458eeb7e600f749227b0482c5aed1521a"
+      "sha256": "eaccf01e62a3fb10ba091e2e960a81084a92c42f7ab0db2c9175c8be38ddd2be"
     },
     {
       "file": "scripts/steps/step_032_nested_field.py",
-      "sha256": "eae717bd38f59897d07d9a8066fd9a58b238b639d402324fdbd446386247f29a"
+      "sha256": "f341bd72767225197002eb5124eb12a4ddbc7cd079d2e26406b8ddcc75cba78a"
     },
     {
       "file": "scripts/steps/step_033_three_leg.py",
-      "sha256": "5e5f32c1ab8411ee8087b32a65274f7f9d430c7062da15a525703538687071be"
+      "sha256": "f9538b792cf0c16345c07e4991aab2e504e0389659a8aab47721bb3401cfcfca"
     },
     {
       "file": "scripts/steps/step_034_code_confirm.py",
-      "sha256": "e21a74f8ae74862e5f9c14bcc99e24bd5a2e5cd62c15b5581e2c702a940ceff5"
+      "sha256": "6b2549c4241a5f13091934f55094a24b4f9b40b9d6705d8d131817a63b57b782"
     },
     {
       "file": "scripts/steps/step_035_consolidation.py",
-      "sha256": "781edbc146b492db63263b681d2bc586c26bb8ca6735261e0798aec667984074"
+      "sha256": "931a1fb31865c5c4a1ef7ed5b270ba81322883a6501ccfae51759caac79b7b42"
     },
     {
       "file": "scripts/steps/step_036_axis_convergence.py",
-      "sha256": "8cedfbaf0a5c66098d6ed4e2b1586c1969183d3e22042e44effcf73bfc4f7a83"
+      "sha256": "0393706f4f81bf90cf2eac1eec48fb8dff5061f19ba8c2ac0b2c920e3b17be27"
     },
     {
       "file": "scripts/steps/step_037_blind_validation.py",
-      "sha256": "2776c8578df90deabb3520c46469cb336f2f6272f45bff3fbe5bfaef1ed7e1f3"
+      "sha256": "a1a9269c0dd556d2ce5deac3402e610424728a8fb3b4dfa718d96f2fbec7782e"
     },
     {
       "file": "scripts/steps/step_038_model_comparison.py",
-      "sha256": "49a1f4a30eb751c6a10941d3dbd994599b2586885cb0bedcd7e98157c51acb9d"
+      "sha256": "a155cc45a767150990e74dc9c9690aec647c163cf4d76778f347b0d81caa0bd4"
     },
     {
       "file": "scripts/steps/step_039_signed_channels.py",
-      "sha256": "2a26aeff9628dabe34a003d6dc258da4ce0fa235b48e415d9e7cda7041d5bbb8"
+      "sha256": "5134ebfae0d89e1a1a8e8663a7dc7885f3db7983c6615e577c0f5c49a1f2628d"
     },
     {
       "file": "scripts/steps/step_040_planetary_baseline.py",
-      "sha256": "0588935fbb8db52285fe9423bba8313ea3e188820b2f4a0370b264b35ed9effd"
+      "sha256": "a010a80b0b032f996a994d9fb95698b95b84ada61c00bbd2b8780f32c2270ffe"
     },
     {
       "file": "scripts/steps/step_041_alternatives.py",
-      "sha256": "035cbc95a0eef527bd806f65ba54cd9dfddfd07afec66790f17a871af80f23e9"
+      "sha256": "92ae9c8e18dcd720c3dcdbc1cbbe594bdf3947702f4f04f0b6d6754864a4b986"
     },
     {
       "file": "scripts/steps/step_042_nbody_planetary_baseline.py",
-      "sha256": "d593f95150b3831b5e983b6c7d2124e5e4f3ca2511517b5069af4897e9443deb"
+      "sha256": "aae9741da8c7c3a8d60557e660b6245163daa4600819bd47533cbc2e5b903ecf"
     },
     {
       "file": "scripts/steps/step_050_one_map.py",
-      "sha256": "a034a49262e29b51240e859e0a3cc83fb7d36c633c245f3f024258d43839f124"
+      "sha256": "7363dea3528fec84340ded787638910262861f064fa441ffe785c65a0ff5ffee"
     },
     {
       "file": "scripts/steps/step_051_evidence_summary.py",
-      "sha256": "cd1dfb3d93ff3b4f7e8042c1a5526920ced1a16a42b297cb8492ddd9b7dc6d1b"
+      "sha256": "fb8a5e31d8d9979e01b75855c0dfdbd91f72652ea37b20a81482b7188f28c1cd"
     },
     {
       "file": "scripts/steps/step_052_injection_chain.py",
-      "sha256": "5e46a09af107fbaa59f15c83d71debefb1d6517fe8bf6c045c5196eba705bca2"
+      "sha256": "da4e5c5a0a251e1e2ba33bf34227b5668c7be0aad6cd32d147557af97a4cae0c"
     },
     {
       "file": "scripts/steps/step_053_catalog_concordance.py",
-      "sha256": "b2109fbc27c3b6bdcea148bd4e41846321f22788b6a4b10f1881b78e0c495eeb"
+      "sha256": "5f725cf5afb00cf57e2c1c1be767353c690f29906fd7074e2d1e2b8f6648bc47"
     },
     {
       "file": "scripts/steps/step_054_prospective_predictions.py",
-      "sha256": "e5b87e0c0665c37f39c1727ac81a4f5c38efd92587b375415910d2bc277508b7"
+      "sha256": "12c27184460e32489ce383e3231f902823659abdf06300a093d6959e62718304"
     },
     {
       "file": "scripts/steps/step_055_morphology.py",
-      "sha256": "37eafd0fef9b657a792390c197f59367ebb49ad262a6aedee1e55496e998131c"
+      "sha256": "0bb64f292844c5fc72022ee9db7334b1cdbe93faaf9e66b98543a480be6a2c59"
     },
     {
       "file": "scripts/steps/step_056_morphology_conditional.py",
-      "sha256": "5093c00d7478b6fc335f89cdb25629d8c17060fe723632d51eb6043f66d07f43"
+      "sha256": "fb62aae20f6d6558c40257926b2542a32f9d31eeddd24c0b07e137eb06ab9574"
     },
     {
       "file": "scripts/steps/step_057_incap_audit.py",
-      "sha256": "01e67006abab80055419f8951c140563ad58ed23d1298c0ebad1acce85b7ff9e"
+      "sha256": "9c33c3ca58d8cfc1a8f2740f3796b6adc84037636ae1f3e7ba82e63312b537be"
     },
     {
       "file": "scripts/steps/step_058_comet_obs_audit.py",
-      "sha256": "5aeeeec53f0e6b527126b0fbf91373cb90c7387208c614fad40c57271441d93a"
+      "sha256": "e710f0baec9f979edef01938768a5ad73344e2bcbc921a0a3e48d918cbeebfda"
     },
     {
       "file": "scripts/steps/step_059_axis_consistency.py",
-      "sha256": "8d9d29f3b5633c7f924081734086ac63de19ca23409fc8963478569b8d846877"
+      "sha256": "ce5e99d959ed98cd765ccb9afea3919c846ea9dd3cb72e440a05e77a1b314a83"
     },
     {
       "file": "scripts/steps/step_060_uncertainty_channel.py",
-      "sha256": "a7de90b1fce6197f36c3cd3b64631ed4019a1f01c5f2283ebae9412b014c6a1c"
+      "sha256": "ba39ab21b147fd3146af93662eb2f7fea42237c7b3598be79be9ba02a0273a5f"
     },
     {
       "file": "scripts/steps/step_061_aphelion_dipole.py",
-      "sha256": "ef4ab21c6fe1fefbf17d8a7f61465fb2dbb9047c3b64eabe55dd0feb63a11f29"
+      "sha256": "0aeb27971f5cf1296dda96ba9f50fc49992c4e157cb17cdbfe11cf433560fae8"
     },
     {
       "file": "scripts/steps/step_062_planet_nine_insertion.py",
-      "sha256": "02d82c44bf02633d992b4cf6373a994130758e370c70ee7cc27ad29a52a4c90b"
+      "sha256": "2dc932a7eb2fd6eb715837e3daad6a02ed0bb9b88eec1648be52ce7cb1c8e7bd"
     },
     {
       "file": "scripts/steps/step_063_bidirectional_rotation.py",
-      "sha256": "8020c3e26278b4be62556096abf94952b8edb2351df5f817156398a006dfda43"
+      "sha256": "dd99aeb22270224e8edc43e28cc089a18aad3bcb5a13735b0770ca8b7cdbc13c"
     },
     {
       "file": "scripts/steps/step_064_warsaw_bidirectional.py",
-      "sha256": "c354195e20b257c20fa01f16148f5366b0326c3bda1995af5b88ec8f7834a54e"
+      "sha256": "d78f44cc05135e21a90b1bd35b6a8e3e1361b6c2c75dc636a5c95523591c9493"
     },
     {
       "file": "scripts/steps/step_065_proper_time_slip.py",
-      "sha256": "57243cdea8819989e1b6c81fb90bf986866cfb4152d1d1cf5280c47e81167314"
+      "sha256": "a192a8c9742ba6ed14ef0d1fad64854c1e756eb715022a16aecc49d36e162eea"
     },
     {
       "file": "scripts/steps/step_066_tno_secular_stability.py",
-      "sha256": "d552dcf6b9fe7637cd6f83837bfd8bbd89c3302a19aede98364b9c82cc90d009"
+      "sha256": "599ccb0789808dcd65d3b67beb2db1430344971cfe0f9166b696ecb1b30cc369"
     },
     {
       "file": "scripts/steps/step_067_detection_power.py",
-      "sha256": "388c9e000f39c3db2a4e10d4d1ddc888baec0972305b909325fb1cc2d477c183"
+      "sha256": "d0958cd0969264c547d3a8a88b86fca7c10b087bb00384ff84f778a14369b1a6"
     },
     {
       "file": "scripts/steps/step_068_wall_vs_field.py",
-      "sha256": "04593eb194f23e36c0aacd3a74f1fa201fb55339cf5d322bacc43e3fbe2646a5"
+      "sha256": "4ad07db5b07510e91685e89318e9946e7218dc234888965c5bd85b3a4f5f9a3f"
     },
     {
       "file": "scripts/steps/step_069_joint_axis_test.py",
-      "sha256": "0a76a4891314a94afb5536d936f9f2ec5aa9383b05107e2a9076e162e9ee9e53"
+      "sha256": "63e54a521747183bcf2a9678c11fc9b45af79a3b529a60e864857c89d274435d"
     },
     {
       "file": "scripts/steps/step_070_galactic_tide.py",
-      "sha256": "eb880b24d109f690fef922e2224fbd030189709df911faebc555dcfc93ec9713"
+      "sha256": "85a2f6f8c947b6c0bd760c9b1026388219569f7e851bbd3991d47936b3be6060"
     },
     {
       "file": "scripts/steps/step_071_radial_slip_profile.py",
-      "sha256": "6a136d256c3ad7a23d648fe345e6f9144ee09a5fba53b0c33fd96d2fedaf80c1"
+      "sha256": "8d30114a1517dd4d4ca738a4c3b7cb47f27c437924c8e37373ba4e8ca5997e5b"
     },
     {
       "file": "scripts/steps/step_072_epoch_stability.py",
-      "sha256": "dd515f93304f448a7101d6fc9d17ec6b27d47002cec9231888b843b8c6dee747"
+      "sha256": "cc0698b5055cf098d2588d1a9539ed4aff7fb8a4f7a13dfcc1b904ae37bed16d"
     },
     {
       "file": "scripts/steps/step_073_edge_width.py",
-      "sha256": "fb607f670d10ba14482094d0b61993910510126539affd27df54af7ec730e228"
+      "sha256": "8b93e18450a8e94845a93ec8aefd1a5804f19fe71e12842eb45204bd55366509"
     },
     {
       "file": "scripts/steps/step_074_loco_joint.py",
-      "sha256": "abcd706ce915f46fd3bfa5a3812080c28057533338476f6728e6e3a723c02205"
+      "sha256": "dfe46670846c3ca626933f44e203cd61bbbb3f8863b05e7f2387b08bdd207e62"
     },
     {
       "file": "scripts/steps/step_075_signed_slip.py",
-      "sha256": "2a024aa49ab88378497c3e8a4f3e26c07d2b0a765da42ee9c5db722654495a69"
+      "sha256": "c9bf278ae15a99f9444ca0f77ae00ada3f93e50dd2741068d045f9410adc5681"
     },
     {
       "file": "scripts/steps/step_076_inner_slip_profile.py",
-      "sha256": "093516894f1e314538d8b9134532a4af753f39fdd9b183a35cdd87abc331db7c"
+      "sha256": "dbb26ed048964f95cca6e587095ef40c6f1c208dbe7da99055da9f12f18b2aed"
     },
     {
       "file": "scripts/steps/step_077_dipole_era.py",
-      "sha256": "6aa5f24d2705eb95847b16192a6ce1009317d9afa86fd6a27c4878880188b371"
+      "sha256": "e8d4f25379a2cdef4d275c5af3b2cdb3e9388b4af12656d68222e67813654bb6"
     },
     {
       "file": "scripts/steps/step_078_tno_era.py",
-      "sha256": "178fd897b04b82962e308fcdba6aefe0c62690d53a9acc6a447e7dfa2df86f33"
+      "sha256": "5d12b689316eaecb519210becfe01353b6d0b71c2c05afec1490fe02044ec618"
     },
     {
       "file": "scripts/steps/step_079_cross_fitter.py",
-      "sha256": "ced38848f5b6ab7591f2e1802c287f874582f1634e265ed90a07a1f9f0e7ab38"
+      "sha256": "eec183be8026e33afc2e27b936f831fe92ebd1b4d95d7241e80a07c14da1b2b3"
     },
     {
       "file": "scripts/steps/step_080_signed_residual.py",
-      "sha256": "7e669645a23201eaa12e1ecae68a612c5a1e48f3402eec23115a8662df8b0390"
+      "sha256": "ce2a25268ea18fd3435dbee3160ddcd1d53140c1d73c06b488d5a6853d502ddb"
     },
     {
       "file": "scripts/steps/step_081_geocentric_null.py",
-      "sha256": "b90d9f5b86dd9940c2d58dc06147a317c1baf4f5eddd5177d172ec714d3fe28c"
+      "sha256": "76c85c899abe694fcb35fab28706f2784b7509b79d05fd25fdea16e2a6ce5925"
     },
     {
       "file": "scripts/steps/step_082_sky_matched.py",
-      "sha256": "67c46e6473522ede6f4d96954de6e2ec8a591b7985ea9258975fc5aa07463531"
+      "sha256": "034e23619ba4b07c2a8332d2fbef5c702f7ed03eb4efa2e2da43799e1e557625"
     },
     {
       "file": "scripts/steps/step_083_mass_ladder.py",
-      "sha256": "815027f6b75ef3543a4b2f9a01b8778c8cd11e248e9ec97f324c553c06212b2e"
+      "sha256": "d3dc78f0375278db94d61e7cd0d4a7c61ed5da30ae047984867643b131554193"
     },
     {
       "file": "scripts/steps/step_084_newest_cohort.py",
-      "sha256": "636ea4ae76ce6538123a6d451df81215112ff655a2b36b0d9c7c20c595ddd053"
+      "sha256": "a09a865a8ac8c2d7d47029b1a95448c2a3dfbf481eff35618df278941682c581"
     },
     {
       "file": "scripts/steps/step_085_des_resident.py",
-      "sha256": "f81495be269fffaa1c59b7f8237f15209b0b296f9e92ef7c474f443322e03361"
+      "sha256": "409936d38d096097f3dd2eb5b35ee630b3e267fe32b397f09dde2dd5535afa52"
     },
     {
       "file": "scripts/steps/step_086_slip_physics.py",
-      "sha256": "0861781750d8d3e25a14e4ce20b87fb1ff84f2ec0d4a273be9618498bb5d7bc3"
+      "sha256": "bef33b6dea7bc86d5f37582ecd6e0314a3b05a9c6b0ce46e901d3735cbef3190"
     },
     {
       "file": "scripts/steps/step_087_distance_ladder.py",
-      "sha256": "263cc228bc44ebe6cea123c9927990df61d60fe7dd1ebd41ac900814208a319f"
+      "sha256": "44bb8e6c824877bcf1a3147a15c6972a9945f8ea720f6693e7f95f16f4de405f"
     },
     {
       "file": "scripts/steps/step_088_tide_resident.py",
-      "sha256": "d245bccec8c9c71441a59d9ba447c9f7514dbde885373eebee24d3d6e26d0282"
+      "sha256": "a3b90fded3b5eee91f8522350e7233d6cb66c21cfe2294e1d870f24c675c7283"
     },
     {
       "file": "scripts/steps/step_089_bipolar_morphology.py",
-      "sha256": "a33b53a1e094734fa153cae4bdf71b7ff1339744d74a19015217fa223f38b4a8"
+      "sha256": "8f793330e2947dce59b07682bef9db0d7d67c9f8584343421f69be73bceecd25"
     },
     {
       "file": "scripts/steps/step_090_mean_plane.py",
-      "sha256": "bc0216116a8be59e6026701c6574715b94164b37524122cb6187e48fa16a6b79"
+      "sha256": "15da19c938e93a2cafb8cd6362ecca369d54eedc3f6c39ce10802f28d006020b"
     },
     {
       "file": "scripts/steps/step_091_inner_perturber.py",
-      "sha256": "0aeba4b0d838ad9150b5ad14718e6aee8d41cb09f7c0960a7508699874089a21"
+      "sha256": "d4bda3d6423f7cd3442edbb999879dee1e4abaa169d52f11dd2cac1d41cc3f1a"
     },
     {
       "file": "scripts/steps/step_092_mpcorb_clustering.py",
-      "sha256": "c4d9fa2344efd0654be3d15b07fdfb315da368927982947f478e6b2507bd1b31"
+      "sha256": "c560710e9a67a602f5dc87bc13ca230c99b537536908e462cb5fad6f3e30dc77"
     },
     {
       "file": "scripts/steps/step_093_perturber_zoo.py",
-      "sha256": "f1fae33d4cb4b0ab35bf4390cbcdd481ee857e2c46973e86da81e09eddaf2835"
+      "sha256": "f42e79d5bf74edca37df379d92b0c56ba6a411c99401db6291b23d3df6fa64f1"
     },
     {
       "file": "scripts/steps/step_094_joint_axis_mp.py",
-      "sha256": "a4954905b45e1bbecab134031dc64b05182d634d9c324b1414450efa0fc8ccc3"
+      "sha256": "fc0fbe71d4043f01d698d99b262931f4789c9df2ab20c495292e7c149b3cf9d7"
     },
     {
       "file": "scripts/steps/step_095_download_spacecraft.py",
-      "sha256": "79000aaca2beceb10eb3552e7ea231478642125dee5068bfbbb471e80cc4a678"
+      "sha256": "6157437a5547c0a924c6bb7ff1a6982928ebb244b3b684c812bd3da0141251f1"
     },
     {
       "file": "scripts/steps/step_096_sclk_clock_audit.py",
-      "sha256": "349807c45a6667beaa5e6ccbe2cfeb067401e33e29b3f4f15ccf467d2bb99310"
+      "sha256": "6abdf8f19f5d3c3128cd60bbafe15d98210f96e4c84700d663b0d3a79af90459"
     },
     {
       "file": "scripts/steps/step_097_pws_plasma_channel.py",
-      "sha256": "74350a6129e81af6d5528e6803ef74adb80be07d678e36a4209bb3c26c246c8f"
+      "sha256": "db9bae6497e9d5ffdc57b14aee53bb71bf1e79f252d869179ed62437e4cab7ea"
     },
     {
       "file": "scripts/steps/step_098_rtg_nuclear_channel.py",
-      "sha256": "be63b96e4c4f55457866b536f0c26e950a5c7243c845688aa9fed446668f5d66"
+      "sha256": "af81ba089d53c01096768dbc4c57e0c196dbf1161f6b99ff54c0f680cda664fd"
     },
     {
       "file": "scripts/steps/step_099_heliospheric_geometry.py",
-      "sha256": "3315e839de83a4022249ea96d41d82cdc240ff618800610a18f820ef18873f45"
+      "sha256": "9e9cb1e9d593259249e8ef5d16e5db60714ec43b8ab571e7a8118a91e0fcdb3a"
     },
     {
       "file": "scripts/steps/step_100_clock_consistency.py",
-      "sha256": "1d8312c35ef8a899af71d6cca1622e0d96767930be387ee9ae44728e550b598a"
+      "sha256": "b2d07e733a3550a457f76d6a48916fe42a762b0e35d0891f7caeeaafa608443d"
     },
     {
       "file": "scripts/steps/step_101_iso_ng_channel.py",
-      "sha256": "a6829feb8243adda2f66b5eccf5ec48789d640141299634d82bb7a2eb015642d"
+      "sha256": "6670aa6a89934a27095f8ac57f696332fdba66ac57a1c248c04c267dcd365f95"
     },
     {
       "file": "scripts/steps/step_102_slip_map_validation.py",
-      "sha256": "36b2476fa03aff88471f85565ee0c9e90bdf17f2a581ccd9058c0cbe830bffce"
+      "sha256": "68381a6164044803a107c6e1bf38d8d0615b1c03c9f0555341a50113d3423088"
     },
     {
       "file": "scripts/steps/step_103_rtg_midlife_control.py",
-      "sha256": "2fcf79d0c9ffa2dacf6c137a28bb1926635bf2720e3709961cb8ede13ad251cb"
+      "sha256": "f18877a0236bd777ae0cc2d85960834c089b9d1bde49045bf01bb50ddead0208"
     },
     {
       "file": "scripts/steps/step_104_spatial_holdout.py",
-      "sha256": "ea9841200031252dbe5b06797fafc6c9aa9457bad53841cf11d94510f63c2f08"
+      "sha256": "8760548f8c5ec4a2179506cbecc0533baf07e75a152f0ead6d6ac1d4e031f177"
     },
     {
       "file": "scripts/steps/step_105_lpc_bidirectional.py",
-      "sha256": "d256874200120176303f85c5dfee3c8456510fd3bdad4a23c366777d02495cde"
+      "sha256": "a3daa9ef5ab5cd357cce2b0aad65114f2d3e1bd24a320455a9a4d0c93d012278"
     },
     {
       "file": "scripts/steps/step_106_harmonic_axis_transfer.py",
-      "sha256": "937ac7ac1dd7702f6406d84aaedb45c732ddc8e2e0aa67f9de21a1f6cfb01576"
+      "sha256": "d0333afd118db472a981aa84712f24fc2b8671dc4a8b79c97dcba6cc8b5197d6"
     },
     {
       "file": "scripts/steps/step_107_named_directions.py",
-      "sha256": "4aa694d4aa79aba11b9d7696ff84f7eb59cc9d2a48461b78df1d156d306f3c82"
+      "sha256": "fa5de8a404390dceb1b853d7fb2a56a609803a6fae984cbab9ca48e0586ba923"
     },
     {
       "file": "scripts/steps/step_108_cometels_dipole.py",
-      "sha256": "2a75494b95b62407d369d0ea018fe44146f224a8b71c90f91cef073888b1c771"
+      "sha256": "36bd9fc799721184978278bd1c2babbc01ecd10058f02ca28250c3573ffe604d"
     },
     {
       "file": "scripts/steps/step_109_census_bias_audit.py",
-      "sha256": "23419de86940b22a7836b93b45f6fdbecbc1bde421af42ca76ac65cf9deb8691"
+      "sha256": "b8cad3bbd6829dee4329e0a54e670989ad694c583f17c5564a7a012f7c8e0cc6"
     },
     {
       "file": "scripts/steps/step_110_aphelion_direction_vs_axis.py",
-      "sha256": "9f1bb14f951b38fd48c66eaea8adb3210e48dfd7f2e3ce9dfdc2b7ae8bc9a0e1"
+      "sha256": "30f77d314720d77cf3528c223e6c7364c29ef79a4d910ce16543bbd02a6f92d9"
     },
     {
       "file": "scripts/steps/step_111_detachment_coherence.py",
-      "sha256": "d770eb5f7ced8b5e1a5a4de55712a995aaca646d35142ab6f220e6f271a548a1"
+      "sha256": "6ca4eec1ced481234ffefd8a2f8dd45cfaf0b40487705f119021460958b3776d"
     },
     {
       "file": "scripts/steps/step_112_ossos_ensemble.py",
-      "sha256": "f0b9208da9d061d5ea770721a3e9cf5ee483a88bd37d833a1ad7d748e2cf5d03"
+      "sha256": "d84fca2a0e71b224f5c816b5b27ff3aed69586a24fae707d26afe4160b11a940"
     },
     {
       "file": "scripts/steps/step_113_resident_ledger.py",
-      "sha256": "6656d0c1ba2761e599223092abbc6ba4b67dba282856bf6f158c1ea9378ed94a"
+      "sha256": "4901ab9504d388fcb07fb73e21a332a94199be98a5a3f82c872eff25cf58bc9e"
     },
     {
       "file": "scripts/steps/step_114_claims_trace.py",
-      "sha256": "b63f1593efb6d858c71ee2654afcdadf7533773dac91fd67ed57ebf3dc2fc00b"
+      "sha256": "e648de40fc643421699d49f19426e2cf7d1cbef553b3370bbe55699eed38552f"
     },
     {
       "file": "scripts/steps/step_115_mixture_posterior.py",
-      "sha256": "e2551964d167339b3ce83fd33e91a95739599d620d64bc008405bbf1dc56c4eb"
+      "sha256": "2306a1bcf65c1a6010694efb0a478238beefaa52eed1e0b9b2adcab971b59b10"
     },
     {
       "file": "scripts/steps/step_116_discovery_coupling.py",
-      "sha256": "a4b3d3c6c8f28883172d9208ceb1b71b064d114bb7787ad2c97d8b410d1adca9"
+      "sha256": "c340238ed2d8ff3015ad9cef00e05f86b156d1a415d695243d52f601732d9087"
     },
     {
       "file": "scripts/steps/step_117_prospective_lpc.py",
-      "sha256": "7293b92edbd9535a60c1cf10aa3c1ca4ea4b12fedde104dbedd54faa0963c760"
+      "sha256": "673d4d332489e33d6758543f30dbfbd8064df261907a18576ce2b19b3b7d5b21"
     },
     {
       "file": "scripts/steps/step_118_prospective_axis_audit.py",
-      "sha256": "b94cb8f2da304b404ade457ca30b66c7efe1cdf408668702271ad506b5709c69"
+      "sha256": "4213b100a93de4194ea5e5994d730b49711e7839c762670d692b2e7edc2a1f9f"
     },
     {
       "file": "scripts/steps/step_119_dipole_mechanism.py",
-      "sha256": "43a7a10234f75da4d0a8f3c2d34e018d1144d69aa209f673bc50813610997ad3"
+      "sha256": "230ce3229eafb05ac22b7a03d2b87c4b146227a2721559973331ce8f0b932fab"
     },
     {
       "file": "scripts/steps/step_120_pre2018_sbdb_factorial.py",
-      "sha256": "5a4173152ed9a5f507791912881419440d53f9a73c13171ac7b22e5fafae50ca"
+      "sha256": "3e70911081bf35892dddea03ad6cc2d068ea19c6e4289fe2e13a5d9a88285496"
     },
     {
       "file": "scripts/steps/step_121_masked_signal.py",
-      "sha256": "285a6b5a624176d0d80dbf02189e1f5a48a4ed17bef67694de49bee49c493500"
+      "sha256": "8f264715de22bca5a4d706e5d7976e2d7a14081394cd3907126cf41cd482e822"
     },
     {
       "file": "scripts/steps/step_122_pre2018_localization.py",
-      "sha256": "89e3cce6903e2d0249756dcf9a6c1614ce6fc66a773f677f2908903b6d07479a"
+      "sha256": "f9ced7372b35a38e2af28cf8bc8821273aa7f4efef33a75c932f0b9cbf899390"
     },
     {
       "file": "scripts/steps/step_123_leg_coherence.py",
-      "sha256": "7390161d0576af6d84565f91bff47dcbc469a291c03aca3b2c9c39d698206e8a"
+      "sha256": "0f4edd4b78241380e95a5b320cc6d685522017d86c94b95bbbe00cdcc780e4ff"
     },
     {
       "file": "scripts/steps/step_124_lineage_aphelion.py",
-      "sha256": "defe75429d692b847d88809866d919bf49088b6cb9113497f4f612067877b0f1"
+      "sha256": "8450855071460781695d8784c85dd7a753243add0174c63606a96bc84e57108d"
     },
     {
       "file": "scripts/steps/step_125_displaced_temporal.py",
-      "sha256": "d214249121c96af287418658ea7c8d9de51640c47ae60f81f6e54142a79a932f"
+      "sha256": "95f2691912f962106b2ebaa7bfc32ca6cfb48734670771c808cc9e7ca1fa7039"
     },
     {
       "file": "scripts/steps/step_126_global_cross_survey_synthesis.py",
-      "sha256": "b13fd5a19cab06174795401fbc03e09dd3b55c3091539406143d1842e7b31492"
+      "sha256": "118adb35104c3d08452ff7af2210daac81a8fc7440af8840ed291173c024fbda"
     },
     {
       "file": "scripts/steps/step_127_nonwarsaw_refit.py",
-      "sha256": "64359c2b55a1707a3d014550eb60d92cbcfc37c8d48b1574b843a27a74a5e0c4"
+      "sha256": "e1b0a01816d29d580f2297462abf4a77caea6c4a2ab686cb80d3ef33926d130d"
     },
     {
       "file": "scripts/steps/step_128_post2017_refit.py",
-      "sha256": "80907d48036b25e4916811b0602d8ae0089e6f24bae8d15ef1099dc7d8463bc1"
+      "sha256": "1bc67755396d3d600c7f8e2b68b1a205b9f10075a316aea1e00c151ffade1b82"
     },
     {
       "file": "scripts/steps/step_129_bipolar_unification.py",
-      "sha256": "cf7c1c75dc500fc6cf7b53eacc15bab1ad13a9f40c5d7b1db2d956d677d8d883"
+      "sha256": "45b6f2bab0751c8a17a8d5b8799d817347a361f88a5c2f3411c89b03d967bf01"
     },
     {
       "file": "scripts/steps/step_130_epoch_axis_trajectory.py",
-      "sha256": "eab7d0f6053d2c9a3544befde275a5864772059e85e6a8b7700871f1699db6f9"
+      "sha256": "30efb3e24d794af2530c39a7193b73b2a955b04eba2d41aadc4ad930f818704e"
     },
     {
       "file": "scripts/steps/step_131_cone_shell_coherence.py",
-      "sha256": "cc4efa4e5056d660a238a24ae6c4cef51996b109f9e1277a81afca5ced2d46cf"
+      "sha256": "dceaa707f0404228d0fa3842f5625094c94f9c660f3feb5dac0d2bb0f42700b7"
     },
     {
       "file": "scripts/steps/step_132_bipolar_meridian.py",
-      "sha256": "3de1d3beb0a03e5a2458854386f7ab3926d75a405c01f8cd241089fc1cf2e55f"
+      "sha256": "fa55bb4dda5f0f2732ddcfb2b6dc5186140b0a8720d06271ff80f4f3ff47aa07"
     },
     {
       "file": "scripts/steps/step_133_harmonic_bipolar.py",
-      "sha256": "c872a9569924d2952e7409f5cc02dc634c4e4438bebe660bdb5e01a51553b58b"
+      "sha256": "0f53fbfa5cb94cc35e33722ebcc4949079e23d5685bad509974d91c670c99b6b"
     },
     {
       "file": "scripts/steps/step_134_lpc_signature_refit.py",
-      "sha256": "e1cf5b9b5166d5cf5f4446fb593ddc7691b71a88477a087558ffd2c1a8d0dfc1"
+      "sha256": "b694b8ab31a535f25237d8e68109ecf93382049517e217de7d46f64d1576b70f"
     },
     {
       "file": "scripts/steps/step_135_cross_channel.py",
-      "sha256": "4b703044483aca8d6f59e9b685f0959d3c9867a0a5b8593a56d353472d3309fc"
+      "sha256": "8a827c2e4295c7720bf024825c916295b14d5e6f06c600be163058ff96d59a3f"
     },
     {
       "file": "scripts/steps/step_136_solar_wind_screening.py",
-      "sha256": "12eda69c55bd20912dae03370d821f4810305eada7cdb715b4f5f9cea6ebd6da"
+      "sha256": "beb39974c0eb412f763d4b3975a44c1361100b881cb360ace62025e6096dd86c"
     },
     {
       "file": "scripts/steps/step_137_rtg_ensemble_regression.py",
-      "sha256": "5699986365de83b17ddd8f537fe2ed1ec2471ceca389d866094fbeccd3a08dad"
+      "sha256": "466fc4920be46c2b6360c92b7bfd1b14b16408f78d2972c5030b7b6d6319ca16"
     },
     {
       "file": "scripts/steps/step_138_oneway_downlink_channel.py",
-      "sha256": "27efac323e67d62ad75c58998a2243d9f2c03f559eef2c875123d82415d06972"
+      "sha256": "355ad2a981c88d8891e00a7f94d6e01b7943b9d88a6319a1b716179670fa05e1"
     },
     {
       "file": "scripts/steps/step_139_frozen_geometry.py",
-      "sha256": "6a3daec5bce40e1f9a2fd5c9b14bb8b98443b3ad52b74d179ba0d7af1105c780"
+      "sha256": "0a623dda658b70aa6caefe1e623353470871ad0a10a785daf6950b55cedbc580"
     },
     {
       "file": "scripts/steps/step_140_astcat_stratification.py",
-      "sha256": "89fc45008841fd2fab633349963441254652c77e8f673cf023cd1519f917da7e"
+      "sha256": "8e8d637ad0c4ebb8edeb87f895647100844431b9af9ab4b795f3f84334da7c0d"
     },
     {
       "file": "scripts/steps/step_141_sclk_signed_drift.py",
-      "sha256": "dcd9fb7e03584d188df6d251199261ae69bc3d6eee16bec1919aa6340c45ce25"
+      "sha256": "8811f6b42cd44432aa065a6942f7f54f77bbb994b4424f980d1f7c78421e65a5"
     },
     {
       "file": "scripts/steps/step_142_gaia_sink.py",
-      "sha256": "616225bf7bd6a3f7b95b64d7f7979172a0f021217b274acf70fa7e28f39af070"
+      "sha256": "d9314790a810ab1b205bac808608da23e927a39f5b34f9f23c8baf706854049f"
     },
     {
       "file": "scripts/steps/step_143_comet_ng_channel.py",
-      "sha256": "1130b7f2effb566cb914fa415c4a1ddf6641e34637006436d72af23411411ea6"
+      "sha256": "cf49bae86992208ffc0647d580722be87a8c7e279745311f2329570be2098b97"
     },
     {
       "file": "scripts/steps/step_144_giant_planet_apsidal.py",
-      "sha256": "91d7243d0b9ae426560e0256babc61999b5d7ac02449e92f1c3235669941dd7a"
+      "sha256": "56af4ef4274357190b8fd62a97da88369a885c749d9b66ebab09d74b1142a65d"
     },
     {
       "file": "scripts/steps/step_145_transfer_function.py",
-      "sha256": "c5abc779a2499aa90c1d42d9972dc9bac7fa5a39092f2421b8309b971b185dec"
+      "sha256": "6eab62875c5fbd75d62d8056467b2c233cbce7dafe4dd428ab19710f2e3abc16"
     },
     {
       "file": "scripts/steps/step_146_sclk_radial_gradient.py",
-      "sha256": "43f967950ad5d3e375bd3f48c41945efc2c4eeeb073f769aef6709f618242e3a"
+      "sha256": "a30c2535bc349818339e01e90b1f7578d0c92fcdce649f3c3c165da1b7545e59"
     },
     {
       "file": "scripts/steps/step_147_ephemeris_audit.py",
-      "sha256": "793f07c8e4ea8c03089666dcca5158bffbee137be110451cce051785f7533f1c"
+      "sha256": "b9b7297f4f986f133f7e0cf5fe44b746c391af3b6b096643ebce02bd4456d6f4"
     },
     {
       "file": "scripts/steps/step_148_pws_anchored_sclk.py",
-      "sha256": "91a206435d07bc015aa67c4b6474d84dfc037cafef2011dbc57e7769f39ca05d"
+      "sha256": "d7439c427f75d91ffaa6631add42e630d906ad0ac0c11e2b6f1bb423f4a28a45"
     },
     {
       "file": "scripts/steps/step_149_newtonian_directional_null.py",
-      "sha256": "46bbd56fc266a173e637adfafb327b5fcccec2e74ced51889604900db5b0b18e"
+      "sha256": "be90bf8fcb756055bc26e7144f27df43b48938240029a30084576664149e7803"
     },
     {
       "file": "scripts/steps/step_150_channel_dissociation.py",
-      "sha256": "fd6a1a1853781cc3599a0ae3672b8459d91195706214febbfdad3ec5f051cd19"
+      "sha256": "29e70b666a45f945647cffd182b50d4f47cb6e476aa106889fe50857b97c8539"
     },
     {
       "file": "scripts/steps/step_151_injection_transfer.py",
-      "sha256": "4360003e9f7517c3e00bb02a927a4b7cd4498f96ed699a4610b0528471598529"
+      "sha256": "74492e6017545a8e3bef52f248c98c1ad5daf6b3b95b8384eb5483cc71330794"
     },
     {
       "file": "scripts/steps/step_152_arrival_latitude_null.py",
-      "sha256": "52dc12d9d4f2f3c2b04f1e60704db3fecdcda408ccbdb024648d0fd03265c8f6"
+      "sha256": "89b66a8343d4faae4c01c23ae09af43d256e202944c7ea19cf899320f0416237"
+    },
+    {
+      "file": "scripts/steps/step_153_zonal_distortion.py",
+      "sha256": "b85a489888e81145d3998fff35bbf09e3f298e33c6e4a1743c1ad7587237d200"
+    },
+    {
+      "file": "scripts/steps/step_154_sclk_plasma_geometry.py",
+      "sha256": "d5c8abe40d3ac64a579183c1b321083d0860e186d4e1f28fbd125caf2441f602"
     },
     {
       "file": "scripts/utils/coordinates.py",
@@ -3163,7 +3820,7 @@
     },
     {
       "file": "scripts/utils/html_to_pdf.py",
-      "sha256": "0e679548d9b20ce2cce255bb6da9b30df51fd75ce09429cfe3e36c99a9186095"
+      "sha256": "a0b59d3693e4e57822fe64c50e6aea04ef77c5a147351c6e476fa43b7483a4ad"
     },
     {
       "file": "scripts/utils/lpc_boundary.py",
@@ -3171,7 +3828,7 @@
     },
     {
       "file": "scripts/utils/mpc_refit.py",
-      "sha256": "7b507e054e8767a0496882a217040a033e00e63a915456c58d375b1b10ed3577"
+      "sha256": "4f7c1e4ff16df4f2fa2b3df89802da9fb0e7cdf42c15f680df30a2c95d8cc76b"
     },
     {
       "file": "scripts/utils/parallel.py",
@@ -3183,11 +3840,15 @@
     },
     {
       "file": "scripts/utils/step_logger.py",
-      "sha256": "764432456addb66df9f5f5ef2f42949734be193f82edf50cf78a1388cf8cbf6c"
+      "sha256": "2914de1dfc44e7be10ef827215ae2e4f8e08af89354ee680ab14dcbd5718a0b9"
     },
     {
       "file": "scripts/utils/tep9_common.py",
-      "sha256": "6ed5279e10a63c2a44125a57beace2434d822aa4213b4ed1f6485dd7918c4dd2"
+      "sha256": "5925f4d3374a9b0dcd7291689d95e76400a8a97e2187d21b8b2c66df36d05333"
+    },
+    {
+      "file": "scripts/utils/tep9_style.py",
+      "sha256": "836bb3ed9588a8259952dfccc58b767881c6b806edd642b82cf3f0ee66b5d557"
     }
   ],
   "result_inventory": [
@@ -3197,6 +3858,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3205,6 +3867,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3213,14 +3876,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_05_one_map.json",
-      "sha256": "1b8fb35fcf01bec154adeac30f175bfa885c15e0694234444cdd25028be4692d",
+      "sha256": "3741a093e4280a89605e56d56a23efb91f58b5c0d2b52b09bfda7aa69740e967",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3229,6 +3894,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3237,14 +3903,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_08_clock_channel.json",
-      "sha256": "ac9d64bffc9d7a8e9b466a755397a3e985dd7ad213400f110eae4e4dc3ed5a80",
+      "sha256": "8d19be413756df599b791caf6b6a18c0b3134bf8158d2dddd057225b33454e3e",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3253,6 +3921,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3261,6 +3930,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3269,14 +3939,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_12_consolidate.json",
-      "sha256": "4318c4eab10869571127acfebdaaef5f2bd221ac6fcb648e61cc18b2c585fdc0",
+      "sha256": "3a3b79b511a8a9ac088f48e9215a1829be03e5d54957b9de214bfbb9feade46f",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3285,6 +3957,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3293,6 +3966,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3301,14 +3975,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_16_signed_channels.json",
-      "sha256": "317034566c77ec338c027cbc983cbc4b4dc2fa70f27f9b6c13f59b76e7fa0fd3",
+      "sha256": "6829a8c7fe3720932d8c316ac199a512c2cd0fe288e9e0328975aeefae18ac35",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3317,14 +3993,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_18_alternatives.json",
-      "sha256": "dd926dc2505261099042979469c4ac53ae1896f7e1862c4461d524408514b8c1",
+      "sha256": "d4aa096f6f9c7e8cbcd888766f4dcc837786b6a7a36ef708633ca519a469a0ba",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3333,6 +4011,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3341,6 +4020,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_136_solar_wind_screening",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
@@ -3349,6 +4029,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_137_rtg_ensemble_regression",
+      "inputs": [
+        {
+          "input": "xlsx",
+          "missing": true
+        },
+        {
+          "input": "telemetry_note",
+          "missing": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -3357,6 +4047,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_138_oneway_downlink_channel",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
@@ -3365,6 +4056,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_139_frozen_geometry",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
@@ -3373,14 +4065,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_140_astcat_stratification",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b105_sclk_signed_drift.json",
-      "sha256": "55ee8e61a094c994a3a0cfb95f687d53091c4353b227dc498d65fa5752c5575b",
+      "sha256": "360c7313801201d895f7fb8581c7acd700ca9e59b3cd17e598e284d174a22c69",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_141_sclk_signed_drift",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
@@ -3389,14 +4083,33 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_142_gaia_sink",
+      "inputs": [
+        {
+          "input": "results/step_b92_refit.jsonl (post-2017 dual-leg refit)",
+          "annotated": true
+        },
+        {
+          "input": "results/step_b91_refit.jsonl (pre-2018 refit)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/mpc/obs/*.json (per-observation astcat labels)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/mpc/sbdb_fp/*.json (NG model_pars + element sigmas)",
+          "annotated": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b107_comet_ng_channel.json",
-      "sha256": "3331eaa05736fddd4fab1cc89debe484bb23708d0b2dfb5b224d00649146273c",
+      "sha256": "66ec6a996cc6cb346ccef4f3819556c562afeda0550e6f113afec95809e08cf8",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3405,15 +4118,26 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b109_transfer_function.json",
-      "sha256": "699335b6b21cb357e480cd11d1c48aac06acad31fa1dfac4c7989d0a355ad979",
+      "sha256": "4e184d8dd8501b5395122f3e190a98da912161ce53a67dc6acaa8946c32584f6",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_145_transfer_function",
-      "older_than_declared_producer": true
+      "inputs": [
+        {
+          "input": "results/step_b91_refit.jsonl (pre-2018 dual-leg refit)",
+          "annotated": true
+        },
+        {
+          "input": "results/step_b92_refit.jsonl (post-2017 dual-leg refit)",
+          "annotated": true
+        }
+      ],
+      "older_than_declared_producer": false
     },
     {
       "file": "step_b10_proxy_validation.json",
@@ -3421,6 +4145,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3429,6 +4154,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3437,46 +4163,115 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_147_ephemeris_audit",
-      "older_than_declared_producer": true
+      "inputs": [
+        {
+          "input": "data/raw/code/code_{osculating,original,future}.html",
+          "missing": true
+        },
+        {
+          "input": "data/raw/warsaw/warsaw_tablec.dat (exclusion list)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/spice/de440s.bsp, de430.bsp, naif0012.tls",
+          "missing": true
+        }
+      ],
+      "older_than_declared_producer": false
     },
     {
       "file": "step_b112_pws_anchored_sclk.json",
-      "sha256": "c969c0a0f117f475dd36474e1916cbcd8618f0c595ebee419e2af0c18bafd525",
+      "sha256": "4d7ba81b1acc7ffad83e10a51398ca4f461fdd77d740781208eb3a8cee4e8965",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b113_newtonian_null.json",
-      "sha256": "d399285f13db75b59e4badbb14f19dafff8c71bad559b1bbcd653e9c15fff084",
+      "sha256": "0021f0bf1292f2289e3ead77da00ad843e97d3e80bc9e5dc2136253d1df83470",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b114_channel_dissociation.json",
-      "sha256": "40b6542823a26f8ebe94167c5db3d3d64fcfc20ffc8e46568866f55b73f125d4",
+      "sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_150_channel_dissociation",
+      "inputs": [
+        {
+          "input": "results/step_b92_post2017_refit.csv",
+          "sha256": "86b8eb3ec977c9a14a68bdad46ebed0da222d453c26b83fe329f4bbbb9bfd983"
+        },
+        {
+          "input": "data/raw/mpc/sbdb_fp/*.json",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/sbdb/sbdb_comets_all.json",
+          "sha256": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
+          "retrieved_utc": null,
+          "url": null
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b115_injection_transfer.json",
-      "sha256": "638da275598ae177449cd4a80da37491b038103b91c4d5ab13ddaa2c2460e9f2",
+      "sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b116_arrival_latitude_null.json",
-      "sha256": "13e4324d6ed47533b383d7935208801952e1818d156a868f23075ca945dd2b10",
+      "sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_152_arrival_latitude_null",
+      "inputs": [],
+      "older_than_declared_producer": false
+    },
+    {
+      "file": "step_b117_zonal_distortion.json",
+      "sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": null,
+      "inputs": [],
+      "older_than_declared_producer": null
+    },
+    {
+      "file": "step_b118_sclk_plasma_geometry.json",
+      "sha256": "db9280c2eee3d038677f103617464a4a3e58b7c5a13ac2443e54c7116c3ba1c2",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_154_sclk_plasma_geometry",
+      "inputs": [
+        {
+          "input": "residuals",
+          "missing": true
+        },
+        {
+          "input": "omni_m",
+          "missing": true
+        },
+        {
+          "input": "omni2",
+          "missing": true
+        },
+        {
+          "input": "sep",
+          "missing": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -3485,6 +4280,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3493,6 +4289,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3501,6 +4298,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3509,6 +4307,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3517,6 +4316,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3525,14 +4325,38 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b17_injection_chain.json",
-      "sha256": "c7657bdca681cff175e8da21a71574d9c350f36c2cbecccc8942160dbe6f941f",
+      "sha256": "cdc1028e5dd4ee5e7ea18124f52d2211463bafb77e6aa38abc5e13732fd41e79",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [
+        {
+          "input": "data/raw/mpc/CometEls.txt",
+          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
+          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/sbdb/sbdb_outer_ss.json",
+          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
+          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/sbdb/sbdb_centaurs.json",
+          "sha256": "eb1cbcf1cf985fd5a6e5d1d0464967cfaa4d5210c4ba88d434cb3c5d0d12d395",
+          "retrieved_utc": "2026-09-20T10:40:12.463596+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-class=CEN",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": null
     },
     {
@@ -3541,6 +4365,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3549,6 +4374,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3557,6 +4383,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3565,6 +4392,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3573,22 +4401,40 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b22_incap_audit.json",
-      "sha256": "ac1c3b7bf8715af14c1aca6abc69a626fa37913006977e13cf900ac9b4ea7dcc",
+      "sha256": "6f690fa1dfc8af697e38cda0333babb514cfea2f25a8b0898dc9ff0d2c117466",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [
+        {
+          "input": "data/raw/sbdb/sbdb_outer_ss.json",
+          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
+          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/mpc/CometEls.txt",
+          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
+          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b23_comet_obs_audit.json",
-      "sha256": "6c9f6b4d100408635559cb05f43f2393ec620e654216cfdc036fbe990ff2633d",
+      "sha256": "64a4df1749d2524f59b74d50d3c35c4edd2cd3a0ed8fb456b79d8915aa44586c",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3597,6 +4443,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3605,6 +4452,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3613,6 +4461,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3621,6 +4470,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3629,6 +4479,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3637,6 +4488,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3645,6 +4497,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3653,14 +4506,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b31_tno_secular.json",
-      "sha256": "75e7f030a3058d31f17f15c7065c07764dd5968bc9e628d245563c09c0f536be",
+      "sha256": "bb78ffdcee3fe6c99026cd7c9c4e5344690e42f97f5a9c57e49c93fb61ce7e0b",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3669,14 +4524,57 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [
+        {
+          "input": "p_wall",
+          "missing": true
+        },
+        {
+          "input": "p_fp",
+          "missing": true
+        },
+        {
+          "input": "mu_wall_deg",
+          "missing": true
+        },
+        {
+          "input": "mu_fp_deg",
+          "missing": true
+        },
+        {
+          "input": "cap_deg",
+          "missing": true
+        },
+        {
+          "input": "f_clustered",
+          "missing": true
+        },
+        {
+          "input": "sigma_deg",
+          "missing": true
+        },
+        {
+          "input": "comet_frac_in_cap",
+          "missing": true
+        },
+        {
+          "input": "comet_rate_in",
+          "missing": true
+        },
+        {
+          "input": "comet_rate_out",
+          "missing": true
+        }
+      ],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b33_wall_vs_field.json",
-      "sha256": "43fe0c70ef04174e04f85b071fbaa64cad9ab65a77209171d4f311c9c5283903",
+      "sha256": "69faff23d5d661d67beb92f69380b3acefb1befaade49f8480bde1250851e908",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3685,6 +4583,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3693,6 +4592,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3701,6 +4601,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3709,6 +4610,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3717,6 +4619,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3725,14 +4628,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b3_robustness.json",
-      "sha256": "2ac030988b83f2d705e97cd1cff003ab2dc72337c81fbddf1ad1f6c74cdc4610",
+      "sha256": "653e9f6f45808e077422a9b725e652fe18d0780c7b46d2b62d497d4f3151bafe",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3741,6 +4646,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3749,6 +4655,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3757,46 +4664,92 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b43_tno_era.json",
-      "sha256": "a7e1991715293f72c119580030921a5061b556266771102e07706415bf31cc78",
+      "sha256": "646532617e8f3fde32cc23b09b890eb3be187fa1b18f190ab5ef643caaac8b36",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b44_cross_fitter.json",
-      "sha256": "7003d3cb341f2a30a8948a505fcec75eff18fe4a87e4c01a0c38898f65eebcb7",
+      "sha256": "dffd654e778f5486729155cd92f6ee084a5d1e061104a8448f2a3086f6f9003a",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [
+        {
+          "input": "data/raw/code/code_osculating.html",
+          "sha256": "593b4221dfcded55f1c5d5f2fdca1bc0e4a2266732c05a4b26fc38a9151b0aef",
+          "retrieved_utc": null,
+          "url": null,
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/code/code_original.html",
+          "sha256": "2215909000eff5d16dc9f6b53481b046d6ba920ffbe45ec8c4b152fff599d1e8",
+          "retrieved_utc": null,
+          "url": null,
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/mpc/CometEls.txt",
+          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
+          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/warsaw/warsaw_tableb.dat",
+          "sha256": "f8c10f5ce1d2999c8466340d86fa0a3f1f718e6e6e0ea242b0a00de81e86d7e6",
+          "retrieved_utc": "2026-09-20T10:40:34.101229+00:00",
+          "url": "https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tableb.dat",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/warsaw/warsaw_tablec.dat",
+          "sha256": "1f5ab8eb276008460a1a6af7442e3dcd8274b3b3e8f65001046336190b60850e",
+          "retrieved_utc": "2026-09-20T10:40:34.988890+00:00",
+          "url": "https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablec.dat",
+          "matches_download_hash": true
+        },
+        {
+          "input": "results/step_b30_proper_time_slip.csv",
+          "sha256": "dd5df9a26f3484801b323b9905fd1e74d9eca1e7f34e3f3c17911a52ad36cea9"
+        }
+      ],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b45_signed_residual.json",
-      "sha256": "b98a48179b0bde3c6763e3b8c55d4dff17f76ddafd484302e43d0b74280012ac",
+      "sha256": "bc7f67216a452f79c5c5e948c74368009c1fa1e40c298b3cc7b9c0b4b4007f70",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b46_geocentric_null.json",
-      "sha256": "d670f9f5f00ed447ff9a176c3851a23d12ee082849a10654e77898e68598d654",
+      "sha256": "9c478363f974b83563029f9f862fb519279e539fd728bb4e42307980f562ed00",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b47_sky_matched.json",
-      "sha256": "d6dcd42fadfbba1f62a3bcc4da452db755db346eef856c4715c1ce2bed73eee0",
+      "sha256": "8c2d552632a24f5463f25c7e7b2fadab3c84a2c83988a979d6f464555ccf7221",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3805,14 +4758,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b49_newest_cohort.json",
-      "sha256": "0efdeaa5a6b1e1412370d0005b698fe6dd9ec784bf876f9c8b30834638fa5b69",
+      "sha256": "5e951db8d73c9eb645c58d3387da11e4cc38666647f5f3dd2f2d44537bd4d6db",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3821,14 +4776,16 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b50_des_resident.json",
-      "sha256": "30bcc55ba2afa72e1cdb55ab4926d0fc7c3ea1f14c3dc88676b7bae6f7a374f0",
+      "sha256": "97800ca1053f7180f92486c5ef6c16a6c75b5fc165dc08f92cdc365fb3951a9b",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3837,6 +4794,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3845,22 +4803,25 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b53_tide_resident.json",
-      "sha256": "059f28ba2b3a8ac175ab75e1b70c0b5a198b36911d07cfa67313acca20179e17",
+      "sha256": "f3f3cde7e04a5292caf31f5bbb7524c62a4e18d6dffe672229f12a361ebfc0d1",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b54_bipolar_morphology.json",
-      "sha256": "733e188901128dda923287e30c2829f317d525b5fa689beef9234c4e7c0214b2",
+      "sha256": "bbd5e5c3255ec36fc473b2d3116c131b6725b16e627ad791ad72ead6c1b131b8",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3869,6 +4830,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3877,6 +4839,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3885,6 +4848,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3893,6 +4857,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3901,6 +4866,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -3909,14 +4875,33 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b60_sclk_audit.json",
-      "sha256": "1cdd0087b0adbfa7f472c4912fab7cc6c814bb6233cde1710dbdcc41acbcc9bc",
+      "sha256": "7e6ff97e1acfad431256b99abd8b6fdb2e4732c7918317b6427d1c06ec0a630a",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_096_sclk_clock_audit",
+      "inputs": [
+        {
+          "input": "sclk_kernels",
+          "missing": true
+        },
+        {
+          "input": "spk",
+          "missing": true
+        },
+        {
+          "input": "lsk",
+          "missing": true
+        },
+        {
+          "input": "crossing_anchors",
+          "missing": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -3925,46 +4910,121 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_097_pws_plasma_channel",
+      "inputs": [
+        {
+          "input": "pws_vlism",
+          "missing": true
+        },
+        {
+          "input": "pds4_bundle",
+          "missing": true
+        },
+        {
+          "input": "literature_anchors",
+          "missing": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b62_rtg_nuclear.json",
-      "sha256": "5f2a9b900c076fefd3f7e9be6ea595275c5e4c6995f674773f07a6f972f569ff",
+      "sha256": "da1ec55b2241b0e75347d5056b8911b68bb1273526e29c4fcff230cb9cc61691",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_098_rtg_nuclear_channel",
+      "inputs": [
+        {
+          "input": "rtg_telemetry",
+          "missing": true
+        },
+        {
+          "input": "literature_anchors",
+          "missing": true
+        },
+        {
+          "input": "dataset_citation",
+          "missing": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b63_heliospheric_geometry.json",
-      "sha256": "3803cf1bf3b7d40b1afb5b0ff8c74f1c698bd07ecf6ff23935804a4198924f8d",
+      "sha256": "2dff389bc8b754bccd4739fb040fb271003325013bfff024e44814c094d62bd7",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_099_heliospheric_geometry",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b64_clock_consistency.json",
-      "sha256": "c01c1b967d1d561bb4044c8aab6ff14acc04e7f6d325274556251d7110d9dd31",
+      "sha256": "e45d5261eb386ae2e93a99267a70e67d2c4198b321acac24f82e80294af01a5d",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_100_clock_consistency",
+      "inputs": [
+        {
+          "input": "results/step_b30_proper_time_slip.csv",
+          "sha256": "dd5df9a26f3484801b323b9905fd1e74d9eca1e7f34e3f3c17911a52ad36cea9"
+        },
+        {
+          "input": "results/step_b60_sclk_audit.json",
+          "sha256": "7e6ff97e1acfad431256b99abd8b6fdb2e4732c7918317b6427d1c06ec0a630a"
+        },
+        {
+          "input": "results/step_b61_pws_channel.json",
+          "sha256": "7ff38cb551542964e1291c7712e4042cf34e3a08511ba4319caa053f3bc4399c"
+        },
+        {
+          "input": "results/step_b62_rtg_nuclear.json",
+          "sha256": "da1ec55b2241b0e75347d5056b8911b68bb1273526e29c4fcff230cb9cc61691"
+        },
+        {
+          "input": "results/step_b63_heliospheric_geometry.json",
+          "sha256": "2dff389bc8b754bccd4739fb040fb271003325013bfff024e44814c094d62bd7"
+        },
+        {
+          "input": "results/step_b54_bipolar_morphology.json",
+          "sha256": "bbd5e5c3255ec36fc473b2d3116c131b6725b16e627ad791ad72ead6c1b131b8"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b65_iso_ng_channel.json",
-      "sha256": "aea53abfcb92399870185a5ea7eb61b8ac6441e237f599d14d173b2d1b027698",
+      "sha256": "01a17f95fb722f93d56020305915c4198f2fe5c473d207867f04cda539fa9578",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_101_iso_ng_channel",
+      "inputs": [
+        {
+          "input": "data/raw/iso/sbdb_iso_*.json (this step, live)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/literature/iso_literature.json",
+          "sha256": "7ebbbc33b37ef47a2e687ccc475d9e35b2a5f9ff74f5150b2251df5ddc3221a1"
+        },
+        {
+          "input": "results/step_b64_clock_consistency.json",
+          "sha256": "e45d5261eb386ae2e93a99267a70e67d2c4198b321acac24f82e80294af01a5d"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b66_slip_map_validation.json",
-      "sha256": "41d130cf9ea38883170c334a406fe06f79fec0d7d8acd135f7c0a9ce9ad8d1c5",
+      "sha256": "895a5022eca169d45e04a423d0d8db850fa43b75eae3cd97d53ecba3d49395a5",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_102_slip_map_validation",
+      "inputs": [
+        {
+          "input": "results/step_b30_proper_time_slip.csv",
+          "sha256": "dd5df9a26f3484801b323b9905fd1e74d9eca1e7f34e3f3c17911a52ad36cea9"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -3973,22 +5033,73 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_103_rtg_midlife_control",
+      "inputs": [
+        {
+          "input": "results/step_b62_rtg_nuclear.csv",
+          "sha256": "1182279fa792a3ab623b4ba19a63e1c9ba0fc1b24a748395149d1eedb24a8917"
+        },
+        {
+          "input": "results/step_b62_rtg_nuclear.json",
+          "sha256": "da1ec55b2241b0e75347d5056b8911b68bb1273526e29c4fcff230cb9cc61691"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b68_spatial_holdout.json",
-      "sha256": "f396d2286c0060d2ffa0f1237cdc5a4a6ce70afe793d668283361ab100fe7d2a",
+      "sha256": "67a37298585a03b4399e43fb4e6d97eec69a0528123748e2357b57a28815df1e",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_104_spatial_holdout",
+      "inputs": [
+        {
+          "input": "results/step_b30_proper_time_slip.csv",
+          "sha256": "dd5df9a26f3484801b323b9905fd1e74d9eca1e7f34e3f3c17911a52ad36cea9"
+        },
+        {
+          "input": "data/raw/code/code_original.html",
+          "sha256": "2215909000eff5d16dc9f6b53481b046d6ba920ffbe45ec8c4b152fff599d1e8",
+          "retrieved_utc": null,
+          "url": null,
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/warsaw/warsaw_tablec.dat",
+          "sha256": "1f5ab8eb276008460a1a6af7442e3dcd8274b3b3e8f65001046336190b60850e",
+          "retrieved_utc": "2026-09-20T10:40:34.988890+00:00",
+          "url": "https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablec.dat",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b69_lpc_bidirectional.json",
-      "sha256": "09de873ebed4dcbc787e469d299d7414ae1b7a35e51c39068c473204c198a0d5",
+      "sha256": "f3272074865aa8986e3bf7bdb024af0ab9965ee6be40059ca80dd7991ba7da5d",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_105_lpc_bidirectional",
+      "inputs": [
+        {
+          "input": "data/raw/lpc/lpc_{osc,orig,fut,aaori}_2006_2010.vot",
+          "missing": true
+        },
+        {
+          "input": "results/step_b30_proper_time_slip.csv",
+          "sha256": "dd5df9a26f3484801b323b9905fd1e74d9eca1e7f34e3f3c17911a52ad36cea9"
+        },
+        {
+          "input": "data/raw/spice/de440s.bsp",
+          "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/naif/naif0012.tls",
+          "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -3997,6 +5108,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -4005,6 +5117,23 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_106_harmonic_axis_transfer",
+      "inputs": [
+        {
+          "input": "results/step_b30_proper_time_slip.csv",
+          "sha256": "dd5df9a26f3484801b323b9905fd1e74d9eca1e7f34e3f3c17911a52ad36cea9"
+        },
+        {
+          "input": "results/step_b69_lpc_bidirectional.csv",
+          "sha256": "059db21d7840b2e3799c17daf981bbacae3692e02416e1bdde24fd44e80e3086"
+        },
+        {
+          "input": "data/raw/lpc/lpc_orig_2006_2010.vot",
+          "sha256": "b62a6e1b0d466f57352bd71fc56cd26a239743f4c6e03912dd826e9fd0ba8aa1",
+          "retrieved_utc": "2026-09-20T10:40:36.064756+00:00",
+          "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tabled1&-out.max=unlimited&-out.all",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4013,30 +5142,92 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_107_named_directions",
+      "inputs": [
+        {
+          "input": "results/step_b70_harmonic_axis_transfer.json (lpc axis)",
+          "annotated": true
+        },
+        {
+          "input": "published direction coordinates (in-code constants)",
+          "annotated": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b72_cometels_dipole.json",
-      "sha256": "48d26012d927bc7701c7d1909e7980865c558fad8aa66837c1af3f762c450552",
+      "sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_108_cometels_dipole",
+      "inputs": [
+        {
+          "input": "data/raw/mpc/CometEls.txt",
+          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
+          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
+          "matches_download_hash": true
+        },
+        {
+          "input": "results/step_b30_proper_time_slip.csv",
+          "sha256": "dd5df9a26f3484801b323b9905fd1e74d9eca1e7f34e3f3c17911a52ad36cea9"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b73_census_bias_audit.json",
-      "sha256": "34c6280c3c1529ae06d487e93086d7fdb90a6017b267c357c9ca5bd92f84dc1a",
+      "sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_109_census_bias_audit",
+      "inputs": [
+        {
+          "input": "data/raw/mpc/CometEls.txt",
+          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
+          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b74_direction_vs_axis.json",
-      "sha256": "b8ef845639c88cc4ec79fe383b8f0e6371bf828bdf412f51b85729d524e8d3c2",
+      "sha256": "a85e2d456e53df50f829a5cf31330dc46f117d57914cce9c498407f00f612e8e",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_110_aphelion_direction_vs_axis",
+      "inputs": [
+        {
+          "input": "data/raw/warsaw/warsaw_tablec.dat",
+          "sha256": "1f5ab8eb276008460a1a6af7442e3dcd8274b3b3e8f65001046336190b60850e",
+          "retrieved_utc": "2026-09-20T10:40:34.988890+00:00",
+          "url": "https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablec.dat",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/code/code_original.html",
+          "sha256": "2215909000eff5d16dc9f6b53481b046d6ba920ffbe45ec8c4b152fff599d1e8",
+          "retrieved_utc": null,
+          "url": null,
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/lpc/lpc_orig_2006_2010.vot",
+          "sha256": "b62a6e1b0d466f57352bd71fc56cd26a239743f4c6e03912dd826e9fd0ba8aa1",
+          "retrieved_utc": "2026-09-20T10:40:36.064756+00:00",
+          "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tabled1&-out.max=unlimited&-out.all",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/mpc/CometEls.txt",
+          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
+          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4045,22 +5236,77 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_111_detachment_coherence",
+      "inputs": [
+        {
+          "input": "data/raw/sbdb/sbdb_outer_ss.json",
+          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
+          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b76_ossos_ensemble.json",
-      "sha256": "79849466b33d67e6db19c038ff471d30a807cb70e2dcf200f64eab9556d342c8",
+      "sha256": "2f3d3dd9395129c5be0aeca70c80b3454b7a3b40c5abfe9617b5a3fd6d12aad9",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_112_ossos_ensemble",
+      "inputs": [
+        {
+          "input": "data/raw/ossos/ossos_t3char.vot",
+          "sha256": "a022b8599bf5814e23b432e389426477abbcf97e0f3b2fcbd41e6d8b11d5addf",
+          "retrieved_utc": "2026-09-20T10:40:31.762765+00:00",
+          "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/ApJS/236/18/t3char&-out.max=unlimited",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/sbdb/sbdb_outer_ss.json",
+          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
+          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/spice/de440s.bsp",
+          "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b77_resident_ledger.json",
-      "sha256": "5c84833c94588814d7f2b803cad8bcca196658818eb0e02875ac28d2822b0560",
+      "sha256": "3c9bd3b94184f4be1f33e1edbc54c342df07e47267b588ed660994856ac220c2",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_113_resident_ledger",
+      "inputs": [
+        {
+          "input": "data/raw/sbdb/sbdb_outer_ss.json",
+          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
+          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/des/y6_des_tnos_color.fits",
+          "sha256": "4f2153f8726485bb661cbf9027a840c69e11c6d87c925d386055b3fdff4ea6e8",
+          "retrieved_utc": "2026-09-20T12:42:03.536690+00:00",
+          "url": "https://raw.githubusercontent.com/bernardinelli/des_tno_catalog/main/y6_des_tnos_color.fits",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/ossos/ossos_t3char.vot",
+          "sha256": "a022b8599bf5814e23b432e389426477abbcf97e0f3b2fcbd41e6d8b11d5addf",
+          "retrieved_utc": "2026-09-20T10:40:31.762765+00:00",
+          "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/ApJS/236/18/t3char&-out.max=unlimited",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4069,6 +5315,33 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_115_mixture_posterior",
+      "inputs": [
+        {
+          "input": "data/raw/sbdb/sbdb_outer_ss.json",
+          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
+          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/des/y6_des_tnos_color.fits",
+          "sha256": "4f2153f8726485bb661cbf9027a840c69e11c6d87c925d386055b3fdff4ea6e8",
+          "retrieved_utc": "2026-09-20T12:42:03.536690+00:00",
+          "url": "https://raw.githubusercontent.com/bernardinelli/des_tno_catalog/main/y6_des_tnos_color.fits",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/ossos/ossos_t3char.vot",
+          "sha256": "a022b8599bf5814e23b432e389426477abbcf97e0f3b2fcbd41e6d8b11d5addf",
+          "retrieved_utc": "2026-09-20T10:40:31.762765+00:00",
+          "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/ApJS/236/18/t3char&-out.max=unlimited",
+          "matches_download_hash": true
+        },
+        {
+          "input": "results/step_b13_patch_scale.json (mixture parameters)",
+          "annotated": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4077,6 +5350,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
@@ -4085,6 +5359,40 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_116_discovery_coupling",
+      "inputs": [
+        {
+          "input": "data/raw/sbdb/sbdb_outer_ss.json",
+          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
+          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/des/y6_des_tnos_color.fits",
+          "sha256": "4f2153f8726485bb661cbf9027a840c69e11c6d87c925d386055b3fdff4ea6e8",
+          "retrieved_utc": "2026-09-20T12:42:03.536690+00:00",
+          "url": "https://raw.githubusercontent.com/bernardinelli/des_tno_catalog/main/y6_des_tnos_color.fits",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/ossos/ossos_t3char.vot",
+          "sha256": "a022b8599bf5814e23b432e389426477abbcf97e0f3b2fcbd41e6d8b11d5addf",
+          "retrieved_utc": "2026-09-20T10:40:31.762765+00:00",
+          "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/ApJS/236/18/t3char&-out.max=unlimited",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/mpc/MPCORB.DAT.gz",
+          "sha256": "11be812eda4c0982741f51f6a4932e8251bf0a0a0472506c0939145cce89fbc9",
+          "retrieved_utc": "2026-09-20T10:40:39.240131+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/MPCORB.DAT.gz",
+          "matches_download_hash": true
+        },
+        {
+          "input": "results/step_b13_patch_scale.json",
+          "sha256": "4bd154e1dd2048be978e43fa06e972bea9cd8ebd31bbe5f81615d29d79851c5f"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4093,7 +5401,28 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_117_prospective_lpc",
-      "older_than_declared_producer": true
+      "inputs": [
+        {
+          "input": "data/raw/sbdb/sbdb_comets_all.json (JPL SBDB, downloaded this step with provenance)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/spice/de440s.bsp",
+          "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
+          "matches_download_hash": true
+        },
+        {
+          "input": "results/step_b30_proper_time_slip.csv (training residuals)",
+          "annotated": true
+        },
+        {
+          "input": "results/step_b28_bidirectional_rotation.json (CODE anchors)",
+          "annotated": true
+        }
+      ],
+      "older_than_declared_producer": false
     },
     {
       "file": "step_b82_axis_audit.json",
@@ -4101,6 +5430,33 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_118_prospective_axis_audit",
+      "inputs": [
+        {
+          "input": "results/step_b81_prospective_lpc.csv / step_b81_legs.jsonl",
+          "missing": true
+        },
+        {
+          "input": "results/step_b28_bidirectional_rotation.csv",
+          "sha256": "b7bf37f2794e0c3805376dd6fba1826385f5c13e982b95f1a90c9b8cfab77a4a"
+        },
+        {
+          "input": "data/raw/code/code_osculating.html",
+          "sha256": "593b4221dfcded55f1c5d5f2fdca1bc0e4a2266732c05a4b26fc38a9151b0aef",
+          "retrieved_utc": null,
+          "url": null,
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/sbdb/sbdb_comets_all.json",
+          "sha256": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
+          "retrieved_utc": null,
+          "url": null
+        },
+        {
+          "input": "results/step_b71_named_directions.json",
+          "sha256": "4b75fed2a5e321ae158030050bb00e04e5aaa89f40004b4676de0e1a1570517e"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4109,6 +5465,25 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_119_dipole_mechanism",
+      "inputs": [
+        {
+          "input": "results/step_b81_prospective_lpc.csv",
+          "sha256": "bb89fbd913e5a4587c7ca8bcb40217a37c96b1c3ce1528ab9ec38af3ea382d98"
+        },
+        {
+          "input": "data/raw/sbdb/sbdb_comets_all.json",
+          "sha256": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
+          "retrieved_utc": null,
+          "url": null
+        },
+        {
+          "input": "data/raw/spice/de440s.bsp",
+          "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4117,7 +5492,29 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_120_pre2018_sbdb_factorial",
-      "older_than_declared_producer": true
+      "inputs": [
+        {
+          "input": "data/raw/sbdb/sbdb_comets_all.json",
+          "sha256": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
+          "retrieved_utc": null,
+          "url": null
+        },
+        {
+          "input": "data/raw/spice/de440s.bsp",
+          "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/code/code_osculating.html",
+          "sha256": "593b4221dfcded55f1c5d5f2fdca1bc0e4a2266732c05a4b26fc38a9151b0aef",
+          "retrieved_utc": null,
+          "url": null,
+          "matches_download_hash": true
+        }
+      ],
+      "older_than_declared_producer": false
     },
     {
       "file": "step_b85_masked_signal.json",
@@ -4125,6 +5522,31 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_121_masked_signal",
+      "inputs": [
+        {
+          "input": "results/step_b81_prospective_lpc.csv",
+          "sha256": "bb89fbd913e5a4587c7ca8bcb40217a37c96b1c3ce1528ab9ec38af3ea382d98"
+        },
+        {
+          "input": "results/step_b84_pre2018_sbdb.csv",
+          "sha256": "e0e3d1f433ac33bc6060fd519da710d11cde8557df678a45e9cd36d226270957"
+        },
+        {
+          "input": "results/step_b83_dipole_mechanism.csv",
+          "sha256": "414db56f449eb9633c30c52e2eca45c64b04cec9e7f8ca2d8a2f321997b8e249"
+        },
+        {
+          "input": "results/step_b28_bidirectional_rotation.csv",
+          "sha256": "b7bf37f2794e0c3805376dd6fba1826385f5c13e982b95f1a90c9b8cfab77a4a"
+        },
+        {
+          "input": "data/raw/code/code_osculating.html",
+          "sha256": "593b4221dfcded55f1c5d5f2fdca1bc0e4a2266732c05a4b26fc38a9151b0aef",
+          "retrieved_utc": null,
+          "url": null,
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4133,6 +5555,12 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_122_pre2018_localization",
+      "inputs": [
+        {
+          "input": "results/step_b84_pre2018_sbdb.csv",
+          "sha256": "e0e3d1f433ac33bc6060fd519da710d11cde8557df678a45e9cd36d226270957"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4141,22 +5569,72 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_123_leg_coherence",
+      "inputs": [
+        {
+          "input": "results/step_b84_pre2018_sbdb.csv",
+          "sha256": "e0e3d1f433ac33bc6060fd519da710d11cde8557df678a45e9cd36d226270957"
+        },
+        {
+          "input": "results/step_b28_bidirectional_rotation.csv",
+          "sha256": "b7bf37f2794e0c3805376dd6fba1826385f5c13e982b95f1a90c9b8cfab77a4a"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b88_lineage_aphelion.json",
-      "sha256": "ca1d843c43ce21465c568d840a3bd2d363f54f0b0bc182664d1e317dca89146e",
+      "sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_124_lineage_aphelion",
+      "inputs": [
+        {
+          "input": "data/raw/sbdb/sbdb_comets_all.json",
+          "sha256": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
+          "retrieved_utc": null,
+          "url": null
+        },
+        {
+          "input": "data/raw/mpc/CometEls.txt",
+          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
+          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
+          "matches_download_hash": true
+        },
+        {
+          "input": "results/step_b30_proper_time_slip.csv",
+          "sha256": "dd5df9a26f3484801b323b9905fd1e74d9eca1e7f34e3f3c17911a52ad36cea9"
+        },
+        {
+          "input": "results/step_b84_pre2018_sbdb.csv",
+          "sha256": "e0e3d1f433ac33bc6060fd519da710d11cde8557df678a45e9cd36d226270957"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b89_displaced_temporal.json",
-      "sha256": "d528d0b9de6600966898b4cad27dcde04de0b1c10ee771b23e813a552fb123fb",
+      "sha256": "46b8ba28b7992975f9d22977a19363d574abf13961bc6dc2ef009bbfb346cb61",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_125_displaced_temporal",
+      "inputs": [
+        {
+          "input": "data/raw/mpc/CometEls.txt",
+          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
+          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
+          "matches_download_hash": true
+        },
+        {
+          "input": "results/step_b84_pre2018_sbdb.csv",
+          "sha256": "e0e3d1f433ac33bc6060fd519da710d11cde8557df678a45e9cd36d226270957"
+        },
+        {
+          "input": "results/step_b81_prospective_lpc.csv",
+          "sha256": "bb89fbd913e5a4587c7ca8bcb40217a37c96b1c3ce1528ab9ec38af3ea382d98"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4165,46 +5643,162 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     },
     {
       "file": "step_b90_global_synthesis.json",
-      "sha256": "535552b94b02ec819ed5e44c3d5be03be65738626961d0155d315723a5049fb1",
+      "sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_126_global_cross_survey_synthesis",
+      "inputs": [
+        {
+          "input": "data/raw/sbdb/sbdb_outer_ss.json",
+          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
+          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/des/y6_des_tnos_color.fits",
+          "sha256": "4f2153f8726485bb661cbf9027a840c69e11c6d87c925d386055b3fdff4ea6e8",
+          "retrieved_utc": "2026-09-20T12:42:03.536690+00:00",
+          "url": "https://raw.githubusercontent.com/bernardinelli/des_tno_catalog/main/y6_des_tnos_color.fits",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/mpc/MPCORB.DAT.gz",
+          "sha256": "11be812eda4c0982741f51f6a4932e8251bf0a0a0472506c0939145cce89fbc9",
+          "retrieved_utc": "2026-09-20T10:40:39.240131+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/MPCORB.DAT.gz",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/mpc/CometEls.txt",
+          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
+          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/code/code_original.html",
+          "sha256": "2215909000eff5d16dc9f6b53481b046d6ba920ffbe45ec8c4b152fff599d1e8",
+          "retrieved_utc": null,
+          "url": null,
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/warsaw/warsaw_tablec.dat",
+          "sha256": "1f5ab8eb276008460a1a6af7442e3dcd8274b3b3e8f65001046336190b60850e",
+          "retrieved_utc": "2026-09-20T10:40:34.988890+00:00",
+          "url": "https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablec.dat",
+          "matches_download_hash": true
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b91_nonwarsaw_refit.json",
-      "sha256": "2e2e98ac57d3dbc23acf7bc397b2dc8dd5011ce220881e175f8e690bcc944603",
+      "sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_127_nonwarsaw_refit",
-      "older_than_declared_producer": true
+      "inputs": [
+        {
+          "input": "results/step_b84_pre2018_sbdb.csv",
+          "sha256": "e0e3d1f433ac33bc6060fd519da710d11cde8557df678a45e9cd36d226270957"
+        },
+        {
+          "input": "data/raw/mpc/CometEls.txt",
+          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
+          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/mpc/obs/*.json (MPC get-obs ADES_DF, cached)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/mpc/sbdb_fp/*.json (SBDB full-prec seeds, cached)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/mpc/obscodes.json",
+          "sha256": "39f7bc78960e19633469c0b785edface70cef26eb00b7d4049a72b282ed02e6c",
+          "retrieved_utc": null,
+          "url": null
+        },
+        {
+          "input": "data/raw/spice/de440s.bsp",
+          "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/naif/naif0012.tls",
+          "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b"
+        }
+      ],
+      "older_than_declared_producer": false
     },
     {
       "file": "step_b92_post2017_refit.json",
-      "sha256": "3cd52157ec9b5633052ab3ce23f5cea6df6a276924c71fd2776d9fcf6458b9af",
+      "sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_128_post2017_refit",
-      "older_than_declared_producer": true
+      "inputs": [
+        {
+          "input": "results/step_b81_prospective_lpc.csv",
+          "sha256": "bb89fbd913e5a4587c7ca8bcb40217a37c96b1c3ce1528ab9ec38af3ea382d98"
+        },
+        {
+          "input": "data/raw/mpc/obs/*.json (shared MPC cache)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/mpc/sbdb_fp/*.json (shared SBDB seed cache)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/mpc/obscodes.json",
+          "sha256": "39f7bc78960e19633469c0b785edface70cef26eb00b7d4049a72b282ed02e6c",
+          "retrieved_utc": null,
+          "url": null
+        },
+        {
+          "input": "data/raw/spice/de440s.bsp",
+          "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/naif/naif0012.tls",
+          "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b"
+        }
+      ],
+      "older_than_declared_producer": false
     },
     {
       "file": "step_b93_bipolar_unification.json",
-      "sha256": "dfde86b025d8125514247960f75123fb2b9c0cd8f82e1b27e4185df8ec8d6141",
+      "sha256": "037e8e575178bb4136706845bb2fac5f9da0a98357602a82f79633cc8bf633c8",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_129_bipolar_unification",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b94_epoch_trajectory.json",
-      "sha256": "e413dba7527ab2463ea082772c3826a53bd524a18a5fdda5e74ccaa6531e5f6b",
+      "sha256": "3749d0e50984eb76f179363d2736bc7d88847d320fe5c3c8551fea03bdacf483",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_130_epoch_axis_trajectory",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
@@ -4213,6 +5807,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_131_cone_shell_coherence",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
@@ -4221,6 +5816,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_132_bipolar_meridian",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
@@ -4229,14 +5825,50 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_133_harmonic_bipolar",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
       "file": "step_b98_lpc_signature_refit.json",
-      "sha256": "8af4d1ab3e55cbdc8875837c7764081504e5dfc14fa8d5540c733999a6e82c6e",
+      "sha256": "7e1147d46624f54cf036854e8c893e4e6768e43d554def9f13a062494ce2d37b",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_134_lpc_signature_refit",
+      "inputs": [
+        {
+          "input": "results/step_b69_lpc_bidirectional.csv",
+          "sha256": "059db21d7840b2e3799c17daf981bbacae3692e02416e1bdde24fd44e80e3086"
+        },
+        {
+          "input": "data/raw/mpc/obs/*.json (MPC get-obs ADES_DF, cached)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/mpc/sbdb_fp/*.json (SBDB full-prec seeds, cached)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/mpc/obscodes.json",
+          "sha256": "39f7bc78960e19633469c0b785edface70cef26eb00b7d4049a72b282ed02e6c",
+          "retrieved_utc": null,
+          "url": null
+        },
+        {
+          "input": "data/raw/code/code_osculating.html (CODE membership)",
+          "annotated": true
+        },
+        {
+          "input": "data/raw/spice/de440s.bsp",
+          "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
+          "matches_download_hash": true
+        },
+        {
+          "input": "data/raw/naif/naif0012.tls",
+          "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b"
+        }
+      ],
       "older_than_declared_producer": false
     },
     {
@@ -4245,6 +5877,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_135_cross_channel",
+      "inputs": [],
       "older_than_declared_producer": false
     },
     {
@@ -4253,6 +5886,7 @@
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
+      "inputs": [],
       "older_than_declared_producer": null
     }
   ],

@@ -1,5 +1,13 @@
 {
  "step": "step_126_global_cross_survey_synthesis",
+ "inputs": [
+  "data/raw/sbdb/sbdb_outer_ss.json",
+  "data/raw/des/y6_des_tnos_color.fits",
+  "data/raw/mpc/MPCORB.DAT.gz",
+  "data/raw/mpc/CometEls.txt",
+  "data/raw/code/code_original.html",
+  "data/raw/warsaw/warsaw_tablec.dat"
+ ],
  "description": "Ten-channel directional localization on overlapping catalogues, evaluated against random test directions",
  "evidence_status": "fixed-catalogue directional localization",
  "calibration": "Fixed observed catalogues, random test direction. Not a null-data maximum-statistic test and not a global discovery p-value. Resident scores select an angular cap before applying an unrestricted Rayleigh reference and are not valid component p-values. Catalogue overlap is retained in the observed landscape but resampled-object bootstrap uncertainty does not preserve cross-catalogue identities.",
@@ -18,8 +26,8 @@
   ]
  },
  "eval_at_tno_axis": {
-  "S_stat": 187.17647192219982,
-  "p_global": 0.012149392530373481,
+  "S_stat": 187.2391056573336,
+  "p_global": 0.011799410029498525,
   "channel_p": [
    5.6996649005101004e-09,
    4.959891828051937e-05,
@@ -28,14 +36,14 @@
    0.008736431325865402,
    0.00533951023764481,
    3.4737254580784554e-07,
-   0.0016507410567462618,
+   0.0015046171770622982,
    0.0037884739536970065,
-   0.04388888888888892
+   0.0466666666666667
   ]
  },
  "eval_at_comet_axis": {
-  "S_stat": 188.7394411590442,
-  "p_global": 0.00974951252437378,
+  "S_stat": 188.331003898701,
+  "p_global": 0.0103994800259987,
   "channel_p": [
    7.56627639243129e-09,
    4.959891828051937e-05,
@@ -44,9 +52,9 @@
    0.005188047766861907,
    0.007831676821448794,
    5.268185803627722e-07,
-   0.0011508538005085512,
+   0.0015185377531340381,
    0.002680412819667582,
-   0.039444444444444456
+   0.036666666666666674
   ]
  },
  "per_channel": {
@@ -79,69 +87,69 @@
    "frac_random_axes_better": 0.00555
   },
   "C8_cometels_census_dipole": {
-   "p_at_tno_axis": 0.0016507410567462618,
-   "frac_random_axes_better": 0.0369
+   "p_at_tno_axis": 0.0015046171770622982,
+   "frac_random_axes_better": 0.0332
   },
   "C9_post2017_sbdb_dipole": {
    "p_at_tno_axis": 0.0037884739536970065,
    "frac_random_axes_better": 0.0887
   },
   "C10_jfc_injection_chain": {
-   "p_at_tno_axis": 0.04388888888888892,
-   "frac_random_axes_better": 0.0421
+   "p_at_tno_axis": 0.0466666666666667,
+   "frac_random_axes_better": 0.04455
   }
  },
  "best_random_axis": {
-  "S_max": 202.340696639243,
-  "sep_to_tno_deg": 14.911430521873214
+  "S_max": 206.32879697909544,
+  "sep_to_tno_deg": 8.038002023550387
  },
  "null_quantiles": {
-  "q50": 45.9859314779618,
-  "q95": 165.63816773652115,
-  "q99": 188.5362345785141,
-  "q999": 196.83990444727303
+  "q50": 46.06425878210463,
+  "q95": 165.42803498434273,
+  "q99": 188.5944690660155,
+  "q999": 196.7039256080595
  },
  "axis_localization": {
   "argmax_lon_lat_deg": [
-   41.160339702835685,
-   -30.078971640591842
+   40.59353855860426,
+   -17.02614628212071
   ],
-  "argmax_sep_to_tno_deg": 14.911430521873214,
-  "argmax_sep_to_comet_deg": 18.318276278948865,
+  "argmax_sep_to_tno_deg": 8.038002023550387,
+  "argmax_sep_to_comet_deg": 7.532866738779702,
   "declared_axes_sep_deg": 15.024754310550334,
-  "frac_sphere_ge_declared": 0.0121,
+  "frac_sphere_ge_declared": 0.01175,
   "s_profile_vs_dist": {
    "0-15deg": {
     "n": 337,
-    "med_S": 183.7777425995052
+    "med_S": 184.12516466202578
    },
    "15-30deg": {
     "n": 1002,
-    "med_S": 169.05817373215112
+    "med_S": 168.21842637768918
    },
    "30-45deg": {
     "n": 1642,
-    "med_S": 144.34540082195616
+    "med_S": 144.54634153324497
    },
    "45-60deg": {
     "n": 2007,
-    "med_S": 109.26989135065548
+    "med_S": 109.75036048712909
    },
    "60-90deg": {
     "n": 4971,
-    "med_S": 59.50219374779319
+    "med_S": 60.1109765822816
    },
    "90-180deg": {
     "n": 10041,
-    "med_S": 33.48430233952339
+    "med_S": 33.43863134104515
    }
   },
   "bootstrap": {
    "n": 150,
-   "r68_deg": 17.198999468997844,
-   "r95_deg": 22.584434596142167,
+   "r68_deg": 18.821858827456765,
+   "r95_deg": 22.23182265677094,
    "argmax_within_r68": true,
-   "med_sep_deg": 10.933828069846628
+   "med_sep_deg": 13.006578522757799
   }
  }
 }

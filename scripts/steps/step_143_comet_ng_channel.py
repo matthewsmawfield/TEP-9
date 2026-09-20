@@ -37,7 +37,7 @@ T7  Independent replication: the same transverse-term cap contrast on
     with no Warsaw input.
 
 Outputs: results/step_b107_comet_ng_channel.json/.csv and
-results/figures/step_b107_comet_ng_channel.png.
+results/figures/supplementary/step_b107_comet_ng_channel.png.
 """
 
 import sys as _sys
@@ -72,21 +72,30 @@ def norm_desig(s):
 
 
 # ---- tablea1: model incidence (GR vs NG) --------------------------------
+# tablea1 lists several rows per comet: the full-arc solution
+# (datat contains "full") plus PRE/POST/DIST subset rows whose subset
+# label sits in the Model column.  The canonical orbit is the full-arc
+# row; last-row-wins parsing would let subset rows overwrite it.
 a1 = {}
 for ln in open(DATA_RAW / "warsaw_tablea1.dat"):
     if len(ln) < 140 or not ln.strip():
         continue
     desig = norm_desig(ln[3:15])
     model = ln[132:140].strip()
+    dset = ln[122:132].strip()
     qosc = ln[40:46].strip()
     nobs = ln[88:93].strip()
     arcy = ln[97:102].strip()
-    a1[desig] = {
+    rec = {
         "model": model,
         "q": float(qosc) if qosc else float("nan"),
         "nobs": int(nobs) if nobs else 0,
         "arc_yr": float(arcy) if arcy else float("nan"),
     }
+    if "full" in dset:
+        a1[desig] = rec
+    elif desig not in a1:
+        a1[desig] = rec
 
 # ---- tableb4: NG parameters ----------------------------------------------
 b4 = {}
@@ -115,7 +124,10 @@ for desig, rec in a1.items():
     ng = b4.get(desig)
     rows.append({
         "desig": desig, "theta": th, "q": q,
-        "model_ng": rec["model"] == "NG",
+        # NG membership: the full-arc Model flag is NG or NGun
+        # (NG-with-uncertainty solutions, all present in tableb4), or
+        # the comet carries published NG parameters in tableb4.
+        "model_ng": rec["model"] in ("NG", "NGun") or ng is not None,
         "nobs": rec["nobs"], "arc_yr": rec["arc_yr"],
         "A1": ng["A1"] if ng else float("nan"),
         "eA1": ng["eA1"] if ng else float("nan"),
@@ -223,7 +235,7 @@ res["T5_confounds"] = {
     if len(ni) >= 3 and len(no) >= 3 else None,
     "arc_med_in": float(np.median(ai)), "arc_med_out": float(np.median(ao)),
     "p_arc": float(_st.mannwhitneyu(ai, ao, alternative="two-sided").pvalue)
-    if len(ai) >= 3 and len(no) >= 3 else None,
+    if len(ai) >= 3 and len(ao) >= 3 else None,
     "note": "NG members only; NG solutions preferentially exist for "
             "well-observed comets -- an in-cap nobs surplus would "
             "inflate any NG-channel contrast"}
@@ -391,11 +403,11 @@ ax.set_title("in-cap component loadings")
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b107_comet_ng_channel.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b107_comet_ng_channel.png", dpi=300)
 
 logger.info("verdict: " + res["verdict"])
 logger.data_save(out)
 logger.data_save(RESULTS / "step_b107_comet_ng_channel.csv")
-logger.data_save(FIG / "step_b107_comet_ng_channel.png")
-print(json.dumps(res["test_summary"], indent=1))
-print(res["verdict"])
+logger.data_save(FIG / "supplementary" / "step_b107_comet_ng_channel.png")
+print("TEST SUMMARY:\n" + json.dumps(res["test_summary"], indent=1))
+print(f"VERDICT: {res['verdict']}")

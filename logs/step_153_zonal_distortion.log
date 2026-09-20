@@ -1,0 +1,116 @@
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] LOGGER INITIALIZED: step_153_zonal_distortion (Step 153)
+[2026-09-20 12:45:50 UTC] [DEBUG   ] [STEP 153] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_153_zonal_distortion.log
+[2026-09-20 12:45:50 UTC] [DEBUG   ] [STEP 153] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:45:50 UTC] [DEBUG   ] [STEP 153] Start time (UTC): 2026-09-20T12:45:50.089617+00:00
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] 
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] STEP PURPOSE
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] --------------------------------------------------------------------------------
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   step_153_zonal_distortion — can legacy star-catalogue warps fake the
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   in-plane anomaly?
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   The strongest conventional account of the pre-2018 transit record is
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   astrometric frame error: the legacy star catalogues against which the
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   pre-Gaia observations were reduced (USNO-B1.0, UCAC4, and their
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   predecessors) carried zonal and regional position systematics at the
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   ~0.1-1 arcsec level, and Gaia DR2 (April 2018) removed them.  If such
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   warps could manufacture the measured signature, the pre-2018 record
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   would be a catalogue artefact and the post-2017 reversal simply the
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   catalogue transition.
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   This step tests that account mechanically rather than rhetorically:
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   realistic position-dependent RA/Dec warps are injected into the REAL
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   MPC astrometric record (true epochs, stations, observing geometry) of
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   a stratified pre-2018 dual-leg sample, the perturbed observations are
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   refit by the identical Levenberg-Marquardt/DE440s machinery used for
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   the independent refit (step 127), and the two fitted legs are
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   propagated to the +/-250 AU boundary sphere with the same REBOUND/IAS15
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   integrator (lpc_boundary.integrate_leg).  A warp that explains the
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   anomaly must reproduce ALL of its channel structure simultaneously:
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   1. ELEMENT SELECTIVITY -- the catalogue anomaly is an in-plane
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   periapsis rotation: the inbound-outbound discrepancy concentrates
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   in omega while i, Omega and e stay flat (step 030 battery).  A
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   sky-position warp is a 2-vector perturbation on the celestial
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   sphere; whether the solver deposits it preferentially in the
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   weakly-constrained in-plane direction (the omega/tp degeneracy
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   direction of a short arc) or spreads it across i, Omega is an
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   empirical property of the fit, not an assumption.  T1 measures
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   the omega-share of the warp-induced angular-element
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   displacement, |dw|/(|dw|+|dOm|+|di|), against the ~1/3
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   expectation of an unselective warp.
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   2. ENERGY FLATNESS -- the anomaly rotates orbits without doing work:
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   the leg-to-leg semimajor-axis channel is flat in the catalogue
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   record.  A positional warp shifts the fitted state vector in
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   position AND velocity space, so it must leak into the energy
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   channel.  T2 measures the warp-induced change in the leg-to-leg
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   |Delta(1/a)| discrepancy.
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   3. AXIS ORGANIZATION -- the measured anomaly is organized about the
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   declared transit axis (the in-cap excess).  A zonal/catalogue
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   error field is anchored to the terrestrial sky (declination
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   bands, plate boundaries), not to the boundary axis; the warp-
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   induced rotation field should show no in-cap concentration.
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   T3 measures the in-cap minus out-of-cap contrast of the induced
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   drot field.
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   4. AMPLITUDE SCALING -- even a warp with the right signature must
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   still reach the observed amplitude with a realistic error budget.
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   T4 measures the induced per-leg asymptote displacement (the same
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   carrier class as the registered in-cap excess, d_in_leg) per
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   arcsecond of warp and extrapolates the warp amplitude required
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   to inject the observed in-cap anomaly scale.
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   Warp models (three classes, seeded realizations per comet):
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   zonal  -- declination/RA band sinusoids at the 10-40 deg plate-zone
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   scale characteristic of photographic-catalogue systematics;
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   tiles  -- 15x15 deg sky tiles each carrying an independent offset,
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   modelling regional plate-solution discontinuities;
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   frame  -- a rigid small rotation of the whole astrometric frame
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   (the strongest conceivable global warp).
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   Realization amplitude 0.7 arcsec -- a conservative upper bound on
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   legacy-catalogue systematics (USNO-B1.0 zonal terms ~0.2-0.5 arcsec;
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   UCAC4 ~0.1-0.2 arcsec) -- plus a 30 arcsec scaling probe to anchor the
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   amplitude extrapolation.
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   Products:
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   results/step_b117_zonal_distortion.json
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   results/step_b117_zonal_distortion.csv
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153]   results/figures/supplementary/step_b117_zonal_distortion.png
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] --------------------------------------------------------------------------------
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] SCRIPT: scripts/steps/step_153_zonal_distortion.py
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] SCRIPT SHA256: b85a489888e81145d3998fff35bbf09e3f298e33c6e4a1743c1ad7587237d200
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] SCRIPT SIZE: 27523 bytes
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] ================================================================================
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] Zonal-distortion null: can catalogue warps fake the in-plane anomaly?
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] ================================================================================
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] dual-leg candidates: 370 of 586 refit rows
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] observed d_in_leg in-cap median 0.1081 deg vs out-of-cap 0.0820 -> excess 0.0260 deg
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] observed ddirf in-cap median 0.1484 deg vs out-of-cap 0.1227 -> excess 0.0257 deg
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] observed drot in-cap median 0.1154 deg vs out-of-cap 0.1205 -> excess -0.0051 deg
+[2026-09-20 12:45:50 UTC] [INFO    ] [STEP 153] stratified sample: 48 comets ([124, 123, 123] per tercile), 4 warp draws each
+[2026-09-20 12:57:06 UTC] [INFO    ] [STEP 153] warped dual-leg solutions: 47 comets, 178 draws
+[2026-09-20 12:57:06 UTC] [INFO    ] [STEP 153] T1 omega-share of induced angular displacement: median 0.780 (isotropy 0.333), p90 0.940, max 0.994
+[2026-09-20 12:57:06 UTC] [INFO    ] [STEP 153] T1 induced element shifts (deg, median): dw 0.0008, dOm 0.0002, di 0.0001
+[2026-09-20 12:57:06 UTC] [INFO    ] [STEP 153] T2 warp-induced leg-to-leg energy discrepancy: |Delta(1/a)| median 1.257e-05 AU^-1 (p90 2.563e-04) vs nominal record median 1.013e-04
+[2026-09-20 12:57:06 UTC] [INFO    ] [STEP 153] T3 induced drot contrast in-cap minus out-of-cap: -0.0000 deg (MWU p=0.840); continuous: rho(|dleg|,-theta) = -0.084 (p=0.323), rho(|ddrot|,-theta) = -0.033 (p=0.698)
+[2026-09-20 12:57:06 UTC] [INFO    ] [STEP 153] T4 induced per-leg displacement at 0.7 arcsec: 0.0008 deg -> warp required for the observed 0.026 deg carrier excess: 23 arcsec; for the in-cap level 0.108 deg: 96 arcsec
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] wrote step_b117_zonal_distortion.json, step_b117_zonal_distortion.csv, step_b117_zonal_distortion.png
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] VERDICT: catalogue warp reproduces the anomaly -> False (omega-isolated True, energy-flat True, axis-organized False, realistic-amplitude False)
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] 
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] ================================================================================
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] STEP SUMMARY: step_153_zonal_distortion
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] ================================================================================
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Step Number: 153
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Status: SUCCESS
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Duration: 11.29m
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Log Records Emitted: 99
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Output Files: 0
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_153_zonal_distortion.log
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] No output files generated
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] ================================================================================
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] STEP 153 COMPLETE: SUCCESS
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_153_zonal_distortion_provenance.json
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] 
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] ================================================================================
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] EXECUTIVE SUMMARY
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] ================================================================================
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Step: step_153_zonal_distortion (Step 153)
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Status: SUCCESS
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Duration: 11.29m
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Log Records: 106
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] Output Files: 0
+[2026-09-20 12:57:07 UTC] [INFO    ] [STEP 153] ================================================================================

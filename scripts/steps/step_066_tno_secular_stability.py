@@ -43,7 +43,7 @@ Outputs
 -------
 results/step_b31_tno_secular.json
 results/step_b31_tno_secular.csv
-results/figures/step_b31_tno_secular.png
+results/figures/supplementary/step_b31_tno_secular.png
 """
 
 import sys as _sys
@@ -143,7 +143,7 @@ T_END   = 2.0e7          # 20 Myr -- enough for clean dvarpi/dt slopes
 DT      = 0.5            # yr (resolves Jupiter at P/24)
 SNAP    = 5.0e4          # snapshot cadence (yr)
 
-def build_sim(p9=None):
+def build_sim(p9=None, m_arr=None):
     """Sun + giants (+P9) at T0, TNO test particles from elements."""
     sim = rebound.Simulation()
     sim.G = MU
@@ -164,10 +164,10 @@ def build_sim(p9=None):
         sim.particles[i9].z  += ps[2]
         sim.particles[i9].vx += vs[0]; sim.particles[i9].vy += vs[1]
         sim.particles[i9].vz += vs[2]
-    for t in tnos:
+    for j, t in enumerate(tnos):
         sim.add(a=t["a"], e=t["e"], inc=math.radians(t["i"]),
                 Omega=math.radians(t["Om"]), omega=math.radians(t["w"]),
-                M=float(rng.uniform(0, 2 * math.pi)))
+                M=float(m_arr[j]))
         i = sim.N - 1
         sim.particles[i].x  += ps[0]; sim.particles[i].y  += ps[1]
         sim.particles[i].z  += ps[2]
@@ -177,8 +177,8 @@ def build_sim(p9=None):
     sim.dt = DT
     return sim
 
-def run_model(label, p9):
-    sim = build_sim(p9)
+def run_model(label, p9, m_arr=None):
+    sim = build_sim(p9, m_arr=m_arr)
     n_tno = len(tnos)
     i0 = sim.N - n_tno                     # first TNO particle index
     i_p9 = i0 - 1 if p9 is not None else None
@@ -200,9 +200,41 @@ def run_model(label, p9):
     logger.info(f"{label}: integrated {T_END/1e6:.0f} Myr, {n_snap} snapshots")
     return ts, varpi_t, p9_varpi_t
 
-ts, vw_g, _   = run_model("giants", None)
-ts, vw_ml, p9_ml   = run_model("giants+bb21_ml", P9_MODELS["bb21_ml"])
-ts, vw_med, p9_med = run_model("giants+bb21_med", P9_MODELS["bb21_med"])
+# Pre-draw every M variate in the parent's rng, in the order the serial
+# run_model calls consumed them, so parallel runs are bit-identical.
+_n = len(tnos)
+m_g   = np.array([rng.uniform(0, 2 * math.pi) for _ in range(_n)])
+m_ml  = np.array([rng.uniform(0, 2 * math.pi) for _ in range(_n)])
+m_med = np.array([rng.uniform(0, 2 * math.pi) for _ in range(_n)])
+
+jobs = [("giants",         None,                 m_g),
+        ("giants+bb21_ml", P9_MODELS["bb21_ml"],  m_ml),
+        ("giants+bb21_med",P9_MODELS["bb21_med"], m_med)]
+
+def _work_model(job):
+    label, p9, ma = job
+    return label, run_model(label, p9, m_arr=ma)
+
+if len(jobs) > 1:
+    import multiprocessing as mp
+    ctx = mp.get_context("fork") if _sys.platform != "win32" \
+        else mp.get_context("spawn")
+
+    def _init():
+        # forked children inherit the parent's BSP fd; concurrent spkezr
+        # reads through a shared descriptor corrupt each other -- reopen
+        # the kernel so each worker holds its own file handle.
+        sp.kclear()
+        sp.furnsh(str(SPK))
+
+    with ctx.Pool(len(jobs), initializer=_init) as pool:
+        results = dict(pool.map(_work_model, jobs))
+else:
+    results = dict([_work_model(j) for j in jobs])
+
+ts, vw_g, _        = results["giants"]
+_,  vw_ml, p9_ml   = results["giants+bb21_ml"]
+_,  vw_med, p9_med = results["giants+bb21_med"]
 
 # ------------------------------------------------------------------
 # Analysis: per-object apsidal drift rates
@@ -229,7 +261,7 @@ dv_g   = drift(vw_g)
 dv_ml  = drift(vw_ml)
 dv_med = drift(vw_med)
 
-# in-cap membership: the pre-declared 60 deg cap about (34,-13)
+# in-cap membership: the pre-declared 60 deg cap about (49,-17)
 def perih_dir(om, Om, inc):
     co, so, cO, sO, ci, si = np.cos(om), np.sin(om), np.cos(Om), np.sin(Om), np.cos(inc), np.sin(inc)
     return np.array([cO*co - sO*so*ci, sO*co + cO*so*ci, so*si])
@@ -241,7 +273,7 @@ def lv(l, b):
     l, b = math.radians(l), math.radians(b)
     return np.array([math.cos(b)*math.cos(l), math.cos(b)*math.sin(l), math.sin(b)])
 
-TNO_AXIS = lv(34, -13)
+TNO_AXIS = lv(49.0, -17.0)
 theta = np.array([sep(perih_dir(math.radians(t["w"]), math.radians(t["Om"]),
                                 math.radians(t["i"])), TNO_AXIS)
                   for t in tnos])
@@ -291,6 +323,7 @@ res = {
               "Per-object apsidal drift dvarpi/dt from unwrapped osculating "
               "varpi; dispersal time = circular-std(varpi)/sigma(dv).",
     "n_tno": len(tnos), "n_incap": int(incap.sum()),
+    "cap_deg": 60.0, "axis": "49,-17",
     "T0_JD": T0_JD, "T_end_yr": T_END, "dt_yr": DT, "snap_yr": SNAP,
     "sig_varpi_incap_deg": sig_varpi_obs,
     "sig_varpi_all_deg": sig_varpi_all,
@@ -381,7 +414,7 @@ ax.set_title("P9 restoring signature", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b31_tno_secular.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b31_tno_secular.png", dpi=300)
 
 for m in ("giants", "giants_bb21ml", "giants_bb21med"):
     d = res["models"][m]
@@ -391,6 +424,6 @@ for m in ("giants", "giants_bb21ml", "giants_bb21med"):
 for m, d in res["p9_restoring"].items():
     logger.info(f"restoring {m}: rho={d['rho']:.3f} p={d['p_2sided']:.4f} | "
                 f"med delta in/out = {d['med_delta_incap']:.3f}/{d['med_delta_outcap']:.3f}")
-print("wrote", out)
-print("wrote", csv_out)
-print("wrote", FIG / "step_b31_tno_secular.png")
+logger.data_save(out)
+logger.data_save(csv_out)
+logger.data_save(FIG / "supplementary" / "step_b31_tno_secular.png")

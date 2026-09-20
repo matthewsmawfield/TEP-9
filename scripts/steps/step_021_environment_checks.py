@@ -24,7 +24,7 @@ E2  The omega decomposition.  varpi = Om + w.  If the varpi
     carries independent structure.
 
 Outputs: results/step_b14_environment_checks.json,
-         figures/step_b14_environment_checks.png
+         figures/supplementary/step_b14_environment_checks.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -195,9 +195,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b14_environment_checks.png", dpi=150)
-    print("wrote results/step_b14_environment_checks.json, "
-          "figures/step_b14_environment_checks.png")
+    fig.savefig(FIG / "supplementary" / "step_b14_environment_checks.png", dpi=300)
+    logger.data_save(RESULTS / "step_b14_environment_checks.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b14_environment_checks.png")
 
 
 if __name__ == "__main__":

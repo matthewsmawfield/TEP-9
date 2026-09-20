@@ -10,7 +10,7 @@ with the footprint-free in-cap rate and Rayleigh significance.
 
 Inputs : data/raw/sbdb/sbdb_outer_ss.json
 Outputs: results/step_b43_tno_era.json
-         results/figures/step_b43_tno_era.png
+         results/figures/supplementary/step_b43_tno_era.png
 """
 
 import sys
@@ -99,9 +99,12 @@ for lo, hi in ERAS:
     R = abs(np.exp(1j * varpi[m]).sum()) / n
     p_ray = math.exp(-n * R * R)
     bt = binomtest(nin, n, frac_in)
+    bt_g = binomtest(nin, n, frac_in, alternative="greater")
     res[f"{lo}-{hi}"] = {
         "n": n, "n_in_cap": nin,
         "cap_frac": nin / n, "cap_frac_global": float(frac_in),
+        # declared directional prediction (in-cap excess) -> greater
+        "p_cap_binom": float(bt_g.pvalue),
         "p_cap_binom_2sided": float(bt.pvalue),
         "axis_proj_z": float(proj),
         "varpi_R": float(R), "varpi_p": float(p_ray)}
@@ -117,8 +120,7 @@ logger.info(f"cap membership vs first_obs year: rho={rho:+.3f} p={p:.3f}")
 
 with open(RESULTS / "step_b43_tno_era.json", "w") as f:
     json.dump(res, f, indent=1)
-print(f"wrote {RESULTS / 'step_b43_tno_era.json'}")
-
+logger.data_save(RESULTS / 'step_b43_tno_era.json')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -143,5 +145,5 @@ ax.legend(frameon=False, fontsize=8)
 ax.set_title("resident alignment by discovery era", fontsize=10)
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b43_tno_era.png", dpi=150)
-print(f"wrote {FIG / 'step_b43_tno_era.png'}")
+fig.savefig(FIG / "supplementary" / "step_b43_tno_era.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b43_tno_era.png')

@@ -1,18 +1,104 @@
-[2026-09-19 22:17:00 UTC] [INFO    ] [STEP 014] LOGGER INITIALIZED: step_014_discovery_footprint (Step 014)
-[2026-09-19 22:17:00 UTC] [DEBUG   ] [STEP 014] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_014_discovery_footprint.log
-[2026-09-19 22:17:00 UTC] [DEBUG   ] [STEP 014] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 22:17:00 UTC] [INFO    ] [STEP 014] ================================================================================
-[2026-09-19 22:17:00 UTC] [INFO    ] [STEP 014] Per-object discovery footprint
-[2026-09-19 22:17:00 UTC] [INFO    ] [STEP 014] ================================================================================
-parsed discovery epochs for 44/44 objects; unparseable: []
-F1 R(lam_opp)=0.295 mean=11 | R(varpi)=0.332
-F2 mean|varpi-lam_opp|=36 deg, frac<60: 0.82
-F3 f=0.00: <R>=0.134 p95=0.261 p=0.0072
-F3 f=0.25: <R>=0.153 p95=0.288 p=0.0166
-F3 f=0.50: <R>=0.182 p95=0.317 p=0.0333
-F3 f=0.75: <R>=0.224 p95=0.345 p=0.0728
-F3 f=1.00: <R>=0.236 p95=0.333 p=0.0527
-F4 R(control Om)=0.207 vs R(detached lam_opp)=0.295
-F5 footprint mean=11 vs observed 49 (offset 38.6); f=1 realizations within 30 deg of 49: 0.3333
-F6 26 clustered objects; their lam_opp: [0.2, 0.2, 0.2, 14.2, 14.2, 14.4, 14.4, 29.5, 45.1, 45.1, 45.3, 45.8, 45.9, 60.4, 138.5, 299.9, 330.1, 330.1, 344.8, 345.3, 345.3, 359.4, 359.5, 359.7, 359.9, 359.9]
-wrote results/step_b5_discovery_footprint.json, figures/step_b5_discovery_footprint.png
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] LOGGER INITIALIZED: step_014_discovery_footprint (Step 014)
+[2026-09-20 10:42:12 UTC] [DEBUG   ] [STEP 014] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_014_discovery_footprint.log
+[2026-09-20 10:42:12 UTC] [DEBUG   ] [STEP 014] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:42:12 UTC] [DEBUG   ] [STEP 014] Start time (UTC): 2026-09-20T10:42:12.175637+00:00
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] 
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] STEP PURPOSE
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] --------------------------------------------------------------------------------
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   TEP / Planet-9 -- step b5: the sample's own discovery footprint
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   The last open loophole in the bias discussion (step b1) is that
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   the detached objects may have been discovered by surveys whose
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   combined footprint was narrower than the generic control
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   footprint -- the "targeted pointing" channel.  This step
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   reconstructs the *actual* discovery footprint of the 44 detached
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   objects from real metadata rather than assuming one.
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   Every provisional designation encodes its own discovery epoch:
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   (YYYY Lx) -> the letter gives the half-month of discovery
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   (A = Jan 1-15, B = Jan 16-31, ... Y = Dec 16-31; I skipped).
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   An object found in a given half-month was, with high
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   probability, found near opposition: its discovery ecliptic
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   longitude lies within ~+-60-90 deg of the opposition longitude
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   lam_opp = lam_sun + 180 on that date.  The distribution of
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   lam_opp across the sample IS the true discovery footprint --
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   measured, not modeled.
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   F1  The footprint itself: R(lam_opp) and its distribution.
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   If the extreme-TNO discoveries came from a narrow seasonal
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   window, R(lam_opp) is large and the pointing channel can in
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   principle reach the observed R(varpi) = 0.33.
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   F2  Realized coupling: varpi - lam_opp per object vs the OSSOS
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   benchmark (mean |dphi| ~ 51 deg).
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   F3  The exact ceiling test: under the strongest possible
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   pointing model every object's perihelion direction equals
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   its discovery longitude, so R(varpi)_max = R(lam_opp) --
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   a hard bound computed on the real footprint, not a proxy.
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   Then the realistic version: varpi_i ~ VM(lam_opp_i, kappa)
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   for a fraction f of objects, uniform otherwise, with
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   kappa calibrated to the OSSOS |dphi| distribution --
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   does the TRUE footprint + measured coupling reproduce
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   the cluster?
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   F4  Comparison against the generic control footprint
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   (control-pool Omega marginal): is the detached discovery
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   footprint actually narrower than the generic one?
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   Caveats: lam_opp is a proxy for discovery longitude (objects
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   can be found up to ~90 deg off opposition, smearing the true
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   footprint further -- which only widens it, making the ceiling
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   argument conservative in the direction that matters).
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   first_observation precoveries are not discovery events; the
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   designation date is the discovery epoch.
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   Outputs: results/step_b5_discovery_footprint.json,
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014]   figures/supplementary/step_b5_discovery_footprint.png
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] --------------------------------------------------------------------------------
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] SCRIPT: scripts/steps/step_014_discovery_footprint.py
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] SCRIPT SHA256: c67c7511fc8ab3d810c91fd2378c49f1522bb33ccd1ac15b822803cf2a070011
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] SCRIPT SIZE: 14268 bytes
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] ================================================================================
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] Per-object discovery footprint
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] ================================================================================
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] parsed discovery epochs for 44/44 objects; unparseable: []
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] F1 R(lam_opp)=0.295 mean=11 | R(varpi)=0.332
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] F2 mean|varpi-lam_opp|=36 deg, frac<60: 0.82
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] F3 f=0.00: <R>=0.134 p95=0.261 p=0.0072
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] F3 f=0.25: <R>=0.153 p95=0.288 p=0.0166
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] F3 f=0.50: <R>=0.182 p95=0.317 p=0.0333
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] F3 f=0.75: <R>=0.224 p95=0.345 p=0.0728
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] F3 f=1.00: <R>=0.236 p95=0.333 p=0.0527
+[2026-09-20 10:42:12 UTC] [INFO    ] [STEP 014] F4 R(control Om)=0.207 vs R(detached lam_opp)=0.295
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] F5 footprint mean=11 vs observed 49 (offset 38.6); f=1 realizations within 30 deg of 49: 0.3333
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] F6 26 clustered objects; their lam_opp: [0.2, 0.2, 0.2, 14.2, 14.2, 14.4, 14.4, 29.5, 45.1, 45.1, 45.3, 45.8, 45.9, 60.4, 138.5, 299.9, 330.1, 330.1, 344.8, 345.3, 345.3, 359.4, 359.5, 359.7, 359.9, 359.9]
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Saving data: step_b5_discovery_footprint.json
+[2026-09-20 10:42:13 UTC] [DEBUG   ] [STEP 014]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b5_discovery_footprint.json
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014]   Output: step_b5_discovery_footprint.json
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Saving data: step_b5_discovery_footprint.png
+[2026-09-20 10:42:13 UTC] [DEBUG   ] [STEP 014]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b5_discovery_footprint.png
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014]   Output: step_b5_discovery_footprint.png
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] 
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] ================================================================================
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] STEP SUMMARY: step_014_discovery_footprint
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] ================================================================================
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Step Number: 014
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Status: SUCCESS
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Duration: 1.15s
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Log Records Emitted: 81
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Output Files: 2
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_014_discovery_footprint.log
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] 
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Generated 2 output file(s):
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014]   • step_b5_discovery_footprint.json: 9.40 KB [sha256 fc2c1ebf010d3e38]
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014]   • step_b5_discovery_footprint.png: 321.84 KB [sha256 3614f5826d68a642]
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] ================================================================================
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] STEP 014 COMPLETE: SUCCESS
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_014_discovery_footprint_provenance.json
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] 
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] ================================================================================
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] EXECUTIVE SUMMARY
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] ================================================================================
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Step: step_014_discovery_footprint (Step 014)
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Status: SUCCESS
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Duration: 1.15s
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Log Records: 91
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Output Files: 2
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] Key Outputs:
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014]   - step_b5_discovery_footprint.json (9.40 KB)
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014]   - step_b5_discovery_footprint.png (321.84 KB)
+[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 014] ================================================================================

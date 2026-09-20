@@ -300,6 +300,7 @@ def download(url, out, label, provenance, retries=6):
     body = b""
     status = None
     expected = None
+    last_err = None
     for attempt in range(retries):
         headers = {"User-Agent": "tep9/1.0"}
         if body:
@@ -319,6 +320,14 @@ def download(url, out, label, provenance, retries=6):
             chunk = e.partial
             status = 200
             cl = crange = None
+        except (urllib.error.URLError, TimeoutError, ConnectionError,
+                http.client.HTTPException, OSError) as e:
+            last_err = e
+            logger.progress(
+                f"  attempt {attempt + 1}/{retries} failed: {e!r}; "
+                f"resuming")
+            time.sleep(2)
+            continue
         if crange:                       # "bytes start-end/total"
             try:
                 expected = int(crange.split("/")[-1])
@@ -339,11 +348,14 @@ def download(url, out, label, provenance, retries=6):
             f"({attempt + 2}/{retries})")
         time.sleep(2)
     if status not in (200, 206):
-        raise RuntimeError(f"download failed: HTTP {status} for {url}")
+        raise RuntimeError(
+            f"download failed: HTTP {status} for {url} "
+            f"(last error: {last_err!r})")
     if expected is not None and len(body) < expected:
         raise RuntimeError(
             f"download truncated after {retries} attempts "
-            f"({len(body)}/{expected} bytes): {url}")
+            f"({len(body)}/{expected} bytes): {url} "
+            f"(last error: {last_err!r})")
     sha = hashlib.sha256(body).hexdigest()
     out.write_bytes(body)
     logger.metric("bytes", len(body), out.name)
@@ -404,23 +416,60 @@ def _solve_anubis(body, url, opener):
         return r.read(), r.status
 
 
-def download_dryad(url, out, label, provenance):
-    logger.subsection(label)
-    logger.progress(f"GET {url} (via Dryad/Anubis gate)")
+def _dryad_attempt(url):
     cj = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(
         urllib.request.HTTPCookieProcessor(cj))
     req = urllib.request.Request(
         url, headers={"User-Agent": BROWSER_UA})
-    t0 = datetime.now(timezone.utc)
     with opener.open(req, timeout=300) as r:
         body = r.read()
         status = r.status
     if b"anubis_challenge" in body or b"Validating" in body:
         body, status = _solve_anubis(body, url, opener)
-    if b"anubis_challenge" in body or len(body) < 1000:
-        raise RuntimeError(f"dryad download suspicious: {len(body)} "
-                           f"bytes for {url}")
+    return body, status
+
+
+def download_dryad(url, out, label, provenance):
+    logger.subsection(label)
+    if out.exists() and out.stat().st_size > 1000:
+        prior = json.loads((DATA_RAW / "provenance_spacecraft.json")
+                           .read_text()) if \
+            (DATA_RAW / "provenance_spacecraft.json").exists() else {}
+        expected = prior.get(out.name, {}).get("sha256")
+        sha = hashlib.sha256(out.read_bytes()).hexdigest()
+        if expected and sha == expected:
+            logger.progress(
+                f"cached {out.name}: {out.stat().st_size} bytes; "
+                f"sha256 matches recorded provenance -- reusing")
+            logger.data_save(out)
+            provenance[out.name] = dict(prior[out.name], reused_cache=True)
+            return
+        logger.progress(
+            f"cached {out.name} fails provenance verification "
+            f"-- re-downloading")
+    logger.progress(f"GET {url} (via Dryad/Anubis gate)")
+    t0 = datetime.now(timezone.utc)
+    body = status = None
+    last_err = None
+    for attempt in range(5):
+        try:
+            body, status = _dryad_attempt(url)
+            if b"anubis_challenge" in body or len(body) < 1000:
+                raise RuntimeError(
+                    f"response failed validation: {len(body)} bytes")
+            break
+        except Exception as e:
+            last_err = e
+            if attempt < 4:
+                wait = 5 * 2 ** attempt
+                logger.progress(
+                    f"  attempt {attempt + 1}/5 failed ({e!r}); "
+                    f"retrying in {wait}s")
+                time.sleep(wait)
+    else:
+        raise RuntimeError(f"dryad download failed after 5 attempts: "
+                           f"{url} (last error: {last_err!r})")
     sha = hashlib.sha256(body).hexdigest()
     out.write_bytes(body)
     logger.metric("bytes", len(body), out.name)

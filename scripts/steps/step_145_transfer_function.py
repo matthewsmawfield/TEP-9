@@ -28,7 +28,7 @@ Tests on the independent dual-leg refit records (steps_127/128):
 
 outputs:
   results/step_b109_transfer_function.json / .csv
-  results/figures/step_b109_transfer_function.png
+  results/figures/supplementary/step_b109_transfer_function.png
 """
 
 import sys as _sys
@@ -40,9 +40,11 @@ import numpy as np
 from scipy import stats as _st
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import RESULTS, lv, sep
 
 logger = StepLogger("step_145_transfer_function")
+tee_stdout(logger)
 
 SEED = 20260919
 CAP = 60.0
@@ -347,10 +349,10 @@ ax.set_title("T2: rotation demand vs energy bound")
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b109_transfer_function.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b109_transfer_function.png", dpi=300)
 logger.info("verdict: " + res["verdict"])
 logger.data_save(out)
 logger.data_save(RESULTS / "step_b109_transfer_function.csv")
-logger.data_save(FIG / "step_b109_transfer_function.png")
-print(json.dumps(res["test_summary"], indent=1))
-print(res["verdict"])
+logger.data_save(FIG / "supplementary" / "step_b109_transfer_function.png")
+print("TEST SUMMARY:\n" + json.dumps(res["test_summary"], indent=1))
+print(f"VERDICT: {res['verdict']}")

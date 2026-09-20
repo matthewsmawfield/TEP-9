@@ -8,6 +8,7 @@ and output file management for pipeline steps.
 Each log entry is prefixed with the step number for easy filtering and tracing.
 """
 
+import atexit
 import logging
 import sys
 import re
@@ -83,11 +84,27 @@ class StepLogger:
         
         # Configure logging
         self._setup_logging()
-        
+
+        # Automatic end-of-step accounting: every step log closes with a
+        # summary block (duration, status, outputs) even when the step
+        # script never calls log_step_summary explicitly.
+        self._t0 = time.time()
+        self._failed = False
+        self._summary_done = False
+        _prev_hook = sys.excepthook
+
+        def _hook(exc_type, exc, tb):
+            self._failed = True
+            _prev_hook(exc_type, exc, tb)
+        sys.excepthook = _hook
+        atexit.register(self._exit_summary)
+
         # Log initialization
         self.logger.info(f"LOGGER INITIALIZED: {step_name} (Step {self.step_number})")
         self.logger.debug(f"Log file: {self.log_file}")
         self.logger.debug(f"Project root: {self.project_root}")
+        self.logger.debug(f"Start time (UTC): {datetime.now(timezone.utc).isoformat()}")
+        self._log_prologue()
         
     def _setup_logging(self):
         """Configure logging with both file and console handlers with step number prefixes."""
@@ -101,6 +118,12 @@ class StepLogger:
         # File handler - DEBUG level for verbose output with step prefix
         file_handler = logging.FileHandler(self.log_file, mode='w')
         file_handler.setLevel(logging.DEBUG)
+        # count every record that reaches the log file
+        self._record_count = [0]
+        def _count(record, counter=self._record_count):
+            counter[0] += 1
+            return True
+        file_handler.addFilter(_count)
         file_formatter = StepPrefixFormatter(
             self.step_number,
             fmt='[%(asctime)s UTC] [%(levelname)-8s] %(message)s',
@@ -120,6 +143,66 @@ class StepLogger:
         console_handler.setFormatter(console_formatter)
         self.logger.addHandler(console_handler)
     
+    def _log_prologue(self):
+        """Emit the standard step prologue: purpose, environment, provenance.
+
+        The purpose block is lifted from the calling step's module
+        docstring so every log opens with the scientific intent of the
+        computation that follows.  The environment and script-hash blocks
+        pin the execution context for exact reproducibility auditing.
+        """
+        # --- step purpose from the __main__ module docstring ---
+        try:
+            main_mod = sys.modules.get("__main__")
+            doc = (getattr(main_mod, "__doc__", None) or "").strip()
+        except Exception:
+            doc = ""
+        if doc:
+            self.logger.info("")
+            self.logger.info("STEP PURPOSE")
+            self.logger.info("-" * 80)
+            for line in doc.splitlines():
+                text = line.strip()
+                if not text or set(text) <= set("=-_*~#"):
+                    continue
+                if text.startswith(("Author:", "Date:")):
+                    continue
+                self.logger.info(f"  {text}")
+            self.logger.info("-" * 80)
+
+        # --- execution environment ---
+        try:
+            import importlib.metadata
+            import platform
+            env = [f"python {platform.python_version()}",
+                   platform.platform(terse=True)]
+            for pkg in ("numpy", "scipy", "pandas", "astropy", "rebound",
+                        "matplotlib"):
+                try:
+                    env.append(f"{pkg} {importlib.metadata.version(pkg)}")
+                except Exception:
+                    pass
+            import os
+            env.append(f"cpus {os.cpu_count()}")
+            self.logger.info("EXECUTION ENVIRONMENT: " + " | ".join(env))
+        except Exception:
+            pass
+
+        # --- calling-script provenance ---
+        try:
+            script = Path(sys.argv[0]).resolve() if sys.argv and sys.argv[0] else None
+            if script is not None and script.exists():
+                try:
+                    rel = script.relative_to(self.project_root)
+                except ValueError:
+                    rel = script
+                digest = self._compute_file_hash(script) or "unavailable"
+                self.logger.info(f"SCRIPT: {rel}")
+                self.logger.info(f"SCRIPT SHA256: {digest}")
+                self.logger.info(f"SCRIPT SIZE: {script.stat().st_size} bytes")
+        except Exception:
+            pass
+
     def header(self, title: str, width: int = 80):
         """Log a formatted header."""
         self.logger.info("=" * width)
@@ -242,20 +325,33 @@ class StepLogger:
         self.logger.debug(f"  COMPARISON [{name}]: expected={expected}, actual={actual}, diff={diff}, {match}")
     
     def add_output_file(self, file_path: Path, description: str = ""):
-        """Register an output file created by this step."""
-        file_info = {
+        """Register an output file created by this step.
+
+        Size and hash are resolved lazily at summary/provenance time so a
+        file registered before it is flushed still records correctly.
+        """
+        if any(o['path'] == str(file_path) for o in self.output_files):
+            return
+        self.output_files.append({
             'path': str(file_path),
             'description': description,
-            'size_bytes': file_path.stat().st_size if file_path.exists() else 0
-        }
-        self.output_files.append(file_info)
+        })
         self.data_provenance['output_files'].append({
             'path': str(file_path),
             'description': description,
-            'size_bytes': file_info['size_bytes'],
-            'hash': self._compute_file_hash(file_path) if file_path.exists() else None
         })
-        self.logger.info(f"  Output: {file_path.name} ({description})")
+        desc = f" ({description})" if description else ""
+        self.logger.info(f"  Output: {file_path.name}{desc}")
+
+    def _finalize_outputs(self):
+        """Refresh recorded size/hash for every registered output file."""
+        for out, prov in zip(self.output_files,
+                             self.data_provenance['output_files']):
+            p = Path(out['path'])
+            out['size_bytes'] = p.stat().st_size if p.exists() else 0
+            prov['size_bytes'] = out['size_bytes']
+            prov['hash'] = self._compute_file_hash(p) if p.exists() else None
+            out['hash'] = prov['hash']
     
     def track_input_file(self, file_path: Path, description: str = "", source_step: str = None):
         """Track an input file used by this step for provenance."""
@@ -296,6 +392,7 @@ class StepLogger:
     
     def save_provenance(self):
         """Save data provenance information to a JSON file."""
+        self._finalize_outputs()
         provenance_dir = self.project_root / 'results' / 'provenance'
         provenance_dir.mkdir(parents=True, exist_ok=True)
         
@@ -309,6 +406,7 @@ class StepLogger:
     
     def log_output_summary(self):
         """Log summary of all output files."""
+        self._finalize_outputs()
         if not self.output_files:
             self.logger.info("No output files generated")
             return
@@ -319,10 +417,32 @@ class StepLogger:
             path = Path(output['path'])
             size_kb = output['size_bytes'] / 1024
             desc = f" - {output['description']}" if output['description'] else ""
-            self.logger.info(f"  • {path.name}: {size_kb:.2f} KB{desc}")
+            sha = output.get('hash') or ""
+            sha_str = f" [sha256 {sha[:16]}]" if sha else ""
+            self.logger.info(f"  • {path.name}: {size_kb:.2f} KB{sha_str}{desc}")
     
+    def _exit_summary(self):
+        """atexit hook: close every step log with a standard summary block."""
+        if self._summary_done:
+            return
+        self._summary_done = True
+        status = "FAILED" if self._failed else "SUCCESS"
+        duration = time.time() - self._t0
+        try:
+            self.log_step_summary(duration, status)
+        except Exception:
+            try:
+                with open(self.log_file, 'a') as f:
+                    ts = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
+                    f.write(f"[{ts} UTC] [INFO    ] [STEP {self.step_number}] "
+                            f"STEP {self.step_number} EXIT: {status} "
+                            f"({duration:.1f}s)\n")
+            except Exception:
+                pass
+
     def log_step_summary(self, duration_seconds: float, status: str = "SUCCESS"):
         """Log final step summary with detailed statistics."""
+        self._summary_done = True
         duration_str = f"{duration_seconds:.2f}s" if duration_seconds < 60 else f"{duration_seconds/60:.2f}m"
         
         self.logger.info("")
@@ -330,7 +450,7 @@ class StepLogger:
         self.logger.info(f"Step Number: {self.step_number}")
         self.logger.info(f"Status: {status}")
         self.logger.info(f"Duration: {duration_str}")
-        self.logger.info(f"Calculations Logged: {self.calculation_counter}")
+        self.logger.info(f"Log Records Emitted: {self._record_count[0]}")
         self.logger.info(f"Output Files: {len(self.output_files)}")
         self.logger.info(f"Log file: {self.log_file}")
         self.log_output_summary()
@@ -355,7 +475,7 @@ class StepLogger:
             f"Step: {self.step_name} (Step {self.step_number})",
             f"Status: {status}",
             f"Duration: {duration_str}",
-            f"Calculations: {self.calculation_counter}",
+            f"Log Records: {self._record_count[0]}",
             f"Output Files: {len(self.output_files)}",
         ]
         
@@ -367,12 +487,11 @@ class StepLogger:
                 summary_lines.append(f"  - {path.name} ({size_kb:.2f} KB)")
         
         summary_lines.append("=" * 80)
-        
-        # Append to log file
-        with open(self.log_file, 'a') as f:
-            for line in summary_lines:
-                timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
-                f.write(f"[{timestamp} UTC] [INFO    ] [STEP {self.step_number}] {line}\n")
+
+        # Emit through the file handler so ordering and record counting
+        # stay consistent with the rest of the log.
+        for line in summary_lines:
+            self.logger.info(line)
     
     def data_load(self, file_path: Path, description: str = ""):
         """Log data loading operation."""
@@ -383,12 +502,15 @@ class StepLogger:
     
     def data_save(self, file_path: Path, description: str = "", record_count: int = None):
         """Log data saving operation."""
+        file_path = Path(file_path)
         self.logger.info(f"Saving data: {file_path.name}")
         self.logger.debug(f"  Full path: {file_path}")
         if description:
             self.logger.debug(f"  Description: {description}")
         if record_count is not None:
             self.logger.debug(f"  Records: {record_count}")
+        if all(o['path'] != str(file_path) for o in self.output_files):
+            self.add_output_file(Path(file_path), description)
     
     def metric(self, name: str, value, units: str = None):
         """Log a metric value."""

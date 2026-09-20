@@ -20,8 +20,35 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 
+_hash_cache = {}
+
 def digest(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    if path not in _hash_cache:
+        _hash_cache[path] = hashlib.sha256(path.read_bytes()).hexdigest()
+    return _hash_cache[path]
+
+
+def input_record(root, rel, result_mtime):
+    """Fingerprint one declared input and cross-check sibling provenance.json."""
+    if '*' in rel or '(' in rel:
+        return dict(input=rel, annotated=True)  # descriptive entry, not a literal path
+    ip = (root / rel).resolve()
+    if not ip.is_relative_to(root) or not ip.exists():
+        return dict(input=rel, missing=not ip.exists())
+    rec = dict(input=rel, sha256=digest(ip))
+    if ip.stat().st_mtime > result_mtime:
+        rec['newer_than_result'] = True
+    prov = ip.parent / 'provenance.json'
+    if prov.exists():
+        try:
+            entry = json.loads(prov.read_text()).get('files', {}).get(ip.name, {})
+            rec['retrieved_utc'] = entry.get('retrieved_utc')
+            rec['url'] = entry.get('url')
+            if entry.get('sha256'):
+                rec['matches_download_hash'] = entry['sha256'] == rec['sha256']
+        except (ValueError, OSError):
+            pass
+    return rec
 
 
 def nonfinite_leaves(value, path=''):
@@ -84,6 +111,56 @@ def audit():
         for name in re.findall(r'src="figures/([^"?]+)"', source):
             if not (ROOT/'results/figures'/name).exists():
                 errors.append(f'Missing figure: {comp.name}: {name}')
+    # Caption numbering must be strictly sequential with no gaps or
+    # duplicates, and every in-text Figure/Table reference must resolve.
+    # Lettered sub-captions (Table 4a, 4b) occupy one numeric slot and must
+    # carry consecutive suffixes beginning at 'a'.
+    caption_counts = {'Figure': {}, 'Table': {}}
+    ref_targets = {'Figure': set(), 'Table': set()}
+    for comp in sorted((ROOT/'site/components').glob('*.html')):
+        source = comp.read_text()
+        for kind, num in re.findall(
+                r'<figcaption>\s*(?:<[^>]+>)*\s*(Figure|Table)\s+'
+                r'(\d+[a-z]?)', source):
+            caption_counts[kind].setdefault(num, []).append(comp.name)
+        for num in re.findall(
+                r'<caption>\s*(?:<[^>]+>)*\s*Table\s+(\d+[a-z]?)', source):
+            caption_counts['Table'].setdefault(num, []).append(comp.name)
+        stripped = re.sub(r'<figcaption>.*?</figcaption>', '', source,
+                          flags=re.S)
+        stripped = re.sub(r'<caption>.*?</caption>', '', stripped,
+                          flags=re.S)
+        for kind, num in re.findall(r'\b(Figure|Table)s?\s+(\d+[a-z]?)',
+                                    stripped):
+            ref_targets[kind].add(num)
+        # capture range endpoints: "Tables 2–7", "Figures 4-6"
+        for kind, num in re.findall(r'\b(Figure|Table)s\s+\d+[\u2013-](\d+)',
+                                    stripped):
+            ref_targets[kind].add(num)
+    for kind, counts in caption_counts.items():
+        for num, files in counts.items():
+            if len(files) > 1:
+                errors.append(f'Duplicate {kind} {num} caption: {files}')
+        by_base = {}
+        for label in counts:
+            m = re.fullmatch(r'(\d+)([a-z]?)', label)
+            by_base.setdefault(int(m.group(1)), []).append(m.group(2))
+        bases = sorted(by_base)
+        if bases and bases != list(range(1, len(bases) + 1)):
+            errors.append(f'{kind} captions not sequential 1..N: {bases}')
+        for base, suffixes in by_base.items():
+            want = [''] if len(suffixes) == 1 else \
+                [chr(97 + i) for i in range(len(suffixes))]
+            if sorted(suffixes) != want:
+                errors.append(
+                    f'{kind} {base} sub-captions not sequential: {suffixes}')
+        for label in sorted(ref_targets[kind]):
+            if label in counts:
+                continue
+            # a bare numeric ref ("Table 4") resolves to a sub-captioned base
+            if re.fullmatch(r'\d+', label) and int(label) in by_base:
+                continue
+            errors.append(f'{kind} {label} referenced but no caption')
     # Exercise the actual JS renderer, including strict JSON handling.
     check = subprocess.run(['node', '-e', r'''const fs=require('fs');
 const {renderClaims}=require('./site/claims');
@@ -94,6 +171,8 @@ for (const f of fs.readdirSync('site/components').filter(f=>f.endsWith('.html'))
     if check.returncode:
         errors.append('Publication renderer: '+check.stderr[-1800:])
     result_inventory = []
+    stale_inputs = []
+    provenance_mismatches = []
     for path in sorted((ROOT/'results').glob('step_*.json')):
         if path.name == 'step_b78_claims_trace.json':
             continue  # never hash the audit's own superseded report
@@ -102,9 +181,18 @@ for (const f of fs.readdirSync('site/components').filter(f=>f.endsWith('.html'))
             nonfinite = list(nonfinite_leaves(result))
             producer = result.get('step') if isinstance(result, dict) else None
             source = ROOT/'scripts/steps'/f'{producer}.py' if producer else None
+            inputs = [input_record(ROOT, rel, path.stat().st_mtime)
+                      for rel in (result.get('inputs') or [])
+                      if isinstance(rel, str)] if isinstance(result, dict) else []
+            for rec in inputs:
+                if rec.get('newer_than_result'):
+                    stale_inputs.append(dict(result=path.name, input=rec['input']))
+                if rec.get('matches_download_hash') is False:
+                    provenance_mismatches.append(dict(result=path.name, input=rec['input']))
             result_inventory.append(dict(file=path.name, sha256=digest(path),
                 nonfinite_count=len(nonfinite), nonfinite_paths=nonfinite,
                 declared_producer=producer,
+                inputs=inputs,
                 older_than_declared_producer=(path.stat().st_mtime < source.stat().st_mtime)
                     if source and source.exists() else None))
         except (ValueError, OSError) as exc:
@@ -120,8 +208,11 @@ for (const f of fs.readdirSync('site/components').filter(f=>f.endsWith('.html'))
         summary=dict(registered_steps=len(registered), python_sources=len(script_inventory),
             bound_claim_occurrences=len(bindings), unique_bound_claims=len(used),
             result_files=len(result_inventory), hard_errors=len(errors),
-            legacy_files_with_nonfinite_values=sum(x.get('nonfinite_count',0)>0 for x in result_inventory)),
+            legacy_files_with_nonfinite_values=sum(x.get('nonfinite_count',0)>0 for x in result_inventory),
+            results_with_newer_inputs=len(stale_inputs),
+            provenance_hash_mismatches=len(provenance_mismatches)),
         errors=errors, unused_claims=sorted(set(registry)-used), bindings=bindings,
+        stale_inputs=stale_inputs, provenance_mismatches=provenance_mismatches,
         script_inventory=script_inventory, result_inventory=result_inventory,
         runtime=dict(python=sys.version, executable=sys.executable, packages=packages),
         provenance_limit='mtimes are hints only; the producer field is self-reported. Utilities, data and external dependencies require hashes captured when each result is produced.')
@@ -139,6 +230,10 @@ def main():
         for row in report['bindings']:
             writer.writerow({**row, 'path': '/'.join(row['path'])})
     print(json.dumps(report['summary'], indent=2))
+    for warning in report['stale_inputs']:
+        print('STALE-INPUT WARNING:', warning['result'], '<-', warning['input'])
+    for mismatch in report['provenance_mismatches']:
+        print('PROVENANCE MISMATCH:', mismatch['result'], '<-', mismatch['input'])
     for error in report['errors']:
         print(error)
     return bool(report['errors'])

@@ -1,9 +1,10 @@
 """step_152: discovery-geometry-conditioned null for the arrival anisotropy (b116).
 
 Step 149 (b113) found that the class-1 arrival directions themselves
-over-concentrate inside the declared 60-deg cap: 43/131 = 32.8% against
-the 25% uniform-sky fraction (binomial p = 0.043).  That null assumes
-isotropic arrivals.  A referee's first objection is that cometary
+over-concentrate inside the declared 60-deg cap about the resident
+axis: 48/131 = 36.6% against the 25% uniform-sky fraction (binomial
+p = 0.0020; the 43/131 = 32.8% figure is the comet-axis cap, kept in
+b113 T6 for both axes).  That null assumes isotropic arrivals.  A referee's first objection is that cometary
 perihelion directions are discovery-biased toward the ecliptic band, so
 a cap sitting near the ecliptic collects excess arrivals by
 construction.  This step replaces the uniform-sky null with the
@@ -38,7 +39,7 @@ Inputs
 Outputs
   results/step_b116_arrival_latitude_null.json
   results/step_b116_arrival_latitude_null.csv
-  results/figures/step_b116_arrival_latitude_null.png
+  results/figures/supplementary/step_b116_arrival_latitude_null.png
 """
 
 import sys as _sys
@@ -240,7 +241,7 @@ ax[2].set_xlabel("cap longitude at axis latitude (deg)")
 ax[2].set_ylabel("in-cap fraction")
 ax[2].set_title("axis-longitude specificity (TNO cap)")
 fig.tight_layout()
-fig.savefig(FIG / "step_b116_arrival_latitude_null.png", dpi=140)
+fig.savefig(FIG / "supplementary" / "step_b116_arrival_latitude_null.png", dpi=300)
 logger.info("verdict: " + out["verdict"])
 print(json.dumps(out["results"], indent=1)[:1500])
-print("\n" + out["verdict"])
+print(f"VERDICT: {out['verdict']}")

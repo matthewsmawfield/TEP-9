@@ -1,21 +1,91 @@
-[2026-09-19 22:17:08 UTC] [INFO    ] [STEP 020] LOGGER INITIALIZED: step_020_axis_coupling (Step 020)
-[2026-09-19 22:17:08 UTC] [DEBUG   ] [STEP 020] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_020_axis_coupling.log
-[2026-09-19 22:17:08 UTC] [DEBUG   ] [STEP 020] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 22:17:08 UTC] [INFO    ] [STEP 020] ================================================================================
-[2026-09-19 22:17:08 UTC] [INFO    ] [STEP 020] Axis-element coupling
-[2026-09-19 22:17:08 UTC] [INFO    ] [STEP 020] ================================================================================
-C1 cos_align vs q: rho=-0.014 p=0.929 (cond p=0.925)
-C1 cos_align vs e: rho=+0.002 p=0.989 (cond p=0.989)
-C1 cos_align vs i: rho=+0.065 p=0.676 (cond p=0.690)
-C1 cos_align vs a: rho=+0.002 p=0.989 (cond p=0.992)
-C2            all: N= 44 anti= 9 frac=0.205
-C2       pre_2014: N= 19 anti= 4 frac=0.211
-C2      post_2014: N= 25 anti= 5 frac=0.200
-C2       numbered: N= 18 anti= 2 frac=0.111
-C2    provisional: N= 26 anti= 7 frac=0.269
-C2         cc_0_1: N=  7 anti= 1 frac=0.143
-C2         cc_2_3: N= 37 anti= 8 frac=0.216
-C2  arc_above_med: N= 22 anti= 6 frac=0.273
-C2  arc_below_med: N= 22 anti= 3 frac=0.136
-C3 axis galactic l=182 b=-44; sep to ISM inflow 151.2 deg (antipode 28.8 deg)
-wrote results/step_b9_axis_coupling.json, figures/step_b9_axis_coupling.png
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] LOGGER INITIALIZED: step_020_axis_coupling (Step 020)
+[2026-09-20 10:42:20 UTC] [DEBUG   ] [STEP 020] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_020_axis_coupling.log
+[2026-09-20 10:42:20 UTC] [DEBUG   ] [STEP 020] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:42:20 UTC] [DEBUG   ] [STEP 020] Start time (UTC): 2026-09-20T10:42:20.910826+00:00
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] 
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] STEP PURPOSE
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] --------------------------------------------------------------------------------
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   TEP / Planet-9 -- step b9: does the axis couple to anything
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   besides the clock angles?
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   The b-series has established a robust clock-sector signal
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   (varpi, omega clustered; Om explained by footprint).  Two
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   questions remain open:
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   C1  Element coupling.  A shepherding point mass predicts that
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   apsidally-confined orbits are also the perihelion-LIFTED
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   orbits (secular q-elevation); a pure clock-sector field
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   signature predicts no physical-element coupling.  Test:
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   3-D alignment of each perihelion vector with the measured
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   axis (lam=49, beta=-17) vs q, e, i, a -- Spearman
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   correlations calibrated against the conditioned null
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   (clock angles randomized, geometry held).
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   C2  Anti-deficit robustness.  Step b6 found a modest anti-cap
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   deficit (9 vs null median 15, p_low=0.045).  Does it
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   survive the same controls applied to the cluster: era
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   (designation year < 2014), orbit quality (numbered vs
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   provisional, condition code, arc length)?
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   C3  Frame check.  If the structure is external/inertial the
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   axis should not prefer the ecliptic frame.  Report the
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   axis in the invariable-plane and galactic frames, and the
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   perihelion-vector clustering recomputed in each; plus the
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   angular separations to the heliosphere/ISM axis, CMB
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   dipole apex and galactic poles for the one-map context.
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   Outputs: results/step_b9_axis_coupling.json,
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020]   figures/supplementary/step_b9_axis_coupling.png
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] --------------------------------------------------------------------------------
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] SCRIPT: scripts/steps/step_020_axis_coupling.py
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] SCRIPT SHA256: b605caca16e0b49d1ba46d0a414234ff10c036efd04309a538898d259e9f3a43
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] SCRIPT SIZE: 13551 bytes
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] Axis-element coupling
+[2026-09-20 10:42:20 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-09-20 10:42:21 UTC] [INFO    ] [STEP 020] C1 cos_align vs q: rho=-0.014 p=0.929 (cond p=0.925)
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C1 cos_align vs e: rho=+0.002 p=0.989 (cond p=0.989)
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C1 cos_align vs i: rho=+0.065 p=0.676 (cond p=0.690)
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C1 cos_align vs a: rho=+0.002 p=0.989 (cond p=0.992)
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C2            all: N= 44 anti= 9 frac=0.205
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C2       pre_2014: N= 19 anti= 4 frac=0.211
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C2      post_2014: N= 25 anti= 5 frac=0.200
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C2       numbered: N= 18 anti= 2 frac=0.111
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C2    provisional: N= 26 anti= 7 frac=0.269
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C2         cc_0_1: N=  7 anti= 1 frac=0.143
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C2         cc_2_3: N= 37 anti= 8 frac=0.216
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C2  arc_above_med: N= 22 anti= 6 frac=0.273
+[2026-09-20 10:42:22 UTC] [INFO    ] [STEP 020] C2  arc_below_med: N= 22 anti= 3 frac=0.136
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] C3 axis galactic l=182 b=-44; sep to ISM inflow 151.2 deg (antipode 28.8 deg)
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Saving data: step_b9_axis_coupling.json
+[2026-09-20 10:42:23 UTC] [DEBUG   ] [STEP 020]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b9_axis_coupling.json
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020]   Output: step_b9_axis_coupling.json
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Saving data: step_b9_axis_coupling.png
+[2026-09-20 10:42:23 UTC] [DEBUG   ] [STEP 020]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b9_axis_coupling.png
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020]   Output: step_b9_axis_coupling.png
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] 
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] STEP SUMMARY: step_020_axis_coupling
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Step Number: 020
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Status: SUCCESS
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Duration: 2.65s
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Log Records Emitted: 68
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Output Files: 2
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_020_axis_coupling.log
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] 
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Generated 2 output file(s):
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020]   • step_b9_axis_coupling.json: 3.32 KB [sha256 897222dc77215044]
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020]   • step_b9_axis_coupling.png: 274.46 KB [sha256 a55e1297eff6d3d0]
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] STEP 020 COMPLETE: SUCCESS
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_020_axis_coupling_provenance.json
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] 
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] EXECUTIVE SUMMARY
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] ================================================================================
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Step: step_020_axis_coupling (Step 020)
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Status: SUCCESS
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Duration: 2.65s
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Log Records: 78
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Output Files: 2
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] Key Outputs:
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020]   - step_b9_axis_coupling.json (3.32 KB)
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020]   - step_b9_axis_coupling.png (274.46 KB)
+[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 020] ================================================================================

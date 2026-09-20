@@ -101,5 +101,5 @@ res = {"n_code_only": len(co), "recovered_axis": recovered,
                "weakest": sorted(loo, key=lambda x: -x["p"])[:5]}}
 out = str(RESULTS / "step_13_axis_convergence.json")
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)

@@ -33,7 +33,7 @@ B4  Discovery distance: are clustered objects systematically nearer
     perihelion at discovery (the bias channel's expected marker)?
 
 Outputs: results/step_06_ossos_bias.json,
-         figures/step_06_ossos_bias.png
+         figures/supplementary/step_06_ossos_bias.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -262,9 +262,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_06_ossos_bias.png", dpi=150)
-    print("wrote results/step_06_ossos_bias.json, "
-          "figures/step_06_ossos_bias.png")
+    fig.savefig(FIG / "supplementary" / "step_06_ossos_bias.png", dpi=300)
+    logger.data_save(RESULTS / "step_06_ossos_bias.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_06_ossos_bias.png")
 
 
 if __name__ == "__main__":

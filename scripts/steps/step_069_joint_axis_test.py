@@ -42,7 +42,7 @@ data/raw/sbdb/sbdb_outer_ss.json           (detached TNOs)
 Outputs
 -------
 results/step_b34_joint_axis.json
-results/figures/step_b34_joint_axis.png
+results/figures/supplementary/step_b34_joint_axis.png
 """
 
 import sys as _sys
@@ -309,12 +309,12 @@ ax.legend(frameon=False, fontsize=8)
 ax.set_title("Joint axis-permutation null vs observed axes", fontsize=10)
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b34_joint_axis.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b34_joint_axis.png", dpi=300)
 
 logger.info(f"p_global at TNO axis   = {p_global_tno:.5f}")
 logger.info(f"p_global at comet axis = {p_global_com:.5f}")
 for k, v in per_ch.items():
     logger.info(f"  {k}: p={v['p_at_tno_axis']:.4f} "
                 f"frac_axes_better={v['frac_axes_better']:.4f}")
-print("wrote", out)
-print("wrote", FIG / "step_b34_joint_axis.png")
+logger.data_save(out)
+logger.data_save(FIG / "supplementary" / "step_b34_joint_axis.png")

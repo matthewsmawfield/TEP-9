@@ -117,6 +117,21 @@ def dipole_b(res, aph, u):
     return float(cc[1])
 
 
+def dipole_b_se(res, aph, u):
+    """OLS standard error of the dipole slope b."""
+    ok = np.isfinite(res) & np.isfinite(aph).all(1)
+    with np.errstate(all="ignore"):
+        cos = np.clip(aph[ok] @ u, -1, 1)
+    y = res[ok]
+    Xm = np.column_stack([np.ones(len(y)), cos])
+    cc, *_ = np.linalg.lstsq(Xm, y, rcond=None)
+    resid = y - Xm @ cc
+    dof = max(len(y) - 2, 1)
+    s2 = float(resid @ resid) / dof
+    sxx = float(((cos - cos.mean()) ** 2).sum())
+    return float(np.sqrt(s2 / sxx)) if sxx > 0 else np.nan
+
+
 def dipole_perm(res, aph, u, n_perm=N_PERM):
     b = dipole_b(res, aph, u)
     ok = np.isfinite(res) & np.isfinite(aph).all(1)
@@ -232,7 +247,10 @@ def cap_audit(d):
                     ("mid", np.abs(cos_ap) < math.cos(math.radians(CAP)))):
         out[nm] = dict(n=int(sel.sum()),
                        med_res=float(np.median(res[sel]))
-                       if sel.any() else None)
+                       if sel.any() else None,
+                       se_med_res=float(1.2533 * np.std(res[sel], ddof=1)
+                                        / np.sqrt(sel.sum()))
+                       if sel.sum() > 1 else None)
     return out
 
 T4 = {}
@@ -313,7 +331,7 @@ out = dict(
 with open(RESULTS / "step_b93_bipolar_unification.json", "w") as f:
     json.dump(out, f, indent=1, default=float)
 logger.info(f"verdict: {verdict}")
-logger.info("wrote results/step_b93_bipolar_unification.json")
+logger.data_save(RESULTS / "step_b93_bipolar_unification.json")
 
 # ---------------------------------------------------------------- fig
 FIG = RESULTS / "figures"
@@ -324,42 +342,57 @@ import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(1, 3, figsize=(15, 4.4))
 
-ax[0].hist(Js, bins=40, color="0.6", alpha=0.8)
-ax[0].axvline(J_obs, color="crimson", lw=2,
+ax[0].hist(Js, bins=40, color="#566573", alpha=0.8)
+ax[0].axvline(J_obs, color="#b43b4e", lw=2,
               label=f"J(CMB) = {J_obs:.4f}\nrank {rank}/{N_DIRS}")
 ax[0].set_xlabel("J(u) = $-b_{pre}(u)\\,b_{post}(u)$")
 ax[0].set_ylabel("random bipolar axes")
-ax[0].set_title("Direction shuffle: extremeness of the CMB axis")
-ax[0].legend(fontsize=9)
+ax[0].legend()
 
+# T1: signed CMB-frame dipole amplitude by era with OLS standard errors.
 xs = ["pre-2018\nindep.", "pre-2018\ncat.", "post-2017\nindep.",
       "post-2017\ncat."]
 bs = [T1["pre2018"]["independent"]["b"], T1["pre2018"]["catalogue"]["b"],
       T1["post2017"]["independent"]["b"], T1["post2017"]["catalogue"]["b"]]
-ax[1].bar(range(4), bs, color=["steelblue", "lightsteelblue",
-                              "indianred", "mistyrose"])
+ses = [dipole_b_se(pre["res"], pre["aph"], CMB_AP),
+       dipole_b_se(pre["cres"], pre["aph"], CMB_AP),
+       dipole_b_se(post["res"], post["aph"], CMB_AP),
+       dipole_b_se(post["cres"], post["aph"], CMB_AP)]
+ax[1].bar(range(4), bs, yerr=ses, capsize=4,
+          error_kw=dict(ecolor="#17202A", elinewidth=1.2),
+          color=["#1C2E4A", "#84a3aa", "#b43b4e", "#d98c96"])
 ax[1].axhline(0, color="k", lw=0.7)
-ax[1].set_xticks(range(4)); ax[1].set_xticklabels(xs, fontsize=8)
+ax[1].set_xticks(range(4)); ax[1].set_xticklabels(xs)
 ax[1].set_ylabel("$b_{\\cos\\theta_{CMB}}$ (dex)")
-ax[1].set_title("Signed CMB-frame dipole amplitude by era")
 
-labels, vals, ns = [], [], []
+labels, vals, ns, ses4 = [], [], [], []
 for nm in ("pre2018", "post2017"):
     for cap_ in ("apex_cap", "antapex_cap", "mid"):
         c = T4[nm][cap_]
         if c["med_res"] is not None:
-            labels.append(f"{nm}\n{cap_}"); vals.append(c["med_res"])
-            ns.append(c["n"])
-ax[2].bar(range(len(vals)), vals,
-          color=["indianred", "steelblue", "0.6",
-                 "indianred", "steelblue", "0.6"][:len(vals)])
+            labels.append(f"{nm.replace('2018', '-18').replace('2017', '-17')}"
+                          f"\n{cap_.replace('_cap', '')}")
+            vals.append(c["med_res"])
+            ns.append(c["n"]); ses4.append(c["se_med_res"])
+cap_cols = {"apex": "#b43b4e", "antapex": "#1C2E4A",
+            "mid": "#566573"}
+bar_cols = [cap_cols[l.split("\n")[1]] for l in labels]
+bars = ax[2].bar(range(len(vals)), vals, yerr=ses4, capsize=3,
+                 error_kw=dict(ecolor="#17202A", elinewidth=1.0),
+                 color=bar_cols)
+for i, (rect, n) in enumerate(zip(bars, ns)):
+    se = ses4[i] or 0.0
+    h = rect.get_height()
+    ax[2].text(rect.get_x() + rect.get_width() / 2,
+               h + se + 0.012 if h >= 0 else h - se - 0.012,
+               f"n={n}", ha="center",
+               va="bottom" if h >= 0 else "top",
+               fontsize=8, color="#17202A")
 ax[2].axhline(0, color="k", lw=0.7)
 ax[2].set_xticks(range(len(vals)))
-ax[2].set_xticklabels([f"{l}\nn={n}" for l, n in zip(labels, ns)],
-                      fontsize=7)
+ax[2].set_xticklabels(labels)
 ax[2].set_ylabel("median residual (dex)")
-ax[2].set_title("Bipolar-cap audit")
 
 fig.tight_layout()
-fig.savefig(FIG / "step_b93_bipolar_unification.png", dpi=150)
-logger.info("wrote results/figures/step_b93_bipolar_unification.png")
+fig.savefig(FIG / "step_b93_bipolar_unification.png", dpi=300)
+logger.data_save(RESULTS / "figures/step_b93_bipolar_unification.png")

@@ -168,8 +168,9 @@ for name, samp in [("spike", spike), ("new", new), ("all_boundish", allb)]:
         u2 = mannwhitneyu(np.abs(da)[inc], np.abs(da)[~inc], alternative="greater")
         s["absDaa_in_vs_out_60"] = {"median_in": float(np.median(np.abs(da)[inc])),
             "median_out": float(np.median(np.abs(da)[~inc])), "p_greater": u2.pvalue}
-    # 5. NG-need by direction (NG or PRE/POST solutions = orbit needs non-GR)
-    ng = np.array([1 if c["model"] in ("NG", "PRE", "POST") else 0 for c in samp])
+    # 5. NG-need by direction (NG/NGun full-arc solutions = orbit needs non-GR;
+    #    NGun entries carry published NG parameters in tableb4)
+    ng = np.array([1 if c["model"] in ("NG", "NGun") else 0 for c in samp])
     if inc.sum() >= 5 and (~inc).sum() >= 5:
         tab = [[int(ng[inc].sum()), int(inc.sum() - ng[inc].sum())],
                [int(ng[~inc].sum()), int((~inc).sum() - ng[~inc].sum())]]
@@ -204,5 +205,5 @@ res["duplicate_solutions"] = dups
 
 out = str(RESULTS / "step_08_clock_channel.json")
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)

@@ -58,7 +58,7 @@ results/step_b54_bipolar_morphology.json  (mirror-cap slip, step 089, if present
 Outputs
 -------
 results/step_b64_clock_consistency.json
-results/figures/step_b64_clock_consistency.png
+results/figures/supplementary/step_b64_clock_consistency.png
 """
 
 import sys
@@ -400,8 +400,8 @@ ax.set_ylabel("lapse contrast / constants-shift (fractional)")
 ax.set_title("Cross-channel clock ledger: detections and bounds")
 ax.legend()
 fig.tight_layout()
-figp = RESULTS / "figures" / "step_b64_clock_consistency.png"
-fig.savefig(figp, dpi=150)
+figp = RESULTS / "figures" / "supplementary" / "step_b64_clock_consistency.png"
+fig.savefig(figp, dpi=300)
 logger.data_save(figp)
 
 out = dict(

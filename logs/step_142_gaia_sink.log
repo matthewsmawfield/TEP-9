@@ -1,23 +1,108 @@
-[2026-09-19 19:56:10 UTC] [INFO    ] [STEP 142] LOGGER INITIALIZED: step_142_gaia_sink (Step 142)
-[2026-09-19 19:56:10 UTC] [DEBUG   ] [STEP 142] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_142_gaia_sink.log
-[2026-09-19 19:56:10 UTC] [DEBUG   ] [STEP 142] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 19:56:10 UTC] [INFO    ] [STEP 142] loading dual-leg records, astcat composition and SBDB model parameters
-[2026-09-19 19:56:13 UTC] [INFO    ] [STEP 142]   pre2018: 489 records (46 with NG parameters; 489 with element sigmas)
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142]   post2017: 186 records (36 with NG parameters; 186 with element sigmas)
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142] T1 resid cap contrast: uni p=0.28322308284490794, sub p=6.452615034300114e-07
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142] T2 misfit channels done
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142] T3 NG rate contrasts done
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142] T4 NG magnitudes done
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142] T5 sigma channels done
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142] T6 matched controls done
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142] T7 era control done
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142] T8 seed-lock diagnostic done
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142] T9 epoch-composition decomposition done
-[2026-09-19 19:56:15 UTC] [INFO    ] [STEP 142] T10 inclination-mediation and power audit done
-[2026-09-19 19:56:16 UTC] [INFO    ] [STEP 142] verdict: ATTENUATED WITH TIME-DOMAIN LOADING: the displaced residual attenuates on uniform-Gaia legs (p=0.283 vs 6.45e-07 sub-threshold) while retaining the same positive sign on every channel.  Three mechanism results sharpen the reading: (1) the anomaly's full-strength carrier on sub-threshold legs is the leg-disagreement channel (p=0.000776), and in-cap perihelion-time uncertainty stays elevated after controlling for observation count (p=0.0257) -- the signature is already expressed as a time-domain disagreement, not only a spatial rotation; (2) the seed-lock account fails -- in-cap element displacement from the catalogue seed grows with Gaia fraction (del_pdeg rho=0.31), so the attenuation is not the fit being pinned to an absorbed solution; (3) the attenuation decomposes predominantly into transit epoch rather than reduction system -- the in-cap amplitude declines with perihelion epoch (rho=-0.54, p=1.38e-05), the residual shows no leg-system-asymmetry dependence that stitching requires (rho=0.06, p=0.411), and the composition correlation partialled on epoch drops to rho=-0.22 (p=0.0986): uniform-Gaia legs are the latest-transiting cohort, and the displaced lobe is intrinsically weakest there.  The epoch gradient is itself a registered measurement (the displaced structure was strongest nearest the transition); (4) the in-cap inclination imbalance flagged by T6 does not mediate the carrier -- ddirf is i-robust (in/out sign preserved in every inclination tercile, i-adjusted contrast unchanged) -- and the uniform-Gaia flatness is genuine amplitude loss rather than underpowering: at the stratum's own sample sizes a sub-threshold-strength effect is detected with 98 per cent power.  What remains open is the residual composition term at late epochs, and the NG-parameter channel is underpowered (n_in=4 in-cap members).
-[2026-09-19 19:56:16 UTC] [INFO    ] [STEP 142] Saving data: step_b106_gaia_sink.json
-[2026-09-19 19:56:16 UTC] [DEBUG   ] [STEP 142]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b106_gaia_sink.json
-[2026-09-19 19:56:16 UTC] [INFO    ] [STEP 142] Saving data: step_b106_gaia_sink.csv
-[2026-09-19 19:56:16 UTC] [DEBUG   ] [STEP 142]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b106_gaia_sink.csv
-[2026-09-19 19:56:16 UTC] [INFO    ] [STEP 142] Saving data: step_b106_gaia_sink.png
-[2026-09-19 19:56:16 UTC] [DEBUG   ] [STEP 142]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b106_gaia_sink.png
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142] LOGGER INITIALIZED: step_142_gaia_sink (Step 142)
+[2026-09-20 12:25:35 UTC] [DEBUG   ] [STEP 142] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_142_gaia_sink.log
+[2026-09-20 12:25:35 UTC] [DEBUG   ] [STEP 142] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:25:35 UTC] [DEBUG   ] [STEP 142] Start time (UTC): 2026-09-20T12:25:35.392662+00:00
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142] 
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142] STEP PURPOSE
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142] --------------------------------------------------------------------------------
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   step_142: Gaia covariance-sink audit (result b106).
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   The modern displaced residual attenuates on uniformly-high-Gaia legs
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   (step_140).  If Gaia astrometry locks the spatial coordinates, a real
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   leg-time slip cannot be absorbed into the fitted elements: it must
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   surface in the channels the fit cannot pin down -- the cross-arc leg
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   misfit, the leg-vs-leg disagreement, the fitted non-gravitational
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   parameters (A1/A2/DT) the catalogue adds to close its residuals, and
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   the time-domain element uncertainties (sigma_tp, sigma_M).
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   Products (all from stored records -- no new integrations):
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   - T1: replication anchor -- the displaced-axis residual cap contrast
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   on uniform-Gaia vs sub-threshold legs (mirrors step_140).
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   - T2: cross-arc RMS (each leg fit scored against the other leg's
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   astrometry) and leg disagreement ddirf, in-cap vs out-cap at the
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   displaced axis, per composition stratum.  Sink prediction: the
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   in/out gap inverts relative to the element-space gap on
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   uniform-Gaia legs.
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   - T3: non-gravitational-solution rate (A1/A2 present in the SBDB
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   model_pars block) in-cap vs out-cap per stratum.
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   - T4: among NG-solution members, |A1|/sig, |A2|/sig, |DT| cap
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   contrasts.
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   - T5: element-sigma channels -- sigma_tp (days), sigma_M (deg),
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   sigma_om/w -- cap contrasts and Gaia-fraction correlations.
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   - T6: matched controls on the uniform-Gaia stratum (n_obs, arc
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   proxy n_in+n_out, perihelion epoch, q, leg-contrast).
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   - T7: pre-2018 contrast at the declared axis for the same misfit
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   channel (era control).
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   Outputs:
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   results/step_b106_gaia_sink.json / .csv
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142]   results/figures/supplementary/step_b106_gaia_sink.png
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142] --------------------------------------------------------------------------------
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142] SCRIPT: scripts/steps/step_142_gaia_sink.py
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142] SCRIPT SHA256: d9314790a810ab1b205bac808608da23e927a39f5b34f9f23c8baf706854049f
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142] SCRIPT SIZE: 35586 bytes
+[2026-09-20 12:25:35 UTC] [INFO    ] [STEP 142] loading dual-leg records, astcat composition and SBDB model parameters
+[2026-09-20 12:25:38 UTC] [INFO    ] [STEP 142]   pre2018: 489 records (46 with NG parameters; 489 with element sigmas)
+[2026-09-20 12:25:39 UTC] [INFO    ] [STEP 142]   post2017: 186 records (36 with NG parameters; 186 with element sigmas)
+[2026-09-20 12:25:39 UTC] [INFO    ] [STEP 142] T1 resid cap contrast: uni p=0.28322308284490794, sub p=6.452615034300114e-07
+[2026-09-20 12:25:39 UTC] [INFO    ] [STEP 142] T2 misfit channels done
+[2026-09-20 12:25:39 UTC] [INFO    ] [STEP 142] T3 NG rate contrasts done
+[2026-09-20 12:25:39 UTC] [INFO    ] [STEP 142] T4 NG magnitudes done
+[2026-09-20 12:25:39 UTC] [INFO    ] [STEP 142] T5 sigma channels done
+[2026-09-20 12:25:39 UTC] [INFO    ] [STEP 142] T6 matched controls done
+[2026-09-20 12:25:39 UTC] [INFO    ] [STEP 142] T7 era control done
+[2026-09-20 12:25:39 UTC] [INFO    ] [STEP 142] T8 seed-lock diagnostic done
+[2026-09-20 12:25:39 UTC] [INFO    ] [STEP 142] T9 epoch-composition decomposition done
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] T10 inclination-mediation and power audit done
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] verdict: ATTENUATED WITH TIME-DOMAIN LOADING: the displaced residual attenuates on uniform-Gaia legs (p=0.283 vs 6.45e-07 sub-threshold) while retaining the same positive sign on every channel.  Three mechanism results sharpen the reading: (1) the anomaly's full-strength carrier on sub-threshold legs is the leg-disagreement channel (p=0.000776), and in-cap perihelion-time uncertainty stays elevated after controlling for observation count (p=0.0257) -- the signature is already expressed as a time-domain disagreement, not only a spatial rotation; (2) the seed-lock account fails -- in-cap element displacement from the catalogue seed grows with Gaia fraction (del_pdeg rho=0.31), so the attenuation is not the fit being pinned to an absorbed solution; (3) the attenuation decomposes predominantly into transit epoch rather than reduction system -- the in-cap amplitude declines with perihelion epoch (rho=-0.54, p=1.38e-05), the residual shows no leg-system-asymmetry dependence that stitching requires (rho=0.06, p=0.411), and the composition correlation partialled on epoch drops to rho=-0.22 (p=0.0986): uniform-Gaia legs are the latest-transiting cohort, and the displaced lobe is intrinsically weakest there.  The epoch gradient is itself a registered measurement (the displaced structure was strongest nearest the transition); (4) the in-cap inclination imbalance flagged by T6 does not mediate the carrier -- ddirf is i-robust (in/out sign preserved in every inclination tercile, i-adjusted contrast unchanged) -- and the uniform-Gaia flatness is genuine amplitude loss rather than underpowering: at the stratum's own sample sizes a sub-threshold-strength effect is detected with 98 per cent power.  What remains open is the residual composition term at late epochs, and the NG-parameter channel is underpowered (n_in=4 in-cap members).
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Saving data: step_b106_gaia_sink.json
+[2026-09-20 12:25:40 UTC] [DEBUG   ] [STEP 142]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b106_gaia_sink.json
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]   Output: step_b106_gaia_sink.json
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Saving data: step_b106_gaia_sink.csv
+[2026-09-20 12:25:40 UTC] [DEBUG   ] [STEP 142]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b106_gaia_sink.csv
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]   Output: step_b106_gaia_sink.csv
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Saving data: step_b106_gaia_sink.png
+[2026-09-20 12:25:40 UTC] [DEBUG   ] [STEP 142]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b106_gaia_sink.png
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]   Output: step_b106_gaia_sink.png
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] TEST SUMMARY:
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] {
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]  "attenuation_replicated": true,
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]  "sink_channels": [],
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]  "n_sink_channels": 0,
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]  "ddirf_carrier_sub": true,
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]  "sig_tp_adj_hit": true,
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]  "seed_lock": false,
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]  "i_mediation": false,
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]  "attenuation_is_amplitude_loss": true
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] }
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] VERDICT: ATTENUATED WITH TIME-DOMAIN LOADING: the displaced residual attenuates on uniform-Gaia legs (p=0.283 vs 6.45e-07 sub-threshold) while retaining the same positive sign on every channel.  Three mechanism results sharpen the reading: (1) the anomaly's full-strength carrier on sub-threshold legs is the leg-disagreement channel (p=0.000776), and in-cap perihelion-time uncertainty stays elevated after controlling for observation count (p=0.0257) -- the signature is already expressed as a time-domain disagreement, not only a spatial rotation; (2) the seed-lock account fails -- in-cap element displacement from the catalogue seed grows with Gaia fraction (del_pdeg rho=0.31), so the attenuation is not the fit being pinned to an absorbed solution; (3) the attenuation decomposes predominantly into transit epoch rather than reduction system -- the in-cap amplitude declines with perihelion epoch (rho=-0.54, p=1.38e-05), the residual shows no leg-system-asymmetry dependence that stitching requires (rho=0.06, p=0.411), and the composition correlation partialled on epoch drops to rho=-0.22 (p=0.0986): uniform-Gaia legs are the latest-transiting cohort, and the displaced lobe is intrinsically weakest there.  The epoch gradient is itself a registered measurement (the displaced structure was strongest nearest the transition); (4) the in-cap inclination imbalance flagged by T6 does not mediate the carrier -- ddirf is i-robust (in/out sign preserved in every inclination tercile, i-adjusted contrast unchanged) -- and the uniform-Gaia flatness is genuine amplitude loss rather than underpowering: at the stratum's own sample sizes a sub-threshold-strength effect is detected with 98 per cent power.  What remains open is the residual composition term at late epochs, and the NG-parameter channel is underpowered (n_in=4 in-cap members).
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] 
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] ================================================================================
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] STEP SUMMARY: step_142_gaia_sink
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] ================================================================================
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Step Number: 142
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Status: SUCCESS
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Duration: 5.55s
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Log Records Emitted: 83
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Output Files: 3
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_142_gaia_sink.log
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] 
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Generated 3 output file(s):
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]   • step_b106_gaia_sink.json: 13.42 KB [sha256 00f48b201ef5b63f]
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]   • step_b106_gaia_sink.csv: 41.34 KB [sha256 8053f798d23a9e41]
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]   • step_b106_gaia_sink.png: 331.38 KB [sha256 3c584f369c3c3852]
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] ================================================================================
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] STEP 142 COMPLETE: SUCCESS
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_142_gaia_sink_provenance.json
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] 
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] ================================================================================
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] EXECUTIVE SUMMARY
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] ================================================================================
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Step: step_142_gaia_sink (Step 142)
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Status: SUCCESS
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Duration: 5.55s
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Log Records: 94
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Output Files: 3
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] Key Outputs:
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]   - step_b106_gaia_sink.json (13.42 KB)
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]   - step_b106_gaia_sink.csv (41.34 KB)
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142]   - step_b106_gaia_sink.png (331.38 KB)
+[2026-09-20 12:25:40 UTC] [INFO    ] [STEP 142] ================================================================================

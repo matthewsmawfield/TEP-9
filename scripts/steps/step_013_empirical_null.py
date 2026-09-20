@@ -44,7 +44,7 @@ E3  Direct OSSOS calibration.  The OSSOS detached objects' own
     for the E2 sweep rather than an assumed one.
 
 Outputs: results/step_b1_empirical_null.json,
-         figures/step_b1_empirical_null.png
+         figures/supplementary/step_b1_empirical_null.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -363,9 +363,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b1_empirical_null.png", dpi=150)
-    print("wrote results/step_b1_empirical_null.json, "
-          "figures/step_b1_empirical_null.png")
+    fig.savefig(FIG / "supplementary" / "step_b1_empirical_null.png", dpi=300)
+    logger.data_save(RESULTS / "step_b1_empirical_null.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b1_empirical_null.png")
 
 
 if __name__ == "__main__":

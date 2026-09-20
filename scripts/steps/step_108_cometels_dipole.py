@@ -42,7 +42,7 @@ Outputs
 -------
 results/step_b72_cometels_dipole.json
 results/step_b72_cometels_dipole.csv
-results/figures/step_b72_cometels_dipole.png
+results/figures/supplementary/step_b72_cometels_dipole.png
 """
 
 import sys as _sys
@@ -305,9 +305,9 @@ ax[2].set(xlabel="eccentricity bin", ylabel=r"$d_\parallel$",
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b72_cometels_dipole.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b72_cometels_dipole.png", dpi=300)
 plt.close(fig)
-logger.data_save(FIG / "step_b72_cometels_dipole.png")
+logger.data_save(FIG / "supplementary" / "step_b72_cometels_dipole.png")
 
 # ------------------------------------------------------------------ output
 d_broad = res["broad_census"]["T2_dipole_tide_null"]["tno_extreme_34_-13"]

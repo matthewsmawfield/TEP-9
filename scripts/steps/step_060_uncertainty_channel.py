@@ -38,7 +38,7 @@ Axes: the same candidate directions as step_059 (both TNO axes plus
 controls).
 
 Outputs: results/step_b25_uncertainty_channel.json,
-         figures/step_b25_uncertainty_channel.png
+         figures/supplementary/step_b25_uncertainty_channel.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -283,10 +283,10 @@ def main():
               ylabel="|1/a$_{orig}$ Warsaw - MW08|",
               title="U4: cross-lineage disagreement")
     fig.tight_layout()
-    fig.savefig(RESULTS / "figures" / "step_b25_uncertainty_channel.png",
-                dpi=150)
-    print("wrote results/step_b25_uncertainty_channel.json, "
-          "figures/step_b25_uncertainty_channel.png")
+    fig.savefig(RESULTS / "figures" / "supplementary" / "step_b25_uncertainty_channel.png",
+                dpi=300)
+    logger.data_save(RESULTS / "step_b25_uncertainty_channel.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b25_uncertainty_channel.png")
 
 
 if __name__ == "__main__":

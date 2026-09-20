@@ -398,10 +398,11 @@ def residuals(r0, v0, et0, obs, geom=None):
     tau = np.linalg.norm(rc0 - robs, axis=1) / C_AU_DAY
     rc = propagate_states(r0, v0, et0, ets - tau * 86400.0)[:, :3]
     u = rc - robs
-    u /= np.linalg.norm(u, axis=1)[:, None]
-    u_eq = (RX.T @ u.T).T
-    ra_p = np.arctan2(u_eq[:, 1], u_eq[:, 0])
-    dec_p = np.arcsin(np.clip(u_eq[:, 2], -1, 1))
+    with np.errstate(invalid="ignore", divide="ignore"):
+        u /= np.linalg.norm(u, axis=1)[:, None]
+        u_eq = (RX.T @ u.T).T
+        ra_p = np.arctan2(u_eq[:, 1], u_eq[:, 0])
+        dec_p = np.arcsin(np.clip(u_eq[:, 2], -1, 1))
     res = np.empty((len(obs), 2))
     dra = (ra_p - geom["ra"] + math.pi) % (2 * math.pi) - math.pi
     res[:, 0] = dra * geom["cosdec"] * AS_RAD

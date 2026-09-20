@@ -32,7 +32,7 @@ Outputs
 -------
 results/step_b49_newest_cohort.json
 results/step_b49_newest_cohort.csv   (per-object scoring)
-results/figures/step_b49_newest_cohort.png
+results/figures/supplementary/step_b49_newest_cohort.png
 """
 
 import sys as _sys
@@ -223,7 +223,9 @@ res["newest_cohort"] = {
     "n_cc3": int(sum(1 for c in ccs if c <= 3)),
     "varpi_cap": {"n_in": n_cap_varpi, "frac": frac_v,
                   "p_vs_footprint_baseline": float(
-                      binomtest(n_cap_varpi, n, base).pvalue) if n and np.isfinite(base) else float("nan"),
+                      binomtest(n_cap_varpi, n, base,
+                                alternative="greater").pvalue)
+                  if n and np.isfinite(base) else float("nan"),
                   "p_vs_prediction_0p59": float(
                       binomtest(n_cap_varpi, n, 0.59).pvalue) if n else float("nan")},
     "peri_cap_3d": {"n_in": n_cap_aph, "frac": frac_a,
@@ -273,9 +275,8 @@ with open(RESULTS/"step_b49_newest_cohort.csv","w",newline="") as f:
     w.writeheader()
     for o in newest + ammon:
         w.writerow({k: o[k] for k in w.fieldnames})
-print(f"wrote {RESULTS/'step_b49_newest_cohort.json'}")
-print(f"wrote {RESULTS/'step_b49_newest_cohort.csv'}")
-
+logger.data_save(RESULTS/'step_b49_newest_cohort.json')
+logger.data_save(RESULTS/'step_b49_newest_cohort.csv')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -330,5 +331,5 @@ ax.set_title("3-D perihelion direction (resident channel)", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS/"figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG/"step_b49_newest_cohort.png", dpi=150)
-print(f"wrote {FIG/'step_b49_newest_cohort.png'}")
+fig.savefig(FIG/"supplementary" / "step_b49_newest_cohort.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b49_newest_cohort.png')

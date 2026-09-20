@@ -19,7 +19,7 @@ T2  Gap stability: the kick-and-geometry-regressed in-cap residual gap
     MWU p-value are reported for both.
 
 Outputs: results/step_b111_ephemeris_audit.json/.csv and
-results/figures/step_b111_ephemeris_audit.png.
+results/figures/supplementary/step_b111_ephemeris_audit.png.
 """
 
 import sys as _sys
@@ -261,37 +261,73 @@ sp.furnsh(str(DATA_RAW / "naif" / "naif0012.tls"))
 # Integrate both legs under each kernel
 # ------------------------------------------------------------------
 
-runs = {}
-for kern in KERNELS:
+def _run_comet(k, ro, oo, et):
+    rb = integrate_leg(oo, et, -1)
+    rf = integrate_leg(oo, et, +1)
+    if rb is None or rf is None:
+        return None
+    po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]),
+                   math.radians(ro["i"]))
+    pf = perih_dir(math.radians(fut[k]["w"]),
+                   math.radians(fut[k]["Om"]),
+                   math.radians(fut[k]["i"]))
+    return dict(
+        phat_back=rb["phat"], phat_fwd=rf["phat"],
+        drot_cat=sep(-po, -pf),
+        drot_sim=sep(rb["phat"], rf["phat"]),
+        daa_sim=rf["aa"] - rb["aa"],
+        denc=min(rb["denc"], rf["denc"]),
+        theta=sep(-po, TNO), q=ro["q"], i=ro["i"])
+
+
+def _work_comet(job):
+    k, ro, oo, et = job
+    try:
+        return _run_comet(k, ro, oo, et)
+    except Exception as e:
+        return ("__error__", k, str(e))
+
+
+def _init_kern(kern):
+    # forked children inherit the parent's BSP fds; concurrent spkezr
+    # reads through a shared descriptor corrupt each other -- reopen the
+    # kernels so each worker holds its own file handles.
     sp.kclear()
     sp.furnsh(str(DATA_RAW / "naif" / "naif0012.tls"))
     sp.furnsh(str(DATA_RAW / "spice" / f"{kern}.bsp"))
+
+
+from scripts.utils.parallel import default_workers as _default_workers
+
+if "--workers" in _sys.argv:
+    N_WORK = max(1, int(_sys.argv[_sys.argv.index("--workers") + 1]))
+else:
+    N_WORK = _default_workers()
+
+import multiprocessing as mp
+_ctx = mp.get_context("fork") if _sys.platform != "win32" \
+    else mp.get_context("spawn")
+
+runs = {}
+for kern in KERNELS:
+    if N_WORK > 1 and len(sample) > 1:
+        with _ctx.Pool(min(N_WORK, len(sample)),
+                       initializer=_init_kern, initargs=(kern,)) as pool:
+            recs = pool.map(_work_comet, sample)
+    else:
+        _init_kern(kern)
+        recs = [_work_comet(s) for s in sample]
     rows = {}
     failed = []
-    for k, ro, oo, et in sample:
-        try:
-            rb = integrate_leg(oo, et, -1)
-            rf = integrate_leg(oo, et, +1)
-        except Exception as e:
-            failed.append(k)
-            logger.warning(f"{k}: {e}")
-            continue
-        if rb is None or rf is None:
+    for (k, ro, oo, et), rec in zip(sample, recs):
+        if rec is None:
             failed.append(k)
             logger.warning(f"{k}: boundary not reached")
-            continue
-        po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]),
-                       math.radians(ro["i"]))
-        pf = perih_dir(math.radians(fut[k]["w"]),
-                       math.radians(fut[k]["Om"]),
-                       math.radians(fut[k]["i"]))
-        rows[k] = dict(
-            phat_back=rb["phat"], phat_fwd=rf["phat"],
-            drot_cat=sep(-po, -pf),
-            drot_sim=sep(rb["phat"], rf["phat"]),
-            daa_sim=rf["aa"] - rb["aa"],
-            denc=min(rb["denc"], rf["denc"]),
-            theta=sep(-po, TNO), q=ro["q"], i=ro["i"])
+        elif isinstance(rec, tuple) and rec[0] == "__error__":
+            failed.append(rec[1])
+            logger.warning(f"{rec[1]}: {rec[2]}")
+        else:
+            rows[k] = rec
     runs[kern] = dict(rows=rows, failed=failed)
     logger.info(f"{kern}: {len(rows)} comets x2 legs; "
                 f"{len(failed)} failed")
@@ -413,7 +449,7 @@ res["caveats"] = [
 out = RESULTS / "step_b111_ephemeris_audit.json"
 with open(out, "w") as _fh:
     json.dump(res, _fh, indent=1)
-logger.info("wrote " + str(out))
+logger.data_save(out)
 
 import csv
 with open(RESULTS / "step_b111_ephemeris_audit.csv", "w",
@@ -447,8 +483,8 @@ ax[1].set_title("T2: per-comet boundary rotation, kernel vs kernel")
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
 fig.tight_layout()
-fig.savefig(FIG / "step_b111_ephemeris_audit.png", dpi=150)
-logger.info("wrote figure")
+fig.savefig(FIG / "supplementary" / "step_b111_ephemeris_audit.png", dpi=300)
+logger.data_save(FIG / "supplementary" / "step_b111_ephemeris_audit.png")
 
-print(json.dumps(res["test_summary"], indent=1))
-print(res["verdict"])
+print("TEST SUMMARY:\n" + json.dumps(res["test_summary"], indent=1))
+print(f"VERDICT: {res['verdict']}")

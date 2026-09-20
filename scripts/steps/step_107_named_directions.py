@@ -33,7 +33,7 @@ Outputs
 -------
 results/step_b71_named_directions.json
 results/step_b71_named_directions.csv
-results/figures/step_b71_named_directions.png
+results/figures/supplementary/step_b71_named_directions.png
 """
 
 import sys as _sys
@@ -229,9 +229,9 @@ axp.set_title('Recovered boundary axes vs named sky directions '
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b71_named_directions.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b71_named_directions.png", dpi=300)
 plt.close(fig)
-logger.data_save(FIG / "step_b71_named_directions.png")
+logger.data_save(FIG / "supplementary" / "step_b71_named_directions.png")
 
 # -------------------------------------------------------------------- output
 verdict = (

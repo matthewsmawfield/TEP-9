@@ -60,7 +60,7 @@ Outputs
 -------
 results/step_b67_rtg_midlife_control.json
 results/step_b67_rtg_midlife_control.csv
-results/figures/step_b67_rtg_midlife_control.png
+results/figures/supplementary/step_b67_rtg_midlife_control.png
 """
 
 import sys as _sys
@@ -458,6 +458,6 @@ ax.set_title(f"sign coherence (HP window {frac_hp:.0%}, "
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b67_rtg_midlife_control.png", dpi=150)
-logger.data_save(FIG / "step_b67_rtg_midlife_control.png")
+fig.savefig(FIG / "supplementary" / "step_b67_rtg_midlife_control.png", dpi=300)
+logger.data_save(FIG / "supplementary" / "step_b67_rtg_midlife_control.png")
 logger.success("RTG mid-life degradation control complete")

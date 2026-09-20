@@ -1,42 +1,133 @@
-[2026-09-19 20:25:13 UTC] [INFO    ] [STEP 090] LOGGER INITIALIZED: step_090_mean_plane (Step 090)
-[2026-09-19 20:25:13 UTC] [DEBUG   ] [STEP 090] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_090_mean_plane.log
-[2026-09-19 20:25:13 UTC] [DEBUG   ] [STEP 090] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 20:25:13 UTC] [INFO    ] [STEP 090] ================================================================================
-[2026-09-19 20:25:13 UTC] [INFO    ] [STEP 090] Bias-free mean-plane warp (SCT25 estimator, MPCORB lineage)
-[2026-09-19 20:25:13 UTC] [INFO    ] [STEP 090] ================================================================================
-[2026-09-19 20:25:14 UTC] [INFO    ] [STEP 090] loading MPCORB ...
-[2026-09-19 20:25:18 UTC] [INFO    ] [STEP 090]   1565627 orbits
-[2026-09-19 20:25:20 UTC] [INFO    ] [STEP 090]   6647 candidates in 30-450 AU, q>28
-[2026-09-19 20:25:21 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
-[2026-09-19 20:25:21 UTC] [INFO    ] [STEP 090] A. SCT25 Table-1 published-sample validation
-[2026-09-19 20:25:21 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
-[2026-09-19 20:25:21 UTC] [INFO    ] [STEP 090] matched 46/46 published objects; missing: []
-[2026-09-19 20:25:28 UTC] [INFO    ] [STEP 090] SCT25 Table-1 (80-400 AU): N=46  i0=13.3  Om0=118  gamma=15  dlogL=3.68  sigma=2.71  FAP=0.0200
-[2026-09-19 20:25:28 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
-[2026-09-19 20:25:28 UTC] [INFO    ] [STEP 090] B. Pipeline-native bins (MMR-excluded)
-[2026-09-19 20:25:28 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
-[2026-09-19 20:25:45 UTC] [INFO    ] [STEP 090] a 50-80 AU: N=149  i0=2.9  Om0=58  gamma=11  dlogL=0.72  sigma=1.20  FAP=0.4688
-[2026-09-19 20:26:01 UTC] [INFO    ] [STEP 090] a 80-200 AU: N=123  i0=1.6  Om0=117  gamma=10  dlogL=0.01  sigma=0.15  FAP=0.9825
-[2026-09-19 20:26:06 UTC] [INFO    ] [STEP 090] a 200-400 AU: N=27  i0=10.3  Om0=135  gamma=21  dlogL=1.77  sigma=1.88  FAP=0.1297
-[2026-09-19 20:26:21 UTC] [INFO    ] [STEP 090] a 80-400 AU: N=150  i0=2.8  Om0=129  gamma=11  dlogL=0.21  sigma=0.65  FAP=0.8554
-[2026-09-19 20:26:32 UTC] [INFO    ] [STEP 090] 80-400 AU, MMR cut 0.01: N=183  i0=3.1  Om0=138  gamma=11  dlogL=0.49  sigma=0.99  FAP=0.7065
-[2026-09-19 20:26:38 UTC] [INFO    ] [STEP 090] 80-400 AU, MMR cut 0.02: N=116  i0=3.0  Om0=143  gamma=11  dlogL=0.38  sigma=0.87  FAP=0.7413
-[2026-09-19 20:26:38 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
-[2026-09-19 20:26:38 UTC] [INFO    ] [STEP 090] C. Direction of the warp
-[2026-09-19 20:26:38 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
-[2026-09-19 20:26:38 UTC] [INFO    ] [STEP 090] 50-80: lean az 328 deg, |az-49|=80.8 deg (p=0.5162), Om0-P9node 38.7 deg
-[2026-09-19 20:26:38 UTC] [INFO    ] [STEP 090] 80-200: lean az 27 deg, |az-49|=21.6 deg (p=0.1047), Om0-P9node 20.5 deg
-[2026-09-19 20:26:38 UTC] [INFO    ] [STEP 090] 200-400: lean az 45 deg, |az-49|=3.7 deg (p=0.0449), Om0-P9node 38.4 deg
-[2026-09-19 20:26:38 UTC] [INFO    ] [STEP 090] 80-400: lean az 39 deg, |az-49|=10.0 deg (p=0.0648), Om0-P9node 32.1 deg
-[2026-09-19 20:26:38 UTC] [INFO    ] [STEP 090] Table1: lean az 28 deg, |az-49|=21.1 deg (p=0.1895), Om0-P9node 21.0 deg
-[2026-09-19 20:26:39 UTC] [INFO    ] [STEP 090] 80-400 jackknife: median az 39 deg, circ sd 2.8 deg, 1.00 within 30 deg of 49
-[2026-09-19 20:26:39 UTC] [INFO    ] [STEP 090] 200-400 jackknife: median az 46 deg, circ sd 3.8 deg, 1.00 within 30 deg of 49
-[2026-09-19 20:26:39 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
-[2026-09-19 20:26:39 UTC] [INFO    ] [STEP 090] D. Mean-pole cross-check (same bins)
-[2026-09-19 20:26:39 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
-[2026-09-19 20:26:39 UTC] [INFO    ] [STEP 090] 50-80 AU: naive mean-pole tilt 5.50 deg, azimuth 23 deg
-[2026-09-19 20:26:39 UTC] [INFO    ] [STEP 090] 80-200 AU: naive mean-pole tilt 7.01 deg, azimuth 47 deg
-[2026-09-19 20:26:39 UTC] [INFO    ] [STEP 090] 200-400 AU: naive mean-pole tilt 9.13 deg, azimuth 54 deg
-[2026-09-19 20:26:39 UTC] [INFO    ] [STEP 090] 80-400 AU: naive mean-pole tilt 7.39 deg, azimuth 48 deg
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b55_mean_plane.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b55_mean_plane.png
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] LOGGER INITIALIZED: step_090_mean_plane (Step 090)
+[2026-09-20 12:04:10 UTC] [DEBUG   ] [STEP 090] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_090_mean_plane.log
+[2026-09-20 12:04:10 UTC] [DEBUG   ] [STEP 090] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:04:10 UTC] [DEBUG   ] [STEP 090] Start time (UTC): 2026-09-20T12:04:10.191984+00:00
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] 
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] STEP PURPOSE
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   Step 090 -- bias-free mean-plane warp of the distant Kuiper belt
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   (Siraj, Chyba & Tremaine 2025 estimator) and the direction of the warp
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   Siraj, Chyba & Tremaine (2025, MNRAS Letters slaf091; arXiv:2508.14156)
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   introduced a likelihood mean-plane estimator that is, by construction,
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   independent of the survey footprint: conditioning on each object's
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   observed position r-hat removes the on-sky selection function w(r)
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   from the likelihood, leaving only the intrinsic orbital-plane term.
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   They report a warp of the distant Kuiper-belt mean plane relative to
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   the invariable plane in the 80-200 AU (2.5 sigma) and 80-400 AU
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   (2.7 sigma) semimajor-axis bins -- i0 ~ 15 deg toward node Omega0 ~
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   120 deg -- and show in their own n-body tests that NEITHER the
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   Brown-Batygin (2021) Planet Nine NOR their own Siraj+25 Planet-X
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   realization can generate it; a third, distinct perturber ('Planet Y',
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   ~0.06-1 M_earth, a = 100-200 AU, i >~ 10 deg) would be required.
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   This step (i) re-implements the exact estimator on real MPCORB
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   elements -- an orbit-fit lineage independent of JPL SBDB -- (ii)
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   reproduces the warp in their semimajor-axis bins on two samples
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   (their published 46-object Table-1 list, and a pipeline-native
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   non-resonant cut), and (iii) asks the question their paper leaves
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   open: WHERE does the disk lean?  The mean-pole offset azimuth is
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   measured against the detached-TNO boundary axis (lam=49 deg) already
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   recovered by the resident and transit channels, and against the
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   published perturber planes.
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   Likelihood (their eq. 16)
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   log L = gamma * m_hat . sum_i J_hat_i
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   - sum_i log I0( gamma * sin(theta_i) ) + const
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   with m_hat the trial mean-plane pole, J_hat_i = r_i x v_i / |r_i x v_i|
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   the angular-momentum direction, and theta_i the angle between m_hat
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   and the observed position r_hat_i.  Delta log L is profiled over
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   gamma at the invariable plane (i_inv = 1.6 deg, Om_inv = 107 deg);
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   significance = sqrt(2 Delta log L) (their convention).  The false-
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   alarm probability is measured by Monte-Carlo: synthetic disks
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   distributed symmetrically about the invariable plane, drawn at the
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   OBSERVED position vectors (the von-Mises-on-the-tangent-circle
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   generative null of SCT25, conditioned on the real on-sky geometry so
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   the C_i denominators match the data exactly).
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   Positions are propagated from MPCORB osculating elements
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   (a, e, i, Om, w, M at the file epoch, K2669 = 2026-06-09 for >99 per
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   cent of rows) by two-body Kepler solution -- heliocentric ecliptic;
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   the heliocentric-vs-barycentric offset is far below the estimator's
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   resolution and is recorded as a caveat.
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   Non-resonant cut: objects within +/-1.5 per cent in semimajor axis of
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   a Neptune mean-motion resonance (p+q):p with p+q <= 12 are excluded --
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   an analytic proxy for the SBDynT 90-clone filter used by SCT25, run
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   at +/-1.0 and +/-2.0 per cent as sensitivity checks.
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   Outputs
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   results/step_b55_mean_plane.json
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090]   results/figures/supplementary/step_b55_mean_plane.png
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] SCRIPT: scripts/steps/step_090_mean_plane.py
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] SCRIPT SHA256: 15da19c938e93a2cafb8cd6362ecca369d54eedc3f6c39ce10802f28d006020b
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] SCRIPT SIZE: 25564 bytes
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] ================================================================================
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] Bias-free mean-plane warp (SCT25 estimator, MPCORB lineage)
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] ================================================================================
+[2026-09-20 12:04:10 UTC] [INFO    ] [STEP 090] loading MPCORB ...
+[2026-09-20 12:04:15 UTC] [INFO    ] [STEP 090]   1565627 orbits
+[2026-09-20 12:04:16 UTC] [INFO    ] [STEP 090]   6647 candidates in 30-450 AU, q>28
+[2026-09-20 12:04:16 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
+[2026-09-20 12:04:16 UTC] [INFO    ] [STEP 090] A. SCT25 Table-1 published-sample validation
+[2026-09-20 12:04:16 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
+[2026-09-20 12:04:16 UTC] [INFO    ] [STEP 090] matched 46/46 published objects; missing: []
+[2026-09-20 12:04:26 UTC] [INFO    ] [STEP 090] SCT25 Table-1 (80-400 AU): N=46  i0=13.3  Om0=118  gamma=15  dlogL=3.68  sigma=2.71  FAP=0.0200
+[2026-09-20 12:04:26 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
+[2026-09-20 12:04:26 UTC] [INFO    ] [STEP 090] B. Pipeline-native bins (MMR-excluded)
+[2026-09-20 12:04:26 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
+[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 090] a 50-80 AU: N=149  i0=2.9  Om0=58  gamma=11  dlogL=0.72  sigma=1.20  FAP=0.4688
+[2026-09-20 12:05:12 UTC] [INFO    ] [STEP 090] a 80-200 AU: N=123  i0=1.6  Om0=117  gamma=10  dlogL=0.01  sigma=0.15  FAP=0.9825
+[2026-09-20 12:05:21 UTC] [INFO    ] [STEP 090] a 200-400 AU: N=27  i0=10.3  Om0=135  gamma=21  dlogL=1.77  sigma=1.88  FAP=0.1297
+[2026-09-20 12:05:43 UTC] [INFO    ] [STEP 090] a 80-400 AU: N=150  i0=2.8  Om0=129  gamma=11  dlogL=0.21  sigma=0.65  FAP=0.8554
+[2026-09-20 12:05:56 UTC] [INFO    ] [STEP 090] 80-400 AU, MMR cut 0.01: N=183  i0=3.1  Om0=138  gamma=11  dlogL=0.49  sigma=0.99  FAP=0.7065
+[2026-09-20 12:06:05 UTC] [INFO    ] [STEP 090] 80-400 AU, MMR cut 0.02: N=116  i0=3.0  Om0=143  gamma=11  dlogL=0.38  sigma=0.87  FAP=0.7413
+[2026-09-20 12:06:05 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
+[2026-09-20 12:06:05 UTC] [INFO    ] [STEP 090] C. Direction of the warp
+[2026-09-20 12:06:05 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
+[2026-09-20 12:06:05 UTC] [INFO    ] [STEP 090] 50-80: lean az 328 deg, |az-49|=80.8 deg (p=0.5162), Om0-P9node 38.7 deg
+[2026-09-20 12:06:05 UTC] [INFO    ] [STEP 090] 80-200: lean az 27 deg, |az-49|=21.6 deg (p=0.1047), Om0-P9node 20.5 deg
+[2026-09-20 12:06:05 UTC] [INFO    ] [STEP 090] 200-400: lean az 45 deg, |az-49|=3.7 deg (p=0.0449), Om0-P9node 38.4 deg
+[2026-09-20 12:06:05 UTC] [INFO    ] [STEP 090] 80-400: lean az 39 deg, |az-49|=10.0 deg (p=0.0648), Om0-P9node 32.1 deg
+[2026-09-20 12:06:05 UTC] [INFO    ] [STEP 090] Table1: lean az 28 deg, |az-49|=21.1 deg (p=0.1895), Om0-P9node 21.0 deg
+[2026-09-20 12:06:07 UTC] [INFO    ] [STEP 090] 80-400 jackknife: median az 39 deg, circ sd 2.8 deg, 1.00 within 30 deg of 49
+[2026-09-20 12:06:08 UTC] [INFO    ] [STEP 090] 200-400 jackknife: median az 46 deg, circ sd 3.8 deg, 1.00 within 30 deg of 49
+[2026-09-20 12:06:08 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
+[2026-09-20 12:06:08 UTC] [INFO    ] [STEP 090] D. Mean-pole cross-check (same bins)
+[2026-09-20 12:06:08 UTC] [INFO    ] [STEP 090] --------------------------------------------------------------------------------
+[2026-09-20 12:06:08 UTC] [INFO    ] [STEP 090] 50-80 AU: naive mean-pole tilt 5.50 deg, azimuth 23 deg
+[2026-09-20 12:06:08 UTC] [INFO    ] [STEP 090] 80-200 AU: naive mean-pole tilt 7.01 deg, azimuth 47 deg
+[2026-09-20 12:06:08 UTC] [INFO    ] [STEP 090] 200-400 AU: naive mean-pole tilt 9.13 deg, azimuth 54 deg
+[2026-09-20 12:06:08 UTC] [INFO    ] [STEP 090] 80-400 AU: naive mean-pole tilt 7.39 deg, azimuth 48 deg
+[2026-09-20 12:06:08 UTC] [INFO    ] [STEP 090] Saving data: step_b55_mean_plane.json
+[2026-09-20 12:06:08 UTC] [DEBUG   ] [STEP 090]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b55_mean_plane.json
+[2026-09-20 12:06:08 UTC] [INFO    ] [STEP 090]   Output: step_b55_mean_plane.json
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Saving data: step_b55_mean_plane.png
+[2026-09-20 12:06:09 UTC] [DEBUG   ] [STEP 090]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b55_mean_plane.png
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090]   Output: step_b55_mean_plane.png
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] 
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] ================================================================================
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] STEP SUMMARY: step_090_mean_plane
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] ================================================================================
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Step Number: 090
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Status: SUCCESS
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Duration: 1.98m
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Log Records Emitted: 110
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Output Files: 2
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_090_mean_plane.log
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] 
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Generated 2 output file(s):
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090]   • step_b55_mean_plane.json: 126.34 KB [sha256 aacf7d79759d1072]
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090]   • step_b55_mean_plane.png: 286.70 KB [sha256 2874dce0b858f726]
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] ================================================================================
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] STEP 090 COMPLETE: SUCCESS
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_090_mean_plane_provenance.json
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] 
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] ================================================================================
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] EXECUTIVE SUMMARY
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] ================================================================================
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Step: step_090_mean_plane (Step 090)
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Status: SUCCESS
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Duration: 1.98m
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Log Records: 120
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Output Files: 2
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] Key Outputs:
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090]   - step_b55_mean_plane.json (126.34 KB)
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090]   - step_b55_mean_plane.png (286.70 KB)
+[2026-09-20 12:06:09 UTC] [INFO    ] [STEP 090] ================================================================================

@@ -262,15 +262,14 @@ for cohort, mk in [("code", "o"), ("warsaw", "s")]:
     dt = np.array([r["dtau_total"] for r in sub])
     inc = th < CAP
     ax.scatter(th[~inc], dt[~inc], s=20, marker=mk, facecolors="none",
-               edgecolors="0.55", label=f"{cohort} outside ($n={int((~inc).sum())}$)")
-    ax.scatter(th[inc], dt[inc], s=24, marker=mk, c="crimson",
+               edgecolors="#566573", label=f"{cohort} outside ($n={int((~inc).sum())}$)")
+    ax.scatter(th[inc], dt[inc], s=24, marker=mk, c="#b43b4e",
                label=f"{cohort} inside ($n={int(inc.sum())}$)")
 ax.axvline(CAP, color="k", ls=":", lw=1)
 ax.set_xlabel(r"aphelion--axis separation $\theta$ (deg)")
-ax.set_ylabel(r"$\delta\tau_{\rm total}$ (yr)")
+ax.set_ylabel(r"$\delta\tau_{\rm total}$ (yr)", labelpad=6)
 ax.set_yscale("log")
-ax.legend(frameon=False, fontsize=8)
-ax.set_title("implied proper-time offset vs axis distance", fontsize=10)
+ax.legend(frameon=False)
 
 ax = axes[1]
 sub = [r for r in allrows if "dtau_unexplained" in r]
@@ -278,19 +277,18 @@ resid = np.array([r["dtau_unexplained"] for r in sub])
 th = np.array([r["theta"] for r in sub])
 inc = th < CAP
 bins = np.linspace(np.percentile(resid, 1), np.percentile(resid, 99), 30)
-ax.hist(resid[~inc], bins=bins, color="0.55", alpha=0.7, density=True,
+ax.hist(resid[~inc], bins=bins, color="#566573", alpha=0.7, density=True,
         label=f"outside ($n={int((~inc).sum())}$)")
-ax.hist(resid[inc], bins=bins, color="crimson", alpha=0.6, density=True,
+ax.hist(resid[inc], bins=bins, color="#b43b4e", alpha=0.6, density=True,
         label=f"inside ($n={int(inc.sum())}$)")
 ax.axvline(0, color="k", ls=":", lw=1)
 ax.set_xlabel(r"unexplained proper-time offset $\delta\tau$ (yr)")
 ax.set_ylabel("density")
-ax.legend(frameon=False, fontsize=8)
-ax.set_title("residual after encounter-budget regression", fontsize=10)
+ax.legend(frameon=False)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b30_proper_time_slip.png", dpi=150)
+fig.savefig(FIG / "step_b30_proper_time_slip.png", dpi=300)
 
 for tag, dd in [("code", res["code"]), ("warsaw", res["warsaw"]), ("pooled", res["pooled"])]:
     d = dd["all"]
@@ -303,6 +301,6 @@ for tag, dd in [("code", res["code"]), ("warsaw", res["warsaw"]), ("pooled", res
         logger.info(f"{tag} inbound: med total in/out = {di['med_total_in']:.2f}/"
                     f"{di['med_total_out']:.2f} yr | unexplained in = {di['med_in']:.2f} yr "
                     f"ci68 {di['ci68_in']} p={di['p_in_gt_out']:.4f}")
-print("wrote", out)
-print("wrote", csv_out)
-print("wrote", FIG / "step_b30_proper_time_slip.png")
+logger.data_save(out)
+logger.data_save(csv_out)
+logger.data_save(FIG / "step_b30_proper_time_slip.png")

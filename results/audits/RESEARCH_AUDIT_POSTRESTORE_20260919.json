@@ -160,11 +160,11 @@
   "step_147_ephemeris_audit.py": "793f07c8e4ea8c03",
   "step_148_pws_anchored_sclk.py": "91a206435d07bc01",
   "step_149_channel_dissociation.py": "d5dee704c60668dd",
-  "step_149_newtonian_directional_null.py": "46bbd56fc266a173",
+  "step_149_newtonian_directional_null.py": "df49aa610a611daa5600c0aac167884b7f99fbf11df62e1322ab51dad185fa7b",
   "step_150_channel_dissociation.py": "fd6a1a1853781cc3",
   "step_151_injection_transfer.py": "4360003e9f7517c3",
   "mpc_refit.py": "0a33b7bb50c0cc48",
-  "step_152_arrival_latitude_null.py": "52dc12d9d4f2f3c2",
+  "step_152_arrival_latitude_null.py": "8f979f30383002848978fa2bcbb644ce9b47fff703c87ce0d82a9f7283829c83",
   "run_all.py": "0d11b0f1153868f7"
  },
  "differs_from_snapshot": [
@@ -217,6 +217,18 @@
   {
    "date": "2026-09-20",
    "note": "step_150 verdict regenerated under corrected logic: REVERSED SENSITIVITY ORDERING -- rotation 163x less error-exposed than aphelion; dissociation cannot be manufactured by orbit-solution error. Manuscript (user edits) now binds 96 claim markers to result leaves; all 158 registry claims verified resolvable. b32 detection-power N=123 is exact binomial (140 was Gaussian); b58 perturber closure 515-4294 Mearth verified. step_151 guards hardened (_try_leg on truth legs, _process try/except)."
+  },
+  {
+   "date": "2026-09-20",
+   "file": "scripts/steps/step_149_newtonian_directional_null.py",
+   "change": "T6 arrival-geometry audit was silently reading the b28 theta column -- separation from the COMET axis (34,-13) -- while reporting it as the resident-axis cap fraction (43/131=32.8%, p=0.027). Correct resident-axis arrival fraction is 48/131=36.6%, p=0.0020, matching step_152/b116 exactly. T6 now recomputes separations from the arrival unit vectors against BOTH declared axes; T7 mediator audit likewise reports both axes; figure left panel now uses resident-axis separation matching its caption. The mislabel understated the resident-axis arrival anisotropy. T3_coarse instrument-matched grid (user edit) verified: T5 coincidence p-values unchanged in character (all_c1/sim 10.8 deg, p=0.009).",
+   "sha256": "df49aa610a611daa5600c0aac167884b7f99fbf11df62e1322ab51dad185fa7b"
+  },
+  {
+   "date": "2026-09-20",
+   "file": "scripts/steps/step_152_arrival_latitude_null.py",
+   "change": "docstring corrected: cites 48/131=36.6% p=0.0020 for the resident-axis cap (the 43/131 figure is the comet-axis cap, retained in b113 T6 for both axes).",
+   "sha256": "8f979f30383002848978fa2bcbb644ce9b47fff703c87ce0d82a9f7283829c83"
   }
  ]
 }

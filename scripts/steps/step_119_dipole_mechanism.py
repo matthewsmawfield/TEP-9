@@ -61,16 +61,18 @@ Outputs
 -------
 results/step_b83_dipole_mechanism.json
 results/step_b83_dipole_mechanism.csv   (per-comet covariates)
-results/figures/step_b83_dipole_mechanism.png
+results/figures/supplementary/step_b83_dipole_mechanism.png
 """
 
 import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import (
     DATA_RAW, RESULTS, sep, lv, lb)
 logger = StepLogger("step_119_dipole_mechanism")
+tee_stdout(logger)
 
 import csv
 import datetime as _dt
@@ -400,7 +402,9 @@ for c, g in t2.items():
     if best_absorb is None or g["gap"] < best_absorb[1]["gap"]:
         best_absorb = (c, g)
 
-frac = t3["frac_remaining"] or 1.0
+frac = t3["frac_remaining"]
+if frac is None:
+    frac = 1.0
 _sv = t4["by_survey"]
 _svb = t4.get("by_survey_bound_only", {})
 _clean = [s for s, v in _sv.items() if v["gap"] < 0.10]
@@ -528,5 +532,5 @@ ax.set_title("dipole within single surveys", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b83_dipole_mechanism.png", dpi=150)
-print("wrote", out)
+fig.savefig(FIG / "supplementary" / "step_b83_dipole_mechanism.png", dpi=300)
+logger.data_save(out)

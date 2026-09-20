@@ -246,28 +246,66 @@ logger.info(f"sample: {len(sample)} class-1 CODE comets")
 # Integrate: baseline + one rung per distance per comet
 # ------------------------------------------------------------------
 
+def _run_comet(k, ro, oo, et):
+    base = integrate(oo, et, None)
+    if base is None:
+        return None
+    po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]), math.radians(ro["i"]))
+    pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]), math.radians(fut[k]["i"]))
+    rec = dict(desig=k, q=ro["q"], cls=ro["cls"],
+               theta=sep(-po, TNO), d_of=sep(-po, -pf))
+    for a9 in A9_LADDER:
+        key = f"a{int(a9)}"
+        ps9, vs9 = p9_state(a9, M9_USE, et)
+        rp = integrate(oo, et, (ps9, vs9, M9_EARTH * M_EARTH_SUN))
+        rec[f"{key}_drot"] = sep(base["phat"], rp["phat"]) if rp else float("nan")
+        rec[f"{key}_mreq"] = (M9_EARTH * rec["d_of"] / rec[f"{key}_drot"]
+                              if np.isfinite(rec[f"{key}_drot"]) and rec[f"{key}_drot"] > 0
+                              else float("nan"))
+    return rec
+
+
+def _work_comet(job):
+    k, ro, oo, et = job
+    try:
+        return _run_comet(k, ro, oo, et)
+    except Exception as e:
+        return ("__error__", k, str(e))
+
+
+from scripts.utils.parallel import default_workers as _default_workers
+
+if "--workers" in _sys.argv:
+    N_WORK = max(1, int(_sys.argv[_sys.argv.index("--workers") + 1]))
+else:
+    N_WORK = _default_workers()
+
+if N_WORK > 1 and len(sample) > 1:
+    import multiprocessing as mp
+    ctx = mp.get_context("fork") if _sys.platform != "win32" \
+        else mp.get_context("spawn")
+
+    def _init():
+        # forked children inherit the parent's BSP fd; concurrent spkezr
+        # reads through a shared descriptor corrupt each other -- reopen
+        # the kernel so each worker holds its own file handle.
+        sp.kclear()
+        sp.furnsh(str(SPK))
+
+    with ctx.Pool(min(N_WORK, len(sample)), initializer=_init) as pool:
+        recs = pool.map(_work_comet, sample)
+else:
+    recs = [_work_comet(s) for s in sample]
+
 rows = []
 failed = []
-for k, ro, oo, et in sample:
-    try:
-        base = integrate(oo, et, None)
-        if base is None:
-            failed.append(k); continue
-        po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]), math.radians(ro["i"]))
-        pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]), math.radians(fut[k]["i"]))
-        rec = dict(desig=k, q=ro["q"], cls=ro["cls"],
-                   theta=sep(-po, TNO), d_of=sep(-po, -pf))
-        for a9 in A9_LADDER:
-            key = f"a{int(a9)}"
-            ps9, vs9 = p9_state(a9, M9_USE, et)
-            rp = integrate(oo, et, (ps9, vs9, M9_EARTH * M_EARTH_SUN))
-            rec[f"{key}_drot"] = sep(base["phat"], rp["phat"]) if rp else float("nan")
-            rec[f"{key}_mreq"] = (M9_EARTH * rec["d_of"] / rec[f"{key}_drot"]
-                                  if np.isfinite(rec[f"{key}_drot"]) and rec[f"{key}_drot"] > 0
-                                  else float("nan"))
+for s, rec in zip(sample, recs):
+    if rec is None:
+        failed.append(s[0])
+    elif isinstance(rec, tuple) and rec[0] == "__error__":
+        failed.append(rec[1]); logger.warning(f"{rec[1]}: {rec[2]}")
+    else:
         rows.append(rec)
-    except Exception as e:
-        failed.append(k); logger.warning(f"{k}: {e}")
 
 logger.info(f"integrated {len(rows)} comets x {1 + len(A9_LADDER)} runs; {len(failed)} failed")
 
@@ -342,9 +380,8 @@ csv_out = str(RESULTS / "step_b52_distance_ladder.csv")
 with open(csv_out, "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
     w.writeheader(); w.writerows(rows)
-print("wrote", out)
-print("wrote", csv_out)
-
+logger.data_save(out)
+logger.data_save(csv_out)
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -359,33 +396,35 @@ ax = axes[0]
 med_in = [res["rungs"][f"a{int(a)}"]["m_req_median_in"] for a in A9_LADDER]
 p05_in = [res["rungs"][f"a{int(a)}"]["m_req_p05_in"] for a in A9_LADDER]
 med_out = [res["rungs"][f"a{int(a)}"]["m_req_median_out"] for a in A9_LADDER]
-ax.plot(A9_LADDER, med_in, "o-", c="crimson", label="in-cap median")
-ax.plot(A9_LADDER, p05_in, "s--", c="crimson", alpha=0.5, label="in-cap 5th pct")
-ax.plot(A9_LADDER, med_out, "o-", c="0.6", label="out-of-cap median")
-ax.axhline(318, color="steelblue", ls=":", lw=1.2, label="1 $M_{Jup}$")
+ax.plot(A9_LADDER, med_in, "o-", c="#b43b4e", label="in-cap median")
+ax.plot(A9_LADDER, p05_in, "s--", c="#b43b4e", alpha=0.5, label="in-cap 5th pct")
+ax.plot(A9_LADDER, med_out, "o-", c="#566573", label="out-of-cap median")
+ax.axhline(318, color="#1A5276", ls=":", lw=1.6, label="1 $M_{\\rm Jup}$")
 ax.axhline(6.9, color="k", ls="--", lw=1, label="BB21 nominal mass")
-ax.axhspan(318, 1e5, color="steelblue", alpha=0.06)
+ax.axhspan(318, 1e5, color="#1A5276", alpha=0.06)
 ax.set_xscale("log"); ax.set_yscale("log")
 ax.set_xlabel("perturber semimajor axis $a_9$ (AU)")
 ax.set_ylabel("required mass ($M_\\oplus$)")
-ax.legend(frameon=False, fontsize=8)
-ax.set_title("required point mass vs perturber distance", fontsize=10)
+ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.18),
+          ncol=3, fontsize=9)
 
 ax = axes[1]
 dr_in = []
 for a9 in A9_LADDER:
     key = f"a{int(a9)}"
     dr_in.append(np.nanmedian([r[key + "_drot"] for r in rows if r["theta"] < 60]))
-ax.plot(A9_LADDER, dr_in, "o-", c="teal", label="injected rotation (6.9 $M_\\oplus$)")
-ax.axhline(float(np.median(dof[inc])), color="crimson", ls="--", lw=1.2,
+ax.plot(A9_LADDER, dr_in, "o-", c="#1A5276",
+        label="injected rotation (6.9 $M_\\oplus$)")
+ax.axhline(float(np.median(dof[inc])), color="#b43b4e", ls="--", lw=1.2,
            label="observed in-cap median $\\delta\\theta$")
 ax.set_xscale("log"); ax.set_yscale("log")
 ax.set_xlabel("perturber semimajor axis $a_9$ (AU)")
 ax.set_ylabel("boundary rotation (deg)")
-ax.legend(frameon=False, fontsize=8)
-ax.set_title("what 6.9 $M_\\oplus$ can do vs what is observed", fontsize=10)
+ax.legend(frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.18),
+          ncol=1, fontsize=9)
 
 fig.tight_layout()
+fig.subplots_adjust(bottom=0.3)
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b52_distance_ladder.png", dpi=150)
-print(f"wrote {FIG / 'step_b52_distance_ladder.png'}")
+fig.savefig(FIG / "step_b52_distance_ladder.png", dpi=300)
+logger.data_save(FIG / 'step_b52_distance_ladder.png')

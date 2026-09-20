@@ -13,7 +13,7 @@ axis separation -- and, through the measured slip-vs-radius profile
 
 Inputs : results/step_b30_proper_time_slip.csv
 Outputs: results/step_b38_edge_width.json
-         results/figures/step_b38_edge_width.png
+         results/figures/supplementary/step_b38_edge_width.png
 """
 
 import sys
@@ -55,6 +55,21 @@ def logistic(th, A, th0, w, c):
     z = np.clip((th0 - th) / np.maximum(w, 1e-6), -60, 60)
     return A / (1.0 + np.exp(-z)) + c
 
+def _boot_chunk(job):
+    """curve_fit over a chunk of bootstrap index rows; deterministic."""
+    idx_c, th, y, p0, bounds = job
+    ws, ths_b, fails = [], [], 0
+    for bi in idx_c:
+        try:
+            pb, _ = curve_fit(logistic, th[bi], y[bi],
+                              p0=p0, bounds=bounds, maxfev=10000)
+            ws.append(pb[2]); ths_b.append(pb[1])
+        except Exception:
+            fails += 1
+    return ws, ths_b, fails
+
+_POOL = None
+
 def fit_edge(th, y):
     """logistic fit + step fit; returns params + RSS comparison."""
     if len(th) < 15:
@@ -81,15 +96,17 @@ def fit_edge(th, y):
     # bootstrap the logistic width
     A_, th0_, w_, c_ = popt
     idx = rng.integers(0, len(th), (NBOOT, len(th)))
+    p0b = [A_, th0_, w_, c_]
+    if _POOL is not None:
+        edges = np.linspace(0, NBOOT, N_WORK + 1).astype(int)
+        jobs = [(idx[a:b], th, y, p0b, bounds)
+                for a, b in zip(edges[:-1], edges[1:])]
+        outs = _POOL.map(_boot_chunk, jobs)
+    else:
+        outs = [_boot_chunk((idx, th, y, p0b, bounds))]
     ws, ths_b, fails = [], [], 0
-    for bi in idx:
-        try:
-            pb, _ = curve_fit(logistic, th[bi], y[bi],
-                              p0=[A_, th0_, w_, c_], bounds=bounds,
-                              maxfev=10000)
-            ws.append(pb[2]); ths_b.append(pb[1])
-        except Exception:
-            fails += 1
+    for w_c, t_c, f_c in outs:
+        ws += w_c; ths_b += t_c; fails += f_c
     ws = np.array(ws); ths_b = np.array(ths_b)
     return {"A": float(A_), "theta0": float(th0_), "w": float(w_),
             "c": float(c_),
@@ -111,6 +128,19 @@ res = {"method": "logistic edge fit to unexplained slip vs axis "
                  "comparison; bootstrap 68% intervals (seed 20260918).",
        "seed": SEED}
 
+from scripts.utils.parallel import default_workers as _default_workers
+
+if "--workers" in sys.argv:
+    N_WORK = max(1, int(sys.argv[sys.argv.index("--workers") + 1]))
+else:
+    N_WORK = _default_workers()
+
+if N_WORK > 1:
+    import multiprocessing as mp
+    _ctx = mp.get_context("fork") if sys.platform != "win32" \
+        else mp.get_context("spawn")
+    _POOL = _ctx.Pool(N_WORK)
+
 for co in ("code", "warsaw", "pooled"):
     sub = [r for r in rows if co == "pooled" or r["cohort"] == co]
     th, dt, _ = load(sub)
@@ -125,10 +155,12 @@ for co in ("code", "warsaw", "pooled"):
                     f"RSS log/step={out['rss_logistic']:.1f}/"
                     f"{out['rss_step']:.1f}")
 
+if _POOL is not None:
+    _POOL.close(); _POOL.join()
+
 with open(RESULTS / "step_b38_edge_width.json", "w") as f:
     json.dump(res, f, indent=1)
-print(f"wrote {RESULTS / 'step_b38_edge_width.json'}")
-
+logger.data_save(RESULTS / 'step_b38_edge_width.json')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -159,5 +191,5 @@ ax.set_title("edge morphology: sharp threshold vs graded transition",
              fontsize=10)
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b38_edge_width.png", dpi=150)
-print(f"wrote {FIG / 'step_b38_edge_width.png'}")
+fig.savefig(FIG / "supplementary" / "step_b38_edge_width.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b38_edge_width.png')

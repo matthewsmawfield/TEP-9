@@ -233,7 +233,7 @@ out = dict(
 with open(RESULTS / "step_b96_bipolar_meridian.json", "w") as f:
     json.dump(out, f, indent=1, default=float)
 logger.info(f"verdict: {verdict}")
-logger.info("wrote results/step_b96_bipolar_meridian.json")
+logger.data_save(RESULTS / "step_b96_bipolar_meridian.json")
 
 # ------------------------------------------------------------------ fig
 FIG = RESULTS / "figures"
@@ -276,5 +276,5 @@ ax[2].set_title("T3 era-side near-meridian cells")
 ax[2].legend(fontsize=8)
 
 fig.tight_layout()
-fig.savefig(FIG / "step_b96_bipolar_meridian.png", dpi=150)
-logger.info("wrote results/figures/step_b96_bipolar_meridian.png")
+fig.savefig(FIG / "supplementary" / "step_b96_bipolar_meridian.png", dpi=300)
+logger.data_save(RESULTS / "figures/supplementary/step_b96_bipolar_meridian.png")

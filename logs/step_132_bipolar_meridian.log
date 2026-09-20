@@ -1,17 +1,86 @@
-[2026-09-19 21:43:00 UTC] [INFO    ] [STEP 132] LOGGER INITIALIZED: step_132_bipolar_meridian (Step 132)
-[2026-09-19 21:43:00 UTC] [DEBUG   ] [STEP 132] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_132_bipolar_meridian.log
-[2026-09-19 21:43:00 UTC] [DEBUG   ] [STEP 132] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:43:00 UTC] [INFO    ] [STEP 132] ================================================================================
-[2026-09-19 21:43:00 UTC] [INFO    ] [STEP 132] Bipolar meridian and polarity-mirror coherence
-[2026-09-19 21:43:00 UTC] [INFO    ] [STEP 132] ================================================================================
-[2026-09-19 21:43:00 UTC] [INFO    ] [STEP 132] T1  polarity-mirror pair
-[2026-09-19 21:43:00 UTC] [INFO    ] [STEP 132]   mirror(declared) vs displaced: 11.52 deg  p_fixed=0.0101  p_shuffle=0.0070
-[2026-09-19 21:43:00 UTC] [INFO    ] [STEP 132] T2  meridian coplanarity of the measured axes
-[2026-09-19 21:43:02 UTC] [INFO    ] [STEP 132]   azimuths [208.8 221.9 205.3]  R=0.992  p_iso=0.0058  p_axis=0.0549
-[2026-09-19 21:43:02 UTC] [INFO    ] [STEP 132] T3  meridian-resident residual on the independent record
-[2026-09-19 21:43:02 UTC] [INFO    ] [STEP 132]   loaded: pre 586, post 248
-[2026-09-19 21:43:02 UTC] [INFO    ] [STEP 132]   pre2018 antapex near-meridian: +0.034 vs +0.033 (n=137)  perm p=0.4994
-[2026-09-19 21:43:03 UTC] [INFO    ] [STEP 132]   post2017 apex near-meridian: +0.208 vs -0.033 (n=50)  perm p=0.00155
-[2026-09-19 21:43:03 UTC] [INFO    ] [STEP 132] verdict: MERIDIAN-MIRROR COHERENT: the era structures form a polarity-mirror pair about the bipolar equator and the measured axes share one meridian about the CMB axis
-[2026-09-19 21:43:03 UTC] [INFO    ] [STEP 132] wrote results/step_b96_bipolar_meridian.json
-[2026-09-19 21:43:03 UTC] [INFO    ] [STEP 132] wrote results/figures/step_b96_bipolar_meridian.png
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] LOGGER INITIALIZED: step_132_bipolar_meridian (Step 132)
+[2026-09-20 12:25:18 UTC] [DEBUG   ] [STEP 132] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_132_bipolar_meridian.log
+[2026-09-20 12:25:18 UTC] [DEBUG   ] [STEP 132] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:25:18 UTC] [DEBUG   ] [STEP 132] Start time (UTC): 2026-09-20T12:25:18.583203+00:00
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] 
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] STEP PURPOSE
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] --------------------------------------------------------------------------------
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   Step 132: Bipolar meridian and polarity-mirror coherence (step_b96).
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   Follow-on to steps 129-131.  If the two eras' transit structures are
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   mirror lobes of one bipolar shell, the displaced axis should sit near
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   the bipolar-equator mirror of the declared axis, and all measured
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   anomaly directions should share a common meridian about the frame
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   axis.  Both relations are tested on measured directions and on the
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   independent per-comet residual record; every null is a permutation or
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   axis-shuffle that preserves the data.
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   T1  Polarity-mirror pair: separation between the equator-mirror of
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   the declared axis (reflection through the bipolar-equatorial
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   plane, the polarity-flip map) and the displaced axis.  Reported
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   against the fixed-target isotropic cap probability and against a
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   20,000-axis shuffle (fraction of random frame axes under which the
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   mirror pair is at least as tight).
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   T2  Meridian coplanarity: azimuthal coherence (circular resultant R)
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   of the three independently measured axes -- declared transit cap,
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   detached-resident axis, displaced structure -- about the CMB
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   bipolar axis.  Nulls: three isotropic directions about the fixed
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   axis, and the same three axes about random bipolar axes.
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   T3  Meridian-resident residual: within each era on the independent
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   record, the residual of comets on the era-correct bipolar side
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   within 30 deg of the meridian plane (defined by the CMB axis and
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   the declared axis -- both externally specified) versus the rest.
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   Mann-Whitney and label permutation.
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   T4  Cross-channel note: detached-resident axis azimuth included in
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   the coplanarity set (T2); ISO asymptotes reported descriptively.
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] --------------------------------------------------------------------------------
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] SCRIPT: scripts/steps/step_132_bipolar_meridian.py
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] SCRIPT SHA256: fa55bb4dda5f0f2732ddcfb2b6dc5186140b0a8720d06271ff80f4f3ff47aa07
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] SCRIPT SIZE: 10848 bytes
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] ================================================================================
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] Bipolar meridian and polarity-mirror coherence
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] ================================================================================
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] T1  polarity-mirror pair
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132]   mirror(declared) vs displaced: 11.52 deg  p_fixed=0.0101  p_shuffle=0.0070
+[2026-09-20 12:25:18 UTC] [INFO    ] [STEP 132] T2  meridian coplanarity of the measured axes
+[2026-09-20 12:25:19 UTC] [INFO    ] [STEP 132]   azimuths [208.8 221.9 205.3]  R=0.992  p_iso=0.0058  p_axis=0.0549
+[2026-09-20 12:25:19 UTC] [INFO    ] [STEP 132] T3  meridian-resident residual on the independent record
+[2026-09-20 12:25:19 UTC] [INFO    ] [STEP 132]   loaded: pre 586, post 248
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132]   pre2018 antapex near-meridian: +0.034 vs +0.033 (n=137)  perm p=0.4994
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132]   post2017 apex near-meridian: +0.208 vs -0.033 (n=50)  perm p=0.00155
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] verdict: MERIDIAN-MIRROR COHERENT: the era structures form a polarity-mirror pair about the bipolar equator and the measured axes share one meridian about the CMB axis
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Saving data: step_b96_bipolar_meridian.json
+[2026-09-20 12:25:20 UTC] [DEBUG   ] [STEP 132]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b96_bipolar_meridian.json
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132]   Output: step_b96_bipolar_meridian.json
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Saving data: step_b96_bipolar_meridian.png
+[2026-09-20 12:25:20 UTC] [DEBUG   ] [STEP 132]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b96_bipolar_meridian.png
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132]   Output: step_b96_bipolar_meridian.png
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] 
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] ================================================================================
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] STEP SUMMARY: step_132_bipolar_meridian
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] ================================================================================
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Step Number: 132
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Status: SUCCESS
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Duration: 2.25s
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Log Records Emitted: 63
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Output Files: 2
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_132_bipolar_meridian.log
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] 
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Generated 2 output file(s):
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132]   • step_b96_bipolar_meridian.json: 1.58 KB [sha256 52e7e270fbd1ed71]
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132]   • step_b96_bipolar_meridian.png: 248.17 KB [sha256 55df3c0e1e2cb4b0]
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] ================================================================================
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] STEP 132 COMPLETE: SUCCESS
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_132_bipolar_meridian_provenance.json
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] 
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] ================================================================================
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] EXECUTIVE SUMMARY
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] ================================================================================
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Step: step_132_bipolar_meridian (Step 132)
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Status: SUCCESS
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Duration: 2.25s
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Log Records: 73
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Output Files: 2
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] Key Outputs:
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132]   - step_b96_bipolar_meridian.json (1.58 KB)
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132]   - step_b96_bipolar_meridian.png (248.17 KB)
+[2026-09-20 12:25:20 UTC] [INFO    ] [STEP 132] ================================================================================

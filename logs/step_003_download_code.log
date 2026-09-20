@@ -1,30 +1,89 @@
-[2026-09-19 21:14:03 UTC] [INFO    ] [STEP 003] LOGGER INITIALIZED: step_003_download_code (Step 003)
-[2026-09-19 21:14:03 UTC] [DEBUG   ] [STEP 003] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_003_download_code.log
-[2026-09-19 21:14:03 UTC] [DEBUG   ] [STEP 003] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:14:03 UTC] [INFO    ] [STEP 003] ================================================================================
-[2026-09-19 21:14:03 UTC] [INFO    ] [STEP 003] CODE catalogue acquisition
-[2026-09-19 21:14:03 UTC] [INFO    ] [STEP 003] ================================================================================
-[2026-09-19 21:14:03 UTC] [DEBUG   ] [STEP 003] 
-[2026-09-19 21:14:03 UTC] [DEBUG   ] [STEP 003] --- code_original.html ---
-[2026-09-19 21:14:04 UTC] [INFO    ] [STEP 003]   → live endpoint returned non-table page for code_original.html (24754 bytes)
-[2026-09-19 21:14:04 UTC] [INFO    ] [STEP 003]   → USING ARCHIVAL SNAPSHOT for code_original.html: pad2 live export unavailable; staged catalogue copy adopted
-[2026-09-19 21:14:04 UTC] [INFO    ] [STEP 003] METRIC: bytes = 429811 archival
-[2026-09-19 21:14:04 UTC] [INFO    ] [STEP 003] METRIC: table_rows = 371 archival
-[2026-09-19 21:14:04 UTC] [INFO    ] [STEP 003] METRIC: sha256 = 2215909000eff5d16dc9f6b53481b046d6ba920ffbe45ec8c4b152fff599d1e8 archival integrity
-[2026-09-19 21:14:04 UTC] [DEBUG   ] [STEP 003] 
-[2026-09-19 21:14:04 UTC] [DEBUG   ] [STEP 003] --- code_osculating.html ---
-[2026-09-19 21:14:04 UTC] [INFO    ] [STEP 003]   → live endpoint returned non-table page for code_osculating.html (24754 bytes)
-[2026-09-19 21:14:04 UTC] [INFO    ] [STEP 003]   → USING ARCHIVAL SNAPSHOT for code_osculating.html: pad2 live export unavailable; staged catalogue copy adopted
-[2026-09-19 21:14:04 UTC] [INFO    ] [STEP 003] METRIC: bytes = 430370 archival
-[2026-09-19 21:14:04 UTC] [INFO    ] [STEP 003] METRIC: table_rows = 371 archival
-[2026-09-19 21:14:04 UTC] [INFO    ] [STEP 003] METRIC: sha256 = 593b4221dfcded55f1c5d5f2fdca1bc0e4a2266732c05a4b26fc38a9151b0aef archival integrity
-[2026-09-19 21:14:04 UTC] [DEBUG   ] [STEP 003] 
-[2026-09-19 21:14:04 UTC] [DEBUG   ] [STEP 003] --- code_future.html ---
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 003]   → live endpoint returned non-table page for code_future.html (24754 bytes)
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 003]   → USING ARCHIVAL SNAPSHOT for code_future.html: pad2 live export unavailable; staged catalogue copy adopted
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 003] METRIC: bytes = 399155 archival
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 003] METRIC: table_rows = 344 archival
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 003] METRIC: sha256 = dd93a8b076cb88cd47f2c0115bbe036b6ebc0327857200fdb259c4ec541a1ade archival integrity
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 003] Saving data: provenance.json
-[2026-09-19 21:14:05 UTC] [DEBUG   ] [STEP 003]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/code/provenance.json
-[2026-09-19 21:14:05 UTC] [INFO    ] [STEP 003]   → CODE acquisition complete -> data/raw/code/
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] LOGGER INITIALIZED: step_003_download_code (Step 003)
+[2026-09-20 10:40:38 UTC] [DEBUG   ] [STEP 003] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_003_download_code.log
+[2026-09-20 10:40:38 UTC] [DEBUG   ] [STEP 003] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:40:38 UTC] [DEBUG   ] [STEP 003] Start time (UTC): 2026-09-20T10:40:38.068115+00:00
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] 
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] STEP PURPOSE
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] --------------------------------------------------------------------------------
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   TEP-9 step 003 -- CODE catalogue acquisition
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   Acquires the CODE catalogue (Catalogue of Orbits and their Dynamical
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   Evolution; Krolikowska & Dybczynski 2020, MNRAS 497, 1781) hosted on
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   the Poznan comet-dynamics server pad2.astro.amu.edu.pl.
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   The catalogue is served through a PHP search interface that renders
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   three orbit-solution tables as HTML:
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   code_original.html    -- original barycentric orbits
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   code_osculating.html  -- osculating heliocentric orbits
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   code_future.html      -- future barycentric orbits
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   Reproduction policy
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   1. The live catalogue endpoints are attempted first.  The pad2
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   interface is a sessioned search application; if a live export is
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   returned it is written with full provenance.
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   2. If the live endpoint is unreachable or returns a non-table page,
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   the versioned archival snapshots staged in data/raw/code/ are
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   adopted.  Their SHA-256 hashes are recorded and logged loudly so
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   provenance is never ambiguous.  These snapshots are the published
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   catalogue content, not synthetic data.
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   Outputs
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   data/raw/code/code_{original,osculating,future}.html
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   data/raw/code/provenance.json
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] --------------------------------------------------------------------------------
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] SCRIPT: scripts/steps/step_003_download_code.py
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] SCRIPT SHA256: b4a27669cf45a404a48f71f85324560ba4418cca7dd952ee1f05970a1cfa3f4b
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] SCRIPT SIZE: 5653 bytes
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] ================================================================================
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] CODE catalogue acquisition
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] ================================================================================
+[2026-09-20 10:40:38 UTC] [DEBUG   ] [STEP 003] 
+[2026-09-20 10:40:38 UTC] [DEBUG   ] [STEP 003] --- code_original.html ---
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   → live endpoint returned non-table page for code_original.html (24754 bytes)
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   → USING ARCHIVAL SNAPSHOT for code_original.html: pad2 live export unavailable; staged catalogue copy adopted
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] METRIC: bytes = 429811 archival
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] METRIC: table_rows = 371 archival
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] METRIC: sha256 = 2215909000eff5d16dc9f6b53481b046d6ba920ffbe45ec8c4b152fff599d1e8 archival integrity
+[2026-09-20 10:40:38 UTC] [DEBUG   ] [STEP 003] 
+[2026-09-20 10:40:38 UTC] [DEBUG   ] [STEP 003] --- code_osculating.html ---
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   → live endpoint returned non-table page for code_osculating.html (24754 bytes)
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003]   → USING ARCHIVAL SNAPSHOT for code_osculating.html: pad2 live export unavailable; staged catalogue copy adopted
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] METRIC: bytes = 430370 archival
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] METRIC: table_rows = 371 archival
+[2026-09-20 10:40:38 UTC] [INFO    ] [STEP 003] METRIC: sha256 = 593b4221dfcded55f1c5d5f2fdca1bc0e4a2266732c05a4b26fc38a9151b0aef archival integrity
+[2026-09-20 10:40:38 UTC] [DEBUG   ] [STEP 003] 
+[2026-09-20 10:40:38 UTC] [DEBUG   ] [STEP 003] --- code_future.html ---
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003]   → live endpoint returned non-table page for code_future.html (24754 bytes)
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003]   → USING ARCHIVAL SNAPSHOT for code_future.html: pad2 live export unavailable; staged catalogue copy adopted
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] METRIC: bytes = 399155 archival
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] METRIC: table_rows = 344 archival
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] METRIC: sha256 = dd93a8b076cb88cd47f2c0115bbe036b6ebc0327857200fdb259c4ec541a1ade archival integrity
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Saving data: provenance.json
+[2026-09-20 10:40:39 UTC] [DEBUG   ] [STEP 003]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/code/provenance.json
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003]   Output: provenance.json
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003]   → CODE acquisition complete -> data/raw/code/
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] 
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] ================================================================================
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] STEP SUMMARY: step_003_download_code
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] ================================================================================
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Step Number: 003
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Status: SUCCESS
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Duration: 1.00s
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Log Records Emitted: 68
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Output Files: 1
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_003_download_code.log
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] 
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Generated 1 output file(s):
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003]   • provenance.json: 1.20 KB [sha256 42c1e800475d818a]
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] ================================================================================
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] STEP 003 COMPLETE: SUCCESS
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_003_download_code_provenance.json
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] 
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] ================================================================================
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] EXECUTIVE SUMMARY
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] ================================================================================
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Step: step_003_download_code (Step 003)
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Status: SUCCESS
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Duration: 1.00s
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Log Records: 77
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Output Files: 1
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] Key Outputs:
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003]   - provenance.json (1.20 KB)
+[2026-09-20 10:40:39 UTC] [INFO    ] [STEP 003] ================================================================================

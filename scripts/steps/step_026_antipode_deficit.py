@@ -40,7 +40,7 @@ C3  who lives on the far side: compare a, q, i, discovery year,
     population (e.g. low-q plungers or recent discoveries)?
 
 Outputs: results/step_b6_antipode_deficit.json,
-         figures/step_b6_antipode_deficit.png
+         figures/supplementary/step_b6_antipode_deficit.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -337,9 +337,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b6_antipode_deficit.png", dpi=150)
-    print("wrote results/step_b6_antipode_deficit.json, "
-          "figures/step_b6_antipode_deficit.png")
+    fig.savefig(FIG / "supplementary" / "step_b6_antipode_deficit.png", dpi=300)
+    logger.data_save(RESULTS / "step_b6_antipode_deficit.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b6_antipode_deficit.png")
 
 
 if __name__ == "__main__":

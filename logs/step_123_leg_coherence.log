@@ -1,20 +1,112 @@
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] LOGGER INITIALIZED: step_123_leg_coherence (Step 123)
-[2026-09-19 21:37:49 UTC] [DEBUG   ] [STEP 123] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_123_leg_coherence.log
-[2026-09-19 21:37:49 UTC] [DEBUG   ] [STEP 123] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] ================================================================================
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] Leg-coherence decomposition of the overlap anomaly
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] ================================================================================
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] pre-2018 cohort: 738 comets with boundary legs
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] CODE-overlap n=288, non-overlap n=450
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] T1 overlap: d_in +0.106 (p=0.042), d_out -0.005 (p=0.547), drot +0.008 (p=0.2479)
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] T1 non_overlap: d_in +0.044 (p=0.118), d_out -0.045 (p=0.931), drot -0.013 (p=0.5743)
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] T2 overlap: med cos(phi) in=+0.236 out=+0.390 (MWU in<out p=0.3825); anti-aligned 0.31 vs 0.28; rho(theta,cosphi)=+0.051 p=0.3922
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] T2 non_overlap: med cos(phi) in=+0.068 out=+0.072 (MWU in<out p=0.3783); anti-aligned 0.36 vs 0.35; rho(theta,cosphi)=+0.016 p=0.7276
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] T3 noise-floor audit: arc 727d vs 614d (worse-arc p=0.630), nobs 221 vs 216; MAD 0.25 vs 0.21 (Levene p=0.836); mean gap +0.040
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] T4 concordance: n=90, rho_all=+0.931 (p=0.000), in-cap rho=0.9493284493284493
-[2026-09-19 21:37:49 UTC] [INFO    ] [STEP 123] T5 class 1a+ (n=82, in=26): med +0.175 (p=0.0466)
-[2026-09-19 21:37:50 UTC] [INFO    ] [STEP 123] T5 class 1a (n=82, in=27): med -0.028 (p=0.1668)
-[2026-09-19 21:37:50 UTC] [INFO    ] [STEP 123] T5 class 1b (n=73, in=19): med -0.042 (p=0.5475)
-[2026-09-19 21:37:50 UTC] [INFO    ] [STEP 123] T5 class 2a (n=29, in=8): med +0.033 (p=0.4525)
-[2026-09-19 21:37:50 UTC] [INFO    ] [STEP 123] T5 class 2b (n=15, in=6): med -0.147 (p=0.9752)
-[2026-09-19 21:37:50 UTC] [INFO    ] [STEP 123] T6 bound subset (n=50): med -0.012 (p=0.4912)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] LOGGER INITIALIZED: step_123_leg_coherence (Step 123)
+[2026-09-20 12:22:24 UTC] [DEBUG   ] [STEP 123] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_123_leg_coherence.log
+[2026-09-20 12:22:24 UTC] [DEBUG   ] [STEP 123] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:22:24 UTC] [DEBUG   ] [STEP 123] Start time (UTC): 2026-09-20T12:22:24.131715+00:00
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] 
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] STEP PURPOSE
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] --------------------------------------------------------------------------------
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   step_123: Leg-coherence decomposition of the CODE-overlap anomaly.
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   Step 122 localized the weak pre-2018 declared-axis term to the 288
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   members the cohort shares with CODE (+0.216 dex, p = 0.010 under
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   independent JPL solutions).  The decisive remaining discrimination is
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   WHERE in the two-leg reconstruction the excess lives:
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   H-JOINT  the anomaly is an inter-leg coherence defect -- the
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   inbound and outbound boundary asymptotes are each
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   individually consistent with the osculating solution, but
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   disagree with each other more at the cap.  This is the
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   morphology a boundary interaction produces: an impulse at
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   the crossing rotates the outgoing leg relative to the
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   incoming one, and the osculating fit lands between them.
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   H-NOISE  the anomaly is a reconstruction floor -- in-cap members
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   have worse solutions, so either or both legs carry the
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   excess and the residual elevation is a spread, not a shift.
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   Both legs' absolute deviations from the osculating pericentre
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   direction (d_in, d_out), their mutual separation (drot), and the
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   osculating direction itself are all in the leg record, so the full
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   three-vector geometry is recoverable: the relative azimuth phi of the
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   two leg deviations about the osculating direction follows the
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   spherical law of cosines,
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   cos(phi) = [cos(drot) - cos(d_in)cos(d_out)]
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   / [sin(d_in)sin(d_out)]
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   phi ~ 0 means the legs deviate coherently (a shared rotation of the
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   whole orbit); phi ~ 180 deg means the osculating direction sits
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   between two divergent asymptotes -- the twist signature of H-JOINT.
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   Tests
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   T1  leg decomposition: declared-cap gaps on resid(log d_in),
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   resid(log d_out) and resid(log drot) for the CODE-overlap and
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   non-overlap members.
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   T2  twist coherence: cos(phi) in-cap vs out-of-cap on the overlap
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   (well-conditioned members only); anti-aligned fraction
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   (cos(phi) < -0.5); non-overlap control.
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   T3  noise-floor rejection: per-object data quality (arc, nobs)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   in-cap vs out-of-cap on the overlap; residual dispersion
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   (MAD ratio, Levene); mean-vs-median shift decomposition.
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   T4  per-comet cross-fitter concordance: JPL-solution resid vs
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   CODE-solution resid on matched designations -- the carrier-level
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   agreement between the two fitters, with the attenuation bound
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   that a uniform cap shift on independent fitter noise predicts.
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   T5  class-constraint gradient: the cap gap ordered by CODE quality
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   class on the overlap -- the absorption-gradient signature of a
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   real discrepancy (tighter fits absorb more of it).
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   T6  bound-solution subset: the overlap gap on JPL-bound (e<1)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   members only.
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   Inputs
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   results/step_b84_pre2018_sbdb.csv   (per-comet legs, in_code flags)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   results/step_b28_bidirectional_rotation.csv  (CODE per-comet legs)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   Outputs
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   results/step_b87_leg_coherence.json
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   results/step_b87_leg_coherence.csv
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123]   results/figures/supplementary/step_b87_leg_coherence.png
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] --------------------------------------------------------------------------------
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] SCRIPT: scripts/steps/step_123_leg_coherence.py
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] SCRIPT SHA256: 0f4edd4b78241380e95a5b320cc6d685522017d86c94b95bbbe00cdcc780e4ff
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] SCRIPT SIZE: 25282 bytes
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] ================================================================================
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] Leg-coherence decomposition of the overlap anomaly
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] ================================================================================
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] pre-2018 cohort: 738 comets with boundary legs
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] CODE-overlap n=288, non-overlap n=450
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T1 overlap: d_in +0.106 (p=0.042), d_out -0.005 (p=0.547), drot +0.008 (p=0.2479)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T1 non_overlap: d_in +0.044 (p=0.118), d_out -0.045 (p=0.931), drot -0.013 (p=0.5743)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T2 overlap: med cos(phi) in=+0.236 out=+0.390 (MWU in<out p=0.3825); anti-aligned 0.31 vs 0.28; rho(theta,cosphi)=+0.051 p=0.3922
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T2 non_overlap: med cos(phi) in=+0.068 out=+0.072 (MWU in<out p=0.3783); anti-aligned 0.36 vs 0.35; rho(theta,cosphi)=+0.016 p=0.7276
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T3 noise-floor audit: arc 727d vs 614d (worse-arc p=0.630), nobs 221 vs 216; MAD 0.25 vs 0.21 (Levene p=0.836); mean gap +0.040
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T4 concordance: n=90, rho_all=+0.931 (p=0.000), in-cap rho=0.9493284493284493
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T5 class 1a+ (n=82, in=26): med +0.175 (p=0.0466)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T5 class 1a (n=82, in=27): med -0.028 (p=0.1668)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T5 class 1b (n=73, in=19): med -0.042 (p=0.5475)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T5 class 2a (n=29, in=8): med +0.033 (p=0.4525)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T5 class 2b (n=15, in=6): med -0.147 (p=0.9752)
+[2026-09-20 12:22:24 UTC] [INFO    ] [STEP 123] T6 bound subset (n=50): med -0.012 (p=0.4912)
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Saving data: step_b87_leg_coherence.json
+[2026-09-20 12:22:25 UTC] [DEBUG   ] [STEP 123]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b87_leg_coherence.json
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123]   Output: step_b87_leg_coherence.json
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] 
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] ================================================================================
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] STEP SUMMARY: step_123_leg_coherence
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] ================================================================================
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Step Number: 123
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Status: SUCCESS
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Duration: 0.94s
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Log Records Emitted: 91
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Output Files: 1
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_123_leg_coherence.log
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] 
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Generated 1 output file(s):
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123]   • step_b87_leg_coherence.json: 4.39 KB [sha256 77528ebab1ce5f10]
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] ================================================================================
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] STEP 123 COMPLETE: SUCCESS
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_123_leg_coherence_provenance.json
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] 
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] ================================================================================
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] EXECUTIVE SUMMARY
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] ================================================================================
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Step: step_123_leg_coherence (Step 123)
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Status: SUCCESS
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Duration: 0.94s
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Log Records: 100
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Output Files: 1
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] Key Outputs:
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123]   - step_b87_leg_coherence.json (4.39 KB)
+[2026-09-20 12:22:25 UTC] [INFO    ] [STEP 123] ================================================================================

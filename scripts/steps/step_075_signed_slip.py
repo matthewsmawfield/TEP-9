@@ -21,7 +21,7 @@ to separate a universal phase sign from a sky-fixed direction kick.
 Outputs:
     results/step_b40_signed_slip.json
     results/step_b40_signed_slip.csv
-    results/figures/step_b40_signed_slip.png
+    results/figures/supplementary/step_b40_signed_slip.png
 """
 
 import sys
@@ -133,6 +133,7 @@ for k, ro in orig.items():
 # ------------------------------------------------------------------
 
 PREF     = {"a": 0, "h": 0, "e": 1, "b": 2}
+PREF_FUT = {"i": 0, "l": 0, "j": 2, "k": 2}
 PREF_OSC = {"a": 0, "g": 0, "d": 1, "e": 2, "f": 2, "b": 3, "c": 3}
 
 def parse_orbit_table(path):
@@ -160,7 +161,7 @@ def dedup(rows, pref):
 
 war_osc  = dedup(parse_orbit_table(str(DATA_RAW / "warsaw" / "warsaw_tableb.dat")), PREF_OSC)
 war_orig = dedup(parse_orbit_table(str(DATA_RAW / "warsaw" / "warsaw_tablec.dat")), PREF)
-war_fut  = dedup(parse_orbit_table(str(DATA_RAW / "warsaw" / "warsaw_tabled.dat")), PREF)
+war_fut  = dedup(parse_orbit_table(str(DATA_RAW / "warsaw" / "warsaw_tabled.dat")), PREF_FUT)
 
 war_rows = []
 for d, b_leg in war_orig.items():
@@ -248,9 +249,8 @@ with open(RESULTS / "step_b40_signed_slip.csv", "w", newline="") as f:
 
 with open(RESULTS / "step_b40_signed_slip.json", "w") as f:
     json.dump(res, f, indent=1)
-print(f"wrote {RESULTS / 'step_b40_signed_slip.json'}")
-print(f"wrote {RESULTS / 'step_b40_signed_slip.csv'}")
-
+logger.data_save(RESULTS / 'step_b40_signed_slip.json')
+logger.data_save(RESULTS / 'step_b40_signed_slip.csv')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -277,5 +277,5 @@ ax.set_title("slip direction: coherent sign = phase lag/advance, "
              "mixed = random torque", fontsize=9)
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b40_signed_slip.png", dpi=150)
-print(f"wrote {FIG / 'step_b40_signed_slip.png'}")
+fig.savefig(FIG / "supplementary" / "step_b40_signed_slip.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b40_signed_slip.png')

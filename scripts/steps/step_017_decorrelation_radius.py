@@ -24,7 +24,7 @@ R3  The sednoid subsample (a>150, q>50): the cleanest objects
     -- deepest boundary-residents -- for comparison.
 
 Outputs: results/step_b16_decorrelation_radius.json,
-         figures/step_b16_decorrelation_radius.png
+         figures/supplementary/step_b16_decorrelation_radius.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -229,10 +229,10 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b16_decorrelation_radius.png",
-                dpi=150)
-    print("wrote results/step_b16_decorrelation_radius.json, "
-          "figures/step_b16_decorrelation_radius.png")
+    fig.savefig(FIG / "supplementary" / "step_b16_decorrelation_radius.png",
+                dpi=300)
+    logger.data_save(RESULTS / "step_b16_decorrelation_radius.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b16_decorrelation_radius.png")
 
 
 if __name__ == "__main__":

@@ -104,7 +104,9 @@ res["R1_repulsion"] = {
     "in_cap_med_dtheta": float(np.median(sgn_in)),
     "out_cap_pos": int((sgn_out > 0).sum()), "out_cap_n": int(len(sgn_out)),
     "out_cap_med_dtheta": float(np.median(sgn_out)),
-    "p_binom_in": float(binomtest(int((sgn_in > 0).sum()), int(len(sgn_in)), 0.5).pvalue),
+    "p_binom_in": float(binomtest(int((sgn_in > 0).sum()), int(len(sgn_in)), 0.5,
+                                 alternative="greater").pvalue),
+    "p_binom_in_2sided": float(binomtest(int((sgn_in > 0).sum()), int(len(sgn_in)), 0.5).pvalue),
     "p_mw_in_vs_out": float(mannwhitneyu(sgn_in, sgn_out, alternative="greater").pvalue)}
 
 # ---- R2 rotation-axis coherence in-cap
@@ -212,5 +214,5 @@ res["R4_joint_axes"] = {
 
 out = str(RESULTS / "step_16_signed_channels.json")
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)

@@ -1,50 +1,108 @@
-[2026-09-19 21:26:55 UTC] [INFO    ] [STEP 038] LOGGER INITIALIZED: step_038_model_comparison (Step 038)
-[2026-09-19 21:26:55 UTC] [DEBUG   ] [STEP 038] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_038_model_comparison.log
-[2026-09-19 21:26:55 UTC] [DEBUG   ] [STEP 038] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:26:55 UTC] [INFO    ] [STEP 038] ================================================================================
-[2026-09-19 21:26:55 UTC] [INFO    ] [STEP 038] Model comparison and controls
-[2026-09-19 21:26:55 UTC] [INFO    ] [STEP 038] ================================================================================
-{
- "n_c1": 131,
- "n_c2": 19,
- "n_matched": 54,
- "M1_beta": {
-  "med_absbeta_in": 22.806262420569485,
-  "med_absbeta_out": 33.316146465154425
- },
- "M1_strata": {
-  "low|beta|<30": {
-   "n_in": 14,
-   "n_out": 14,
-   "med_in": 0.16864979372557093,
-   "med_out": 0.11625007921602537,
-   "p": 0.031380488727403864
-  },
-  "high|beta|>=30": {
-   "n_in": 5,
-   "n_out": 21,
-   "med_in": 0.2485563329027556,
-   "med_out": 0.13697178100850027,
-   "p": 0.001717847370021283
-  },
-  "matched_subsample": {
-   "n_in": 19,
-   "n_out": 14,
-   "med_in": 0.21202382273464052,
-   "med_out": 0.13778540486327728,
-   "p": 0.056536938089311435
-  }
- },
- "M2_patch_model": {
-  "sigma_deg": 68.36011937137893,
-  "lnLR": 3.0715531082517042,
-  "delta_BIC": -1.8348618766251406,
-  "approx_logBF": -0.9174309383125703,
-  "note": "patch model dlogN = mu + A*exp(-theta^2/2s^2) vs flat; logBF ~ deltaBIC/2 (Kass-Raftery)"
- },
- "M4_era": {
-  "rho_dof_vs_year": -0.014988560805117915,
-  "p": 0.9143354110899574
- }
-}
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_15_model_comparison.json
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] LOGGER INITIALIZED: step_038_model_comparison (Step 038)
+[2026-09-20 10:45:59 UTC] [DEBUG   ] [STEP 038] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_038_model_comparison.log
+[2026-09-20 10:45:59 UTC] [DEBUG   ] [STEP 038] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:45:59 UTC] [DEBUG   ] [STEP 038] Start time (UTC): 2026-09-20T10:45:59.776929+00:00
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] 
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] STEP PURPOSE
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] --------------------------------------------------------------------------------
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   step_15: formal model comparison + the last standard-physics controls.
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   M1  ecliptic-latitude control: the axis sits at beta ~ -13 deg, so
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   in-cap aphelia are preferentially low-|beta|.  If the excess
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   were ecliptic-proximity (deeper planetary-plane scattering),
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   matching the |beta| distributions must kill it.  Compute the
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   cap contrast inside |beta| strata and on a |beta|-matched
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   subsample.
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   M2  patch-model likelihood: d_of ~ baseline + A * exp(-theta^2/2 s^2)
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   fitted on the CODE-only data vs the flat null -> likelihood
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   ratio / BIC-based Bayes factor.  One number for the patch.
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   M3  auxiliary class-2 sample: class 2a/2b CODE-only comets --
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   lower-quality orbits the anomaly should still touch if it
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   lives in the sky rather than in orbit quality.
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   M4  seasonal/solar-longitude control: if the excess were an
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   observation-geometry artifact tied to discovery season,
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   d_of should correlate with solar longitude at perihelion,
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   not with the fixed axis.  Uses perihelion year+month from
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038]   the catalogue epoch.
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] --------------------------------------------------------------------------------
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] SCRIPT: scripts/steps/step_038_model_comparison.py
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] SCRIPT SHA256: a155cc45a767150990e74dc9c9690aec647c163cf4d76778f347b0d81caa0bd4
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] SCRIPT SIZE: 7761 bytes
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] ================================================================================
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] Model comparison and controls
+[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 038] ================================================================================
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] RESULT PAYLOAD:
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] {
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  "n_c1": 131,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  "n_c2": 19,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  "n_matched": 54,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  "M1_beta": {
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "med_absbeta_in": 22.806262420569485,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "med_absbeta_out": 33.316146465154425
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  },
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  "M1_strata": {
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "low|beta|<30": {
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "n_in": 14,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "n_out": 14,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "med_in": 0.16864979372557093,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "med_out": 0.11625007921602537,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "p": 0.031380488727403864
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   },
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "high|beta|>=30": {
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "n_in": 5,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "n_out": 21,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "med_in": 0.2485563329027556,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "med_out": 0.13697178100850027,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "p": 0.001717847370021283
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   },
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "matched_subsample": {
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "n_in": 19,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "n_out": 14,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "med_in": 0.21202382273464052,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "med_out": 0.13778540486327728,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]    "p": 0.056536938089311435
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   }
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  },
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  "M2_patch_model": {
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "sigma_deg": 68.36011937137893,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "lnLR": 3.0715531082517042,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "delta_BIC": -1.8348618766251406,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "approx_logBF": -0.9174309383125703,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "note": "patch model dlogN = mu + A*exp(-theta^2/2s^2) vs flat; logBF ~ deltaBIC/2 (Kass-Raftery)"
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  },
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  "M4_era": {
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "rho_dof_vs_year": -0.014988560805117915,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   "p": 0.9143354110899574
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]  }
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] }
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Saving data: step_15_model_comparison.json
+[2026-09-20 10:46:00 UTC] [DEBUG   ] [STEP 038]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_15_model_comparison.json
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   Output: step_15_model_comparison.json
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] 
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] ================================================================================
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] STEP SUMMARY: step_038_model_comparison
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] ================================================================================
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Step Number: 038
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Status: SUCCESS
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Duration: 0.49s
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Log Records Emitted: 87
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Output Files: 1
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_038_model_comparison.log
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] 
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Generated 1 output file(s):
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   • step_15_model_comparison.json: 0.96 KB [sha256 407a76e92a198233]
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] ================================================================================
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] STEP 038 COMPLETE: SUCCESS
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_038_model_comparison_provenance.json
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] 
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] ================================================================================
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] EXECUTIVE SUMMARY
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] ================================================================================
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Step: step_038_model_comparison (Step 038)
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Status: SUCCESS
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Duration: 0.49s
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Log Records: 96
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Output Files: 1
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] Key Outputs:
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038]   - step_15_model_comparison.json (0.96 KB)
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 038] ================================================================================

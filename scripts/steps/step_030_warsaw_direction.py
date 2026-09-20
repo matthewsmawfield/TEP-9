@@ -168,5 +168,5 @@ for name, sample in [("spike", spike), ("new", newc), ("all_bound", [c for c in 
 out = str(RESULTS / "step_07_warsaw_comets.json")
 with open(out, "w") as f:
     json.dump(res, f, indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)

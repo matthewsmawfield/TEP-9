@@ -250,24 +250,62 @@ logger.info(f"sample: {len(sample)} class-1 CODE comets "
 # Integrate
 # ------------------------------------------------------------------
 
-rows = []
-failed = []
-for k, ro, oo, et in sample:
-    try:
-        r = integrate(oo, et, "ias15")
-        rm = integrate(oo, et, "mercurius")
-    except Exception as e:
-        failed.append(k); logger.warning(f"{k}: integration failed ({e})"); continue
+def _run_comet(k, ro, oo, et):
+    r = integrate(oo, et, "ias15")
+    rm = integrate(oo, et, "mercurius")
     if r is None:
-        failed.append(k); logger.warning(f"{k}: boundary not reached"); continue
+        return None
     po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]), math.radians(ro["i"]))
     pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]), math.radians(fut[k]["i"]))
-    rows.append(dict(desig=k, cls=ro["cls"], q=ro["q"], i=ro["i"], T=oo["T"],
+    return dict(desig=k, cls=ro["cls"], q=ro["q"], i=ro["i"], T=oo["T"],
         aa_osc=oo["aa"], aa_orig=ro["aa"], cat_kick=oo["aa"] - ro["aa"],
         aa_out=r["aa_out"], kick_e=r["kick_e"], denc=r["denc"], dom=r["dom"],
         t_years=r["t_years"],
         aa_out_merc=(rm["aa_out"] if rm else float("nan")),
-        theta=sep(-po, TNO), d_of=sep(-po, -pf)))
+        theta=sep(-po, TNO), d_of=sep(-po, -pf))
+
+
+def _work_comet(job):
+    k, ro, oo, et = job
+    try:
+        return _run_comet(k, ro, oo, et)
+    except Exception as e:
+        return ("__error__", k, str(e))
+
+
+from scripts.utils.parallel import default_workers as _default_workers
+
+if "--workers" in _sys.argv:
+    N_WORK = max(1, int(_sys.argv[_sys.argv.index("--workers") + 1]))
+else:
+    N_WORK = _default_workers()
+
+if N_WORK > 1 and len(sample) > 1:
+    import multiprocessing as mp
+    ctx = mp.get_context("fork") if _sys.platform != "win32" \
+        else mp.get_context("spawn")
+
+    def _init():
+        # forked children inherit the parent's BSP fd; concurrent spkezr
+        # reads through a shared descriptor corrupt each other -- reopen
+        # the kernel so each worker holds its own file handle.
+        sp.kclear()
+        sp.furnsh(str(SPK))
+
+    with ctx.Pool(min(N_WORK, len(sample)), initializer=_init) as pool:
+        recs = pool.map(_work_comet, sample)
+else:
+    recs = [_work_comet(s) for s in sample]
+
+rows = []
+failed = []
+for (k, ro, oo, et), rec in zip(sample, recs):
+    if rec is None:
+        failed.append(k); logger.warning(f"{k}: boundary not reached")
+    elif isinstance(rec, tuple) and rec[0] == "__error__":
+        failed.append(rec[1]); logger.warning(f"{rec[1]}: integration failed ({rec[2]})")
+    else:
+        rows.append(rec)
 
 logger.info(f"integrated {len(rows)} comets; {len(failed)} failed")
 
@@ -358,10 +396,9 @@ with open(csv_out, "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
     w.writeheader(); w.writerows(rows)
 
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
-print("wrote", csv_out)
-
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)
+logger.data_save(csv_out)
 # ------------------------------------------------------------------
 # Figure: periapsis-direction discrepancy vs measured energy kick
 # ------------------------------------------------------------------
@@ -388,5 +425,5 @@ ax.legend(frameon=False, fontsize=9)
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_19_rotation_vs_energy.png", dpi=150)
-print("wrote", FIG / "step_19_rotation_vs_energy.png")
+fig.savefig(FIG / "supplementary" / "step_19_rotation_vs_energy.png", dpi=300)
+logger.data_save(FIG / "supplementary" / "step_19_rotation_vs_energy.png")

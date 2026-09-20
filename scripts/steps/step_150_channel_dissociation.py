@@ -46,7 +46,7 @@ T4  matched-error-scale: the aphelion displacement at the perturbation
 Products:
   results/step_b114_channel_dissociation.json
   results/step_b114_channel_dissociation.csv
-  results/figures/step_b114_channel_dissociation.png
+  results/figures/supplementary/step_b114_channel_dissociation.png
 """
 
 import csv
@@ -68,6 +68,7 @@ ROOT = _Path(__file__).resolve().parents[2]
 _sys.path.insert(0, str(ROOT))
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.parallel import default_workers as _default_workers
 from scripts.utils import lpc_boundary as B
 
@@ -80,7 +81,7 @@ SBDB_DIR = ROOT / "data/raw/mpc/sbdb_fp"
 OUT_J = ROOT / "results/step_b114_channel_dissociation.json"
 OUT_C = ROOT / "results/step_b114_channel_dissociation.csv"
 FIGDIR = ROOT / "results" / "figures"
-OUT_P = FIGDIR / "step_b114_channel_dissociation.png"
+OUT_P = FIGDIR / "supplementary" / "step_b114_channel_dissociation.png"
 
 EL_MAP = {"e": "e", "q": "q", "i": "i", "node": "om", "peri": "w",
           "om": "om", "w": "w", "tp": "tp"}
@@ -200,7 +201,9 @@ def _worker(job):
 
 
 def main():
-    logger = StepLogger("step_150_channel_dissociation").logger
+    _step_log = StepLogger("step_150_channel_dissociation")
+    tee_stdout(_step_log)
+    logger = _step_log.logger
     rng = np.random.default_rng(SEED)
 
     for k in (glob.glob(str(ROOT / "data/raw/spice/*.tls")) +
@@ -426,12 +429,12 @@ def main():
     ax[1].set_xlabel("log10(sigma_drot / sigma_aph)")
     FIGDIR.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(OUT_P, dpi=140)
+    fig.savefig(OUT_P, dpi=300)
     plt.close(fig)
     logger.info("verdict: " + verdict[:200])
     pass
     print(json.dumps(out["results"], indent=1)[:2000])
-    print("\n" + verdict)
+    print(f"VERDICT: {verdict}")
 
 
 if __name__ == "__main__":

@@ -1,34 +1,123 @@
-[2026-09-19 21:29:19 UTC] [INFO    ] [STEP 050] LOGGER INITIALIZED: step_050_one_map (Step 050)
-[2026-09-19 21:29:19 UTC] [DEBUG   ] [STEP 050] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_050_one_map.log
-[2026-09-19 21:29:19 UTC] [DEBUG   ] [STEP 050] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:29:19 UTC] [INFO    ] [STEP 050] ================================================================================
-[2026-09-19 21:29:19 UTC] [INFO    ] [STEP 050] One-map axis coincidence
-[2026-09-19 21:29:19 UTC] [INFO    ] [STEP 050] ================================================================================
-T1 separations from TNO perihelion axis (49.9,-17.0):
-  ism_inflow      ( 255.8,   5.2) sep= 28.0  vs anti-axis  28.0
-  heliotail       (  75.8,  -5.2) sep= 28.0  vs anti-axis  28.0
-  v1_hp           ( 255.0,  35.0) sep=151.3  vs anti-axis  28.7
-  v2_hp           ( 290.0, -32.0) sep=104.4  vs anti-axis  75.6
-  comet_peri      ( 219.5,  30.8) sep= 16.7  vs anti-axis  16.7
-  oumuamua        ( 284.5,  56.8) sep=123.2  vs anti-axis  56.8
-  cmb_dipole      ( 171.7, -11.2) sep= 64.1  vs anti-axis  64.1
-  axis_of_evil    ( 167.2,   2.4) sep= 63.3  vs anti-axis  63.3
-  radio_dipole    ( 171.7, -11.2) sep= 64.0  vs anti-axis  64.0
-  alpha_dipole    ( 264.2, -34.7) sep= 61.2  vs anti-axis  61.2
-  qso_pol         (   2.2,  -1.9) sep= 49.3  vs anti-axis  49.3
-  galactic_pole   ( 180.0,  29.8) sep= 47.2  vs anti-axis  47.2
-
-T2 folded concentration R=0.742 p=4.09e-03; axial |cos|=0.488 p=5.27e-01
-T3 local subset R=0.290 p=1.00e+00
-T3b triple axis |cos|=0.859 p=3.10e-02 {'tno_comet': 16.7, 'tno_ism': 28.0, 'comet_ism': 42.6}
-T3c plane pole (50,84) vs peri axis (50,-17)
-   separation matrix (deg):
-   tno_peri comet_pe ism_infl    v1_hp    v2_hp oumuamua
-   tno_peri      0.0     16.7     28.0    151.3    104.4    123.2
-   comet_pe     16.7      0.0     42.6     29.9     91.6     51.1
-   ism_infl     28.0     42.6      0.0     29.8     49.4     56.4
-      v1_hp    151.3     29.9     29.8      0.0     74.6     29.5
-      v2_hp    104.4     91.6     49.4     74.6      0.0     88.9
-   oumuamua    123.2     51.1     56.4     29.5     88.9      0.0
-
-wrote results/step_05_one_map.json, figures/step_05_one_map.png
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050] LOGGER INITIALIZED: step_050_one_map (Step 050)
+[2026-09-20 12:35:10 UTC] [DEBUG   ] [STEP 050] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_050_one_map.log
+[2026-09-20 12:35:10 UTC] [DEBUG   ] [STEP 050] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:35:10 UTC] [DEBUG   ] [STEP 050] Start time (UTC): 2026-09-20T12:35:10.947930+00:00
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050] 
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050] STEP PURPOSE
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050] --------------------------------------------------------------------------------
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   TEP / Planet-9 -- step 05: the one-map test
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   The sharpest TEP prediction in the ideas file: if the solar system's
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   anomalous directions are all projections of a single proper-time
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   field structure, they should not merely "roughly align" -- they
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   should be the same map.  This step collects the measured TNO
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   clustering axis from step_02 plus every independently published
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   anomalous direction, converts all of them to J2000 ecliptic
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   coordinates, and runs a spherical concentration test.
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   Axes included (all real, published values; sources listed):
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   MEASURED HERE
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   tno_peri     TNO perihelion axis (step_02): ecliptic lam, beta
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   tno_pole     TNO common-plane normal (step_02)
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   comet_peri   outer-comet perihelion anisotropy (step_03)
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   PUBLISHED SOLAR-SYSTEM / LOCAL
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   ism_inflow   interstellar He inflow (heliosphere nose):
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   ecliptic (255.8, +5.16) -- Bzowski+2015 IBEX
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   heliotail    opposite of ism_inflow
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   v1_hp        Voyager 1 heliopause crossing direction:
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   ecliptic (255.0, +35.0), 121.6 AU -- Stone+2013
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   v2_hp        Voyager 2 direction: ecliptic (290.0, -32.0),
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   119 AU -- Burlaga+2019
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   oumuamua     'Oumuamua incoming radiant:
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   equatorial (279.48, +33.86) -- JPL sol. 15
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   PUBLISHED COSMOLOGICAL
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   cmb_dipole   CMB kinematic dipole apex:
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   galactic (l,b)=(264.02,48.25) -- Planck
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   axis_of_evil CMB quadrupole-octupole normal (axial):
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   galactic (l,b)~(250,60) -- de Oliveira-Costa+2004
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   radio_dipole NVSS source-count dipole:
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   equatorial (168,-7), ~CMB direction, ~3-4x amplitude
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   excess -- Singal 2011; arXiv 2509.16732
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   alpha_dipole fine-structure dipole (axial):
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   equatorial (17.4h,-58) -- Webb+2011
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   qso_pol      quasar polarization alignment axis (axial):
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   galactic (l,b)~(101,-62) -- Hutsemekers/Ralston-Jain
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   Tests
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   T1  Pairwise angular separations between the TNO perihelion axis and
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   every other axis (min over +- for axial quantities).
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   T2  Concentration: are the anomalous directions more clustered than
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   chance?  Spherical resultant R over the directional subset, and
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   an axial version for the axis set; Monte-Carlo calibrated.
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   T3  The local subset (solar-system axes only): TNO axis, comet axis,
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   ISM inflow, V1/V2 -- do the local anomalies share one direction?
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   Outputs: results/step_05_one_map.json,
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050]   figures/supplementary/step_05_one_map.png
+[2026-09-20 12:35:10 UTC] [INFO    ] [STEP 050] --------------------------------------------------------------------------------
+[2026-09-20 12:35:11 UTC] [INFO    ] [STEP 050] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:35:11 UTC] [INFO    ] [STEP 050] SCRIPT: scripts/steps/step_050_one_map.py
+[2026-09-20 12:35:11 UTC] [INFO    ] [STEP 050] SCRIPT SHA256: ee360d3fb0124e7202c514eb122130aa961ace3edf4de162682dd73ee6d36862
+[2026-09-20 12:35:11 UTC] [INFO    ] [STEP 050] SCRIPT SIZE: 21327 bytes
+[2026-09-20 12:35:11 UTC] [INFO    ] [STEP 050] ================================================================================
+[2026-09-20 12:35:11 UTC] [INFO    ] [STEP 050] One-map axis coincidence
+[2026-09-20 12:35:11 UTC] [INFO    ] [STEP 050] ================================================================================
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050] T1 separations from TNO perihelion axis (49.9,-17.0):
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   ism_inflow      ( 255.8,   5.2) sep= 28.0  vs anti-axis  28.0
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   heliotail       (  75.8,  -5.2) sep= 28.0  vs anti-axis  28.0
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   v1_hp           ( 255.0,  35.0) sep=151.3  vs anti-axis  28.7
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   v2_hp           ( 290.0, -32.0) sep=104.4  vs anti-axis  75.6
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   comet_peri      ( 219.5,  30.8) sep= 16.7  vs anti-axis  16.7
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   oumuamua        ( 284.5,  56.8) sep=123.2  vs anti-axis  56.8
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   cmb_dipole      ( 171.7, -11.2) sep= 64.1  vs anti-axis  64.1
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   axis_of_evil    ( 167.2,   2.4) sep= 63.3  vs anti-axis  63.3
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   radio_dipole    ( 171.7, -11.2) sep= 64.0  vs anti-axis  64.0
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   alpha_dipole    ( 264.2, -34.7) sep= 61.2  vs anti-axis  61.2
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   qso_pol         (   2.2,  -1.9) sep= 49.3  vs anti-axis  49.3
+[2026-09-20 12:35:12 UTC] [INFO    ] [STEP 050]   galactic_pole   ( 180.0,  29.8) sep= 47.2  vs anti-axis  47.2
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] 
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] T2 folded concentration R=0.742 p=1.56e-01 (fixed-anchor p=1.54e-01); axial |cos|=0.488 p=5.27e-01
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] T3 local subset R=0.290 p=8.52e-01 (fixed-anchor p=8.52e-01)
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] T3b triple axis |cos|=0.859 p=3.10e-02 {'tno_comet': 16.7, 'tno_ism': 28.0, 'comet_ism': 42.6}
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] T3d self-clustering R=0.796 p=1.17e-02 resultant (259,+22) sep_from_anti=28.0
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] T3c plane pole (50,84) vs peri axis (50,-17)
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]    separation matrix (deg):
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]    tno_peri comet_pe ism_infl    v1_hp    v2_hp oumuamua
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]    tno_peri      0.0     16.7     28.0    151.3    104.4    123.2
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]    comet_pe     16.7      0.0     42.6     29.9     91.6     51.1
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]    ism_infl     28.0     42.6      0.0     29.8     49.4     56.4
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]       v1_hp    151.3     29.9     29.8      0.0     74.6     29.5
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]       v2_hp    104.4     91.6     49.4     74.6      0.0     88.9
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]    oumuamua    123.2     51.1     56.4     29.5     88.9      0.0
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Saving data: step_05_one_map.json
+[2026-09-20 12:35:13 UTC] [DEBUG   ] [STEP 050]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_05_one_map.json
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]   Output: step_05_one_map.json
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Saving data: step_05_one_map.png
+[2026-09-20 12:35:13 UTC] [DEBUG   ] [STEP 050]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_05_one_map.png
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]   Output: step_05_one_map.png
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] 
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] ================================================================================
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] STEP SUMMARY: step_050_one_map
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] ================================================================================
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Step Number: 050
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Status: SUCCESS
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Duration: 2.99s
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Log Records Emitted: 100
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Output Files: 2
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_050_one_map.log
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] 
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Generated 2 output file(s):
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]   • step_05_one_map.json: 5.18 KB [sha256 3741a093e4280a89]
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]   • step_05_one_map.png: 347.23 KB [sha256 84f8f0cb44775123]
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] ================================================================================
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] STEP 050 COMPLETE: SUCCESS
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_050_one_map_provenance.json
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] 
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] ================================================================================
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] EXECUTIVE SUMMARY
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] ================================================================================
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Step: step_050_one_map (Step 050)
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Status: SUCCESS
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Duration: 2.99s
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Log Records: 110
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Output Files: 2
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] Key Outputs:
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]   - step_05_one_map.json (5.18 KB)
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050]   - step_05_one_map.png (347.23 KB)
+[2026-09-20 12:35:13 UTC] [INFO    ] [STEP 050] ================================================================================

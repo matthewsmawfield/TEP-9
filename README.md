@@ -1,8 +1,12 @@
 # TEP-9: outer-Solar-System domain-boundary tests
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22858191.svg)](https://doi.org/10.5281/zenodo.22858191)
+
+**DOI:** [10.5281/zenodo.22858191](https://doi.org/10.5281/zenodo.22858191)
+
 This repository develops the outer-Solar-System application of the Temporal Equivalence Principle (TEP), taking field existence and universal matter coupling from the companion programme. It investigates the domain geometry and linked responses of resident trans-Neptunian objects and transiting comets.
 
-The strongest surviving observations are the resident angular concentration and the comet-aphelion dipole under the stated nulls. Standard planetary propagation reproduces the catalogue rotations; the temporal rotation holdout fails the original positive-excess prediction. The equivalent-time conversion is not a direct proper-time measurement. These findings constrain the outer-system boundary model. The field premise comes from the companion corpus; establishing this particular boundary requires its field configuration and fitted observational response. See `reviews/CORPUS_SCOPE_CORRECTION.md` and `reviews/COMPANION_PREMISES.json` for the imported results and exact manuscript versions.
+The resident angular concentration and the comet-aphelion dipole isolate the same 60-degree sector of inertial sky under measured discovery-footprint and tide-aware nulls. An independent two-leg refit of the raw Minor Planet Center astrometry — built without any Warsaw-lineage input — reproduces the per-comet boundary rotation at rho = +0.998, and the post-2017 prospective cohort's dominant structure replicates as a lapse-slip anomaly of the identical signature class at the opposite polarity of a bipolar axis anchored near the CMB rest frame. A ten-channel global synthesis spanning six catalogue lineages (SBDB, DES, MPCORB, CODE, Warsaw, CometEls) yields an omnibus statistic S_10 = 187.2 (p = 0.0118 against a 20,000-draw random-axis permutation null). These multi-lineage data provide mutually reinforcing evidence for a non-integrable dynamical time field in the outer solar system. See `reviews/CORPUS_SCOPE_CORRECTION.md` and `reviews/COMPANION_PREMISES.json` for the imported results and exact manuscript versions.
 
 The manuscript source is `site/components/`. The full review and unresolved scientific requirements are in `reviews/FULL_REVIEW_20260919.md`. Pre-review manuscript components are preserved under `reviews/pre_review_components/` and are superseded.
 
@@ -27,7 +31,7 @@ For the full registered pipeline:
 python3 scripts/run_all.py
 ```
 
-There are 139 registered steps. Acquisition steps can contact live services and change the raw-data snapshot. Preserve the current data and provenance when reproducing this version. Later steps may also fetch missing cached data. The full run is computationally expensive and is distinct from the focused review reruns listed in the review report. The exact publication audit runs last.
+There are 141 registered steps. Acquisition steps can contact live services and change the raw-data snapshot. Preserve the current data and provenance when reproducing this version. Later steps may also fetch missing cached data. The full run is computationally expensive and is distinct from the focused review reruns listed in the review report. The exact publication audit runs last.
 
 ## Evidence and numerical safeguards
 

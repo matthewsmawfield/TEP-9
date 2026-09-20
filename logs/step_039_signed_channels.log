@@ -1,52 +1,114 @@
-[2026-09-19 21:26:56 UTC] [INFO    ] [STEP 039] LOGGER INITIALIZED: step_039_signed_channels (Step 039)
-[2026-09-19 21:26:56 UTC] [DEBUG   ] [STEP 039] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_039_signed_channels.log
-[2026-09-19 21:26:56 UTC] [DEBUG   ] [STEP 039] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:26:56 UTC] [INFO    ] [STEP 039] ================================================================================
-[2026-09-19 21:26:56 UTC] [INFO    ] [STEP 039] Signed channels and matched control
-[2026-09-19 21:26:56 UTC] [INFO    ] [STEP 039] ================================================================================
-{
- "n": 54,
- "n_in": 19,
- "R1_repulsion": {
-  "in_cap_pos": 11,
-  "in_cap_n": 19,
-  "in_cap_med_dtheta": 0.07026251213450507,
-  "out_cap_pos": 23,
-  "out_cap_n": 35,
-  "out_cap_med_dtheta": 0.01973264013655296,
-  "p_binom_in": 0.6476058959960938,
-  "p_mw_in_vs_out": 0.5144491910281985
- },
- "R2_rotaxis": {
-  "R_in": 0.37061592241659364,
-  "R_out": 0.5872005975758746,
-  "n_in_axes": 19,
-  "p_perm_in": 0.9977001149942503,
-  "mean_axis_sep_from_tno": 18.70994597168148
- },
- "R3_matched": {
-  "n_pairs": 19,
-  "med_in": 0.21202382273464052,
-  "med_out": 0.08800466726477785,
-  "p": 0.0019244943455161336,
-  "med_dq": 0.0751,
-  "med_ddaa": 53.089999999999996
- },
- "R4_joint_axes": {
-  "code_best": {
-   "p": 0.0024594669684765255,
-   "lam": 10.0,
-   "beta": -20.0,
-   "sep_tno": 24.022220227433344
-  },
-  "warsaw_best": {
-   "p": 0.021391914399818183,
-   "lam": 70.0,
-   "beta": -30.0,
-   "sep_tno": 37.3307902061929
-  },
-  "code_vs_warsaw_sep": 54.69639932197536,
-  "n_warsaw": 99
- }
-}
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_16_signed_channels.json
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] LOGGER INITIALIZED: step_039_signed_channels (Step 039)
+[2026-09-20 10:46:00 UTC] [DEBUG   ] [STEP 039] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_039_signed_channels.log
+[2026-09-20 10:46:00 UTC] [DEBUG   ] [STEP 039] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:46:00 UTC] [DEBUG   ] [STEP 039] Start time (UTC): 2026-09-20T10:46:00.452687+00:00
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] 
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] STEP PURPOSE
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] --------------------------------------------------------------------------------
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   step_16: fresh signed channels on the independent CODE data.
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   Everything so far uses magnitudes (d_of).  TEP's boundary makes
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   SIGNED predictions never yet tested on this data:
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   R1  repulsion sign: if the boundary deflects trajectories away
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   from the axis, in-cap comets' future aphelia should move
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   AWAY from it -- sign(theta_fut - theta_orig) > 0 in-cap,
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   tested vs out-cap and vs a binomial null.  This is the
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   comet-side analog of the anti-cap deficit and the b12
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   JFC bipolar population.
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   R2  rotation-axis coherence: the axis of each comet's
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   orig->fut aphelion rotation.  A localized structure
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   twists crossing trajectories about a shared direction;
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   random planetary kicks do not.  Mean resultant length of
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   in-cap rotation axes vs permutation.
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   R3  doubly-matched control: each in-cap comet matched to the
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   out-cap comet nearest in (q, |daa_of|) -- does d_of still
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   differ when kick magnitude AND perihelion depth are
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   held fixed?
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   R4  joint patch fit: scan the axis on the COMBINED Warsaw+CODE
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   independent data for the d-type statistic each catalogue
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039]   supports, and report the joint best axis vs the TNO axis.
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] --------------------------------------------------------------------------------
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] SCRIPT: scripts/steps/step_039_signed_channels.py
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] SCRIPT SHA256: 5134ebfae0d89e1a1a8e8663a7dc7885f3db7983c6615e577c0f5c49a1f2628d
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] SCRIPT SIZE: 9618 bytes
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] ================================================================================
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] Signed channels and matched control
+[2026-09-20 10:46:00 UTC] [INFO    ] [STEP 039] ================================================================================
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] RESULT PAYLOAD:
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] {
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]  "n": 54,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]  "n_in": 19,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]  "R1_repulsion": {
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "in_cap_pos": 11,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "in_cap_n": 19,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "in_cap_med_dtheta": 0.07026251213450507,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "out_cap_pos": 23,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "out_cap_n": 35,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "out_cap_med_dtheta": 0.01973264013655296,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "p_binom_in": 0.3238029479980469,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "p_binom_in_2sided": 0.6476058959960938,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "p_mw_in_vs_out": 0.5144491910281985
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]  },
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]  "R2_rotaxis": {
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "R_in": 0.37061592241659364,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "R_out": 0.5872005975758746,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "n_in_axes": 19,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "p_perm_in": 0.9977001149942503,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "mean_axis_sep_from_tno": 18.70994597168148
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]  },
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]  "R3_matched": {
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "n_pairs": 19,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "med_in": 0.21202382273464052,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "med_out": 0.08800466726477785,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "p": 0.0019244943455161336,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "med_dq": 0.0751,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "med_ddaa": 53.089999999999996
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]  },
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]  "R4_joint_axes": {
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "code_best": {
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]    "p": 0.0024594669684765255,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]    "lam": 10.0,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]    "beta": -20.0,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]    "sep_tno": 24.022220227433344
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   },
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "warsaw_best": {
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]    "p": 0.021391914399818183,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]    "lam": 70.0,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]    "beta": -30.0,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]    "sep_tno": 37.3307902061929
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   },
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "code_vs_warsaw_sep": 54.69639932197536,
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   "n_warsaw": 99
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]  }
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] }
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Saving data: step_16_signed_channels.json
+[2026-09-20 10:46:01 UTC] [DEBUG   ] [STEP 039]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_16_signed_channels.json
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   Output: step_16_signed_channels.json
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] 
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] ================================================================================
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] STEP SUMMARY: step_039_signed_channels
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] ================================================================================
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Step Number: 039
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Status: SUCCESS
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Duration: 0.99s
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Log Records Emitted: 93
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Output Files: 1
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_039_signed_channels.log
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] 
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Generated 1 output file(s):
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   • step_16_signed_channels.json: 1.00 KB [sha256 6829a8c7fe372093]
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] ================================================================================
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] STEP 039 COMPLETE: SUCCESS
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_039_signed_channels_provenance.json
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] 
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] ================================================================================
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] EXECUTIVE SUMMARY
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] ================================================================================
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Step: step_039_signed_channels (Step 039)
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Status: SUCCESS
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Duration: 0.99s
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Log Records: 102
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Output Files: 1
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] Key Outputs:
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039]   - step_16_signed_channels.json (1.00 KB)
+[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 039] ================================================================================

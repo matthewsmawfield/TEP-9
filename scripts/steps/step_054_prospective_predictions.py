@@ -41,7 +41,7 @@ applies to, the numerical value, and the competing-model
 baseline -- a dated, falsifiable record.
 
 Outputs: results/step_b19_prospective_predictions.json,
-         figures/step_b19_prospective_predictions.png
+         figures/supplementary/step_b19_prospective_predictions.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -284,10 +284,10 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b19_prospective_predictions.png",
-                dpi=150)
-    print("wrote results/step_b19_prospective_predictions.json, "
-          "figures/step_b19_prospective_predictions.png")
+    fig.savefig(FIG / "supplementary" / "step_b19_prospective_predictions.png",
+                dpi=300)
+    logger.data_save(RESULTS / "step_b19_prospective_predictions.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b19_prospective_predictions.png")
 
 
 if __name__ == "__main__":

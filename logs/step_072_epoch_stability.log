@@ -1,18 +1,74 @@
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 072] LOGGER INITIALIZED: step_072_epoch_stability (Step 072)
-[2026-09-19 22:19:03 UTC] [DEBUG   ] [STEP 072] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_072_epoch_stability.log
-[2026-09-19 22:19:03 UTC] [DEBUG   ] [STEP 072] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 072] ================================================================================
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 072] Epoch stability of the implied proper-time slip
-[2026-09-19 22:19:03 UTC] [INFO    ] [STEP 072] ================================================================================
-[2026-09-19 22:19:04 UTC] [INFO    ] [STEP 072] comets with parsed perihelion year: n=229 (1885-2025)
-[2026-09-19 22:19:04 UTC] [INFO    ] [STEP 072] era 1885-1950: in +7.38 (n=9) out -3.22 (n=18) contrast +10.60 p=0.0073
-[2026-09-19 22:19:04 UTC] [INFO    ] [STEP 072] era 1950-1990: in +0.81 (n=14) out +0.13 (n=17) contrast +0.67 p=0.4136
-[2026-09-19 22:19:04 UTC] [INFO    ] [STEP 072] era 1990-2030: in +0.39 (n=52) out -3.94 (n=119) contrast +4.33 p=0.1357
-[2026-09-19 22:19:04 UTC] [INFO    ] [STEP 072] code/in: n=43 rho=-0.177 p=0.256 slope=-10.57 yr/cy
-[2026-09-19 22:19:04 UTC] [INFO    ] [STEP 072] code/out: n=88 rho=-0.104 p=0.333 slope=+1.84 yr/cy
-[2026-09-19 22:19:04 UTC] [INFO    ] [STEP 072] warsaw/in: n=32 rho=-0.024 p=0.897 slope=-31.10 yr/cy
-[2026-09-19 22:19:04 UTC] [INFO    ] [STEP 072] warsaw/out: n=66 rho=-0.010 p=0.934 slope=+1.39 yr/cy
-[2026-09-19 22:19:04 UTC] [INFO    ] [STEP 072] pooled/in: n=75 rho=-0.187 p=0.108 slope=-14.73 yr/cy
-[2026-09-19 22:19:04 UTC] [INFO    ] [STEP 072] pooled/out: n=154 rho=-0.012 p=0.883 slope=+1.71 yr/cy
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b37_epoch_stability.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b37_epoch_stability.png
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] LOGGER INITIALIZED: step_072_epoch_stability (Step 072)
+[2026-09-20 11:30:18 UTC] [DEBUG   ] [STEP 072] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_072_epoch_stability.log
+[2026-09-20 11:30:18 UTC] [DEBUG   ] [STEP 072] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 11:30:18 UTC] [DEBUG   ] [STEP 072] Start time (UTC): 2026-09-20T11:30:18.601626+00:00
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] 
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] STEP PURPOSE
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] --------------------------------------------------------------------------------
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   Step 072 -- epoch stability of the implied proper-time slip.
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   A primordial boundary is inertially fixed: the unexplained slip must be
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   independent of the perihelion epoch.  A heliospheric/interface boundary
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   advects with the Local Interstellar Cloud flow (~26 km/s), and a
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   catalogue quality systematic would relax as orbit determination
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   improved -- both predict an epoch trend.  The measured per-comet
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   unexplained slip (step_065 residual after the encounter-budget
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   regression) is tested against perihelion year, inside and outside the
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   axis cap, per cohort and pooled, and across the photographic->CCD era
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   boundary.
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   Inputs : results/step_b30_proper_time_slip.csv
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   Outputs: results/step_b37_epoch_stability.json
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072]   results/figures/supplementary/step_b37_epoch_stability.png
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] --------------------------------------------------------------------------------
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] SCRIPT: scripts/steps/step_072_epoch_stability.py
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] SCRIPT SHA256: cc0698b5055cf098d2588d1a9539ed4aff7fb8a4f7a13dfcc1b904ae37bed16d
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] SCRIPT SIZE: 8234 bytes
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] ================================================================================
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] Epoch stability of the implied proper-time slip
+[2026-09-20 11:30:18 UTC] [INFO    ] [STEP 072] ================================================================================
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] comets with parsed perihelion year: n=229 (1885-2025)
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] era 1885-1950: in +7.38 (n=9) out -3.22 (n=18) contrast +10.60 p=0.0073
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] era 1950-1990: in +0.81 (n=14) out +0.13 (n=17) contrast +0.67 p=0.4136
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] era 1990-2030: in +0.39 (n=52) out -3.94 (n=119) contrast +4.33 p=0.1357
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] code/in: n=43 rho=-0.177 p=0.256 slope=-10.57 yr/cy
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] code/out: n=88 rho=-0.104 p=0.333 slope=+1.84 yr/cy
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] warsaw/in: n=32 rho=-0.024 p=0.897 slope=-31.10 yr/cy
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] warsaw/out: n=66 rho=-0.010 p=0.934 slope=+1.39 yr/cy
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] pooled/in: n=75 rho=-0.187 p=0.108 slope=-14.73 yr/cy
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] pooled/out: n=154 rho=-0.012 p=0.883 slope=+1.71 yr/cy
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072] Saving data: step_b37_epoch_stability.json
+[2026-09-20 11:30:19 UTC] [DEBUG   ] [STEP 072]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b37_epoch_stability.json
+[2026-09-20 11:30:19 UTC] [INFO    ] [STEP 072]   Output: step_b37_epoch_stability.json
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Saving data: step_b37_epoch_stability.png
+[2026-09-20 11:30:20 UTC] [DEBUG   ] [STEP 072]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b37_epoch_stability.png
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072]   Output: step_b37_epoch_stability.png
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] 
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] ================================================================================
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] STEP SUMMARY: step_072_epoch_stability
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] ================================================================================
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Step Number: 072
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Status: SUCCESS
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Duration: 1.76s
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Log Records Emitted: 51
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Output Files: 2
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_072_epoch_stability.log
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] 
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Generated 2 output file(s):
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072]   • step_b37_epoch_stability.json: 2.58 KB [sha256 c742e2f794e332c9]
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072]   • step_b37_epoch_stability.png: 202.98 KB [sha256 148c1214825d0cf0]
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] ================================================================================
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] STEP 072 COMPLETE: SUCCESS
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_072_epoch_stability_provenance.json
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] 
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] ================================================================================
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] EXECUTIVE SUMMARY
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] ================================================================================
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Step: step_072_epoch_stability (Step 072)
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Status: SUCCESS
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Duration: 1.76s
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Log Records: 61
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Output Files: 2
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] Key Outputs:
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072]   - step_b37_epoch_stability.json (2.58 KB)
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072]   - step_b37_epoch_stability.png (202.98 KB)
+[2026-09-20 11:30:20 UTC] [INFO    ] [STEP 072] ================================================================================

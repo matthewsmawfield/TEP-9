@@ -30,7 +30,7 @@ Products (all from stored records -- no new integrations):
 
 Outputs:
   results/step_b106_gaia_sink.json / .csv
-  results/figures/step_b106_gaia_sink.png
+  results/figures/supplementary/step_b106_gaia_sink.png
 """
 
 import sys as _sys
@@ -44,9 +44,11 @@ import numpy as np
 from scipy import stats as _st
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import DATA_RAW, RESULTS, lv, sep
 
 logger = StepLogger("step_142_gaia_sink")
+tee_stdout(logger)
 
 OBS_DIR = DATA_RAW / "mpc" / "obs"
 SBDB_DIR = DATA_RAW / "mpc" / "sbdb_fp"
@@ -814,10 +816,10 @@ ax.set_title("misfit vs composition")
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b106_gaia_sink.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b106_gaia_sink.png", dpi=300)
 logger.info("verdict: " + res["verdict"])
 logger.data_save(out)
 logger.data_save(RESULTS / "step_b106_gaia_sink.csv")
-logger.data_save(FIG / "step_b106_gaia_sink.png")
-print(json.dumps(res["test_summary"], indent=1))
-print(res["verdict"])
+logger.data_save(FIG / "supplementary" / "step_b106_gaia_sink.png")
+print("TEST SUMMARY:\n" + json.dumps(res["test_summary"], indent=1))
+print(f"VERDICT: {res['verdict']}")

@@ -28,7 +28,7 @@ T4  Caveat ledger: cadence gaps near crossings and kernel
     registers the epoch evidence alongside them.
 
 Outputs: results/step_b112_pws_anchored_sclk.json/.csv and
-results/figures/step_b112_pws_anchored_sclk.png.
+results/figures/supplementary/step_b112_pws_anchored_sclk.png.
 """
 
 import sys as _sys
@@ -123,8 +123,8 @@ for craft in ("VG1", "VG2"):
             o2, _ = best_neg_offset(yr, rd, tt)
             if o2 is not None and off is not None and o2 <= off:
                 nt += 1
-        p = nt / N_NULL
-        tail_fracs.append(max(p, 0.5 / N_NULL))
+        p = (nt + 1) / (N_NULL + 1)
+        tail_fracs.append(p)
         res["T1_epoch_lock"][f"{craft}_{name}"] = {
             "crossing_epoch": t_hp, "radius_au": r_hp,
             "best_neg_step_ppm": float(step),
@@ -140,11 +140,18 @@ print(f"T2 joint epoch-lock Fisher p = {fisher:.4f}")
 
 # ---- T3: V1 PWS plasma-step coincidence ---------------------------------------
 pws = json.load(open(RESULTS / "step_b61_pws_channel.json"))
-pws_epochs = []
+pws_epochs_raw = []
 for s in pws["craft"]["VG1"]["top_steps"]:
     y0 = float(s["utc0"][:4]) + (float(s["utc0"][5:7]) - 0.5) / 12.0
-    pws_epochs.append(y0)
-res["T3_pws_coincidence"] = {"pws_step_epochs": pws_epochs}
+    pws_epochs_raw.append(y0)
+# merge steps belonging to the same event (contiguous samples split
+# into several top_steps entries) -- keep the earliest epoch
+pws_epochs = []
+for y0 in sorted(pws_epochs_raw):
+    if not pws_epochs or y0 - pws_epochs[-1] > 1.0:
+        pws_epochs.append(y0)
+res["T3_pws_coincidence"] = {"pws_step_epochs": pws_epochs,
+                             "n_top_steps_raw": len(pws_epochs_raw)}
 if pws_epochs:
     yr, dnu = series("VG1")
     ex = np.zeros(len(yr), bool)
@@ -161,27 +168,27 @@ if pws_epochs:
     if len(neg):
         dists = np.array([min(abs(pe - t) for t in neg[:, 0])
                           for pe in pws_epochs])
-        # null: same count of random step epochs
+        # null: same count of random changepoint epochs over the
+        # scanned range (not the span of the detected changepoints)
         nd = []
         for _ in range(N_NULL):
-            fake = rng.uniform(neg[:, 0].min(), neg[:, 0].max(), len(neg))
+            fake = rng.uniform(ts.min(), ts.max(), len(neg))
             nd.append(np.array([min(abs(pe - t) for t in fake)
                                 for pe in pws_epochs]).mean())
         obs_mean = float(dists.mean())
-        p3 = float((np.array(nd) <= obs_mean).mean())
+        p3 = float((np.array(nd) <= obs_mean).sum() + 1) / (N_NULL + 1)
         res["T3_pws_coincidence"].update({
             "mean_dist_yr": obs_mean,
             "per_step_dist_yr": [float(x) for x in dists],
             "null_mean_dist_yr": float(np.mean(nd)),
             "p_closer_than_random": p3,
-            "direction": ("anticoincident" if p3 < 0.5 else "coincident"),
+            "direction": ("coincident" if p3 < 0.5 else "anticoincident"),
             "note": "p is the fraction of random-changepoint null "
                     "draws at least as close as observed; p~0 means "
-                    "the real negative changepoints sit FARTHER from "
+                    "the real negative changepoints sit CLOSER to "
                     "the plasma steps than random placements -- "
-                    "consistent with changepoints clustered in "
-                    "kernel-calibration segments rather than at "
-                    "plasma events"})
+                    "the epoch-coincidence direction; p~1 means the "
+                    "changepoints are farther than random"})
         print(f"T3: PWS steps mean {obs_mean:.2f} yr from nearest "
               f"negative SCLK changepoint (null {np.mean(nd):.2f}, "
               f"p={p3:.4f})")
@@ -252,11 +259,11 @@ if res["T3_pws_coincidence"].get("per_step_dist_yr"):
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b112_pws_anchored_sclk.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b112_pws_anchored_sclk.png", dpi=300)
 
 logger.info("verdict: " + res["verdict"])
 logger.data_save(out)
 logger.data_save(RESULTS / "step_b112_pws_anchored_sclk.csv")
-logger.data_save(FIG / "step_b112_pws_anchored_sclk.png")
-print(json.dumps(res["test_summary"], indent=1))
-print(res["verdict"])
+logger.data_save(FIG / "supplementary" / "step_b112_pws_anchored_sclk.png")
+print("TEST SUMMARY:\n" + json.dumps(res["test_summary"], indent=1))
+print(f"VERDICT: {res['verdict']}")

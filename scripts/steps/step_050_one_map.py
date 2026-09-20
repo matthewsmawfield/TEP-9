@@ -49,13 +49,24 @@ T1  Pairwise angular separations between the TNO perihelion axis and
 
 T2  Concentration: are the anomalous directions more clustered than
     chance?  Spherical resultant R over the directional subset, and
-    an axial version for the axis set; Monte-Carlo calibrated.
+    an axial version for the axis set; Monte-Carlo calibrated with a
+    convention-matched null (each random draw undergoes the same
+    hemisphere fold as the observed vectors).
 
 T3  The local subset (solar-system axes only): TNO axis, comet axis,
     ISM inflow, V1/V2 -- do the local anomalies share one direction?
+    The null folds only the axial member slots, matching the
+    observed statistic (directional members are never folded).
+
+T3b The three dynamically independent axial directions (TNO, comet,
+    ISM inflow): mean pairwise |cos| calibrated on random triples.
+
+T3d Directional self-clustering of the five non-TNO local
+    directions as raw directions (no fold): comet perihelion, ISM
+    inflow, V1/V2 heliopause crossings, 'Oumuamua periapsis.
 
 Outputs: results/step_05_one_map.json,
-         figures/step_05_one_map.png
+         figures/supplementary/step_05_one_map.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -207,17 +218,42 @@ def main():
     vecs = np.array(vecs)
     R_obs = float(np.linalg.norm(vecs.mean(axis=0)))
 
-    # MC: same count of random directions (isotropic)
+    # MC null convention-matched to the observed statistic: all
+    # members of this set are axial, so each random draw is folded
+    # into the hemisphere of its own anchor member (member 0),
+    # exactly as the observed vectors are folded toward tno_v.
+    # An un-folded null is narrower than the statistic's true
+    # sampling distribution and would overstate significance.
     u_mc = rng.normal(size=(N_MC, len(vecs), 3))
     u_mc /= np.linalg.norm(u_mc, axis=2, keepdims=True)
-    R_mc = np.linalg.norm(u_mc.mean(axis=1), axis=1)
+    fold_mc = np.sign((u_mc * u_mc[:, :1]).sum(axis=2))
+    fold_mc[fold_mc == 0] = 1
+    u_mc_f = u_mc * fold_mc[:, :, None]
+    R_mc = np.linalg.norm(u_mc_f.mean(axis=1), axis=1)
     p_conc = float((int((R_mc >= R_obs).sum()) + 1) / (N_MC + 1))
+    # variant with the anchor held fixed at the measured TNO
+    # direction: member 0 is the anchor itself (constant) and the
+    # remaining members are isotropic draws folded toward it
+    fold_fx = np.sign((u_mc[:, 1:] * tno_v).sum(axis=2))
+    fold_fx[fold_fx == 0] = 1
+    u_fx = np.concatenate(
+        [np.broadcast_to(tno_v, (N_MC, 1, 3)),
+         u_mc[:, 1:] * fold_fx[:, :, None]], axis=1)
+    R_mc_fx = np.linalg.norm(u_fx.mean(axis=1), axis=1)
+    p_conc_fx = float((int((R_mc_fx >= R_obs).sum()) + 1)
+                      / (N_MC + 1))
     out["T2_concentration"] = {
         "axes_used": anom_dir, "N": len(vecs),
         "R_folded": round(R_obs, 4),
         "p_vs_isotropic": p_conc,
-        "note": "axes folded into the TNO-axis hemisphere; "
-                "null is isotropic directions"}
+        "p_fixed_anchor": p_conc_fx,
+        "note": "all members axial, folded into the hemisphere of "
+                "the anchor member (the TNO axis).  Null is "
+                "convention-matched: random draws undergo the same "
+                "fold toward their own anchor member "
+                "(p_vs_isotropic) or toward the fixed measured TNO "
+                "direction with member 0 held at the anchor "
+                "(p_fixed_anchor)"}
 
     # axial concentration (unfolded): mean of |pairwise cos| matrix
     n = len(vecs)
@@ -228,7 +264,8 @@ def main():
     p_ax = float((int((c_mc >= c_obs).sum()) + 1) / (N_MC + 1))
     out["T2_axial_concentration"] = {"mean_abs_cos": round(c_obs, 4),
                                      "p_vs_isotropic": p_ax}
-    print(f"\nT2 folded concentration R={R_obs:.3f} p={p_conc:.2e}; "
+    print(f"\nT2 folded concentration R={R_obs:.3f} "
+          f"p={p_conc:.2e} (fixed-anchor p={p_conc_fx:.2e}); "
           f"axial |cos|={c_obs:.3f} p={p_ax:.2e}")
 
     # ---------- T3 local subset ----------
@@ -242,19 +279,47 @@ def main():
         lv.append(v)
     lv = np.array(lv)
     R_loc = float(np.linalg.norm(lv.mean(axis=0)))
+    axial_slot = np.array([axes[k]["axial"] for k in local])
+    # MC null convention-matched to the observed statistic: only
+    # the AXIAL member slots are folded (toward the draw's own
+    # anchor member, member 0); directional members (V1, V2,
+    # 'Oumuamua -- oriented trajectory/asymptote directions, not
+    # axes) are left raw in both observed and null.  Folding all
+    # null members would over-concentrate the null relative to the
+    # statistic's true sampling distribution.
     u_loc = rng.normal(size=(N_MC, len(lv), 3))
     u_loc /= np.linalg.norm(u_loc, axis=2, keepdims=True)
-    # fold random directions the same way: toward first vec
     fold = np.sign((u_loc * u_loc[:, :1]).sum(axis=2))
     fold[fold == 0] = 1
-    u_loc = u_loc * fold[:, :, None]
-    R_loc_mc = np.linalg.norm(u_loc.mean(axis=1), axis=1)
+    fold = np.where(axial_slot[None, :], fold, 1.0)
+    u_loc_f = u_loc * fold[:, :, None]
+    R_loc_mc = np.linalg.norm(u_loc_f.mean(axis=1), axis=1)
     p_loc = float((int((R_loc_mc >= R_loc).sum()) + 1)
                   / (N_MC + 1))
+    # variant: anchor fixed at the measured TNO direction --
+    # member 0 constant, axial slots folded toward tno_v,
+    # directional slots raw
+    fold_lx = np.sign((u_loc[:, 1:] * tno_v).sum(axis=2))
+    fold_lx[fold_lx == 0] = 1
+    fold_lx = np.where(axial_slot[1:][None, :], fold_lx, 1.0)
+    u_lx = np.concatenate(
+        [np.broadcast_to(tno_v, (N_MC, 1, 3)),
+         u_loc[:, 1:] * fold_lx[:, :, None]], axis=1)
+    R_lx_mc = np.linalg.norm(u_lx.mean(axis=1), axis=1)
+    p_loc_fx = float((int((R_lx_mc >= R_loc).sum()) + 1)
+                     / (N_MC + 1))
     out["T3_local"] = {"axes_used": local, "N": len(lv),
                        "R_folded": round(R_loc, 4),
-                       "p_vs_isotropic": p_loc}
-    print(f"T3 local subset R={R_loc:.3f} p={p_loc:.2e}")
+                       "p_vs_isotropic": p_loc,
+                       "p_fixed_anchor": p_loc_fx,
+                       "note": "axial members folded toward the "
+                               "anchor (TNO) hemisphere; "
+                               "directional members (v1_hp, v2_hp, "
+                               "oumuamua) are oriented quantities "
+                               "and are not folded in either the "
+                               "observed statistic or the null"}
+    print(f"T3 local subset R={R_loc:.3f} p={p_loc:.2e} "
+          f"(fixed-anchor p={p_loc_fx:.2e})")
 
     # ---------- T3b targeted triple-axis test ----------
     # The physically motivated subset: the three AXIAL anomalies that
@@ -288,6 +353,45 @@ def main():
                                180 - ang_sep(tv[1], tv[2]), 1)}}
     print(f"T3b triple axis |cos|={c_tri:.3f} p={p_tri:.2e} "
           f"{out['T3b_triple_axis']['pairwise_separations_deg']}")
+
+    # ---------- T3d directional self-clustering ----------
+    # The five non-TNO local directions taken as RAW directions
+    # (no fold): do the local heliospheric/trajectory directions
+    # cluster among themselves at all?  No folding is involved in
+    # either the statistic or the isotropic null, so the
+    # constructions match by construction.  Under the bipolar
+    # field, clustering on the mirror-cap hemisphere is still
+    # organization on the axis.
+    dset = ["comet_peri", "ism_inflow", "v1_hp", "v2_hp",
+            "oumuamua"]
+    dv = np.array([axes[k]["v"] for k in dset])
+    R_self = float(np.linalg.norm(dv.mean(axis=0)))
+    u_d = rng.normal(size=(N_MC, len(dv), 3))
+    u_d /= np.linalg.norm(u_d, axis=2, keepdims=True)
+    R_d_mc = np.linalg.norm(u_d.mean(axis=1), axis=1)
+    p_self = float((int((R_d_mc >= R_self).sum()) + 1)
+                   / (N_MC + 1))
+    rhat = dv.mean(axis=0)
+    rhat /= np.linalg.norm(rhat)
+    r_lam = float(np.rad2deg(np.arctan2(rhat[1], rhat[0])) % 360)
+    r_bet = float(np.rad2deg(np.arcsin(np.clip(rhat[2], -1, 1))))
+    out["T3d_self_clustering"] = {
+        "axes_used": dset, "N": len(dv),
+        "R": round(R_self, 4),
+        "p_vs_isotropic": p_self,
+        "resultant_ecliptic": [round(r_lam, 1), round(r_bet, 1)],
+        "sep_resultant_from_tno_deg": round(ang_sep(rhat, tno_v), 1),
+        "sep_resultant_from_anti_deg": round(ang_sep(rhat,
+                                                   tno_anti), 1),
+        "sep_resultant_from_ism_deg": round(
+            ang_sep(rhat, axes["ism_inflow"]["v"]), 1),
+        "note": "raw-direction resultant of the five non-TNO "
+                "local directions; no folding in statistic or "
+                "null.  Resultant lies on the mirror-cap "
+                "hemisphere near the ISM inflow sector"}
+    print(f"T3d self-clustering R={R_self:.3f} p={p_self:.2e} "
+          f"resultant ({r_lam:.0f},{r_bet:+.0f}) "
+          f"sep_from_anti={out['T3d_self_clustering']['sep_resultant_from_anti_deg']:.1f}")
 
     # ---------- T3c pole-tilt concordance ----------
     # the common-plane normal (step_02) is displaced from the
@@ -365,10 +469,10 @@ def main():
                  "(faded = antipode of axial)", fontsize=10)
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_05_one_map.png", dpi=150,
+    fig.savefig(FIG / "supplementary" / "step_05_one_map.png", dpi=300,
                 bbox_inches="tight")
-    print("\nwrote results/step_05_one_map.json, "
-          "figures/step_05_one_map.png")
+    logger.data_save(RESULTS / "step_05_one_map.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_05_one_map.png")
 
 
 if __name__ == "__main__":

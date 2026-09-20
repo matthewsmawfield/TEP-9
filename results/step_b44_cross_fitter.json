@@ -1,34 +1,42 @@
 {
+ "inputs": [
+  "data/raw/code/code_osculating.html",
+  "data/raw/code/code_original.html",
+  "data/raw/mpc/CometEls.txt",
+  "data/raw/warsaw/warsaw_tableb.dat",
+  "data/raw/warsaw/warsaw_tablec.dat",
+  "results/step_b30_proper_time_slip.csv"
+ ],
  "method": "per-comet periapsis-direction difference between the MPC CometEls fit and the catalogue osculating fit (CODE or Warsaw) -- the direct inter-fitter noise floor; compared in and out of the 60-deg cap and against the measured anomaly.",
  "cap_deg": 60.0,
- "axis": "49,-17",
+ "axis": "34,-13",
  "seed": 20260918,
  "groups": {
   "code": {
-   "n": 61,
+   "n": 62,
    "n_in": 21,
-   "n_out": 40,
-   "median_dperi_deg": 0.148178204341441,
+   "n_out": 41,
+   "median_dperi_deg": 0.14922821245403473,
    "median_in": 0.15400491245385045,
-   "median_out": 0.14340826215145075,
-   "p_mwu_in_vs_out": 0.2104598302929075
+   "median_out": 0.1447900330694188,
+   "p_mwu_in_vs_out": 0.2646247102735273
   },
   "warsaw": {
-   "n": 7,
+   "n": 8,
    "n_in": 2,
-   "n_out": 5,
-   "median_dperi_deg": 0.21413693593093372,
+   "n_out": 6,
+   "median_dperi_deg": 0.2424161464828175,
    "median_in": 0.2080126325480266,
-   "median_out": 0.27069535703470127
+   "median_out": 0.2781664096720633
   },
   "pooled": {
-   "n": 68,
+   "n": 70,
    "n_in": 23,
-   "n_out": 45,
-   "median_dperi_deg": 0.1529336863226049,
+   "n_out": 47,
+   "median_dperi_deg": 0.15478477317775718,
    "median_in": 0.1595832533511377,
-   "median_out": 0.14670406899464314,
-   "p_mwu_in_vs_out": 0.27621215031001534
+   "median_out": 0.14704561578163095,
+   "p_mwu_in_vs_out": 0.40216140785069765
   }
  },
  "floor_vs_anomaly": {
@@ -38,22 +46,22 @@
    "p_2sided": 0.4609431837520659
   },
   "out_cap": {
-   "n": 40,
-   "rho": 0.14634146341463417,
-   "p_2sided": 0.3675563711082528
+   "n": 41,
+   "rho": 0.1991289198606272,
+   "p_2sided": 0.21197213511053728
   },
   "all": {
-   "n": 61,
-   "rho": 0.1881015335801163,
-   "p_2sided": 0.14657915124118245
+   "n": 62,
+   "rho": 0.22233134396011178,
+   "p_2sided": 0.08241852443950298
   }
  },
  "disp_dir": {
   "n_in": 23,
-  "n_out": 45,
-  "R_in": 0.19327288227090517,
-  "p_in": 0.46145585378858966,
-  "R_out": 0.149327110111549,
-  "p_out": 0.3900384475655496
+  "n_out": 47,
+  "R_in": 0.19327576811574892,
+  "p_in": 0.4614422662870452,
+  "R_out": 0.15802122125565005,
+  "p_out": 0.3180654740713807
  }
 }

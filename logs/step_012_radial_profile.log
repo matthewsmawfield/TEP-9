@@ -1,30 +1,104 @@
-[2026-09-19 22:16:54 UTC] [INFO    ] [STEP 012] LOGGER INITIALIZED: step_012_radial_profile (Step 012)
-[2026-09-19 22:16:54 UTC] [DEBUG   ] [STEP 012] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_012_radial_profile.log
-[2026-09-19 22:16:54 UTC] [DEBUG   ] [STEP 012] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 22:16:54 UTC] [INFO    ] [STEP 012] ================================================================================
-[2026-09-19 22:16:54 UTC] [INFO    ] [STEP 012] Radial turn-on profile
-[2026-09-19 22:16:54 UTC] [INFO    ] [STEP 012] ================================================================================
-secure outer catalog: 1225 objects
-W1 a     35-    88 N=1102 R(v)=0.05 R(w)=0.05 R(O)=0.19 p=0.041
-W1 a     44-   111 N= 604 R(v)=0.06 R(w)=0.08 R(O)=0.18 p=0.087
-W1 a     56-   139 N= 253 R(v)=0.10 R(w)=0.12 R(O)=0.24 p=0.062
-W1 a     70-   175 N= 141 R(v)=0.08 R(w)=0.16 R(O)=0.28 p=0.444
-W1 a     88-   221 N=  86 R(v)=0.09 R(w)=0.25 R(O)=0.31 p=0.540
-W1 a    111-   278 N=  45 R(v)=0.22 R(w)=0.24 R(O)=0.42 p=0.120
-W1 a    139-   350 N=  34 R(v)=0.21 R(w)=0.41 R(O)=0.45 p=0.229
-W1 a    175-   441 N=  27 R(v)=0.31 R(w)=0.42 R(O)=0.51 p=0.080
-W1 a    221-   555 N=  22 R(v)=0.37 R(w)=0.36 R(O)=0.47 p=0.051
-W1 a    278-   698 N=  18 R(v)=0.35 R(w)=0.34 R(O)=0.36 p=0.114
-W1 a    350-   879 N=  13 R(v)=0.46 R(w)=0.29 R(O)=0.24 p=0.060
-W1 a    441-  1107 N=   9 R(v)=0.39 R(w)=0.48 R(O)=0.41 p=0.253
-W2 a_min: most significant tail at a>120.0 (N=61, p=0.0050)
-W2 ad_min: most significant tail at ad>200.0 (N=62, p=0.0046)
-W2 q_min_within_a150: most significant tail at q>32.5 (N=43, p=0.0048)
-W3 a: split at 39.5 (in N=115 R=0.159 p=0.06; out N=1110 R=0.086 mean=49.3 p=2.78e-04)
-W3 ad: split at 48.5 (in N=462 R=0.011 p=0.94; out N=763 R=0.098 mean=51.4 p=6.37e-04)
-W3 q: split at 36.5 (in N=565 R=0.11 p=0.00; out N=660 R=0.049 mean=356.4 p=2.04e-01)
-W3 full-MC: p(ad>48.5)=0.0010, p(a>39.5)=0.0002
-W4 a 30-60: N=986 mean(varpi)=52.3 +[-26,26]
-W4 a 60-150: N=195 mean(varpi)=28.5 +[-41,48]
-W4 a 150-inf: N=44 mean(varpi)=49.1 +[-16,18]
-wrote results/step_b2_radial_profile.json, figures/step_b2_radial_profile.png
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] LOGGER INITIALIZED: step_012_radial_profile (Step 012)
+[2026-09-20 10:42:06 UTC] [DEBUG   ] [STEP 012] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_012_radial_profile.log
+[2026-09-20 10:42:06 UTC] [DEBUG   ] [STEP 012] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:42:06 UTC] [DEBUG   ] [STEP 012] Start time (UTC): 2026-09-20T10:42:06.453423+00:00
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] 
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] STEP PURPOSE
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] --------------------------------------------------------------------------------
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   TEP / Planet-9 -- step b2: where does the clustering turn on?
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   The two competing pictures predict different radial structure.
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   * Point-mass shepherding: confinement should strengthen with
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   semimajor axis (the perturber dominates the most distant
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   orbits) and cluster membership should track the perturber's
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   secular reach -- a smooth, monotonic trend.
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   * Fixed spatial boundary (TEP): orbits are phase-locked by the
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   proper-time field where they *are*, so clustering should
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   switch on at a fixed spatial radius.  The natural coordinate
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   is then the orbit's spatial extent -- aphelion distance ad =
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   a(1+e) -- not the semimajor axis itself.  A transition at
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   fixed ad independent of a is the "domain wall" signature.
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   Scans performed (all on the secure catalog, cc<=3):
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   W1  sliding windows in log a (0.4 dex, 0.1 dex step):
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   R(varpi), R(omega), R(Omega) and conditioned p(varpi)
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   per window -- element selectivity shows which part of the
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   anomaly turns on where.
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   W2  threshold scans: for each of a_min, ad_min, q_min, the
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   clustering of the tail sample x > x_min vs threshold --
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   locates the turn-on in each coordinate.
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   W3  change-point estimate: the radius x* that best splits the
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   population into unclustered (inside) and clustered
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   (outside) subsamples, in each of a, ad, q -- the wall
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   radius.  A sharp, coordinate-consistent transition
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   supports the boundary picture; a smeared or
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   coordinate-dependent one supports shepherding.
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   Statistics: conditioned null as in step 02 (fix a,e,i; om,w
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   uniform; 5000 MC per window for the scan, 20000 at key points).
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   Outputs: results/step_b2_radial_profile.json,
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012]   figures/supplementary/step_b2_radial_profile.png
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] --------------------------------------------------------------------------------
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] SCRIPT: scripts/steps/step_012_radial_profile.py
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] SCRIPT SHA256: 91f01cdedb19e90c001412b37416284473d6cd461fe765b9aa4c74b7354b90c1
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] SCRIPT SIZE: 13878 bytes
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] Radial turn-on profile
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] secure outer catalog: 1225 objects
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a     35-    88 N=1102 R(v)=0.05 R(w)=0.05 R(O)=0.19 p=0.041
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a     44-   111 N= 604 R(v)=0.06 R(w)=0.08 R(O)=0.18 p=0.087
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a     56-   139 N= 253 R(v)=0.10 R(w)=0.12 R(O)=0.24 p=0.062
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a     70-   175 N= 141 R(v)=0.08 R(w)=0.16 R(O)=0.28 p=0.444
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a     88-   221 N=  86 R(v)=0.09 R(w)=0.25 R(O)=0.31 p=0.540
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a    111-   278 N=  45 R(v)=0.22 R(w)=0.24 R(O)=0.42 p=0.120
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a    139-   350 N=  34 R(v)=0.21 R(w)=0.41 R(O)=0.45 p=0.229
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a    175-   441 N=  27 R(v)=0.31 R(w)=0.42 R(O)=0.51 p=0.080
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a    221-   555 N=  22 R(v)=0.37 R(w)=0.36 R(O)=0.47 p=0.051
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a    278-   698 N=  18 R(v)=0.35 R(w)=0.34 R(O)=0.36 p=0.114
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a    350-   879 N=  13 R(v)=0.46 R(w)=0.29 R(O)=0.24 p=0.060
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 012] W1 a    441-  1107 N=   9 R(v)=0.39 R(w)=0.48 R(O)=0.41 p=0.253
+[2026-09-20 10:42:07 UTC] [INFO    ] [STEP 012] W2 a_min: most significant tail at a>120.0 (N=61, p=0.0050)
+[2026-09-20 10:42:07 UTC] [INFO    ] [STEP 012] W2 ad_min: most significant tail at ad>200.0 (N=62, p=0.0046)
+[2026-09-20 10:42:07 UTC] [INFO    ] [STEP 012] W2 q_min_within_a150: most significant tail at q>32.5 (N=43, p=0.0048)
+[2026-09-20 10:42:07 UTC] [INFO    ] [STEP 012] W3 a: split at 39.5 (in N=115 R=0.159 p=0.06; out N=1110 R=0.086 mean=49.3 p=2.78e-04)
+[2026-09-20 10:42:07 UTC] [INFO    ] [STEP 012] W3 ad: split at 48.5 (in N=462 R=0.011 p=0.94; out N=763 R=0.098 mean=51.4 p=6.37e-04)
+[2026-09-20 10:42:07 UTC] [INFO    ] [STEP 012] W3 q: split at 36.5 (in N=565 R=0.11 p=0.00; out N=660 R=0.049 mean=356.4 p=2.04e-01)
+[2026-09-20 10:42:08 UTC] [INFO    ] [STEP 012] W3 full-MC: p(ad>48.5)=0.0010, p(a>39.5)=0.0002
+[2026-09-20 10:42:08 UTC] [INFO    ] [STEP 012] W4 a 30-60: N=986 mean(varpi)=52.3 +[-26,26]
+[2026-09-20 10:42:08 UTC] [INFO    ] [STEP 012] W4 a 60-150: N=195 mean(varpi)=28.5 +[-41,48]
+[2026-09-20 10:42:08 UTC] [INFO    ] [STEP 012] W4 a 150-inf: N=44 mean(varpi)=49.1 +[-16,18]
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Saving data: step_b2_radial_profile.json
+[2026-09-20 10:42:09 UTC] [DEBUG   ] [STEP 012]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b2_radial_profile.json
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012]   Output: step_b2_radial_profile.json
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Saving data: step_b2_radial_profile.png
+[2026-09-20 10:42:09 UTC] [DEBUG   ] [STEP 012]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b2_radial_profile.png
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012]   Output: step_b2_radial_profile.png
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] 
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] STEP SUMMARY: step_012_radial_profile
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Step Number: 012
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Status: SUCCESS
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Duration: 2.69s
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Log Records Emitted: 81
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Output Files: 2
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_012_radial_profile.log
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] 
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Generated 2 output file(s):
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012]   • step_b2_radial_profile.json: 14.30 KB [sha256 57daadfec972675e]
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012]   • step_b2_radial_profile.png: 443.40 KB [sha256 7279ee52957187fe]
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] STEP 012 COMPLETE: SUCCESS
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_012_radial_profile_provenance.json
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] 
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] EXECUTIVE SUMMARY
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] ================================================================================
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Step: step_012_radial_profile (Step 012)
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Status: SUCCESS
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Duration: 2.69s
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Log Records: 91
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Output Files: 2
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] Key Outputs:
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012]   - step_b2_radial_profile.json (14.30 KB)
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012]   - step_b2_radial_profile.png (443.40 KB)
+[2026-09-20 10:42:09 UTC] [INFO    ] [STEP 012] ================================================================================

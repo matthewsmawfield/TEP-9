@@ -37,6 +37,7 @@ tee_stdout(logger)
 logger.header("Solar-wind screening-epoch test")
 
 import datetime
+import time
 import hashlib
 import json
 import math
@@ -59,9 +60,20 @@ def fetch_omni():
         logger.info(f"OMNI cache present: {OMNI_FILE.name}")
         return
     OMNI_DIR.mkdir(parents=True, exist_ok=True)
-    r = requests.get(OMNI_URL, timeout=180,
-                     headers={"User-Agent": "tep9/1.0"})
-    r.raise_for_status()
+    r = None
+    for attempt in range(1, 6):
+        try:
+            r = requests.get(OMNI_URL, timeout=180,
+                             headers={"User-Agent": "tep9/1.0"})
+            r.raise_for_status()
+            break
+        except Exception as exc:
+            if attempt == 5:
+                raise
+            wait = 5 * 2 ** (attempt - 1)
+            logger.info(f"OMNI fetch attempt {attempt} failed ({exc}); "
+                        f"retrying in {wait}s")
+            time.sleep(wait)
     OMNI_FILE.write_bytes(r.content)
     prov = {"step": "step_136_solar_wind_screening",
             "files": {"omni_m_daily.dat": {
@@ -239,7 +251,7 @@ out = dict(step="step_136_solar_wind_screening", result="b100",
            T4_regime_split=T4)
 with open(RESULTS / "step_b100_solar_wind_screening.json", "w") as f:
     json.dump(out, f, indent=1, default=float)
-logger.info("wrote results/step_b100_solar_wind_screening.json")
+logger.data_save(RESULTS / "step_b100_solar_wind_screening.json")
 
 FIG = RESULTS / "figures"
 import matplotlib
@@ -278,5 +290,5 @@ ax[2].set_title("T4 pressure timeline vs switch epoch")
 ax[2].legend(fontsize=8)
 
 fig.tight_layout()
-fig.savefig(FIG / "step_b100_solar_wind_screening.png", dpi=150)
-logger.info("wrote results/figures/step_b100_solar_wind_screening.png")
+fig.savefig(FIG / "supplementary" / "step_b100_solar_wind_screening.png", dpi=300)
+logger.data_save(RESULTS / "figures/supplementary/step_b100_solar_wind_screening.png")

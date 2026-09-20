@@ -27,7 +27,9 @@ footprint baseline, and combines them three ways:
       selection functions, not their memberships, are independent).
   2.  A deduplicated union pool: each distinct object counted once,
       assigned the baseline of its primary survey; a single binomial
-      test of the union in-cap count.
+      test of the union in-cap count, reported for the full pool and
+      for the boundary-resident subset (a>150) on which the resident
+      anomaly is defined.
   3.  Direction concordance: the in-cap members' mean varpi per
       survey, tested for mutual consistency against the footprint
       null (does each survey's in-cap population point at the same
@@ -44,7 +46,7 @@ Outputs
 -------
 results/step_b77_resident_ledger.json
 results/step_b77_resident_ledger.csv
-results/figures/step_b77_resident_ledger.png
+results/figures/supplementary/step_b77_resident_ledger.png
 """
 
 import sys as _sys
@@ -193,9 +195,13 @@ for name, sv in surveys.items():
         survey=name, cohort=sv["cohort"], fit_lineage=sv["fit_lineage"],
         n=n, n_in=n_in, frac_in=n_in / n,
         baseline=base, lam_kind=rows[0]["lam_kind"],
-        p_vs_baseline=float(binomtest(n_in, n, base).pvalue)
+        # declared directional prediction (in-cap excess) -> greater tail,
+        # matching the exceedance convention of steps 117/133/152
+        p_vs_baseline=float(binomtest(n_in, n, base,
+                                      alternative="greater").pvalue)
         if np.isfinite(base) else float("nan"),
-        p_vs_uniform=float(binomtest(n_in, n, UNIFORM).pvalue),
+        p_vs_uniform=float(binomtest(n_in, n, UNIFORM,
+                                     alternative="greater").pvalue),
         R_varpi=circ_R(np.deg2rad(vps)),
         mean_varpi=circ_mean(np.deg2rad(vps)),
         incap_mean_varpi=circ_mean(np.deg2rad(in_vps))
@@ -231,23 +237,47 @@ for sv_name in ORDER:
         k = norm_key(o["name"])
         if k not in union:
             union[k] = dict(name=o["name"], varpi=o["varpi"],
-                            lam=o["lam"], src=sv_name)
+                            lam=o["lam"], a=o["a"], q=o["q"],
+                            src=sv_name)
+
+
+def score_union(urows, label):
+    uv = np.array([o["varpi"] for o in urows])
+    ul = np.array([o["lam"] for o in urows])
+    ok = np.isfinite(ul)
+    n_u, n_u_in = len(urows), int(np.sum(d_ax(uv) < CAP))
+    base_u = float(np.mean(smear_cap(d_ax(ul[ok]))))
+    res = dict(
+        n=n_u, n_in=n_u_in, frac_in=n_u_in / n_u,
+        baseline=base_u,
+        p_vs_baseline=float(binomtest(n_u_in, n_u, base_u,
+                                      alternative="greater").pvalue),
+        p_vs_uniform=float(binomtest(n_u_in, n_u, UNIFORM,
+                                     alternative="greater").pvalue))
+    logger.info(f"union[{label}] n={n_u} in-cap={n_u_in} "
+                f"({n_u_in/n_u:.3f}) pooled baseline={base_u:.3f} "
+                f"p={res['p_vs_baseline']:.3g}")
+    return res
+
+
 urows = list(union.values())
-uv = np.array([o["varpi"] for o in urows])
-ul = np.array([o["lam"] for o in urows])
-ok = np.isfinite(ul)
-n_u, n_u_in = len(urows), int(np.sum(d_ax(uv) < CAP))
-base_u = float(np.mean(smear_cap(d_ax(ul[ok]))))
-union_res = dict(
-    n=n_u, n_in=n_u_in, frac_in=n_u_in / n_u,
-    baseline=base_u,
-    p_vs_baseline=float(binomtest(n_u_in, n_u, base_u).pvalue),
-    p_vs_uniform=float(binomtest(n_u_in, n_u, UNIFORM).pvalue),
-    note="each distinct object counted once; baseline assigned by "
-         "primary survey (OSSOS > DES > SBDB precedence)")
-logger.info(f"union n={n_u} in-cap={n_u_in} ({n_u_in/n_u:.3f}) "
-            f"pooled baseline={base_u:.3f} "
-            f"p={union_res['p_vs_baseline']:.3g}")
+union_res = score_union(urows, "all")
+union_res["note"] = ("each distinct object counted once; baseline "
+                     "assigned by primary survey (OSSOS > DES > SBDB "
+                     "precedence); mixes interior and boundary-resident "
+                     "orbits -- descriptive only")
+
+# the resident claim is defined on the boundary-resident population
+# (a > 150 AU); the OSSOS 'det' criterion (a > 47.7, e > 0.24) admits
+# interior detachments, so the pooled all-object union above dilutes
+# the resident test with objects that never sample the boundary.
+ub_rows = [o for o in urows if o["a"] > 150.0]
+union_boundary = score_union(ub_rows, "a>150")
+union_boundary["note"] = (
+    "deduplicated union restricted to boundary residents (a>150 AU): "
+    "the population on which the resident anomaly is defined; "
+    "baseline assigned by primary survey (OSSOS > DES > SBDB "
+    "precedence)")
 
 # ------------------------------------------------------------------
 # 4. Fisher combination + direction concordance
@@ -315,6 +345,7 @@ res = dict(
              "members are mostly interior to the a>150 cut; 9 OSSOS-"
              "det objects share SBDB catalogue membership overall)"),
     union=union_res,
+    union_boundary_resident=union_boundary,
     combined=combined,
     caveat="The OSSOS 'det' class median semimajor axis is ~60 AU -- "
            "inside the ~150 AU boundary -- so its baseline-consistency "
@@ -324,8 +355,7 @@ res = dict(
 
 out = RESULTS / "step_b77_resident_ledger.json"
 json.dump(res, open(out, "w"), indent=1, default=float)
-print("wrote", out)
-
+logger.data_save(out)
 csv_out = RESULTS / "step_b77_resident_ledger.csv"
 with open(csv_out, "w", newline="") as f:
     w = csv.writer(f)
@@ -337,8 +367,7 @@ with open(csv_out, "w", newline="") as f:
                         f"{o['lam']:.2f}", f"{o['a']:.2f}",
                         f"{o['q']:.2f}", f"{d_ax(o['varpi']):.1f}",
                         int(d_ax(o["varpi"]) < CAP)])
-print("wrote", csv_out)
-
+logger.data_save(csv_out)
 # ------------------------------------------------------------------
 # 6. Figure
 # ------------------------------------------------------------------
@@ -350,11 +379,14 @@ import matplotlib.pyplot as plt
 fig, axes = plt.subplots(1, 2, figsize=(12.5, 4.6))
 
 ax = axes[0]
-x = np.arange(len(ledger) + 1)
-obs = [r["frac_in"] for r in ledger] + [union_res["frac_in"]]
-bas = [r["baseline"] for r in ledger] + [union_res["baseline"]]
+x = np.arange(len(ledger) + 2)
+obs = [r["frac_in"] for r in ledger] + [union_res["frac_in"],
+                                        union_boundary["frac_in"]]
+bas = [r["baseline"] for r in ledger] + [union_res["baseline"],
+                                         union_boundary["baseline"]]
 lbl = [f"{r['survey']}\nn={r['n']}" for r in ledger] + \
-      [f"union\nn={n_u}"]
+      [f"union\nn={union_res['n']}",
+       f"union a>150\nn={union_boundary['n']}"]
 ax.bar(x - 0.2, obs, 0.4, color="crimson", label="observed in-cap")
 ax.bar(x + 0.2, bas, 0.4, color="0.6",
        label="own-footprint baseline")
@@ -382,5 +414,5 @@ ax.set_title("Cohort varpi distributions", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"
-fig.savefig(FIG / "step_b77_resident_ledger.png", dpi=150)
-print(f"wrote {FIG / 'step_b77_resident_ledger.png'}")
+fig.savefig(FIG / "supplementary" / "step_b77_resident_ledger.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b77_resident_ledger.png')

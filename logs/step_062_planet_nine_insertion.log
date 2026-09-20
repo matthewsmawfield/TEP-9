@@ -1,19 +1,106 @@
-[2026-09-19 21:30:02 UTC] [INFO    ] [STEP 062] LOGGER INITIALIZED: step_062_planet_nine_insertion (Step 062)
-[2026-09-19 21:30:02 UTC] [DEBUG   ] [STEP 062] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_062_planet_nine_insertion.log
-[2026-09-19 21:30:02 UTC] [DEBUG   ] [STEP 062] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:30:02 UTC] [INFO    ] [STEP 062] ================================================================================
-[2026-09-19 21:30:02 UTC] [INFO    ] [STEP 062] Planet Nine insertion test (REBOUND/IAS15 + DE440s)
-[2026-09-19 21:30:02 UTC] [INFO    ] [STEP 062] ================================================================================
-[2026-09-19 21:30:02 UTC] [INFO    ] [STEP 062] sample: 131 class-1 CODE comets
-[2026-09-19 21:49:41 UTC] [INFO    ] [STEP 062] integrated 131 comets x 9 runs; 0 failed
-[2026-09-19 21:49:41 UTC] [INFO    ] [STEP 062] bb21_ml_M0: med drot=0.00028 deg (in 0.00017 / out 0.00031) max 0.0027; shortfall x517; resid cap p=0.0063
-[2026-09-19 21:49:41 UTC] [INFO    ] [STEP 062] bb21_ml_M90: med drot=0.00029 deg (in 0.00031 / out 0.00028) max 0.0017; shortfall x504; resid cap p=0.0012
-[2026-09-19 21:49:41 UTC] [INFO    ] [STEP 062] bb21_ml_M180: med drot=0.00026 deg (in 0.00032 / out 0.00023) max 0.0006; shortfall x565; resid cap p=0.0266
-[2026-09-19 21:49:41 UTC] [INFO    ] [STEP 062] bb21_ml_M270: med drot=0.00024 deg (in 0.00025 / out 0.00023) max 0.0009; shortfall x602; resid cap p=0.0012
-[2026-09-19 21:49:41 UTC] [INFO    ] [STEP 062] bb21_med_M0: med drot=0.00031 deg (in 0.00022 / out 0.00036) max 0.0010; shortfall x466; resid cap p=0.0120
-[2026-09-19 21:49:41 UTC] [INFO    ] [STEP 062] bb21_med_M90: med drot=0.00030 deg (in 0.00030 / out 0.00030) max 0.0006; shortfall x479; resid cap p=0.0015
-[2026-09-19 21:49:41 UTC] [INFO    ] [STEP 062] bb21_med_M180: med drot=0.00028 deg (in 0.00025 / out 0.00029) max 0.0005; shortfall x515; resid cap p=0.0004
-[2026-09-19 21:49:41 UTC] [INFO    ] [STEP 062] bb21_med_M270: med drot=0.00028 deg (in 0.00029 / out 0.00028) max 0.0005; shortfall x511; resid cap p=0.0039
-[2026-09-19 21:49:41 UTC] [INFO    ] [STEP 062] pooled max: med drot=0.00047 deg, max 0.0027, shortfall x307, resid p=0.0016
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b27_planet_nine_insertion.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b27_planet_nine_insertion.csv
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] LOGGER INITIALIZED: step_062_planet_nine_insertion (Step 062)
+[2026-09-20 11:27:14 UTC] [DEBUG   ] [STEP 062] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_062_planet_nine_insertion.log
+[2026-09-20 11:27:14 UTC] [DEBUG   ] [STEP 062] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 11:27:14 UTC] [DEBUG   ] [STEP 062] Start time (UTC): 2026-09-20T11:27:14.082529+00:00
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] 
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] STEP PURPOSE
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] --------------------------------------------------------------------------------
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   step_062: Planet Nine insertion test -- does the published perturber
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   produce the observed comet anomaly on real trajectories?
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   step_042 established that subtracting the measured planetary baseline
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   leaves the in-cap anomaly undiminished.  This step asks the inverse
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   question for the specific conventional hypothesis: insert the Brown &
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   Batygin (2021, AJ 162, 219) Planet Nine into the same backward
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   integrations and measure what it does to each comet's reconstructed
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   orbit.
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   Two published realizations are tested:
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   bb21_ml   maximum-likelihood model: m9 = 5.0 M_earth, a9 = 300 AU,
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   e9 = 0.15, i9 = 17 deg, varpi9 = 254 deg, Om9 = 108 deg
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   (BB21 Section on maximum likelihood, "nearly a local peak
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   in every dimension")
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   bb21_med  marginalized-median model: m9 = 6.9 M_earth, a9 = 461 AU,
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   e9 = 0.30, i9 = 15.6 deg, varpi9 = 246.7 deg, Om9 = 96.9 deg
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   (BB21 corner-plot medians)
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   P9's mean anomaly is unconstrained by the secular analysis (BB21 set
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   M9 = 0 and marginalized the position), so each model is run on a
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   four-point mean-anomaly grid {0, 90, 180, 270 deg}; M9 = 180 deg
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   (near apoapsis) is the residence-time-weighted most probable position
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   for an eccentric orbit.  This brackets every plausible placement.
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   For each class-1 CODE comet (identical selection to step_040/042) the
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   osculating elements at the catalogued perihelion epoch are converted
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   to a heliocentric state and integrated backward through Sun +
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   planetary-system barycentres (DE440s) to 255 AU heliocentric, twice:
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   with and without the P9 particle (REBOUND/IAS15).  At the boundary the
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   osculating periapsis direction and barycentric 1/a are recovered for
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   each run.  The paired differences
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   drot_p9  = angle between boundary periapsis directions, P9 vs no-P9
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   dk_p9    = |1/a_out(P9) - 1/a_out(noP9)|   [10^-6 AU^-1]
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   denc_p9  = minimum comet-P9 distance [AU]
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   isolate the perturbation P9 would actually inject into the catalogued
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   original-orbit reconstruction.  The observed discrepancy d_of is the
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   orig->fut perihelion-direction residual used by every Phase-3 step.
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   Tests per (model, M9) cell and pooled:
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   1. magnitude: median/max drot_p9 against the observed in-cap median
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   d_of -- the trajectory-level impulse budget;
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   2. targeting: Spearman(drot_p9, d_of) and in/out-cap Mann-Whitney on
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   drot_p9 -- a causal perturber must hit the discrepant comets;
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   3. absorption: log(d_of) ~ drot_p9 + |kick_e| + q residual cap
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   contrast -- if P9 explained the signal the residual collapses.
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   Outputs
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   results/step_b27_planet_nine_insertion.json
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062]   results/step_b27_planet_nine_insertion.csv   (per-comet P9 kicks)
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] --------------------------------------------------------------------------------
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] SCRIPT: scripts/steps/step_062_planet_nine_insertion.py
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] SCRIPT SHA256: 2dc932a7eb2fd6eb715837e3daad6a02ed0bb9b88eec1648be52ce7cb1c8e7bd
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] SCRIPT SIZE: 18805 bytes
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] ================================================================================
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] Planet Nine insertion test (REBOUND/IAS15 + DE440s)
+[2026-09-20 11:27:14 UTC] [INFO    ] [STEP 062] ================================================================================
+[2026-09-20 11:27:15 UTC] [INFO    ] [STEP 062] sample: 131 class-1 CODE comets
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] integrated 131 comets x 9 runs; 0 failed
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] bb21_ml_M0: med drot=0.00028 deg (in 0.00017 / out 0.00031) max 0.0027; shortfall x517; resid cap p=0.0063
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] bb21_ml_M90: med drot=0.00029 deg (in 0.00031 / out 0.00028) max 0.0017; shortfall x504; resid cap p=0.0012
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] bb21_ml_M180: med drot=0.00026 deg (in 0.00032 / out 0.00023) max 0.0006; shortfall x565; resid cap p=0.0266
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] bb21_ml_M270: med drot=0.00024 deg (in 0.00025 / out 0.00023) max 0.0009; shortfall x602; resid cap p=0.0012
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] bb21_med_M0: med drot=0.00031 deg (in 0.00022 / out 0.00036) max 0.0010; shortfall x466; resid cap p=0.0120
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] bb21_med_M90: med drot=0.00030 deg (in 0.00030 / out 0.00030) max 0.0006; shortfall x479; resid cap p=0.0015
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] bb21_med_M180: med drot=0.00028 deg (in 0.00025 / out 0.00029) max 0.0005; shortfall x515; resid cap p=0.0004
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] bb21_med_M270: med drot=0.00028 deg (in 0.00029 / out 0.00028) max 0.0005; shortfall x511; resid cap p=0.0039
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] pooled max: med drot=0.00047 deg, max 0.0027, shortfall x307, resid p=0.0016
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Saving data: step_b27_planet_nine_insertion.json
+[2026-09-20 11:30:10 UTC] [DEBUG   ] [STEP 062]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b27_planet_nine_insertion.json
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062]   Output: step_b27_planet_nine_insertion.json
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Saving data: step_b27_planet_nine_insertion.csv
+[2026-09-20 11:30:10 UTC] [DEBUG   ] [STEP 062]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b27_planet_nine_insertion.csv
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062]   Output: step_b27_planet_nine_insertion.csv
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] 
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] ================================================================================
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] STEP SUMMARY: step_062_planet_nine_insertion
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] ================================================================================
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Step Number: 062
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Status: SUCCESS
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Duration: 2.95m
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Log Records Emitted: 83
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Output Files: 2
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_062_planet_nine_insertion.log
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] 
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Generated 2 output file(s):
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062]   • step_b27_planet_nine_insertion.json: 12.98 KB [sha256 f716c96ad887e8c9]
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062]   • step_b27_planet_nine_insertion.csv: 80.30 KB [sha256 d4c154a252a036f2]
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] ================================================================================
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] STEP 062 COMPLETE: SUCCESS
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_062_planet_nine_insertion_provenance.json
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] 
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] ================================================================================
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] EXECUTIVE SUMMARY
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] ================================================================================
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Step: step_062_planet_nine_insertion (Step 062)
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Status: SUCCESS
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Duration: 2.95m
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Log Records: 93
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Output Files: 2
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] Key Outputs:
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062]   - step_b27_planet_nine_insertion.json (12.98 KB)
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062]   - step_b27_planet_nine_insertion.csv (80.30 KB)
+[2026-09-20 11:30:10 UTC] [INFO    ] [STEP 062] ================================================================================

@@ -1,34 +1,117 @@
-[2026-09-19 22:16:49 UTC] [INFO    ] [STEP 011] LOGGER INITIALIZED: step_011_discriminators (Step 011)
-[2026-09-19 22:16:49 UTC] [DEBUG   ] [STEP 011] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_011_discriminators.log
-[2026-09-19 22:16:49 UTC] [DEBUG   ] [STEP 011] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 22:16:49 UTC] [INFO    ] [STEP 011] ================================================================================
-[2026-09-19 22:16:49 UTC] [INFO    ] [STEP 011] Field-wall vs point-mass discriminators
-[2026-09-19 22:16:49 UTC] [INFO    ] [STEP 011] ================================================================================
-D1 om     R=0.3265 null=0.1330 p=8.70e-03
-D1 w      R=0.3476 null=0.1339 p=4.90e-03
-D1 varpi  R=0.3316 null=0.1341 p=7.35e-03
-D1 phat   R=0.3355 null=0.1363 p=5.20e-03
-D1 nhat   R=0.9440 null=0.9395 p=1.17e-02
-D2 mixture: mu=41.0 deg, kappa=2.93, f=0.43
-D3 align vs a      rho=+0.033 p=0.833
-D3 align vs q      rho=-0.002 p=0.990
-D3 align vs ad     rho=+0.029 p=0.852
-D3 align vs i      rho=+0.025 p=0.874
-D3 align vs log_a  rho=+0.033 p=0.833
-   AUC(a)=0.453  (n_aligned=26, n_not=18)
-   AUC(q)=0.590  (n_aligned=26, n_not=18)
-   AUC(ad)=0.449  (n_aligned=26, n_not=18)
-D4 resonances: best a9=1500 AU, z=0.00, global p=0.940
-D5 max gap in varpi: 37 deg between [213.9, 251.1], p=0.740
-D6 Centaurs a>30: N=6 R=0.228 p=0.733
-D6 comets q>=5: N=268 R=0.193 p=3.1e-07
-   COM: N=61 R=0.241 p=4.9e-03 -> (267.9,41.1)
-   CTc: N=22 R=0.28 p=7.5e-02 -> (64.1,10.6)
-   HTC: N=4 R=0.572 p=1.4e-01 -> (161.3,-39.8)
-   HYP: N=115 R=0.185 p=2.8e-03 -> (200.5,48.2)
-   JFc: N=65 R=0.445 p=4.2e-09 -> (219.3,1.4)
-D7 m=1 R=0.332 z=4.84 p=7.42e-03 dir=49
-D7 m=2 R=0.239 z=2.51 p=8.13e-02 dir=32
-D7 m=3 R=0.065 z=0.18 p=8.33e-01 dir=55
-
-wrote results/step_03_discriminators.json, figures/step_03_discriminators.png
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] LOGGER INITIALIZED: step_011_discriminators (Step 011)
+[2026-09-20 10:42:01 UTC] [DEBUG   ] [STEP 011] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_011_discriminators.log
+[2026-09-20 10:42:01 UTC] [DEBUG   ] [STEP 011] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:42:01 UTC] [DEBUG   ] [STEP 011] Start time (UTC): 2026-09-20T10:42:01.199880+00:00
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] 
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] STEP PURPOSE
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] --------------------------------------------------------------------------------
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   TEP / Planet-9 -- step 03: field-wall vs point-mass discriminators
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   The two candidate explanations of the extreme-TNO clustering make
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   different structural predictions for the same catalog:
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   Point mass (Planet 9): a moving perturber shepherds orbits.  It
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   couples to all orbital elements through Newtonian dynamics;
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   confinement should strengthen with semimajor axis; surviving
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   objects are expected to occupy mean-motion resonances with the
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   perturber (resonant substructure in a); non-aligned objects are
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   transitional, scattered smoothly.
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   Temporal field boundary (TEP): a spatially fixed lapse gradient.
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   Its gradient has one direction in inertial space, so the anomaly
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   concentrates in the clock-like elements (perihelion longitudes,
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   nodal phases) rather than the geometric elements; selection is by
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   *crossing*, so membership should have a sharp edge in the variable
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   that controls crossing (perihelion/aphelion geometry), not a smooth
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   gradient in a; semimajor axes should be smooth (no resonances);
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   every population that crosses the boundary shares the axis.
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   Tests implemented on the detached sample (a>150 AU, q>30 AU,
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   condition_code<=3):
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   D1  Element selectivity: conditioned-MC significance separately for
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   node om, argument w, longitude varpi, perihelion vector phat and
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   folded pole nhat.
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   D2  Clustered-mixture structure: uniform + von Mises fit to varpi;
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   clustered fraction, center, concentration kappa.
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   D3  Membership predictor: is alignment with the mean axis controlled
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   by a (shepherding expectation) or by the crossing variables
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   q, aphelion ad?  Spearman tests + logistic AUC.
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   D4  Resonant substructure: for a trial perturber axis a9 in
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   300-900 AU, does the observed a-set sit preferentially at
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   mean-motion resonances (period ratios near small-integer p/q)?
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   Statistic: mean distance of (a/a9)^{3/2} to the nearest small
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   rational, calibrated by Monte-Carlo.
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   D5  Sharp-edge test: does the transition between aligned and
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   unaligned objects occur sharply at a boundary in perihelion
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   direction space (wall), or smoothly (shepherd)?
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   D6  Cross-population: Centaurs (class CEN) -- the Neptune-coupled
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   population -- should show no axis; outer comets are checked for a
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   preferred perihelion axis for comparison with the TNO axis.
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   Outputs: results/step_03_discriminators.json,
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]   figures/supplementary/step_03_discriminators.png
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] --------------------------------------------------------------------------------
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] SCRIPT: scripts/steps/step_011_discriminators.py
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] SCRIPT SHA256: ce502a548e859b9b00834953f5b390b316a4f8a20a31b3442744dcf830c4fede
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] SCRIPT SIZE: 19060 bytes
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] Field-wall vs point-mass discriminators
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D1 om     R=0.3265 null=0.1330 p=8.70e-03
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D1 w      R=0.3476 null=0.1339 p=4.90e-03
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D1 varpi  R=0.3316 null=0.1341 p=7.35e-03
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D1 phat   R=0.3355 null=0.1363 p=5.20e-03
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D1 nhat   R=0.9440 null=0.9395 p=1.17e-02
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D2 mixture: mu=41.0 deg, kappa=2.93, f=0.43
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D3 align vs a      rho=+0.033 p=0.833
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D3 align vs q      rho=-0.002 p=0.990
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D3 align vs ad     rho=+0.029 p=0.852
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D3 align vs i      rho=+0.025 p=0.874
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011] D3 align vs log_a  rho=+0.033 p=0.833
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]    AUC(a)=0.453  (n_aligned=26, n_not=18)
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]    AUC(q)=0.590  (n_aligned=26, n_not=18)
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 011]    AUC(ad)=0.449  (n_aligned=26, n_not=18)
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011] D4 resonances: best a9=1500 AU, z=0.00, global p=0.940
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011] D5 max gap in varpi: 37 deg between [213.9, 251.1], p=0.740
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011] D6 Centaurs a>30: N=6 R=0.228 p=0.733
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011] D6 comets q>=5: N=268 R=0.193 p=3.1e-07
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011]    COM: N=61 R=0.241 p=4.9e-03 -> (267.9,41.1)
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011]    CTc: N=22 R=0.28 p=7.5e-02 -> (64.1,10.6)
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011]    HTC: N=4 R=0.572 p=1.4e-01 -> (161.3,-39.8)
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011]    HYP: N=115 R=0.185 p=2.8e-03 -> (200.5,48.2)
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011]    JFc: N=65 R=0.445 p=4.2e-09 -> (219.3,1.4)
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011] D7 m=1 R=0.332 z=4.84 p=7.42e-03 dir=49
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011] D7 m=2 R=0.239 z=2.51 p=8.13e-02 dir=32
+[2026-09-20 10:42:05 UTC] [INFO    ] [STEP 011] D7 m=3 R=0.065 z=0.18 p=8.33e-01 dir=55
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Saving data: step_03_discriminators.json
+[2026-09-20 10:42:06 UTC] [DEBUG   ] [STEP 011]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_03_discriminators.json
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011]   Output: step_03_discriminators.json
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Saving data: step_03_discriminators.png
+[2026-09-20 10:42:06 UTC] [DEBUG   ] [STEP 011]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_03_discriminators.png
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011]   Output: step_03_discriminators.png
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] 
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] STEP SUMMARY: step_011_discriminators
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Step Number: 011
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Status: SUCCESS
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Duration: 5.02s
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Log Records Emitted: 94
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Output Files: 2
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_011_discriminators.log
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] 
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Generated 2 output file(s):
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011]   • step_03_discriminators.json: 9.45 KB [sha256 263dde8d6038d2de]
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011]   • step_03_discriminators.png: 328.20 KB [sha256 0c87815a372b72bf]
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] STEP 011 COMPLETE: SUCCESS
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_011_discriminators_provenance.json
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] 
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] EXECUTIVE SUMMARY
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] ================================================================================
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Step: step_011_discriminators (Step 011)
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Status: SUCCESS
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Duration: 5.02s
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Log Records: 104
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Output Files: 2
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] Key Outputs:
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011]   - step_03_discriminators.json (9.45 KB)
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011]   - step_03_discriminators.png (328.20 KB)
+[2026-09-20 10:42:06 UTC] [INFO    ] [STEP 011] ================================================================================

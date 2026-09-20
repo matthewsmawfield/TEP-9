@@ -1,12 +1,88 @@
-[2026-09-19 20:45:13 UTC] [INFO    ] [STEP 084] LOGGER INITIALIZED: step_084_newest_cohort (Step 084)
-[2026-09-19 20:45:13 UTC] [DEBUG   ] [STEP 084] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_084_newest_cohort.log
-[2026-09-19 20:45:13 UTC] [DEBUG   ] [STEP 084] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 20:45:13 UTC] [INFO    ] [STEP 084] ================================================================================
-[2026-09-19 20:45:13 UTC] [INFO    ] [STEP 084] Newest detached-cohort audit
-[2026-09-19 20:45:13 UTC] [INFO    ] [STEP 084] ================================================================================
-[2026-09-19 20:45:14 UTC] [INFO    ] [STEP 084] detached a>150 q>30: 90
-[2026-09-19 20:45:14 UTC] [INFO    ] [STEP 084] Ammonite: varpi=270.8, theta=134.2 deg (out-cap); R 0.357->0.332 (p 0.0043->0.0075)
-[2026-09-19 20:45:14 UTC] [INFO    ] [STEP 084] newest cohort n=21: varpi-cap 2/21=0.10 vs baseline 0.12; aph-cap 2/21=0.10; mean varpi 276.3; footprint R 0.56 mean 232
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b49_newest_cohort.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b49_newest_cohort.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b49_newest_cohort.png
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] LOGGER INITIALIZED: step_084_newest_cohort (Step 084)
+[2026-09-20 11:49:13 UTC] [DEBUG   ] [STEP 084] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_084_newest_cohort.log
+[2026-09-20 11:49:13 UTC] [DEBUG   ] [STEP 084] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 11:49:13 UTC] [DEBUG   ] [STEP 084] Start time (UTC): 2026-09-20T11:49:13.206196+00:00
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] 
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] STEP PURPOSE
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] --------------------------------------------------------------------------------
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   Step 084 -- newest detached-cohort audit.
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   The SBDB snapshot now carries the 2025-2026 discovery cohort and the
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   fourth sednoid 2023 KQ14 ('Ammonite', Chen et al. 2025, Nat Astron 9,
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   1438), whose longitude of perihelion falls opposite the clustered
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   sednoids and has been widely reported as weakening the Planet Nine
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   case.  This step measures, on the real catalogue entries:
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   1. where Ammonite actually sits relative to the measured axis, and
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   what removing or adding it does to the resident-sample statistics
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   (a single-object jackknife on the cc <= 3 detached sample);
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   2. the newest detached cohort -- every a > 150, q > 30 object whose
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   designation year is 2025 or later -- scored against the registered
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   P1/P2 predictions of step_054: the in-cap fraction versus the
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   footprint-only baseline (~0.42) and the mixture prediction (0.59),
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   and the cohort mean varpi against the frozen 95 per cent interval
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   [17, 88] and the footprint-only mean (~10.5 deg);
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   3. the same footprint model as steps 014/054 (designation half-month
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   -> opposition longitude) applied to the new cohort itself, so the
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   baseline is computed on the cohort's own discovery seasons.
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   The 2025-26 cohort orbits are provisional (median condition code ~7-8,
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   single- or few-opposition arcs); the audit reports them as a
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   diagnostic read, with the secure-orbit subset (cc <= 3) broken out
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   separately.  Ammonite is already inside the primary N = 44 sample via
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   its 2005 precovery, so its jackknife is retrospective -- but it is the
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   object whose addition was claimed to dissolve the clustering, which
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   makes the with/without comparison the informative quantity.
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   Outputs
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   results/step_b49_newest_cohort.json
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   results/step_b49_newest_cohort.csv   (per-object scoring)
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084]   results/figures/supplementary/step_b49_newest_cohort.png
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] --------------------------------------------------------------------------------
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] SCRIPT: scripts/steps/step_084_newest_cohort.py
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] SCRIPT SHA256: a09a865a8ac8c2d7d47029b1a95448c2a3dfbf481eff35618df278941682c581
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] SCRIPT SIZE: 14588 bytes
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] ================================================================================
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] Newest detached-cohort audit
+[2026-09-20 11:49:13 UTC] [INFO    ] [STEP 084] ================================================================================
+[2026-09-20 11:49:17 UTC] [INFO    ] [STEP 084] detached a>150 q>30: 90
+[2026-09-20 11:49:18 UTC] [INFO    ] [STEP 084] Ammonite: varpi=270.8, theta=134.2 deg (out-cap); R 0.357->0.332 (p 0.0043->0.0075)
+[2026-09-20 11:49:18 UTC] [INFO    ] [STEP 084] newest cohort n=21: varpi-cap 2/21=0.10 vs baseline 0.12; aph-cap 2/21=0.10; mean varpi 276.3; footprint R 0.56 mean 232
+[2026-09-20 11:49:18 UTC] [INFO    ] [STEP 084] Saving data: step_b49_newest_cohort.json
+[2026-09-20 11:49:18 UTC] [DEBUG   ] [STEP 084]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b49_newest_cohort.json
+[2026-09-20 11:49:18 UTC] [INFO    ] [STEP 084]   Output: step_b49_newest_cohort.json
+[2026-09-20 11:49:18 UTC] [INFO    ] [STEP 084] Saving data: step_b49_newest_cohort.csv
+[2026-09-20 11:49:18 UTC] [DEBUG   ] [STEP 084]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b49_newest_cohort.csv
+[2026-09-20 11:49:18 UTC] [INFO    ] [STEP 084]   Output: step_b49_newest_cohort.csv
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Saving data: step_b49_newest_cohort.png
+[2026-09-20 11:49:20 UTC] [DEBUG   ] [STEP 084]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b49_newest_cohort.png
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084]   Output: step_b49_newest_cohort.png
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] 
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] ================================================================================
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] STEP SUMMARY: step_084_newest_cohort
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] ================================================================================
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Step Number: 084
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Status: SUCCESS
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Duration: 7.39s
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Log Records Emitted: 63
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Output Files: 3
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_084_newest_cohort.log
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] 
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Generated 3 output file(s):
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084]   • step_b49_newest_cohort.json: 2.27 KB [sha256 5e951db8d73c9eb6]
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084]   • step_b49_newest_cohort.csv: 2.58 KB [sha256 14990a590cfdbe0d]
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084]   • step_b49_newest_cohort.png: 216.96 KB [sha256 39a5accbd1d045f8]
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] ================================================================================
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] STEP 084 COMPLETE: SUCCESS
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_084_newest_cohort_provenance.json
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] 
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] ================================================================================
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] EXECUTIVE SUMMARY
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] ================================================================================
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Step: step_084_newest_cohort (Step 084)
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Status: SUCCESS
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Duration: 7.39s
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Log Records: 74
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Output Files: 3
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] Key Outputs:
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084]   - step_b49_newest_cohort.json (2.27 KB)
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084]   - step_b49_newest_cohort.csv (2.58 KB)
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084]   - step_b49_newest_cohort.png (216.96 KB)
+[2026-09-20 11:49:20 UTC] [INFO    ] [STEP 084] ================================================================================

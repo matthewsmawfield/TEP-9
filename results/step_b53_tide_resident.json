@@ -1,7 +1,9 @@
 {
  "method": "44 detached TNOs (a>150,q>30,cc<=3) under Sun+giants + epoch-fixed galactic tide (step_070 tensor, Strang-split kicks every 1 kyr), WHFast dt=0.5 yr, 20 Myr.  Models: real varpi (maintenance), scrambled varpi (regeneration), real varpi + BB21 median P9 (joint confinement).",
  "n_tno": 44,
- "n_incap": 25,
+ "n_incap": 26,
+ "cap_deg": 60.0,
+ "axis": "49,-17",
  "T0_JD": 2461200.5,
  "T_end_yr": 20000000.0,
  "dt_yr": 0.5,
@@ -16,39 +18,39 @@
   347.3399138611412,
   167.33991386114118
  ],
- "sig_varpi_incap_deg": 30.874694843008484,
+ "sig_varpi_incap_deg": 32.13471747013997,
  "sig_varpi_all_deg": 85.13650858254982,
  "models": {
   "tide_observed": {
    "sigma_dv_all_deg_Myr": 0.1761886853804171,
-   "sigma_dv_incap_deg_Myr": 0.21611876724372134,
+   "sigma_dv_incap_deg_Myr": 0.2122371102416334,
    "t_disp_all_Myr": 483.2121222695298,
-   "t_disp_incap_Myr": 142.85985079764262,
-   "med_dv_incap": 0.0034824644515785495,
-   "med_dv_outcap": 0.012424066522554983
+   "t_disp_incap_Myr": 151.409512848881,
+   "med_dv_incap": 0.0027546947949093703,
+   "med_dv_outcap": 0.014457962557598843
   },
   "tide_scrambled": {
    "sigma_dv_all_deg_Myr": 0.1833224533284074,
-   "sigma_dv_incap_deg_Myr": 0.19933364469255146,
+   "sigma_dv_incap_deg_Myr": 0.2012886575111927,
    "t_disp_all_Myr": 464.40851645179885,
-   "t_disp_incap_Myr": 154.88953152203203,
-   "med_dv_incap": 0.010656701606011966,
-   "med_dv_outcap": 0.0027582745901028514
+   "t_disp_incap_Myr": 159.64494903719603,
+   "med_dv_incap": 0.010298226770324947,
+   "med_dv_outcap": 0.0038170979492331567
   },
   "tide_p9_med": {
    "sigma_dv_all_deg_Myr": 0.179077112205269,
-   "sigma_dv_incap_deg_Myr": 0.19672538924215605,
+   "sigma_dv_incap_deg_Myr": 0.19343585112882541,
    "t_disp_all_Myr": 475.41814548003885,
-   "t_disp_incap_Myr": 156.9431122334889,
-   "med_dv_incap": 0.0024359299448040946,
-   "med_dv_outcap": 0.013803682162998045
+   "t_disp_incap_Myr": 166.1259651849063,
+   "med_dv_incap": 0.0017863509451491503,
+   "med_dv_outcap": 0.014368500825085222
   }
  },
  "tide_restoring": {
   "rho_abs_off_vs_toward": 0.13488372093023254,
   "p_2sided": 0.3826854443901113,
-  "med_toward_incap": 0.005208201750160701,
-  "med_toward_outcap": -0.002141684470188145,
+  "med_toward_incap": 0.004942597818836586,
+  "med_toward_outcap": -0.002411560361073861,
   "note": "spearman of |offset from nearer tide libration centre| against drift toward that centre; restoring confinement requires a significant negative rho (larger offsets restored more strongly)"
  },
  "R_varpi_t": {

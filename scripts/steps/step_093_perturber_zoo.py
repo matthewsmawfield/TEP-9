@@ -36,7 +36,7 @@ Outputs
 -------
 results/step_b58_perturber_zoo.json
 results/step_b58_perturber_zoo.csv
-results/figures/step_b58_perturber_zoo.png
+results/figures/supplementary/step_b58_perturber_zoo.png
 """
 
 import sys as _sys
@@ -269,31 +269,69 @@ logger.info(f"sample: {len(sample)} class-1 CODE comets; candidate "
             f"inserted at {D_CAND:.0f} AU, e={E_CAND}, "
             "m=7 and 17 M_earth")
 
+def _run_comet(k, ro, oo, et):
+    base = integrate(oo, et, None)
+    if base is None:
+        return None
+    po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]),
+                   math.radians(ro["i"]))
+    pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]),
+                   math.radians(fut[k]["i"]))
+    rec = dict(desig=k, theta=sep(-po, TNO_TRANSIT),
+               d_of=sep(-po, -pf))
+    for m_e in (7.0, 17.0):
+        rc, vc = cand_state(m_e)
+        rp = integrate(oo, et, (rc, vc, m_e * M_EARTH_SUN))
+        key = f"m{int(m_e)}"
+        rec[f"{key}_drot"] = sep(base["phat"], rp["phat"]) if rp else float("nan")
+        rec[f"{key}_mreq"] = (m_e * rec["d_of"] / rec[f"{key}_drot"]
+                              if np.isfinite(rec[f"{key}_drot"])
+                              and rec[f"{key}_drot"] > 0
+                              else float("nan"))
+    return rec
+
+
+def _work_comet(job):
+    k, ro, oo, et = job
+    try:
+        return _run_comet(k, ro, oo, et)
+    except Exception as e:
+        return ("__error__", k, str(e))
+
+
+from scripts.utils.parallel import default_workers as _default_workers
+
+if "--workers" in _sys.argv:
+    N_WORK = max(1, int(_sys.argv[_sys.argv.index("--workers") + 1]))
+else:
+    N_WORK = _default_workers()
+
+if N_WORK > 1 and len(sample) > 1:
+    import multiprocessing as mp
+    ctx = mp.get_context("fork") if _sys.platform != "win32" \
+        else mp.get_context("spawn")
+
+    def _init():
+        # forked children inherit the parent's BSP fd; concurrent spkezr
+        # reads through a shared descriptor corrupt each other -- reopen
+        # the kernel so each worker holds its own file handle.
+        sp.kclear()
+        sp.furnsh(str(SPK))
+
+    with ctx.Pool(min(N_WORK, len(sample)), initializer=_init) as pool:
+        recs = pool.map(_work_comet, sample)
+else:
+    recs = [_work_comet(s) for s in sample]
+
 rows = []
 failed = []
-for k, ro, oo, et in sample:
-    try:
-        base = integrate(oo, et, None)
-        if base is None:
-            failed.append(k); continue
-        po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]),
-                       math.radians(ro["i"]))
-        pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]),
-                       math.radians(fut[k]["i"]))
-        rec = dict(desig=k, theta=sep(-po, TNO_TRANSIT),
-                   d_of=sep(-po, -pf))
-        for m_e in (7.0, 17.0):
-            rc, vc = cand_state(m_e)
-            rp = integrate(oo, et, (rc, vc, m_e * M_EARTH_SUN))
-            key = f"m{int(m_e)}"
-            rec[f"{key}_drot"] = sep(base["phat"], rp["phat"]) if rp else float("nan")
-            rec[f"{key}_mreq"] = (m_e * rec["d_of"] / rec[f"{key}_drot"]
-                                  if np.isfinite(rec[f"{key}_drot"])
-                                  and rec[f"{key}_drot"] > 0
-                                  else float("nan"))
+for s, rec in zip(sample, recs):
+    if rec is None:
+        failed.append(s[0])
+    elif isinstance(rec, tuple) and rec[0] == "__error__":
+        failed.append(rec[1]); logger.warning(f"{rec[1]}: {rec[2]}")
+    else:
         rows.append(rec)
-    except Exception as e:
-        failed.append(k); logger.warning(f"{k}: {e}")
 
 logger.info(f"integrated {len(rows)} comets x 3 runs; "
             f"{len(failed)} failed")
@@ -380,9 +418,8 @@ json.dump(out, open(RESULTS / "step_b58_perturber_zoo.json", "w"),
 with open(RESULTS / "step_b58_perturber_zoo.csv", "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
     w.writeheader(); w.writerows(rows)
-print("wrote", RESULTS / "step_b58_perturber_zoo.json")
-print("wrote", RESULTS / "step_b58_perturber_zoo.csv")
-
+logger.data_save(RESULTS / "step_b58_perturber_zoo.json")
+logger.data_save(RESULTS / "step_b58_perturber_zoo.csv")
 # ------------------------------------------------------------------
 # Figure: required-mass map
 # ------------------------------------------------------------------
@@ -443,5 +480,5 @@ ax.legend(fontsize=6.5, loc="upper left")
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b58_perturber_zoo.png", dpi=150)
-print(f"wrote {FIG / 'step_b58_perturber_zoo.png'}")
+fig.savefig(FIG / "supplementary" / "step_b58_perturber_zoo.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b58_perturber_zoo.png')

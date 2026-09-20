@@ -1,23 +1,244 @@
-[2026-09-19 21:43:13 UTC] [INFO    ] [STEP 140] LOGGER INITIALIZED: step_140_astcat_stratification (Step 140)
-[2026-09-19 21:43:13 UTC] [DEBUG   ] [STEP 140] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_140_astcat_stratification.log
-[2026-09-19 21:43:13 UTC] [DEBUG   ] [STEP 140] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:43:13 UTC] [INFO    ] [STEP 140] loading dual-leg records and per-leg astcat composition
-[2026-09-19 21:43:16 UTC] [INFO    ] [STEP 140]   pre2018: 489 fitted records with composition (398 dual-leg)
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   post2017: 186 fitted records with composition (159 dual-leg)
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   pre2018: leg Gaia in=0.00 out=0.00; uniform-modern 0.00, uniform-legacy 0.90, mixed 0.03
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   post2017: leg Gaia in=0.78 out=0.85; uniform-modern 0.59, uniform-legacy 0.02, mixed 0.02
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] T2 uniform-modern-legs control (post-2017 cohort)
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   uniform_ge70 n=109 (98 dual): d_out_leg p=0.07207858347111872, ddirf p=0.2825299810360341, resid p=0.28322308284490794
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   mixed n=77 (61 dual): d_out_leg p=0.08014510059643437, ddirf p=0.0007756579426962262, resid p=6.452615034300114e-07
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] T3 uniform-legacy-legs control (pre-2018 cohort)
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   uniform_le30 n=441 (365 dual): d_in_leg p=0.0012391978118810403, ddirf p=0.14006701747685485
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   gaia_rich n=48 (33 dual): d_in_leg p=0.2788948311730717, ddirf p=0.012433759386620374
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] T4 composition vs signal association
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   pre2018: rho(ddirf, min-leg Gaia) = -0.103 (p=0.0391), n=398
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   post2017: rho(ddirf, min-leg Gaia) = -0.221 (p=0.00503), n=159
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] T5 era crossers (pre-2018 table, post-2018 perihelia)
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   20 crossers: d_out_leg p=None, median min-leg Gaia 0.17
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] T6 matched-composition audit of the mixed stratum
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140]   pooled-resid cap gap: uniform p=0.20875406084068815, mixed p=8.889566133867382e-07; contrast-regressed p=9.37e-07
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] verdict: LEGACY CARRIER SURVIVES; DISPLACED CARRIER ATTENUATED, NOT COMPOSITION-EXPLAINED: the declared-cap inbound-leg signal survives on uniform-legacy legs (p=0.00124).  The displaced-cap residual is nonsignificant on uniformly-high-Gaia legs (p=0.209) and strong on sub-threshold legs (p=8.89e-07); however the sub-threshold stratum is composition-homogeneous (only ~2% of post-2017 legs are truly stitch-mixed), in-cap members match out-of-cap on leg composition, leg contrast and perihelion epoch (T6), and the cap gap persists after regressing out absolute leg contrast.  The attenuation is therefore not explained as a catalogue-stitching systematic: it admits a composition-modulated signal amplitude or a reduction-quality dependence, while catalogue-by-sky interactions remain unresolved.
-[2026-09-19 21:43:18 UTC] [INFO    ] [STEP 140] wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b104_astcat_stratification.json
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140] LOGGER INITIALIZED: step_140_astcat_stratification (Step 140)
+[2026-09-20 12:25:29 UTC] [DEBUG   ] [STEP 140] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_140_astcat_stratification.log
+[2026-09-20 12:25:29 UTC] [DEBUG   ] [STEP 140] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:25:29 UTC] [DEBUG   ] [STEP 140] Start time (UTC): 2026-09-20T12:25:29.726206+00:00
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140] 
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140] STEP PURPOSE
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140] --------------------------------------------------------------------------------
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   Step 140: Astrometric-catalogue stratification (step_b104).
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   The era transition near 2018 coincides with the astrometric
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   reduction-catalogue switch (UCAC4-era -> Gaia-DR era reductions) in
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   the MPC observation stream.  Step 130 showed the signature
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   transition tracks perihelion epoch rather than source table, but a
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   reduction systematic applied per-observation would also track
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   perihelion epoch -- the confound was narrowed, not closed.
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   This step stratifies directly on the per-observation astcat field
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   of the cached MPC ADES observations:
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   GAIA-ERA   = {Gaia1, Gaia2, Gaia3, Gaia3E, ATLAS2}  -- ATLAS2 is
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   the Gaia-derived ATLAS-REFCAT2, same reduction epoch
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   LEGACY     = {UCAC*, USNO*, GSC*, NOMAD, PPMXL, URAT1, 2MASS,
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   ACT, UNK, ...}
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   For every dual-leg refit record the Gaia-era fraction is computed
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   per leg (inbound = pre-perihelion obs, outbound = post-perihelion
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   obs, split at the comet's tp_jd), giving each comet a leg-level
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   reduction-composition profile independent of its source table.
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   Tests
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   T1  composition summary: leg Gaia fractions by cohort (pre-2018
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   vs post-2017 refits) -- quantifies how mixed the legs are.
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   T2  uniform-modern-legs control (post-2017 cohort): the
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   displaced-cap contrast on the carrier channels (d_out_leg,
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   ddirf) restricted to comets whose BOTH legs are >=70%
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   Gaia-era reductions.  A reduction-switch artifact cannot
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   survive a leg-uniform cut -- both legs were reduced in the
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   same system.
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   T3  uniform-legacy-legs control (pre-2018 cohort): the
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   declared-cap contrast on the carrier channel (d_in_leg)
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   restricted to comets whose both legs are <=30% Gaia-era.
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   The registered anomaly on pre-Gaia reductions demonstrates
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   it predates the switch rather than being created by it.
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   T4  composition-vs-signal association: Spearman of the leg-fit
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   disagreement (ddirf) against the minimum leg Gaia fraction,
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   per cohort and cap -- under the systematic the signal
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   should scale with composition.
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   T5  era crossers: pre-2018-table comets whose perihelia fall
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   after 2018 -- does their signature track their leg
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   composition or their transit epoch?
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   Selection rules, sample sizes, null model and seeds are reported
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   in the result leaf; missing astcat counts toward LEGACY (the
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140]   pre-catalog-era default).
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140] --------------------------------------------------------------------------------
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140] SCRIPT: scripts/steps/step_140_astcat_stratification.py
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140] SCRIPT SHA256: 8e8d637ad0c4ebb8edeb87f895647100844431b9af9ab4b795f3f84334da7c0d
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140] SCRIPT SIZE: 19020 bytes
+[2026-09-20 12:25:29 UTC] [INFO    ] [STEP 140] loading dual-leg records and per-leg astcat composition
+[2026-09-20 12:25:32 UTC] [INFO    ] [STEP 140]   pre2018: 489 fitted records with composition (398 dual-leg)
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   post2017: 186 fitted records with composition (159 dual-leg)
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   pre2018: leg Gaia in=0.00 out=0.00; uniform-modern 0.00, uniform-legacy 0.90, mixed 0.03
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   post2017: leg Gaia in=0.78 out=0.85; uniform-modern 0.59, uniform-legacy 0.02, mixed 0.02
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] T2 uniform-modern-legs control (post-2017 cohort)
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   uniform_ge70 n=109 (98 dual): d_out_leg p=0.07207858347111872, ddirf p=0.2825299810360341, resid p=0.28322308284490794
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   mixed n=77 (61 dual): d_out_leg p=0.08014510059643437, ddirf p=0.0007756579426962262, resid p=6.452615034300114e-07
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] T3 uniform-legacy-legs control (pre-2018 cohort)
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   uniform_le30 n=441 (365 dual): d_in_leg p=0.0012391978118810403, ddirf p=0.14006701747685485
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   gaia_rich n=48 (33 dual): d_in_leg p=0.2788948311730717, ddirf p=0.012433759386620374
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] T4 composition vs signal association
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   pre2018: rho(ddirf, min-leg Gaia) = -0.103 (p=0.0391), n=398
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   post2017: rho(ddirf, min-leg Gaia) = -0.221 (p=0.00503), n=159
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] T5 era crossers (pre-2018 table, post-2018 perihelia)
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   20 crossers: d_out_leg p=None, median min-leg Gaia 0.17
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] T6 matched-composition audit of the mixed stratum
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   pooled-resid cap gap: uniform p=0.20875406084068815, mixed p=8.889566133867382e-07; contrast-regressed p=9.37e-07
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] verdict: LEGACY CARRIER SURVIVES; DISPLACED CARRIER ATTENUATED, NOT COMPOSITION-EXPLAINED: the declared-cap inbound-leg signal survives on uniform-legacy legs (p=0.00124).  The displaced-cap residual is nonsignificant on uniformly-high-Gaia legs (p=0.209) and strong on sub-threshold legs (p=8.89e-07); however the sub-threshold stratum is composition-homogeneous (only ~2% of post-2017 legs are truly stitch-mixed), in-cap members match out-of-cap on leg composition, leg contrast and perihelion epoch (T6), and the cap gap persists after regressing out absolute leg contrast.  The attenuation is therefore not explained as a catalogue-stitching systematic: it admits a composition-modulated signal amplitude or a reduction-quality dependence, while catalogue-by-sky interactions remain unresolved.
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Saving data: step_b104_astcat_stratification.json
+[2026-09-20 12:25:34 UTC] [DEBUG   ] [STEP 140]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b104_astcat_stratification.json
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   Output: step_b104_astcat_stratification.json
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]  "T1": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   "pre2018": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n": 489,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "gaia_in_median": 0.0,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "gaia_out_median": 0.0,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "frac_both_ge70": 0.002044989775051125,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "frac_both_le30": 0.901840490797546,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "frac_mixed": 0.03067484662576687,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n_obs_in": 238287,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n_obs_out": 176558
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   "post2017": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n": 186,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "gaia_in_median": 0.7820233902664759,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "gaia_out_median": 0.8465575112788478,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "frac_both_ge70": 0.5860215053763441,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "frac_both_le30": 0.016129032258064516,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "frac_mixed": 0.016129032258064516,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n_obs_in": 118116,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n_obs_out": 94673
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   }
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]  },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]  "T2": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   "uniform_ge70": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n": 109,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_d_out_leg": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 26,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 72,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.10367756848124862,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.07959267364548969,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.07207858347111872
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_d_in_leg": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 26,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 72,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.09116750759325772,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.10132008673963482,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.8378661954272761
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_ddirf": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 26,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 72,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.11305410256568763,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.08889436902391444,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.2825299810360341
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "resid_field": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 30,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 79,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.09410370076520536,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.025161248346712073,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.28322308284490794
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    }
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   "mixed": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n": 77,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_d_out_leg": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 21,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 40,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.11811020164220219,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.09699846791680379,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.08014510059643437
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_d_in_leg": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 21,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 40,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.14497821302537217,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.1002766884881578,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.00876072067114082
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_ddirf": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 21,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 40,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.25807280882438977,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.11099345574667296,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.0007756579426962262
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "resid_field": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 27,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 50,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.25330847376684396,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": -0.1324318852062411,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 6.452615034300114e-07
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    }
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   }
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]  },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]  "T3": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   "uniform_le30": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n": 441,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n_dual": 365,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_d_in_leg": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 96,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 269,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.10777066917869128,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.08142501818706939,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.0012391978118810403
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_d_out_leg": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 96,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 269,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.09543996014591904,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.09978194995847983,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.5911197902739853
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_ddirf": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 96,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 269,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.148364688550931,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.12690593470590908,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.14006701747685485
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    }
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   "gaia_rich": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n": 48,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "n_dual": 33,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_d_in_leg": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 9,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 24,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.1080794548379425,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.08161651622720931,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.2788948311730717
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_d_out_leg": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 9,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 24,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.12329699583393985,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.0807275803410735,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.05516709346222098
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    "our_ddirf": {
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_in": 9,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "n_out": 24,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_in": 0.19110700034111283,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "median_out": 0.06085293544139826,
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]     "p": 0.012433759386620374
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]    }
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   }
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]  },
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]  "verdict": "LEGACY CARRIER SURVIVES; DISPLACED CARRIER ATTENUATED, NOT COMPOSITION-EXPLAINED: the declared-cap inbound-leg signal survives on uniform-legacy legs (p=0.00124).  The displaced-cap residual is nonsignificant on uniformly-high-Gaia legs (p=0.209) and strong on sub-threshold legs (p=8.89e-07); however the sub-threshold stratum is composition-homogeneous (only ~2% of post-2017 legs are truly stitch-mixed), in-cap members match out-of-cap on leg composition, leg contrast and perihelion epoch (T6), and the cap gap persists after regressing out absolute leg contrast.  The attenuation is therefore not explained as a catalogue-stitching systematic: it admits a composition-modulated signal amplitude or a reduction-quality dependence, while catalogue-by-sky interactions remain unresolved."
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] }
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] 
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] ================================================================================
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] STEP SUMMARY: step_140_astcat_stratification
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] ================================================================================
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Step Number: 140
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Status: SUCCESS
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Duration: 4.40s
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Log Records Emitted: 223
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Output Files: 1
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_140_astcat_stratification.log
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] 
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Generated 1 output file(s):
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   • step_b104_astcat_stratification.json: 6.29 KB [sha256 6d29ad5b268b88bf]
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] ================================================================================
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] STEP 140 COMPLETE: SUCCESS
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_140_astcat_stratification_provenance.json
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] 
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] ================================================================================
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] EXECUTIVE SUMMARY
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] ================================================================================
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Step: step_140_astcat_stratification (Step 140)
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Status: SUCCESS
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Duration: 4.40s
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Log Records: 232
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Output Files: 1
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] Key Outputs:
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140]   - step_b104_astcat_stratification.json (6.29 KB)
+[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 140] ================================================================================

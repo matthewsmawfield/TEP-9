@@ -24,7 +24,7 @@ Tests (CODE-only matched, N=54):
   C3  same two tests on the Warsaw spike sample for cross-checking
 
 Outputs: results/step_b24_axis_consistency.json,
-         figures/step_b24_axis_consistency.png
+         figures/supplementary/step_b24_axis_consistency.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -205,6 +205,7 @@ def main():
     orows = parse_warsaw(DATA_RAW / "warsaw" / "warsaw_tablec.dat")
     frows = parse_warsaw(DATA_RAW / "warsaw" / "warsaw_tabled.dat")
     PREF = {"a": 0, "h": 0, "e": 1, "b": 2}
+    PREF_FUT = {"i": 0, "l": 0, "j": 2, "k": 2}
     o_d, f_d = {}, {}
     for r in orows:
         k = r["desig"]
@@ -212,7 +213,7 @@ def main():
             o_d[k] = r
     for r in frows:
         k = r["desig"]
-        if k not in f_d or PREF.get(r["com"], 9) < PREF.get(f_d[k]["com"], 9):
+        if k not in f_d or PREF_FUT.get(r["com"], 9) < PREF_FUT.get(f_d[k]["com"], 9):
             f_d[k] = r
     wrows = []
     for k, ro in o_d.items():
@@ -271,10 +272,10 @@ def main():
     ax.legend(handles=[Patch(color=c, label=g)
                        for g, c in cols.items()], fontsize=7)
     fig.tight_layout()
-    fig.savefig(RESULTS / "figures" / "step_b24_axis_consistency.png",
-                dpi=150)
-    print("wrote results/step_b24_axis_consistency.json, "
-          "figures/step_b24_axis_consistency.png")
+    fig.savefig(RESULTS / "figures" / "supplementary" / "step_b24_axis_consistency.png",
+                dpi=300)
+    logger.data_save(RESULTS / "step_b24_axis_consistency.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b24_axis_consistency.png")
 
 
 if __name__ == "__main__":

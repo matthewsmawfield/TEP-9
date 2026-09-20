@@ -39,7 +39,7 @@ Statistics: conditioned null as in step 02 (fix a,e,i; om,w
 uniform; 5000 MC per window for the scan, 20000 at key points).
 
 Outputs: results/step_b2_radial_profile.json,
-         figures/step_b2_radial_profile.png
+         figures/supplementary/step_b2_radial_profile.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -331,9 +331,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b2_radial_profile.png", dpi=150)
-    print("wrote results/step_b2_radial_profile.json, "
-          "figures/step_b2_radial_profile.png")
+    fig.savefig(FIG / "supplementary" / "step_b2_radial_profile.png", dpi=300)
+    logger.data_save(RESULTS / "step_b2_radial_profile.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b2_radial_profile.png")
 
 
 if __name__ == "__main__":

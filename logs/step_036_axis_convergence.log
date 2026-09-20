@@ -1,94 +1,141 @@
-[2026-09-19 21:26:01 UTC] [INFO    ] [STEP 036] LOGGER INITIALIZED: step_036_axis_convergence (Step 036)
-[2026-09-19 21:26:01 UTC] [DEBUG   ] [STEP 036] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_036_axis_convergence.log
-[2026-09-19 21:26:01 UTC] [DEBUG   ] [STEP 036] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:26:01 UTC] [INFO    ] [STEP 036] ================================================================================
-[2026-09-19 21:26:01 UTC] [INFO    ] [STEP 036] Independent axis recovery
-[2026-09-19 21:26:01 UTC] [INFO    ] [STEP 036] ================================================================================
-{
- "n_code_only": 54,
- "recovered_axis": {
-  "lam": 10.0,
-  "beta": -20.0,
-  "p": 0.0024594669684765255,
-  "sep_from_tno": 24.022220227433344,
-  "top10": [
-   {
-    "lam": 10.0,
-    "beta": -20.0,
-    "p": 0.0024594669684765255
-   },
-   {
-    "lam": 20.0,
-    "beta": -20.0,
-    "p": 0.004795910085035517
-   },
-   {
-    "lam": 10.0,
-    "beta": -10.0,
-    "p": 0.005324961824809417
-   },
-   {
-    "lam": 20.0,
-    "beta": 0.0,
-    "p": 0.005362206997917242
-   },
-   {
-    "lam": 20.0,
-    "beta": -10.0,
-    "p": 0.005608464505622025
-   },
-   {
-    "lam": 30.0,
-    "beta": -20.0,
-    "p": 0.006177262014581712
-   },
-   {
-    "lam": 30.0,
-    "beta": 10.0,
-    "p": 0.00799653275394653
-   },
-   {
-    "lam": 50.0,
-    "beta": -50.0,
-    "p": 0.008765009230837494
-   },
-   {
-    "lam": 20.0,
-    "beta": -30.0,
-    "p": 0.010210889482210534
-   },
-   {
-    "lam": 40.0,
-    "beta": -10.0,
-    "p": 0.011567871652231155
-   }
-  ]
- },
- "loo": {
-  "min": 0.0012875103863031875,
-  "max": 0.005767289306612099,
-  "weakest": [
-   {
-    "dropped": "C/1959 X1",
-    "p": 0.005767289306612099
-   },
-   {
-    "dropped": "C/1937 C1",
-    "p": 0.005179126867591146
-   },
-   {
-    "dropped": "C/2018 C2",
-    "p": 0.005179126867591146
-   },
-   {
-    "dropped": "C/1948 E1",
-    "p": 0.004905565290290865
-   },
-   {
-    "dropped": "C/2014 W6",
-    "p": 0.004905565290290865
-   }
-  ]
- }
-}
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_13_axis_convergence.json
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] LOGGER INITIALIZED: step_036_axis_convergence (Step 036)
+[2026-09-20 10:45:32 UTC] [DEBUG   ] [STEP 036] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_036_axis_convergence.log
+[2026-09-20 10:45:32 UTC] [DEBUG   ] [STEP 036] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:45:32 UTC] [DEBUG   ] [STEP 036] Start time (UTC): 2026-09-20T10:45:32.726708+00:00
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] 
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] STEP PURPOSE
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] --------------------------------------------------------------------------------
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036]   step_13: axis convergence and influence audit on the CODE-only sample.
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036]   Does the independent comet sample recover the TNO axis on its own?
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036]   A free sky scan finds the direction of maximum cap-contrast in d_of;
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036]   if the anomaly is a real spatial structure, the recovered axis should
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036]   land on the pre-declared TNO direction -- cross-population coherence
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036]   measured without ever fitting to it.  Leave-one-out checks that no
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036]   single comet drives the result.
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] --------------------------------------------------------------------------------
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] SCRIPT: scripts/steps/step_036_axis_convergence.py
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] SCRIPT SHA256: 0393706f4f81bf90cf2eac1eec48fb8dff5061f19ba8c2ac0b2c920e3b17be27
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] SCRIPT SIZE: 4557 bytes
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] ================================================================================
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] Independent axis recovery
+[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 036] ================================================================================
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] RESULT PAYLOAD:
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]  "n_code_only": 54,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]  "recovered_axis": {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   "lam": 10.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   "beta": -20.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   "p": 0.0024594669684765255,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   "sep_from_tno": 24.022220227433344,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   "top10": [
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "lam": 10.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "beta": -20.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.0024594669684765255
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "lam": 20.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "beta": -20.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.004795910085035517
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "lam": 10.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "beta": -10.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.005324961824809417
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "lam": 20.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "beta": 0.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.005362206997917242
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "lam": 20.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "beta": -10.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.005608464505622025
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "lam": 30.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "beta": -20.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.006177262014581712
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "lam": 30.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "beta": 10.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.00799653275394653
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "lam": 50.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "beta": -50.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.008765009230837494
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "lam": 20.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "beta": -30.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.010210889482210534
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "lam": 40.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "beta": -10.0,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.011567871652231155
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    }
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   ]
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]  },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]  "loo": {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   "min": 0.0012875103863031875,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   "max": 0.005767289306612099,
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   "weakest": [
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "dropped": "C/1959 X1",
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.005767289306612099
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "dropped": "C/1937 C1",
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.005179126867591146
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "dropped": "C/2018 C2",
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.005179126867591146
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "dropped": "C/1948 E1",
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.004905565290290865
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    },
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    {
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "dropped": "C/2014 W6",
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]     "p": 0.004905565290290865
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]    }
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   ]
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]  }
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] }
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Saving data: step_13_axis_convergence.json
+[2026-09-20 10:45:33 UTC] [DEBUG   ] [STEP 036]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_13_axis_convergence.json
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   Output: step_13_axis_convergence.json
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] 
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] ================================================================================
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] STEP SUMMARY: step_036_axis_convergence
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] ================================================================================
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Step Number: 036
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Status: SUCCESS
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Duration: 0.70s
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Log Records Emitted: 120
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Output Files: 1
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_036_axis_convergence.log
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] 
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Generated 1 output file(s):
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   • step_13_axis_convergence.json: 1.34 KB [sha256 c236a102d96a672e]
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] ================================================================================
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] STEP 036 COMPLETE: SUCCESS
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_036_axis_convergence_provenance.json
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] 
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] ================================================================================
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] EXECUTIVE SUMMARY
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] ================================================================================
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Step: step_036_axis_convergence (Step 036)
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Status: SUCCESS
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Duration: 0.70s
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Log Records: 129
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Output Files: 1
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] Key Outputs:
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036]   - step_13_axis_convergence.json (1.34 KB)
+[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 036] ================================================================================

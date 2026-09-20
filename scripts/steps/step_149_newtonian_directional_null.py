@@ -40,7 +40,9 @@ Channels:
 
   T6  arrival-geometry audit: in-cap fraction vs the cap solid-angle
       fraction, median theta -- whether the arrival directions alone
-      predispose a cap result.
+      predispose a cap result.  Separations are recomputed from the
+      arrival unit vectors against both declared axes (the b28 `theta`
+      column is the comet-axis separation and is not reused here).
   T7  conventional-mediator audit: Spearman of theta against |daa_sim|,
       denc and drot_sim -- which encounter property carries the
       directional structure under standard dynamics.
@@ -48,7 +50,7 @@ Channels:
 Inputs:  results/step_b28_bidirectional_rotation.csv,
          data/raw/code/code_original.html
 Outputs: results/step_b113_newtonian_null.json / .csv
-         results/figures/step_b113_newtonian_null.png
+         results/figures/supplementary/step_b113_newtonian_null.png
 """
 
 import sys as _sys
@@ -185,6 +187,13 @@ def channel_pipeline(U, v, label):
         "sep_best_comet": float(sep(best["ax"], CAX)) if best["ax"] is not None else None,
         "look_elsewhere_frac": n_beat / n_eval if n_eval else None}
 
+    # observed best axis on the SAME coarse grid the T5 null scans
+    # (identical instrument for the coincidence comparison)
+    ax_c, z_c = coarse_best(U, v)
+    out["T3_coarse"] = {"best_lb": list(lb(ax_c)), "z": z_c,
+                        "sep_best_tno": float(sep(ax_c, TNO)),
+                        "sep_best_comet": float(sep(ax_c, CAX))}
+
     # T4 label-swap cap null (B2 statistic on the TNO cap)
     inc = th_tno <= CAP
     obs = float(np.median(v[inc]) - np.median(v[~inc]))
@@ -260,9 +269,11 @@ for stag, sub in subsets.items():
     for ch in CHANNELS:
         v = np.array([r[ch] for r in sub])
         out, Uo, vo, th = channel_pipeline(U, v, f"{stag}.{ch}")
-        # T5 only where the channel produces a real best axis
-        if out["T3_scan"]["sep_best_tno"] is not None:
-            t5 = axis_coincidence(Uo, vo, out["T3_scan"]["sep_best_tno"])
+        # T5 only where the channel produces a real best axis; the
+        # observed separation is taken on the same coarse grid the
+        # null scans, so instrument resolution is identical
+        if out["T3_coarse"]["sep_best_tno"] is not None:
+            t5 = axis_coincidence(Uo, vo, out["T3_coarse"]["sep_best_tno"])
             perm_store[f"{stag}.{ch}"] = t5
             out["T5_axis_coincidence"] = {k: v2 for k, v2 in t5.items()
                                           if k not in ("seps", "zmax")}
@@ -275,28 +286,37 @@ for stag, sub in subsets.items():
             f"sep_TNO={t3['sep_best_tno']:.1f} | "
             f"coinc p={out.get('T5_axis_coincidence', {}).get('p_sep_le_obs')}")
 
-# T6 arrival-geometry audit
+# T6 arrival-geometry audit -- arrival-direction separations are
+# recomputed from U against BOTH declared axes (the b28 `theta` column
+# is the separation from the comet axis, not the resident axis)
 for stag, sub in subsets.items():
-    th = np.array([r["theta"] for r in sub])
-    res[stag]["T6_arrival_geometry"] = {
-        "n": len(sub), "n_in": int((th <= CAP).sum()),
-        "frac_in": float(np.mean(th <= CAP)),
-        "cap_sky_frac": CAP_FRAC,
-        "p_binom": float(binomtest(int((th <= CAP).sum()), len(sub),
-                                   CAP_FRAC).pvalue),
-        "med_theta": float(np.median(th))}
-    logger.info(f"{stag} arrival geometry: {int((th<=CAP).sum())}/{len(sub)} "
-                f"in cap (sky frac {CAP_FRAC:.2f}), "
-                f"med theta={np.median(th):.1f}")
+    U = np.array([r["u"] for r in sub])
+    t6 = {"n": len(sub), "cap_sky_frac": CAP_FRAC}
+    for tag, ax in (("tno", TNO), ("comet_axis", CAX)):
+        th = thetas(U, ax)
+        n_in = int((th <= CAP).sum())
+        t6[tag] = {
+            "n_in": n_in,
+            "frac_in": float(np.mean(th <= CAP)),
+            "p_binom": float(binomtest(n_in, len(sub), CAP_FRAC,
+                                       alternative="greater").pvalue),
+            "med_theta": float(np.median(th))}
+        logger.info(f"{stag} arrival geometry vs {tag} axis: {n_in}/{len(sub)} "
+                    f"in cap (sky frac {CAP_FRAC:.2f}), "
+                    f"med theta={np.median(th):.1f}")
+    res[stag]["T6_arrival_geometry"] = t6
 
-# T7 conventional mediators (theta vs encounter properties)
+# T7 conventional mediators (theta vs encounter properties) -- reported
+# against both declared axes for consistency with T6
 for stag, sub in subsets.items():
-    th = np.array([r["theta"] for r in sub])
+    U = np.array([r["u"] for r in sub])
     med = {}
-    for key in ("kick", "denc", "sim"):
-        vv = np.array([r[key] for r in sub])
-        rho, p = spearmanr(th, vv)
-        med[key] = {"rho": float(rho), "p": float(p)}
+    for tag, ax in (("tno", TNO), ("comet_axis", CAX)):
+        th = thetas(U, ax)
+        for key in ("kick", "denc", "sim"):
+            vv = np.array([r[key] for r in sub])
+            rho, p = spearmanr(th, vv)
+            med[f"{key}_{tag}"] = {"rho": float(rho), "p": float(p)}
     res[stag]["T7_mediators"] = med
     logger.info(f"{stag} mediators vs theta: " +
                 " ".join(f"{k} rho={m['rho']:+.3f} (p={m['p']:.3g})"
@@ -325,12 +345,14 @@ res["finding"] = (
 csv_out = RESULTS / "step_b113_newtonian_null.csv"
 with open(csv_out, "w", newline="") as f:
     w = csv.writer(f)
-    w.writerow(["desig", "cls", "q", "i", "l_arr", "b_arr", "theta",
+    w.writerow(["desig", "cls", "q", "i", "l_arr", "b_arr",
+                "theta_tno", "theta_cax",
                 "drot_cat", "drot_sim", "res", "kick", "denc", "rpk"])
     for r in rows:
         l_, b_ = lb(r["u"])
         w.writerow([r["desig"], r["cls"], r["q"], r["i"],
-                    f"{l_:.4f}", f"{b_:.4f}", f"{r['theta']:.4f}",
+                    f"{l_:.4f}", f"{b_:.4f}",
+                    f"{sep(r['u'], TNO):.4f}", f"{r['theta']:.4f}",
                     f"{r['cat']:.6f}", f"{r['sim']:.6f}", f"{r['res']:.6f}",
                     f"{r['kick']:.4f}", f"{r['denc']:.4f}",
                     f"{r['rpk']:.4f}" if np.isfinite(r["rpk"]) else ""])
@@ -350,7 +372,7 @@ sub = subsets["matched"]
 okfig = np.array([np.isfinite(r["u"]).all() for r in sub])
 U = np.array([r["u"] for r in sub])[okfig]
 vs = np.array([r["sim"] for r in sub])[okfig]
-th = np.array([r["theta"] for r in sub])[okfig]
+th = thetas(U, TNO)
 inc = th <= CAP
 
 fig, axes = plt.subplots(1, 3, figsize=(15, 4.6))
@@ -360,7 +382,7 @@ ax.scatter(th[~inc], vs[~inc], s=22, c="0.55", alpha=0.75,
 ax.scatter(th[inc], vs[inc], s=26, c="crimson", alpha=0.85,
            label=f"inside cap (n={int(inc.sum())})")
 ax.axvline(CAP, color="k", ls=":", lw=1)
-ax.set_xlabel(r"arrival-direction separation from TNO axis, $\theta$ (deg)")
+ax.set_xlabel(r"arrival-direction separation from resident axis, $\theta$ (deg)")
 ax.set_ylabel(r"modelled rotation $d_{\rm sim}$ (deg)")
 ax.set_title("Newtonian rotation field vs axis (matched)")
 ax.legend(fontsize=8)
@@ -388,12 +410,12 @@ ax.legend(fontsize=8, loc="upper right")
 fig.colorbar(sc, ax=ax, label=r"$-\log_{10} p$")
 
 ax = axes[2]
-key = "matched.sim"
+key = "all_c1.sim"
 if key in perm_store:
     seps_p = perm_store[key]["seps"]
     ax.hist(seps_p, bins=40, color="0.6", alpha=0.8,
             label="direction-unlinked null")
-    obs = res["matched"]["sim"]["T3_scan"]["sep_best_tno"]
+    obs = res["all_c1"]["sim"]["T3_coarse"]["sep_best_tno"]
     ax.axvline(obs, color="crimson", lw=1.6,
                label=f"model best-axis sep = {obs:.1f} deg")
     ax.set_xlabel("best-axis separation from TNO axis (deg)")
@@ -403,8 +425,8 @@ if key in perm_store:
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b113_newtonian_null.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b113_newtonian_null.png", dpi=300)
 
-print("wrote", json_out)
-print("wrote", csv_out)
-print("wrote", FIG / "step_b113_newtonian_null.png")
+logger.data_save(json_out)
+logger.data_save(csv_out)
+logger.data_save(FIG / "supplementary" / "step_b113_newtonian_null.png")

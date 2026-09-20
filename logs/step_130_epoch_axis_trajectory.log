@@ -1,25 +1,123 @@
-[2026-09-19 21:40:44 UTC] [INFO    ] [STEP 130] LOGGER INITIALIZED: step_130_epoch_axis_trajectory (Step 130)
-[2026-09-19 21:40:44 UTC] [DEBUG   ] [STEP 130] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_130_epoch_axis_trajectory.log
-[2026-09-19 21:40:44 UTC] [DEBUG   ] [STEP 130] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:40:44 UTC] [INFO    ] [STEP 130] ================================================================================
-[2026-09-19 21:40:44 UTC] [INFO    ] [STEP 130] Epoch-resolved axis trajectory: drift vs switch
-[2026-09-19 21:40:44 UTC] [INFO    ] [STEP 130] ================================================================================
-[2026-09-19 21:40:44 UTC] [INFO    ] [STEP 130] pooled dual-leg comets: 557 -> 557 with all channels; eras: 398 pre-2018, 159 post-2017
-[2026-09-19 21:40:44 UTC] [INFO    ] [STEP 130]   1950-1990 n=77: decl 0.2079/0.1396 p=0.0201 | disp 0.1705/0.1308 p=0.0568
-[2026-09-19 21:40:44 UTC] [INFO    ] [STEP 130]   1990-2005 n=97: decl 0.0826/0.1457 p=0.9913 | disp 0.0818/0.1483 p=0.9947
-[2026-09-19 21:40:44 UTC] [INFO    ] [STEP 130]   2005-2014 n=130: decl 0.1649/0.1160 p=0.1110 | disp 0.1294/0.1225 p=0.5308
-[2026-09-19 21:40:44 UTC] [INFO    ] [STEP 130]   2014-2018 n=74: decl 0.2115/0.0784 p=0.0188 | disp 0.1193/0.1237 p=0.4180
-[2026-09-19 21:40:44 UTC] [INFO    ] [STEP 130]   2018-2031 n=179: decl 0.0907/0.1192 p=0.9271 | disp 0.1503/0.0982 p=0.0017
-[2026-09-19 21:40:50 UTC] [INFO    ] [STEP 130]   T2 arc argmax per bin: ['0.00', '-0.50', '0.00', '-0.30', '0.85'] rho=0.410 perm p=0.2375
-[2026-09-19 21:42:43 UTC] [INFO    ] [STEP 130]   T3 fixed decl +0.0083 disp +0.0208 | switch +0.0341 (Ts=2018.0) drift +0.0377 (Tc=2020.0,W=10.0) adv +0.0169 p=0.0220
-[2026-09-19 21:42:44 UTC] [INFO    ] [STEP 130]   T4 declared-cap: n=146 rho=-0.207 perm p=0.0200
-[2026-09-19 21:42:44 UTC] [INFO    ] [STEP 130]   T4 displaced-cap: n=179 rho=+0.004 perm p=0.9661
-[2026-09-19 21:42:44 UTC] [INFO    ] [STEP 130]   T6 era crossers (pre-2018 table, tp>2018): n=20 declared p=0.0741 displaced p=0.0484
-[2026-09-19 21:42:44 UTC] [INFO    ] [STEP 130] VERDICT: TRANSITION-LOCALIZED: the epoch-ordering of the pooled record is real, but the best drift ramp has reached the scan's resolution floor -- the transition is fast (<=10-20 yr about the era boundary), degenerate with a sharp switch; no slow sweep is resolved
-[2026-09-19 21:42:45 UTC] [INFO    ] [STEP 130] Saving data: step_b94_epoch_trajectory.json
-[2026-09-19 21:42:45 UTC] [DEBUG   ] [STEP 130]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b94_epoch_trajectory.json
-[2026-09-19 21:42:45 UTC] [INFO    ] [STEP 130] Saving data: step_b94_epoch_trajectory.csv
-[2026-09-19 21:42:45 UTC] [DEBUG   ] [STEP 130]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b94_epoch_trajectory.csv
-[2026-09-19 21:42:45 UTC] [INFO    ] [STEP 130] Saving data: step_b94_epoch_trajectory.png
-[2026-09-19 21:42:45 UTC] [DEBUG   ] [STEP 130]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b94_epoch_trajectory.png
-[2026-09-19 21:42:45 UTC] [INFO    ] [STEP 130] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_130_epoch_axis_trajectory_provenance.json
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] LOGGER INITIALIZED: step_130_epoch_axis_trajectory (Step 130)
+[2026-09-20 12:23:53 UTC] [DEBUG   ] [STEP 130] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_130_epoch_axis_trajectory.log
+[2026-09-20 12:23:53 UTC] [DEBUG   ] [STEP 130] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:23:53 UTC] [DEBUG   ] [STEP 130] Start time (UTC): 2026-09-20T12:23:53.609251+00:00
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] 
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] STEP PURPOSE
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] --------------------------------------------------------------------------------
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   Step 130 -- Epoch-resolved axis trajectory on the pooled
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   independent dual-leg record.
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   Steps 127-128 established that both eras carry lapse-slip anomalies
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   in the raw astrometric record on zero-Warsaw-lineage fits -- but at
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   different sky positions and on different legs: the pre-2018 record
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   carries the registered inbound-leg anomaly at the declared axis
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   (34,-13), while the post-2017 record carries a same-class anomaly at
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   the displaced axis (120,-40) on the outbound leg.  The boundary
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   channel's registered position is therefore epoch-dependent, and two
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   readings remain:
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   * dynamic-field -- the boundary structure moved: the anomalous
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   direction drifts continuously from the declared toward the
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   displaced orientation as transit epoch advances;
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   * era-artifact / sharp switch -- two unrelated era-locked
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   structures; no continuous trajectory connects them.
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   This step discriminates on the pooled independent record: every
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   dual-leg comet from the step-127 (pre-2018) and step-128 (post-2017)
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   refits, each carrying an independently fitted leg-disagreement
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   carrier (our_ddirf), a leg-rotation channel (our_drot), the
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   single-fit inbound-leg deviation (reconstructed per-comet as
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   sep(boundary-leg aphelion, osculating periapsis)), and the
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   boundary-leg aphelion direction for cap classification at any axis.
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   Perihelion year is used as the epoch proxy; the boundary-transit
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   epochs bracket perihelion (inbound tens of years before, outbound
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   tens of years after) and co-move with it on the ~75-year baseline
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   spanned here.
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   Registered tests
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   T1  per-bin contrasts: fixed epoch bins; in-cap vs out-of-cap
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   Mann-Whitney on ddirf at the declared and displaced axes.
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   T2  arc-trajectory scan: per bin, the cap-contrast gap profiled
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   along the declared->displaced great-circle arc (s in
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   [-0.5, 1.5]); the argmax position per bin is the epoch's
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   measured axis position on the arc.  Trajectory statistic:
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   Spearman(bin epoch, s_argmax).  Null: epoch-label permutation
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   re-deriving the full trajectory (500).
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   T3  drift-vs-switch model comparison on the pooled cohort: the
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   cap contrast under (a) the fixed declared axis, (b) the fixed
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   displaced axis, (c) the best switch model -- declared cap
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   before T_s, displaced cap after -- and (d) the best drift
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   model -- a slerp-interpolated axis sweeping declared->
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   displaced over a ramp (T_c, W).  The switch/drift advantage
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   over the best fixed axis is evaluated against an epoch-label
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   permutation null (500); fixed axes are unaffected by the
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   permutation, so the null prices exactly the epoch-ordering
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   component.
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   T4  epoch interaction within caps: Spearman(yr, ddirf) among
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   declared-cap and displaced-cap members separately, with
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   label-shuffle nulls -- does each axis's anomaly strengthen or
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   decay across the baseline.
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   T5  audit: cohort composition, commensurability, cap overlaps.
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   Outputs
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   results/step_b94_epoch_trajectory.json
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   results/step_b94_epoch_trajectory.csv
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   results/figures/supplementary/step_b94_epoch_trajectory.png
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] --------------------------------------------------------------------------------
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] SCRIPT: scripts/steps/step_130_epoch_axis_trajectory.py
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] SCRIPT SHA256: 30efb3e24d794af2530c39a7193b73b2a955b04eba2d41aadc4ad930f818704e
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] SCRIPT SIZE: 19956 bytes
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] ================================================================================
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] Epoch-resolved axis trajectory: drift vs switch
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] ================================================================================
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130] pooled dual-leg comets: 557 -> 557 with all channels; eras: 398 pre-2018, 159 post-2017
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   1950-1990 n=77: decl 0.2079/0.1396 p=0.0201 | disp 0.1705/0.1308 p=0.0568
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   1990-2005 n=97: decl 0.0826/0.1457 p=0.9913 | disp 0.0818/0.1483 p=0.9947
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   2005-2014 n=130: decl 0.1649/0.1160 p=0.1110 | disp 0.1294/0.1225 p=0.5308
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   2014-2018 n=74: decl 0.2115/0.0784 p=0.0188 | disp 0.1193/0.1237 p=0.4180
+[2026-09-20 12:23:53 UTC] [INFO    ] [STEP 130]   2018-2031 n=179: decl 0.0907/0.1192 p=0.9271 | disp 0.1503/0.0982 p=0.0017
+[2026-09-20 12:23:55 UTC] [INFO    ] [STEP 130]   T2 arc argmax per bin: ['0.00', '-0.50', '0.00', '-0.30', '0.85'] rho=0.410 perm p=0.2375
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   T3 fixed decl +0.0083 disp +0.0208 | switch +0.0341 (Ts=2018.0) drift +0.0377 (Tc=2020.0,W=10.0) adv +0.0169 p=0.0220
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   T4 declared-cap: n=146 rho=-0.207 perm p=0.0200
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   T4 displaced-cap: n=179 rho=+0.004 perm p=0.9661
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   T6 era crossers (pre-2018 table, tp>2018): n=20 declared p=0.0741 displaced p=0.0484
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] VERDICT: TRANSITION-LOCALIZED: the epoch-ordering of the pooled record is real, but the best drift ramp has reached the scan's resolution floor -- the transition is fast (<=10-20 yr about the era boundary), degenerate with a sharp switch; no slow sweep is resolved
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Saving data: step_b94_epoch_trajectory.json
+[2026-09-20 12:25:06 UTC] [DEBUG   ] [STEP 130]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b94_epoch_trajectory.json
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   Output: step_b94_epoch_trajectory.json
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Saving data: step_b94_epoch_trajectory.csv
+[2026-09-20 12:25:06 UTC] [DEBUG   ] [STEP 130]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b94_epoch_trajectory.csv
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   Output: step_b94_epoch_trajectory.csv
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Saving data: step_b94_epoch_trajectory.png
+[2026-09-20 12:25:06 UTC] [DEBUG   ] [STEP 130]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b94_epoch_trajectory.png
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   Output: step_b94_epoch_trajectory.png
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_130_epoch_axis_trajectory_provenance.json
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] 
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] ================================================================================
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] STEP SUMMARY: step_130_epoch_axis_trajectory
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] ================================================================================
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Step Number: 130
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Status: SUCCESS
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Duration: 1.22m
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Log Records Emitted: 98
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Output Files: 3
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_130_epoch_axis_trajectory.log
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] 
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Generated 3 output file(s):
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   • step_b94_epoch_trajectory.json: 8.32 KB [sha256 3749d0e50984eb76]
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   • step_b94_epoch_trajectory.csv: 0.12 KB [sha256 ee72118a0f2a6e0d]
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   • step_b94_epoch_trajectory.png: 479.28 KB [sha256 7b91a90dbd86c2a0]
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] ================================================================================
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] STEP 130 COMPLETE: SUCCESS
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_130_epoch_axis_trajectory_provenance.json
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] 
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] ================================================================================
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] EXECUTIVE SUMMARY
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] ================================================================================
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Step: step_130_epoch_axis_trajectory (Step 130)
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Status: SUCCESS
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Duration: 1.22m
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Log Records: 109
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Output Files: 3
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] Key Outputs:
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   - step_b94_epoch_trajectory.json (8.32 KB)
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   - step_b94_epoch_trajectory.csv (0.12 KB)
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130]   - step_b94_epoch_trajectory.png (479.28 KB)
+[2026-09-20 12:25:06 UTC] [INFO    ] [STEP 130] ================================================================================

@@ -75,7 +75,7 @@ Outputs
 -------
 results/step_b65_iso_ng_channel.json
 results/step_b65_iso_ng_channel.csv
-results/figures/step_b65_iso_ng_channel.png
+results/figures/supplementary/step_b65_iso_ng_channel.png
 data/raw/iso/sbdb_iso_{1I,2I,3I}.json
 data/raw/iso/provenance.json
 """
@@ -129,7 +129,7 @@ def fetch_sbdb(des):
                 body = r.read()
                 status = r.status
             sha = hashlib.sha256(body).hexdigest()
-            prov[f"sbdb_iso_{des}"] = dict(
+            prov[f"sbdb_iso_{des}.json"] = dict(
                 url=url, retrieved_utc=t0.isoformat(),
                 http_status=status, bytes=len(body), sha256=sha)
             out.write_bytes(body)
@@ -141,7 +141,7 @@ def fetch_sbdb(des):
             time.sleep(2.0 * (attempt + 1))
     if out.exists():
         cached = out.read_bytes()
-        prov[f"sbdb_iso_{des}"] = dict(
+        prov[f"sbdb_iso_{des}.json"] = dict(
             url=url, retrieved_utc="cached-file",
             note=("live fetch failed after 3 attempts; reused the "
                   "pinned raw file from the previous live retrieval"),
@@ -610,8 +610,8 @@ def main():
     ax2.legend(fontsize=7)
     ax2.grid(alpha=0.3, which="both")
     fig.tight_layout()
-    figp = RESULTS / "figures" / "step_b65_iso_ng_channel.png"
-    fig.savefig(figp, dpi=150)
+    figp = RESULTS / "figures" / "supplementary" / "step_b65_iso_ng_channel.png"
+    fig.savefig(figp, dpi=300)
     logger.data_save(figp)
 
     # ---------------- csv ledger --------------------------------------

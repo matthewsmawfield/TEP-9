@@ -164,7 +164,7 @@ out = dict(step="step_138_oneway_downlink_channel", result="b102",
            T3_boundary_coverage=T3, T4_sensitivity=T4)
 with open(RESULTS / "step_b102_oneway_channel.json", "w") as f:
     json.dump(out, f, indent=1)
-logger.info("wrote results/step_b102_oneway_channel.json")
+logger.data_save(RESULTS / "step_b102_oneway_channel.json")
 
 import matplotlib
 matplotlib.use("Agg")
@@ -191,6 +191,6 @@ ax.axvline(100, color="black", ls=":", lw=0.8)
 ax.set_title("One-way downlink channels vs boundary distance "
              "(step 138)")
 fig.tight_layout()
-fig.savefig(RESULTS / "figures" / "step_b102_oneway_channel.png",
-            dpi=150)
-logger.info("wrote results/figures/step_b102_oneway_channel.png")
+fig.savefig(RESULTS / "figures" / "supplementary" / "step_b102_oneway_channel.png",
+            dpi=300)
+logger.data_save(RESULTS / "figures/supplementary/step_b102_oneway_channel.png")

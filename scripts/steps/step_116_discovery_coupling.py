@@ -58,7 +58,7 @@ Outputs
 results/step_b80_discovery_coupling.json
 results/step_b80_discovery_coupling.csv   (per-object scoring)
 results/step_b80_forward_predictions.csv  (provisional cohort)
-results/figures/step_b80_discovery_coupling.png
+results/figures/supplementary/step_b80_discovery_coupling.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -1079,22 +1079,19 @@ out = dict(
                    "step_b80_forward_predictions.csv.")
 json.dump(out, open(RESULTS / "step_b80_discovery_coupling.json", "w"),
           indent=1, default=float)
-print("wrote", RESULTS / "step_b80_discovery_coupling.json")
-
+logger.data_save(RESULTS / "step_b80_discovery_coupling.json")
 with open(RESULTS / "step_b80_discovery_coupling.csv", "w",
           newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(per_obj[0].keys()))
     w.writeheader()
     w.writerows(per_obj)
-print("wrote", RESULTS / "step_b80_discovery_coupling.csv")
-
+logger.data_save(RESULTS / "step_b80_discovery_coupling.csv")
 with open(RESULTS / "step_b80_forward_predictions.csv", "w",
           newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(fwd[0].keys()))
     w.writeheader()
     w.writerows(fwd)
-print("wrote", RESULTS / "step_b80_forward_predictions.csv")
-
+logger.data_save(RESULTS / "step_b80_forward_predictions.csv")
 # ------------------------------------------------------------------
 # figure
 # ------------------------------------------------------------------
@@ -1173,5 +1170,5 @@ ax.legend(fontsize=7)
 fig.tight_layout()
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b80_discovery_coupling.png", dpi=150)
-print(f"wrote {FIG / 'step_b80_discovery_coupling.png'}")
+fig.savefig(FIG / "supplementary" / "step_b80_discovery_coupling.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b80_discovery_coupling.png')

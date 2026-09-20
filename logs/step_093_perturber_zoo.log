@@ -1,14 +1,93 @@
-[2026-09-19 21:28:09 UTC] [INFO    ] [STEP 093] LOGGER INITIALIZED: step_093_perturber_zoo (Step 093)
-[2026-09-19 21:28:09 UTC] [DEBUG   ] [STEP 093] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_093_perturber_zoo.log
-[2026-09-19 21:28:09 UTC] [DEBUG   ] [STEP 093] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:28:09 UTC] [INFO    ] [STEP 093] ================================================================================
-[2026-09-19 21:28:09 UTC] [INFO    ] [STEP 093] Perturber-zoo closure: candidates vs required-mass map
-[2026-09-19 21:28:09 UTC] [INFO    ] [STEP 093] ================================================================================
-[2026-09-19 21:28:09 UTC] [INFO    ] [STEP 093] IRAS-AKARI candidate at ecliptic (lam,beta)=(5.4,-57.5); 51.8 deg from the TNO axis, 128.2 deg from the required anti-aligned direction
-[2026-09-19 21:28:10 UTC] [INFO    ] [STEP 093] sample: 131 class-1 CODE comets; candidate inserted at 600 AU, e=0.3, m=7 and 17 M_earth
-[2026-09-19 21:33:19 UTC] [INFO    ] [STEP 093] integrated 131 comets x 3 runs; 0 failed
-[2026-09-19 21:33:19 UTC] [INFO    ] [STEP 093] candidate at 7 M_earth: med drot 0.00030 deg | required mass in-cap med 3367 M_earth
-[2026-09-19 21:33:19 UTC] [INFO    ] [STEP 093] candidate at 17 M_earth: med drot 0.00072 deg | required mass in-cap med 3367 M_earth
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b58_perturber_zoo.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b58_perturber_zoo.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b58_perturber_zoo.png
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] LOGGER INITIALIZED: step_093_perturber_zoo (Step 093)
+[2026-09-20 12:17:25 UTC] [DEBUG   ] [STEP 093] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_093_perturber_zoo.log
+[2026-09-20 12:17:25 UTC] [DEBUG   ] [STEP 093] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:17:25 UTC] [DEBUG   ] [STEP 093] Start time (UTC): 2026-09-20T12:17:25.352483+00:00
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] 
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] STEP PURPOSE
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] --------------------------------------------------------------------------------
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   Step 093 -- perturber-zoo closure: every proposed body against the
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   required-mass map and the observational bounds
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   Steps 083/087/091 measured, with IAS15 + DE440s integrations of the
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   CODE class-1 comet sample, the point mass each candidate perturber
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   would need to reproduce the observed boundary rotation.  This step
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   closes the zoo: it places EVERY published candidate on one map --
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   required mass vs exclusion bound -- and adds the one real candidate
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   body reported to date.
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   Candidates / bounds
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   * BB21 Planet Nine median geometry (a9 = 461 AU, step 083/087):
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   required ~10^3 M_earth -- deep inside the IRAS/WISE all-sky
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   exclusion (>~1 M_Jup).
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   * Distance ladder (step 087, a9 = 250-1000 AU): required-mass scaling
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   m_req ~ a9^gamma measured on the same integrations.
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   * SCT25 Planet Y (a9 = 100-200 AU, step 091): required mass vs the
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   Gomes+23 5-sigma ephemeris line 1.1 M_earth (d/400)^3 and vs the
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   SCT25 warp-producing box 0.06-1 M_earth.
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   * IRAS-AKARI candidate (Phan et al. 2025, arXiv:2504.17288): a real
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   source pair with candidate separation (RA, Dec) ~ (35.5, -48.9)
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   deg -> ecliptic (lam, beta) ~ (0, -57) deg, inferred distance
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   500-700 AU and mass 7-17 M_earth IF it is a planet.  Its sky
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   position is measured against (i) the detached-TNO axis
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   (lam, beta) = (49, -17) deg, (ii) the required anti-aligned
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   shepherding direction (229, 17) deg, and (iii) the BB21 perihelion
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   direction.  Its capacity is then measured directly: the candidate
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   is inserted into the same REBOUND machinery at 600 AU toward its
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   catalogued position at 7 and 17 M_earth and the injected rotation
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   is compared with the observed boundary rotation.
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   Outputs
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   results/step_b58_perturber_zoo.json
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   results/step_b58_perturber_zoo.csv
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093]   results/figures/supplementary/step_b58_perturber_zoo.png
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] --------------------------------------------------------------------------------
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] SCRIPT: scripts/steps/step_093_perturber_zoo.py
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] SCRIPT SHA256: f42e79d5bf74edca37df379d92b0c56ba6a411c99401db6291b23d3df6fa64f1
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] SCRIPT SIZE: 19577 bytes
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] ================================================================================
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] Perturber-zoo closure: candidates vs required-mass map
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] ================================================================================
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] IRAS-AKARI candidate at ecliptic (lam,beta)=(5.4,-57.5); 51.8 deg from the TNO axis, 128.2 deg from the required anti-aligned direction
+[2026-09-20 12:17:25 UTC] [INFO    ] [STEP 093] sample: 131 class-1 CODE comets; candidate inserted at 600 AU, e=0.3, m=7 and 17 M_earth
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] integrated 131 comets x 3 runs; 0 failed
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] candidate at 7 M_earth: med drot 0.00030 deg | required mass in-cap med 3367 M_earth
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] candidate at 17 M_earth: med drot 0.00072 deg | required mass in-cap med 3367 M_earth
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Saving data: step_b58_perturber_zoo.json
+[2026-09-20 12:18:19 UTC] [DEBUG   ] [STEP 093]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b58_perturber_zoo.json
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093]   Output: step_b58_perturber_zoo.json
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Saving data: step_b58_perturber_zoo.csv
+[2026-09-20 12:18:19 UTC] [DEBUG   ] [STEP 093]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b58_perturber_zoo.csv
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093]   Output: step_b58_perturber_zoo.csv
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Saving data: step_b58_perturber_zoo.png
+[2026-09-20 12:18:19 UTC] [DEBUG   ] [STEP 093]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b58_perturber_zoo.png
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093]   Output: step_b58_perturber_zoo.png
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] 
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] ================================================================================
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] STEP SUMMARY: step_093_perturber_zoo
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] ================================================================================
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Step Number: 093
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Status: SUCCESS
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Duration: 54.48s
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Log Records Emitted: 68
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Output Files: 3
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_093_perturber_zoo.log
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] 
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Generated 3 output file(s):
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093]   • step_b58_perturber_zoo.json: 6.13 KB [sha256 4114f1d41d1935a8]
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093]   • step_b58_perturber_zoo.csv: 16.73 KB [sha256 4382f3a1d23e433a]
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093]   • step_b58_perturber_zoo.png: 304.93 KB [sha256 66e2349725781a23]
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] ================================================================================
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] STEP 093 COMPLETE: SUCCESS
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_093_perturber_zoo_provenance.json
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] 
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] ================================================================================
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] EXECUTIVE SUMMARY
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] ================================================================================
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Step: step_093_perturber_zoo (Step 093)
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Status: SUCCESS
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Duration: 54.48s
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Log Records: 79
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Output Files: 3
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] Key Outputs:
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093]   - step_b58_perturber_zoo.json (6.13 KB)
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093]   - step_b58_perturber_zoo.csv (16.73 KB)
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093]   - step_b58_perturber_zoo.png (304.93 KB)
+[2026-09-20 12:18:19 UTC] [INFO    ] [STEP 093] ================================================================================

@@ -28,7 +28,7 @@ Outputs
 -------
 results/step_b54_bipolar_morphology.json
 results/step_b54_bipolar_morphology.csv
-results/figures/step_b54_bipolar_morphology.png
+results/figures/supplementary/step_b54_bipolar_morphology.png
 """
 
 import sys as _sys
@@ -143,11 +143,20 @@ rho_dtau, p_dtau = spearmanr(
     np.array([d["dtau"] for d in data if np.isfinite(d["dtau"])]))
 
 n_mid_pos = int(np.sum(dtau_mid > 0))
+# declared sign structure: the axisymmetric field is positive at both
+# poles and negative mid-range -> cap/anti test n_pos >= obs (greater),
+# mid tests n_pos <= obs (less); two-sided values kept alongside
 bt_mid = binomtest(n_mid_pos, len(dtau_mid), 0.5)
+bt_mid_g = binomtest(len(dtau_mid) - n_mid_pos, len(dtau_mid), 0.5,
+                     alternative="greater")
 n_anti_pos = int(np.sum(dtau_anti > 0))
 bt_anti = binomtest(n_anti_pos, len(dtau_anti), 0.5)
+bt_anti_g = binomtest(n_anti_pos, len(dtau_anti), 0.5,
+                      alternative="greater")
 n_cap_pos = int(np.sum(dtau_cap > 0))
 bt_cap = binomtest(n_cap_pos, len(dtau_cap), 0.5)
+bt_cap_g = binomtest(n_cap_pos, len(dtau_cap), 0.5,
+                     alternative="greater")
 
 # anti-cap elevation over the mid region in the time channel
 u_dtau_anti = mannwhitneyu(dtau_anti, dtau_mid, alternative="greater")
@@ -211,11 +220,14 @@ res = {
     },
     "T4_sign_structure": {
         "cap_frac_pos": float(np.mean(dtau_cap > 0)),
-        "cap_binom_p": float(bt_cap.pvalue),
+        "cap_binom_p": float(bt_cap_g.pvalue),
+        "cap_binom_p_2sided": float(bt_cap.pvalue),
         "mid_frac_pos": float(np.mean(dtau_mid > 0)),
-        "mid_binom_p": float(bt_mid.pvalue),
+        "mid_binom_p": float(bt_mid_g.pvalue),
+        "mid_binom_p_2sided": float(bt_mid.pvalue),
         "anti_frac_pos": float(np.mean(dtau_anti > 0)),
-        "anti_binom_p": float(bt_anti.pvalue),
+        "anti_binom_p": float(bt_anti_g.pvalue),
+        "anti_binom_p_2sided": float(bt_anti.pvalue),
         "dtau_anti_vs_mid_mw_p": float(u_dtau_anti.pvalue),
         "dtau_cap_vs_mid_mw_p": float(u_dtau_cap.pvalue),
     },
@@ -306,7 +318,7 @@ fig.suptitle("single-faced transit anomaly: no mirror-cap lobe "
              "(step 089)", fontsize=11)
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b54_bipolar_morphology.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b54_bipolar_morphology.png", dpi=300)
 
 T1 = res["T1_mirror_cap"]
 logger.info(f"T1: anti-cap drot median {T1['drot_anti_med']:.4f} vs mid "
@@ -326,6 +338,6 @@ logger.info(f"T4: frac pos cap/mid/anti = "
 logger.info(f"T6: dtau vs cos(theta) rho={r1_tau:+.3f} p={p1_tau:.4f}; "
             f"vs cos(2theta) rho={r2_tau:+.3f} p={p2_tau:.4f} | "
             f"drot vs cos(2theta) rho={r2_rot:+.3f} p={p2_rot:.4f}")
-print("wrote", out)
-print("wrote", csv_out)
-print("wrote", FIG / "step_b54_bipolar_morphology.png")
+logger.data_save(out)
+logger.data_save(csv_out)
+logger.data_save(FIG / "supplementary" / "step_b54_bipolar_morphology.png")

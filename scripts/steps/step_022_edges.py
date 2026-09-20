@@ -29,7 +29,7 @@ Also computed: the aphelion-distance distribution of the detached
 population, locating the outer edge of the affected zone.
 
 Outputs: results/step_04_edges.json,
-         figures/step_04_edges.png
+         figures/supplementary/step_04_edges.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -234,9 +234,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_04_edges.png", dpi=150)
-    print("\nwrote results/step_04_edges.json, "
-          "figures/step_04_edges.png")
+    fig.savefig(FIG / "supplementary" / "step_04_edges.png", dpi=300)
+    logger.data_save(RESULTS / "step_04_edges.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_04_edges.png")
 
 
 if __name__ == "__main__":

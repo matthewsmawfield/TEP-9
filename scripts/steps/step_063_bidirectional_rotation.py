@@ -22,7 +22,7 @@ Outputs
 -------
 results/step_b28_bidirectional_rotation.json
 results/step_b28_bidirectional_rotation.csv
-results/figures/step_b28_rotation_residual.png
+results/figures/supplementary/step_b28_rotation_residual.png
 """
 
 import sys as _sys
@@ -235,21 +235,16 @@ logger.info(f"sample: {len(sample)} class-1 CODE comets")
 # Integrate both legs
 # ------------------------------------------------------------------
 
-rows = []
-failed = []
-for k, ro, oo, et in sample:
-    try:
-        rb = integrate_leg(oo, et, -1)
-        rf = integrate_leg(oo, et, +1)
-    except Exception as e:
-        failed.append(k); logger.warning(f"{k}: {e}"); continue
+def _run_comet(k, ro, oo, et):
+    rb = integrate_leg(oo, et, -1)
+    rf = integrate_leg(oo, et, +1)
     if rb is None or rf is None:
-        failed.append(k); logger.warning(f"{k}: boundary not reached"); continue
+        return None
     po = perih_dir(math.radians(ro["w"]), math.radians(ro["Om"]), math.radians(ro["i"]))
     pf = perih_dir(math.radians(fut[k]["w"]), math.radians(fut[k]["Om"]), math.radians(fut[k]["i"]))
     drot_cat = sep(-po, -pf)
     drot_sim = sep(rb["phat"], rf["phat"])
-    rows.append(dict(desig=k, cls=ro["cls"], q=ro["q"], i=ro["i"],
+    return dict(desig=k, cls=ro["cls"], q=ro["q"], i=ro["i"],
         theta=sep(-po, TNO),
         drot_cat=drot_cat, drot_sim=drot_sim,
         d_back=sep(rb["phat"], po),      # sim vs catalogue, original leg
@@ -258,7 +253,50 @@ for k, ro, oo, et in sample:
         daa_sim=rf["aa"] - rb["aa"],
         denc=min(rb["denc"], rf["denc"]),
         aa_back=rb["aa"], aa_fwd=rf["aa"], aa_osc=oo["aa"],
-        t_back=rb["t_years"], t_fwd=rf["t_years"]))
+        t_back=rb["t_years"], t_fwd=rf["t_years"])
+
+
+def _work_comet(job):
+    k, ro, oo, et = job
+    try:
+        return _run_comet(k, ro, oo, et)
+    except Exception as e:
+        return ("__error__", k, str(e))
+
+
+from scripts.utils.parallel import default_workers as _default_workers
+
+if "--workers" in _sys.argv:
+    N_WORK = max(1, int(_sys.argv[_sys.argv.index("--workers") + 1]))
+else:
+    N_WORK = _default_workers()
+
+if N_WORK > 1 and len(sample) > 1:
+    import multiprocessing as mp
+    ctx = mp.get_context("fork") if _sys.platform != "win32" \
+        else mp.get_context("spawn")
+
+    def _init():
+        # forked children inherit the parent's BSP fd; concurrent spkezr
+        # reads through a shared descriptor corrupt each other -- reopen
+        # the kernel so each worker holds its own file handle.
+        sp.kclear()
+        sp.furnsh(str(SPK))
+
+    with ctx.Pool(min(N_WORK, len(sample)), initializer=_init) as pool:
+        recs = pool.map(_work_comet, sample)
+else:
+    recs = [_work_comet(s) for s in sample]
+
+rows = []
+failed = []
+for (k, ro, oo, et), rec in zip(sample, recs):
+    if rec is None:
+        failed.append(k); logger.warning(f"{k}: boundary not reached")
+    elif isinstance(rec, tuple) and rec[0] == "__error__":
+        failed.append(rec[1]); logger.warning(f"{rec[1]}: {rec[2]}")
+    else:
+        rows.append(rec)
 
 logger.info(f"integrated {len(rows)} comets x2 legs; {len(failed)} failed")
 
@@ -383,18 +421,16 @@ ax.set_xlim(lo, lim); ax.set_ylim(lo, lim)
 ax.set_xlabel(r"modelled rotation $d_{\rm rot,sim}$ (deg)")
 ax.set_ylabel(r"catalogued discrepancy $d_{\rm of}$ (deg)")
 ax.legend(frameon=False, fontsize=9, loc="upper left")
-ax.set_title("independent integration vs catalogue", fontsize=10)
 
 ax = axes[1]
 ax.hist(np.log10(leg), bins=30, color="steelblue", alpha=0.8)
 ax.axvline(np.log10(0.01), color="k", ls=":", lw=1)
 ax.set_xlabel(r"per-leg boundary offset $\log_{10}$(deg)")
 ax.set_ylabel("legs")
-ax.set_title("sim vs catalogue, per boundary leg", fontsize=10)
 
 fig.tight_layout()
-FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b28_rotation_residual.png", dpi=150)
+FIG = RESULTS / "figures" / "supplementary"; FIG.mkdir(parents=True, exist_ok=True)
+fig.savefig(FIG / "step_b28_rotation_residual.png", dpi=300)
 
 for tag, d in [("matched", res["matched"]), ("all_c1", res["all_c1"])]:
     logger.info(f"{tag}: leg offset med/p95 {d['leg_offset_med']:.4f}/{d['leg_offset_p95']:.3f} deg | "
@@ -402,6 +438,6 @@ for tag, d in [("matched", res["matched"]), ("all_c1", res["all_c1"])]:
                 f"med|drot diff|={d['med_abs_drot_diff']:.4f} | "
                 f"rot-per-kick resid (kick+denc+q+i) cap p={d['rot_per_kick_resid_full']['p']:.4f} "
                 f"rho={d['rot_per_kick_resid_full']['rho']:.3f}")
-print("wrote", out)
-print("wrote", csv_out)
-print("wrote", FIG / "step_b28_rotation_residual.png")
+logger.data_save(out)
+logger.data_save(csv_out)
+logger.data_save(FIG / "step_b28_rotation_residual.png")

@@ -35,7 +35,7 @@ data/raw/code/code_original.html, code_future.html  (signed omega)
 Outputs
 -------
 results/step_b33_wall_vs_field.json
-results/figures/step_b33_wall_vs_field.png
+results/figures/supplementary/step_b33_wall_vs_field.png
 """
 
 import sys as _sys
@@ -195,10 +195,16 @@ def coherence(sub):
         for tag, m in [("in", incs), ("out", ~incs)]:
             if m.sum() >= 5:
                 pos = int((dw[m] > 0).sum())
+                nseg = int(m.sum())
+                # declared direction: the catalogue signed-omega
+                # rotation is negative-dominated (same sign as the
+                # signed-slip anomaly channel), so n_neg >= obs
                 out[f"dw_sign_{tag}"] = {
-                    "n": int(m.sum()), "n_pos": pos,
-                    "frac_pos": pos / int(m.sum()),
-                    "p_binom": float(binomtest(pos, int(m.sum()), 0.5).pvalue)}
+                    "n": nseg, "n_pos": pos, "n_neg": nseg - pos,
+                    "frac_pos": pos / nseg,
+                    "p_binom": float(binomtest(nseg - pos, nseg, 0.5,
+                                               alternative="greater").pvalue),
+                    "p_binom_2sided": float(binomtest(pos, nseg, 0.5).pvalue)}
         if incs.any() and (~incs).any():
             u = mannwhitneyu(np.abs(dw[incs]), np.abs(dw[~incs]),
                              alternative="greater")
@@ -297,7 +303,7 @@ ax.set_title("Warsaw: crossing localization", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b33_wall_vs_field.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b33_wall_vs_field.png", dpi=300)
 
 for tag, d in res["scaling"].items():
     if d.get("in"):
@@ -314,5 +320,5 @@ if ws:
                 f"p={ws['p_share_in_gt_out']:.4f} | slip coupling "
                 f"rho={ws['slip_coupling']['rho']:.3f} "
                 f"p={ws['slip_coupling']['p_2sided']:.4f}")
-print("wrote", out)
-print("wrote", FIG / "step_b33_wall_vs_field.png")
+logger.data_save(out)
+logger.data_save(FIG / "supplementary" / "step_b33_wall_vs_field.png")

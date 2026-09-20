@@ -1,17 +1,91 @@
-[2026-09-19 20:45:23 UTC] [INFO    ] [STEP 087] LOGGER INITIALIZED: step_087_distance_ladder (Step 087)
-[2026-09-19 20:45:23 UTC] [DEBUG   ] [STEP 087] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_087_distance_ladder.log
-[2026-09-19 20:45:23 UTC] [DEBUG   ] [STEP 087] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 20:45:23 UTC] [INFO    ] [STEP 087] ================================================================================
-[2026-09-19 20:45:23 UTC] [INFO    ] [STEP 087] Perturber distance ladder (REBOUND/IAS15 + DE440s)
-[2026-09-19 20:45:23 UTC] [INFO    ] [STEP 087] ================================================================================
-[2026-09-19 20:45:24 UTC] [INFO    ] [STEP 087] sample: 131 class-1 CODE comets
-[2026-09-19 20:53:55 UTC] [INFO    ] [STEP 087] integrated 131 comets x 6 runs; 0 failed
-[2026-09-19 20:53:55 UTC] [INFO    ] [STEP 087] a9=  250 AU: med drot=0.00036 deg | required mass in-cap med 2186 M_earth, p05 529, >M_Jup 1.00
-[2026-09-19 20:53:55 UTC] [INFO    ] [STEP 087] a9=  300 AU: med drot=0.00031 deg | required mass in-cap med 3712 M_earth, p05 724, >M_Jup 1.00
-[2026-09-19 20:53:55 UTC] [INFO    ] [STEP 087] a9=  461 AU: med drot=0.00028 deg | required mass in-cap med 4290 M_earth, p05 793, >M_Jup 1.00
-[2026-09-19 20:53:55 UTC] [INFO    ] [STEP 087] a9=  700 AU: med drot=0.00029 deg | required mass in-cap med 3525 M_earth, p05 710, >M_Jup 1.00
-[2026-09-19 20:53:55 UTC] [INFO    ] [STEP 087] a9= 1000 AU: med drot=0.00029 deg | required mass in-cap med 3490 M_earth, p05 694, >M_Jup 1.00
-[2026-09-19 20:53:55 UTC] [INFO    ] [STEP 087] distance scaling: m_req ~ a9^+0.20; drot ~ a9^-0.14
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b52_distance_ladder.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b52_distance_ladder.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b52_distance_ladder.png
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087] LOGGER INITIALIZED: step_087_distance_ladder (Step 087)
+[2026-09-20 12:38:32 UTC] [DEBUG   ] [STEP 087] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_087_distance_ladder.log
+[2026-09-20 12:38:32 UTC] [DEBUG   ] [STEP 087] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:38:32 UTC] [DEBUG   ] [STEP 087] Start time (UTC): 2026-09-20T12:38:32.932212+00:00
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087] 
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087] STEP PURPOSE
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087] --------------------------------------------------------------------------------
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   Step 087 -- perturber distance ladder: what mass is required at
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   any distance?
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   Step 083 fixed the perturber's geometry to the published
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   Brown & Batygin (2021) median location and showed the required mass
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   is brown-dwarf scale (~4300 M_earth in-cap median).  That leaves one
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   escape route: a perturber elsewhere -- closer, where a smaller mass
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   delivers the same impulse, or farther, where surveys are shallower.
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   This step closes it by measuring the required mass as a function of
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   perturber semimajor axis, holding the anti-aligned shepherding
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   geometry (e9 = 0.30, i9 = 15.6 deg, varpi9 = 246.7 deg, Om9 = 96.9
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   deg, M9 = 180 deg residence-weighted) and the fiducial 6.9 M_earth
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   mass.  Because the injected rotation scales linearly in mass
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   (step 083, alpha = 1.00), a single rung at each distance yields the
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   required mass directly:
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   m_req(a9) = 6.9 * (d_of / drot_6.9(a9))
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   Rungs: a9 = 250, 300, 461, 700, 1000 AU.  Deliverables: the
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   required-mass distribution per rung in and out of the cap, the
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   distance-scaling exponent gamma of m_req ~ a9^gamma, and the
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   comparison against survey exclusion lines (IRAS/WISE all-sky limits
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   of order Jupiter masses at these distances; BB21 nominal 5-10
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   M_earth).  A point mass that must sit at any of these distances at
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   ~10^3 M_earth is excluded by every relevant survey; a perturber
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   closer still enters the planetary-ephemeris bounded regime.
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   Outputs
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   results/step_b52_distance_ladder.json
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   results/step_b52_distance_ladder.csv   (per-comet ladder)
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087]   results/figures/step_b52_distance_ladder.png
+[2026-09-20 12:38:32 UTC] [INFO    ] [STEP 087] --------------------------------------------------------------------------------
+[2026-09-20 12:38:33 UTC] [INFO    ] [STEP 087] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:38:33 UTC] [INFO    ] [STEP 087] SCRIPT: scripts/steps/step_087_distance_ladder.py
+[2026-09-20 12:38:33 UTC] [INFO    ] [STEP 087] SCRIPT SHA256: 44bb8e6c824877bcf1a3147a15c6972a9945f8ea720f6693e7f95f16f4de405f
+[2026-09-20 12:38:33 UTC] [INFO    ] [STEP 087] SCRIPT SIZE: 17109 bytes
+[2026-09-20 12:38:33 UTC] [INFO    ] [STEP 087] ================================================================================
+[2026-09-20 12:38:33 UTC] [INFO    ] [STEP 087] Perturber distance ladder (REBOUND/IAS15 + DE440s)
+[2026-09-20 12:38:33 UTC] [INFO    ] [STEP 087] ================================================================================
+[2026-09-20 12:38:35 UTC] [INFO    ] [STEP 087] sample: 131 class-1 CODE comets
+[2026-09-20 12:43:53 UTC] [INFO    ] [STEP 087] integrated 131 comets x 6 runs; 0 failed
+[2026-09-20 12:43:57 UTC] [INFO    ] [STEP 087] a9=  250 AU: med drot=0.00036 deg | required mass in-cap med 2186 M_earth, p05 529, >M_Jup 1.00
+[2026-09-20 12:43:58 UTC] [INFO    ] [STEP 087] a9=  300 AU: med drot=0.00031 deg | required mass in-cap med 3712 M_earth, p05 724, >M_Jup 1.00
+[2026-09-20 12:43:59 UTC] [INFO    ] [STEP 087] a9=  461 AU: med drot=0.00028 deg | required mass in-cap med 4290 M_earth, p05 793, >M_Jup 1.00
+[2026-09-20 12:43:59 UTC] [INFO    ] [STEP 087] a9=  700 AU: med drot=0.00029 deg | required mass in-cap med 3525 M_earth, p05 710, >M_Jup 1.00
+[2026-09-20 12:43:59 UTC] [INFO    ] [STEP 087] a9= 1000 AU: med drot=0.00029 deg | required mass in-cap med 3490 M_earth, p05 694, >M_Jup 1.00
+[2026-09-20 12:44:00 UTC] [INFO    ] [STEP 087] distance scaling: m_req ~ a9^+0.20; drot ~ a9^-0.14
+[2026-09-20 12:44:00 UTC] [INFO    ] [STEP 087] Saving data: step_b52_distance_ladder.json
+[2026-09-20 12:44:00 UTC] [DEBUG   ] [STEP 087]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b52_distance_ladder.json
+[2026-09-20 12:44:00 UTC] [INFO    ] [STEP 087]   Output: step_b52_distance_ladder.json
+[2026-09-20 12:44:00 UTC] [INFO    ] [STEP 087] Saving data: step_b52_distance_ladder.csv
+[2026-09-20 12:44:00 UTC] [DEBUG   ] [STEP 087]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b52_distance_ladder.csv
+[2026-09-20 12:44:00 UTC] [INFO    ] [STEP 087]   Output: step_b52_distance_ladder.csv
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Saving data: step_b52_distance_ladder.png
+[2026-09-20 12:44:05 UTC] [DEBUG   ] [STEP 087]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b52_distance_ladder.png
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087]   Output: step_b52_distance_ladder.png
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] 
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] ================================================================================
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] STEP SUMMARY: step_087_distance_ladder
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] ================================================================================
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Step Number: 087
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Status: SUCCESS
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Duration: 5.54m
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Log Records Emitted: 66
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Output Files: 3
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_087_distance_ladder.log
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] 
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Generated 3 output file(s):
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087]   • step_b52_distance_ladder.json: 3.03 KB [sha256 c311b7e753e81cbb]
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087]   • step_b52_distance_ladder.csv: 33.79 KB [sha256 3b40faa656885e3a]
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087]   • step_b52_distance_ladder.png: 169.50 KB [sha256 020115804365db5b]
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] ================================================================================
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] STEP 087 COMPLETE: SUCCESS
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_087_distance_ladder_provenance.json
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] 
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] ================================================================================
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] EXECUTIVE SUMMARY
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] ================================================================================
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Step: step_087_distance_ladder (Step 087)
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Status: SUCCESS
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Duration: 5.54m
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Log Records: 77
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Output Files: 3
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] Key Outputs:
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087]   - step_b52_distance_ladder.json (3.03 KB)
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087]   - step_b52_distance_ladder.csv (33.79 KB)
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087]   - step_b52_distance_ladder.png (169.50 KB)
+[2026-09-20 12:44:05 UTC] [INFO    ] [STEP 087] ================================================================================

@@ -61,7 +61,7 @@ Inputs
 Outputs
   results/step_b115_injection_transfer.json / .csv
   results/step_b115_injection.jsonl        (per-comet checkpoint)
-  results/figures/step_b115_injection_transfer.png
+  results/figures/supplementary/step_b115_injection_transfer.png
 """
 
 import sys as _sys
@@ -212,8 +212,11 @@ def synth_obs(r_t, v_t, et0, obs, sigma_as, rng,
                          et_slip, slip_fn)
     rc = st2[:, :3]
     u = rc - robs
-    u /= np.linalg.norm(u, axis=1)[:, None]
-    u_eq = (RX.T @ u.T).T
+    un = np.linalg.norm(u, axis=1)
+    un[un == 0] = 1.0
+    u /= un[:, None]
+    with np.errstate(all="ignore"):  # Accelerate BLAS raises spurious FP flags
+        u_eq = (RX.T @ u.T).T
     ra_p = np.arctan2(u_eq[:, 1], u_eq[:, 0])
     dec_p = np.arcsin(np.clip(u_eq[:, 2], -1, 1))
     sig = sigma_as / AS_RAD
@@ -559,8 +562,7 @@ with open(csv_out, "w", newline="") as f:
             w.writerow([r["desig"], r["theta"], r["dtau"], inj] +
                        [("" if not np.isfinite(med(r, inj, k))
                          else f"{med(r, inj, k):.6g}") for k in PROD_KEYS])
-print("wrote", csv_out)
-
+logger.data_save(csv_out)
 # ------------------------------------------------------------------
 # figure
 # ------------------------------------------------------------------
@@ -612,6 +614,6 @@ ax.legend(fontsize=8)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b115_injection_transfer.png", dpi=150)
-print("wrote", RESULTS / "step_b115_injection_transfer.json")
-print("wrote", FIG / "step_b115_injection_transfer.png")
+fig.savefig(FIG / "supplementary" / "step_b115_injection_transfer.png", dpi=300)
+logger.data_save(RESULTS / "step_b115_injection_transfer.json")
+logger.data_save(FIG / "supplementary" / "step_b115_injection_transfer.png")

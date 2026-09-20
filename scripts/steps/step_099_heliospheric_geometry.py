@@ -47,7 +47,7 @@ results/step_b60_sclk_audit.json (Voyager geometry, cross-check)
 Outputs
 -------
 results/step_b63_heliospheric_geometry.json
-results/figures/step_b63_heliospheric_geometry.png
+results/figures/supplementary/step_b63_heliospheric_geometry.png
 data/raw/horizons/probe_vectors.json
 """
 
@@ -94,8 +94,19 @@ def fetch(url, label):
     logger.progress(f"GET {url[:110]}")
     req = urllib.request.Request(url, headers={"User-Agent": "tep9/1.0"})
     t0 = datetime.now(timezone.utc)
-    with urllib.request.urlopen(req, timeout=120) as r:
-        body = r.read()
+    body = None
+    for attempt in range(1, 6):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                body = r.read()
+            break
+        except Exception as exc:
+            if attempt == 5:
+                raise
+            wait = 5 * 2 ** (attempt - 1)
+            logger.progress(f"fetch attempt {attempt} failed ({exc}); "
+                            f"retrying in {wait}s")
+            time.sleep(wait)
     sha = hashlib.sha256(body).hexdigest()
     prov[label] = dict(url=url, retrieved_utc=t0.isoformat(),
                        bytes=len(body), sha256=sha)
@@ -314,8 +325,8 @@ def main():
                  "directions, escaping-probe and ISO asymptotes")
     ax.grid(alpha=0.3)
     fig.tight_layout()
-    figp = RESULTS / "figures" / "step_b63_heliospheric_geometry.png"
-    fig.savefig(figp, dpi=150)
+    figp = RESULTS / "figures" / "supplementary" / "step_b63_heliospheric_geometry.png"
+    fig.savefig(figp, dpi=300)
     logger.data_save(figp)
 
     (HOR_DIR / "probe_vectors.json").write_text(json.dumps(

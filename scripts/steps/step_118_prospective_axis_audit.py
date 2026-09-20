@@ -66,16 +66,18 @@ Outputs
 -------
 results/step_b82_axis_audit.json
 results/step_b82_axis_audit.csv (per-grid-axis scan rows)
-results/figures/step_b82_axis_audit.png
+results/figures/supplementary/step_b82_axis_audit.png
 """
 
 import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import (
     DATA_RAW, RESULTS, perih_dir, sep, lv, lb, parse_code)
 logger = StepLogger("step_118_prospective_axis_audit")
+tee_stdout(logger)
 
 import csv
 import json
@@ -763,5 +765,5 @@ ax.set_title("prospective cohort at the rotated control axis",
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b82_axis_audit.png", dpi=150)
-print("wrote", out)
+fig.savefig(FIG / "supplementary" / "step_b82_axis_audit.png", dpi=300)
+logger.data_save(out)

@@ -51,7 +51,7 @@ Outputs
 -------
 results/step_b69_lpc_bidirectional.json
 results/step_b69_lpc_bidirectional.csv   (per-comet legs + slip)
-results/figures/step_b69_lpc_bidirectional.png
+results/figures/supplementary/step_b69_lpc_bidirectional.png
 """
 
 import sys as _sys
@@ -388,7 +388,8 @@ n_ok = int(np.sum((pred_lpc > 0) == (dtau_unexpl > 0)))
 t3 = dict(map_coef=dict(a=float(c_map[0]), b=float(c_map[1])),
           spearman_rho=float(rho_tr), spearman_p=float(p_tr),
           sign_correct=n_ok, n=n_lpc, sign_frac=n_ok / n_lpc,
-          sign_binom_p=float(binomtest(n_ok, n_lpc, 0.5).pvalue),
+          sign_binom_p=float(binomtest(n_ok, n_lpc, 0.5,
+                                       alternative="greater").pvalue),
           med_pred=float(np.median(pred_lpc)),
           med_obs=float(np.median(dtau_unexpl)))
 logger.metric("map_transfer_lpc",
@@ -597,6 +598,6 @@ ax.set_title(f"sign {n_ok}/{n_lpc} "
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b69_lpc_bidirectional.png", dpi=150)
-logger.data_save(FIG / "step_b69_lpc_bidirectional.png")
+fig.savefig(FIG / "supplementary" / "step_b69_lpc_bidirectional.png", dpi=300)
+logger.data_save(FIG / "supplementary" / "step_b69_lpc_bidirectional.png")
 logger.success("Third-catalogue replication + transfer complete")

@@ -58,7 +58,7 @@ Registered tests
 Outputs
   results/step_b94_epoch_trajectory.json
   results/step_b94_epoch_trajectory.csv
-  results/figures/step_b94_epoch_trajectory.png
+  results/figures/supplementary/step_b94_epoch_trajectory.png
 """
 
 import json
@@ -75,6 +75,7 @@ import numpy as np
 from scipy.stats import mannwhitneyu, spearmanr
 
 from scripts.utils.step_logger import StepLogger
+from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.statistics import monte_carlo_tail, monte_carlo_p
 from scripts.utils.tep9_common import DATA_RAW, RESULTS, sep, perih_dir
 
@@ -82,6 +83,7 @@ FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
 
 logger = StepLogger("step_130_epoch_axis_trajectory")
+tee_stdout(logger)
 
 B91 = RESULTS / "step_b91_refit.jsonl"
 B92 = RESULTS / "step_b92_refit.jsonl"
@@ -295,10 +297,8 @@ res["T3_drift_vs_switch"] = {
                    "width_yr": par_dr[1]},
     "advantage_over_fixed": adv_obs,
     "perm_p_advantage": monte_carlo_tail(adv_perm, adv_obs),
-    "perm_p_switch_vs_fixed": float(np.mean(
-        sw_perm - best_fixed >= c_sw - best_fixed)),
-    "perm_p_drift_vs_fixed": float(np.mean(
-        dr_perm - best_fixed >= c_dr - best_fixed)),
+    "perm_p_switch_vs_fixed": monte_carlo_tail(sw_perm, c_sw),
+    "perm_p_drift_vs_fixed": monte_carlo_tail(dr_perm, c_dr),
     "note": ("contrast = in-cap minus out-of-cap median ddirf on the "
              "pooled cohort; switch/drift hyperparameters scanned per "
              "realization inside the permutation null, so the null "
@@ -461,12 +461,12 @@ ax.axhline(c_disp, color="tab:orange", ls="--", lw=0.8)
 ax.set_xlabel("drift ramp centre T_c"); ax.set_ylabel("pooled contrast")
 ax.set_title("drift model vs fixed axes"); ax.legend(fontsize=8)
 fig.tight_layout()
-fig.savefig(FIG / "step_b94_epoch_trajectory.png", dpi=130)
+fig.savefig(FIG / "supplementary" / "step_b94_epoch_trajectory.png", dpi=300)
 plt.close(fig)
 
 with open(RESULTS / "step_b94_epoch_trajectory.json", "w") as f:
     json.dump(res, f, indent=1)
 logger.data_save(RESULTS / "step_b94_epoch_trajectory.json")
 logger.data_save(RESULTS / "step_b94_epoch_trajectory.csv")
-logger.data_save(FIG / "step_b94_epoch_trajectory.png")
+logger.data_save(FIG / "supplementary" / "step_b94_epoch_trajectory.png")
 logger.save_provenance()

@@ -1,23 +1,139 @@
-[2026-09-19 21:56:07 UTC] [INFO    ] [STEP 117] LOGGER INITIALIZED: step_117_prospective_lpc (Step 117)
-[2026-09-19 21:56:07 UTC] [DEBUG   ] [STEP 117] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_117_prospective_lpc.log
-[2026-09-19 21:56:07 UTC] [DEBUG   ] [STEP 117] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:56:07 UTC] [INFO    ] [STEP 117] ================================================================================
-[2026-09-19 21:56:07 UTC] [INFO    ] [STEP 117] Prospective validation cohort: post-2017 SBDB LPCs (REBOUND/DE440s)
-[2026-09-19 21:56:07 UTC] [INFO    ] [STEP 117] ================================================================================
-[2026-09-19 21:56:07 UTC] [INFO    ] [STEP 117] using cached sbdb_comets_all.json
-[2026-09-19 21:56:07 UTC] [INFO    ] [STEP 117] SBDB comet table: 4077 rows, fields 22
-[2026-09-19 21:56:07 UTC] [INFO    ] [STEP 117] post-2017 comets: near-parabolic usable 287; deep-plunger primary (q<3.1) 148; bound controls 64; excluded {'year': 2815, 'frag': 13, 'e': 0, 'q': 4, 'arc': 11, 'iso': 2}
-[2026-09-19 21:56:07 UTC] [INFO    ] [STEP 117] integrating primary cohort ...
-[2026-09-19 21:56:08 UTC] [INFO    ] [STEP 117] prospective: integrated 255 comets x2 legs; 32 failed
-[2026-09-19 21:56:08 UTC] [INFO    ] [STEP 117] integrating bound-comet control cohort ...
-[2026-09-19 21:56:08 UTC] [INFO    ] [STEP 117] control: integrated 0 comets x2 legs; 64 failed
-[2026-09-19 21:56:15 UTC] [INFO    ] [STEP 117] failure accounting: primary hard=27 skipped=0 extended=5 control=64 | primary-fail in-cap 0.18518518518518517 vs integrated 0.2644628099173554
-[2026-09-19 21:56:15 UTC] [INFO    ] [STEP 117] slip-map transfer: rho=-0.041 p=0.6532 sign-acc=0.43 (n=121)
-[2026-09-19 21:56:15 UTC] [INFO    ] [STEP 117] sky scan: registered-axis contrast -0.057 deg; best at (l,b)=(120,-45) contrast 0.097 deg (78 deg away); 201/264 dirs >= registered
-[2026-09-19 21:56:16 UTC] [INFO    ] [STEP 117] primary(q<3.1): n=121 in=32 | med drot in/out 0.114/0.171 | MWU p=0.9556 perm p=0.9200 | resid cap p=0.9702 | dtau med_in=-5.49 yr
-[2026-09-19 21:56:16 UTC] [INFO    ] [STEP 117] primary pure-gravity: n=89 in=23 | med drot in/out 0.111/0.145 | MWU p=0.9122 perm p=0.8012 | resid cap p=0.9672 | dtau med_in=-7.96 yr
-[2026-09-19 21:56:16 UTC] [INFO    ] [STEP 117] oort-spike(q<3.1,0<1/a<100): n=30 in=8 | med drot in/out 0.079/0.180 | MWU p=0.9718 perm p=0.9769 | resid cap p=0.9825 | dtau med_in=-6.15 yr
-[2026-09-19 21:56:16 UTC] [INFO    ] [STEP 117] oort-spike pure-gravity: n=18 in=4 | med drot in/out 0.146/0.145 | MWU p=0.6010 perm p=0.5828 | resid cap p=0.3605 | dtau med_in=3.32 yr
-[2026-09-19 21:56:16 UTC] [INFO    ] [STEP 117] all_near_parabolic: n=255 in=68 | med drot in/out 0.095/0.123 | MWU p=0.9125 perm p=0.9251 | resid cap p=0.9517 | dtau med_in=-3.86 yr
-[2026-09-19 21:56:16 UTC] [INFO    ] [STEP 117] extended(q>=3.1): n=134 in=36 | med drot in/out 0.083/0.086 | MWU p=0.5628 perm p=0.5833 | resid cap p=0.9143 | dtau med_in=-2.37 yr
-[2026-09-19 21:56:16 UTC] [INFO    ] [STEP 117] control(e<0.95): n=0 in=0 -- insufficient_sample
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] LOGGER INITIALIZED: step_117_prospective_lpc (Step 117)
+[2026-09-20 12:21:22 UTC] [DEBUG   ] [STEP 117] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_117_prospective_lpc.log
+[2026-09-20 12:21:22 UTC] [DEBUG   ] [STEP 117] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:21:22 UTC] [DEBUG   ] [STEP 117] Start time (UTC): 2026-09-20T12:21:22.398089+00:00
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] 
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] STEP PURPOSE
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] --------------------------------------------------------------------------------
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   step_117: Prospective validation cohort -- post-2017 SBDB long-period
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   comets through the identical bidirectional boundary instrument.
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   Every transit-channel test so far (steps 030-042, 063-086, 102-106)
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   runs on catalogue comets discovered before 2018 -- the Warsaw, CODE and
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   one-apparition tables that also defined the axis, the cap and the slip
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   map.  This step breaks that closure.  It downloads the complete JPL
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   SBDB comet table and selects every comet discovered in 2018 or later --
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   a cohort that could not have entered any fit, scan or registration --
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   and passes it through the identical REBOUND/DE440s bidirectional
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   instrument validated in step 063 (the instrument that reproduces the
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   catalogue's own boundary solutions to a median 0.001 deg per leg).
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   Two independence statements are made at once:
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   * out-of-time: the axis (l,b) = (34,-13) deg, the 60 deg cap and the
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   bipolar slip map were all fixed on pre-2018 data; this cohort is a
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   genuine prospective holdout;
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   * out-of-lineage: the osculating elements are JPL SBDB orbit
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   solutions -- a fourth orbit-determination pipeline, independent of
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   the Warsaw school that produced every orig/fut catalogue used so
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   far.
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   Cohort (pre-declared, mirroring the CODE class-1 selection)
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   * provisional designation C/2018+ (post-CODE cutoff; CODE is
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   near-complete through 2017);
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   * 0.95 < e < 1.5 (near-parabolic; excludes ISOs and bound comets);
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   * 0.1 < q < 3.1 AU (deep plungers, the class-1 regime; Kreutz-family
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   sungrazers excluded);
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   * data arc >= 30 d and >= 20 observations used (orbit quality);
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   * primary designation only (fragment components excluded);
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   * a bound periodic control cohort (e < 0.95, 2018+) is carried
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   through the same instrument -- the boundary rotation requires
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   reaching the boundary.
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   Channels (identical instruments to steps 063/065)
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T1  cap contrast of the full-pass rotation drot (in- vs out-cap,
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   Mann-Whitney + theta-permutation null);
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T2  rotation-per-kick residual: log(drot) regressed on
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   [log|daa|, log(d_enc), q, i]; cap contrast + Spearman vs theta;
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T3  continuous cap-free Spearman(theta, drot);
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T4  energy channel |d(1/a)| in/out (expected flat -- the TEP
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   discriminator is rotation without energy exchange);
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T5  implied proper-time offset dtau = drot/om_b with the step-065
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   linear residual -> unexplained offset in years, in- vs out-cap;
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T6  three-leg decomposition: inbound-leg vs outbound-leg rotation
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   residual (the inbound-weighted claim of Section 4.1);
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T7  bipolar slip-map transfer: a + b cos(2*theta) fitted on the
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   pooled CODE+Warsaw residuals (step_b30 products) scored on the
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   new cohort -- out-of-sample Spearman and lobe sign accuracy;
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T8  aphelion-direction dipole of the reconstructed inbound
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   asymptotes: cap count vs uniform baseline and vs the CODE
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   cohort's own measured cap rate;
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T9  periodic-comet control: identical cap test on bound 2018+
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   comets that never reach the boundary sphere;
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T10 geometric control: the identical cap test with the transit
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   axis rotated 90 deg in ecliptic longitude -- same cohort,
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   wrong axis, expected flat;
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   T11 subset tiers: the CODE class-1 dynamical equivalent
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   (0 < 1/a_back < 100 x 10^-6 AU^-1, Oort-spike first
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   arrivals) and the pure-gravity subset (SBDB solutions
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   without fitted A1/A2/A3/DT non-gravitational parameters).
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   Inputs
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   data/raw/sbdb/sbdb_comets_all.json      (downloaded here if absent)
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   data/raw/spice/de440s.bsp               (provenance pinned)
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   results/step_b28_bidirectional_rotation.json   (CODE reference values)
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   results/step_b30_proper_time_slip.csv          (training residuals)
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   Outputs
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   results/step_b81_prospective_lpc.json
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   results/step_b81_prospective_lpc.csv
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117]   results/figures/step_b81_prospective_lpc.png
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] --------------------------------------------------------------------------------
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] SCRIPT: scripts/steps/step_117_prospective_lpc.py
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] SCRIPT SHA256: 673d4d332489e33d6758543f30dbfbd8064df261907a18576ce2b19b3b7d5b21
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] SCRIPT SIZE: 50799 bytes
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] ================================================================================
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] Prospective validation cohort: post-2017 SBDB LPCs (REBOUND/DE440s)
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] ================================================================================
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] using cached sbdb_comets_all.json
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] SBDB comet table: 4077 rows, fields 22
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] post-2017 comets: near-parabolic usable 287; deep-plunger primary (q<3.1) 148; bound controls 64; excluded {'year': 2815, 'frag': 13, 'e': 0, 'q': 4, 'arc': 11, 'iso': 2}
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] integrating primary cohort ...
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] prospective: integrated 255 comets x2 legs; 32 failed
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] integrating bound-comet control cohort ...
+[2026-09-20 12:21:22 UTC] [INFO    ] [STEP 117] control: integrated 0 comets x2 legs; 64 failed
+[2026-09-20 12:21:26 UTC] [INFO    ] [STEP 117] failure accounting: primary hard=27 skipped=0 extended=5 control=64 | primary-fail in-cap 0.18518518518518517 vs integrated 0.2644628099173554
+[2026-09-20 12:21:26 UTC] [INFO    ] [STEP 117] slip-map transfer: rho=-0.041 p=0.6532 sign-acc=0.43 (n=121)
+[2026-09-20 12:21:26 UTC] [INFO    ] [STEP 117] sky scan: registered-axis contrast -0.057 deg; best at (l,b)=(120,-45) contrast 0.097 deg (78 deg away); 201/264 dirs >= registered
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] primary(q<3.1): n=121 in=32 | med drot in/out 0.114/0.171 | MWU p=0.9556 perm p=0.9200 | resid cap p=0.9702 | dtau med_in=-5.49 yr
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] primary pure-gravity: n=89 in=23 | med drot in/out 0.111/0.145 | MWU p=0.9122 perm p=0.8012 | resid cap p=0.9672 | dtau med_in=-7.96 yr
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] oort-spike(q<3.1,0<1/a<100): n=30 in=8 | med drot in/out 0.079/0.180 | MWU p=0.9718 perm p=0.9769 | resid cap p=0.9825 | dtau med_in=-6.15 yr
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] oort-spike pure-gravity: n=18 in=4 | med drot in/out 0.146/0.145 | MWU p=0.6010 perm p=0.5828 | resid cap p=0.3605 | dtau med_in=3.32 yr
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] all_near_parabolic: n=255 in=68 | med drot in/out 0.095/0.123 | MWU p=0.9125 perm p=0.9251 | resid cap p=0.9517 | dtau med_in=-3.86 yr
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] extended(q>=3.1): n=134 in=36 | med drot in/out 0.083/0.086 | MWU p=0.5628 perm p=0.5833 | resid cap p=0.9143 | dtau med_in=-2.37 yr
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] control(e<0.95): n=0 in=0 -- insufficient_sample
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Saving data: step_b81_prospective_lpc.json
+[2026-09-20 12:21:27 UTC] [DEBUG   ] [STEP 117]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b81_prospective_lpc.json
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117]   Output: step_b81_prospective_lpc.json
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Saving data: step_b81_prospective_lpc.csv
+[2026-09-20 12:21:27 UTC] [DEBUG   ] [STEP 117]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b81_prospective_lpc.csv
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117]   Output: step_b81_prospective_lpc.csv
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Saving data: step_b81_prospective_lpc.png
+[2026-09-20 12:21:27 UTC] [DEBUG   ] [STEP 117]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b81_prospective_lpc.png
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117]   Output: step_b81_prospective_lpc.png
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] 
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] ================================================================================
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] STEP SUMMARY: step_117_prospective_lpc
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] ================================================================================
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Step Number: 117
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Status: SUCCESS
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Duration: 4.95s
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Log Records Emitted: 114
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Output Files: 3
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_117_prospective_lpc.log
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] 
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Generated 3 output file(s):
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117]   • step_b81_prospective_lpc.json: 45.20 KB [sha256 9c27d35e4fc98176]
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117]   • step_b81_prospective_lpc.csv: 78.93 KB [sha256 bb89fbd913e5a458]
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117]   • step_b81_prospective_lpc.png: 434.31 KB [sha256 fe8ed945938653de]
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] ================================================================================
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] STEP 117 COMPLETE: SUCCESS
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_117_prospective_lpc_provenance.json
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] 
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] ================================================================================
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] EXECUTIVE SUMMARY
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] ================================================================================
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Step: step_117_prospective_lpc (Step 117)
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Status: SUCCESS
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Duration: 4.95s
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Log Records: 125
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Output Files: 3
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] Key Outputs:
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117]   - step_b81_prospective_lpc.json (45.20 KB)
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117]   - step_b81_prospective_lpc.csv (78.93 KB)
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117]   - step_b81_prospective_lpc.png (434.31 KB)
+[2026-09-20 12:21:27 UTC] [INFO    ] [STEP 117] ================================================================================

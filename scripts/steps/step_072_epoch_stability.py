@@ -13,7 +13,7 @@ boundary.
 
 Inputs : results/step_b30_proper_time_slip.csv
 Outputs: results/step_b37_epoch_stability.json
-         results/figures/step_b37_epoch_stability.png
+         results/figures/supplementary/step_b37_epoch_stability.png
 """
 
 import sys
@@ -152,8 +152,7 @@ for co in ("code", "warsaw", "pooled"):
 
 with open(RESULTS / "step_b37_epoch_stability.json", "w") as f:
     json.dump(res, f, indent=1)
-print(f"wrote {RESULTS / 'step_b37_epoch_stability.json'}")
-
+logger.data_save(RESULTS / 'step_b37_epoch_stability.json')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -201,5 +200,5 @@ if ec:
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b37_epoch_stability.png", dpi=150)
-print(f"wrote {FIG / 'step_b37_epoch_stability.png'}")
+fig.savefig(FIG / "supplementary" / "step_b37_epoch_stability.png", dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b37_epoch_stability.png')

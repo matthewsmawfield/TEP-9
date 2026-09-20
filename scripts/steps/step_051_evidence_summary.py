@@ -21,7 +21,7 @@ Families:
   F6  NULL results that disfavour the alternatives
 
 Outputs: results/step_b15_evidence_summary.json,
-         figures/step_b15_evidence_summary.png
+         figures/supplementary/step_b15_evidence_summary.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -279,9 +279,9 @@ def main():
     ax[1].legend(fontsize=7)
 
     fig.tight_layout()
-    fig.savefig(FIG / "step_b15_evidence_summary.png", dpi=150)
-    print("wrote results/step_b15_evidence_summary.json, "
-          "figures/step_b15_evidence_summary.png")
+    fig.savefig(FIG / "supplementary" / "step_b15_evidence_summary.png", dpi=300)
+    logger.data_save(RESULTS / "step_b15_evidence_summary.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b15_evidence_summary.png")
 
 
 if __name__ == "__main__":

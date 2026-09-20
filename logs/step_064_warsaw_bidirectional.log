@@ -1,13 +1,82 @@
-[2026-09-19 21:54:02 UTC] [INFO    ] [STEP 064] LOGGER INITIALIZED: step_064_warsaw_bidirectional (Step 064)
-[2026-09-19 21:54:02 UTC] [DEBUG   ] [STEP 064] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_064_warsaw_bidirectional.log
-[2026-09-19 21:54:02 UTC] [DEBUG   ] [STEP 064] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:54:02 UTC] [INFO    ] [STEP 064] ================================================================================
-[2026-09-19 21:54:02 UTC] [INFO    ] [STEP 064] Warsaw bidirectional boundary validation (REBOUND/IAS15 + DE440s)
-[2026-09-19 21:54:02 UTC] [INFO    ] [STEP 064] ================================================================================
-[2026-09-19 21:54:03 UTC] [INFO    ] [STEP 064] sample: 98 Warsaw spike comets
-[2026-09-19 21:57:09 UTC] [INFO    ] [STEP 064] integrated 98 comets x2 legs; 0 failed
-[2026-09-19 21:57:10 UTC] [INFO    ] [STEP 064] matched: n=41 in-cap=12 | leg offset med/p95 0.0017/0.022 deg | sim-vs-cat rho=0.9943 | rot-per-kick resid cap p=0.2325 rho=-0.047
-[2026-09-19 21:57:10 UTC] [INFO    ] [STEP 064] all_spike: n=98 in-cap=32 | leg offset med/p95 0.0008/0.009 deg | sim-vs-cat rho=0.9979 | rot-per-kick resid cap p=0.2013 rho=0.005
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b29_warsaw_bidirectional.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b29_warsaw_bidirectional.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b29_warsaw_rotation_residual.png
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] LOGGER INITIALIZED: step_064_warsaw_bidirectional (Step 064)
+[2026-09-20 11:38:17 UTC] [DEBUG   ] [STEP 064] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_064_warsaw_bidirectional.log
+[2026-09-20 11:38:17 UTC] [DEBUG   ] [STEP 064] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 11:38:17 UTC] [DEBUG   ] [STEP 064] Start time (UTC): 2026-09-20T11:38:17.709814+00:00
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] 
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] STEP PURPOSE
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] --------------------------------------------------------------------------------
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   step_064: Warsaw bidirectional boundary validation -- independent
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   catalogue replication of step_063.
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   step_063 showed that an independent REBOUND/IAS15 integration of the
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   class-1 CODE comets reproduces the catalogue's original/future boundary
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   solutions to a median 0.001 deg per leg, and that the rotation-per-kick
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   residual retains its cap preference after the full encounter budget is
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   regressed out.  That validation was confined to a single catalogue.
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   This step repeats the identical machinery on the Warsaw near-parabolic
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   catalogue (Krolikowska 2014, VizieR J/A+A/567/A126): a different comet
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   sample, independently determined three-leg solutions.
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   For each Warsaw spike comet (0 < original 1/a < 100 x 10^-6 AU^-1,
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   matching the Phase-3 spike definition) the osculating elements at the
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   catalogued perihelion epoch are integrated through Sun +
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   planetary-system barycentres (DE440s, REBOUND/IAS15) twice:
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   backward until barycentric |r| = 250 AU  -> analogue of "original"
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   forward  until barycentric |r| = 250 AU  -> analogue of "future"
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   Boundary solutions are evaluated relative to the system barycentre,
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   matching the catalogue's original/future convention.
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   Outputs
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   results/step_b29_warsaw_bidirectional.json
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   results/step_b29_warsaw_bidirectional.csv
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064]   results/figures/supplementary/step_b29_warsaw_rotation_residual.png
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] --------------------------------------------------------------------------------
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] SCRIPT: scripts/steps/step_064_warsaw_bidirectional.py
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] SCRIPT SHA256: d78f44cc05135e21a90b1bd35b6a8e3e1361b6c2c75dc636a5c95523591c9493
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] SCRIPT SIZE: 19114 bytes
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] ================================================================================
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] Warsaw bidirectional boundary validation (REBOUND/IAS15 + DE440s)
+[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 064] ================================================================================
+[2026-09-20 11:38:18 UTC] [INFO    ] [STEP 064] sample: 98 Warsaw spike comets
+[2026-09-20 11:39:04 UTC] [INFO    ] [STEP 064] integrated 98 comets x2 legs; 0 failed
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] matched: n=41 in-cap=12 | leg offset med/p95 0.0017/0.022 deg | sim-vs-cat rho=0.9943 | rot-per-kick resid cap p=0.2325 rho=-0.047
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] all_spike: n=98 in-cap=32 | leg offset med/p95 0.0008/0.009 deg | sim-vs-cat rho=0.9979 | rot-per-kick resid cap p=0.2013 rho=0.005
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Saving data: step_b29_warsaw_bidirectional.json
+[2026-09-20 11:39:05 UTC] [DEBUG   ] [STEP 064]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b29_warsaw_bidirectional.json
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064]   Output: step_b29_warsaw_bidirectional.json
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Saving data: step_b29_warsaw_bidirectional.csv
+[2026-09-20 11:39:05 UTC] [DEBUG   ] [STEP 064]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b29_warsaw_bidirectional.csv
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064]   Output: step_b29_warsaw_bidirectional.csv
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Saving data: step_b29_warsaw_rotation_residual.png
+[2026-09-20 11:39:05 UTC] [DEBUG   ] [STEP 064]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b29_warsaw_rotation_residual.png
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064]   Output: step_b29_warsaw_rotation_residual.png
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] 
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] ================================================================================
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] STEP SUMMARY: step_064_warsaw_bidirectional
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] ================================================================================
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Step Number: 064
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Status: SUCCESS
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Duration: 47.79s
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Log Records Emitted: 57
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Output Files: 3
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_064_warsaw_bidirectional.log
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] 
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Generated 3 output file(s):
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064]   • step_b29_warsaw_bidirectional.json: 5.30 KB [sha256 289292b8706a1a76]
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064]   • step_b29_warsaw_bidirectional.csv: 31.02 KB [sha256 bcbe969ba6eefe8e]
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064]   • step_b29_warsaw_rotation_residual.png: 226.26 KB [sha256 bbf5a9e6f59d17e1]
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] ================================================================================
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] STEP 064 COMPLETE: SUCCESS
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_064_warsaw_bidirectional_provenance.json
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] 
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] ================================================================================
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] EXECUTIVE SUMMARY
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] ================================================================================
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Step: step_064_warsaw_bidirectional (Step 064)
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Status: SUCCESS
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Duration: 47.79s
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Log Records: 68
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Output Files: 3
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] Key Outputs:
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064]   - step_b29_warsaw_bidirectional.json (5.30 KB)
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064]   - step_b29_warsaw_bidirectional.csv (31.02 KB)
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064]   - step_b29_warsaw_rotation_residual.png (226.26 KB)
+[2026-09-20 11:39:05 UTC] [INFO    ] [STEP 064] ================================================================================

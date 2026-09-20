@@ -312,7 +312,7 @@ out = dict(
 with open(RESULTS / "step_b95_cone_shell.json", "w") as f:
     json.dump(out, f, indent=1, default=float)
 logger.info(f"verdict: {verdict}")
-logger.info("wrote results/step_b95_cone_shell.json")
+logger.data_save(RESULTS / "step_b95_cone_shell.json")
 
 # ------------------------------------------------------------------ fig
 FIG = RESULTS / "figures"
@@ -382,5 +382,5 @@ for i, nm in enumerate(("pre2018", "post2017")):
 ax[2].legend(fontsize=8)
 
 fig.tight_layout()
-fig.savefig(FIG / "step_b95_cone_shell.png", dpi=150)
-logger.info("wrote results/figures/step_b95_cone_shell.png")
+fig.savefig(FIG / "supplementary" / "step_b95_cone_shell.png", dpi=300)
+logger.data_save(RESULTS / "figures/supplementary/step_b95_cone_shell.png")

@@ -234,5 +234,5 @@ res["B6_no_qcut"] = {"n": len(allco), "n_in": int(i2.sum()),
 
 out = str(RESULTS / "step_14_blind_validation.json")
 json.dump(res, open(out, "w"), indent=1, default=float)
-print(json.dumps(res, indent=1, default=float))
-print("wrote", out)
+print("RESULT PAYLOAD:\n" + json.dumps(res, indent=1, default=float))
+logger.data_save(out)

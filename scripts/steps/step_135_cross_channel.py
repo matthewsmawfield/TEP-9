@@ -337,7 +337,7 @@ out = dict(step="step_135_cross_channel", result="b99", verdict=verdict,
            registration_status="No timestamped pre-analysis registration established by this script")
 with open(RESULTS / "step_b99_cross_channel.json", "w") as f:
     json.dump(out, f, indent=1, default=float)
-logger.info("wrote results/step_b99_cross_channel.json")
+logger.data_save(RESULTS / "step_b99_cross_channel.json")
 
 FIG = RESULTS / "figures"
 import matplotlib
@@ -393,5 +393,5 @@ else:
     ax[2].axis("off")
 
 fig.tight_layout()
-fig.savefig(FIG / "step_b99_cross_channel.png", dpi=150)
-logger.info("wrote results/figures/step_b99_cross_channel.png")
+fig.savefig(FIG / "supplementary" / "step_b99_cross_channel.png", dpi=300)
+logger.data_save(RESULTS / "figures/supplementary/step_b99_cross_channel.png")

@@ -212,32 +212,23 @@ async def generate_pdf(quality: str = 'high', wait_time: float = 5.0, skip_build
     if quality == 'maximum':
         # Highest resolution for archival/print quality
         options = presets['high_quality'].copy()
-        options['scale'] = 0.90  # Larger content, target <20 pages
+        options['scale'] = 0.72  # Larger content, target <20 pages
         options['device_scale_factor'] = 3.0  # High pixel density for sharpness
         options['viewport'] = {'width': 1920, 'height': 1080}
         options['prefer_css_page_size'] = True
     elif quality == 'high':
         options = presets['high_quality'].copy()
-        options['scale'] = 0.90
+        options['scale'] = 0.72
         options['device_scale_factor'] = 2.5
         options['viewport'] = {'width': 1920, 'height': 1080}
         options['prefer_css_page_size'] = True
     elif quality == 'print':
         options = presets['print_ready'].copy()
-        options['scale'] = 0.90
+        options['scale'] = 0.72
         options['device_scale_factor'] = 2.0
     else:
         options = presets['web_optimized'].copy()
-    
-    options['custom_css'] = '''
-    @media print {
-        .header-image, .header-image img { max-height: 135px !important; object-fit: cover; }
-        .abstract { break-inside: avoid !important; }
-        body, main, article { padding-bottom: 0 !important; margin-bottom: 0 !important; }
-        .manuscript-section:last-child, .manuscript-section:last-child > p:last-child { margin-bottom: 0 !important; padding-bottom: 0 !important; }
-        p { orphans: 3; widows: 3; }
-    }
-    '''
+
     options['wait_time'] = wait_time
     options['format'] = 'A4'
     options['margin_top'] = '1.2cm'

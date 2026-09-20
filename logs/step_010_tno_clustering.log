@@ -1,34 +1,107 @@
-[2026-09-19 21:15:41 UTC] [INFO    ] [STEP 010] LOGGER INITIALIZED: step_010_tno_clustering (Step 010)
-[2026-09-19 21:15:41 UTC] [DEBUG   ] [STEP 010] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_010_tno_clustering.log
-[2026-09-19 21:15:41 UTC] [DEBUG   ] [STEP 010] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:15:41 UTC] [INFO    ] [STEP 010] ================================================================================
-[2026-09-19 21:15:41 UTC] [INFO    ] [STEP 010] Detached-TNO orientation clustering
-[2026-09-19 21:15:41 UTC] [INFO    ] [STEP 010] ================================================================================
-catalog: 7300 objects with a >= 30 AU
-
-== detached_a150_q30_cc3: N=44
-   varpi mean=49.1 CI68 [33.2, 66.6] R=0.3316 (null 0.1341) p=7.35e-03
-   phat R=0.3355 (null 0.1363) p=5.20e-03 -> lam=49.9 beta=-17.0
-   nhat R=0.944 (null 0.9395) p=1.17e-02 -> lam=49.9 beta=83.6
-
-== extreme_a250_q30_cc3: N=26
-   varpi mean=33.1 CI68 [13.8, 53.2] R=0.3665 (null 0.1729) p=2.68e-02
-   phat R=0.3595 (null 0.1759) p=2.57e-02 -> lam=34.0 beta=-12.6
-   nhat R=0.9402 (null 0.9359) p=6.52e-02 -> lam=34.8 beta=83.1
-
-== sednoid_a150_q50_cc3: N=5
-   varpi mean=16.2 CI68 [-35.2, 53.1] R=0.4297 (null 0.402) p=4.23e-01
-   phat R=0.4174 (null 0.4058) p=4.49e-01 -> lam=16.5 beta=-13.1
-   nhat R=0.9778 (null 0.975) p=2.45e-01 -> lam=4.6 beta=82.2
-
-== detached_a150_q30_allcc: N=90
-   varpi mean=356.9 CI68 [301.0, 407.6] R=0.082 (null 0.0935) p=5.46e-01
-   phat R=0.0986 (null 0.0953) p=4.22e-01 -> lam=6.9 beta=-47.2
-   nhat R=0.9301 (null 0.9288) p=6.41e-02 -> lam=47.4 beta=86.1
-
-== extreme_a150_q40_cc3: N=18
-   varpi mean=21.5 CI68 [-4.4, 41.6] R=0.4054 (null 0.2093) p=4.99e-02
-   phat R=0.3944 (null 0.2119) p=5.42e-02 -> lam=22.2 beta=-9.5
-   nhat R=0.9668 (null 0.9639) p=8.84e-02 -> lam=16.4 beta=84.1
-
-wrote results/step_02_clustering.json, figures/step_02_clustering.png
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] LOGGER INITIALIZED: step_010_tno_clustering (Step 010)
+[2026-09-20 10:41:59 UTC] [DEBUG   ] [STEP 010] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_010_tno_clustering.log
+[2026-09-20 10:41:59 UTC] [DEBUG   ] [STEP 010] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:41:59 UTC] [DEBUG   ] [STEP 010] Start time (UTC): 2026-09-20T10:41:59.786170+00:00
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] 
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] STEP PURPOSE
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] --------------------------------------------------------------------------------
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   TEP / Planet-9 -- step 02: the perihelion-clustering anomaly
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   Reproduces, from the full JPL SBDB catalog, the anomalous clustering
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   of distant trans-Neptunian object orbits that motivates the Planet-9
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   hypothesis (Trujillo & Sheppard 2014; Batygin & Brown 2016;
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   Brown & Batygin 2021).
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   Under the standard interpretation the clustering is shepherding by an
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   unseen point mass.  Under TEP the clustered perihelion longitudes are
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   orbital clocks phase-locked about a fixed inertial direction -- the
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   signature of a spatially structured proper-time field, not a body.
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   Method -- a *conditioned* null.  Each orbit is decomposed into
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   geometric elements (a, e, i: shape and plane tilt) and clock elements
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   (node om, argument of perihelion w, and varpi = om + w).  The null
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   hypothesis holds every object's observed (a, e, i) fixed and draws om,
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   w uniform on the circle.  Clustering is therefore tested in the
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   angular/clock sector only, conditioned on the observed geometric
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   sector -- precisely where a temporal-field boundary acts, and free of
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   the inclination-marginal bias that afflicts naive pole-vector tests.
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   Sample definitions follow the literature convention:
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   detached:    a > 150 AU, q > 30 AU
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   extreme:     a > 250 AU, q > 30 AU
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   sednoid:     a > 150 AU, q > 50 AU
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   Orbit quality: primary results use condition_code <= 3 (secure,
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   multi-opposition orbits), as is standard in this literature; the
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   unfiltered catalog is shown for contrast.
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   Statistics per sample: Rayleigh R of varpi; spherical resultant R of
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   the perihelion unit vectors phat; spherical R of the folded orbit
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   poles nhat; each calibrated against 20000 conditioned Monte-Carlo
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   realizations.  Bootstrap 68% intervals on the mean direction.
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   Outputs: results/step_02_clustering.json,
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010]   figures/supplementary/step_02_clustering.png
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] --------------------------------------------------------------------------------
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] SCRIPT: scripts/steps/step_010_tno_clustering.py
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] SCRIPT SHA256: 82a400c303721bdaba9497ce0c5e181b477e4fdca61f6ac98e73bd1725478bfc
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] SCRIPT SIZE: 11598 bytes
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] ================================================================================
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] Detached-TNO orientation clustering
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] ================================================================================
+[2026-09-20 10:41:59 UTC] [INFO    ] [STEP 010] catalog: 7300 objects with a >= 30 AU
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010] 
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010] == detached_a150_q30_cc3: N=44
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    varpi mean=49.1 CI68 [33.2, 66.6] R=0.3316 (null 0.1341) p=7.35e-03
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    phat R=0.3355 (null 0.1363) p=5.20e-03 -> lam=49.9 beta=-17.0
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    nhat R=0.944 (null 0.9395) p=1.17e-02 -> lam=49.9 beta=83.6
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010] 
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010] == extreme_a250_q30_cc3: N=26
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    varpi mean=33.1 CI68 [13.8, 53.2] R=0.3665 (null 0.1729) p=2.68e-02
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    phat R=0.3595 (null 0.1759) p=2.57e-02 -> lam=34.0 beta=-12.6
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    nhat R=0.9402 (null 0.9359) p=6.52e-02 -> lam=34.8 beta=83.1
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010] 
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010] == sednoid_a150_q50_cc3: N=5
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    varpi mean=16.2 CI68 [-35.2, 53.1] R=0.4297 (null 0.402) p=4.23e-01
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    phat R=0.4174 (null 0.4058) p=4.49e-01 -> lam=16.5 beta=-13.1
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    nhat R=0.9778 (null 0.975) p=2.45e-01 -> lam=4.6 beta=82.2
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010] 
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010] == detached_a150_q30_allcc: N=90
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    varpi mean=356.9 CI68 [301.0, 407.6] R=0.082 (null 0.0935) p=5.46e-01
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    phat R=0.0986 (null 0.0953) p=4.22e-01 -> lam=6.9 beta=-47.2
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    nhat R=0.9301 (null 0.9288) p=6.41e-02 -> lam=47.4 beta=86.1
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010] 
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010] == extreme_a150_q40_cc3: N=18
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    varpi mean=21.5 CI68 [-4.4, 41.6] R=0.4054 (null 0.2093) p=4.99e-02
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    phat R=0.3944 (null 0.2119) p=5.42e-02 -> lam=22.2 beta=-9.5
+[2026-09-20 10:42:00 UTC] [INFO    ] [STEP 010]    nhat R=0.9668 (null 0.9639) p=8.84e-02 -> lam=16.4 beta=84.1
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Saving data: step_02_clustering.json
+[2026-09-20 10:42:01 UTC] [DEBUG   ] [STEP 010]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_02_clustering.json
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010]   Output: step_02_clustering.json
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Saving data: step_02_clustering.png
+[2026-09-20 10:42:01 UTC] [DEBUG   ] [STEP 010]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_02_clustering.png
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010]   Output: step_02_clustering.png
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] 
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] ================================================================================
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] STEP SUMMARY: step_010_tno_clustering
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] ================================================================================
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Step Number: 010
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Status: SUCCESS
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Duration: 1.25s
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Log Records Emitted: 84
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Output Files: 2
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_010_tno_clustering.log
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] 
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Generated 2 output file(s):
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010]   • step_02_clustering.json: 12.63 KB [sha256 64794d64b149a9eb]
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010]   • step_02_clustering.png: 425.84 KB [sha256 ec75b2fdaa32a0bd]
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] ================================================================================
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] STEP 010 COMPLETE: SUCCESS
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_010_tno_clustering_provenance.json
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] 
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] ================================================================================
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] EXECUTIVE SUMMARY
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] ================================================================================
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Step: step_010_tno_clustering (Step 010)
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Status: SUCCESS
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Duration: 1.25s
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Log Records: 94
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Output Files: 2
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] Key Outputs:
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010]   - step_02_clustering.json (12.63 KB)
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010]   - step_02_clustering.png (425.84 KB)
+[2026-09-20 10:42:01 UTC] [INFO    ] [STEP 010] ================================================================================

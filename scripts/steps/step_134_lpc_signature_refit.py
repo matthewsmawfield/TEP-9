@@ -32,7 +32,7 @@ Outputs
   results/step_b98_lpc_signature_refit.json
   results/step_b98_lpc_signature_refit.csv   (per-comet table)
   results/step_b98_lpc_refit.jsonl           (per-comet checkpoint)
-  results/figures/step_b98_lpc_signature_refit.png
+  results/figures/supplementary/step_b98_lpc_signature_refit.png
 """
 
 import csv
@@ -50,7 +50,7 @@ import numpy as np
 from scipy.stats import mannwhitneyu, spearmanr
 
 from scripts.utils.step_logger import StepLogger  # noqa: F401
-from scripts.utils.tep9_common import DATA_RAW, parse_code
+from scripts.utils.tep9_common import DATA_RAW, parse_code, tee_stdout
 
 # ------------------------------------------------------------------
 # step_127 machinery reuse: exec everything up to its cohort block with
@@ -78,6 +78,7 @@ for fname in ("resid_model", "cap_mwu", "perm_p"):
     exec(text[start:end + 1], ns)
 
 logger = ns["logger"]
+tee_stdout(logger)
 
 RESULTS = ns["RESULTS"]
 FIG = RESULTS / "figures"
@@ -190,7 +191,7 @@ t1 = {"n": len(out_rows)}
 if len(out_rows) >= 5:
     rho, p = spearmanr([r["cat_drot"] for r in out_rows],
                        [r["our_drot"] for r in out_rows])
-    t1.update(rho=float(rho), p=float(p),
+    t1.update(rho=float(rho), p=float(max(p, np.nextafter(0.0, 1.0))),
               med_abs_diff_deg=float(np.median(
                   [abs(r["our_drot"] - r["cat_drot"])
                    for r in out_rows])))
@@ -340,8 +341,8 @@ if out_rows:
 fig.suptitle("Step 134 -- signature-cohort (LPC 1902-1950) independent "
              "two-leg refit", fontsize=11)
 fig.tight_layout(rect=[0, 0, 1, 0.94])
-out_png = FIG / "step_b98_lpc_signature_refit.png"
-fig.savefig(out_png, dpi=150)
+out_png = FIG / "supplementary" / "step_b98_lpc_signature_refit.png"
+fig.savefig(out_png, dpi=300)
 plt.close(fig)
 logger.data_save(out_png, "signature-cohort refit figure")
 

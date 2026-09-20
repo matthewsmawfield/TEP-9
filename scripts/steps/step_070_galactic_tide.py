@@ -35,7 +35,7 @@ Outputs
 -------
 results/step_b35_galactic_tide.json
 results/step_b35_galactic_tide.csv
-results/figures/step_b35_galactic_tide.png
+results/figures/supplementary/step_b35_galactic_tide.png
 """
 
 import sys as _sys
@@ -388,7 +388,7 @@ ax.set_title("tide contribution to orig$\\to$fut rotation", fontsize=10)
 
 fig.tight_layout()
 FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG / "step_b35_galactic_tide.png", dpi=150)
+fig.savefig(FIG / "supplementary" / "step_b35_galactic_tide.png", dpi=300)
 
 logger.info(f"per-leg tide offset: med {np.median(dmax):.2e} deg, "
             f"max {dmax.max():.2e} deg")
@@ -396,6 +396,6 @@ logger.info(f"rotation change: med |ddrot| {np.median(np.abs(dd)):.2e}, "
             f"max {np.abs(dd).max():.2e} deg")
 logger.info(f"cap contrast: leg p={res['cap_contrast']['leg_offset_in_gt_out_p']:.3f}, "
             f"ddrot p={res['cap_contrast']['abs_ddrot_in_gt_out_p']:.3f}")
-print("wrote", out)
-print("wrote", csv_out)
-print("wrote", FIG / "step_b35_galactic_tide.png")
+logger.data_save(out)
+logger.data_save(csv_out)
+logger.data_save(FIG / "supplementary" / "step_b35_galactic_tide.png")

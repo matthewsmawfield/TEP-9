@@ -1,20 +1,95 @@
-[2026-09-19 20:09:21 UTC] [INFO    ] [STEP 088] LOGGER INITIALIZED: step_088_tide_resident (Step 088)
-[2026-09-19 20:09:21 UTC] [DEBUG   ] [STEP 088] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_088_tide_resident.log
-[2026-09-19 20:09:21 UTC] [DEBUG   ] [STEP 088] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 20:09:21 UTC] [INFO    ] [STEP 088] ================================================================================
-[2026-09-19 20:09:21 UTC] [INFO    ] [STEP 088] Resident-side galactic-tide insertion (REBOUND/DE440s)
-[2026-09-19 20:09:21 UTC] [INFO    ] [STEP 088] ================================================================================
-[2026-09-19 20:09:22 UTC] [INFO    ] [STEP 088] tide coefficients: Kx=7.061e-16 Ky=-7.061e-16 Kz=-5.653e-15 yr^-2
-[2026-09-19 20:09:22 UTC] [INFO    ] [STEP 088] tide libration directions (ecliptic lon,lat): (347.3,59.6); (167.3,-59.6)
-[2026-09-19 20:09:22 UTC] [INFO    ] [STEP 088] detached sample: 44 TNOs (a>150, q>30, cc<=3)
-[2026-09-19 20:14:29 UTC] [INFO    ] [STEP 088] tide_observed: integrated 20 Myr (50 tide kicks per snapshot)
-[2026-09-19 20:19:43 UTC] [INFO    ] [STEP 088] tide_scrambled: integrated 20 Myr (50 tide kicks per snapshot)
-[2026-09-19 20:25:10 UTC] [INFO    ] [STEP 088] tide_p9_med: integrated 20 Myr (50 tide kicks per snapshot)
-[2026-09-19 20:25:11 UTC] [INFO    ] [STEP 088] tide_observed: sigma(dv) all/in = 0.176/0.216 deg/Myr | t_disp in = 143 Myr
-[2026-09-19 20:25:11 UTC] [INFO    ] [STEP 088] tide_scrambled: sigma(dv) all/in = 0.183/0.199 deg/Myr | t_disp in = 155 Myr
-[2026-09-19 20:25:11 UTC] [INFO    ] [STEP 088] tide_p9_med: sigma(dv) all/in = 0.179/0.197 deg/Myr | t_disp in = 157 Myr
-[2026-09-19 20:25:11 UTC] [INFO    ] [STEP 088] endpoints: R20 obs=0.275 scr=0.133 (mean 166 deg) p9=0.246
-[2026-09-19 20:25:11 UTC] [INFO    ] [STEP 088] tide restoring: rho=+0.135 p=0.3827
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b53_tide_resident.json
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b53_tide_resident.csv
-wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b53_tide_resident.png
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] LOGGER INITIALIZED: step_088_tide_resident (Step 088)
+[2026-09-20 11:54:11 UTC] [DEBUG   ] [STEP 088] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_088_tide_resident.log
+[2026-09-20 11:54:11 UTC] [DEBUG   ] [STEP 088] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 11:54:11 UTC] [DEBUG   ] [STEP 088] Start time (UTC): 2026-09-20T11:54:11.193180+00:00
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] 
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] STEP PURPOSE
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] --------------------------------------------------------------------------------
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   step_088: Galactic-tide insertion on the resident population --
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   maintenance and regeneration tests.
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   step_070 measured the tide's contribution to the transit channel
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   (~1e-9 deg, null).  The resident side carries a different question:
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   the Galactic tide is the standard "no new physics" mechanism invoked
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   for outer-system apsidal structure, so the decisive test is whether
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   the tide can *maintain* the observed varpi cluster or *regenerate*
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   one from an isotropic start.  This step inserts the same epoch-fixed
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   inertial tide tensor used in step_070 (Kx=+OmG^2, Ky=-OmG^2,
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   Kz=-4 pi G rho) into the step_066 secular harness -- the 44 detached
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   TNOs (a>150, q>30, cc<=3) integrated 20 Myr under Sun+giants -- via
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   Strang-split velocity kicks.
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   Three realizations:
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   tide_observed   : real catalogue varpi + giants + tide
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   -> does the tide hold or disperse R_varpi?
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   tide_scrambled  : initial varpi randomized (a,e,i,Om fixed, w reset)
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   -> does the tide *create* varpi concentration, and
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   if so at what direction?
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   tide_p9_med     : real varpi + giants + tide + BB21 median P9
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   -> does tide+perturber jointly confine?
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   Diagnostics per model: sigma(dvarpi/dt) and dispersal time (as 066);
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   R_varpi(t); the final mean varpi direction; and a restoring-torque
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   test against the tide's own ecliptic libration directions (the
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   galactic-plane points l=90/270 deg, the tide's stationary loci).
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   Outputs
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   results/step_b53_tide_resident.json
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   results/step_b53_tide_resident.csv
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088]   results/figures/supplementary/step_b53_tide_resident.png
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] --------------------------------------------------------------------------------
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] SCRIPT: scripts/steps/step_088_tide_resident.py
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] SCRIPT SHA256: a3b90fded3b5eee91f8522350e7233d6cb66c21cfe2294e1d870f24c675c7283
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] SCRIPT SIZE: 17517 bytes
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] ================================================================================
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] Resident-side galactic-tide insertion (REBOUND/DE440s)
+[2026-09-20 11:54:11 UTC] [INFO    ] [STEP 088] ================================================================================
+[2026-09-20 11:54:12 UTC] [INFO    ] [STEP 088] tide coefficients: Kx=7.061e-16 Ky=-7.061e-16 Kz=-5.653e-15 yr^-2
+[2026-09-20 11:54:12 UTC] [INFO    ] [STEP 088] tide libration directions (ecliptic lon,lat): (347.3,59.6); (167.3,-59.6)
+[2026-09-20 11:54:12 UTC] [INFO    ] [STEP 088] detached sample: 44 TNOs (a>150, q>30, cc<=3)
+[2026-09-20 12:03:49 UTC] [INFO    ] [STEP 088] tide_scrambled: integrated 20 Myr (50 tide kicks per snapshot)
+[2026-09-20 12:03:54 UTC] [INFO    ] [STEP 088] tide_observed: integrated 20 Myr (50 tide kicks per snapshot)
+[2026-09-20 12:04:05 UTC] [INFO    ] [STEP 088] tide_p9_med: integrated 20 Myr (50 tide kicks per snapshot)
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] tide_observed: sigma(dv) all/in = 0.176/0.212 deg/Myr | t_disp in = 151 Myr
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] tide_scrambled: sigma(dv) all/in = 0.183/0.201 deg/Myr | t_disp in = 160 Myr
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] tide_p9_med: sigma(dv) all/in = 0.179/0.193 deg/Myr | t_disp in = 166 Myr
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] endpoints: R20 obs=0.275 scr=0.133 (mean 166 deg) p9=0.246
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] tide restoring: rho=+0.135 p=0.3827
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Saving data: step_b53_tide_resident.json
+[2026-09-20 12:04:07 UTC] [DEBUG   ] [STEP 088]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b53_tide_resident.json
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088]   Output: step_b53_tide_resident.json
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Saving data: step_b53_tide_resident.csv
+[2026-09-20 12:04:07 UTC] [DEBUG   ] [STEP 088]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b53_tide_resident.csv
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088]   Output: step_b53_tide_resident.csv
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Saving data: step_b53_tide_resident.png
+[2026-09-20 12:04:07 UTC] [DEBUG   ] [STEP 088]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b53_tide_resident.png
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088]   Output: step_b53_tide_resident.png
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] 
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] ================================================================================
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] STEP SUMMARY: step_088_tide_resident
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] ================================================================================
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Step Number: 088
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Status: SUCCESS
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Duration: 9.93m
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Log Records Emitted: 67
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Output Files: 3
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_088_tide_resident.log
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] 
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Generated 3 output file(s):
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088]   • step_b53_tide_resident.json: 33.57 KB [sha256 f3f3cde7e04a5292]
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088]   • step_b53_tide_resident.csv: 6.11 KB [sha256 532fd1cf4eb63270]
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088]   • step_b53_tide_resident.png: 335.69 KB [sha256 a73a42c46ac11b87]
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] ================================================================================
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] STEP 088 COMPLETE: SUCCESS
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_088_tide_resident_provenance.json
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] 
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] ================================================================================
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] EXECUTIVE SUMMARY
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] ================================================================================
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Step: step_088_tide_resident (Step 088)
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Status: SUCCESS
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Duration: 9.93m
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Log Records: 78
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Output Files: 3
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] Key Outputs:
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088]   - step_b53_tide_resident.json (33.57 KB)
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088]   - step_b53_tide_resident.csv (6.11 KB)
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088]   - step_b53_tide_resident.png (335.69 KB)
+[2026-09-20 12:04:07 UTC] [INFO    ] [STEP 088] ================================================================================

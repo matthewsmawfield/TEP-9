@@ -1,19 +1,87 @@
-[2026-09-19 21:29:27 UTC] [INFO    ] [STEP 055] LOGGER INITIALIZED: step_055_morphology (Step 055)
-[2026-09-19 21:29:27 UTC] [DEBUG   ] [STEP 055] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_055_morphology.log
-[2026-09-19 21:29:27 UTC] [DEBUG   ] [STEP 055] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:29:27 UTC] [INFO    ] [STEP 055] ================================================================================
-[2026-09-19 21:29:27 UTC] [INFO    ] [STEP 055] Cluster threshold morphology
-[2026-09-19 21:29:27 UTC] [INFO    ] [STEP 055] ================================================================================
-M1   0- 15: frac 0.159 vs uniform 0.083
-M1  15- 30: frac 0.159 vs uniform 0.083
-M1  30- 45: frac 0.136 vs uniform 0.083
-M1  45- 60: frac 0.136 vs uniform 0.083
-M1  60- 75: frac 0.068 vs uniform 0.083
-M1  75- 90: frac 0.023 vs uniform 0.083
-M1  90-120: frac 0.114 vs uniform 0.167
-M1 120-150: frac 0.091 vs uniform 0.167
-M1 150-180: frac 0.114 vs uniform 0.167
-M2: vm f=0.41 sig=35 AIC=509.9 | tophat f=0.40 W=52 AIC=507.2 | unif AIC=518.0
-M3: ring 60-90 N=4 vs expect 7 p=0.1217
-M4: in-cap counts [7 7 6 6] chi2=0.15 p=0.985
-wrote results/step_b20_morphology.json, figures/step_b20_morphology.png
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] LOGGER INITIALIZED: step_055_morphology (Step 055)
+[2026-09-20 10:47:30 UTC] [DEBUG   ] [STEP 055] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_055_morphology.log
+[2026-09-20 10:47:30 UTC] [DEBUG   ] [STEP 055] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:47:30 UTC] [DEBUG   ] [STEP 055] Start time (UTC): 2026-09-20T10:47:30.332396+00:00
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] 
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] STEP PURPOSE
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] --------------------------------------------------------------------------------
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   TEP / Planet-9 -- step b20: cluster morphology
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   The comet channel (step_18) found the anomaly is a
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   THRESHOLD, not a peak: flat excess inside a ~60-75 deg
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   patch, then a step down to background -- "the shape of a
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   wall, not a mass."  The same question on the TNO side:
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   is the detached varpi cluster peaked (von Mises -- a
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   directional pull toward the axis) or flat-topped (a
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   cap-uniform plateau -- a boundary sector)?
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   The raw profile says top-hat: ~flat inside 60 deg, then a
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   depleted ring at 60-90 deg, then far-field uniform.  This
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   step formalizes it.
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   M1  Angular profile of detached varpi about the axis.
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   M2  Model comparison on the unbinned offsets:
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   (a) uniform + von Mises cluster   (b13's model)
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   (b) uniform + top-hat sector of half-width W
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   (c) uniform only
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   -- AIC on maximum likelihood.
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   M3  The deficit ring: fraction of objects at 60-90 deg
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   vs the uniform expectation -- a real boundary has an
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   outside as well as an inside.
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   M4  In-cap flatness: chi2 uniformity of the 26 in-cap
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   objects' internal distribution.
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   Outputs: results/step_b20_morphology.json,
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   figures/supplementary/step_b20_morphology.png
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] --------------------------------------------------------------------------------
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] SCRIPT: scripts/steps/step_055_morphology.py
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] SCRIPT SHA256: 0bb64f292844c5fc72022ee9db7334b1cdbe93faaf9e66b98543a480be6a2c59
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] SCRIPT SIZE: 9188 bytes
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] ================================================================================
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Cluster threshold morphology
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] ================================================================================
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M1   0- 15: frac 0.159 vs uniform 0.083
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M1  15- 30: frac 0.159 vs uniform 0.083
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M1  30- 45: frac 0.136 vs uniform 0.083
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M1  45- 60: frac 0.136 vs uniform 0.083
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M1  60- 75: frac 0.068 vs uniform 0.083
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M1  75- 90: frac 0.023 vs uniform 0.083
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M1  90-120: frac 0.114 vs uniform 0.167
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M1 120-150: frac 0.091 vs uniform 0.167
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M1 150-180: frac 0.114 vs uniform 0.167
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M2: vm f=0.41 sig=35 AIC=509.9 | tophat f=0.40 W=52 AIC=507.2 | unif AIC=518.0
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M3: ring 60-90 N=4 vs expect 7 p=0.1217
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] M4: in-cap counts [7 7 6 6] chi2=0.15 p=0.985
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Saving data: step_b20_morphology.json
+[2026-09-20 10:47:30 UTC] [DEBUG   ] [STEP 055]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b20_morphology.json
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   Output: step_b20_morphology.json
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Saving data: step_b20_morphology.png
+[2026-09-20 10:47:30 UTC] [DEBUG   ] [STEP 055]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b20_morphology.png
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   Output: step_b20_morphology.png
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] 
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] ================================================================================
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] STEP SUMMARY: step_055_morphology
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] ================================================================================
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Step Number: 055
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Status: SUCCESS
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Duration: 0.60s
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Log Records Emitted: 64
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Output Files: 2
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_055_morphology.log
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] 
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Generated 2 output file(s):
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   • step_b20_morphology.json: 1.57 KB [sha256 aa66db30b7b60fec]
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   • step_b20_morphology.png: 116.14 KB [sha256 748f4ee923962225]
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] ================================================================================
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] STEP 055 COMPLETE: SUCCESS
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_055_morphology_provenance.json
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] 
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] ================================================================================
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] EXECUTIVE SUMMARY
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] ================================================================================
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Step: step_055_morphology (Step 055)
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Status: SUCCESS
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Duration: 0.60s
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Log Records: 74
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Output Files: 2
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] Key Outputs:
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   - step_b20_morphology.json (1.57 KB)
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055]   - step_b20_morphology.png (116.14 KB)
+[2026-09-20 10:47:30 UTC] [INFO    ] [STEP 055] ================================================================================

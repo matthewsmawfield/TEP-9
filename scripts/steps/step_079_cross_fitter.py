@@ -18,7 +18,7 @@ Inputs : data/raw/mpc/CometEls.txt,
          results/step_b30_proper_time_slip.csv
 Outputs: results/step_b44_cross_fitter.json
          results/step_b44_cross_fitter.csv
-         results/figures/step_b44_cross_fitter.png
+         results/figures/supplementary/step_b44_cross_fitter.png
 """
 
 import sys
@@ -52,7 +52,7 @@ def lv(l, b):
     l, b = math.radians(l), math.radians(b)
     return np.array([math.cos(b)*math.cos(l), math.cos(b)*math.sin(l), math.sin(b)])
 
-AXIS = lv(49.0, -17.0)
+AXIS = lv(34.0, -13.0)   # transit-axis convention (comet cap, steps 030-086)
 CAP  = 60.0
 
 # ------------------------------------------------------------------
@@ -109,7 +109,7 @@ def parse_orbit_table(path):
         except ValueError: continue
     return rows
 
-PREF_OSC={"a":0,"h":1,"e":2,"b":3}
+PREF_OSC={"a":0,"g":0,"d":1,"e":2,"f":2,"b":3,"c":3}
 def dedup(rows, pref):
     out={}
     for r in rows:
@@ -165,11 +165,17 @@ for r in rows:
 # Statistics
 # ------------------------------------------------------------------
 
-res={"method":"per-comet periapsis-direction difference between the "
+res={"inputs":["data/raw/code/code_osculating.html",
+               "data/raw/code/code_original.html",
+               "data/raw/mpc/CometEls.txt",
+               "data/raw/warsaw/warsaw_tableb.dat",
+               "data/raw/warsaw/warsaw_tablec.dat",
+               "results/step_b30_proper_time_slip.csv"],
+     "method":"per-comet periapsis-direction difference between the "
        "MPC CometEls fit and the catalogue osculating fit (CODE or "
        "Warsaw) -- the direct inter-fitter noise floor; compared in "
        "and out of the 60-deg cap and against the measured anomaly.",
-     "cap_deg":CAP,"axis":"49,-17","seed":SEED}
+     "cap_deg":CAP,"axis":"34,-13","seed":SEED}
 
 out={}
 for cat in ("code","warsaw","pooled"):
@@ -237,9 +243,8 @@ with open(RESULTS/"step_b44_cross_fitter.csv","w",newline="") as f:
                                    "w","Om","i","w2","Om2","i2"])
     w.writeheader()
     for r in rows: w.writerow({k:r[k] for k in w.fieldnames})
-print(f"wrote {RESULTS/'step_b44_cross_fitter.json'}")
-print(f"wrote {RESULTS/'step_b44_cross_fitter.csv'}")
-
+logger.data_save(RESULTS/'step_b44_cross_fitter.json')
+logger.data_save(RESULTS/'step_b44_cross_fitter.csv')
 # ------------------------------------------------------------------
 # Figure
 # ------------------------------------------------------------------
@@ -269,5 +274,5 @@ ax.set_ylabel("log10 |delta periapsis dir| (deg)")
 ax.set_title("floor by cap membership",fontsize=10)
 fig.tight_layout()
 FIG=RESULTS/"figures"; FIG.mkdir(exist_ok=True)
-fig.savefig(FIG/"step_b44_cross_fitter.png",dpi=150)
-print(f"wrote {FIG/'step_b44_cross_fitter.png'}")
+fig.savefig(FIG/"supplementary" / "step_b44_cross_fitter.png",dpi=300)
+logger.data_save(FIG / 'supplementary' / 'step_b44_cross_fitter.png')

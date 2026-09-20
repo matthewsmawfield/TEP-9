@@ -1,26 +1,99 @@
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 137] LOGGER INITIALIZED: step_137_rtg_ensemble_regression (Step 137)
-[2026-09-19 21:43:10 UTC] [DEBUG   ] [STEP 137] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_137_rtg_ensemble_regression.log
-[2026-09-19 21:43:10 UTC] [DEBUG   ] [STEP 137] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 137] ================================================================================
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 137] RTG cross-generator degradation regression
-[2026-09-19 21:43:10 UTC] [INFO    ] [STEP 137] ================================================================================
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137] T1 ensemble: 34 series across 6 families
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137] T3 pooled 9-yr wander null
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137]   n=509 windows, std=0.789%, p5/p95=-0.675/+1.109%
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137] T4 crossing-window residuals vs ensemble null
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137]   VG1_rtg1: dr=-0.559%  tail=7.4%  |W|>=|dr| frac=0.326
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137]   VG1_rtg2: dr=-0.548%  tail=8.1%  |W|>=|dr| frac=0.360
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137]   VG1_rtg3: dr=-0.560%  tail=7.5%  |W|>=|dr| frac=0.328
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137]   VG1_total: dr=-0.383%  tail=16.5%  |W|>=|dr| frac=0.583
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137]   VG2_rtg1: dr=-0.630%  tail=6.2%  |W|>=|dr| frac=0.094
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137]   VG2_rtg2: dr=+0.360%  tail=91.7%  |W|>=|dr| frac=0.176
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137]   VG2_total: dr=-0.424%  tail=8.4%  |W|>=|dr| frac=0.147
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137] T4b craft common-mode crossing channel
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137]   V1: common-mode dr=-0.546%  tail=5.98% (null n=117)
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137]   V2: common-mode dr=-0.013%  tail=40.11% (null n=177)
-[2026-09-19 21:43:11 UTC] [INFO    ] [STEP 137] T5 sibling-coherence thermal control
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 137]   within 0.044% vs across 0.392% medians, MWU p=4.1e-39
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 137]   V1 excess 0.383% -> |da/a|~2.51e-05 (1s)
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 137] verdict: WEAK COHERENT DECLINE: V1's three nuclear clocks decline together -0.55% across the heliopause window -- a common-mode excursion at 5.98% raw / 12.0% family-wise (over 2 craft tests) against the fleet's common-mode wander (n=117), while the out-of-cap V2 common-mode is flat at -0.01% (40% tail) -- the cap-geometry contrast points the predicted way but the excursion does not clear the family-wise line; the nuclear channel remains an upper bound with a resolved directional carrier
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 137] wrote results/step_b101_rtg_ensemble.json
-[2026-09-19 21:43:12 UTC] [INFO    ] [STEP 137] wrote results/figures/step_b101_rtg_ensemble.png
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] LOGGER INITIALIZED: step_137_rtg_ensemble_regression (Step 137)
+[2026-09-20 12:25:26 UTC] [DEBUG   ] [STEP 137] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_137_rtg_ensemble_regression.log
+[2026-09-20 12:25:26 UTC] [DEBUG   ] [STEP 137] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:25:26 UTC] [DEBUG   ] [STEP 137] Start time (UTC): 2026-09-20T12:25:26.886481+00:00
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] 
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] STEP PURPOSE
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] --------------------------------------------------------------------------------
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   Step 137: RTG cross-generator degradation regression (step_b101).
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   The thermal-regression close on the RTG channel named in step 098
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   and bounded by step 103.  Per-sensor thermal telemetry is not
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   publicly archived for the Voyager bus (the JPL thermal-model
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   literature records that the flight system carries very few
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   temperature sensors), so the physically meaningful regression of
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   the RTG decline against the spacecraft's thermal/degradation state
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   is run against the full cross-generator ensemble: every unit-level
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   P/P0 series in the Whiting & Woerner (2023) Dryad dataset, six RTG
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   families, 34 series.
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   T1  Ensemble extraction: all unit-level series (MHW, GPHS, MMRTG,
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   SNAP-19, SNAP-27, SNAP-9A).
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   T2  Smooth per-unit baselines (quadratic in log P/P0 over mission
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   years) -- a 9-yr excursion cannot distort a 10-40 yr fit.
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   T3  Pooled wander null: the empirical distribution of residual
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   change over 9-yr windows across every generator -- what real,
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   documented RTG aging does to a crossing-aligned window.
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   T4  Crossing-window test: Voyager per-unit and mission-total
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   residual change over the heliopause-aligned windows (V1
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   34.75-43.75 yr per step_103, opening at its t_hp = 34.97 yr;
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   V2 34.5-43.5 yr, closing just after its t_hp = 41.22 yr --
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   the widest post-crossing window the V2 record supports),
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   priced against the pooled null.
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   T5  Sibling-coherence thermal control: units sharing one
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   spacecraft share its thermal/bus environment; the
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   within-mission versus cross-mission residual-difference
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   distribution measures how much common-mode wander the shared
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   thermal state can supply.
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   T6  Bound translation through the Gamow amplification of step 098
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137]   (|d lambda/lambda| = 152.7 |d alpha_eff/alpha_eff|).
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] --------------------------------------------------------------------------------
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] SCRIPT: scripts/steps/step_137_rtg_ensemble_regression.py
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] SCRIPT SHA256: 466fc4920be46c2b6360c92b7bfd1b14b16408f78d2972c5030b7b6d6319ca16
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] SCRIPT SIZE: 20050 bytes
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] ================================================================================
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] RTG cross-generator degradation regression
+[2026-09-20 12:25:26 UTC] [INFO    ] [STEP 137] ================================================================================
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137] T1 ensemble: 34 series across 6 families
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137] T3 pooled 9-yr wander null
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   n=509 windows, std=0.789%, p5/p95=-0.675/+1.109%
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137] T4 crossing-window residuals vs ensemble null
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   VG1_rtg1: dr=-0.559%  tail=7.4%  |W|>=|dr| frac=0.326
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   VG1_rtg2: dr=-0.548%  tail=8.1%  |W|>=|dr| frac=0.360
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   VG1_rtg3: dr=-0.560%  tail=7.5%  |W|>=|dr| frac=0.328
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   VG1_total: dr=-0.383%  tail=16.5%  |W|>=|dr| frac=0.583
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   VG2_rtg1: dr=-0.630%  tail=6.2%  |W|>=|dr| frac=0.094
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   VG2_rtg2: dr=+0.360%  tail=91.7%  |W|>=|dr| frac=0.176
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   VG2_total: dr=-0.424%  tail=8.4%  |W|>=|dr| frac=0.147
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137] T4b craft common-mode crossing channel
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   V1: common-mode dr=-0.546%  tail=5.98% (null n=117)
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   V2: common-mode dr=-0.013%  tail=40.11% (null n=177)
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137] T5 sibling-coherence thermal control
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   within 0.044% vs across 0.392% medians, MWU p=4.1e-39
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   V1 excess 0.383% -> |da/a|~2.51e-05 (1s)
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137] verdict: WEAK COHERENT DECLINE: V1's three nuclear clocks decline together -0.55% across the heliopause window -- a common-mode excursion at 5.98% raw / 12.0% family-wise (over 2 craft tests) against the fleet's common-mode wander (n=117), while the out-of-cap V2 common-mode is flat at -0.01% (40% tail) -- the cap-geometry contrast points the predicted way but the excursion does not clear the family-wise line; the nuclear channel remains an upper bound with a resolved directional carrier
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137] Saving data: step_b101_rtg_ensemble.json
+[2026-09-20 12:25:27 UTC] [DEBUG   ] [STEP 137]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b101_rtg_ensemble.json
+[2026-09-20 12:25:27 UTC] [INFO    ] [STEP 137]   Output: step_b101_rtg_ensemble.json
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Saving data: step_b101_rtg_ensemble.png
+[2026-09-20 12:25:28 UTC] [DEBUG   ] [STEP 137]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b101_rtg_ensemble.png
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137]   Output: step_b101_rtg_ensemble.png
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] 
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] STEP SUMMARY: step_137_rtg_ensemble_regression
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Step Number: 137
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Status: SUCCESS
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Duration: 1.21s
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Log Records Emitted: 76
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Output Files: 2
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_137_rtg_ensemble_regression.log
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] 
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Generated 2 output file(s):
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137]   • step_b101_rtg_ensemble.json: 8.71 KB [sha256 203d37019c12c4c0]
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137]   • step_b101_rtg_ensemble.png: 339.36 KB [sha256 0f7997ff05edbc17]
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] STEP 137 COMPLETE: SUCCESS
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_137_rtg_ensemble_regression_provenance.json
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] 
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] EXECUTIVE SUMMARY
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] ================================================================================
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Step: step_137_rtg_ensemble_regression (Step 137)
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Status: SUCCESS
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Duration: 1.21s
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Log Records: 86
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Output Files: 2
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] Key Outputs:
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137]   - step_b101_rtg_ensemble.json (8.71 KB)
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137]   - step_b101_rtg_ensemble.png (339.36 KB)
+[2026-09-20 12:25:28 UTC] [INFO    ] [STEP 137] ================================================================================

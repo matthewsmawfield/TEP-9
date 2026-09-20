@@ -34,7 +34,7 @@ J5  Multiple-testing accounting: every p-value quoted in the
     which statements survive familywise control.
 
 Outputs: results/step_b3_robustness.json,
-         figures/step_b3_robustness.png
+         figures/supplementary/step_b3_robustness.png
 
 Author: Matthew Lukin Smawfield
 Date: September 2026
@@ -346,9 +346,9 @@ def main():
 
     FIG.mkdir(exist_ok=True)
     fig.tight_layout()
-    fig.savefig(FIG / "step_b3_robustness.png", dpi=150)
-    print("wrote results/step_b3_robustness.json, "
-          "figures/step_b3_robustness.png")
+    fig.savefig(FIG / "supplementary" / "step_b3_robustness.png", dpi=300)
+    logger.data_save(RESULTS / "step_b3_robustness.json")
+    logger.data_save(RESULTS / "figures/supplementary/step_b3_robustness.png")
 
 
 if __name__ == "__main__":

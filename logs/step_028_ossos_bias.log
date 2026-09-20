@@ -1,15 +1,85 @@
-[2026-09-19 21:21:28 UTC] [INFO    ] [STEP 028] LOGGER INITIALIZED: step_028_ossos_bias (Step 028)
-[2026-09-19 21:21:28 UTC] [DEBUG   ] [STEP 028] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_028_ossos_bias.log
-[2026-09-19 21:21:28 UTC] [DEBUG   ] [STEP 028] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:21:28 UTC] [INFO    ] [STEP 028] ================================================================================
-[2026-09-19 21:21:28 UTC] [INFO    ] [STEP 028] OSSOS pointing coupling
-[2026-09-19 21:21:28 UTC] [INFO    ] [STEP 028] ================================================================================
-B1 |varpi-lam_d| mean=50.8 deg, R=0.513 (null 0.160) p=2.50e-04
-B2 OSSOS detached varpi mean=329 deg R=0.108 p=0.698
-B3 clustered (varpi within 60 of 50): 13 objects discovered at lam_d [7.9, 9.5, 9.5, 9.8, 12.9, 14.5, 24.4, 27.4, 48.4, 49.8, 50.2, 50.3, 51.3]
-B4 discovery r/q median=1.10
-B5 a30_40           N=  193  p(Om)=7.40e-05  p(varpi)=3.30e-01
-B5 a40_60           N=  793  p(Om)=1.54e-12  p(varpi)=1.85e-01
-B5 a60_150          N=  195  p(Om)=2.44e-06  p(varpi)=4.44e-01
-B5 a150_detached    N=   44  p(Om)=8.54e-03  p(varpi)=7.31e-03
-wrote results/step_06_ossos_bias.json, figures/step_06_ossos_bias.png
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] LOGGER INITIALIZED: step_028_ossos_bias (Step 028)
+[2026-09-20 10:43:54 UTC] [DEBUG   ] [STEP 028] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_028_ossos_bias.log
+[2026-09-20 10:43:54 UTC] [DEBUG   ] [STEP 028] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 10:43:54 UTC] [DEBUG   ] [STEP 028] Start time (UTC): 2026-09-20T10:43:54.734498+00:00
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] 
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] STEP PURPOSE
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] --------------------------------------------------------------------------------
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   TEP / Planet-9 -- step 06: bias control with the OSSOS ensemble
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   The standard objection to the extreme-TNO clustering is discovery
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   bias: an eccentric object is brightest near perihelion, so a survey
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   pointing at ecliptic longitude lam_d preferentially detects objects
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   whose perihelion directions lie near lam_d.  The characterized OSSOS
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   ensemble (Bannister+ 2018, ApJS 236, 18; VizieR J/ApJS/236/18) is
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   the only TNO sample with fully documented discovery circumstances --
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   per-object discovery RA/Dec, distance, magnitude, and survey block.
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   Three real-data tests on the 31 detached objects (cl='det'):
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   B1  Pointing coupling.  Circular correlation between discovery
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   ecliptic longitude lam_d and longitude of perihelion varpi.
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   Under the "found near perihelion" bias, varpi - lam_d ~ 0.
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   B2  Is OSSOS's detached sample direction different from the global
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   (SBDB) cluster axis?  OSSOS's deep blocks concentrated near
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   lam ~ 210-240 deg -- the anti-cluster side.  A uniform
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   population filtered through that footprint produces an apparent
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   concentration on the anti side: explicit demonstration of the
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   bias mechanism, and evidence the global cluster is not an
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   OSSOS artifact.
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   B3  Discovery geometry of the clustered group: were objects in the
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   clustered direction (varpi ~ 50 deg) found only by blocks
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   pointing at ~50 deg (suspicious), or across diverse pointings?
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   B4  Discovery distance: are clustered objects systematically nearer
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   perihelion at discovery (the bias channel's expected marker)?
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   Outputs: results/step_06_ossos_bias.json,
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028]   figures/supplementary/step_06_ossos_bias.png
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] --------------------------------------------------------------------------------
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] SCRIPT: scripts/steps/step_028_ossos_bias.py
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] SCRIPT SHA256: 1c7ced419d16e1fac7bfc73fa816169bdccc27e14f4c5a8b9ca18e0f343a8090
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] SCRIPT SIZE: 11248 bytes
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] ================================================================================
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] OSSOS pointing coupling
+[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 028] ================================================================================
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] B1 |varpi-lam_d| mean=50.8 deg, R=0.513 (null 0.160) p=2.50e-04
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] B2 OSSOS detached varpi mean=329 deg R=0.108 p=0.698
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] B3 clustered (varpi within 60 of 50): 13 objects discovered at lam_d [7.9, 9.5, 9.5, 9.8, 12.9, 14.5, 24.4, 27.4, 48.4, 49.8, 50.2, 50.3, 51.3]
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] B4 discovery r/q median=1.10
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] B5 a30_40           N=  193  p(Om)=7.40e-05  p(varpi)=3.30e-01
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] B5 a40_60           N=  793  p(Om)=1.54e-12  p(varpi)=1.85e-01
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] B5 a60_150          N=  195  p(Om)=2.44e-06  p(varpi)=4.44e-01
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] B5 a150_detached    N=   44  p(Om)=8.54e-03  p(varpi)=7.31e-03
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Saving data: step_06_ossos_bias.json
+[2026-09-20 10:43:55 UTC] [DEBUG   ] [STEP 028]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_06_ossos_bias.json
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028]   Output: step_06_ossos_bias.json
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Saving data: step_06_ossos_bias.png
+[2026-09-20 10:43:55 UTC] [DEBUG   ] [STEP 028]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_06_ossos_bias.png
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028]   Output: step_06_ossos_bias.png
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] 
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] ================================================================================
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] STEP SUMMARY: step_028_ossos_bias
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] ================================================================================
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Step Number: 028
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Status: SUCCESS
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Duration: 1.02s
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Log Records Emitted: 62
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Output Files: 2
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_028_ossos_bias.log
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] 
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Generated 2 output file(s):
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028]   • step_06_ossos_bias.json: 6.40 KB [sha256 324ad065adc82628]
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028]   • step_06_ossos_bias.png: 218.23 KB [sha256 9c3620a9282c942e]
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] ================================================================================
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] STEP 028 COMPLETE: SUCCESS
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_028_ossos_bias_provenance.json
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] 
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] ================================================================================
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] EXECUTIVE SUMMARY
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] ================================================================================
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Step: step_028_ossos_bias (Step 028)
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Status: SUCCESS
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Duration: 1.02s
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Log Records: 72
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Output Files: 2
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] Key Outputs:
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028]   - step_06_ossos_bias.json (6.40 KB)
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028]   - step_06_ossos_bias.png (218.23 KB)
+[2026-09-20 10:43:55 UTC] [INFO    ] [STEP 028] ================================================================================

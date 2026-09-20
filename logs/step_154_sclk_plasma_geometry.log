@@ -1,0 +1,115 @@
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] LOGGER INITIALIZED: step_154_sclk_plasma_geometry (Step 154)
+[2026-09-20 12:24:03 UTC] [DEBUG   ] [STEP 154] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_154_sclk_plasma_geometry.log
+[2026-09-20 12:24:03 UTC] [DEBUG   ] [STEP 154] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:24:03 UTC] [DEBUG   ] [STEP 154] Start time (UTC): 2026-09-20T12:24:03.063707+00:00
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] 
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] STEP PURPOSE
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] --------------------------------------------------------------------------------
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   Step 154: SCLK link-plasma and solar-activity regression (step_b118).
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   The plasma-projection confound on the spacecraft clock channel: if
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   solar-wind turbulence, IMF state, or heliospheric plasma structure
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   along the Earth--spacecraft line of sight contaminated the SCLK
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   calibration record, the residuals must organize by the link's plasma
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   covariates -- contemporaneous solar activity and the Sun--Earth--probe
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   (SEP) elongation angle that controls the inner-heliosphere column the
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   radio link traverses -- not by the craft's heliocentric radius.
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   Steps 141/146/148 tested crossings, radial gradients and PWS
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   anchoring; this step runs the direct regression that was missing.
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   Data: per-calibration-boundary residual series from step 096
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   (step_b60_sclk_journey.csv: phase_resid_s, drift_ppm, r_au, region);
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   NASA/GSFC OMNIWeb COHO daily merged dataset (omni_m_daily.dat, RTN
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   format: BR/BT/BN, |B|, Vsw, Np, Tp) and OMNI2 daily averages
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   (omni_01_av.dat: Kp, SSN, F10.7, ap) matched to each segment interval;
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   SEP angle computed at each boundary epoch from the NAIF trajectory and
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   DE440s ephemeris kernels (ECLIPJ2000, Sun-centred).
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   T1  Interval-matched activity regression: Spearman |phase_resid| and
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   |drift_ppm| against segment-averaged P_dyn, |B|, Vsw, Tp, SSN,
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   F10.7, ap -- per craft and pooled Voyager.
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   T2  Link-geometry regression: |phase_resid| vs SEP elongation; solar
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   plasma scintillation noise grows steeply toward conjunction, so a
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   link artefact must load the small-SEP end.
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   T3  Partial correlations (decisive): resid ~ r_au given {P_dyn, SEP,
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   F10.7} versus resid ~ P_dyn given r_au -- whether the radial
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   organization survives controlling the plasma covariates.
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   T4  Shell stratification: the heliosheath residual excess split at
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   median P_dyn / F10.7 -- a link-plasma origin requires the excess
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   to concentrate in the high-activity half -- with the segment
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   interval-length control (raw phase residuals accumulate with
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   segment span at rho ~ 0.9, so any cadence-activity covariance
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154]   masquerades as a residual-activity coupling).
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] --------------------------------------------------------------------------------
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] SCRIPT: scripts/steps/step_154_sclk_plasma_geometry.py
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] SCRIPT SHA256: d5c8abe40d3ac64a579183c1b321083d0860e186d4e1f28fbd125caf2441f602
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] SCRIPT SIZE: 18665 bytes
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] ================================================================================
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] SCLK link-plasma and solar-activity regression
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] ================================================================================
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] OMNI2 daily cache present: omni_01_av.dat
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] daily covariates: 23376 days, 1963-01-01 to 2026-12-31
+[2026-09-20 12:24:03 UTC] [INFO    ] [STEP 154] boundary segments: 5888 ({'VG1': 1127, 'VG2': 1396, 'NH1': 3365})
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Saving data: step_b118_sclk_plasma_geometry.csv
+[2026-09-20 12:24:04 UTC] [DEBUG   ] [STEP 154]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b118_sclk_plasma_geometry.csv
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   Output: step_b118_sclk_plasma_geometry.csv
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] T1 interval-matched activity regression
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG1 |phase_resid_s|: strongest covariate p_dyn rho=-0.113 p=0.000231 (n=1056)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG1 |drift_ppm|: strongest covariate p_dyn rho=-0.170 p=2.66e-08 (n=1056)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG2 |phase_resid_s|: strongest covariate p_dyn rho=-0.157 p=1.04e-08 (n=1314)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG2 |drift_ppm|: strongest covariate p_dyn rho=-0.226 p=1.27e-16 (n=1314)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG-pooled |phase_resid_s|: strongest covariate p_dyn rho=-0.139 p=1.25e-11 (n=2370)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG-pooled |drift_ppm|: strongest covariate p_dyn rho=-0.200 p=6.54e-23 (n=2370)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   NH1 |phase_resid_s|: strongest covariate f107 rho=-0.048 p=0.00514 (n=3365)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   NH1 |drift_ppm|: strongest covariate ap rho=-0.106 p=6.77e-10 (n=3365)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] T2 SEP-elongation regression
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG1: rho(|phase_resid|, SEP)=+0.016 p=0.582; min SEP 5.9 deg, 8 boundaries <10 deg
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG2: rho(|phase_resid|, SEP)=-0.019 p=0.481; min SEP 0.6 deg, 41 boundaries <10 deg
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG-pooled: rho(|phase_resid|, SEP)=-0.003 p=0.877; min SEP 0.6 deg, 49 boundaries <10 deg
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   NH1: rho(|phase_resid|, SEP)=-0.058 p=0.000806; min SEP 1.2 deg, 152 boundaries <10 deg
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] T3 partial correlations: radius vs plasma covariates
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG1: resid~r rho=+0.291 -> partial given plasma +0.280 (p=1.7e-20); resid~P_dyn partial -0.017 (p=0.58); SEP partial +0.022 (p=0.47)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG2: resid~r rho=+0.370 -> partial given plasma +0.333 (p=1.9e-35); resid~P_dyn partial -0.032 (p=0.24); SEP partial -0.015 (p=0.59)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG-pooled: resid~r rho=+0.331 -> partial given plasma +0.305 (p=4.1e-52); resid~P_dyn partial -0.031 (p=0.13); SEP partial +0.003 (p=0.87)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] T4 heliosheath-shell activity stratification
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG1 shell split p_dyn@1.45: hi 1.03e-02s vs lo 8.00e-04s, MWU p=0.039; partial given (r, interval) r=-0.113 p=0.235
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG1 shell split f107@77.96: hi 6.35e-03s vs lo 1.00e-03s, MWU p=0.257; partial given (r, interval) r=+0.054 p=0.569
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG2 shell split p_dyn@1.42: hi 6.15e-03s vs lo 1.00e-03s, MWU p=0.00996; partial given (r, interval) r=+0.026 p=0.715
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   VG2 shell split f107@82.17: hi 4.15e-03s vs lo 1.40e-03s, MWU p=0.842; partial given (r, interval) r=+0.071 p=0.309
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] verdict: LINK-PLASMA NOT SUPPORTED: residuals carry no contemporaneous solar-activity or SEP-elongation organization once segment-interval length is controlled; the radial structure survives partialling every plasma covariate (T1-T4) (min T1 p=6.54e-23)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Saving data: step_b118_sclk_plasma_geometry.json
+[2026-09-20 12:24:04 UTC] [DEBUG   ] [STEP 154]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b118_sclk_plasma_geometry.json
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   Output: step_b118_sclk_plasma_geometry.json
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Saving data: step_b118_sclk_plasma_geometry.png
+[2026-09-20 12:24:04 UTC] [DEBUG   ] [STEP 154]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b118_sclk_plasma_geometry.png
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   Output: step_b118_sclk_plasma_geometry.png
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] 
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] ================================================================================
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] STEP SUMMARY: step_154_sclk_plasma_geometry
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] ================================================================================
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Step Number: 154
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Status: SUCCESS
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Duration: 1.66s
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Log Records Emitted: 90
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Output Files: 3
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_154_sclk_plasma_geometry.log
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] 
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Generated 3 output file(s):
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   • step_b118_sclk_plasma_geometry.csv: 904.88 KB [sha256 23e78362638c1adf]
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   • step_b118_sclk_plasma_geometry.json: 10.36 KB [sha256 db9280c2eee3d038]
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   • step_b118_sclk_plasma_geometry.png: 892.50 KB [sha256 bbe574d50581e773]
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] ================================================================================
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] STEP 154 COMPLETE: SUCCESS
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_154_sclk_plasma_geometry_provenance.json
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] 
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] ================================================================================
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] EXECUTIVE SUMMARY
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] ================================================================================
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Step: step_154_sclk_plasma_geometry (Step 154)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Status: SUCCESS
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Duration: 1.66s
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Log Records: 101
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Output Files: 3
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] Key Outputs:
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   - step_b118_sclk_plasma_geometry.csv (904.88 KB)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   - step_b118_sclk_plasma_geometry.json (10.36 KB)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154]   - step_b118_sclk_plasma_geometry.png (892.50 KB)
+[2026-09-20 12:24:04 UTC] [INFO    ] [STEP 154] ================================================================================

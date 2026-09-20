@@ -1,22 +1,96 @@
-[2026-09-19 21:43:06 UTC] [INFO    ] [STEP 134] LOGGER INITIALIZED: step_134_lpc_signature_refit (Step 134)
-[2026-09-19 21:43:06 UTC] [DEBUG   ] [STEP 134] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_134_lpc_signature_refit.log
-[2026-09-19 21:43:06 UTC] [DEBUG   ] [STEP 134] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-19 21:43:06 UTC] [INFO    ] [STEP 134] ================================================================================
-[2026-09-19 21:43:06 UTC] [INFO    ] [STEP 134] Signature-cohort (LPC 1902-1950) independent two-leg refit -- step_127 machinery
-[2026-09-19 21:43:06 UTC] [INFO    ] [STEP 134] ================================================================================
-[2026-09-19 21:43:06 UTC] [INFO    ] [STEP 134] signature cohort: 30 LPCs (30 CODE members)
-[2026-09-19 21:43:06 UTC] [INFO    ] [STEP 134] 17 checkpointed, 13 failed, 0 to process
-[2026-09-19 21:43:06 UTC] [INFO    ] [STEP 134] fitted cohort: 17 comets (13 failed/skipped)
-[2026-09-19 21:43:06 UTC] [INFO    ] [STEP 134] verdict: SIGNATURE-COHORT REPLICATION: the independent two-leg refit concords with the catalogue per-comet rotations (rho=1.000, n=17) and reproduces the in-cap excess on identical members (refit MWU p=0.0409, median-gap permutation p=0.069; catalogue p=0.0409).  The historical carrier is a feature of the raw astrometry, not of the Warsaw fit products.  Shared astrometry and a standard force model bound interpretation; the fitted subset is small and set by observability.
-[2026-09-19 21:43:06 UTC] [INFO    ] [STEP 134] Saving data: step_b98_lpc_signature_refit.json
-[2026-09-19 21:43:06 UTC] [DEBUG   ] [STEP 134]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b98_lpc_signature_refit.json
-[2026-09-19 21:43:06 UTC] [DEBUG   ] [STEP 134]   Description: signature-cohort refit tests
-[2026-09-19 21:43:06 UTC] [INFO    ] [STEP 134] Saving data: step_b98_lpc_signature_refit.csv
-[2026-09-19 21:43:06 UTC] [DEBUG   ] [STEP 134]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b98_lpc_signature_refit.csv
-[2026-09-19 21:43:06 UTC] [DEBUG   ] [STEP 134]   Description: per-comet signature-cohort refit table
-[2026-09-19 21:43:06 UTC] [DEBUG   ] [STEP 134]   Records: 17
-[2026-09-19 21:43:07 UTC] [INFO    ] [STEP 134] Saving data: step_b98_lpc_signature_refit.png
-[2026-09-19 21:43:07 UTC] [DEBUG   ] [STEP 134]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b98_lpc_signature_refit.png
-[2026-09-19 21:43:07 UTC] [DEBUG   ] [STEP 134]   Description: signature-cohort refit figure
-[2026-09-19 21:43:07 UTC] [INFO    ] [STEP 134] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_134_lpc_signature_refit_provenance.json
-[2026-09-19 21:43:07 UTC] [INFO    ] [STEP 134] signature-cohort refit complete
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] LOGGER INITIALIZED: step_134_lpc_signature_refit (Step 134)
+[2026-09-20 12:25:23 UTC] [DEBUG   ] [STEP 134] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_134_lpc_signature_refit.log
+[2026-09-20 12:25:23 UTC] [DEBUG   ] [STEP 134] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-20 12:25:23 UTC] [DEBUG   ] [STEP 134] Start time (UTC): 2026-09-20T12:25:23.418347+00:00
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] 
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] STEP PURPOSE
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] --------------------------------------------------------------------------------
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   Step 134 -- Signature-cohort independent refit.
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   step_127 built the zero-Warsaw-lineage two-leg LM refit and validated it
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   on the pre-2018 yr >= 1950 cohort (n = 587, per-comet concordance
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   rho = 0.998, registered inbound-leg in-cap excess retained on identical
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   members).  But the registered signature population itself -- the LPC
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   1902-1950 one-apparition sample whose declared-axis replication anchors
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   the three-leg signature (step_105, results/step_b69_lpc_bidirectional) --
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   was excluded by that step's year floor.  This step points the identical
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   machinery at the signature carriers themselves: the 30 LPCs of
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   step_b69_lpc_bidirectional.csv.
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   Reuses step_127's machinery verbatim (imports/constants/fitting/
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   boundary-propagation functions) by exec'ing the source up to its cohort
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   block, with the machinery logger name and download-provenance label
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   retargeted to this step so the donor step's log and the MPC provenance
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   ledger are not clobbered.
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   Registered tests
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   T1  fitter validity: per-comet Spearman concordance of our drot vs the
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   catalogue drot on the fitted members.
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   T2  rotation cap contrast at 60 deg on BOTH records: catalogue drot vs
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   our drot on identical members -- the signature-cohort in-cap
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   excess must survive on the zero-lineage fits for the carrier
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   degeneracy to close on the objects that carry the anomaly.
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   T3  independent-leg disagreement (ddirf) cap contrast on the dual-leg
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   subset (expected small: early-century astrometry rarely supports
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   two independent leg solutions under the same observation floor).
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   Outputs
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   results/step_b98_lpc_signature_refit.json
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   results/step_b98_lpc_signature_refit.csv   (per-comet table)
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   results/step_b98_lpc_refit.jsonl           (per-comet checkpoint)
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   results/figures/supplementary/step_b98_lpc_signature_refit.png
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] --------------------------------------------------------------------------------
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] SCRIPT: scripts/steps/step_134_lpc_signature_refit.py
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] SCRIPT SHA256: b694b8ab31a535f25237d8e68109ecf93382049517e217de7d46f64d1576b70f
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] SCRIPT SIZE: 14580 bytes
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] ================================================================================
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] Signature-cohort (LPC 1902-1950) independent two-leg refit -- step_127 machinery
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] ================================================================================
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] signature cohort: 30 LPCs (30 CODE members)
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] 17 checkpointed, 13 failed, 0 to process
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] fitted cohort: 17 comets (13 failed/skipped)
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] verdict: SIGNATURE-COHORT REPLICATION: the independent two-leg refit concords with the catalogue per-comet rotations (rho=1.000, n=17) and reproduces the in-cap excess on identical members (refit MWU p=0.0409, median-gap permutation p=0.069; catalogue p=0.0409).  The historical carrier is a feature of the raw astrometry, not of the Warsaw fit products.  Shared astrometry and a standard force model bound interpretation; the fitted subset is small and set by observability.
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] Saving data: step_b98_lpc_signature_refit.json
+[2026-09-20 12:25:23 UTC] [DEBUG   ] [STEP 134]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b98_lpc_signature_refit.json
+[2026-09-20 12:25:23 UTC] [DEBUG   ] [STEP 134]   Description: signature-cohort refit tests
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   Output: step_b98_lpc_signature_refit.json (signature-cohort refit tests)
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134] Saving data: step_b98_lpc_signature_refit.csv
+[2026-09-20 12:25:23 UTC] [DEBUG   ] [STEP 134]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b98_lpc_signature_refit.csv
+[2026-09-20 12:25:23 UTC] [DEBUG   ] [STEP 134]   Description: per-comet signature-cohort refit table
+[2026-09-20 12:25:23 UTC] [DEBUG   ] [STEP 134]   Records: 17
+[2026-09-20 12:25:23 UTC] [INFO    ] [STEP 134]   Output: step_b98_lpc_signature_refit.csv (per-comet signature-cohort refit table)
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Saving data: step_b98_lpc_signature_refit.png
+[2026-09-20 12:25:24 UTC] [DEBUG   ] [STEP 134]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b98_lpc_signature_refit.png
+[2026-09-20 12:25:24 UTC] [DEBUG   ] [STEP 134]   Description: signature-cohort refit figure
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134]   Output: step_b98_lpc_signature_refit.png (signature-cohort refit figure)
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_134_lpc_signature_refit_provenance.json
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] signature-cohort refit complete
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] 
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] ================================================================================
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] STEP SUMMARY: step_134_lpc_signature_refit
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] ================================================================================
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Step Number: 134
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Status: SUCCESS
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Duration: 0.61s
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Log Records Emitted: 71
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Output Files: 3
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_134_lpc_signature_refit.log
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] 
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Generated 3 output file(s):
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134]   • step_b98_lpc_signature_refit.json: 2.54 KB [sha256 7e1147d46624f54c] - signature-cohort refit tests
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134]   • step_b98_lpc_signature_refit.csv: 3.35 KB [sha256 049e6fa0197e267b] - per-comet signature-cohort refit table
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134]   • step_b98_lpc_signature_refit.png: 230.56 KB [sha256 d315d0a88d40e095] - signature-cohort refit figure
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] ================================================================================
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] STEP 134 COMPLETE: SUCCESS
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_134_lpc_signature_refit_provenance.json
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] 
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] ================================================================================
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] EXECUTIVE SUMMARY
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] ================================================================================
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Step: step_134_lpc_signature_refit (Step 134)
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Status: SUCCESS
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Duration: 0.61s
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Log Records: 82
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Output Files: 3
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] Key Outputs:
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134]   - step_b98_lpc_signature_refit.json (2.54 KB)
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134]   - step_b98_lpc_signature_refit.csv (3.35 KB)
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134]   - step_b98_lpc_signature_refit.png (230.56 KB)
+[2026-09-20 12:25:24 UTC] [INFO    ] [STEP 134] ================================================================================
