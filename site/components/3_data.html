@@ -7,11 +7,11 @@
 <h2>2.1 The resident population: JPL SBDB outer solar system</h2>
 
 <p>
-    The JPL Small-Body Database (SBDB) query API supplies the complete asteroid orbit catalogue with heliocentric semimajor axis $a \geq 30$ AU (7,299 objects at retrieval), the class-CEN Centaur population (1,050 objects), and comets reaching perihelia $q \geq 5$ AU (268 objects). The fields retrieved are designation, $a$, $e$, $i$, $\Omega$, $\omega$, $q$, aphelion, absolute magnitude $H$, element epoch, orbit class, condition code, data arc, observation counts, and first/last observation dates.
+    The JPL Small-Body Database (SBDB) query API supplies the complete asteroid orbit catalogue with heliocentric semimajor axis $a \geq 30$ AU (7,300 objects at retrieval), the class-CEN Centaur population (1,050 objects), and comets reaching perihelia $q \geq 5$ AU (268 objects). The fields retrieved are designation, $a$, $e$, $i$, $\Omega$, $\omega$, $q$, aphelion, absolute magnitude $H$, element epoch, orbit class, condition code, data arc, observation counts, and first/last observation dates.
 </p>
 
 <p>
-    The primary resident sample follows the literature convention for the detached population: $a > 150$ AU, $q > 30$ AU, and orbit condition code $\leq 3$ (secure, multi-opposition solutions). This yields $N = 44$ objects, among them 2023 KQ14 ('Ammonite'), the newest Sedna-like body, which enters the secure sample through a 2005 precovery rather than its 2023 discovery arc. Sensitivity to the cuts is mapped throughout: the extreme subsample ($a > 250$ AU; $N = 26$), a relaxed-quality control (all condition codes; $N = 90$), a sednoid subset ($q > 50$ AU; $N = 5$), and a plunging-transit control ($a > 150$ AU, $q \leq 30$ AU; $N = 34$) are analysed in parallel. A further prospective cohort — all objects with $a > 150$ AU, $q > 30$ AU, and designation year 2025 or later, at any condition code ($N = 21$; median condition code 8) — is scored separately against the registered predictions and its own discovery footprint in the newest-cohort audit (Section 5.5).
+    The primary resident sample follows the literature convention for the detached population: $a > 150$ AU, $q > 30$ AU, and orbit condition code $\leq 3$ (secure, multi-opposition solutions). This yields $N = 44$ objects, among them 2023 KQ14 ('Ammonite'), the newest Sedna-like body, which enters the secure sample through a 2005 precovery rather than its 2023 discovery arc. Sensitivity to the cuts is mapped throughout: the extreme subsample ($a > 250$ AU; $N = 26$), a relaxed-quality control (all condition codes; $N = 90$), a sednoid subset ($q > 50$ AU; $N = 5$), and a plunging-transit control ($a > 150$ AU, $q \leq 30$ AU; $N = 34$) are analysed in parallel. A further prospective cohort — all objects with $a > 150$ AU, $q > 30$ AU, and designation year 2025 or later, at any condition code ($N = 21$; median condition code 8) — is scored separately against the registered predictions and its own discovery footprint in the newest-cohort audit (Section 7).
 </p>
 
 <h2>2.2 The transit population: Warsaw and CODE comet catalogues</h2>
@@ -37,11 +37,11 @@
 <h2>2.4 Auxiliary catalogues</h2>
 
 <p>
-    Three further public resources support the concordance and injection-chain analyses: the Minor Planet Center's full orbit catalogue MPCORB.DAT (1.56 million orbits), used to recompute the TNO cluster on MPC orbit solutions and to carry the catalogue-lineage replications of Sections 3.6 and 5.1 — the detached-clustering reproduction and the bias-free mean-plane audit; the JPL comet elements file (CometEls.txt), used to select the Jupiter-family population by Tisserand class; and the Dark Energy Survey six-year TNO catalogue (Bernardinelli et al. 2022; 814 objects discovered in a contiguous 5000 deg$^2$ of southern sky with independently fitted orbits), used as the independent resident-lineage cohort in Section 5.5. The N-body planetary baseline additionally uses the JPL DE440s planetary ephemeris (NAIF generic kernel, coverage 1849–2150) for solar-system barycentric planet states at each comet's perihelion epoch.
+    Three further public resources support the concordance and injection-chain analyses. The Minor Planet Center's full orbit catalogue MPCORB.DAT (1.56 million orbits) recomputes the TNO cluster on MPC orbit solutions and carries the catalogue-lineage replications of Sections 3.6 and 5.1 — the detached-clustering reproduction and the bias-free mean-plane audit. The JPL comet elements file (CometEls.txt) selects the Jupiter-family population by Tisserand class. And the Dark Energy Survey six-year TNO catalogue (Bernardinelli et al. 2022; 814 objects discovered in a contiguous 5000 deg$^2$ of southern sky with independently fitted orbits) serves as the independent resident-lineage cohort in Section 3.6. The N-body planetary baseline additionally uses the JPL DE440s planetary ephemeris (Park et al. 2021; NAIF generic kernel, coverage 1849–2150) for solar-system barycentric planet states at each comet's perihelion epoch.
 </p>
 
 <table class="data-table">
-    <caption>Table 1: Data catalogues and their roles</caption>
+    <caption><strong>Table 1:</strong> Data catalogues and their roles</caption>
     <thead>
         <tr>
             <th>Catalogue</th>
@@ -55,7 +55,7 @@
         <tr>
             <td>JPL SBDB</td>
             <td>ssd-api.jpl.nasa.gov</td>
-            <td>7,299 outer asteroids; 1,050 Centaurs; 268 comets</td>
+            <td>7,300 outer asteroids; 1,050 Centaurs; 268 comets</td>
             <td>Resident + injected populations</td>
             <td>001</td>
         </tr>

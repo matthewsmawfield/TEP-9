@@ -105,7 +105,8 @@
    "p_tide_null"
   ],
   "digits": 3,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "post_ecliptic_p": {
   "file": "step_b88_lineage_aphelion.json",
@@ -126,7 +127,8 @@
    "p_combined"
   ],
   "digits": 3,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "holdout_p": {
   "file": "step_b81_prospective_lpc.json",
@@ -199,7 +201,8 @@
    "fisher_p_nominal"
   ],
   "digits": 3,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "refit_in_p": {
   "file": "step_b91_nonwarsaw_refit.json",
@@ -271,7 +274,8 @@
    "p"
   ],
   "digits": 3,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "legacy_p": {
   "file": "step_b104_astcat_stratification.json",
@@ -307,6 +311,15 @@
  "resident_union_p": {
   "file": "step_b77_resident_ledger.json",
   "path": [
+   "union_boundary_resident",
+   "p_vs_baseline"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "union_all_p": {
+  "file": "step_b77_resident_ledger.json",
+  "path": [
    "union",
    "p_vs_baseline"
   ],
@@ -320,7 +333,8 @@
    "fisher_p"
   ],
   "digits": 3,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "global_rank": {
   "file": "step_b90_global_synthesis.json",
@@ -349,7 +363,8 @@
    "p"
   ],
   "digits": 2,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "disp_resid_cat_p": {
   "file": "step_b92_post2017_refit.json",
@@ -360,7 +375,8 @@
    "p"
   ],
   "digits": 2,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "disp_extreme_p": {
   "file": "step_b92_post2017_refit.json",
@@ -381,7 +397,8 @@
    "p"
   ],
   "digits": 2,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "disp_dout_p": {
   "file": "step_b92_post2017_refit.json",
@@ -625,7 +642,8 @@
    "p"
   ],
   "digits": 3,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "post2017_refit_n": {
   "file": "step_b92_post2017_refit.json",
@@ -687,7 +705,8 @@
    "p_2sided"
   ],
   "digits": 3,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "bipolar_joint_p": {
   "file": "step_b93_bipolar_unification.json",
@@ -696,7 +715,8 @@
    "p_J"
   ],
   "digits": 3,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "mirror_sep": {
   "file": "step_b96_bipolar_meridian.json",
@@ -764,7 +784,8 @@
    "p_perm"
   ],
   "digits": 3,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "dipole_mirror_p": {
   "file": "step_b97_harmonic_bipolar.json",
@@ -869,6 +890,27 @@
    "p_in_gt_out"
   ],
   "digits": 3,
+  "probability": true
+ },
+ "dtau_warsaw_all_in": {
+  "file": "step_b30_proper_time_slip.json",
+  "path": [
+   "warsaw",
+   "all",
+   "dtau_inbound_unexplained",
+   "med_in"
+  ],
+  "digits": 2
+ },
+ "dtau_warsaw_all_p": {
+  "file": "step_b30_proper_time_slip.json",
+  "path": [
+   "warsaw",
+   "all",
+   "dtau_inbound_unexplained",
+   "p_in_gt_out"
+  ],
+  "digits": 2,
   "probability": true
  },
  "p9_anticorr_rho": {
@@ -1046,7 +1088,8 @@
    "p_rayleigh"
   ],
   "digits": 2,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "sclk_hs_ppm": {
   "file": "step_b60_sclk_audit.json",
@@ -1085,7 +1128,8 @@
    "mannwhitney_p"
   ],
   "digits": 2,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "warsaw_slip_coupling_rho": {
   "file": "step_b33_wall_vs_field.json",
@@ -1105,7 +1149,8 @@
    "p_2sided"
   ],
   "digits": 2,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "inbound_share_in": {
   "file": "step_b33_wall_vs_field.json",
@@ -1123,7 +1168,8 @@
    "p_cohort_perm_corrected"
   ],
   "digits": 2,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "disp_axis_p": {
   "file": "step_b82_axis_audit.json",
@@ -1134,7 +1180,8 @@
    "p"
   ],
   "digits": 2,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "confound_base_p": {
   "file": "step_b82_axis_audit.json",
@@ -1144,7 +1191,8 @@
    "p_2sided"
   ],
   "digits": 2,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "signflip_p": {
   "file": "step_b82_axis_audit.json",
@@ -1197,6 +1245,233 @@
   "digits": 2,
   "probability": true
  },
+ "census_dpar_2": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "broad_census",
+   "T2_dipole_tide_null",
+   "tno_extreme_34_-13",
+   "d_par"
+  ],
+  "digits": 2
+ },
+ "census_p_sci": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "broad_census",
+   "T2_dipole_tide_null",
+   "tno_extreme_34_-13",
+   "p_tide_null"
+  ],
+  "digits": 1,
+  "format": "sci",
+  "probability": true
+ },
+ "census_spike_d": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "spike_proxy",
+   "T2_dipole_tide_null",
+   "tno_extreme_34_-13",
+   "d_par"
+  ],
+  "digits": 2
+ },
+ "census_spike_p": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "spike_proxy",
+   "T2_dipole_tide_null",
+   "tno_extreme_34_-13",
+   "p_tide_null"
+  ],
+  "digits": 2,
+  "format": "sci",
+  "probability": true
+ },
+ "census_ebin985_d": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "T3_eccentricity_gradient",
+   "2",
+   "d_par"
+  ],
+  "digits": 2
+ },
+ "census_ebin985_p": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "T3_eccentricity_gradient",
+   "2",
+   "p_tide_null"
+  ],
+  "digits": 2,
+  "format": "sci",
+  "probability": true
+ },
+ "census_ebin10_d": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "T3_eccentricity_gradient",
+   "3",
+   "d_par"
+  ],
+  "digits": 2
+ },
+ "census_ebin10_p": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "T3_eccentricity_gradient",
+   "3",
+   "p_tide_null"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "census_n_shared": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "n_shared"
+  ],
+  "format": "integer"
+ },
+ "census_n_new": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "n_new"
+  ],
+  "format": "integer"
+ },
+ "census_new_d": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "T4_new_to_training",
+   "T2_dipole_tide_null",
+   "tno_extreme_34_-13",
+   "d_par"
+  ],
+  "digits": 2
+ },
+ "census_new_p": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "T4_new_to_training",
+   "T2_dipole_tide_null",
+   "tno_extreme_34_-13",
+   "p_tide_null"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "census_free_lam": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "T5_free_dipole",
+   "lam"
+  ],
+  "digits": 2
+ },
+ "census_free_bet": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "T5_free_dipole",
+   "bet"
+  ],
+  "digits": 2
+ },
+ "census_free_sep_cap": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "T5_free_dipole",
+   "sep_from_cap"
+  ],
+  "digits": 2
+ },
+ "census_free_sep_anti": {
+  "file": "step_b72_cometels_dipole.json",
+  "path": [
+   "samples",
+   "T5_free_dipole",
+   "sep_from_anti"
+  ],
+  "digits": 3
+ },
+ "census_chi2_lo": {
+  "file": "step_b73_census_bias_audit.json",
+  "path": [
+   "T5_summary",
+   "q"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "census_chi2_hi": {
+  "file": "step_b73_census_bias_audit.json",
+  "path": [
+   "T5_summary",
+   "H"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "dir_mom_p_lo": {
+  "file": "step_b74_direction_vs_axis.json",
+  "path": [
+   "samples",
+   "cometels_spike",
+   "p_tide_null",
+   "cos"
+  ],
+  "digits": 1,
+  "format": "sci",
+  "probability": true
+ },
+ "dir_mom_p_hi": {
+  "file": "step_b74_direction_vs_axis.json",
+  "path": [
+   "samples",
+   "warsaw_spike",
+   "p_tide_null",
+   "cos"
+  ],
+  "digits": 1,
+  "probability": true
+ },
+ "axis_mom_p_lo": {
+  "file": "step_b74_direction_vs_axis.json",
+  "path": [
+   "samples",
+   "code_matched",
+   "p_tide_null",
+   "cos2"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "axis_mom_p_hi": {
+  "file": "step_b74_direction_vs_axis.json",
+  "path": [
+   "samples",
+   "cometels_broad",
+   "p_tide_null",
+   "abs_cos"
+  ],
+  "digits": 2,
+  "probability": true
+ },
  "cone_post_p": {
   "file": "step_b95_cone_shell.json",
   "path": [
@@ -1205,7 +1480,8 @@
    "p_perm"
   ],
   "digits": 1,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "cone_post_gap": {
   "file": "step_b95_cone_shell.json",
@@ -1224,7 +1500,8 @@
    "p_ge"
   ],
   "digits": 1,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "strict_strata_p": {
   "file": "step_b82_axis_audit.json",
@@ -1367,6 +1644,17 @@
   "digits": 3,
   "probability": false
  },
+ "post2017_n_nontraining": {
+  "file": "step_b88_lineage_aphelion.json",
+  "path": [
+   "results",
+   "T3_strata",
+   "post2017",
+   "not_in_training",
+   "n"
+  ],
+  "format": "integer"
+ },
  "post2017_dpar_nontraining": {
   "file": "step_b88_lineage_aphelion.json",
   "path": [
@@ -1461,7 +1749,8 @@
    "p_fisher"
   ],
   "probability": true,
-  "digits": 2
+  "digits": 2,
+  "format": "sci"
  },
  "epoch_year": {
   "file": "step_b94_epoch_trajectory.json",
@@ -1616,7 +1905,8 @@
    "p"
   ],
   "digits": 2,
-  "probability": true
+  "probability": true,
+  "format": "sci"
  },
  "dissoc_sdrot": {
   "file": "step_b114_channel_dissociation.json",
@@ -1877,5 +2167,132 @@
   ],
   "digits": 3,
   "probability": true
+ },
+ "zonal_wshare": {
+  "file": "step_b117_zonal_distortion.json",
+  "path": [
+   "T1_element_selectivity",
+   "wshare_median"
+  ],
+  "digits": 2,
+  "probability": false
+ },
+ "zonal_dd1a": {
+  "file": "step_b117_zonal_distortion.json",
+  "path": [
+   "T2_energy_leakage",
+   "warp_dd1a_median"
+  ],
+  "digits": 2,
+  "probability": false,
+  "format": "sci"
+ },
+ "zonal_org_p": {
+  "file": "step_b117_zonal_distortion.json",
+  "path": [
+   "T3_axis_organization",
+   "mwu_p"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "zonal_req_arcsec": {
+  "file": "step_b117_zonal_distortion.json",
+  "path": [
+   "T4_amplitude_scaling",
+   "required_warp_arcsec"
+  ],
+  "digits": 0,
+  "probability": false
+ },
+ "zonal_induced": {
+  "file": "step_b117_zonal_distortion.json",
+  "path": [
+   "T4_amplitude_scaling",
+   "induced_dleg_median_07"
+  ],
+  "digits": 4,
+  "probability": false
+ },
+ "zonal_req_level": {
+  "file": "step_b117_zonal_distortion.json",
+  "path": [
+   "T4_amplitude_scaling",
+   "required_warp_arcsec_for_incap_level"
+  ],
+  "digits": 0,
+  "probability": false
+ },
+ "zonal_obs_excess": {
+  "file": "step_b117_zonal_distortion.json",
+  "path": [
+   "T4_amplitude_scaling",
+   "observed_excesses_deg",
+   "d_in_leg"
+  ],
+  "digits": 3,
+  "probability": false
+ },
+ "zonal_n": {
+  "file": "step_b117_zonal_distortion.json",
+  "path": [
+   "n_comets"
+  ],
+  "format": "integer",
+  "probability": false
+ },
+ "audit_steps": {
+  "file": "step_b78_claims_trace.json",
+  "path": [
+   "summary",
+   "registered_steps"
+  ],
+  "format": "integer",
+  "probability": false
+ },
+ "audit_sources": {
+  "file": "step_b78_claims_trace.json",
+  "path": [
+   "summary",
+   "python_sources"
+  ],
+  "format": "integer",
+  "probability": false
+ },
+ "audit_bindings": {
+  "file": "step_b78_claims_trace.json",
+  "path": [
+   "summary",
+   "bound_claim_occurrences"
+  ],
+  "format": "integer",
+  "probability": false
+ },
+ "audit_unique": {
+  "file": "step_b78_claims_trace.json",
+  "path": [
+   "summary",
+   "unique_bound_claims"
+  ],
+  "format": "integer",
+  "probability": false
+ },
+ "audit_results": {
+  "file": "step_b78_claims_trace.json",
+  "path": [
+   "summary",
+   "result_files"
+  ],
+  "format": "integer",
+  "probability": false
+ },
+ "audit_errors": {
+  "file": "step_b78_claims_trace.json",
+  "path": [
+   "summary",
+   "hard_errors"
+  ],
+  "format": "integer",
+  "probability": false
  }
 }

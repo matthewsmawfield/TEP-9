@@ -1,0 +1,13 @@
+<h2>10. Data availability and reproducibility</h2>
+
+<h2>10.1 Data availability</h2>
+
+<p>
+    All catalogues used are public. The JPL Small-Body Database is queried live through <code>https://ssd-api.jpl.nasa.gov/sbdb_query.api</code>. The OSSOS characterized ensemble, the Warsaw comet-orbit tables, and the one-apparition comet catalogue are obtained from the CDS/VizieR archives (J/ApJS/236/18, J/A+A/567/A126, and J/A+A/571/A63). The CODE catalogue is distributed through the Poznań comet-dynamics server at pad2.astro.amu.edu.pl; the copy analysed here is an archival snapshot of the published table, integrity-pinned by SHA-256 in <code>data/raw/code/provenance.json</code>. MPCORB and the JPL CometEls file complete the auxiliary data; the N-body baseline draws planet states from the JPL DE440s ephemeris kernel (<code>data/raw/spice/de440s.bsp</code>, SHA-256 pinned in provenance). No synthetic or simulated data enter any reported statistic.
+</p>
+
+<h2>10.2 Reproducibility</h2>
+
+<p>
+    The complete analysis is a single-command pipeline archived at <a href="https://github.com/matthewsmawfield/TEP-9">github.com/matthewsmawfield/TEP-9</a> (Zenodo DOI <a href="https://doi.org/10.5281/zenodo.22858191">10.5281/zenodo.22858191</a>): <code>python3 scripts/run_all.py</code>, run from the repository root, executes the one hundred and forty-one registered steps in order under <code>scripts/run_all.py</code>, organized in seven phases from catalogue acquisition through predictive validation. Every step writes a verbose timestamped log to <code>logs/</code>, a machine-readable JSON result to <code>results/</code>, and figures to <code>results/figures/</code>; every download records its URL, retrieval timestamp, byte count, and SHA-256 checksum under <code>data/raw/*/provenance.json</code>; Monte-Carlo nulls use fixed recorded seeds; and a per-run audit with script-integrity hashes is written to <code>results/audits/</code>. Every step number, result file, and figure cited in the text resolves unambiguously to a named artefact in that archive. The only non-self-contained steps are 135 and 139, which read registered result leaves — not raw data — from the sibling TEP-GNSS-II, TEP-GNSS-MGEX, and TEP-LLR pipelines in the local corpus, each itself a provenance-pinned public pipeline; the pipeline fails loudly if any required catalogue is absent.
+</p>
