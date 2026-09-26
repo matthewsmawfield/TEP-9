@@ -3,7 +3,7 @@
 TEP Evidence and Model-Comparison Utilities
 ==========================================
 
-Version: TEP v0.10 (Jakarta)
+Version: TEP v0.14 (Jakarta)
 
 Provides Bayesian evidence calculations and model-comparison statistics
 used across the TEP corpus.
@@ -86,7 +86,7 @@ def model_comparison_summary(evidence_null, evidence_alt, model_names=("Null", "
     """
     log_bf = evidence_alt - evidence_null
     bf = np.exp(log_bf)
-    log10_bf = log_bf / np.log(10.0)
+    log10_bf = np.log10(bf)
     strength = jeffreys_scale_interpretation(log10_bf)
     favoured = model_names[1] if log_bf > 0 else model_names[0]
 
@@ -115,12 +115,12 @@ def angular_separation_deg(ra1, dec1, ra2, dec2):
 def p_value_from_sigma(sigma):
     """Two-tailed p-value from a standard-deviation threshold."""
     from scipy.stats import norm
-    return float(2.0 * norm.sf(abs(sigma)))
+    return 2.0 * (1.0 - norm.cdf(abs(sigma)))
 
 
 def sigma_from_p_value(p):
     """Two-tailed sigma from a p-value."""
     from scipy.stats import norm
-    if not np.isfinite(p) or p < 0 or p > 1:
-        raise ValueError("p must lie in [0, 1]")
-    return float(norm.isf(p / 2.0))
+    if p <= 0 or p >= 1:
+        return np.inf
+    return float(norm.ppf(1.0 - p / 2.0))
