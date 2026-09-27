@@ -1,67 +1,117 @@
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] LOGGER INITIALIZED: step_073_edge_width (Step 073)
-[2026-09-20 11:49:05 UTC] [DEBUG   ] [STEP 073] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_073_edge_width.log
-[2026-09-20 11:49:05 UTC] [DEBUG   ] [STEP 073] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 11:49:05 UTC] [DEBUG   ] [STEP 073] Start time (UTC): 2026-09-20T11:49:05.439110+00:00
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] 
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] STEP PURPOSE
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] --------------------------------------------------------------------------------
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   Step 073 -- boundary edge width.
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   The origin question (Section 6.8) turns on edge morphology: a
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   topological-defect wall has a sharp threshold while a plasma-sourced
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   gradient is diffuse.  The transition in the unexplained slip across the
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   axis cap is fitted with a logistic edge
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   dtau(theta) = A * sigmoid((theta0 - theta)/w) + c
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   against the step-function alternative (w -> 0).  The 10-90% transition
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   width 4.39w and its bootstrap interval quantify "sharp" in degrees of
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   axis separation -- and, through the measured slip-vs-radius profile
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   (step_071), in AU of boundary penetration.
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   Inputs : results/step_b30_proper_time_slip.csv
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   Outputs: results/step_b38_edge_width.json
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073]   results/figures/supplementary/step_b38_edge_width.png
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] --------------------------------------------------------------------------------
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] SCRIPT: scripts/steps/step_073_edge_width.py
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] SCRIPT SHA256: 8b93e18450a8e94845a93ec8aefd1a5804f19fe71e12842eb45204bd55366509
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] SCRIPT SIZE: 7269 bytes
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] ================================================================================
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] Boundary edge width: logistic fit to the slip transition
-[2026-09-20 11:49:05 UTC] [INFO    ] [STEP 073] ================================================================================
-[2026-09-20 11:51:22 UTC] [INFO    ] [STEP 073] code: theta0=59.5 deg w=0.2 deg  10-90% width=0.9 deg [0.9,0.9] RSS log/step=19123.5/19013.5
-[2026-09-20 11:52:09 UTC] [INFO    ] [STEP 073] warsaw: theta0=44.5 deg w=0.2 deg  10-90% width=0.9 deg [0.9,1.3] RSS log/step=108888.4/108887.4
-[2026-09-20 11:53:06 UTC] [INFO    ] [STEP 073] pooled: theta0=45.4 deg w=0.2 deg  10-90% width=0.9 deg [0.9,0.9] RSS log/step=131074.0/131027.3
-[2026-09-20 11:53:06 UTC] [INFO    ] [STEP 073] Saving data: step_b38_edge_width.json
-[2026-09-20 11:53:06 UTC] [DEBUG   ] [STEP 073]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b38_edge_width.json
-[2026-09-20 11:53:06 UTC] [INFO    ] [STEP 073]   Output: step_b38_edge_width.json
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Saving data: step_b38_edge_width.png
-[2026-09-20 11:53:08 UTC] [DEBUG   ] [STEP 073]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b38_edge_width.png
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073]   Output: step_b38_edge_width.png
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] 
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] ================================================================================
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] STEP SUMMARY: step_073_edge_width
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] ================================================================================
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Step Number: 073
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Status: SUCCESS
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Duration: 4.04m
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Log Records Emitted: 44
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Output Files: 2
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_073_edge_width.log
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] 
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Generated 2 output file(s):
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073]   • step_b38_edge_width.json: 1.83 KB [sha256 456db89cf2873af7]
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073]   • step_b38_edge_width.png: 185.31 KB [sha256 5d9e98d4c8217f21]
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] ================================================================================
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] STEP 073 COMPLETE: SUCCESS
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_073_edge_width_provenance.json
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] 
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] ================================================================================
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] EXECUTIVE SUMMARY
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] ================================================================================
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Step: step_073_edge_width (Step 073)
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Status: SUCCESS
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Duration: 4.04m
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Log Records: 54
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Output Files: 2
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] Key Outputs:
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073]   - step_b38_edge_width.json (1.83 KB)
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073]   - step_b38_edge_width.png (185.31 KB)
-[2026-09-20 11:53:08 UTC] [INFO    ] [STEP 073] ================================================================================
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] LOGGER INITIALIZED: step_073_edge_width (Step 073)
+[2026-09-21 14:49:13 UTC] [DEBUG   ] [STEP 073] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_073_edge_width.log
+[2026-09-21 14:49:13 UTC] [DEBUG   ] [STEP 073] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:49:13 UTC] [DEBUG   ] [STEP 073] Start time (UTC): 2026-09-21T14:49:13.717966+00:00
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] 
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] STEP PURPOSE
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] --------------------------------------------------------------------------------
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   Step 073 -- boundary edge width.
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   The origin question (Section 6.8) turns on edge morphology: a
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   topological-defect wall has a sharp threshold while a plasma-sourced
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   gradient is diffuse.  The transition in the unexplained slip across the
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   axis cap is fitted with a logistic edge
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   dtau(theta) = A * sigmoid((theta0 - theta)/w) + c
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   against the step-function alternative (w -> 0).  The 10-90% transition
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   width 4.39w and its bootstrap interval quantify "sharp" in degrees of
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   axis separation -- and, through the measured slip-vs-radius profile
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   (step_071), in AU of boundary penetration.
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   Inputs : results/step_b30_proper_time_slip.csv
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   Outputs: results/step_b38_edge_width.json
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073]   results/figures/supplementary/step_b38_edge_width.png
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] --------------------------------------------------------------------------------
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] SCRIPT: scripts/steps/step_073_edge_width.py
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] SCRIPT SHA256: 8b93e18450a8e94845a93ec8aefd1a5804f19fe71e12842eb45204bd55366509
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] SCRIPT SIZE: 7269 bytes
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] ================================================================================
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] Boundary edge width: logistic fit to the slip transition
+[2026-09-21 14:49:13 UTC] [INFO    ] [STEP 073] ================================================================================
+[2026-09-21 14:50:04 UTC] [INFO    ] [STEP 073] code: theta0=59.5 deg w=0.2 deg  10-90% width=0.9 deg [0.9,0.9] RSS log/step=19123.5/19013.5
+[2026-09-21 14:50:19 UTC] [INFO    ] [STEP 073] warsaw: theta0=44.5 deg w=0.2 deg  10-90% width=0.9 deg [0.9,1.3] RSS log/step=108888.4/108887.4
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] pooled: theta0=45.4 deg w=0.2 deg  10-90% width=0.9 deg [0.9,0.9] RSS log/step=131074.0/131027.3
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Saving data: step_b38_edge_width.json
+[2026-09-21 14:50:36 UTC] [DEBUG   ] [STEP 073]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b38_edge_width.json
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]   Output: step_b38_edge_width.json
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Saving data: step_b38_edge_width.png
+[2026-09-21 14:50:36 UTC] [DEBUG   ] [STEP 073]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b38_edge_width.png
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]   Output: step_b38_edge_width.png
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] 
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] ================================================================================
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] STEP SUMMARY: step_073_edge_width
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] ================================================================================
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Step Number: 073
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Status: SUCCESS
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Duration: 1.38m
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Log Records Emitted: 44
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Output Files: 2
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_073_edge_width.log
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] 
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Generated 2 output file(s):
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]   • step_b38_edge_width.json: 1.83 KB [sha256 456db89cf2873af7]
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]   • step_b38_edge_width.png: 185.31 KB [sha256 5d9e98d4c8217f21]
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] 
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]   RESULT SNAPSHOT [step_b38_edge_width.json]:
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_code:
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       A = 3.3851729
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       theta0 = 59.543135
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       w = 0.20004314
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       c = -1.8463825
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       width_10_90 = 0.87907938
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       boot_ok = 20000
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       boot_fail = 0
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       rss_logistic = 19123.487
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       rss_step = 19013.524
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       step_threshold = 59.816901
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       step_within_1se = True
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       n = 131
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_code.w_ci68 [n=2]: median=0.20007906 min=0.20000046 max=0.20015767
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_code.theta0_ci68 [n=2]: median=59.876435 min=58.205524 max=61.547346
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_code.width10_90_ci68 [n=2]: median=0.87923725 min=0.87889181 max=0.87958268
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_warsaw:
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       A = 18.716728
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       theta0 = 44.467807
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       w = 0.20067906
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       c = -3.1615492
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       width_10_90 = 0.88187388
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       boot_ok = 20000
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       boot_fail = 0
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       rss_logistic = 108888.37
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       rss_step = 108887.44
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       step_threshold = 42.856443
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       step_within_1se = True
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       n = 98
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_warsaw.w_ci68 [n=2]: median=0.2509532 min=0.20000038 max=0.30190601
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_warsaw.theta0_ci68 [n=2]: median=41.465333 min=37.045064 max=45.885601
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_warsaw.width10_90_ci68 [n=2]: median=1.102801 min=0.87889147 max=1.3267106
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_pooled:
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       A = 9.430135
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       theta0 = 45.393519
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       w = 0.2
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       c = -2.0451634
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       width_10_90 = 0.8788898
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       boot_ok = 20000
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       boot_fail = 0
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       rss_logistic = 131074.02
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       rss_step = 131027.3
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       step_threshold = 45.421985
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       step_within_1se = True
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]       n = 229
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_pooled.w_ci68 [n=2]: median=0.20085401 min=0.2 max=0.20170802
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_pooled.theta0_ci68 [n=2]: median=45.181322 min=43.75449 max=46.608155
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]     edge_pooled.width10_90_ci68 [n=2]: median=0.8826427 min=0.8788898 max=0.88639559
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] ================================================================================
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] STEP 073 COMPLETE: SUCCESS
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_073_edge_width_provenance.json
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] 
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] ================================================================================
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] EXECUTIVE SUMMARY
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] ================================================================================
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Step: step_073_edge_width (Step 073)
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Status: SUCCESS
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Duration: 1.38m
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Log Records: 104
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Output Files: 2
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] Key Outputs:
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]   - step_b38_edge_width.json (1.83 KB)
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073]   - step_b38_edge_width.png (185.31 KB)
+[2026-09-21 14:50:36 UTC] [INFO    ] [STEP 073] ================================================================================

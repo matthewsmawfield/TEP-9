@@ -1,0 +1,361 @@
+{
+ "step": "step_160_iso_legrefit",
+ "description": "independent two-leg LM refit of the ISOs on raw MPC astrometry; per-leg boundary asymptotes, cap classification, inter-leg non-closure and perihelion-epoch slip; cohort percentiles vs the post-2017 refit record",
+ "cap_deg": 60.0,
+ "edge_hi_deg": 75.0,
+ "ledger": [
+  {
+   "label": "1I/'Oumuamua",
+   "sbdb": "1I",
+   "obs_des": "1I",
+   "n_obs": 192,
+   "n_in": 0,
+   "n_out": 192,
+   "tp_seed_jd": 2458006.0073213754,
+   "elements": {
+    "q": 0.2559115812959116,
+    "e": 1.201133796102373,
+    "i": 122.7417062847286,
+    "om": 24.59690955523242,
+    "w": 241.8105360304898,
+    "tp": 2458006.0073213754
+   },
+   "fit_all_rms": 0.3805082701596056,
+   "fit_all_n": 178,
+   "drot": 0.14173972355055367,
+   "d_in": 0.2696548782235519,
+   "d_out": 0.135098128349967,
+   "daa": 751.353262345423,
+   "denc": 6.334466493316342,
+   "theta": 77.97603663923672,
+   "dtau": 32.796792708797646,
+   "out_rms": 0.3805082701596056,
+   "out_nkeep": 178,
+   "sbdb_model_pars": {
+    "A1": {
+     "value": 2.790193364334668e-07,
+     "sigma": 3.574e-08
+    },
+    "A2": {
+     "value": 1.441264159911234e-08,
+     "sigma": 2.445e-08
+    },
+    "A3": {
+     "value": 1.57392261588653e-08,
+     "sigma": 2.249e-08
+    },
+    "ALN": {
+     "value": 0.0408373333128795,
+     "sigma": null
+    },
+    "NK": {
+     "value": 2.6,
+     "sigma": null
+    },
+    "NM": {
+     "value": 2.0,
+     "sigma": null
+    },
+    "NN": {
+     "value": 3.0,
+     "sigma": null
+    },
+    "R0": {
+     "value": 5.0,
+     "sigma": null
+    }
+   },
+   "soln_date": "2018-06-26 12:17:57",
+   "orbit_id": "16",
+   "tp_out_jd": 2458006.001529311,
+   "tp_all_jd": 2458006.001529311
+  },
+  {
+   "label": "2I/Borisov",
+   "sbdb": "2I",
+   "obs_des": "2I",
+   "n_obs": 2687,
+   "n_in": 2445,
+   "n_out": 242,
+   "tp_seed_jd": 2458826.052845906,
+   "elements": {
+    "q": 2.006520878500843,
+    "e": 3.356475782676596,
+    "i": 44.05264247909138,
+    "om": 308.1477292269942,
+    "w": 209.1236864378081,
+    "tp": 2458826.052845906
+   },
+   "fit_all_rms": 0.7142032429898642,
+   "fit_all_n": 2594,
+   "drot": 0.06120022470484975,
+   "d_in": 0.05537320252567649,
+   "d_out": 0.03863385648296937,
+   "daa": 465.10668009356596,
+   "denc": 5.539528025870238,
+   "theta": 71.05312844121016,
+   "dtau": 3.5946551431597364,
+   "ddirf": 0.058376200463260995,
+   "d_in_leg": 0.054439281690494716,
+   "d_out_leg": 0.03877391914442498,
+   "xarc_rms_in2out": 2.7530327898409896,
+   "in_rms": 0.6549029343921272,
+   "out_rms": 0.8266705005237122,
+   "in_nkeep": 2374,
+   "out_nkeep": 240,
+   "sbdb_model_pars": {
+    "A1": {
+     "value": 4.859588264027485e-08,
+     "sigma": 4.051e-09
+    },
+    "A2": {
+     "value": 1.879898690951361e-08,
+     "sigma": 5.999e-09
+    },
+    "A3": {
+     "value": 2.835503220128475e-09,
+     "sigma": 7.186e-10
+    },
+    "ALN": {
+     "value": 1.0,
+     "sigma": null
+    },
+    "DT": {
+     "value": -65.13009704907404,
+     "sigma": 10.96
+    },
+    "NK": {
+     "value": 0.0,
+     "sigma": null
+    },
+    "NM": {
+     "value": 2.0,
+     "sigma": null
+    },
+    "NN": {
+     "value": 0.0,
+     "sigma": null
+    },
+    "R0": {
+     "value": 1.0,
+     "sigma": null
+    }
+   },
+   "soln_date": "2024-06-24 15:49:04",
+   "orbit_id": "54",
+   "tp_in_jd": 2458826.0547776287,
+   "tp_out_jd": 2458826.0530931074,
+   "tp_all_jd": 2458826.0539560774,
+   "dtp_io_d": 0.0016845213249325752,
+   "inleg_periapsis": {
+    "ecl_lon": 149.92,
+    "ecl_lat": -19.76,
+    "sep_axis_deg": 94.1,
+    "sep_antiaxis_deg": 85.9,
+    "in_cap": false,
+    "in_mirror_cap": false,
+    "sector": "field"
+   },
+   "outleg_periapsis": {
+    "ecl_lon": 149.95,
+    "ecl_lat": -19.81,
+    "sep_axis_deg": 94.12,
+    "sep_antiaxis_deg": 85.88,
+    "in_cap": false,
+    "in_mirror_cap": false,
+    "sector": "field"
+   },
+   "ddirf_legs": 0.058376200463260995
+  },
+  {
+   "label": "3I/ATLAS",
+   "sbdb": "3I",
+   "obs_des": "C/2025 N1",
+   "n_obs": 8387,
+   "n_in": 4239,
+   "n_out": 4148,
+   "tp_seed_jd": 2460977.9952628477,
+   "elements": {
+    "q": 1.356481057231181,
+    "e": 6.141351449317625,
+    "i": 175.1164570850441,
+    "om": 322.1696089290778,
+    "w": 128.0228697185194,
+    "tp": 2460977.9952628477
+   },
+   "fit_all_rms": 0.558488245467198,
+   "fit_all_n": 7840,
+   "drot": 0.15206196957807913,
+   "d_in": 0.016723262847749918,
+   "d_out": 0.1685789106811959,
+   "daa": -1879.246859183535,
+   "denc": 5.757142891639078,
+   "theta": 21.732599173642257,
+   "dtau": 8.487940521893233,
+   "ddirf": 0.15353366652810385,
+   "d_in_leg": 0.016581252691704733,
+   "d_out_leg": 0.17010216747716309,
+   "xarc_rms_in2out": 6.575284893078174,
+   "in_rms": 0.33540730149032494,
+   "out_rms": 0.3667176064487856,
+   "in_nkeep": 3949,
+   "out_nkeep": 3697,
+   "sbdb_model_pars": {
+    "A1": {
+     "value": 5.320206310958365e-08,
+     "sigma": 1.22e-09
+    },
+    "A2": {
+     "value": 1.148166024648843e-08,
+     "sigma": 2.139e-09
+    },
+    "A3": {
+     "value": -6.854491622221589e-09,
+     "sigma": 1.776e-10
+    },
+    "ALN": {
+     "value": 1.0,
+     "sigma": null
+    },
+    "DT": {
+     "value": 9.47881547776126,
+     "sigma": 1.426
+    },
+    "NK": {
+     "value": 0.0,
+     "sigma": null
+    },
+    "NM": {
+     "value": 2.0,
+     "sigma": null
+    },
+    "NN": {
+     "value": 0.0,
+     "sigma": null
+    },
+    "R0": {
+     "value": 1.0,
+     "sigma": null
+    }
+   },
+   "soln_date": "2026-02-19 09:10:47",
+   "orbit_id": "54",
+   "tp_in_jd": 2460977.9827408795,
+   "tp_out_jd": 2460977.982767148,
+   "tp_all_jd": 2460977.982482945,
+   "dtp_io_d": -2.626841887831688e-05,
+   "inleg_periapsis": {
+    "ecl_lon": 194.05,
+    "ecl_lat": 3.83,
+    "sep_axis_deg": 143.29,
+    "sep_antiaxis_deg": 36.71,
+    "in_cap": false,
+    "in_mirror_cap": true,
+    "sector": "mirror_cap"
+   },
+   "outleg_periapsis": {
+    "ecl_lon": 194.11,
+    "ecl_lat": 3.69,
+    "sep_axis_deg": 143.29,
+    "sep_antiaxis_deg": 36.71,
+    "in_cap": false,
+    "in_mirror_cap": true,
+    "sector": "mirror_cap"
+   },
+   "ddirf_legs": 0.15353366652810385
+  }
+ ],
+ "cohort_context": {
+  "1I/'Oumuamua": {
+   "ddirf": null,
+   "d_in_leg": null,
+   "d_out_leg": null,
+   "xarc_rms_in2out": null,
+   "fit_all_rms": {
+    "cohort_n": 249,
+    "cohort_med": 0.504354054877642,
+    "cohort_p95": 1.096333497682779,
+    "iso_value": 0.3805082701596056,
+    "iso_percentile": 20.481927710843372
+   }
+  },
+  "2I/Borisov": {
+   "ddirf": {
+    "cohort_n": 160,
+    "cohort_med": 0.11329569978798074,
+    "cohort_p95": 0.4530344488295844,
+    "iso_value": 0.058376200463260995,
+    "iso_percentile": 22.5
+   },
+   "d_in_leg": {
+    "cohort_n": 160,
+    "cohort_med": 0.10187596684148603,
+    "cohort_p95": 0.3514971825511185,
+    "iso_value": 0.054439281690494716,
+    "iso_percentile": 15.0
+   },
+   "d_out_leg": {
+    "cohort_n": 160,
+    "cohort_med": 0.09149766739052806,
+    "cohort_p95": 0.2186997054383103,
+    "iso_value": 0.03877391914442498,
+    "iso_percentile": 10.0
+   },
+   "xarc_rms_in2out": {
+    "cohort_n": 160,
+    "cohort_med": 3.703919813782205,
+    "cohort_p95": 37.95807480002011,
+    "iso_value": 2.7530327898409896,
+    "iso_percentile": 41.25
+   },
+   "fit_all_rms": {
+    "cohort_n": 249,
+    "cohort_med": 0.504354054877642,
+    "cohort_p95": 1.096333497682779,
+    "iso_value": 0.7142032429898642,
+    "iso_percentile": 81.12449799196787
+   }
+  },
+  "3I/ATLAS": {
+   "ddirf": {
+    "cohort_n": 160,
+    "cohort_med": 0.11329569978798074,
+    "cohort_p95": 0.4530344488295844,
+    "iso_value": 0.15353366652810385,
+    "iso_percentile": 63.74999999999999
+   },
+   "d_in_leg": {
+    "cohort_n": 160,
+    "cohort_med": 0.10187596684148603,
+    "cohort_p95": 0.3514971825511185,
+    "iso_value": 0.016581252691704733,
+    "iso_percentile": 1.25
+   },
+   "d_out_leg": {
+    "cohort_n": 160,
+    "cohort_med": 0.09149766739052806,
+    "cohort_p95": 0.2186997054383103,
+    "iso_value": 0.17010216747716309,
+    "iso_percentile": 89.375
+   },
+   "xarc_rms_in2out": {
+    "cohort_n": 160,
+    "cohort_med": 3.703919813782205,
+    "cohort_p95": 37.95807480002011,
+    "iso_value": 6.575284893078174,
+    "iso_percentile": 66.875
+   },
+   "fit_all_rms": {
+    "cohort_n": 249,
+    "cohort_med": 0.504354054877642,
+    "cohort_p95": 1.096333497682779,
+    "iso_value": 0.558488245467198,
+    "iso_percentile": 63.05220883534136
+   }
+  }
+ },
+ "caveats": [
+  "pure-gravity leg fits absorb real NG outgassing into the fitted states; for the volatile-active ISOs (2I, 3I) the leg disagreement is therefore a joint lapse+outgassing channel and is interpreted against the SBDB NG ledger, not as a clean datum.",
+  "the ISO arcs are short (months), so leg fits carry wider element covariance than the multi-apparition comet cohort; cohort percentiles are contextual, not calibrated nulls."
+ ]
+}

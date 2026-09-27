@@ -77,7 +77,8 @@ from scipy.stats import mannwhitneyu, spearmanr
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.statistics import monte_carlo_tail, monte_carlo_p
-from scripts.utils.tep9_common import DATA_RAW, RESULTS, sep, perih_dir
+from scripts.utils.tep9_common import (DATA_RAW, RESULTS, sep, perih_dir,
+                                       load_jsonl_dedup)
 
 FIG = RESULTS / "figures"
 FIG.mkdir(exist_ok=True)
@@ -144,14 +145,14 @@ def _mwz(vals, th, cap=CAP):
 # ---- load pooled dual-leg record ---------------------------------
 recs = []
 for path, era in ((B91, "pre2018"), (B92, "post2017")):
-    for line in open(path):
-        r = json.loads(line)
+    for r in load_jsonl_dedup(path):
         if r.get("our_ddirf") is None or r.get("our_aph") is None:
             continue
         a = np.asarray(r["our_aph"], float)
-        if not np.all(np.isfinite(a)):
+        n = np.linalg.norm(a)
+        if not np.all(np.isfinite(a)) or n == 0:
             continue
-        a = a / np.linalg.norm(a)
+        a = a / n
         p_osc = perih_dir(math.radians(r["our_w"]),
                           math.radians(r["our_om"]),
                           math.radians(r["our_i"]))

@@ -296,12 +296,11 @@ fig.suptitle("CometEls census dipole stability under discovery "
 fig.tight_layout(rect=[0, 0, 1, 0.94])
 fig.savefig(RESULTS / "figures" / "supplementary" / "step_b73_census_bias_audit.png",
             dpi=300)
-logger.info("Saving data: supplementary/step_b73_census_bias_audit.png")
+logger.data_save(RESULTS / "figures" / "supplementary" / "step_b73_census_bias_audit.png")
 
 # --------------------------------------------------------------- outputs
 with open(RESULTS / "step_b73_census_bias_audit.json", "w") as f:
     json.dump(out, f, indent=1)
-logger.info("Saving data: step_b73_census_bias_audit.json")
 
 with open(RESULTS / "step_b73_census_bias_audit.csv", "w",
           newline="") as f:
@@ -310,7 +309,7 @@ with open(RESULTS / "step_b73_census_bias_audit.csv", "w",
     for c in broad:
         wtr.writerow([c["desig"], c["year"], c["H"], c["q"], c["e"],
                       round(float(c["aph"] @ CAP), 4)])
-logger.info("Saving data: step_b73_census_bias_audit.csv")
+logger.data_save(RESULTS / "step_b73_census_bias_audit.csv")
 
 _blocks = (out["T2_magnitude"], out["T3_era"], out["T4_perihelion"])
 n_pos = sum(1 for blk in _blocks for r in blk["bins"]
@@ -336,4 +335,5 @@ out["verdict"] = verdict
 logger.info(f"verdict: {verdict}")
 with open(RESULTS / "step_b73_census_bias_audit.json", "w") as f:
     json.dump(out, f, indent=1)
+logger.data_save(RESULTS / "step_b73_census_bias_audit.json")
 logger.info("Census bias audit complete")

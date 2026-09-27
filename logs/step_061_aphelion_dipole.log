@@ -1,111 +1,183 @@
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] LOGGER INITIALIZED: step_061_aphelion_dipole (Step 061)
-[2026-09-20 10:47:47 UTC] [DEBUG   ] [STEP 061] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_061_aphelion_dipole.log
-[2026-09-20 10:47:47 UTC] [DEBUG   ] [STEP 061] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:47:47 UTC] [DEBUG   ] [STEP 061] Start time (UTC): 2026-09-20T10:47:47.357202+00:00
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] 
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] STEP PURPOSE
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] --------------------------------------------------------------------------------
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   TEP-9 step 061 -- aphelion-sky channel: tide calibration and the
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   m=1 dipole
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   The transit analyses (steps 030-060) test the RECONSTRUCTION channel:
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   how badly a standard-dynamics clock describes the inbound trajectory.
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   This step tests the complementary SPATIAL channel on the same comets:
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   where their original-orbit aphelia actually point on the sky.
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   Two measurements, both strictly real-data:
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   T1  galactic-tide calibration.  The dominant known anisotropy of
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   Oort-spike aphelia is the galactic tide, which is axisymmetric
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   about the galactic pole and concentrates aphelia toward the
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   galactic plane.  The pipeline's directional machinery must
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   recover that known structure to be trusted on the unknown one.
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   Test: distribution of |b_gal| of the aphelia vs isotropic
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   (two-sample KS against a uniform-sphere draw, and the
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   mean |b_gal|).
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   T2  the m=1 dipole toward the boundary axis.  A tide cannot
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   produce an m=1 asymmetry along a fixed ecliptic direction --
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   it is axisymmetric about the galactic pole.  The measured
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   dipole component along the pre-declared axis is therefore a
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   clean observable:
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   d_par = < aph_i . axis >
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   calibrated against a TIDE-AWARE Monte-Carlo null that resamples
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   galactic longitudes uniform while retaining the observed
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   |b_gal| distribution (random hemisphere sign).  This is the
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   spatial analogue of the clock-channel test: does the sky
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   itself lean toward the axis?
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   Samples: Warsaw spike (orig aphelia, 0<1/a<100e-6), CODE class-1
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   matched, and the lpc one-apparition cohort -- three increasingly
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   independent draws of the same population.
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   Axes: both TNO axes plus the antipode and galactic-pole control.
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   Outputs: results/step_b26_aphelion_dipole.json,
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061]   figures/supplementary/step_b26_aphelion_dipole.png
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] --------------------------------------------------------------------------------
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] SCRIPT: scripts/steps/step_061_aphelion_dipole.py
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] SCRIPT SHA256: 0aeb27971f5cf1296dda96ba9f50fc49992c4e157cb17cdbfe11cf433560fae8
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] SCRIPT SIZE: 11569 bytes
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] ================================================================================
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] Aphelion-sky dipole and tide calibration
-[2026-09-20 10:47:47 UTC] [INFO    ] [STEP 061] ================================================================================
-[2026-09-20 10:47:50 UTC] [INFO    ] [STEP 061]   warsaw spike: n=110 mean|b|=31.6 (iso 32.7) KS p=0.025
-[2026-09-20 10:47:50 UTC] [INFO    ] [STEP 061]     tno_extreme_34_-13       d_par=+0.1340 p=0.005699715014249288
-[2026-09-20 10:47:50 UTC] [INFO    ] [STEP 061]     tno_detached_50_-17      d_par=+0.1420 p=0.004499775011249437
-[2026-09-20 10:47:50 UTC] [INFO    ] [STEP 061]     anti_extreme             d_par=-0.1340 p=0.9939003049847508
-[2026-09-20 10:47:50 UTC] [INFO    ] [STEP 061]     gal_pole                 d_par=-0.0869 p=0.9529023548822559
-[2026-09-20 10:47:50 UTC] [INFO    ] [STEP 061]     gal_antictr_180_0        d_par=+0.1131 p=0.021248937553122346
-[2026-09-20 10:47:50 UTC] [INFO    ] [STEP 061]     gal_ctr_0_0              d_par=-0.1131 p=0.9773011349432529
-[2026-09-20 10:47:52 UTC] [INFO    ] [STEP 061]   code class-1 matched: n=98 mean|b|=30.8 (iso 32.7) KS p=0.028
-[2026-09-20 10:47:52 UTC] [INFO    ] [STEP 061]     tno_extreme_34_-13       d_par=+0.1932 p=0.00034998250087495624
-[2026-09-20 10:47:52 UTC] [INFO    ] [STEP 061]     tno_detached_50_-17      d_par=+0.2097 p=0.00014999250037498125
-[2026-09-20 10:47:52 UTC] [INFO    ] [STEP 061]     anti_extreme             d_par=-0.1932 p=0.999850007499625
-[2026-09-20 10:47:52 UTC] [INFO    ] [STEP 061]     gal_pole                 d_par=-0.1086 p=0.9770511474426279
-[2026-09-20 10:47:52 UTC] [INFO    ] [STEP 061]     gal_antictr_180_0        d_par=+0.1855 p=0.0011499425028748563
-[2026-09-20 10:47:52 UTC] [INFO    ] [STEP 061]     gal_ctr_0_0              d_par=-0.1855 p=0.9989500524973751
-[2026-09-20 10:47:54 UTC] [INFO    ] [STEP 061]   code-only: n=63 mean|b|=29.4 (iso 32.7) KS p=0.073
-[2026-09-20 10:47:54 UTC] [INFO    ] [STEP 061]     tno_extreme_34_-13       d_par=+0.2152 p=0.0007999600019999
-[2026-09-20 10:47:54 UTC] [INFO    ] [STEP 061]     tno_detached_50_-17      d_par=+0.2308 p=0.0005499725013749313
-[2026-09-20 10:47:54 UTC] [INFO    ] [STEP 061]     anti_extreme             d_par=-0.2152 p=0.9994000299985001
-[2026-09-20 10:47:54 UTC] [INFO    ] [STEP 061]     gal_pole                 d_par=-0.1206 p=0.9674016299185041
-[2026-09-20 10:47:54 UTC] [INFO    ] [STEP 061]     gal_antictr_180_0        d_par=+0.2038 p=0.0038498075096245186
-[2026-09-20 10:47:54 UTC] [INFO    ] [STEP 061]     gal_ctr_0_0              d_par=-0.2038 p=0.9954502274886255
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]   lpc one-apparition: n=30 mean|b|=26.2 (iso 32.6) KS p=0.166
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]     tno_extreme_34_-13       d_par=+0.3055 p=0.0007999600019999
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]     tno_detached_50_-17      d_par=+0.3434 p=0.00044997750112494374
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]     anti_extreme             d_par=-0.3055 p=0.9991500424978751
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]     gal_pole                 d_par=-0.2689 p=0.9991500424978751
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]     gal_antictr_180_0        d_par=+0.2104 p=0.03179841007949603
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]     gal_ctr_0_0              d_par=-0.2104 p=0.9685015749212539
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Saving data: step_b26_aphelion_dipole.json
-[2026-09-20 10:47:56 UTC] [DEBUG   ] [STEP 061]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b26_aphelion_dipole.json
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]   Output: step_b26_aphelion_dipole.json
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Saving data: step_b26_aphelion_dipole.png
-[2026-09-20 10:47:56 UTC] [DEBUG   ] [STEP 061]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b26_aphelion_dipole.png
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]   Output: step_b26_aphelion_dipole.png
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] 
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] ================================================================================
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] STEP SUMMARY: step_061_aphelion_dipole
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] ================================================================================
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Step Number: 061
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Status: SUCCESS
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Duration: 9.05s
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Log Records Emitted: 88
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Output Files: 2
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_061_aphelion_dipole.log
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] 
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Generated 2 output file(s):
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]   • step_b26_aphelion_dipole.json: 3.66 KB [sha256 08f01587c66f64f0]
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]   • step_b26_aphelion_dipole.png: 133.68 KB [sha256 b28498d63b150ef1]
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] ================================================================================
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] STEP 061 COMPLETE: SUCCESS
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_061_aphelion_dipole_provenance.json
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] 
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] ================================================================================
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] EXECUTIVE SUMMARY
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] ================================================================================
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Step: step_061_aphelion_dipole (Step 061)
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Status: SUCCESS
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Duration: 9.05s
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Log Records: 98
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Output Files: 2
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] Key Outputs:
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]   - step_b26_aphelion_dipole.json (3.66 KB)
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061]   - step_b26_aphelion_dipole.png (133.68 KB)
-[2026-09-20 10:47:56 UTC] [INFO    ] [STEP 061] ================================================================================
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] LOGGER INITIALIZED: step_061_aphelion_dipole (Step 061)
+[2026-09-21 14:37:09 UTC] [DEBUG   ] [STEP 061] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_061_aphelion_dipole.log
+[2026-09-21 14:37:09 UTC] [DEBUG   ] [STEP 061] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:37:09 UTC] [DEBUG   ] [STEP 061] Start time (UTC): 2026-09-21T14:37:09.883701+00:00
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] 
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] STEP PURPOSE
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] --------------------------------------------------------------------------------
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   TEP-9 step 061 -- aphelion-sky channel: tide calibration and the
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   m=1 dipole
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   The transit analyses (steps 030-060) test the RECONSTRUCTION channel:
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   how badly a standard-dynamics clock describes the inbound trajectory.
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   This step tests the complementary SPATIAL channel on the same comets:
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   where their original-orbit aphelia actually point on the sky.
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   Two measurements, both strictly real-data:
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   T1  galactic-tide calibration.  The dominant known anisotropy of
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   Oort-spike aphelia is the galactic tide, which is axisymmetric
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   about the galactic pole and concentrates aphelia toward the
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   galactic plane.  The pipeline's directional machinery must
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   recover that known structure to be trusted on the unknown one.
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   Test: distribution of |b_gal| of the aphelia vs isotropic
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   (two-sample KS against a uniform-sphere draw, and the
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   mean |b_gal|).
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   T2  the m=1 dipole toward the boundary axis.  A tide cannot
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   produce an m=1 asymmetry along a fixed ecliptic direction --
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   it is axisymmetric about the galactic pole.  The measured
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   dipole component along the pre-declared axis is therefore a
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   clean observable:
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   d_par = < aph_i . axis >
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   calibrated against a TIDE-AWARE Monte-Carlo null that resamples
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   galactic longitudes uniform while retaining the observed
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   |b_gal| distribution (random hemisphere sign).  This is the
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   spatial analogue of the clock-channel test: does the sky
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   itself lean toward the axis?
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   Samples: Warsaw spike (orig aphelia, 0<1/a<100e-6), CODE class-1
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   matched, and the lpc one-apparition cohort -- three increasingly
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   independent draws of the same population.
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   Axes: both TNO axes plus the antipode and galactic-pole control.
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   Outputs: results/step_b26_aphelion_dipole.json,
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061]   figures/supplementary/step_b26_aphelion_dipole.png
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] --------------------------------------------------------------------------------
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] SCRIPT: scripts/steps/step_061_aphelion_dipole.py
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] SCRIPT SHA256: 0aeb27971f5cf1296dda96ba9f50fc49992c4e157cb17cdbfe11cf433560fae8
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] SCRIPT SIZE: 11569 bytes
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] ================================================================================
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] Aphelion-sky dipole and tide calibration
+[2026-09-21 14:37:09 UTC] [INFO    ] [STEP 061] ================================================================================
+[2026-09-21 14:37:13 UTC] [INFO    ] [STEP 061]   warsaw spike: n=110 mean|b|=31.6 (iso 32.7) KS p=0.025
+[2026-09-21 14:37:13 UTC] [INFO    ] [STEP 061]     tno_extreme_34_-13       d_par=+0.1340 p=0.005699715014249288
+[2026-09-21 14:37:13 UTC] [INFO    ] [STEP 061]     tno_detached_50_-17      d_par=+0.1420 p=0.004499775011249437
+[2026-09-21 14:37:13 UTC] [INFO    ] [STEP 061]     anti_extreme             d_par=-0.1340 p=0.9939003049847508
+[2026-09-21 14:37:13 UTC] [INFO    ] [STEP 061]     gal_pole                 d_par=-0.0869 p=0.9529023548822559
+[2026-09-21 14:37:13 UTC] [INFO    ] [STEP 061]     gal_antictr_180_0        d_par=+0.1131 p=0.021248937553122346
+[2026-09-21 14:37:13 UTC] [INFO    ] [STEP 061]     gal_ctr_0_0              d_par=-0.1131 p=0.9773011349432529
+[2026-09-21 14:37:16 UTC] [INFO    ] [STEP 061]   code class-1 matched: n=98 mean|b|=30.8 (iso 32.7) KS p=0.028
+[2026-09-21 14:37:16 UTC] [INFO    ] [STEP 061]     tno_extreme_34_-13       d_par=+0.1932 p=0.00034998250087495624
+[2026-09-21 14:37:16 UTC] [INFO    ] [STEP 061]     tno_detached_50_-17      d_par=+0.2097 p=0.00014999250037498125
+[2026-09-21 14:37:16 UTC] [INFO    ] [STEP 061]     anti_extreme             d_par=-0.1932 p=0.999850007499625
+[2026-09-21 14:37:16 UTC] [INFO    ] [STEP 061]     gal_pole                 d_par=-0.1086 p=0.9770511474426279
+[2026-09-21 14:37:16 UTC] [INFO    ] [STEP 061]     gal_antictr_180_0        d_par=+0.1855 p=0.0011499425028748563
+[2026-09-21 14:37:16 UTC] [INFO    ] [STEP 061]     gal_ctr_0_0              d_par=-0.1855 p=0.9989500524973751
+[2026-09-21 14:37:19 UTC] [INFO    ] [STEP 061]   code-only: n=63 mean|b|=29.4 (iso 32.7) KS p=0.073
+[2026-09-21 14:37:19 UTC] [INFO    ] [STEP 061]     tno_extreme_34_-13       d_par=+0.2152 p=0.0007999600019999
+[2026-09-21 14:37:19 UTC] [INFO    ] [STEP 061]     tno_detached_50_-17      d_par=+0.2308 p=0.0005499725013749313
+[2026-09-21 14:37:19 UTC] [INFO    ] [STEP 061]     anti_extreme             d_par=-0.2152 p=0.9994000299985001
+[2026-09-21 14:37:19 UTC] [INFO    ] [STEP 061]     gal_pole                 d_par=-0.1206 p=0.9674016299185041
+[2026-09-21 14:37:19 UTC] [INFO    ] [STEP 061]     gal_antictr_180_0        d_par=+0.2038 p=0.0038498075096245186
+[2026-09-21 14:37:19 UTC] [INFO    ] [STEP 061]     gal_ctr_0_0              d_par=-0.2038 p=0.9954502274886255
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]   lpc one-apparition: n=30 mean|b|=26.2 (iso 32.6) KS p=0.166
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     tno_extreme_34_-13       d_par=+0.3055 p=0.0007999600019999
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     tno_detached_50_-17      d_par=+0.3434 p=0.00044997750112494374
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     anti_extreme             d_par=-0.3055 p=0.9991500424978751
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     gal_pole                 d_par=-0.2689 p=0.9991500424978751
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     gal_antictr_180_0        d_par=+0.2104 p=0.03179841007949603
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     gal_ctr_0_0              d_par=-0.2104 p=0.9685015749212539
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Saving data: step_b26_aphelion_dipole.json
+[2026-09-21 14:37:22 UTC] [DEBUG   ] [STEP 061]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b26_aphelion_dipole.json
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]   Output: step_b26_aphelion_dipole.json
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Saving data: step_b26_aphelion_dipole.png
+[2026-09-21 14:37:22 UTC] [DEBUG   ] [STEP 061]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b26_aphelion_dipole.png
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]   Output: step_b26_aphelion_dipole.png
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] 
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] ================================================================================
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] STEP SUMMARY: step_061_aphelion_dipole
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] ================================================================================
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Step Number: 061
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Status: SUCCESS
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Duration: 12.59s
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Log Records Emitted: 88
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Output Files: 2
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_061_aphelion_dipole.log
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] 
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Generated 2 output file(s):
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]   • step_b26_aphelion_dipole.json: 3.66 KB [sha256 08f01587c66f64f0]
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]   • step_b26_aphelion_dipole.png: 155.62 KB [sha256 d8084c88ccccf952]
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] 
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]   RESULT SNAPSHOT [step_b26_aphelion_dipole.json]:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     warsaw_spike:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       label = warsaw spike
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       n = 110
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     warsaw_spike.T1_tide_calibration:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       mean_abs_bgal = 31.638384
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       isotropic_mean = 32.677539
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       ks_p_vs_isotropic = 0.024552977
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       note = the galactic tide is axisymmetric about the gal pole; the observed |b_gal| profile is t...
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     warsaw_spike.T2_dipole_tide_null.tno_extreme_34_-13:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = 0.134
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.005699715
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     warsaw_spike.T2_dipole_tide_null.tno_detached_50_-17:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = 0.142
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.004499775
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     warsaw_spike.T2_dipole_tide_null.anti_extreme:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = -0.134
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.9939003
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     warsaw_spike.T2_dipole_tide_null.gal_pole:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = -0.0869
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.95290235
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     warsaw_spike.T2_dipole_tide_null.gal_antictr_180_0:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = 0.1131
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.021248938
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     warsaw_spike.T2_dipole_tide_null.gal_ctr_0_0:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = -0.1131
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.97730113
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_matched:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       label = code class-1 matched
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       n = 98
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_matched.T1_tide_calibration:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       mean_abs_bgal = 30.792111
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       isotropic_mean = 32.723585
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       ks_p_vs_isotropic = 0.027956719
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       note = the galactic tide is axisymmetric about the gal pole; the observed |b_gal| profile is t...
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_matched.T2_dipole_tide_null.tno_extreme_34_-13:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = 0.1932
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.0003499825
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_matched.T2_dipole_tide_null.tno_detached_50_-17:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = 0.2097
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.0001499925
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_matched.T2_dipole_tide_null.anti_extreme:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = -0.1932
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.99985001
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_matched.T2_dipole_tide_null.gal_pole:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = -0.1086
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.97705115
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_matched.T2_dipole_tide_null.gal_antictr_180_0:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = 0.1855
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.0011499425
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_matched.T2_dipole_tide_null.gal_ctr_0_0:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = -0.1855
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.99895005
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_only:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       label = code-only
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       n = 63
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_only.T1_tide_calibration:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       mean_abs_bgal = 29.438795
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       isotropic_mean = 32.691384
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       ks_p_vs_isotropic = 0.073109337
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       note = the galactic tide is axisymmetric about the gal pole; the observed |b_gal| profile is t...
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_only.T2_dipole_tide_null.tno_extreme_34_-13:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = 0.2152
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.00079996
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_only.T2_dipole_tide_null.tno_detached_50_-17:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = 0.2308
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.0005499725
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]     code_only.T2_dipole_tide_null.anti_extreme:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       d_par = -0.2152
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       p_tide_null = 0.99940003
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] ================================================================================
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] STEP 061 COMPLETE: SUCCESS
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_061_aphelion_dipole_provenance.json
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] 
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] ================================================================================
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] EXECUTIVE SUMMARY
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] ================================================================================
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Step: step_061_aphelion_dipole (Step 061)
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Status: SUCCESS
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Duration: 12.59s
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Log Records: 170
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Output Files: 2
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] Key Outputs:
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]   - step_b26_aphelion_dipole.json (3.66 KB)
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061]   - step_b26_aphelion_dipole.png (155.62 KB)
+[2026-09-21 14:37:22 UTC] [INFO    ] [STEP 061] ================================================================================

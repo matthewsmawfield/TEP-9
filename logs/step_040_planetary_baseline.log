@@ -1,112 +1,146 @@
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] LOGGER INITIALIZED: step_040_planetary_baseline (Step 040)
-[2026-09-20 10:46:01 UTC] [DEBUG   ] [STEP 040] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_040_planetary_baseline.log
-[2026-09-20 10:46:01 UTC] [DEBUG   ] [STEP 040] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:46:01 UTC] [DEBUG   ] [STEP 040] Start time (UTC): 2026-09-20T10:46:01.641548+00:00
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] 
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] STEP PURPOSE
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] --------------------------------------------------------------------------------
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   step_17: the planetary baseline -- the test the whole analysis needed.
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   Every earlier test compared raw d_of against the axis.  The correct
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   TEP observable is the residual AFTER the standard planetary baseline.
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   This step builds that baseline:
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   For each comet: node heliocentric distances r_asc, r_desc (analytic
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   from q, e, w) and Jupiter's ecliptic longitude at the perihelion
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   epoch (mean longitude 34.35 deg at J2000, rate 30.349 deg/yr --
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   an analytic approximation adequate for a covariance baseline).
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   Encounter proxy jproxy = min over nodes of the combined
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   node-distance/node-timing separation (a comet is perturbed
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   strongly only when a node sits near 5.2 AU AND Jupiter is there).
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   Baseline regression: log(d_of) ~ 1 + jproxy + q over the full
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   sample -> residuals.  Then the axis tests run on the residuals:
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   cap contrast and the continuous Spearman test, no cap, no cuts.
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   The baseline works: d_of correlates with jproxy globally
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   (rho = -0.47).  The in-cap comets carry NO geometric advantage
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   (jproxy, node_min, i, q, |daa| all flat vs out-cap).  And the
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   residual axis preference STRENGTHENS: p = 0.0018 (matched),
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   p = 0.0036 cap / rho = -0.28, p = 0.0012 continuous (all class-1).
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   Standard planetary geometry is now explicitly subtracted; what
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   remains is the non-planetary residual, and it still points at
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040]   the TNO axis.
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] --------------------------------------------------------------------------------
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] SCRIPT: scripts/steps/step_040_planetary_baseline.py
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] SCRIPT SHA256: a010a80b0b032f996a994d9fb95698b95b84ada61c00bbd2b8780f32c2270ffe
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] SCRIPT SIZE: 6028 bytes
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] ================================================================================
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] Planetary baseline residual
-[2026-09-20 10:46:01 UTC] [INFO    ] [STEP 040] ================================================================================
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] RESULT PAYLOAD:
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] {
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]  "n_all_c1": 131,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]  "matched": {
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "n": 54,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "n_in": 19,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "jproxy_p_2s": 0.5993838607503066,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "q_p_2s": 0.6120331415229909,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "i_p_2s": 0.7171527174670546,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "spearman_dof_jproxy": {
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "rho": -0.46796264532113585,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "p": 0.00035941416184120966
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   },
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "residual_cap": {
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "med_in": 0.4628196835225298,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "med_out": -0.005367781942145822,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "p": 0.0017713485609765034
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   },
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "residual_continuous": {
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "rho": -0.38852677720602247,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "p_2sided": 0.0036928063380426367
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   }
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]  },
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]  "all_c1": {
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "n": 131,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "n_in": 43,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "jproxy_p_2s": 0.6085070733676994,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "q_p_2s": 0.8695737761661341,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "i_p_2s": 0.0686215392059113,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "spearman_dof_jproxy": {
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "rho": -0.4244701863022474,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "p": 4.3551245372592795e-07
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   },
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "residual_cap": {
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "med_in": 0.3105235550126364,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "med_out": 0.011942002398417584,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "p": 0.003589045485510702
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   },
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   "residual_continuous": {
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "rho": -0.2801153045427855,
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]    "p_2sided": 0.0011933478053119753
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   }
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]  }
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] }
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Saving data: step_17_planetary_baseline.json
-[2026-09-20 10:46:02 UTC] [DEBUG   ] [STEP 040]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_17_planetary_baseline.json
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   Output: step_17_planetary_baseline.json
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] 
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] ================================================================================
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] STEP SUMMARY: step_040_planetary_baseline
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] ================================================================================
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Step Number: 040
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Status: SUCCESS
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Duration: 0.41s
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Log Records Emitted: 91
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Output Files: 1
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_040_planetary_baseline.log
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] 
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Generated 1 output file(s):
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   • step_17_planetary_baseline.json: 0.92 KB [sha256 738ddb8f54df9e31]
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] ================================================================================
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] STEP 040 COMPLETE: SUCCESS
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_040_planetary_baseline_provenance.json
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] 
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] ================================================================================
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] EXECUTIVE SUMMARY
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] ================================================================================
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Step: step_040_planetary_baseline (Step 040)
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Status: SUCCESS
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Duration: 0.41s
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Log Records: 100
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Output Files: 1
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] Key Outputs:
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040]   - step_17_planetary_baseline.json (0.92 KB)
-[2026-09-20 10:46:02 UTC] [INFO    ] [STEP 040] ================================================================================
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040] LOGGER INITIALIZED: step_040_planetary_baseline (Step 040)
+[2026-09-21 14:36:11 UTC] [DEBUG   ] [STEP 040] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_040_planetary_baseline.log
+[2026-09-21 14:36:11 UTC] [DEBUG   ] [STEP 040] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:36:11 UTC] [DEBUG   ] [STEP 040] Start time (UTC): 2026-09-21T14:36:11.974733+00:00
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040] 
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040] STEP PURPOSE
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040] --------------------------------------------------------------------------------
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   step_17: the planetary baseline -- the test the whole analysis needed.
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   Every earlier test compared raw d_of against the axis.  The correct
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   TEP observable is the residual AFTER the standard planetary baseline.
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   This step builds that baseline:
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   For each comet: node heliocentric distances r_asc, r_desc (analytic
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   from q, e, w) and Jupiter's ecliptic longitude at the perihelion
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   epoch (mean longitude 34.35 deg at J2000, rate 30.349 deg/yr --
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   an analytic approximation adequate for a covariance baseline).
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   Encounter proxy jproxy = min over nodes of the combined
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   node-distance/node-timing separation (a comet is perturbed
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   strongly only when a node sits near 5.2 AU AND Jupiter is there).
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   Baseline regression: log(d_of) ~ 1 + jproxy + q over the full
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   sample -> residuals.  Then the axis tests run on the residuals:
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   cap contrast and the continuous Spearman test, no cap, no cuts.
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   The baseline works: d_of correlates with jproxy globally
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   (rho = -0.47).  The in-cap comets carry NO geometric advantage
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   (jproxy, node_min, i, q, |daa| all flat vs out-cap).  And the
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   residual axis preference STRENGTHENS: p = 0.0018 (matched),
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   p = 0.0036 cap / rho = -0.28, p = 0.0012 continuous (all class-1).
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   Standard planetary geometry is now explicitly subtracted; what
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   remains is the non-planetary residual, and it still points at
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040]   the TNO axis.
+[2026-09-21 14:36:11 UTC] [INFO    ] [STEP 040] --------------------------------------------------------------------------------
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] SCRIPT: scripts/steps/step_040_planetary_baseline.py
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] SCRIPT SHA256: a010a80b0b032f996a994d9fb95698b95b84ada61c00bbd2b8780f32c2270ffe
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] SCRIPT SIZE: 6028 bytes
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] ================================================================================
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Planetary baseline residual
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] ================================================================================
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] RESULT PAYLOAD:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] {
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]  "n_all_c1": 131,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]  "matched": {
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "n": 54,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "n_in": 19,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "jproxy_p_2s": 0.5993838607503066,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "q_p_2s": 0.6120331415229909,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "i_p_2s": 0.7171527174670546,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "spearman_dof_jproxy": {
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "rho": -0.46796264532113585,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "p": 0.00035941416184120966
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   },
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "residual_cap": {
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "med_in": 0.4628196835225298,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "med_out": -0.005367781942145822,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "p": 0.0017713485609765034
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   },
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "residual_continuous": {
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "rho": -0.38852677720602247,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "p_2sided": 0.0036928063380426367
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   }
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]  },
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]  "all_c1": {
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "n": 131,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "n_in": 43,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "jproxy_p_2s": 0.6085070733676994,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "q_p_2s": 0.8695737761661341,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "i_p_2s": 0.0686215392059113,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "spearman_dof_jproxy": {
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "rho": -0.4244701863022474,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "p": 4.3551245372592795e-07
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   },
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "residual_cap": {
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "med_in": 0.3105235550126364,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "med_out": 0.011942002398417584,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "p": 0.003589045485510702
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   },
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   "residual_continuous": {
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "rho": -0.2801153045427855,
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]    "p_2sided": 0.0011933478053119753
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   }
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]  }
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] }
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Saving data: step_17_planetary_baseline.json
+[2026-09-21 14:36:12 UTC] [DEBUG   ] [STEP 040]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_17_planetary_baseline.json
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   Output: step_17_planetary_baseline.json
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] 
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] ================================================================================
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] STEP SUMMARY: step_040_planetary_baseline
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] ================================================================================
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Step Number: 040
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Status: SUCCESS
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Duration: 0.59s
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Log Records Emitted: 91
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Output Files: 1
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_040_planetary_baseline.log
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] 
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Generated 1 output file(s):
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   • step_17_planetary_baseline.json: 0.92 KB [sha256 738ddb8f54df9e31]
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] 
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   RESULT SNAPSHOT [step_17_planetary_baseline.json]:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]     matched:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       n = 54
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       n_in = 19
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       jproxy_p_2s = 0.59938386
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       q_p_2s = 0.61203314
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       i_p_2s = 0.71715272
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]     matched.spearman_dof_jproxy:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       rho = -0.46796265
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       p = 0.00035941416
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]     matched.residual_cap:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       med_in = 0.46281968
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       med_out = -0.0053677819
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       p = 0.0017713486
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]     matched.residual_continuous:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       rho = -0.38852678
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       p_2sided = 0.0036928063
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]     all_c1:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       n = 131
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       n_in = 43
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       jproxy_p_2s = 0.60850707
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       q_p_2s = 0.86957378
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       i_p_2s = 0.068621539
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]     all_c1.spearman_dof_jproxy:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       rho = -0.42447019
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       p = 4.3551245e-07
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]     all_c1.residual_cap:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       med_in = 0.31052356
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       med_out = 0.011942002
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       p = 0.0035890455
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]     all_c1.residual_continuous:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       rho = -0.2801153
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]       p_2sided = 0.0011933478
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] ================================================================================
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] STEP 040 COMPLETE: SUCCESS
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_040_planetary_baseline_provenance.json
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] 
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] ================================================================================
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] EXECUTIVE SUMMARY
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] ================================================================================
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Step: step_040_planetary_baseline (Step 040)
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Status: SUCCESS
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Duration: 0.59s
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Log Records: 134
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Output Files: 1
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] Key Outputs:
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040]   - step_17_planetary_baseline.json (0.92 KB)
+[2026-09-21 14:36:12 UTC] [INFO    ] [STEP 040] ================================================================================

@@ -1,103 +1,161 @@
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] LOGGER INITIALIZED: step_146_sclk_radial_gradient (Step 146)
-[2026-09-20 12:25:49 UTC] [DEBUG   ] [STEP 146] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_146_sclk_radial_gradient.log
-[2026-09-20 12:25:49 UTC] [DEBUG   ] [STEP 146] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:25:49 UTC] [DEBUG   ] [STEP 146] Start time (UTC): 2026-09-20T12:25:49.938275+00:00
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] 
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] STEP PURPOSE
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] --------------------------------------------------------------------------------
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   Step 146: SCLK radial lapse-gradient and bipolar-sign channel (step_b110).
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   Step 141 tested signed level *steps* at the four crossings.  A second
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   observable in the same one-way record is the drift's spatial
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   structure: the signed fractional oscillator offset dnu versus
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   heliocentric radius and versus the craft's direction on the bipolar
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   axis.  The two Voyagers exited toward opposite polarities of the
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   measured bipolar field -- Voyager 1 north of the ecliptic toward the
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   antapex-side lobe, Voyager 2 south toward the apex side.  A bipolar
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   lapse field predicts opposite-signed outer-region drift between them;
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   ordinary oscillator ageing predicts same-signed, time-organized drift.
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   T1  Signed drift vs radius: Spearman dnu vs r_au per craft over the
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   full record and the outer region (r > 60 AU), with the NH1
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   control (whose dnu is kernel-frozen, registered as such).
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   T2  Bipolar-sign test: outer-region (r > 60 AU) per-year drift slope
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   for V1 vs V2 -- opposite sign predicted by the bipolar geometry --
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   together with each craft's median outer asymptote direction and
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   its separation from the declared axis, anti-axis and CMB axis.
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   T3  Radius-vs-ageing discrimination: per-AU and per-year drift
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   coefficients for the two Voyagers, and the partial correlation
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   dnu ~ r_au | mission-age.  Radius and age are ~99.9 per cent
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   collinear outbound, so the registered discriminator is the
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   outer-region sign split (T2), not the full-record correlation.
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   T4  Directional coupling: each craft's post-60 AU drift slope
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   against the cosine of its trajectory direction to the bipolar
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   (CMB) axis -- the signed quantity a bipolar lapse gradient
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   predicts to reverse between the two asymptotes.
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   Outputs: results/step_b110_sclk_radial_gradient.json/.csv and
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146]   results/figures/supplementary/step_b110_sclk_radial_gradient.png.
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] --------------------------------------------------------------------------------
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] SCRIPT: scripts/steps/step_146_sclk_radial_gradient.py
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] SCRIPT SHA256: a30c2535bc349818339e01e90b1f7578d0c92fcdce649f3c3c165da1b7545e59
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] SCRIPT SIZE: 12217 bytes
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] ================================================================================
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] SCLK radial lapse-gradient and bipolar-sign channel
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 146] ================================================================================
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] VG1: rho(dnu,r)=+0.238 p=3.4e-16; outer slope -0.0309 ppm/yr
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] VG2: rho(dnu,r)=+0.294 p=1.5e-29; outer slope +0.0296 ppm/yr
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] NH1: rho(dnu,r)=+0.024 p=1.6e-01; outer slope -0.0018 ppm/yr
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] T2: V1 outer -0.0309 ppm/yr (cosCMB=+0.00, cosComet=-0.88); V2 +0.0296 ppm/yr (cosCMB=-0.27, cosComet=-0.25)
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] verdict: SCLK RADIAL CHANNEL SPLIT-SIGN, AXIS-UNRESOLVED: outer-region (r>60 AU) signed drift is opposite-signed between the craft -- V1 -0.0309 ppm/yr (cos to CMB axis +0.00, comet axis -0.88), V2 +0.0296 ppm/yr (CMB -0.27, comet -0.25) -- and locks to neither measured bipolar axis; NH1 interior control flat.  Radius and age are ~99.9 per cent collinear outbound, so the registered evidence is the directional sign structure, with kernel segmentation the standing caveat.
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Saving data: step_b110_sclk_radial_gradient.json
-[2026-09-20 12:25:50 UTC] [DEBUG   ] [STEP 146]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b110_sclk_radial_gradient.json
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]   Output: step_b110_sclk_radial_gradient.json
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Saving data: step_b110_sclk_radial_gradient.csv
-[2026-09-20 12:25:50 UTC] [DEBUG   ] [STEP 146]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b110_sclk_radial_gradient.csv
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]   Output: step_b110_sclk_radial_gradient.csv
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Saving data: step_b110_sclk_radial_gradient.png
-[2026-09-20 12:25:50 UTC] [DEBUG   ] [STEP 146]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b110_sclk_radial_gradient.png
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]   Output: step_b110_sclk_radial_gradient.png
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] TEST SUMMARY:
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] {
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]  "v1_outer_slope_ppm_per_yr": -0.03090346085065754,
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]  "v2_outer_slope_ppm_per_yr": 0.029614540553684288,
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]  "v1_cos_cmb": 0.002397463084851545,
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]  "v2_cos_cmb": -0.27427185715884034,
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]  "v1_cos_comet": -0.8807785407925961,
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]  "v2_cos_comet": -0.24591509082333,
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]  "slopes_opposite_signed": true,
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]  "bipolar_sign_agreement": false,
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]  "v1_rho_outer": 0.2429748065864616,
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]  "v2_rho_outer": 0.27763299207276915
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] }
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] VERDICT: SCLK RADIAL CHANNEL SPLIT-SIGN, AXIS-UNRESOLVED: outer-region (r>60 AU) signed drift is opposite-signed between the craft -- V1 -0.0309 ppm/yr (cos to CMB axis +0.00, comet axis -0.88), V2 +0.0296 ppm/yr (CMB -0.27, comet -0.25) -- and locks to neither measured bipolar axis; NH1 interior control flat.  Radius and age are ~99.9 per cent collinear outbound, so the registered evidence is the directional sign structure, with kernel segmentation the standing caveat.
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] 
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] ================================================================================
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] STEP SUMMARY: step_146_sclk_radial_gradient
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] ================================================================================
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Step Number: 146
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Status: SUCCESS
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Duration: 0.74s
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Log Records Emitted: 78
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Output Files: 3
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_146_sclk_radial_gradient.log
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] 
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Generated 3 output file(s):
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]   • step_b110_sclk_radial_gradient.json: 4.42 KB [sha256 8232e03deae7824f]
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]   • step_b110_sclk_radial_gradient.csv: 13.09 KB [sha256 0a3b28ec4dabca23]
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]   • step_b110_sclk_radial_gradient.png: 279.19 KB [sha256 9325e9de965ac3cb]
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] ================================================================================
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] STEP 146 COMPLETE: SUCCESS
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_146_sclk_radial_gradient_provenance.json
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] 
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] ================================================================================
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] EXECUTIVE SUMMARY
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] ================================================================================
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Step: step_146_sclk_radial_gradient (Step 146)
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Status: SUCCESS
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Duration: 0.74s
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Log Records: 89
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Output Files: 3
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] Key Outputs:
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]   - step_b110_sclk_radial_gradient.json (4.42 KB)
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]   - step_b110_sclk_radial_gradient.csv (13.09 KB)
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146]   - step_b110_sclk_radial_gradient.png (279.19 KB)
-[2026-09-20 12:25:50 UTC] [INFO    ] [STEP 146] ================================================================================
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] LOGGER INITIALIZED: step_146_sclk_radial_gradient (Step 146)
+[2026-09-21 15:17:45 UTC] [DEBUG   ] [STEP 146] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_146_sclk_radial_gradient.log
+[2026-09-21 15:17:45 UTC] [DEBUG   ] [STEP 146] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:17:45 UTC] [DEBUG   ] [STEP 146] Start time (UTC): 2026-09-21T15:17:45.118170+00:00
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] 
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] STEP PURPOSE
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] --------------------------------------------------------------------------------
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   Step 146: SCLK radial lapse-gradient and bipolar-sign channel (step_b110).
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   Step 141 tested signed level *steps* at the four crossings.  A second
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   observable in the same one-way record is the drift's spatial
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   structure: the signed fractional oscillator offset dnu versus
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   heliocentric radius and versus the craft's direction on the bipolar
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   axis.  The two Voyagers exited toward opposite polarities of the
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   measured bipolar field -- Voyager 1 north of the ecliptic toward the
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   antapex-side lobe, Voyager 2 south toward the apex side.  A bipolar
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   lapse field predicts opposite-signed outer-region drift between them;
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   ordinary oscillator ageing predicts same-signed, time-organized drift.
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   T1  Signed drift vs radius: Spearman dnu vs r_au per craft over the
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   full record and the outer region (r > 60 AU), with the NH1
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   control (whose dnu is kernel-frozen, registered as such).
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   T2  Bipolar-sign test: outer-region (r > 60 AU) per-year drift slope
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   for V1 vs V2 -- opposite sign predicted by the bipolar geometry --
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   together with each craft's median outer asymptote direction and
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   its separation from the declared axis, anti-axis and CMB axis.
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   T3  Radius-vs-ageing discrimination: per-AU and per-year drift
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   coefficients for the two Voyagers, and the partial correlation
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   dnu ~ r_au | mission-age.  Radius and age are ~99.9 per cent
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   collinear outbound, so the registered discriminator is the
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   outer-region sign split (T2), not the full-record correlation.
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   T4  Directional coupling: each craft's post-60 AU drift slope
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   against the cosine of its trajectory direction to the bipolar
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   (CMB) axis -- the signed quantity a bipolar lapse gradient
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   predicts to reverse between the two asymptotes.
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   Outputs: results/step_b110_sclk_radial_gradient.json/.csv and
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   results/figures/supplementary/step_b110_sclk_radial_gradient.png.
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] --------------------------------------------------------------------------------
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] SCRIPT: scripts/steps/step_146_sclk_radial_gradient.py
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] SCRIPT SHA256: a30c2535bc349818339e01e90b1f7578d0c92fcdce649f3c3c165da1b7545e59
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] SCRIPT SIZE: 12217 bytes
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] ================================================================================
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] SCLK radial lapse-gradient and bipolar-sign channel
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] ================================================================================
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] VG1: rho(dnu,r)=+0.238 p=3.4e-16; outer slope -0.0309 ppm/yr
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] VG2: rho(dnu,r)=+0.294 p=1.5e-29; outer slope +0.0296 ppm/yr
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] NH1: rho(dnu,r)=+0.024 p=1.6e-01; outer slope -0.0018 ppm/yr
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] T2: V1 outer -0.0309 ppm/yr (cosCMB=+0.00, cosComet=-0.88); V2 +0.0296 ppm/yr (cosCMB=-0.27, cosComet=-0.25)
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] verdict: SCLK RADIAL CHANNEL SPLIT-SIGN, AXIS-UNRESOLVED: outer-region (r>60 AU) signed drift is opposite-signed between the craft -- V1 -0.0309 ppm/yr (cos to CMB axis +0.00, comet axis -0.88), V2 +0.0296 ppm/yr (CMB -0.27, comet -0.25) -- and locks to neither measured bipolar axis; NH1 interior control flat.  Radius and age are ~99.9 per cent collinear outbound, so the registered evidence is the directional sign structure, with kernel segmentation the standing caveat.
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Saving data: step_b110_sclk_radial_gradient.json
+[2026-09-21 15:17:45 UTC] [DEBUG   ] [STEP 146]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b110_sclk_radial_gradient.json
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   Output: step_b110_sclk_radial_gradient.json
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Saving data: step_b110_sclk_radial_gradient.csv
+[2026-09-21 15:17:45 UTC] [DEBUG   ] [STEP 146]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b110_sclk_radial_gradient.csv
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   Output: step_b110_sclk_radial_gradient.csv
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Saving data: step_b110_sclk_radial_gradient.png
+[2026-09-21 15:17:45 UTC] [DEBUG   ] [STEP 146]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b110_sclk_radial_gradient.png
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   Output: step_b110_sclk_radial_gradient.png
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] TEST SUMMARY:
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] {
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]  "v1_outer_slope_ppm_per_yr": -0.03090346085065754,
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]  "v2_outer_slope_ppm_per_yr": 0.029614540553684288,
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]  "v1_cos_cmb": 0.002397463084851545,
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]  "v2_cos_cmb": -0.27427185715884034,
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]  "v1_cos_comet": -0.8807785407925961,
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]  "v2_cos_comet": -0.24591509082333,
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]  "slopes_opposite_signed": true,
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]  "bipolar_sign_agreement": false,
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]  "v1_rho_outer": 0.2429748065864616,
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]  "v2_rho_outer": 0.27763299207276915
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] }
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] VERDICT: SCLK RADIAL CHANNEL SPLIT-SIGN, AXIS-UNRESOLVED: outer-region (r>60 AU) signed drift is opposite-signed between the craft -- V1 -0.0309 ppm/yr (cos to CMB axis +0.00, comet axis -0.88), V2 +0.0296 ppm/yr (CMB -0.27, comet -0.25) -- and locks to neither measured bipolar axis; NH1 interior control flat.  Radius and age are ~99.9 per cent collinear outbound, so the registered evidence is the directional sign structure, with kernel segmentation the standing caveat.
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] 
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] ================================================================================
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] STEP SUMMARY: step_146_sclk_radial_gradient
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] ================================================================================
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Step Number: 146
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Status: SUCCESS
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Duration: 0.76s
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Log Records Emitted: 78
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Output Files: 3
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_146_sclk_radial_gradient.log
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] 
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Generated 3 output file(s):
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   • step_b110_sclk_radial_gradient.json: 4.42 KB [sha256 8232e03deae7824f]
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   • step_b110_sclk_radial_gradient.csv: 13.09 KB [sha256 0a3b28ec4dabca23]
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   • step_b110_sclk_radial_gradient.png: 279.19 KB [sha256 9325e9de965ac3cb]
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] 
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   RESULT SNAPSHOT [step_b110_sclk_radial_gradient.json]:
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]     test_summary:
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       v1_outer_slope_ppm_per_yr = -0.030903461
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       v2_outer_slope_ppm_per_yr = 0.029614541
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       v1_cos_cmb = 0.0023974631
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       v2_cos_cmb = -0.27427186
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       v1_cos_comet = -0.88077854
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       v2_cos_comet = -0.24591509
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       slopes_opposite_signed = True
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       bipolar_sign_agreement = False
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       v1_rho_outer = 0.24297481
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       v2_rho_outer = 0.27763299
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]     T1_radial.VG1:
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       n = 1144
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       rho_full = 0.23803159
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       p_full = 3.358111e-16
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       n_outer = 488
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       rho_outer = 0.24297481
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       p_outer = 5.467773e-08
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       slope_ppm_per_yr_outer = -0.030903461
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       slope_ppm_per_au_outer = -0.0085619692
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]     T1_radial.VG2:
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       n = 1407
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       rho_full = 0.29447803
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       p_full = 1.51688e-29
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       n_outer = 424
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       rho_outer = 0.27763299
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       p_outer = 6.0766023e-09
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       slope_ppm_per_yr_outer = 0.029614541
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       slope_ppm_per_au_outer = 0.0093090653
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]     T1_radial.NH1:
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       n = 3381
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       rho_full = 0.024363896
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       p_full = 0.15667058
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       n_outer = 110
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       rho_outer = -0.30379368
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       p_outer = 0.0012534593
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       slope_ppm_per_yr_outer = -0.0018402493
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       slope_ppm_per_au_outer = -0.00064178777
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]     T2_bipolar_sign:
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       prediction = bipolar lapse: sign(drift) tracks the sign of the trajectory's projection on the bipola...
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]     T2_bipolar_sign.VG1:
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       outer_slope_ppm_per_yr = -0.030903461
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       asymptote_lon_deg = 253.6205
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       asymptote_lat_deg = 34.791
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       sep_from_axis_deg = 151.73642
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       sep_from_antiaxis_deg = 28.263579
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       sep_from_cmb_apex_deg = 89.862635
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       sep_from_cmb_antapex_deg = 90.137365
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       cos_to_cmb_axis = 0.0023974631
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       cos_to_comet_axis = -0.88077854
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]     T2_bipolar_sign.VG2:
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       outer_slope_ppm_per_yr = 0.029614541
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       asymptote_lon_deg = 288.9335
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       asymptote_lat_deg = -32.622
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       sep_from_axis_deg = 104.23592
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] ================================================================================
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] STEP 146 COMPLETE: SUCCESS
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_146_sclk_radial_gradient_provenance.json
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] 
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] ================================================================================
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] EXECUTIVE SUMMARY
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] ================================================================================
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Step: step_146_sclk_radial_gradient (Step 146)
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Status: SUCCESS
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Duration: 0.76s
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Log Records: 147
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Output Files: 3
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] Key Outputs:
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   - step_b110_sclk_radial_gradient.json (4.42 KB)
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   - step_b110_sclk_radial_gradient.csv (13.09 KB)
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146]   - step_b110_sclk_radial_gradient.png (279.19 KB)
+[2026-09-21 15:17:45 UTC] [INFO    ] [STEP 146] ================================================================================

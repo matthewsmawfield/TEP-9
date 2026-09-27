@@ -1,110 +1,168 @@
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] LOGGER INITIALIZED: step_083_mass_ladder (Step 083)
-[2026-09-20 11:46:25 UTC] [DEBUG   ] [STEP 083] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_083_mass_ladder.log
-[2026-09-20 11:46:25 UTC] [DEBUG   ] [STEP 083] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 11:46:25 UTC] [DEBUG   ] [STEP 083] Start time (UTC): 2026-09-20T11:46:25.322580+00:00
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] 
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] STEP PURPOSE
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] --------------------------------------------------------------------------------
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   Step 083 -- perturber mass ladder: what point mass would the
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   transit anomaly require?
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   step_062 showed that the two published Brown & Batygin (2021)
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   realizations inject <= 0.003 deg of boundary rotation against the
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   >= 0.14 deg observed -- a shortfall of roughly two orders of
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   magnitude in angle.  This step converts that shortfall into a mass
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   statement.  The gravitational impulse a distant perturber delivers to
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   a comet's reconstructed orbit scales with the perturber's mass, so a
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   mass ladder at fixed geometry measures both the scaling exponent and
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   the mass a point-mass explanation would actually require.
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   Cells
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   bb21_med_m7    m9 =   6.9 M_earth (the published realization, M9 = 180)
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   bb21_med_m20   m9 =  20   "
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   bb21_med_m50   m9 =  50   "
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   bb21_med_m150  m9 = 150   "
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   sct25_px       m9 =   4.4 M_earth, a = 290 AU, e = 0.29, i = 6.8 deg --
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   the Siraj, Chyba & Tremaine (2025, ApJ 978, 139)
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   quadrivariate best fit, placed in the anti-aligned
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   shepherding configuration (varpi9 = 246.7, Om9 = 96.9,
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   the same apsidal geometry as bb21_med; the fit
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   constrains m, a, e, i only) at M9 = 180.
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   All cells use the residence-time-weighted most probable position
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   M9 = 180 deg.  The m9 = 6.9 anchor is taken from the step_b27 CSV
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   (deterministic integrator, identical inputs) so each comet needs one
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   no-P9 baseline plus four new integrations.
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   Per comet the periapsis-direction rotation drot is measured at each
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   mass; a log-log fit on the bb21_med ladder gives the scaling exponent
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   alpha (drot ~ m^alpha), and the required mass
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   m_req = 6.9 * (d_of / drot_6.9)^(1/alpha)
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   is the point mass at the published location that would reproduce that
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   comet's observed orig->future rotation d_of.  Deliverables: the
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   scaling exponent, the required-mass distribution in and out of the
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   cap, and the same targeting/absorption statistics as step_062 for the
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   Siraj realization.
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   Context for interpretation (recorded in the JSON): Pan-STARRS1 +
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   ZTF + DES already exclude ~78 per cent of the BB21 parameter space
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   (Brown, Holman & Batygin 2024, AJ 167, 146); IRAS/WISE all-sky limits bound any
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   roughly Jupiter-mass-or-larger body well inside ~10^4 AU; and
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   planetary-ranging ephemerides bound a ~300-500 AU perturber at a few
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   tens of Earth masses.  A required mass of order 10^3-10^4 M_earth is
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   not a planet -- it is a brown dwarf that every relevant survey
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   excludes.
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   Outputs
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   results/step_b48_mass_ladder.json
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   results/step_b48_mass_ladder.csv   (per-comet ladder)
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083]   results/figures/supplementary/step_b48_mass_ladder.png
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] --------------------------------------------------------------------------------
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] SCRIPT: scripts/steps/step_083_mass_ladder.py
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] SCRIPT SHA256: d3dc78f0375278db94d61e7cd0d4a7c61ed5da30ae047984867643b131554193
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] SCRIPT SIZE: 23441 bytes
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] ================================================================================
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] Perturber mass ladder (REBOUND/IAS15 + DE440s)
-[2026-09-20 11:46:25 UTC] [INFO    ] [STEP 083] ================================================================================
-[2026-09-20 11:46:26 UTC] [INFO    ] [STEP 083] sample: 131 class-1 CODE comets
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083] integrated 131 comets x 5 runs; 0 failed
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083] scaling exponent alpha = 1.00 [1.00, 1.00]
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083] required mass: median 3228 M_earth; in-cap 4294; 5th pct 794; frac>1000 0.86
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083] bb21_med_m20: med drot=0.00081 deg (in 0.00072 / out 0.00084) max 0.0015; shortfall x178
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083] bb21_med_m50: med drot=0.00203 deg (in 0.00180 / out 0.00211) max 0.0039; shortfall x71
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083] bb21_med_m150: med drot=0.00609 deg (in 0.00540 / out 0.00633) max 0.0115; shortfall x24
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083] sct25_px: med drot=0.00020 deg (in 0.00021 / out 0.00019) max 0.0005; shortfall x705
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083] Saving data: step_b48_mass_ladder.json
-[2026-09-20 11:49:08 UTC] [DEBUG   ] [STEP 083]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b48_mass_ladder.json
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083]   Output: step_b48_mass_ladder.json
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083] Saving data: step_b48_mass_ladder.csv
-[2026-09-20 11:49:08 UTC] [DEBUG   ] [STEP 083]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b48_mass_ladder.csv
-[2026-09-20 11:49:08 UTC] [INFO    ] [STEP 083]   Output: step_b48_mass_ladder.csv
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Saving data: step_b48_mass_ladder.png
-[2026-09-20 11:49:11 UTC] [DEBUG   ] [STEP 083]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b48_mass_ladder.png
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083]   Output: step_b48_mass_ladder.png
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] 
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] ================================================================================
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] STEP SUMMARY: step_083_mass_ladder
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] ================================================================================
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Step Number: 083
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Status: SUCCESS
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Duration: 2.77m
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Log Records Emitted: 85
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Output Files: 3
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_083_mass_ladder.log
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] 
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Generated 3 output file(s):
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083]   • step_b48_mass_ladder.json: 4.30 KB [sha256 18784792b3fd5963]
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083]   • step_b48_mass_ladder.csv: 41.09 KB [sha256 a2746a649a6ddeb7]
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083]   • step_b48_mass_ladder.png: 622.61 KB [sha256 453311984499e57f]
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] ================================================================================
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] STEP 083 COMPLETE: SUCCESS
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_083_mass_ladder_provenance.json
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] 
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] ================================================================================
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] EXECUTIVE SUMMARY
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] ================================================================================
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Step: step_083_mass_ladder (Step 083)
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Status: SUCCESS
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Duration: 2.77m
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Log Records: 96
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Output Files: 3
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] Key Outputs:
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083]   - step_b48_mass_ladder.json (4.30 KB)
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083]   - step_b48_mass_ladder.csv (41.09 KB)
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083]   - step_b48_mass_ladder.png (622.61 KB)
-[2026-09-20 11:49:11 UTC] [INFO    ] [STEP 083] ================================================================================
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] LOGGER INITIALIZED: step_083_mass_ladder (Step 083)
+[2026-09-21 14:53:27 UTC] [DEBUG   ] [STEP 083] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_083_mass_ladder.log
+[2026-09-21 14:53:27 UTC] [DEBUG   ] [STEP 083] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:53:27 UTC] [DEBUG   ] [STEP 083] Start time (UTC): 2026-09-21T14:53:27.156946+00:00
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] 
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] STEP PURPOSE
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] --------------------------------------------------------------------------------
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   Step 083 -- perturber mass ladder: what point mass would the
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   transit anomaly require?
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   step_062 showed that the two published Brown & Batygin (2021)
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   realizations inject <= 0.003 deg of boundary rotation against the
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   >= 0.14 deg observed -- a shortfall of roughly two orders of
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   magnitude in angle.  This step converts that shortfall into a mass
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   statement.  The gravitational impulse a distant perturber delivers to
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   a comet's reconstructed orbit scales with the perturber's mass, so a
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   mass ladder at fixed geometry measures both the scaling exponent and
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   the mass a point-mass explanation would actually require.
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   Cells
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   bb21_med_m7    m9 =   6.9 M_earth (the published realization, M9 = 180)
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   bb21_med_m20   m9 =  20   "
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   bb21_med_m50   m9 =  50   "
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   bb21_med_m150  m9 = 150   "
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   sct25_px       m9 =   4.4 M_earth, a = 290 AU, e = 0.29, i = 6.8 deg --
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   the Siraj, Chyba & Tremaine (2025, ApJ 978, 139)
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   quadrivariate best fit, placed in the anti-aligned
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   shepherding configuration (varpi9 = 246.7, Om9 = 96.9,
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   the same apsidal geometry as bb21_med; the fit
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   constrains m, a, e, i only) at M9 = 180.
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   All cells use the residence-time-weighted most probable position
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   M9 = 180 deg.  The m9 = 6.9 anchor is taken from the step_b27 CSV
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   (deterministic integrator, identical inputs) so each comet needs one
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   no-P9 baseline plus four new integrations.
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   Per comet the periapsis-direction rotation drot is measured at each
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   mass; a log-log fit on the bb21_med ladder gives the scaling exponent
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   alpha (drot ~ m^alpha), and the required mass
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   m_req = 6.9 * (d_of / drot_6.9)^(1/alpha)
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   is the point mass at the published location that would reproduce that
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   comet's observed orig->future rotation d_of.  Deliverables: the
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   scaling exponent, the required-mass distribution in and out of the
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   cap, and the same targeting/absorption statistics as step_062 for the
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   Siraj realization.
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   Context for interpretation (recorded in the JSON): Pan-STARRS1 +
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   ZTF + DES already exclude ~78 per cent of the BB21 parameter space
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   (Brown, Holman & Batygin 2024, AJ 167, 146); IRAS/WISE all-sky limits bound any
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   roughly Jupiter-mass-or-larger body well inside ~10^4 AU; and
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   planetary-ranging ephemerides bound a ~300-500 AU perturber at a few
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   tens of Earth masses.  A required mass of order 10^3-10^4 M_earth is
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   not a planet -- it is a brown dwarf that every relevant survey
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   excludes.
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   Outputs
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   results/step_b48_mass_ladder.json
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   results/step_b48_mass_ladder.csv   (per-comet ladder)
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083]   results/figures/supplementary/step_b48_mass_ladder.png
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] --------------------------------------------------------------------------------
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] SCRIPT: scripts/steps/step_083_mass_ladder.py
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] SCRIPT SHA256: 8033461214c1008123be4f6abd3ed788003a10e4010312a9f982c445cf0e3434
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] SCRIPT SIZE: 23529 bytes
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] ================================================================================
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] Perturber mass ladder (REBOUND/IAS15 + DE440s)
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] ================================================================================
+[2026-09-21 14:53:27 UTC] [INFO    ] [STEP 083] sample: 131 class-1 CODE comets
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083] integrated 131 comets x 5 runs; 0 failed
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083] scaling exponent alpha = 1.00 [1.00, 1.00]
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083] required mass: median 3228 M_earth; in-cap 4294; 5th pct 794; frac>1000 0.86
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083] bb21_med_m20: med drot=0.00081 deg (in 0.00072 / out 0.00084) max 0.0015; shortfall x178
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083] bb21_med_m50: med drot=0.00203 deg (in 0.00180 / out 0.00211) max 0.0039; shortfall x71
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083] bb21_med_m150: med drot=0.00609 deg (in 0.00540 / out 0.00633) max 0.0115; shortfall x24
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083] sct25_px: med drot=0.00020 deg (in 0.00021 / out 0.00019) max 0.0005; shortfall x705
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083] Saving data: step_b48_mass_ladder.json
+[2026-09-21 14:54:49 UTC] [DEBUG   ] [STEP 083]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b48_mass_ladder.json
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083]   Output: step_b48_mass_ladder.json
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083] Saving data: step_b48_mass_ladder.csv
+[2026-09-21 14:54:49 UTC] [DEBUG   ] [STEP 083]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b48_mass_ladder.csv
+[2026-09-21 14:54:49 UTC] [INFO    ] [STEP 083]   Output: step_b48_mass_ladder.csv
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Saving data: step_b48_mass_ladder.png
+[2026-09-21 14:54:50 UTC] [DEBUG   ] [STEP 083]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b48_mass_ladder.png
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]   Output: step_b48_mass_ladder.png
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] 
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] ================================================================================
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] STEP SUMMARY: step_083_mass_ladder
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] ================================================================================
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Step Number: 083
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Status: SUCCESS
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Duration: 1.39m
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Log Records Emitted: 85
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Output Files: 3
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_083_mass_ladder.log
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] 
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Generated 3 output file(s):
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]   • step_b48_mass_ladder.json: 4.30 KB [sha256 18784792b3fd5963]
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]   • step_b48_mass_ladder.csv: 41.09 KB [sha256 a2746a649a6ddeb7]
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]   • step_b48_mass_ladder.png: 622.61 KB [sha256 453311984499e57f]
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] 
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]   RESULT SNAPSHOT [step_b48_mass_ladder.json]:
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]     meta:
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       n = 131
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       n_failed = 0
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       anchor = bb21_med m9=6.9 M9=180 drot taken from step_b27_planet_nine_insertion.csv (deterministi...
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       M9_deg = 180
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       integrator = ias15
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       boundary_AU = 255
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       ephemeris = data/raw/spice/de440s.bsp (provenance pinned)
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]     meta.failed [n=0]
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]     meta.models.bb21_med_m20:
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       m9 = 20
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       a9 = 461
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       e9 = 0.3
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       i9 = 15.6
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       varpi9 = 246.7
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       Om9 = 96.9
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       note = BB21 median geometry, mass ladder rung
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]     meta.models.bb21_med_m50:
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       m9 = 50
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       a9 = 461
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       e9 = 0.3
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       i9 = 15.6
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       varpi9 = 246.7
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       Om9 = 96.9
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       note = BB21 median geometry, mass ladder rung
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]     meta.models.bb21_med_m150:
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       m9 = 150
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       a9 = 461
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       e9 = 0.3
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       i9 = 15.6
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       varpi9 = 246.7
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       Om9 = 96.9
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       note = BB21 median geometry, mass ladder rung
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]     meta.models.sct25_px:
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       m9 = 4.4
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       a9 = 290
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       e9 = 0.29
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       i9 = 6.8
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       varpi9 = 246.7
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       Om9 = 96.9
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       note = Siraj, Chyba & Tremaine 2025 ApJ 978 139 quadrivariate best fit (m,a,e,i); apsidal geom...
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]     meta.references [n=4]
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]     scaling:
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       alpha_median = 0.99986861
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       alpha_i16 = 0.99986315
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       alpha_i84 = 0.99987197
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       note = per-comet log-log slope of boundary rotation vs perturber mass across the bb21_med ladd...
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]     required_mass:
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       n = 131
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       m_req_median_all = 3228.1534
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       m_req_median_in = 4293.7012
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       m_req_median_out = 2540.4542
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       m_req_p05_in = 793.77051
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       m_req_min = 37.223405
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       frac_in_req_gt_1000 = 0.86046512
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] ================================================================================
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] STEP 083 COMPLETE: SUCCESS
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_083_mass_ladder_provenance.json
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] 
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] ================================================================================
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] EXECUTIVE SUMMARY
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] ================================================================================
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Step: step_083_mass_ladder (Step 083)
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Status: SUCCESS
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Duration: 1.39m
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Log Records: 154
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Output Files: 3
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] Key Outputs:
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]   - step_b48_mass_ladder.json (4.30 KB)
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]   - step_b48_mass_ladder.csv (41.09 KB)
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083]   - step_b48_mass_ladder.png (622.61 KB)
+[2026-09-21 14:54:50 UTC] [INFO    ] [STEP 083] ================================================================================

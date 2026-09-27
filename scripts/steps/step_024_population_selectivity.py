@@ -135,7 +135,7 @@ def main():
               f"p={p:.4f}")
     s3["note"] = ("the axis signature is specific to the "
                   "boundary-RESIDENT population: detached "
-                  "orbits align (mean cos 0.34, p=1e-4); "
+                  "orbits align (mean cos 0.34, p=5e-5); "
                   "plunging orbits that transit the inner "
                   "system are isotropic (p=0.37) -- their "
                   "clock elements are scrambled by the deep "

@@ -1,91 +1,157 @@
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] LOGGER INITIALIZED: step_145_transfer_function (Step 145)
-[2026-09-20 12:25:48 UTC] [DEBUG   ] [STEP 145] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_145_transfer_function.log
-[2026-09-20 12:25:48 UTC] [DEBUG   ] [STEP 145] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:25:48 UTC] [DEBUG   ] [STEP 145] Start time (UTC): 2026-09-20T12:25:48.706963+00:00
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] 
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] STEP PURPOSE
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] --------------------------------------------------------------------------------
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   step_145: transfer-function discriminator (result b109).
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   The observed periapsis rotation is converted to an equivalent time
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   scale by dt_eq = dtheta * r_b^2 / h (step_065).  Two microscopic
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   realizations produce that observable:
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   - impulse realization: a conformal fifth-force kick across a lapse
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   wall, dv = c^2 Da / v_n along the wall normal.  It predicts
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   (a) dtheta ~ 1/(v_n v), so the implied slip dt = dtheta/Omega is
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   strongly anticorrelated with crossing speed, and (b) an along-
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   track component that changes orbital energy at
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   D(1/a) = 2 v dv_par / GM.
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   - holonomy realization: a crossing-localized time translation
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   (non-integrable time transport, H = oint_C dtau).  It predicts a
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   universal dt independent of crossing velocity and zero local
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   impulse, so the energy channel stays flat.
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   Tests on the independent dual-leg refit records (steps_127/128):
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   - T1: Spearman rho(dtau, v_rx) at shells r_x = 60/100/250 AU, in and
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   out of each era's anomaly cap, both eras.  Flat selects holonomy.
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   - T2: transverse-fraction bound -- the rotation requires
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   dv_perp = v * dtheta while the flat energy channel bounds
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   |dv_par| <= GM D(1/a)/(2v).  The required transverse fraction of
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   any mechanical kick.
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   - T3: implied conformal-step scale Da ~ dv_perp v / c^2.
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   outputs:
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   results/step_b109_transfer_function.json / .csv
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   results/figures/supplementary/step_b109_transfer_function.png
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] --------------------------------------------------------------------------------
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] SCRIPT: scripts/steps/step_145_transfer_function.py
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] SCRIPT SHA256: 6eab62875c5fbd75d62d8056467b2c233cbce7dafe4dd428ab19710f2e3abc16
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] SCRIPT SIZE: 15406 bytes
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] loading dual-leg refit records
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   pre2018: 630 records (172 in-cap)
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145]   post2017: 248 records (75 in-cap)
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] T1 velocity scaling done
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] T2 transverse bound done
-[2026-09-20 12:25:48 UTC] [INFO    ] [STEP 145] T3 conformal-step scale done
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] verdict: ERA-ASYMMETRIC VELOCITY SCALING: the pre-2018 declared-axis slip is velocity-flat (rho=-0.002, p=0.979) -- the holonomy signature -- while the post-2017 displaced slip anticorrelates with crossing speed (rho=-0.371, p=0.00104; partialled on transit epoch rho=-0.446, p=6.09e-05).  The energy channel still bounds any mechanical kick to ~97.5 per cent transverse, so the eras do not share a single realization: the older record carries the universal-amplitude (holonomy) signature, the modern record's residual carries an additional velocity- or epoch-dependent term -- the same heterogeneity the epoch-decomposition audit (step_142 T9) measures independently.  The equivalent conformal step on the older record is ~6.1e-13.
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Saving data: step_b109_transfer_function.json
-[2026-09-20 12:25:49 UTC] [DEBUG   ] [STEP 145]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b109_transfer_function.json
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]   Output: step_b109_transfer_function.json
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Saving data: step_b109_transfer_function.csv
-[2026-09-20 12:25:49 UTC] [DEBUG   ] [STEP 145]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b109_transfer_function.csv
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]   Output: step_b109_transfer_function.csv
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Saving data: step_b109_transfer_function.png
-[2026-09-20 12:25:49 UTC] [DEBUG   ] [STEP 145]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b109_transfer_function.png
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]   Output: step_b109_transfer_function.png
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] TEST SUMMARY:
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] {
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]  "velocity_flat": false,
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]  "min_transverse_frac": 0.9752912724922329
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] }
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] VERDICT: ERA-ASYMMETRIC VELOCITY SCALING: the pre-2018 declared-axis slip is velocity-flat (rho=-0.002, p=0.979) -- the holonomy signature -- while the post-2017 displaced slip anticorrelates with crossing speed (rho=-0.371, p=0.00104; partialled on transit epoch rho=-0.446, p=6.09e-05).  The energy channel still bounds any mechanical kick to ~97.5 per cent transverse, so the eras do not share a single realization: the older record carries the universal-amplitude (holonomy) signature, the modern record's residual carries an additional velocity- or epoch-dependent term -- the same heterogeneity the epoch-decomposition audit (step_142 T9) measures independently.  The equivalent conformal step on the older record is ~6.1e-13.
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] 
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] ================================================================================
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] STEP SUMMARY: step_145_transfer_function
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] ================================================================================
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Step Number: 145
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Status: SUCCESS
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Duration: 0.71s
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Log Records Emitted: 66
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Output Files: 3
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_145_transfer_function.log
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] 
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Generated 3 output file(s):
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]   • step_b109_transfer_function.json: 4.48 KB [sha256 4e184d8dd8501b53]
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]   • step_b109_transfer_function.csv: 172.41 KB [sha256 547ebc039518f215]
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]   • step_b109_transfer_function.png: 404.87 KB [sha256 873cd3c801c94157]
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] ================================================================================
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] STEP 145 COMPLETE: SUCCESS
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_145_transfer_function_provenance.json
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] 
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] ================================================================================
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] EXECUTIVE SUMMARY
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] ================================================================================
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Step: step_145_transfer_function (Step 145)
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Status: SUCCESS
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Duration: 0.71s
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Log Records: 77
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Output Files: 3
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] Key Outputs:
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]   - step_b109_transfer_function.json (4.48 KB)
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]   - step_b109_transfer_function.csv (172.41 KB)
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145]   - step_b109_transfer_function.png (404.87 KB)
-[2026-09-20 12:25:49 UTC] [INFO    ] [STEP 145] ================================================================================
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] LOGGER INITIALIZED: step_145_transfer_function (Step 145)
+[2026-09-24 11:01:56 UTC] [DEBUG   ] [STEP 145] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_145_transfer_function.log
+[2026-09-24 11:01:56 UTC] [DEBUG   ] [STEP 145] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-24 11:01:56 UTC] [DEBUG   ] [STEP 145] Start time (UTC): 2026-09-24T11:01:56.665578+00:00
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] 
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] STEP PURPOSE
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] --------------------------------------------------------------------------------
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   step_145: transfer-function discriminator (result b109).
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   The observed periapsis rotation is converted to an equivalent time
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   scale by dt_eq = dtheta * r_b^2 / h (step_065).  Two microscopic
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   realizations produce that observable:
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   - impulse realization: a conformal fifth-force kick across a lapse
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   wall, dv = c^2 Da / v_n along the wall normal.  It predicts
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   (a) dtheta ~ 1/(v_n v), so the implied slip dt = dtheta/Omega is
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   strongly anticorrelated with crossing speed, and (b) an along-
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   track component that changes orbital energy at
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   D(1/a) = 2 v dv_par / GM.
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   - holonomy realization: a crossing-localized time translation
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   (non-integrable time transport, H = oint_C dtau).  It predicts a
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   universal dt independent of crossing velocity and zero local
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   impulse, so the energy channel stays flat.
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   Tests on the independent dual-leg refit records (steps_127/128):
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   - T1: Spearman rho(dtau, v_rx) at shells r_x = 60/100/250 AU, in and
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   out of each era's anomaly cap, both eras.  Flat selects holonomy.
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   - T2: transverse-fraction bound -- the rotation requires
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   dv_perp = v * dtheta while the flat energy channel bounds
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   |dv_par| <= GM D(1/a)/(2v).  The required transverse fraction of
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   any mechanical kick.
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   - T3: implied conformal-step scale Da ~ dv_perp v / c^2.
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   outputs:
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   results/step_b109_transfer_function.json / .csv
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   results/figures/supplementary/step_b109_transfer_function.png
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] --------------------------------------------------------------------------------
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] SCRIPT: scripts/steps/step_145_transfer_function.py
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] SCRIPT SHA256: 78375261c25791c60c4b7a1d51d8bc83eddb0aa403f4e55b19c7465028da7bf4
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] SCRIPT SIZE: 16854 bytes
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] loading dual-leg refit records
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   pre2018: 586 records (162 in-cap)
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145]   post2017: 248 records (75 in-cap)
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] T1 velocity scaling done
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] T2 transverse bound done
+[2026-09-24 11:01:56 UTC] [INFO    ] [STEP 145] T3 conformal-step scale done
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] verdict: ENERGY CHANNEL NON-BINDING: the corrected |D(1/a)| floor (median ~16 m/s along-track) is not tighter than the transverse impulse a mechanical kick would need (~14 m/s), so the energy channel cannot exclude an impulse realization -- the earlier ~97 per cent transverse bound was a wrong-variable artefact (the planetary-approach distance had been substituted for the energy residual).  The holonomy discriminator therefore rests on the velocity-scaling test alone: the pre-2018 declared-axis slip is velocity-flat (rho=+0.019, p=0.806) while the post-2017 displaced slip anticorrelates with crossing speed (rho=-0.371, p=0.00104; partialled on transit epoch rho=-0.446, p=6.09e-05).  The equivalent conformal step on the older record is ~6.0e-13.
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Saving data: step_b109_transfer_function.json
+[2026-09-24 11:01:57 UTC] [DEBUG   ] [STEP 145]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b109_transfer_function.json
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]   Output: step_b109_transfer_function.json
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Saving data: step_b109_transfer_function.csv
+[2026-09-24 11:01:57 UTC] [DEBUG   ] [STEP 145]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b109_transfer_function.csv
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]   Output: step_b109_transfer_function.csv
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Saving data: step_b109_transfer_function.png
+[2026-09-24 11:01:57 UTC] [DEBUG   ] [STEP 145]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b109_transfer_function.png
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]   Output: step_b109_transfer_function.png
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] TEST SUMMARY:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] {
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]  "velocity_flat": false,
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]  "min_transverse_frac": -0.661840857568247
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] }
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] VERDICT: ENERGY CHANNEL NON-BINDING: the corrected |D(1/a)| floor (median ~16 m/s along-track) is not tighter than the transverse impulse a mechanical kick would need (~14 m/s), so the energy channel cannot exclude an impulse realization -- the earlier ~97 per cent transverse bound was a wrong-variable artefact (the planetary-approach distance had been substituted for the energy residual).  The holonomy discriminator therefore rests on the velocity-scaling test alone: the pre-2018 declared-axis slip is velocity-flat (rho=+0.019, p=0.806) while the post-2017 displaced slip anticorrelates with crossing speed (rho=-0.371, p=0.00104; partialled on transit epoch rho=-0.446, p=6.09e-05).  The equivalent conformal step on the older record is ~6.0e-13.
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] 
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] ================================================================================
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] STEP SUMMARY: step_145_transfer_function
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] ================================================================================
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Step Number: 145
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Status: SUCCESS
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Duration: 0.43s
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Log Records Emitted: 66
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Output Files: 3
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_145_transfer_function.log
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] 
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Generated 3 output file(s):
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]   • step_b109_transfer_function.json: 4.66 KB [sha256 36e3fcef32eae423]
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]   • step_b109_transfer_function.csv: 163.78 KB [sha256 5e5ac44f91316b54]
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]   • step_b109_transfer_function.png: 415.81 KB [sha256 44b8a76187659509]
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] 
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]   RESULT SNAPSHOT [step_b109_transfer_function.json]:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     axes.pre2018_declared [n=2]: median=10.5 min=-13 max=34
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     axes.post2017_displaced [n=2]: median=40 min=-40 max=120
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.pre2018.r60au.in_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 162
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = 0.019443633
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.80600435
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.pre2018.r60au.out_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 424
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = -0.019662786
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.68641472
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.pre2018.r100au.in_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 162
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = 0.019443633
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.80600435
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.pre2018.r100au.out_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 424
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = -0.019662786
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.68641472
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.pre2018.r250au.in_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 162
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = 0.019443633
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.80600435
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.pre2018.r250au.out_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 423
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = -0.012693564
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.79462772
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.pre2018.in_cap_partial_v60_given_epoch:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 162
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = 0.072102472
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.36187628
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.post2017.r60au.in_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 75
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = -0.37123755
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.0010416335
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.post2017.r60au.out_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 173
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = 0.061574368
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.42094834
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.post2017.r100au.in_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 75
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = -0.37123755
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.0010416335
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.post2017.r100au.out_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 173
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = 0.061574368
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.42094834
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.post2017.r250au.in_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 75
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = -0.37123755
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.0010416335
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.post2017.r250au.out_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 173
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = 0.061574368
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 0.42094834
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T1_velocity_scaling.post2017.in_cap_partial_v60_given_epoch:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 75
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       rho = -0.4459175
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       p = 6.0866237e-05
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]     T2_transverse_bound.pre2018.in_cap:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       n = 162
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       med_dv_perp_m_s = 10.577363
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       med_dv_par_bound_m_s = 21.094709
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       med_transverse_frac = -0.66184086
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]       ... (snapshot truncated; full values in JSON)
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] ================================================================================
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] STEP 145 COMPLETE: SUCCESS
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_145_transfer_function_provenance.json
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] 
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] ================================================================================
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] EXECUTIVE SUMMARY
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] ================================================================================
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Step: step_145_transfer_function (Step 145)
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Status: SUCCESS
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Duration: 0.43s
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Log Records: 143
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Output Files: 3
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] Key Outputs:
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]   - step_b109_transfer_function.json (4.66 KB)
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]   - step_b109_transfer_function.csv (163.78 KB)
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145]   - step_b109_transfer_function.png (415.81 KB)
+[2026-09-24 11:01:57 UTC] [INFO    ] [STEP 145] ================================================================================

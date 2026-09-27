@@ -1,116 +1,178 @@
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] LOGGER INITIALIZED: step_151_injection_transfer (Step 151)
-[2026-09-20 12:45:24 UTC] [DEBUG   ] [STEP 151] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_151_injection_transfer.log
-[2026-09-20 12:45:24 UTC] [DEBUG   ] [STEP 151] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:45:24 UTC] [DEBUG   ] [STEP 151] Start time (UTC): 2026-09-20T12:45:24.099592+00:00
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] 
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] STEP PURPOSE
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] --------------------------------------------------------------------------------
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   step_151: slip injection -> standard refit transfer function (b115).
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   The manuscript converts the observed periapsis rotation into an
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   equivalent time, dtau = drot * r_b^2 / h, without deriving what a
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   proper-time perturbation actually does to a fitted orbit.  This step
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   derives it.  For each dual-leg cohort comet the REAL observing chain
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   is kept -- the same MPC epochs, stations and noise floor -- but the
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   astrometry is synthesised from a truth orbit with a specified slip
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   realization injected, then refit with the standard LM/DE440s model
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   exactly as steps 127/128 fit the real record.
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   Injection realizations (the slip is applied at the true inbound
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   250 AU boundary crossing unless noted):
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   ctrl      no injection -- instrument noise floor
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   full      full-state time translation: boundary state advanced by
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   dtau along its own (two-body) orbit.  The translation is
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   absorbed by t_p; what remains is only the rescrambled
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   planetary-encounter sequence -- the measurable residue of
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   a global phase shift and the practical content of the
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   oint(d ln A) = 0 statement on an open (transiting) path.
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   pos       position-only time translation: r -> r + v*dtau, v fixed.
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   The minimal non-integrable structure that can carry a
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   record.
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   vel       velocity-only time translation: v -> v(t+dtau), r fixed.
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   kick      transverse impulse at the crossing: v -> v + dv_t, with
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   dv_t = |v| * drot (the impulse realization of step_145).
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   mid       within-apparition holonomy: position-only slip applied at
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   the perihelion epoch, so inbound and outbound arcs see
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   different orbits -- the realization a true leg-disagreement
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   signature would require.
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   Measured per comet x injection (the transfer vector):
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   fitted-element shifts dq, de, di, dOm, dw vs truth;
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   boundary products drot, d_in, d_out, daa, denc (fitted orbit);
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   inferred-origin displacements d_true_in / d_true_out (fitted
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   asymptote vs TRUE asymptote -- the channel the catalogue record
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   actually encodes);
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   leg products ddirf, d_in_leg, d_out_leg, xarc_rms_in2out;
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   fit rms per leg / full arc.
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   Tests
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   T1  controls: ctrl and full must be null on every channel.
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   T2  transfer vectors per boundary realization (pos, vel, kick).
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   T3  leg-disagreement discriminator: predicted ddirf per realization
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   vs the observed cohort distribution -- a past-boundary slip
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   predicts ~zero leg disagreement (the whole apparition is
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   post-slip); only the mid-arc realization can produce it.
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   T4  energy channel: daa injected per realization; the impulse must
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   move energy, the slip realizations must not -- matched against
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   the observed flat energy channel.
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   T5  amplitude tracking: injected dtau vs produced d_true_in across
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   comets -- does the required slip size track the measured
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   anomaly?
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   Inputs
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   results/step_b91_refit.jsonl   (dual-leg cohort + measured products)
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   data/raw/mpc/obs/*.json        (cached real observing geometry)
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   data/raw/mpc/sbdb_fp/*.json    (truth orbits)
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   Outputs
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   results/step_b115_injection_transfer.json / .csv
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   results/step_b115_injection.jsonl        (per-comet checkpoint)
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151]   results/figures/supplementary/step_b115_injection_transfer.png
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] --------------------------------------------------------------------------------
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] SCRIPT: scripts/steps/step_151_injection_transfer.py
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] SCRIPT SHA256: 74492e6017545a8e3bef52f248c98c1ad5daf6b3b95b8384eb5483cc71330794
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] SCRIPT SIZE: 23909 bytes
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] ================================================================================
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] Slip injection -> standard refit transfer function
-[2026-09-20 12:45:24 UTC] [INFO    ] [STEP 151] ================================================================================
-[2026-09-20 12:45:25 UTC] [INFO    ] [STEP 151] injection cohort: 10 in-cap + 10 out-of-cap dual-leg comets
-[2026-09-20 12:45:25 UTC] [INFO    ] [STEP 151] 20 checkpointed, 0 to inject
-[2026-09-20 12:45:25 UTC] [INFO    ] [STEP 151] injected cohort: 20 comets
-[2026-09-20 12:45:31 UTC] [INFO    ] [STEP 151] Saving data: step_b115_injection_transfer.csv
-[2026-09-20 12:45:31 UTC] [DEBUG   ] [STEP 151]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b115_injection_transfer.csv
-[2026-09-20 12:45:31 UTC] [INFO    ] [STEP 151]   Output: step_b115_injection_transfer.csv
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Saving data: step_b115_injection_transfer.json
-[2026-09-20 12:45:32 UTC] [DEBUG   ] [STEP 151]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b115_injection_transfer.json
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151]   Output: step_b115_injection_transfer.json
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Saving data: step_b115_injection_transfer.png
-[2026-09-20 12:45:32 UTC] [DEBUG   ] [STEP 151]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b115_injection_transfer.png
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151]   Output: step_b115_injection_transfer.png
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] 
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] ================================================================================
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] STEP SUMMARY: step_151_injection_transfer
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] ================================================================================
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Step Number: 151
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Status: SUCCESS
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Duration: 8.60s
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Log Records Emitted: 91
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Output Files: 3
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_151_injection_transfer.log
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] 
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Generated 3 output file(s):
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151]   • step_b115_injection_transfer.csv: 25.71 KB [sha256 2c7d55e26e582388]
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151]   • step_b115_injection_transfer.json: 18.04 KB [sha256 946acb95504fb922]
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151]   • step_b115_injection_transfer.png: 293.31 KB [sha256 514a4ccb88576f7d]
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] ================================================================================
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] STEP 151 COMPLETE: SUCCESS
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_151_injection_transfer_provenance.json
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] 
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] ================================================================================
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] EXECUTIVE SUMMARY
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] ================================================================================
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Step: step_151_injection_transfer (Step 151)
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Status: SUCCESS
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Duration: 8.60s
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Log Records: 102
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Output Files: 3
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] Key Outputs:
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151]   - step_b115_injection_transfer.csv (25.71 KB)
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151]   - step_b115_injection_transfer.json (18.04 KB)
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151]   - step_b115_injection_transfer.png (293.31 KB)
-[2026-09-20 12:45:32 UTC] [INFO    ] [STEP 151] ================================================================================
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] LOGGER INITIALIZED: step_151_injection_transfer (Step 151)
+[2026-09-21 15:32:12 UTC] [DEBUG   ] [STEP 151] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_151_injection_transfer.log
+[2026-09-21 15:32:12 UTC] [DEBUG   ] [STEP 151] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:32:12 UTC] [DEBUG   ] [STEP 151] Start time (UTC): 2026-09-21T15:32:12.521056+00:00
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] 
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] STEP PURPOSE
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] --------------------------------------------------------------------------------
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   step_151: slip injection -> standard refit transfer function (b115).
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   The manuscript converts the observed periapsis rotation into an
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   equivalent time, dtau = drot * r_b^2 / h, without deriving what a
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   proper-time perturbation actually does to a fitted orbit.  This step
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   derives it.  For each dual-leg cohort comet the REAL observing chain
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   is kept -- the same MPC epochs, stations and noise floor -- but the
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   astrometry is synthesised from a truth orbit with a specified slip
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   realization injected, then refit with the standard LM/DE440s model
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   exactly as steps 127/128 fit the real record.
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   Injection realizations (the slip is applied at the true inbound
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   250 AU boundary crossing unless noted):
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   ctrl      no injection -- instrument noise floor
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   full      full-state time translation: boundary state advanced by
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   dtau along its own (two-body) orbit.  The translation is
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   absorbed by t_p; what remains is only the rescrambled
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   planetary-encounter sequence -- the measurable residue of
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   a global phase shift and the practical content of the
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   oint(d ln A) = 0 statement on an open (transiting) path.
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   pos       position-only time translation: r -> r + v*dtau, v fixed.
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   The minimal non-integrable structure that can carry a
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   record.
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   vel       velocity-only time translation: v -> v(t+dtau), r fixed.
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   kick      transverse impulse at the crossing: v -> v + dv_t, with
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   dv_t = |v| * drot (the impulse realization of step_145).
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   mid       within-apparition holonomy: position-only slip applied at
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   the perihelion epoch, so inbound and outbound arcs see
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   different orbits -- the realization a true leg-disagreement
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   signature would require.
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   Measured per comet x injection (the transfer vector):
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   fitted-element shifts dq, de, di, dOm, dw vs truth;
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   boundary products drot, d_in, d_out, daa, denc (fitted orbit);
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   inferred-origin displacements d_true_in / d_true_out (fitted
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   asymptote vs TRUE asymptote -- the channel the catalogue record
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   actually encodes);
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   leg products ddirf, d_in_leg, d_out_leg, xarc_rms_in2out;
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   fit rms per leg / full arc.
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   Tests
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   T1  controls: ctrl and full must be null on every channel.
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   T2  transfer vectors per boundary realization (pos, vel, kick).
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   T3  leg-disagreement discriminator: predicted ddirf per realization
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   vs the observed cohort distribution -- a past-boundary slip
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   predicts ~zero leg disagreement (the whole apparition is
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   post-slip); only the mid-arc realization can produce it.
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   T4  energy channel: daa injected per realization; the impulse must
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   move energy, the slip realizations must not -- matched against
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   the observed flat energy channel.
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   T5  amplitude tracking: injected dtau vs produced d_true_in across
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   comets -- does the required slip size track the measured
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   anomaly?
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   Inputs
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   results/step_b91_refit.jsonl   (dual-leg cohort + measured products)
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   data/raw/mpc/obs/*.json        (cached real observing geometry)
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   data/raw/mpc/sbdb_fp/*.json    (truth orbits)
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   Outputs
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   results/step_b115_injection_transfer.json / .csv
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   results/step_b115_injection.jsonl        (per-comet checkpoint)
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151]   results/figures/supplementary/step_b115_injection_transfer.png
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] --------------------------------------------------------------------------------
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] SCRIPT: scripts/steps/step_151_injection_transfer.py
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] SCRIPT SHA256: 6ddc25a25f72f11259ed0618f7a15fdaf791614328874ac1f099fb132458a6dd
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] SCRIPT SIZE: 24579 bytes
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] ================================================================================
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] Slip injection -> standard refit transfer function
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] ================================================================================
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] injection cohort: 10 in-cap + 10 out-of-cap dual-leg comets
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] 20 checkpointed, 0 to inject
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] checkpoint compacted: 20 unique designations written to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b115_injection.jsonl
+[2026-09-21 15:32:12 UTC] [INFO    ] [STEP 151] injected cohort: 20 comets
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Saving data: step_b115_injection_transfer.csv
+[2026-09-21 15:32:13 UTC] [DEBUG   ] [STEP 151]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b115_injection_transfer.csv
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]   Output: step_b115_injection_transfer.csv
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Saving data: step_b115_injection_transfer.json
+[2026-09-21 15:32:13 UTC] [DEBUG   ] [STEP 151]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b115_injection_transfer.json
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]   Output: step_b115_injection_transfer.json
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Saving data: step_b115_injection_transfer.png
+[2026-09-21 15:32:13 UTC] [DEBUG   ] [STEP 151]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b115_injection_transfer.png
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]   Output: step_b115_injection_transfer.png
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] 
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] ================================================================================
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] STEP SUMMARY: step_151_injection_transfer
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] ================================================================================
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Step Number: 151
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Status: SUCCESS
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Duration: 1.27s
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Log Records Emitted: 92
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Output Files: 3
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_151_injection_transfer.log
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] 
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Generated 3 output file(s):
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]   • step_b115_injection_transfer.csv: 25.71 KB [sha256 2c7d55e26e582388]
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]   • step_b115_injection_transfer.json: 18.04 KB [sha256 946acb95504fb922]
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]   • step_b115_injection_transfer.png: 293.31 KB [sha256 514a4ccb88576f7d]
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] 
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]   RESULT SNAPSHOT [step_b115_injection_transfer.json]:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]     injections:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       ctrl = no injection -- instrument floor
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       full = full-state time translation at the boundary (phase-shift realization; absorbed by tp mo...
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       pos = position-only slip r->r+v*dtau at the boundary
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       vel = velocity-only slip v->v(t+dtau) at the boundary
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       kick = transverse impulse dv_t = v*drot at the boundary
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       mid = position-only slip at the perihelion epoch (within-arc holonomy)
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]     T_ctrl.drot:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       n = 20
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med = 0.13935028
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p16 = 0.047249638
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p84 = 0.36559517
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med_abs = 0.13935028
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]     T_ctrl.d_in:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       n = 20
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med = 0.10736794
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p16 = 0.037202377
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p84 = 0.18088222
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med_abs = 0.10736794
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]     T_ctrl.d_out:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       n = 20
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med = 0.10115024
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p16 = 0.059531573
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p84 = 0.15695704
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med_abs = 0.10115024
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]     T_ctrl.d_true_in:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       n = 20
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med = 4.7622861e-05
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p16 = 1.2690933e-05
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p84 = 0.00033100002
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med_abs = 4.7622861e-05
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]     T_ctrl.d_true_out:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       n = 20
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med = 4.7728721e-05
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p16 = 1.2622763e-05
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p84 = 0.00033079674
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med_abs = 4.7728721e-05
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]     T_ctrl.ddirf:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       n = 20
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med = 0.13894054
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p16 = 0.047348891
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p84 = 0.36695914
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med_abs = 0.13894054
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]     T_ctrl.d_in_leg:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       n = 20
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med = 0.10693868
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p16 = 0.037258073
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p84 = 0.20074474
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med_abs = 0.10693868
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]     T_ctrl.d_out_leg:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       n = 20
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med = 0.1010653
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p16 = 0.058403031
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       p84 = 0.1575977
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med_abs = 0.1010653
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]     T_ctrl.xarc_rms_in2out:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       n = 20
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       med = 1.4309526
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] ================================================================================
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] STEP 151 COMPLETE: SUCCESS
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_151_injection_transfer_provenance.json
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] 
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] ================================================================================
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] EXECUTIVE SUMMARY
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] ================================================================================
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Step: step_151_injection_transfer (Step 151)
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Status: SUCCESS
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Duration: 1.27s
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Log Records: 164
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Output Files: 3
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] Key Outputs:
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]   - step_b115_injection_transfer.csv (25.71 KB)
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]   - step_b115_injection_transfer.json (18.04 KB)
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151]   - step_b115_injection_transfer.png (293.31 KB)
+[2026-09-21 15:32:13 UTC] [INFO    ] [STEP 151] ================================================================================

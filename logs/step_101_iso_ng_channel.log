@@ -1,161 +1,215 @@
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] LOGGER INITIALIZED: step_101_iso_ng_channel (Step 101)
-[2026-09-20 12:19:16 UTC] [DEBUG   ] [STEP 101] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_101_iso_ng_channel.log
-[2026-09-20 12:19:16 UTC] [DEBUG   ] [STEP 101] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:19:16 UTC] [DEBUG   ] [STEP 101] Start time (UTC): 2026-09-20T12:19:16.391301+00:00
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] 
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] STEP PURPOSE
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] --------------------------------------------------------------------------------
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   TEP-9 step 101 -- Interstellar-object non-gravitational channel
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   The three catalogued interstellar objects are the only population
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   besides comets that physically transits the outer boundary sector on
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   measurable trajectories.  Step 099 scored their inbound asymptotes
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   geometrically; this step tests the *dynamical* channel: the fitted
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   non-gravitational (NG) acceleration parameters in the JPL SBDB orbit
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   solutions against the boundary-sector geometry each trajectory
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   threaded.
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   The discriminating observable is not the presence of NG -- every
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   outgassing comet carries fitted NG terms -- but an *unexplained* NG:
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   a fitted acceleration with no detected volatile driver.  Literature
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   anchors (transcribed published values, ``iso_literature.json``)
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   record that 1I/'Oumuamua's NG is unexplained by any detected mass
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   loss (~25 kg/s required, ~3 orders of magnitude above observed
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   limits) while 2I/Borisov's and 3I/ATLAS's are accounted for by
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   measured gas and dust production.
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   Geometry scored per object
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   * arrival and departure velocity-asymptote directions (computed from
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   the SBDB osculating hyperbolic elements: position directions at
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   nu = -nu_inf and nu = +nu_inf), and the periapsis direction that
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   sets the sky sector of the inner observed arc;
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   * separations against the pre-declared axis (49,-17) and antiaxis
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   (229,+17), classified as lobe (<60 deg, the measured cap radius),
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   edge band (60-75 deg, the measured transition width of step 073),
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   or field;
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   * a bipolar double-lobe transit flag -- arrival through one 60-deg
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   lobe and departure through the other -- the geometry under which
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   the two boundary crossings compound rather than cancel in the
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   bipolar slip field (steps 052, 089).
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   Tests
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   T1 sector concordance: does unexplained-NG incidence coincide with
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   the bipolar double-lobe transit?  Exchangeability weight reported
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   (n = 3; descriptive, not a detection claim).
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   T2 magnitude: implied fractional effective-attraction offset
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   f(r) = |a_ng(r)| / g_sun(r) evaluated under each solution's own
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   Marsden-Sekanina g(r) law at r = q, 1 au, 2 au; compared with the
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   comet-channel lapse contrast (step 100, implied dA/A).
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   T3 vector morphology: |A2/A1| and |A3/A1| transverse fractions and
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   perihelion-time offset DT -- a directed-gradient signature is
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   radial-dominant while rotational-jet outgassing loads power into
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   the transverse component and asymmetric activity requires DT.
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   T4 inner-arc sector: the periapsis-direction sector each inner
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   observed arc sampled vs the measured cos-2theta sign structure
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   (step 089: positive dtau at both axis poles, negative in the
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   60-120 deg mid-band).  Borisov's fully volatile-explained NG
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   bounds any *universal interior* lapse-gradient term on a
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   mid-band inner arc at its fitted amplitude -- extending the
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   wall-over-field verdict of step 068 into the inner system.
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   T5 prospective registration: pre-declared NG-class predictions for
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   future ISO arrivals by transit geometry.
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   T6 classification stability: single-member reclassification audit --
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   the T1 concordance is load-bearing on the volatile classes, so
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   each object's reclassification consequence is computed and the
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   monitored channel (SBDB solution evolution, the 3I mass-
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   accounting caveat) registered; publicly discussed 3I oddities
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   are triaged as non-lapse channels.
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   Inputs
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   JPL SBDB full-precision orbit solutions incl. NG model_pars
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   (live query, raw JSON + provenance pinned under data/raw/iso/)
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   data/raw/literature/iso_literature.json (transcribed anchors)
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   results/step_b64_clock_consistency.json (comet-channel contrast)
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   Outputs
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   results/step_b65_iso_ng_channel.json
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   results/step_b65_iso_ng_channel.csv
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   results/figures/supplementary/step_b65_iso_ng_channel.png
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   data/raw/iso/sbdb_iso_{1I,2I,3I}.json
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   data/raw/iso/provenance.json
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] --------------------------------------------------------------------------------
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] SCRIPT: scripts/steps/step_101_iso_ng_channel.py
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] SCRIPT SHA256: 6670aa6a89934a27095f8ac57f696332fdba66ac57a1c248c04c267dcd365f95
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] SCRIPT SIZE: 34078 bytes
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] ================================================================================
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] Interstellar-object non-gravitational channel
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] ================================================================================
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101] METRIC: comet_contrast_dA_over_A = 1.161e-02
-[2026-09-20 12:19:16 UTC] [INFO    ] [STEP 101]   → GET https://ssd-api.jpl.nasa.gov/sbdb.api?des=1I&full-prec=true
-[2026-09-20 12:19:17 UTC] [INFO    ] [STEP 101]   → SBDB attempt 1 failed: HTTP Error 502: Bad Gateway
-[2026-09-20 12:19:19 UTC] [INFO    ] [STEP 101]   → GET https://ssd-api.jpl.nasa.gov/sbdb.api?des=1I&full-prec=true
-[2026-09-20 12:19:20 UTC] [INFO    ] [STEP 101] Saving data: sbdb_iso_1I.json
-[2026-09-20 12:19:20 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/iso/sbdb_iso_1I.json
-[2026-09-20 12:19:20 UTC] [INFO    ] [STEP 101]   Output: sbdb_iso_1I.json
-[2026-09-20 12:19:20 UTC] [INFO    ] [STEP 101] METRIC: 1I'Oumuamua = arr lobe(284.59,56.86) dep lobe(8.44,23.4) vol=unexplained A1=2.79e-07 f(1au)=9.43e-04
-[2026-09-20 12:19:20 UTC] [INFO    ] [STEP 101]   → GET https://ssd-api.jpl.nasa.gov/sbdb.api?des=2I&full-prec=true
-[2026-09-20 12:19:21 UTC] [INFO    ] [STEP 101]   → SBDB attempt 1 failed: HTTP Error 502: Bad Gateway
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 101]   → GET https://ssd-api.jpl.nasa.gov/sbdb.api?des=2I&full-prec=true
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 101]   → SBDB attempt 2 failed: HTTP Error 502: Bad Gateway
-[2026-09-20 12:19:27 UTC] [INFO    ] [STEP 101]   → GET https://ssd-api.jpl.nasa.gov/sbdb.api?des=2I&full-prec=true
-[2026-09-20 12:19:28 UTC] [INFO    ] [STEP 101]   → SBDB attempt 3 failed: HTTP Error 502: Bad Gateway
-[2026-09-20 12:19:34 UTC] [INFO    ] [STEP 101]   → using pinned cache /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/iso/sbdb_iso_2I.json
-[2026-09-20 12:19:34 UTC] [INFO    ] [STEP 101] METRIC: 2IBorisov = arr edge(54.34,42.89) dep edge(273.81,-28.62) vol=explained A1=4.86e-08 f(1au)=1.64e-04
-[2026-09-20 12:19:34 UTC] [INFO    ] [STEP 101]   → GET https://ssd-api.jpl.nasa.gov/sbdb.api?des=3I&full-prec=true
-[2026-09-20 12:19:35 UTC] [INFO    ] [STEP 101] Saving data: sbdb_iso_3I.json
-[2026-09-20 12:19:35 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/iso/sbdb_iso_3I.json
-[2026-09-20 12:19:35 UTC] [INFO    ] [STEP 101]   Output: sbdb_iso_3I.json
-[2026-09-20 12:19:35 UTC] [INFO    ] [STEP 101] METRIC: 3IATLAS = arr edge(293.61,2.34) dep lobe(94.88,-3.59) vol=explained A1=5.32e-08 f(1au)=1.80e-04
-[2026-09-20 12:19:35 UTC] [INFO    ] [STEP 101] METRIC: T1_concordance = True p_exch=0.333
-[2026-09-20 12:19:35 UTC] [INFO    ] [STEP 101] METRIC: T2_1I_frac_1au = 9.43e-04 vs comet 1.2e-02 (x0.08)
-[2026-09-20 12:19:35 UTC] [INFO    ] [STEP 101] METRIC: T3_1I_A2_over_A1 = 0.052 DT=None
-[2026-09-20 12:19:35 UTC] [INFO    ] [STEP 101] METRIC: T3_2I_A2_over_A1 = 0.387 DT=-65.13009704907404
-[2026-09-20 12:19:35 UTC] [INFO    ] [STEP 101] METRIC: T3_3I_A2_over_A1 = 0.216 DT=9.47881547776126
-[2026-09-20 12:19:35 UTC] [INFO    ] [STEP 101] METRIC: T4_borisov_bound = 1.64e-04 70.7x below comet contrast
-[2026-09-20 12:19:35 UTC] [INFO    ] [STEP 101] METRIC: T6_atlas_reclass = concordance broken: an unexplained member without a bipolar double-lobe transit status=explained soln=2026-02-19 09:10:47
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Saving data: step_b65_iso_ng_channel.png
-[2026-09-20 12:19:36 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b65_iso_ng_channel.png
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   Output: step_b65_iso_ng_channel.png
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Saving data: step_b65_iso_ng_channel.csv
-[2026-09-20 12:19:36 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b65_iso_ng_channel.csv
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   Output: step_b65_iso_ng_channel.csv
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Saving data: provenance.json
-[2026-09-20 12:19:36 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/iso/provenance.json
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   Output: provenance.json
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Saving data: step_b65_iso_ng_channel.json
-[2026-09-20 12:19:36 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b65_iso_ng_channel.json
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   Output: step_b65_iso_ng_channel.json
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] ✓ ISO non-gravitational channel complete
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] 
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] ================================================================================
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] STEP SUMMARY: step_101_iso_ng_channel
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] ================================================================================
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Step Number: 101
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Status: SUCCESS
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Duration: 19.88s
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Log Records Emitted: 130
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Output Files: 6
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_101_iso_ng_channel.log
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] 
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Generated 6 output file(s):
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   • sbdb_iso_1I.json: 3.45 KB [sha256 32a8ab7e9b7973aa]
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   • sbdb_iso_3I.json: 3.63 KB [sha256 8b978fbfc536a6ef]
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   • step_b65_iso_ng_channel.png: 368.20 KB [sha256 d194336ef6841d32]
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   • step_b65_iso_ng_channel.csv: 1.22 KB [sha256 eae35e3f180b1240]
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   • provenance.json: 0.99 KB [sha256 008ebb911ed16943]
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   • step_b65_iso_ng_channel.json: 20.03 KB [sha256 01a17f95fb722f93]
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] ================================================================================
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] STEP 101 COMPLETE: SUCCESS
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_101_iso_ng_channel_provenance.json
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] 
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] ================================================================================
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] EXECUTIVE SUMMARY
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] ================================================================================
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Step: step_101_iso_ng_channel (Step 101)
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Status: SUCCESS
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Duration: 19.88s
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Log Records: 144
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Output Files: 6
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] Key Outputs:
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   - sbdb_iso_1I.json (3.45 KB)
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   - sbdb_iso_3I.json (3.63 KB)
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   - step_b65_iso_ng_channel.png (368.20 KB)
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   - step_b65_iso_ng_channel.csv (1.22 KB)
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   - provenance.json (0.99 KB)
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101]   - step_b65_iso_ng_channel.json (20.03 KB)
-[2026-09-20 12:19:36 UTC] [INFO    ] [STEP 101] ================================================================================
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] LOGGER INITIALIZED: step_101_iso_ng_channel (Step 101)
+[2026-09-21 15:11:20 UTC] [DEBUG   ] [STEP 101] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_101_iso_ng_channel.log
+[2026-09-21 15:11:20 UTC] [DEBUG   ] [STEP 101] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:11:20 UTC] [DEBUG   ] [STEP 101] Start time (UTC): 2026-09-21T15:11:20.898111+00:00
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] 
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] STEP PURPOSE
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] --------------------------------------------------------------------------------
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   TEP-9 step 101 -- Interstellar-object non-gravitational channel
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   The three catalogued interstellar objects are the only population
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   besides comets that physically transits the outer boundary sector on
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   measurable trajectories.  Step 099 scored their inbound asymptotes
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   geometrically; this step tests the *dynamical* channel: the fitted
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   non-gravitational (NG) acceleration parameters in the JPL SBDB orbit
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   solutions against the boundary-sector geometry each trajectory
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   threaded.
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   The discriminating observable is not the presence of NG -- every
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   outgassing comet carries fitted NG terms -- but an *unexplained* NG:
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   a fitted acceleration with no detected volatile driver.  Literature
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   anchors (transcribed published values, ``iso_literature.json``)
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   record that 1I/'Oumuamua's NG is unexplained by any detected mass
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   loss (~25 kg/s required, ~3 orders of magnitude above observed
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   limits) while 2I/Borisov's and 3I/ATLAS's are accounted for by
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   measured gas and dust production.
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   Geometry scored per object
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   * arrival and departure velocity-asymptote directions (computed from
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   the SBDB osculating hyperbolic elements: position directions at
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   nu = -nu_inf and nu = +nu_inf), and the periapsis direction that
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   sets the sky sector of the inner observed arc;
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   * separations against the pre-declared axis (49,-17) and antiaxis
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   (229,+17), classified as lobe (<60 deg, the measured cap radius),
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   edge band (60-75 deg, the measured transition width of step 073),
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   or field;
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   * a bipolar double-lobe transit flag -- arrival through one 60-deg
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   lobe and departure through the other -- the geometry under which
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   the two boundary crossings compound rather than cancel in the
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   bipolar slip field (steps 052, 089).
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   Tests
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   T1 sector concordance: does unexplained-NG incidence coincide with
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   the bipolar double-lobe transit?  Exchangeability weight reported
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   (n = 3; descriptive, not a detection claim).
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   T2 magnitude: implied fractional effective-attraction offset
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   f(r) = |a_ng(r)| / g_sun(r) evaluated under each solution's own
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   Marsden-Sekanina g(r) law at r = q, 1 au, 2 au; compared with the
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   comet-channel lapse contrast (step 100, implied dA/A).
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   T3 vector morphology: |A2/A1| and |A3/A1| transverse fractions and
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   perihelion-time offset DT -- a directed-gradient signature is
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   radial-dominant while rotational-jet outgassing loads power into
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   the transverse component and asymmetric activity requires DT.
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   T4 inner-arc sector: the periapsis-direction sector each inner
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   observed arc sampled vs the measured cos-2theta sign structure
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   (step 089: positive dtau at both axis poles, negative in the
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   60-120 deg mid-band).  Borisov's fully volatile-explained NG
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   bounds any *universal interior* lapse-gradient term on a
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   mid-band inner arc at its fitted amplitude -- extending the
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   wall-over-field verdict of step 068 into the inner system.
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   T5 prospective registration: pre-declared NG-class predictions for
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   future ISO arrivals by transit geometry.
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   T6 classification stability: single-member reclassification audit --
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   the T1 concordance is load-bearing on the volatile classes, so
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   each object's reclassification consequence is computed and the
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   monitored channel (SBDB solution evolution, the 3I mass-
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   accounting caveat) registered; publicly discussed 3I oddities
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   are triaged as non-lapse channels.
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   Inputs
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   JPL SBDB full-precision orbit solutions incl. NG model_pars
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   (live query, raw JSON + provenance pinned under data/raw/iso/)
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   data/raw/literature/iso_literature.json (transcribed anchors)
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   results/step_b64_clock_consistency.json (comet-channel contrast)
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   Outputs
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   results/step_b65_iso_ng_channel.json
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   results/step_b65_iso_ng_channel.csv
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   results/figures/supplementary/step_b65_iso_ng_channel.png
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   data/raw/iso/sbdb_iso_{1I,2I,3I}.json
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   data/raw/iso/provenance.json
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] --------------------------------------------------------------------------------
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] SCRIPT: scripts/steps/step_101_iso_ng_channel.py
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] SCRIPT SHA256: 6670aa6a89934a27095f8ac57f696332fdba66ac57a1c248c04c267dcd365f95
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] SCRIPT SIZE: 34078 bytes
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] ================================================================================
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] Interstellar-object non-gravitational channel
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] ================================================================================
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101] METRIC: comet_contrast_dA_over_A = 1.161e-02
+[2026-09-21 15:11:20 UTC] [INFO    ] [STEP 101]   → GET https://ssd-api.jpl.nasa.gov/sbdb.api?des=1I&full-prec=true
+[2026-09-21 15:11:21 UTC] [INFO    ] [STEP 101] Saving data: sbdb_iso_1I.json
+[2026-09-21 15:11:21 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/iso/sbdb_iso_1I.json
+[2026-09-21 15:11:21 UTC] [INFO    ] [STEP 101]   Output: sbdb_iso_1I.json
+[2026-09-21 15:11:21 UTC] [INFO    ] [STEP 101] METRIC: 1I'Oumuamua = arr lobe(284.59,56.86) dep lobe(8.44,23.4) vol=unexplained A1=2.79e-07 f(1au)=9.43e-04
+[2026-09-21 15:11:21 UTC] [INFO    ] [STEP 101]   → GET https://ssd-api.jpl.nasa.gov/sbdb.api?des=2I&full-prec=true
+[2026-09-21 15:11:22 UTC] [INFO    ] [STEP 101] Saving data: sbdb_iso_2I.json
+[2026-09-21 15:11:22 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/iso/sbdb_iso_2I.json
+[2026-09-21 15:11:22 UTC] [INFO    ] [STEP 101]   Output: sbdb_iso_2I.json
+[2026-09-21 15:11:22 UTC] [INFO    ] [STEP 101] METRIC: 2IBorisov = arr edge(54.34,42.89) dep edge(273.81,-28.62) vol=explained A1=4.86e-08 f(1au)=1.64e-04
+[2026-09-21 15:11:22 UTC] [INFO    ] [STEP 101]   → GET https://ssd-api.jpl.nasa.gov/sbdb.api?des=3I&full-prec=true
+[2026-09-21 15:11:23 UTC] [INFO    ] [STEP 101] Saving data: sbdb_iso_3I.json
+[2026-09-21 15:11:23 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/iso/sbdb_iso_3I.json
+[2026-09-21 15:11:23 UTC] [INFO    ] [STEP 101]   Output: sbdb_iso_3I.json
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] METRIC: 3IATLAS = arr edge(293.61,2.34) dep lobe(94.88,-3.59) vol=explained A1=5.32e-08 f(1au)=1.80e-04
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] METRIC: T1_concordance = True p_exch=0.333
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] METRIC: T2_1I_frac_1au = 9.43e-04 vs comet 1.2e-02 (x0.08)
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] METRIC: T3_1I_A2_over_A1 = 0.052 DT=None
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] METRIC: T3_2I_A2_over_A1 = 0.387 DT=-65.13009704907404
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] METRIC: T3_3I_A2_over_A1 = 0.216 DT=9.47881547776126
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] METRIC: T4_borisov_bound = 1.64e-04 70.7x below comet contrast
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] METRIC: T6_atlas_reclass = concordance broken: an unexplained member without a bipolar double-lobe transit status=explained soln=2026-02-19 09:10:47
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Saving data: step_b65_iso_ng_channel.png
+[2026-09-21 15:11:24 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b65_iso_ng_channel.png
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   Output: step_b65_iso_ng_channel.png
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Saving data: step_b65_iso_ng_channel.csv
+[2026-09-21 15:11:24 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b65_iso_ng_channel.csv
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   Output: step_b65_iso_ng_channel.csv
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Saving data: provenance.json
+[2026-09-21 15:11:24 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/iso/provenance.json
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   Output: provenance.json
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Saving data: step_b65_iso_ng_channel.json
+[2026-09-21 15:11:24 UTC] [DEBUG   ] [STEP 101]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b65_iso_ng_channel.json
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   Output: step_b65_iso_ng_channel.json
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] ✓ ISO non-gravitational channel complete
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] 
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] ================================================================================
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] STEP SUMMARY: step_101_iso_ng_channel
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] ================================================================================
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Step Number: 101
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Status: SUCCESS
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Duration: 3.66s
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Log Records Emitted: 125
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Output Files: 7
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_101_iso_ng_channel.log
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] 
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Generated 7 output file(s):
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   • sbdb_iso_1I.json: 3.45 KB [sha256 3cbd0c37d2b151fc]
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   • sbdb_iso_2I.json: 3.59 KB [sha256 7d1b55e8bcdf227c]
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   • sbdb_iso_3I.json: 3.63 KB [sha256 41a1db54660bbc2a]
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   • step_b65_iso_ng_channel.png: 368.20 KB [sha256 d194336ef6841d32]
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   • step_b65_iso_ng_channel.csv: 1.22 KB [sha256 eae35e3f180b1240]
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   • provenance.json: 0.92 KB [sha256 e895c1b2d80d8435]
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   • step_b65_iso_ng_channel.json: 19.96 KB [sha256 f97a9e47567b8fe2]
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] 
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   RESULT SNAPSHOT [step_b65_iso_ng_channel.json]:
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]     axis:
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       ecl_lon = 49
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       ecl_lat = -17
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       anti_lon = 229
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       anti_lat = 17
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       cap_deg = 60
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]     axis.edge_band_deg [n=2]: median=67.5 min=60 max=75
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]     iso_ledger[0]:
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       des = 1I
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       label = 1I/'Oumuamua
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       orbit_id = 16
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       soln_date = 2018-06-26 12:17:57
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       data_arc_d = 80
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       n_obs_used = 207
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       rms_arcsec = .43612
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       e = 1.2011338
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       q_au = 0.25591158
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       i_deg = 122.74171
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       double_lobe_transit = True
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       any_lobe_leg = True
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       volatile_status = unexplained
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       volatile_note = required mass loss ~25 kg/s for outgassing recoil; detected limits are ~3 orders of mag...
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]     iso_ledger[0].geometry.arrival:
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       ecl_lon = 284.59
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       ecl_lat = 56.86
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       sep_axis_deg = 122.7
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       sep_antiaxis_deg = 57.3
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       in_cap = False
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       in_mirror_cap = True
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       sector = lobe
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       bipolar_band = pole_lobe
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       near_pole = antiaxis
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]     iso_ledger[0].geometry.departure:
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       ecl_lon = 8.44
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       ecl_lat = 23.4
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       sep_axis_deg = 56.58
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       sep_antiaxis_deg = 123.42
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       in_cap = True
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       in_mirror_cap = False
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       sector = lobe
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       bipolar_band = pole_lobe
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       near_pole = axis
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]     iso_ledger[0].geometry.periapsis:
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       ecl_lon = 159.34
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       ecl_lat = -47.85
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       sep_axis_deg = 90.36
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       sep_antiaxis_deg = 89.64
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       in_cap = False
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       in_mirror_cap = False
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       sector = field
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       bipolar_band = mid_band
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       near_pole = antiaxis
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]     iso_ledger[0].ng:
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       n_model_pars = 8
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] ================================================================================
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] STEP 101 COMPLETE: SUCCESS
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_101_iso_ng_channel_provenance.json
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] 
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] ================================================================================
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] EXECUTIVE SUMMARY
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] ================================================================================
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Step: step_101_iso_ng_channel (Step 101)
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Status: SUCCESS
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Duration: 3.66s
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Log Records: 197
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Output Files: 7
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] Key Outputs:
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   - sbdb_iso_1I.json (3.45 KB)
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   - sbdb_iso_2I.json (3.59 KB)
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   - sbdb_iso_3I.json (3.63 KB)
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   - step_b65_iso_ng_channel.png (368.20 KB)
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   - step_b65_iso_ng_channel.csv (1.22 KB)
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   - provenance.json (0.92 KB)
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101]   - step_b65_iso_ng_channel.json (19.96 KB)
+[2026-09-21 15:11:24 UTC] [INFO    ] [STEP 101] ================================================================================

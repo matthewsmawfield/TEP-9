@@ -202,11 +202,13 @@ out["caveats"] = [
 
 with open(RESULTS / "step_b116_arrival_latitude_null.json", "w") as f:
     json.dump(out, f, indent=1)
+logger.add_output_file(RESULTS / "step_b116_arrival_latitude_null.json")
 with open(RESULTS / "step_b116_arrival_latitude_null.csv", "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=sorted({k for x in csvs for k in x}))
     w.writeheader()
     for x in csvs:
         w.writerow(x)
+logger.add_output_file(RESULTS / "step_b116_arrival_latitude_null.csv")
 
 # figure
 import matplotlib
@@ -242,6 +244,7 @@ ax[2].set_ylabel("in-cap fraction")
 ax[2].set_title("axis-longitude specificity (TNO cap)")
 fig.tight_layout()
 fig.savefig(FIG / "supplementary" / "step_b116_arrival_latitude_null.png", dpi=300)
+logger.add_output_file(FIG / "supplementary" / "step_b116_arrival_latitude_null.png")
 logger.info("verdict: " + out["verdict"])
 print(json.dumps(out["results"], indent=1)[:1500])
 print(f"VERDICT: {out['verdict']}")

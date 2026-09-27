@@ -1,105 +1,168 @@
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] LOGGER INITIALIZED: step_105_lpc_bidirectional (Step 105)
-[2026-09-20 12:19:49 UTC] [DEBUG   ] [STEP 105] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_105_lpc_bidirectional.log
-[2026-09-20 12:19:49 UTC] [DEBUG   ] [STEP 105] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:19:49 UTC] [DEBUG   ] [STEP 105] Start time (UTC): 2026-09-20T12:19:49.567491+00:00
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] 
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] STEP PURPOSE
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] --------------------------------------------------------------------------------
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   Step 105 -- third-catalogue bidirectional replication + map transfer.
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   The transit evidence rests on the Warsaw and CODE cohorts, which are
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   independent in sample but share the Poznan orbit-determination
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   lineage.  The one-apparition catalogue (Krolikowska 2014, A&A 571,
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   A63; VizieR J/A+A/571/A63) supplies a third population: comets
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   observed at a single apparition, orbit-fitted on the shortest arcs
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   the catalogues carry, with osculating / original / future solutions
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   plus MW08 comparison 1/a values.  None of these comets entered the
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   slip map's construction.
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   This step runs the entire transit instrument on that cohort
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   end-to-end: the identical REBOUND/IAS15 + DE440s bidirectional
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   integration to the 250 AU barycentric sphere, the catalogue
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   boundary solutions reproduced as validation, the planetary-subtracted
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   implied proper-time slip derived with the step-065 conversion, and
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   then -- the discriminating test -- whether the bipolar slip map
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   fitted on the 229 Warsaw+CODE comets predicts this third cohort's
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   unexplained slip out-of-sample.
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   T1  machinery validation: simulated vs catalogue boundary
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   periapsis directions per leg (the step-063 instrument check).
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   T2  channel replication: in-cap vs out-cap contrast of the
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   unexplained slip, and the continuous theta correlation, on
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   the new cohort alone.
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   T3  map transfer: the map dtau = a + b*cos(2*theta) fitted on the
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   229 (step 102, frozen coefficients) predicts the lpc cohort's
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   dtau_unexplained -- Spearman, sign accuracy, and predicted vs
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   observed median in each of the three map regions.
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   T4  MW08 cross-lineage energy channel on the same cohort
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   (the only MW08 observable; MW08 publishes no angular
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   elements), reported for completeness.
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   The cohort is small (n ~ 30-40 after the spike cut), so the test is
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   powered for sign and amplitude consistency rather than a fresh
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   detection; results are reported at face value with the sample size
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   stated.  Fixed seeds throughout.
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   Inputs
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   data/raw/lpc/lpc_{osc,orig,fut,aaori}_2006_2010.vot   (J/A+A/571/A63)
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   results/step_b30_proper_time_slip.csv               (229-comet map
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   training set)
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   data/raw/spice/de440s.bsp, data/raw/naif/naif0012.tls
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   Outputs
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   results/step_b69_lpc_bidirectional.json
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   results/step_b69_lpc_bidirectional.csv   (per-comet legs + slip)
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105]   results/figures/supplementary/step_b69_lpc_bidirectional.png
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] --------------------------------------------------------------------------------
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] SCRIPT: scripts/steps/step_105_lpc_bidirectional.py
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] SCRIPT SHA256: a3daa9ef5ab5cd357cce2b0aad65114f2d3e1bd24a320455a9a4d0c93d012278
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] SCRIPT SIZE: 24178 bytes
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] ================================================================================
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] Third-catalogue bidirectional replication + map transfer
-[2026-09-20 12:19:49 UTC] [INFO    ] [STEP 105] ================================================================================
-[2026-09-20 12:19:50 UTC] [INFO    ] [STEP 105] one-apparition cohort: 38 with all legs, 30 inside the near-parabolic spike
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] integrated 30 lpc comets x2 legs; 0 failed/unreached
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] METRIC: leg_agreement_median_deg = back 0.0000, fwd 0.0000
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] METRIC: lpc_residual_vs_theta = rho=-0.367 (p=0.0461)
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] METRIC: map_transfer_lpc = rho=+0.115 (p=0.5435), sign 17/30 (p=0.292)
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] membership split: 23 shared, 7 new
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Saving data: step_b69_lpc_bidirectional.json
-[2026-09-20 12:20:27 UTC] [DEBUG   ] [STEP 105]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b69_lpc_bidirectional.json
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105]   Output: step_b69_lpc_bidirectional.json
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Saving data: step_b69_lpc_bidirectional.csv
-[2026-09-20 12:20:27 UTC] [DEBUG   ] [STEP 105]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b69_lpc_bidirectional.csv
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105]   Output: step_b69_lpc_bidirectional.csv
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Saving data: step_b69_lpc_bidirectional.png
-[2026-09-20 12:20:27 UTC] [DEBUG   ] [STEP 105]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b69_lpc_bidirectional.png
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105]   Output: step_b69_lpc_bidirectional.png
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] ✓ Third-catalogue replication + transfer complete
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] 
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] ================================================================================
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] STEP SUMMARY: step_105_lpc_bidirectional
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] ================================================================================
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Step Number: 105
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Status: SUCCESS
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Duration: 38.21s
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Log Records Emitted: 80
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Output Files: 3
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_105_lpc_bidirectional.log
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] 
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Generated 3 output file(s):
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105]   • step_b69_lpc_bidirectional.json: 4.18 KB [sha256 f3272074865aa898]
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105]   • step_b69_lpc_bidirectional.csv: 9.69 KB [sha256 059db21d7840b2e3]
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105]   • step_b69_lpc_bidirectional.png: 367.33 KB [sha256 6ab2a08eaf004be0]
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] ================================================================================
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] STEP 105 COMPLETE: SUCCESS
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_105_lpc_bidirectional_provenance.json
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] 
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] ================================================================================
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] EXECUTIVE SUMMARY
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] ================================================================================
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Step: step_105_lpc_bidirectional (Step 105)
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Status: SUCCESS
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Duration: 38.21s
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Log Records: 91
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Output Files: 3
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] Key Outputs:
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105]   - step_b69_lpc_bidirectional.json (4.18 KB)
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105]   - step_b69_lpc_bidirectional.csv (9.69 KB)
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105]   - step_b69_lpc_bidirectional.png (367.33 KB)
-[2026-09-20 12:20:27 UTC] [INFO    ] [STEP 105] ================================================================================
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] LOGGER INITIALIZED: step_105_lpc_bidirectional (Step 105)
+[2026-09-21 15:11:35 UTC] [DEBUG   ] [STEP 105] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_105_lpc_bidirectional.log
+[2026-09-21 15:11:35 UTC] [DEBUG   ] [STEP 105] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:11:35 UTC] [DEBUG   ] [STEP 105] Start time (UTC): 2026-09-21T15:11:35.976885+00:00
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] 
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] STEP PURPOSE
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] --------------------------------------------------------------------------------
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   Step 105 -- third-catalogue bidirectional replication + map transfer.
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   The transit evidence rests on the Warsaw and CODE cohorts, which are
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   independent in sample but share the Poznan orbit-determination
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   lineage.  The one-apparition catalogue (Krolikowska 2014, A&A 571,
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   A63; VizieR J/A+A/571/A63) supplies a third population: comets
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   observed at a single apparition, orbit-fitted on the shortest arcs
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   the catalogues carry, with osculating / original / future solutions
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   plus MW08 comparison 1/a values.  None of these comets entered the
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   slip map's construction.
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   This step runs the entire transit instrument on that cohort
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   end-to-end: the identical REBOUND/IAS15 + DE440s bidirectional
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   integration to the 250 AU barycentric sphere, the catalogue
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   boundary solutions reproduced as validation, the planetary-subtracted
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   implied proper-time slip derived with the step-065 conversion, and
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   then -- the discriminating test -- whether the bipolar slip map
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   fitted on the 229 Warsaw+CODE comets predicts this third cohort's
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   unexplained slip out-of-sample.
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   T1  machinery validation: simulated vs catalogue boundary
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   periapsis directions per leg (the step-063 instrument check).
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   T2  channel replication: in-cap vs out-cap contrast of the
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   unexplained slip, and the continuous theta correlation, on
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   the new cohort alone.
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   T3  map transfer: the map dtau = a + b*cos(2*theta) fitted on the
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   229 (step 102, frozen coefficients) predicts the lpc cohort's
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   dtau_unexplained -- Spearman, sign accuracy, and predicted vs
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   observed median in each of the three map regions.
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   T4  MW08 cross-lineage energy channel on the same cohort
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   (the only MW08 observable; MW08 publishes no angular
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   elements), reported for completeness.
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   The cohort is small (n ~ 30-40 after the spike cut), so the test is
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   powered for sign and amplitude consistency rather than a fresh
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   detection; results are reported at face value with the sample size
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   stated.  Fixed seeds throughout.
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   Inputs
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   data/raw/lpc/lpc_{osc,orig,fut,aaori}_2006_2010.vot   (J/A+A/571/A63)
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   results/step_b30_proper_time_slip.csv               (229-comet map
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   training set)
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   data/raw/spice/de440s.bsp, data/raw/naif/naif0012.tls
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   Outputs
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   results/step_b69_lpc_bidirectional.json
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   results/step_b69_lpc_bidirectional.csv   (per-comet legs + slip)
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105]   results/figures/supplementary/step_b69_lpc_bidirectional.png
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] --------------------------------------------------------------------------------
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] SCRIPT: scripts/steps/step_105_lpc_bidirectional.py
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] SCRIPT SHA256: 19d16b75582171eb1950382084673003d49478de8b1a0570268b005be8fc1ad5
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] SCRIPT SIZE: 24266 bytes
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] ================================================================================
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] Third-catalogue bidirectional replication + map transfer
+[2026-09-21 15:11:35 UTC] [INFO    ] [STEP 105] ================================================================================
+[2026-09-21 15:11:36 UTC] [INFO    ] [STEP 105] one-apparition cohort: 38 with all legs, 30 inside the near-parabolic spike
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] integrated 30 lpc comets x2 legs; 0 failed/unreached
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] METRIC: leg_agreement_median_deg = back 0.0000, fwd 0.0000
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] METRIC: lpc_residual_vs_theta = rho=-0.367 (p=0.0461)
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] METRIC: map_transfer_lpc = rho=+0.115 (p=0.5435), sign 17/30 (p=0.292)
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] membership split: 23 shared, 7 new
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Saving data: step_b69_lpc_bidirectional.json
+[2026-09-21 15:12:12 UTC] [DEBUG   ] [STEP 105]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b69_lpc_bidirectional.json
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]   Output: step_b69_lpc_bidirectional.json
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Saving data: step_b69_lpc_bidirectional.csv
+[2026-09-21 15:12:12 UTC] [DEBUG   ] [STEP 105]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b69_lpc_bidirectional.csv
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]   Output: step_b69_lpc_bidirectional.csv
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Saving data: step_b69_lpc_bidirectional.png
+[2026-09-21 15:12:12 UTC] [DEBUG   ] [STEP 105]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b69_lpc_bidirectional.png
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]   Output: step_b69_lpc_bidirectional.png
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] ✓ Third-catalogue replication + transfer complete
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] 
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] ================================================================================
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] STEP SUMMARY: step_105_lpc_bidirectional
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] ================================================================================
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Step Number: 105
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Status: SUCCESS
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Duration: 36.51s
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Log Records Emitted: 80
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Output Files: 3
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_105_lpc_bidirectional.log
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] 
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Generated 3 output file(s):
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]   • step_b69_lpc_bidirectional.json: 4.18 KB [sha256 f3272074865aa898]
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]   • step_b69_lpc_bidirectional.csv: 9.69 KB [sha256 059db21d7840b2e3]
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]   • step_b69_lpc_bidirectional.png: 367.33 KB [sha256 6ab2a08eaf004be0]
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] 
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]   RESULT SNAPSHOT [step_b69_lpc_bidirectional.json]:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     inputs [n=4]
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     failed [n=0]
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T1_leg_validation:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       med_back_deg = 4.9676131e-05
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       med_fwd_deg = 4.8730111e-05
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       p95_deg = 0.0014605508
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T2_channel_replication.cap_contrast:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       n_in = 9
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       n_out = 21
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       med_in = 3.6915995
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       med_out = -3.9510716
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       p_in_gt_out = 0.042739973
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T2_channel_replication.vs_theta:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       rho = -0.36685206
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       p_2sided = 0.046142103
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T2_channel_replication.vs_theta_cat_channel:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       rho = -0.36685206
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       p_2sided = 0.046142103
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T2_detached_axis:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       rho = -0.38153504
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       p_2sided = 0.037489585
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T3_map_transfer:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       spearman_rho = 0.11546162
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       spearman_p = 0.54346945
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       sign_correct = 17
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       n = 30
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       sign_frac = 0.56666667
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       sign_binom_p = 0.29233236
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       med_pred = -2.0222525
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       med_obs = 1.2479351
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T3_map_transfer.map_coef:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       a = 2.1475175
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       b = 5.9808048
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T3b_membership_split.shared:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       n = 23
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       vs_theta_rho = -0.41798419
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       vs_theta_p = 0.047174855
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       transfer_rho = 0.16403162
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       transfer_p = 0.45452869
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       sign_correct = 14
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       med_dtau = -0.127056
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T3b_membership_split.nonshared:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       n = 7
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       vs_theta_rho = -0.35714286
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       vs_theta_p = 0.43161135
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       transfer_rho = 0.14285714
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       transfer_p = 0.7599453
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       sign_correct = 3
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       med_dtau = 5.7361695
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T3b_membership_split.nonshared_desigs [n=7]
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T4_mw08_energy:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       mw_jump_med = 330.5
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       mw_jump_incap_med = 285
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       mw_jump_outcap_med = 346
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     T4_mw08_energy.xline_vs_theta:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       rho = 0.17799533
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       p_2sided = 0.34668495
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]     verdict:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       replication = TEP-direction
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       transfer = weak-positive
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] ================================================================================
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] STEP 105 COMPLETE: SUCCESS
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_105_lpc_bidirectional_provenance.json
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] 
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] ================================================================================
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] EXECUTIVE SUMMARY
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] ================================================================================
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Step: step_105_lpc_bidirectional (Step 105)
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Status: SUCCESS
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Duration: 36.51s
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Log Records: 154
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Output Files: 3
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] Key Outputs:
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]   - step_b69_lpc_bidirectional.json (4.18 KB)
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]   - step_b69_lpc_bidirectional.csv (9.69 KB)
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105]   - step_b69_lpc_bidirectional.png (367.33 KB)
+[2026-09-21 15:12:12 UTC] [INFO    ] [STEP 105] ================================================================================

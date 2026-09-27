@@ -145,7 +145,7 @@ def analyse(name, events):
     # smooth gradient; report the per-AU drift rate as the smooth-
     # segment bound on a constants-shift masquerading as gradient.
     seg_rates = [s["frac_change"] / s["ddhp_au"]
-                 for s in steps if s["ddhp_au"] > 0.1]
+                 for s in steps if 0.1 < s["ddhp_au"] < 2.0]
     if len(seg_rates) >= 6:
         smooth_drift = dict(
             median_frac_per_au=float(np.median(seg_rates)),
@@ -164,18 +164,28 @@ def analyse(name, events):
     # density-consistent requirement and the constant-density one.
     dlnf_full = 2.0 * math_log(fpe[np.nanargmax(ne)] /
                                fpe[np.nanargmin(ne)])
-    # comet-channel contrast loaded from the ledger when available
-    # (frac_slip = dtau/t_transit); fallback keeps step runnable
-    # standalone.
-    comet_dA = 1.16e-2
+    # comet-channel contrast loaded from the step-100 ledger when
+    # available (frac_slip = dtau/t_transit).  Step 097 precedes
+    # step_100 in the registry, so a first-ever full run has no
+    # ledger yet; in that case the documented prior value is used,
+    # the substitution is warned loudly, and the source is recorded
+    # in the output.  A present-but-unreadable ledger is a corruption
+    # signal and fails closed.
+    comet_dA_source = "results/step_b64_clock_consistency.json"
     ledger_path = RESULTS / "step_b64_clock_consistency.json"
     if ledger_path.exists():
-        try:
-            comet_dA = float(json.load(open(ledger_path))
-                             ["comet_channel"]["implied_dA_over_A"])
-        except Exception:
-            pass
+        comet_dA = float(json.load(open(ledger_path))
+                         ["comet_channel"]["implied_dA_over_A"])
+    else:
+        comet_dA = 1.16e-2  # documented prior; matches ledger 0.011611
+        comet_dA_source = "prior_constant_no_ledger"
+        logger.warning(
+            "step_b64_clock_consistency.json absent (step 097 precedes "
+            "step 100 in the registry); using documented prior "
+            "comet_dA=1.16e-2 for the lapse-equivalent ratio. Re-run "
+            "after step_100 to bind the live ledger value.")
     lapse_equiv = dict(
+        comet_channel_dA_source=comet_dA_source,
         ne_ratio=float(ne1 / ne0),
         fpe_ratio=float(fpe[np.nanargmax(ne)] / fpe[np.nanargmin(ne)]),
         deltaX_constant_density=float(dlnf_full),

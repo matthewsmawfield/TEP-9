@@ -1,167 +1,216 @@
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] LOGGER INITIALIZED: step_037_blind_validation (Step 037)
-[2026-09-20 10:45:33 UTC] [DEBUG   ] [STEP 037] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_037_blind_validation.log
-[2026-09-20 10:45:33 UTC] [DEBUG   ] [STEP 037] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:45:33 UTC] [DEBUG   ] [STEP 037] Start time (UTC): 2026-09-20T10:45:33.577844+00:00
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] 
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] STEP PURPOSE
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] --------------------------------------------------------------------------------
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   step_14: blind validation -- the tests that close the last loopholes.
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   The remaining critiques of the step_11-13 confirmation:
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   (a) the axis seed came from the TNO side
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   (b) the q<3.1/class-1 regime was inherited from Warsaw
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   (c) the 60 deg cap was data-chosen
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   This battery removes each:
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   B1  continuous statistic, no cap: Spearman rho between angular
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   distance to the axis and d_of on ALL class-1 CODE-only
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   Oort-spike comets (no q cut at all) -- and on the matched
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   subset.  A real localized structure must decay monotonically
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   with angle; the cap becomes irrelevant.
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   B2  permutation null: shuffle aphelion directions among the same
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   comets (preserves every marginal) -> empirical p for the
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   cap contrast, no Gaussian assumptions.
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   B3  look-elsewhere count: of the full-sky grid scan, how many
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   independent directions reach p <= the observed?  The honest
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   trials factor.
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   B4  split-half blind validation: derive the best axis on a random
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   half of the data, apply the cap-60 d_of test to the held-out
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   half, repeat 500x.  If the structure is real, held-out p is
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   small AND the recovered axes cluster at the TNO direction --
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   axis and significance derived on data that never met.
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   B5  reverse cross-validation: evaluate the Warsaw discovery
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   statistic (d_so, full-arc) at the CODE-recovered axis
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   (lam 10, beta -20) -- symmetric confirmation: each catalogue
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   predicts the other's anomaly.
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   B6  all-class-1 no-q-cut cap test: the matched-regime criterion
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   dropped entirely -- does the signal survive losing the
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037]   Warsaw-inherited cut?
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] --------------------------------------------------------------------------------
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] SCRIPT: scripts/steps/step_037_blind_validation.py
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] SCRIPT SHA256: a1a9269c0dd556d2ce5deac3402e610424728a8fb3b4dfa718d96f2fbec7782e
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] SCRIPT SIZE: 10434 bytes
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] ================================================================================
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] Blind validation battery
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] ================================================================================
-[2026-09-20 10:45:33 UTC] [INFO    ] [STEP 037] CODE-only class-1 spike: 131 total, 54 deep plungers (q<3.1)
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] RESULT PAYLOAD:
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  "n_all_c1": 131,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  "n_matched": 54,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  "B1_spearman": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "all_c1": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "rho": -0.24310041103934235,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "p_2sided": 0.005144495232842704,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "n": 131
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   },
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "matched": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "rho": -0.3143510577472841,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "p_2sided": 0.020614445873721257,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "n": 54
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   },
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "matched_codeaxis": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "rho": -0.2925481227368019,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "p_2sided": 0.03181827947212569,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "n": 54
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   }
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  },
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  "B2_perm": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "obs_meddiff": 0.08127839828578629,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "p_perm": 0.0063996800159992,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "n_perm": 20000
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  },
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  "B3_look_elsewhere": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "n_grid": 2232,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "n_axes_p_le_obs": 6,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "fraction": 0.002688172043010753,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "best": [
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    [
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     0.0013484176236670147,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     15.0,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     -15.0
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    ],
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    [
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     0.001908759829179218,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     20.0,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     -25.0
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    ],
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    [
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     0.002426502543859529,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     20.0,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     -5.0
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    ],
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    [
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     0.002426502543859529,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     25.0,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     -5.0
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    ],
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    [
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     0.0024594669684765255,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     5.0,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]     -20.0
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    ]
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   ],
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "note": "nearby grid points are correlated; the effective number of independent sky directions is ~n_grid/(cap solid-angle factor) -- the raw fraction is the honest upper bound on trials"
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  },
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  "B4_split_half": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "heldout_p_median": 0.21691941173201357,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "heldout_p_lt_0.05_frac": 0.218,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "heldout_p_lt_0.10_frac": 0.334,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "recovered_axis_to_tno_med_deg": 29.436114386152603,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "recovered_within_45deg_frac": 0.696,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "note": "axis derived on half A, tested on held-out half B, 500 reps"
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  },
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  "B5_reverse_warsaw": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "tno": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "n": 60,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "n_in": 21,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "med_in": 0.10518563754764582,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "med_out": 0.06337932566157782,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "p": 0.008864300328535015
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   },
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "code_recovered": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "n": 60,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "n_in": 22,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "med_in": 0.08446903670223094,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "med_out": 0.06768259704676818,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]    "p": 0.35924123339562863
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   }
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  },
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  "B6_no_qcut": {
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "n": 131,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "n_in": 43,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "med_in": 0.14434842433250053,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "med_out": 0.09858890272439819,
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   "p": 0.010015762665330209
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]  }
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] }
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Saving data: step_14_blind_validation.json
-[2026-09-20 10:45:59 UTC] [DEBUG   ] [STEP 037]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_14_blind_validation.json
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   Output: step_14_blind_validation.json
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] 
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] ================================================================================
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] STEP SUMMARY: step_037_blind_validation
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] ================================================================================
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Step Number: 037
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Status: SUCCESS
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Duration: 25.98s
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Log Records Emitted: 146
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Output Files: 1
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_037_blind_validation.log
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] 
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Generated 1 output file(s):
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   • step_14_blind_validation.json: 1.79 KB [sha256 c6dde7f2545f1ca2]
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] ================================================================================
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] STEP 037 COMPLETE: SUCCESS
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_037_blind_validation_provenance.json
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] 
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] ================================================================================
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] EXECUTIVE SUMMARY
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] ================================================================================
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Step: step_037_blind_validation (Step 037)
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Status: SUCCESS
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Duration: 25.98s
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Log Records: 155
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Output Files: 1
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] Key Outputs:
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037]   - step_14_blind_validation.json (1.79 KB)
-[2026-09-20 10:45:59 UTC] [INFO    ] [STEP 037] ================================================================================
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] LOGGER INITIALIZED: step_037_blind_validation (Step 037)
+[2026-09-21 14:35:33 UTC] [DEBUG   ] [STEP 037] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_037_blind_validation.log
+[2026-09-21 14:35:33 UTC] [DEBUG   ] [STEP 037] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:35:33 UTC] [DEBUG   ] [STEP 037] Start time (UTC): 2026-09-21T14:35:33.314858+00:00
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] 
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] STEP PURPOSE
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] --------------------------------------------------------------------------------
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   step_14: blind validation -- the tests that close the last loopholes.
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   The remaining critiques of the step_11-13 confirmation:
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   (a) the axis seed came from the TNO side
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   (b) the q<3.1/class-1 regime was inherited from Warsaw
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   (c) the 60 deg cap was data-chosen
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   This battery removes each:
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   B1  continuous statistic, no cap: Spearman rho between angular
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   distance to the axis and d_of on ALL class-1 CODE-only
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   Oort-spike comets (no q cut at all) -- and on the matched
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   subset.  A real localized structure must decay monotonically
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   with angle; the cap becomes irrelevant.
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   B2  permutation null: shuffle aphelion directions among the same
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   comets (preserves every marginal) -> empirical p for the
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   cap contrast, no Gaussian assumptions.
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   B3  look-elsewhere count: of the full-sky grid scan, how many
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   independent directions reach p <= the observed?  The honest
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   trials factor.
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   B4  split-half blind validation: derive the best axis on a random
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   half of the data, apply the cap-60 d_of test to the held-out
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   half, repeat 500x.  If the structure is real, held-out p is
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   small AND the recovered axes cluster at the TNO direction --
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   axis and significance derived on data that never met.
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   B5  reverse cross-validation: evaluate the Warsaw discovery
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   statistic (d_so, full-arc) at the CODE-recovered axis
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   (lam 10, beta -20) -- symmetric confirmation: each catalogue
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   predicts the other's anomaly.
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   B6  all-class-1 no-q-cut cap test: the matched-regime criterion
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   dropped entirely -- does the signal survive losing the
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037]   Warsaw-inherited cut?
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] --------------------------------------------------------------------------------
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] SCRIPT: scripts/steps/step_037_blind_validation.py
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] SCRIPT SHA256: a1a9269c0dd556d2ce5deac3402e610424728a8fb3b4dfa718d96f2fbec7782e
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] SCRIPT SIZE: 10434 bytes
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] ================================================================================
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] Blind validation battery
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] ================================================================================
+[2026-09-21 14:35:33 UTC] [INFO    ] [STEP 037] CODE-only class-1 spike: 131 total, 54 deep plungers (q<3.1)
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] RESULT PAYLOAD:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  "n_all_c1": 131,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  "n_matched": 54,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  "B1_spearman": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "all_c1": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "rho": -0.24310041103934235,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "p_2sided": 0.005144495232842704,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "n": 131
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   },
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "matched": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "rho": -0.3143510577472841,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "p_2sided": 0.020614445873721257,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "n": 54
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   },
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "matched_codeaxis": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "rho": -0.2925481227368019,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "p_2sided": 0.03181827947212569,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "n": 54
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   }
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  },
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  "B2_perm": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "obs_meddiff": 0.08127839828578629,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "p_perm": 0.0063996800159992,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "n_perm": 20000
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  },
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  "B3_look_elsewhere": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "n_grid": 2232,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "n_axes_p_le_obs": 6,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "fraction": 0.002688172043010753,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "best": [
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    [
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     0.0013484176236670147,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     15.0,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     -15.0
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    ],
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    [
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     0.001908759829179218,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     20.0,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     -25.0
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    ],
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    [
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     0.002426502543859529,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     20.0,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     -5.0
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    ],
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    [
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     0.002426502543859529,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     25.0,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     -5.0
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    ],
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    [
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     0.0024594669684765255,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     5.0,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     -20.0
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    ]
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   ],
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "note": "nearby grid points are correlated; the effective number of independent sky directions is ~n_grid/(cap solid-angle factor) -- the raw fraction is the honest upper bound on trials"
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  },
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  "B4_split_half": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "heldout_p_median": 0.21691941173201357,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "heldout_p_lt_0.05_frac": 0.218,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "heldout_p_lt_0.10_frac": 0.334,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "recovered_axis_to_tno_med_deg": 29.436114386152603,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "recovered_within_45deg_frac": 0.696,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "note": "axis derived on half A, tested on held-out half B, 500 reps"
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  },
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  "B5_reverse_warsaw": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "tno": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "n": 60,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "n_in": 21,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "med_in": 0.10518563754764582,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "med_out": 0.06337932566157782,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "p": 0.008864300328535015
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   },
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "code_recovered": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "n": 60,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "n_in": 22,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "med_in": 0.08446903670223094,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "med_out": 0.06768259704676818,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]    "p": 0.35924123339562863
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   }
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  },
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  "B6_no_qcut": {
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "n": 131,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "n_in": 43,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "med_in": 0.14434842433250053,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "med_out": 0.09858890272439819,
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   "p": 0.010015762665330209
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]  }
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] }
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Saving data: step_14_blind_validation.json
+[2026-09-21 14:36:09 UTC] [DEBUG   ] [STEP 037]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_14_blind_validation.json
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   Output: step_14_blind_validation.json
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] 
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] ================================================================================
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] STEP SUMMARY: step_037_blind_validation
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] ================================================================================
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Step Number: 037
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Status: SUCCESS
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Duration: 35.81s
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Log Records Emitted: 146
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Output Files: 1
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_037_blind_validation.log
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] 
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Generated 1 output file(s):
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   • step_14_blind_validation.json: 1.79 KB [sha256 c6dde7f2545f1ca2]
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] 
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   RESULT SNAPSHOT [step_14_blind_validation.json]:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     B1_spearman.all_c1:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       rho = -0.24310041
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       p_2sided = 0.0051444952
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n = 131
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     B1_spearman.matched:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       rho = -0.31435106
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       p_2sided = 0.020614446
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n = 54
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     B1_spearman.matched_codeaxis:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       rho = -0.29254812
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       p_2sided = 0.031818279
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n = 54
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     B2_perm:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       obs_meddiff = 0.081278398
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       p_perm = 0.00639968
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n_perm = 20000
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     B3_look_elsewhere:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n_grid = 2232
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n_axes_p_le_obs = 6
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       fraction = 0.002688172
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       note = nearby grid points are correlated; the effective number of independent sky directions i...
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     B3_look_elsewhere.best [n=5]
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     B4_split_half:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       heldout_p_median = 0.21691941
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       heldout_p_lt_0.05_frac = 0.218
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       heldout_p_lt_0.10_frac = 0.334
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       recovered_axis_to_tno_med_deg = 29.436114
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       recovered_within_45deg_frac = 0.696
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       note = axis derived on half A, tested on held-out half B, 500 reps
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     B5_reverse_warsaw.tno:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n = 60
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n_in = 21
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       med_in = 0.10518564
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       med_out = 0.063379326
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       p = 0.0088643003
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     B5_reverse_warsaw.code_recovered:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n = 60
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n_in = 22
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       med_in = 0.084469037
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       med_out = 0.067682597
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       p = 0.35924123
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]     B6_no_qcut:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n = 131
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       n_in = 43
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       med_in = 0.14434842
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       med_out = 0.098588903
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]       p = 0.010015763
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] ================================================================================
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] STEP 037 COMPLETE: SUCCESS
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_037_blind_validation_provenance.json
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] 
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] ================================================================================
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] EXECUTIVE SUMMARY
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] ================================================================================
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Step: step_037_blind_validation (Step 037)
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Status: SUCCESS
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Duration: 35.81s
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Log Records: 204
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Output Files: 1
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] Key Outputs:
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037]   - step_14_blind_validation.json (1.79 KB)
+[2026-09-21 14:36:09 UTC] [INFO    ] [STEP 037] ================================================================================

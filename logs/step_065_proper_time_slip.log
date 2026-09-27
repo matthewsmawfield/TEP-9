@@ -1,96 +1,164 @@
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] LOGGER INITIALIZED: step_065_proper_time_slip (Step 065)
-[2026-09-20 11:05:24 UTC] [DEBUG   ] [STEP 065] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_065_proper_time_slip.log
-[2026-09-20 11:05:24 UTC] [DEBUG   ] [STEP 065] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 11:05:24 UTC] [DEBUG   ] [STEP 065] Start time (UTC): 2026-09-20T11:05:24.659514+00:00
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] 
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] STEP PURPOSE
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] --------------------------------------------------------------------------------
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   step_065: Operational time-equivalent of the transit rotation.
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   Every Phase-3 step expresses the comet anomaly in angular units: the
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   orig->fut periapsis-direction rotation d_of and its residual after the
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   measured encounter budget is regressed out (step_063).  Under the
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   domain-boundary reading that residual is a phase error -- a proper-time
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   offset accumulated during the boundary crossing that a standard-clock
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   reconstruction mis-assigns as an in-plane rotation.  This step converts
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   the measured rotation into an operational time-equivalent; it is not a
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   derived proper-time measurement until a field/clock response model is
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   specified.
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   Definition
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   At the 250 AU barycentric reference sphere a periapsis-direction
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   rotation d_th (radians) corresponds to the comet's sky position having
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   been swept through the same angle.  The comet sweeps sky angle at the
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   rate Omega_b = h / r_b^2, where h = sqrt(mu q (1+e)) is the specific
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   angular momentum of the boundary orbit and r_b = 250 AU.  The operational
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   time-equivalent is therefore
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   dtau = d_th * r_b^2 / h        [yr]
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   -- the time an unperturbed comet on the same boundary orbit needs to
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   subtend the unexplained rotation.  No lapse-field amplitude is assumed.
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   Two quantities are reported per comet:
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   dtau_total   : the full orig->fut rotation expressed in years
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   dtau_unexplained : the residual of dtau after regression on the
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   measured encounter budget (energy kick, minimum
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   planetary approach, perihelion depth, inclination)
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   The fractional slip dtau/(t_back + t_fwd) expresses the offset relative
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   to the comet's measured transit duration inside the 250 AU sphere -- a
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   dimensionless lapse contrast.
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   Inputs
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   results/step_b28_bidirectional_rotation.csv   (CODE cohort, step_063)
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   results/step_b29_warsaw_bidirectional.csv     (Warsaw cohort, step_064)
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   Outputs
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   results/step_b30_proper_time_slip.json
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   results/step_b30_proper_time_slip.csv
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065]   results/figures/step_b30_proper_time_slip.png
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] --------------------------------------------------------------------------------
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] SCRIPT: scripts/steps/step_065_proper_time_slip.py
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] SCRIPT SHA256: a192a8c9742ba6ed14ef0d1fad64854c1e756eb715022a16aecc49d36e162eea
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] SCRIPT SIZE: 13563 bytes
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] ================================================================================
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] Operational time-equivalent (transit rotation in time units)
-[2026-09-20 11:05:24 UTC] [INFO    ] [STEP 065] ================================================================================
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] cohorts: CODE n=131, Warsaw n=98
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] code (all): n=131 in=43 | dtau_total in/out = 9.34/6.66 yr | unexplained in = 0.54 yr ci68 [-0.7320247919355132, 1.1715849639574207] p=0.0394
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] warsaw (all): n=98 in=32 | dtau_total in/out = 6.12/6.26 yr | unexplained in = 4.46 yr ci68 [1.6284968345182924, 6.288263520900561] p=0.0372
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] warsaw inbound: med total in/out = 5.16/4.34 yr | unexplained in = 5.04 yr ci68 [2.589970277213931, 7.224157209451667] p=0.0079
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] pooled (all): n=229 in=75 | dtau_total in/out = 8.46/6.60 yr | unexplained in = 2.06 yr ci68 [0.19544142768068617, 3.180297563560706] p=0.0164
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Saving data: step_b30_proper_time_slip.json
-[2026-09-20 11:05:25 UTC] [DEBUG   ] [STEP 065]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b30_proper_time_slip.json
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065]   Output: step_b30_proper_time_slip.json
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Saving data: step_b30_proper_time_slip.csv
-[2026-09-20 11:05:25 UTC] [DEBUG   ] [STEP 065]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b30_proper_time_slip.csv
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065]   Output: step_b30_proper_time_slip.csv
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Saving data: step_b30_proper_time_slip.png
-[2026-09-20 11:05:25 UTC] [DEBUG   ] [STEP 065]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b30_proper_time_slip.png
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065]   Output: step_b30_proper_time_slip.png
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] 
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] ================================================================================
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] STEP SUMMARY: step_065_proper_time_slip
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] ================================================================================
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Step Number: 065
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Status: SUCCESS
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Duration: 0.90s
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Log Records Emitted: 71
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Output Files: 3
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_065_proper_time_slip.log
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] 
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Generated 3 output file(s):
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065]   • step_b30_proper_time_slip.json: 7.15 KB [sha256 1c522e480fc629dd]
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065]   • step_b30_proper_time_slip.csv: 73.03 KB [sha256 dd5df9a26f348480]
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065]   • step_b30_proper_time_slip.png: 264.57 KB [sha256 0accb2b0d4fe877b]
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] ================================================================================
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] STEP 065 COMPLETE: SUCCESS
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_065_proper_time_slip_provenance.json
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] 
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] ================================================================================
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] EXECUTIVE SUMMARY
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] ================================================================================
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Step: step_065_proper_time_slip (Step 065)
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Status: SUCCESS
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Duration: 0.90s
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Log Records: 82
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Output Files: 3
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] Key Outputs:
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065]   - step_b30_proper_time_slip.json (7.15 KB)
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065]   - step_b30_proper_time_slip.csv (73.03 KB)
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065]   - step_b30_proper_time_slip.png (264.57 KB)
-[2026-09-20 11:05:25 UTC] [INFO    ] [STEP 065] ================================================================================
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] LOGGER INITIALIZED: step_065_proper_time_slip (Step 065)
+[2026-09-21 14:41:41 UTC] [DEBUG   ] [STEP 065] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_065_proper_time_slip.log
+[2026-09-21 14:41:41 UTC] [DEBUG   ] [STEP 065] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:41:41 UTC] [DEBUG   ] [STEP 065] Start time (UTC): 2026-09-21T14:41:41.687617+00:00
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] 
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] STEP PURPOSE
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] --------------------------------------------------------------------------------
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   step_065: Operational time-equivalent of the transit rotation.
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   Every Phase-3 step expresses the comet anomaly in angular units: the
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   orig->fut periapsis-direction rotation d_of and its residual after the
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   measured encounter budget is regressed out (step_063).  Under the
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   domain-boundary reading that residual is a phase error -- a proper-time
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   offset accumulated during the boundary crossing that a standard-clock
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   reconstruction mis-assigns as an in-plane rotation.  This step converts
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   the measured rotation into an operational time-equivalent; it is not a
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   derived proper-time measurement until a field/clock response model is
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   specified.
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   Definition
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   At the 250 AU barycentric reference sphere a periapsis-direction
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   rotation d_th (radians) corresponds to the comet's sky position having
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   been swept through the same angle.  The comet sweeps sky angle at the
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   rate Omega_b = h / r_b^2, where h = sqrt(mu q (1+e)) is the specific
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   angular momentum of the boundary orbit and r_b = 250 AU.  The operational
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   time-equivalent is therefore
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   dtau = d_th * r_b^2 / h        [yr]
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   -- the time an unperturbed comet on the same boundary orbit needs to
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   subtend the unexplained rotation.  No lapse-field amplitude is assumed.
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   Two quantities are reported per comet:
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   dtau_total   : the full orig->fut rotation expressed in years
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   dtau_unexplained : the residual of dtau after regression on the
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   measured encounter budget (energy kick, minimum
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   planetary approach, perihelion depth, inclination)
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   The fractional slip dtau/(t_back + t_fwd) expresses the offset relative
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   to the comet's measured transit duration inside the 250 AU sphere -- a
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   dimensionless lapse contrast.
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   Inputs
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   results/step_b28_bidirectional_rotation.csv   (CODE cohort, step_063)
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   results/step_b29_warsaw_bidirectional.csv     (Warsaw cohort, step_064)
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   Outputs
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   results/step_b30_proper_time_slip.json
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   results/step_b30_proper_time_slip.csv
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065]   results/figures/step_b30_proper_time_slip.png
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] --------------------------------------------------------------------------------
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] SCRIPT: scripts/steps/step_065_proper_time_slip.py
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] SCRIPT SHA256: a192a8c9742ba6ed14ef0d1fad64854c1e756eb715022a16aecc49d36e162eea
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] SCRIPT SIZE: 13563 bytes
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] ================================================================================
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] Operational time-equivalent (transit rotation in time units)
+[2026-09-21 14:41:41 UTC] [INFO    ] [STEP 065] ================================================================================
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] cohorts: CODE n=131, Warsaw n=98
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] code (all): n=131 in=43 | dtau_total in/out = 9.34/6.66 yr | unexplained in = 0.54 yr ci68 [-0.7320247919355132, 1.1715849639574207] p=0.0394
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] warsaw (all): n=98 in=32 | dtau_total in/out = 6.12/6.26 yr | unexplained in = 4.46 yr ci68 [1.6284968345182924, 6.288263520900561] p=0.0372
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] warsaw inbound: med total in/out = 5.16/4.34 yr | unexplained in = 5.04 yr ci68 [2.589970277213931, 7.224157209451667] p=0.0079
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] pooled (all): n=229 in=75 | dtau_total in/out = 8.46/6.60 yr | unexplained in = 2.06 yr ci68 [0.19544142768068617, 3.180297563560706] p=0.0164
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Saving data: step_b30_proper_time_slip.json
+[2026-09-21 14:41:42 UTC] [DEBUG   ] [STEP 065]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b30_proper_time_slip.json
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]   Output: step_b30_proper_time_slip.json
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Saving data: step_b30_proper_time_slip.csv
+[2026-09-21 14:41:42 UTC] [DEBUG   ] [STEP 065]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b30_proper_time_slip.csv
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]   Output: step_b30_proper_time_slip.csv
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Saving data: step_b30_proper_time_slip.png
+[2026-09-21 14:41:42 UTC] [DEBUG   ] [STEP 065]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b30_proper_time_slip.png
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]   Output: step_b30_proper_time_slip.png
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] 
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] ================================================================================
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] STEP SUMMARY: step_065_proper_time_slip
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] ================================================================================
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Step Number: 065
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Status: SUCCESS
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Duration: 1.14s
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Log Records Emitted: 71
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Output Files: 3
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_065_proper_time_slip.log
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] 
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Generated 3 output file(s):
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]   • step_b30_proper_time_slip.json: 7.15 KB [sha256 1c522e480fc629dd]
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]   • step_b30_proper_time_slip.csv: 73.03 KB [sha256 dd5df9a26f348480]
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]   • step_b30_proper_time_slip.png: 264.57 KB [sha256 0accb2b0d4fe877b]
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] 
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]   RESULT SNAPSHOT [step_b30_proper_time_slip.json]:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       n = 131
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.matched:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       n = 54
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       n_in = 19
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_dtau_total_in = 20.309245
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_dtau_total_out = 13.269621
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_transit_yr = 601
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       dtau_in_gt_out_p = 0.0092679908
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.matched.dtau_vs_theta:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       rho = -0.23689727
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       p_2sided = 0.084573567
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.matched.dtau_resid_log_cap:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       p = 0.0012434649
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_resid_in = 0.35082493
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_resid_out = -0.1560376
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.matched.dtau_resid_log_vs_theta:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       rho = -0.40720412
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       p_2sided = 0.002243555
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.matched.dtau_unexplained:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_in = 4.9144935
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_out = -3.8509222
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       p_in_gt_out = 0.0053249618
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.matched.dtau_unexplained.ci68_in [n=2]: median=5.0569259 min=4.0659868 max=6.047865
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.matched.dtau_unexplained_vs_theta:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       rho = -0.35262055
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       p_2sided = 0.0089180487
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.matched.frac_slip:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_in = 0.033458394
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_out = 0.022452828
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       resid_cap_p = 0.0013200068
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.all:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       n = 131
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       n_in = 43
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_dtau_total_in = 9.3387905
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_dtau_total_out = 6.6560445
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_transit_yr = 610
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       dtau_in_gt_out_p = 0.026278738
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.all.dtau_vs_theta:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       rho = -0.19233438
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       p_2sided = 0.0277459
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.all.dtau_resid_log_cap:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       p = 0.013617916
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_resid_in = 0.36394592
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_resid_out = 0.059810247
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.all.dtau_resid_log_vs_theta:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       rho = -0.23698286
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       p_2sided = 0.0064236753
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.all.dtau_unexplained:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_in = 0.54022867
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_out = -1.5391975
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       p_in_gt_out = 0.039443221
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.all.dtau_unexplained.ci68_in [n=2]: median=0.21978009 min=-0.73202479 max=1.171585
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.all.dtau_unexplained_vs_theta:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       rho = -0.1534885
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       p_2sided = 0.080065484
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     code.all.frac_slip:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_in = 0.015359853
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       med_out = 0.01101081
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       resid_cap_p = 0.011999789
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     warsaw:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       n = 98
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]     warsaw.matched:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       n = 41
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       n_in = 12
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] ================================================================================
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] STEP 065 COMPLETE: SUCCESS
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_065_proper_time_slip_provenance.json
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] 
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] ================================================================================
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] EXECUTIVE SUMMARY
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] ================================================================================
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Step: step_065_proper_time_slip (Step 065)
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Status: SUCCESS
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Duration: 1.14s
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Log Records: 150
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Output Files: 3
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] Key Outputs:
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]   - step_b30_proper_time_slip.json (7.15 KB)
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]   - step_b30_proper_time_slip.csv (73.03 KB)
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065]   - step_b30_proper_time_slip.png (264.57 KB)
+[2026-09-21 14:41:42 UTC] [INFO    ] [STEP 065] ================================================================================

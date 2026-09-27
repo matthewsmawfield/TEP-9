@@ -1,0 +1,179 @@
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] LOGGER INITIALIZED: step_163_footprint_forward (Step 163)
+[2026-09-21 15:44:09 UTC] [DEBUG   ] [STEP 163] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_163_footprint_forward.log
+[2026-09-21 15:44:09 UTC] [DEBUG   ] [STEP 163] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:44:09 UTC] [DEBUG   ] [STEP 163] Start time (UTC): 2026-09-21T15:44:09.878948+00:00
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] 
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] STEP PURPOSE
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] --------------------------------------------------------------------------------
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   step_163: forward-modelled discovery footprint for the arrival anisotropy (b129).
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   Step 152 (b116) conditioned the arrival-direction null on the observed
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   latitude marginals and left an explicit caveat: the second-order bias --
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   longitude structure produced by opposition-pointing and survey geometry --
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   was not modelled.  A later diagnostic (longitude-permutation null) showed
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   that conditioning on the observed longitude marginal removes the cap
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   excess, but that null is not decisive: a marginal-level dipole signal is
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   absorbed into the conditioned marginal by construction.  The decisive
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   question is whether a physically modelled discovery footprint can produce
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   the observed aphelion-direction dipole in the first place.
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   This step builds that footprint as a forward model.  For each real comet
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   the orbit shape (q, e) and perihelion epoch are kept fixed while the
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   spatial orientation is redrawn isotropically (Haar-random rotations of
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   the perifocal frame).  Each orientation is propagated over its bright
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   window (r < r_vis, Barker parabolic time law) and scored by whether the
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   geocentric position is in the night sky (solar elongation > el_min), in
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   the declination reach of the historical northern-observatory record
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   (dec > dec_min), and within geocentric distance dmax.  Discovery weight
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   is the observable brightness integral sum 1/(r^2 Delta^2).  The pooled
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   weight map on the (randomised) aphelion directions is the predicted
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   discovered-population marginal under an isotropic source.
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   Tests
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   T1  footprint dipole vs observed dipole: predicted direction and
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   amplitude of the discovered-population aphelion dipole under an
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   isotropic source, and its angular separation from the observed
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   dipole.
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   T2  selection-only null: n arrival directions are resampled from the
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   brightness-weighted footprint pool; the distribution of the
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   resulting dipole direction relative to the declared transit axis
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   gives p_dir = P(sep <= observed) and p_joint = P(R >= observed
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   and sep <= observed).  The in-cap fraction under the same null
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   prices the cap statistic against the footprint.
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   T3  dipole decomposition: the observed mean direction vector is fit
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   as A*(transit axis) + B*(footprint direction); the displaced
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   control axis (120,-40) is fit in parallel as a specificity check.
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   T4  robustness: the footprint dipole and the residual's axis
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   separation are recomputed over a grid of window depths,
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   elongation limits, declination limits and discovery-weight
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   schemes.
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   T5  longitude-marginal diagnostic: predicted vs observed ecliptic-
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   longitude dipole of the aphelion direction (the channel the
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   latitude-conditioned nulls cannot see).
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   Cohorts: CODE class-1 (all and q < 3.1 matched) and the SBDB
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   near-parabolic lineage cohorts (pre-2018, post-2017, all), using the
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   same membership definitions as steps 124/149/152.
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   Inputs
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   data/raw/code/code_original.html
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   data/raw/sbdb/sbdb_comets_all.json
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   results/step_b28_bidirectional_rotation.csv
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   Outputs
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   results/step_b129_footprint_forward.json
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   results/step_b129_footprint_forward.csv
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163]   results/figures/supplementary/step_b129_footprint_forward.png
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] --------------------------------------------------------------------------------
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] SCRIPT: scripts/steps/step_163_footprint_forward.py
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] SCRIPT SHA256: e1378563541f5094f367a1a83e213cc829d1e5fdc47551512e05977df77afa80
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] SCRIPT SIZE: 20126 bytes
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] ================================================================================
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] Forward-modelled discovery footprint -- physically propagated observability null for the arrival dipole
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] ================================================================================
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] class-1 cohort with epochs: 131
+[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 163] SBDB near-parabolic cohorts: pre-2018 n=880, post-2017 n=287
+[2026-09-21 15:44:15 UTC] [INFO    ] [STEP 163] class1_all: obs R=0.224 dir=(37,-30) | fp dir=(193,-44) R=0.130 sep=103 | null p_dir=0.0004 p_joint=0.0001 | resid dir=(29,-5) sep_axis=10
+[2026-09-21 15:44:18 UTC] [INFO    ] [STEP 163] class1_matched_q3p1: obs R=0.244 dir=(50,-13) | fp dir=(193,-22) R=0.162 sep=130 | null p_dir=0.0010 p_joint=0.0001 | resid dir=(36,1) sep_axis=14
+[2026-09-21 15:44:25 UTC] [INFO    ] [STEP 163] sbdb_pre2018: obs R=0.149 dir=(60,-49) | fp dir=(218,-79) R=0.061 sep=51 | null p_dir=0.0072 p_joint=0.0001 | resid dir=(58,-26) sep_axis=26
+[2026-09-21 15:44:40 UTC] [INFO    ] [STEP 163] sbdb_post2017: obs R=0.111 dir=(20,-42) | fp dir=(288,-32) R=0.152 sep=70 | null p_dir=0.0001 p_joint=0.0001 | resid dir=(76,2) sep_axis=44
+[2026-09-21 15:44:50 UTC] [INFO    ] [STEP 163] sbdb_all: obs R=0.137 dir=(52,-49) | fp dir=(264,-78) R=0.059 sep=52 | null p_dir=0.0029 p_joint=0.0001 | resid dir=(56,-24) sep_axis=24
+[2026-09-21 15:44:50 UTC] [INFO    ] [STEP 163] Saving data: step_b129_footprint_forward.json
+[2026-09-21 15:44:50 UTC] [DEBUG   ] [STEP 163]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b129_footprint_forward.json
+[2026-09-21 15:44:50 UTC] [INFO    ] [STEP 163]   Output: step_b129_footprint_forward.json
+[2026-09-21 15:44:50 UTC] [INFO    ] [STEP 163] Saving data: step_b129_footprint_forward.csv
+[2026-09-21 15:44:50 UTC] [DEBUG   ] [STEP 163]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b129_footprint_forward.csv
+[2026-09-21 15:44:50 UTC] [INFO    ] [STEP 163]   Output: step_b129_footprint_forward.csv
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Saving data: step_b129_footprint_forward.png
+[2026-09-21 15:44:51 UTC] [DEBUG   ] [STEP 163]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b129_footprint_forward.png
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]   Output: step_b129_footprint_forward.png
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] verdict: physical discovery footprint does not reproduce the arrival dipole direction; the axis-aligned component survives footprint subtraction
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] VERDICT: physical discovery footprint does not reproduce the arrival dipole direction; the axis-aligned component survives footprint subtraction
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] 
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] ================================================================================
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] STEP SUMMARY: step_163_footprint_forward
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] ================================================================================
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Step Number: 163
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Status: SUCCESS
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Duration: 41.49s
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Log Records Emitted: 93
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Output Files: 3
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_163_footprint_forward.log
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] 
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Generated 3 output file(s):
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]   • step_b129_footprint_forward.json: 8.91 KB [sha256 4cb19a5ae0cf37c2]
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]   • step_b129_footprint_forward.csv: 2.50 KB [sha256 8186081117d5f858]
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]   • step_b129_footprint_forward.png: 131.18 KB [sha256 d22462d3d538d76a]
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] 
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]   RESULT SNAPSHOT [step_b129_footprint_forward.json]:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     model:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       propagation = parabolic Barker, true-anomaly grid
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       n_orientations = 150
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       nu_grid = 180
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       n_mc = 8000
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       weight = sum over observable timesteps of 1/(r^2 Delta^2)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       observability = elongation>el_min, dec>dec_min, r<r_vis, Delta<dmax
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     model.cuts_reference:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       r_vis = 3
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       dmax = 4
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       el_min = 60
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       dec_min = -40
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_all:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       n = 131
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_all.T1:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       obs_R = 0.22446537
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       fp_R = 0.13010047
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       sep_obs_fp = 102.50531
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_all.T1.obs_dir [n=2]: median=3.610913 min=-30.19185 max=37.413676
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_all.T1.fp_dir [n=2]: median=74.377646 min=-43.92827 max=192.68356
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_all.T2:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       p_dir_tno = 0.00037495313
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       p_dir_resident = 0.00037495313
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       p_joint = 0.00012498438
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       null_R_med = 0.14728281
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       null_dir_med_sep_tno = 117.1953
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       obs_sep_tno = 17.479198
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       obs_sep_resident = 16.90891
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       null_cap_med = 0.22900763
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       obs_cap = 0.32824427
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       p_cap = 0.0046244219
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_all.T3:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       A_axis = 0.25243676
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       B_fp = 0.077029147
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       resid_norm = 0.0090358002
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       A_ctrl = 0.19338972
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       B_fp_ctrl = -0.16660121
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       resid_norm_ctrl = 0.15667251
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       resid_vec_R = 0.28276759
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       resid_sep_tno = 9.5493768
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       resid_sep_resident = 22.852426
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_all.T3.resid_dir [n=2]: median=12.415164 min=-4.589259 max=29.419587
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_all.T4:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       n_scen = 36
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       fp_dir_maxpair_sep = 101.7636
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       resid_sep_tno_med = 9.8793709
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       resid_sep_tno_max = 21.963296
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_all.T4.fp_dir_med [n=2]: median=90.33229 min=-24.36811 max=205.03269
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_all.T5:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       obs_lon_dipole_R = 0.25071819
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       obs_lon_dipole_dir = 45.943376
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       fp_lon_dipole_R = 0.10043847
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       fp_lon_dipole_dir = 201.22779
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_matched_q3p1:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       n = 54
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]     results.class1_matched_q3p1.T1:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       obs_R = 0.24400661
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       fp_R = 0.16188262
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] ================================================================================
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] STEP 163 COMPLETE: SUCCESS
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_163_footprint_forward_provenance.json
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] 
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] ================================================================================
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] EXECUTIVE SUMMARY
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] ================================================================================
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Step: step_163_footprint_forward (Step 163)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Status: SUCCESS
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Duration: 41.49s
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Log Records: 165
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Output Files: 3
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] Key Outputs:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]   - step_b129_footprint_forward.json (8.91 KB)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]   - step_b129_footprint_forward.csv (2.50 KB)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163]   - step_b129_footprint_forward.png (131.18 KB)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 163] ================================================================================

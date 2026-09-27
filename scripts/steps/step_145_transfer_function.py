@@ -41,7 +41,8 @@ from scipy import stats as _st
 
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.tep9_common import tee_stdout
-from scripts.utils.tep9_common import RESULTS, lv, sep
+from scripts.utils.tep9_common import (RESULTS, lv, sep,
+                                       load_jsonl_dedup)
 
 logger = StepLogger("step_145_transfer_function")
 tee_stdout(logger)
@@ -82,8 +83,7 @@ logger.info("loading dual-leg refit records")
 cohorts = {}
 for tag, jf, axis in (("pre2018", "step_b91_refit.jsonl", AXIS_DECL),
                       ("post2017", "step_b92_refit.jsonl", AXIS_DISP)):
-    with open(RESULTS / jf) as _fh:
-        recs = [json.loads(line) for line in _fh]
+    recs = load_jsonl_dedup(RESULTS / jf)
     recs = [r for r in recs
             if r.get("our_drot") is not None
             and r.get("our_dtau") is not None
@@ -157,10 +157,11 @@ for tag, recs in cohorts.items():
     inc = np.array([r["_incap"] for r in recs])
     v = np.array([r["_v60"] for r in recs], dtype=float)   # AU/yr
     dth = np.array([r["our_drot"] for r in recs], dtype=float)
-    denc = np.array([abs(r["our_denc"]) for r in recs], dtype=float)
-    m = np.isfinite(v) & np.isfinite(dth) & np.isfinite(denc)
+    daa = np.array([abs(r["our_daa"]) for r in recs],
+                   dtype=float)   # D(1/a) in 1e-6 AU^-1
+    m = np.isfinite(v) & np.isfinite(dth) & np.isfinite(daa)
     dv_perp = np.radians(dth) * v * AU_YR_TO_M_S          # m/s
-    dv_par = GM * 1e-6 * denc / (2.0 * v) * AU_YR_TO_M_S  # m/s
+    dv_par = GM * 1e-6 * daa / (2.0 * v) * AU_YR_TO_M_S   # m/s
     row = {}
     for side, mm in (("in_cap", m & inc), ("out_cap", m & ~inc)):
         if mm.sum() > 10:
@@ -268,18 +269,41 @@ elif tf_min > 0.9:
         f"~{t3.get('pre2018', {}).get('med_dalpha', float('nan')):.1e}.")
 else:
     res["verdict"] = (
-        "VELOCITY-DEPENDENT SLIP DETECTED: the implied slip scales "
-        "with crossing speed -- inspect T1 strata; an impulse-like "
-        "or dwell-accumulation realization is not excluded.")
+        "ENERGY CHANNEL NON-BINDING: the corrected |D(1/a)| floor "
+        f"(median ~{min(tf_pre.get('med_dv_par_bound_m_s', 0), tf_post.get('med_dv_par_bound_m_s', 0)):.0f} m/s "
+        "along-track) is not tighter than the transverse impulse a "
+        "mechanical kick would need "
+        f"(~{max(tf_pre.get('med_dv_perp_m_s', 0), tf_post.get('med_dv_perp_m_s', 0)):.0f} m/s), "
+        "so the energy channel cannot exclude an impulse "
+        "realization -- the earlier ~97 per cent transverse bound "
+        "was a wrong-variable artefact (the planetary-approach "
+        "distance had been substituted for the energy residual).  "
+        "The holonomy discriminator therefore rests on the "
+        "velocity-scaling test alone: the pre-2018 declared-axis "
+        "slip is velocity-flat "
+        f"(rho={raw_pre.get('rho', float('nan')):+.3f}, "
+        f"p={raw_pre.get('p', float('nan')):.3g}) while the "
+        "post-2017 displaced slip anticorrelates with crossing "
+        "speed "
+        f"(rho={raw_post.get('rho', float('nan')):+.3f}, "
+        f"p={raw_post.get('p', float('nan')):.3g}; partialled on "
+        "transit epoch "
+        f"rho={pv_post.get('rho', float('nan')):+.3f}, "
+        f"p={pv_post.get('p', float('nan')):.3g}).  The equivalent "
+        "conformal step on the older record is "
+        f"~{t3.get('pre2018', {}).get('med_dalpha', float('nan')):.1e}.")
 res["evidence_status"] = "mechanism discriminator"
 
 res["inputs"] = [
     "results/step_b91_refit.jsonl (pre-2018 dual-leg refit)",
     "results/step_b92_refit.jsonl (post-2017 dual-leg refit)"]
 res["caveats"] = [
-    "The transverse bound uses |D(1/a)| as a noise floor on the "
-    "along-track impulse; it bounds the median kick, not the "
-    "per-object tail.",
+    "The transverse bound uses the measured |D(1/a)| channel "
+    "(the inter-leg energy difference, in 1e-6 AU^-1) as the "
+    "floor on the along-track impulse; it bounds the median "
+    "kick, not the per-object tail, and it includes the real "
+    "planetary encounter contribution, so it is a conservative "
+    "(loose) floor.",
     "v_n is approximated by the total crossing speed; a strongly "
     "grazing wall geometry lowers the implied conformal step.",
     "The discriminator compares realizations of the measured "
@@ -334,11 +358,11 @@ for tag, col, lab in (("pre2018", "crimson", "pre-2018"),
     recs = cohorts[tag]
     v = np.array([r["_v60"] for r in recs], dtype=float)
     dth = np.array([r["our_drot"] for r in recs], dtype=float)
-    denc = np.array([abs(r["our_denc"]) for r in recs], dtype=float)
+    daa = np.array([abs(r["our_daa"]) for r in recs], dtype=float)
     inc = np.array([r["_incap"] for r in recs])
-    m = np.isfinite(v) & np.isfinite(dth) & np.isfinite(denc) & inc
+    m = np.isfinite(v) & np.isfinite(dth) & np.isfinite(daa) & inc
     ax.scatter(np.radians(dth[m]) * v[m] * AU_YR_TO_M_S,
-               GM * 1e-6 * denc[m] / (2 * v[m]) * AU_YR_TO_M_S,
+               GM * 1e-6 * daa[m] / (2 * v[m]) * AU_YR_TO_M_S,
                s=14, alpha=0.6, c=col, label=f"{lab} in-cap")
 ax.set_xscale("log"); ax.set_yscale("log")
 ax.set_xlabel("required transverse kick dv_perp (m/s)")

@@ -138,6 +138,13 @@ def main():
                     f"OSSOS VOTable looks truncated ({n_rows} rows)")
     for sub, prov in provs.items():
         prov_path = DATA_RAW / sub / "provenance.json"
+        if prov_path.exists():
+            try:
+                prior = json.loads(prov_path.read_text())
+                for k, v in prior.get("files", {}).items():
+                    prov.setdefault(k, v)
+            except json.JSONDecodeError:
+                pass
         doc = {"step": "step_002_download_cds",
                "generated_utc": datetime.now(timezone.utc).isoformat(),
                "files": prov}

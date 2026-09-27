@@ -1,83 +1,140 @@
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] LOGGER INITIALIZED: step_059_axis_consistency (Step 059)
-[2026-09-20 10:47:45 UTC] [DEBUG   ] [STEP 059] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_059_axis_consistency.log
-[2026-09-20 10:47:45 UTC] [DEBUG   ] [STEP 059] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:47:45 UTC] [DEBUG   ] [STEP 059] Start time (UTC): 2026-09-20T10:47:45.658057+00:00
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] 
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] STEP PURPOSE
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] --------------------------------------------------------------------------------
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   TEP-9 step 059 -- axis-consistency test
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   Two distinct TNO-derived directions appear in the pipeline:
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   * the detached-sample axis (a>150, q>30, cc<=3):
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   (lam, beta) = (49.9, -17.0) deg   [step_02]
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   * the extreme-sample axis (a>250, q>30, cc<=3):
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   (lam, beta) = (34.0, -12.6) deg   [step_02]
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   The comet-side cap tests (steps 030-041) were pre-declared on the
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   extreme axis (34,-13).  This step re-runs the headline cap contrast
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   and the continuous statistic under BOTH TNO axes, the CODE-recovered
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   axis, their antipodes, and non-TNO reference directions -- on the
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   independent CODE-only sample.  If the anomaly is a real structure in
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   the sky rather than a cap-placement artefact, it must survive under
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   either TNO axis and remain absent under the control directions.
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   Tests (CODE-only matched, N=54):
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   C1  in-cap vs out-cap d_of contrast (MWU, greater) under each axis
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   C2  continuous Spearman correlation d_of vs angular distance
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   C3  same two tests on the Warsaw spike sample for cross-checking
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   Outputs: results/step_b24_axis_consistency.json,
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059]   figures/supplementary/step_b24_axis_consistency.png
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] --------------------------------------------------------------------------------
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] SCRIPT: scripts/steps/step_059_axis_consistency.py
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] SCRIPT SHA256: ce5e99d959ed98cd765ccb9afea3919c846ea9dd3cb72e440a05e77a1b314a83
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] SCRIPT SIZE: 10120 bytes
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] ================================================================================
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] Axis-consistency test
-[2026-09-20 10:47:45 UTC] [INFO    ] [STEP 059] ================================================================================
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] CODE-only matched: 54
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   tno_detached_50_-17        cap p=0.0304 rho=-0.310 p=0.0225
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   tno_extreme_34_-13         cap p=0.0030 rho=-0.314 p=0.0206
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   code_recovered_10_-20      cap p=0.0025 rho=-0.293 p=0.0318
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   anti_detached              cap p=0.9686 rho=+0.310 p=0.0225
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   anti_extreme               cap p=0.9156 rho=+0.314 p=0.0206
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   ism_inflow                 cap p=0.9487 rho=+0.191 p=0.1655
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   gal_pole                   cap p=0.5267 rho=+0.208 p=0.1314
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   ecl_pole                   cap p=0.2810 rho=-0.038 p=0.7858
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   W tno_detached_50_-17        cap p=0.5148 rho=+0.016
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   W tno_extreme_34_-13         cap p=0.5309 rho=+0.033
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   W anti_extreme               cap p=0.5711 rho=-0.033
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   W gal_pole                   cap p=0.8885 rho=+0.061
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Saving data: step_b24_axis_consistency.json
-[2026-09-20 10:47:46 UTC] [DEBUG   ] [STEP 059]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b24_axis_consistency.json
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   Output: step_b24_axis_consistency.json
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Saving data: step_b24_axis_consistency.png
-[2026-09-20 10:47:46 UTC] [DEBUG   ] [STEP 059]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b24_axis_consistency.png
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   Output: step_b24_axis_consistency.png
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] 
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] ================================================================================
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] STEP SUMMARY: step_059_axis_consistency
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] ================================================================================
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Step Number: 059
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Status: SUCCESS
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Duration: 0.53s
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Log Records Emitted: 60
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Output Files: 2
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_059_axis_consistency.log
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] 
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Generated 2 output file(s):
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   • step_b24_axis_consistency.json: 3.17 KB [sha256 cba33849a2060f39]
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   • step_b24_axis_consistency.png: 70.33 KB [sha256 a81fc0ce71c02508]
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] ================================================================================
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] STEP 059 COMPLETE: SUCCESS
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_059_axis_consistency_provenance.json
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] 
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] ================================================================================
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] EXECUTIVE SUMMARY
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] ================================================================================
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Step: step_059_axis_consistency (Step 059)
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Status: SUCCESS
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Duration: 0.53s
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Log Records: 70
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Output Files: 2
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] Key Outputs:
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   - step_b24_axis_consistency.json (3.17 KB)
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059]   - step_b24_axis_consistency.png (70.33 KB)
-[2026-09-20 10:47:46 UTC] [INFO    ] [STEP 059] ================================================================================
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] LOGGER INITIALIZED: step_059_axis_consistency (Step 059)
+[2026-09-21 14:37:07 UTC] [DEBUG   ] [STEP 059] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_059_axis_consistency.log
+[2026-09-21 14:37:07 UTC] [DEBUG   ] [STEP 059] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:37:07 UTC] [DEBUG   ] [STEP 059] Start time (UTC): 2026-09-21T14:37:07.888898+00:00
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] 
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] STEP PURPOSE
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] --------------------------------------------------------------------------------
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   TEP-9 step 059 -- axis-consistency test
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   Two distinct TNO-derived directions appear in the pipeline:
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   * the detached-sample axis (a>150, q>30, cc<=3):
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   (lam, beta) = (49.9, -17.0) deg   [step_02]
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   * the extreme-sample axis (a>250, q>30, cc<=3):
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   (lam, beta) = (34.0, -12.6) deg   [step_02]
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   The comet-side cap tests (steps 030-041) were pre-declared on the
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   extreme axis (34,-13).  This step re-runs the headline cap contrast
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   and the continuous statistic under BOTH TNO axes, the CODE-recovered
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   axis, their antipodes, and non-TNO reference directions -- on the
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   independent CODE-only sample.  If the anomaly is a real structure in
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   the sky rather than a cap-placement artefact, it must survive under
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   either TNO axis and remain absent under the control directions.
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   Tests (CODE-only matched, N=54):
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   C1  in-cap vs out-cap d_of contrast (MWU, greater) under each axis
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   C2  continuous Spearman correlation d_of vs angular distance
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   C3  same two tests on the Warsaw spike sample for cross-checking
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   Outputs: results/step_b24_axis_consistency.json,
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059]   figures/supplementary/step_b24_axis_consistency.png
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] --------------------------------------------------------------------------------
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] SCRIPT: scripts/steps/step_059_axis_consistency.py
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] SCRIPT SHA256: ce5e99d959ed98cd765ccb9afea3919c846ea9dd3cb72e440a05e77a1b314a83
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] SCRIPT SIZE: 10120 bytes
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] ================================================================================
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] Axis-consistency test
+[2026-09-21 14:37:07 UTC] [INFO    ] [STEP 059] ================================================================================
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] CODE-only matched: 54
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   tno_detached_50_-17        cap p=0.0304 rho=-0.310 p=0.0225
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   tno_extreme_34_-13         cap p=0.0030 rho=-0.314 p=0.0206
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   code_recovered_10_-20      cap p=0.0025 rho=-0.293 p=0.0318
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   anti_detached              cap p=0.9686 rho=+0.310 p=0.0225
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   anti_extreme               cap p=0.9156 rho=+0.314 p=0.0206
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   ism_inflow                 cap p=0.9487 rho=+0.191 p=0.1655
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   gal_pole                   cap p=0.5267 rho=+0.208 p=0.1314
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   ecl_pole                   cap p=0.2810 rho=-0.038 p=0.7858
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   W tno_detached_50_-17        cap p=0.5148 rho=+0.016
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   W tno_extreme_34_-13         cap p=0.5309 rho=+0.033
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   W anti_extreme               cap p=0.5711 rho=-0.033
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   W gal_pole                   cap p=0.8885 rho=+0.061
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Saving data: step_b24_axis_consistency.json
+[2026-09-21 14:37:08 UTC] [DEBUG   ] [STEP 059]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b24_axis_consistency.json
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   Output: step_b24_axis_consistency.json
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Saving data: step_b24_axis_consistency.png
+[2026-09-21 14:37:08 UTC] [DEBUG   ] [STEP 059]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b24_axis_consistency.png
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   Output: step_b24_axis_consistency.png
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] 
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] ================================================================================
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] STEP SUMMARY: step_059_axis_consistency
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] ================================================================================
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Step Number: 059
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Status: SUCCESS
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Duration: 0.71s
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Log Records Emitted: 60
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Output Files: 2
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_059_axis_consistency.log
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] 
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Generated 2 output file(s):
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   • step_b24_axis_consistency.json: 3.17 KB [sha256 cba33849a2060f39]
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   • step_b24_axis_consistency.png: 100.16 KB [sha256 b27c5e428910ec90]
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] 
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   RESULT SNAPSHOT [step_b24_axis_consistency.json]:
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]     code_only.tno_detached_50_-17:
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_in = 22
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_out = 32
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_in = 0.16922455
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_out = 0.13456885
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       cap_p = 0.03040489
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_rho = -0.31015819
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_p = 0.022461944
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       group = TNO axis
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]     code_only.tno_extreme_34_-13:
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_in = 19
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_out = 35
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_in = 0.21202382
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_out = 0.13074542
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       cap_p = 0.0029505468
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_rho = -0.31435106
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_p = 0.020614446
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       group = TNO axis
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]     code_only.code_recovered_10_-20:
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_in = 17
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_out = 37
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_in = 0.24444631
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_out = 0.13216591
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       cap_p = 0.002459467
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_rho = -0.29254812
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_p = 0.031818279
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       group = TNO axis
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]     code_only.anti_detached:
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_in = 7
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_out = 47
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_in = 0.076263871
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_out = 0.15400253
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       cap_p = 0.9685961
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_rho = 0.31015819
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_p = 0.022461944
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       group = antipode
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]     code_only.anti_extreme:
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_in = 6
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_out = 48
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_in = 0.093236656
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_out = 0.15261961
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       cap_p = 0.91563929
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_rho = 0.31435106
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_p = 0.020614446
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       group = antipode
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]     code_only.ism_inflow:
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_in = 11
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       n_out = 43
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_in = 0.11020944
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       med_out = 0.15400253
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       cap_p = 0.94868881
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_rho = 0.19146179
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       spearman_p = 0.16547267
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       group = control
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] ================================================================================
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] STEP 059 COMPLETE: SUCCESS
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_059_axis_consistency_provenance.json
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] 
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] ================================================================================
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] EXECUTIVE SUMMARY
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] ================================================================================
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Step: step_059_axis_consistency (Step 059)
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Status: SUCCESS
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Duration: 0.71s
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Log Records: 127
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Output Files: 2
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] Key Outputs:
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   - step_b24_axis_consistency.json (3.17 KB)
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059]   - step_b24_axis_consistency.png (100.16 KB)
+[2026-09-21 14:37:08 UTC] [INFO    ] [STEP 059] ================================================================================

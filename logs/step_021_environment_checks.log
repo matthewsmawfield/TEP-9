@@ -1,73 +1,95 @@
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] LOGGER INITIALIZED: step_021_environment_checks (Step 021)
-[2026-09-20 10:42:23 UTC] [DEBUG   ] [STEP 021] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_021_environment_checks.log
-[2026-09-20 10:42:23 UTC] [DEBUG   ] [STEP 021] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:42:23 UTC] [DEBUG   ] [STEP 021] Start time (UTC): 2026-09-20T10:42:23.850343+00:00
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] 
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] STEP PURPOSE
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] --------------------------------------------------------------------------------
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   TEP / Planet-9 -- step b14: environment checks
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   Two external-structure checks that the bias machinery has not
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   yet covered:
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   E1  The galactic tide.  The known external field acting on
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   outer solar-system orbits is the galactic tidal field --
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   quadrupolar, with preferred directions set by the galactic
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   plane, not a pointed direction.  If the detached cluster
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   were tidal, perihelia should organize relative to the
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   galactic equator/poles and the signature should be
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   axis-symmetric (m=2).  Test: galactic latitude of the
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   perihelion vectors vs isotropic and conditioned nulls;
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   plus the axis's own galactic position.
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   E2  The omega decomposition.  varpi = Om + w.  If the varpi
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   cluster were intrinsic and Om merely footprint-biased,
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   mean w should land near (mean varpi - mean Om) ~ 269 deg.
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   The observed mean w tells whether the w-clustering
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   (Trujillo-Sheppard element) is a trivial consequence or
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   carries independent structure.
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   Outputs: results/step_b14_environment_checks.json,
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021]   figures/supplementary/step_b14_environment_checks.png
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] --------------------------------------------------------------------------------
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] SCRIPT: scripts/steps/step_021_environment_checks.py
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] SCRIPT SHA256: 9cfa5e78c0cbfb7724d512b6ad66be5b83760df517fb253dcf1cd4f0d61acc88
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] SCRIPT SIZE: 8417 bytes
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] ================================================================================
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] Galactic-tide and omega decomposition
-[2026-09-20 10:42:23 UTC] [INFO    ] [STEP 021] ================================================================================
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] E1 mean|sin b|=0.608 p=0.0064
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] E2 mean w=301 vs predicted 269 (offset +33)
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Saving data: step_b14_environment_checks.json
-[2026-09-20 10:42:24 UTC] [DEBUG   ] [STEP 021]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b14_environment_checks.json
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021]   Output: step_b14_environment_checks.json
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Saving data: step_b14_environment_checks.png
-[2026-09-20 10:42:24 UTC] [DEBUG   ] [STEP 021]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b14_environment_checks.png
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021]   Output: step_b14_environment_checks.png
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] 
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] ================================================================================
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] STEP SUMMARY: step_021_environment_checks
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] ================================================================================
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Step Number: 021
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Status: SUCCESS
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Duration: 0.60s
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Log Records Emitted: 50
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Output Files: 2
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_021_environment_checks.log
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] 
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Generated 2 output file(s):
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021]   • step_b14_environment_checks.json: 1.26 KB [sha256 bb8055eff3014242]
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021]   • step_b14_environment_checks.png: 152.51 KB [sha256 b3d63e5a76bfa0a3]
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] ================================================================================
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] STEP 021 COMPLETE: SUCCESS
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_021_environment_checks_provenance.json
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] 
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] ================================================================================
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] EXECUTIVE SUMMARY
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] ================================================================================
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Step: step_021_environment_checks (Step 021)
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Status: SUCCESS
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Duration: 0.60s
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Log Records: 60
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Output Files: 2
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] Key Outputs:
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021]   - step_b14_environment_checks.json (1.26 KB)
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021]   - step_b14_environment_checks.png (152.51 KB)
-[2026-09-20 10:42:24 UTC] [INFO    ] [STEP 021] ================================================================================
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] LOGGER INITIALIZED: step_021_environment_checks (Step 021)
+[2026-09-21 14:31:20 UTC] [DEBUG   ] [STEP 021] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_021_environment_checks.log
+[2026-09-21 14:31:20 UTC] [DEBUG   ] [STEP 021] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:31:20 UTC] [DEBUG   ] [STEP 021] Start time (UTC): 2026-09-21T14:31:20.782405+00:00
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] 
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] STEP PURPOSE
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] --------------------------------------------------------------------------------
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   TEP / Planet-9 -- step b14: environment checks
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   Two external-structure checks that the bias machinery has not
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   yet covered:
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   E1  The galactic tide.  The known external field acting on
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   outer solar-system orbits is the galactic tidal field --
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   quadrupolar, with preferred directions set by the galactic
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   plane, not a pointed direction.  If the detached cluster
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   were tidal, perihelia should organize relative to the
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   galactic equator/poles and the signature should be
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   axis-symmetric (m=2).  Test: galactic latitude of the
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   perihelion vectors vs isotropic and conditioned nulls;
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   plus the axis's own galactic position.
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   E2  The omega decomposition.  varpi = Om + w.  If the varpi
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   cluster were intrinsic and Om merely footprint-biased,
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   mean w should land near (mean varpi - mean Om) ~ 269 deg.
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   The observed mean w tells whether the w-clustering
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   (Trujillo-Sheppard element) is a trivial consequence or
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   carries independent structure.
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   Outputs: results/step_b14_environment_checks.json,
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021]   figures/supplementary/step_b14_environment_checks.png
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] --------------------------------------------------------------------------------
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] SCRIPT: scripts/steps/step_021_environment_checks.py
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] SCRIPT SHA256: 9cfa5e78c0cbfb7724d512b6ad66be5b83760df517fb253dcf1cd4f0d61acc88
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] SCRIPT SIZE: 8417 bytes
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] ================================================================================
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] Galactic-tide and omega decomposition
+[2026-09-21 14:31:20 UTC] [INFO    ] [STEP 021] ================================================================================
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] E1 mean|sin b|=0.608 p=0.0064
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] E2 mean w=301 vs predicted 269 (offset +33)
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Saving data: step_b14_environment_checks.json
+[2026-09-21 14:31:21 UTC] [DEBUG   ] [STEP 021]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b14_environment_checks.json
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]   Output: step_b14_environment_checks.json
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Saving data: step_b14_environment_checks.png
+[2026-09-21 14:31:21 UTC] [DEBUG   ] [STEP 021]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b14_environment_checks.png
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]   Output: step_b14_environment_checks.png
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] 
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] ================================================================================
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] STEP SUMMARY: step_021_environment_checks
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] ================================================================================
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Step Number: 021
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Status: SUCCESS
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Duration: 0.63s
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Log Records Emitted: 50
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Output Files: 2
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_021_environment_checks.log
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] 
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Generated 2 output file(s):
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]   • step_b14_environment_checks.json: 1.26 KB [sha256 bb8055eff3014242]
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]   • step_b14_environment_checks.png: 143.81 KB [sha256 a9cb63395f15685b]
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] 
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]   RESULT SNAPSHOT [step_b14_environment_checks.json]:
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]     E1_galactic_tide:
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       mean_abs_sin_b_gal = 0.608
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       isotropic_expectation = 0.5
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       p_isotropic = 0.0064496775
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       median_abs_b_deg = 43.3
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       note = perihelia sit at mid galactic latitudes (mean|sin b| 0.61, p=0.006 vs isotropic) -- but...
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]     E1_galactic_tide.axis_galactic:
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       l = 182
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       b = -44
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]     E1_galactic_tide.m1_vs_m2:
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       m1_p = 0.0074
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       m2_p = 0.081
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       source = step_02/03 harmonic decomposition
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]     E2_omega_decomposition:
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       mean_Om_deg = 140.4
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       mean_w_deg = 301.3
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       mean_varpi_deg = 49.1
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       predicted_w_deg = 268.7
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       offset_deg = 32.6
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]       note = if the varpi cluster were intrinsic and Om purely footprint, mean w would sit near mean...
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] ================================================================================
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] STEP 021 COMPLETE: SUCCESS
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_021_environment_checks_provenance.json
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] 
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] ================================================================================
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] EXECUTIVE SUMMARY
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] ================================================================================
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Step: step_021_environment_checks (Step 021)
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Status: SUCCESS
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Duration: 0.63s
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Log Records: 82
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Output Files: 2
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] Key Outputs:
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]   - step_b14_environment_checks.json (1.26 KB)
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021]   - step_b14_environment_checks.png (143.81 KB)
+[2026-09-21 14:31:21 UTC] [INFO    ] [STEP 021] ================================================================================

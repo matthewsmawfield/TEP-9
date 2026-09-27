@@ -289,7 +289,7 @@
   "probability": true
  },
  "direct_p": {
-  "file": "audits/TEP9_OBSERVABLE_AUDIT_20260919.json",
+  "file": "audits/audit_tep9_observables.json",
   "path": [
    "residual_definition",
    "q_lt_3p1",
@@ -299,7 +299,7 @@
   "probability": true
  },
  "proxy_p": {
-  "file": "audits/TEP9_OBSERVABLE_AUDIT_20260919.json",
+  "file": "audits/audit_tep9_observables.json",
   "path": [
    "residual_definition",
    "q_lt_3p1",
@@ -649,6 +649,14 @@
   "file": "step_b92_post2017_refit.json",
   "path": [
    "n_full_arc"
+  ],
+  "format": "integer",
+  "probability": false
+ },
+ "post2017_refit_fitted": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "n_fitted"
   ],
   "format": "integer",
   "probability": false
@@ -1043,7 +1051,8 @@
    "predeclared",
    "rank_frac"
   ],
-  "digits": 3,
+  "digits": 2,
+  "format": "pct",
   "probability": false
  },
  "harmonic_b_held": {
@@ -1844,6 +1853,110 @@
   "digits": 3,
   "probability": true
  },
+ "syn_c1_p": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "per_channel",
+   "C1_sbdb_tno_varpi",
+   "p_at_tno_axis"
+  ],
+  "digits": 2,
+  "format": "sci",
+  "probability": true
+ },
+ "syn_c2_p": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "per_channel",
+   "C2_des_tno_cluster",
+   "p_at_tno_axis"
+  ],
+  "digits": 2,
+  "format": "sci",
+  "probability": true
+ },
+ "syn_c3_p": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "per_channel",
+   "C3_mpcorb_tno_cluster",
+   "p_at_tno_axis"
+  ],
+  "digits": 2,
+  "format": "sci",
+  "probability": true
+ },
+ "syn_c4_p": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "per_channel",
+   "C4_mean_plane_lean",
+   "p_at_tno_axis"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "syn_c5_p": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "per_channel",
+   "C5_code_comet_slip",
+   "p_at_tno_axis"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "syn_c6_p": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "per_channel",
+   "C6_warsaw_inbound_slip",
+   "p_at_tno_axis"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "syn_c7_p": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "per_channel",
+   "C7_pooled_comet_dipole",
+   "p_at_tno_axis"
+  ],
+  "digits": 2,
+  "format": "sci",
+  "probability": true
+ },
+ "syn_c8_p": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "per_channel",
+   "C8_cometels_census_dipole",
+   "p_at_tno_axis"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "syn_c9_p": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "per_channel",
+   "C9_post2017_sbdb_dipole",
+   "p_at_tno_axis"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "syn_c10_p": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "per_channel",
+   "C10_jfc_injection_chain",
+   "p_at_tno_axis"
+  ],
+  "digits": 2,
+  "probability": true
+ },
  "best_axis_sep": {
   "file": "step_b90_global_synthesis.json",
   "path": [
@@ -2294,5 +2407,1864 @@
   ],
   "format": "integer",
   "probability": false
+ },
+ "xf_disp_dir_p": {
+  "file": "step_b44_cross_fitter.json",
+  "path": [
+   "disp_dir",
+   "p_in"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "xf_pooled_n": {
+  "file": "step_b44_cross_fitter.json",
+  "path": [
+   "groups",
+   "pooled",
+   "n"
+  ],
+  "digits": 0,
+  "format": "integer",
+  "probability": false
+ },
+ "xf_pooled_floor": {
+  "file": "step_b44_cross_fitter.json",
+  "path": [
+   "groups",
+   "pooled",
+   "median_dperi_deg"
+  ],
+  "digits": 2,
+  "probability": false
+ },
+ "xf_pooled_in": {
+  "file": "step_b44_cross_fitter.json",
+  "path": [
+   "groups",
+   "pooled",
+   "median_in"
+  ],
+  "digits": 3,
+  "probability": false
+ },
+ "xf_pooled_out": {
+  "file": "step_b44_cross_fitter.json",
+  "path": [
+   "groups",
+   "pooled",
+   "median_out"
+  ],
+  "digits": 3,
+  "probability": false
+ },
+ "xf_pooled_mwu_p": {
+  "file": "step_b44_cross_fitter.json",
+  "path": [
+   "groups",
+   "pooled",
+   "p_mwu_in_vs_out"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "xf_floor_rho": {
+  "file": "step_b44_cross_fitter.json",
+  "path": [
+   "floor_vs_anomaly",
+   "all",
+   "rho"
+  ],
+  "digits": 2,
+  "probability": false
+ },
+ "xf_floor_p": {
+  "file": "step_b44_cross_fitter.json",
+  "path": [
+   "floor_vs_anomaly",
+   "all",
+   "p_2sided"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "xf_disp_r": {
+  "file": "step_b44_cross_fitter.json",
+  "path": [
+   "disp_dir",
+   "R_in"
+  ],
+  "digits": 3,
+  "probability": false
+ },
+ "tps_arc_frac": {
+  "file": "step_b125_tp_slip.json",
+  "path": [
+   "T1_validity",
+   "med_abs_dtp_io_frac_of_arc"
+  ],
+  "digits": 2,
+  "format": "sci",
+  "probability": false
+ },
+ "jfc_pairing_p": {
+  "file": "step_b17_injection_chain.json",
+  "path": [
+   "I3_pairing_test_q<3",
+   "p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "jfc_n_all": {
+  "file": "step_b17_injection_chain.json",
+  "path": [
+   "n_jfc"
+  ],
+  "format": "integer",
+  "probability": false
+ },
+ "jfc_deep_n": {
+  "file": "step_b17_injection_chain.json",
+  "path": [
+   "I4_chain",
+   "JFC_q<3",
+   "N"
+  ],
+  "format": "integer",
+  "probability": false
+ },
+ "jfc_deep_mu": {
+  "file": "step_b17_injection_chain.json",
+  "path": [
+   "I4_chain",
+   "JFC_q<3",
+   "mu"
+  ],
+  "digits": 3,
+  "probability": false
+ },
+ "jfc_shallow_fp_mu": {
+  "file": "step_b17_injection_chain.json",
+  "path": [
+   "I2_footprints",
+   "rows",
+   "2",
+   "mu_opp"
+  ],
+  "digits": 3,
+  "probability": false
+ },
+ "jfc_shallow_obs_mu": {
+  "file": "step_b17_injection_chain.json",
+  "path": [
+   "I2_footprints",
+   "rows",
+   "2",
+   "mu_varpi"
+  ],
+  "digits": 3,
+  "probability": false
+ },
+ "gs_dirf_in": {
+  "file": "step_b106_gaia_sink.json",
+  "path": [
+   "T7_pre2018_declared_axis_misfit",
+   "ddirf",
+   "median_in"
+  ],
+  "digits": 3,
+  "probability": false
+ },
+ "gs_dirf_out": {
+  "file": "step_b106_gaia_sink.json",
+  "path": [
+   "T7_pre2018_declared_axis_misfit",
+   "ddirf",
+   "median_out"
+  ],
+  "digits": 3,
+  "probability": false
+ },
+ "gs_dirf_p": {
+  "file": "step_b106_gaia_sink.json",
+  "path": [
+   "T7_pre2018_declared_axis_misfit",
+   "ddirf",
+   "p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "loc_overlap_gap": {
+  "file": "step_b86_pre2018_localization.json",
+  "path": [
+   "T1_membership_decomposition",
+   "overlap",
+   "med_gap"
+  ],
+  "digits": 1
+ },
+ "loc_overlap_p": {
+  "file": "step_b86_pre2018_localization.json",
+  "path": [
+   "T1_membership_decomposition",
+   "overlap",
+   "mwu_greater_p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "loc_nonoverlap_gap": {
+  "file": "step_b86_pre2018_localization.json",
+  "path": [
+   "T1_membership_decomposition",
+   "non_overlap",
+   "med_gap"
+  ],
+  "digits": 2
+ },
+ "loc_nonoverlap_p": {
+  "file": "step_b86_pre2018_localization.json",
+  "path": [
+   "T1_membership_decomposition",
+   "non_overlap",
+   "mwu_greater_p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "leg_din_gap": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T1_leg_decomposition",
+   "overlap",
+   "d_in",
+   "med_gap"
+  ],
+  "digits": 3
+ },
+ "leg_din_p": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T1_leg_decomposition",
+   "overlap",
+   "d_in",
+   "mwu_greater_p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "leg_dout_p": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T1_leg_decomposition",
+   "overlap",
+   "d_out",
+   "mwu_greater_p"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "twist_in": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T2_twist_coherence",
+   "overlap",
+   "med_in"
+  ],
+  "digits": 3
+ },
+ "twist_out": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T2_twist_coherence",
+   "overlap",
+   "med_out"
+  ],
+  "digits": 3
+ },
+ "twist_p": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T2_twist_coherence",
+   "overlap",
+   "mwu_less_p"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "xf_concord_n": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T4_cross_fitter_concordance",
+   "n_pairs"
+  ],
+  "format": "integer"
+ },
+ "xf_concord_rho": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T4_cross_fitter_concordance",
+   "rho_all"
+  ],
+  "digits": 2
+ },
+ "xf_concord_rho_in": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T4_cross_fitter_concordance",
+   "rho_in"
+  ],
+  "digits": 2
+ },
+ "xf_concord_p": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T4_cross_fitter_concordance",
+   "rho_all_p"
+  ],
+  "format": "sci",
+  "digits": 1
+ },
+ "strata_bound_gap": {
+  "file": "step_b83_dipole_mechanism.json",
+  "path": [
+   "T6_sample_splits",
+   "bound_e_lt_1",
+   "gap"
+  ],
+  "digits": 2
+ },
+ "strata_peri_gap": {
+  "file": "step_b83_dipole_mechanism.json",
+  "path": [
+   "T6_sample_splits",
+   "arc_spans_perihelion",
+   "gap"
+  ],
+  "digits": 2
+ },
+ "strata_nobs_p": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T4c_robustness",
+   "quality_strata",
+   "n_obs>=med",
+   "p"
+  ],
+  "digits": 1,
+  "probability": true
+ },
+ "pred_frac_in": {
+  "file": "step_b19_prospective_predictions.json",
+  "path": [
+   "P1_next_detached",
+   "predicted_frac_in_cap"
+  ],
+  "format": "pct",
+  "digits": 2
+ },
+ "pred_frac_base": {
+  "file": "step_b19_prospective_predictions.json",
+  "path": [
+   "P1_next_detached",
+   "footprint_only_baseline"
+  ],
+  "format": "pct",
+  "digits": 2
+ },
+ "pred_n_1pct": {
+  "file": "step_b32_detection_power.json",
+  "path": [
+   "N_exact_C1_binomial",
+   "C1_95pct_at_1pct"
+  ],
+  "format": "integer"
+ },
+ "pred_n_5pct": {
+  "file": "step_b32_detection_power.json",
+  "path": [
+   "N_exact_C1_binomial",
+   "C1_95pct_at_5pct"
+  ],
+  "format": "integer"
+ },
+ "refit_dual_n": {
+  "file": "step_b91_nonwarsaw_refit.json",
+  "path": [
+   "n_dual_leg"
+  ],
+  "format": "integer"
+ },
+ "refit_rms_as": {
+  "file": "step_b91_nonwarsaw_refit.json",
+  "path": [
+   "T5_audit",
+   "rms_all_median"
+  ],
+  "digits": 2
+ },
+ "refit_pdir_deg": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T1_validity",
+   "element_diffs_vs_sbdb",
+   "med_pdir_deg"
+  ],
+  "digits": 1
+ },
+ "refit_pdir_deg_pre": {
+  "file": "step_b91_nonwarsaw_refit.json",
+  "path": [
+   "T1_validity",
+   "element_diffs_vs_sbdb",
+   "med_pdir_deg"
+  ],
+  "digits": 1
+ },
+ "post2017_dual_n": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "n_dual_joint"
+  ],
+  "format": "integer"
+ },
+ "mask_leg_in": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T2_masking",
+   "declared_axis",
+   "leg_fit",
+   "med_in"
+  ],
+  "digits": 2
+ },
+ "mask_leg_out": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T2_masking",
+   "declared_axis",
+   "leg_fit",
+   "med_out"
+  ],
+  "digits": 3
+ },
+ "mask_leg_p": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T2_masking",
+   "declared_axis",
+   "leg_fit",
+   "p_perm"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "mask_single_p": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T2_masking",
+   "declared_axis",
+   "single_fit",
+   "p"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "mask_cat_p": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T2_masking",
+   "declared_axis",
+   "catalogue",
+   "p"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "mask_disp_p_lo": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T3_displaced",
+   "displaced_axis",
+   "leg_fit",
+   "p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "mask_disp_p_hi": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T3_displaced",
+   "displaced_axis",
+   "catalogue",
+   "p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "disp_dout_in": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T4_signature_class",
+   "at_displaced",
+   "our_d_out_leg",
+   "med_in"
+  ],
+  "digits": 3
+ },
+ "disp_dout_out": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T4_signature_class",
+   "at_displaced",
+   "our_d_out_leg",
+   "med_out"
+  ],
+  "digits": 2
+ },
+ "disp_drot_p": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T4_signature_class",
+   "at_displaced",
+   "our_drot",
+   "p"
+  ],
+  "digits": 1,
+  "probability": true
+ },
+ "disp_ddirf_p": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T4_signature_class",
+   "at_displaced",
+   "our_ddirf",
+   "p"
+  ],
+  "digits": 1,
+  "probability": true
+ },
+ "disp_fitrms_p": {
+  "file": "step_b92_post2017_refit.json",
+  "path": [
+   "T4_signature_class",
+   "at_displaced",
+   "ctl_fit_all_rms",
+   "p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "disp_daa_p": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T8_signature_morphology",
+   "daa_energy",
+   "mw_p_greater"
+  ],
+  "digits": 1,
+  "probability": true
+ },
+ "disp_share_in": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T8_signature_morphology",
+   "inbound_share",
+   "med_in"
+  ],
+  "digits": 2
+ },
+ "disp_bound_in": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T8_signature_morphology",
+   "bound_fraction",
+   "in_cap"
+  ],
+  "format": "pct",
+  "digits": 2
+ },
+ "disp_bound_out": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T8_signature_morphology",
+   "bound_fraction",
+   "out_cap"
+  ],
+  "format": "pct",
+  "digits": 2
+ },
+ "carrier_warsaw_p": {
+  "file": "step_b33_wall_vs_field.json",
+  "path": [
+   "warsaw_inbound_share",
+   "p_share_in_gt_out"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "carrier_sbdbrefit_p": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T9_carrier_audit",
+   "in_code_under_sbdb",
+   "mw_p_greater"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "carrier_sbdbrefit_share": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T9_carrier_audit",
+   "in_code_under_sbdb",
+   "inbound_share_in"
+  ],
+  "digits": 2
+ },
+ "carrier_lpc_ngrid": {
+  "file": "step_b70_harmonic_axis_transfer.json",
+  "path": [
+   "T1_axis_recovery",
+   "n_grid"
+  ],
+  "format": "integer"
+ },
+ "code_p_approx": {
+  "file": "step_11_code_confirm.json",
+  "path": [
+   "code_only",
+   "d_of",
+   "p"
+  ],
+  "digits": 1,
+  "probability": true
+ },
+ "cmb_code_b": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T10_cmb_dipole_ladder",
+   "CODE",
+   "b_cos_cmb"
+  ],
+  "digits": 3
+ },
+ "cmb_code_p": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T10_cmb_dipole_ladder",
+   "CODE",
+   "p_2sided_perm"
+  ],
+  "format": "sci",
+  "digits": 2
+ },
+ "cmb_code_sep": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T10_cmb_dipole_ladder",
+   "CODE",
+   "pole_sep_to_cmb_apex"
+  ],
+  "digits": 2
+ },
+ "cmb_post_b": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T10_cmb_dipole_ladder",
+   "post2017",
+   "b_cos_cmb"
+  ],
+  "digits": 3
+ },
+ "cmb_post_sep": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T10_cmb_dipole_ladder",
+   "post2017",
+   "pole_sep_to_cmb_apex"
+  ],
+  "digits": 2
+ },
+ "cmb_post_p": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T10_cmb_dipole_ladder",
+   "post2017",
+   "p_2sided_perm"
+  ],
+  "format": "sci",
+  "digits": 1
+ },
+ "cmb_warsaw_p": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T10_cmb_dipole_ladder",
+   "warsaw",
+   "p_2sided_perm"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "cmb_pre_p": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T10_cmb_dipole_ladder",
+   "pre2018",
+   "p_2sided_perm"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "cmb_decl_antapex": {
+  "file": "step_b89_displaced_temporal.json",
+  "path": [
+   "results",
+   "T5_named_directions",
+   "cmb_cone_coherence",
+   "declared_axis_angle_deg"
+  ],
+  "digits": 3
+ },
+ "gnss_cmb_sep": {
+  "file": "step_b99_cross_channel.json",
+  "path": [
+   "T1_ledger",
+   "3",
+   "cone_deg"
+  ],
+  "digits": 2
+ },
+ "drot_overlap_gap": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T1_leg_decomposition",
+   "overlap",
+   "drot",
+   "med_gap"
+  ],
+  "digits": 1
+ },
+ "drot_overlap_p": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T1_leg_decomposition",
+   "overlap",
+   "drot",
+   "mwu_greater_p"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "gap45_jpl": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T4_cross_fitter_concordance",
+   "matched_gap_45deg",
+   "jpl"
+  ],
+  "digits": 3
+ },
+ "gap45_code": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T4_cross_fitter_concordance",
+   "matched_gap_45deg",
+   "code"
+  ],
+  "digits": 3
+ },
+ "gap60_jpl": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T4_cross_fitter_concordance",
+   "matched_gap_60deg",
+   "jpl"
+  ],
+  "digits": 3
+ },
+ "gap60_code": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T4_cross_fitter_concordance",
+   "matched_gap_60deg",
+   "code"
+  ],
+  "digits": 2
+ },
+ "cls1a_gap": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T5_class_constraint_gradient",
+   "1a+",
+   "med_gap"
+  ],
+  "digits": 3
+ },
+ "cls1a_p": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T5_class_constraint_gradient",
+   "1a+",
+   "mwu_greater_p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "nf_arc_in": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T3_noise_floor_audit",
+   "med_arc_in"
+  ],
+  "format": "integer"
+ },
+ "nf_arc_out": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T3_noise_floor_audit",
+   "med_arc_out"
+  ],
+  "format": "integer"
+ },
+ "nf_nobs_in": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T3_noise_floor_audit",
+   "med_nobs_in"
+  ],
+  "format": "integer"
+ },
+ "nf_nobs_out": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T3_noise_floor_audit",
+   "med_nobs_out"
+  ],
+  "format": "integer"
+ },
+ "nf_levene_p": {
+  "file": "step_b87_leg_coherence.json",
+  "path": [
+   "T3_noise_floor_audit",
+   "levene_p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "meridian_pre_p": {
+  "file": "step_b96_bipolar_meridian.json",
+  "path": [
+   "T3_meridian_resident",
+   "pre2018",
+   "p_perm"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "fp_dir_lam": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_all",
+   "T1",
+   "fp_dir",
+   "0"
+  ],
+  "digits": 4
+ },
+ "fp_dir_bet": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_all",
+   "T1",
+   "fp_dir",
+   "1"
+  ],
+  "digits": 4
+ },
+ "fp_obs_sep": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_all",
+   "T1",
+   "sep_obs_fp"
+  ],
+  "digits": 4
+ },
+ "fp_nullcap": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_all",
+   "T2",
+   "null_cap_med"
+  ],
+  "digits": 3,
+  "format": "pct"
+ },
+ "fp_pcap": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_all",
+   "T2",
+   "p_cap"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "fp_pdir": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_all",
+   "T2",
+   "p_dir_tno"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "fp_pdir_matched": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_matched_q3p1",
+   "T2",
+   "p_dir_tno"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "fp_pdir_pre": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "sbdb_pre2018",
+   "T2",
+   "p_dir_tno"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "fp_pdir_all": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "sbdb_all",
+   "T2",
+   "p_dir_tno"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "fp_resid_sep": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_all",
+   "T3",
+   "resid_sep_tno"
+  ],
+  "digits": 2
+ },
+ "fp_resid_sep_max": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_all",
+   "T4",
+   "resid_sep_tno_max"
+  ],
+  "digits": 3
+ },
+ "fp_lon_dir": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_all",
+   "T5",
+   "fp_lon_dipole_dir"
+  ],
+  "digits": 4
+ },
+ "fp_obs_londir": {
+  "file": "step_b129_footprint_forward.json",
+  "path": [
+   "results",
+   "class1_all",
+   "T5",
+   "obs_lon_dipole_dir"
+  ],
+  "digits": 3
+ },
+ "gen_fcap_med": {
+  "file": "step_b123_generative_population.json",
+  "path": [
+   "results",
+   "models",
+   "M1_tide_flux_sel|all_c1",
+   "f_cap_med"
+  ],
+  "digits": 3,
+  "format": "pct"
+ },
+ "gen_pcap": {
+  "file": "step_b123_generative_population.json",
+  "path": [
+   "results",
+   "models",
+   "M1_tide_flux_sel|all_c1",
+   "p_cap"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "gen_pcap_matched": {
+  "file": "step_b123_generative_population.json",
+  "path": [
+   "results",
+   "models",
+   "M1_tide_flux_sel|matched",
+   "p_cap"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "gen_pdir_matched": {
+  "file": "step_b123_generative_population.json",
+  "path": [
+   "results",
+   "models",
+   "M1_tide_flux_sel|matched",
+   "p_dir"
+  ],
+  "format": "sci",
+  "digits": 2,
+  "probability": true
+ },
+ "gen_obs_sep_matched": {
+  "file": "step_b123_generative_population.json",
+  "path": [
+   "results",
+   "models",
+   "M1_tide_flux_sel|matched",
+   "obs_sep"
+  ],
+  "digits": 2
+ },
+ "gen_model_sep": {
+  "file": "step_b123_generative_population.json",
+  "path": [
+   "results",
+   "wmaps",
+   "tide_flux",
+   "density_resultant_sep"
+  ],
+  "digits": 3,
+  "probability": false
+ },
+ "iso_a1_offsig": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "T3_real_record",
+   "A1_offset_sigma"
+  ],
+  "digits": 2
+ },
+ "iso_a1_refit": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "T3_real_record",
+   "A1_refit"
+  ],
+  "digits": 3,
+  "format": "sci"
+ },
+ "iso_inj_a1sig": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "T1_controls",
+   "max_abs_A1_over_sigma"
+  ],
+  "digits": 2
+ },
+ "iso_inj_floor": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "realizations",
+   "ctrl",
+   "grav_rms"
+  ],
+  "digits": 3
+ },
+ "iso_inj_freq": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "T2_lapse_transfer",
+   "f_required_for_observed_A1"
+  ],
+  "digits": 2,
+  "format": "sci"
+ },
+ "iso_inj_grav_real": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "T3_real_record",
+   "grav_rms"
+  ],
+  "digits": 3
+ },
+ "iso_inj_mid_rms": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "realizations",
+   "mid",
+   "grav_rms"
+  ],
+  "digits": 3
+ },
+ "iso_inj_morph": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "T4_morphology",
+   "A2_over_A1"
+  ],
+  "digits": 2
+ },
+ "iso_inj_ng_real": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "T3_real_record",
+   "ng_rms"
+  ],
+  "digits": 3
+ },
+ "iso_inj_pred": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "T2_lapse_transfer",
+   "predicted_f_dwell_scaled"
+  ],
+  "digits": 2,
+  "format": "sci"
+ },
+ "iso_inj_slope": {
+  "file": "step_b119_iso_injection.json",
+  "path": [
+   "T2_lapse_transfer",
+   "slope_A1_per_f"
+  ],
+  "digits": 2,
+  "format": "sci"
+ },
+ "met_thread_in": {
+  "file": "step_b124_metric_winding.json",
+  "path": [
+   "results",
+   "T8_threading",
+   "resident",
+   "med_in"
+  ],
+  "digits": 3
+ },
+ "met_thread_out": {
+  "file": "step_b124_metric_winding.json",
+  "path": [
+   "results",
+   "T8_threading",
+   "resident",
+   "med_out"
+  ],
+  "digits": 3
+ },
+ "met_thread_p": {
+  "file": "step_b124_metric_winding.json",
+  "path": [
+   "results",
+   "T8_threading",
+   "resident",
+   "p_cap_thread"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "met_w_pcap": {
+  "file": "step_b124_metric_winding.json",
+  "path": [
+   "results",
+   "T2_cap_partition",
+   "p_greater"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "met_w_in": {
+  "file": "step_b124_metric_winding.json",
+  "path": [
+   "results",
+   "T2_cap_partition",
+   "med_in"
+  ],
+  "digits": 3
+ },
+ "met_w_out": {
+  "file": "step_b124_metric_winding.json",
+  "path": [
+   "results",
+   "T2_cap_partition",
+   "med_out"
+  ],
+  "digits": 3
+ },
+ "rad_d8_100": {
+  "file": "step_b122_boundary_radius.json",
+  "path": [
+   "radial_transfer",
+   "100.0",
+   "med_at_8AU"
+  ],
+  "digits": 3
+ },
+ "rad_d8_250": {
+  "file": "step_b122_boundary_radius.json",
+  "path": [
+   "radial_transfer",
+   "250.0",
+   "med_at_8AU"
+  ],
+  "digits": 3
+ },
+ "rad_ddirf_250": {
+  "file": "step_b122_boundary_radius.json",
+  "path": [
+   "aggregate",
+   "250.0",
+   "ddirf_med"
+  ],
+  "digits": 3
+ },
+ "rad_disrupt25_n": {
+  "file": "step_b122_boundary_radius.json",
+  "path": [
+   "aggregate",
+   "25.0",
+   "n_disrupted"
+  ],
+  "format": "integer"
+ },
+ "rad_disrupt250_n": {
+  "file": "step_b122_boundary_radius.json",
+  "path": [
+   "aggregate",
+   "250.0",
+   "n_disrupted"
+  ],
+  "format": "integer",
+  "probability": false
+ },
+ "tps_med_dtp": {
+  "file": "step_b125_tp_slip.json",
+  "path": [
+   "T1_validity",
+   "med_abs_dtp_io_d"
+  ],
+  "digits": 2
+ },
+ "tps_p_cap": {
+  "file": "step_b125_tp_slip.json",
+  "path": [
+   "T2_cap_contrast",
+   "full",
+   "p_mwu"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "tps_p_code": {
+  "file": "step_b125_tp_slip.json",
+  "path": [
+   "T2_cap_contrast",
+   "code_overlap",
+   "p_perm"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "tps_p_sign": {
+  "file": "step_b125_tp_slip.json",
+  "path": [
+   "T3_signed_polarity",
+   "declared_cap",
+   "p_signed_shift"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "tps_med_in": {
+  "file": "step_b125_tp_slip.json",
+  "path": [
+   "T2_cap_contrast",
+   "full",
+   "med_in_d"
+  ],
+  "digits": 3
+ },
+ "tps_med_out": {
+  "file": "step_b125_tp_slip.json",
+  "path": [
+   "T2_cap_contrast",
+   "full",
+   "med_out_d"
+  ],
+  "digits": 3
+ },
+ "iso_leg_drot1": {
+  "file": "step_b126_iso_legrefit.json",
+  "path": [
+   "ledger",
+   "0",
+   "drot"
+  ],
+  "digits": 3
+ },
+ "iso_leg_drot2": {
+  "file": "step_b126_iso_legrefit.json",
+  "path": [
+   "ledger",
+   "1",
+   "drot"
+  ],
+  "digits": 3
+ },
+ "iso_leg_drot3": {
+  "file": "step_b126_iso_legrefit.json",
+  "path": [
+   "ledger",
+   "2",
+   "drot"
+  ],
+  "digits": 3
+ },
+ "iso_leg_dtau1": {
+  "file": "step_b126_iso_legrefit.json",
+  "path": [
+   "ledger",
+   "0",
+   "dtau"
+  ],
+  "digits": 3
+ },
+ "iso_leg_dtau2": {
+  "file": "step_b126_iso_legrefit.json",
+  "path": [
+   "ledger",
+   "1",
+   "dtau"
+  ],
+  "digits": 2
+ },
+ "iso_leg_dtau3": {
+  "file": "step_b126_iso_legrefit.json",
+  "path": [
+   "ledger",
+   "2",
+   "dtau"
+  ],
+  "digits": 2
+ },
+ "iso_leg_din1": {
+  "file": "step_b126_iso_legrefit.json",
+  "path": [
+   "ledger",
+   "0",
+   "d_in"
+  ],
+  "digits": 3
+ },
+ "iso_leg_dout1": {
+  "file": "step_b126_iso_legrefit.json",
+  "path": [
+   "ledger",
+   "0",
+   "d_out"
+  ],
+  "digits": 3
+ },
+ "iso_leg_pct1": {
+  "file": "step_b126_iso_legrefit.json",
+  "path": [
+   "cohort_context",
+   "1I/'Oumuamua",
+   "fit_all_rms",
+   "iso_percentile"
+  ],
+  "digits": 2
+ },
+ "apdb_rho_at": {
+  "file": "step_b127_apdb_planet.json",
+  "path": [
+   "T2_direction",
+   "along_track",
+   "rho_vs_sep_axis"
+  ],
+  "digits": 2
+ },
+ "apdb_p_at": {
+  "file": "step_b127_apdb_planet.json",
+  "path": [
+   "T2_direction",
+   "along_track",
+   "p"
+  ],
+  "digits": 2,
+  "format": "sci",
+  "probability": true
+ },
+ "apdb_med_in": {
+  "file": "step_b127_apdb_planet.json",
+  "path": [
+   "T2_direction",
+   "along_track",
+   "cap_mwu",
+   "med_in"
+  ],
+  "digits": 3
+ },
+ "apdb_med_out": {
+  "file": "step_b127_apdb_planet.json",
+  "path": [
+   "T2_direction",
+   "along_track",
+   "cap_mwu",
+   "med_out"
+  ],
+  "digits": 2
+ },
+ "apdb_p_cap": {
+  "file": "step_b127_apdb_planet.json",
+  "path": [
+   "T2_direction",
+   "along_track",
+   "cap_mwu",
+   "p"
+  ],
+  "digits": 2,
+  "format": "sci",
+  "probability": true
+ },
+ "nima_n_oc": {
+  "file": "step_b128_nima_pilot.json",
+  "path": [
+   "T1_coverage",
+   "n_with_oc"
+  ],
+  "format": "integer"
+ },
+ "nima_in_amp": {
+  "file": "step_b128_nima_pilot.json",
+  "path": [
+   "T3_contrast",
+   "in_med_amp"
+  ],
+  "digits": 3
+ },
+ "nima_out_amp": {
+  "file": "step_b128_nima_pilot.json",
+  "path": [
+   "T3_contrast",
+   "out_med_amp"
+  ],
+  "digits": 3
+ },
+ "tide_leg_offset_p": {
+  "file": "step_b35_galactic_tide.json",
+  "path": [
+   "cap_contrast",
+   "leg_offset_in_gt_out_p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "tide_ddrot_p": {
+  "file": "step_b35_galactic_tide.json",
+  "path": [
+   "cap_contrast",
+   "abs_ddrot_in_gt_out_p"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "synth_pairwise_mean_deg": {
+  "file": "step_b90_global_synthesis.json",
+  "path": [
+   "pairwise_concordance",
+   "mean_pairwise_deg"
+  ],
+  "digits": 3
+ },
+ "tg_slip_disp_med": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "slip_displacement_deg",
+   "median"
+  ],
+  "digits": 3
+ },
+ "tg_slip_disp_max": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "slip_displacement_deg",
+   "max"
+  ],
+  "digits": 3
+ },
+ "tg_req_shift_fcap10": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "redirection_bound",
+   "all_c1",
+   "f_cap_by_coherent_shift_deg",
+   "10"
+  ],
+  "digits": 3
+ },
+ "tg_enh_factor": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "required_modulation",
+   "all_c1",
+   "enhancement_factor"
+  ],
+  "digits": 3
+ },
+ "tg_enh_factor_matched": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "required_modulation",
+   "matched",
+   "enhancement_factor"
+  ],
+  "digits": 3
+ },
+ "tg_lobe_A": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "required_modulation",
+   "all_c1",
+   "lobe_A_on_iso"
+  ],
+  "digits": 2
+ },
+ "tg_dip_m": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "required_modulation",
+   "all_c1",
+   "dip_m_on_iso"
+  ],
+  "digits": 2
+ },
+ "tg_fanti_obs": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "models",
+   "M_lobe|all_c1",
+   "f_anti_obs"
+  ],
+  "digits": 3
+ },
+ "tg_fanti_iso_med": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "models",
+   "M_iso|all_c1",
+   "f_anti_med"
+  ],
+  "digits": 3
+ },
+ "tg_fanti_dip_med": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "models",
+   "M_dip|all_c1",
+   "f_anti_med"
+  ],
+  "digits": 3
+ },
+ "tg_fanti_lobe_med": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "models",
+   "M_lobe|all_c1",
+   "f_anti_med"
+  ],
+  "digits": 3
+ },
+ "tg_rho_drot_lobe": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "joint",
+   "all_c1",
+   "rho_drot_lobe"
+  ],
+  "digits": 3
+ },
+ "tg_rho_drot_lobe_p": {
+  "file": "step_b130_tep_generative.json",
+  "path": [
+   "results",
+   "joint",
+   "all_c1",
+   "p_drot_lobe"
+  ],
+  "digits": 2,
+  "probability": true
+ },
+ "df_ub_req": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "headline",
+   "u_b_required"
+  ],
+  "digits": 2,
+  "format": "sci"
+ },
+ "df_contrast": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "headline",
+   "measured_contrast_yr"
+  ],
+  "digits": 2
+ },
+ "df_rho_pred": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "headline",
+   "rho_pred_vs_resid"
+  ],
+  "digits": 3
+ },
+ "df_rho_pred_p": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "headline",
+   "p_pred_vs_resid"
+  ],
+  "digits": 3,
+  "probability": true
+ },
+ "df_pred_pole": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "headline",
+   "pred_pole_med"
+  ],
+  "digits": 2
+ },
+ "df_pred_mid": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "headline",
+   "pred_mid_med"
+  ],
+  "digits": 2
+ },
+ "df_track_contrast_s": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "tracking_baseline",
+   "pred_contrast_s"
+  ],
+  "digits": 2,
+  "format": "sci"
+ },
+ "df_conf_ratio": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "conformal_correlate",
+   "ratio_vs_sustained_bound"
+  ],
+  "digits": 0
+ },
+ "df_conf_ratio_inst": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "conformal_correlate",
+   "ratio_vs_instantaneous_bound"
+  ],
+  "digits": 1
+ },
+ "df_gal_ratio": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "sourceable_budget",
+   "ratio_vs_galactic"
+  ],
+  "digits": 0
+ },
+ "df_shear_imp": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "shear_impulse",
+   "delta_v_m_s"
+  ],
+  "digits": 2,
+  "format": "sci"
+ },
+ "df_shear_ratio": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "shear_impulse",
+   "ratio"
+  ],
+  "digits": 2,
+  "format": "sci"
+ },
+ "df_adm_slip_sust": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "admissible_sector",
+   "max_slip_contrast_sustained_yr"
+  ],
+  "digits": 1,
+  "format": "sci"
+ },
+ "df_adm_slip_inst": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "admissible_sector",
+   "max_slip_contrast_instantaneous_yr"
+  ],
+  "digits": 1,
+  "format": "sci"
+ },
+ "df_deficit_sust": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "admissible_sector",
+   "deficit_vs_measured_sustained"
+  ],
+  "digits": 2,
+  "format": "sci"
+ },
+ "df_deficit_inst": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "admissible_sector",
+   "deficit_vs_measured_instantaneous"
+  ],
+  "digits": 2,
+  "format": "sci"
+ },
+ "df_adm_signed_transport": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "branch_comparison",
+   "admissible_signed_transport_contrast_yr"
+  ],
+  "digits": 2
+ },
+ "df_excluded_signed_transport": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "branch_comparison",
+   "excluded_signed_transport_contrast_yr"
+  ],
+  "digits": 2
+ },
+ "df_adm_amplitude_contrast": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "branch_comparison",
+   "observable_amplitude_contrast_yr"
+  ],
+  "digits": 2
+ },
+ "df_dlna_ppm": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "conformal_correlate",
+   "delta_lnA_ppm"
+  ],
+  "digits": 0
+ },
+ "df_ub_energy": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "b0_requirement_plane",
+   "entries",
+   "energy_channel_bound",
+   "u_b"
+  ],
+  "digits": 1,
+  "format": "sci"
+ },
+ "df_b0_req_energy": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "b0_requirement_plane",
+   "entries",
+   "energy_channel_bound",
+   "B0_required_for_measured"
+  ],
+  "digits": 1,
+  "format": "sci"
+ },
+ "df_b0_req_sclk": {
+  "file": "step_b131_disformal_slip.json",
+  "path": [
+   "admissibility_ledger",
+   "b0_requirement_plane",
+   "entries",
+   "sclk_sustained_bound",
+   "B0_required_for_measured"
+  ],
+  "digits": 1,
+  "format": "sci"
  }
 }

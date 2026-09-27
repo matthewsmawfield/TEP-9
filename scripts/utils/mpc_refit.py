@@ -352,6 +352,7 @@ def propagate_states(r0, v0, et0, ets):
             vx=v0[0] + vs[0], vy=v0[1] + vs[1], vz=v0[2] + vs[2])
     nc = sim.N - 1
     sim.integrator = "ias15"
+    sim.exit_min_distance = 0.001  # collision scale: bound IAS15 against step collapse
     out = np.empty((len(ets), 6))
     order = np.argsort(ets)
     for ei in order:
@@ -398,7 +399,9 @@ def residuals(r0, v0, et0, obs, geom=None):
     tau = np.linalg.norm(rc0 - robs, axis=1) / C_AU_DAY
     rc = propagate_states(r0, v0, et0, ets - tau * 86400.0)[:, :3]
     u = rc - robs
-    with np.errstate(invalid="ignore", divide="ignore"):
+    # 'over' included: rejected LM proposals can propagate to absurd
+    # radii; the resulting inf/nan residuals are filtered below
+    with np.errstate(invalid="ignore", divide="ignore", over="ignore"):
         u /= np.linalg.norm(u, axis=1)[:, None]
         u_eq = (RX.T @ u.T).T
         ra_p = np.arctan2(u_eq[:, 1], u_eq[:, 0])
@@ -500,14 +503,18 @@ def state_to_perih(r, v, et):
 # ------------------------------------------------------------------
 
 def fit_comet(des, min_obs_leg=MIN_OBS_LEG,
-              min_leg_span_d=MIN_LEG_SPAN_D):
+              min_leg_span_d=MIN_LEG_SPAN_D, sbdb_des=None):
     """Fetch, fit, and propagate one comet.
 
     Returns (result_dict, None) or (None, error_string).  The result
     carries the SBDB seed elements, the fitted states per leg label
     ("in", "out", "all"), the single-fit boundary products, and --
     when both legs are fittable -- the leg-fit products (ddirf,
-    cross-arc rms, d_in_leg / d_out_leg)."""
+    cross-arc rms, d_in_leg / d_out_leg).
+
+    ``sbdb_des`` overrides the designator used for the SBDB seed
+    fetch when the MPC observation designator differs (e.g. ISOs:
+    MPC astrometry under "C/2025 N1", SBDB orbit under "3I")."""
     try:
         raw = get_obs(des)
     except Exception as exc:
@@ -516,7 +523,7 @@ def fit_comet(des, min_obs_leg=MIN_OBS_LEG,
     if len(obs) < 2 * min_obs_leg:
         return None, f"only {len(obs)} usable obs"
     try:
-        sb = get_sbdb(des)
+        sb = get_sbdb(sbdb_des or des)
         el = {e["name"]: float(e["value"])
               for e in sb["orbit"]["elements"] if e.get("value")}
         el["epoch"] = float(sb["orbit"]["epoch"])
@@ -605,12 +612,15 @@ def fit_comet(des, min_obs_leg=MIN_OBS_LEG,
                 res[f"{lab}_rms"] = fits[lab]["rms"]
                 res[f"{lab}_nkeep"] = fits[lab]["n_keep"]
 
-    # boundary asymptotes
+    # boundary asymptotes; hyperbolic seeds (ISOs) carry real escape
+    # speed at the 250 AU sphere, so the speed ceiling is relaxed
+    v_bnd = 40.0 if el["e"] > 1.0 else None
+    _kw = {} if v_bnd is None else {"v_max": v_bnd}
     try:
         if "all" in fits:
             fa = fits["all"]
-            rb = integrate_leg(fa["r"], fa["v"], fa["et"], -1)
-            rf = integrate_leg(fa["r"], fa["v"], fa["et"], +1)
+            rb = integrate_leg(fa["r"], fa["v"], fa["et"], -1, **_kw)
+            rf = integrate_leg(fa["r"], fa["v"], fa["et"], +1, **_kw)
             if rb and rf:
                 drot = sep(rb["phat"], rf["phat"])
                 aph = -rb["phat"]
@@ -628,8 +638,8 @@ def fit_comet(des, min_obs_leg=MIN_OBS_LEG,
                            dtau=math.radians(drot) / om_b)
         if "in" in fits and "out" in fits:
             fi, fo = fits["in"], fits["out"]
-            rbi = integrate_leg(fi["r"], fi["v"], fi["et"], -1)
-            rfo = integrate_leg(fo["r"], fo["v"], fo["et"], +1)
+            rbi = integrate_leg(fi["r"], fi["v"], fi["et"], -1, **_kw)
+            rfo = integrate_leg(fo["r"], fo["v"], fo["et"], +1, **_kw)
             if rbi and rfo:
                 res["ddirf"] = sep(rbi["phat"], rfo["phat"])
                 if p_all is not None:

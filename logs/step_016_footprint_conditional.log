@@ -1,103 +1,161 @@
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] LOGGER INITIALIZED: step_016_footprint_conditional (Step 016)
-[2026-09-20 10:42:14 UTC] [DEBUG   ] [STEP 016] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_016_footprint_conditional.log
-[2026-09-20 10:42:14 UTC] [DEBUG   ] [STEP 016] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:42:14 UTC] [DEBUG   ] [STEP 016] Start time (UTC): 2026-09-20T10:42:14.346014+00:00
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] 
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] STEP PURPOSE
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] --------------------------------------------------------------------------------
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   TEP / Planet-9 -- step b8: distance-aware footprint null
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   Step b5 reconstructed the detached sample's own discovery
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   footprint.  Step b7 flagged the remaining caveat: the empirical
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   null assumed a radius-independent footprint, while distant
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   objects are found by fewer, deeper surveys -- the footprint may
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   NARROW with a.  This step measures that directly and rebuilds
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   the nulls conditioned on each object's own discovery geometry.
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   Every provisional designation gives the discovery half-month ->
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   opposition longitude lam_opp.  The footprint-versus-distance
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   profile, the convolution decomposition varpi = lam_opp + Delta,
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   and the pairing test are all computed from real metadata.
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   D1  Footprint vs a: R(lam_opp) and mean direction per a-bin.
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   The profile shows whether distant discoveries really come
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   from a narrower sky.
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   D2  The convolution test: varpi_i = lam_opp_i + Delta_i.
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   Under pure footprint manufacture Delta is a pointing smear
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   independent of lam_opp; the observed pairing is then a
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   typical shuffle and R(varpi) sits inside the shuffle
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   distribution.  Under intrinsic clustering the pairing must
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   compensate (objects found off-axis need larger Delta to land
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   on the axis), pushing observed R(varpi) to the edge of the
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   shuffle null.  Both marginals come from the detached sample
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   itself -- no transfer assumption.
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   D3  Footprint-conditional (Om,w) null: for each detached object
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   draw a control object's (Om,w) pair from controls whose
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   lam_opp lies within +-30 deg of that object's own.  This
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   reproduces the MEASURED detached footprint and the empirical
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   elements<->footprint map simultaneously -- the tightest
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   achievable catalog null for R(varpi).
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   D4  Same conditional null for the pole tilt (resolves the b7
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   caveat): draw (Om,i) per object from lam_opp-matched
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   controls, compute the coherent mean-pole tilt.  Does the
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   detached sample's narrow footprint alone generate its 6.4 deg
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   coherent tilt toward az ~ 50 deg?
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   Caveats: lam_opp remains an opposition proxy for true discovery
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   longitude; the D3/D4 conditional map is estimated on control
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   objects at a < 150 AU whose discovery geometry (all orbital
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   phases) differs from near-perihelion-dominated distant
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   discoveries -- the D2 pairing test uses only the detached
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   sample's own marginals and carries no such assumption.
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   Outputs: results/step_b8_footprint_conditional.json,
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016]   figures/supplementary/step_b8_footprint_conditional.png
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] --------------------------------------------------------------------------------
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] SCRIPT: scripts/steps/step_016_footprint_conditional.py
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] SCRIPT SHA256: ced092b20d6a7124400e89c23ad68f48e4a2775821add438ff2316b264fe1a1e
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] SCRIPT SIZE: 15503 bytes
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] ================================================================================
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] Distance-aware conditional null
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 016] ================================================================================
-[2026-09-20 10:42:15 UTC] [INFO    ] [STEP 016] parsed 1250 objects (0 unparseable)
-[2026-09-20 10:42:15 UTC] [INFO    ] [STEP 016] D1 a    30-45: N= 627 R(lam_opp)=0.154@  5.5 R(Om)=0.233 R(varpi)=0.051@ 39.4
-[2026-09-20 10:42:15 UTC] [INFO    ] [STEP 016] D1 a    45-60: N= 372 R(lam_opp)=0.112@ 59.8 R(Om)=0.155 R(varpi)=0.043@ 72.7
-[2026-09-20 10:42:15 UTC] [INFO    ] [STEP 016] D1 a   60-100: N= 162 R(lam_opp)=0.100@ 15.8 R(Om)=0.254 R(varpi)=0.010@ 32.8
-[2026-09-20 10:42:15 UTC] [INFO    ] [STEP 016] D1 a  100-150: N=  45 R(lam_opp)=0.281@342.3 R(Om)=0.384 R(varpi)=0.112@346.0
-[2026-09-20 10:42:15 UTC] [INFO    ] [STEP 016] D1 a  150-inf: N=  44 R(lam_opp)=0.295@ 10.5 R(Om)=0.326 R(varpi)=0.332@ 49.1
-[2026-09-20 10:42:15 UTC] [INFO    ] [STEP 016] D2 R(lo)=0.295 R(D)=0.754 R_indep=0.223@28 | obs 0.332@49 | shuffle 0.236 p_pair=0.0559
-[2026-09-20 10:42:15 UTC] [INFO    ] [STEP 016] D3 conditional pools: min=132 median=246
-[2026-09-20 10:42:15 UTC] [INFO    ] [STEP 016] D3 conditional null: <R>=0.181 p95=0.317 mu=28 | obs 0.332@49 p=0.0346
-[2026-09-20 10:42:15 UTC] [INFO    ] [STEP 016] D4 tilt obs 6.43@50 vs conditional null 3.53@26 p=0.0439
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Saving data: step_b8_footprint_conditional.json
-[2026-09-20 10:42:16 UTC] [DEBUG   ] [STEP 016]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b8_footprint_conditional.json
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016]   Output: step_b8_footprint_conditional.json
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Saving data: step_b8_footprint_conditional.png
-[2026-09-20 10:42:16 UTC] [DEBUG   ] [STEP 016]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b8_footprint_conditional.png
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016]   Output: step_b8_footprint_conditional.png
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] 
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] ================================================================================
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] STEP SUMMARY: step_016_footprint_conditional
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] ================================================================================
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Step Number: 016
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Status: SUCCESS
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Duration: 1.76s
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Log Records Emitted: 80
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Output Files: 2
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_016_footprint_conditional.log
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] 
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Generated 2 output file(s):
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016]   • step_b8_footprint_conditional.json: 2.86 KB [sha256 b78ca4a0e8398116]
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016]   • step_b8_footprint_conditional.png: 251.47 KB [sha256 4b81ebd679db628e]
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] ================================================================================
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] STEP 016 COMPLETE: SUCCESS
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_016_footprint_conditional_provenance.json
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] 
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] ================================================================================
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] EXECUTIVE SUMMARY
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] ================================================================================
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Step: step_016_footprint_conditional (Step 016)
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Status: SUCCESS
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Duration: 1.76s
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Log Records: 90
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Output Files: 2
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] Key Outputs:
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016]   - step_b8_footprint_conditional.json (2.86 KB)
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016]   - step_b8_footprint_conditional.png (251.47 KB)
-[2026-09-20 10:42:16 UTC] [INFO    ] [STEP 016] ================================================================================
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] LOGGER INITIALIZED: step_016_footprint_conditional (Step 016)
+[2026-09-21 14:31:06 UTC] [DEBUG   ] [STEP 016] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_016_footprint_conditional.log
+[2026-09-21 14:31:06 UTC] [DEBUG   ] [STEP 016] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:31:06 UTC] [DEBUG   ] [STEP 016] Start time (UTC): 2026-09-21T14:31:06.345614+00:00
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] 
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] STEP PURPOSE
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] --------------------------------------------------------------------------------
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   TEP / Planet-9 -- step b8: distance-aware footprint null
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   Step b5 reconstructed the detached sample's own discovery
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   footprint.  Step b7 flagged the remaining caveat: the empirical
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   null assumed a radius-independent footprint, while distant
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   objects are found by fewer, deeper surveys -- the footprint may
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   NARROW with a.  This step measures that directly and rebuilds
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   the nulls conditioned on each object's own discovery geometry.
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   Every provisional designation gives the discovery half-month ->
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   opposition longitude lam_opp.  The footprint-versus-distance
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   profile, the convolution decomposition varpi = lam_opp + Delta,
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   and the pairing test are all computed from real metadata.
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   D1  Footprint vs a: R(lam_opp) and mean direction per a-bin.
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   The profile shows whether distant discoveries really come
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   from a narrower sky.
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   D2  The convolution test: varpi_i = lam_opp_i + Delta_i.
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   Under pure footprint manufacture Delta is a pointing smear
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   independent of lam_opp; the observed pairing is then a
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   typical shuffle and R(varpi) sits inside the shuffle
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   distribution.  Under intrinsic clustering the pairing must
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   compensate (objects found off-axis need larger Delta to land
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   on the axis), pushing observed R(varpi) to the edge of the
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   shuffle null.  Both marginals come from the detached sample
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   itself -- no transfer assumption.
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   D3  Footprint-conditional (Om,w) null: for each detached object
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   draw a control object's (Om,w) pair from controls whose
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   lam_opp lies within +-30 deg of that object's own.  This
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   reproduces the MEASURED detached footprint and the empirical
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   elements<->footprint map simultaneously -- the tightest
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   achievable catalog null for R(varpi).
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   D4  Same conditional null for the pole tilt (resolves the b7
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   caveat): draw (Om,i) per object from lam_opp-matched
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   controls, compute the coherent mean-pole tilt.  Does the
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   detached sample's narrow footprint alone generate its 6.4 deg
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   coherent tilt toward az ~ 50 deg?
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   Caveats: lam_opp remains an opposition proxy for true discovery
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   longitude; the D3/D4 conditional map is estimated on control
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   objects at a < 150 AU whose discovery geometry (all orbital
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   phases) differs from near-perihelion-dominated distant
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   discoveries -- the D2 pairing test uses only the detached
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   sample's own marginals and carries no such assumption.
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   Outputs: results/step_b8_footprint_conditional.json,
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016]   figures/supplementary/step_b8_footprint_conditional.png
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] --------------------------------------------------------------------------------
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] SCRIPT: scripts/steps/step_016_footprint_conditional.py
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] SCRIPT SHA256: ced092b20d6a7124400e89c23ad68f48e4a2775821add438ff2316b264fe1a1e
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] SCRIPT SIZE: 15503 bytes
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] ================================================================================
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] Distance-aware conditional null
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 016] ================================================================================
+[2026-09-21 14:31:08 UTC] [INFO    ] [STEP 016] parsed 1250 objects (0 unparseable)
+[2026-09-21 14:31:08 UTC] [INFO    ] [STEP 016] D1 a    30-45: N= 627 R(lam_opp)=0.154@  5.5 R(Om)=0.233 R(varpi)=0.051@ 39.4
+[2026-09-21 14:31:08 UTC] [INFO    ] [STEP 016] D1 a    45-60: N= 372 R(lam_opp)=0.112@ 59.8 R(Om)=0.155 R(varpi)=0.043@ 72.7
+[2026-09-21 14:31:08 UTC] [INFO    ] [STEP 016] D1 a   60-100: N= 162 R(lam_opp)=0.100@ 15.8 R(Om)=0.254 R(varpi)=0.010@ 32.8
+[2026-09-21 14:31:08 UTC] [INFO    ] [STEP 016] D1 a  100-150: N=  45 R(lam_opp)=0.281@342.3 R(Om)=0.384 R(varpi)=0.112@346.0
+[2026-09-21 14:31:08 UTC] [INFO    ] [STEP 016] D1 a  150-inf: N=  44 R(lam_opp)=0.295@ 10.5 R(Om)=0.326 R(varpi)=0.332@ 49.1
+[2026-09-21 14:31:08 UTC] [INFO    ] [STEP 016] D2 R(lo)=0.295 R(D)=0.754 R_indep=0.223@28 | obs 0.332@49 | shuffle 0.236 p_pair=0.0559
+[2026-09-21 14:31:08 UTC] [INFO    ] [STEP 016] D3 conditional pools: min=132 median=246
+[2026-09-21 14:31:08 UTC] [INFO    ] [STEP 016] D3 conditional null: <R>=0.181 p95=0.317 mu=28 | obs 0.332@49 p=0.0346
+[2026-09-21 14:31:08 UTC] [INFO    ] [STEP 016] D4 tilt obs 6.43@50 vs conditional null 3.53@26 p=0.0439
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Saving data: step_b8_footprint_conditional.json
+[2026-09-21 14:31:09 UTC] [DEBUG   ] [STEP 016]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b8_footprint_conditional.json
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]   Output: step_b8_footprint_conditional.json
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Saving data: step_b8_footprint_conditional.png
+[2026-09-21 14:31:09 UTC] [DEBUG   ] [STEP 016]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b8_footprint_conditional.png
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]   Output: step_b8_footprint_conditional.png
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] 
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] ================================================================================
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] STEP SUMMARY: step_016_footprint_conditional
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] ================================================================================
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Step Number: 016
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Status: SUCCESS
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Duration: 2.79s
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Log Records Emitted: 80
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Output Files: 2
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_016_footprint_conditional.log
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] 
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Generated 2 output file(s):
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]   • step_b8_footprint_conditional.json: 2.86 KB [sha256 b78ca4a0e8398116]
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]   • step_b8_footprint_conditional.png: 254.64 KB [sha256 b456112385657a49]
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] 
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]   RESULT SNAPSHOT [step_b8_footprint_conditional.json]:
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]     D1_footprint_vs_a:
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       note = the discovery footprint IS distance-dependent: R(lam_opp) ~0.10-0.15 in the inner belt ...
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]     D1_footprint_vs_a.rows[0]:
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       bin = 30-45
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       N = 627
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_lam_opp = 0.154
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_lam_opp_deg = 5.5
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_Omega = 0.233
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_varpi = 0.051
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_varpi_deg = 39.4
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]     D1_footprint_vs_a.rows[1]:
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       bin = 45-60
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       N = 372
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_lam_opp = 0.112
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_lam_opp_deg = 59.8
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_Omega = 0.155
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_varpi = 0.043
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_varpi_deg = 72.7
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]     D1_footprint_vs_a.rows[2]:
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       bin = 60-100
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       N = 162
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_lam_opp = 0.1
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_lam_opp_deg = 15.8
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_Omega = 0.254
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_varpi = 0.01
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_varpi_deg = 32.8
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]     D1_footprint_vs_a.rows[3]:
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       bin = 100-150
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       N = 45
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_lam_opp = 0.281
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_lam_opp_deg = 342.3
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_Omega = 0.384
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_varpi = 0.112
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_varpi_deg = 346
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]     D1_footprint_vs_a.rows[4]:
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       bin = 150-inf
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       N = 44
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_lam_opp = 0.295
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_lam_opp_deg = 10.5
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_Omega = 0.326
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_varpi = 0.332
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_varpi_deg = 49.1
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]     D2_convolution:
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_lam_opp = 0.295
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_lam_opp_deg = 10.5
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_Delta = 0.754
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_Delta_deg = 17.4
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_varpi_obs = 0.332
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_varpi_obs_deg = 49.1
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       R_varpi_indep_conv = 0.223
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       mean_varpi_indep_deg = 27.9
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       shuffle_null_R_mean = 0.236
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       shuffle_null_mu_mean = 27.8
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       p_pairing = 0.055897205
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       direction_offset_vs_shuffle_deg = -122.4
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] ================================================================================
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] STEP 016 COMPLETE: SUCCESS
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_016_footprint_conditional_provenance.json
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] 
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] ================================================================================
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] EXECUTIVE SUMMARY
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] ================================================================================
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Step: step_016_footprint_conditional (Step 016)
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Status: SUCCESS
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Duration: 2.79s
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Log Records: 148
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Output Files: 2
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] Key Outputs:
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]   - step_b8_footprint_conditional.json (2.86 KB)
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016]   - step_b8_footprint_conditional.png (254.64 KB)
+[2026-09-21 14:31:09 UTC] [INFO    ] [STEP 016] ================================================================================

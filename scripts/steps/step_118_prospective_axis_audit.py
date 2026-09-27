@@ -75,7 +75,8 @@ _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.tep9_common import tee_stdout
 from scripts.utils.tep9_common import (
-    DATA_RAW, RESULTS, perih_dir, sep, lv, lb, parse_code)
+    DATA_RAW, RESULTS, perih_dir, sep, lv, lb, parse_code,
+    load_jsonl_dedup)
 logger = StepLogger("step_118_prospective_axis_audit")
 tee_stdout(logger)
 
@@ -116,10 +117,9 @@ def load_prospective():
         if not ck.exists():
             raise FileNotFoundError(
                 "step_117 products missing; run step_117 first")
-        for line in ck.read_text().splitlines():
-            r = json.loads(line)
-            if not r.get("failed"):
-                rows.append(_coerce(r))
+        for r in load_jsonl_dedup(ck,
+                                  keep=lambda r: not r.get("failed")):
+            rows.append(_coerce(r))
     return rows
 
 

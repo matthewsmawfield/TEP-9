@@ -18,44 +18,44 @@
   "pre2018": {
    "r60au": {
     "in_cap": {
-     "n": 172,
-     "rho": -0.0020494412973034166,
-     "p": 0.9787132055038348
+     "n": 162,
+     "rho": 0.019443632940565458,
+     "p": 0.8060043503912466
     },
     "out_cap": {
-     "n": 458,
-     "rho": -0.005746047855107537,
-     "p": 0.9023955315883998
+     "n": 424,
+     "rho": -0.01966278602970694,
+     "p": 0.6864147179119526
     }
    },
    "r100au": {
     "in_cap": {
-     "n": 172,
-     "rho": -0.0020494412973034166,
-     "p": 0.9787132055038348
+     "n": 162,
+     "rho": 0.019443632940565458,
+     "p": 0.8060043503912466
     },
     "out_cap": {
-     "n": 458,
-     "rho": -0.005746047855107537,
-     "p": 0.9023955315883998
+     "n": 424,
+     "rho": -0.01966278602970694,
+     "p": 0.6864147179119526
     }
    },
    "r250au": {
     "in_cap": {
-     "n": 172,
-     "rho": -0.0020494412973034166,
-     "p": 0.9787132055038348
+     "n": 162,
+     "rho": 0.019443632940565458,
+     "p": 0.8060043503912466
     },
     "out_cap": {
-     "n": 457,
-     "rho": 0.0007951105479008214,
-     "p": 0.9864757271966724
+     "n": 423,
+     "rho": -0.012693564129444198,
+     "p": 0.7946277192696305
     }
    },
    "in_cap_partial_v60_given_epoch": {
-    "n": 172,
-    "rho": 0.0011839120037356904,
-    "p": 0.9877021770211685
+    "n": 162,
+    "rho": 0.07210247247590539,
+    "p": 0.36187627507395703
    }
   },
   "post2017": {
@@ -105,39 +105,39 @@
  "T2_transverse_bound": {
   "pre2018": {
    "in_cap": {
-    "n": 172,
-    "med_dv_perp_m_s": 10.74713853073435,
-    "med_dv_par_bound_m_s": 0.29295503650913335,
-    "med_transverse_frac": 0.9752912724922329
+    "n": 162,
+    "med_dv_perp_m_s": 10.57736333662552,
+    "med_dv_par_bound_m_s": 21.09470948875341,
+    "med_transverse_frac": -0.661840857568247
    },
    "out_cap": {
-    "n": 458,
+    "n": 424,
     "med_dv_perp_m_s": 11.47391803001419,
-    "med_dv_par_bound_m_s": 0.2815216742856127,
-    "med_transverse_frac": 0.9760830267559037
+    "med_dv_par_bound_m_s": 23.017307929614432,
+    "med_transverse_frac": -0.8035339949283505
    }
   },
   "post2017": {
    "in_cap": {
     "n": 75,
     "med_dv_perp_m_s": 14.007760325006446,
-    "med_dv_par_bound_m_s": 0.2985200394560114,
-    "med_transverse_frac": 0.9806810456304582
+    "med_dv_par_bound_m_s": 16.335403906727358,
+    "med_transverse_frac": -0.03307380458293263
    },
    "out_cap": {
     "n": 173,
     "med_dv_perp_m_s": 8.796637667041864,
-    "med_dv_par_bound_m_s": 0.27499529597237166,
-    "med_transverse_frac": 0.9680276646069427
+    "med_dv_par_bound_m_s": 26.518649676697404,
+    "med_transverse_frac": -1.7528858484508976
    }
   }
  },
  "T3_conformal_step_scale": {
   "pre2018": {
-   "n": 172,
-   "med_dalpha": 6.130242096544649e-13,
-   "p16": 2.7876204044604013e-13,
-   "p84": 1.501985425350604e-12
+   "n": 162,
+   "med_dalpha": 6.041581637853757e-13,
+   "p16": 2.7678674354917844e-13,
+   "p84": 1.5086291035514506e-12
   },
   "post2017": {
    "n": 75,
@@ -148,16 +148,16 @@
  },
  "test_summary": {
   "velocity_flat": false,
-  "min_transverse_frac": 0.9752912724922329
+  "min_transverse_frac": -0.661840857568247
  },
- "verdict": "ERA-ASYMMETRIC VELOCITY SCALING: the pre-2018 declared-axis slip is velocity-flat (rho=-0.002, p=0.979) -- the holonomy signature -- while the post-2017 displaced slip anticorrelates with crossing speed (rho=-0.371, p=0.00104; partialled on transit epoch rho=-0.446, p=6.09e-05).  The energy channel still bounds any mechanical kick to ~97.5 per cent transverse, so the eras do not share a single realization: the older record carries the universal-amplitude (holonomy) signature, the modern record's residual carries an additional velocity- or epoch-dependent term -- the same heterogeneity the epoch-decomposition audit (step_142 T9) measures independently.  The equivalent conformal step on the older record is ~6.1e-13.",
+ "verdict": "ENERGY CHANNEL NON-BINDING: the corrected |D(1/a)| floor (median ~16 m/s along-track) is not tighter than the transverse impulse a mechanical kick would need (~14 m/s), so the energy channel cannot exclude an impulse realization -- the earlier ~97 per cent transverse bound was a wrong-variable artefact (the planetary-approach distance had been substituted for the energy residual).  The holonomy discriminator therefore rests on the velocity-scaling test alone: the pre-2018 declared-axis slip is velocity-flat (rho=+0.019, p=0.806) while the post-2017 displaced slip anticorrelates with crossing speed (rho=-0.371, p=0.00104; partialled on transit epoch rho=-0.446, p=6.09e-05).  The equivalent conformal step on the older record is ~6.0e-13.",
  "evidence_status": "mechanism discriminator",
  "inputs": [
   "results/step_b91_refit.jsonl (pre-2018 dual-leg refit)",
   "results/step_b92_refit.jsonl (post-2017 dual-leg refit)"
  ],
  "caveats": [
-  "The transverse bound uses |D(1/a)| as a noise floor on the along-track impulse; it bounds the median kick, not the per-object tail.",
+  "The transverse bound uses the measured |D(1/a)| channel (the inter-leg energy difference, in 1e-6 AU^-1) as the floor on the along-track impulse; it bounds the median kick, not the per-object tail, and it includes the real planetary encounter contribution, so it is a conservative (loose) floor.",
   "v_n is approximated by the total crossing speed; a strongly grazing wall geometry lowers the implied conformal step.",
   "The discriminator compares realizations of the measured observable; it does not derive dtau from a specific scalar potential, which remains the open microscopic problem."
  ]

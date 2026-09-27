@@ -1,80 +1,139 @@
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] LOGGER INITIALIZED: step_063_bidirectional_rotation (Step 063)
-[2026-09-20 11:37:35 UTC] [DEBUG   ] [STEP 063] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_063_bidirectional_rotation.log
-[2026-09-20 11:37:35 UTC] [DEBUG   ] [STEP 063] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 11:37:35 UTC] [DEBUG   ] [STEP 063] Start time (UTC): 2026-09-20T11:37:35.540998+00:00
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] 
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] STEP PURPOSE
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] --------------------------------------------------------------------------------
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   step_063: Bidirectional boundary validation + rotation-per-kick residual.
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   Every Phase-3 step measures the catalogue's orig->fut periapsis-direction
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   discrepancy d_of.  step_042 verified that a real N-body integration
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   reproduces the catalogue's energy kicks (rho=0.98), and step_062 showed
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   the published Planet Nine cannot inject the observed rotation.  This
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   step measures what STANDARD dynamics predicts for the rotation itself,
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   and -- critically -- evaluates the boundary solutions in the same
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   BARYCENTRIC frame the catalogue uses for its original/future orbits.
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   For each class-1 CODE comet (identical selection to step_040/042/062)
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   the osculating elements at the catalogued perihelion epoch are
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   converted to a state and integrated through Sun + planetary-system
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   barycentres (DE440s, REBOUND/IAS15) TWICE:
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   backward until barycentric |r| = 250 AU  -> analogue of the catalogue's
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   "original" solution
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   forward  until barycentric |r| = 250 AU  -> analogue of the "future"
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   solution
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   Outputs
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   results/step_b28_bidirectional_rotation.json
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   results/step_b28_bidirectional_rotation.csv
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063]   results/figures/supplementary/step_b28_rotation_residual.png
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] --------------------------------------------------------------------------------
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] SCRIPT: scripts/steps/step_063_bidirectional_rotation.py
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] SCRIPT SHA256: dd99aeb22270224e8edc43e28cc089a18aad3bcb5a13735b0770ca8b7cdbc13c
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] SCRIPT SIZE: 18367 bytes
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] ================================================================================
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] Bidirectional boundary validation (REBOUND/IAS15 + DE440s)
-[2026-09-20 11:37:35 UTC] [INFO    ] [STEP 063] ================================================================================
-[2026-09-20 11:37:36 UTC] [INFO    ] [STEP 063] sample: 131 class-1 CODE comets
-[2026-09-20 11:38:16 UTC] [INFO    ] [STEP 063] integrated 131 comets x2 legs; 0 failed
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] matched: leg offset med/p95 0.0009/0.005 deg | sim-vs-cat rho=0.9991 | med|drot diff|=0.0006 | rot-per-kick resid (kick+denc+q+i) cap p=0.0019 rho=-0.408
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] all_c1: leg offset med/p95 0.0012/0.040 deg | sim-vs-cat rho=0.9992 | med|drot diff|=0.0005 | rot-per-kick resid (kick+denc+q+i) cap p=0.0122 rho=-0.252
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Saving data: step_b28_bidirectional_rotation.json
-[2026-09-20 11:38:17 UTC] [DEBUG   ] [STEP 063]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b28_bidirectional_rotation.json
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063]   Output: step_b28_bidirectional_rotation.json
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Saving data: step_b28_bidirectional_rotation.csv
-[2026-09-20 11:38:17 UTC] [DEBUG   ] [STEP 063]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b28_bidirectional_rotation.csv
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063]   Output: step_b28_bidirectional_rotation.csv
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Saving data: step_b28_rotation_residual.png
-[2026-09-20 11:38:17 UTC] [DEBUG   ] [STEP 063]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b28_rotation_residual.png
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063]   Output: step_b28_rotation_residual.png
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] 
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] ================================================================================
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] STEP SUMMARY: step_063_bidirectional_rotation
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] ================================================================================
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Step Number: 063
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Status: SUCCESS
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Duration: 41.82s
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Log Records Emitted: 55
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Output Files: 3
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_063_bidirectional_rotation.log
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] 
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Generated 3 output file(s):
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063]   • step_b28_bidirectional_rotation.json: 3.77 KB [sha256 8144a37cf955a658]
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063]   • step_b28_bidirectional_rotation.csv: 30.42 KB [sha256 b7bf37f2794e0c38]
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063]   • step_b28_rotation_residual.png: 206.58 KB [sha256 7bce40dddfa59b4e]
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] ================================================================================
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] STEP 063 COMPLETE: SUCCESS
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_063_bidirectional_rotation_provenance.json
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] 
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] ================================================================================
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] EXECUTIVE SUMMARY
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] ================================================================================
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Step: step_063_bidirectional_rotation (Step 063)
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Status: SUCCESS
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Duration: 41.82s
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Log Records: 66
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Output Files: 3
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] Key Outputs:
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063]   - step_b28_bidirectional_rotation.json (3.77 KB)
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063]   - step_b28_bidirectional_rotation.csv (30.42 KB)
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063]   - step_b28_rotation_residual.png (206.58 KB)
-[2026-09-20 11:38:17 UTC] [INFO    ] [STEP 063] ================================================================================
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] LOGGER INITIALIZED: step_063_bidirectional_rotation (Step 063)
+[2026-09-21 14:40:35 UTC] [DEBUG   ] [STEP 063] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_063_bidirectional_rotation.log
+[2026-09-21 14:40:35 UTC] [DEBUG   ] [STEP 063] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:40:35 UTC] [DEBUG   ] [STEP 063] Start time (UTC): 2026-09-21T14:40:35.848004+00:00
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] 
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] STEP PURPOSE
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] --------------------------------------------------------------------------------
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   step_063: Bidirectional boundary validation + rotation-per-kick residual.
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   Every Phase-3 step measures the catalogue's orig->fut periapsis-direction
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   discrepancy d_of.  step_042 verified that a real N-body integration
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   reproduces the catalogue's energy kicks (rho=0.98), and step_062 showed
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   the published Planet Nine cannot inject the observed rotation.  This
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   step measures what STANDARD dynamics predicts for the rotation itself,
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   and -- critically -- evaluates the boundary solutions in the same
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   BARYCENTRIC frame the catalogue uses for its original/future orbits.
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   For each class-1 CODE comet (identical selection to step_040/042/062)
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   the osculating elements at the catalogued perihelion epoch are
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   converted to a state and integrated through Sun + planetary-system
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   barycentres (DE440s, REBOUND/IAS15) TWICE:
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   backward until barycentric |r| = 250 AU  -> analogue of the catalogue's
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   "original" solution
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   forward  until barycentric |r| = 250 AU  -> analogue of the "future"
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   solution
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   Outputs
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   results/step_b28_bidirectional_rotation.json
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   results/step_b28_bidirectional_rotation.csv
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063]   results/figures/supplementary/step_b28_rotation_residual.png
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] --------------------------------------------------------------------------------
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] SCRIPT: scripts/steps/step_063_bidirectional_rotation.py
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] SCRIPT SHA256: 26847d0fd66c80d4c18c1411ad5dbd326825fda13bc8f3856d227ec0276e0b36
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] SCRIPT SIZE: 18455 bytes
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] ================================================================================
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] Bidirectional boundary validation (REBOUND/IAS15 + DE440s)
+[2026-09-21 14:40:35 UTC] [INFO    ] [STEP 063] ================================================================================
+[2026-09-21 14:40:36 UTC] [INFO    ] [STEP 063] sample: 131 class-1 CODE comets
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] integrated 131 comets x2 legs; 0 failed
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] matched: leg offset med/p95 0.0009/0.005 deg | sim-vs-cat rho=0.9991 | med|drot diff|=0.0006 | rot-per-kick resid (kick+denc+q+i) cap p=0.0019 rho=-0.408
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] all_c1: leg offset med/p95 0.0012/0.040 deg | sim-vs-cat rho=0.9992 | med|drot diff|=0.0005 | rot-per-kick resid (kick+denc+q+i) cap p=0.0122 rho=-0.252
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Saving data: step_b28_bidirectional_rotation.json
+[2026-09-21 14:41:11 UTC] [DEBUG   ] [STEP 063]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b28_bidirectional_rotation.json
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]   Output: step_b28_bidirectional_rotation.json
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Saving data: step_b28_bidirectional_rotation.csv
+[2026-09-21 14:41:11 UTC] [DEBUG   ] [STEP 063]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b28_bidirectional_rotation.csv
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]   Output: step_b28_bidirectional_rotation.csv
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Saving data: step_b28_rotation_residual.png
+[2026-09-21 14:41:11 UTC] [DEBUG   ] [STEP 063]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b28_rotation_residual.png
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]   Output: step_b28_rotation_residual.png
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] 
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] ================================================================================
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] STEP SUMMARY: step_063_bidirectional_rotation
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] ================================================================================
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Step Number: 063
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Status: SUCCESS
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Duration: 35.73s
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Log Records Emitted: 55
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Output Files: 3
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_063_bidirectional_rotation.log
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] 
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Generated 3 output file(s):
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]   • step_b28_bidirectional_rotation.json: 3.77 KB [sha256 8144a37cf955a658]
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]   • step_b28_bidirectional_rotation.csv: 30.42 KB [sha256 b7bf37f2794e0c38]
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]   • step_b28_rotation_residual.png: 206.58 KB [sha256 7bce40dddfa59b4e]
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] 
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]   RESULT SNAPSHOT [step_b28_bidirectional_rotation.json]:
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]     failed [n=0]
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]     matched:
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       n = 54
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       n_in = 19
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       leg_offset_med = 0.00091562722
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       leg_offset_p95 = 0.0053436555
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       leg_offset_max = 0.01122363
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       frac_legs_within_0p01 = 0.98148148
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       frac_legs_within_0p1 = 1
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_drot_cat_in = 0.21202382
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_drot_cat_out = 0.13074542
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_drot_sim_in = 0.21200797
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_drot_sim_out = 0.12802926
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_abs_drot_diff = 0.00063948763
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       frac_comets_drot_within_0p02 = 1
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       drot_sim_in_vs_out_p = 0.0047180298
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]     matched.drot_sim_vs_cat:
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       rho = 0.99908519
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       p_2sided = 7.2182458e-73
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]     matched.energy_validation:
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       rho = 0.98818372
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       p_2sided = 4.9111728e-44
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_abs_diff = 0.51343434
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]     matched.drot_sim_vs_theta:
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       rho = -0.31679055
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       p_2sided = 0.019599957
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]     matched.rot_per_kick_resid_kick:
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       p = 0.0029505468
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       rho = -0.31572327
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       p_2sided = 0.020038463
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_resid_in = 0.17019468
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_resid_out = -0.054713194
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]     matched.rot_per_kick_resid_kick_denc:
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       p = 0.0019882465
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       rho = -0.40415476
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       p_2sided = 0.0024384605
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_resid_in = 0.16697402
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_resid_out = -0.041718704
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]     matched.rot_per_kick_resid_full:
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       p = 0.0018769518
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       rho = -0.40773775
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       p_2sided = 0.0022109089
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_resid_in = 0.16354376
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_resid_out = -0.052855265
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]     all_c1:
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       n = 131
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       n_in = 43
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       leg_offset_med = 0.0012420393
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       leg_offset_p95 = 0.039666988
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       leg_offset_max = 0.22820196
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       frac_legs_within_0p01 = 0.90839695
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       frac_legs_within_0p1 = 0.96183206
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_drot_cat_in = 0.14434842
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_drot_cat_out = 0.098588903
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_drot_sim_in = 0.14702895
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       med_drot_sim_out = 0.094322885
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] ================================================================================
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] STEP 063 COMPLETE: SUCCESS
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_063_bidirectional_rotation_provenance.json
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] 
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] ================================================================================
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] EXECUTIVE SUMMARY
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] ================================================================================
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Step: step_063_bidirectional_rotation (Step 063)
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Status: SUCCESS
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Duration: 35.73s
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Log Records: 125
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Output Files: 3
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] Key Outputs:
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]   - step_b28_bidirectional_rotation.json (3.77 KB)
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]   - step_b28_bidirectional_rotation.csv (30.42 KB)
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063]   - step_b28_rotation_residual.png (206.58 KB)
+[2026-09-21 14:41:11 UTC] [INFO    ] [STEP 063] ================================================================================

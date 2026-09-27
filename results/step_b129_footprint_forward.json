@@ -1,0 +1,322 @@
+{
+ "step": "step_163_footprint_forward",
+ "seed": 20261101,
+ "model": {
+  "propagation": "parabolic Barker, true-anomaly grid",
+  "n_orientations": 150,
+  "nu_grid": 180,
+  "n_mc": 8000,
+  "cuts_reference": {
+   "r_vis": 3.0,
+   "dmax": 4.0,
+   "el_min": 60.0,
+   "dec_min": -40.0
+  },
+  "weight": "sum over observable timesteps of 1/(r^2 Delta^2)",
+  "observability": "elongation>el_min, dec>dec_min, r<r_vis, Delta<dmax"
+ },
+ "results": {
+  "class1_all": {
+   "n": 131,
+   "T1": {
+    "obs_R": 0.2244653698658766,
+    "obs_dir": [
+     37.41367610781615,
+     -30.19185006419347
+    ],
+    "fp_R": 0.13010046664026337,
+    "fp_dir": [
+     192.68356241256586,
+     -43.9282700127666
+    ],
+    "sep_obs_fp": 102.50531106660456
+   },
+   "T2": {
+    "p_dir_tno": 0.0003749531308586427,
+    "p_dir_resident": 0.0003749531308586427,
+    "p_joint": 0.00012498437695288088,
+    "null_R_med": 0.1472828135034132,
+    "null_dir_med_sep_tno": 117.1953012845905,
+    "obs_sep_tno": 17.479197856902505,
+    "obs_sep_resident": 16.908910388843168,
+    "null_cap_med": 0.22900763358778625,
+    "obs_cap": 0.3282442748091603,
+    "p_cap": 0.004624421947256593
+   },
+   "T3": {
+    "A_axis": 0.2524367647388617,
+    "B_fp": 0.07702914720347888,
+    "resid_norm": 0.009035800177057253,
+    "A_ctrl": 0.19338972219342176,
+    "B_fp_ctrl": -0.166601214043909,
+    "resid_norm_ctrl": 0.1566725058329182,
+    "resid_vec_R": 0.28276759494373704,
+    "resid_dir": [
+     29.419586706206747,
+     -4.589258966012669
+    ],
+    "resid_sep_tno": 9.549376771066322,
+    "resid_sep_resident": 22.85242625655803
+   },
+   "T4": {
+    "n_scen": 36,
+    "fp_dir_med": [
+     205.03269013829626,
+     -24.368109939680174
+    ],
+    "fp_dir_maxpair_sep": 101.76359578653144,
+    "resid_sep_tno_med": 9.879370885302091,
+    "resid_sep_tno_max": 21.963295567471135
+   },
+   "T5": {
+    "obs_lon_dipole_R": 0.2507181935654263,
+    "obs_lon_dipole_dir": 45.94337565013462,
+    "fp_lon_dipole_R": 0.10043847356417951,
+    "fp_lon_dipole_dir": 201.22778927283554
+   }
+  },
+  "class1_matched_q3p1": {
+   "n": 54,
+   "T1": {
+    "obs_R": 0.2440066081848647,
+    "obs_dir": [
+     49.60394716960766,
+     -13.310029220546342
+    ],
+    "fp_R": 0.16188261694355313,
+    "fp_dir": [
+     193.22550581051271,
+     -22.23937745031515
+    ],
+    "sep_obs_fp": 129.64836109354073
+   },
+   "T2": {
+    "p_dir_tno": 0.000999875015623047,
+    "p_dir_resident": 0.00012498437695288088,
+    "p_joint": 0.00012498437695288088,
+    "null_R_med": 0.19530836693645093,
+    "null_dir_med_sep_tno": 132.05556099897927,
+    "obs_sep_tno": 15.195158934548855,
+    "obs_sep_resident": 3.7357145909990113,
+    "null_cap_med": 0.2222222222222222,
+    "obs_cap": 0.35185185185185186,
+    "p_cap": 0.016372953380827397
+   },
+   "T3": {
+    "A_axis": 0.27616081455675484,
+    "B_fp": 0.05366628527167844,
+    "resid_norm": 0.05353101162382348,
+    "A_ctrl": 0.2087612445608605,
+    "B_fp_ctrl": -0.249202371570244,
+    "resid_norm_ctrl": 0.021471162894830077,
+    "resid_vec_R": 0.3689899845784307,
+    "resid_dir": [
+     35.665650283289125,
+     0.7909501839319296
+    ],
+    "resid_sep_tno": 13.889550316976207,
+    "resid_sep_resident": 22.119749924176173
+   },
+   "T4": {
+    "n_scen": 36,
+    "fp_dir_med": [
+     208.5714972061012,
+     -27.927487295371233
+    ],
+    "fp_dir_maxpair_sep": 107.44297742219457,
+    "resid_sep_tno_med": 17.069462478438133,
+    "resid_sep_tno_max": 29.98639978708614
+   },
+   "T5": {
+    "obs_lon_dipole_R": 0.29813704181492484,
+    "obs_lon_dipole_dir": 47.35602418663899,
+    "fp_lon_dipole_R": 0.16661127392141784,
+    "fp_lon_dipole_dir": 194.96073216525446
+   }
+  },
+  "sbdb_pre2018": {
+   "n": 880,
+   "T1": {
+    "obs_R": 0.14855028021428754,
+    "obs_dir": [
+     60.29455314527307,
+     -49.16406963691512
+    ],
+    "fp_R": 0.06144333527625067,
+    "fp_dir": [
+     217.90364989610882,
+     -79.26538687570252
+    ],
+    "sep_obs_fp": 50.89576796709717
+   },
+   "T2": {
+    "p_dir_tno": 0.007249093863267091,
+    "p_dir_resident": 0.0029996250468691415,
+    "p_joint": 0.00012498437695288088,
+    "null_R_med": 0.06803938628104902,
+    "null_dir_med_sep_tno": 87.38620416845828,
+    "obs_sep_tno": 42.148749508952264,
+    "obs_sep_resident": 33.44484894597147,
+    "null_cap_med": 0.28295454545454546,
+    "obs_cap": 0.2727272727272727,
+    "p_cap": 0.7616547931508562
+   },
+   "T3": {
+    "A_axis": 0.1065629452063934,
+    "B_fp": 0.08943847645148677,
+    "resid_norm": 0.044167693999503044,
+    "A_ctrl": 0.08383842321056999,
+    "B_fp_ctrl": 0.04239325572233978,
+    "resid_norm_ctrl": 0.0942940670426725,
+    "resid_vec_R": 0.11970184207305579,
+    "resid_dir": [
+     57.97699628109241,
+     -25.760061844308968
+    ],
+    "resid_sep_tno": 25.897144162694648,
+    "resid_sep_resident": 12.099475780201686
+   },
+   "T4": {
+    "n_scen": 4,
+    "fp_dir_med": [
+     214.54713958168367,
+     -80.27785794476964
+    ],
+    "fp_dir_maxpair_sep": 51.745286348990554,
+    "resid_sep_tno_med": 27.994047954808238,
+    "resid_sep_tno_max": 31.00610812909349
+   },
+   "T5": {
+    "obs_lon_dipole_R": 0.10331081468325018,
+    "obs_lon_dipole_dir": 57.140600284831194,
+    "fp_lon_dipole_R": 0.015824912534219904,
+    "fp_lon_dipole_dir": 212.87260781454165
+   }
+  },
+  "sbdb_post2017": {
+   "n": 287,
+   "T1": {
+    "obs_R": 0.11140048261375803,
+    "obs_dir": [
+     20.1744429724639,
+     -42.2202636005731
+    ],
+    "fp_R": 0.15215533717792518,
+    "fp_dir": [
+     288.1191942349701,
+     -32.298632855783644
+    ],
+    "sep_obs_fp": 70.32939597809734
+   },
+   "T2": {
+    "p_dir_tno": 0.00012498437695288088,
+    "p_dir_resident": 0.00012498437695288088,
+    "p_joint": 0.00012498437695288088,
+    "null_R_med": 0.1589336187876169,
+    "null_dir_med_sep_tno": 95.67158982823071,
+    "obs_sep_tno": 31.587248489198434,
+    "obs_sep_resident": 35.221990520948346,
+    "null_cap_med": 0.25435540069686413,
+    "obs_cap": 0.2682926829268293,
+    "p_cap": 0.3085864266966629
+   },
+   "T3": {
+    "A_axis": 0.09994508782244119,
+    "B_fp": 0.048010151330717205,
+    "resid_norm": 0.03354667332474084,
+    "A_ctrl": 0.05264879497417231,
+    "B_fp_ctrl": 0.05277663321210703,
+    "resid_norm_ctrl": 0.09200776228538199,
+    "resid_vec_R": 0.15540283526896748,
+    "resid_dir": [
+     76.04681026498837,
+     2.375910096172722
+    ],
+    "resid_sep_tno": 44.469972906376974,
+    "resid_sep_resident": 32.97941656539779
+   },
+   "T4": {
+    "n_scen": 36,
+    "fp_dir_med": [
+     303.9223784506237,
+     -30.3415002290524
+    ],
+    "fp_dir_maxpair_sep": 91.11217930773033,
+    "resid_sep_tno_med": 49.01056016216856,
+    "resid_sep_tno_max": 102.39601510434365
+   },
+   "T5": {
+    "obs_lon_dipole_R": 0.07957282732413495,
+    "obs_lon_dipole_dir": 30.28697061453183,
+    "fp_lon_dipole_R": 0.1316400411625777,
+    "fp_lon_dipole_dir": 289.9672260065827
+   }
+  },
+  "sbdb_all": {
+   "n": 1167,
+   "T1": {
+    "obs_R": 0.13671821268630904,
+    "obs_dir": [
+     51.915521707376904,
+     -48.98608650817012
+    ],
+    "fp_R": 0.05895177994726123,
+    "fp_dir": [
+     264.3490299740255,
+     -77.58746762159167
+    ],
+    "sep_obs_fp": 51.84016390217709
+   },
+   "T2": {
+    "p_dir_tno": 0.0028746406699162604,
+    "p_dir_resident": 0.0004999375078115235,
+    "p_joint": 0.00012498437695288088,
+    "null_R_med": 0.06391922020796126,
+    "null_dir_med_sep_tno": 85.30797010904976,
+    "obs_sep_tno": 38.908060353458815,
+    "obs_sep_resident": 32.07384190034818,
+    "null_cap_med": 0.27420736932305056,
+    "obs_cap": 0.27163667523564694,
+    "p_cap": 0.5883014623172104
+   },
+   "T3": {
+    "A_axis": 0.09985867506524973,
+    "B_fp": 0.07587977376932085,
+    "resid_norm": 0.040723070452172924,
+    "A_ctrl": 0.06645083864561706,
+    "B_fp_ctrl": 0.05164813745708509,
+    "resid_norm_ctrl": 0.09065321988637799,
+    "resid_vec_R": 0.1104879664663397,
+    "resid_dir": [
+     55.78736331245071,
+     -24.3680552137123
+    ],
+    "resid_sep_tno": 23.511464583833884,
+    "resid_sep_resident": 9.722333043680644
+   },
+   "T4": {
+    "n_scen": 4,
+    "fp_dir_med": [
+     260.7593074178006,
+     -69.131756704268
+    ],
+    "fp_dir_maxpair_sep": 58.722297660968735,
+    "resid_sep_tno_med": 26.88175291645104,
+    "resid_sep_tno_max": 28.73547469968467
+   },
+   "T5": {
+    "obs_lon_dipole_R": 0.0957714741214028,
+    "obs_lon_dipole_dir": 51.84465747975862,
+    "fp_lon_dipole_R": 0.01900201439979028,
+    "fp_lon_dipole_dir": 256.7909460732795
+   }
+  }
+ },
+ "verdict": "physical discovery footprint does not reproduce the arrival dipole direction; the axis-aligned component survives footprint subtraction",
+ "caveats": [
+  "forward model is first-principles: circular Earth orbit, parabolic time law, sharp observability cuts and a 1/(r^2 D^2) brightness proxy; it is not a survey-realistic pipeline",
+  "the footprint dipole direction is stable across the scenario grid for the class-1 cohort but its amplitude is weighting-scheme dependent",
+  "the resampled null holds each comet's real perihelion epoch fixed; epoch marginals are near-uniform (Ls dipole R~0.06)",
+  "results are for the dipole (l=1) mode; higher multipoles are not tested here"
+ ]
+}

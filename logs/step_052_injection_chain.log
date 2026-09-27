@@ -1,92 +1,150 @@
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] LOGGER INITIALIZED: step_052_injection_chain (Step 052)
-[2026-09-20 10:47:24 UTC] [DEBUG   ] [STEP 052] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_052_injection_chain.log
-[2026-09-20 10:47:24 UTC] [DEBUG   ] [STEP 052] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:47:24 UTC] [DEBUG   ] [STEP 052] Start time (UTC): 2026-09-20T10:47:24.597451+00:00
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] 
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] STEP PURPOSE
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] --------------------------------------------------------------------------------
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   TEP / Planet-9 -- step b17: the injection chain
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   The injected population is not one sample -- it is a chain:
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   detached TNOs (boundary-resident) -> centaurs (transit) ->
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   Jupiter-family comets (injected).  The full JFC population
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   (N ~ 575, T_J in 2-3) shows a systematic rotation of mean
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   longitude of perihelion with perihelion depth: ~+40 deg at
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   q < 3 -- aligned with the detached-TNO axis at 49 deg --
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   progressing to ~190 deg pooled at q > 5 and ~220 deg on the
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   dated JFc subset of step_b12, the anti-axis sector.
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   The injected chain therefore touches BOTH ends of the
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   measured axis.  Whether this progression is a bipolar
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   boundary signature or a JFC-specific secular/observational
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   feature is tested with the usual machinery: measured
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   discovery footprints per q-bin and the pairing test.
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   I1  The q-progression: mean varpi, Omega, w per JFC q-bin.
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   I2  Discovery footprints per q-bin (provisional-dated
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   subset): does pointing explain the progression?
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   I3  Pairing test on the deepest injected subsample (q<3):
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   observed (lam_opp, Delta) pairing vs its own marginals.
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   I4  The chain summary: detached TNOs, centaurs, deep JFCs,
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   shallow JFCs.
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   Caveat carried forward from b12: JFC perihelia carry known
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   secular structure (Jupiter-driven omega preferences), so
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   amplitude claims are unsafe; the datum is the direction
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   progression and its endpoints.
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   Data: data/CometEls.txt (all MPC comets, q/e/w/Om/i),
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   data/sbdb_centaurs.json, data/sbdb_outer_ss.json.
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   Outputs: results/step_b17_injection_chain.json,
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052]   figures/supplementary/step_b17_injection_chain.png
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] --------------------------------------------------------------------------------
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] SCRIPT: scripts/steps/step_052_injection_chain.py
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] SCRIPT SHA256: da4e5c5a0a251e1e2ba33bf34227b5668c7be0aad6cd32d147557af97a4cae0c
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] SCRIPT SIZE: 12365 bytes
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] ================================================================================
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] Injected-population depth chain
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 052] ================================================================================
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I1 q 0-1: N= 28 varpi  36.2 (R=0.34)  Om 233.4  w 192.8
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I1 q 1-2: N=156 varpi  41.7 (R=0.33)  Om  62.3  w 350.1
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I1 q 2-3: N=196 varpi  40.3 (R=0.25)  Om  94.1  w  62.3
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I1 q 3-4: N=103 varpi  74.1 (R=0.23)  Om 158.8  w 259.2
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I1 q 4-5: N= 60 varpi 123.8 (R=0.25)  Om 101.2  w  71.3
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I1 q 5-6: N= 26 varpi 172.2 (R=0.15)  Om 180.1  w  30.9
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I1 q 6-15: N= 10 varpi 229.7 (R=0.33)  Om 296.6  w  35.2
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I2 q 0-3: N= 77 lam_opp  13.5 (R=0.17)  varpi  35.0 (R=0.23)
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I2 q 3-5: N= 84 lam_opp  80.4 (R=0.28)  varpi 116.0 (R=0.24)
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I2 q 5-15: N= 31 lam_opp 292.5 (R=0.07)  varpi 204.3 (R=0.21)
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I3 q<3: N=77 R=0.234@35 null 0.118 p=0.0272
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] I4: det 49 (N=44) | cen 95 R=0.09 (N=1044) | JFC<3 41 (N=380) | JFC>5 198 (N=36)
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Saving data: step_b17_injection_chain.json
-[2026-09-20 10:47:25 UTC] [DEBUG   ] [STEP 052]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b17_injection_chain.json
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052]   Output: step_b17_injection_chain.json
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Saving data: step_b17_injection_chain.png
-[2026-09-20 10:47:25 UTC] [DEBUG   ] [STEP 052]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b17_injection_chain.png
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052]   Output: step_b17_injection_chain.png
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] 
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] ================================================================================
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] STEP SUMMARY: step_052_injection_chain
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] ================================================================================
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Step Number: 052
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Status: SUCCESS
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Duration: 0.87s
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Log Records Emitted: 69
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Output Files: 2
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_052_injection_chain.log
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] 
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Generated 2 output file(s):
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052]   • step_b17_injection_chain.json: 2.90 KB [sha256 cdc1028e5dd4ee5e]
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052]   • step_b17_injection_chain.png: 154.49 KB [sha256 f5d61ef673f86abe]
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] ================================================================================
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] STEP 052 COMPLETE: SUCCESS
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_052_injection_chain_provenance.json
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] 
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] ================================================================================
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] EXECUTIVE SUMMARY
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] ================================================================================
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Step: step_052_injection_chain (Step 052)
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Status: SUCCESS
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Duration: 0.87s
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Log Records: 79
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Output Files: 2
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] Key Outputs:
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052]   - step_b17_injection_chain.json (2.90 KB)
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052]   - step_b17_injection_chain.png (154.49 KB)
-[2026-09-20 10:47:25 UTC] [INFO    ] [STEP 052] ================================================================================
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] LOGGER INITIALIZED: step_052_injection_chain (Step 052)
+[2026-09-21 14:36:37 UTC] [DEBUG   ] [STEP 052] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_052_injection_chain.log
+[2026-09-21 14:36:37 UTC] [DEBUG   ] [STEP 052] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:36:37 UTC] [DEBUG   ] [STEP 052] Start time (UTC): 2026-09-21T14:36:37.348966+00:00
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] 
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] STEP PURPOSE
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] --------------------------------------------------------------------------------
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   TEP / Planet-9 -- step b17: the injection chain
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   The injected population is not one sample -- it is a chain:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   detached TNOs (boundary-resident) -> centaurs (transit) ->
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   Jupiter-family comets (injected).  The full JFC population
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   (N ~ 580, T_J in 2-3) shows a systematic rotation of mean
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   longitude of perihelion with perihelion depth: ~+40 deg at
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   q < 3 -- aligned with the detached-TNO axis at 49 deg --
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   progressing to ~198 deg pooled at q > 5 and ~220 deg on the
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   dated JFc subset of step_b12, the anti-axis sector.
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   The injected chain therefore touches BOTH ends of the
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   measured axis.  Whether this progression is a bipolar
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   boundary signature or a JFC-specific secular/observational
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   feature is tested with the usual machinery: measured
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   discovery footprints per q-bin and the pairing test.
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   I1  The q-progression: mean varpi, Omega, w per JFC q-bin.
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   I2  Discovery footprints per q-bin (provisional-dated
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   subset): does pointing explain the progression?
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   I3  Pairing test on the deepest injected subsample (q<3):
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   observed (lam_opp, Delta) pairing vs its own marginals.
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   I4  The chain summary: detached TNOs, centaurs, deep JFCs,
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   shallow JFCs.
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   Caveat carried forward from b12: JFC perihelia carry known
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   secular structure (Jupiter-driven omega preferences), so
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   amplitude claims are unsafe; the datum is the direction
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   progression and its endpoints.
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   Data: data/CometEls.txt (all MPC comets, q/e/w/Om/i),
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   data/sbdb_centaurs.json, data/sbdb_outer_ss.json.
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   Outputs: results/step_b17_injection_chain.json,
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052]   figures/supplementary/step_b17_injection_chain.png
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] --------------------------------------------------------------------------------
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] SCRIPT: scripts/steps/step_052_injection_chain.py
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] SCRIPT SHA256: 0e3d111440d29ec6ccfaf57f9bc5974bb887cace90aafc598968ca93efdc7054
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] SCRIPT SIZE: 12365 bytes
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] ================================================================================
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] Injected-population depth chain
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 052] ================================================================================
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I1 q 0-1: N= 28 varpi  36.2 (R=0.34)  Om 233.4  w 192.8
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I1 q 1-2: N=156 varpi  41.7 (R=0.33)  Om  62.3  w 350.1
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I1 q 2-3: N=196 varpi  40.3 (R=0.25)  Om  94.1  w  62.3
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I1 q 3-4: N=103 varpi  74.1 (R=0.23)  Om 158.8  w 259.2
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I1 q 4-5: N= 60 varpi 123.8 (R=0.25)  Om 101.2  w  71.3
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I1 q 5-6: N= 26 varpi 172.2 (R=0.15)  Om 180.1  w  31.0
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I1 q 6-15: N= 10 varpi 229.7 (R=0.33)  Om 296.6  w  35.2
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I2 q 0-3: N= 77 lam_opp  13.5 (R=0.17)  varpi  35.0 (R=0.23)
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I2 q 3-5: N= 84 lam_opp  80.4 (R=0.28)  varpi 116.0 (R=0.24)
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I2 q 5-15: N= 31 lam_opp 292.5 (R=0.07)  varpi 204.3 (R=0.21)
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I3 q<3: N=77 R=0.234@35 null 0.118 p=0.0272
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] I4: det 49 (N=44) | cen 95 R=0.09 (N=1044) | JFC<3 41 (N=380) | JFC>5 198 (N=36)
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Saving data: step_b17_injection_chain.json
+[2026-09-21 14:36:38 UTC] [DEBUG   ] [STEP 052]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b17_injection_chain.json
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]   Output: step_b17_injection_chain.json
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Saving data: step_b17_injection_chain.png
+[2026-09-21 14:36:38 UTC] [DEBUG   ] [STEP 052]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b17_injection_chain.png
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]   Output: step_b17_injection_chain.png
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] 
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] ================================================================================
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] STEP SUMMARY: step_052_injection_chain
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] ================================================================================
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Step Number: 052
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Status: SUCCESS
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Duration: 1.14s
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Log Records Emitted: 69
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Output Files: 2
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_052_injection_chain.log
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] 
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Generated 2 output file(s):
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]   • step_b17_injection_chain.json: 2.90 KB [sha256 971e873b2bda3c43]
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]   • step_b17_injection_chain.png: 213.85 KB [sha256 aa894b117436bcb8]
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] 
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]   RESULT SNAPSHOT [step_b17_injection_chain.json]:
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]     inputs [n=3]
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]     I1_q_progression:
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       note = mean varpi rotates ~150 deg across the JFC q range: ~+40 deg deep (aligned with the det...
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]     I1_q_progression.rows[0]:
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       q_bin = 0-1
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       N = 28
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_varpi = 0.337
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_varpi = 36.2
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_om = 0.127
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_om = 233.4
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_w = 0.409
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_w = 192.8
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]     I1_q_progression.rows[1]:
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       q_bin = 1-2
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       N = 156
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_varpi = 0.327
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_varpi = 41.7
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_om = 0.132
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_om = 62.3
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_w = 0.06
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_w = 350.1
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]     I1_q_progression.rows[2]:
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       q_bin = 2-3
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       N = 196
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_varpi = 0.254
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_varpi = 40.3
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_om = 0.102
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_om = 94.1
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_w = 0.08
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_w = 62.3
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]     I1_q_progression.rows[3]:
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       q_bin = 3-4
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       N = 103
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_varpi = 0.228
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_varpi = 74.1
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_om = 0.117
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_om = 158.8
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_w = 0.058
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_w = 259.2
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]     I1_q_progression.rows[4]:
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       q_bin = 4-5
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       N = 60
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_varpi = 0.25
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_varpi = 123.8
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_om = 0.221
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_om = 101.2
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_w = 0.15
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_w = 71.3
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]     I1_q_progression.rows[5]:
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       q_bin = 5-6
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       N = 26
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_varpi = 0.152
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_varpi = 172.2
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       R_om = 0.097
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       mu_om = 180.1
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] ================================================================================
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] STEP 052 COMPLETE: SUCCESS
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_052_injection_chain_provenance.json
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] 
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] ================================================================================
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] EXECUTIVE SUMMARY
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] ================================================================================
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Step: step_052_injection_chain (Step 052)
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Status: SUCCESS
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Duration: 1.14s
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Log Records: 137
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Output Files: 2
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] Key Outputs:
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]   - step_b17_injection_chain.json (2.90 KB)
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052]   - step_b17_injection_chain.png (213.85 KB)
+[2026-09-21 14:36:38 UTC] [INFO    ] [STEP 052] ================================================================================

@@ -195,6 +195,12 @@ def integrate(ro, et, integrator="ias15"):
         sim.dt = 0.1                   # yr; r_crit_hill default (3 Hill radii)
     else:
         sim.integrator = "ias15"
+    sim.exit_min_distance = 0.001  # collision scale (inside Roche
+                                 # zone): bounds IAS15 against
+                                 # adaptive-step collapse without
+                                 # firing on real approaches
+                                 # (e.g. C/1902 R1's 0.049 AU
+                                 # Mercury pass)
     denc = np.full(sim.N - 1, np.inf)
     t = -DT_OUT
     # t is negative for the backward leg; compare elapsed time, not signed t.

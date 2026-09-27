@@ -1,96 +1,152 @@
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] LOGGER INITIALIZED: step_107_named_directions (Step 107)
-[2026-09-20 12:20:36 UTC] [DEBUG   ] [STEP 107] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_107_named_directions.log
-[2026-09-20 12:20:36 UTC] [DEBUG   ] [STEP 107] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:20:36 UTC] [DEBUG   ] [STEP 107] Start time (UTC): 2026-09-20T12:20:36.725846+00:00
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] 
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] STEP PURPOSE
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] --------------------------------------------------------------------------------
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   Step 107 -- named-direction audit of the recovered axes.
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   The recovered boundary axis is reported on the comet side as the
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   cap-declaration axis (34,-13), the detached-sample axis
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   (49.9,-17), and the third-cohort free-scan direction (50,-50)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   measured in step 106.  A natural referee question is whether the
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   axis is "just" a named direction of the sky -- the galactic
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   geometry that drives the tide, the solar-motion apex, the CMB
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   dipole, the ecliptic poles, or the perihelion direction
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   published for the Planet Nine hypothesis.
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   This step tabulates the angular separation between each
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   recovered axis (and its antipode, since the field is bipolar)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   and a list of named astrophysical directions, all converted to
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   ecliptic coordinates from their published source frames:
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   galactic centre / anticentre      (l = 0, 180 deg; b = 0)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   north / south galactic poles      (b = +/-90 deg)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   solar apex (Dehnen & Binney 1998) (l = 56.24, b = 22.78)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   solar antapex                     (antipode of the above)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   galactic rotation direction       (l = 90, b = 0)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   CMB dipole apex (Planck)          (l = 264.02, b = 48.25)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   north / south ecliptic poles      (beta = +/-90 deg)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   Planet Nine perihelion direction  (Brown & Batygin 2021:
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   Omega=94, omega=147, i=30)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   A uniform-direction Monte Carlo then answers the coincidence
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   question: what fraction of random bipolar axes come as close as
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   the measured axis to ANY member of the named set?
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   Outputs
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   results/step_b71_named_directions.json
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   results/step_b71_named_directions.csv
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107]   results/figures/supplementary/step_b71_named_directions.png
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] --------------------------------------------------------------------------------
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] SCRIPT: scripts/steps/step_107_named_directions.py
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] SCRIPT SHA256: fa5de8a404390dceb1b853d7fb2a56a609803a6fae984cbab9ca48e0586ba923
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] SCRIPT SIZE: 12389 bytes
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] ================================================================================
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] Named-direction audit of the recovered axes
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] ================================================================================
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] named directions: 11
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] METRIC: nearest_named[cap-declaration] = bipolar P9 perihelion (BB21) at 29.8 deg / direct S galactic pole at 35.6 deg
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] METRIC: nearest_named[detached-sample] = bipolar P9 perihelion (BB21) at 14.2 deg / direct Galactic anticentre at 42.9 deg
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] METRIC: nearest_named[lpc free-scan] = bipolar solar apex (DB98) at 25.5 deg / direct solar antapex at 25.5 deg
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] METRIC: P9_perihelion_vs_antipodes = {'cap-declaration': 29.79, 'detached-sample': 14.19, 'lpc free-scan': 36.2}
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] METRIC: coincidence[cap-declaration] = p=0.708 (frac random axes as close to a named dir)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] METRIC: coincidence[detached-sample] = p=0.216 (frac random axes as close to a named dir)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] METRIC: coincidence[lpc free-scan] = p=0.581 (frac random axes as close to a named dir)
-[2026-09-20 12:20:36 UTC] [INFO    ] [STEP 107] METRIC: mutual_axes = {'cap-declaration vs detached-sample': 15.86, 'cap-declaration vs lpc free-scan': 39.25, 'detached-sample vs lpc free-scan': 33.0}
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Saving data: step_b71_named_directions.png
-[2026-09-20 12:20:37 UTC] [DEBUG   ] [STEP 107]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b71_named_directions.png
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107]   Output: step_b71_named_directions.png
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Saving data: step_b71_named_directions.json
-[2026-09-20 12:20:37 UTC] [DEBUG   ] [STEP 107]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b71_named_directions.json
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107]   Output: step_b71_named_directions.json
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Saving data: step_b71_named_directions.csv
-[2026-09-20 12:20:37 UTC] [DEBUG   ] [STEP 107]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b71_named_directions.csv
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107]   Output: step_b71_named_directions.csv
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] verdict: No named astrophysical direction lies within the ~30-40 deg localization radius of any recovered axis.  Nearest to the cap-declaration axis is the south galactic pole at 35.6 deg, and the closest approach in the bipolar sense is the published Planet Nine perihelion direction (244.6,+15.8): 150 deg from the primary axis but 29.8 deg from its antipode (14.2 deg from the detached axis antipode) -- inside the bipolar field's mirror lobe, the location the anti-aligned shepherding picture itself predicts for the perturber.  For the detached axis that antipodal consistency is expected rather than coincidental -- the axis and the P9 direction derive from the same TNO clustering under the anti-aligned convention -- while for the comet-side cap axis the closest named approach is consistent with chance (p=0.71 under a uniform-direction null): the axis is a measured structure, not a named direction of the coordinate sky.
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] named-direction audit complete
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] 
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] ================================================================================
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] STEP SUMMARY: step_107_named_directions
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] ================================================================================
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Step Number: 107
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Status: SUCCESS
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Duration: 0.40s
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Log Records Emitted: 71
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Output Files: 3
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_107_named_directions.log
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] 
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Generated 3 output file(s):
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107]   • step_b71_named_directions.png: 405.28 KB [sha256 1c55dea32c7f6d81]
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107]   • step_b71_named_directions.json: 10.39 KB [sha256 4b75fed2a5e321ae]
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107]   • step_b71_named_directions.csv: 2.12 KB [sha256 e75007cc91e604b6]
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] ================================================================================
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] STEP 107 COMPLETE: SUCCESS
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_107_named_directions_provenance.json
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] 
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] ================================================================================
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] EXECUTIVE SUMMARY
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] ================================================================================
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Step: step_107_named_directions (Step 107)
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Status: SUCCESS
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Duration: 0.40s
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Log Records: 82
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Output Files: 3
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] Key Outputs:
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107]   - step_b71_named_directions.png (405.28 KB)
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107]   - step_b71_named_directions.json (10.39 KB)
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107]   - step_b71_named_directions.csv (2.12 KB)
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 107] ================================================================================
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] LOGGER INITIALIZED: step_107_named_directions (Step 107)
+[2026-09-21 15:12:20 UTC] [DEBUG   ] [STEP 107] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_107_named_directions.log
+[2026-09-21 15:12:20 UTC] [DEBUG   ] [STEP 107] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:12:20 UTC] [DEBUG   ] [STEP 107] Start time (UTC): 2026-09-21T15:12:20.469679+00:00
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] 
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] STEP PURPOSE
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] --------------------------------------------------------------------------------
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   Step 107 -- named-direction audit of the recovered axes.
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   The recovered boundary axis is reported on the comet side as the
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   cap-declaration axis (34,-13), the detached-sample axis
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   (49.9,-17), and the third-cohort free-scan direction (50,-50)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   measured in step 106.  A natural referee question is whether the
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   axis is "just" a named direction of the sky -- the galactic
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   geometry that drives the tide, the solar-motion apex, the CMB
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   dipole, the ecliptic poles, or the perihelion direction
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   published for the Planet Nine hypothesis.
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   This step tabulates the angular separation between each
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   recovered axis (and its antipode, since the field is bipolar)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   and a list of named astrophysical directions, all converted to
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   ecliptic coordinates from their published source frames:
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   galactic centre / anticentre      (l = 0, 180 deg; b = 0)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   north / south galactic poles      (b = +/-90 deg)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   solar apex (Dehnen & Binney 1998) (l = 56.24, b = 22.78)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   solar antapex                     (antipode of the above)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   galactic rotation direction       (l = 90, b = 0)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   CMB dipole apex (Planck)          (l = 264.02, b = 48.25)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   north / south ecliptic poles      (beta = +/-90 deg)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   Planet Nine perihelion direction  (Brown & Batygin 2021:
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   Omega=94, omega=147, i=30)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   A uniform-direction Monte Carlo then answers the coincidence
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   question: what fraction of random bipolar axes come as close as
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   the measured axis to ANY member of the named set?
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   Outputs
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   results/step_b71_named_directions.json
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   results/step_b71_named_directions.csv
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   results/figures/supplementary/step_b71_named_directions.png
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] --------------------------------------------------------------------------------
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] SCRIPT: scripts/steps/step_107_named_directions.py
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] SCRIPT SHA256: fa5de8a404390dceb1b853d7fb2a56a609803a6fae984cbab9ca48e0586ba923
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] SCRIPT SIZE: 12389 bytes
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] ================================================================================
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Named-direction audit of the recovered axes
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] ================================================================================
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] named directions: 11
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] METRIC: nearest_named[cap-declaration] = bipolar P9 perihelion (BB21) at 29.8 deg / direct S galactic pole at 35.6 deg
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] METRIC: nearest_named[detached-sample] = bipolar P9 perihelion (BB21) at 14.2 deg / direct Galactic anticentre at 42.9 deg
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] METRIC: nearest_named[lpc free-scan] = bipolar solar apex (DB98) at 25.5 deg / direct solar antapex at 25.5 deg
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] METRIC: P9_perihelion_vs_antipodes = {'cap-declaration': 29.79, 'detached-sample': 14.19, 'lpc free-scan': 36.2}
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] METRIC: coincidence[cap-declaration] = p=0.708 (frac random axes as close to a named dir)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] METRIC: coincidence[detached-sample] = p=0.216 (frac random axes as close to a named dir)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] METRIC: coincidence[lpc free-scan] = p=0.581 (frac random axes as close to a named dir)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] METRIC: mutual_axes = {'cap-declaration vs detached-sample': 15.86, 'cap-declaration vs lpc free-scan': 39.25, 'detached-sample vs lpc free-scan': 33.0}
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Saving data: step_b71_named_directions.png
+[2026-09-21 15:12:20 UTC] [DEBUG   ] [STEP 107]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b71_named_directions.png
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   Output: step_b71_named_directions.png
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Saving data: step_b71_named_directions.json
+[2026-09-21 15:12:20 UTC] [DEBUG   ] [STEP 107]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b71_named_directions.json
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   Output: step_b71_named_directions.json
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Saving data: step_b71_named_directions.csv
+[2026-09-21 15:12:20 UTC] [DEBUG   ] [STEP 107]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b71_named_directions.csv
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   Output: step_b71_named_directions.csv
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] verdict: No named astrophysical direction lies within the ~30-40 deg localization radius of any recovered axis.  Nearest to the cap-declaration axis is the south galactic pole at 35.6 deg, and the closest approach in the bipolar sense is the published Planet Nine perihelion direction (244.6,+15.8): 150 deg from the primary axis but 29.8 deg from its antipode (14.2 deg from the detached axis antipode) -- inside the bipolar field's mirror lobe, the location the anti-aligned shepherding picture itself predicts for the perturber.  For the detached axis that antipodal consistency is expected rather than coincidental -- the axis and the P9 direction derive from the same TNO clustering under the anti-aligned convention -- while for the comet-side cap axis the closest named approach is consistent with chance (p=0.71 under a uniform-direction null): the axis is a measured structure, not a named direction of the coordinate sky.
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] named-direction audit complete
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] 
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] ================================================================================
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] STEP SUMMARY: step_107_named_directions
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] ================================================================================
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Step Number: 107
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Status: SUCCESS
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Duration: 0.33s
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Log Records Emitted: 71
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Output Files: 3
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_107_named_directions.log
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] 
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Generated 3 output file(s):
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   • step_b71_named_directions.png: 405.28 KB [sha256 1c55dea32c7f6d81]
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   • step_b71_named_directions.json: 10.39 KB [sha256 4b75fed2a5e321ae]
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   • step_b71_named_directions.csv: 2.12 KB [sha256 e75007cc91e604b6]
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] 
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   RESULT SNAPSHOT [step_b71_named_directions.json]:
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     inputs [n=2]
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.Galactic centre [n=2]: median=130.6516 min=-5.5363147 max=266.83952
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.Galactic anticentre [n=2]: median=46.187919 min=5.5363147 max=86.839524
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.N galactic pole [n=2]: median=104.91733 min=29.811439 max=180.02322
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.S galactic pole [n=2]: median=-14.894111 min=-29.811439 max=0.023217013
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.solar apex (DB98) [n=2]: median=162.46517 min=53.516073 max=271.41427
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.solar antapex [n=2]: median=18.9491 min=-53.516073 max=91.414274
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.galactic rotation dir [n=2]: median=203.45707 min=59.574218 max=347.33991
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.CMB dipole apex [n=2]: median=80.256095 min=-11.154933 max=171.66712
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.N ecliptic pole [n=2]: median=45 min=0 max=90
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.S ecliptic pole [n=2]: median=-45 min=-90 max=0
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     named_directions.P9 perihelion (BB21) [n=2]: median=130.22439 min=15.802338 max=244.64645
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     axes.cap-declaration [n=2]: median=10.5 min=-13 max=34
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     axes.detached-sample [n=2]: median=16.45 min=-17 max=49.9
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     axes.lpc free-scan [n=2]: median=0 min=-50 max=50
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     separations[0]:
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       axis = cap-declaration
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named = Galactic centre
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named_lam = 266.84
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named_bet = -5.54
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_axis = 124.34
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_antipode = 55.66
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_bipolar = 55.66
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     separations[1]:
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       axis = cap-declaration
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named = Galactic anticentre
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named_lam = 86.84
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named_bet = 5.54
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_axis = 55.66
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_antipode = 124.34
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_bipolar = 55.66
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     separations[2]:
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       axis = cap-declaration
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named = N galactic pole
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named_lam = 180.02
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named_bet = 29.81
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_axis = 144.38
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_antipode = 35.62
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_bipolar = 35.62
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     separations[3]:
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       axis = cap-declaration
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named = S galactic pole
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named_lam = 0.02
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named_bet = -29.81
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_axis = 35.62
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_antipode = 144.38
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_bipolar = 35.62
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]     separations[4]:
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       axis = cap-declaration
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named = solar apex (DB98)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named_lam = 271.41
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       named_bet = 53.52
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       sep_axis = 119.53
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] ================================================================================
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] STEP 107 COMPLETE: SUCCESS
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_107_named_directions_provenance.json
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] 
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] ================================================================================
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] EXECUTIVE SUMMARY
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] ================================================================================
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Step: step_107_named_directions (Step 107)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Status: SUCCESS
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Duration: 0.33s
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Log Records: 138
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Output Files: 3
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] Key Outputs:
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   - step_b71_named_directions.png (405.28 KB)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   - step_b71_named_directions.json (10.39 KB)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107]   - step_b71_named_directions.csv (2.12 KB)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 107] ================================================================================

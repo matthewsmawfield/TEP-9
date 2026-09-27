@@ -1,198 +1,198 @@
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] LOGGER INITIALIZED: step_002_download_cds (Step 002)
-[2026-09-20 10:40:31 UTC] [DEBUG   ] [STEP 002] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_002_download_cds.log
-[2026-09-20 10:40:31 UTC] [DEBUG   ] [STEP 002] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:40:31 UTC] [DEBUG   ] [STEP 002] Start time (UTC): 2026-09-20T10:40:31.740011+00:00
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] 
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] STEP PURPOSE
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] --------------------------------------------------------------------------------
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   TEP-9 step 002 -- CDS catalogue download (OSSOS + Warsaw)
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   Downloads the two published survey catalogues used for bias
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   calibration and comet orbit reconstruction:
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   1. OSSOS characterized ensemble (Bannister et al. 2018, ApJS 236, 18;
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   VizieR J/ApJS/236/18).  The t3char table is fetched as a VOTable
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   via the VizieR votable endpoint, and the authoritative fixed-width
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   t3char.dat + ReadMe are fetched from the CDS archive for provenance
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   cross-checking.
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   2. Warsaw catalogue of cometary orbits (Krolikowska 2014, A&A 567,
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   A126; VizieR J/A+A/567/A126): tables a1, b, b4, c, d plus the CDS
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   ReadMe, from the CDS archive FTP.
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   3. One-apparition comet catalogue (Krolikowska 2014, A&A 571, A63;
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   VizieR J/A+A/571/A63): osculating elements (tableb1), original/
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   future 1/a with uncertainties and the Marsden-Williams 2008
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   comparison values (tablec1), and original/future barycentric
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   elements with per-element uncertainties (tabled1/tablee1).  These
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   supply the uncertainty-normalized and third-lineage checks.
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   Outputs
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   data/raw/ossos/ossos_t3char.vot
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   data/raw/ossos/t3char.dat, ReadMe         (provenance cross-check)
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   data/raw/warsaw/warsaw_{a1,b,b4,c,d}.dat, warsaw_ReadMe
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   data/raw/lpc/lpc_{osc,orig,fut,aaori}_2006_2010.vot
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   data/raw/{ossos,warsaw,lpc}/provenance.json
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] --------------------------------------------------------------------------------
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] SCRIPT: scripts/steps/step_002_download_cds.py
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] SCRIPT SHA256: 35916c331f6743d68c6336504dc948d046d640ec56e009f7ae79811871f0a2a3
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] SCRIPT SIZE: 6401 bytes
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] ================================================================================
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] CDS catalogue download (OSSOS + Warsaw)
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002] ================================================================================
-[2026-09-20 10:40:31 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:31 UTC] [DEBUG   ] [STEP 002] --- OSSOS characterized ensemble, VOTable export (J/ApJS/236/18) ---
-[2026-09-20 10:40:31 UTC] [INFO    ] [STEP 002]   → GET https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/ApJS/236/18/t3char&-out.max=unlimited
-[2026-09-20 10:40:32 UTC] [INFO    ] [STEP 002] METRIC: bytes = 304259 ossos_t3char.vot
-[2026-09-20 10:40:32 UTC] [INFO    ] [STEP 002] Saving data: ossos_t3char.vot
-[2026-09-20 10:40:32 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/ossos/ossos_t3char.vot
-[2026-09-20 10:40:32 UTC] [INFO    ] [STEP 002]   Output: ossos_t3char.vot
-[2026-09-20 10:40:32 UTC] [INFO    ] [STEP 002] METRIC: votable_rows = 840 OSSOS characterized detections
-[2026-09-20 10:40:32 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:32 UTC] [DEBUG   ] [STEP 002] --- OSSOS t3char authoritative fixed-width table ---
-[2026-09-20 10:40:32 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/ApJS/236/18/t3char.dat
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002] METRIC: bytes = 225960 t3char.dat
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002] Saving data: t3char.dat
-[2026-09-20 10:40:33 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/ossos/t3char.dat
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002]   Output: t3char.dat
-[2026-09-20 10:40:33 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:33 UTC] [DEBUG   ] [STEP 002] --- OSSOS CDS ReadMe ---
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/ApJS/236/18/ReadMe
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002] METRIC: bytes = 12708 ReadMe
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002] Saving data: ReadMe
-[2026-09-20 10:40:33 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/ossos/ReadMe
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002]   Output: ReadMe
-[2026-09-20 10:40:33 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:33 UTC] [DEBUG   ] [STEP 002] --- Warsaw catalogue CDS ReadMe (J/A+A/567/A126) ---
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/ReadMe
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002] METRIC: bytes = 10802 warsaw_ReadMe
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002] Saving data: warsaw_ReadMe
-[2026-09-20 10:40:33 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_ReadMe
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002]   Output: warsaw_ReadMe
-[2026-09-20 10:40:33 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:33 UTC] [DEBUG   ] [STEP 002] --- Warsaw table A1: observational material / quality class ---
-[2026-09-20 10:40:33 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablea1.dat
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002] METRIC: bytes = 24422 warsaw_tablea1.dat
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002] Saving data: warsaw_tablea1.dat
-[2026-09-20 10:40:34 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_tablea1.dat
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002]   Output: warsaw_tablea1.dat
-[2026-09-20 10:40:34 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:34 UTC] [DEBUG   ] [STEP 002] --- Warsaw table B: osculating heliocentric elements ---
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tableb.dat
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002] METRIC: bytes = 26666 warsaw_tableb.dat
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002] Saving data: warsaw_tableb.dat
-[2026-09-20 10:40:34 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_tableb.dat
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002]   Output: warsaw_tableb.dat
-[2026-09-20 10:40:34 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:34 UTC] [DEBUG   ] [STEP 002] --- Warsaw table B4: osculating elements, extended sample ---
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tableb4.dat
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002] METRIC: bytes = 6215 warsaw_tableb4.dat
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002] Saving data: warsaw_tableb4.dat
-[2026-09-20 10:40:34 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_tableb4.dat
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002]   Output: warsaw_tableb4.dat
-[2026-09-20 10:40:34 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:34 UTC] [DEBUG   ] [STEP 002] --- Warsaw table C: original barycentric elements ---
-[2026-09-20 10:40:34 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablec.dat
-[2026-09-20 10:40:35 UTC] [INFO    ] [STEP 002] METRIC: bytes = 25472 warsaw_tablec.dat
-[2026-09-20 10:40:35 UTC] [INFO    ] [STEP 002] Saving data: warsaw_tablec.dat
-[2026-09-20 10:40:35 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_tablec.dat
-[2026-09-20 10:40:35 UTC] [INFO    ] [STEP 002]   Output: warsaw_tablec.dat
-[2026-09-20 10:40:35 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:35 UTC] [DEBUG   ] [STEP 002] --- Warsaw table D: future barycentric elements ---
-[2026-09-20 10:40:35 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tabled.dat
-[2026-09-20 10:40:35 UTC] [INFO    ] [STEP 002] METRIC: bytes = 25074 warsaw_tabled.dat
-[2026-09-20 10:40:35 UTC] [INFO    ] [STEP 002] Saving data: warsaw_tabled.dat
-[2026-09-20 10:40:35 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_tabled.dat
-[2026-09-20 10:40:35 UTC] [INFO    ] [STEP 002]   Output: warsaw_tabled.dat
-[2026-09-20 10:40:35 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:35 UTC] [DEBUG   ] [STEP 002] --- J/A+A/571/A63 tableb1: osculating elements, 1901-1950 cohort ---
-[2026-09-20 10:40:35 UTC] [INFO    ] [STEP 002]   → GET https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tableb1&-out.max=unlimited&-out.all
-[2026-09-20 10:40:36 UTC] [INFO    ] [STEP 002] METRIC: bytes = 24114 lpc_osc_2006_2010.vot
-[2026-09-20 10:40:36 UTC] [INFO    ] [STEP 002] Saving data: lpc_osc_2006_2010.vot
-[2026-09-20 10:40:36 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/lpc/lpc_osc_2006_2010.vot
-[2026-09-20 10:40:36 UTC] [INFO    ] [STEP 002]   Output: lpc_osc_2006_2010.vot
-[2026-09-20 10:40:36 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:36 UTC] [DEBUG   ] [STEP 002] --- J/A+A/571/A63 tabled1: original barycentric elements + errors ---
-[2026-09-20 10:40:36 UTC] [INFO    ] [STEP 002]   → GET https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tabled1&-out.max=unlimited&-out.all
-[2026-09-20 10:40:36 UTC] [INFO    ] [STEP 002] METRIC: bytes = 24025 lpc_orig_2006_2010.vot
-[2026-09-20 10:40:36 UTC] [INFO    ] [STEP 002] Saving data: lpc_orig_2006_2010.vot
-[2026-09-20 10:40:36 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/lpc/lpc_orig_2006_2010.vot
-[2026-09-20 10:40:36 UTC] [INFO    ] [STEP 002]   Output: lpc_orig_2006_2010.vot
-[2026-09-20 10:40:36 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:36 UTC] [DEBUG   ] [STEP 002] --- J/A+A/571/A63 tablee1: future barycentric elements + errors ---
-[2026-09-20 10:40:36 UTC] [INFO    ] [STEP 002]   → GET https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tablee1&-out.max=unlimited&-out.all
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] METRIC: bytes = 24078 lpc_fut_2006_2010.vot
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Saving data: lpc_fut_2006_2010.vot
-[2026-09-20 10:40:37 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/lpc/lpc_fut_2006_2010.vot
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   Output: lpc_fut_2006_2010.vot
-[2026-09-20 10:40:37 UTC] [DEBUG   ] [STEP 002] 
-[2026-09-20 10:40:37 UTC] [DEBUG   ] [STEP 002] --- J/A+A/571/A63 tablec1: orig/fut 1/a + errors + MW08 values ---
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   → GET https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tablec1&-out.max=unlimited&-out.all
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] METRIC: bytes = 17574 lpc_aaori_2006_2010.vot
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Saving data: lpc_aaori_2006_2010.vot
-[2026-09-20 10:40:37 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/lpc/lpc_aaori_2006_2010.vot
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   Output: lpc_aaori_2006_2010.vot
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Saving data: provenance.json
-[2026-09-20 10:40:37 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/ossos/provenance.json
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   Output: provenance.json
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Saving data: provenance.json
-[2026-09-20 10:40:37 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/provenance.json
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   Output: provenance.json
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Saving data: provenance.json
-[2026-09-20 10:40:37 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/lpc/provenance.json
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   Output: provenance.json
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   → CDS download complete -> data/raw/{ossos,warsaw}/
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] 
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] ================================================================================
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] STEP SUMMARY: step_002_download_cds
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] ================================================================================
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Step Number: 002
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Status: SUCCESS
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Duration: 6.15s
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Log Records Emitted: 147
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Output Files: 16
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_002_download_cds.log
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] 
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Generated 16 output file(s):
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • ossos_t3char.vot: 297.13 KB [sha256 a022b8599bf5814e]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • t3char.dat: 220.66 KB [sha256 35c6af083804788d]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • ReadMe: 12.41 KB [sha256 362db5bb7e4f3967]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • warsaw_ReadMe: 10.55 KB [sha256 cc3d72d19a3f257c]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • warsaw_tablea1.dat: 23.85 KB [sha256 e2e3dabd6fa5e3d0]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • warsaw_tableb.dat: 26.04 KB [sha256 f8c10f5ce1d2999c]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • warsaw_tableb4.dat: 6.07 KB [sha256 9cc3160124076748]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • warsaw_tablec.dat: 24.88 KB [sha256 1f5ab8eb27600846]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • warsaw_tabled.dat: 24.49 KB [sha256 076475c89b38cf35]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • lpc_osc_2006_2010.vot: 23.55 KB [sha256 7ec1e2f1b798933c]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • lpc_orig_2006_2010.vot: 23.46 KB [sha256 b62a6e1b0d466f57]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • lpc_fut_2006_2010.vot: 23.51 KB [sha256 c65813e8f19378b1]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • lpc_aaori_2006_2010.vot: 17.16 KB [sha256 aeffb32b31297ae8]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • provenance.json: 1.17 KB [sha256 babc9cef220fa96a]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • provenance.json: 2.25 KB [sha256 f5c5786eaba96acb]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   • provenance.json: 1.78 KB [sha256 dbee6d21f5de500b]
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] ================================================================================
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] STEP 002 COMPLETE: SUCCESS
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_002_download_cds_provenance.json
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] 
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] ================================================================================
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] EXECUTIVE SUMMARY
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] ================================================================================
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Step: step_002_download_cds (Step 002)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Status: SUCCESS
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Duration: 6.15s
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Log Records: 171
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Output Files: 16
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] Key Outputs:
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - ossos_t3char.vot (297.13 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - t3char.dat (220.66 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - ReadMe (12.41 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - warsaw_ReadMe (10.55 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - warsaw_tablea1.dat (23.85 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - warsaw_tableb.dat (26.04 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - warsaw_tableb4.dat (6.07 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - warsaw_tablec.dat (24.88 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - warsaw_tabled.dat (24.49 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - lpc_osc_2006_2010.vot (23.55 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - lpc_orig_2006_2010.vot (23.46 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - lpc_fut_2006_2010.vot (23.51 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - lpc_aaori_2006_2010.vot (17.16 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - provenance.json (1.17 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - provenance.json (2.25 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002]   - provenance.json (1.78 KB)
-[2026-09-20 10:40:37 UTC] [INFO    ] [STEP 002] ================================================================================
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] LOGGER INITIALIZED: step_002_download_cds (Step 002)
+[2026-09-21 14:28:51 UTC] [DEBUG   ] [STEP 002] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_002_download_cds.log
+[2026-09-21 14:28:51 UTC] [DEBUG   ] [STEP 002] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:28:51 UTC] [DEBUG   ] [STEP 002] Start time (UTC): 2026-09-21T14:28:51.942990+00:00
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] 
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] STEP PURPOSE
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] --------------------------------------------------------------------------------
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   TEP-9 step 002 -- CDS catalogue download (OSSOS + Warsaw)
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   Downloads the two published survey catalogues used for bias
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   calibration and comet orbit reconstruction:
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   1. OSSOS characterized ensemble (Bannister et al. 2018, ApJS 236, 18;
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   VizieR J/ApJS/236/18).  The t3char table is fetched as a VOTable
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   via the VizieR votable endpoint, and the authoritative fixed-width
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   t3char.dat + ReadMe are fetched from the CDS archive for provenance
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   cross-checking.
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   2. Warsaw catalogue of cometary orbits (Krolikowska 2014, A&A 567,
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   A126; VizieR J/A+A/567/A126): tables a1, b, b4, c, d plus the CDS
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   ReadMe, from the CDS archive FTP.
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   3. One-apparition comet catalogue (Krolikowska 2014, A&A 571, A63;
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   VizieR J/A+A/571/A63): osculating elements (tableb1), original/
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   future 1/a with uncertainties and the Marsden-Williams 2008
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   comparison values (tablec1), and original/future barycentric
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   elements with per-element uncertainties (tabled1/tablee1).  These
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   supply the uncertainty-normalized and third-lineage checks.
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   Outputs
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   data/raw/ossos/ossos_t3char.vot
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   data/raw/ossos/t3char.dat, ReadMe         (provenance cross-check)
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   data/raw/warsaw/warsaw_{a1,b,b4,c,d}.dat, warsaw_ReadMe
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   data/raw/lpc/lpc_{osc,orig,fut,aaori}_2006_2010.vot
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   data/raw/{ossos,warsaw,lpc}/provenance.json
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] --------------------------------------------------------------------------------
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] SCRIPT: scripts/steps/step_002_download_cds.py
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] SCRIPT SHA256: 77f95a824afb4d42167a7193b27b057c208860ea23479e9abd074bddc26f99d5
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] SCRIPT SIZE: 6671 bytes
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] ================================================================================
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] CDS catalogue download (OSSOS + Warsaw)
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002] ================================================================================
+[2026-09-21 14:28:51 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:51 UTC] [DEBUG   ] [STEP 002] --- OSSOS characterized ensemble, VOTable export (J/ApJS/236/18) ---
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 002]   → GET https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/ApJS/236/18/t3char&-out.max=unlimited
+[2026-09-21 14:28:52 UTC] [INFO    ] [STEP 002] METRIC: bytes = 304259 ossos_t3char.vot
+[2026-09-21 14:28:52 UTC] [INFO    ] [STEP 002] Saving data: ossos_t3char.vot
+[2026-09-21 14:28:52 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/ossos/ossos_t3char.vot
+[2026-09-21 14:28:52 UTC] [INFO    ] [STEP 002]   Output: ossos_t3char.vot
+[2026-09-21 14:28:52 UTC] [INFO    ] [STEP 002] METRIC: votable_rows = 840 OSSOS characterized detections
+[2026-09-21 14:28:52 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:52 UTC] [DEBUG   ] [STEP 002] --- OSSOS t3char authoritative fixed-width table ---
+[2026-09-21 14:28:52 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/ApJS/236/18/t3char.dat
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002] METRIC: bytes = 225960 t3char.dat
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002] Saving data: t3char.dat
+[2026-09-21 14:28:53 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/ossos/t3char.dat
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002]   Output: t3char.dat
+[2026-09-21 14:28:53 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:53 UTC] [DEBUG   ] [STEP 002] --- OSSOS CDS ReadMe ---
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/ApJS/236/18/ReadMe
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002] METRIC: bytes = 12708 ReadMe
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002] Saving data: ReadMe
+[2026-09-21 14:28:53 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/ossos/ReadMe
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002]   Output: ReadMe
+[2026-09-21 14:28:53 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:53 UTC] [DEBUG   ] [STEP 002] --- Warsaw catalogue CDS ReadMe (J/A+A/567/A126) ---
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/ReadMe
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002] METRIC: bytes = 10802 warsaw_ReadMe
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002] Saving data: warsaw_ReadMe
+[2026-09-21 14:28:53 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_ReadMe
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002]   Output: warsaw_ReadMe
+[2026-09-21 14:28:53 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:53 UTC] [DEBUG   ] [STEP 002] --- Warsaw table A1: observational material / quality class ---
+[2026-09-21 14:28:53 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablea1.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002] METRIC: bytes = 24422 warsaw_tablea1.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002] Saving data: warsaw_tablea1.dat
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_tablea1.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002]   Output: warsaw_tablea1.dat
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002] --- Warsaw table B: osculating heliocentric elements ---
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tableb.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002] METRIC: bytes = 26666 warsaw_tableb.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002] Saving data: warsaw_tableb.dat
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_tableb.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002]   Output: warsaw_tableb.dat
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002] --- Warsaw table B4: osculating elements, extended sample ---
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tableb4.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002] METRIC: bytes = 6215 warsaw_tableb4.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002] Saving data: warsaw_tableb4.dat
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_tableb4.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002]   Output: warsaw_tableb4.dat
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002] --- Warsaw table C: original barycentric elements ---
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablec.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002] METRIC: bytes = 25472 warsaw_tablec.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002] Saving data: warsaw_tablec.dat
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_tablec.dat
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002]   Output: warsaw_tablec.dat
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:54 UTC] [DEBUG   ] [STEP 002] --- Warsaw table D: future barycentric elements ---
+[2026-09-21 14:28:54 UTC] [INFO    ] [STEP 002]   → GET https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tabled.dat
+[2026-09-21 14:28:55 UTC] [INFO    ] [STEP 002] METRIC: bytes = 25074 warsaw_tabled.dat
+[2026-09-21 14:28:55 UTC] [INFO    ] [STEP 002] Saving data: warsaw_tabled.dat
+[2026-09-21 14:28:55 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/warsaw_tabled.dat
+[2026-09-21 14:28:55 UTC] [INFO    ] [STEP 002]   Output: warsaw_tabled.dat
+[2026-09-21 14:28:55 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:55 UTC] [DEBUG   ] [STEP 002] --- J/A+A/571/A63 tableb1: osculating elements, 1901-1950 cohort ---
+[2026-09-21 14:28:55 UTC] [INFO    ] [STEP 002]   → GET https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tableb1&-out.max=unlimited&-out.all
+[2026-09-21 14:28:55 UTC] [INFO    ] [STEP 002] METRIC: bytes = 24114 lpc_osc_2006_2010.vot
+[2026-09-21 14:28:55 UTC] [INFO    ] [STEP 002] Saving data: lpc_osc_2006_2010.vot
+[2026-09-21 14:28:55 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/lpc/lpc_osc_2006_2010.vot
+[2026-09-21 14:28:55 UTC] [INFO    ] [STEP 002]   Output: lpc_osc_2006_2010.vot
+[2026-09-21 14:28:55 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:55 UTC] [DEBUG   ] [STEP 002] --- J/A+A/571/A63 tabled1: original barycentric elements + errors ---
+[2026-09-21 14:28:55 UTC] [INFO    ] [STEP 002]   → GET https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tabled1&-out.max=unlimited&-out.all
+[2026-09-21 14:28:56 UTC] [INFO    ] [STEP 002] METRIC: bytes = 24025 lpc_orig_2006_2010.vot
+[2026-09-21 14:28:56 UTC] [INFO    ] [STEP 002] Saving data: lpc_orig_2006_2010.vot
+[2026-09-21 14:28:56 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/lpc/lpc_orig_2006_2010.vot
+[2026-09-21 14:28:56 UTC] [INFO    ] [STEP 002]   Output: lpc_orig_2006_2010.vot
+[2026-09-21 14:28:56 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:56 UTC] [DEBUG   ] [STEP 002] --- J/A+A/571/A63 tablee1: future barycentric elements + errors ---
+[2026-09-21 14:28:56 UTC] [INFO    ] [STEP 002]   → GET https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tablee1&-out.max=unlimited&-out.all
+[2026-09-21 14:28:56 UTC] [INFO    ] [STEP 002] METRIC: bytes = 24078 lpc_fut_2006_2010.vot
+[2026-09-21 14:28:56 UTC] [INFO    ] [STEP 002] Saving data: lpc_fut_2006_2010.vot
+[2026-09-21 14:28:56 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/lpc/lpc_fut_2006_2010.vot
+[2026-09-21 14:28:56 UTC] [INFO    ] [STEP 002]   Output: lpc_fut_2006_2010.vot
+[2026-09-21 14:28:56 UTC] [DEBUG   ] [STEP 002] 
+[2026-09-21 14:28:56 UTC] [DEBUG   ] [STEP 002] --- J/A+A/571/A63 tablec1: orig/fut 1/a + errors + MW08 values ---
+[2026-09-21 14:28:56 UTC] [INFO    ] [STEP 002]   → GET https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tablec1&-out.max=unlimited&-out.all
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] METRIC: bytes = 17574 lpc_aaori_2006_2010.vot
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Saving data: lpc_aaori_2006_2010.vot
+[2026-09-21 14:28:57 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/lpc/lpc_aaori_2006_2010.vot
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   Output: lpc_aaori_2006_2010.vot
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Saving data: provenance.json
+[2026-09-21 14:28:57 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/ossos/provenance.json
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   Output: provenance.json
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Saving data: provenance.json
+[2026-09-21 14:28:57 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/warsaw/provenance.json
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   Output: provenance.json
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Saving data: provenance.json
+[2026-09-21 14:28:57 UTC] [DEBUG   ] [STEP 002]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/lpc/provenance.json
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   Output: provenance.json
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   → CDS download complete -> data/raw/{ossos,warsaw}/
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] 
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] ================================================================================
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] STEP SUMMARY: step_002_download_cds
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] ================================================================================
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Step Number: 002
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Status: SUCCESS
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Duration: 5.63s
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Log Records Emitted: 147
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Output Files: 16
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_002_download_cds.log
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] 
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Generated 16 output file(s):
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • ossos_t3char.vot: 297.13 KB [sha256 77ddfeca032e67c2]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • t3char.dat: 220.66 KB [sha256 35c6af083804788d]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • ReadMe: 12.41 KB [sha256 362db5bb7e4f3967]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • warsaw_ReadMe: 10.55 KB [sha256 cc3d72d19a3f257c]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • warsaw_tablea1.dat: 23.85 KB [sha256 e2e3dabd6fa5e3d0]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • warsaw_tableb.dat: 26.04 KB [sha256 f8c10f5ce1d2999c]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • warsaw_tableb4.dat: 6.07 KB [sha256 9cc3160124076748]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • warsaw_tablec.dat: 24.88 KB [sha256 1f5ab8eb27600846]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • warsaw_tabled.dat: 24.49 KB [sha256 076475c89b38cf35]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • lpc_osc_2006_2010.vot: 23.55 KB [sha256 50365dbd70dce1d4]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • lpc_orig_2006_2010.vot: 23.46 KB [sha256 8a039ab9396e1e2f]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • lpc_fut_2006_2010.vot: 23.51 KB [sha256 124a921c7777e58f]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • lpc_aaori_2006_2010.vot: 17.16 KB [sha256 126b8631e1002899]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • provenance.json: 1.63 KB [sha256 ee05788d1aca682e]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • provenance.json: 2.25 KB [sha256 4aa8ca55e133fd14]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   • provenance.json: 1.78 KB [sha256 dca485bad2c40305]
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] ================================================================================
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] STEP 002 COMPLETE: SUCCESS
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_002_download_cds_provenance.json
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] 
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] ================================================================================
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] EXECUTIVE SUMMARY
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] ================================================================================
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Step: step_002_download_cds (Step 002)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Status: SUCCESS
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Duration: 5.63s
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Log Records: 171
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Output Files: 16
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] Key Outputs:
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - ossos_t3char.vot (297.13 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - t3char.dat (220.66 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - ReadMe (12.41 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - warsaw_ReadMe (10.55 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - warsaw_tablea1.dat (23.85 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - warsaw_tableb.dat (26.04 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - warsaw_tableb4.dat (6.07 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - warsaw_tablec.dat (24.88 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - warsaw_tabled.dat (24.49 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - lpc_osc_2006_2010.vot (23.55 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - lpc_orig_2006_2010.vot (23.46 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - lpc_fut_2006_2010.vot (23.51 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - lpc_aaori_2006_2010.vot (17.16 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - provenance.json (1.63 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - provenance.json (2.25 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002]   - provenance.json (1.78 KB)
+[2026-09-21 14:28:57 UTC] [INFO    ] [STEP 002] ================================================================================

@@ -407,12 +407,14 @@ def main():
 
     with open(OUT_J, "w") as fh:
         json.dump(out, fh, indent=1)
+    _step_log.add_output_file(OUT_J)
     with open(OUT_C, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=sorted(
             {k for x in recs for k in x}))
         w.writeheader()
         for x in recs:
             w.writerow(x)
+    _step_log.add_output_file(OUT_C)
 
     fig, ax = plt.subplots(1, 2, figsize=(10, 4))
     ax[0].scatter([x["nobs"] for x in good],
@@ -431,6 +433,7 @@ def main():
     fig.tight_layout()
     fig.savefig(OUT_P, dpi=300)
     plt.close(fig)
+    _step_log.add_output_file(OUT_P)
     logger.info("verdict: " + verdict[:200])
     pass
     print(json.dumps(out["results"], indent=1)[:2000])

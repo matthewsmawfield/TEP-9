@@ -1,109 +1,168 @@
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] LOGGER INITIALIZED: step_122_pre2018_localization (Step 122)
-[2026-09-20 12:22:23 UTC] [DEBUG   ] [STEP 122] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_122_pre2018_localization.log
-[2026-09-20 12:22:23 UTC] [DEBUG   ] [STEP 122] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:22:23 UTC] [DEBUG   ] [STEP 122] Start time (UTC): 2026-09-20T12:22:23.016118+00:00
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] 
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] STEP PURPOSE
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] --------------------------------------------------------------------------------
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   step_122: Anomaly localization on the pre-2018 SBDB record.
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   Step 121's joint decomposition returned a weak positive declared-axis
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   term on the broad pre-2018 cohort (+0.166 dex, p = 0.019) while the
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   deep-plunger primary stayed median-null (step 120).  Two readings are
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   possible:
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   H-LOCK   the term is carried by the 288 members the cohort shares
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   with CODE -- the anomaly is locked to the CODE-selected
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   objects and reproduces under independent JPL solutions
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   (object-association, strengthening the step_120 claim);
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   H-BROAD  the term generalizes across the pre-2018 population --
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   a broad anomaly diluted in CODE, weakening the
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   localization story.
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   This step localizes the term.  The 738 integrated pre-2018 comets are
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   split by CODE membership and interrogated at the declared axis; the
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   non-overlap remainder is then audited for what carries its residual
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   positive lean (era concentration vs a handful of fat-tailed
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   19th/20th-century solutions).
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   Tests
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   T1  membership decomposition: declared-axis gap, MWU and Spearman
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   for CODE-overlap (n=288) vs non-overlap (n=450); membership x
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   cap interaction on the pooled cohort (in_code labels permuted)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   -- is the anomaly membership-locked at significance?
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   T2  cap-width sensitivity on the overlap (45/60/75 deg) plus
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   anti-axis and post-2017-displaced-axis controls -- does the
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   overlap term have the anomaly's threshold morphology?
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   T3  era x membership grid (pre-1990 / 1990-2009 / 2010-2017) --
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   where the overlap term lives in time, and whether the
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   non-overlap pre-1990 lean is real.
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   T4  fat-tail audit of the non-overlap pre-1990 cell: trimmed and
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   winsorized means, leave-one-out on the top in-cap residuals,
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   composition (arc, nobs, condition code) of the high-residual
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   members -- fat right tail of historical solutions vs signal.
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   T5  quality-matched non-overlap subsets (q<3.1, bound, spanning
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   arc, arc>365d, nobs>300) -- does ANY non-overlap cell show the
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   anomaly?
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   Inputs
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   results/step_b84_pre2018_sbdb.csv   (per-comet legs, in_code flags)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   Outputs
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   results/step_b86_pre2018_localization.json
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   results/step_b86_pre2018_localization.csv
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   results/figures/supplementary/step_b86_pre2018_localization.png
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] --------------------------------------------------------------------------------
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] SCRIPT: scripts/steps/step_122_pre2018_localization.py
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] SCRIPT SHA256: f9ced7372b35a38e2af28cf8bc8821273aa7f4efef33a75c932f0b9cbf899390
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] SCRIPT SIZE: 18455 bytes
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] ================================================================================
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Anomaly localization: pre-2018 declared-axis term
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] ================================================================================
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] pre-2018 cohort: 738 comets with boundary legs
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] CODE-overlap n=288, non-overlap n=450
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T1 overlap: med +0.008 (MWU p=0.2479); non-overlap: med -0.013 (MWU p=0.5743)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T1 membership x cap interaction k=+0.024 p=0.6577
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T2 overlap cap<45: med +0.011 (MWU p=0.2671)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T2 overlap cap<60: med +0.008 (MWU p=0.2479)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T2 overlap cap<75: med +0.008 (MWU p=0.3062)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T2 overlap at anti_axis: med -0.067 (MWU p=0.7582)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T2 overlap at post2017_displaced: med +0.014 (MWU p=0.7926)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T3 pre_1990 overlap (n=70): med +0.089 (MWU p=0.3726)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T3 pre_1990 non_overlap (n=185): med -0.027 (MWU p=0.5049)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T3 y1990_2009 overlap (n=114): med -0.082 (MWU p=0.5224)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T3 y1990_2009 non_overlap (n=156): med -0.011 (MWU p=0.4876)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T3 y2010_2017 overlap (n=104): med +0.050 (MWU p=0.1149)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T3 y2010_2017 non_overlap (n=109): med -0.044 (MWU p=0.6753)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T4 non-overlap pre-1990: med -0.027, mean +0.019, trim10 +0.005, winsor95 +0.020, top-5 share 0.29
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T5 non-overlap q_lt_3p1 (n=350): med -0.029 (MWU p=0.7935)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T5 non-overlap q_lt_3p1_bound (n=237): med -0.034 (MWU p=0.7450)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T5 non-overlap q_lt_3p1_span_arc (n=254): med -0.031 (MWU p=0.8470)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T5 non-overlap arc_gt_365_nobs_gt_300 (n=89): med +0.046 (MWU p=0.1819)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T5 non-overlap post_1990_only (n=265): med -0.023 (MWU p=0.6186)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] T5 non-overlap q_lt_3p1_post_1990 (n=172): med -0.080 (MWU p=0.8947)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Saving data: step_b86_pre2018_localization.json
-[2026-09-20 12:22:23 UTC] [DEBUG   ] [STEP 122]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b86_pre2018_localization.json
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   Output: step_b86_pre2018_localization.json
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] 
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] ================================================================================
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] STEP SUMMARY: step_122_pre2018_localization
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] ================================================================================
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Step Number: 122
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Status: SUCCESS
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Duration: 0.90s
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Log Records Emitted: 88
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Output Files: 1
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_122_pre2018_localization.log
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] 
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Generated 1 output file(s):
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   • step_b86_pre2018_localization.json: 7.42 KB [sha256 20a9f88ec5dc0ae0]
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] ================================================================================
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] STEP 122 COMPLETE: SUCCESS
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_122_pre2018_localization_provenance.json
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] 
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] ================================================================================
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] EXECUTIVE SUMMARY
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] ================================================================================
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Step: step_122_pre2018_localization (Step 122)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Status: SUCCESS
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Duration: 0.90s
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Log Records: 97
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Output Files: 1
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] Key Outputs:
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122]   - step_b86_pre2018_localization.json (7.42 KB)
-[2026-09-20 12:22:23 UTC] [INFO    ] [STEP 122] ================================================================================
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] LOGGER INITIALIZED: step_122_pre2018_localization (Step 122)
+[2026-09-21 15:14:05 UTC] [DEBUG   ] [STEP 122] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_122_pre2018_localization.log
+[2026-09-21 15:14:05 UTC] [DEBUG   ] [STEP 122] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:14:05 UTC] [DEBUG   ] [STEP 122] Start time (UTC): 2026-09-21T15:14:05.270740+00:00
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] 
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] STEP PURPOSE
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] --------------------------------------------------------------------------------
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   step_122: Anomaly localization on the pre-2018 SBDB record.
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   Step 121's joint decomposition returned a weak positive declared-axis
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   term on the broad pre-2018 cohort (+0.166 dex, p = 0.019) while the
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   deep-plunger primary stayed median-null (step 120).  Two readings are
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   possible:
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   H-LOCK   the term is carried by the 288 members the cohort shares
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   with CODE -- the anomaly is locked to the CODE-selected
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   objects and reproduces under independent JPL solutions
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   (object-association, strengthening the step_120 claim);
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   H-BROAD  the term generalizes across the pre-2018 population --
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   a broad anomaly diluted in CODE, weakening the
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   localization story.
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   This step localizes the term.  The 738 integrated pre-2018 comets are
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   split by CODE membership and interrogated at the declared axis; the
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   non-overlap remainder is then audited for what carries its residual
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   positive lean (era concentration vs a handful of fat-tailed
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   19th/20th-century solutions).
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   Tests
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   T1  membership decomposition: declared-axis gap, MWU and Spearman
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   for CODE-overlap (n=288) vs non-overlap (n=450); membership x
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   cap interaction on the pooled cohort (in_code labels permuted)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   -- is the anomaly membership-locked at significance?
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   T2  cap-width sensitivity on the overlap (45/60/75 deg) plus
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   anti-axis and post-2017-displaced-axis controls -- does the
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   overlap term have the anomaly's threshold morphology?
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   T3  era x membership grid (pre-1990 / 1990-2009 / 2010-2017) --
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   where the overlap term lives in time, and whether the
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   non-overlap pre-1990 lean is real.
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   T4  fat-tail audit of the non-overlap pre-1990 cell: trimmed and
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   winsorized means, leave-one-out on the top in-cap residuals,
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   composition (arc, nobs, condition code) of the high-residual
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   members -- fat right tail of historical solutions vs signal.
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   T5  quality-matched non-overlap subsets (q<3.1, bound, spanning
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   arc, arc>365d, nobs>300) -- does ANY non-overlap cell show the
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   anomaly?
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   Inputs
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   results/step_b84_pre2018_sbdb.csv   (per-comet legs, in_code flags)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   Outputs
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   results/step_b86_pre2018_localization.json
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   results/step_b86_pre2018_localization.csv
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122]   results/figures/supplementary/step_b86_pre2018_localization.png
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] --------------------------------------------------------------------------------
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] SCRIPT: scripts/steps/step_122_pre2018_localization.py
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] SCRIPT SHA256: f9ced7372b35a38e2af28cf8bc8821273aa7f4efef33a75c932f0b9cbf899390
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] SCRIPT SIZE: 18455 bytes
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] ================================================================================
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] Anomaly localization: pre-2018 declared-axis term
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] ================================================================================
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] pre-2018 cohort: 738 comets with boundary legs
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] CODE-overlap n=288, non-overlap n=450
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T1 overlap: med +0.008 (MWU p=0.2479); non-overlap: med -0.013 (MWU p=0.5743)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T1 membership x cap interaction k=+0.024 p=0.6577
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T2 overlap cap<45: med +0.011 (MWU p=0.2671)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T2 overlap cap<60: med +0.008 (MWU p=0.2479)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T2 overlap cap<75: med +0.008 (MWU p=0.3062)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T2 overlap at anti_axis: med -0.067 (MWU p=0.7582)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T2 overlap at post2017_displaced: med +0.014 (MWU p=0.7926)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T3 pre_1990 overlap (n=70): med +0.089 (MWU p=0.3726)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T3 pre_1990 non_overlap (n=185): med -0.027 (MWU p=0.5049)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T3 y1990_2009 overlap (n=114): med -0.082 (MWU p=0.5224)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T3 y1990_2009 non_overlap (n=156): med -0.011 (MWU p=0.4876)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T3 y2010_2017 overlap (n=104): med +0.050 (MWU p=0.1149)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T3 y2010_2017 non_overlap (n=109): med -0.044 (MWU p=0.6753)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T4 non-overlap pre-1990: med -0.027, mean +0.019, trim10 +0.005, winsor95 +0.020, top-5 share 0.29
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T5 non-overlap q_lt_3p1 (n=350): med -0.029 (MWU p=0.7935)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T5 non-overlap q_lt_3p1_bound (n=237): med -0.034 (MWU p=0.7450)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T5 non-overlap q_lt_3p1_span_arc (n=254): med -0.031 (MWU p=0.8470)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T5 non-overlap arc_gt_365_nobs_gt_300 (n=89): med +0.046 (MWU p=0.1819)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T5 non-overlap post_1990_only (n=265): med -0.023 (MWU p=0.6186)
+[2026-09-21 15:14:05 UTC] [INFO    ] [STEP 122] T5 non-overlap q_lt_3p1_post_1990 (n=172): med -0.080 (MWU p=0.8947)
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Saving data: step_b86_pre2018_localization.json
+[2026-09-21 15:14:06 UTC] [DEBUG   ] [STEP 122]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b86_pre2018_localization.json
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]   Output: step_b86_pre2018_localization.json
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] 
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] ================================================================================
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] STEP SUMMARY: step_122_pre2018_localization
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] ================================================================================
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Step Number: 122
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Status: SUCCESS
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Duration: 1.14s
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Log Records Emitted: 88
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Output Files: 1
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_122_pre2018_localization.log
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] 
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Generated 1 output file(s):
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]   • step_b86_pre2018_localization.json: 7.42 KB [sha256 20a9f88ec5dc0ae0]
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] 
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]   RESULT SNAPSHOT [step_b86_pre2018_localization.json]:
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]     inputs [n=1]
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]     T1_membership_decomposition.overlap:
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n = 288
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n_in = 87
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       med_gap = 0.0075700389
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mean_gap = 0.039637594
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mwu_greater_p = 0.24790637
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho = -0.052925403
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho_p = 0.37084317
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]     T1_membership_decomposition.non_overlap:
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n = 450
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n_in = 107
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       med_gap = -0.013100236
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mean_gap = 0.0042949581
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mwu_greater_p = 0.57429546
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho = -0.035044848
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho_p = 0.45834571
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]     T1_membership_decomposition.membership_x_cap_interaction:
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       k = 0.023845105
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       p_perm = 0.65767116
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]     T2_overlap_cap_and_axis.cap_widths.cap_45:
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n = 288
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n_in = 57
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       med_gap = 0.011344047
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mean_gap = 0.047061702
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mwu_greater_p = 0.26712349
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho = -0.052925403
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho_p = 0.37084317
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]     T2_overlap_cap_and_axis.cap_widths.cap_60:
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n = 288
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n_in = 87
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       med_gap = 0.0075700389
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mean_gap = 0.039637594
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mwu_greater_p = 0.24790637
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho = -0.052925403
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho_p = 0.37084317
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]     T2_overlap_cap_and_axis.cap_widths.cap_75:
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n = 288
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n_in = 129
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       med_gap = 0.0075700389
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mean_gap = 0.038284681
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mwu_greater_p = 0.30624514
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho = -0.052925403
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho_p = 0.37084317
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]     T2_overlap_cap_and_axis.axis_controls.anti_axis:
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n = 288
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n_in = 42
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       med_gap = -0.067266388
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mean_gap = -0.030098012
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       mwu_greater_p = 0.75823703
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho = 0.052925403
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       rho_p = 0.37084317
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]     T2_overlap_cap_and_axis.axis_controls.post2017_displaced:
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n = 288
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       n_in = 101
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       med_gap = 0.013663173
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] ================================================================================
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] STEP 122 COMPLETE: SUCCESS
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_122_pre2018_localization_provenance.json
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] 
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] ================================================================================
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] EXECUTIVE SUMMARY
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] ================================================================================
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Step: step_122_pre2018_localization (Step 122)
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Status: SUCCESS
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Duration: 1.14s
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Log Records: 156
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Output Files: 1
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] Key Outputs:
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122]   - step_b86_pre2018_localization.json (7.42 KB)
+[2026-09-21 15:14:06 UTC] [INFO    ] [STEP 122] ================================================================================

@@ -1,80 +1,115 @@
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147] LOGGER INITIALIZED: step_147_ephemeris_audit (Step 147)
-[2026-09-20 12:25:51 UTC] [DEBUG   ] [STEP 147] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_147_ephemeris_audit.log
-[2026-09-20 12:25:51 UTC] [DEBUG   ] [STEP 147] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:25:51 UTC] [DEBUG   ] [STEP 147] Start time (UTC): 2026-09-20T12:25:51.262467+00:00
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147] 
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147] STEP PURPOSE
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147] --------------------------------------------------------------------------------
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   Step 147: ephemeris-version audit (step_b111).
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   The bidirectional boundary integration of step_063 runs under DE440s;
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   the CODE osculating solutions were fitted under an earlier ephemeris
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   generation (DE405/DE430 era).  A sceptic can ask whether the in-cap
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   rotation gap is a planetary-ephemeris version artefact -- the catalogue
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   fit and the independent propagation disagreeing on the planets, not on
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   the comet.
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   T1  Per-leg ephemeris displacement: each comet's osculating elements at
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   perihelion are integrated to the +/-250 AU barycentric sphere under
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   Sun + planetary-system barycentres, once with DE440s and once with
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   DE430, and the boundary periapsis directions are compared leg by
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   leg (median / p95 / max separation in degrees).
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   T2  Gap stability: the kick-and-geometry-regressed in-cap residual gap
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   (the same four-covariate construction as the declared-anomaly
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   instrument) is recomputed under each ephemeris; the gap and its
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   MWU p-value are reported for both.
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   Outputs: results/step_b111_ephemeris_audit.json/.csv and
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147]   results/figures/supplementary/step_b111_ephemeris_audit.png.
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147] --------------------------------------------------------------------------------
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147] SCRIPT: scripts/steps/step_147_ephemeris_audit.py
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147] SCRIPT SHA256: b9b7297f4f986f133f7e0cf5fe44b746c391af3b6b096643ebce02bd4456d6f4
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147] SCRIPT SIZE: 18012 bytes
-[2026-09-20 12:25:51 UTC] [INFO    ] [STEP 147] sample: 131 class-1 CODE comets
-[2026-09-20 12:26:20 UTC] [INFO    ] [STEP 147] de440s: 131 comets x2 legs; 0 failed
-[2026-09-20 12:26:52 UTC] [INFO    ] [STEP 147] de430: 131 comets x2 legs; 0 failed
-[2026-09-20 12:26:52 UTC] [INFO    ] [STEP 147] 131 comets integrated under both kernels
-[2026-09-20 12:26:52 UTC] [INFO    ] [STEP 147] T1 ephemeris leg displacement: median 3.36e-09 deg, max 5.4e-07 deg
-[2026-09-20 12:26:52 UTC] [INFO    ] [STEP 147] T2 de440s: in-cap residual gap +0.1234 dex, p=0.01185
-[2026-09-20 12:26:52 UTC] [INFO    ] [STEP 147] T2 de430: in-cap residual gap +0.1234 dex, p=0.01185
-[2026-09-20 12:26:52 UTC] [INFO    ] [STEP 147] Saving data: step_b111_ephemeris_audit.json
-[2026-09-20 12:26:52 UTC] [DEBUG   ] [STEP 147]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b111_ephemeris_audit.json
-[2026-09-20 12:26:52 UTC] [INFO    ] [STEP 147]   Output: step_b111_ephemeris_audit.json
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Saving data: step_b111_ephemeris_audit.png
-[2026-09-20 12:26:53 UTC] [DEBUG   ] [STEP 147]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b111_ephemeris_audit.png
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147]   Output: step_b111_ephemeris_audit.png
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] TEST SUMMARY:
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] {
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147]  "legs_ephemeris_stable": true,
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147]  "gap_ephemeris_stable": true,
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147]  "gap_significant_both": true
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] }
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] VERDICT: EPHEMERIS-INVARIANT: the DE440s/DE430 boundary periapsis directions agree to a median of 3.36e-09 deg per leg (p95 1.75e-08, max 5.4e-07), and the kick-and-geometry-regressed in-cap gap is +0.1234 dex (p=0.0118) under DE440s versus +0.1234 dex (p=0.0118) under DE430 -- the ephemeris generation does not perturb the cometary boundary reconstruction or the in-cap excess.
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] 
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] ================================================================================
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] STEP SUMMARY: step_147_ephemeris_audit
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] ================================================================================
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Step Number: 147
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Status: SUCCESS
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Duration: 1.03m
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Log Records Emitted: 57
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Output Files: 2
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_147_ephemeris_audit.log
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] 
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Generated 2 output file(s):
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147]   • step_b111_ephemeris_audit.json: 1.99 KB [sha256 21c39c8b8f559610]
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147]   • step_b111_ephemeris_audit.png: 229.00 KB [sha256 4e36c556965fc562]
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] ================================================================================
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] STEP 147 COMPLETE: SUCCESS
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_147_ephemeris_audit_provenance.json
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] 
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] ================================================================================
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] EXECUTIVE SUMMARY
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] ================================================================================
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Step: step_147_ephemeris_audit (Step 147)
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Status: SUCCESS
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Duration: 1.03m
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Log Records: 67
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Output Files: 2
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] Key Outputs:
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147]   - step_b111_ephemeris_audit.json (1.99 KB)
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147]   - step_b111_ephemeris_audit.png (229.00 KB)
-[2026-09-20 12:26:53 UTC] [INFO    ] [STEP 147] ================================================================================
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147] LOGGER INITIALIZED: step_147_ephemeris_audit (Step 147)
+[2026-09-21 15:17:46 UTC] [DEBUG   ] [STEP 147] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_147_ephemeris_audit.log
+[2026-09-21 15:17:46 UTC] [DEBUG   ] [STEP 147] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:17:46 UTC] [DEBUG   ] [STEP 147] Start time (UTC): 2026-09-21T15:17:46.488644+00:00
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147] 
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147] STEP PURPOSE
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147] --------------------------------------------------------------------------------
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   Step 147: ephemeris-version audit (step_b111).
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   The bidirectional boundary integration of step_063 runs under DE440s;
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   the CODE osculating solutions were fitted under an earlier ephemeris
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   generation (DE405/DE430 era).  A sceptic can ask whether the in-cap
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   rotation gap is a planetary-ephemeris version artefact -- the catalogue
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   fit and the independent propagation disagreeing on the planets, not on
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   the comet.
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   T1  Per-leg ephemeris displacement: each comet's osculating elements at
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   perihelion are integrated to the +/-250 AU barycentric sphere under
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   Sun + planetary-system barycentres, once with DE440s and once with
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   DE430, and the boundary periapsis directions are compared leg by
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   leg (median / p95 / max separation in degrees).
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   T2  Gap stability: the kick-and-geometry-regressed in-cap residual gap
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   (the same four-covariate construction as the declared-anomaly
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   instrument) is recomputed under each ephemeris; the gap and its
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   MWU p-value are reported for both.
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   Outputs: results/step_b111_ephemeris_audit.json/.csv and
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147]   results/figures/supplementary/step_b111_ephemeris_audit.png.
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147] --------------------------------------------------------------------------------
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147] SCRIPT: scripts/steps/step_147_ephemeris_audit.py
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147] SCRIPT SHA256: c132c908a14813d8e0faa19d4c943ef15e11f957ff1359edbb870d817807166d
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147] SCRIPT SIZE: 18100 bytes
+[2026-09-21 15:17:46 UTC] [INFO    ] [STEP 147] sample: 131 class-1 CODE comets
+[2026-09-21 15:18:19 UTC] [INFO    ] [STEP 147] de440s: 131 comets x2 legs; 0 failed
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] de430: 131 comets x2 legs; 0 failed
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] 131 comets integrated under both kernels
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] T1 ephemeris leg displacement: median 3.36e-09 deg, max 5.4e-07 deg
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] T2 de440s: in-cap residual gap +0.1234 dex, p=0.01185
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] T2 de430: in-cap residual gap +0.1234 dex, p=0.01185
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Saving data: step_b111_ephemeris_audit.json
+[2026-09-21 15:18:51 UTC] [DEBUG   ] [STEP 147]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b111_ephemeris_audit.json
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]   Output: step_b111_ephemeris_audit.json
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Saving data: step_b111_ephemeris_audit.png
+[2026-09-21 15:18:51 UTC] [DEBUG   ] [STEP 147]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b111_ephemeris_audit.png
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]   Output: step_b111_ephemeris_audit.png
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] TEST SUMMARY:
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] {
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]  "legs_ephemeris_stable": true,
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]  "gap_ephemeris_stable": true,
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]  "gap_significant_both": true
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] }
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] VERDICT: EPHEMERIS-INVARIANT: the DE440s/DE430 boundary periapsis directions agree to a median of 3.36e-09 deg per leg (p95 1.75e-08, max 5.4e-07), and the kick-and-geometry-regressed in-cap gap is +0.1234 dex (p=0.0118) under DE440s versus +0.1234 dex (p=0.0118) under DE430 -- the ephemeris generation does not perturb the cometary boundary reconstruction or the in-cap excess.
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] 
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] ================================================================================
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] STEP SUMMARY: step_147_ephemeris_audit
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] ================================================================================
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Step Number: 147
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Status: SUCCESS
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Duration: 1.09m
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Log Records Emitted: 57
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Output Files: 2
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_147_ephemeris_audit.log
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] 
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Generated 2 output file(s):
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]   • step_b111_ephemeris_audit.json: 1.99 KB [sha256 21c39c8b8f559610]
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]   • step_b111_ephemeris_audit.png: 229.00 KB [sha256 4e36c556965fc562]
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] 
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]   RESULT SNAPSHOT [step_b111_ephemeris_audit.json]:
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]     kernels [n=2]
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]     n_failed:
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       de440s = 0
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       de430 = 0
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]     T1_ephemeris_displacement:
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       n_legs = 262
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       median_deg_back = 2.9705932e-09
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       median_deg_fwd = 3.8377661e-09
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       median_deg_all = 3.3617196e-09
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       p95_deg_all = 1.7535458e-08
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       max_deg_all = 5.3969802e-07
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       frac_legs_within_1e-4_deg = 1
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       frac_legs_within_1e-3_deg = 1
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]     T2_incap_gap_by_kernel.de440s:
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       n = 131
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       n_in = 43
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       gap_dex = 0.1234093
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       med_resid_in = 0.15050002
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       med_resid_out = 0.027090725
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       p = 0.011847543
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]     T2_incap_gap_by_kernel.de430:
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       n = 131
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       n_in = 43
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       gap_dex = 0.12340936
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       med_resid_in = 0.15050003
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       med_resid_out = 0.027090673
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       p = 0.011847543
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]     test_summary:
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       legs_ephemeris_stable = True
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       gap_ephemeris_stable = True
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]       gap_significant_both = True
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]     inputs [n=3]
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]     caveats [n=2]
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] ================================================================================
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] STEP 147 COMPLETE: SUCCESS
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_147_ephemeris_audit_provenance.json
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] 
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] ================================================================================
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] EXECUTIVE SUMMARY
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] ================================================================================
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Step: step_147_ephemeris_audit (Step 147)
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Status: SUCCESS
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Duration: 1.09m
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Log Records: 102
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Output Files: 2
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] Key Outputs:
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]   - step_b111_ephemeris_audit.json (1.99 KB)
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147]   - step_b111_ephemeris_audit.png (229.00 KB)
+[2026-09-21 15:18:51 UTC] [INFO    ] [STEP 147] ================================================================================

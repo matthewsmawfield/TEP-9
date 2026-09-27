@@ -1,75 +1,138 @@
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] LOGGER INITIALIZED: step_051_evidence_summary (Step 051)
-[2026-09-20 10:47:23 UTC] [DEBUG   ] [STEP 051] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_051_evidence_summary.log
-[2026-09-20 10:47:23 UTC] [DEBUG   ] [STEP 051] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:47:23 UTC] [DEBUG   ] [STEP 051] Start time (UTC): 2026-09-20T10:47:23.164369+00:00
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] 
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] STEP PURPOSE
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] --------------------------------------------------------------------------------
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   TEP / Planet-9 -- step b15: evidence summary
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   A single harvest of the pipeline's primary hypothesis tests,
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   with multiple-testing control.  The pipeline has grown to
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   ~30 analyses; this step collects the headline p-values,
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   applies Benjamini-Hochberg FDR control within test families,
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   and reports the combined evidence honestly -- including the
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   tests that came back NULL, which constrain the interpretation
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   as much as the detections.
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   Families:
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   F1  TNO clock-sector clustering (primary detections)
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   F2  Bias-control bounds (the pointing channel measured &
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   bounded at three levels)
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   F3  Structure tests (radial, warp, patch, anti-deficit)
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   F4  Comet clock channel (concurrent numbered pipeline)
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   F5  Cross-population direction consistency
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   F6  NULL results that disfavour the alternatives
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   Outputs: results/step_b15_evidence_summary.json,
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051]   figures/supplementary/step_b15_evidence_summary.png
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] --------------------------------------------------------------------------------
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] SCRIPT: scripts/steps/step_051_evidence_summary.py
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] SCRIPT SHA256: fb8a5e31d8d9979e01b75855c0dfdbd91f72652ea37b20a81482b7188f28c1cd
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] SCRIPT SIZE: 11483 bytes
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] ================================================================================
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] Multiple-testing evidence summary
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] ================================================================================
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] F1: n=7 raw<.05=7 BH thr=0.0500 survive=7
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] F2: n=4 raw<.05=2 BH thr=0.0000 survive=0
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] F3: n=4 raw<.05=3 BH thr=0.0000 survive=0
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] F4: n=4 raw<.05=4 BH thr=0.0500 survive=4
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] F5: n=3 raw<.05=3 BH thr=0.0500 survive=3
-[2026-09-20 10:47:23 UTC] [INFO    ] [STEP 051] combined Fisher p = 2.55e-04
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Saving data: step_b15_evidence_summary.json
-[2026-09-20 10:47:24 UTC] [DEBUG   ] [STEP 051]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b15_evidence_summary.json
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051]   Output: step_b15_evidence_summary.json
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Saving data: step_b15_evidence_summary.png
-[2026-09-20 10:47:24 UTC] [DEBUG   ] [STEP 051]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b15_evidence_summary.png
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051]   Output: step_b15_evidence_summary.png
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] 
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] ================================================================================
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] STEP SUMMARY: step_051_evidence_summary
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] ================================================================================
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Step Number: 051
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Status: SUCCESS
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Duration: 0.96s
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Log Records Emitted: 52
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Output Files: 2
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_051_evidence_summary.log
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] 
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Generated 2 output file(s):
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051]   • step_b15_evidence_summary.json: 4.58 KB [sha256 dc8461a6010b0b18]
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051]   • step_b15_evidence_summary.png: 124.55 KB [sha256 da8be3fbd64fdb86]
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] ================================================================================
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] STEP 051 COMPLETE: SUCCESS
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_051_evidence_summary_provenance.json
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] 
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] ================================================================================
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] EXECUTIVE SUMMARY
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] ================================================================================
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Step: step_051_evidence_summary (Step 051)
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Status: SUCCESS
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Duration: 0.96s
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Log Records: 62
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Output Files: 2
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] Key Outputs:
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051]   - step_b15_evidence_summary.json (4.58 KB)
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051]   - step_b15_evidence_summary.png (124.55 KB)
-[2026-09-20 10:47:24 UTC] [INFO    ] [STEP 051] ================================================================================
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] LOGGER INITIALIZED: step_051_evidence_summary (Step 051)
+[2026-09-21 14:36:36 UTC] [DEBUG   ] [STEP 051] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_051_evidence_summary.log
+[2026-09-21 14:36:36 UTC] [DEBUG   ] [STEP 051] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:36:36 UTC] [DEBUG   ] [STEP 051] Start time (UTC): 2026-09-21T14:36:36.288088+00:00
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] 
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] STEP PURPOSE
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] --------------------------------------------------------------------------------
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   TEP / Planet-9 -- step b15: evidence summary
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   A single harvest of the pipeline's primary hypothesis tests,
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   with multiple-testing control.  The pipeline has grown to
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   ~30 analyses; this step collects the headline p-values,
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   applies Benjamini-Hochberg FDR control within test families,
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   and reports the combined evidence honestly -- including the
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   tests that came back NULL, which constrain the interpretation
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   as much as the detections.
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   Families:
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   F1  TNO clock-sector clustering (primary detections)
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   F2  Bias-control bounds (the pointing channel measured &
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   bounded at three levels)
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   F3  Structure tests (radial, warp, patch, anti-deficit)
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   F4  Comet clock channel (concurrent numbered pipeline)
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   F5  Cross-population direction consistency
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   F6  NULL results that disfavour the alternatives
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   Outputs: results/step_b15_evidence_summary.json,
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051]   figures/supplementary/step_b15_evidence_summary.png
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] --------------------------------------------------------------------------------
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] SCRIPT: scripts/steps/step_051_evidence_summary.py
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] SCRIPT SHA256: fb8a5e31d8d9979e01b75855c0dfdbd91f72652ea37b20a81482b7188f28c1cd
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] SCRIPT SIZE: 11483 bytes
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] ================================================================================
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] Multiple-testing evidence summary
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] ================================================================================
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] F1: n=7 raw<.05=7 BH thr=0.0500 survive=7
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] F2: n=4 raw<.05=2 BH thr=0.0000 survive=0
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] F3: n=4 raw<.05=3 BH thr=0.0000 survive=0
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] F4: n=4 raw<.05=4 BH thr=0.0500 survive=4
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] F5: n=3 raw<.05=3 BH thr=0.0500 survive=3
+[2026-09-21 14:36:36 UTC] [INFO    ] [STEP 051] combined Fisher p = 2.55e-04
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Saving data: step_b15_evidence_summary.json
+[2026-09-21 14:36:37 UTC] [DEBUG   ] [STEP 051]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b15_evidence_summary.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]   Output: step_b15_evidence_summary.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Saving data: step_b15_evidence_summary.png
+[2026-09-21 14:36:37 UTC] [DEBUG   ] [STEP 051]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b15_evidence_summary.png
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]   Output: step_b15_evidence_summary.png
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] 
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] ================================================================================
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] STEP SUMMARY: step_051_evidence_summary
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] ================================================================================
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Step Number: 051
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Status: SUCCESS
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Duration: 0.79s
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Log Records Emitted: 52
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Output Files: 2
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_051_evidence_summary.log
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] 
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Generated 2 output file(s):
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]   • step_b15_evidence_summary.json: 4.58 KB [sha256 dc8461a6010b0b18]
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]   • step_b15_evidence_summary.png: 165.87 KB [sha256 7777a35d28458ff1]
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] 
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]   RESULT SNAPSHOT [step_b15_evidence_summary.json]:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     tests[0]:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       name = varpi conditioned-null R (step_02)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       p = 0.0073
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       family = F1
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       src = step_02_clustering.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     tests[1]:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       name = 3-D perihelion-vector alignment (b11)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       p = 0.0001
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       family = F1
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       src = step_b11_population_selectivity.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     tests[2]:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       name = omega conditioned-null R (b1)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       p = 0.008
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       family = F1
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       src = step_b1_empirical_null.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     tests[3]:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       name = varpi empirical-null R (b1)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       p = 0.013
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       family = F1
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       src = step_b1_empirical_null.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     tests[4]:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       name = numbered-orbits R=0.59 (b3)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       p = 0.0015
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       family = F1
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       src = step_b3_robustness.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     tests[5]:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       name = pre-2014 subsample (b3)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       p = 0.043
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       family = F1
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       src = step_b3_robustness.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     tests[6]:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       name = cap-profile peak, 3-D (b13)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       p = 0.0001
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       family = F1
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       src = step_b13_patch_scale.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     tests[7]:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       name = maximal-pointing ceiling (b5)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       p = 0.0527
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       family = F2
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       src = step_b5_discovery_footprint.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     nulls [n=6]
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     staleness_audit:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n_checked = 24
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n_mismatched = 0
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     staleness_audit.mismatches [n=0]
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     family_bh.F1:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n = 7
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n_below_raw05 = 7
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       bh_threshold = 0.05
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n_surviving_bh = 7
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     family_bh.F2:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n = 4
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n_below_raw05 = 2
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       bh_threshold = 0
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n_surviving_bh = 0
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]     family_bh.F3:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n = 4
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n_below_raw05 = 3
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       bh_threshold = 0
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       n_surviving_bh = 0
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] ================================================================================
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] STEP 051 COMPLETE: SUCCESS
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_051_evidence_summary_provenance.json
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] 
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] ================================================================================
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] EXECUTIVE SUMMARY
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] ================================================================================
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Step: step_051_evidence_summary (Step 051)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Status: SUCCESS
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Duration: 0.79s
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Log Records: 125
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Output Files: 2
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] Key Outputs:
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]   - step_b15_evidence_summary.json (4.58 KB)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051]   - step_b15_evidence_summary.png (165.87 KB)
+[2026-09-21 14:36:37 UTC] [INFO    ] [STEP 051] ================================================================================

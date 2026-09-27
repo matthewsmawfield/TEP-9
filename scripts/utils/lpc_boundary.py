@@ -38,6 +38,13 @@ R_STOP = 250.0
 T_MAX = 20000.0
 DT_OUT = 1.0
 V_BND_MAX = 10.0  # |v| ceiling at the 250 AU sphere (escape ~0.6 AU/yr)
+R_MIN_ENC = 0.001  # exit threshold: comet driven inside 0.001 AU of a
+                   # massive body is inside its Roche zone and is
+                   # destroyed -- bounds IAS15 against adaptive-step
+                   # collapse without ever firing on a real approach
+DT_MIN_YR = 1e-8  # ~0.3 s: below this the integrator is numerically
+                  # degenerate even absent a registered encounter;
+                  # real deep-encounter transients stay above it
 
 TNO = lv(34.0, -13.0)          # pre-declared transit axis (steps 030-086)
 
@@ -98,13 +105,17 @@ def boundary_orbit(r_rel, v_rel, mtot):
     return phat, -2 * E / mu * 1e6
 
 
-def integrate_leg(r0, v0, et0, direction, t_max=None):
+def integrate_leg(r0, v0, et0, direction, t_max=None,
+                  v_max=V_BND_MAX):
     """One leg to the +/-250 AU barycentric sphere. direction=-1 gives
     the inbound (original-analogue) asymptote, +1 the outbound.
     t_max overrides the global T_MAX iteration budget; callers that
     perturb orbits can pass a smaller bound so pathological draws
     (deeply bound solutions that never reach the sphere) cannot stall
-    a worker for the full 20 kyr march."""
+    a worker for the full 20 kyr march.  v_max overrides the boundary
+    speed sanity ceiling; interstellar objects carry real hyperbolic
+    excess (~5-13 AU/yr), so ISO refits pass a wider bound while the
+    comet default stays at the escape-speed scale."""
     if t_max is None:
         t_max = T_MAX
     sim = init_sim(et0)
@@ -115,10 +126,14 @@ def integrate_leg(r0, v0, et0, direction, t_max=None):
             vx=v0[0] + vs[0], vy=v0[1] + vs[1], vz=v0[2] + vs[2])
     nc = sim.N - 1
     sim.integrator = "ias15"
+    sim.exit_min_distance = R_MIN_ENC
     denc = np.full(sim.N - 1, np.inf)
     t = direction * DT_OUT
     while abs(t) < t_max:
         sim.integrate(t, exact_finish_time=0)
+        if abs(sim.dt) < DT_MIN_YR:
+            raise RuntimeError("IAS15 timestep collapse "
+                               f"(dt={sim.dt:.2e} yr)")
         p = sim.particles
         r_rel = np.array([p[nc].x - p[0].x, p[nc].y - p[0].y,
                           p[nc].z - p[0].z])
@@ -142,7 +157,7 @@ def integrate_leg(r0, v0, et0, direction, t_max=None):
     p = sim.particles
     r_rel = np.array([p[nc].x, p[nc].y, p[nc].z]) - rb
     v_rel = np.array([p[nc].vx, p[nc].vy, p[nc].vz]) - vb
-    if np.linalg.norm(v_rel) > V_BND_MAX:
+    if np.linalg.norm(v_rel) > v_max:
         raise RuntimeError(
             f"unphysical boundary speed |v|={np.linalg.norm(v_rel):.1f} AU/yr")
     phat, aa = boundary_orbit(r_rel, v_rel, mtot)

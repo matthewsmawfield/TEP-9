@@ -4,7 +4,7 @@ TEP-9 step 003 -- CODE catalogue acquisition
 =============================================
 
 Acquires the CODE catalogue (Catalogue of Orbits and their Dynamical
-Evolution; Krolikowska & Dybczynski 2020, MNRAS 497, 1781) hosted on
+Evolution; Krolikowska & Dybczynski 2020, A&A 640, A97) hosted on
 the Poznan comet-dynamics server pad2.astro.amu.edu.pl.
 
 The catalogue is served through a PHP search interface that renders
@@ -94,7 +94,7 @@ def main():
     prov = {"step": "step_003_download_code",
             "generated_utc": datetime.now(timezone.utc).isoformat(),
             "catalogue": "CODE (Krolikowska & Dybczynski 2020, "
-                         "MNRAS 497, 1781)",
+                         "A&A 640, A97)",
             "host": "pad2.astro.amu.edu.pl", "files": {}}
 
     for fname, params in LIVE_ATTEMPTS.items():
@@ -139,6 +139,13 @@ def main():
             link.symlink_to(f"code/{fname}")
 
     prov_path = CODE_DIR / "provenance.json"
+    if prov_path.exists():
+        try:
+            prior = json.loads(prov_path.read_text())
+            for k, v in prior.get("files", {}).items():
+                prov["files"].setdefault(k, v)
+        except json.JSONDecodeError:
+            pass
     prov_path.write_text(json.dumps(prov, indent=2))
     logger.data_save(prov_path)
     logger.progress("CODE acquisition complete -> data/raw/code/")

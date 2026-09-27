@@ -32,9 +32,9 @@ can produce.
 
   T3  Vintage-matched control.  Voyager 2's two functioning units
       are the same MHW design with the same 1977 beginning-of-
-      mission epoch: whatever generic mid-life aging does to V1's
-      units at mission-year 29-37 it must also do to V2's at the
-      SAME mission years (V2 was still inside the heliosphere and
+      mission epoch: any generic mid-life aging acting on V1's
+      units at mission-year 29-37 must act identically on V2's at
+      the SAME mission years (V2 was still inside the heliosphere and
       outside both field lobes then).  The identical (t0, w) ramp
       is fitted to the V2 mean-unit excess over the identical
       window; a V2 ramp of equal amplitude would convict common-

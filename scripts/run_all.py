@@ -33,7 +33,7 @@ Phases
    map, OSSOS ensemble audit, resident ledger, claims-trace audit,
    mixture posterior and empirical discovery-coupling audits.
 9. Prospective lineage holdout and independent-refit synthesis
-   (117-136): post-2017 SBDB LPC prospective cohort through the
+   (117-154): post-2017 SBDB LPC prospective cohort through the
    identical bidirectional instrument, displaced-dipole axis audit,
    dipole-mechanism identification, pre-2018 era-by-lineage factorial,
    masked-signal discrimination, anomaly localization, leg-coherence
@@ -45,7 +45,29 @@ Phases
    frame-anchored bipolar unification, the epoch-resolved axis
    trajectory, bipolar cone-shell/meridian/harmonic coherence,
    cross-channel axis convergence against the sibling clock and
-   lunar pipelines, and the OMNI solar-wind screening-epoch test.
+   lunar pipelines, the OMNI solar-wind screening-epoch test, the
+   RTG cross-generator regression, one-way downlink and SCLK
+   signed-drift/radial-gradient channels, the frozen-geometry
+   predictive battery, astrometric-catalogue stratification, the
+   Gaia covariance-sink audit, the comet non-gravitational channel,
+   the giant-planet secular apsidal channel, the slip-injection
+   transfer function, the arrival-latitude conditioned nulls, the
+   zonal-distortion null, and the SCLK link-plasma regression.
+10. Forward-model and generative closure (155-164): the 1I/'Oumuamua
+   slip-injection to non-gravitational-term transfer test, the
+   boundary-radius forward-model scan, the conventional generative
+   population model (isotropic Oort-spike source with secular
+   Galactic-tide injection and empirical discovery selection), the
+   metric-derived winding-holonomy slip field tested against the
+   measured equivalent-time offsets, the perihelion-time leg-slip
+   channel, the independent two-leg refit of the interstellar
+   objects, the APDB planetary astrometric O-C channel, the NIMA
+   detached-resident O-C pilot, the forward-modelled comet discovery
+   footprint, and the TEP-side generative model for the arrival
+   anisotropy.
+11. Publication validation (step 114, run last): the exact
+   claims-trace audit binding every cited step, result, figure and
+   headline number to a leaf in ``results/``.
 
 Each step writes ``logs/<step_name>.log``; ``logs/pipeline.log``
 records the orchestrator run.  Machine-readable outputs land in
@@ -56,6 +78,8 @@ import sys
 import subprocess
 import time
 import json
+import fcntl
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Tuple, Dict
@@ -65,6 +89,26 @@ STEPS_DIR = PROJECT_ROOT / 'scripts' / 'steps'
 LOGS_DIR = PROJECT_ROOT / 'logs'
 
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
+
+LOCK_FILE = LOGS_DIR / "pipeline.lock"
+
+
+def acquire_pipeline_lock():
+    """Exclusive run lock: a second concurrent run_all.py would
+    interleave pipeline.log and overwrite results/provenance
+    mid-flight, corrupting the audit trail.  The lock is held for the
+    life of this process (flock releases on exit, even on a crash).
+    Returns the open fd, or None when another run holds the lock."""
+    fd = open(LOCK_FILE, "w")
+    try:
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        fd.close()
+        return None
+    fd.write(f"pid={os.getpid()} started_utc="
+             f"{datetime.now(timezone.utc).isoformat()}\n")
+    fd.flush()
+    return fd
 
 CORE_STEPS: List[Tuple[str, str]] = [
     # Phase 1: Data acquisition & provenance
@@ -169,6 +213,8 @@ CORE_STEPS: List[Tuple[str, str]] = [
     ('step_098_rtg_nuclear_channel.py', 'Step 098: RTG nuclear-decay channel (Pu-238 clock, Gamow-amplified constants bound)'),
     ('step_099_heliospheric_geometry.py', 'Step 099: Heliospheric geometry (probe/ISO asymptotes vs axis and caps)'),
     ('step_100_clock_consistency.py', 'Step 100: Cross-channel clock-consistency synthesis (orbital/electronic/plasma/nuclear)'),
+
+    # Phase 8: Predictive validation & census channels
     ('step_101_iso_ng_channel.py', 'Step 101: Interstellar-object non-gravitational channel (SBDB NG solutions vs cap-transit geometry)'),
     ('step_102_slip_map_validation.py', 'Step 102: Out-of-sample validation of the bipolar slip map (5-fold CV + CODE<->Warsaw transfer)'),
     ('step_103_rtg_midlife_control.py', 'Step 103: RTG mid-life degradation control (placebo-epoch ramp scan + vintage-matched V2 reference)'),
@@ -184,6 +230,8 @@ CORE_STEPS: List[Tuple[str, str]] = [
     ('step_113_resident_ledger.py', 'Step 113: Independent-survey resident ledger (SBDB+DES+OSSOS vs own baselines, Fisher combination, deduplicated union)'),
     ('step_115_mixture_posterior.py', 'Step 115: Mixture posterior-predictive audit (each resident cohort scored vs footprint-only and TEP-mixture posteriors on its own discovery longitude)'),
     ('step_116_discovery_coupling.py', 'Step 116: Empirical discovery-coupling kernel and closed-channel audit (LOO measured varpi-lam kernel replaces assumed WN50; decisive-window split; cross-fitter instability; forward predictions)'),
+
+    # Phase 9: Prospective lineage holdout & independent-refit synthesis
     ('step_117_prospective_lpc.py', 'Step 117: Prospective post-2017 SBDB LPC cohort through the identical bidirectional instrument (out-of-time, out-of-lineage replication)'),
     ('step_118_prospective_axis_audit.py', 'Step 118: Displaced-dipole audit of the prospective cohort (free axis recovery, global nulls, longitude harmonics, cross-cohort coverage)'),
     ('step_119_dipole_mechanism.py', 'Step 119: Mechanism identification for the post-2017 displaced dipole (observing-geometry covariates, survey lineage, quality stratification)'),
@@ -222,7 +270,22 @@ CORE_STEPS: List[Tuple[str, str]] = [
     ('step_152_arrival_latitude_null.py', 'Step 152: Arrival-anisotropy conditioned nulls -- ecliptic- and Galactic-latitude-conditioned longitude shuffles and axis-longitude specificity scan for the in-cap arrival excess, replacing the uniform-sky binomial null of step 149 T6'),
     ('step_153_zonal_distortion.py', 'Step 153: Zonal-distortion null -- legacy star-catalogue warp classes (zonal bands, regional tiles, rigid frame rotation) injected into real MPC astrometry, refit by the identical LM/DE440s machinery and propagated to the boundary sphere; tests whether a catalogue error field can reproduce the anomaly simultaneously in element selectivity, energy flatness, axis organization and amplitude'),
     ('step_154_sclk_plasma_geometry.py', 'Step 154: SCLK link-plasma and solar-activity regression -- per-boundary phase residuals and drift vs interval-matched OMNI P_dyn/|B|/Vsw/Tp/SSN/F10.7/ap and Sun-Earth-probe elongation; partial radius-vs-plasma correlations and heliosheath activity stratification'),
-    # Publication validation depends on every upstream result.
+
+    # Phase 10: Forward-model closure -- generative source models,
+    # field-level derivations, and injected-realization transfer tests
+    ('step_155_iso_injection.py', 'Step 155: 1I/Oumuamua slip-injection -> NG-term transfer test -- synthetic astrometry on the real MPC observing chain with boundary-slip and sustained lapse-rate realizations, refit by gravity-only and Marsden-NG-augmented LM/DE440s machinery; measures the fitted A1 transfer function and validates against the SBDB 7c solution'),
+    ('step_156_boundary_radius_scan.py', 'Step 156: Boundary-radius forward-model scan -- position-slip holonomy injected at controlled inbound crossing radii {8,25,50,100,150,250} AU through the real MPC observing chain, refit by the standard LM/DE440s machinery, with shell-resolved fitted-vs-true reconstruction testing whether a distant crossing produces a fitted offset already developed at 8 AU'),
+    ('step_157_generative_population.py', 'Step 157: Conventional generative population model -- isotropic Oort-spike source, secular Galactic-tide injection (orbit-integrated torque), stellar-impulse remixing and empirical ecliptic-latitude discovery selection, tested against the observed cap excess and arrival-resultant alignment'),
+    ('step_158_metric_winding.py', 'Step 158: Metric-derived TEP slip -- winding-holonomy field phi = m*theta_A*sigma(r) about the boundary axis; path-integrated proper-time offsets computed on the true dual-leg trajectories and tested against the measured equivalent-time offsets, cap partition, velocity flatness, control axes and boundary-radius sensitivity'),
+    ('step_159_tp_slip.py', 'Step 159: Perihelion-time leg-slip channel -- osculating perihelion-epoch disagreement between independently fitted inbound/outbound legs on the step_b91 dual-leg record; validity concordance vs catalogue dtau/ddirf, cap contrast, bipolar polarity, noise dissociation'),
+    ('step_160_iso_legrefit.py', 'Step 160: Independent two-leg refit of the interstellar objects -- raw-MPC leg-split LM/DE440s fits of 1I/2I/3I with per-leg boundary asymptotes, cap classification, inter-leg non-closure, perihelion-epoch slip, SBDB NG-ledger confound context and post-2017 cohort percentiles'),
+    ('step_161_apdb_planet.py', 'Step 161: APDB planetary astrometric O-C channel -- O\'Handley-format Pluto/Uranus/Neptune optical record (1914-1998) reduced against DE440s with FK4/FK5/TETE equinox handling, light-time and topocentric correction; per-source sanity floor, direction organisation, within-source robustness, normal-point ledger'),
+    ('step_162_nima_pilot.py', 'Step 162: NIMA detached-resident O-C pilot -- Lucky Star/NIMA per-observation residuals for the resident-ledger intersection; coverage, per-object residual level and secular drift vs cap membership; small-N pilot, not a detection channel'),
+    ('step_163_footprint_forward.py', 'Step 163: Forward-modelled comet discovery footprint -- isotropic reorientation of each real orbit propagated through the bright window with elongation/declination/geocentric cuts and brightness weighting; tests whether physical discovery selection can produce the observed aphelion dipole direction, with selection-only null, axis+footprint decomposition, scenario robustness and longitude-marginal diagnostic'),
+    ('step_164_tep_generative.py', 'Step 164: TEP-side generative model for the arrival anisotropy -- symmetric counterpart of the conventional generative test; quantifies the slip-redirection bound (measured fitted-aphelion displacement vs coherent requirement), solves the required source-level modulation amplitude on the isotropic and tidal baselines, and discriminates lobe vs bipolar source morphology via the anti-cap fraction across all five cohorts'),
+    ('step_165_disformal_slip.py', 'Step 165: Canonical disformal transport -- admissible-branch benchmark for the comet boundary slip; integrates the synchronisation connection dsigma = -(B/A^2)(u.grad phi) P grad phi (Jakarta A3.2) along comet trajectories through a boundary-layer field excursion, evaluates the B0 > 0 causal branch explicitly, separates the unsigned equivalent-time amplitude from signed open-path transport, solves the excursion depth u_b required at the benchmark scale, and tests antipodal double-crossing bipolarity, per-comet correlation, tracking baseline and channel decomposition'),
+    # Phase 11: Publication validation -- claims-trace audit.
+    # Depends on every upstream result.
     ('step_114_claims_trace.py', 'Step 114: Manuscript claims-trace audit (every cited step/result/figure/number traced to results/)'),
 
 ]
@@ -231,16 +294,19 @@ CORE_STEPS: List[Tuple[str, str]] = [
 class PipelineLogger:
     """Handles consistent logging for pipeline execution."""
 
-    def __init__(self):
+    def __init__(self, append: bool = False):
         self.start_time = datetime.now(timezone.utc)
         self.log_file = LOGS_DIR / "pipeline.log"
         self.step_results: List[Dict] = []
+        # resume runs append so the aggregate log keeps the full-session
+        # audit trail rather than truncating the earlier positions
+        self._append = append
 
     def _write(self, message: str, level: str = "INFO"):
         timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
         log_line = f"[{timestamp}] [{level:8}] {message}"
         print(message)
-        mode = 'w' if not hasattr(self, '_log_initialized') else 'a'
+        mode = 'a' if (hasattr(self, '_log_initialized') or self._append) else 'w'
         with open(self.log_file, mode, encoding='utf-8') as f:
             f.write(log_line + '\n')
         self._log_initialized = True
@@ -389,11 +455,12 @@ class PipelineLogger:
 
 
 def step_outputs(step_path: Path) -> List[Path]:
-    """Result JSONs a step declares it writes (RESULTS / "name.json")."""
+    """Result JSONs a step declares it writes (RESULTS / "name.json"
+    or "results/name.json" literal paths)."""
     import re
     src = step_path.read_text(errors='ignore')
     names = set(re.findall(
-        r'["\'](step_[A-Za-z0-9_]+\.json)["\']', src))
+        r'["\'](?:results[/\\])?(step_[A-Za-z0-9_]+\.json)["\']', src))
     return [PROJECT_ROOT / 'results' / n for n in sorted(names)]
 
 
@@ -414,6 +481,8 @@ def step_is_fresh(filename: str, logger: PipelineLogger) -> bool:
         if out_m < script_m:
             return False
         for rel in (rec.get('inputs') or []):
+            if not isinstance(rel, str) or '*' in rel or '(' in rel:
+                continue  # annotated/globbed input description, not a path
             inp = PROJECT_ROOT / rel
             if not inp.exists() or inp.stat().st_mtime > out_m:
                 return False
@@ -466,7 +535,14 @@ def main():
         last = min(len(CORE_STEPS), int(argv[i + 1]))
     skip_fresh = "--skip-fresh" in argv
 
-    logger = PipelineLogger()
+    lock_fd = acquire_pipeline_lock()
+    if lock_fd is None:
+        holder = LOCK_FILE.read_text(errors="ignore").strip()
+        print(f"[FAIL] another pipeline run holds {LOCK_FILE} "
+              f"({holder}); refusing to start a concurrent run")
+        return 1
+
+    logger = PipelineLogger(append=(first > 1))
     title = ("TEP-9 PIPELINE - FULL EXECUTION" if (first, last) == (1, len(CORE_STEPS))
              else f"TEP-9 PIPELINE - RESUME (positions {first}-{last})")
     logger.header(title, 80)

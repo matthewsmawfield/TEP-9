@@ -13,6 +13,7 @@ import math
 import os
 import re
 import sys
+import warnings
 from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
@@ -25,6 +26,57 @@ DATA_PROC = PROJECT_ROOT / "data" / "processed"
 RESULTS = PROJECT_ROOT / "results"
 RESULTS.mkdir(parents=True, exist_ok=True)
 (RESULTS / "figures" / "supplementary").mkdir(parents=True, exist_ok=True)
+
+
+def _accelerate_blas():
+    """True when NumPy is linked against Apple Accelerate.
+
+    Accelerate's BLAS routines leave floating-point exception flags
+    set after successful calls, so NumPy reports RuntimeWarnings of
+    the form '... encountered in matmul' even when every input and
+    output is finite.  On this backend the flags carry no usable
+    information, so the matmul-attributed warnings are suppressed;
+    non-finite propagation is still caught by the publication audit
+    and by the finite-input guards in each step."""
+    try:
+        deps = np.show_config(mode="dicts")["Build Dependencies"]
+        return "accelerate" in str(deps.get("blas", "")).lower()
+    except Exception:
+        return False
+
+
+if _accelerate_blas():
+    warnings.filterwarnings("ignore",
+                            message=r".* encountered in matmul",
+                            category=RuntimeWarning)
+
+
+def load_jsonl_dedup(path, key=None, keep=None):
+    """Read a per-object JSONL checkpoint, deduplicated by designation.
+
+    Checkpoint files are append-oriented and can accumulate duplicate
+    rows (interrupted or overlapping writes).  Records are keyed on
+    `key` (default: 'des', falling back to 'desig'); the last row for
+    each key wins, matching the load_ckpt convention used across the
+    pipeline.  `keep` is an optional predicate applied before dedup.
+    Records without a key are always retained.
+    """
+    rows = {}
+    for i, line in enumerate(open(path)):
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            r = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if keep is not None and not keep(r):
+            continue
+        k = (key(r) if callable(key)
+             else r.get(key) if key
+             else (r.get("des") or r.get("desig")))
+        rows[k if k is not None else ("_nokey", i)] = r
+    return list(rows.values())
 
 
 def _apply_pub_style():

@@ -1,86 +1,148 @@
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] LOGGER INITIALIZED: step_015_proxy_validation (Step 015)
-[2026-09-20 10:42:13 UTC] [DEBUG   ] [STEP 015] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_015_proxy_validation.log
-[2026-09-20 10:42:13 UTC] [DEBUG   ] [STEP 015] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:42:13 UTC] [DEBUG   ] [STEP 015] Start time (UTC): 2026-09-20T10:42:13.527350+00:00
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] 
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] STEP PURPOSE
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] --------------------------------------------------------------------------------
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   TEP / Planet-9 -- step b10: validating the opposition proxy
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   with REAL discovery coordinates
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   Steps b5 and b8 reconstructed discovery footprints from
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   provisional-designation half-months, using opposition longitude
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   lam_opp as a proxy for the true discovery longitude lam_d.
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   The stated caveat was that off-opposition pointings could make
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   the true footprint wider than reconstructed.  The OSSOS
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   characterized ensemble (J/ApJS/236/18) contains REAL discovery
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   RA/Dec, discovery JD and heliocentric distance for 840 objects
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   -- enough to validate the proxy directly and close that caveat.
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   V1  Proxy validation: |lam_d - lam_opp| per OSSOS object.
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   If the error is small, the reconstructed footprints in
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   b5/b8 are essentially exact, not approximate.
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   V2  The TRUE coupling measured on real discovery longitudes:
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   Delta_true = varpi - lam_d, by a-bin and by r/q.  This is
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   the externally-measured version of the smear that pointing
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   bias can apply to varpi.
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   V3  Externally-calibrated ceiling: apply the OSSOS-measured
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   Delta_true distribution (near-perihelion subset) to each
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   detached SBDB object's own lam_opp (itself smeared by the
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   measured proxy error) -- the tightest data-driven bound on
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   what pointing alone can do to R(varpi).
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   V4  The OSSOS a>150 micro-sample with true discovery
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   longitudes listed explicitly.
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   Outputs: results/step_b10_proxy_validation.json,
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015]   figures/supplementary/step_b10_proxy_validation.png
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] --------------------------------------------------------------------------------
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] SCRIPT: scripts/steps/step_015_proxy_validation.py
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] SCRIPT SHA256: f4c7670e640d3d1cef5320be464b9cc581b1d35e4431ce02a46e90ab4c9ebd5a
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] SCRIPT SIZE: 12412 bytes
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] ================================================================================
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] Footprint proxy validation
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] ================================================================================
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] V1 |lam_d-lam_opp|: median 6.2 p90 23.3 max 26.4
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] V2      all: N=840 med|D|=60 frac<45=0.40
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] V2     a<60: N=783 med|D|=62 frac<45=0.38
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] V2   60-150: N= 49 med|D|=37 frac<45=0.61
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] V2    a>150: N=  8 med|D|=50 frac<45=0.50
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] V2  rq<1.15: N=653 med|D|=44 frac<45=0.51
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] V2 rq>=1.15: N=187 med|D|=112 frac<45=0.01
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] V3 coupling pool: N=760 OSSOS r/q<1.3
-[2026-09-20 10:42:13 UTC] [INFO    ] [STEP 015] V3 calibrated ceiling: <R>=0.157 p95=0.295 max=0.497 vs obs 0.332 p=0.0207
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Saving data: step_b10_proxy_validation.json
-[2026-09-20 10:42:14 UTC] [DEBUG   ] [STEP 015]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b10_proxy_validation.json
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015]   Output: step_b10_proxy_validation.json
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Saving data: step_b10_proxy_validation.png
-[2026-09-20 10:42:14 UTC] [DEBUG   ] [STEP 015]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b10_proxy_validation.png
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015]   Output: step_b10_proxy_validation.png
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] 
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] ================================================================================
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] STEP SUMMARY: step_015_proxy_validation
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] ================================================================================
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Step Number: 015
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Status: SUCCESS
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Duration: 0.63s
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Log Records Emitted: 63
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Output Files: 2
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_015_proxy_validation.log
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] 
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Generated 2 output file(s):
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015]   • step_b10_proxy_validation.json: 2.77 KB [sha256 f77b9f40d5bf3ba7]
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015]   • step_b10_proxy_validation.png: 192.44 KB [sha256 b38af5db5d36e841]
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] ================================================================================
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] STEP 015 COMPLETE: SUCCESS
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_015_proxy_validation_provenance.json
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] 
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] ================================================================================
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] EXECUTIVE SUMMARY
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] ================================================================================
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Step: step_015_proxy_validation (Step 015)
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Status: SUCCESS
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Duration: 0.63s
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Log Records: 73
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Output Files: 2
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] Key Outputs:
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015]   - step_b10_proxy_validation.json (2.77 KB)
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015]   - step_b10_proxy_validation.png (192.44 KB)
-[2026-09-20 10:42:14 UTC] [INFO    ] [STEP 015] ================================================================================
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] LOGGER INITIALIZED: step_015_proxy_validation (Step 015)
+[2026-09-21 14:31:05 UTC] [DEBUG   ] [STEP 015] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_015_proxy_validation.log
+[2026-09-21 14:31:05 UTC] [DEBUG   ] [STEP 015] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:31:05 UTC] [DEBUG   ] [STEP 015] Start time (UTC): 2026-09-21T14:31:05.105874+00:00
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] 
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] STEP PURPOSE
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] --------------------------------------------------------------------------------
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   TEP / Planet-9 -- step b10: validating the opposition proxy
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   with REAL discovery coordinates
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   Steps b5 and b8 reconstructed discovery footprints from
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   provisional-designation half-months, using opposition longitude
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   lam_opp as a proxy for the true discovery longitude lam_d.
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   The stated caveat was that off-opposition pointings could make
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   the true footprint wider than reconstructed.  The OSSOS
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   characterized ensemble (J/ApJS/236/18) contains REAL discovery
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   RA/Dec, discovery JD and heliocentric distance for 840 objects
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   -- enough to validate the proxy directly and close that caveat.
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   V1  Proxy validation: |lam_d - lam_opp| per OSSOS object.
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   If the error is small, the reconstructed footprints in
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   b5/b8 are essentially exact, not approximate.
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   V2  The TRUE coupling measured on real discovery longitudes:
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   Delta_true = varpi - lam_d, by a-bin and by r/q.  This is
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   the externally-measured version of the smear that pointing
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   bias can apply to varpi.
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   V3  Externally-calibrated ceiling: apply the OSSOS-measured
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   Delta_true distribution (near-perihelion subset) to each
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   detached SBDB object's own lam_opp (itself smeared by the
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   measured proxy error) -- the tightest data-driven bound on
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   what pointing alone can do to R(varpi).
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   V4  The OSSOS a>150 micro-sample with true discovery
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   longitudes listed explicitly.
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   Outputs: results/step_b10_proxy_validation.json,
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015]   figures/supplementary/step_b10_proxy_validation.png
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] --------------------------------------------------------------------------------
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] SCRIPT: scripts/steps/step_015_proxy_validation.py
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] SCRIPT SHA256: f4c7670e640d3d1cef5320be464b9cc581b1d35e4431ce02a46e90ab4c9ebd5a
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] SCRIPT SIZE: 12412 bytes
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] ================================================================================
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] Footprint proxy validation
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] ================================================================================
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] V1 |lam_d-lam_opp|: median 6.2 p90 23.3 max 26.4
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] V2      all: N=840 med|D|=60 frac<45=0.40
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] V2     a<60: N=783 med|D|=62 frac<45=0.38
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] V2   60-150: N= 49 med|D|=37 frac<45=0.61
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] V2    a>150: N=  8 med|D|=50 frac<45=0.50
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] V2  rq<1.15: N=653 med|D|=44 frac<45=0.51
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] V2 rq>=1.15: N=187 med|D|=112 frac<45=0.01
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] V3 coupling pool: N=760 OSSOS r/q<1.3
+[2026-09-21 14:31:05 UTC] [INFO    ] [STEP 015] V3 calibrated ceiling: <R>=0.157 p95=0.295 max=0.497 vs obs 0.332 p=0.0207
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Saving data: step_b10_proxy_validation.json
+[2026-09-21 14:31:06 UTC] [DEBUG   ] [STEP 015]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b10_proxy_validation.json
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]   Output: step_b10_proxy_validation.json
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Saving data: step_b10_proxy_validation.png
+[2026-09-21 14:31:06 UTC] [DEBUG   ] [STEP 015]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b10_proxy_validation.png
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]   Output: step_b10_proxy_validation.png
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] 
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] ================================================================================
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] STEP SUMMARY: step_015_proxy_validation
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] ================================================================================
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Step Number: 015
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Status: SUCCESS
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Duration: 0.95s
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Log Records Emitted: 63
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Output Files: 2
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_015_proxy_validation.log
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] 
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Generated 2 output file(s):
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]   • step_b10_proxy_validation.json: 2.77 KB [sha256 f77b9f40d5bf3ba7]
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]   • step_b10_proxy_validation.png: 201.32 KB [sha256 0718c64536bfe1c7]
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] 
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]   RESULT SNAPSHOT [step_b10_proxy_validation.json]:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V1_proxy_error:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       median_deg = 6.2
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       p68_deg = 10
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       p90_deg = 23.3
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       max_deg = 26.4
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       frac_gt30 = 0
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       frac_gt60 = 0
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       frac_gt90 = 0
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       note = REAL discovery coordinates vs opposition proxy: median error only ~6 deg, NONE beyond ~...
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V2_true_coupling:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       note = coupling measured on TRUE discovery longitude; 78% of OSSOS objects found within r/q<1....
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V2_true_coupling.all:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       N = 840
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       median_abs_Delta_deg = 60.4
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       mean_abs_Delta_deg = 69.4
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       frac_within_45 = 0.395
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V2_true_coupling.a<60:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       N = 783
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       median_abs_Delta_deg = 62.2
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       mean_abs_Delta_deg = 71.2
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       frac_within_45 = 0.381
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V2_true_coupling.60-150:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       N = 49
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       median_abs_Delta_deg = 36.8
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       mean_abs_Delta_deg = 43.2
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       frac_within_45 = 0.612
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V2_true_coupling.a>150:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       N = 8
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       median_abs_Delta_deg = 50.5
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       mean_abs_Delta_deg = 51.5
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       frac_within_45 = 0.5
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V2_true_coupling.rq<1.15:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       N = 653
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       median_abs_Delta_deg = 44.2
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       mean_abs_Delta_deg = 56
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       frac_within_45 = 0.507
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V2_true_coupling.rq>=1.15:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       N = 187
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       median_abs_Delta_deg = 112.4
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       mean_abs_Delta_deg = 115.9
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       frac_within_45 = 0.005
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V2_true_coupling.rq_stats:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       median_rq = 1.048
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       frac_rq<1.15 = 0.777
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V3_calibrated_ceiling:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       coupling_pool = OSSOS r/q<1.3, N=760
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       observed_R = 0.332
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       null_R_mean = 0.157
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       null_R_p95 = 0.295
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       null_R_max = 0.497
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       null_mu_mean = 11.7
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       p = 0.020748963
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       note = the tightest data-driven pointing bound: each detached object's own measured lam_opp, s...
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]     V4_ossos_detached[0]:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       a = 150
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       q = 41
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       varpi = 253.3
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       lam_d = 213.5
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       lam_opp = 194.6
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] ================================================================================
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] STEP 015 COMPLETE: SUCCESS
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_015_proxy_validation_provenance.json
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] 
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] ================================================================================
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] EXECUTIVE SUMMARY
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] ================================================================================
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Step: step_015_proxy_validation (Step 015)
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Status: SUCCESS
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Duration: 0.95s
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Log Records: 135
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Output Files: 2
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] Key Outputs:
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]   - step_b10_proxy_validation.json (2.77 KB)
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015]   - step_b10_proxy_validation.png (201.32 KB)
+[2026-09-21 14:31:06 UTC] [INFO    ] [STEP 015] ================================================================================

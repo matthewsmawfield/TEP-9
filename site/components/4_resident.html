@@ -22,7 +22,7 @@
 </p>
 
 <p>
-    Three results close the bias channel. First, the maximal-pointing ceiling: even under the extreme assumption $\varpi_i = \lambda_{ {\rm opp},i}$ exactly — perfect perihelion-to-opposition coupling — the measured footprint realizes only $R_\varpi = 0.295$, below the observed 0.332; pointing cannot reach the observed amplitude at any coupling strength. Second, the direction mismatch: the footprint's own mean direction is $10.5^\circ$, while the observed cluster sits at $49.1^\circ$ — a $38.6^\circ$ systematic offset that the footprint does not predict at all. Third, the distance-aware conditional null, which convolves each object's footprint with the OSSOS-measured opposition–perihelion coupling, returns $p = 0.035$: the anomaly survives the strongest empirically calibrated bias model. The footprint proxy itself is validated against real discovery coordinates (median error 6°), and even a 100 per cent coupling sweep fails to reproduce the observed $R$ ($p = 0.020$).
+    Three results close the bias channel. First, the maximal-pointing ceiling: even under the extreme assumption $\varpi_i = \lambda_{ {\rm opp},i}$ exactly — perfect perihelion-to-opposition coupling — the measured footprint realizes only $R_\varpi = 0.295$, below the observed 0.332; pointing cannot reach the observed amplitude at any coupling strength. Second, the direction mismatch: the footprint's own mean direction is $10.5^\circ$, while the observed cluster sits at $49.1^\circ$ — a $38.6^\circ$ systematic offset that the footprint does not predict at all. Third, the distance-aware conditional null, which convolves each object's footprint with the OSSOS-measured opposition–perihelion coupling, returns $p = 0.035$: the anomaly survives the strongest empirically calibrated bias model. The footprint proxy itself is validated against real discovery coordinates (median error 6°), and even with the OSSOS-measured near-perihelion coupling applied at 100 per cent strength, the realized footprint fails to reach the observed $R$ ($p = 0.021$).
 </p>
 
 <h2>3.3 Failure of the shepherding signatures</h2>
@@ -40,13 +40,13 @@
 <h2>3.5 Resident-versus-transit selectivity</h2>
 
 <p>
-    The signature is specific to the resident population. Detached orbits align to the axis at $p = 10^{-4}$ in the three-dimensional test; plunging detached orbits ($a &gt; 150$ AU, $q \leq 30$ AU) that transit the inner system are consistent with isotropy ($p = 0.37$). The contrast is itself a domain-boundary prediction: an orbit that plunges through the full radial structure to the planetary region has its clock-sector elements scrambled by the transit, while an orbit that remains resident retains the secular imprint.
+    The signature is specific to the resident population. Detached orbits align to the axis at $p = 5\times10^{-5}$ in the three-dimensional test; plunging detached orbits ($a &gt; 150$ AU, $q \leq 30$ AU) that transit the inner system are consistent with isotropy ($p = 0.37$). The contrast is itself a domain-boundary prediction: an orbit that plunges through the full radial structure to the planetary region has its clock-sector elements scrambled by the transit, while an orbit that remains resident retains the secular imprint.
 </p>
 
 <h2>3.6 Patch scale and catalogue concordance</h2>
 
 <p>
-    The structure's intrinsic angular scale is measured by a uniform-plus-von-Mises mixture fit to the $\varpi$ distribution: a clustered fraction $f = 0.43$ (68 per cent interval $[0.32, 0.70]$) in a patch of width $\sigma = 34.4^\circ$ ($[27.5^\circ, 48.0^\circ]$) — a finite sector, not a point. The cap-profile scan peaks at 50° in $\varpi$ (with $p \leq 10^{-4}$ sustained over 30–60° caps) and at 40–60° in the three-dimensional perihelion-vector profile, where the in-cap excess exceeds every Monte-Carlo realization of the conditioned null. The cluster also survives a catalogue swap. Recomputed on the Minor Planet Center's own orbit solutions for the identical object list, the alignment is element-for-element identical ($R = 0.332$ at $\bar\varpi = 49.1^\circ$; median $|\Delta\varpi| = 0.003^\circ$), excluding solver and parsing systematics — though since JPL ingests MPC fits, this is a concordance check rather than an independent derivation.
+    The structure's intrinsic angular scale is measured by a uniform-plus-von-Mises mixture fit to the $\varpi$ distribution: a clustered fraction $f = 0.43$ (68 per cent interval $[0.32, 0.70]$) in a patch of width $\sigma = 34.4^\circ$ ($[27.5^\circ, 48.0^\circ]$) — a finite sector, not a point. The cap-profile scan peaks at 50° in $\varpi$ ($p = 2\times10^{-4}$, remaining below $10^{-2}$ across the full 30–60° range) and at 40–60° in the three-dimensional perihelion-vector profile, where $p \leq 10^{-4}$ is sustained over 30–60° caps and the in-cap excess exceeds every Monte-Carlo realization of the conditioned null. The cluster also survives a catalogue swap. Recomputed on the Minor Planet Center's own orbit solutions for the identical object list, the alignment is element-for-element identical ($R = 0.332$ at $\bar\varpi = 49.1^\circ$; median $|\Delta\varpi| = 0.003^\circ$), excluding solver and parsing systematics — though since JPL ingests MPC fits, this is a concordance check rather than an independent derivation.
 </p>
 
 <p>
@@ -89,19 +89,23 @@
 </p>
 
 <p>
-    Splitting the detached sample by first-observation year (step 078) confirms the era audit directly: cap membership is uncorrelated with discovery epoch ($\rho = -0.086$, $p = 0.58$), the bulk 2005–2015 CCD-era cohort alone carries a significant periapsis resultant ($R = 0.42$, $p = 0.005$), and the in-cap fraction is stable across eras ($0.636$, $0.621$); the post-2015 cohort is too small to test ($n = 4$), a gap the LSST-era sample will close. The synthesis one-map (Figure 5, Section 5.1) places every measured population and reference axis on a single ecliptic projection.
+    Splitting the detached sample by first-observation year (step 078) confirms the era audit directly: cap membership is uncorrelated with discovery epoch ($\rho = -0.086$, $p = 0.58$), the bulk 2005–2015 CCD-era cohort alone carries a significant periapsis resultant ($R = 0.42$, $p = 0.005$), and the in-cap fraction is stable across eras ($0.636$, $0.621$); the post-2015 cohort is too small to test ($n = 4$), a gap the LSST-era sample will close. The synthesis one-map (Figure 6, Section 5.1) places every measured population and reference axis on a single ecliptic projection.
 </p>
 
 <p>
-    The selection boundary itself is then audited continuously rather than at a handful of alternative cuts (step 111). The detachment plane — $a_{\min} \in \{100, 125, \dots, 250\}$ AU crossed with $q_{\min} \in \{30, 33, \dots, 50\}$ AU, all at condition code $\leq 3$ — is scanned cell by cell, recomputing the $\varpi$ resultant under the identical conditioned null together with the recovered three-dimensional perihelion direction. Of the 42 cells retaining at least eight objects, 34 reach $p &lt; 0.05$ individually, and every recovered direction lies within $30^\circ$ of one of the two declared axes — 74 per cent within $30^\circ$ of the detached-sample axis itself.
+    The selection boundary itself is then audited continuously rather than at a handful of alternative cuts (step 111). The detachment plane — $a_{\min} \in \{100, 125, \dots, 250\}$ AU crossed with $q_{\min} \in \{30, 33, 35, 38, 40, 45, 50\}$ AU, all at condition code $\leq 3$ — is scanned cell by cell, recomputing the $\varpi$ resultant under the identical conditioned null together with the recovered three-dimensional perihelion direction. Of the 42 cells retaining at least eight objects, 34 reach $p &lt; 0.05$ individually, and every recovered direction lies within $30^\circ$ of one of the two declared axes — 74 per cent within $30^\circ$ of the detached-sample axis itself.
 </p>
 
 <p>
     The direction does not wander randomly with the cut: it drifts smoothly with detachment depth, from $(50^\circ, -17^\circ)$ at the shallow cells toward the cap-declaration direction $(34^\circ, -13^\circ)$ at the deepest, where several cells land within $0.4^\circ$–$12^\circ$ of the cap axis. The declared cell sits inside this coherent plateau, so the measured axis is a property of the detached population and not of one selection boundary — and the two declared directions are bracketing measurements of a single sector whose deepest-detached members converge on the direction the comet channel recovers independently.
 </p>
 
+<p>
+    The mechanism attribution of the resident alignment is stated plainly rather than implied. The transit channel's mechanism — a crossing-localized non-integrable transport slip — is defined for bodies that traverse the boundary once, and does not apply to residents that never cross it. A secularly accumulating phase slip is likewise excluded as the organizing agent on morphological grounds alone: an unbounded accumulation over Gyr would produce a secular drift of perihelia, not a stationary clustering direction. The admissible field-side candidate is a secular geodesic response of the resident clock-sector elements to the boundary's shear structure — the equilibrium bias a standing axisymmetric lapse gradient imprints on apsidal orientation — whose required amplitude is governed by the same admissibility ledger as the transit excursion of Section 6.7 and is not yet derived from a solved field configuration. The resident alignment therefore stands in this work as an independent spatial datum — the datum the Planet Nine hypothesis was introduced to explain — whose TEP interpretation is open, in parallel with the transit channel's status under the admissible-branch computation of Section 6.7.
+</p>
+
 <table class="data-table">
-    <caption><strong>Table 2:</strong> Resident-signature tests (pipeline steps 010–028, 053, 057, 085, 111–113)</caption>
+    <caption><strong>Table 2:</strong> Resident-signature tests (pipeline steps 010–028, 053, 057, 085, 092, 111–113, 116)</caption>
     <thead>
         <tr>
             <th>Test</th>
@@ -113,7 +117,7 @@
     <tbody>
         <tr><td>$\varpi$ conditioned-null $R$ (detached, $N=44$)</td><td>$R =$ {{claim:resident_r}}, $p =$ {{claim:resident_p}}</td><td>0.134</td><td>step_010</td></tr>
         <tr><td>3-D perihelion alignment</td><td>$R = 0.336$, $p = 0.0052$</td><td>0.136</td><td>step_010</td></tr>
-        <tr><td>3-D axis test (boundary-resident)</td><td>$p = 10^{-4}$</td><td>isotropic</td><td>step_024</td></tr>
+        <tr><td>3-D axis test (boundary-resident)</td><td>$p = 5\times10^{-5}$</td><td>isotropic</td><td>step_024</td></tr>
         <tr><td>Plunging detached control</td><td>$p = 0.37$</td><td>isotropic</td><td>step_024</td></tr>
         <tr><td>Maximal-pointing ceiling</td><td>$R_{\max}=0.295 &lt; 0.332$</td><td>100% coupling</td><td>step_014</td></tr>
         <tr><td>Footprint direction offset</td><td>$38.6^\circ$</td><td>footprint mean $10.5^\circ$</td><td>step_014</td></tr>

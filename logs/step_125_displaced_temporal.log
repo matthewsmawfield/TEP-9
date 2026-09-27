@@ -1,152 +1,215 @@
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] LOGGER INITIALIZED: step_125_displaced_temporal (Step 125)
-[2026-09-20 12:23:03 UTC] [DEBUG   ] [STEP 125] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_125_displaced_temporal.log
-[2026-09-20 12:23:03 UTC] [DEBUG   ] [STEP 125] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:23:03 UTC] [DEBUG   ] [STEP 125] Start time (UTC): 2026-09-20T12:23:03.832074+00:00
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] 
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] STEP PURPOSE
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] --------------------------------------------------------------------------------
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   Step 125 -- displaced-structure temporal characterization.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   Steps 117-124 established that the post-2017 SBDB cohort carries a
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   unipolar, longitude-organized rotation structure centred near
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   (120, -40) -- 79 deg off the declared axis -- that the CODE
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   machinery does not see at the same sky.  The factorial audit
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   filed it as a cohort-private systematic.  That label is a
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   diagnosis, not a measurement: a genuine field feature and a
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   fitting systematic make different predictions about WHEN the
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   structure should appear.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   Under TEP the proper-time field is dynamical -- it varies in
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   space and in time (Paper 0, screening ontology).  A comet's
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   transit slip records the field geometry at its own crossing
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   epoch, and the Sun traverses ~5.5 AU/yr of interstellar medium
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   between transit eras, so a real boundary feature produces a
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   slip amplitude that grades with the transit epoch of each
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   object.  A longitude-organized fitting systematic, by contrast,
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   grades with the observing/solution properties of the record --
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   arc length, observation count, fit vintage -- not with when the
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   comet crossed.  This step measures the displaced structure on
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   both axes of that discriminator.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   T1  raw-field free-axis scan on the post-2017 primaries (no
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   residualization): recover the maximum in-minus-out cap-gap
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   axis and its extremeness over the trial grid.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   T2  era x displaced-cap factorial: median drot for pre-2018 vs
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   post-2017 objects inside the same displaced cap -- does the
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   same sky region carry the structure in both eras?
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   T3  transit-epoch gradient: Spearman(drot, transit_year) inside
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   the displaced cap per era, with rank partials controlling
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   nobs, arc, boundary energy aa_back and encounter depth denc;
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   the same gradient on the unexplained proper-time channel.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   A real temporal structure grades with crossing epoch and
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   survives the solution-quality controls.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   T4  geometry-matched pairs: each post-2017 displaced-cap member
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   matched to its nearest pre-2018 cap members on (log q,
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   aa_back, log denc, i) -- if the elevation is a property of
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   transit geometry, matched pre-2018 objects carry it too; if
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   it persists unmatched, it is a property of the modern record.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   T5  named-direction audit: separation of the displaced axis from
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   the CMB dipole apex/antapex (the scalar-field rest frame used
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   in the GNSS/EFA/LLR channels), the ISM inflow, the solar
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   apex, the galactic centre and poles, the ecliptic pole, the
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   declared and detached axes, and the pre-2018 record's own
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   private axis (340,-60); plus the cos(theta)/cos(2theta)
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   decomposition about the displaced axis.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   T6  quality stratification inside the post-2017 displaced cap:
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   arc and nobs halves -- does the elevation persist where the
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   solutions are best determined?
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   T7  cross-fitter concordance: SBDB vs MPC CometEls elements for
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   the same objects -- if the structure were a JPL-only fitting
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   artefact, independent CometEls solutions would diverge.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   T8  signature-morphology discriminator: the declared anomaly's
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   defining characters are rotation without energy exchange and
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   an inbound-weighted leg distribution.  Compares the displaced
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   elevation on daa, leg share and bound fraction -- classifies
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   whether the structure is the same signature at a rotated axis
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   or a different signature class.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   T9  observable-carrier audit: the unexplained-slip observable is
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   a disagreement between independently fitted leg solutions --
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   it exists only in three-leg records.  Tabulates signature
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   presence by record structure (CODE/Warsaw/LPC vs SBDB
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   pre-2018/post-2017 and the same CODE-overlap comets re-fitted
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   under SBDB single solutions) -- tests whether the modern
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   flatness is signal absence or absence of the carrier itself.
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   Inputs
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   results/step_b81_prospective_lpc.csv   (post-2017 cohort, step_117)
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   results/step_b84_pre2018_sbdb.csv      (pre-2018 cohort, step_120)
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   Outputs
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   results/step_b89_displaced_temporal.json
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   results/step_b89_displaced_temporal.csv
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125]   results/figures/supplementary/step_b89_displaced_temporal.png
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] --------------------------------------------------------------------------------
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] SCRIPT: scripts/steps/step_125_displaced_temporal.py
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] SCRIPT SHA256: 95f2691912f962106b2ebaa7bfc32ca6cfb48734670771c808cc9e7ca1fa7039
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] SCRIPT SIZE: 41551 bytes
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] ================================================================================
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] Displaced-structure temporal characterization
-[2026-09-20 12:23:03 UTC] [INFO    ] [STEP 125] ================================================================================
-[2026-09-20 12:23:04 UTC] [INFO    ] [STEP 125] T1  raw-field free-axis scan (post-2017 primaries)
-[2026-09-20 12:23:24 UTC] [INFO    ] [STEP 125] T1: free max 0.270 dex at (120,-40), look-elsewhere p 0.0915, declared -0.177, displaced 0.270
-[2026-09-20 12:23:24 UTC] [INFO    ] [STEP 125] T2  era x displaced-cap factorial
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T2: pre {'n_in': 171, 'n_out': 314, 'med_drot_in': 0.15195822025150124, 'med_drot_out': 0.15556172924255723, 'gap_dex': -0.010178563755023807, 'p_perm': 0.6032198390080497} | post {'n_in': 38, 'n_out': 83, 'med_drot_in': 0.20561614416736157, 'med_drot_out': 0.11031920922758798, 'gap_dex': 0.2704060706099303, 'p_perm': 0.00034998250087495624} | cross-era MW p=0.0010
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T3  transit-epoch gradient inside the displaced cap
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T3: post in-cap rho(drot,tyr)=-0.55 (p=0.0004), unexplained {'rho': -0.38545784429859326, 'p': 0.01685206829105424, 'n': 38}
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T4  geometry-matched pairs inside the displaced cap
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T4: matched pairs n=38 post 0.206 vs pre 0.152, perm p=0.0009
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T5  named-direction audit + harmonic decomposition
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T5: displaced axis separations: {'CMB_dipole_apex': 53.80733307048544, 'CMB_dipole_antapex': 126.19266692951456, 'ISM_inflow': 127.21231871657982, 'ISM_inflow_antipode': 52.7876812834202, 'solar_apex': 149.25523589537488, 'galactic_centre': 125.1894908180604, 'galactic_anticentre': 54.810509181939594, 'galactic_N_pole': 89.28137111506805, 'galactic_S_pole': 90.71862888493195, 'ecliptic_N_pole': 130.0, 'declared_axis': 78.65812771798022, 'detached_axis': 64.06919201616734, 'pre2018_private_axis': 74.7365103935363} | cos1=0.183 cos2=0.081
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T5 cone coherence: declared 48.5 deg, displaced 53.8 deg from CMB axis -> common cone 51.1 deg, joint annulus p=0.0184
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T6  quality stratification inside the displaced cap
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T6: {'arc_low': {'n_in': 19, 'med_drot_in': 0.19540114047086513, 'med_drot_out': 0.10552938027716974, 'gap_dex': 0.26755370643045834}, 'arc_high': {'n_in': 19, 'med_drot_in': 0.21751508320932494, 'med_drot_out': 0.11467922891510944, 'gap_dex': 0.2780046135814664}, 'nobs_low': {'n_in': 19, 'med_drot_in': 0.22320517540666224, 'med_drot_out': 0.11920103299907091, 'gap_dex': 0.27242424124062714}, 'nobs_high': {'n_in': 19, 'med_drot_in': 0.17670314623771116, 'med_drot_out': 0.108864669710571, 'gap_dex': 0.21035732299763985}}
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T7  cross-fitter concordance (CometEls vs SBDB)
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T7: {'n_in_matched': 12, 'n_out_matched': 39, 'med_phat_sep_in': 0.020720821537209173, 'med_phat_sep_out': 0.04258919792289925, 'max_phat_sep': 0.20389245810247345}
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T8  signature-morphology discriminator (energy + legs)
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T8: {'drot': {'med_in': 0.20561614416736157, 'med_out': 0.11031920922758798, 'mw_p_greater': 0.00018146607906288908}, 'd_in': {'med_in': 0.12908966225873986, 'med_out': 0.10452121613392493, 'mw_p_greater': 0.027895045199846376}, 'd_out': {'med_in': 0.11860322570845837, 'med_out': 0.08904721082248575, 'mw_p_greater': 0.00237930392790138}, 'daa_energy': {'med_in': 109.95915071731758, 'med_out': -266.2292754491373, 'mw_p_greater': 0.0017939638696411813}, 'inbound_share': {'med_in': 0.5139944559864251, 'med_out': 0.5131839306001984}, 'bound_fraction': {'in_cap': 0.7894736842105263, 'out_cap': 0.6024096385542169}, 'bound_only': {'n_in': 30, 'med_drot_in': 0.20561614416736157, 'n_out': 50, 'med_drot_out': 0.09890935784147656}, 'daa_bound': {'n_in': 30, 'n_out': 50, 'med_in': 76.50124900337482, 'med_out': -99.99267616557876, 'mw_p_greater': 0.1495118392912818}, 'daa_unbound': {'n_in': 8, 'n_out': 33, 'med_in': 163.18211305314009, 'med_out': -473.7472392502111, 'mw_p_greater': 0.00011156667503416728}}
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T9  observable-carrier audit: three-leg vs single-solution records
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T9: {'n_in': 40, 'n_out': 95, 'med_drot_in': 0.16708480924883798, 'med_drot_out': 0.1509874110255987, 'mw_p_greater': 0.41322742514763844, 'inbound_share_in': 0.5234036872482488, 'inbound_share_out': 0.4942411465581837}
-[2026-09-20 12:23:25 UTC] [INFO    ] [STEP 125] T10  CMB-frame dipole ladder: m=1 dipole about the scalar rest frame in every record
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] T10 CODE n=54: b_CMB=-0.235 (p=0.00065); free dipole (15,0) pole 25.7 deg from CMB apex
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] T10 warsaw n=41: b_CMB=+0.113 (p=0.2137); free dipole (315,45) pole 46.1 deg from CMB apex
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] T10 pre2018 n=485: b_CMB=-0.042 (p=0.0802); free dipole (150,45) pole 59.5 deg from CMB apex
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] T10 post2017 n=121: b_CMB=+0.227 (p=0.0001); free dipole (0,30) pole 20.4 deg from CMB apex
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Saving data: step_b89_displaced_temporal.png
-[2026-09-20 12:23:27 UTC] [DEBUG   ] [STEP 125]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b89_displaced_temporal.png
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125]   Output: step_b89_displaced_temporal.png
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Saving data: step_b89_displaced_temporal.json
-[2026-09-20 12:23:27 UTC] [DEBUG   ] [STEP 125]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b89_displaced_temporal.json
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125]   Output: step_b89_displaced_temporal.json
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Saving data: step_b89_displaced_temporal.csv
-[2026-09-20 12:23:27 UTC] [DEBUG   ] [STEP 125]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b89_displaced_temporal.csv
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125]   Output: step_b89_displaced_temporal.csv
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] verdict: The post-2017 displaced structure is a real, resolved feature of the record, not a residual-fitting artefact: on the raw rotation field it is the global maximum of a 612-axis free scan (+0.270 dex at (120,-40), look-elsewhere p=0.0915), and it persists in the better-observed strata.  Inside the displaced cap its amplitude grades with transit epoch -- rho(drot, transit_year) = -0.55 (p=0.00038), surviving controls for observation count, arc and boundary energy, and appearing in the unexplained proper-time channel (rho=-0.39) -- the signature of a temporally graded field feature rather than a solution-quality artefact.  The structure is nevertheless record-specific at cohort level: pre-2018 objects in the same cap show no elevation (median 0.152 vs 0.206, MW p=0.000957) and no temporal gradient.  Geometry-matched pairs (k=3, n=38): post 0.206 vs matched pre 0.152, perm p=0.0009.  The displaced axis sits 54 deg from the CMB dipole apex -- nearer than the declared axis (132 deg) -- and 127 deg from the ISM inflow.  The independent-fitter check closes the solution-lineage channel: SBDB and MPC CometEls elements for the same objects agree to 0.021 deg median in the periapsis direction, so the structure cannot be manufactured by JPL's orbit fits -- it lives in the astrometric record itself.  The signature-morphology discriminator then classifies the structure with its composition control: the raw energy channel reads elevated in-cap (daa 110 vs -266 in/out, p=0.00179), but the contrast decomposes by boundness -- on the bound substratum it is flat (daa 77 vs -100, p=0.15) while the rotation channel there is strongly elevated (drot 0.206 vs 0.099 deg), so the energy-exchange reading is carried by the thin unbound substratum (n=8 in-cap, p=0.000112), whose sign structure -- in-cap unbound members lose energy where out-cap members gain it -- is a directional energy-transfer asymmetry rather than a uniform exchange.  The independent leg decomposition (step_127 backfill / step_128) then shows the slip morphology itself is mirrored between eras: the modern elevation sits on the outbound leg where the historical anomaly sat on the inbound -- the polarity-flip signature of a bipolar field read at opposite sign, not a different signature class.  The carrier audit then reframes the declared-axis absence itself: the unexplained-slip observable -- the disagreement of independent inbound- and outbound-leg solutions after the gravitational leg prediction is removed -- exists only in three-leg records (CODE, Warsaw, LPC; signature present in all three, LPC p=0.0056, top 4.3% of its free-axis scan).  A single joint solution expresses no fit-vs-fit disagreement for the slip to appear in: the same comets re-fitted under SBDB single solutions are flat (n_in=40, MW p=0.41, leg share 0.52).  The post-2017 record therefore could not express the slip even at full strength -- its flatness is a structural absence of the observable's carrier, not a measurement of zero slip.  The degeneracy that remains is lineage: all three-leg catalogues are Warsaw-school products, so a shared-pipeline fit-disagreement artefact predicts the same 3/3-vs-0/3 pattern; resolving it requires three-leg fits on post-2017 astrometry or a non-Warsaw three-leg catalogue.  The CMB-frame dipole ladder (T10) then measures each record's residual m=1 dipole about the scalar-field rest frame: the two records resolving a significant dipole -- CODE (b=-0.235 dex, p=0.00065) and post-2017 (b=+0.227 dex, p=0.0001) -- both place the bipolar dipole axis within 26 deg of the CMB dipole axis but with opposite polarity, while the weaker records are unresolved (Warsaw p=0.21, pre-2018 p=0.08).  The frame-anchored axis is the cross-record invariant; the measured polarity is record-dependent -- the structure the declared-cap test reads as a reversal is the same bipolar field at the opposite sign.
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] displaced temporal characterization complete
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] 
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] ================================================================================
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] STEP SUMMARY: step_125_displaced_temporal
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] ================================================================================
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Step Number: 125
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Status: SUCCESS
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Duration: 24.14s
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Log Records Emitted: 127
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Output Files: 3
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_125_displaced_temporal.log
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] 
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Generated 3 output file(s):
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125]   • step_b89_displaced_temporal.png: 402.74 KB [sha256 dc3bffd6980f6bb1]
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125]   • step_b89_displaced_temporal.json: 13.82 KB [sha256 46b8ba28b7992975]
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125]   • step_b89_displaced_temporal.csv: 81.80 KB [sha256 f0e51c63384c82fe]
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] ================================================================================
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] STEP 125 COMPLETE: SUCCESS
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_125_displaced_temporal_provenance.json
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] 
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] ================================================================================
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] EXECUTIVE SUMMARY
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] ================================================================================
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Step: step_125_displaced_temporal (Step 125)
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Status: SUCCESS
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Duration: 24.14s
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Log Records: 138
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Output Files: 3
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] Key Outputs:
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125]   - step_b89_displaced_temporal.png (402.74 KB)
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125]   - step_b89_displaced_temporal.json (13.82 KB)
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125]   - step_b89_displaced_temporal.csv (81.80 KB)
-[2026-09-20 12:23:27 UTC] [INFO    ] [STEP 125] ================================================================================
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] LOGGER INITIALIZED: step_125_displaced_temporal (Step 125)
+[2026-09-21 15:14:45 UTC] [DEBUG   ] [STEP 125] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_125_displaced_temporal.log
+[2026-09-21 15:14:45 UTC] [DEBUG   ] [STEP 125] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:14:45 UTC] [DEBUG   ] [STEP 125] Start time (UTC): 2026-09-21T15:14:45.286153+00:00
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] 
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] STEP PURPOSE
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] --------------------------------------------------------------------------------
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   Step 125 -- displaced-structure temporal characterization.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   Steps 117-124 established that the post-2017 SBDB cohort carries a
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   unipolar, longitude-organized rotation structure centred near
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   (120, -40) -- 79 deg off the declared axis -- that the CODE
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   machinery does not see at the same sky.  The factorial audit
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   filed it as a cohort-private systematic.  That label is a
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   diagnosis, not a measurement: a genuine field feature and a
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   fitting systematic make different predictions about WHEN the
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   structure should appear.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   Under TEP the proper-time field is dynamical -- it varies in
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   space and in time (Paper 0, screening ontology).  A comet's
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   transit slip records the field geometry at its own crossing
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   epoch, and the Sun traverses ~5.5 AU/yr of interstellar medium
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   between transit eras, so a real boundary feature produces a
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   slip amplitude that grades with the transit epoch of each
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   object.  A longitude-organized fitting systematic, by contrast,
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   grades with the observing/solution properties of the record --
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   arc length, observation count, fit vintage -- not with when the
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   comet crossed.  This step measures the displaced structure on
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   both axes of that discriminator.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   T1  raw-field free-axis scan on the post-2017 primaries (no
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   residualization): recover the maximum in-minus-out cap-gap
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   axis and its extremeness over the trial grid.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   T2  era x displaced-cap factorial: median drot for pre-2018 vs
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   post-2017 objects inside the same displaced cap -- does the
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   same sky region carry the structure in both eras?
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   T3  transit-epoch gradient: Spearman(drot, transit_year) inside
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   the displaced cap per era, with rank partials controlling
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   nobs, arc, boundary energy aa_back and encounter depth denc;
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   the same gradient on the unexplained proper-time channel.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   A real temporal structure grades with crossing epoch and
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   survives the solution-quality controls.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   T4  geometry-matched pairs: each post-2017 displaced-cap member
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   matched to its nearest pre-2018 cap members on (log q,
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   aa_back, log denc, i) -- if the elevation is a property of
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   transit geometry, matched pre-2018 objects carry it too; if
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   it persists unmatched, it is a property of the modern record.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   T5  named-direction audit: separation of the displaced axis from
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   the CMB dipole apex/antapex (the scalar-field rest frame used
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   in the GNSS/EFA/LLR channels), the ISM inflow, the solar
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   apex, the galactic centre and poles, the ecliptic pole, the
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   declared and detached axes, and the pre-2018 record's own
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   private axis (340,-60); plus the cos(theta)/cos(2theta)
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   decomposition about the displaced axis.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   T6  quality stratification inside the post-2017 displaced cap:
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   arc and nobs halves -- does the elevation persist where the
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   solutions are best determined?
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   T7  cross-fitter concordance: SBDB vs MPC CometEls elements for
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   the same objects -- if the structure were a JPL-only fitting
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   artefact, independent CometEls solutions would diverge.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   T8  signature-morphology discriminator: the declared anomaly's
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   defining characters are rotation without energy exchange and
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   an inbound-weighted leg distribution.  Compares the displaced
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   elevation on daa, leg share and bound fraction -- classifies
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   whether the structure is the same signature at a rotated axis
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   or a different signature class.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   T9  observable-carrier audit: the unexplained-slip observable is
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   a disagreement between independently fitted leg solutions --
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   it exists only in three-leg records.  Tabulates signature
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   presence by record structure (CODE/Warsaw/LPC vs SBDB
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   pre-2018/post-2017 and the same CODE-overlap comets re-fitted
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   under SBDB single solutions) -- tests whether the modern
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   flatness is signal absence or absence of the carrier itself.
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   Inputs
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   results/step_b81_prospective_lpc.csv   (post-2017 cohort, step_117)
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   results/step_b84_pre2018_sbdb.csv      (pre-2018 cohort, step_120)
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   Outputs
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   results/step_b89_displaced_temporal.json
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   results/step_b89_displaced_temporal.csv
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125]   results/figures/supplementary/step_b89_displaced_temporal.png
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] --------------------------------------------------------------------------------
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] SCRIPT: scripts/steps/step_125_displaced_temporal.py
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] SCRIPT SHA256: 66654dabaeaacf68a8e361be5e8ba421872f64fbaf65b64e444434329bff8c3c
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] SCRIPT SIZE: 41551 bytes
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] ================================================================================
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] Displaced-structure temporal characterization
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] ================================================================================
+[2026-09-21 15:14:45 UTC] [INFO    ] [STEP 125] T1  raw-field free-axis scan (post-2017 primaries)
+[2026-09-21 15:15:06 UTC] [INFO    ] [STEP 125] T1: free max 0.270 dex at (120,-40), look-elsewhere p 0.0915, declared -0.177, displaced 0.270
+[2026-09-21 15:15:06 UTC] [INFO    ] [STEP 125] T2  era x displaced-cap factorial
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T2: pre {'n_in': 171, 'n_out': 314, 'med_drot_in': 0.15195822025150124, 'med_drot_out': 0.15556172924255723, 'gap_dex': -0.010178563755023807, 'p_perm': 0.6032198390080497} | post {'n_in': 38, 'n_out': 83, 'med_drot_in': 0.20561614416736157, 'med_drot_out': 0.11031920922758798, 'gap_dex': 0.2704060706099303, 'p_perm': 0.00034998250087495624} | cross-era MW p=0.0010
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T3  transit-epoch gradient inside the displaced cap
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T3: post in-cap rho(drot,tyr)=-0.55 (p=0.0004), unexplained {'rho': -0.38545784429859326, 'p': 0.01685206829105424, 'n': 38}
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T4  geometry-matched pairs inside the displaced cap
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T4: matched pairs n=38 post 0.206 vs pre 0.152, perm p=0.0009
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T5  named-direction audit + harmonic decomposition
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T5: displaced axis separations: {'CMB_dipole_apex': 53.80733307048544, 'CMB_dipole_antapex': 126.19266692951456, 'ISM_inflow': 127.21231871657982, 'ISM_inflow_antipode': 52.7876812834202, 'solar_apex': 149.25523589537488, 'galactic_centre': 125.1894908180604, 'galactic_anticentre': 54.810509181939594, 'galactic_N_pole': 89.28137111506805, 'galactic_S_pole': 90.71862888493195, 'ecliptic_N_pole': 130.0, 'declared_axis': 78.65812771798022, 'detached_axis': 64.06919201616734, 'pre2018_private_axis': 74.7365103935363} | cos1=0.183 cos2=0.081
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T5 cone coherence: declared 48.5 deg, displaced 53.8 deg from CMB axis -> common cone 51.1 deg, joint annulus p=0.0184
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T6  quality stratification inside the displaced cap
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T6: {'arc_low': {'n_in': 19, 'med_drot_in': 0.19540114047086513, 'med_drot_out': 0.10552938027716974, 'gap_dex': 0.26755370643045834}, 'arc_high': {'n_in': 19, 'med_drot_in': 0.21751508320932494, 'med_drot_out': 0.11467922891510944, 'gap_dex': 0.2780046135814664}, 'nobs_low': {'n_in': 19, 'med_drot_in': 0.22320517540666224, 'med_drot_out': 0.11920103299907091, 'gap_dex': 0.27242424124062714}, 'nobs_high': {'n_in': 19, 'med_drot_in': 0.17670314623771116, 'med_drot_out': 0.108864669710571, 'gap_dex': 0.21035732299763985}}
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T7  cross-fitter concordance (CometEls vs SBDB)
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T7: {'n_in_matched': 12, 'n_out_matched': 39, 'med_phat_sep_in': 0.021032841831147092, 'med_phat_sep_out': 0.04278727756385423, 'max_phat_sep': 0.20405357066591567}
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T8  signature-morphology discriminator (energy + legs)
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T8: {'drot': {'med_in': 0.20561614416736157, 'med_out': 0.11031920922758798, 'mw_p_greater': 0.00018146607906288908}, 'd_in': {'med_in': 0.12908966225873986, 'med_out': 0.10452121613392493, 'mw_p_greater': 0.027895045199846376}, 'd_out': {'med_in': 0.11860322570845837, 'med_out': 0.08904721082248575, 'mw_p_greater': 0.00237930392790138}, 'daa_energy': {'med_in': 109.95915071731758, 'med_out': -266.2292754491373, 'mw_p_greater': 0.0017939638696411813}, 'inbound_share': {'med_in': 0.5139944559864251, 'med_out': 0.5131839306001984}, 'bound_fraction': {'in_cap': 0.7894736842105263, 'out_cap': 0.6024096385542169}, 'bound_only': {'n_in': 30, 'med_drot_in': 0.20561614416736157, 'n_out': 50, 'med_drot_out': 0.09890935784147656}, 'daa_bound': {'n_in': 30, 'n_out': 50, 'med_in': 76.50124900337482, 'med_out': -99.99267616557876, 'mw_p_greater': 0.1495118392912818}, 'daa_unbound': {'n_in': 8, 'n_out': 33, 'med_in': 163.18211305314009, 'med_out': -473.7472392502111, 'mw_p_greater': 0.00011156667503416728}}
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T9  observable-carrier audit: three-leg vs single-solution records
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T9: {'n_in': 40, 'n_out': 95, 'med_drot_in': 0.16708480924883798, 'med_drot_out': 0.1509874110255987, 'mw_p_greater': 0.41322742514763844, 'inbound_share_in': 0.5234036872482488, 'inbound_share_out': 0.4942411465581837}
+[2026-09-21 15:15:07 UTC] [INFO    ] [STEP 125] T10  CMB-frame dipole ladder: m=1 dipole about the scalar rest frame in every record
+[2026-09-21 15:15:09 UTC] [INFO    ] [STEP 125] T10 CODE n=54: b_CMB=-0.235 (p=0.00065); free dipole (15,0) pole 25.7 deg from CMB apex
+[2026-09-21 15:15:09 UTC] [INFO    ] [STEP 125] T10 warsaw n=41: b_CMB=+0.113 (p=0.2137); free dipole (315,45) pole 46.1 deg from CMB apex
+[2026-09-21 15:15:09 UTC] [INFO    ] [STEP 125] T10 pre2018 n=485: b_CMB=-0.042 (p=0.0802); free dipole (150,45) pole 59.5 deg from CMB apex
+[2026-09-21 15:15:09 UTC] [INFO    ] [STEP 125] T10 post2017 n=121: b_CMB=+0.227 (p=0.0001); free dipole (0,30) pole 20.4 deg from CMB apex
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Saving data: step_b89_displaced_temporal.png
+[2026-09-21 15:15:10 UTC] [DEBUG   ] [STEP 125]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b89_displaced_temporal.png
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]   Output: step_b89_displaced_temporal.png
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Saving data: step_b89_displaced_temporal.json
+[2026-09-21 15:15:10 UTC] [DEBUG   ] [STEP 125]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b89_displaced_temporal.json
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]   Output: step_b89_displaced_temporal.json
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Saving data: step_b89_displaced_temporal.csv
+[2026-09-21 15:15:10 UTC] [DEBUG   ] [STEP 125]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b89_displaced_temporal.csv
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]   Output: step_b89_displaced_temporal.csv
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] verdict: The post-2017 displaced structure is a real, resolved feature of the record, not a residual-fitting artefact: on the raw rotation field it is the global maximum of a 612-axis free scan (+0.270 dex at (120,-40), look-elsewhere p=0.0915), and it persists in the better-observed strata.  Inside the displaced cap its amplitude grades with transit epoch -- rho(drot, transit_year) = -0.55 (p=0.00038), surviving controls for observation count, arc and boundary energy, and appearing in the unexplained proper-time channel (rho=-0.39) -- the signature of a temporally graded field feature rather than a solution-quality artefact.  The structure is nevertheless record-specific at cohort level: pre-2018 objects in the same cap show no elevation (median 0.152 vs 0.206, MW p=0.000957) and no temporal gradient.  Geometry-matched pairs (k=3, n=38): post 0.206 vs matched pre 0.152, perm p=0.0009.  The displaced axis sits 54 deg from the CMB dipole apex -- nearer than the declared axis (132 deg) -- and 127 deg from the ISM inflow.  The independent-fitter check closes the solution-lineage channel: SBDB and MPC CometEls elements for the same objects agree to 0.021 deg median in the periapsis direction, so the structure cannot be manufactured by JPL's orbit fits -- it lives in the astrometric record itself.  The signature-morphology discriminator then classifies the structure with its composition control: the raw energy channel reads elevated in-cap (daa 110 vs -266 in/out, p=0.00179), but the contrast decomposes by boundness -- on the bound substratum it is flat (daa 77 vs -100, p=0.15) while the rotation channel there is strongly elevated (drot 0.206 vs 0.099 deg), so the energy-exchange reading is carried by the thin unbound substratum (n=8 in-cap, p=0.000112), whose sign structure -- in-cap unbound members lose energy where out-cap members gain it -- is a directional energy-transfer asymmetry rather than a uniform exchange.  The independent leg decomposition (step_127 backfill / step_128) then shows the slip morphology itself is mirrored between eras: the modern elevation sits on the outbound leg where the historical anomaly sat on the inbound -- the polarity-flip signature of a bipolar field read at opposite sign, not a different signature class.  The carrier audit then reframes the declared-axis absence itself: the unexplained-slip observable -- the disagreement of independent inbound- and outbound-leg solutions after the gravitational leg prediction is removed -- exists only in three-leg records (CODE, Warsaw, LPC; signature present in all three, LPC p=0.0056, top 4.6% of its free-axis scan).  A single joint solution expresses no fit-vs-fit disagreement for the slip to appear in: the same comets re-fitted under SBDB single solutions are flat (n_in=40, MW p=0.41, leg share 0.52).  The post-2017 record therefore could not express the slip even at full strength -- its flatness is a structural absence of the observable's carrier, not a measurement of zero slip.  The degeneracy that remains is lineage: all three-leg catalogues are Warsaw-school products, so a shared-pipeline fit-disagreement artefact predicts the same 3/3-vs-0/3 pattern; resolving it requires three-leg fits on post-2017 astrometry or a non-Warsaw three-leg catalogue.  The CMB-frame dipole ladder (T10) then measures each record's residual m=1 dipole about the scalar-field rest frame: the two records resolving a significant dipole -- CODE (b=-0.235 dex, p=0.00065) and post-2017 (b=+0.227 dex, p=0.0001) -- both place the bipolar dipole axis within 26 deg of the CMB dipole axis but with opposite polarity, while the weaker records are unresolved (Warsaw p=0.21, pre-2018 p=0.08).  The frame-anchored axis is the cross-record invariant; the measured polarity is record-dependent -- the structure the declared-cap test reads as a reversal is the same bipolar field at the opposite sign.
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] displaced temporal characterization complete
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] 
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] ================================================================================
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] STEP SUMMARY: step_125_displaced_temporal
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] ================================================================================
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Step Number: 125
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Status: SUCCESS
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Duration: 24.75s
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Log Records Emitted: 127
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Output Files: 3
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_125_displaced_temporal.log
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] 
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Generated 3 output file(s):
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]   • step_b89_displaced_temporal.png: 402.74 KB [sha256 dc3bffd6980f6bb1]
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]   • step_b89_displaced_temporal.json: 13.82 KB [sha256 2f745d2888ad84e9]
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]   • step_b89_displaced_temporal.csv: 81.80 KB [sha256 f0e51c63384c82fe]
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] 
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]   RESULT SNAPSHOT [step_b89_displaced_temporal.json]:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     inputs [n=3]
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T1_raw_free_scan:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       free_axis_l = 120
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       free_axis_b = -40
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       free_gap_dex = 0.27040607
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       extremeness_p = 0.091454273
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n_trial_axes = 612
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n_perm_extremeness = 2000
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       sep_from_declared = 78.658128
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       gap_at_declared = -0.17678418
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       gap_at_displaced = 0.27040607
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T2_era_cap_factorial.pre2018:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n_in = 171
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n_out = 314
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       med_drot_in = 0.15195822
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       med_drot_out = 0.15556173
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       gap_dex = -0.010178564
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       p_perm = 0.60321984
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T2_era_cap_factorial.post2017:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n_in = 38
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n_out = 83
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       med_drot_in = 0.20561614
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       med_drot_out = 0.11031921
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       gap_dex = 0.27040607
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       p_perm = 0.0003499825
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T2_era_cap_factorial.cross_era_in_cap:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       med_post = 0.20561614
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       med_pre = 0.15195822
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       mw_p_greater = 0.00095672535
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T3_transit_epoch_gradient.pre2018.spearman_drot_tyr:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       rho = -0.041974264
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       p = 0.58568531
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n = 171
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T3_transit_epoch_gradient.pre2018.partial_drot_tyr_given_nobs:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       rho = -0.14715015
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       p = 6.0056066e-05
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n = 738
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T3_transit_epoch_gradient.pre2018.incap_partial_given_nobs:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       rho = -0.055357339
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       p = 0.47205877
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n = 171
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T3_transit_epoch_gradient.pre2018.partial_drot_tyr_given_arc:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       rho = -0.068116542
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       p = 0.06438906
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n = 738
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T3_transit_epoch_gradient.pre2018.incap_partial_given_arc:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       rho = -0.088778334
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       p = 0.24821579
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n = 171
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T3_transit_epoch_gradient.pre2018.partial_drot_tyr_given_aa_back:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       rho = -0.073149492
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       p = 0.046979629
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n = 738
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T3_transit_epoch_gradient.pre2018.incap_partial_given_aa_back:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       rho = -0.020471884
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       p = 0.79041715
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       n = 171
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]     results.T3_transit_epoch_gradient.pre2018.partial_drot_tyr_given_denc:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       rho = -0.14340474
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       p = 9.2535245e-05
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] ================================================================================
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] STEP 125 COMPLETE: SUCCESS
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_125_displaced_temporal_provenance.json
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] 
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] ================================================================================
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] EXECUTIVE SUMMARY
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] ================================================================================
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Step: step_125_displaced_temporal (Step 125)
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Status: SUCCESS
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Duration: 24.75s
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Log Records: 201
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Output Files: 3
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] Key Outputs:
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]   - step_b89_displaced_temporal.png (402.74 KB)
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]   - step_b89_displaced_temporal.json (13.82 KB)
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125]   - step_b89_displaced_temporal.csv (81.80 KB)
+[2026-09-21 15:15:10 UTC] [INFO    ] [STEP 125] ================================================================================

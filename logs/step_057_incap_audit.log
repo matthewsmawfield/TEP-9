@@ -1,78 +1,128 @@
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] LOGGER INITIALIZED: step_057_incap_audit (Step 057)
-[2026-09-20 12:38:05 UTC] [DEBUG   ] [STEP 057] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_057_incap_audit.log
-[2026-09-20 12:38:05 UTC] [DEBUG   ] [STEP 057] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:38:05 UTC] [DEBUG   ] [STEP 057] Start time (UTC): 2026-09-20T12:38:05.436170+00:00
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] 
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] STEP PURPOSE
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] --------------------------------------------------------------------------------
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   TEP / Planet-9 -- step b22: in-cap property audit + one map
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   Do the 26 clustered detached objects differ from the 18
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   out-cap ones in any property OTHER than the clock angles?
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   If in-cap objects were systematically brighter, better-
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   observed, or from a different discovery era, a residual
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   selection channel would remain open.  The audit: KS tests
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   of a, q, e, i, H, arc, n_obs, discovery year, and the
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   numbered-orbit fraction.
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   A1  Property table: in-cap vs out-cap, per field.
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   A2  Numbered fraction inside vs outside the cap.
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   Plus the synthesis figure: one sky map (ecliptic
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   coordinates) showing every population and every reference
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   axis measured in this pipeline -- the "one map" the
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   program title invokes.
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   Outputs: results/step_b22_incap_audit.json,
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057]   figures/step_b22_one_map.png
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] --------------------------------------------------------------------------------
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] SCRIPT: scripts/steps/step_057_incap_audit.py
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] SCRIPT SHA256: 9c33c3ca58d8cfc1a8f2740f3796b6adc84037636ae1f3e7ba82e63312b537be
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] SCRIPT SIZE: 7970 bytes
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] ================================================================================
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] In-cap property audit and synthesis map
-[2026-09-20 12:38:05 UTC] [INFO    ] [STEP 057] ================================================================================
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A1 a   : in    276.00 | out    283.50 | KS p=0.946
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A1 q   : in     39.80 | out     38.40 | KS p=0.488
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A1 e   : in      0.85 | out      0.85 | KS p=0.335
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A1 i   : in     16.88 | out     15.75 | KS p=0.579
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A1 H   : in      6.59 | out      7.31 | KS p=0.073
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A1 arc : in   4368.00 | out   4158.50 | KS p=0.991
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A1 nobs: in     50.50 | out     31.50 | KS p=0.012
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A1 yr  : in   2012.50 | out   2011.50 | KS p=0.839
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A1 om  : in    116.22 | out    199.75 | KS p=0.005
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A1 w   : in    273.32 | out    154.47 | KS p=0.002
-[2026-09-20 12:38:08 UTC] [INFO    ] [STEP 057] A2: numbered in 14/26 vs 4/18 p=0.061
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Saving data: step_b22_incap_audit.json
-[2026-09-20 12:38:10 UTC] [DEBUG   ] [STEP 057]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b22_incap_audit.json
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057]   Output: step_b22_incap_audit.json
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Saving data: step_b22_one_map.png
-[2026-09-20 12:38:10 UTC] [DEBUG   ] [STEP 057]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b22_one_map.png
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057]   Output: step_b22_one_map.png
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] 
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] ================================================================================
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] STEP SUMMARY: step_057_incap_audit
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] ================================================================================
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Step Number: 057
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Status: SUCCESS
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Duration: 4.64s
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Log Records Emitted: 55
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Output Files: 2
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_057_incap_audit.log
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] 
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Generated 2 output file(s):
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057]   • step_b22_incap_audit.json: 1.74 KB [sha256 6f690fa1dfc8af69]
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057]   • step_b22_one_map.png: 483.63 KB [sha256 1328cf77b27fb58b]
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] ================================================================================
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] STEP 057 COMPLETE: SUCCESS
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_057_incap_audit_provenance.json
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] 
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] ================================================================================
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] EXECUTIVE SUMMARY
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] ================================================================================
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Step: step_057_incap_audit (Step 057)
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Status: SUCCESS
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Duration: 4.64s
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Log Records: 65
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Output Files: 2
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] Key Outputs:
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057]   - step_b22_incap_audit.json (1.74 KB)
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057]   - step_b22_one_map.png (483.63 KB)
-[2026-09-20 12:38:10 UTC] [INFO    ] [STEP 057] ================================================================================
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] LOGGER INITIALIZED: step_057_incap_audit (Step 057)
+[2026-09-21 14:37:05 UTC] [DEBUG   ] [STEP 057] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_057_incap_audit.log
+[2026-09-21 14:37:05 UTC] [DEBUG   ] [STEP 057] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:37:05 UTC] [DEBUG   ] [STEP 057] Start time (UTC): 2026-09-21T14:37:05.053870+00:00
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] 
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] STEP PURPOSE
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] --------------------------------------------------------------------------------
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   TEP / Planet-9 -- step b22: in-cap property audit + one map
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   Do the 26 clustered detached objects differ from the 18
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   out-cap ones in any property OTHER than the clock angles?
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   If in-cap objects were systematically brighter, better-
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   observed, or from a different discovery era, a residual
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   selection channel would remain open.  The audit: KS tests
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   of a, q, e, i, H, arc, n_obs, discovery year, and the
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   numbered-orbit fraction.
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   A1  Property table: in-cap vs out-cap, per field.
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   A2  Numbered fraction inside vs outside the cap.
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   Plus the synthesis figure: one sky map (ecliptic
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   coordinates) showing every population and every reference
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   axis measured in this pipeline -- the "one map" the
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   program title invokes.
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   Outputs: results/step_b22_incap_audit.json,
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057]   figures/step_b22_one_map.png
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] --------------------------------------------------------------------------------
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] SCRIPT: scripts/steps/step_057_incap_audit.py
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] SCRIPT SHA256: 9c33c3ca58d8cfc1a8f2740f3796b6adc84037636ae1f3e7ba82e63312b537be
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] SCRIPT SIZE: 7970 bytes
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] ================================================================================
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] In-cap property audit and synthesis map
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] ================================================================================
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A1 a   : in    276.00 | out    283.50 | KS p=0.946
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A1 q   : in     39.80 | out     38.40 | KS p=0.488
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A1 e   : in      0.85 | out      0.85 | KS p=0.335
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A1 i   : in     16.88 | out     15.75 | KS p=0.579
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A1 H   : in      6.59 | out      7.31 | KS p=0.073
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A1 arc : in   4368.00 | out   4158.50 | KS p=0.991
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A1 nobs: in     50.50 | out     31.50 | KS p=0.012
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A1 yr  : in   2012.50 | out   2011.50 | KS p=0.839
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A1 om  : in    116.22 | out    199.75 | KS p=0.005
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A1 w   : in    273.32 | out    154.47 | KS p=0.002
+[2026-09-21 14:37:05 UTC] [INFO    ] [STEP 057] A2: numbered in 14/26 vs 4/18 p=0.061
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Saving data: step_b22_incap_audit.json
+[2026-09-21 14:37:06 UTC] [DEBUG   ] [STEP 057]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b22_incap_audit.json
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]   Output: step_b22_incap_audit.json
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Saving data: step_b22_one_map.png
+[2026-09-21 14:37:06 UTC] [DEBUG   ] [STEP 057]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b22_one_map.png
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]   Output: step_b22_one_map.png
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] 
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] ================================================================================
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] STEP SUMMARY: step_057_incap_audit
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] ================================================================================
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Step Number: 057
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Status: SUCCESS
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Duration: 1.24s
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Log Records Emitted: 55
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Output Files: 2
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_057_incap_audit.log
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] 
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Generated 2 output file(s):
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]   • step_b22_incap_audit.json: 1.74 KB [sha256 6f690fa1dfc8af69]
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]   • step_b22_one_map.png: 483.62 KB [sha256 1fd40e8b7e19dfaf]
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] 
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]   RESULT SNAPSHOT [step_b22_incap_audit.json]:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     inputs [n=2]
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     A1_property_audit:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       note = physical elements (a, q, e, i), magnitude, arc, n_obs, era identical inside vs outside ...
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     A1_property_audit.rows[0]:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       field = a
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       in_median = 276
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       out_median = 283.5
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       ks_p = 0.94637556
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     A1_property_audit.rows[1]:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       field = q
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       in_median = 39.799
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       out_median = 38.4
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       ks_p = 0.48796593
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     A1_property_audit.rows[2]:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       field = e
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       in_median = 0.847
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       out_median = 0.854
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       ks_p = 0.33503062
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     A1_property_audit.rows[3]:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       field = i
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       in_median = 16.88
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       out_median = 15.745
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       ks_p = 0.5791966
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     A1_property_audit.rows[4]:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       field = H
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       in_median = 6.59
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       out_median = 7.315
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       ks_p = 0.073192245
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     A1_property_audit.rows[5]:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       field = arc
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       in_median = 4368
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       out_median = 4158.5
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       ks_p = 0.99087039
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     A1_property_audit.rows[6]:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       field = nobs
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       in_median = 50.5
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       out_median = 31.5
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       ks_p = 0.011800098
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     A1_property_audit.rows[7]:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       field = yr
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       in_median = 2012.5
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       out_median = 2011.5
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       ks_p = 0.83931237
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]     A2_numbered_fraction:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       in_cap_numbered = 14/26
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       out_cap_numbered = 4/18
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       fisher_p = 0.060752872
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]       note = if the cluster lived in well-determined orbits, in-cap objects would be more numbered; ...
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] ================================================================================
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] STEP 057 COMPLETE: SUCCESS
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_057_incap_audit_provenance.json
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] 
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] ================================================================================
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] EXECUTIVE SUMMARY
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] ================================================================================
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Step: step_057_incap_audit (Step 057)
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Status: SUCCESS
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Duration: 1.24s
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Log Records: 115
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Output Files: 2
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] Key Outputs:
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]   - step_b22_incap_audit.json (1.74 KB)
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057]   - step_b22_one_map.png (483.62 KB)
+[2026-09-21 14:37:06 UTC] [INFO    ] [STEP 057] ================================================================================

@@ -1,255 +1,328 @@
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] LOGGER INITIALIZED: step_031_clock_channel (Step 031)
-[2026-09-20 10:44:20 UTC] [DEBUG   ] [STEP 031] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_031_clock_channel.log
-[2026-09-20 10:44:20 UTC] [DEBUG   ] [STEP 031] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:44:20 UTC] [DEBUG   ] [STEP 031] Start time (UTC): 2026-09-20T10:44:20.078131+00:00
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] 
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] STEP PURPOSE
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] --------------------------------------------------------------------------------
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   step_08: the clock channel -- osculating-to-original orbit discrepancy
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   vs direction to the TNO boundary axis.
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   TEP nuance missed by the directional-excess test (step_07): under TEP a
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   proper-time boundary does not primarily change WHICH direction comets
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   arrive from -- it changes the comet's CLOCK during passage.  The Warsaw
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   catalogue's "original" orbits are back-integrated under standard
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   dynamics; if a comet crossed a temporal boundary, that reconstruction is
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   biased.  The observable is therefore:
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   - the DISCREPANCY between the measured (osculating) orbit and the
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   back-integrated (original) orbit -- direction-selective if and only
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   if the discrepancy source sits on the boundary axis;
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   - direction-selective structure in the original ENERGY (1/a_orig);
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   - direction-selective need for non-gravitational (NG) solutions --
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   unexplained momentum exchange is the standard patch for exactly the
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   kind of anomaly a temporal gradient produces.
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   Data: J/A+A/567/A126 (Krolikowska 2014) tables a1, b, b4, c -- all real.
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   Nulls: permutation of directions (preserves aa/element distributions),
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   plus control axes (galactic pole, apex, anti-axis) -- the signature must
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031]   be axis-specific, not generic.
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] --------------------------------------------------------------------------------
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] SCRIPT: scripts/steps/step_031_clock_channel.py
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] SCRIPT SHA256: eaccf01e62a3fb10ba091e2e960a81084a92c42f7ab0db2c9175c8be38ddd2be
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] SCRIPT SIZE: 9152 bytes
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] Orbit-reconstruction clock channel
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-09-20 10:44:20 UTC] [INFO    ] [STEP 031] 107 comets matched osc+orig
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] RESULT PAYLOAD:
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  "n_matched": 107,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  "spike": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "n": 99,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_ddir_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": -0.015955473098330238,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.5614219289035548
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_absDaa_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": 0.015534941249226962,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.4351282435878206
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_signedDaa_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": -0.0035250463821892386,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.5185740712964352
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_aaorig_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": -0.05606679035250464,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.7083645817709114
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "ddir_in_vs_out_60": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "n_in": 32,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_in": 0.09241478690236163,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_out": 0.06522854159245667,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_greater": 0.034250150811914015
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "absDaa_in_vs_out_60": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_in": 469.235,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_out": 282.71000000000004,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_greater": 0.20847523307914456
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "ng_frac_in_vs_out_60": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "in": [
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     11,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     21
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    ],
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "out": [
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     22,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     45
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    ],
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_fisher_greater": 0.5266025674057224
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   }
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  "new": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "n": 44,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_ddir_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": 0.0001409443269908386,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.5029748512574371
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_absDaa_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": 0.2241014799154334,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.07209639518024098
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_signedDaa_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": -0.2114164904862579,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.9140542972851358
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_aaorig_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": 0.11923890063424947,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.22378881055947203
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "ddir_in_vs_out_60": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "n_in": 11,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_in": 0.08322160263267282,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_out": 0.06476007430142847,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_greater": 0.20039266838494524
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "absDaa_in_vs_out_60": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_in": 268.61,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_out": 301.74,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_greater": 0.7919241165068476
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "ng_frac_in_vs_out_60": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "in": [
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     4,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     7
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    ],
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "out": [
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     8,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     25
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    ],
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_fisher_greater": 0.3391323459863399
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   }
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  "all_boundish": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "n": 107,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_ddir_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": -0.0021944003605086308,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.5074746262686866
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_absDaa_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": 0.017173142107016204,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.42847857607119644
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_signedDaa_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": -0.009855208761927154,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.5377731113444327
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "corr_aaorig_vs_theta": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "rho": -0.020846803424831993,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_perm": 0.584720763961802
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "ddir_in_vs_out_60": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "n_in": 35,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_in": 0.09552806206251013,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_out": 0.06768259704676818,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_greater": 0.04183645641385283
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "absDaa_in_vs_out_60": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_in": 455.25,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "median_out": 291.15500000000003,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_greater": 0.18061552383273938
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "ng_frac_in_vs_out_60": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "in": [
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     12,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     23
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    ],
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "out": [
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     26,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]     46
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    ],
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "p_fisher_greater": 0.6530832767907606
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   }
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  "controls_spike": {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "gal_pole_corr_ddir": 0.03009276437847866,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "gal_pole_p": 0.767471794348601,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "antitno_corr_ddir": 0.015955473098330238,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   "antitno_p": 0.8754429109908457
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  "duplicate_solutions": [
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "desig": "C/2001 Q4",
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "theta": 12.320113574055222,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "daa": 11.270000000000003,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "ddir": 0.001041732956208413
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "desig": "C/2002 T7",
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "theta": 80.57019512735297,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "daa": 7.899999999999999,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "ddir": 0.0006360974645905434
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "desig": "C/2003 K4",
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "theta": 38.521734793343015,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "daa": 19.68,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "ddir": 0.0014619646575040367
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "desig": "C/2006 VZ13",
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "theta": 36.72705798213101,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "daa": 32.43,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "ddir": 0.0010168501475183965
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "desig": "C/2007 N3",
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "theta": 17.1301022945656,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "daa": 3.080000000000002,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "ddir": 0.0003944850022630635
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "desig": "C/2007 Q3",
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "theta": 63.98182449099164,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "daa": 2.779999999999994,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "ddir": 0.0003738943748388617
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "desig": "C/2007 W1",
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "theta": 70.04716616094221,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "daa": 13.59,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "ddir": 0.000692186156778298
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "desig": "C/2008 A1",
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "theta": 66.48820281583323,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "daa": 2.2299999999999898,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "ddir": 0.00021564841838402052
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   },
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   {
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "desig": "C/2009 K5",
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "theta": 50.79178414969273,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "daa": 3.9200000000000017,
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]    "ddir": 6.374207945442709e-05
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   }
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]  ]
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] }
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Saving data: step_08_clock_channel.json
-[2026-09-20 10:45:30 UTC] [DEBUG   ] [STEP 031]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_08_clock_channel.json
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   Output: step_08_clock_channel.json
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] 
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] STEP SUMMARY: step_031_clock_channel
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Step Number: 031
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Status: SUCCESS
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Duration: 1.17m
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Log Records Emitted: 234
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Output Files: 1
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_031_clock_channel.log
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] 
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Generated 1 output file(s):
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   • step_08_clock_channel.json: 3.77 KB [sha256 8d19be413756df59]
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] STEP 031 COMPLETE: SUCCESS
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_031_clock_channel_provenance.json
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] 
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] EXECUTIVE SUMMARY
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] ================================================================================
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Step: step_031_clock_channel (Step 031)
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Status: SUCCESS
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Duration: 1.17m
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Log Records: 243
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Output Files: 1
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] Key Outputs:
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031]   - step_08_clock_channel.json (3.77 KB)
-[2026-09-20 10:45:30 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] LOGGER INITIALIZED: step_031_clock_channel (Step 031)
+[2026-09-21 14:33:56 UTC] [DEBUG   ] [STEP 031] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_031_clock_channel.log
+[2026-09-21 14:33:56 UTC] [DEBUG   ] [STEP 031] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:33:56 UTC] [DEBUG   ] [STEP 031] Start time (UTC): 2026-09-21T14:33:56.198188+00:00
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] 
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] STEP PURPOSE
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] --------------------------------------------------------------------------------
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   step_08: the clock channel -- osculating-to-original orbit discrepancy
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   vs direction to the TNO boundary axis.
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   TEP nuance missed by the directional-excess test (step_07): under TEP a
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   proper-time boundary does not primarily change WHICH direction comets
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   arrive from -- it changes the comet's CLOCK during passage.  The Warsaw
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   catalogue's "original" orbits are back-integrated under standard
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   dynamics; if a comet crossed a temporal boundary, that reconstruction is
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   biased.  The observable is therefore:
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   - the DISCREPANCY between the measured (osculating) orbit and the
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   back-integrated (original) orbit -- direction-selective if and only
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   if the discrepancy source sits on the boundary axis;
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   - direction-selective structure in the original ENERGY (1/a_orig);
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   - direction-selective need for non-gravitational (NG) solutions --
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   unexplained momentum exchange is the standard patch for exactly the
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   kind of anomaly a temporal gradient produces.
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   Data: J/A+A/567/A126 (Krolikowska 2014) tables a1, b, b4, c -- all real.
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   Nulls: permutation of directions (preserves aa/element distributions),
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   plus control axes (galactic pole, apex, anti-axis) -- the signature must
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031]   be axis-specific, not generic.
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] --------------------------------------------------------------------------------
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] SCRIPT: scripts/steps/step_031_clock_channel.py
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] SCRIPT SHA256: eaccf01e62a3fb10ba091e2e960a81084a92c42f7ab0db2c9175c8be38ddd2be
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] SCRIPT SIZE: 9152 bytes
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] Orbit-reconstruction clock channel
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-09-21 14:33:56 UTC] [INFO    ] [STEP 031] 107 comets matched osc+orig
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] RESULT PAYLOAD:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  "n_matched": 107,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  "spike": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "n": 99,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_ddir_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": -0.015955473098330238,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.5614219289035548
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_absDaa_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": 0.015534941249226962,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.4351282435878206
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_signedDaa_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": -0.0035250463821892386,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.5185740712964352
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_aaorig_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": -0.05606679035250464,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.7083645817709114
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "ddir_in_vs_out_60": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "n_in": 32,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_in": 0.09241478690236163,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_out": 0.06522854159245667,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_greater": 0.034250150811914015
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "absDaa_in_vs_out_60": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_in": 469.235,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_out": 282.71000000000004,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_greater": 0.20847523307914456
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "ng_frac_in_vs_out_60": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "in": [
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     11,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     21
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    ],
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "out": [
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     22,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     45
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    ],
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_fisher_greater": 0.5266025674057224
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   }
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  "new": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "n": 44,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_ddir_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": 0.0001409443269908386,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.5029748512574371
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_absDaa_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": 0.2241014799154334,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.07209639518024098
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_signedDaa_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": -0.2114164904862579,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.9140542972851358
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_aaorig_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": 0.11923890063424947,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.22378881055947203
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "ddir_in_vs_out_60": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "n_in": 11,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_in": 0.08322160263267282,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_out": 0.06476007430142847,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_greater": 0.20039266838494524
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "absDaa_in_vs_out_60": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_in": 268.61,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_out": 301.74,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_greater": 0.7919241165068476
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "ng_frac_in_vs_out_60": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "in": [
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     4,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     7
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    ],
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "out": [
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     8,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     25
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    ],
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_fisher_greater": 0.3391323459863399
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   }
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  "all_boundish": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "n": 107,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_ddir_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": -0.0021944003605086308,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.5074746262686866
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_absDaa_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": 0.017173142107016204,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.42847857607119644
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_signedDaa_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": -0.009855208761927154,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.5377731113444327
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "corr_aaorig_vs_theta": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "rho": -0.020846803424831993,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_perm": 0.584720763961802
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "ddir_in_vs_out_60": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "n_in": 35,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_in": 0.09552806206251013,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_out": 0.06768259704676818,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_greater": 0.04183645641385283
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "absDaa_in_vs_out_60": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_in": 455.25,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "median_out": 291.15500000000003,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_greater": 0.18061552383273938
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "ng_frac_in_vs_out_60": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "in": [
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     12,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     23
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    ],
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "out": [
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     26,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     46
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    ],
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "p_fisher_greater": 0.6530832767907606
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   }
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  "controls_spike": {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "gal_pole_corr_ddir": 0.03009276437847866,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "gal_pole_p": 0.767471794348601,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "antitno_corr_ddir": 0.015955473098330238,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   "antitno_p": 0.8754429109908457
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  "duplicate_solutions": [
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "desig": "C/2001 Q4",
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "theta": 12.320113574055222,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "daa": 11.270000000000003,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "ddir": 0.001041732956208413
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "desig": "C/2002 T7",
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "theta": 80.57019512735297,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "daa": 7.899999999999999,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "ddir": 0.0006360974645905434
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "desig": "C/2003 K4",
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "theta": 38.521734793343015,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "daa": 19.68,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "ddir": 0.0014619646575040367
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "desig": "C/2006 VZ13",
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "theta": 36.72705798213101,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "daa": 32.43,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "ddir": 0.0010168501475183965
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "desig": "C/2007 N3",
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "theta": 17.1301022945656,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "daa": 3.080000000000002,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "ddir": 0.0003944850022630635
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "desig": "C/2007 Q3",
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "theta": 63.98182449099164,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "daa": 2.779999999999994,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "ddir": 0.0003738943748388617
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "desig": "C/2007 W1",
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "theta": 70.04716616094221,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "daa": 13.59,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "ddir": 0.000692186156778298
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "desig": "C/2008 A1",
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "theta": 66.48820281583323,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "daa": 2.2299999999999898,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "ddir": 0.00021564841838402052
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   },
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   {
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "desig": "C/2009 K5",
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "theta": 50.79178414969273,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "daa": 3.9200000000000017,
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]    "ddir": 6.374207945442709e-05
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   }
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]  ]
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] }
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Saving data: step_08_clock_channel.json
+[2026-09-21 14:35:28 UTC] [DEBUG   ] [STEP 031]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_08_clock_channel.json
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   Output: step_08_clock_channel.json
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] 
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] STEP SUMMARY: step_031_clock_channel
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Step Number: 031
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Status: SUCCESS
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Duration: 1.54m
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Log Records Emitted: 234
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Output Files: 1
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_031_clock_channel.log
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] 
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Generated 1 output file(s):
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   • step_08_clock_channel.json: 3.77 KB [sha256 8d19be413756df59]
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] 
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   RESULT SNAPSHOT [step_08_clock_channel.json]:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     spike:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       n = 99
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     spike.corr_ddir_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = -0.015955473
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.56142193
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     spike.corr_absDaa_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = 0.015534941
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.43512824
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     spike.corr_signedDaa_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = -0.0035250464
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.51857407
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     spike.corr_aaorig_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = -0.05606679
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.70836458
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     spike.ddir_in_vs_out_60:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       n_in = 32
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       median_in = 0.092414787
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       median_out = 0.065228542
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_greater = 0.034250151
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     spike.absDaa_in_vs_out_60:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       median_in = 469.235
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       median_out = 282.71
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_greater = 0.20847523
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     spike.ng_frac_in_vs_out_60:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_fisher_greater = 0.52660257
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     spike.ng_frac_in_vs_out_60.in [n=2]: median=16 min=11 max=21
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     spike.ng_frac_in_vs_out_60.out [n=2]: median=33.5 min=22 max=45
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     new:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       n = 44
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     new.corr_ddir_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = 0.00014094433
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.50297485
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     new.corr_absDaa_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = 0.22410148
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.072096395
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     new.corr_signedDaa_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = -0.21141649
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.9140543
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     new.corr_aaorig_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = 0.1192389
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.22378881
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     new.ddir_in_vs_out_60:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       n_in = 11
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       median_in = 0.083221603
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       median_out = 0.064760074
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_greater = 0.20039267
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     new.absDaa_in_vs_out_60:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       median_in = 268.61
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       median_out = 301.74
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_greater = 0.79192412
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     new.ng_frac_in_vs_out_60:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_fisher_greater = 0.33913235
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     new.ng_frac_in_vs_out_60.in [n=2]: median=5.5 min=4 max=7
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     new.ng_frac_in_vs_out_60.out [n=2]: median=16.5 min=8 max=25
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     all_boundish:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       n = 107
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     all_boundish.corr_ddir_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = -0.0021944004
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.50747463
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     all_boundish.corr_absDaa_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = 0.017173142
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.42847858
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     all_boundish.corr_signedDaa_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = -0.0098552088
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.53777311
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     all_boundish.corr_aaorig_vs_theta:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       rho = -0.020846803
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       p_perm = 0.58472076
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]     all_boundish.ddir_in_vs_out_60:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       n_in = 35
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] STEP 031 COMPLETE: SUCCESS
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_031_clock_channel_provenance.json
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] 
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] EXECUTIVE SUMMARY
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] ================================================================================
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Step: step_031_clock_channel (Step 031)
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Status: SUCCESS
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Duration: 1.54m
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Log Records: 316
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Output Files: 1
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] Key Outputs:
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031]   - step_08_clock_channel.json (3.77 KB)
+[2026-09-21 14:35:28 UTC] [INFO    ] [STEP 031] ================================================================================

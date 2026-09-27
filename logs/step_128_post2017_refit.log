@@ -1,462 +1,524 @@
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] LOGGER INITIALIZED: step_128_post2017_refit (Step 128)
-[2026-09-20 12:23:45 UTC] [DEBUG   ] [STEP 128] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_128_post2017_refit.log
-[2026-09-20 12:23:45 UTC] [DEBUG   ] [STEP 128] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:23:45 UTC] [DEBUG   ] [STEP 128] Start time (UTC): 2026-09-20T12:23:45.917332+00:00
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] 
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] STEP PURPOSE
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] --------------------------------------------------------------------------------
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   Step 128 -- Post-2017 two-leg refit: the masking discriminator.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   The registered prospective test (step_117) returned a reversed
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   declared-axis contrast on the post-2017 SBDB cohort -- but the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   carrier audit showed the slip observable is structurally absent from
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   single-solution records: a joint fit absorbs any uniform proper-time
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   slip into shared orbital elements, leaving the propagated residual
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   dominated by planetary scatter.  The holdout could therefore only
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   fail in form, never confirm: the construction needed to express the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   anomaly (a leg-separated record) does not exist in that lineage.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   Step 127 supplied the missing instrument -- an independent
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   Levenberg-Marquardt two-leg refit of the raw MPC astrometry under the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   identical REBOUND/IAS15 + DE440s force model, propagated to the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   +/-250 AU sphere through the same machinery.  On the pre-2018 cohort
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   it reproduced the catalogue record at per-comet concordance rho =
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   +0.998 and recovered the registered inbound-leg in-cap excess.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   This step points the same instrument at the post-2017 cohort
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   (step_b81 primaries).  Two constructions are tested on identical
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   members:
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   * the single-fit construction -- the propagated boundary products
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   of the joint (full-arc) fit, the only construction a
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   single-solution lineage can express.  Predicted flat under the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   masking hypothesis.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   * the leg-fit construction -- the independently fitted inbound and
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   outbound legs, whose boundary asymptotes carry whatever slip the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   transit actually imparted.  This is the construction the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   three-leg catalogue records realize, and the registered carrier
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   d_in on the pre-2018 record lives here.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   Registered tests
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   T1  instrument validity on the new era: per-comet concordance of
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   our drot versus the catalogue-propagated drot, and element
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   agreement of our full-arc fit against the SBDB seed.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   T2  DECISIVE -- the masking discriminator: on the dual-leg subset,
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   the cap contrast (theta < 60 deg, aph against the declared
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   axis) of the leg-fit inbound deviation d_in_leg versus (a) the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   single-fit d_in on the same members and (b) the catalogue's
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   propagated d_in.  Under TEP-with-masking the leg-fit channel
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   carries the in-cap excess the joint construction erases.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   Flatness on the leg-fit channel would confine the anomaly to
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   the pre-2018 era -- a substantive boundary on the hypothesis.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   T3  displaced-structure control: the same contrasts evaluated
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   about the post-2017 displaced axis (120, -40) -- does the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   modern residual systematic appear on independent fits, or was
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   it a single-lineage fit field?
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   T4  quality strata: contrast on NG-flagged vs clean comets (the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   non-gravitational floor differs by construction), and the
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   cross-arc extrapolation penalty by cap.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   T4b signature-class audit: at both axes on the dual-leg cohort,
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   cap contrasts on every channel -- leg deviations (d_in_leg,
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   d_out_leg), drot, ddirf, |daa| energy, plus coverage and
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   fit-quality controls.  The declared anomaly's class is
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   single-leg rotation slip without energy exchange; the audit
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   asks whether the displaced structure shares that class.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   T4c robustness: label-permutation nulls on the carrying channels,
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   500-direction shuffle extremeness of the displaced residual
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   gap on the independent record, and quality strata (n_obs,
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   fit RMS, NG-clean) on the same field.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   T5  audit: cohort yield, leg coverage, fit quality.
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   Outputs
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   results/step_b92_post2017_refit.json
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   results/step_b92_post2017_refit.csv
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   results/figures/supplementary/step_b92_post2017_refit.png
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   results/step_b92_refit.jsonl            (per-comet checkpoint)
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128]   (obs/sbdb caches shared with step_127 under data/raw/mpc/)
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] --------------------------------------------------------------------------------
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] SCRIPT: scripts/steps/step_128_post2017_refit.py
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] SCRIPT SHA256: 1bc67755396d3d600c7f8e2b68b1a205b9f10075a316aea1e00c151ffade1b82
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] SCRIPT SIZE: 29672 bytes
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] ================================================================================
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] Post-2017 two-leg refit: the masking discriminator
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] ================================================================================
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] post-2017 refit cohort: 255 comets
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] 249 checkpointed, 6 failed, 0 to process
-[2026-09-20 12:23:45 UTC] [INFO    ] [STEP 128] fitted cohort: 249 comets (6 failed/skipped)
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] RESULT PAYLOAD:
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "step": "step_128_post2017_refit",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "description": "independent two-leg LM refit of the post-2017 prospective cohort on raw MPC astrometry; the masking discriminator -- leg-fit vs single-fit carrier constructions on identical members",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "n_attempted": 255,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "n_fitted": 249,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "n_failed": 6,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "n_full_arc": 248,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "n_dual_leg": 160,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "n_dual_joint": 159,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "n_inbound_obs": 227,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "T1_validity": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "drot_concordance": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n": 248,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "rho": 0.9996302304686946,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "p": 5e-324
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "d_in_concordance": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "rho": 0.9657121367801098,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "p": 4.428726448711759e-146
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "element_diffs_vs_sbdb": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_dq_au": 1.8453555618691553e-05,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_pdir_deg": 0.00391444819413966,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "p95_pdir_deg": 0.039727935988651236
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "T2_masking": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "declared_axis": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "leg_fit": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.08565478495859052,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.10952583315964712,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.9994913007020897,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p_perm": 0.997000599880024
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "single_fit": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.08632614572932326,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.11046194442764831,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.9991205349854301
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "catalogue": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.08355537493381777,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.10708153021455263,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.9987439167945599
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "leg_fit_out": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.099597512434911,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.09081221914094528,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.25226755748733665
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "T3_displaced": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "displaced_axis": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "leg_fit": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.10735904034885059,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.1002766884881578,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.2257142173975013
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "single_fit": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.10771882559864941,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.10244145740739638,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.26981421292019514
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "catalogue": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.09916453732060324,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.09962799909851877,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.32190070217020555
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "declared_single_all": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_in": 66,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_out": 182,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_in": 0.09330113556270715,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_out": 0.1064968693706214,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "p": 0.9764825159855833
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "declared_cat_all": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_in": 66,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_out": 182,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_in": 0.08644720012939386,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_out": 0.10583713286195914,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "p": 0.9887088351771101
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "displaced_resid_field": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 75,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 173,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.16487007556160604,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": -0.04179435617264016,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 5.4437551026469916e-05
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "cat": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 75,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 173,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.17295494255988375,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": -0.04744013031794059,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 1.5451568167688013e-05
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "declared_control_our": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 66,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 182,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": -0.05393177804871968,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.05541410598671431,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.9514918994806965
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "T4_strata": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "ng": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_in": 9,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_out": 26,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_in": 0.09382319019090514,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_out": 0.10684781307201072,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "p": 0.9570366118796234
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "clean": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_in": 32,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_out": 92,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_in": 0.08562474181157781,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_out": 0.11303147183150264,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "p": 0.9977102557886486
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "xarc_rms": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_in": 2.7964147225417735,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "med_out": 3.796778285272259,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "p": 0.9388737042280493
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "T4_signature_class": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "at_displaced": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_d_in_leg": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.10735904034885059,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.1002766884881578,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.2257142173975013
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_d_out_leg": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.10787343365879667,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.08514679689225604,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.02066622298256279
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_drot": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.14705631315699894,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.10212992761799536,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.006605410778953648
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_ddirf": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.14827011592596645,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.1001968315169503,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.0069630911378131335
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "abs_daa": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 205.4943516475741,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 319.6640175561597,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.9793337770174372
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "ctl_n_in": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 314.0,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 445.0,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.013852358519572195
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "ctl_n_out": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 118.0,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 304.0,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.25038739060254767
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "ctl_fit_all_rms": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 47,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 112,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.5361490244665966,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.5202367326205593,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.8517833743534305
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "at_declared": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_d_in_leg": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.08565478495859052,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.10952583315964712,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.9994913007020897
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_d_out_leg": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.099597512434911,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.09081221914094528,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.25226755748733665
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_drot": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.08497424508378779,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.12905752535446038,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.966876376009584
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_ddirf": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.083976255998868,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.12243757483204584,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.9841349046081478
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "abs_daa": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 233.93336647527383,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 279.63685655474956,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.7873621031602667
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "ctl_n_in": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 392.0,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 358.0,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.6478653400021857
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "ctl_n_out": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 333.0,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 193.5,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.18002008722992835
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "ctl_fit_all_rms": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 41,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 118,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.5191851600956794,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": 0.535912292615732,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.3477079976581625
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "T4c_robustness": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "perm_nulls_at_displaced": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_d_out_leg": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "gap": 0.02272663676654063,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p_perm": 0.04319136172765447
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_ddirf": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "gap": 0.04807328440901615,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p_perm": 0.01999600079984003
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "our_drot": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "gap": 0.04492638553900358,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p_perm": 0.01839632073585283
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "direction_shuffle": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_dir": 500,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "obs_gap": 0.2066644317342462,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "p_extremeness": 0.003992015968063872
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "quality_strata": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "n_obs>=med": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n": 125,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 35,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 90,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.11967633635155339,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": -0.030013222534741146,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.005239843233858882
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "rms<=med": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n": 124,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 35,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 89,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.05403429547224514,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": -0.034950792633731353,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.056175368228354394
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "ng_clean": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n": 211,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_in": 67,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "n_out": 144,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_in": 0.1321580324140581,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "med_out": -0.0362299006825918,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]     "p": 0.00017748148734752513
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "n_nonfinite_rows": 0,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "T5_audit": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "rms_all_median": 0.5028780672893991,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "dual_yield_frac": 0.642570281124498,
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "fail_reasons": [
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "only 17 usable obs",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "only 7 usable obs",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]    "sbdb: no orbit block"
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   ]
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "verdict": "ERA-CONFINED + SAME-CLASS ASTROMETRIC: the leg-separated record -- the construction that can express slip -- reproduces the same in-cap reversal as the single-fit and catalogue records, so the prospective reversal is real astrometry, not single-solution masking; the declared-axis carrier is confined to the pre-2018 record.  The post-2017 record's own dominant structure is nonetheless a lapse-slip anomaly of the same signature class on the same independent fits: single-leg rotation slip (outbound d_out_leg 0.108 vs 0.085 deg in/out, p=0.021), elevated leg disagreement (p=0.007), flat energy exchange (|daa| p=0.979), matched fit quality -- rotation without energy exchange, direction-localized at the displaced axis.  The boundary channel's registered position and leg are epoch-dependent; both eras' dominant structures are lapse-slip anomalies in the astrometric record",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "forward_prediction": {
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "registered": "future (LSST-era) LPC cohorts continue the modern displaced-lobe polarity on the leg-separated channel; a return of the pre-2018 declared-axis inbound-leg excess, or no coherent lobe, breaks the era-polarity ordering",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "channel": "two-leg refit d_out_leg / residual cap-gap at the displaced axis",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "scorable_with": "this script re-run on the new cohort"
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  },
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "inputs": [
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "results/step_b81_prospective_lpc.csv",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "data/raw/mpc/obs/*.json (shared MPC cache)",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "data/raw/mpc/sbdb_fp/*.json (shared SBDB seed cache)",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "data/raw/mpc/obscodes.json",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "data/raw/spice/de440s.bsp",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "data/raw/naif/naif0012.tls"
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  ],
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  "caveats": [
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "The leg-fit carrier requires >=12 astrometric observations per leg; post-2017 comets discovered post-perihelion contribute only the single-fit construction, so the dual-leg subset is the decisive arena and its size is set by observability.",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "Pure-gravity refit: cometary NG terms are absorbed into the leg solutions; the NG-flag stratum in T4 prices that floor.",
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   "d_in_leg compares the inbound-leg asymptote to the joint-fit osculating direction -- the construction the three-leg catalogue record realizes; per-comet sign conventions follow step_123."
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]  ]
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] }
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Saving data: step_b92_post2017_refit.json
-[2026-09-20 12:23:46 UTC] [DEBUG   ] [STEP 128]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b92_post2017_refit.json
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   Output: step_b92_post2017_refit.json
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Saving data: step_b92_post2017_refit.csv
-[2026-09-20 12:23:46 UTC] [DEBUG   ] [STEP 128]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b92_post2017_refit.csv
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   Output: step_b92_post2017_refit.csv
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Saving data: step_b92_post2017_refit.png
-[2026-09-20 12:23:46 UTC] [DEBUG   ] [STEP 128]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b92_post2017_refit.png
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   Output: step_b92_post2017_refit.png
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] 
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] ================================================================================
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] STEP SUMMARY: step_128_post2017_refit
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] ================================================================================
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Step Number: 128
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Status: SUCCESS
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Duration: 0.64s
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Log Records Emitted: 437
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Output Files: 3
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_128_post2017_refit.log
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] 
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Generated 3 output file(s):
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   • step_b92_post2017_refit.json: 8.87 KB [sha256 d8b32ec87103fcd0]
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   • step_b92_post2017_refit.csv: 143.87 KB [sha256 86b8eb3ec977c9a1]
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   • step_b92_post2017_refit.png: 485.21 KB [sha256 45491f9b31e7e8bf]
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] ================================================================================
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] STEP 128 COMPLETE: SUCCESS
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_128_post2017_refit_provenance.json
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] 
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] ================================================================================
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] EXECUTIVE SUMMARY
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] ================================================================================
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Step: step_128_post2017_refit (Step 128)
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Status: SUCCESS
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Duration: 0.64s
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Log Records: 448
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Output Files: 3
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] Key Outputs:
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   - step_b92_post2017_refit.json (8.87 KB)
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   - step_b92_post2017_refit.csv (143.87 KB)
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128]   - step_b92_post2017_refit.png (485.21 KB)
-[2026-09-20 12:23:46 UTC] [INFO    ] [STEP 128] ================================================================================
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128] LOGGER INITIALIZED: step_128_post2017_refit (Step 128)
+[2026-09-21 15:15:29 UTC] [DEBUG   ] [STEP 128] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_128_post2017_refit.log
+[2026-09-21 15:15:29 UTC] [DEBUG   ] [STEP 128] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:15:29 UTC] [DEBUG   ] [STEP 128] Start time (UTC): 2026-09-21T15:15:29.970549+00:00
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128] 
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128] STEP PURPOSE
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128] --------------------------------------------------------------------------------
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   Step 128 -- Post-2017 two-leg refit: the masking discriminator.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   The registered prospective test (step_117) returned a reversed
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   declared-axis contrast on the post-2017 SBDB cohort -- but the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   carrier audit showed the slip observable is structurally absent from
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   single-solution records: a joint fit absorbs any uniform proper-time
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   slip into shared orbital elements, leaving the propagated residual
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   dominated by planetary scatter.  The holdout could therefore only
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   fail in form, never confirm: the construction needed to express the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   anomaly (a leg-separated record) does not exist in that lineage.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   Step 127 supplied the missing instrument -- an independent
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   Levenberg-Marquardt two-leg refit of the raw MPC astrometry under the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   identical REBOUND/IAS15 + DE440s force model, propagated to the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   +/-250 AU sphere through the same machinery.  On the pre-2018 cohort
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   it reproduced the catalogue record at per-comet concordance rho =
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   +0.998 and recovered the registered inbound-leg in-cap excess.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   This step points the same instrument at the post-2017 cohort
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   (step_b81 primaries).  Two constructions are tested on identical
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   members:
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   * the single-fit construction -- the propagated boundary products
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   of the joint (full-arc) fit, the only construction a
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   single-solution lineage can express.  Predicted flat under the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   masking hypothesis.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   * the leg-fit construction -- the independently fitted inbound and
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   outbound legs, whose boundary asymptotes carry any slip the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   transit actually imparted.  This is the construction the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   three-leg catalogue records realize, and the registered carrier
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   d_in on the pre-2018 record lives here.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   Registered tests
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   T1  instrument validity on the new era: per-comet concordance of
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   our drot versus the catalogue-propagated drot, and element
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   agreement of our full-arc fit against the SBDB seed.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   T2  DECISIVE -- the masking discriminator: on the dual-leg subset,
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   the cap contrast (theta < 60 deg, aph against the declared
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   axis) of the leg-fit inbound deviation d_in_leg versus (a) the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   single-fit d_in on the same members and (b) the catalogue's
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   propagated d_in.  Under TEP-with-masking the leg-fit channel
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   carries the in-cap excess the joint construction erases.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   Flatness on the leg-fit channel would confine the anomaly to
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   the pre-2018 era -- a substantive boundary on the hypothesis.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   T3  displaced-structure control: the same contrasts evaluated
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   about the post-2017 displaced axis (120, -40) -- does the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   modern residual systematic appear on independent fits, or was
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   it a single-lineage fit field?
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   T4  quality strata: contrast on NG-flagged vs clean comets (the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   non-gravitational floor differs by construction), and the
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   cross-arc extrapolation penalty by cap.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   T4b signature-class audit: at both axes on the dual-leg cohort,
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   cap contrasts on every channel -- leg deviations (d_in_leg,
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   d_out_leg), drot, ddirf, |daa| energy, plus coverage and
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   fit-quality controls.  The declared anomaly's class is
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   single-leg rotation slip without energy exchange; the audit
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   asks whether the displaced structure shares that class.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   T4c robustness: label-permutation nulls on the carrying channels,
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   500-direction shuffle extremeness of the displaced residual
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   gap on the independent record, and quality strata (n_obs,
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   fit RMS, NG-clean) on the same field.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   T5  audit: cohort yield, leg coverage, fit quality.
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   Outputs
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   results/step_b92_post2017_refit.json
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   results/step_b92_post2017_refit.csv
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   results/figures/supplementary/step_b92_post2017_refit.png
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   results/step_b92_refit.jsonl            (per-comet checkpoint)
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128]   (obs/sbdb caches shared with step_127 under data/raw/mpc/)
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128] --------------------------------------------------------------------------------
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128] SCRIPT: scripts/steps/step_128_post2017_refit.py
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128] SCRIPT SHA256: b095b9f5a6f45e19c7746f16704a3a55b7cf5ec884a685b5cf17eb3b49d9def9
+[2026-09-21 15:15:29 UTC] [INFO    ] [STEP 128] SCRIPT SIZE: 29667 bytes
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] ================================================================================
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Post-2017 two-leg refit: the masking discriminator
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] ================================================================================
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] post-2017 refit cohort: 255 comets
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] 249 checkpointed, 6 failed, 0 to process
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] fitted cohort: 249 comets (6 failed/skipped)
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] RESULT PAYLOAD:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "step": "step_128_post2017_refit",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "description": "independent two-leg LM refit of the post-2017 prospective cohort on raw MPC astrometry; the masking discriminator -- leg-fit vs single-fit carrier constructions on identical members",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "n_attempted": 255,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "n_fitted": 249,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "n_failed": 6,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "n_full_arc": 248,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "n_dual_leg": 160,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "n_dual_joint": 159,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "n_inbound_obs": 227,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "T1_validity": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "drot_concordance": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n": 248,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "rho": 0.9996302304686946,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "p": 5e-324
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "d_in_concordance": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "rho": 0.9657121367801098,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "p": 4.428726448711759e-146
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "element_diffs_vs_sbdb": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_dq_au": 1.8453555618691553e-05,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_pdir_deg": 0.00391444819413966,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "p95_pdir_deg": 0.039727935988651236
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "T2_masking": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "declared_axis": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "leg_fit": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.08565478495859052,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.10952583315964712,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.9994913007020897,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p_perm": 0.997000599880024
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "single_fit": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.08632614572932326,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.11046194442764831,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.9991205349854301
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "catalogue": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.08355537493381777,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.10708153021455263,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.9987439167945599
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "leg_fit_out": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.099597512434911,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.09081221914094528,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.25226755748733665
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "T3_displaced": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "displaced_axis": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "leg_fit": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.10735904034885059,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.1002766884881578,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.2257142173975013
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "single_fit": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.10771882559864941,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.10244145740739638,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.26981421292019514
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "catalogue": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.09916453732060324,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.09962799909851877,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.32190070217020555
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "declared_single_all": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_in": 66,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_out": 182,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_in": 0.09330113556270715,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_out": 0.1064968693706214,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "p": 0.9764825159855833
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "declared_cat_all": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_in": 66,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_out": 182,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_in": 0.08644720012939386,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_out": 0.10583713286195914,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "p": 0.9887088351771101
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "displaced_resid_field": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 75,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 173,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.16487007556160604,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": -0.04179435617264016,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 5.4437551026469916e-05
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "cat": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 75,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 173,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.17295494255988375,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": -0.04744013031794059,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 1.5451568167688013e-05
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "declared_control_our": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 66,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 182,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": -0.05393177804871968,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.05541410598671431,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.9514918994806965
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "T4_strata": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "ng": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_in": 9,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_out": 26,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_in": 0.09382319019090514,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_out": 0.10684781307201072,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "p": 0.9570366118796234
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "clean": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_in": 32,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_out": 92,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_in": 0.08562474181157781,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_out": 0.11303147183150264,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "p": 0.9977102557886486
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "xarc_rms": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_in": 2.7964147225417735,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "med_out": 3.796778285272259,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "p": 0.9388737042280493
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "T4_signature_class": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "at_displaced": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_d_in_leg": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.10735904034885059,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.1002766884881578,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.2257142173975013
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_d_out_leg": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.10787343365879667,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.08514679689225604,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.02066622298256279
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_drot": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.14705631315699894,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.10212992761799536,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.006605410778953648
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_ddirf": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.14827011592596645,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.1001968315169503,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.0069630911378131335
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "abs_daa": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 205.4943516475741,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 319.6640175561597,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.9793337770174372
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "ctl_n_in": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 314.0,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 445.0,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.013852358519572195
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "ctl_n_out": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 118.0,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 304.0,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.25038739060254767
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "ctl_fit_all_rms": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 47,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 112,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.5361490244665966,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.5202367326205593,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.8517833743534305
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "at_declared": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_d_in_leg": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.08565478495859052,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.10952583315964712,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.9994913007020897
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_d_out_leg": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.099597512434911,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.09081221914094528,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.25226755748733665
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_drot": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.08497424508378779,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.12905752535446038,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.966876376009584
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_ddirf": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.083976255998868,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.12243757483204584,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.9841349046081478
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "abs_daa": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 233.93336647527383,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 279.63685655474956,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.7873621031602667
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "ctl_n_in": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 392.0,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 358.0,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.6478653400021857
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "ctl_n_out": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 333.0,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 193.5,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.18002008722992835
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "ctl_fit_all_rms": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 41,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 118,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.5191851600956794,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": 0.535912292615732,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.3477079976581625
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "T4c_robustness": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "perm_nulls_at_displaced": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_d_out_leg": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "gap": 0.02272663676654063,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p_perm": 0.04319136172765447
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_ddirf": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "gap": 0.04807328440901615,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p_perm": 0.01999600079984003
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "our_drot": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "gap": 0.04492638553900358,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p_perm": 0.01839632073585283
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "direction_shuffle": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_dir": 500,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "obs_gap": 0.2066644317342462,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "p_extremeness": 0.003992015968063872
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "quality_strata": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "n_obs>=med": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n": 125,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 35,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 90,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.11967633635155339,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": -0.030013222534741146,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.005239843233858882
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "rms<=med": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n": 124,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 35,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 89,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.05403429547224514,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": -0.034950792633731353,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.056175368228354394
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "ng_clean": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n": 211,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_in": 67,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "n_out": 144,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_in": 0.1321580324140581,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "med_out": -0.0362299006825918,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     "p": 0.00017748148734752513
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "n_nonfinite_rows": 0,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "T5_audit": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "rms_all_median": 0.5028780672893991,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "dual_yield_frac": 0.642570281124498,
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "fail_reasons": [
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "only 17 usable obs",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "only 7 usable obs",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]    "sbdb: no orbit block"
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   ]
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "verdict": "ERA-CONFINED + SAME-CLASS ASTROMETRIC: the leg-separated record -- the construction that can express slip -- reproduces the same in-cap reversal as the single-fit and catalogue records, so the prospective reversal is real astrometry, not single-solution masking; the declared-axis carrier is confined to the pre-2018 record.  The post-2017 record's own dominant structure is nonetheless a lapse-slip anomaly of the same signature class on the same independent fits: single-leg rotation slip (outbound d_out_leg 0.108 vs 0.085 deg in/out, p=0.021), elevated leg disagreement (p=0.007), flat energy exchange (|daa| p=0.979), matched fit quality -- rotation without energy exchange, direction-localized at the displaced axis.  The boundary channel's registered position and leg are epoch-dependent; both eras' dominant structures are lapse-slip anomalies in the astrometric record",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "forward_prediction": {
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "registered": "future (LSST-era) LPC cohorts continue the modern displaced-lobe polarity on the leg-separated channel; a return of the pre-2018 declared-axis inbound-leg excess, or no coherent lobe, breaks the era-polarity ordering",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "channel": "two-leg refit d_out_leg / residual cap-gap at the displaced axis",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "scorable_with": "this script re-run on the new cohort"
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  },
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "inputs": [
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "results/step_b81_prospective_lpc.csv",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "data/raw/mpc/obs/*.json (shared MPC cache)",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "data/raw/mpc/sbdb_fp/*.json (shared SBDB seed cache)",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "data/raw/mpc/obscodes.json",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "data/raw/spice/de440s.bsp",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "data/raw/naif/naif0012.tls"
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  ],
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  "caveats": [
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "The leg-fit carrier requires >=12 astrometric observations per leg; post-2017 comets discovered post-perihelion contribute only the single-fit construction, so the dual-leg subset is the decisive arena and its size is set by observability.",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "Pure-gravity refit: cometary NG terms are absorbed into the leg solutions; the NG-flag stratum in T4 prices that floor.",
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   "d_in_leg compares the inbound-leg asymptote to the joint-fit osculating direction -- the construction the three-leg catalogue record realizes; per-comet sign conventions follow step_123."
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]  ]
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] }
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Saving data: step_b92_post2017_refit.json
+[2026-09-21 15:15:30 UTC] [DEBUG   ] [STEP 128]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b92_post2017_refit.json
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   Output: step_b92_post2017_refit.json
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Saving data: step_b92_post2017_refit.csv
+[2026-09-21 15:15:30 UTC] [DEBUG   ] [STEP 128]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b92_post2017_refit.csv
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   Output: step_b92_post2017_refit.csv
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Saving data: step_b92_post2017_refit.png
+[2026-09-21 15:15:30 UTC] [DEBUG   ] [STEP 128]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b92_post2017_refit.png
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   Output: step_b92_post2017_refit.png
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] 
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] ================================================================================
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] STEP SUMMARY: step_128_post2017_refit
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] ================================================================================
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Step Number: 128
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Status: SUCCESS
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Duration: 0.97s
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Log Records Emitted: 437
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Output Files: 3
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_128_post2017_refit.log
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] 
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Generated 3 output file(s):
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   • step_b92_post2017_refit.json: 8.87 KB [sha256 d8b32ec87103fcd0]
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   • step_b92_post2017_refit.csv: 143.87 KB [sha256 86b8eb3ec977c9a1]
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   • step_b92_post2017_refit.png: 485.21 KB [sha256 45491f9b31e7e8bf]
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] 
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   RESULT SNAPSHOT [step_b92_post2017_refit.json]:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T1_validity.drot_concordance:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n = 248
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       rho = 0.99963023
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p = 4.9406565e-324
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T1_validity.d_in_concordance:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       rho = 0.96571214
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p = 4.4287264e-146
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T1_validity.element_diffs_vs_sbdb:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_dq_au = 1.8453556e-05
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_pdir_deg = 0.0039144482
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p95_pdir_deg = 0.039727936
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T2_masking.declared_axis.leg_fit:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_in = 41
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_out = 118
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_in = 0.085654785
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_out = 0.10952583
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p = 0.9994913
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p_perm = 0.9970006
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T2_masking.declared_axis.single_fit:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_in = 41
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_out = 118
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_in = 0.086326146
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_out = 0.11046194
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p = 0.99912053
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T2_masking.declared_axis.catalogue:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_in = 41
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_out = 118
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_in = 0.083555375
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_out = 0.10708153
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p = 0.99874392
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T2_masking.declared_axis.leg_fit_out:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_in = 41
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_out = 118
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_in = 0.099597512
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_out = 0.090812219
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p = 0.25226756
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T3_displaced.displaced_axis.leg_fit:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_in = 47
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_out = 112
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_in = 0.10735904
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_out = 0.10027669
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p = 0.22571422
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T3_displaced.displaced_axis.single_fit:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_in = 47
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_out = 112
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_in = 0.10771883
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_out = 0.10244146
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p = 0.26981421
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T3_displaced.displaced_axis.catalogue:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_in = 47
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_out = 112
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_in = 0.099164537
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_out = 0.099627999
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       p = 0.3219007
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]     T3_displaced.declared_single_all:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_in = 66
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       n_out = 182
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_in = 0.093301136
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       med_out = 0.10649687
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] ================================================================================
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] STEP 128 COMPLETE: SUCCESS
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_128_post2017_refit_provenance.json
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] 
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] ================================================================================
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] EXECUTIVE SUMMARY
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] ================================================================================
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Step: step_128_post2017_refit (Step 128)
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Status: SUCCESS
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Duration: 0.97s
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Log Records: 510
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Output Files: 3
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] Key Outputs:
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   - step_b92_post2017_refit.json (8.87 KB)
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   - step_b92_post2017_refit.csv (143.87 KB)
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128]   - step_b92_post2017_refit.png (485.21 KB)
+[2026-09-21 15:15:30 UTC] [INFO    ] [STEP 128] ================================================================================

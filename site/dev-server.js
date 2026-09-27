@@ -16,7 +16,7 @@ class DevServer {
         this.isBuilding = false;
         this.buildQueue = false;
         this.clients = new Set();
-        this.port = 51813;
+        this.port = 55536; // Unique port for TEP-9 (Paper 36)
     }
     async build() {
         if (this.isBuilding) { this.buildQueue = true; return; }

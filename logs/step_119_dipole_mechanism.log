@@ -1,152 +1,213 @@
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119] LOGGER INITIALIZED: step_119_dipole_mechanism (Step 119)
-[2026-09-20 12:22:17 UTC] [DEBUG   ] [STEP 119] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_119_dipole_mechanism.log
-[2026-09-20 12:22:17 UTC] [DEBUG   ] [STEP 119] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:22:17 UTC] [DEBUG   ] [STEP 119] Start time (UTC): 2026-09-20T12:22:17.857413+00:00
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119] 
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119] STEP PURPOSE
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119] --------------------------------------------------------------------------------
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   step_119: Mechanism identification for the post-2017 displaced dipole.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   Step 118 established that the prospective cohort's discrepancy field
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   carries a coherent, cohort-private dipole -- unipolar (cos1 dominant),
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   displaced ~80-120 deg off the declared axis, organised primarily in
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   aphelion ecliptic longitude (phase ~182 deg), invisible to the CODE
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   cohort at the same sky position, and strongest in the shorter-arc
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   half of the sample.  The manuscript reads it as a longitude-organised
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   systematic of the post-2017 orbit solutions and states its origin is
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   identifiable in principle.  This step performs the identification:
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   every computable observing-geometry and fit-record covariate is scored
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   against the residual field, and the dipole is re-measured after each
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   covariate is absorbed into the baseline regression.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   Hypotheses under test
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   H-GEO   opposition/elongation geometry: short-arc orbits observed
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   near solar conjunction carry a line-of-sight degeneracy that
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   inflates the boundary-reconstruction discrepancy; the dipole
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   longitude then reflects where the perihelion sat relative to
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   Earth at mid-arc, not an inertial direction.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   H-WEAK  weak-direction projection: the aphelion direction of a
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   short-arc solution errs along the geocentric observing
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   direction; resid should grow as |u_aph . g_hat| -> 1.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   H-ARC   arc asymmetry: arcs that do not span perihelion (all-pre or
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   all-post) produce systematically different solutions than
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   spanning arcs.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   H-SURV  survey lineage: a single survey's fit record carries the
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   dipole; within-survey subsets are clean.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   H-YEAR  designation-year composition: the dipole is carried by one
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   discovery season.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   H-RES   none of the measured covariates absorbs the dipole -- it is
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   a structural property of the modern fit record not reducible
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   to observing geometry (e.g. a pipeline-level systematic in
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   epoch/NG handling).
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   Tests
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   T1  Spearman correlations: resid and raw drot against every
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   covariate (opposition factor, elongation, geocentric distance,
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   weak-direction cosine, pre-perihelion arc fraction, days from
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   perihelion at mid-arc, arc, nobs, q, i, e, cc, year).
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   T2  absorption: the recovered-axis cap-gap re-measured with each
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   covariate appended to the step_063 residual regression -- which
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   covariate(s) shrink the dipole.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   T3  joint harmonic + covariate fit: the order-1 longitude amplitude
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   before and after all geometry covariates are entered together.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   T4  survey stratification and leave-one-survey-out.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   T5  leave-one-year-out on designation year.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   T6  sample splits: deep-plunger vs extended, bound vs hyperbolic,
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   near-perihelion-observed vs distant-arc.
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   Inputs
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   results/step_b81_prospective_lpc.csv    (per-comet boundary legs)
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   data/raw/sbdb/sbdb_comets_all.json      (first/last obs, tp, cc, names)
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   data/raw/spice/de440s.bsp               (Earth position at mid-arc)
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   Outputs
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   results/step_b83_dipole_mechanism.json
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   results/step_b83_dipole_mechanism.csv   (per-comet covariates)
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119]   results/figures/supplementary/step_b83_dipole_mechanism.png
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119] --------------------------------------------------------------------------------
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119] SCRIPT: scripts/steps/step_119_dipole_mechanism.py
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119] SCRIPT SHA256: 230ce3229eafb05ac22b7a03d2b87c4b146227a2721559973331ce8f0b932fab
-[2026-09-20 12:22:17 UTC] [INFO    ] [STEP 119] SCRIPT SIZE: 20778 bytes
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] ================================================================================
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] Mechanism identification: post-2017 displaced dipole
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] ================================================================================
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] prospective cohort: 255 comets with boundary legs
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] observing-geometry covariates computed for 255 comets
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] recovered-axis baseline gap +0.180 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 opp: rho_resid=-0.024 (p=0.709)  rho_drot=-0.070
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 elong: rho_resid=+0.071 (p=0.259)  rho_drot=-0.046
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 geo_d: rho_resid=+0.040 (p=0.526)  rho_drot=-0.345
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 weak_cos: rho_resid=-0.045 (p=0.47)  rho_drot=+0.311
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 f_pre: rho_resid=-0.087 (p=0.168)  rho_drot=-0.032
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 d_peri: rho_resid=+0.024 (p=0.704)  rho_drot=-0.107
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 arc: rho_resid=-0.062 (p=0.328)  rho_drot=-0.229
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 nobs: rho_resid=-0.110 (p=0.0796)  rho_drot=-0.005
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 q: rho_resid=+0.048 (p=0.446)  rho_drot=-0.358
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 i: rho_resid=+0.004 (p=0.95)  rho_drot=+0.027
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 e: rho_resid=+0.116 (p=0.0654)  rho_drot=-0.000
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T1 yr: rho_resid=-0.066 (p=0.297)  rho_drot=-0.072
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +opp: gap +0.193 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +elong: gap +0.199 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +geo_d: gap +0.197 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +weak_cos: gap +0.179 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +f_pre: gap +0.176 dex (p=0.0001)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +d_peri: gap +0.204 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +arc: gap +0.192 dex (p=0.0001)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +nobs: gap +0.182 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +q: gap +0.180 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +i: gap +0.180 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +e: gap +0.182 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +yr: gap +0.210 dex (p=0.0000)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T2 +all: gap +0.199 dex (p=9.081301943649191e-05)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T3 dipole amplitude 0.162 -> 0.155 after covariate control (96% remaining; baseline p=0.0005)
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T4 PANSTARRS (n=70): gap +0.018 p=0.2794
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T4 ATLAS (n=56): gap +0.182 p=0.0771
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T4 Lemmon (n=31): gap +0.203 p=0.0473
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T4b PANSTARRS bound-only (n=33): gap +0.206 p=0.4598
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T4b ATLAS bound-only (n=32): gap +0.215 p=0.0588
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T4b Lemmon bound-only (n=19): gap +0.111 p=0.2160
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T5 minus 2018: gap +0.146 p=0.0012
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T5 minus 2019: gap +0.161 p=0.0004
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T5 minus 2020: gap +0.135 p=0.0004
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T5 minus 2021: gap +0.192 p=0.0004
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T5 minus 2022: gap +0.182 p=0.0000
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T5 minus 2023: gap +0.189 p=0.0000
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T5 minus 2024: gap +0.225 p=0.0000
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T5 minus 2025: gap +0.215 p=0.0000
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T5 minus 2026: gap +0.220 p=0.0000
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T6 deep_plunger_q_lt_3p1 (n=121): gap +0.300 p=4.906919173482853e-05
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T6 extended_q_ge_3p1 (n=134): gap +0.081 p=0.026635896213366674
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T6 bound_e_lt_1 (n=141): gap +0.233 p=0.0012489504135890332
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T6 hyperbolic_e_ge_1 (n=114): gap +0.031 p=0.03747928190326484
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T6 observed_near_perihelion_lt90d (n=116): gap +0.291 p=0.00017134349055737013
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T6 observed_far_from_perihelion (n=139): gap +0.119 p=0.02940603889111829
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T6 arc_spans_perihelion (n=190): gap +0.231 p=1.7517291757306477e-05
-[2026-09-20 12:22:18 UTC] [INFO    ] [STEP 119] T6 arc_one_sided (n=65): gap +0.026 p=0.22350301453557542
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Saving data: step_b83_dipole_mechanism.json
-[2026-09-20 12:22:19 UTC] [DEBUG   ] [STEP 119]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b83_dipole_mechanism.json
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119]   Output: step_b83_dipole_mechanism.json
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] 
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] ================================================================================
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] STEP SUMMARY: step_119_dipole_mechanism
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] ================================================================================
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Step Number: 119
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Status: SUCCESS
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Duration: 1.28s
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Log Records Emitted: 131
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Output Files: 1
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_119_dipole_mechanism.log
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] 
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Generated 1 output file(s):
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119]   • step_b83_dipole_mechanism.json: 14.02 KB [sha256 b8b56ca4acb30d43]
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] ================================================================================
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] STEP 119 COMPLETE: SUCCESS
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_119_dipole_mechanism_provenance.json
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] 
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] ================================================================================
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] EXECUTIVE SUMMARY
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] ================================================================================
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Step: step_119_dipole_mechanism (Step 119)
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Status: SUCCESS
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Duration: 1.28s
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Log Records: 140
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Output Files: 1
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] Key Outputs:
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119]   - step_b83_dipole_mechanism.json (14.02 KB)
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 119] ================================================================================
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119] LOGGER INITIALIZED: step_119_dipole_mechanism (Step 119)
+[2026-09-21 15:13:59 UTC] [DEBUG   ] [STEP 119] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_119_dipole_mechanism.log
+[2026-09-21 15:13:59 UTC] [DEBUG   ] [STEP 119] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:13:59 UTC] [DEBUG   ] [STEP 119] Start time (UTC): 2026-09-21T15:13:59.479737+00:00
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119] 
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119] STEP PURPOSE
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119] --------------------------------------------------------------------------------
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   step_119: Mechanism identification for the post-2017 displaced dipole.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   Step 118 established that the prospective cohort's discrepancy field
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   carries a coherent, cohort-private dipole -- unipolar (cos1 dominant),
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   displaced ~80-120 deg off the declared axis, organised primarily in
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   aphelion ecliptic longitude (phase ~182 deg), invisible to the CODE
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   cohort at the same sky position, and strongest in the shorter-arc
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   half of the sample.  The manuscript reads it as a longitude-organised
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   systematic of the post-2017 orbit solutions and states its origin is
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   identifiable in principle.  This step performs the identification:
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   every computable observing-geometry and fit-record covariate is scored
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   against the residual field, and the dipole is re-measured after each
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   covariate is absorbed into the baseline regression.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   Hypotheses under test
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   H-GEO   opposition/elongation geometry: short-arc orbits observed
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   near solar conjunction carry a line-of-sight degeneracy that
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   inflates the boundary-reconstruction discrepancy; the dipole
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   longitude then reflects where the perihelion sat relative to
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   Earth at mid-arc, not an inertial direction.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   H-WEAK  weak-direction projection: the aphelion direction of a
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   short-arc solution errs along the geocentric observing
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   direction; resid should grow as |u_aph . g_hat| -> 1.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   H-ARC   arc asymmetry: arcs that do not span perihelion (all-pre or
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   all-post) produce systematically different solutions than
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   spanning arcs.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   H-SURV  survey lineage: a single survey's fit record carries the
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   dipole; within-survey subsets are clean.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   H-YEAR  designation-year composition: the dipole is carried by one
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   discovery season.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   H-RES   none of the measured covariates absorbs the dipole -- it is
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   a structural property of the modern fit record not reducible
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   to observing geometry (e.g. a pipeline-level systematic in
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   epoch/NG handling).
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   Tests
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   T1  Spearman correlations: resid and raw drot against every
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   covariate (opposition factor, elongation, geocentric distance,
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   weak-direction cosine, pre-perihelion arc fraction, days from
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   perihelion at mid-arc, arc, nobs, q, i, e, cc, year).
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   T2  absorption: the recovered-axis cap-gap re-measured with each
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   covariate appended to the step_063 residual regression -- which
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   covariate(s) shrink the dipole.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   T3  joint harmonic + covariate fit: the order-1 longitude amplitude
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   before and after all geometry covariates are entered together.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   T4  survey stratification and leave-one-survey-out.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   T5  leave-one-year-out on designation year.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   T6  sample splits: deep-plunger vs extended, bound vs hyperbolic,
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   near-perihelion-observed vs distant-arc.
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   Inputs
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   results/step_b81_prospective_lpc.csv    (per-comet boundary legs)
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   data/raw/sbdb/sbdb_comets_all.json      (first/last obs, tp, cc, names)
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   data/raw/spice/de440s.bsp               (Earth position at mid-arc)
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   Outputs
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   results/step_b83_dipole_mechanism.json
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   results/step_b83_dipole_mechanism.csv   (per-comet covariates)
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119]   results/figures/supplementary/step_b83_dipole_mechanism.png
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119] --------------------------------------------------------------------------------
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119] SCRIPT: scripts/steps/step_119_dipole_mechanism.py
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119] SCRIPT SHA256: 230ce3229eafb05ac22b7a03d2b87c4b146227a2721559973331ce8f0b932fab
+[2026-09-21 15:13:59 UTC] [INFO    ] [STEP 119] SCRIPT SIZE: 20778 bytes
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] ================================================================================
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] Mechanism identification: post-2017 displaced dipole
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] ================================================================================
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] prospective cohort: 255 comets with boundary legs
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] observing-geometry covariates computed for 255 comets
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] recovered-axis baseline gap +0.180 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 opp: rho_resid=-0.024 (p=0.709)  rho_drot=-0.070
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 elong: rho_resid=+0.071 (p=0.259)  rho_drot=-0.046
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 geo_d: rho_resid=+0.040 (p=0.526)  rho_drot=-0.345
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 weak_cos: rho_resid=-0.045 (p=0.47)  rho_drot=+0.311
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 f_pre: rho_resid=-0.087 (p=0.168)  rho_drot=-0.032
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 d_peri: rho_resid=+0.024 (p=0.704)  rho_drot=-0.107
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 arc: rho_resid=-0.062 (p=0.328)  rho_drot=-0.229
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 nobs: rho_resid=-0.110 (p=0.0796)  rho_drot=-0.005
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 q: rho_resid=+0.048 (p=0.446)  rho_drot=-0.358
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 i: rho_resid=+0.004 (p=0.95)  rho_drot=+0.027
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 e: rho_resid=+0.116 (p=0.0654)  rho_drot=-0.000
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T1 yr: rho_resid=-0.066 (p=0.297)  rho_drot=-0.072
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +opp: gap +0.193 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +elong: gap +0.199 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +geo_d: gap +0.197 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +weak_cos: gap +0.179 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +f_pre: gap +0.176 dex (p=0.0001)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +d_peri: gap +0.204 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +arc: gap +0.192 dex (p=0.0001)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +nobs: gap +0.182 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +q: gap +0.180 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +i: gap +0.180 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +e: gap +0.182 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +yr: gap +0.210 dex (p=0.0000)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T2 +all: gap +0.199 dex (p=9.081301943649191e-05)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T3 dipole amplitude 0.162 -> 0.155 after covariate control (96% remaining; baseline p=0.0005)
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T4 PANSTARRS (n=70): gap +0.018 p=0.2794
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T4 ATLAS (n=56): gap +0.182 p=0.0771
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T4 Lemmon (n=31): gap +0.203 p=0.0473
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T4b PANSTARRS bound-only (n=33): gap +0.206 p=0.4598
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T4b ATLAS bound-only (n=32): gap +0.215 p=0.0588
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T4b Lemmon bound-only (n=19): gap +0.111 p=0.2160
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T5 minus 2018: gap +0.146 p=0.0012
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T5 minus 2019: gap +0.161 p=0.0004
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T5 minus 2020: gap +0.135 p=0.0004
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T5 minus 2021: gap +0.192 p=0.0004
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T5 minus 2022: gap +0.182 p=0.0000
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T5 minus 2023: gap +0.189 p=0.0000
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T5 minus 2024: gap +0.225 p=0.0000
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T5 minus 2025: gap +0.215 p=0.0000
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T5 minus 2026: gap +0.220 p=0.0000
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T6 deep_plunger_q_lt_3p1 (n=121): gap +0.300 p=4.906919173482853e-05
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T6 extended_q_ge_3p1 (n=134): gap +0.081 p=0.026635896213366674
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T6 bound_e_lt_1 (n=141): gap +0.233 p=0.0012489504135890332
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T6 hyperbolic_e_ge_1 (n=114): gap +0.031 p=0.03747928190326484
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T6 observed_near_perihelion_lt90d (n=116): gap +0.291 p=0.00017134349055737013
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T6 observed_far_from_perihelion (n=139): gap +0.119 p=0.02940603889111829
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T6 arc_spans_perihelion (n=190): gap +0.231 p=1.7517291757306477e-05
+[2026-09-21 15:14:00 UTC] [INFO    ] [STEP 119] T6 arc_one_sided (n=65): gap +0.026 p=0.22350301453557542
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Saving data: step_b83_dipole_mechanism.json
+[2026-09-21 15:14:01 UTC] [DEBUG   ] [STEP 119]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b83_dipole_mechanism.json
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]   Output: step_b83_dipole_mechanism.json
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] 
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] ================================================================================
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] STEP SUMMARY: step_119_dipole_mechanism
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] ================================================================================
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Step Number: 119
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Status: SUCCESS
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Duration: 1.70s
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Log Records Emitted: 131
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Output Files: 1
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_119_dipole_mechanism.log
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] 
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Generated 1 output file(s):
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]   • step_b83_dipole_mechanism.json: 14.02 KB [sha256 b8b56ca4acb30d43]
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] 
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]   RESULT SNAPSHOT [step_b83_dipole_mechanism.json]:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     inputs [n=3]
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     T1_covariate_correlations.opp:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       n = 255
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_resid = -0.023506977
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_resid = 0.70871406
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_drot = -0.069821098
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_drot = 0.26664072
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     T1_covariate_correlations.elong:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       n = 255
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_resid = 0.070877721
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_resid = 0.25945317
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_drot = -0.045908117
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_drot = 0.46546535
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     T1_covariate_correlations.geo_d:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       n = 255
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_resid = 0.039846283
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_resid = 0.52645968
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_drot = -0.34544566
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_drot = 1.4740025e-08
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     T1_covariate_correlations.weak_cos:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       n = 255
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_resid = -0.045426123
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_resid = 0.47016782
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_drot = 0.31120383
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_drot = 3.9447049e-07
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     T1_covariate_correlations.f_pre:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       n = 255
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_resid = -0.086556532
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_resid = 0.16820524
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_drot = -0.032038435
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_drot = 0.61059105
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     T1_covariate_correlations.d_peri:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       n = 255
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_resid = 0.023890192
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_resid = 0.70418619
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_drot = -0.10666111
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_drot = 0.089182627
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     T1_covariate_correlations.arc:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       n = 255
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_resid = -0.061548165
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_resid = 0.32760714
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_drot = -0.22909484
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_drot = 0.00022463551
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     T1_covariate_correlations.nobs:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       n = 255
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_resid = -0.11000197
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_resid = 0.079553121
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_drot = -0.0049842501
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_drot = 0.93687232
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     T1_covariate_correlations.q:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       n = 255
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_resid = 0.047973969
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_resid = 0.44560752
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_drot = -0.35824788
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       p_drot = 3.8787552e-09
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]     T1_covariate_correlations.i:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       n = 255
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       rho_resid = 0.0039341173
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] ================================================================================
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] STEP 119 COMPLETE: SUCCESS
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_119_dipole_mechanism_provenance.json
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] 
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] ================================================================================
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] EXECUTIVE SUMMARY
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] ================================================================================
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Step: step_119_dipole_mechanism (Step 119)
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Status: SUCCESS
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Duration: 1.70s
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Log Records: 201
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Output Files: 1
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] Key Outputs:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119]   - step_b83_dipole_mechanism.json (14.02 KB)
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 119] ================================================================================

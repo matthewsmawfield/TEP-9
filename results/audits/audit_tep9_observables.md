@@ -17,7 +17,7 @@ Reproduce from the repository root:
 python3 scripts/audits/audit_tep9_observables.py
 ```
 
-The companion `TEP9_OBSERVABLE_AUDIT_20260919.json` records input hashes,
+The companion `audit_tep9_observables.json` records input hashes,
 full-precision results, coordinate consumers, and validation details.
 
 ## 1. A rounding bug discards the strongest era result

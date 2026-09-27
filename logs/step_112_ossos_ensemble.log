@@ -1,133 +1,188 @@
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] LOGGER INITIALIZED: step_112_ossos_ensemble (Step 112)
-[2026-09-20 12:21:02 UTC] [DEBUG   ] [STEP 112] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_112_ossos_ensemble.log
-[2026-09-20 12:21:02 UTC] [DEBUG   ] [STEP 112] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:21:02 UTC] [DEBUG   ] [STEP 112] Start time (UTC): 2026-09-20T12:21:02.595489+00:00
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] 
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] STEP PURPOSE
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   Step 112 -- OSSOS characterized-ensemble audit.
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   Every resident-signature test so far runs on survey samples whose
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   selection functions must be modelled from proxy data (designation
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   half-months, calibrated smearing widths).  The Outer Solar System
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   Origins Survey ensemble (Bannister et al. 2018, ApJS 236, 18; VizieR
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   J/ApJS/236/18/t3char) is the only large TNO sample that is fully
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   characterized by construction: 840 objects with secure multi-opposition
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   orbits, the survey's own dynamical classification, and -- decisive for
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   this audit -- the exact discovery astrometry (RA, Dec, JD) of every
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   object in the same table.  The discovery geometry here is measured,
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   not proxied.
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   This step scores the ensemble against the pre-declared axis
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   (lam, beta) = (49 deg, -17 deg), cap 60 deg:
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   1.  Per-class selectivity profile.  OSSOS labels each object cen /
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   sca / det / res / cla / jco.  The TEP resident signature is claimed
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   to live on boundary-crossing detached orbits; the characterized
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   ensemble tests that claim class-by-class under one selection
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   function.
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   2.  Class-aware footprint baselines.  The discovery-longitude --
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   longitude-of-perihelion coupling is not universal: eccentric
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   populations (det, sca, cen) are discovered preferentially near
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   perihelion, so varpi tracks the discovery longitude lam_disc with
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   the measured ~50 deg smear; low-eccentricity and resonant
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   populations (cla, res, jco) are discovered at any orbital phase,
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   so varpi is decoupled from lam_disc and the correct baseline is
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   uniform (cap fraction 1/3).  The coupling is measured directly
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   here -- the resultant of varpi - lam_disc per class -- rather than
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   assumed, which also cross-validates the pipeline's footprint model
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   on independent data.
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   3.  Detached-cohort audit.  The 31 'det' objects: in-cap fraction
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   versus uniform (1/3), versus the coupled-footprint baseline
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   (smeared-cap model with the SBDB-measured 50 deg width), and
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   versus the registered P1 prediction (0.59); secure-flagged subset;
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   discovery-sector split; strict a>150, q>30 subset; a-stratified
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   trend; element-uncertainty propagation (published sigma_Omega,
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   sigma_omega jittered into cap membership); and the inter-fitter
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   floor against the SBDB orbit record.
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   4.  Resonant positive control.  The 132 plutinos carry a known
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   Neptune-organized varpi structure (apsidal libration avoids the
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   conjunction geometry).  Neptune's osculating longitude of
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   perihelion is computed from DE440s on the same machinery the
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   N-body steps use; the plutino separation distribution is compared
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   against it -- the machinery must recover known solar-system
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   structure before an anomalous structure can be credited.
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   Honest reading: the OSSOS 'det' class is dominated by semimajor axes
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   of ~50-90 AU -- inside the ~150 AU boundary the resident signature
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   occupies -- so the cohort is primarily a selectivity and
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   selection-function control, not a high-leverage replication; the
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   strict a>150 members are reported for the record.
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   Outputs
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   results/step_b76_ossos_ensemble.json
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   results/step_b76_ossos_ensemble.csv   (per-class + per-object det scoring)
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112]   results/figures/supplementary/step_b76_ossos_ensemble.png
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] SCRIPT: scripts/steps/step_112_ossos_ensemble.py
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] SCRIPT SHA256: d84fca2a0e71b224f5c816b5b27ff3aed69586a24fae707d26afe4160b11a940
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] SCRIPT SIZE: 24692 bytes
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] ================================================================================
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] OSSOS characterized-ensemble audit
-[2026-09-20 12:21:02 UTC] [INFO    ] [STEP 112] ================================================================================
-[2026-09-20 12:21:03 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
-[2026-09-20 12:21:03 UTC] [INFO    ] [STEP 112] Loading OSSOS t3char ensemble
-[2026-09-20 12:21:03 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
-[2026-09-20 12:21:03 UTC] [INFO    ] [STEP 112] OSSOS characterized objects: 840
-[2026-09-20 12:21:03 UTC] [INFO    ] [STEP 112] uncertainty rows parsed from t3char.dat: 840
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] parsed: 840
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] Per-class coupling diagnostic and selectivity profile
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] det: n=31 in-cap=13 (0.419) baseline[perihelion-coupled]=0.401 p=0.856 coupling R_d=0.513
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] sca: n=38 in-cap=17 (0.447) baseline[perihelion-coupled]=0.410 p=0.626 coupling R_d=0.541
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] res: n=313 in-cap=125 (0.399) baseline[perihelion-coupled]=0.444 p=0.112 coupling R_d=0.442
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] cla: n=436 in-cap=134 (0.307) baseline[any-phase (uniform)]=0.333 p=0.264 coupling R_d=0.124
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] cen: n=16 in-cap=9 (0.562) baseline[perihelion-coupled]=0.476 p=0.619 coupling R_d=0.540
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] jco: n=5 in-cap=2 (0.400) baseline[perihelion-coupled]=0.386 p=1.000 coupling R_d=0.407
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] Detached-cohort audit
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] det n=31 in-cap=13 (0.419) vs coupled 0.401 (p=0.487), vs uniform (p=0.203), vs P1 0.59 (p=0.0669)
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] Resonant positive control (plutino libration)
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] Neptune varpi: mean 44.97 deg (J2000); osculating 64.35 deg (DE440s, 2015; wanders at e~0.01), a=29.98 AU
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] plutinos n=132: median |varpi-varpi_N|=97.7 deg, in TEP cap 49/132 (0.371)
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] Saving data: step_b76_ossos_ensemble.json
-[2026-09-20 12:21:04 UTC] [DEBUG   ] [STEP 112]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b76_ossos_ensemble.json
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112]   Output: step_b76_ossos_ensemble.json
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112] Saving data: step_b76_ossos_ensemble.csv
-[2026-09-20 12:21:04 UTC] [DEBUG   ] [STEP 112]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b76_ossos_ensemble.csv
-[2026-09-20 12:21:04 UTC] [INFO    ] [STEP 112]   Output: step_b76_ossos_ensemble.csv
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Saving data: step_b76_ossos_ensemble.png
-[2026-09-20 12:21:05 UTC] [DEBUG   ] [STEP 112]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b76_ossos_ensemble.png
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112]   Output: step_b76_ossos_ensemble.png
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] 
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] ================================================================================
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] STEP SUMMARY: step_112_ossos_ensemble
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] ================================================================================
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Step Number: 112
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Status: SUCCESS
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Duration: 2.76s
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Log Records Emitted: 108
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Output Files: 3
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_112_ossos_ensemble.log
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] 
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Generated 3 output file(s):
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112]   • step_b76_ossos_ensemble.json: 9.07 KB [sha256 2f3d3dd9395129c5]
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112]   • step_b76_ossos_ensemble.csv: 60.94 KB [sha256 d29d23405913c91f]
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112]   • step_b76_ossos_ensemble.png: 329.40 KB [sha256 7191e5bf8a2c6587]
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] ================================================================================
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] STEP 112 COMPLETE: SUCCESS
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_112_ossos_ensemble_provenance.json
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] 
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] ================================================================================
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] EXECUTIVE SUMMARY
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] ================================================================================
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Step: step_112_ossos_ensemble (Step 112)
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Status: SUCCESS
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Duration: 2.76s
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Log Records: 119
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Output Files: 3
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] Key Outputs:
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112]   - step_b76_ossos_ensemble.json (9.07 KB)
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112]   - step_b76_ossos_ensemble.csv (60.94 KB)
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112]   - step_b76_ossos_ensemble.png (329.40 KB)
-[2026-09-20 12:21:05 UTC] [INFO    ] [STEP 112] ================================================================================
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] LOGGER INITIALIZED: step_112_ossos_ensemble (Step 112)
+[2026-09-21 15:12:44 UTC] [DEBUG   ] [STEP 112] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_112_ossos_ensemble.log
+[2026-09-21 15:12:44 UTC] [DEBUG   ] [STEP 112] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:12:44 UTC] [DEBUG   ] [STEP 112] Start time (UTC): 2026-09-21T15:12:44.949259+00:00
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] 
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] STEP PURPOSE
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   Step 112 -- OSSOS characterized-ensemble audit.
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   Every resident-signature test so far runs on survey samples whose
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   selection functions must be modelled from proxy data (designation
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   half-months, calibrated smearing widths).  The Outer Solar System
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   Origins Survey ensemble (Bannister et al. 2018, ApJS 236, 18; VizieR
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   J/ApJS/236/18/t3char) is the only large TNO sample that is fully
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   characterized by construction: 840 objects with secure multi-opposition
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   orbits, the survey's own dynamical classification, and -- decisive for
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   this audit -- the exact discovery astrometry (RA, Dec, JD) of every
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   object in the same table.  The discovery geometry here is measured,
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   not proxied.
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   This step scores the ensemble against the pre-declared axis
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   (lam, beta) = (49 deg, -17 deg), cap 60 deg:
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   1.  Per-class selectivity profile.  OSSOS labels each object cen /
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   sca / det / res / cla / jco.  The TEP resident signature is claimed
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   to live on boundary-crossing detached orbits; the characterized
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   ensemble tests that claim class-by-class under one selection
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   function.
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   2.  Class-aware footprint baselines.  The discovery-longitude --
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   longitude-of-perihelion coupling is not universal: eccentric
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   populations (det, sca, cen) are discovered preferentially near
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   perihelion, so varpi tracks the discovery longitude lam_disc with
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   the measured ~50 deg smear; low-eccentricity and resonant
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   populations (cla, res, jco) are discovered at any orbital phase,
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   so varpi is decoupled from lam_disc and the correct baseline is
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   uniform (cap fraction 1/3).  The coupling is measured directly
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   here -- the resultant of varpi - lam_disc per class -- rather than
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   assumed, which also cross-validates the pipeline's footprint model
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   on independent data.
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   3.  Detached-cohort audit.  The 31 'det' objects: in-cap fraction
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   versus uniform (1/3), versus the coupled-footprint baseline
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   (smeared-cap model with the SBDB-measured 50 deg width), and
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   versus the registered P1 prediction (0.59); secure-flagged subset;
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   discovery-sector split; strict a>150, q>30 subset; a-stratified
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   trend; element-uncertainty propagation (published sigma_Omega,
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   sigma_omega jittered into cap membership); and the inter-fitter
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   floor against the SBDB orbit record.
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   4.  Resonant positive control.  The 132 plutinos carry a known
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   Neptune-organized varpi structure (apsidal libration avoids the
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   conjunction geometry).  Neptune's osculating longitude of
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   perihelion is computed from DE440s on the same machinery the
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   N-body steps use; the plutino separation distribution is compared
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   against it -- the machinery must recover known solar-system
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   structure before an anomalous structure can be credited.
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   Honest reading: the OSSOS 'det' class is dominated by semimajor axes
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   of ~50-90 AU -- inside the ~150 AU boundary the resident signature
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   occupies -- so the cohort is primarily a selectivity and
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   selection-function control, not a high-leverage replication; the
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   strict a>150 members are reported for the record.
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   Outputs
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   results/step_b76_ossos_ensemble.json
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   results/step_b76_ossos_ensemble.csv   (per-class + per-object det scoring)
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112]   results/figures/supplementary/step_b76_ossos_ensemble.png
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] SCRIPT: scripts/steps/step_112_ossos_ensemble.py
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] SCRIPT SHA256: d84fca2a0e71b224f5c816b5b27ff3aed69586a24fae707d26afe4160b11a940
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] SCRIPT SIZE: 24692 bytes
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] ================================================================================
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] OSSOS characterized-ensemble audit
+[2026-09-21 15:12:44 UTC] [INFO    ] [STEP 112] ================================================================================
+[2026-09-21 15:12:45 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
+[2026-09-21 15:12:45 UTC] [INFO    ] [STEP 112] Loading OSSOS t3char ensemble
+[2026-09-21 15:12:45 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
+[2026-09-21 15:12:45 UTC] [INFO    ] [STEP 112] OSSOS characterized objects: 840
+[2026-09-21 15:12:45 UTC] [INFO    ] [STEP 112] uncertainty rows parsed from t3char.dat: 840
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] parsed: 840
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] Per-class coupling diagnostic and selectivity profile
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] det: n=31 in-cap=13 (0.419) baseline[perihelion-coupled]=0.401 p=0.856 coupling R_d=0.513
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] sca: n=38 in-cap=17 (0.447) baseline[perihelion-coupled]=0.410 p=0.626 coupling R_d=0.541
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] res: n=313 in-cap=125 (0.399) baseline[perihelion-coupled]=0.444 p=0.112 coupling R_d=0.442
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] cla: n=436 in-cap=134 (0.307) baseline[any-phase (uniform)]=0.333 p=0.264 coupling R_d=0.124
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] cen: n=16 in-cap=9 (0.562) baseline[perihelion-coupled]=0.476 p=0.619 coupling R_d=0.540
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] jco: n=5 in-cap=2 (0.400) baseline[perihelion-coupled]=0.386 p=1.000 coupling R_d=0.407
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] Detached-cohort audit
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] det n=31 in-cap=13 (0.419) vs coupled 0.401 (p=0.487), vs uniform (p=0.203), vs P1 0.59 (p=0.0669)
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] Resonant positive control (plutino libration)
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] --------------------------------------------------------------------------------
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] Neptune varpi: mean 44.97 deg (J2000); osculating 64.35 deg (DE440s, 2015; wanders at e~0.01), a=29.98 AU
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] plutinos n=132: median |varpi-varpi_N|=97.7 deg, in TEP cap 49/132 (0.371)
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] Saving data: step_b76_ossos_ensemble.json
+[2026-09-21 15:12:46 UTC] [DEBUG   ] [STEP 112]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b76_ossos_ensemble.json
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112]   Output: step_b76_ossos_ensemble.json
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112] Saving data: step_b76_ossos_ensemble.csv
+[2026-09-21 15:12:46 UTC] [DEBUG   ] [STEP 112]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b76_ossos_ensemble.csv
+[2026-09-21 15:12:46 UTC] [INFO    ] [STEP 112]   Output: step_b76_ossos_ensemble.csv
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Saving data: step_b76_ossos_ensemble.png
+[2026-09-21 15:12:47 UTC] [DEBUG   ] [STEP 112]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b76_ossos_ensemble.png
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]   Output: step_b76_ossos_ensemble.png
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] 
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] ================================================================================
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] STEP SUMMARY: step_112_ossos_ensemble
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] ================================================================================
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Step Number: 112
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Status: SUCCESS
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Duration: 2.21s
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Log Records Emitted: 108
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Output Files: 3
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_112_ossos_ensemble.log
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] 
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Generated 3 output file(s):
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]   • step_b76_ossos_ensemble.json: 9.07 KB [sha256 2f3d3dd9395129c5]
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]   • step_b76_ossos_ensemble.csv: 60.94 KB [sha256 d29d23405913c91f]
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]   • step_b76_ossos_ensemble.png: 329.40 KB [sha256 7191e5bf8a2c6587]
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] 
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]   RESULT SNAPSHOT [step_b76_ossos_ensemble.json]:
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]     inputs [n=3]
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]     axis_deg [n=2]: median=16 min=-17 max=49
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]     selectivity_profile.det:
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       n = 31
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       n_in = 13
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       frac_in = 0.41935484
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline_kind = perihelion-coupled
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline = 0.40145563
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline_coupled = 0.40145563
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline_uniform = 0.33333333
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_vs_baseline = 0.85609646
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_vs_coupled = 0.85609646
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_vs_uniform = 0.34185397
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       R_varpi = 0.10837109
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       mean_varpi_deg = 329.12232
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_rayleigh = 0.69484039
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       coupling_R_d = 0.51301105
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       coupling_mean_d_deg = 1.2757369
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]     selectivity_profile.sca:
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       n = 38
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       n_in = 17
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       frac_in = 0.44736842
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline_kind = perihelion-coupled
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline = 0.40973769
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline_coupled = 0.40973769
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline_uniform = 0.33333333
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_vs_baseline = 0.62564527
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_vs_coupled = 0.62564527
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_vs_uniform = 0.16748448
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       R_varpi = 0.13561576
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       mean_varpi_deg = 31.569115
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_rayleigh = 0.49714073
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       coupling_R_d = 0.54104637
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       coupling_mean_d_deg = -1.626409
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]     selectivity_profile.res:
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       n = 313
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       n_in = 125
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       frac_in = 0.39936102
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline_kind = perihelion-coupled
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline = 0.44423269
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline_coupled = 0.44423269
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       baseline_uniform = 0.33333333
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_vs_baseline = 0.11159739
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_vs_coupled = 0.11159739
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_vs_uniform = 0.01631604
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       R_varpi = 0.048607927
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       mean_varpi_deg = 14.22366
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       p_rayleigh = 0.47733598
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       coupling_R_d = 0.44177887
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       coupling_mean_d_deg = -7.6400514
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]     selectivity_profile.cla:
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       n = 436
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] ================================================================================
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] STEP 112 COMPLETE: SUCCESS
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_112_ossos_ensemble_provenance.json
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] 
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] ================================================================================
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] EXECUTIVE SUMMARY
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] ================================================================================
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Step: step_112_ossos_ensemble (Step 112)
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Status: SUCCESS
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Duration: 2.21s
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Log Records: 174
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Output Files: 3
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] Key Outputs:
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]   - step_b76_ossos_ensemble.json (9.07 KB)
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]   - step_b76_ossos_ensemble.csv (60.94 KB)
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112]   - step_b76_ossos_ensemble.png (329.40 KB)
+[2026-09-21 15:12:47 UTC] [INFO    ] [STEP 112] ================================================================================

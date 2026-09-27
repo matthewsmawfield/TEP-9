@@ -14,19 +14,19 @@
  "gaia_lo": 0.3,
  "seed": 20260919,
  "n_records": {
-  "pre2018": 489,
+  "pre2018": 455,
   "post2017": 186
  },
  "T1_composition": {
   "pre2018": {
-   "n": 489,
+   "n": 455,
    "gaia_in_median": 0.0,
    "gaia_out_median": 0.0,
-   "frac_both_ge70": 0.002044989775051125,
-   "frac_both_le30": 0.901840490797546,
-   "frac_mixed": 0.03067484662576687,
-   "n_obs_in": 238287,
-   "n_obs_out": 176558
+   "frac_both_ge70": 0.002197802197802198,
+   "frac_both_le30": 0.8945054945054945,
+   "frac_mixed": 0.03296703296703297,
+   "n_obs_in": 235622,
+   "n_obs_out": 174146
   },
   "post2017": {
    "n": 186,
@@ -105,28 +105,28 @@
  },
  "T3_uniform_legacy_legs": {
   "uniform_le30": {
-   "n": 441,
-   "n_dual": 365,
+   "n": 407,
+   "n_dual": 340,
    "our_d_in_leg": {
-    "n_in": 96,
-    "n_out": 269,
+    "n_in": 90,
+    "n_out": 250,
     "median_in": 0.10777066917869128,
-    "median_out": 0.08142501818706939,
-    "p": 0.0012391978118810403
+    "median_out": 0.08210330714784991,
+    "p": 0.00253939488393643
    },
    "our_d_out_leg": {
-    "n_in": 96,
-    "n_out": 269,
-    "median_in": 0.09543996014591904,
-    "median_out": 0.09978194995847983,
-    "p": 0.5911197902739853
+    "n_in": 90,
+    "n_out": 250,
+    "median_in": 0.09398555332209099,
+    "median_out": 0.10026059164135522,
+    "p": 0.7548122956070575
    },
    "our_ddirf": {
-    "n_in": 96,
-    "n_out": 269,
-    "median_in": 0.148364688550931,
-    "median_out": 0.12690593470590908,
-    "p": 0.14006701747685485
+    "n_in": 90,
+    "n_out": 250,
+    "median_in": 0.1467977441876383,
+    "median_out": 0.1287770474383264,
+    "p": 0.27812776473218753
    }
   },
   "gaia_rich": {
@@ -157,9 +157,9 @@
  },
  "T4_composition_vs_signal": {
   "pre2018": {
-   "n": 398,
-   "rho_ddirf_vs_minleg": -0.10344334909189841,
-   "p": 0.039137899741904215
+   "n": 373,
+   "rho_ddirf_vs_minleg": -0.1069917911762776,
+   "p": 0.03888979598515997
   },
   "post2017": {
    "n": 159,
@@ -240,5 +240,5 @@
    "slope": 0.008682271060301268
   }
  },
- "verdict": "LEGACY CARRIER SURVIVES; DISPLACED CARRIER ATTENUATED, NOT COMPOSITION-EXPLAINED: the declared-cap inbound-leg signal survives on uniform-legacy legs (p=0.00124).  The displaced-cap residual is nonsignificant on uniformly-high-Gaia legs (p=0.209) and strong on sub-threshold legs (p=8.89e-07); however the sub-threshold stratum is composition-homogeneous (only ~2% of post-2017 legs are truly stitch-mixed), in-cap members match out-of-cap on leg composition, leg contrast and perihelion epoch (T6), and the cap gap persists after regressing out absolute leg contrast.  The attenuation is therefore not explained as a catalogue-stitching systematic: it admits a composition-modulated signal amplitude or a reduction-quality dependence, while catalogue-by-sky interactions remain unresolved."
+ "verdict": "LEGACY CARRIER SURVIVES; DISPLACED CARRIER ATTENUATED, NOT COMPOSITION-EXPLAINED: the declared-cap inbound-leg signal survives on uniform-legacy legs (p=0.00254).  The displaced-cap residual is nonsignificant on uniformly-high-Gaia legs (p=0.209) and strong on sub-threshold legs (p=8.89e-07); however the sub-threshold stratum is composition-homogeneous (only ~2% of post-2017 legs are truly stitch-mixed), in-cap members match out-of-cap on leg composition, leg contrast and perihelion epoch (T6), and the cap gap persists after regressing out absolute leg contrast.  The attenuation is therefore not explained as a catalogue-stitching systematic: it admits a composition-modulated signal amplitude or a reduction-quality dependence, while catalogue-by-sky interactions remain unresolved."
 }

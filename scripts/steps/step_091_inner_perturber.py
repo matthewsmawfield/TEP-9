@@ -167,17 +167,18 @@ MU = 4 * math.pi ** 2
 R_STOP = 255.0
 T_MAX  = -20000.0
 DT_OUT = 1.0
-# Close-encounter exit: any comet driven inside 0.05 AU of a massive
-# body is removed (scattered/disrupted) -- IAS15's adaptive step
-# otherwise collapses and the call never returns.  Every completed
-# run records min planet approach >= 0.27 AU, so this threshold never
-# fires on the catalogue trajectories; it exists purely as a bounded
-# escape for pathological perturber runs.
-R_MIN_ENC = 0.05
-# Timestep-collapse guard: if IAS15's adaptive step shrinks below ~30 s
+# Close-encounter exit: any comet driven inside 0.001 AU of a massive
+# body is inside its Roche zone / near surface and is destroyed --
+# IAS15's adaptive step otherwise collapses and the call never
+# returns.  The threshold is collision scale, not encounter scale:
+# real catalogue trajectories (e.g. C/1902 R1's documented 0.049 AU
+# Mercury pass) integrate through unaffected.
+R_MIN_ENC = 0.001
+# Timestep-collapse guard: if IAS15's adaptive step shrinks below ~0.3 s
 # the trajectory is numerically degenerate even without a registered
-# encounter -- abandon the integration rather than spin.
-DT_MIN_YR = 1e-6
+# encounter -- abandon the integration rather than spin.  Real deep-
+# encounter transients (e.g. a 0.05 AU Mercury pass) stay above this.
+DT_MIN_YR = 1e-8
 
 def p9_state(a9, geo, m9_deg, et):
     w9 = geo["varpi9"] - geo["Om9"]

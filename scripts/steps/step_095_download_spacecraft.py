@@ -360,7 +360,7 @@ def download(url, out, label, provenance, retries=6):
     out.write_bytes(body)
     logger.metric("bytes", len(body), out.name)
     logger.data_save(out)
-    provenance[out.name] = {
+    provenance[str(out.relative_to(DATA_RAW))] = {
         "url": url, "retrieved_utc": t0.isoformat(),
         "http_status": status, "bytes": len(body), "sha256": sha,
         "description": label,
@@ -436,14 +436,16 @@ def download_dryad(url, out, label, provenance):
         prior = json.loads((DATA_RAW / "provenance_spacecraft.json")
                            .read_text()) if \
             (DATA_RAW / "provenance_spacecraft.json").exists() else {}
-        expected = prior.get(out.name, {}).get("sha256")
+        rel_key = str(out.relative_to(DATA_RAW))
+        prior_rec = prior.get(rel_key) or prior.get(out.name) or {}
+        expected = prior_rec.get("sha256")
         sha = hashlib.sha256(out.read_bytes()).hexdigest()
         if expected and sha == expected:
             logger.progress(
                 f"cached {out.name}: {out.stat().st_size} bytes; "
                 f"sha256 matches recorded provenance -- reusing")
             logger.data_save(out)
-            provenance[out.name] = dict(prior[out.name], reused_cache=True)
+            provenance[rel_key] = dict(prior_rec, reused_cache=True)
             return
         logger.progress(
             f"cached {out.name} fails provenance verification "
@@ -474,7 +476,7 @@ def download_dryad(url, out, label, provenance):
     out.write_bytes(body)
     logger.metric("bytes", len(body), out.name)
     logger.data_save(out)
-    provenance[out.name] = {
+    provenance[str(out.relative_to(DATA_RAW))] = {
         "url": url, "retrieved_utc": t0.isoformat(),
         "http_status": status, "bytes": len(body), "sha256": sha,
         "description": label,
@@ -497,7 +499,7 @@ def main():
     lit_path = LIT_DIR / "literature_anchors.json"
     lit_path.write_text(json.dumps(LITERATURE_ANCHORS, indent=1))
     logger.data_save(lit_path)
-    provenance[lit_path.name] = {
+    provenance[str(lit_path.relative_to(DATA_RAW))] = {
         "url": None,
         "retrieved_utc": datetime.now(timezone.utc).isoformat(),
         "bytes": lit_path.stat().st_size,
@@ -508,6 +510,15 @@ def main():
     }
 
     prov_path = DATA_RAW / "provenance_spacecraft.json"
+    if prov_path.exists():
+        try:
+            prior_all = json.loads(prov_path.read_text())
+            for k, v in prior_all.items():
+                if (isinstance(v, dict) and "sha256" in v
+                        and k not in provenance):
+                    provenance[k] = v
+        except json.JSONDecodeError:
+            pass
     prov_path.write_text(json.dumps(provenance, indent=1))
     logger.data_save(prov_path)
 

@@ -1,112 +1,173 @@
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] LOGGER INITIALIZED: step_097_pws_plasma_channel (Step 097)
-[2026-09-20 12:18:44 UTC] [DEBUG   ] [STEP 097] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_097_pws_plasma_channel.log
-[2026-09-20 12:18:44 UTC] [DEBUG   ] [STEP 097] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:18:44 UTC] [DEBUG   ] [STEP 097] Start time (UTC): 2026-09-20T12:18:44.165483+00:00
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] 
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] STEP PURPOSE
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] --------------------------------------------------------------------------------
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   TEP-9 step 097 -- Voyager PWS plasma-frequency channel
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   The PWS VLISM electron-density collections (PDS4 bundle
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   urn:nasa:pds:voyager-pws-vlism-density) record per-event electron
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   plasma frequency f_pe, the derived density N_e = 4 pi^2 m_e eps0
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   f_pe^2 / e^2 with min/max bounds, and the spacecraft state vector --
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   the only in-situ measurement series across a candidate boundary in
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   the outer heliosphere.
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   Two questions are addressed, with care taken not to conflate the
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   measurement channels:
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   1. Is the measured structure plasma or lapse artifact?  The measured
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   f_pe is referenced to the onboard frequency scale; under a
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   conformal lapse every onboard-referenced frequency shifts by the
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   same factor, so a lapse offset cannot selectively move f_pe (and
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   the SCLK channel already bounds the onboard-vs-ground rate ratio
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   at ~5e-5).  A *constants-shift* reading is different: if e_eff,
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   m_e,eff or eps0,eff scale with A(phi) while N_e stays smooth,
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   measured f_pe could mimic density structure.  The step computes
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   the combined constants-shift deltaX = 2 delta ln f_pe required to
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   attribute each observed jump to such a shift at constant density,
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   and compares it with the ~1e-2 lapse contrast implied by the
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   comet channel.  If the required deltaX is orders of magnitude
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   larger, the structure is confirmed as real plasma structure --
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   which is what a plasma-coupled screening transition would *use*
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   (co-location, not illusion).
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   2. What does the residual (smooth-segment) channel bound?  Within
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   inter-jump segments the f_pe drift is slow; the segment-to-
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   segment consistency and the step sizes versus the 18-Hz spectrum
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   analyser channel width bound any residual constants-shift along
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   the trajectory at the few-percent level -- a bound that applies
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   to a lapse gradient threading V1's path specifically.
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   Also reported: per-event separation of the spacecraft position and
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   velocity directions from the TNO axis and anti-axis (both spacecraft
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   sample the anti-axis hemisphere / mirror-cap region), and the
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   measured density-gradient scale as a candidate screening length.
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   Inputs
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   data/raw/voyager_pws/vg1-vlism-density-2012-2025.csv
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   data/raw/voyager_pws/vg2-vlism-density-2019-2025.csv
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   data/raw/literature/literature_anchors.json
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   results/step_b60_sclk_audit.json   (SCLK bound, for context)
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   Outputs
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   results/step_b61_pws_channel.json
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   results/step_b61_pws_events.csv
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   results/figures/supplementary/step_b61_pws_channel.png
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] --------------------------------------------------------------------------------
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] SCRIPT: scripts/steps/step_097_pws_plasma_channel.py
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] SCRIPT SHA256: db9bae6497e9d5ffdc57b14aee53bb71bf1e79f252d869179ed62437e4cab7ea
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] SCRIPT SIZE: 15536 bytes
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] ================================================================================
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Voyager PWS plasma-frequency channel
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] ================================================================================
-[2026-09-20 12:18:44 UTC] [DEBUG   ] [STEP 097] 
-[2026-09-20 12:18:44 UTC] [DEBUG   ] [STEP 097] --- VG1: 755 events ---
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] METRIC: ne_range = 0.054-0.155 cm^-3
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] METRIC: fpe_range = 2088-3533 Hz
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] METRIC: radius_range = 122.2-164.9 AU
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] METRIC: fpe_channel_hz = 2.0 median channel spacing
-[2026-09-20 12:18:44 UTC] [DEBUG   ] [STEP 097] 
-[2026-09-20 12:18:44 UTC] [DEBUG   ] [STEP 097] --- VG2: 5 events ---
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] METRIC: ne_range = 0.039-0.120 cm^-3
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] METRIC: fpe_range = 1780-3110 Hz
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] METRIC: radius_range = 119.9-140.7 AU
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] METRIC: fpe_channel_hz = nan median channel spacing
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Saving data: step_b61_pws_events.csv
-[2026-09-20 12:18:44 UTC] [DEBUG   ] [STEP 097]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b61_pws_events.csv
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   Output: step_b61_pws_events.csv
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Saving data: step_b61_pws_channel.png
-[2026-09-20 12:18:44 UTC] [DEBUG   ] [STEP 097]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b61_pws_channel.png
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   Output: step_b61_pws_channel.png
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Saving data: step_b61_pws_channel.json
-[2026-09-20 12:18:44 UTC] [DEBUG   ] [STEP 097]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b61_pws_channel.json
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   Output: step_b61_pws_channel.json
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] ✓ PWS plasma channel complete
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] 
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] ================================================================================
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] STEP SUMMARY: step_097_pws_plasma_channel
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] ================================================================================
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Step Number: 097
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Status: SUCCESS
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Duration: 0.61s
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Log Records Emitted: 87
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Output Files: 3
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_097_pws_plasma_channel.log
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] 
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Generated 3 output file(s):
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   • step_b61_pws_events.csv: 76.65 KB [sha256 0494dba6a887c40f]
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   • step_b61_pws_channel.png: 286.77 KB [sha256 f1605a884e1cabf2]
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   • step_b61_pws_channel.json: 7.00 KB [sha256 7ff38cb551542964]
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] ================================================================================
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] STEP 097 COMPLETE: SUCCESS
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_097_pws_plasma_channel_provenance.json
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] 
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] ================================================================================
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] EXECUTIVE SUMMARY
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] ================================================================================
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Step: step_097_pws_plasma_channel (Step 097)
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Status: SUCCESS
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Duration: 0.61s
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Log Records: 98
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Output Files: 3
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] Key Outputs:
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   - step_b61_pws_events.csv (76.65 KB)
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   - step_b61_pws_channel.png (286.77 KB)
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097]   - step_b61_pws_channel.json (7.00 KB)
-[2026-09-20 12:18:44 UTC] [INFO    ] [STEP 097] ================================================================================
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] LOGGER INITIALIZED: step_097_pws_plasma_channel (Step 097)
+[2026-09-21 15:11:06 UTC] [DEBUG   ] [STEP 097] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_097_pws_plasma_channel.log
+[2026-09-21 15:11:06 UTC] [DEBUG   ] [STEP 097] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:11:06 UTC] [DEBUG   ] [STEP 097] Start time (UTC): 2026-09-21T15:11:06.234508+00:00
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] 
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] STEP PURPOSE
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] --------------------------------------------------------------------------------
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   TEP-9 step 097 -- Voyager PWS plasma-frequency channel
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   The PWS VLISM electron-density collections (PDS4 bundle
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   urn:nasa:pds:voyager-pws-vlism-density) record per-event electron
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   plasma frequency f_pe, the derived density N_e = 4 pi^2 m_e eps0
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   f_pe^2 / e^2 with min/max bounds, and the spacecraft state vector --
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   the only in-situ measurement series across a candidate boundary in
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   the outer heliosphere.
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   Two questions are addressed, with care taken not to conflate the
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   measurement channels:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   1. Is the measured structure plasma or lapse artifact?  The measured
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   f_pe is referenced to the onboard frequency scale; under a
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   conformal lapse every onboard-referenced frequency shifts by the
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   same factor, so a lapse offset cannot selectively move f_pe (and
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   the SCLK channel already bounds the onboard-vs-ground rate ratio
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   at ~5e-5).  A *constants-shift* reading is different: if e_eff,
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   m_e,eff or eps0,eff scale with A(phi) while N_e stays smooth,
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   measured f_pe could mimic density structure.  The step computes
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   the combined constants-shift deltaX = 2 delta ln f_pe required to
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   attribute each observed jump to such a shift at constant density,
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   and compares it with the ~1e-2 lapse contrast implied by the
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   comet channel.  If the required deltaX is orders of magnitude
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   larger, the structure is confirmed as real plasma structure --
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   which is what a plasma-coupled screening transition would *use*
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   (co-location, not illusion).
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   2. What does the residual (smooth-segment) channel bound?  Within
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   inter-jump segments the f_pe drift is slow; the segment-to-
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   segment consistency and the step sizes versus the 18-Hz spectrum
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   analyser channel width bound any residual constants-shift along
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   the trajectory at the few-percent level -- a bound that applies
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   to a lapse gradient threading V1's path specifically.
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   Also reported: per-event separation of the spacecraft position and
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   velocity directions from the TNO axis and anti-axis (both spacecraft
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   sample the anti-axis hemisphere / mirror-cap region), and the
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   measured density-gradient scale as a candidate screening length.
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   Inputs
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   data/raw/voyager_pws/vg1-vlism-density-2012-2025.csv
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   data/raw/voyager_pws/vg2-vlism-density-2019-2025.csv
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   data/raw/literature/literature_anchors.json
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   results/step_b60_sclk_audit.json   (SCLK bound, for context)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   Outputs
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   results/step_b61_pws_channel.json
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   results/step_b61_pws_events.csv
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   results/figures/supplementary/step_b61_pws_channel.png
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] --------------------------------------------------------------------------------
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] SCRIPT: scripts/steps/step_097_pws_plasma_channel.py
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] SCRIPT SHA256: f51a1ba6c310cce397e55fc0fd45ead1f203923596905ce77a6c8bbf1e564889
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] SCRIPT SIZE: 16278 bytes
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] ================================================================================
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Voyager PWS plasma-frequency channel
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] ================================================================================
+[2026-09-21 15:11:06 UTC] [DEBUG   ] [STEP 097] 
+[2026-09-21 15:11:06 UTC] [DEBUG   ] [STEP 097] --- VG1: 755 events ---
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] METRIC: ne_range = 0.054-0.155 cm^-3
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] METRIC: fpe_range = 2088-3533 Hz
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] METRIC: radius_range = 122.2-164.9 AU
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] METRIC: fpe_channel_hz = 2.0 median channel spacing
+[2026-09-21 15:11:06 UTC] [DEBUG   ] [STEP 097] 
+[2026-09-21 15:11:06 UTC] [DEBUG   ] [STEP 097] --- VG2: 5 events ---
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] METRIC: ne_range = 0.039-0.120 cm^-3
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] METRIC: fpe_range = 1780-3110 Hz
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] METRIC: radius_range = 119.9-140.7 AU
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] METRIC: fpe_channel_hz = nan median channel spacing
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Saving data: step_b61_pws_events.csv
+[2026-09-21 15:11:06 UTC] [DEBUG   ] [STEP 097]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b61_pws_events.csv
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   Output: step_b61_pws_events.csv
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Saving data: step_b61_pws_channel.png
+[2026-09-21 15:11:06 UTC] [DEBUG   ] [STEP 097]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b61_pws_channel.png
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   Output: step_b61_pws_channel.png
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Saving data: step_b61_pws_channel.json
+[2026-09-21 15:11:06 UTC] [DEBUG   ] [STEP 097]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b61_pws_channel.json
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   Output: step_b61_pws_channel.json
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] ✓ PWS plasma channel complete
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] 
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] ================================================================================
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] STEP SUMMARY: step_097_pws_plasma_channel
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] ================================================================================
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Step Number: 097
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Status: SUCCESS
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Duration: 0.43s
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Log Records Emitted: 87
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Output Files: 3
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_097_pws_plasma_channel.log
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] 
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Generated 3 output file(s):
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   • step_b61_pws_events.csv: 76.65 KB [sha256 0494dba6a887c40f]
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   • step_b61_pws_channel.png: 286.77 KB [sha256 f1605a884e1cabf2]
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   • step_b61_pws_channel.json: 7.14 KB [sha256 7d8ad5d58764a311]
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] 
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   RESULT SNAPSHOT [step_b61_pws_channel.json]:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     inputs:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       pds4_bundle = urn:nasa:pds:voyager-pws-vlism-density
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       literature_anchors = data/raw/literature/literature_anchors.json
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     inputs.pws_vlism [n=2]
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG1:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       n_events = 755
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       fpe_channel_hz = 2
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG1.ne_range [n=2]: median=0.104417 min=0.054064 max=0.15477
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG1.fpe_range_hz [n=2]: median=2810.4 min=2088 max=3532.8
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG1.radius_range_au [n=2]: median=143.5505 min=122.173 max=164.928
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG1.d_hp_range_au [n=2]: median=21.9505 min=0.573 max=43.328
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG1.top_steps [n=8]
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG1.smooth_drift:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       median_frac_per_au = 0
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       p95_abs_frac_per_au = 0.34098766
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG1.lapse_equiv:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       comet_channel_dA_source = results/step_b64_clock_consistency.json
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       ne_ratio = 2.8627183
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       fpe_ratio = 1.691954
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       deltaX_constant_density = 1.0517682
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       comet_channel_dA_over_A = 0.011610564
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       ratio_vs_comet = 90.587171
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       note = deltaX is the combined exponent shift in e_eff^2/(m_e,eff eps0,eff) that would be requi...
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG1.geometry:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       median_pos_lon_deg = 255.815
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       median_pos_lat_deg = 35.0534
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       sep_to_axis_deg = 150.06
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       sep_to_antiaxis_deg = 29.94
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       sep_to_ism_inflow_deg = 29.89
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       inside_60deg_mirror_cap = True
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG1.density_gradient:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       log_linear_scale_au = 65.242544
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       slope_per_au = 0.015327422
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       resid_rms_log = 0.098497165
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG2:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       n_events = 5
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG2.ne_range [n=2]: median=0.0795 min=0.039 max=0.12
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG2.fpe_range_hz [n=2]: median=2445 min=1780 max=3110
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG2.radius_range_au [n=2]: median=130.2965 min=119.934 max=140.659
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG2.d_hp_range_au [n=2]: median=11.2965 min=0.934 max=21.659
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG2.top_steps [n=4]
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG2.smooth_drift:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       note = insufficient segments (0) for a drift-rate bound
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG2.lapse_equiv:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       comet_channel_dA_source = results/step_b64_clock_consistency.json
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       ne_ratio = 3.0769231
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       fpe_ratio = 1.747191
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       deltaX_constant_density = 1.1160187
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       comet_channel_dA_over_A = 0.011610564
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       ratio_vs_comet = 96.120972
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       note = deltaX is the combined exponent shift in e_eff^2/(m_e,eff eps0,eff) that would be requi...
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]     craft.VG2.geometry:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       median_pos_lon_deg = 218.643
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       median_pos_lat_deg = -32.9029
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       sep_to_axis_deg = 129.12
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       sep_to_antiaxis_deg = 50.88
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       sep_to_ism_inflow_deg = 51.86
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       inside_60deg_mirror_cap = True
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] ================================================================================
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] STEP 097 COMPLETE: SUCCESS
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_097_pws_plasma_channel_provenance.json
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] 
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] ================================================================================
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] EXECUTIVE SUMMARY
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] ================================================================================
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Step: step_097_pws_plasma_channel (Step 097)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Status: SUCCESS
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Duration: 0.43s
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Log Records: 159
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Output Files: 3
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] Key Outputs:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   - step_b61_pws_events.csv (76.65 KB)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   - step_b61_pws_channel.png (286.77 KB)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097]   - step_b61_pws_channel.json (7.14 KB)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 097] ================================================================================

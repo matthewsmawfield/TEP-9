@@ -1,111 +1,178 @@
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] LOGGER INITIALIZED: step_082_sky_matched (Step 082)
-[2026-09-20 11:46:22 UTC] [DEBUG   ] [STEP 082] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_082_sky_matched.log
-[2026-09-20 11:46:22 UTC] [DEBUG   ] [STEP 082] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 11:46:22 UTC] [DEBUG   ] [STEP 082] Start time (UTC): 2026-09-20T11:46:22.917347+00:00
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] 
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] STEP PURPOSE
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] --------------------------------------------------------------------------------
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   Step 082 -- same-patch geocentric control.
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   step_081 showed that in-cap comets are observed preferentially toward
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   the anti-axis sky region (geocentric resultant R = 0.73): a sky-
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   localized astrometric systematic is therefore not excluded on geometry
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   alone.  This step closes the loophole with a matched-patch design.
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   Two comets observed from the SAME geocentric sky position near
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   perihelion epoch are exposed to the same zonal catalogue error, the
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   same crowding statistics, and the same reduction geometry -- but a
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   temporal boundary acts on the comet's APHELION direction, which is set
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   by the orbit, not by where Earth stood.  The two hypotheses therefore
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   make different predictions inside one observed patch:
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   sky-systematic : discrepancy tracks the observed direction; comets
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   seen in the affected patch carry the anomaly
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   regardless of aphelion direction.
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   temporal wall  : discrepancy tracks the aphelion direction; inside
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   the patch the in-cap members remain discrepant and
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   the out-of-cap members do not.
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   Per-comet data are joined from two measured products:
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   step_b46_geocentric_null.csv   geocentric unit direction at the
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   perihelion epoch (DE440s), and theta,
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   the aphelion-direction angle to the
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   resident axis (49,-17);
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   step_b27_planet_nine_insertion.csv
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   d_of, the catalogue orig->future
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   periapsis rotation (the anomaly
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   channel used by every Phase-3 step).
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   Solar elongation and the galactic latitude of the observed direction
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   are recomputed per comet from DE440s so the two classic observation-
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   geometry channels enter as continuous covariates.
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   Tests
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   1. matched patch: among comets observed within 60 deg of the anti-axis
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   (the patch where the in-cap cohort is seen), in-cap vs out-of-cap
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   d_of (Mann-Whitney) -- the systematic predicts equality;
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   2. restricted gradient: within the patch, Spearman(theta_aph, d_of) --
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   the systematic predicts a flat gradient;
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   3. partial Spearman: d_of vs axis alignment A = cos(theta_aph)
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   controlling observed-patch alignment G = cos(geo_sep), and the
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   mirror -- which predictor retains the signal;
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   4. elongation and galactic-latitude channels: correlation with d_of
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   and in/out-cap contrasts;
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   5. double-dissociation table: median d_of in the (cap x patch) cells.
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   Outputs
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   results/step_b47_sky_matched.json
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   results/step_b47_sky_matched.csv   (per-comet geometry + channels)
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082]   results/figures/supplementary/step_b47_sky_matched.png
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] --------------------------------------------------------------------------------
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] SCRIPT: scripts/steps/step_082_sky_matched.py
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] SCRIPT SHA256: 034e23619ba4b07c2a8332d2fbef5c702f7ed03eb4efa2e2da43799e1e557625
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] SCRIPT SIZE: 16947 bytes
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] ================================================================================
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] Same-patch geocentric control
-[2026-09-20 11:46:22 UTC] [INFO    ] [STEP 082] ================================================================================
-[2026-09-20 11:46:23 UTC] [INFO    ] [STEP 082] joined 131 comets (b46 x b27)
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] in-patch members: 48 (in-cap 35, out-of-cap 13)
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] patch<30.0: in 0.092 (n=14) vs out 0.154 (n=3) p=0.8779
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] patch<40.0: in 0.144 (n=23) vs out 0.139 (n=4) p=0.7957
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] patch<50.0: in 0.148 (n=30) vs out 0.131 (n=7) p=0.7091
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] patch<60.0: in 0.144 (n=35) vs out 0.131 (n=13) p=0.5370
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] patch gradient rho=-0.010 (p=0.948); in-cap position rho=+0.004 (p=0.979); out-cap theta rho=-0.145 (p=0.179)
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] axis|geo rho=+0.108 (p=0.2212);  geo|axis rho=+0.008 (p=0.9287)
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] elong rho=-0.154 (all), +0.042 (in-cap); |b_gal| rho=+0.114
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] d_of medians: in_cap__in_patch=0.144(n=35); in_cap__out_patch=0.126(n=8); out_cap__in_patch=0.131(n=13); out_cap__out_patch=0.078(n=75)
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Saving data: step_b47_sky_matched.json
-[2026-09-20 11:46:24 UTC] [DEBUG   ] [STEP 082]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b47_sky_matched.json
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082]   Output: step_b47_sky_matched.json
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Saving data: step_b47_sky_matched.csv
-[2026-09-20 11:46:24 UTC] [DEBUG   ] [STEP 082]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b47_sky_matched.csv
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082]   Output: step_b47_sky_matched.csv
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Saving data: step_b47_sky_matched.png
-[2026-09-20 11:46:24 UTC] [DEBUG   ] [STEP 082]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b47_sky_matched.png
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082]   Output: step_b47_sky_matched.png
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] 
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] ================================================================================
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] STEP SUMMARY: step_082_sky_matched
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] ================================================================================
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Step Number: 082
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Status: SUCCESS
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Duration: 1.98s
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Log Records Emitted: 86
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Output Files: 3
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_082_sky_matched.log
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] 
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Generated 3 output file(s):
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082]   • step_b47_sky_matched.json: 3.56 KB [sha256 8c2d552632a24f54]
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082]   • step_b47_sky_matched.csv: 15.79 KB [sha256 b05bd64ad27c411f]
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082]   • step_b47_sky_matched.png: 274.81 KB [sha256 3097bf0039136612]
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] ================================================================================
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] STEP 082 COMPLETE: SUCCESS
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_082_sky_matched_provenance.json
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] 
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] ================================================================================
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] EXECUTIVE SUMMARY
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] ================================================================================
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Step: step_082_sky_matched (Step 082)
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Status: SUCCESS
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Duration: 1.98s
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Log Records: 97
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Output Files: 3
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] Key Outputs:
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082]   - step_b47_sky_matched.json (3.56 KB)
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082]   - step_b47_sky_matched.csv (15.79 KB)
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082]   - step_b47_sky_matched.png (274.81 KB)
-[2026-09-20 11:46:24 UTC] [INFO    ] [STEP 082] ================================================================================
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] LOGGER INITIALIZED: step_082_sky_matched (Step 082)
+[2026-09-21 14:53:26 UTC] [DEBUG   ] [STEP 082] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_082_sky_matched.log
+[2026-09-21 14:53:26 UTC] [DEBUG   ] [STEP 082] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:53:26 UTC] [DEBUG   ] [STEP 082] Start time (UTC): 2026-09-21T14:53:26.112676+00:00
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] 
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] STEP PURPOSE
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] --------------------------------------------------------------------------------
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   Step 082 -- same-patch geocentric control.
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   step_081 showed that in-cap comets are observed preferentially toward
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   the anti-axis sky region (geocentric resultant R = 0.73): a sky-
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   localized astrometric systematic is therefore not excluded on geometry
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   alone.  This step closes the loophole with a matched-patch design.
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   Two comets observed from the SAME geocentric sky position near
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   perihelion epoch are exposed to the same zonal catalogue error, the
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   same crowding statistics, and the same reduction geometry -- but a
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   temporal boundary acts on the comet's APHELION direction, which is set
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   by the orbit, not by where Earth stood.  The two hypotheses therefore
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   make different predictions inside one observed patch:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   sky-systematic : discrepancy tracks the observed direction; comets
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   seen in the affected patch carry the anomaly
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   regardless of aphelion direction.
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   temporal wall  : discrepancy tracks the aphelion direction; inside
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   the patch the in-cap members remain discrepant and
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   the out-of-cap members do not.
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   Per-comet data are joined from two measured products:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   step_b46_geocentric_null.csv   geocentric unit direction at the
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   perihelion epoch (DE440s), and theta,
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   the aphelion-direction angle to the
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   resident axis (49,-17);
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   step_b27_planet_nine_insertion.csv
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   d_of, the catalogue orig->future
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   periapsis rotation (the anomaly
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   channel used by every Phase-3 step).
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   Solar elongation and the galactic latitude of the observed direction
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   are recomputed per comet from DE440s so the two classic observation-
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   geometry channels enter as continuous covariates.
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   Tests
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   1. matched patch: among comets observed within 60 deg of the anti-axis
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   (the patch where the in-cap cohort is seen), in-cap vs out-of-cap
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   d_of (Mann-Whitney) -- the systematic predicts equality;
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   2. restricted gradient: within the patch, Spearman(theta_aph, d_of) --
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   the systematic predicts a flat gradient;
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   3. partial Spearman: d_of vs axis alignment A = cos(theta_aph)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   controlling observed-patch alignment G = cos(geo_sep), and the
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   mirror -- which predictor retains the signal;
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   4. elongation and galactic-latitude channels: correlation with d_of
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   and in/out-cap contrasts;
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   5. double-dissociation table: median d_of in the (cap x patch) cells.
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   Outputs
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   results/step_b47_sky_matched.json
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   results/step_b47_sky_matched.csv   (per-comet geometry + channels)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   results/figures/supplementary/step_b47_sky_matched.png
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] --------------------------------------------------------------------------------
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] SCRIPT: scripts/steps/step_082_sky_matched.py
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] SCRIPT SHA256: 034e23619ba4b07c2a8332d2fbef5c702f7ed03eb4efa2e2da43799e1e557625
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] SCRIPT SIZE: 16947 bytes
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] ================================================================================
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Same-patch geocentric control
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] ================================================================================
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] joined 131 comets (b46 x b27)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] in-patch members: 48 (in-cap 35, out-of-cap 13)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] patch<30.0: in 0.092 (n=14) vs out 0.154 (n=3) p=0.8779
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] patch<40.0: in 0.144 (n=23) vs out 0.139 (n=4) p=0.7957
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] patch<50.0: in 0.148 (n=30) vs out 0.131 (n=7) p=0.7091
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] patch<60.0: in 0.144 (n=35) vs out 0.131 (n=13) p=0.5370
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] patch gradient rho=-0.010 (p=0.948); in-cap position rho=+0.004 (p=0.979); out-cap theta rho=-0.145 (p=0.179)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] axis|geo rho=+0.108 (p=0.2212);  geo|axis rho=+0.008 (p=0.9287)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] elong rho=-0.154 (all), +0.042 (in-cap); |b_gal| rho=+0.114
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] d_of medians: in_cap__in_patch=0.144(n=35); in_cap__out_patch=0.126(n=8); out_cap__in_patch=0.131(n=13); out_cap__out_patch=0.078(n=75)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Saving data: step_b47_sky_matched.json
+[2026-09-21 14:53:26 UTC] [DEBUG   ] [STEP 082]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b47_sky_matched.json
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   Output: step_b47_sky_matched.json
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Saving data: step_b47_sky_matched.csv
+[2026-09-21 14:53:26 UTC] [DEBUG   ] [STEP 082]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b47_sky_matched.csv
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   Output: step_b47_sky_matched.csv
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Saving data: step_b47_sky_matched.png
+[2026-09-21 14:53:26 UTC] [DEBUG   ] [STEP 082]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b47_sky_matched.png
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   Output: step_b47_sky_matched.png
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] 
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] ================================================================================
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] STEP SUMMARY: step_082_sky_matched
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] ================================================================================
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Step Number: 082
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Status: SUCCESS
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Duration: 0.84s
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Log Records Emitted: 86
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Output Files: 3
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_082_sky_matched.log
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] 
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Generated 3 output file(s):
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   • step_b47_sky_matched.json: 3.56 KB [sha256 8c2d552632a24f54]
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   • step_b47_sky_matched.csv: 15.79 KB [sha256 b05bd64ad27c411f]
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   • step_b47_sky_matched.png: 274.81 KB [sha256 3097bf0039136612]
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] 
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   RESULT SNAPSHOT [step_b47_sky_matched.json]:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     matched_patch_radii:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       note = same observed sky patch: a zonal systematic acts on patch members irrespective of aphel...
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     matched_patch_radii.30deg:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n_in = 14
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n_out = 3
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       med_d_of_in = 0.092383824
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       med_d_of_out = 0.15400253
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_mwu_in_greater = 0.87794118
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     matched_patch_radii.40deg:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n_in = 23
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n_out = 4
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       med_d_of_in = 0.14365126
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       med_d_of_out = 0.13942072
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_mwu_in_greater = 0.7957265
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     matched_patch_radii.50deg:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n_in = 30
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n_out = 7
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       med_d_of_in = 0.14779256
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       med_d_of_out = 0.13074542
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_mwu_in_greater = 0.70911057
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     matched_patch_radii.60deg:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n_in = 35
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n_out = 13
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       med_d_of_in = 0.14434842
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       med_d_of_out = 0.13074542
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_mwu_in_greater = 0.53696868
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     gradients.patch_theta_vs_d:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n = 48
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       rho = -0.0096613113
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_2sided = 0.94803658
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       note = within the observed patch: systematic predicts ~0; boundary predicts d_of growing towar...
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     gradients.incap_geosep_vs_d:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n = 43
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       rho = 0.0042283298
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_2sided = 0.97853146
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       note = does the observed position within the affected region modulate the anomaly? a patch sys...
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     gradients.outcap_theta_vs_d:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n = 88
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       rho = -0.14471135
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_2sided = 0.17856213
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       note = does the aphelion-direction gradient continue beyond the cap edge? a sharp boundary pre...
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     partial_spearman:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       note = rank-residualized partial Spearman; the surviving partial correlation identifies which ...
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     partial_spearman.d_of_vs_axis_align:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       rho = 0.24310041
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_2sided = 0.0051444952
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     partial_spearman.d_of_vs_observed_align:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       rho = 0.22984039
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_2sided = 0.0082689985
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     partial_spearman.axis_given_observed:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       rho = 0.1076069
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_2sided = 0.22119039
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     partial_spearman.observed_given_axis:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       rho = 0.0078951583
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_2sided = 0.92868492
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     geometry_channels:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       note = solar elongation at perihelion epoch and galactic latitude of the observed direction --...
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     geometry_channels.elong_vs_d_of_all:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       rho = -0.15433727
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_2sided = 0.078390421
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]     geometry_channels.elong_vs_d_of_incap:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       n = 43
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       rho = 0.041830263
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       p_2sided = 0.78998268
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] ================================================================================
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] STEP 082 COMPLETE: SUCCESS
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_082_sky_matched_provenance.json
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] 
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] ================================================================================
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] EXECUTIVE SUMMARY
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] ================================================================================
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Step: step_082_sky_matched (Step 082)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Status: SUCCESS
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Duration: 0.84s
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Log Records: 164
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Output Files: 3
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] Key Outputs:
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   - step_b47_sky_matched.json (3.56 KB)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   - step_b47_sky_matched.csv (15.79 KB)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082]   - step_b47_sky_matched.png (274.81 KB)
+[2026-09-21 14:53:26 UTC] [INFO    ] [STEP 082] ================================================================================

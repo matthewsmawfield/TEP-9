@@ -1,0 +1,138 @@
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] LOGGER INITIALIZED: step_165_disformal_slip (Step 165)
+[2026-09-24 10:52:07 UTC] [DEBUG   ] [STEP 165] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_165_disformal_slip.log
+[2026-09-24 10:52:07 UTC] [DEBUG   ] [STEP 165] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-24 10:52:07 UTC] [DEBUG   ] [STEP 165] Start time (UTC): 2026-09-24T10:52:07.348994+00:00
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] 
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] STEP PURPOSE
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] --------------------------------------------------------------------------------
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   step_165: canonical disformal transport -- amplitude closure for
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   the comet boundary slip (b131).
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   Step 158 (b124) established that a single-valued scalar winding
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   realisation cannot produce the slip: d(phi) is exact, the physical
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   endpoint term is leg-symmetric, and the tested open-path statistic
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   was cap-blind.  The canonical theory paper (0-TEP, Jakarta revision,
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   Sec. 3.3 / 6 / A3.2) supplies the structure that step was missing:
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   the invariant observable is the synchronisation connection
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   dsigma_mu = -(B/A^2)(u . grad phi) P_mu^nu grad_nu phi ,
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   whose scalar (conformal) part is exact and whose leading NON-exact
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   part is the projected disformal term.  A comet is a transported
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   clock: along its worldline u.grad phi = du/dt, so the open-path
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   desynchronisation relative to the barycentric network is
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   dt_slip = (1/c) int dsigma_i dx^i
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   = -(1/c^2) int b(u) R_H^2 / (A^2 N^2) (du/dt)^2 dt
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   with the corpus field-space envelope (excursion convention: u is the
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   field measured from the contemporary ambient; the absolute-u convention
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   is macroscopically excluded in the Paper-0 triangle calculation)
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   b(u) = B0 * u^2/(1+u^2) * exp(-u^4 / 2 sigma_B^4),
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   B0 = +3.2e-3   (admissible-branch benchmark).  The magnitude is
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   mirrored from the Paper-0 volume-balance reconstruction only to
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   set an instrumental scale; that reconstruction found B0 < 0 and
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   is excluded by the Paper-0 null-cone condition.  It is therefore
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   not a calibration of the admissible normalization.
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   The primary step-065 datum is an equivalent-time amplitude obtained
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   from an angular separation, delta t_eq = |delta theta| r_b^2/h.  It is
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   unsigned.  Consequently the fit below must use |delta t_slip|.  The
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   sign of the open-path synchronization transport is retained separately
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   and is never inferred from that amplitude statistic.
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   Properties that follow from the form alone (all measured
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   independently in this pipeline):
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   * sign-definite in B: one sign of slip, no tuned sign;
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   * quadratic in the traversal rate -> the slip concentrates where
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   |grad u| is concentrated: a boundary transition gives a discrete
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   crossing offset (step 071 shell flatness, step 068 transit-time
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   independence);
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   * the comet crosses the boundary twice, at antipodal points, so an
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   axis-anchored field G(th) contributes G(th)^4 + G(180-th)^4 --
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   every odd harmonic cancels identically and the open-path slip is
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   automatically bipolar (cos 2th dominated) for ANY axis-anchored
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   field -- the morphology the residual slip field actually carries
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   (step 086: cos2th rho=+0.17, p=0.010; cos th flat at p=0.30),
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   while the resident-cloud source response is linear and stays
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   dipolar (step 164);
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   * the theta-uniform part of the lag is absorbed into the fitted
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   elements (parameter absorption, step 151) -- the observable is
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   the theta-dependent contrast, which is what the harmonic map
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   measures.
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   The open question tested quantitatively: at a positive-B admissible
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   benchmark of the same magnitude as the excluded reconstruction scale,
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   what boundary field excursion u_b does the measured amplitude contrast
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   require?  The answer is a scale relation, not a normalization
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   prediction, and is compared against the corpus anchors
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   (Newtonian-tracking 4e-11, Galactic ambient ~7e-7, solar surface ~2e-6,
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   cosmological u ~ 0.75).
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   Channels:
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   M (motion/quadratic): u.grad phi = du/dt along the comet
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   worldline -> per-crossing lag ~ (|B0| R_H^2/c^2) v_r *
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   int env_b(u) (du/dr)^2 dr; bipolar response via the
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   antipodal sum (exact for every axis-anchored G).
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   R (network roll): u.grad phi = -Pi W (partitioned roll of the
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   static clock congruence, Pi = H0) -> net transport
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   ~ (|B0| R_H^2/c^2) Pi * [U(G_in) - U(G_out)], signed by the
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   antipodal field difference; dipolar response, subdominant.
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   Inputs
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   results/step_b30_proper_time_slip.csv   (per-comet residual slip,
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   dtau_unexplained, and axis separation theta; 229 pooled)
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   results/step_b124_metric_winding.csv    (per-comet boundary
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   crossing speed v_cross)
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   Outputs
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   results/step_b131_disformal_slip.json
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   results/step_b131_disformal_slip.csv
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165]   results/figures/supplementary/step_b131_disformal_slip.png
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] --------------------------------------------------------------------------------
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] SCRIPT: scripts/steps/step_165_disformal_slip.py
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] SCRIPT SHA256: 6f3f967464eb46238e72f522536e06a3d990717a6b1471f652eb5527e8bee15d
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] SCRIPT SIZE: 30893 bytes
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] ================================================================================
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] Canonical disformal transport -- comet-slip amplitude closure
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] ================================================================================
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] cohort: 229 comets with residual slip, theta, crossing speed
+[2026-09-24 10:52:07 UTC] [INFO    ] [STEP 165] measured residual: pole 2.06 yr (n=107), midband -3.89 yr (n=122), contrast 5.94 yr
+[2026-09-24 10:52:11 UTC] [INFO    ] [STEP 165]   iso|ell4: uniform cos1=1.20e-45 cos2=4.63e-32 | u_b(contrast) = nan
+[2026-09-24 10:52:15 UTC] [INFO    ] [STEP 165]   iso|ell8: uniform cos1=5.98e-46 cos2=2.31e-32 | u_b(contrast) = nan
+[2026-09-24 10:52:19 UTC] [INFO    ] [STEP 165]   iso|ell16: uniform cos1=2.99e-46 cos2=1.16e-32 | u_b(contrast) = nan
+[2026-09-24 10:52:23 UTC] [INFO    ] [STEP 165]   iso|ell32: uniform cos1=1.49e-46 cos2=5.79e-33 | u_b(contrast) = nan
+[2026-09-24 10:52:27 UTC] [INFO    ] [STEP 165]   iso|ell64: uniform cos1=7.47e-47 cos2=2.89e-33 | u_b(contrast) = nan
+[2026-09-24 10:52:31 UTC] [INFO    ] [STEP 165]   dip_a1|ell4: uniform cos1=9.94e-46 cos2=5.87e-29 | u_b(contrast) = 1.04e-04
+[2026-09-24 10:52:35 UTC] [INFO    ] [STEP 165]   dip_a1|ell8: uniform cos1=4.97e-46 cos2=2.93e-29 | u_b(contrast) = 1.22e-04
+[2026-09-24 10:52:40 UTC] [INFO    ] [STEP 165]   dip_a1|ell16: uniform cos1=2.48e-46 cos2=1.47e-29 | u_b(contrast) = 1.47e-04
+[2026-09-24 10:52:45 UTC] [INFO    ] [STEP 165]   dip_a1|ell32: uniform cos1=1.24e-46 cos2=7.34e-30 | u_b(contrast) = 1.74e-04
+[2026-09-24 10:52:49 UTC] [INFO    ] [STEP 165]   dip_a1|ell64: uniform cos1=6.21e-47 cos2=3.67e-30 | u_b(contrast) = 2.05e-04
+[2026-09-24 10:52:53 UTC] [INFO    ] [STEP 165]   dip_a2|ell4: uniform cos1=8.70e-45 cos2=3.35e-28 | u_b(contrast) = 6.80e-05
+[2026-09-24 10:52:58 UTC] [INFO    ] [STEP 165]   dip_a2|ell8: uniform cos1=4.35e-45 cos2=1.68e-28 | u_b(contrast) = 8.28e-05
+[2026-09-24 10:53:02 UTC] [INFO    ] [STEP 165]   dip_a2|ell16: uniform cos1=2.17e-45 cos2=8.38e-29 | u_b(contrast) = 9.63e-05
+[2026-09-24 10:53:06 UTC] [INFO    ] [STEP 165]   dip_a2|ell32: uniform cos1=1.09e-45 cos2=4.19e-29 | u_b(contrast) = 1.15e-04
+[2026-09-24 10:53:11 UTC] [INFO    ] [STEP 165]   dip_a2|ell64: uniform cos1=5.43e-46 cos2=2.09e-29 | u_b(contrast) = 1.39e-04
+[2026-09-24 10:53:15 UTC] [INFO    ] [STEP 165]   quad_P2|ell4: uniform cos1=1.37e-45 cos2=1.25e-28 | u_b(contrast) = 1.04e-04
+[2026-09-24 10:53:20 UTC] [INFO    ] [STEP 165]   quad_P2|ell8: uniform cos1=6.83e-46 cos2=6.24e-29 | u_b(contrast) = 1.22e-04
+[2026-09-24 10:53:24 UTC] [INFO    ] [STEP 165]   quad_P2|ell16: uniform cos1=3.42e-46 cos2=3.12e-29 | u_b(contrast) = 1.47e-04
+[2026-09-24 10:53:29 UTC] [INFO    ] [STEP 165]   quad_P2|ell32: uniform cos1=1.71e-46 cos2=1.56e-29 | u_b(contrast) = 1.74e-04
+[2026-09-24 10:53:33 UTC] [INFO    ] [STEP 165]   quad_P2|ell64: uniform cos1=8.54e-47 cos2=7.80e-30 | u_b(contrast) = 2.05e-04
+[2026-09-24 10:53:44 UTC] [INFO    ] [STEP 165] headline: {"morph": "dip_a1: field 1 + cos th; antipodal double crossing", "ell_au": 8.0, "u_b_required": 0.0001, "harmonics_uniform": {"cos1": 5.527559593347755e-45, "cos2": 7.199319518760749e-29}, "rho_pred_vs_resid": 0.1694, "p_pred_vs_resid": 0.0105, "rho_in_cap": 0.0369, "p_in_cap": 0.7531, "pred_pole_med": 8.1894, "pred_mid_med": 2.2451, "pred_mean_absorbed": 5.2377, "signed_transport_pole_med": -8.1894, "signed_transport_mid_med": -2.2451, "signed_transport_contrast": -5.9443, "roll_pole_med": 0.0002, "roll_mid_med": 0.0, "roll_cos1_uniform": 0.0, "measured_contrast_yr": 5.9443}
+[2026-09-24 10:53:44 UTC] [INFO    ] [STEP 165] admissibility ledger: {"galactic_ambient_u": 0.0, "ratio_vs_galactic": 178.7861, "solar_tracking_250AU_u": 0.0, "ratio_vs_solar": 3169969.4634}
+[2026-09-24 10:53:44 UTC] [INFO    ] [STEP 165]   conformal step 125 ppm = 31x sustained bound; shear impulse 2.70e+09 m/s = 1.2e+08 x bound; admissible slip <= 6.2e-06-3.9e-03 yr vs measured 5.9 yr
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] outputs: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b131_disformal_slip.json, /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b131_disformal_slip.csv, /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b131_disformal_slip.png
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] 
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] ================================================================================
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] STEP SUMMARY: step_165_disformal_slip
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] ================================================================================
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Step Number: 165
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Status: SUCCESS
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Duration: 1.73m
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Log Records Emitted: 121
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Output Files: 0
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_165_disformal_slip.log
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] No output files generated
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] ================================================================================
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] STEP 165 COMPLETE: SUCCESS
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_165_disformal_slip_provenance.json
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] 
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] ================================================================================
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] EXECUTIVE SUMMARY
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] ================================================================================
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Step: step_165_disformal_slip (Step 165)
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Status: SUCCESS
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Duration: 1.73m
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Log Records: 128
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] Output Files: 0
+[2026-09-24 10:53:50 UTC] [INFO    ] [STEP 165] ================================================================================

@@ -1,114 +1,171 @@
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] LOGGER INITIALIZED: step_143_comet_ng_channel (Step 143)
-[2026-09-20 12:25:41 UTC] [DEBUG   ] [STEP 143] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_143_comet_ng_channel.log
-[2026-09-20 12:25:41 UTC] [DEBUG   ] [STEP 143] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:25:41 UTC] [DEBUG   ] [STEP 143] Start time (UTC): 2026-09-20T12:25:41.237363+00:00
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] 
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] STEP PURPOSE
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] --------------------------------------------------------------------------------
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   Step 143: Comet non-gravitational acceleration channel (step_b107).
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   Published NG parameters are used throughout this work only as an
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   exclusion control (the NG-clean subsets).  They are never read as an
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   observable.  Under the boundary-slip picture they should carry the
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   anomaly in a specific way: a proper-time slip absorbed by a
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   pure-gravity fit must leak into whatever free parameter soaks up a
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   timing error, and in the Marsden formulation that parameter is the
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   transverse NG term A2 (the component that changes the fitted orbital
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   period).  The Warsaw catalogue publishes A1/A2/A3 with uncertainties
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   plus the outgassing-peak time shift tau for every comet whose orbit
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   required an NG solution (tableb4, J/A+A/567/A126).
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   This step reads the NG record as a directional channel against the
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   declared cap (theta < 60 deg to the (34,-13) transit axis, taken from
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   the step_b30 per-comet record):
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   T1  NG-model incidence: fraction of the Warsaw cohort fitted with an
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   NG orbit (tablea1 Model column), in-cap vs out-cap.
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   T2  Transverse leakage: signed A2 and significance-weighted A2/e_A2
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   in-cap vs out-cap, plus A2 against cos(theta) over the full cohort.
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   The slip is time-domain; A2 is the timing parameter.
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   T3  Radial/normal controls: the same tests on A1 and A3 -- a genuine
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   boundary signal should load preferentially into the transverse
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   component, not uniformly into all three.
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   T4  Time-shift channel: the fitted outgassing-peak offset tau in-cap
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   vs out-cap.
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   T5  Confound audit: NG solutions are preferentially fitted to
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   well-observed, brighter comets -- n_obs and arc-length medians
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   in-cap vs out-cap among NG members, and an n_obs-matched
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   sensitivity bound on the T2 contrast.
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   T6  Era note: the Warsaw NG record is pre-2011; the channel is
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   registered on the cohort that carries the declared anomaly.
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   T7  Independent replication: the same transverse-term cap contrast on
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   the JPL SBDB NG record (model_pars in the full-precision orbit
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   files), pre-2018 and post-2017 cohorts -- a second orbit pipeline
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   with no Warsaw input.
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   Outputs: results/step_b107_comet_ng_channel.json/.csv and
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143]   results/figures/supplementary/step_b107_comet_ng_channel.png.
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] --------------------------------------------------------------------------------
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] SCRIPT: scripts/steps/step_143_comet_ng_channel.py
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] SCRIPT SHA256: cf49bae86992208ffc0647d580722be87a8c7e279745311f2329570be2098b97
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] SCRIPT SIZE: 17327 bytes
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] ================================================================================
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] Comet non-gravitational acceleration channel
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] ================================================================================
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] joined Warsaw cohort n=97  in-cap=31  NG members=33
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] T1 NG incidence: in 11/31 vs out 22/66  p=0.823
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] NG members with theta: 33  in-cap=11
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] T2_transverse_A2: med_in=0.647 med_out=0.167 p=0.3  rho(cos)=+0.019 p=0.919
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] T2b_A2_signif: med_in=3.676 med_out=1.199 p=0.669  rho(cos)=+0.173 p=0.344
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] T3_radial_A1: med_in=2.558 med_out=6.243 p=0.502  rho(cos)=-0.305 p=0.0896
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] T3b_normal_A3: med_in=0 med_out=0 p=0.766  rho(cos)=-0.012 p=0.949
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] T4_tau: med_in=0 med_out=0 p=0.117  rho(cos)=-0.188 p=0.304
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] T2c signed A2: in-cap mean +72.5 (frac>0 0.80) vs out +260
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] T6 A2 vs theta: rho=+0.130 p=0.477 (n=32)
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] T7 SBDB replication pre2018: n=47 A2 med_in=2.73e-10 med_out=-1.09e-09 p=0.684
-[2026-09-20 12:25:41 UTC] [INFO    ] [STEP 143] T7 SBDB replication post2017: n=51 A2 med_in=-4.28e-09 med_out=-2.22e-09 p=0.672
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] verdict: NG CHANNEL TRANSVERSE-SELECTIVE ELEVATION, UNDERPOWERED: NG incidence in 11/31 vs out 22/66 (p=0.823); transverse A2 contrast med 0.647 vs 0.167 (3.9x), p=0.3 at n_in=10.  The NG record is read as an observable for the first time: a boundary slip absorbed by pure-gravity fits must leak into the fitted transverse term.  The transverse component -- the time-domain direction -- is the only elevated channel (radial A1 and normal A3 flat), and the in-cap fraction of positive A2 runs 8/10; the contrast is sign-consistent with time-domain loading but unresolved at this membership.
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Saving data: step_b107_comet_ng_channel.json
-[2026-09-20 12:25:42 UTC] [DEBUG   ] [STEP 143]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b107_comet_ng_channel.json
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]   Output: step_b107_comet_ng_channel.json
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Saving data: step_b107_comet_ng_channel.csv
-[2026-09-20 12:25:42 UTC] [DEBUG   ] [STEP 143]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b107_comet_ng_channel.csv
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]   Output: step_b107_comet_ng_channel.csv
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Saving data: step_b107_comet_ng_channel.png
-[2026-09-20 12:25:42 UTC] [DEBUG   ] [STEP 143]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b107_comet_ng_channel.png
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]   Output: step_b107_comet_ng_channel.png
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] TEST SUMMARY:
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] {
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]  "ng_incidence_differs": false,
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]  "a2_cap_contrast_p": 0.2998652374243521,
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]  "a2_vs_theta_p": 0.47653042810790036,
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]  "n_ng_members": 33,
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]  "n_ng_in_cap": 11
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] }
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] VERDICT: NG CHANNEL TRANSVERSE-SELECTIVE ELEVATION, UNDERPOWERED: NG incidence in 11/31 vs out 22/66 (p=0.823); transverse A2 contrast med 0.647 vs 0.167 (3.9x), p=0.3 at n_in=10.  The NG record is read as an observable for the first time: a boundary slip absorbed by pure-gravity fits must leak into the fitted transverse term.  The transverse component -- the time-domain direction -- is the only elevated channel (radial A1 and normal A3 flat), and the in-cap fraction of positive A2 runs 8/10; the contrast is sign-consistent with time-domain loading but unresolved at this membership.
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] 
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] ================================================================================
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] STEP SUMMARY: step_143_comet_ng_channel
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] ================================================================================
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Step Number: 143
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Status: SUCCESS
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Duration: 0.85s
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Log Records Emitted: 89
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Output Files: 3
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_143_comet_ng_channel.log
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] 
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Generated 3 output file(s):
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]   • step_b107_comet_ng_channel.json: 5.22 KB [sha256 66ec6a996cc6cb34]
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]   • step_b107_comet_ng_channel.csv: 8.21 KB [sha256 2bf2f8b4036fd972]
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]   • step_b107_comet_ng_channel.png: 194.20 KB [sha256 1cf15134b51b6bf8]
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] ================================================================================
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] STEP 143 COMPLETE: SUCCESS
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_143_comet_ng_channel_provenance.json
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] 
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] ================================================================================
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] EXECUTIVE SUMMARY
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] ================================================================================
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Step: step_143_comet_ng_channel (Step 143)
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Status: SUCCESS
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Duration: 0.85s
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Log Records: 100
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Output Files: 3
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] Key Outputs:
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]   - step_b107_comet_ng_channel.json (5.22 KB)
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]   - step_b107_comet_ng_channel.csv (8.21 KB)
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143]   - step_b107_comet_ng_channel.png (194.20 KB)
-[2026-09-20 12:25:42 UTC] [INFO    ] [STEP 143] ================================================================================
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] LOGGER INITIALIZED: step_143_comet_ng_channel (Step 143)
+[2026-09-21 15:17:36 UTC] [DEBUG   ] [STEP 143] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_143_comet_ng_channel.log
+[2026-09-21 15:17:36 UTC] [DEBUG   ] [STEP 143] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:17:36 UTC] [DEBUG   ] [STEP 143] Start time (UTC): 2026-09-21T15:17:36.257961+00:00
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] 
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] STEP PURPOSE
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] --------------------------------------------------------------------------------
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   Step 143: Comet non-gravitational acceleration channel (step_b107).
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   Published NG parameters are used throughout this work only as an
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   exclusion control (the NG-clean subsets).  They are never read as an
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   observable.  Under the boundary-slip picture they should carry the
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   anomaly in a specific way: a proper-time slip absorbed by a
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   pure-gravity fit must leak into whichever free parameter absorbs a
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   timing error, and in the Marsden formulation that parameter is the
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   transverse NG term A2 (the component that changes the fitted orbital
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   period).  The Warsaw catalogue publishes A1/A2/A3 with uncertainties
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   plus the outgassing-peak time shift tau for every comet whose orbit
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   required an NG solution (tableb4, J/A+A/567/A126).
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   This step reads the NG record as a directional channel against the
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   declared cap (theta < 60 deg to the (34,-13) transit axis, taken from
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   the step_b30 per-comet record):
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   T1  NG-model incidence: fraction of the Warsaw cohort fitted with an
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   NG orbit (tablea1 Model column), in-cap vs out-cap.
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   T2  Transverse leakage: signed A2 and significance-weighted A2/e_A2
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   in-cap vs out-cap, plus A2 against cos(theta) over the full cohort.
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   The slip is time-domain; A2 is the timing parameter.
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   T3  Radial/normal controls: the same tests on A1 and A3 -- a genuine
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   boundary signal should load preferentially into the transverse
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   component, not uniformly into all three.
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   T4  Time-shift channel: the fitted outgassing-peak offset tau in-cap
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   vs out-cap.
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   T5  Confound audit: NG solutions are preferentially fitted to
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   well-observed, brighter comets -- n_obs and arc-length medians
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   in-cap vs out-cap among NG members, and an n_obs-matched
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   sensitivity bound on the T2 contrast.
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   T6  Era note: the Warsaw NG record is pre-2011; the channel is
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   registered on the cohort that carries the declared anomaly.
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   T7  Independent replication: the same transverse-term cap contrast on
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   the JPL SBDB NG record (model_pars in the full-precision orbit
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   files), pre-2018 and post-2017 cohorts -- a second orbit pipeline
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   with no Warsaw input.
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   Outputs: results/step_b107_comet_ng_channel.json/.csv and
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143]   results/figures/supplementary/step_b107_comet_ng_channel.png.
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] --------------------------------------------------------------------------------
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] SCRIPT: scripts/steps/step_143_comet_ng_channel.py
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] SCRIPT SHA256: dfcc29aadf350d4ebc28e7b6569bc8080de8da20579570ef3d079999268796c2
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] SCRIPT SIZE: 17413 bytes
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] ================================================================================
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] Comet non-gravitational acceleration channel
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] ================================================================================
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] joined Warsaw cohort n=97  in-cap=31  NG members=33
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] T1 NG incidence: in 11/31 vs out 22/66  p=0.823
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] NG members with theta: 33  in-cap=11
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] T2_transverse_A2: med_in=0.647 med_out=0.167 p=0.3  rho(cos)=+0.019 p=0.919
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] T2b_A2_signif: med_in=3.676 med_out=1.199 p=0.669  rho(cos)=+0.173 p=0.344
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] T3_radial_A1: med_in=2.558 med_out=6.243 p=0.502  rho(cos)=-0.305 p=0.0896
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] T3b_normal_A3: med_in=0 med_out=0 p=0.766  rho(cos)=-0.012 p=0.949
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] T4_tau: med_in=0 med_out=0 p=0.117  rho(cos)=-0.188 p=0.304
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] T2c signed A2: in-cap mean +72.5 (frac>0 0.80) vs out +260
+[2026-09-21 15:17:36 UTC] [INFO    ] [STEP 143] T6 A2 vs theta: rho=+0.130 p=0.477 (n=32)
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] T7 SBDB replication pre2018: n=47 A2 med_in=2.73e-10 med_out=-1.09e-09 p=0.684
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] T7 SBDB replication post2017: n=35 A2 med_in=-3.2e-09 med_out=-1.8e-09 p=0.686
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] verdict: NG CHANNEL TRANSVERSE-SELECTIVE ELEVATION, UNDERPOWERED: NG incidence in 11/31 vs out 22/66 (p=0.823); transverse A2 contrast med 0.647 vs 0.167 (3.9x), p=0.3 at n_in=10.  The NG record is read as an observable for the first time: a boundary slip absorbed by pure-gravity fits must leak into the fitted transverse term.  The transverse component -- the time-domain direction -- is the only elevated channel (radial A1 and normal A3 flat), and the in-cap fraction of positive A2 runs 8/10; the contrast is sign-consistent with time-domain loading but unresolved at this membership.
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Saving data: step_b107_comet_ng_channel.json
+[2026-09-21 15:17:37 UTC] [DEBUG   ] [STEP 143]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b107_comet_ng_channel.json
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]   Output: step_b107_comet_ng_channel.json
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Saving data: step_b107_comet_ng_channel.csv
+[2026-09-21 15:17:37 UTC] [DEBUG   ] [STEP 143]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b107_comet_ng_channel.csv
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]   Output: step_b107_comet_ng_channel.csv
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Saving data: step_b107_comet_ng_channel.png
+[2026-09-21 15:17:37 UTC] [DEBUG   ] [STEP 143]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b107_comet_ng_channel.png
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]   Output: step_b107_comet_ng_channel.png
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] TEST SUMMARY:
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] {
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]  "ng_incidence_differs": false,
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]  "a2_cap_contrast_p": 0.2998652374243521,
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]  "a2_vs_theta_p": 0.47653042810790036,
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]  "n_ng_members": 33,
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]  "n_ng_in_cap": 11
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] }
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] VERDICT: NG CHANNEL TRANSVERSE-SELECTIVE ELEVATION, UNDERPOWERED: NG incidence in 11/31 vs out 22/66 (p=0.823); transverse A2 contrast med 0.647 vs 0.167 (3.9x), p=0.3 at n_in=10.  The NG record is read as an observable for the first time: a boundary slip absorbed by pure-gravity fits must leak into the fitted transverse term.  The transverse component -- the time-domain direction -- is the only elevated channel (radial A1 and normal A3 flat), and the in-cap fraction of positive A2 runs 8/10; the contrast is sign-consistent with time-domain loading but unresolved at this membership.
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] 
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] ================================================================================
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] STEP SUMMARY: step_143_comet_ng_channel
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] ================================================================================
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Step Number: 143
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Status: SUCCESS
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Duration: 1.12s
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Log Records Emitted: 89
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Output Files: 3
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_143_comet_ng_channel.log
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] 
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Generated 3 output file(s):
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]   • step_b107_comet_ng_channel.json: 5.22 KB [sha256 6c7fd99693bf0d45]
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]   • step_b107_comet_ng_channel.csv: 8.21 KB [sha256 2bf2f8b4036fd972]
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]   • step_b107_comet_ng_channel.png: 194.20 KB [sha256 1cf15134b51b6bf8]
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] 
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]   RESULT SNAPSHOT [step_b107_comet_ng_channel.json]:
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]     test_summary:
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       ng_incidence_differs = False
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       a2_cap_contrast_p = 0.29986524
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       a2_vs_theta_p = 0.47653043
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_ng_members = 33
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_ng_in_cap = 11
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]     T1_ng_incidence:
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_ng_in = 11
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_in = 31
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_ng_out = 22
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_out = 66
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       frac_in = 0.35483871
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       frac_out = 0.33333333
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       p_fisher_2sided = 0.82294503
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]     T2_transverse_A2:
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_in = 10
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_out = 22
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       med_in = 0.647
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       med_out = 0.167
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       mean_in = 72.517762
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       mean_out = 260.36402
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       p_mw = 0.29986524
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       rho_vs_costheta = 0.018695015
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       p_spearman = 0.91910902
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]     T2b_A2_signif:
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_in = 10
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_out = 22
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       med_in = 3.6764137
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       med_out = 1.1990027
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       mean_in = 2.5078014
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       mean_out = 1.4806601
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       p_mw = 0.66946258
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       rho_vs_costheta = 0.17302053
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       p_spearman = 0.34364911
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       note = A2/e_A2 significance-weighted
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]     T3_radial_A1:
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_in = 10
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_out = 22
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       med_in = 2.5585
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       med_out = 6.243
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       mean_in = 365.65109
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       mean_out = 1003.9726
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       p_mw = 0.50233495
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       rho_vs_costheta = -0.30498534
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       p_spearman = 0.089635301
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]     T3b_normal_A3:
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_in = 10
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       n_out = 22
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       med_in = 0
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       med_out = 0
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       mean_in = 0.944053
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       mean_out = -3.1726659
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       p_mw = 0.76627187
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       rho_vs_costheta = -0.011677886
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] ================================================================================
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] STEP 143 COMPLETE: SUCCESS
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_143_comet_ng_channel_provenance.json
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] 
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] ================================================================================
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] EXECUTIVE SUMMARY
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] ================================================================================
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Step: step_143_comet_ng_channel (Step 143)
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Status: SUCCESS
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Duration: 1.12s
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Log Records: 157
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Output Files: 3
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] Key Outputs:
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]   - step_b107_comet_ng_channel.json (5.22 KB)
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]   - step_b107_comet_ng_channel.csv (8.21 KB)
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143]   - step_b107_comet_ng_channel.png (194.20 KB)
+[2026-09-21 15:17:37 UTC] [INFO    ] [STEP 143] ================================================================================

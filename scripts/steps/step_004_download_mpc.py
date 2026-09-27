@@ -141,6 +141,21 @@ def fetch(url, dest, note, prov):
         link.symlink_to(f"{dest.parent.name}/{dest.name}")
 
 
+def _merge_prov(prov_path, doc):
+    """Merge this step's fetch records into any existing ledger so
+    entries written by other steps (obs/, sbdb_fp/, obscodes.json,
+    post-hoc audit records) are preserved rather than clobbered."""
+    if prov_path.exists():
+        try:
+            old = json.loads(prov_path.read_text())
+            old_files = old.get("files", {})
+            old_files.update(doc["files"])
+            doc["files"] = old_files
+        except json.JSONDecodeError:
+            pass
+    prov_path.write_text(json.dumps(doc, indent=2))
+
+
 def main():
     logger.header("MPC / JPL element-file download")
     OUT.mkdir(parents=True, exist_ok=True)
@@ -151,7 +166,7 @@ def main():
            "generated_utc": datetime.now(timezone.utc).isoformat(),
            "files": prov}
     prov_path = OUT / "provenance.json"
-    prov_path.write_text(json.dumps(doc, indent=2))
+    _merge_prov(prov_path, doc)
     logger.data_save(prov_path)
     logger.progress("MPC download complete -> data/raw/mpc/")
 
@@ -163,7 +178,7 @@ def main():
             "generated_utc": datetime.now(timezone.utc).isoformat(),
             "files": sprov}
     sprov_path = SPICE_OUT / "provenance.json"
-    sprov_path.write_text(json.dumps(sdoc, indent=2))
+    _merge_prov(sprov_path, sdoc)
     logger.data_save(sprov_path)
     logger.progress("SPICE kernel download complete -> data/raw/spice/")
 

@@ -1,4 +1,5 @@
 """Mathematical controls, not empirical TEP evidence."""
+import json
 import math
 from pathlib import Path
 from types import SimpleNamespace
@@ -113,3 +114,17 @@ def test_pdf_css_is_css_not_nested_style_markup():
     assert '<style' not in css
     assert 'page-break-after: avoid' in css
     assert 'orphans: 3' in css
+
+
+def test_disformal_branch_preserves_sign_separately_from_unsigned_observable():
+    result_path = Path(__file__).resolve().parents[1] / 'results' / 'step_b131_disformal_slip.json'
+    result = json.loads(result_path.read_text())
+    comparison = result['branch_comparison']
+    admissible = comparison['admissible_signed_transport_contrast_yr']
+    excluded = comparison['excluded_signed_transport_contrast_yr']
+    amplitude = comparison['observable_amplitude_contrast_yr']
+
+    assert result['constants']['B0'] > 0
+    assert admissible == pytest.approx(-excluded)
+    assert abs(admissible) == pytest.approx(amplitude)
+    assert amplitude == pytest.approx(result['headline']['measured_contrast_yr'], abs=1e-10)

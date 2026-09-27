@@ -151,7 +151,7 @@ def integrate_leg(ro,et,direction):
     sim.add(x=rvec[0]+ps[0],y=rvec[1]+ps[1],z=rvec[2]+ps[2],
             vx=vvec[0]+vs[0],vy=vvec[1]+vs[1],vz=vvec[2]+vs[2])
     nc=sim.N-1
-    sim.integrator="ias15"
+    sim.integrator="ias15"; sim.exit_min_distance=0.001   # collision scale: bound against IAS15 step collapse
     t=direction*DT_OUT
     while abs(t)<T_MAX:
         sim.integrate(t,exact_finish_time=0)

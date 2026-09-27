@@ -1,210 +1,275 @@
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] LOGGER INITIALIZED: step_096_sclk_clock_audit (Step 096)
-[2026-09-20 12:18:40 UTC] [DEBUG   ] [STEP 096] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_096_sclk_clock_audit.log
-[2026-09-20 12:18:40 UTC] [DEBUG   ] [STEP 096] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:18:40 UTC] [DEBUG   ] [STEP 096] Start time (UTC): 2026-09-20T12:18:40.756770+00:00
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] 
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] STEP PURPOSE
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] --------------------------------------------------------------------------------
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   TEP-9 step 096 -- Voyager SCLK clock-correction audit
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   The Voyager spacecraft clock (SCLK) is not free-running in the data
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   record: JPL maintains a SCLK -> ephemeris-time correlation file
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   (SCLKvSCET) that is re-fitted whenever ground calibration shows the
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   onboard oscillator has drifted.  Each NAIF SCLK kernel release folds
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   the full history of those calibrations into the SCLK01_COEFFICIENTS
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   triplets (SCLK ticks, TDB seconds, parallel rate in s per most
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   significant field unit).  The rate column is therefore the measured
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   onboard-oscillator rate relative to terrestrial time at every
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   calibration epoch -- i.e. the complete resync / re-rate history of
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   the mission clock, exactly the dataset expected if the onboard clock
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   ever had to be corrected against anomalous drift.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   Record classes
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   * fine calibration records: rate within 0.5 s of the dominant cruise
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   mode (2880 s per MSF unit); these are the measured-oscillator-rate
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   channel.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   * rate-mode records: recurring commanded rates (e.g. 2820.000x, the
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   47/48 programmed rate state) and the coarse early-mission records
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   of the pre-1992 reconstruction -- engineering states, not drift.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   * the 1979-03-05 Jupiter-encounter sequence is dense calibration
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   (~hourly records) and is retained but flagged.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   Physical framing for TEP
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   Under the conformal lapse A(phi) an onboard oscillator rescales with
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   local physics, but the calibration record bridges spacecraft-local
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   time to the terrestrial timescale: the measured rate is the *ratio*
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   of the onboard rate to the ground rate at that instant, so a lapse
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   contrast between the spacecraft's location and Earth appears
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   directly as a fractional rate offset (modulo light-path lapse
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   gradients folded into the DSN model).  The comet channel requires a
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   cumulative slip accumulated along a transit through the boundary
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   sector; the SCLK channel bounds the *instantaneous* onboard-vs-
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   ground lapse contrast along Voyager's trajectory.  These are
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   different observables of the same field -- the step computes the
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   bound and tests its correlation with the boundary crossings and
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   radius rather than claiming a detection or a falsification.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   Tests
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   1. Ageing-detrended residual distribution of the fine-calibration
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   rate record (quartz ageing is smooth; steps are the signal).
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   2. Crossing-window tests: mean |residual| within +/-90 d and +/-365 d
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   of the termination-shock and heliopause crossings vs the global
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   residual distribution.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   3. Radius trend: Spearman correlation of |residual| with
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   heliocentric radius (a sustained lapse gradient along the path
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   would imprint a radial trend; radius is degenerate with mission
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   epoch on the outbound trajectory and is reported with that
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   caveat).
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   4. Signed-offset step tests at each crossing: the channel-relevant
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   lapse signature -- a persistent signed rate offset after the
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   boundary -- tested by a step term in the rate fit and a
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   before/after window contrast.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   5. Trajectory geometry: angular separation of each spacecraft's
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   asymptote from the TNO axis and anti-axis -- the two spacecraft
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   sample different field directions (V1 near the mirror cap).
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   6. VG1 vs VG2 as independent clocks.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   7. Drift-interval channel (New Horizons control): the implied mean
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   oscillator drift rate within each calibration segment (phase
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   residual / segment length), reproducing the correction-interval
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   drift staircase of the earlier TVP spacecraft-clock study.  New
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   Horizons supplies the no-crossing interior baseline: launched
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   2006, still inside the heliosphere at ~60 AU, asymptote outside
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   both field caps.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   8. Journey-drift channel: every correction interval is placed on
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   the reconstructed trajectory -- heliocentric radius, ecliptic
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   position, speed, radial velocity, direction of travel relative
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   to the field axis, screening region (inner heliosphere /
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   heliosheath / VLISM), and distance to each giant-planet well.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   The TEP density-screening picture predicts the unscreened
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   lapse contrast should peak in the low-density heliosheath
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   shell and be suppressed inside planetary wells; the step
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   tests drift against each coordinate, contrasts regions
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   (with cadence-matched controls), audits planetary-encounter
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   windows, and integrates the cumulative proper-time wander.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   Radius, epoch, and velocity direction are mutually
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   degenerate on an outbound trajectory -- the correlations
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   are reported with that caveat and the cadence/epoch
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   sensitivity tests are run explicitly.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   Honesty notes encoded in the output
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   * SCLK coefficients are a JPL reconstruction (SCLKvSCET), not raw
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   oscillator counts; cadence is irregular (~monthly, sparser late).
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   * ppm-level deviations are dominated by ordinary oscillator physics;
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   the TEP statistic is correlation with crossings/radius, not the
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   deviations themselves.
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   * The measured bound |dnu| < ~5e-5 constrains the *instantaneous*
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   onboard-vs-ground lapse contrast; a cumulative comet slip of
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   ~1e-3 built up across a transit region is not excluded by this
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   channel unless the boundary is sharp *and* the oscillator couples
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   the same way orbital dynamics does -- a process-dependence the
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   TEP framework itself predicts may differ (electronic vs nuclear
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   vs macroscopic-dynamical clocks).
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   Inputs
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   data/raw/naif/vg100051.tsc, vg200051.tsc, new_horizons_3381.tsc
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   data/raw/naif/Voyager_1.a54206u_V0.2_merged.bsp
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   data/raw/naif/Voyager_2.m05016u.merged.bsp
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   data/raw/naif/nh_*.bsp (recon+pred trajectory chain, 2006-2033)
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   data/raw/naif/naif0012.tls
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   data/raw/literature/literature_anchors.json
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   Outputs
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   results/step_b60_sclk_audit.json
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   results/step_b60_sclk_rates.csv
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   results/step_b60_sclk_phase_boundaries.csv
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   results/step_b60_sclk_drift.csv
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   results/step_b60_sclk_journey.csv
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   results/figures/supplementary/step_b60_sclk_audit.png
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096]   results/figures/supplementary/step_b60_sclk_journey.png
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] --------------------------------------------------------------------------------
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] SCRIPT: scripts/steps/step_096_sclk_clock_audit.py
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] SCRIPT SHA256: 6abdf8f19f5d3c3128cd60bbafe15d98210f96e4c84700d663b0d3a79af90459
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] SCRIPT SIZE: 86817 bytes
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] ================================================================================
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] Voyager SCLK clock-correction audit
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] ================================================================================
-[2026-09-20 12:18:40 UTC] [DEBUG   ] [STEP 096] 
-[2026-09-20 12:18:40 UTC] [DEBUG   ] [STEP 096] --- VG1: parsing SCLK kernel ---
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] METRIC: n_partitions = 15 SCLK partitions
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] METRIC: n_records = 1185 coefficient records
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] METRIC: n_calibration = 1144 fine calibration records
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] METRIC: n_rate_mode = 41 rate-mode records
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] METRIC: ageing_slope_ppm_per_yr = 0.0112 linear drift trend
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] METRIC: resid_rms_ppm = 4.802 scatter about ageing trend
-[2026-09-20 12:18:40 UTC] [INFO    ] [STEP 096] METRIC: resid_abs_p99_ppm = 13.62 99th pct |residual|
-[2026-09-20 12:18:41 UTC] [DEBUG   ] [STEP 096] 
-[2026-09-20 12:18:41 UTC] [DEBUG   ] [STEP 096] --- VG2: parsing SCLK kernel ---
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: n_partitions = 15 SCLK partitions
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: n_records = 1448 coefficient records
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: n_calibration = 1407 fine calibration records
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: n_rate_mode = 41 rate-mode records
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: ageing_slope_ppm_per_yr = 0.053 linear drift trend
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: resid_rms_ppm = 5.623 scatter about ageing trend
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: resid_abs_p99_ppm = 18.13 99th pct |residual|
-[2026-09-20 12:18:41 UTC] [DEBUG   ] [STEP 096] 
-[2026-09-20 12:18:41 UTC] [DEBUG   ] [STEP 096] --- NH1: parsing SCLK kernel ---
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: n_partitions = 3 SCLK partitions
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: n_records = 3382 coefficient records
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: n_calibration = 3382 fine calibration records
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: n_rate_mode = 0 rate-mode records
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: ageing_slope_ppm_per_yr = -0.0004 linear drift trend
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: resid_rms_ppm = 0.003 scatter about ageing trend
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: resid_abs_p99_ppm = 0.01 99th pct |residual|
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_rates.csv
-[2026-09-20 12:18:41 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b60_sclk_rates.csv
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_rates.csv
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_phase_boundaries.csv
-[2026-09-20 12:18:41 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b60_sclk_phase_boundaries.csv
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_phase_boundaries.csv
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_drift.csv
-[2026-09-20 12:18:41 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b60_sclk_drift.csv
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_drift.csv
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_journey.csv
-[2026-09-20 12:18:41 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b60_sclk_journey.csv
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_journey.csv
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: cross_craft_radius_rho = 0.619 VG1-vs-VG2 drift profile at matched radius
-[2026-09-20 12:18:41 UTC] [INFO    ] [STEP 096] METRIC: cross_craft_epoch_rho = 0.179 VG1-vs-VG2 drift profile at matched epoch
-[2026-09-20 12:18:42 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_audit.png
-[2026-09-20 12:18:42 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b60_sclk_audit.png
-[2026-09-20 12:18:42 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_audit.png
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_journey.png
-[2026-09-20 12:18:43 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b60_sclk_journey.png
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_journey.png
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_audit.json
-[2026-09-20 12:18:43 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b60_sclk_audit.json
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_audit.json
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] ✓ SCLK clock audit complete
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] 
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] ================================================================================
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] STEP SUMMARY: step_096_sclk_clock_audit
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] ================================================================================
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Step Number: 096
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Status: SUCCESS
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Duration: 3.11s
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Log Records Emitted: 177
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Output Files: 7
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_096_sclk_clock_audit.log
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] 
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Generated 7 output file(s):
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_rates.csv: 678.52 KB [sha256 c77be72d5f106f02]
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_phase_boundaries.csv: 207.10 KB [sha256 1fbea1e06e2b2bd8]
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_drift.csv: 235.53 KB [sha256 c772f63dd70300cb]
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_journey.csv: 944.28 KB [sha256 54aebfab650308a6]
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_audit.png: 1214.87 KB [sha256 e8653bc6a9154636]
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_journey.png: 2305.11 KB [sha256 780ea869b4c2b896]
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_audit.json: 359.60 KB [sha256 7e6ff97e1acfad43]
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] ================================================================================
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] STEP 096 COMPLETE: SUCCESS
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_096_sclk_clock_audit_provenance.json
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] 
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] ================================================================================
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] EXECUTIVE SUMMARY
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] ================================================================================
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Step: step_096_sclk_clock_audit (Step 096)
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Status: SUCCESS
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Duration: 3.11s
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Log Records: 192
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Output Files: 7
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] Key Outputs:
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_rates.csv (678.52 KB)
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_phase_boundaries.csv (207.10 KB)
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_drift.csv (235.53 KB)
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_journey.csv (944.28 KB)
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_audit.png (1214.87 KB)
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_journey.png (2305.11 KB)
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_audit.json (359.60 KB)
-[2026-09-20 12:18:43 UTC] [INFO    ] [STEP 096] ================================================================================
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] LOGGER INITIALIZED: step_096_sclk_clock_audit (Step 096)
+[2026-09-21 15:11:03 UTC] [DEBUG   ] [STEP 096] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_096_sclk_clock_audit.log
+[2026-09-21 15:11:03 UTC] [DEBUG   ] [STEP 096] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:11:03 UTC] [DEBUG   ] [STEP 096] Start time (UTC): 2026-09-21T15:11:03.515137+00:00
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] 
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] STEP PURPOSE
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] --------------------------------------------------------------------------------
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   TEP-9 step 096 -- Voyager SCLK clock-correction audit
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   The Voyager spacecraft clock (SCLK) is not free-running in the data
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   record: JPL maintains a SCLK -> ephemeris-time correlation file
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   (SCLKvSCET) that is re-fitted whenever ground calibration shows the
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   onboard oscillator has drifted.  Each NAIF SCLK kernel release folds
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   the full history of those calibrations into the SCLK01_COEFFICIENTS
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   triplets (SCLK ticks, TDB seconds, parallel rate in s per most
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   significant field unit).  The rate column is therefore the measured
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   onboard-oscillator rate relative to terrestrial time at every
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   calibration epoch -- i.e. the complete resync / re-rate history of
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   the mission clock, exactly the dataset expected if the onboard clock
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   ever had to be corrected against anomalous drift.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   Record classes
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   * fine calibration records: rate within 0.5 s of the dominant cruise
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   mode (2880 s per MSF unit); these are the measured-oscillator-rate
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   channel.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   * rate-mode records: recurring commanded rates (e.g. 2820.000x, the
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   47/48 programmed rate state) and the coarse early-mission records
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   of the pre-1992 reconstruction -- engineering states, not drift.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   * the 1979-03-05 Jupiter-encounter sequence is dense calibration
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   (~hourly records) and is retained but flagged.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   Physical framing for TEP
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   Under the conformal lapse A(phi) an onboard oscillator rescales with
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   local physics, but the calibration record bridges spacecraft-local
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   time to the terrestrial timescale: the measured rate is the *ratio*
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   of the onboard rate to the ground rate at that instant, so a lapse
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   contrast between the spacecraft's location and Earth appears
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   directly as a fractional rate offset (modulo light-path lapse
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   gradients folded into the DSN model).  The comet channel requires a
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   cumulative slip accumulated along a transit through the boundary
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   sector; the SCLK channel bounds the *instantaneous* onboard-vs-
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   ground lapse contrast along Voyager's trajectory.  These are
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   different observables of the same field -- the step computes the
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   bound and tests its correlation with the boundary crossings and
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   radius rather than claiming a detection or a falsification.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   Tests
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   1. Ageing-detrended residual distribution of the fine-calibration
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   rate record (quartz ageing is smooth; steps are the signal).
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   2. Crossing-window tests: mean |residual| within +/-90 d and +/-365 d
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   of the termination-shock and heliopause crossings vs the global
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   residual distribution.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   3. Radius trend: Spearman correlation of |residual| with
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   heliocentric radius (a sustained lapse gradient along the path
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   would imprint a radial trend; radius is degenerate with mission
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   epoch on the outbound trajectory and is reported with that
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   caveat).
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   4. Signed-offset step tests at each crossing: the channel-relevant
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   lapse signature -- a persistent signed rate offset after the
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   boundary -- tested by a step term in the rate fit and a
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   before/after window contrast.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   5. Trajectory geometry: angular separation of each spacecraft's
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   asymptote from the TNO axis and anti-axis -- the two spacecraft
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   sample different field directions (V1 near the mirror cap).
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   6. VG1 vs VG2 as independent clocks.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   7. Drift-interval channel (New Horizons control): the implied mean
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   oscillator drift rate within each calibration segment (phase
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   residual / segment length), reproducing the correction-interval
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   drift staircase of the earlier TVP spacecraft-clock study.  New
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   Horizons supplies the no-crossing interior baseline: launched
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   2006, still inside the heliosphere at ~60 AU, asymptote outside
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   both field caps.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   8. Journey-drift channel: every correction interval is placed on
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   the reconstructed trajectory -- heliocentric radius, ecliptic
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   position, speed, radial velocity, direction of travel relative
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   to the field axis, screening region (inner heliosphere /
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   heliosheath / VLISM), and distance to each giant-planet well.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   The TEP density-screening picture predicts the unscreened
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   lapse contrast should peak in the low-density heliosheath
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   shell and be suppressed inside planetary wells; the step
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   tests drift against each coordinate, contrasts regions
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   (with cadence-matched controls), audits planetary-encounter
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   windows, and integrates the cumulative proper-time wander.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   Radius, epoch, and velocity direction are mutually
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   degenerate on an outbound trajectory -- the correlations
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   are reported with that caveat and the cadence/epoch
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   sensitivity tests are run explicitly.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   Honesty notes encoded in the output
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   * SCLK coefficients are a JPL reconstruction (SCLKvSCET), not raw
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   oscillator counts; cadence is irregular (~monthly, sparser late).
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   * ppm-level deviations are dominated by ordinary oscillator physics;
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   the TEP statistic is correlation with crossings/radius, not the
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   deviations themselves.
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   * The measured bound |dnu| < ~5e-5 constrains the *instantaneous*
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   onboard-vs-ground lapse contrast; a cumulative comet slip of
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   ~1e-3 built up across a transit region is not excluded by this
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   channel unless the boundary is sharp *and* the oscillator couples
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   the same way orbital dynamics does -- a process-dependence the
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   TEP framework itself predicts may differ (electronic vs nuclear
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   vs macroscopic-dynamical clocks).
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   Inputs
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   data/raw/naif/vg100051.tsc, vg200051.tsc, new_horizons_3381.tsc
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   data/raw/naif/Voyager_1.a54206u_V0.2_merged.bsp
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   data/raw/naif/Voyager_2.m05016u.merged.bsp
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   data/raw/naif/nh_*.bsp (recon+pred trajectory chain, 2006-2033)
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   data/raw/naif/naif0012.tls
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   data/raw/literature/literature_anchors.json
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   Outputs
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   results/step_b60_sclk_audit.json
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   results/step_b60_sclk_rates.csv
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   results/step_b60_sclk_phase_boundaries.csv
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   results/step_b60_sclk_drift.csv
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   results/step_b60_sclk_journey.csv
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   results/figures/supplementary/step_b60_sclk_audit.png
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096]   results/figures/supplementary/step_b60_sclk_journey.png
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] --------------------------------------------------------------------------------
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] SCRIPT: scripts/steps/step_096_sclk_clock_audit.py
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] SCRIPT SHA256: 6abdf8f19f5d3c3128cd60bbafe15d98210f96e4c84700d663b0d3a79af90459
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] SCRIPT SIZE: 86817 bytes
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] ================================================================================
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] Voyager SCLK clock-correction audit
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] ================================================================================
+[2026-09-21 15:11:03 UTC] [DEBUG   ] [STEP 096] 
+[2026-09-21 15:11:03 UTC] [DEBUG   ] [STEP 096] --- VG1: parsing SCLK kernel ---
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: n_partitions = 15 SCLK partitions
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: n_records = 1185 coefficient records
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: n_calibration = 1144 fine calibration records
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: n_rate_mode = 41 rate-mode records
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: ageing_slope_ppm_per_yr = 0.0112 linear drift trend
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: resid_rms_ppm = 4.802 scatter about ageing trend
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: resid_abs_p99_ppm = 13.62 99th pct |residual|
+[2026-09-21 15:11:03 UTC] [DEBUG   ] [STEP 096] 
+[2026-09-21 15:11:03 UTC] [DEBUG   ] [STEP 096] --- VG2: parsing SCLK kernel ---
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: n_partitions = 15 SCLK partitions
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: n_records = 1448 coefficient records
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: n_calibration = 1407 fine calibration records
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: n_rate_mode = 41 rate-mode records
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: ageing_slope_ppm_per_yr = 0.053 linear drift trend
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: resid_rms_ppm = 5.623 scatter about ageing trend
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: resid_abs_p99_ppm = 18.13 99th pct |residual|
+[2026-09-21 15:11:03 UTC] [DEBUG   ] [STEP 096] 
+[2026-09-21 15:11:03 UTC] [DEBUG   ] [STEP 096] --- NH1: parsing SCLK kernel ---
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: n_partitions = 3 SCLK partitions
+[2026-09-21 15:11:03 UTC] [INFO    ] [STEP 096] METRIC: n_records = 3382 coefficient records
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] METRIC: n_calibration = 3382 fine calibration records
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] METRIC: n_rate_mode = 0 rate-mode records
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] METRIC: ageing_slope_ppm_per_yr = -0.0004 linear drift trend
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] METRIC: resid_rms_ppm = 0.003 scatter about ageing trend
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] METRIC: resid_abs_p99_ppm = 0.01 99th pct |residual|
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_rates.csv
+[2026-09-21 15:11:04 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b60_sclk_rates.csv
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_rates.csv
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_phase_boundaries.csv
+[2026-09-21 15:11:04 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b60_sclk_phase_boundaries.csv
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_phase_boundaries.csv
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_drift.csv
+[2026-09-21 15:11:04 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b60_sclk_drift.csv
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_drift.csv
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_journey.csv
+[2026-09-21 15:11:04 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b60_sclk_journey.csv
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_journey.csv
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] METRIC: cross_craft_radius_rho = 0.619 VG1-vs-VG2 drift profile at matched radius
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] METRIC: cross_craft_epoch_rho = 0.179 VG1-vs-VG2 drift profile at matched epoch
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_audit.png
+[2026-09-21 15:11:04 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b60_sclk_audit.png
+[2026-09-21 15:11:04 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_audit.png
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_journey.png
+[2026-09-21 15:11:05 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b60_sclk_journey.png
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_journey.png
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] Saving data: step_b60_sclk_audit.json
+[2026-09-21 15:11:05 UTC] [DEBUG   ] [STEP 096]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b60_sclk_audit.json
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]   Output: step_b60_sclk_audit.json
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] ✓ SCLK clock audit complete
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] 
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] ================================================================================
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] STEP SUMMARY: step_096_sclk_clock_audit
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] ================================================================================
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] Step Number: 096
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] Status: SUCCESS
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] Duration: 2.48s
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] Log Records Emitted: 177
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] Output Files: 7
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_096_sclk_clock_audit.log
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] 
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] Generated 7 output file(s):
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_rates.csv: 678.52 KB [sha256 c77be72d5f106f02]
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_phase_boundaries.csv: 207.10 KB [sha256 1fbea1e06e2b2bd8]
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_drift.csv: 235.53 KB [sha256 c772f63dd70300cb]
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_journey.csv: 944.28 KB [sha256 54aebfab650308a6]
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_audit.png: 1214.87 KB [sha256 e8653bc6a9154636]
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_journey.png: 2305.11 KB [sha256 780ea869b4c2b896]
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]   • step_b60_sclk_audit.json: 359.60 KB [sha256 7e6ff97e1acfad43]
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] 
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]   RESULT SNAPSHOT [step_b60_sclk_audit.json]:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     inputs:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       lsk = data/raw/naif/naif0012.tls
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       crossing_anchors = data/raw/literature/literature_anchors.json
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     inputs.sclk_kernels [n=3]
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     inputs.spk [n=9]
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.stats:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n_records = 1185
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n_calibration = 1144
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n_rate_mode = 41
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n_dense_cal = 7
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       ageing_slope_ppm_per_yr = 0.011210754
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       resid_rms_ppm = 4.8019332
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       resid_abs_p99_ppm = 13.624047
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.stats.cadence_days:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       median = 3.0166675
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       max = 352.99944
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.stats.radius_test:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       degeneracy_note = radius is monotonic in time on the outbound trajectory and |resid| measures scatter, no...
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.stats.radius_test.all_records:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       rho = 0.108
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       p = 0.00027253271
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n = 1137
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.stats.radius_test.post1990:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       rho = 0.128
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       p = 0.0010946543
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n = 644
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.crossing_tests.termination_shock:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       epoch_utc = 2004-12-16
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       radius_au = 94
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       citation = Stone et al. 2005, Science 309, 2017; Burlaga et al. 2005, Science 309, 2027
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.crossing_tests.termination_shock.pm90d:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n_records = 6
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       mean_abs_resid_ppm = 3.19
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       percentile_vs_global = 83.6
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.crossing_tests.termination_shock.pm365d:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n_records = 28
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       mean_abs_resid_ppm = 4.843
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       percentile_vs_global = 89
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.crossing_tests.heliopause:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       epoch_utc = 2012-08-25
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       radius_au = 121.6
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       citation = Gurnett et al. 2013, Science 341, 1489; Krimigis et al. 2013, Science 341, 144
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.crossing_tests.heliopause.pm90d:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n_records = 15
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       mean_abs_resid_ppm = 3.18
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       percentile_vs_global = 83.6
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.crossing_tests.heliopause.pm365d:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n_records = 41
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       mean_abs_resid_ppm = 3.658
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       percentile_vs_global = 85.6
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.step_tests.termination_shock:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       epoch_utc = 2004-12-16
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       radius_au = 94
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       citation = Stone et al. 2005, Science 309, 2017; Burlaga et al. 2005, Science 309, 2027
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       step_ppm = -0.114
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       step_frac = -1.1388628e-07
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       t_stat = -0.192
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       p_value = 0.84804499
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       p_value_log10 = -0.071581109
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]     craft.VG1.step_tests.termination_shock.window_365d:
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n_before = 16
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       n_after = 12
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] ================================================================================
+[2026-09-21 15:11:05 UTC] [INFO    ] [STEP 096] STEP 096 COMPLETE: SUCCESS
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_096_sclk_clock_audit_provenance.json
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] 
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] ================================================================================
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] EXECUTIVE SUMMARY
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] ================================================================================
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] Step: step_096_sclk_clock_audit (Step 096)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] Status: SUCCESS
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] Duration: 2.48s
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] Log Records: 257
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] Output Files: 7
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] Key Outputs:
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_rates.csv (678.52 KB)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_phase_boundaries.csv (207.10 KB)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_drift.csv (235.53 KB)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_journey.csv (944.28 KB)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_audit.png (1214.87 KB)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_journey.png (2305.11 KB)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096]   - step_b60_sclk_audit.json (359.60 KB)
+[2026-09-21 15:11:06 UTC] [INFO    ] [STEP 096] ================================================================================

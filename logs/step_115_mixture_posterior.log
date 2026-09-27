@@ -1,162 +1,218 @@
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] LOGGER INITIALIZED: step_115_mixture_posterior (Step 115)
-[2026-09-20 13:01:41 UTC] [DEBUG   ] [STEP 115] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_115_mixture_posterior.log
-[2026-09-20 13:01:41 UTC] [DEBUG   ] [STEP 115] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 13:01:41 UTC] [DEBUG   ] [STEP 115] Start time (UTC): 2026-09-20T13:01:41.325594+00:00
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] 
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] STEP PURPOSE
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] --------------------------------------------------------------------------------
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   Step 115 -- mixture posterior-predictive audit of resident cohorts.
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   The registered prospective prediction (step_054) is conditional on a
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   cohort's discovery geometry: the expected in-cap rate under EITHER
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   model is a function of where the cohort was discovered pointing.
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   The footprint-only model predicts the in-cap rate through the
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   coupling-smear baseline; the TEP mixture predicts it through the
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   per-object posterior P(varpi in cap | lam_opp).  For a cohort
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   discovered looking toward the anti-axis sector the two predictions
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   nearly coincide (the intrinsic-axis population is rarely discoverable
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   there), while a cohort discovered looking at the axis sector
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   separates them by tens of points.  The newest provisional cohort --
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   scored "untested" in step_084 -- can therefore be scored after all:
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   against the prediction each model makes FOR ITS OWN pointing.
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   Generative models compared:
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   H0  footprint only:  varpi | lam ~ WN(lam, sigma_c)
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   -> per-object in-cap probability = the established smear_cap
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   baseline of steps 014/054/085/112/113.
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   H1  TEP mixture (step_025 fit, registered in step_054):
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   varpi ~ f * WN(axis, sigma_int) + (1 - f) * Uniform,
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   lam | varpi ~ WN(varpi, sigma_c)
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   -> per-object posterior P(varpi in cap | lam_i) by Bayes on a
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   0.25 deg longitude grid (720-point circle).
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   For every cohort the step reports the observed in-cap count, the
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   expected count under each model, the exact Poisson-binomial
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   probability of the observed count under each model, and the
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   per-cohort Bayes factor P(k|H1)/P(k|H0).  A deduplicated union
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   (same precedence as step_113) carries the joint factor, and a
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   discovery-longitude lever-arm map shows where a future cohort is
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   decisive.  Provisional-orbit quality is assessed from the data
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   itself: the circular scatter of (varpi - lam_opp) residuals on the
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   newest cohort versus the secure cohort.
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   Cohorts (constructed exactly as in steps 113/084):
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   SBDB      secure detached a>150, q>30, cc<=3  (designation proxy)
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   DES       detached a>150, q>30                (designation proxy)
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   OSSOS     'det' class                         (exact astrometry)
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   2025+     detached a>150, q>30, designation year >= 2025, any cc
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   (provisional orbits; designation proxy)
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   era bins  the full SBDB detached pool (any cc) split by
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   designation year -- 2000-05, 2006-10, 2011-15, 2016-19,
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   2020-22, 2023-24, 2025+ -- scoring whether the signature
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   persists across discovery generations and whether each
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   generation's count matches what its own pointing predicts
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   Outputs
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   results/step_b79_mixture_posterior.json
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   results/step_b79_mixture_posterior.csv   (per-object posterior scoring)
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115]   results/figures/supplementary/step_b79_mixture_posterior.png
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] --------------------------------------------------------------------------------
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] SCRIPT: scripts/steps/step_115_mixture_posterior.py
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] SCRIPT SHA256: 2306a1bcf65c1a6010694efb0a478238beefaa52eed1e0b9b2adcab971b59b10
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] SCRIPT SIZE: 28953 bytes
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] ================================================================================
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] Mixture posterior-predictive audit
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] ================================================================================
-[2026-09-20 13:01:41 UTC] [INFO    ] [STEP 115] mixture parameters: f=0.431, sigma_int=34.4 deg, coupling sigma_c=50.0 deg, axis=49.0 deg, cap=60.0 deg
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] --------------------------------------------------------------------------------
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] Per-cohort scoring
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] --------------------------------------------------------------------------------
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] SBDB   n= 44 k=26 (0.591) | E[H0]=18.4 E[H1]=25.5 | P(k|H0)=0.00332 P(k|H1)=0.148 BF=44.6
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] SBDB-prv n= 46 k= 7 (0.152) | E[H0]=8.3 E[H1]=13.5 | P(k|H0)=0.161 P(k|H1)=0.00449 BF=0.028
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] 2025+  n= 21 k= 2 (0.095) | E[H0]=2.4 E[H1]=4.5 | P(k|H0)=0.313 P(k|H1)=0.0871 BF=0.278
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] DES    n= 16 k=13 (0.812) | E[H0]=8.8 E[H1]=12.1 | P(k|H0)=0.02 P(k|H1)=0.214 BF=10.7
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] OSSOS  n= 31 k=13 (0.419) | E[H0]=12.4 E[H1]=15.5 | P(k|H0)=0.203 P(k|H1)=0.0751 BF=0.37
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2000-05 n=  8 k= 4 (0.500) | E[H0]=3.0 E[H1]=4.1 | P(k|H0)=0.24 P(k|H1)=0.377 BF=1.57
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2000-05 [sec] n=  8 k= 4 (0.500) | E[H0]=3.0 E[H1]=4.1 | P(k|H0)=0.24 P(k|H1)=0.377 BF=1.57
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2006-10 n=  4 k= 3 (0.750) | E[H0]=2.2 E[H1]=2.7 | P(k|H0)=0.394 P(k|H1)=0.635 BF=1.61
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2006-10 [sec] n=  3 k= 3 (1.000) | E[H0]=2.2 E[H1]=2.6 | P(k|H0)=0.392 P(k|H1)=0.669 BF=1.71
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2006-10 [prv] n=  1 k= 0 (0.000) | E[H0]=0.0 E[H1]=0.1 | P(k|H0)=0.962 P(k|H1)=0.909 BF=0.945
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2011-15 n= 35 k=18 (0.514) | E[H0]=12.8 E[H1]=18.2 | P(k|H0)=0.0163 P(k|H1)=0.169 BF=10.4
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2011-15 [sec] n= 22 k=14 (0.636) | E[H0]=9.7 E[H1]=13.4 | P(k|H0)=0.0197 P(k|H1)=0.202 BF=10.2
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2011-15 [prv] n= 13 k= 4 (0.308) | E[H0]=3.2 E[H1]=4.8 | P(k|H0)=0.245 P(k|H1)=0.248 BF=1.01
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2016-19 n= 15 k= 6 (0.400) | E[H0]=5.4 E[H1]=8.0 | P(k|H0)=0.222 P(k|H1)=0.114 BF=0.515
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2016-19 [sec] n=  8 k= 5 (0.625) | E[H0]=3.0 E[H1]=4.6 | P(k|H0)=0.091 P(k|H1)=0.292 BF=3.21
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2016-19 [prv] n=  7 k= 1 (0.143) | E[H0]=2.4 E[H1]=3.4 | P(k|H0)=0.158 P(k|H1)=0.0256 BF=0.162
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2020-22 n=  5 k= 0 (0.000) | E[H0]=0.8 E[H1]=1.3 | P(k|H0)=0.389 P(k|H1)=0.145 BF=0.373
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2020-22 [sec] n=  1 k= 0 (0.000) | E[H0]=0.5 E[H1]=0.7 | P(k|H0)=0.536 P(k|H1)=0.307 BF=0.573
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2020-22 [prv] n=  4 k= 0 (0.000) | E[H0]=0.3 E[H1]=0.6 | P(k|H0)=0.726 P(k|H1)=0.473 BF=0.652
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2023-24 n=  2 k= 0 (0.000) | E[H0]=0.1 E[H1]=0.2 | P(k|H0)=0.915 P(k|H1)=0.8 BF=0.875
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2023-24 [sec] n=  2 k= 0 (0.000) | E[H0]=0.1 E[H1]=0.2 | P(k|H0)=0.915 P(k|H1)=0.8 BF=0.875
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2025+ n= 21 k= 2 (0.095) | E[H0]=2.4 E[H1]=4.5 | P(k|H0)=0.313 P(k|H1)=0.0871 BF=0.278
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] era 2025+ [prv] n= 21 k= 2 (0.095) | E[H0]=2.4 E[H1]=4.5 | P(k|H0)=0.313 P(k|H1)=0.0871 BF=0.278
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] noise-convolved SBDB-prv: k=7 E[H0n]=8.94 E[H1n]=14.56 BF=0.0194
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] noise-convolved 2025+: k=2 E[H0n]=2.82 E[H1n]=5.23 BF=0.181
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] noise-convolved era 2006-10 [prv]: k=0 E[H0n]=0.06 E[H1n]=0.13 BF=0.918
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] noise-convolved era 2011-15 [prv]: k=4 E[H0n]=3.27 E[H1n]=4.98 BF=0.906
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] noise-convolved era 2016-19 [prv]: k=1 E[H0n]=2.41 E[H1n]=3.43 BF=0.213
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] noise-convolved era 2020-22 [prv]: k=0 E[H0n]=0.38 E[H1n]=0.78 BF=0.6
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] noise-convolved era 2025+ [prv]: k=2 E[H0n]=2.82 E[H1n]=5.23 BF=0.181
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] provisional residual width sigma_eff=56.2 deg -> extra varpi scatter sigma_e=25.6 deg
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] union(sec) n= 76 k=39 | E[H0]=31.3 E[H1]=41.7 | BF=9.72
-[2026-09-20 13:01:42 UTC] [INFO    ] [STEP 115] union(all) n= 97 k=41 | E[H0]=33.7 E[H1]=46.2 | BF=2.63
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity SBDB: BF range [1.532, 58.659], fraction favouring mixture 1.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity SBDB-prv: BF range [0.0, 0.532], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity 2025+: BF range [0.0, 0.969], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity DES: BF range [3.891, 28.064], fraction favouring mixture 1.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity OSSOS: BF range [0.005, 1.226], fraction favouring mixture 0.028
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2000-05: BF range [0.649, 1.639], fraction favouring mixture 0.944
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2000-05 [sec]: BF range [0.649, 1.639], fraction favouring mixture 0.944
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2006-10: BF range [1.211, 2.184], fraction favouring mixture 1.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2006-10 [sec]: BF range [1.222, 3.217], fraction favouring mixture 1.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2006-10 [prv]: BF range [0.659, 0.991], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2011-15: BF range [0.154, 14.185], fraction favouring mixture 0.944
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2011-15 [sec]: BF range [3.524, 13.585], fraction favouring mixture 1.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2011-15 [prv]: BF range [0.043, 1.485], fraction favouring mixture 0.417
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2016-19: BF range [0.01, 1.074], fraction favouring mixture 0.028
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2016-19 [sec]: BF range [1.721, 4.432], fraction favouring mixture 1.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2016-19 [prv]: BF range [0.006, 0.472], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2020-22: BF range [0.033, 0.696], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2020-22 [sec]: BF range [0.275, 0.783], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2020-22 [prv]: BF range [0.121, 0.889], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2023-24: BF range [0.418, 0.974], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2023-24 [sec]: BF range [0.418, 0.974], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2025+: BF range [0.0, 0.969], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] sensitivity era 2025+ [prv]: BF range [0.0, 0.969], fraction favouring mixture 0.0
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Saving data: step_b79_mixture_posterior.json
-[2026-09-20 13:01:44 UTC] [DEBUG   ] [STEP 115]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b79_mixture_posterior.json
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115]   Output: step_b79_mixture_posterior.json
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Saving data: step_b79_mixture_posterior.csv
-[2026-09-20 13:01:44 UTC] [DEBUG   ] [STEP 115]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b79_mixture_posterior.csv
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115]   Output: step_b79_mixture_posterior.csv
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Saving data: step_b79_mixture_posterior.png
-[2026-09-20 13:01:44 UTC] [DEBUG   ] [STEP 115]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b79_mixture_posterior.png
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115]   Output: step_b79_mixture_posterior.png
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] 
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] ================================================================================
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] STEP SUMMARY: step_115_mixture_posterior
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] ================================================================================
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Step Number: 115
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Status: SUCCESS
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Duration: 3.21s
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Log Records Emitted: 137
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Output Files: 3
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_115_mixture_posterior.log
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] 
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Generated 3 output file(s):
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115]   • step_b79_mixture_posterior.json: 36.80 KB [sha256 9269d52f4ad93499]
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115]   • step_b79_mixture_posterior.csv: 17.26 KB [sha256 b1370661d3c0eb75]
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115]   • step_b79_mixture_posterior.png: 386.13 KB [sha256 cd072922470a2f75]
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] ================================================================================
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] STEP 115 COMPLETE: SUCCESS
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_115_mixture_posterior_provenance.json
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] 
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] ================================================================================
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] EXECUTIVE SUMMARY
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] ================================================================================
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Step: step_115_mixture_posterior (Step 115)
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Status: SUCCESS
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Duration: 3.21s
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Log Records: 148
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Output Files: 3
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] Key Outputs:
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115]   - step_b79_mixture_posterior.json (36.80 KB)
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115]   - step_b79_mixture_posterior.csv (17.26 KB)
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115]   - step_b79_mixture_posterior.png (386.13 KB)
-[2026-09-20 13:01:44 UTC] [INFO    ] [STEP 115] ================================================================================
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] LOGGER INITIALIZED: step_115_mixture_posterior (Step 115)
+[2026-09-21 15:12:48 UTC] [DEBUG   ] [STEP 115] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_115_mixture_posterior.log
+[2026-09-21 15:12:48 UTC] [DEBUG   ] [STEP 115] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:12:48 UTC] [DEBUG   ] [STEP 115] Start time (UTC): 2026-09-21T15:12:48.793227+00:00
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] 
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] STEP PURPOSE
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] --------------------------------------------------------------------------------
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   Step 115 -- mixture posterior-predictive audit of resident cohorts.
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   The registered prospective prediction (step_054) is conditional on a
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   cohort's discovery geometry: the expected in-cap rate under EITHER
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   model is a function of where the cohort was discovered pointing.
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   The footprint-only model predicts the in-cap rate through the
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   coupling-smear baseline; the TEP mixture predicts it through the
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   per-object posterior P(varpi in cap | lam_opp).  For a cohort
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   discovered looking toward the anti-axis sector the two predictions
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   nearly coincide (the intrinsic-axis population is rarely discoverable
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   there), while a cohort discovered looking at the axis sector
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   separates them by tens of points.  The newest provisional cohort --
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   scored "untested" in step_084 -- can therefore be scored after all:
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   against the prediction each model makes FOR ITS OWN pointing.
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   Generative models compared:
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   H0  footprint only:  varpi | lam ~ WN(lam, sigma_c)
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   -> per-object in-cap probability = the established smear_cap
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   baseline of steps 014/054/085/112/113.
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   H1  TEP mixture (step_025 fit, registered in step_054):
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   varpi ~ f * WN(axis, sigma_int) + (1 - f) * Uniform,
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   lam | varpi ~ WN(varpi, sigma_c)
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   -> per-object posterior P(varpi in cap | lam_i) by Bayes on a
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   0.25 deg longitude grid (720-point circle).
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   For every cohort the step reports the observed in-cap count, the
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   expected count under each model, the exact Poisson-binomial
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   probability of the observed count under each model, and the
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   per-cohort Bayes factor P(k|H1)/P(k|H0).  A deduplicated union
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   (same precedence as step_113) carries the joint factor, and a
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   discovery-longitude lever-arm map shows where a future cohort is
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   decisive.  Provisional-orbit quality is assessed from the data
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   itself: the circular scatter of (varpi - lam_opp) residuals on the
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   newest cohort versus the secure cohort.
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   Cohorts (constructed exactly as in steps 113/084):
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   SBDB      secure detached a>150, q>30, cc<=3  (designation proxy)
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   DES       detached a>150, q>30                (designation proxy)
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   OSSOS     'det' class                         (exact astrometry)
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   2025+     detached a>150, q>30, designation year >= 2025, any cc
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   (provisional orbits; designation proxy)
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   era bins  the full SBDB detached pool (any cc) split by
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   designation year -- 2000-05, 2006-10, 2011-15, 2016-19,
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   2020-22, 2023-24, 2025+ -- scoring whether the signature
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   persists across discovery generations and whether each
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   generation's count matches what its own pointing predicts
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   Outputs
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   results/step_b79_mixture_posterior.json
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   results/step_b79_mixture_posterior.csv   (per-object posterior scoring)
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115]   results/figures/supplementary/step_b79_mixture_posterior.png
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] --------------------------------------------------------------------------------
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] SCRIPT: scripts/steps/step_115_mixture_posterior.py
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] SCRIPT SHA256: 2306a1bcf65c1a6010694efb0a478238beefaa52eed1e0b9b2adcab971b59b10
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] SCRIPT SIZE: 28953 bytes
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] ================================================================================
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] Mixture posterior-predictive audit
+[2026-09-21 15:12:48 UTC] [INFO    ] [STEP 115] ================================================================================
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] mixture parameters: f=0.431, sigma_int=34.4 deg, coupling sigma_c=50.0 deg, axis=49.0 deg, cap=60.0 deg
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] --------------------------------------------------------------------------------
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] Per-cohort scoring
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] --------------------------------------------------------------------------------
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] SBDB   n= 44 k=26 (0.591) | E[H0]=18.4 E[H1]=25.5 | P(k|H0)=0.00332 P(k|H1)=0.148 BF=44.6
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] SBDB-prv n= 46 k= 7 (0.152) | E[H0]=8.3 E[H1]=13.5 | P(k|H0)=0.161 P(k|H1)=0.00449 BF=0.028
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] 2025+  n= 21 k= 2 (0.095) | E[H0]=2.4 E[H1]=4.5 | P(k|H0)=0.313 P(k|H1)=0.0871 BF=0.278
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] DES    n= 16 k=13 (0.812) | E[H0]=8.8 E[H1]=12.1 | P(k|H0)=0.02 P(k|H1)=0.214 BF=10.7
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] OSSOS  n= 31 k=13 (0.419) | E[H0]=12.4 E[H1]=15.5 | P(k|H0)=0.203 P(k|H1)=0.0751 BF=0.37
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2000-05 n=  8 k= 4 (0.500) | E[H0]=3.0 E[H1]=4.1 | P(k|H0)=0.24 P(k|H1)=0.377 BF=1.57
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2000-05 [sec] n=  8 k= 4 (0.500) | E[H0]=3.0 E[H1]=4.1 | P(k|H0)=0.24 P(k|H1)=0.377 BF=1.57
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2006-10 n=  4 k= 3 (0.750) | E[H0]=2.2 E[H1]=2.7 | P(k|H0)=0.394 P(k|H1)=0.635 BF=1.61
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2006-10 [sec] n=  3 k= 3 (1.000) | E[H0]=2.2 E[H1]=2.6 | P(k|H0)=0.392 P(k|H1)=0.669 BF=1.71
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2006-10 [prv] n=  1 k= 0 (0.000) | E[H0]=0.0 E[H1]=0.1 | P(k|H0)=0.962 P(k|H1)=0.909 BF=0.945
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2011-15 n= 35 k=18 (0.514) | E[H0]=12.8 E[H1]=18.2 | P(k|H0)=0.0163 P(k|H1)=0.169 BF=10.4
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2011-15 [sec] n= 22 k=14 (0.636) | E[H0]=9.7 E[H1]=13.4 | P(k|H0)=0.0197 P(k|H1)=0.202 BF=10.2
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2011-15 [prv] n= 13 k= 4 (0.308) | E[H0]=3.2 E[H1]=4.8 | P(k|H0)=0.245 P(k|H1)=0.248 BF=1.01
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2016-19 n= 15 k= 6 (0.400) | E[H0]=5.4 E[H1]=8.0 | P(k|H0)=0.222 P(k|H1)=0.114 BF=0.515
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2016-19 [sec] n=  8 k= 5 (0.625) | E[H0]=3.0 E[H1]=4.6 | P(k|H0)=0.091 P(k|H1)=0.292 BF=3.21
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2016-19 [prv] n=  7 k= 1 (0.143) | E[H0]=2.4 E[H1]=3.4 | P(k|H0)=0.158 P(k|H1)=0.0256 BF=0.162
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2020-22 n=  5 k= 0 (0.000) | E[H0]=0.8 E[H1]=1.3 | P(k|H0)=0.389 P(k|H1)=0.145 BF=0.373
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2020-22 [sec] n=  1 k= 0 (0.000) | E[H0]=0.5 E[H1]=0.7 | P(k|H0)=0.536 P(k|H1)=0.307 BF=0.573
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2020-22 [prv] n=  4 k= 0 (0.000) | E[H0]=0.3 E[H1]=0.6 | P(k|H0)=0.726 P(k|H1)=0.473 BF=0.652
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2023-24 n=  2 k= 0 (0.000) | E[H0]=0.1 E[H1]=0.2 | P(k|H0)=0.915 P(k|H1)=0.8 BF=0.875
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2023-24 [sec] n=  2 k= 0 (0.000) | E[H0]=0.1 E[H1]=0.2 | P(k|H0)=0.915 P(k|H1)=0.8 BF=0.875
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2025+ n= 21 k= 2 (0.095) | E[H0]=2.4 E[H1]=4.5 | P(k|H0)=0.313 P(k|H1)=0.0871 BF=0.278
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] era 2025+ [prv] n= 21 k= 2 (0.095) | E[H0]=2.4 E[H1]=4.5 | P(k|H0)=0.313 P(k|H1)=0.0871 BF=0.278
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] noise-convolved SBDB-prv: k=7 E[H0n]=8.94 E[H1n]=14.56 BF=0.0194
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] noise-convolved 2025+: k=2 E[H0n]=2.82 E[H1n]=5.23 BF=0.181
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] noise-convolved era 2006-10 [prv]: k=0 E[H0n]=0.06 E[H1n]=0.13 BF=0.918
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] noise-convolved era 2011-15 [prv]: k=4 E[H0n]=3.27 E[H1n]=4.98 BF=0.906
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] noise-convolved era 2016-19 [prv]: k=1 E[H0n]=2.41 E[H1n]=3.43 BF=0.213
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] noise-convolved era 2020-22 [prv]: k=0 E[H0n]=0.38 E[H1n]=0.78 BF=0.6
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] noise-convolved era 2025+ [prv]: k=2 E[H0n]=2.82 E[H1n]=5.23 BF=0.181
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] provisional residual width sigma_eff=56.2 deg -> extra varpi scatter sigma_e=25.6 deg
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] union(sec) n= 76 k=39 | E[H0]=31.3 E[H1]=41.7 | BF=9.72
+[2026-09-21 15:12:49 UTC] [INFO    ] [STEP 115] union(all) n= 97 k=41 | E[H0]=33.7 E[H1]=46.2 | BF=2.63
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity SBDB: BF range [1.532, 58.659], fraction favouring mixture 1.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity SBDB-prv: BF range [0.0, 0.532], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity 2025+: BF range [0.0, 0.969], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity DES: BF range [3.891, 28.064], fraction favouring mixture 1.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity OSSOS: BF range [0.005, 1.226], fraction favouring mixture 0.028
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2000-05: BF range [0.649, 1.639], fraction favouring mixture 0.944
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2000-05 [sec]: BF range [0.649, 1.639], fraction favouring mixture 0.944
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2006-10: BF range [1.211, 2.184], fraction favouring mixture 1.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2006-10 [sec]: BF range [1.222, 3.217], fraction favouring mixture 1.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2006-10 [prv]: BF range [0.659, 0.991], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2011-15: BF range [0.154, 14.185], fraction favouring mixture 0.944
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2011-15 [sec]: BF range [3.524, 13.585], fraction favouring mixture 1.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2011-15 [prv]: BF range [0.043, 1.485], fraction favouring mixture 0.417
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2016-19: BF range [0.01, 1.074], fraction favouring mixture 0.028
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2016-19 [sec]: BF range [1.721, 4.432], fraction favouring mixture 1.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2016-19 [prv]: BF range [0.006, 0.472], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2020-22: BF range [0.033, 0.696], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2020-22 [sec]: BF range [0.275, 0.783], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2020-22 [prv]: BF range [0.121, 0.889], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2023-24: BF range [0.418, 0.974], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2023-24 [sec]: BF range [0.418, 0.974], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2025+: BF range [0.0, 0.969], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] sensitivity era 2025+ [prv]: BF range [0.0, 0.969], fraction favouring mixture 0.0
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] Saving data: step_b79_mixture_posterior.json
+[2026-09-21 15:12:51 UTC] [DEBUG   ] [STEP 115]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b79_mixture_posterior.json
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115]   Output: step_b79_mixture_posterior.json
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115] Saving data: step_b79_mixture_posterior.csv
+[2026-09-21 15:12:51 UTC] [DEBUG   ] [STEP 115]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b79_mixture_posterior.csv
+[2026-09-21 15:12:51 UTC] [INFO    ] [STEP 115]   Output: step_b79_mixture_posterior.csv
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Saving data: step_b79_mixture_posterior.png
+[2026-09-21 15:12:52 UTC] [DEBUG   ] [STEP 115]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b79_mixture_posterior.png
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]   Output: step_b79_mixture_posterior.png
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] 
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] ================================================================================
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] STEP SUMMARY: step_115_mixture_posterior
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] ================================================================================
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Step Number: 115
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Status: SUCCESS
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Duration: 3.59s
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Log Records Emitted: 137
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Output Files: 3
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_115_mixture_posterior.log
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] 
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Generated 3 output file(s):
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]   • step_b79_mixture_posterior.json: 36.80 KB [sha256 9269d52f4ad93499]
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]   • step_b79_mixture_posterior.csv: 17.26 KB [sha256 b1370661d3c0eb75]
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]   • step_b79_mixture_posterior.png: 386.13 KB [sha256 cd072922470a2f75]
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] 
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]   RESULT SNAPSHOT [step_b79_mixture_posterior.json]:
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]     inputs [n=4]
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]     mixture:
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       f_cluster = 0.431
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       sigma_int_deg = 34.4
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       source = results/step_b13_patch_scale.json P2_intrinsic_width
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]     per_cohort.SBDB:
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       label = SBDB secure detached (a>150,q>30,cc<=3)
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       n = 44
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       n_scored = 44
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       k_in = 26
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       frac_in = 0.59090909
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       exp_H0 = 18.36
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       exp_H1 = 25.54
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       pk_H0 = 0.003324659
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       pk_H1 = 0.14825304
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       bayes_H1_over_H0 = 44.591954
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       ppred_tail_H0 = 0.0049027275
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       ppred_tail_H1 = 0.51001745
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       mean_lam = 10.516942
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       delta_scatter_deg = 43.1
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]     per_cohort.SBDB-prv:
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       label = SBDB provisional detached pooled (a>150,q>30,cc>3)
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       n = 46
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       n_scored = 46
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       k_in = 7
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       frac_in = 0.15217391
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       exp_H0 = 8.35
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       exp_H1 = 13.54
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       pk_H0 = 0.16075054
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       pk_H1 = 0.004493475
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       bayes_H1_over_H0 = 0.027953094
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       ppred_tail_H0 = 0.35473737
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       ppred_tail_H1 = 0.0059544751
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       mean_lam = 221.40685
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       delta_scatter_deg = 50.1
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]     per_cohort.2025+:
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       label = 2025+ provisional detached (any cc)
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       n = 21
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       n_scored = 21
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       k_in = 2
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       frac_in = 0.095238095
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       exp_H0 = 2.41
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       exp_H1 = 4.52
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       pk_H0 = 0.31295451
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       pk_H1 = 0.087061756
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       bayes_H1_over_H0 = 0.27819301
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       ppred_tail_H0 = 0.56356082
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       ppred_tail_H1 = 0.11170991
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       mean_lam = 230.32306
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       delta_scatter_deg = 39.7
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]     per_cohort.DES:
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       label = DES detached (a>150,q>30)
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       n = 16
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] ================================================================================
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] STEP 115 COMPLETE: SUCCESS
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_115_mixture_posterior_provenance.json
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] 
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] ================================================================================
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] EXECUTIVE SUMMARY
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] ================================================================================
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Step: step_115_mixture_posterior (Step 115)
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Status: SUCCESS
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Duration: 3.59s
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Log Records: 204
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Output Files: 3
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] Key Outputs:
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]   - step_b79_mixture_posterior.json (36.80 KB)
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]   - step_b79_mixture_posterior.csv (17.26 KB)
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115]   - step_b79_mixture_posterior.png (386.13 KB)
+[2026-09-21 15:12:52 UTC] [INFO    ] [STEP 115] ================================================================================

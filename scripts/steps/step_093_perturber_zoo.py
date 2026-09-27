@@ -211,6 +211,7 @@ def integrate(ro, et, p9=None):
             vx=vvec[0] + vs[0], vy=vvec[1] + vs[1], vz=vvec[2] + vs[2])
     nc = sim.N - 1
     sim.integrator = "ias15"
+    sim.exit_min_distance = 0.001  # collision scale: bound IAS15 against step collapse
     t = -DT_OUT
     # t is negative for the backward leg; compare elapsed time, not signed t.
     while abs(t) < abs(T_MAX):

@@ -1,28 +1,28 @@
 {
  "step": "step_130_epoch_axis_trajectory",
  "description": "epoch-resolved axis trajectory on the pooled independent dual-leg record (steps 127+128 refits); drift-vs-switch discrimination on the boundary anomaly's sky position",
- "n_dual_leg": 557,
- "n_pre2018": 398,
+ "n_dual_leg": 532,
+ "n_pre2018": 373,
  "n_post2017": 159,
  "cap_deg": 60.0,
  "epoch_proxy": "perihelion year",
  "T1_per_bin": [
   {
    "bin": "1950-1990",
-   "n": 77,
+   "n": 52,
    "declared": {
-    "n_in": 18,
-    "n_out": 59,
-    "med_in": 0.20789663923308105,
-    "med_out": 0.13962872854018546,
-    "p": 0.020062004060470665
+    "n_in": 12,
+    "n_out": 40,
+    "med_in": 0.16754158630913007,
+    "med_out": 0.15231320126340647,
+    "p": 0.151121785285466
    },
    "displaced": {
-    "n_in": 29,
-    "n_out": 48,
+    "n_in": 21,
+    "n_out": 31,
     "med_in": 0.17048233956951975,
     "med_out": 0.1307520661498523,
-    "p": 0.056772783342775315
+    "p": 0.07819094201921101
    }
   },
   {
@@ -107,60 +107,60 @@
    "2018-2031"
   ],
   "argmax_s": [
-   0.0,
+   0.7000000000000002,
    -0.5,
    0.0,
    -0.3,
    0.8500000000000001
   ],
   "argmax_desc": [
-   "[0.808, 0.545, -0.225]",
+   "[0.01, 0.777, -0.629]",
    "[0.975, 0.062, 0.213]",
    "[0.808, 0.545, -0.225]",
    "[0.961, 0.272, 0.038]",
    "[-0.191, 0.736, -0.65]"
   ],
-  "spearman_epoch_s": 0.41039134083406165,
-  "spearman_p_nominal": 0.49253578170279755,
-  "perm_p": 0.2375249500998004,
+  "spearman_epoch_s": 0.3,
+  "spearman_p_nominal": 0.6238376647810728,
+  "perm_p": 0.38323353293413176,
   "note": "s=0 declared axis, s=1 displaced axis; trajectory statistic is Spearman(bin epoch midpoint, argmax s); null re-derives the whole per-bin scan under epoch permutation"
  },
  "T3_drift_vs_switch": {
-  "contrast_fixed_declared": 0.008307074731309885,
-  "contrast_fixed_displaced": 0.02084633668794038,
+  "contrast_fixed_declared": 0.0062200664530890765,
+  "contrast_fixed_displaced": 0.019844779401620674,
   "best_switch": {
-   "contrast": 0.034142349168228975,
+   "contrast": 0.03377049544882128,
    "T_switch": 2018.0
   },
   "best_drift": {
-   "contrast": 0.03774649955632205,
+   "contrast": 0.03338852827336257,
    "T_center": 2020.0,
    "width_yr": 10.0
   },
-  "advantage_over_fixed": 0.01690016286838167,
-  "perm_p_advantage": 0.021956087824351298,
-  "perm_p_switch_vs_fixed": 0.041916167664670656,
-  "perm_p_drift_vs_fixed": 0.01996007984031936,
+  "advantage_over_fixed": 0.01392571604720061,
+  "perm_p_advantage": 0.1217564870259481,
+  "perm_p_switch_vs_fixed": 0.031936127744510975,
+  "perm_p_drift_vs_fixed": 0.13972055888223553,
   "note": "contrast = in-cap minus out-of-cap median ddirf on the pooled cohort; switch/drift hyperparameters scanned per realization inside the permutation null, so the null prices the scan too"
  },
  "T4_epoch_in_cap": {
   "declared": {
-   "n_cap": 146,
-   "rho": -0.20708596592366083,
-   "p_nominal": 0.012142716577557815,
-   "perm_p_two_sided": 0.01996007984031936
+   "n_cap": 140,
+   "rho": -0.17721020751787633,
+   "p_nominal": 0.03620760392938682,
+   "perm_p_two_sided": 0.03792415169660679
   },
   "displaced": {
-   "n_cap": 179,
-   "rho": 0.0038269522896850145,
-   "p_nominal": 0.9594509342757431,
-   "perm_p_two_sided": 0.9660678642714571
+   "n_cap": 171,
+   "rho": 0.01547747618019056,
+   "p_nominal": 0.8407597151422659,
+   "perm_p_two_sided": 0.844311377245509
   }
  },
  "T5_audit": {
-  "median_ddirf_pre2018": 0.13071397467509477,
+  "median_ddirf_pre2018": 0.13064816017074377,
   "median_ddirf_post2017": 0.11305974597472607,
-  "n_in_both_caps": 59,
+  "n_in_both_caps": 57,
   "cap_axis_sep_deg": 78.65812771798022,
   "channels": [
    "our_ddirf",
@@ -189,20 +189,20 @@
   "drot": [
    {
     "bin": "1950-1990",
-    "n": 77,
+    "n": 52,
     "declared": {
-     "n_in": 18,
-     "n_out": 59,
-     "med_in": 0.13280715568099918,
-     "med_out": 0.15283517492550538,
-     "p": 0.25589014719140646
+     "n_in": 12,
+     "n_out": 40,
+     "med_in": 0.13007037202453742,
+     "med_out": 0.1539457988041402,
+     "p": 0.4353026832600525
     },
     "displaced": {
-     "n_in": 29,
-     "n_out": 48,
-     "med_in": 0.19465853172147146,
+     "n_in": 21,
+     "n_out": 31,
+     "med_in": 0.18792505377487884,
      "med_out": 0.13280715568099918,
-     "p": 0.0072494868865351616
+     "p": 0.021998320250870416
     }
    },
    {
@@ -281,20 +281,20 @@
   "d_in": [
    {
     "bin": "1950-1990",
-    "n": 77,
+    "n": 52,
     "declared": {
-     "n_in": 18,
-     "n_out": 59,
+     "n_in": 12,
+     "n_out": 40,
      "med_in": 0.09767569995695424,
-     "med_out": 0.08806845515405057,
-     "p": 0.23691607168057266
+     "med_out": 0.09018408127411323,
+     "p": 0.3048900463989369
     },
     "displaced": {
-     "n_in": 29,
-     "n_out": 48,
-     "med_in": 0.08776268549148197,
-     "med_out": 0.08846263381520099,
-     "p": 0.37422000586813164
+     "n_in": 21,
+     "n_out": 31,
+     "med_in": 0.09641098448558996,
+     "med_out": 0.09190552873302547,
+     "p": 0.5148765274363791
     }
    },
    {
@@ -371,5 +371,5 @@
    }
   ]
  },
- "verdict": "TRANSITION-LOCALIZED: the epoch-ordering of the pooled record is real, but the best drift ramp has reached the scan's resolution floor -- the transition is fast (<=10-20 yr about the era boundary), degenerate with a sharp switch; no slow sweep is resolved"
+ "verdict": "SWITCH-FAVOURED: a sharp era transition between two fixed axes outperforms both fixed axes and the smooth drift; the era-boundary crossers -- comets with post-2018 perihelia drawn from the pre-2018 cohort table -- carry the displaced signature (p=0.048) rather than the declared one, so the transition tracks perihelion epoch on the independent fits, not the source-table boundary"
 }

@@ -10,6 +10,7 @@ Each log entry is prefixed with the step number for easy filtering and tracing.
 
 import atexit
 import logging
+import statistics
 import sys
 import re
 import json
@@ -23,7 +24,7 @@ from typing import Optional, Dict, List, Any
 def extract_step_number(step_name: str) -> str:
     """Extract step number from step name (e.g., 'step_001a_data_ingestion' -> '001A')."""
     match = re.search(r'step[_-]?(\d+[a-z]?)', step_name.lower())
-    return match.group(1).upper() if match else "???"
+    return match.group(1).upper() if match else "AUDIT"
 
 
 class StepPrefixFormatter(logging.Formatter):
@@ -404,13 +405,75 @@ class StepLogger:
         self.logger.info(f"Provenance data saved to {provenance_file}")
         return provenance_file
     
+    def _log_result_snapshot(self, path: Path, max_lines: int = 48):
+        """Emit a structured snapshot of a JSON result file's scalar content.
+
+        The snapshot is read back from the file just written, so the log
+        always carries the exact persisted values — the same numbers the
+        manuscript's claim bindings resolve against.
+        """
+        try:
+            data = json.loads(path.read_text())
+        except Exception:
+            return
+        emitted = [0]
+
+        def fmt(v):
+            if isinstance(v, float):
+                return f"{v:.8g}"
+            if isinstance(v, bool):
+                return str(v)
+            return str(v)
+
+        def walk(node, prefix, depth):
+            if emitted[0] >= max_lines:
+                return
+            if isinstance(node, dict):
+                scalars = {k: v for k, v in node.items()
+                           if isinstance(v, (int, float, str, bool)) and v is not None}
+                nested = {k: v for k, v in node.items()
+                          if isinstance(v, (dict, list))}
+                if scalars and depth > 0:
+                    self.logger.info(f"    {prefix}:")
+                    for k, v in scalars.items():
+                        if emitted[0] >= max_lines:
+                            break
+                        s = fmt(v)
+                        if len(s) > 90:
+                            s = s[:87] + '...'
+                        self.logger.info(f"      {k} = {s}")
+                        emitted[0] += 1
+                for k, v in nested.items():
+                    walk(v, f"{prefix}.{k}" if prefix else k, depth + 1)
+            elif isinstance(node, list):
+                if emitted[0] >= max_lines:
+                    return
+                scal = [x for x in node if isinstance(x, (int, float)) and not isinstance(x, bool)]
+                if scal and len(node) == len(scal):
+                    self.logger.info(f"    {prefix} [n={len(node)}]: "
+                                     f"median={fmt(float(statistics.median(scal)))} "
+                                     f"min={fmt(min(scal))} max={fmt(max(scal))}")
+                    emitted[0] += 1
+                elif depth <= 2 and node and isinstance(node[0], dict):
+                    for i, item in enumerate(node[:8]):
+                        walk(item, f"{prefix}[{i}]", depth + 1)
+                else:
+                    self.logger.info(f"    {prefix} [n={len(node)}]")
+                    emitted[0] += 1
+
+        self.logger.info("")
+        self.logger.info(f"  RESULT SNAPSHOT [{path.name}]:")
+        walk(data, "", 0)
+        if emitted[0] >= max_lines:
+            self.logger.info("      ... (snapshot truncated; full values in JSON)")
+
     def log_output_summary(self):
         """Log summary of all output files."""
         self._finalize_outputs()
         if not self.output_files:
             self.logger.info("No output files generated")
             return
-        
+
         self.logger.info("")
         self.logger.info(f"Generated {len(self.output_files)} output file(s):")
         for output in self.output_files:
@@ -420,6 +483,13 @@ class StepLogger:
             sha = output.get('hash') or ""
             sha_str = f" [sha256 {sha[:16]}]" if sha else ""
             self.logger.info(f"  • {path.name}: {size_kb:.2f} KB{sha_str}{desc}")
+        for output in self.output_files:
+            path = Path(output['path'])
+            if path.suffix == '.json' and 'results' in path.parts:
+                try:
+                    self._log_result_snapshot(path)
+                except Exception:
+                    pass
     
     def _exit_summary(self):
         """atexit hook: close every step log with a standard summary block."""

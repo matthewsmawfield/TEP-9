@@ -1,0 +1,219 @@
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] LOGGER INITIALIZED: step_164_tep_generative (Step 164)
+[2026-09-21 15:44:51 UTC] [DEBUG   ] [STEP 164] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_164_tep_generative.log
+[2026-09-21 15:44:51 UTC] [DEBUG   ] [STEP 164] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:44:51 UTC] [DEBUG   ] [STEP 164] Start time (UTC): 2026-09-21T15:44:51.649898+00:00
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] 
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] STEP PURPOSE
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] --------------------------------------------------------------------------------
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   step_164: TEP-side generative model for the arrival anisotropy
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   (b130).
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   Step 157 (b123) put the CONVENTIONAL models on a generative footing:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   isotropic Oort source, Galactic-tide injection, stellar remixing and
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   empirical discovery selection were required to produce the observed
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   arrival-direction distribution -- and failed (model in-cap fractions
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   ~0.25-0.28 against the observed 0.37-0.41).  Step 163 (b129) showed
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   the physically propagated discovery footprint cannot write the
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   observed dipole direction either.  The remaining asymmetry: the TEP
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   hypothesis itself has never been required to generate the data.  This
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   step applies the identical generative machinery to the TEP-side
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   models and asks what they predict.
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   The measured anomaly separates into two questions:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   (i) Can the measured boundary slip REDIRECT arrival directions?
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   The fitted aphelion direction is what the catalogue records; if
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   the slip rotated it systematically toward the axis, an isotropic
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   arrival distribution could masquerade as the dipole.  The
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   step_151 injection transfer function measured the slip's effect
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   on fitted elements on the real observing chain -- its per-comet
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   fitted-aphelion displacement is applied here to synthetic
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   footprint-selected arrivals (M_slip), and the coherent
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   displacement that WOULD be required is computed directly (T4).
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   (ii) If the anomaly lives in the incoming state itself -- the
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   arriving population's source distribution -- what anisotropy
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   must the field write there?  Two morphologies are tested:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   M_lobe (a localised sector enhancement, w propto 1 + A inside
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   the declared 60-deg cap) and M_dip (a bipolar modulation,
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   w propto 1 + m cos(theta_axis)).  The two are discriminated by
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   the anti-axis: M_dip depletes the far hemisphere, M_lobe does
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   not.  The observed anti-cap fraction decides.
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   T5 then checks the joint-consistency requirement on the real data:
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   the same axis-anchored structure must carry both the arrival
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   excess and the rotation field -- quantified as the rank
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   correlation between each comet's lobe weight and its measured
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   rotation, plus the inbound-leg asymmetry and flat energy channel
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   the downstream observables require.
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   Models (identical selection machinery to step_157)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   M_iso      isotropic source x kappa(beta) selection  (control)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   M_tide     tidal injection x selection               (conventional)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   M_slip     isotropic x slip redirection x selection  (TEP boundary-
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   redirection realization)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   M_lobe     isotropic x sector lobe x selection       (TEP source)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   M_dip      isotropic x cos(theta) dipole x selection (TEP source,
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   bipolar morphology)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   Inputs
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   results/step_b28_bidirectional_rotation.csv   (arrival cohort)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   data/raw/code/code_original.html              (periapsis elements)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   results/step_b115_injection.jsonl             (measured slip->
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   fitted-aphelion displacement, pos realization)
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   Outputs
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   results/step_b130_tep_generative.json
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   results/step_b130_tep_generative.csv
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164]   results/figures/supplementary/step_b130_tep_generative.png
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] --------------------------------------------------------------------------------
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] SCRIPT: scripts/steps/step_164_tep_generative.py
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] SCRIPT SHA256: 87fae08e8778f4b9c85804115913bc7abcd41543af7f8b6915e0c0a3db2febc9
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] SCRIPT SIZE: 25768 bytes
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] ================================================================================
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] TEP-side generative model -- boundary-slip redirection bound + required source-level anisotropy
+[2026-09-21 15:44:51 UTC] [INFO    ] [STEP 164] ================================================================================
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164] joined 131 comets (step_b28 x CODE original)
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164] SBDB cohorts added: pre-2018 n=880, post-2017 n=287
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   matched: n=54 f_cap=0.407 f_anti=0.130 resultant [ 49.6 -13.3]
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   all_c1: n=131 f_cap=0.366 f_anti=0.130 resultant [ 37.4 -30.2]
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   sbdb_pre2018: n=880 f_cap=0.311 f_anti=0.176 resultant [ 60.3 -49.2]
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   sbdb_post2017: n=287 f_cap=0.296 f_anti=0.185 resultant [ 20.2 -42.2]
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   sbdb_all: n=1167 f_cap=0.308 f_anti=0.178 resultant [ 51.9 -49. ]
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   matched: rho(drot, lobe weight) = +0.314 (p=0.0206)
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   all_c1: rho(drot, lobe weight) = +0.279 (p=0.0012)
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164] tide w_flux: max=4.428 nonzero-frac=1.000
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164] measured slip->fitted-aphelion displacement (pos): n=20 med=0.1325 deg max=1.427 deg
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   matched: baseline f_cap iso=0.266 tide=0.264; required lobe A=0.90 (iso) / 0.91 (tide); dipole m=0.75; sector density ratio 1.53x
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   M_iso|matched: f_cap med=0.259 p_cap=0.0170; f_anti med=0.241 (obs 0.130); res-sep med 80.0 p_dir=0.0005
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   M_tide|matched: f_cap med=0.259 p_cap=0.0190; f_anti med=0.241 (obs 0.130); res-sep med 78.9 p_dir=0.0035
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   M_lobe|matched: f_cap med=0.407 p_cap=0.5732; f_anti med=0.185 (obs 0.130); res-sep med 31.9 p_dir=0.0110
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   M_dip|matched: f_cap med=0.407 p_cap=0.5487; f_anti med=0.093 (obs 0.130); res-sep med 21.3 p_dir=0.0210
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   M_slip|matched: slip-redirected f_cap med=0.259 p_cap=0.0145 (identical to isotropic -- redirection cannot write the dipole)
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   matched: coherent rim-shift f_cap by displacement: 1deg->0.259, 5deg->0.315, 10deg->0.352, 20deg->0.426, 30deg->0.519, 45deg->0.648  (obs 0.407; measured slip displacement med 0.132 deg)
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   all_c1: baseline f_cap iso=0.287 tide=0.284; required lobe A=0.44 (iso) / 0.46 (tide); dipole m=0.39; sector density ratio 1.28x
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   M_iso|all_c1: f_cap med=0.290 p_cap=0.0345; f_anti med=0.237 (obs 0.130); res-sep med 74.1 p_dir=0.0040
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   M_tide|all_c1: f_cap med=0.282 p_cap=0.0245; f_anti med=0.229 (obs 0.130); res-sep med 70.2 p_dir=0.0055
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   M_lobe|all_c1: f_cap med=0.366 p_cap=0.5477; f_anti med=0.214 (obs 0.130); res-sep med 46.5 p_dir=0.0315
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   M_dip|all_c1: f_cap med=0.366 p_cap=0.5177; f_anti med=0.168 (obs 0.130); res-sep med 35.7 p_dir=0.0675
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   M_slip|all_c1: slip-redirected f_cap med=0.290 p_cap=0.0345 (identical to isotropic -- redirection cannot write the dipole)
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   all_c1: coherent rim-shift f_cap by displacement: 1deg->0.290, 5deg->0.321, 10deg->0.366, 20deg->0.435, 30deg->0.519, 45deg->0.649  (obs 0.366; measured slip displacement med 0.132 deg)
+[2026-09-21 15:44:52 UTC] [INFO    ] [STEP 164]   sbdb_pre2018: baseline f_cap iso=0.281 tide=0.279; required lobe A=0.16 (iso) / 0.17 (tide); dipole m=0.15; sector density ratio 1.11x
+[2026-09-21 15:44:53 UTC] [INFO    ] [STEP 164]   M_iso|sbdb_pre2018: f_cap med=0.281 p_cap=0.0235; f_anti med=0.239 (obs 0.176); res-sep med 73.6 p_dir=0.0010
+[2026-09-21 15:44:53 UTC] [INFO    ] [STEP 164]   M_tide|sbdb_pre2018: f_cap med=0.280 p_cap=0.0225; f_anti med=0.231 (obs 0.176); res-sep med 68.3 p_dir=0.0010
+[2026-09-21 15:44:53 UTC] [INFO    ] [STEP 164]   M_lobe|sbdb_pre2018: f_cap med=0.311 p_cap=0.5112; f_anti med=0.228 (obs 0.176); res-sep med 59.3 p_dir=0.0030
+[2026-09-21 15:44:53 UTC] [INFO    ] [STEP 164]   M_dip|sbdb_pre2018: f_cap med=0.310 p_cap=0.4958; f_anti med=0.210 (obs 0.176); res-sep med 52.2 p_dir=0.0110
+[2026-09-21 15:44:53 UTC] [INFO    ] [STEP 164]   M_slip|sbdb_pre2018: slip-redirected f_cap med=0.281 p_cap=0.0285 (identical to isotropic -- redirection cannot write the dipole)
+[2026-09-21 15:44:53 UTC] [INFO    ] [STEP 164]   sbdb_pre2018: coherent rim-shift f_cap by displacement: 1deg->0.287, 5deg->0.319, 10deg->0.359, 20deg->0.439, 30deg->0.524, 45deg->0.647  (obs 0.311; measured slip displacement med 0.132 deg)
+[2026-09-21 15:44:53 UTC] [INFO    ] [STEP 164]   sbdb_post2017: baseline f_cap iso=0.268 tide=0.266; required lobe A=0.15 (iso) / 0.16 (tide); dipole m=0.14; sector density ratio 1.11x
+[2026-09-21 15:44:53 UTC] [INFO    ] [STEP 164]   M_iso|sbdb_post2017: f_cap med=0.268 p_cap=0.1554; f_anti med=0.240 (obs 0.185); res-sep med 75.1 p_dir=0.0445
+[2026-09-21 15:44:54 UTC] [INFO    ] [STEP 164]   M_tide|sbdb_post2017: f_cap med=0.265 p_cap=0.1414; f_anti med=0.233 (obs 0.185); res-sep med 69.8 p_dir=0.0755
+[2026-09-21 15:44:54 UTC] [INFO    ] [STEP 164]   M_lobe|sbdb_post2017: f_cap med=0.296 p_cap=0.5212; f_anti med=0.230 (obs 0.185); res-sep med 58.0 p_dir=0.1294
+[2026-09-21 15:44:54 UTC] [INFO    ] [STEP 164]   M_dip|sbdb_post2017: f_cap med=0.296 p_cap=0.5272; f_anti med=0.213 (obs 0.185); res-sep med 48.4 p_dir=0.2604
+[2026-09-21 15:44:54 UTC] [INFO    ] [STEP 164]   M_slip|sbdb_post2017: slip-redirected f_cap med=0.268 p_cap=0.1599 (identical to isotropic -- redirection cannot write the dipole)
+[2026-09-21 15:44:54 UTC] [INFO    ] [STEP 164]   sbdb_post2017: coherent rim-shift f_cap by displacement: 1deg->0.275, 5deg->0.305, 10deg->0.348, 20deg->0.432, 30deg->0.517, 45deg->0.645  (obs 0.296; measured slip displacement med 0.132 deg)
+[2026-09-21 15:44:54 UTC] [INFO    ] [STEP 164]   sbdb_all: baseline f_cap iso=0.278 tide=0.276; required lobe A=0.16 (iso) / 0.17 (tide); dipole m=0.15; sector density ratio 1.11x
+[2026-09-21 15:44:54 UTC] [INFO    ] [STEP 164]   M_iso|sbdb_all: f_cap med=0.278 p_cap=0.0135; f_anti med=0.239 (obs 0.178); res-sep med 73.2 p_dir=0.0005
+[2026-09-21 15:44:54 UTC] [INFO    ] [STEP 164]   M_tide|sbdb_all: f_cap med=0.276 p_cap=0.0055; f_anti med=0.231 (obs 0.178); res-sep med 68.1 p_dir=0.0005
+[2026-09-21 15:44:54 UTC] [INFO    ] [STEP 164]   M_lobe|sbdb_all: f_cap med=0.308 p_cap=0.5117; f_anti med=0.229 (obs 0.178); res-sep med 58.8 p_dir=0.0005
+[2026-09-21 15:44:55 UTC] [INFO    ] [STEP 164]   M_dip|sbdb_all: f_cap med=0.308 p_cap=0.5157; f_anti med=0.210 (obs 0.178); res-sep med 50.7 p_dir=0.0075
+[2026-09-21 15:44:55 UTC] [INFO    ] [STEP 164]   M_slip|sbdb_all: slip-redirected f_cap med=0.278 p_cap=0.0120 (identical to isotropic -- redirection cannot write the dipole)
+[2026-09-21 15:44:55 UTC] [INFO    ] [STEP 164]   sbdb_all: coherent rim-shift f_cap by displacement: 1deg->0.284, 5deg->0.317, 10deg->0.356, 20deg->0.436, 30deg->0.519, 45deg->0.645  (obs 0.308; measured slip displacement med 0.132 deg)
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Saving data: step_b130_tep_generative.json
+[2026-09-21 15:44:56 UTC] [DEBUG   ] [STEP 164]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b130_tep_generative.json
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]   Output: step_b130_tep_generative.json
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Saving data: step_b130_tep_generative.csv
+[2026-09-21 15:44:56 UTC] [DEBUG   ] [STEP 164]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b130_tep_generative.csv
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]   Output: step_b130_tep_generative.csv
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Saving data: step_b130_tep_generative.png
+[2026-09-21 15:44:56 UTC] [DEBUG   ] [STEP 164]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b130_tep_generative.png
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]   Output: step_b130_tep_generative.png
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] saved step_b130_tep_generative.json, step_b130_tep_generative.csv, step_b130_tep_generative.png
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] VERDICT: slip redirection cannot write the dipole (measured 0.132 deg vs coherent ~10-20 deg required) -> the anomaly lives in the incoming state; required source modulation is bipolar-consistent (sector density x1.28 cap-side with anti-cap depleted below the selection baseline in every cohort; dipole m=0.39 reproduces both sides, pure lobe leaves f_anti=0.214 vs obs 0.130)
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] 
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] ================================================================================
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] STEP SUMMARY: step_164_tep_generative
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] ================================================================================
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Step Number: 164
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Status: SUCCESS
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Duration: 4.81s
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Log Records Emitted: 132
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Output Files: 3
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_164_tep_generative.log
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] 
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Generated 3 output file(s):
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]   • step_b130_tep_generative.json: 16.49 KB [sha256 6ae2b4f66d6b2229]
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]   • step_b130_tep_generative.csv: 3081.70 KB [sha256 b793e274bcd40412]
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]   • step_b130_tep_generative.png: 204.39 KB [sha256 461d0c2dec8f79cc]
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] 
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]   RESULT SNAPSHOT [step_b130_tep_generative.json]:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.configs:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       seed = 20261102
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       n_dir = 4096
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       n_real = 2000
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       cap = 60
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       axis = resident (49,-17)
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.configs.tide:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       KX = 7.0608705e-16
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       KY = -7.0608705e-16
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       KZ = -5.6531981e-15
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.observed.matched:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       n = 54
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_cap = 0.40740741
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_anti = 0.12962963
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       res_sep_TNO = 3.7357146
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.observed.matched.res [n=2]: median=18.146959 min=-13.310029 max=49.603947
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.observed.all_c1:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       n = 131
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_cap = 0.36641221
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_anti = 0.12977099
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       res_sep_TNO = 16.90891
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.observed.all_c1.res [n=2]: median=3.610913 min=-30.19185 max=37.413676
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.observed.sbdb_pre2018:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       n = 880
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_cap = 0.31136364
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_anti = 0.17613636
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       res_sep_TNO = 33.444849
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.observed.sbdb_pre2018.res [n=2]: median=5.5652418 min=-49.16407 max=60.294553
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.observed.sbdb_post2017:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       n = 287
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_cap = 0.29616725
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_anti = 0.18466899
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       res_sep_TNO = 35.221991
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.observed.sbdb_post2017.res [n=2]: median=-11.02291 min=-42.220264 max=20.174443
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.observed.sbdb_all:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       n = 1167
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_cap = 0.30762639
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_anti = 0.17823479
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       res_sep_TNO = 32.073842
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.observed.sbdb_all.res [n=2]: median=1.4647176 min=-48.986087 max=51.915522
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.joint.matched:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       rho_drot_lobe = 0.31427482
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       p_drot_lobe = 0.020646852
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.joint.all_c1:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       rho_drot_lobe = 0.27909571
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       p_drot_lobe = 0.001245816
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.slip_displacement_deg:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       n = 20
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       median = 0.13249147
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       p90 = 0.79757984
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       max = 1.4266063
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]     results.models.M_iso|matched:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       model = M_iso
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       subset = matched
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       n = 54
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_obs = 0.40740741
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_cap_med = 0.25925926
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       f_cap_p95 = 0.37037037
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       p_cap = 0.016991504
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] ================================================================================
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] STEP 164 COMPLETE: SUCCESS
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_164_tep_generative_provenance.json
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] 
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] ================================================================================
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] EXECUTIVE SUMMARY
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] ================================================================================
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Step: step_164_tep_generative (Step 164)
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Status: SUCCESS
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Duration: 4.81s
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Log Records: 205
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Output Files: 3
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] Key Outputs:
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]   - step_b130_tep_generative.json (16.49 KB)
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]   - step_b130_tep_generative.csv (3081.70 KB)
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164]   - step_b130_tep_generative.png (204.39 KB)
+[2026-09-21 15:44:56 UTC] [INFO    ] [STEP 164] ================================================================================

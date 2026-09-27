@@ -31,7 +31,7 @@ For the full registered pipeline:
 python3 scripts/run_all.py
 ```
 
-There are 141 registered steps. Acquisition steps can contact live services and change the raw-data snapshot. Preserve the current data and provenance when reproducing this version. Later steps may also fetch missing cached data. The full run is computationally expensive and is distinct from the focused review reruns listed in the review report. The exact publication audit runs last.
+There are 151 registered steps. Acquisition steps can contact live services and change the raw-data snapshot. Preserve the current data and provenance when reproducing this version. Later steps may also fetch missing cached data. The full run is computationally expensive and is distinct from the focused review reruns listed in the review report. The exact publication audit runs last.
 
 ## Evidence and numerical safeguards
 

@@ -20,7 +20,7 @@ convergence on the declared outer solar system proper-time domain boundary:
     C9: SBDB post-2017 prospective comets aphelion dipole (N=287, 2018-2026)
 
   Inflow / Outflow bipolar channel:
-    C10: Jupiter-family comets (JFCs) antipodal perihelion concentration (N=378)
+    C10: Jupiter-family comets (JFCs) antipodal perihelion concentration (N=380)
 
 A 20,000-draw random-axis comparison evaluates a conditional sky-area rank: the fraction of random sky directions whose joint Fisher statistic
 S = -2 sum ln p reaches or exceeds the value measured at the declared boundary axis.
@@ -466,6 +466,46 @@ for j, name in enumerate(ch_names):
         "frac_random_axes_better": frac_better
     }
 
+# Per-channel best directions and pairwise angular concordance.
+# Each channel's own preferred direction is the scan axis at which its
+# statistic is individually most significant on the fixed catalogues;
+# the 10x10 separation matrix then quantifies whether the channels
+# independently converge on a common sector.
+best_dir_idx = np.argmin(ch_rand, axis=0)
+best_dirs = rand_axes[best_dir_idx]
+pairwise_deg = np.zeros((10, 10))
+for _a in range(10):
+    for _b in range(_a + 1, 10):
+        pairwise_deg[_a, _b] = pairwise_deg[_b, _a] = sep(
+            best_dirs[_a], best_dirs[_b])
+_upper = pairwise_deg[np.triu_indices(10, 1)]
+mean_pairwise_deg = float(_upper.mean())
+max_pairwise_deg = float(_upper.max())
+frac_within_60 = float((_upper < 60.0).mean())
+for j, name in enumerate(ch_names):
+    _lam, _bet = lb(best_dirs[j])
+    per_channel_results[name]["best_dir_deg"] = [float(_lam),
+                                                 float(_bet)]
+    per_channel_results[name]["best_dir_p"] = float(
+        ch_rand[best_dir_idx[j], j])
+pairwise_concordance = {
+    "definition": "best_dir[j] = scan axis minimizing channel j's p-value on the fixed catalogues; separations are great-circle degrees between channel best directions",
+    "per_channel_best_dir_deg": {
+        name: per_channel_results[name]["best_dir_deg"]
+        for name in ch_names},
+    "matrix_deg": {
+        ch_names[_a]: {ch_names[_b]: float(pairwise_deg[_a, _b])
+                       for _b in range(10) if _b != _a}
+        for _a in range(10)},
+    "mean_pairwise_deg": mean_pairwise_deg,
+    "max_pairwise_deg": max_pairwise_deg,
+    "frac_pairs_within_60deg": frac_within_60,
+}
+logger.info(
+    f"pairwise concordance: mean {mean_pairwise_deg:.1f} deg, "
+    f"max {max_pairwise_deg:.1f} deg, "
+    f"{frac_within_60:.2%} of channel pairs within 60 deg")
+
 best_idx = np.argmax(S_rand)
 best_axis = rand_axes[best_idx]
 best_sep = sep(best_axis, AX_TNO)
@@ -659,17 +699,19 @@ results_payload = {
         "q99": float(np.percentile(S_rand, 99)),
         "q999": float(np.percentile(S_rand, 99.9))
     },
-    "axis_localization": axis_localization
+    "axis_localization": axis_localization,
+    "pairwise_concordance": pairwise_concordance
 }
 
 # persist the landscape for downstream localization audits
 np.savez_compressed(RESULTS / "step_b90_s_landscape.npz",
                     axes=rand_axes, S=S_rand)
+logger.data_save(RESULTS / "step_b90_s_landscape.npz")
 
 out_json = RESULTS / "step_b90_global_synthesis.json"
 with open(out_json, "w") as f:
     json.dump(results_payload, f, indent=1)
-logger.info(f"Wrote JSON: {out_json}")
+logger.data_save(out_json)
 
 # CSV summary
 out_csv = RESULTS / "step_b90_global_synthesis.csv"
@@ -678,7 +720,7 @@ with open(out_csv, "w", newline="") as f:
     w.writerow(["channel", "name", "p_at_tno_axis", "frac_axes_better"])
     for j, name in enumerate(ch_names):
         w.writerow([f"C{j+1}", name, f"{p_tno_obs[j]:.6e}", f"{per_channel_results[name]['frac_random_axes_better']:.6f}"])
-logger.info(f"Wrote CSV: {out_csv}")
+logger.data_save(out_csv)
 
 # ------------------------------------------------------------------
 # 5. Publication Figure
@@ -738,5 +780,5 @@ plt.tight_layout()
 out_fig = RESULTS / "figures" / "step_b90_global_synthesis.png"
 plt.savefig(out_fig, dpi=300)
 plt.close()
-logger.info(f"Saved figure: {out_fig}")
+logger.data_save(out_fig)
 logger.success("Step 126 completed successfully.")

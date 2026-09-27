@@ -1,0 +1,354 @@
+{
+ "step": "step_165_disformal_slip",
+ "seed": 20261103,
+ "model": "dt_slip = (1/c) int dsigma.dx; dsigma_mu = -(B/A^2)(u.grad phi) P grad phi; admissible positive-B benchmark; excursion convention for u",
+ "constants": {
+  "B0": 0.0032,
+  "B0_excluded_reference": -0.0032,
+  "R_H_m": 1.3207048458149781e+26,
+  "H0": 2.27e-18,
+  "r_b_AU": 250.0,
+  "cap_deg": 60.0
+ },
+ "anchors": {
+  "Newtonian_tracking_250AU": 3.9479966442472974e-11,
+  "Galactic_ambient": 7e-07,
+  "solar_surface": 2.1e-06,
+  "required_u_b_dip_ell8": 0.00012515028803863725,
+  "cosmological_ambient": 0.75
+ },
+ "headline": {
+  "morph": "dip_a1: field 1 + cos th; antipodal double crossing",
+  "ell_au": 8.0,
+  "u_b_required": 0.00012515028803863725,
+  "harmonics_uniform": {
+   "cos1": 5.527559593347755e-45,
+   "cos2": 7.199319518760749e-29
+  },
+  "rho_pred_vs_resid": 0.16936836109639966,
+  "p_pred_vs_resid": 0.0105,
+  "rho_in_cap": 0.03692745376955903,
+  "p_in_cap": 0.7531131649263428,
+  "pred_pole_med": 8.189416845794675,
+  "pred_mid_med": 2.245091527182729,
+  "pred_mean_absorbed": 5.237682797853595,
+  "signed_transport_pole_med": -8.189416845794675,
+  "signed_transport_mid_med": -2.245091527182729,
+  "signed_transport_contrast": -5.944325318611946,
+  "roll_pole_med": 0.0001604456355789951,
+  "roll_mid_med": 4.191220144178532e-05,
+  "roll_cos1_uniform": 4.901350990337404e-12,
+  "measured_contrast_yr": 5.944325318617941
+ },
+ "tracking_baseline": {
+  "u_b": 3.9479966442472974e-11,
+  "pred_contrast_s": 1.8578868527262127e-18,
+  "statement": "potential-tracking amplitude under-produces the measured slip by ~24 orders -- a genuine boundary field structure is required, not local tracking"
+ },
+ "scan": {
+  "iso|ell4": {
+   "tag": "iso|ell4",
+   "morph": "iso",
+   "ell_au": 4.0,
+   "cos1_uniform": 1.1955676648533065e-45,
+   "cos2_uniform": 4.628867923602865e-32,
+   "ub_for_contrast": null,
+   "contrast_max_yr": 0.0
+  },
+  "iso|ell8": {
+   "tag": "iso|ell8",
+   "morph": "iso",
+   "ell_au": 8.0,
+   "cos1_uniform": 5.977838324266532e-46,
+   "cos2_uniform": 2.3144339618014325e-32,
+   "ub_for_contrast": null,
+   "contrast_max_yr": 0.0
+  },
+  "iso|ell16": {
+   "tag": "iso|ell16",
+   "morph": "iso",
+   "ell_au": 16.0,
+   "cos1_uniform": 2.988919162133266e-46,
+   "cos2_uniform": 1.1572169809007162e-32,
+   "ub_for_contrast": null,
+   "contrast_max_yr": 0.0
+  },
+  "iso|ell32": {
+   "tag": "iso|ell32",
+   "morph": "iso",
+   "ell_au": 32.0,
+   "cos1_uniform": 1.494459581066633e-46,
+   "cos2_uniform": 5.786084904503581e-33,
+   "ub_for_contrast": null,
+   "contrast_max_yr": 0.0
+  },
+  "iso|ell64": {
+   "tag": "iso|ell64",
+   "morph": "iso",
+   "ell_au": 64.0,
+   "cos1_uniform": 7.472297905333165e-47,
+   "cos2_uniform": 2.8930424522517906e-33,
+   "ub_for_contrast": null,
+   "contrast_max_yr": 0.0
+  },
+  "dip_a1|ell4": {
+   "tag": "dip_a1|ell4",
+   "morph": "dip_a1",
+   "ell_au": 4.0,
+   "cos1_uniform": 9.937185785793717e-46,
+   "cos2_uniform": 5.869404431631497e-29,
+   "ub_for_contrast": 0.00010413819691998257,
+   "contrast_max_yr": 4760167347237.051
+  },
+  "dip_a1|ell8": {
+   "tag": "dip_a1|ell8",
+   "morph": "dip_a1",
+   "ell_au": 8.0,
+   "cos1_uniform": 4.968592892896858e-46,
+   "cos2_uniform": 2.9347022158157487e-29,
+   "ub_for_contrast": 0.00012174347941278241,
+   "contrast_max_yr": 2380083673618.5254
+  },
+  "dip_a1|ell16": {
+   "tag": "dip_a1|ell16",
+   "morph": "dip_a1",
+   "ell_au": 16.0,
+   "cos1_uniform": 2.484296446448429e-46,
+   "cos2_uniform": 1.4673511079078743e-29,
+   "ub_for_contrast": 0.00014667370393927652,
+   "contrast_max_yr": 1190041836809.2627
+  },
+  "dip_a1|ell32": {
+   "tag": "dip_a1|ell32",
+   "morph": "dip_a1",
+   "ell_au": 32.0,
+   "cos1_uniform": 1.2421482232242146e-46,
+   "cos2_uniform": 7.336755539539372e-30,
+   "ub_for_contrast": 0.00017377916655674733,
+   "contrast_max_yr": 595020918404.6313
+  },
+  "dip_a1|ell64": {
+   "tag": "dip_a1|ell64",
+   "morph": "dip_a1",
+   "ell_au": 64.0,
+   "cos1_uniform": 6.210741116121073e-47,
+   "cos2_uniform": 3.668377769769686e-30,
+   "ub_for_contrast": 0.0002049035214766508,
+   "contrast_max_yr": 297510459202.3157
+  },
+  "dip_a2|ell4": {
+   "tag": "dip_a2|ell4",
+   "morph": "dip_a2",
+   "ell_au": 4.0,
+   "cos1_uniform": 8.695037562569502e-45,
+   "cos2_uniform": 3.3517631358120276e-28,
+   "ub_for_contrast": 6.803416329382884e-05,
+   "contrast_max_yr": 24196014454831.805
+  },
+  "dip_a2|ell8": {
+   "tag": "dip_a2|ell8",
+   "morph": "dip_a2",
+   "ell_au": 8.0,
+   "cos1_uniform": 4.347518781284751e-45,
+   "cos2_uniform": 1.6758815679060138e-28,
+   "ub_for_contrast": 8.276208679417278e-05,
+   "contrast_max_yr": 12098007227415.902
+  },
+  "dip_a2|ell16": {
+   "tag": "dip_a2|ell16",
+   "morph": "dip_a2",
+   "ell_au": 16.0,
+   "cos1_uniform": 2.1737593906423756e-45,
+   "cos2_uniform": 8.379407839530069e-29,
+   "ub_for_contrast": 9.628885306860989e-05,
+   "contrast_max_yr": 6049003613707.951
+  },
+  "dip_a2|ell32": {
+   "tag": "dip_a2|ell32",
+   "morph": "dip_a2",
+   "ell_au": 32.0,
+   "cos1_uniform": 1.0868796953211878e-45,
+   "cos2_uniform": 4.1897039197650345e-29,
+   "ub_for_contrast": 0.00011482626649225193,
+   "contrast_max_yr": 3024501806853.9756
+  },
+  "dip_a2|ell64": {
+   "tag": "dip_a2|ell64",
+   "morph": "dip_a2",
+   "ell_au": 64.0,
+   "cos1_uniform": 5.434398476605939e-46,
+   "cos2_uniform": 2.0948519598825173e-29,
+   "ub_for_contrast": 0.0001386671194294035,
+   "contrast_max_yr": 1512250903426.9878
+  },
+  "quad_P2|ell4": {
+   "tag": "quad_P2|ell4",
+   "morph": "quad_P2",
+   "ell_au": 4.0,
+   "cos1_uniform": 1.366363045546636e-45,
+   "cos2_uniform": 1.2474364939867462e-28,
+   "ub_for_contrast": 0.00010427692807563172,
+   "contrast_max_yr": 4782303507071.721
+  },
+  "quad_P2|ell8": {
+   "tag": "quad_P2|ell8",
+   "morph": "quad_P2",
+   "ell_au": 8.0,
+   "cos1_uniform": 6.83181522773318e-46,
+   "cos2_uniform": 6.237182469933731e-29,
+   "ub_for_contrast": 0.0001218657357108104,
+   "contrast_max_yr": 2391151753535.8604
+  },
+  "quad_P2|ell16": {
+   "tag": "quad_P2|ell16",
+   "morph": "quad_P2",
+   "ell_au": 16.0,
+   "cos1_uniform": 3.41590761386659e-46,
+   "cos2_uniform": 3.1185912349668655e-29,
+   "ub_for_contrast": 0.00014678144181841585,
+   "contrast_max_yr": 1195575876767.9302
+  },
+  "quad_P2|ell32": {
+   "tag": "quad_P2|ell32",
+   "morph": "quad_P2",
+   "ell_au": 32.0,
+   "cos1_uniform": 1.707953806933295e-46,
+   "cos2_uniform": 1.5592956174834328e-29,
+   "ub_for_contrast": 0.00017399464188700518,
+   "contrast_max_yr": 597787938383.9651
+  },
+  "quad_P2|ell64": {
+   "tag": "quad_P2|ell64",
+   "morph": "quad_P2",
+   "ell_au": 64.0,
+   "cos1_uniform": 8.539769034666475e-47,
+   "cos2_uniform": 7.796478087417164e-30,
+   "ub_for_contrast": 0.0002050934078622583,
+   "contrast_max_yr": 298893969191.98254
+  }
+ },
+ "verdict": {
+  "required_u_b": 0.00012515028803863725,
+  "statement": "On the admissible B0 = +3.2e-3 benchmark, whose magnitude is mirrored from the sign-excluded Paper-0 reconstruction only as an instrumental scale, the canonical synchronisation connection integrated along comet trajectories reproduces the measured bipolar slip contrast (+5.9 yr pole-versus-midband) for a boundary field excursion u_b ~ 1.3e-04.  The morphology is not tuned: an axis-anchored field crossed at antipodal points gives a bipolar (cos 2th) open-path slip identically -- every odd harmonic cancels in the double crossing -- matching the measured harmonic structure (cos 2th dominated, cos th flat), while the resident-cloud source response stays linear/dipolar (step 164).  The required excursion sits ~10^3 above Galactic ambient tracking and ~10^3 below the cosmological value: the 250 AU boundary would have to be a genuine temporal-structure boundary -- the edge of the Solar System's screening domain -- rather than a kinematic marker.  Potential-tracking amplitudes (u ~ 4e-11) under-produce the slip by ~24 orders.",
+  "sign_check": "The fitted step-065 equivalent time is constructed from an unsigned angular separation and therefore cannot select the sign of B.  The admissible B0 > 0 and excluded B0 < 0 benchmarks give identical amplitude profiles and opposite signed open-path transport.  A signed transfer function is required before the independent signed-rotation statistic can be mapped to the synchronization-connection orientation.",
+  "morphology_check": "any axis-anchored field -> bipolar slip via the antipodal double crossing (odd harmonics cancel identically); the network-roll channel is dipolar and subdominant",
+  "absorption_note": "the theta-uniform part of the lag is absorbed into the fitted elements (parameter absorption, step 151); the observable is the theta-dependent contrast",
+  "remaining_gap": "u_b is measured, not derived: closure requires solving the screening-domain field profile at the 250 AU boundary and checking whether the solved depth reaches ~1e-4",
+  "admissibility": "see admissibility_ledger: the required excursion is unsourceable by the local field hierarchy, carries a mandatory ~120 ppm conformal clock step and a ~10^10x over-bound shear impulse, and the admissible B >= 0 branch predicts the wrong sign; the result is a falsification condition on the solved field profile, not mechanism closure"
+ },
+ "branch_comparison": {
+  "admissible_B0": 0.0032,
+  "excluded_reference_B0": -0.0032,
+  "normalization_provenance": "|B0| = 3.2e-3 is inherited from the excluded Paper-0 volume-balance reconstruction only as an amplitude benchmark; the admissible normalization is not derived",
+  "admissible_signed_transport_contrast_yr": -5.944325318611946,
+  "excluded_signed_transport_contrast_yr": 5.944325318611946,
+  "observable_amplitude_contrast_yr": 5.944325318611946,
+  "sign_observability": "step_065 uses angular separations and measures |delta t_eq|; it cannot adjudicate the transport sign.  The sign retained by step_080 has not yet been propagated through a signed plus/minus disformal injection and is not used to select B."
+ },
+ "admissibility_ledger": {
+  "required_u_b": 0.00012515028803863725,
+  "sourceable_budget": {
+   "galactic_ambient_u": 7e-07,
+   "ratio_vs_galactic": 178.7861257694818,
+   "solar_tracking_250AU_u": 3.9479966442472974e-11,
+   "ratio_vs_solar": 3169969.46339851,
+   "note": "an excursion intermediate between the Galactic ambient and the cosmological field is landscape-level structure, not a solar screening transition -- a screening edge joins the solar solution to the ambient, it cannot exceed it"
+  },
+  "conformal_correlate": {
+   "delta_lnA_ppm": 125.15028803863724,
+   "sclk_sustained_bound_ppm": 4.0,
+   "ratio_vs_sustained_bound": 31.28757200965931,
+   "sclk_instantaneous_bound": 2e-05,
+   "ratio_vs_instantaneous_bound": 6.257514401931862,
+   "voyager_note": "at r_b <= 165 AU the step is already excluded by the Voyager SCLK record; at the step-156 best fit (~250 AU) no spacecraft has crossed, so the ~120 ppm crossing step is a dated prediction the text must state, not omit"
+  },
+  "shear_correlate": {
+   "W_4AU": {
+    "a_m_s2": 18.797648554351998,
+    "ratio_vs_ambient_floor": 48199098857.31281,
+    "ratio_vs_solar_g_at_rb": 198123091.46240684
+   },
+   "W_8AU": {
+    "a_m_s2": 9.398824277175999,
+    "ratio_vs_ambient_floor": 24099549428.656406,
+    "ratio_vs_solar_g_at_rb": 99061545.73120342
+   },
+   "W_16AU": {
+    "a_m_s2": 4.699412138587999,
+    "ratio_vs_ambient_floor": 12049774714.328203,
+    "ratio_vs_solar_g_at_rb": 49530772.86560171
+   },
+   "W_32AU": {
+    "a_m_s2": 2.3497060692939997,
+    "ratio_vs_ambient_floor": 6024887357.164102,
+    "ratio_vs_solar_g_at_rb": 24765386.432800855
+   },
+   "W_64AU": {
+    "a_m_s2": 1.1748530346469999,
+    "ratio_vs_ambient_floor": 3012443678.582051,
+    "ratio_vs_solar_g_at_rb": 12382693.216400428
+   },
+   "W_250AU": {
+    "a_m_s2": 0.300762376869632,
+    "ratio_vs_ambient_floor": 771185581.717005,
+    "ratio_vs_solar_g_at_rb": 3169969.4633985097
+   }
+  },
+  "shear_impulse": {
+   "delta_v_m_s": 2696608128.9788594,
+   "energy_channel_bound_m_s": 22.17139916478426,
+   "energy_channel_bound_source": "median measured |D(1/a)| = 208.5 x1e-6 AU^-1 over the slip cohort; total channel (encounter kicks included), hence conservative.  The earlier hardcoded 0.3 m/s traced to a step-145 expression that substituted the planetary-approach distance (AU) for the energy residual (1e-6 AU^-1) -- a wrong-variable defect corrected in step_145 T2.",
+   "ratio": 121625527.95774804,
+   "u_b_bound_from_energy_channel": 1.0289804298495105e-12,
+   "note": "the wall-normal impulse c^2 du/dr integrated across the layer is c^2 u_b / v -- independent of W; exceeds the along-track energy-channel bound by ~10^8"
+  },
+  "realization_consistency": {
+   "holonomy_equiv_conformal_step": 6.04e-13,
+   "disformal_required_u_b": 0.00012515028803863725,
+   "ratio": 207202463.6401279,
+   "note": "the two quoted realizations differ by ~8 orders; they cannot describe the same field"
+  },
+  "admissible_sector": {
+   "admissible_branch": "B >= 0 (matter cone inside gravitational cone, Paper 0 Section 4)",
+   "sign_under_admissible_branch": "the admissible B >= 0 envelope gives the opposite signed open-path transport to the excluded B < 0 reconstruction. The step-065 amplitude used here is unsigned, so it neither selects nor falsifies either orientation; the earlier wrong-sign conclusion was a sign-observability error",
+   "u_b_at_sustained_clock_bound": 4e-06,
+   "max_slip_contrast_sustained_yr": 6.203190703792345e-06,
+   "u_b_at_instantaneous_clock_bound": 2e-05,
+   "max_slip_contrast_instantaneous_yr": 0.003876994187200417,
+   "deficit_vs_measured_sustained": 958268.9945327417,
+   "deficit_vs_measured_instantaneous": 1533.230392308209
+  },
+  "b0_requirement_plane": {
+   "scaling": "slip proportional to B0 exactly; contrast ~ B0 u_b^4 in the small-u regime (env_b ~ u^2)",
+   "entries": {
+    "galactic_ambient": {
+     "u_b": 7e-07,
+     "slip_contrast_at_benchmark_yr": 5.817914406335822e-09,
+     "B0_required_for_measured": 3269529.197415187
+    },
+    "sclk_sustained_bound": {
+     "u_b": 4e-06,
+     "slip_contrast_at_benchmark_yr": 6.203190703792345e-06,
+     "B0_required_for_measured": 3066.4607825047738
+    },
+    "sclk_instantaneous_bound": {
+     "u_b": 2e-05,
+     "slip_contrast_at_benchmark_yr": 0.003876994187200417,
+     "B0_required_for_measured": 4.906337255386269
+    },
+    "energy_channel_bound": {
+     "u_b": 1.0289804298495105e-12,
+     "slip_contrast_at_benchmark_yr": 2.716461958637938e-32,
+     "B0_required_for_measured": 7.002432321605256e+29
+    },
+    "solar_tracking_250AU": {
+     "u_b": 3.9479966442472974e-11,
+     "slip_contrast_at_benchmark_yr": 5.886840471249089e-26,
+     "B0_required_for_measured": 3.231247918553039e+23
+    }
+   },
+   "note": "the energy-channel bound (u_b <= 1.0e-12, from the wall-normal impulse c^2 u_b / v <= 22.2 m/s, the measured |D(1/a)| floor) is the binding constraint: closure at that excursion requires an admissible B0 ~ 7.0e+29.  The verdict 'unsourceable excursion' is equivalently 'underived normalization': the falsification condition is the (B0, u_b) plane, and it stays closed unless either a sourceable ~1e-4 wall or an admissible B0 many orders above the mirrored benchmark is derived."
+  },
+  "verdict": "falsification condition, not mechanism closure: u_b ~ 1.3e-04 is a required input the solved admissible field profile must supply. It exceeds the entire ambient field hierarchy by ~10^2-10^6, carries a mandatory 125 ppm clock step (~31x the sustained spacecraft bound) and a 1.2e+08 x over-floor shear impulse that violates the flat energy channel. The branch-sign audit does not add an exclusion: the fitted equivalent-time datum is unsigned, and the admissible B >= 0 branch has now been evaluated explicitly. The channel is thereby converted to a bound: the admissible boundary-localised disformal slip is <= 6.2e-06 yr (sustained clock bound) to 3.9e-03 yr (instantaneous bound), versus the measured 5.9 yr."
+ }
+}

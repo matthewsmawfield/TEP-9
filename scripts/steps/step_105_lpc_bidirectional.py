@@ -228,6 +228,7 @@ def integrate_leg(ro, et, direction):
             vx=vvec[0] + vs[0], vy=vvec[1] + vs[1], vz=vvec[2] + vs[2])
     nc = sim.N - 1
     sim.integrator = "ias15"
+    sim.exit_min_distance = 0.001  # collision scale: bound IAS15 against step collapse
     denc = np.full(sim.N - 1, np.inf)
     t = direction * DT_OUT
     while abs(t) < T_MAX:

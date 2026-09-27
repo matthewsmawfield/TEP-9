@@ -1,125 +1,184 @@
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] LOGGER INITIALIZED: step_120_pre2018_sbdb_factorial (Step 120)
-[2026-09-20 12:22:19 UTC] [DEBUG   ] [STEP 120] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_120_pre2018_sbdb_factorial.log
-[2026-09-20 12:22:19 UTC] [DEBUG   ] [STEP 120] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:22:19 UTC] [DEBUG   ] [STEP 120] Start time (UTC): 2026-09-20T12:22:19.393595+00:00
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] 
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] STEP PURPOSE
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] --------------------------------------------------------------------------------
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   step_120: Era x lineage factorial -- the pre-2018 SBDB LPC cohort.
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   The prospective programme has produced a 2x2 design with one cell
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   missing:
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   CODE solutions x pre-2018 objects   -> declared-axis anomaly
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   (steps 030-106)
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   SBDB solutions x post-2017 objects  -> displaced unipolar dipole,
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   cohort-private (117-119)
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   SBDB solutions x pre-2018 objects   -> ??? (this step)
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   The reading of the prospective failure hinges on the missing cell:
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   - if the pre-2018 SBDB cohort recovers the DECLARED axis, the
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   displaced dipole is carried by the modern objects' data (short
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   arcs, modern discovery geometry), and the CODE anomaly stands
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   unchallenged on the historical record;
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   - if it recovers the post-2017 DISPLACED dipole instead, the
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   structure is a property of the SBDB fit record irrespective of
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   object era -- a far stronger systematic, and one that turns the
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   question back onto the CODE anomaly itself.
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   A second discriminator is built into the SBDB record: every
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   pre-2018 comet carries a last_obs date, so the cohort splits by FIT
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   VINTAGE -- solutions whose arcs end before 2018 (historical record)
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   versus solutions updated on modern data.  If the displaced structure
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   tracks fit vintage rather than object era it appears in the
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   modern-refit members of the pre-2018 cohort.
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   Cohort: identical cuts to step_117 -- C/ designations, primary
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   objects, 0.95 < e < 1.5, arc >= 30 d, nobs >= 20 -- except
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   designation year < 2018.  The instrument is the shared
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   scripts/utils/lpc_boundary.py bidirectional integrator (identical to
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   step_063/064/065/117): REBOUND/IAS15, DE440s, Sun plus planetary
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   barycentres, 250 AU barycentric boundary.
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   Tests
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   T1  declared-axis instruments on the deep-plunger primary (q<3.1):
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   cap contrast, residual cap test, Spearman vs theta -- does
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   SBDB pre-2018 reproduce the CODE anomaly?
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   T2  free axis scan (10-deg grid, MWU on drot and on the residual
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   field) -- does the cohort's own axis land near the declared
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   axis or the post-2017 displaced direction?
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   T3  displaced-axis gap: cap-gap at the post-2017 recovered axes
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   (120,-40) residual / (160,-10) raw -- is the displaced dipole
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   present in the pre-2018 record?
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   T4  fit-vintage split: last_obs >= 2018 vs < 2018 -- does the
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   displaced structure track fit vintage or object era?
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   T5  longitude harmonic of the residual field -- phase against the
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   post-2017 (182 deg) and CODE (26 deg) references.
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   T6  mechanism-split replication: bound vs hyperbolic,
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   perihelion-spanning vs one-sided arcs (the step_119
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   localization) on the pre-2018 cohort.
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   T7  CODE-overlap subset: members also in the CODE class-1 table --
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   SBDB-solution behaviour on bodies whose CODE solutions carry
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   the anomaly.
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   T8  quality-stratified declared-axis test (the step_118 strata) --
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   does the in-cap residual concentrate in the best-determined
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   members, as in CODE?
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   Inputs
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   data/raw/sbdb/sbdb_comets_all.json
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   data/raw/spice/de440s.bsp
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   data/raw/code/code_osculating.html          (overlap membership)
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   Outputs
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   results/step_b84_legs.jsonl               (integration checkpoint)
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   results/step_b84_pre2018_sbdb.json
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   results/step_b84_pre2018_sbdb.csv
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120]   results/figures/supplementary/step_b84_pre2018_sbdb.png
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] --------------------------------------------------------------------------------
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] SCRIPT: scripts/steps/step_120_pre2018_sbdb_factorial.py
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] SCRIPT SHA256: 3e70911081bf35892dddea03ad6cc2d068ea19c6e4289fe2e13a5d9a88285496
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] SCRIPT SIZE: 28326 bytes
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] ================================================================================
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] Era x lineage factorial: pre-2018 SBDB cohort
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] ================================================================================
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] pre-2018 comets: near-parabolic usable 880; deep-plunger primary (q<3.1) 627; modern-fit (last_obs>=2018) 60; excluded {'year': 397, 'frag': 29, 'e': 0, 'q': 1504, 'arc': 283, 'iso': 0}
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] integrating pre-2018 cohort ...
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] pre2018: integrated 738 comets x2 legs; 142 failed
-[2026-09-20 12:22:19 UTC] [INFO    ] [STEP 120] T1 primary declared-axis: n=485 in=117 med 0.15100656530594098/0.15520894918727646 resid cap p=0.7855214194753455
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T2 free scan raw: (340,-60) p=1.14e-03 | resid: (340,-60) p=2.10e-05
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T3 displaced-axis gaps: (120,-40) -0.022, (160,-10) -0.043, declared -0.022
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T4 modern_fit_last_obs_ge_2018 (n=20): declared gap n/a, displaced gap +0.044
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T4 historical_fit_last_obs_lt_2018 (n=465): declared gap -0.037, displaced gap -0.044
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T5 pre-2018 resid order-1: amp 0.060 phase 306 p=0.0075
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T6 bound_e_lt_1 (n=254): declared -0.044, displaced -0.011
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T6 hyperbolic_e_ge_1 (n=231): declared -0.042, displaced -0.033
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T6 arc_spans_perihelion (n=357): declared -0.025, displaced -0.020
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T6 arc_one_sided (n=128): declared -0.037, displaced -0.072
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T8 arc_gt_730_nobs_gt_500 (n=48): declared gap -0.030243979681785826, p=0.5277439113578002
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T8 arc_gt_365_nobs_gt_300 (n=97): declared gap 0.17444812341910448, p=0.06719835036118153
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T8 arc_top_quartile (n=122): declared gap 0.10341801037787901, p=0.10306217409480967
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T8 nobs_gt_1000 (n=69): declared gap 0.04088059558112078, p=0.4801553900239011
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] T7 CODE-overlap (n=135): declared -0.031, displaced +0.047
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Saving data: step_b84_pre2018_sbdb.json
-[2026-09-20 12:22:20 UTC] [DEBUG   ] [STEP 120]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b84_pre2018_sbdb.json
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120]   Output: step_b84_pre2018_sbdb.json
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] 
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] ================================================================================
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] STEP SUMMARY: step_120_pre2018_sbdb_factorial
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] ================================================================================
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Step Number: 120
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Status: SUCCESS
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Duration: 1.20s
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Log Records Emitted: 104
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Output Files: 1
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_120_pre2018_sbdb_factorial.log
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] 
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Generated 1 output file(s):
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120]   • step_b84_pre2018_sbdb.json: 7.37 KB [sha256 7a92ecfa908f1eda]
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] ================================================================================
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] STEP 120 COMPLETE: SUCCESS
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_120_pre2018_sbdb_factorial_provenance.json
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] 
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] ================================================================================
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] EXECUTIVE SUMMARY
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] ================================================================================
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Step: step_120_pre2018_sbdb_factorial (Step 120)
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Status: SUCCESS
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Duration: 1.20s
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Log Records: 113
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Output Files: 1
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] Key Outputs:
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120]   - step_b84_pre2018_sbdb.json (7.37 KB)
-[2026-09-20 12:22:20 UTC] [INFO    ] [STEP 120] ================================================================================
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120] LOGGER INITIALIZED: step_120_pre2018_sbdb_factorial (Step 120)
+[2026-09-21 15:14:01 UTC] [DEBUG   ] [STEP 120] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_120_pre2018_sbdb_factorial.log
+[2026-09-21 15:14:01 UTC] [DEBUG   ] [STEP 120] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:14:01 UTC] [DEBUG   ] [STEP 120] Start time (UTC): 2026-09-21T15:14:01.567402+00:00
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120] 
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120] STEP PURPOSE
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120] --------------------------------------------------------------------------------
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   step_120: Era x lineage factorial -- the pre-2018 SBDB LPC cohort.
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   The prospective programme has produced a 2x2 design with one cell
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   missing:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   CODE solutions x pre-2018 objects   -> declared-axis anomaly
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   (steps 030-106)
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   SBDB solutions x post-2017 objects  -> displaced unipolar dipole,
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   cohort-private (117-119)
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   SBDB solutions x pre-2018 objects   -> ??? (this step)
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   The reading of the prospective failure hinges on the missing cell:
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   - if the pre-2018 SBDB cohort recovers the DECLARED axis, the
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   displaced dipole is carried by the modern objects' data (short
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   arcs, modern discovery geometry), and the CODE anomaly stands
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   unchallenged on the historical record;
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   - if it recovers the post-2017 DISPLACED dipole instead, the
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   structure is a property of the SBDB fit record irrespective of
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   object era -- a far stronger systematic, and one that turns the
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   question back onto the CODE anomaly itself.
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   A second discriminator is built into the SBDB record: every
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   pre-2018 comet carries a last_obs date, so the cohort splits by FIT
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   VINTAGE -- solutions whose arcs end before 2018 (historical record)
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   versus solutions updated on modern data.  If the displaced structure
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   tracks fit vintage rather than object era it appears in the
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   modern-refit members of the pre-2018 cohort.
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   Cohort: identical cuts to step_117 -- C/ designations, primary
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   objects, 0.95 < e < 1.5, arc >= 30 d, nobs >= 20 -- except
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   designation year < 2018.  The instrument is the shared
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   scripts/utils/lpc_boundary.py bidirectional integrator (identical to
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   step_063/064/065/117): REBOUND/IAS15, DE440s, Sun plus planetary
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   barycentres, 250 AU barycentric boundary.
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   Tests
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   T1  declared-axis instruments on the deep-plunger primary (q<3.1):
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   cap contrast, residual cap test, Spearman vs theta -- does
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   SBDB pre-2018 reproduce the CODE anomaly?
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   T2  free axis scan (10-deg grid, MWU on drot and on the residual
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   field) -- does the cohort's own axis land near the declared
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   axis or the post-2017 displaced direction?
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   T3  displaced-axis gap: cap-gap at the post-2017 recovered axes
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   (120,-40) residual / (160,-10) raw -- is the displaced dipole
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   present in the pre-2018 record?
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   T4  fit-vintage split: last_obs >= 2018 vs < 2018 -- does the
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   displaced structure track fit vintage or object era?
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   T5  longitude harmonic of the residual field -- phase against the
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   post-2017 (182 deg) and CODE (26 deg) references.
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   T6  mechanism-split replication: bound vs hyperbolic,
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   perihelion-spanning vs one-sided arcs (the step_119
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   localization) on the pre-2018 cohort.
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   T7  CODE-overlap subset: members also in the CODE class-1 table --
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   SBDB-solution behaviour on bodies whose CODE solutions carry
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   the anomaly.
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   T8  quality-stratified declared-axis test (the step_118 strata) --
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   does the in-cap residual concentrate in the best-determined
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   members, as in CODE?
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   Inputs
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   data/raw/sbdb/sbdb_comets_all.json
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   data/raw/spice/de440s.bsp
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   data/raw/code/code_osculating.html          (overlap membership)
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   Outputs
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   results/step_b84_legs.jsonl               (integration checkpoint)
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   results/step_b84_pre2018_sbdb.json
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   results/step_b84_pre2018_sbdb.csv
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120]   results/figures/supplementary/step_b84_pre2018_sbdb.png
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120] --------------------------------------------------------------------------------
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120] SCRIPT: scripts/steps/step_120_pre2018_sbdb_factorial.py
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120] SCRIPT SHA256: 3e70911081bf35892dddea03ad6cc2d068ea19c6e4289fe2e13a5d9a88285496
+[2026-09-21 15:14:01 UTC] [INFO    ] [STEP 120] SCRIPT SIZE: 28326 bytes
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] ================================================================================
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] Era x lineage factorial: pre-2018 SBDB cohort
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] ================================================================================
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] pre-2018 comets: near-parabolic usable 880; deep-plunger primary (q<3.1) 627; modern-fit (last_obs>=2018) 60; excluded {'year': 397, 'frag': 29, 'e': 0, 'q': 1504, 'arc': 283, 'iso': 0}
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] integrating pre-2018 cohort ...
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] pre2018: integrated 738 comets x2 legs; 142 failed
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T1 primary declared-axis: n=485 in=117 med 0.15100656530594098/0.15520894918727646 resid cap p=0.7855214194753455
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T2 free scan raw: (340,-60) p=1.14e-03 | resid: (340,-60) p=2.10e-05
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T3 displaced-axis gaps: (120,-40) -0.022, (160,-10) -0.043, declared -0.022
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T4 modern_fit_last_obs_ge_2018 (n=20): declared gap n/a, displaced gap +0.044
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T4 historical_fit_last_obs_lt_2018 (n=465): declared gap -0.037, displaced gap -0.044
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T5 pre-2018 resid order-1: amp 0.060 phase 306 p=0.0075
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T6 bound_e_lt_1 (n=254): declared -0.044, displaced -0.011
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T6 hyperbolic_e_ge_1 (n=231): declared -0.042, displaced -0.033
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T6 arc_spans_perihelion (n=357): declared -0.025, displaced -0.020
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T6 arc_one_sided (n=128): declared -0.037, displaced -0.072
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T8 arc_gt_730_nobs_gt_500 (n=48): declared gap -0.030243979681785826, p=0.5277439113578002
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T8 arc_gt_365_nobs_gt_300 (n=97): declared gap 0.17444812341910448, p=0.06719835036118153
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T8 arc_top_quartile (n=122): declared gap 0.10341801037787901, p=0.10306217409480967
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T8 nobs_gt_1000 (n=69): declared gap 0.04088059558112078, p=0.4801553900239011
+[2026-09-21 15:14:02 UTC] [INFO    ] [STEP 120] T7 CODE-overlap (n=135): declared -0.031, displaced +0.047
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Saving data: step_b84_pre2018_sbdb.json
+[2026-09-21 15:14:03 UTC] [DEBUG   ] [STEP 120]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b84_pre2018_sbdb.json
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]   Output: step_b84_pre2018_sbdb.json
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] 
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] ================================================================================
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] STEP SUMMARY: step_120_pre2018_sbdb_factorial
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] ================================================================================
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Step Number: 120
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Status: SUCCESS
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Duration: 1.45s
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Log Records Emitted: 104
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Output Files: 1
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_120_pre2018_sbdb_factorial.log
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] 
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Generated 1 output file(s):
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]   • step_b84_pre2018_sbdb.json: 7.37 KB [sha256 7a92ecfa908f1eda]
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] 
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]   RESULT SNAPSHOT [step_b84_pre2018_sbdb.json]:
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]     inputs [n=3]
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]     axis_ecl_deg [n=2]: median=10.5 min=-13 max=34
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]     cohort_counts:
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       usable_near_parabolic = 880
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       deep_plunger_primary = 627
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       integrated = 738
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       modern_fit_last_obs_ge_2018 = 60
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       code_overlap = 288
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]     cohort_counts.excluded:
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       year = 397
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       frag = 29
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       e = 0
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       q = 1504
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       arc = 283
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       iso = 0
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]     T1_declared_axis:
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       n = 485
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       n_in = 117
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       med_drot_in = 0.15100657
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       med_drot_out = 0.15520895
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       drot_in_gt_out_p = 0.55256524
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       rho_vs_theta = -0.025283345
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       p_2sided = 0.57858011
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]     T1_declared_axis.resid_cap:
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       med_in = 0.033983247
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       med_out = 0.059352613
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       p = 0.78552142
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]     T2_free_scan.raw_drot.best:
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       p = 0.0011415787
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       lam = 340
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       beta = -60
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       n_in = 129
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       sep_from_declared = 61.237926
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       sep_from_post2017_resid = 74.73651
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]     T2_free_scan.resid.best:
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       p = 2.0989709e-05
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       lam = 340
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       beta = -60
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       n_in = 129
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       sep_from_declared = 61.237926
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       sep_from_post2017_resid = 74.73651
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]     T3_displaced_axis.at_post2017_resid_axis:
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       n_in = 171
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       med_in = 0.039160742
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       med_out = 0.060709248
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       gap = -0.021548505
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       mwu_greater_p = 0.931733
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       rho = 0.058789814
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       p_2sided = 0.19618799
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]     T3_displaced_axis.at_post2017_raw_axis:
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       n_in = 114
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       med_in = 0.0098576856
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       med_out = 0.053151892
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       gap = -0.043294207
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       mwu_greater_p = 0.83397346
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       rho = 0.10374273
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] ================================================================================
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] STEP 120 COMPLETE: SUCCESS
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_120_pre2018_sbdb_factorial_provenance.json
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] 
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] ================================================================================
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] EXECUTIVE SUMMARY
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] ================================================================================
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Step: step_120_pre2018_sbdb_factorial (Step 120)
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Status: SUCCESS
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Duration: 1.45s
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Log Records: 172
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Output Files: 1
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] Key Outputs:
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120]   - step_b84_pre2018_sbdb.json (7.37 KB)
+[2026-09-21 15:14:03 UTC] [INFO    ] [STEP 120] ================================================================================

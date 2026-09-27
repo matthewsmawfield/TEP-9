@@ -246,11 +246,10 @@ fig.suptitle("Detachment-cut coherence of the resident axis "
 fig.tight_layout(rect=[0, 0, 1, 0.94])
 fig.savefig(RESULTS / "figures" / "supplementary" / "step_b75_detachment_coherence.png",
             dpi=300)
-logger.info("Saving data: supplementary/step_b75_detachment_coherence.png")
+logger.data_save(RESULTS / "figures" / "supplementary" / "step_b75_detachment_coherence.png")
 
 with open(RESULTS / "step_b75_detachment_coherence.json", "w") as f:
     json.dump(out, f, indent=1)
-logger.info("Saving data: step_b75_detachment_coherence.json")
 
 with open(RESULTS / "step_b75_detachment_coherence.csv", "w",
           newline="") as f:
@@ -266,7 +265,7 @@ with open(RESULTS / "step_b75_detachment_coherence.csv", "w",
                       c.get("phat_bet"), c.get("sep_from_axis"),
                       c.get("sep_from_cap"),
                       c.get("min_sep_to_declared")])
-logger.info("Saving data: step_b75_detachment_coherence.csv")
+logger.data_save(RESULTS / "step_b75_detachment_coherence.csv")
 
 verdict = (f"Across {out['n_cells_used']} adequately sized "
            f"detachment cuts the recovered direction is coherent, "
@@ -291,4 +290,5 @@ out["verdict"] = verdict
 logger.info(f"verdict: {verdict}")
 with open(RESULTS / "step_b75_detachment_coherence.json", "w") as f:
     json.dump(out, f, indent=1)
+logger.data_save(RESULTS / "step_b75_detachment_coherence.json")
 logger.info("Detachment coherence complete")

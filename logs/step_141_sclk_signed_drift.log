@@ -1,102 +1,163 @@
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] LOGGER INITIALIZED: step_141_sclk_signed_drift (Step 141)
-[2026-09-20 12:25:34 UTC] [DEBUG   ] [STEP 141] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_141_sclk_signed_drift.log
-[2026-09-20 12:25:34 UTC] [DEBUG   ] [STEP 141] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:25:34 UTC] [DEBUG   ] [STEP 141] Start time (UTC): 2026-09-20T12:25:34.286769+00:00
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] 
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] STEP PURPOSE
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] --------------------------------------------------------------------------------
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   Step 141: SCLK signed-drift crossing channel (step_b105).
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   Step 096 tested the absolute calibration residuals -- the scatter
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   of the SCLK correction record -- and returned bounds at the ppm
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   level.  A different observable lives in the same record: the
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   signed fractional frequency offset dnu of the onboard oscillator
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   versus Earth time.  The onboard oscillator ticks in spacecraft
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   proper time; its measured rate against ground-defined ET through
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   the downlinked timestamps is a one-way clock comparison -- the
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   transport class the two-way cancellation theorem says can carry a
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   lapse signal.  This step tests the signed level for
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   crossing-aligned structure.
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   T1  Signed dnu level steps at the four boundary crossings
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   (V1 TS 2004.96, V1 HP 2012.65, V2 TS 2007.66, V2 HP 2018.90)
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   at 2/3/5-yr window widths, raw and smooth-ageing detrended
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   (quadratic in log mission-age).
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   T2  Changepoint extremeness: the same windowed-step statistic at
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   every admissible changepoint in each record -- the price of
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   asking "how often does a step this size occur anywhere".
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   T3  Joint statistic: 4/4 sign consistency against the measured
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   ~50 per cent negative base rate, and the Fisher combination
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   of the four negative-direction tail fractions.
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   T4  Artefact audit: calibration cadence around each crossing
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   (long gaps bias windowed means), and the NH1 interior control
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   (whose dnu is frozen at sub-0.1 ppm -- unusable for the
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   signed channel, registered as such).
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   T5  Degeneracy statement: ordinary oscillator ageing predicts
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   monotone deceleration, which the detrended test removes; what
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   remains is a crossing-aligned local feature, but the record
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   is kernel-segmented and two-craft, so the channel registers
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   as a candidate with priced degeneracy -- not a null and not
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   a detection.
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] --------------------------------------------------------------------------------
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] SCRIPT: scripts/steps/step_141_sclk_signed_drift.py
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] SCRIPT SHA256: 8811f6b42cd44432aa065a6942f7f54f77bbb994b4424f980d1f7c78421e65a5
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] SCRIPT SIZE: 9438 bytes
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] ================================================================================
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] SCLK signed-drift crossing channel
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] ================================================================================
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG1 TS w=2.0: raw -1.86 / det -1.90 ppm, neg tail 3.5%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG1 TS w=3.0: raw -1.69 / det -1.74 ppm, neg tail 3.7%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG1 TS w=5.0: raw -0.04 / det -0.12 ppm, neg tail 62.6%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG1 HP w=2.0: raw -0.99 / det -1.01 ppm, neg tail 14.6%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG1 HP w=3.0: raw -0.91 / det -0.93 ppm, neg tail 11.0%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG1 HP w=5.0: raw -0.45 / det -0.50 ppm, neg tail 20.4%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG2 TS w=2.0: raw -2.43 / det -2.48 ppm, neg tail 6.3%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG2 TS w=3.0: raw -3.85 / det -3.91 ppm, neg tail 1.8%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG2 TS w=5.0: raw -2.46 / det -2.54 ppm, neg tail 3.3%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG2 HP w=2.0: raw -2.51 / det -2.55 ppm, neg tail 5.1%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG2 HP w=3.0: raw -2.43 / det -2.48 ppm, neg tail 9.0%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG2 HP w=5.0: raw -1.76 / det -1.85 ppm, neg tail 11.9%
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] T3 joint sign-consistency
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   4/4 negative, base rate 0.66, binom p=0.195; Fisher chi2=23.9 p=0.00241
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] T4 cadence/segmentation audit
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG1 TS: nearby gaps [115.7, 0.3, 24.3, 0.3, 50.3, 0.3]
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG1 HP: nearby gaps [9.7, 0.3, 27.7, 0.3, 12.7, 0.3]
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG2 TS: nearby gaps [82.7, 0.3, 31.0, 0.3, 14.3, 0.3]
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   VG2 HP: nearby gaps [0.0, 89.9, 74.0, 113.0, 38.2, 25.8]
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] verdict: SCLK CALIBRATION DIAGNOSTIC: 4/4 negative three-year-window steps. Same-craft correlation and kernel segmentation prevent an independent-crossing detection claim; compare window sensitivity and empirical epoch ranks.
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Saving data: step_b105_sclk_signed_drift.json
-[2026-09-20 12:25:34 UTC] [DEBUG   ] [STEP 141]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b105_sclk_signed_drift.json
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   Output: step_b105_sclk_signed_drift.json
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Saving data: step_b105_sclk_drift.png
-[2026-09-20 12:25:34 UTC] [DEBUG   ] [STEP 141]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b105_sclk_drift.png
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   Output: step_b105_sclk_drift.png
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] 
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] ================================================================================
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] STEP SUMMARY: step_141_sclk_signed_drift
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] ================================================================================
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Step Number: 141
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Status: SUCCESS
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Duration: 0.62s
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Log Records Emitted: 79
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Output Files: 2
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_141_sclk_signed_drift.log
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] 
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Generated 2 output file(s):
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   • step_b105_sclk_signed_drift.json: 6.72 KB [sha256 360c7313801201d8]
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   • step_b105_sclk_drift.png: 228.72 KB [sha256 8f261cc51ab10159]
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] ================================================================================
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] STEP 141 COMPLETE: SUCCESS
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_141_sclk_signed_drift_provenance.json
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] 
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] ================================================================================
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] EXECUTIVE SUMMARY
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] ================================================================================
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Step: step_141_sclk_signed_drift (Step 141)
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Status: SUCCESS
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Duration: 0.62s
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Log Records: 89
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Output Files: 2
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] Key Outputs:
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   - step_b105_sclk_signed_drift.json (6.72 KB)
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141]   - step_b105_sclk_drift.png (228.72 KB)
-[2026-09-20 12:25:34 UTC] [INFO    ] [STEP 141] ================================================================================
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] LOGGER INITIALIZED: step_141_sclk_signed_drift (Step 141)
+[2026-09-21 15:17:27 UTC] [DEBUG   ] [STEP 141] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_141_sclk_signed_drift.log
+[2026-09-21 15:17:27 UTC] [DEBUG   ] [STEP 141] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:17:27 UTC] [DEBUG   ] [STEP 141] Start time (UTC): 2026-09-21T15:17:27.193437+00:00
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] 
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] STEP PURPOSE
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] --------------------------------------------------------------------------------
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   Step 141: SCLK signed-drift crossing channel (step_b105).
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   Step 096 tested the absolute calibration residuals -- the scatter
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   of the SCLK correction record -- and returned bounds at the ppm
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   level.  A different observable lives in the same record: the
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   signed fractional frequency offset dnu of the onboard oscillator
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   versus Earth time.  The onboard oscillator ticks in spacecraft
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   proper time; its measured rate against ground-defined ET through
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   the downlinked timestamps is a one-way clock comparison -- the
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   transport class the two-way cancellation theorem says can carry a
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   lapse signal.  This step tests the signed level for
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   crossing-aligned structure.
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   T1  Signed dnu level steps at the four boundary crossings
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   (V1 TS 2004.96, V1 HP 2012.65, V2 TS 2007.66, V2 HP 2018.90)
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   at 2/3/5-yr window widths, raw and smooth-ageing detrended
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   (quadratic in log mission-age).
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   T2  Changepoint extremeness: the same windowed-step statistic at
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   every admissible changepoint in each record -- the price of
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   asking "how often does a step this size occur anywhere".
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   T3  Joint statistic: 4/4 sign consistency against the measured
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   ~50 per cent negative base rate, and the Fisher combination
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   of the four negative-direction tail fractions.
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   T4  Artefact audit: calibration cadence around each crossing
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   (long gaps bias windowed means), and the NH1 interior control
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   (whose dnu is frozen at sub-0.1 ppm -- unusable for the
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   signed channel, registered as such).
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   T5  Degeneracy statement: ordinary oscillator ageing predicts
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   monotone deceleration, which the detrended test removes; what
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   remains is a crossing-aligned local feature, but the record
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   is kernel-segmented and two-craft, so the channel registers
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   as a candidate with priced degeneracy -- not a null and not
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   a detection.
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] --------------------------------------------------------------------------------
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] SCRIPT: scripts/steps/step_141_sclk_signed_drift.py
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] SCRIPT SHA256: 8811f6b42cd44432aa065a6942f7f54f77bbb994b4424f980d1f7c78421e65a5
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] SCRIPT SIZE: 9438 bytes
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] ================================================================================
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] SCLK signed-drift crossing channel
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] ================================================================================
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG1 TS w=2.0: raw -1.86 / det -1.90 ppm, neg tail 3.5%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG1 TS w=3.0: raw -1.69 / det -1.74 ppm, neg tail 3.7%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG1 TS w=5.0: raw -0.04 / det -0.12 ppm, neg tail 62.6%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG1 HP w=2.0: raw -0.99 / det -1.01 ppm, neg tail 14.6%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG1 HP w=3.0: raw -0.91 / det -0.93 ppm, neg tail 11.0%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG1 HP w=5.0: raw -0.45 / det -0.50 ppm, neg tail 20.4%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG2 TS w=2.0: raw -2.43 / det -2.48 ppm, neg tail 6.3%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG2 TS w=3.0: raw -3.85 / det -3.91 ppm, neg tail 1.8%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG2 TS w=5.0: raw -2.46 / det -2.54 ppm, neg tail 3.3%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG2 HP w=2.0: raw -2.51 / det -2.55 ppm, neg tail 5.1%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG2 HP w=3.0: raw -2.43 / det -2.48 ppm, neg tail 9.0%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG2 HP w=5.0: raw -1.76 / det -1.85 ppm, neg tail 11.9%
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] T3 joint sign-consistency
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   4/4 negative, base rate 0.66, binom p=0.195; Fisher chi2=23.9 p=0.00241
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] T4 cadence/segmentation audit
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG1 TS: nearby gaps [115.7, 0.3, 24.3, 0.3, 50.3, 0.3]
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG1 HP: nearby gaps [9.7, 0.3, 27.7, 0.3, 12.7, 0.3]
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG2 TS: nearby gaps [82.7, 0.3, 31.0, 0.3, 14.3, 0.3]
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   VG2 HP: nearby gaps [0.0, 89.9, 74.0, 113.0, 38.2, 25.8]
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] verdict: SCLK CALIBRATION DIAGNOSTIC: 4/4 negative three-year-window steps. Same-craft correlation and kernel segmentation prevent an independent-crossing detection claim; compare window sensitivity and empirical epoch ranks.
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141] Saving data: step_b105_sclk_signed_drift.json
+[2026-09-21 15:17:27 UTC] [DEBUG   ] [STEP 141]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b105_sclk_signed_drift.json
+[2026-09-21 15:17:27 UTC] [INFO    ] [STEP 141]   Output: step_b105_sclk_signed_drift.json
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Saving data: step_b105_sclk_drift.png
+[2026-09-21 15:17:28 UTC] [DEBUG   ] [STEP 141]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b105_sclk_drift.png
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]   Output: step_b105_sclk_drift.png
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] 
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] ================================================================================
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] STEP SUMMARY: step_141_sclk_signed_drift
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] ================================================================================
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Step Number: 141
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Status: SUCCESS
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Duration: 0.92s
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Log Records Emitted: 79
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Output Files: 2
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_141_sclk_signed_drift.log
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] 
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Generated 2 output file(s):
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]   • step_b105_sclk_signed_drift.json: 6.72 KB [sha256 360c7313801201d8]
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]   • step_b105_sclk_drift.png: 228.72 KB [sha256 8f261cc51ab10159]
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] 
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]   RESULT SNAPSHOT [step_b105_sclk_signed_drift.json]:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]     T1_crossing_steps.VG1.TS:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       epoch = 2004.96
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       radius_au = 94
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]     T1_crossing_steps.VG1.TS.w2:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       raw_ppm = -1.8615472
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       detrended_ppm = -1.8985208
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_raw = 0.035087719
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_det = 0.035087719
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       abs_frac_det = 0.11695906
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       n_changepoints = 171
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]     T1_crossing_steps.VG1.TS.w3:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       raw_ppm = -1.6911184
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       detrended_ppm = -1.7380854
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_raw = 0.036809816
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_det = 0.036809816
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       abs_frac_det = 0.12269939
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       n_changepoints = 163
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]     T1_crossing_steps.VG1.TS.w5:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       raw_ppm = -0.039442821
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       detrended_ppm = -0.1223562
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_raw = 0.34693878
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_det = 0.62585034
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       abs_frac_det = 0.97278912
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       n_changepoints = 147
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]     T1_crossing_steps.VG1.HP:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       epoch = 2012.65
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       radius_au = 121.6
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]     T1_crossing_steps.VG1.HP.w2:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       raw_ppm = -0.99089385
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       detrended_ppm = -1.0060499
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_raw = 0.14619883
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_det = 0.14619883
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       abs_frac_det = 0.28070175
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       n_changepoints = 171
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]     T1_crossing_steps.VG1.HP.w3:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       raw_ppm = -0.90623826
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       detrended_ppm = -0.9303596
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_raw = 0.11042945
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_det = 0.11042945
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       abs_frac_det = 0.23312883
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       n_changepoints = 163
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]     T1_crossing_steps.VG1.HP.w5:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       raw_ppm = -0.45062576
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       detrended_ppm = -0.49938927
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_raw = 0.16326531
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_det = 0.20408163
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       abs_frac_det = 0.44897959
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       n_changepoints = 147
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]     T1_crossing_steps.VG2.TS:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       epoch = 2007.66
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       radius_au = 84
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]     T1_crossing_steps.VG2.TS.w2:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       raw_ppm = -2.4340435
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       detrended_ppm = -2.4781936
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_raw = 0.062857143
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       neg_frac_det = 0.062857143
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       abs_frac_det = 0.13714286
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       n_changepoints = 175
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] ================================================================================
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] STEP 141 COMPLETE: SUCCESS
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_141_sclk_signed_drift_provenance.json
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] 
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] ================================================================================
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] EXECUTIVE SUMMARY
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] ================================================================================
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Step: step_141_sclk_signed_drift (Step 141)
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Status: SUCCESS
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Duration: 0.92s
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Log Records: 150
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Output Files: 2
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] Key Outputs:
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]   - step_b105_sclk_signed_drift.json (6.72 KB)
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141]   - step_b105_sclk_drift.png (228.72 KB)
+[2026-09-21 15:17:28 UTC] [INFO    ] [STEP 141] ================================================================================

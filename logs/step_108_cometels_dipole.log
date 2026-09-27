@@ -1,105 +1,175 @@
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] LOGGER INITIALIZED: step_108_cometels_dipole (Step 108)
-[2026-09-20 12:20:37 UTC] [DEBUG   ] [STEP 108] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_108_cometels_dipole.log
-[2026-09-20 12:20:37 UTC] [DEBUG   ] [STEP 108] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:20:37 UTC] [DEBUG   ] [STEP 108] Start time (UTC): 2026-09-20T12:20:37.298496+00:00
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] 
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] STEP PURPOSE
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] --------------------------------------------------------------------------------
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   Step 108 -- full-population aphelion dipole (CometEls census).
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   The aphelion-dipole channel (step_061) measured the m=1 lean of
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   comet aphelia toward the boundary axis on four quality-selected
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   samples: the Warsaw spike, CODE class-1 matched and CODE-only,
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   and the one-apparition cohort.  Every one of those samples is a
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   catalogue elite: comets that earned full three-leg solutions.
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   A referee can therefore ask whether the dipole is a property of
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   the discovered near-parabolic population or a selection of the
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   solution-quality cut.
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   This step runs the identical tide-aware dipole test on the full
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   MPC CometEls census -- every catalogued comet with published
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   elements, quality cut or not -- restricted to the near-parabolic
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   population:
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   broad census   e in [0.90, 1.02)              (~270 comets)
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   spike proxy    e < 1 and a_osc = q/(1-e) > 250 AU
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   T1  tide calibration (|b_gal| vs isotropic, as in step_061).
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   T2  d_par = <aph . axis> under the identical tide-aware null
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   (preserve |b_gal|, uniform galactic longitude, random
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   hemisphere) on both TNO axes, the anti-axis, and the
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   galactic-pole control.
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   T3  eccentricity gradient: d_par in e-bins -- does the lean
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   strengthen toward the spike?
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   T4  membership split: comets absent from the 229-comet training
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   set carry the genuinely new information; the shared subset
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   is a same-record check.
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   T5  free dipole recovery: the census's own spherical-mean
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   aphelion direction and its separation from the measured
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   axis -- does the broad population self-organize toward the
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   axis without being told where it is?
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   Inputs
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   data/raw/mpc/CometEls.txt
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   results/step_b30_proper_time_slip.csv   (training-set membership)
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   Outputs
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   results/step_b72_cometels_dipole.json
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   results/step_b72_cometels_dipole.csv
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108]   results/figures/supplementary/step_b72_cometels_dipole.png
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] --------------------------------------------------------------------------------
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] SCRIPT: scripts/steps/step_108_cometels_dipole.py
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] SCRIPT SHA256: 36bd9fc799721184978278bd1c2babbc01ecd10058f02ca28250c3573ffe604d
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] SCRIPT SIZE: 15167 bytes
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] ================================================================================
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] Full-population aphelion dipole (CometEls census)
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] ================================================================================
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] CometEls parsed: 959 comets
-[2026-09-20 12:20:37 UTC] [INFO    ] [STEP 108] broad census n=268 (dedup 930 unique designations); spike proxy n=115
-[2026-09-20 12:20:40 UTC] [INFO    ] [STEP 108] METRIC: dipole[CometEls broad e in [0.90,1.02)] = n=268 d_par(cap)=+0.1045 p=0.0007
-[2026-09-20 12:20:42 UTC] [INFO    ] [STEP 108] METRIC: dipole[CometEls spike a_osc>250AU] = n=115 d_par(cap)=+0.1779 p=0.0005
-[2026-09-20 12:20:42 UTC] [INFO    ] [STEP 108] METRIC: e_bin[0.9,0.95) = n=14 d_par=+0.0746 p=0.308
-[2026-09-20 12:20:43 UTC] [INFO    ] [STEP 108] METRIC: e_bin[0.95,0.985) = n=18 d_par=-0.1566 p=0.889
-[2026-09-20 12:20:43 UTC] [INFO    ] [STEP 108] METRIC: e_bin[0.985,1.0) = n=128 d_par=+0.1758 p=5e-05
-[2026-09-20 12:20:43 UTC] [INFO    ] [STEP 108] METRIC: e_bin[1.0,1.02) = n=114 d_par=+0.0885 p=0.0445
-[2026-09-20 12:20:45 UTC] [INFO    ] [STEP 108] METRIC: dipole[broad shared with 229 (n=62)] = n=62 d_par(cap)=+0.2153 p=0.00115
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] METRIC: dipole[broad not in 229 (n=206)] = n=206 d_par(cap)=+0.0712 p=0.0309
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] METRIC: free_dipole = (35.3,-34.4) R=0.112 sep_cap=21.4 sep_anti=158.6
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Saving data: step_b72_cometels_dipole.png
-[2026-09-20 12:20:48 UTC] [DEBUG   ] [STEP 108]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b72_cometels_dipole.png
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108]   Output: step_b72_cometels_dipole.png
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Saving data: step_b72_cometels_dipole.json
-[2026-09-20 12:20:48 UTC] [DEBUG   ] [STEP 108]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b72_cometels_dipole.json
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108]   Output: step_b72_cometels_dipole.json
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Saving data: step_b72_cometels_dipole.csv
-[2026-09-20 12:20:48 UTC] [DEBUG   ] [STEP 108]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b72_cometels_dipole.csv
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108]   Output: step_b72_cometels_dipole.csv
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] verdict: On the full CometEls near-parabolic census (n=268), the aphelia lean toward the cap-declaration axis at d_par=+0.104 under the identical tide-aware null (p=0.0007); the spike-proxy subset (n=115) leans at +0.178 (p=0.0005).  The 206 comets absent from the 229-comet training set -- the genuinely new information -- lean at +0.071 (p=0.0309).  The census's own free dipole recovers (35,-34), 21 deg from the cap axis and 159 deg from the anti-axis -- the broadest discovered population self-organizes toward the measured sector without being told where it is.
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] CometEls census dipole complete
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] 
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] ================================================================================
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] STEP SUMMARY: step_108_cometels_dipole
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] ================================================================================
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Step Number: 108
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Status: SUCCESS
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Duration: 11.38s
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Log Records Emitted: 80
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Output Files: 3
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_108_cometels_dipole.log
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] 
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Generated 3 output file(s):
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108]   • step_b72_cometels_dipole.png: 217.46 KB [sha256 9dc8c930fd80a3a7]
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108]   • step_b72_cometels_dipole.json: 5.39 KB [sha256 4c6ede55ea3ac357]
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108]   • step_b72_cometels_dipole.csv: 18.65 KB [sha256 d909bfbb2828258a]
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] ================================================================================
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] STEP 108 COMPLETE: SUCCESS
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_108_cometels_dipole_provenance.json
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] 
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] ================================================================================
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] EXECUTIVE SUMMARY
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] ================================================================================
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Step: step_108_cometels_dipole (Step 108)
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Status: SUCCESS
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Duration: 11.38s
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Log Records: 91
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Output Files: 3
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] Key Outputs:
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108]   - step_b72_cometels_dipole.png (217.46 KB)
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108]   - step_b72_cometels_dipole.json (5.39 KB)
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108]   - step_b72_cometels_dipole.csv (18.65 KB)
-[2026-09-20 12:20:48 UTC] [INFO    ] [STEP 108] ================================================================================
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] LOGGER INITIALIZED: step_108_cometels_dipole (Step 108)
+[2026-09-21 15:12:20 UTC] [DEBUG   ] [STEP 108] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_108_cometels_dipole.log
+[2026-09-21 15:12:20 UTC] [DEBUG   ] [STEP 108] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:12:20 UTC] [DEBUG   ] [STEP 108] Start time (UTC): 2026-09-21T15:12:20.952175+00:00
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] 
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] STEP PURPOSE
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] --------------------------------------------------------------------------------
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   Step 108 -- full-population aphelion dipole (CometEls census).
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   The aphelion-dipole channel (step_061) measured the m=1 lean of
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   comet aphelia toward the boundary axis on four quality-selected
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   samples: the Warsaw spike, CODE class-1 matched and CODE-only,
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   and the one-apparition cohort.  Every one of those samples is a
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   catalogue elite: comets that earned full three-leg solutions.
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   A referee can therefore ask whether the dipole is a property of
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   the discovered near-parabolic population or a selection of the
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   solution-quality cut.
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   This step runs the identical tide-aware dipole test on the full
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   MPC CometEls census -- every catalogued comet with published
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   elements, quality cut or not -- restricted to the near-parabolic
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   population:
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   broad census   e in [0.90, 1.02)              (~270 comets)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   spike proxy    e < 1 and a_osc = q/(1-e) > 250 AU
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   T1  tide calibration (|b_gal| vs isotropic, as in step_061).
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   T2  d_par = <aph . axis> under the identical tide-aware null
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   (preserve |b_gal|, uniform galactic longitude, random
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   hemisphere) on both TNO axes, the anti-axis, and the
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   galactic-pole control.
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   T3  eccentricity gradient: d_par in e-bins -- does the lean
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   strengthen toward the spike?
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   T4  membership split: comets absent from the 229-comet training
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   set carry the genuinely new information; the shared subset
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   is a same-record check.
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   T5  free dipole recovery: the census's own spherical-mean
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   aphelion direction and its separation from the measured
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   axis -- does the broad population self-organize toward the
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   axis without being told where it is?
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   Inputs
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   data/raw/mpc/CometEls.txt
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   results/step_b30_proper_time_slip.csv   (training-set membership)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   Outputs
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   results/step_b72_cometels_dipole.json
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   results/step_b72_cometels_dipole.csv
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108]   results/figures/supplementary/step_b72_cometels_dipole.png
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] --------------------------------------------------------------------------------
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] SCRIPT: scripts/steps/step_108_cometels_dipole.py
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] SCRIPT SHA256: 36bd9fc799721184978278bd1c2babbc01ecd10058f02ca28250c3573ffe604d
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] SCRIPT SIZE: 15167 bytes
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] ================================================================================
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] Full-population aphelion dipole (CometEls census)
+[2026-09-21 15:12:20 UTC] [INFO    ] [STEP 108] ================================================================================
+[2026-09-21 15:12:21 UTC] [INFO    ] [STEP 108] CometEls parsed: 959 comets
+[2026-09-21 15:12:21 UTC] [INFO    ] [STEP 108] broad census n=268 (dedup 930 unique designations); spike proxy n=115
+[2026-09-21 15:12:23 UTC] [INFO    ] [STEP 108] METRIC: dipole[CometEls broad e in [0.90,1.02)] = n=268 d_par(cap)=+0.1045 p=0.0007
+[2026-09-21 15:12:25 UTC] [INFO    ] [STEP 108] METRIC: dipole[CometEls spike a_osc>250AU] = n=115 d_par(cap)=+0.1779 p=0.0005
+[2026-09-21 15:12:26 UTC] [INFO    ] [STEP 108] METRIC: e_bin[0.9,0.95) = n=14 d_par=+0.0746 p=0.308
+[2026-09-21 15:12:26 UTC] [INFO    ] [STEP 108] METRIC: e_bin[0.95,0.985) = n=18 d_par=-0.1566 p=0.889
+[2026-09-21 15:12:26 UTC] [INFO    ] [STEP 108] METRIC: e_bin[0.985,1.0) = n=128 d_par=+0.1758 p=5e-05
+[2026-09-21 15:12:27 UTC] [INFO    ] [STEP 108] METRIC: e_bin[1.0,1.02) = n=114 d_par=+0.0885 p=0.0445
+[2026-09-21 15:12:29 UTC] [INFO    ] [STEP 108] METRIC: dipole[broad shared with 229 (n=62)] = n=62 d_par(cap)=+0.2153 p=0.00115
+[2026-09-21 15:12:31 UTC] [INFO    ] [STEP 108] METRIC: dipole[broad not in 229 (n=206)] = n=206 d_par(cap)=+0.0712 p=0.0309
+[2026-09-21 15:12:31 UTC] [INFO    ] [STEP 108] METRIC: free_dipole = (35.3,-34.4) R=0.112 sep_cap=21.4 sep_anti=158.6
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Saving data: step_b72_cometels_dipole.png
+[2026-09-21 15:12:32 UTC] [DEBUG   ] [STEP 108]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b72_cometels_dipole.png
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]   Output: step_b72_cometels_dipole.png
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Saving data: step_b72_cometels_dipole.json
+[2026-09-21 15:12:32 UTC] [DEBUG   ] [STEP 108]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b72_cometels_dipole.json
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]   Output: step_b72_cometels_dipole.json
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Saving data: step_b72_cometels_dipole.csv
+[2026-09-21 15:12:32 UTC] [DEBUG   ] [STEP 108]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b72_cometels_dipole.csv
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]   Output: step_b72_cometels_dipole.csv
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] verdict: On the full CometEls near-parabolic census (n=268), the aphelia lean toward the cap-declaration axis at d_par=+0.104 under the identical tide-aware null (p=0.0007); the spike-proxy subset (n=115) leans at +0.178 (p=0.0005).  The 206 comets absent from the 229-comet training set -- the genuinely new information -- lean at +0.071 (p=0.0309).  The census's own free dipole recovers (35,-34), 21 deg from the cap axis and 159 deg from the anti-axis -- the broadest discovered population self-organizes toward the measured sector without being told where it is.
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] CometEls census dipole complete
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] 
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] ================================================================================
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] STEP SUMMARY: step_108_cometels_dipole
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] ================================================================================
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Step Number: 108
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Status: SUCCESS
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Duration: 11.07s
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Log Records Emitted: 80
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Output Files: 3
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_108_cometels_dipole.log
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] 
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Generated 3 output file(s):
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]   • step_b72_cometels_dipole.png: 217.46 KB [sha256 9dc8c930fd80a3a7]
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]   • step_b72_cometels_dipole.json: 5.39 KB [sha256 3cbe2a580f5b7f4b]
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]   • step_b72_cometels_dipole.csv: 18.63 KB [sha256 53e58fe1a2793402]
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] 
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]   RESULT SNAPSHOT [step_b72_cometels_dipole.json]:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     inputs [n=2]
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.broad_census:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       label = CometEls broad e in [0.90,1.02)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       n = 268
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.broad_census.T1_tide_calibration:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       mean_abs_bgal = 29.474707
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       isotropic_mean = 32.717811
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       ks_p_vs_isotropic = 0.0025324503
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.broad_census.T2_dipole_tide_null.tno_extreme_34_-13:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = 0.1045
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.000699965
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.broad_census.T2_dipole_tide_null.tno_detached_50_-17:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = 0.1043
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.00159992
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.broad_census.T2_dipole_tide_null.anti_extreme:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = -0.1045
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.99915004
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.broad_census.T2_dipole_tide_null.gal_pole:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = -0.0972
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.99870006
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.broad_census.T2_dipole_tide_null.gal_antictr_180_0:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = 0.0512
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.082095895
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.spike_proxy:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       label = CometEls spike a_osc>250AU
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       n = 115
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.spike_proxy.T1_tide_calibration:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       mean_abs_bgal = 28.699904
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       isotropic_mean = 32.791676
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       ks_p_vs_isotropic = 0.052167076
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.spike_proxy.T2_dipole_tide_null.tno_extreme_34_-13:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = 0.1779
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.000499975
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.spike_proxy.T2_dipole_tide_null.tno_detached_50_-17:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = 0.1716
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.00079996
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.spike_proxy.T2_dipole_tide_null.anti_extreme:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = -0.1779
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.9999
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.spike_proxy.T2_dipole_tide_null.gal_pole:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = -0.0679
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.9159542
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.spike_proxy.T2_dipole_tide_null.gal_antictr_180_0:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = 0.1774
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.00059997
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.T3_eccentricity_gradient[0]:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       e_bin = [0.9,0.95)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       n = 14
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = 0.0746
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.30843458
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.T3_eccentricity_gradient[1]:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       e_bin = [0.95,0.985)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       n = 18
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = -0.1566
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.88905555
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.T3_eccentricity_gradient[2]:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       e_bin = [0.985,1.0)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       n = 128
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = 0.1758
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 4.99975e-05
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.T3_eccentricity_gradient[3]:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       e_bin = [1.0,1.02)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       n = 114
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       d_par = 0.0885
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       p_tide_null = 0.044547773
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]     samples.T4_shared_with_training:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       label = broad shared with 229 (n=62)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] ================================================================================
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] STEP 108 COMPLETE: SUCCESS
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_108_cometels_dipole_provenance.json
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] 
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] ================================================================================
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] EXECUTIVE SUMMARY
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] ================================================================================
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Step: step_108_cometels_dipole (Step 108)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Status: SUCCESS
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Duration: 11.07s
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Log Records: 161
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Output Files: 3
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] Key Outputs:
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]   - step_b72_cometels_dipole.png (217.46 KB)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]   - step_b72_cometels_dipole.json (5.39 KB)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108]   - step_b72_cometels_dipole.csv (18.63 KB)
+[2026-09-21 15:12:32 UTC] [INFO    ] [STEP 108] ================================================================================

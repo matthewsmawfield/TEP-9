@@ -1,104 +1,141 @@
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] LOGGER INITIALIZED: step_066_tno_secular_stability (Step 066)
-[2026-09-20 11:55:17 UTC] [DEBUG   ] [STEP 066] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_066_tno_secular_stability.log
-[2026-09-20 11:55:17 UTC] [DEBUG   ] [STEP 066] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 11:55:17 UTC] [DEBUG   ] [STEP 066] Start time (UTC): 2026-09-20T11:55:17.741611+00:00
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] 
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] STEP PURPOSE
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] --------------------------------------------------------------------------------
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   step_066: Secular stability of the real detached-TNO cluster under
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   the measured planetary system, with and without the published
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   Planet Nine.
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   The shepherding hypothesis requires the observed varpi alignment to be
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   *maintained*: differential apsidal precession under the known planets
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   otherwise disperses the cluster on a measurable timescale.  This step
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   integrates the actual catalogued population -- the 44 detached TNOs
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   (a > 150 AU, q > 30 AU, condition code <= 3; identical selection to
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   step_010) -- forward through the real planetary system (Sun + giant
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   planets on DE440s states) and measures the apsidal-precession rates
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   directly.
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   Three realizations are compared:
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   giants        : Sun + Jupiter, Saturn, Uranus, Neptune (DE440s)
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   giants+bb21ml : + Brown & Batygin (2021) maximum-likelihood Planet Nine
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   (m9=5.0 M_E, a9=300 AU, e9=0.15, i9=17 deg,
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   varpi9=254 deg, Om9=108 deg, M9=0)
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   giants+bb21med: + BB21 marginalized-median model
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   (m9=6.9 M_E, a9=461 AU, e9=0.30, i9=15.6 deg,
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   varpi9=246.7 deg, Om9=96.9 deg, M9=0)
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   The TNOs are massless test particles started from their catalogued
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   osculating elements at a common epoch (median element epoch; along-track
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   phase is drawn uniformly since SBDB supplies no mean anomaly -- apsidal
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   precession is phase-independent).
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   Measured per object over the integration:
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   dvarpi/dt   : linear drift of the longitude of perihelion -> the
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   differential-precession dispersal rate
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   Dvarpi(t)   : varpi relative to P9's varpi -- the libration coordinate
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   a confining perturber must hold near 180 deg
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   Reported:
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   sigma(dvarpi/dt) per model -> dispersal time t_disp = sigma_varpi /
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   sigma(dvarpi/dt) for the observed cluster spread;
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   the P9 restoring signature: correlation of the P9-added drift
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   dvarpi_P9 - dvarpi_giants against the offset (Dvarpi - 180 deg);
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   R_varpi(t) of the observed cluster under each model.
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   Outputs
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   results/step_b31_tno_secular.json
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   results/step_b31_tno_secular.csv
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066]   results/figures/supplementary/step_b31_tno_secular.png
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] --------------------------------------------------------------------------------
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] SCRIPT: scripts/steps/step_066_tno_secular_stability.py
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] SCRIPT SHA256: 599ccb0789808dcd65d3b67beb2db1430344971cfe0f9166b696ecb1b30cc369
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] SCRIPT SIZE: 16757 bytes
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] ================================================================================
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] Secular stability of the detached-TNO cluster (REBOUND/DE440s)
-[2026-09-20 11:55:17 UTC] [INFO    ] [STEP 066] ================================================================================
-[2026-09-20 11:55:18 UTC] [INFO    ] [STEP 066] detached sample: 44 TNOs (a>150, q>30, cc<=3)
-[2026-09-20 11:55:18 UTC] [INFO    ] [STEP 066] common epoch JD 2461200.5
-[2026-09-20 12:04:32 UTC] [INFO    ] [STEP 066] giants: integrated 20 Myr, 401 snapshots
-[2026-09-20 12:04:45 UTC] [INFO    ] [STEP 066] giants+bb21_med: integrated 20 Myr, 401 snapshots
-[2026-09-20 12:04:45 UTC] [INFO    ] [STEP 066] giants+bb21_ml: integrated 20 Myr, 401 snapshots
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] giants: sigma(dv) all/in = 0.165/0.200 deg/Myr | t_disp in = 161 Myr
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] giants_bb21ml: sigma(dv) all/in = 0.186/0.197 deg/Myr | t_disp in = 163 Myr
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] giants_bb21med: sigma(dv) all/in = 0.181/0.190 deg/Myr | t_disp in = 169 Myr
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] restoring bb21_ml: rho=0.279 p=0.0672 | med delta in/out = -0.001/-0.000
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] restoring bb21_med: rho=0.087 p=0.5765 | med delta in/out = -0.002/-0.000
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Saving data: step_b31_tno_secular.json
-[2026-09-20 12:04:46 UTC] [DEBUG   ] [STEP 066]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b31_tno_secular.json
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066]   Output: step_b31_tno_secular.json
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Saving data: step_b31_tno_secular.csv
-[2026-09-20 12:04:46 UTC] [DEBUG   ] [STEP 066]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b31_tno_secular.csv
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066]   Output: step_b31_tno_secular.csv
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Saving data: step_b31_tno_secular.png
-[2026-09-20 12:04:46 UTC] [DEBUG   ] [STEP 066]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b31_tno_secular.png
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066]   Output: step_b31_tno_secular.png
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] 
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] ================================================================================
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] STEP SUMMARY: step_066_tno_secular_stability
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] ================================================================================
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Step Number: 066
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Status: SUCCESS
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Duration: 9.48m
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Log Records Emitted: 76
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Output Files: 3
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_066_tno_secular_stability.log
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] 
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Generated 3 output file(s):
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066]   • step_b31_tno_secular.json: 32.87 KB [sha256 bb78ffdcee3fe6c9]
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066]   • step_b31_tno_secular.csv: 6.12 KB [sha256 37bab4eb39ae3173]
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066]   • step_b31_tno_secular.png: 369.96 KB [sha256 ca00c944976ab4c6]
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] ================================================================================
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] STEP 066 COMPLETE: SUCCESS
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_066_tno_secular_stability_provenance.json
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] 
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] ================================================================================
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] EXECUTIVE SUMMARY
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] ================================================================================
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Step: step_066_tno_secular_stability (Step 066)
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Status: SUCCESS
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Duration: 9.48m
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Log Records: 87
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Output Files: 3
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] Key Outputs:
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066]   - step_b31_tno_secular.json (32.87 KB)
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066]   - step_b31_tno_secular.csv (6.12 KB)
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066]   - step_b31_tno_secular.png (369.96 KB)
-[2026-09-20 12:04:46 UTC] [INFO    ] [STEP 066] ================================================================================
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] LOGGER INITIALIZED: step_066_tno_secular_stability (Step 066)
+[2026-09-21 14:41:43 UTC] [DEBUG   ] [STEP 066] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_066_tno_secular_stability.log
+[2026-09-21 14:41:43 UTC] [DEBUG   ] [STEP 066] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:41:43 UTC] [DEBUG   ] [STEP 066] Start time (UTC): 2026-09-21T14:41:43.114461+00:00
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] 
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] STEP PURPOSE
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] --------------------------------------------------------------------------------
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   step_066: Secular stability of the real detached-TNO cluster under
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   the measured planetary system, with and without the published
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   Planet Nine.
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   The shepherding hypothesis requires the observed varpi alignment to be
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   *maintained*: differential apsidal precession under the known planets
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   otherwise disperses the cluster on a measurable timescale.  This step
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   integrates the actual catalogued population -- the 44 detached TNOs
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   (a > 150 AU, q > 30 AU, condition code <= 3; identical selection to
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   step_010) -- forward through the real planetary system (Sun + giant
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   planets on DE440s states) and measures the apsidal-precession rates
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   directly.
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   Three realizations are compared:
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   giants        : Sun + Jupiter, Saturn, Uranus, Neptune (DE440s)
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   giants+bb21ml : + Brown & Batygin (2021) maximum-likelihood Planet Nine
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   (m9=5.0 M_E, a9=300 AU, e9=0.15, i9=17 deg,
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   varpi9=254 deg, Om9=108 deg, M9=0)
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   giants+bb21med: + BB21 marginalized-median model
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   (m9=6.9 M_E, a9=461 AU, e9=0.30, i9=15.6 deg,
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   varpi9=246.7 deg, Om9=96.9 deg, M9=0)
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   The TNOs are massless test particles started from their catalogued
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   osculating elements at a common epoch (median element epoch; along-track
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   phase is drawn uniformly since SBDB supplies no mean anomaly -- apsidal
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   precession is phase-independent).
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   Measured per object over the integration:
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   dvarpi/dt   : linear drift of the longitude of perihelion -> the
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   differential-precession dispersal rate
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   Dvarpi(t)   : varpi relative to P9's varpi -- the libration coordinate
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   a confining perturber must hold near 180 deg
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   Reported:
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   sigma(dvarpi/dt) per model -> dispersal time t_disp = sigma_varpi /
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   sigma(dvarpi/dt) for the observed cluster spread;
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   the P9 restoring signature: correlation of the P9-added drift
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   dvarpi_P9 - dvarpi_giants against the offset (Dvarpi - 180 deg);
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   R_varpi(t) of the observed cluster under each model.
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   Outputs
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   results/step_b31_tno_secular.json
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   results/step_b31_tno_secular.csv
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066]   results/figures/supplementary/step_b31_tno_secular.png
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] --------------------------------------------------------------------------------
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] SCRIPT: scripts/steps/step_066_tno_secular_stability.py
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] SCRIPT SHA256: 599ccb0789808dcd65d3b67beb2db1430344971cfe0f9166b696ecb1b30cc369
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] SCRIPT SIZE: 16757 bytes
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] ================================================================================
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] Secular stability of the detached-TNO cluster (REBOUND/DE440s)
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] ================================================================================
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] detached sample: 44 TNOs (a>150, q>30, cc<=3)
+[2026-09-21 14:41:43 UTC] [INFO    ] [STEP 066] common epoch JD 2461200.5
+[2026-09-21 14:47:46 UTC] [INFO    ] [STEP 066] giants: integrated 20 Myr, 401 snapshots
+[2026-09-21 14:47:54 UTC] [INFO    ] [STEP 066] giants+bb21_med: integrated 20 Myr, 401 snapshots
+[2026-09-21 14:47:54 UTC] [INFO    ] [STEP 066] giants+bb21_ml: integrated 20 Myr, 401 snapshots
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] giants: sigma(dv) all/in = 0.165/0.200 deg/Myr | t_disp in = 161 Myr
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] giants_bb21ml: sigma(dv) all/in = 0.186/0.197 deg/Myr | t_disp in = 163 Myr
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] giants_bb21med: sigma(dv) all/in = 0.181/0.190 deg/Myr | t_disp in = 169 Myr
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] restoring bb21_ml: rho=0.279 p=0.0672 | med delta in/out = -0.001/-0.000
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] restoring bb21_med: rho=0.087 p=0.5765 | med delta in/out = -0.002/-0.000
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Saving data: step_b31_tno_secular.json
+[2026-09-21 14:47:55 UTC] [DEBUG   ] [STEP 066]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b31_tno_secular.json
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]   Output: step_b31_tno_secular.json
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Saving data: step_b31_tno_secular.csv
+[2026-09-21 14:47:55 UTC] [DEBUG   ] [STEP 066]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b31_tno_secular.csv
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]   Output: step_b31_tno_secular.csv
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Saving data: step_b31_tno_secular.png
+[2026-09-21 14:47:55 UTC] [DEBUG   ] [STEP 066]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b31_tno_secular.png
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]   Output: step_b31_tno_secular.png
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] 
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] ================================================================================
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] STEP SUMMARY: step_066_tno_secular_stability
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] ================================================================================
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Step Number: 066
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Status: SUCCESS
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Duration: 6.20m
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Log Records Emitted: 76
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Output Files: 3
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_066_tno_secular_stability.log
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] 
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Generated 3 output file(s):
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]   • step_b31_tno_secular.json: 32.87 KB [sha256 bb78ffdcee3fe6c9]
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]   • step_b31_tno_secular.csv: 6.12 KB [sha256 37bab4eb39ae3173]
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]   • step_b31_tno_secular.png: 369.96 KB [sha256 ca00c944976ab4c6]
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] 
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]   RESULT SNAPSHOT [step_b31_tno_secular.json]:
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]     models.giants:
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       sigma_dv_all_deg_Myr = 0.16485666
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       sigma_dv_incap_deg_Myr = 0.19964381
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       t_disp_all_Myr = 516.42747
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       t_disp_incap_Myr = 160.96025
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       med_dv_incap = 0.0069082225
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       med_dv_outcap = 0.012000808
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]     models.giants_bb21ml:
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       sigma_dv_all_deg_Myr = 0.18556363
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       sigma_dv_incap_deg_Myr = 0.19654891
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       t_disp_all_Myr = 458.79955
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       t_disp_incap_Myr = 163.49476
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       med_dv_incap = 0.0058472724
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       med_dv_outcap = 0.0069000404
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]     models.giants_bb21med:
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       sigma_dv_all_deg_Myr = 0.1814132
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       sigma_dv_incap_deg_Myr = 0.19033323
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       t_disp_all_Myr = 469.2961
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       t_disp_incap_Myr = 168.83398
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       med_dv_incap = -0.00023974592
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       med_dv_outcap = 0.012910229
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]     p9_restoring.bb21_ml:
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       rho = 0.27850599
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       p_2sided = 0.067156726
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       med_delta_incap = -0.0013292769
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       med_delta_outcap = -0.00013086895
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]     p9_restoring.bb21_med:
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       rho = 0.086539817
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       p_2sided = 0.57645919
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       med_delta_incap = -0.0018266269
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]       med_delta_outcap = -0.00040154845
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]     R_varpi_t.ts_Myr [n=401]: median=10 min=0 max=20
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]     R_varpi_t.giants [n=401]: median=0.30537474 min=0.26186972 max=0.33198404
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]     R_varpi_t.giants_bb21ml [n=401]: median=0.32199584 min=0.30171831 max=0.33295702
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]     R_varpi_t.giants_bb21med [n=401]: median=0.29054105 min=0.22754307 max=0.33276685
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] ================================================================================
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] STEP 066 COMPLETE: SUCCESS
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_066_tno_secular_stability_provenance.json
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] 
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] ================================================================================
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] EXECUTIVE SUMMARY
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] ================================================================================
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Step: step_066_tno_secular_stability (Step 066)
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Status: SUCCESS
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Duration: 6.20m
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Log Records: 124
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Output Files: 3
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] Key Outputs:
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]   - step_b31_tno_secular.json (32.87 KB)
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]   - step_b31_tno_secular.csv (6.12 KB)
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066]   - step_b31_tno_secular.png (369.96 KB)
+[2026-09-21 14:47:55 UTC] [INFO    ] [STEP 066] ================================================================================

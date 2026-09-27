@@ -1,0 +1,188 @@
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] LOGGER INITIALIZED: step_155_iso_injection (Step 155)
+[2026-09-21 15:39:02 UTC] [DEBUG   ] [STEP 155] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_155_iso_injection.log
+[2026-09-21 15:39:02 UTC] [DEBUG   ] [STEP 155] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:39:02 UTC] [DEBUG   ] [STEP 155] Start time (UTC): 2026-09-21T15:39:02.694069+00:00
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] 
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] STEP PURPOSE
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] --------------------------------------------------------------------------------
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   step_155: 1I/'Oumuamua slip-injection -> NG-term transfer test (b119).
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   Section 6.10 records that 1I/'Oumuamua carries an unexplained
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   Marsden radial term A1 = +2.79e-7 au/d^2 (SBDB orbit 16, soln. 7c),
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   i.e. an effective-attraction shortfall of ~9.4e-4 of solar gravity
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   across the 80-day arc.  This step derives what a specified proper-time
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   perturbation does to a *standard orbit fit* on that arc, using the
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   real observing chain -- the same MPC epochs, stations and noise floor.
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   Unlike the comet cohort (step_151), 'Oumuamua's apparition lies
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   entirely INSIDE the domain: every observation is post-entry.  A
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   one-shot slip at the inbound boundary crossing is then a pure
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   pre-arc state change -- standard machinery absorbs it into the fitted
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   elements and the in-arc NG term stays at the noise floor (the same
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   absorption step_151 demonstrated).  The channel that can register an
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   in-arc term is a SUSTAINED lapse-rate offset: while inside the lobe,
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   the object's proper time accumulates at a fractional rate f relative
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   to TDB, so its observed position at epoch t is the orbit evaluated at
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   tau(t) = t + f*(t - t_x).  This is equivalent to an effective solar
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   attraction rescaled by (1+f)^2, and a Marsden fitter maps the
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   residual onto the radial coefficient A1.
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   Injection realizations:
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   ctrl        no injection -- instrument noise floor
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   ent_full    full-state time translation at the true inbound 250 AU
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   crossing (phase-shift realization; must be absorbed)
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   ent_pos     position-only slip r -> r + v*dtau at the crossing
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   ent_vel     velocity-only slip v -> v(t+dtau) at the crossing
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   mid         position-only slip at the mid-arc epoch (within-arc
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   holonomy -- the only instantaneous-slip geometry that
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   can leave an in-arc residual)
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   lapse_<f>   sustained lapse-rate offset f accumulated since the
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   entry crossing, scanned across the comet-channel range;
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   positions evaluated at tau(t) = t + f*(t - t_x)
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   Measured per realization:
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   gravity-only LM refit rms (real noise floor = 0.436 arcsec);
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   Marsden NG-augmented refit (A1, A2, A3 with the SBDB g(r) law
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   ALN=0.0408, R0=5, NM=2, NN=3, NK=2.6) -> recovered coefficients;
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   fitted-element shifts vs truth.
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   Tests
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   T1  controls: ctrl and ent_* realizations must return A1 ~ 0
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   (absorption -- consistent with step_151's boundary-slip null)
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   T2  lapse-rate transfer: recovered A1 vs injected f must be linear
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   through zero; solve for the f that reproduces the observed
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   A1 = +2.79e-7 and compare with the comet-channel lapse contrast
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   (1.2e-2) under the dwell-time suppression (~26.3 vs 2.7 km/s)
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   T3  real-record validation: the same NG fitter applied to the real
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   MPC astrometry must recover the SBDB solution within ~2 sigma
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   T4  morphology: a pure lapse offset should produce a dominantly
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   radial term, matching the observed |A2/A1| = 0.05
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   Inputs
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   data/raw/mpc/obs/1I.json         (real observing chain, cached)
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   data/raw/iso/sbdb_iso_1I.json    (truth orbit, cached)
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   Outputs
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   results/step_b119_iso_injection.json / .csv
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155]   results/figures/supplementary/step_b119_iso_injection.png
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] --------------------------------------------------------------------------------
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] SCRIPT: scripts/steps/step_155_iso_injection.py
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] SCRIPT SHA256: 4bbb17924c692e7d2469a161bac5975b380dfaeb9eedbd1cbb8677f2267f6d22
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] SCRIPT SIZE: 29187 bytes
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] ================================================================================
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] 1I/'Oumuamua slip-injection -> NG-term transfer test
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] ================================================================================
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] 1I observing chain: 192 usable optical obs, 39.9 d arc
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] truth: e=1.201134 q=0.2559 i=122.742 epoch=2458080.50 tp=2458006.01
+[2026-09-21 15:39:02 UTC] [INFO    ] [STEP 155] inbound 250 AU crossing: -44.00 yr before epoch (ET -8.239e+08)
+[2026-09-21 15:39:12 UTC] [INFO    ] [STEP 155]   ctrl           grav_rms=0.410" ng_rms=0.409" A1=+6.349e-08+/-4.1e-07 A2=+6.851e-08 A3=+4.893e-08
+[2026-09-21 15:39:23 UTC] [INFO    ] [STEP 155]   ent_full       grav_rms=0.396" ng_rms=0.395" A1=-1.328e-05+/-2.2e-03 A2=-9.534e-06 A3=-2.130e-05
+[2026-09-21 15:39:33 UTC] [INFO    ] [STEP 155]   ent_pos        grav_rms=0.396" ng_rms=0.395" A1=-1.313e-05+/-2.1e-03 A2=-9.316e-06 A3=-2.079e-05
+[2026-09-21 15:39:43 UTC] [INFO    ] [STEP 155]   ent_vel        grav_rms=0.410" ng_rms=0.409" A1=+7.032e-08+/-4.4e-07 A2=+7.539e-08 A3=+5.445e-08
+[2026-09-21 15:39:52 UTC] [INFO    ] [STEP 155]   mid            grav_rms=201.742" ng_rms=139.588" A1=+4.356e-05+/-3.6e-04 A2=+3.307e-05 A3=-5.474e-06
+[2026-09-21 15:40:02 UTC] [INFO    ] [STEP 155]   lapse_-1.20e-03 grav_rms=6.481" ng_rms=0.354" A1=+6.893e-07+/-4.0e-08 A2=+4.225e-09 A3=+1.431e-08
+[2026-09-21 15:40:11 UTC] [INFO    ] [STEP 155]   lapse_-6.00e-04 grav_rms=0.804" ng_rms=0.394" A1=+4.296e-07+/-1.6e-07 A2=+6.000e-08 A3=+5.557e-08
+[2026-09-21 15:40:21 UTC] [INFO    ] [STEP 155]   lapse_-4.70e-04 grav_rms=1.119" ng_rms=0.400" A1=+3.386e-07+/-2.0e-07 A2=+4.360e-08 A3=+3.937e-08
+[2026-09-21 15:40:30 UTC] [INFO    ] [STEP 155]   lapse_-3.00e-04 grav_rms=0.688" ng_rms=0.407" A1=+2.483e-07+/-2.7e-07 A2=+6.186e-08 A3=+4.768e-08
+[2026-09-21 15:40:39 UTC] [INFO    ] [STEP 155]   lapse_-1.50e-04 grav_rms=0.464" ng_rms=0.409" A1=+1.483e-07+/-3.3e-07 A2=+6.106e-08 A3=+4.440e-08
+[2026-09-21 15:40:49 UTC] [INFO    ] [STEP 155]   lapse_-7.50e-05 grav_rms=0.433" ng_rms=0.409" A1=+1.080e-07+/-3.7e-07 A2=+6.699e-08 A3=+4.820e-08
+[2026-09-21 15:40:58 UTC] [INFO    ] [STEP 155]   lapse_+0.00e+00 grav_rms=0.410" ng_rms=0.409" A1=+6.349e-08+/-4.1e-07 A2=+6.851e-08 A3=+4.893e-08
+[2026-09-21 15:41:08 UTC] [INFO    ] [STEP 155]   lapse_+7.50e-05 grav_rms=0.416" ng_rms=0.408" A1=+2.033e-08+/-4.5e-07 A2=+7.113e-08 A3=+5.075e-08
+[2026-09-21 15:41:16 UTC] [INFO    ] [STEP 155]   lapse_+1.50e-04 grav_rms=0.415" ng_rms=0.408" A1=-2.114e-08+/-5.0e-07 A2=+7.566e-08 A3=+5.424e-08
+[2026-09-21 15:41:25 UTC] [INFO    ] [STEP 155]   lapse_+3.00e-04 grav_rms=0.433" ng_rms=0.407" A1=-1.119e-07+/-6.1e-07 A2=+7.923e-08 A3=+5.684e-08
+[2026-09-21 15:41:34 UTC] [INFO    ] [STEP 155]   lapse_+4.70e-04 grav_rms=0.444" ng_rms=0.406" A1=-2.203e-07+/-7.4e-07 A2=+8.237e-08 A3=+5.890e-08
+[2026-09-21 15:41:43 UTC] [INFO    ] [STEP 155]   lapse_+6.00e-04 grav_rms=0.451" ng_rms=0.406" A1=-3.032e-07+/-8.4e-07 A2=+8.959e-08 A3=+6.455e-08
+[2026-09-21 15:41:52 UTC] [INFO    ] [STEP 155]   lapse_+1.20e-03 grav_rms=0.474" ng_rms=0.404" A1=-6.939e-07+/-1.3e-06 A2=+2.357e-07 A3=+1.977e-07
+[2026-09-21 15:41:59 UTC] [INFO    ] [STEP 155] real record: grav_rms=0.381" ng_rms=0.261" A1=+2.869e-07+/-4.9e-07 (SBDB +2.790e-07 +/- 3.6e-08) A2=+5.987e-08 A3=+5.250e-08
+[2026-09-21 15:41:59 UTC] [INFO    ] [STEP 155] Saving data: step_b119_iso_injection.csv
+[2026-09-21 15:41:59 UTC] [DEBUG   ] [STEP 155]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b119_iso_injection.csv
+[2026-09-21 15:41:59 UTC] [INFO    ] [STEP 155]   Output: step_b119_iso_injection.csv
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Saving data: step_b119_iso_injection.json
+[2026-09-21 15:42:00 UTC] [DEBUG   ] [STEP 155]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b119_iso_injection.json
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]   Output: step_b119_iso_injection.json
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Saving data: step_b119_iso_injection.png
+[2026-09-21 15:42:00 UTC] [DEBUG   ] [STEP 155]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b119_iso_injection.png
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]   Output: step_b119_iso_injection.png
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] 
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] ================================================================================
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] STEP SUMMARY: step_155_iso_injection
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] ================================================================================
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Step Number: 155
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Status: SUCCESS
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Duration: 2.97m
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Log Records Emitted: 106
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Output Files: 3
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_155_iso_injection.log
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] 
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Generated 3 output file(s):
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]   • step_b119_iso_injection.csv: 1.96 KB [sha256 c01c02e5f5533d1c]
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]   • step_b119_iso_injection.json: 8.61 KB [sha256 adb8932b947764ff]
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]   • step_b119_iso_injection.png: 375.30 KB [sha256 416785da32a0e850]
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] 
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]   RESULT SNAPSHOT [step_b119_iso_injection.json]:
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]     sbdb_reference:
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A1 = 2.7901934e-07
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A1_sig = 3.574e-08
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A2 = 1.4412642e-08
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A3 = 1.5739226e-08
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       orbit_id = 16
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       soln = 7c
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]     realizations.ctrl:
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       grav_rms = 0.40979105
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       ng_rms = 0.40877314
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A1 = 6.3493775e-08
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A2 = 6.8505824e-08
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A3 = 4.8934786e-08
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A1 = 4.0725917e-07
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A2 = 3.5716012e-07
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A3 = 2.8075753e-07
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       n_keep = 190
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]     realizations.ent_full:
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       grav_rms = 0.39552757
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       ng_rms = 0.39524398
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A1 = -1.3279007e-05
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A2 = -9.5344376e-06
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A3 = -2.1303593e-05
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A1 = 0.0022104018
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A2 = 0.00052824332
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A3 = 0.00068689248
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       n_keep = 190
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]     realizations.ent_pos:
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       grav_rms = 0.39553921
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       ng_rms = 0.39525512
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A1 = -1.3131052e-05
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A2 = -9.3160847e-06
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A3 = -2.0794942e-05
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A1 = 0.0021453104
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A2 = 0.0005154259
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A3 = 0.00066996433
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       n_keep = 190
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]     realizations.ent_vel:
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       grav_rms = 0.40954037
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       ng_rms = 0.40852901
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A1 = 7.0319684e-08
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A2 = 7.539037e-08
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A3 = 5.4453277e-08
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A1 = 4.3921242e-07
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A2 = 3.8850694e-07
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A3 = 3.0907028e-07
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       n_keep = 190
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]     realizations.mid:
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       grav_rms = 201.74156
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       ng_rms = 139.58777
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A1 = 4.3555072e-05
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A2 = 3.3071726e-05
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       A3 = -5.4735903e-06
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       s_A1 = 0.00035977609
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] ================================================================================
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] STEP 155 COMPLETE: SUCCESS
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_155_iso_injection_provenance.json
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] 
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] ================================================================================
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] EXECUTIVE SUMMARY
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] ================================================================================
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Step: step_155_iso_injection (Step 155)
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Status: SUCCESS
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Duration: 2.97m
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Log Records: 174
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Output Files: 3
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] Key Outputs:
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]   - step_b119_iso_injection.csv (1.96 KB)
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]   - step_b119_iso_injection.json (8.61 KB)
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155]   - step_b119_iso_injection.png (375.30 KB)
+[2026-09-21 15:42:00 UTC] [INFO    ] [STEP 155] ================================================================================

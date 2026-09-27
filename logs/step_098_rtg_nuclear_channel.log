@@ -1,141 +1,200 @@
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] LOGGER INITIALIZED: step_098_rtg_nuclear_channel (Step 098)
-[2026-09-20 12:18:45 UTC] [DEBUG   ] [STEP 098] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_098_rtg_nuclear_channel.log
-[2026-09-20 12:18:45 UTC] [DEBUG   ] [STEP 098] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:18:45 UTC] [DEBUG   ] [STEP 098] Start time (UTC): 2026-09-20T12:18:45.571608+00:00
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] 
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] STEP PURPOSE
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] --------------------------------------------------------------------------------
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   TEP-9 step 098 -- RTG nuclear-decay channel
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   Each Voyager carries three MHW-RTG units powered by Pu-238 alpha
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   decay (half-life 87.7 yr).  The electrical power record is therefore
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   a continuous ~44-year monitor of a *nuclear* clock -- a process class
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   distinct from both the electronic quartz oscillator (SCLK channel)
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   and the macroscopic orbital dynamics (comet channel).  This is the
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   "nuclear processes in the power engine" channel requested for the
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   TEP-9 analysis.
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   Data
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   The channel uses the published historical RTG performance dataset
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   (Whiting & Woerner 2023, doi:10.5061/dryad.1zcrjdfw2), which collates
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   the JPL MHW-RTG telemetry record: normalized electrical power versus
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   time for the Voyager 1 and Voyager 2 total missions and for each
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   individual RTG unit, through August 2021.  This is real telemetry --
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   129 Voyager-1 and 89 Voyager-2 total-mission epochs plus five
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   per-unit series -- not literature anchors.
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   Pedigree facts encoded from the dataset README (used in the
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   analysis):
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   * values are normalized to the beginning-of-mission power (highest
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   point within 30 days of BOM); absolute watts use the tabulated
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   PBOM (V1 total 471 We, V2 total 476 We);
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   * the first ~13.3 years are spacecraft-reported power;
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   * post-13.3-year points are recorded at epochs where an RTG current
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   dropped one telemetry bit (0.039 A for VG1, 0.038 A for VG2), so
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   the late series is bit-quantized at the ~1 % level;
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   * Voyager 2 RTG #3 telemetry was lost ~700 h after launch; the V2
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   total is reconstructed from units 1-2 plus a fixed bus-voltage
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   correction;
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   * literature power anchors (literature_anchors.json) are retained as
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   an independent cross-check on the fitted model.
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   Physics of the channel
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   Alpha-decay rates are exponentially sensitive to the effective fine
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   structure constant through the Gamow penetrability exponent
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   G = pi Z1 Z2 alpha / beta ,   beta = v_rel/c ,
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   lambda ~ exp(-2 G)  =>  delta lambda / lambda ~ -2 G delta alpha_eff / alpha_eff .
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   For Pu-238 -> U-234 + alpha (Q = 5.59 MeV, Z1 Z2 = 184) the exponent
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   evaluates to G ~ 76, so the decay rate amplifies any constants
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   shift by ~150x: a delta alpha_eff / alpha_eff step at a
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   lapse-boundary crossing of comet-channel strength (~1e-2) would
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   appear as an order-unity step in thermal power -- far above the
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   bit-quantization floor.  The bound is
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   process-specific by construction: the TEP framework treats
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   electronic, nuclear and gravitational/dynamical couplings to A(phi)
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   as potentially different, so the RTG bound constrains the *nuclear*
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   channel without assuming it equals the orbital channel.
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   Signatures tested
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   1. Level step at each crossing epoch: ln P = a + b t + s H(t-t_cx);
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   a constants step changes the instantaneous decay-rate power
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   (level), so s is the channel-relevant statistic.  t-test on s.
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   2. Slope change at each crossing epoch: a post-crossing change in
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   the effective decay constant shows as a break in b.
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   3. Per-RTU consistency: the same tests on the five functioning
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   per-unit series (3 x VG1, 2 x VG2).
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   4. VG1 - VG2 differential normalized power: removes the common-mode
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   degradation model and exposes craft-specific residuals around
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   each craft's own crossings.
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   5. Cross-check: the fitted model evaluated at the published
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   literature-anchor epochs.
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   Inputs
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   data/raw/rtg/All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   data/raw/literature/literature_anchors.json
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   Outputs
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   results/step_b62_rtg_nuclear.json
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   results/step_b62_rtg_nuclear.csv  (per-epoch power series)
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098]   results/figures/supplementary/step_b62_rtg_nuclear.png
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] --------------------------------------------------------------------------------
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] SCRIPT: scripts/steps/step_098_rtg_nuclear_channel.py
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] SCRIPT SHA256: af81ba089d53c01096768dbc4c57e0c196dbf1161f6b99ff54c0f680cda664fd
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] SCRIPT SIZE: 42866 bytes
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] ================================================================================
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] RTG nuclear-decay channel (telemetry)
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] ================================================================================
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: n_VG1_total = 129 telemetry epochs, last=2021-08-04
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: n_VG1_rtg1 = 52 telemetry epochs, last=2021-02-24
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: n_VG1_rtg2 = 52 telemetry epochs, last=2021-08-04
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: n_VG1_rtg3 = 53 telemetry epochs, last=2021-05-11
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: n_VG2_total = 89 telemetry epochs, last=2021-02-27
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: n_VG2_rtg1 = 53 telemetry epochs, last=2021-02-27
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: n_VG2_rtg2 = 52 telemetry epochs, last=2021-02-04
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: gamow_exponent = 76.3 Pu-238 Gamow exponent
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: decay_amplification = 153.0 |dlambda/lambda| per |dalpha/alpha|
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: VG1_total_k_deg = 0.837 degradation %/yr beyond Pu-238
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: VG1_total_resid_rms = 0.46 log-residual rms (%)
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: VG2_total_k_deg = 0.888 degradation %/yr beyond Pu-238
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: VG2_total_resid_rms = 0.61 log-residual rms (%)
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: VG1_total_v1_termination_shock_step = 0.28 % step at 2004-12-16 (p=0.085)
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: VG1_total_v1_heliopause_step = -0.74 % step at 2012-08-25 (p=0.000)
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: VG2_total_v2_termination_shock_step = -0.15 % step at 2007-08-30 (p=0.607)
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: VG2_total_v2_heliopause_step = -0.77 % step at 2018-11-05 (p=0.040)
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: VG1_total_placebo_envelope = 0.86 % max |placebo step|
-[2026-09-20 12:18:45 UTC] [INFO    ] [STEP 098] METRIC: VG2_total_placebo_envelope = 0.99 % max |placebo step|
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Saving data: step_b62_rtg_nuclear.png
-[2026-09-20 12:18:46 UTC] [DEBUG   ] [STEP 098]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b62_rtg_nuclear.png
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098]   Output: step_b62_rtg_nuclear.png
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Saving data: step_b62_rtg_nuclear.csv
-[2026-09-20 12:18:46 UTC] [DEBUG   ] [STEP 098]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b62_rtg_nuclear.csv
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098]   Output: step_b62_rtg_nuclear.csv
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Saving data: step_b62_rtg_nuclear.json
-[2026-09-20 12:18:46 UTC] [DEBUG   ] [STEP 098]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b62_rtg_nuclear.json
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098]   Output: step_b62_rtg_nuclear.json
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] ✓ RTG nuclear channel complete
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] 
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] ================================================================================
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] STEP SUMMARY: step_098_rtg_nuclear_channel
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] ================================================================================
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Step Number: 098
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Status: SUCCESS
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Duration: 0.71s
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Log Records Emitted: 116
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Output Files: 3
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_098_rtg_nuclear_channel.log
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] 
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Generated 3 output file(s):
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098]   • step_b62_rtg_nuclear.png: 697.45 KB [sha256 5f51bf83be2f0c50]
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098]   • step_b62_rtg_nuclear.csv: 34.31 KB [sha256 1182279fa792a3ab]
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098]   • step_b62_rtg_nuclear.json: 33.85 KB [sha256 da1ec55b2241b0e7]
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] ================================================================================
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] STEP 098 COMPLETE: SUCCESS
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_098_rtg_nuclear_channel_provenance.json
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] 
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] ================================================================================
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] EXECUTIVE SUMMARY
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] ================================================================================
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Step: step_098_rtg_nuclear_channel (Step 098)
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Status: SUCCESS
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Duration: 0.71s
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Log Records: 127
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Output Files: 3
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] Key Outputs:
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098]   - step_b62_rtg_nuclear.png (697.45 KB)
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098]   - step_b62_rtg_nuclear.csv (34.31 KB)
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098]   - step_b62_rtg_nuclear.json (33.85 KB)
-[2026-09-20 12:18:46 UTC] [INFO    ] [STEP 098] ================================================================================
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] LOGGER INITIALIZED: step_098_rtg_nuclear_channel (Step 098)
+[2026-09-21 15:11:07 UTC] [DEBUG   ] [STEP 098] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_098_rtg_nuclear_channel.log
+[2026-09-21 15:11:07 UTC] [DEBUG   ] [STEP 098] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 15:11:07 UTC] [DEBUG   ] [STEP 098] Start time (UTC): 2026-09-21T15:11:07.214254+00:00
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] 
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] STEP PURPOSE
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] --------------------------------------------------------------------------------
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   TEP-9 step 098 -- RTG nuclear-decay channel
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Each Voyager carries three MHW-RTG units powered by Pu-238 alpha
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   decay (half-life 87.7 yr).  The electrical power record is therefore
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   a continuous ~44-year monitor of a *nuclear* clock -- a process class
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   distinct from both the electronic quartz oscillator (SCLK channel)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   and the macroscopic orbital dynamics (comet channel).  This is the
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   "nuclear processes in the power engine" channel requested for the
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   TEP-9 analysis.
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Data
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   The channel uses the published historical RTG performance dataset
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   (Whiting & Woerner 2023, doi:10.5061/dryad.1zcrjdfw2), which collates
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   the JPL MHW-RTG telemetry record: normalized electrical power versus
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   time for the Voyager 1 and Voyager 2 total missions and for each
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   individual RTG unit, through August 2021.  This is real telemetry --
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   129 Voyager-1 and 89 Voyager-2 total-mission epochs plus five
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   per-unit series -- not literature anchors.
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Pedigree facts encoded from the dataset README (used in the
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   analysis):
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   * values are normalized to the beginning-of-mission power (highest
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   point within 30 days of BOM); absolute watts use the tabulated
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   PBOM (V1 total 471 We, V2 total 476 We);
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   * the first ~13.3 years are spacecraft-reported power;
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   * post-13.3-year points are recorded at epochs where an RTG current
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   dropped one telemetry bit (0.039 A for VG1, 0.038 A for VG2), so
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   the late series is bit-quantized at the ~1 % level;
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   * Voyager 2 RTG #3 telemetry was lost ~700 h after launch; the V2
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   total is reconstructed from units 1-2 plus a fixed bus-voltage
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   correction;
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   * literature power anchors (literature_anchors.json) are retained as
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   an independent cross-check on the fitted model.
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Physics of the channel
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Alpha-decay rates are exponentially sensitive to the effective fine
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   structure constant through the Gamow penetrability exponent
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   G = pi Z1 Z2 alpha / beta ,   beta = v_rel/c ,
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   lambda ~ exp(-2 G)  =>  delta lambda / lambda ~ -2 G delta alpha_eff / alpha_eff .
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   For Pu-238 -> U-234 + alpha (Q = 5.59 MeV, Z1 Z2 = 184) the exponent
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   evaluates to G ~ 76, so the decay rate amplifies any constants
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   shift by ~150x: a delta alpha_eff / alpha_eff step at a
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   lapse-boundary crossing of comet-channel strength (~1e-2) would
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   appear as an order-unity step in thermal power -- far above the
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   bit-quantization floor.  The bound is
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   process-specific by construction: the TEP framework treats
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   electronic, nuclear and gravitational/dynamical couplings to A(phi)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   as potentially different, so the RTG bound constrains the *nuclear*
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   channel without assuming it equals the orbital channel.
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Signatures tested
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   1. Level step at each crossing epoch: ln P = a + b t + s H(t-t_cx);
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   a constants step changes the instantaneous decay-rate power
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   (level), so s is the channel-relevant statistic.  t-test on s.
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   2. Slope change at each crossing epoch: a post-crossing change in
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   the effective decay constant shows as a break in b.
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   3. Per-RTU consistency: the same tests on the five functioning
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   per-unit series (3 x VG1, 2 x VG2).
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   4. VG1 - VG2 differential normalized power: removes the common-mode
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   degradation model and exposes craft-specific residuals around
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   each craft's own crossings.
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   5. Cross-check: the fitted model evaluated at the published
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   literature-anchor epochs.
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Inputs
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   data/raw/rtg/All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   data/raw/literature/literature_anchors.json
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Outputs
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   results/step_b62_rtg_nuclear.json
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   results/step_b62_rtg_nuclear.csv  (per-epoch power series)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   results/figures/supplementary/step_b62_rtg_nuclear.png
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] --------------------------------------------------------------------------------
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] SCRIPT: scripts/steps/step_098_rtg_nuclear_channel.py
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] SCRIPT SHA256: af81ba089d53c01096768dbc4c57e0c196dbf1161f6b99ff54c0f680cda664fd
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] SCRIPT SIZE: 42866 bytes
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] ================================================================================
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] RTG nuclear-decay channel (telemetry)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] ================================================================================
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: n_VG1_total = 129 telemetry epochs, last=2021-08-04
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: n_VG1_rtg1 = 52 telemetry epochs, last=2021-02-24
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: n_VG1_rtg2 = 52 telemetry epochs, last=2021-08-04
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: n_VG1_rtg3 = 53 telemetry epochs, last=2021-05-11
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: n_VG2_total = 89 telemetry epochs, last=2021-02-27
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: n_VG2_rtg1 = 53 telemetry epochs, last=2021-02-27
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: n_VG2_rtg2 = 52 telemetry epochs, last=2021-02-04
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: gamow_exponent = 76.3 Pu-238 Gamow exponent
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: decay_amplification = 153.0 |dlambda/lambda| per |dalpha/alpha|
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: VG1_total_k_deg = 0.837 degradation %/yr beyond Pu-238
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: VG1_total_resid_rms = 0.46 log-residual rms (%)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: VG2_total_k_deg = 0.888 degradation %/yr beyond Pu-238
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: VG2_total_resid_rms = 0.61 log-residual rms (%)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: VG1_total_v1_termination_shock_step = 0.28 % step at 2004-12-16 (p=0.085)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: VG1_total_v1_heliopause_step = -0.74 % step at 2012-08-25 (p=0.000)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: VG2_total_v2_termination_shock_step = -0.15 % step at 2007-08-30 (p=0.607)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: VG2_total_v2_heliopause_step = -0.77 % step at 2018-11-05 (p=0.040)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: VG1_total_placebo_envelope = 0.86 % max |placebo step|
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] METRIC: VG2_total_placebo_envelope = 0.99 % max |placebo step|
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Saving data: step_b62_rtg_nuclear.png
+[2026-09-21 15:11:07 UTC] [DEBUG   ] [STEP 098]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b62_rtg_nuclear.png
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Output: step_b62_rtg_nuclear.png
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Saving data: step_b62_rtg_nuclear.csv
+[2026-09-21 15:11:07 UTC] [DEBUG   ] [STEP 098]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b62_rtg_nuclear.csv
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Output: step_b62_rtg_nuclear.csv
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Saving data: step_b62_rtg_nuclear.json
+[2026-09-21 15:11:07 UTC] [DEBUG   ] [STEP 098]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b62_rtg_nuclear.json
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   Output: step_b62_rtg_nuclear.json
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] ✓ RTG nuclear channel complete
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] 
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] ================================================================================
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] STEP SUMMARY: step_098_rtg_nuclear_channel
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] ================================================================================
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Step Number: 098
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Status: SUCCESS
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Duration: 0.60s
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Log Records Emitted: 116
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Output Files: 3
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_098_rtg_nuclear_channel.log
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] 
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Generated 3 output file(s):
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   • step_b62_rtg_nuclear.png: 697.45 KB [sha256 5f51bf83be2f0c50]
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   • step_b62_rtg_nuclear.csv: 34.31 KB [sha256 1182279fa792a3ab]
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   • step_b62_rtg_nuclear.json: 33.85 KB [sha256 da1ec55b2241b0e7]
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] 
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   RESULT SNAPSHOT [step_b62_rtg_nuclear.json]:
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]     inputs:
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       rtg_telemetry = raw/rtg/All_RTGs_P_Over_P0_-_2023_Update_for_Release.xlsx
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       literature_anchors = data/raw/literature/literature_anchors.json
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       dataset_citation = Whiting & Woerner 2023, doi:10.5061/dryad.1zcrjdfw2; Voyager telemetry courtesy E. Medi...
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]     physics:
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       reaction = Pu-238 -> U-234 + alpha, Q=5.593 MeV
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       half_life_yr = 87.7
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       gamow_exponent = 76.337001
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       decay_amplification = 152.674
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       amplification_note = |d lambda/lambda| = 2G |d alpha_eff/alpha_eff| ~ 153 |d alpha_eff/alpha_eff|; the RTG p...
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]     telemetry.n_epochs:
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_total = 129
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_rtg1 = 52
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_rtg2 = 52
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_rtg3 = 53
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG2_total = 89
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG2_rtg1 = 53
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG2_rtg2 = 52
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]     telemetry.last_epoch:
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_total = 2021-08-04
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_rtg1 = 2021-02-24
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_rtg2 = 2021-08-04
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_rtg3 = 2021-05-11
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG2_total = 2021-02-27
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG2_rtg1 = 2021-02-27
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG2_rtg2 = 2021-02-04
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]     telemetry.pbom_w:
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_total = 471
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_rtg1 = 156
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_rtg2 = 157
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG1_rtg3 = 159
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG2_total = 476
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG2_rtg1 = 158
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       VG2_rtg2 = 158
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]     telemetry.pedigree_notes [n=3]
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]     model_fits.VG1_total:
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       a = -0.036338302
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       k_eff = 0.016270172
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       c2 = 2.4201511e-05
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       k_deg_per_yr = 0.0083665556
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       P0_w = 454.1919
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       resid_rms = 0.0046196267
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       resid_abs_max = 0.036338302
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       resid_abs_p99 = 0.013629397
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]     model_fits.VG2_total:
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       a = -0.034140607
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       k_eff = 0.01677995
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       c2 = 3.3689322e-05
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       k_deg_per_yr = 0.0088763337
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       P0_w = 460.02335
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       resid_rms = 0.0061034679
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       resid_abs_max = 0.034140607
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       resid_abs_p99 = 0.019561189
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]     step_tests.VG1_total.v1_termination_shock:
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       epoch_utc = 2004-12-16
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       radius_au = 94
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] ================================================================================
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] STEP 098 COMPLETE: SUCCESS
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_098_rtg_nuclear_channel_provenance.json
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] 
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] ================================================================================
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] EXECUTIVE SUMMARY
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] ================================================================================
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Step: step_098_rtg_nuclear_channel (Step 098)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Status: SUCCESS
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Duration: 0.60s
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Log Records: 186
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Output Files: 3
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] Key Outputs:
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   - step_b62_rtg_nuclear.png (697.45 KB)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   - step_b62_rtg_nuclear.csv (34.31 KB)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098]   - step_b62_rtg_nuclear.json (33.85 KB)
+[2026-09-21 15:11:07 UTC] [INFO    ] [STEP 098] ================================================================================

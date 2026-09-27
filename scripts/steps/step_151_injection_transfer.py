@@ -154,6 +154,7 @@ def slip_propagate(r_t, v_t, et0, ets, et_slip=None, slip_fn=None):
             vx=v_t[0] + vs[0], vy=v_t[1] + vs[1], vz=v_t[2] + vs[2])
     nc = sim.N - 1
     sim.integrator = "ias15"
+    sim.exit_min_distance = 0.001  # collision scale: bound IAS15 against step collapse
     sec_yr = 86400.0 * DAY_YR
     out = np.empty((len(ets), 6))
     order = np.argsort(ets)
@@ -421,6 +422,10 @@ if LIMIT:
 logger.info(f"injection cohort: {len(inc)} in-cap + {len(out)} "
             f"out-of-cap dual-leg comets")
 
+def _f(o):
+    return float(o) if isinstance(o, np.floating) else str(o)
+
+
 done = {}
 if CKPT.exists() and not REDO:
     for line in CKPT.read_text().splitlines():
@@ -450,8 +455,6 @@ def _process(rec):
 
 
 def _account(rec, rowres, err):
-    def _f(o):
-        return float(o) if isinstance(o, np.floating) else str(o)
     with open(CKPT, "a") as ck:
         if rowres is None:
             ck.write(json.dumps({"desig": rec["desig"], "failed": True,
@@ -477,6 +480,22 @@ if todo:
                 logger.warning(f"{rec['desig']}: {err}")
             _account(rec, rr, err)
             logger.info(f"  {i+1}/{len(todo)} injected")
+
+# compact checkpoint: append-mode accumulation across overlapping runs can
+# otherwise leave duplicate per-designation records in the JSONL
+if CKPT.exists():
+    uniq = {}
+    for line in CKPT.read_text().splitlines():
+        try:
+            r = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        uniq[r.get("desig")] = r
+    with open(CKPT, "w") as ck:
+        for r in uniq.values():
+            ck.write(json.dumps(r, default=_f) + "\n")
+    logger.info(f"checkpoint compacted: {len(uniq)} unique designations "
+                f"written to {CKPT}")
 
 logger.info(f"injected cohort: {len(rows)} comets")
 

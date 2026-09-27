@@ -605,6 +605,7 @@ def main():
                                           DRAWS}}
 
     out = {
+        "step": "step_153_zonal_distortion", "seed": SEED,
         "n_comets": len(recs), "n_draws": sum(len(r["draws"])
                                               for r in recs),
         "dropouts": dropouts,
@@ -619,6 +620,9 @@ def main():
     }
     with open(OUT_J, "w") as fh:
         json.dump(out, fh, indent=1)
+    logger.add_output_file(OUT_J)
+    logger.add_output_file(OUT_C)
+    logger.add_output_file(OUT_P)
     logger.info(f"wrote {OUT_J.name}, {OUT_C.name}, {OUT_P.name}")
     logger.info("VERDICT: catalogue warp reproduces the anomaly -> "
                 f"{t5['catalogue_warp_can_fake']} "

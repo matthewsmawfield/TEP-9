@@ -1,79 +1,135 @@
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] LOGGER INITIALIZED: step_027_antipodal_populations (Step 027)
-[2026-09-20 10:43:53 UTC] [DEBUG   ] [STEP 027] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_027_antipodal_populations.log
-[2026-09-20 10:43:53 UTC] [DEBUG   ] [STEP 027] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:43:53 UTC] [DEBUG   ] [STEP 027] Start time (UTC): 2026-09-20T10:43:53.198409+00:00
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] 
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] STEP PURPOSE
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] --------------------------------------------------------------------------------
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   TEP / Planet-9 -- step b12: the antipodal-population test
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   Step_03 found the outer-comet perihelion anisotropy near
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   lam ~ 219 deg and the detached-TNO cluster near lam ~ 49 deg --
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   the two ends of ONE axis.  A directed field structure predicts
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   exactly this bipolar pattern on different dynamical
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   populations; a point mass does not.  But comet perihelion
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   statistics are discovery-biased, so the JFC sample gets the
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   full bias machinery developed for the TNOs:
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   B1  Reconstruct the JFC discovery footprint (provisional
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   designation -> lam_opp) and measure the realized coupling
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   Delta = varpi - lam_opp.
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   B2  The pairing test: if JFC varpi clustering were pure
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   footprint smear, the observed (lam_opp, Delta) pairing is
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   a typical shuffle of the marginals.  Under intrinsic
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   clustering the pairing compensates -- same machinery as
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   b8/D2.
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   B3  Ceiling: R(varpi) vs R(lam_opp) -- can the realized
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   footprint reach the observed concentration at all?
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   B4  Era and quality stability: designation-era splits,
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   and cross-checks in the CTc and HYP classes.
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   Outputs: results/step_b12_antipodal_populations.json,
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027]   figures/supplementary/step_b12_antipodal_populations.png
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] --------------------------------------------------------------------------------
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] SCRIPT: scripts/steps/step_027_antipodal_populations.py
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] SCRIPT SHA256: 1b7a631a87992c8a2ab7a94b406413365f623720ee25ba53c332987d1ed6cef1
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] SCRIPT SIZE: 9018 bytes
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] ================================================================================
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] JFC bipolar population
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] ================================================================================
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] JFc_all: N=60 R(varpi)=0.481@220 R(lo)=0.352@189 R(D)=0.77 p_pair=0.0001 sep_to_229=8.7
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] JFc_pre2000: N=22 R(varpi)=0.957@219 R(lo)=0.911@183 R(D)=0.97 p_pair=0.0086 sep_to_229=10.5
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] JFc_post2000: N=38 R(varpi)=0.207@225 R(lo)=0.062@250 R(D)=0.65 p_pair=0.0786 sep_to_229=3.9
-[2026-09-20 10:43:53 UTC] [INFO    ] [STEP 027] CTc: N=18 R(varpi)=0.282@78 R(lo)=0.319@360 R(D)=0.74 p_pair=0.4281 sep_to_229=151.1
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] HYP: N=115 R(varpi)=0.147@136 R(lo)=0.098@243 R(D)=0.32 p_pair=0.0831 sep_to_229=93.2
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] COM: N=61 R(varpi)=0.233@332 R(lo)=0.184@273 R(D)=0.18 p_pair=0.0393 sep_to_229=103.4
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Saving data: step_b12_antipodal_populations.json
-[2026-09-20 10:43:54 UTC] [DEBUG   ] [STEP 027]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b12_antipodal_populations.json
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027]   Output: step_b12_antipodal_populations.json
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Saving data: step_b12_antipodal_populations.png
-[2026-09-20 10:43:54 UTC] [DEBUG   ] [STEP 027]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b12_antipodal_populations.png
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027]   Output: step_b12_antipodal_populations.png
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] 
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] ================================================================================
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] STEP SUMMARY: step_027_antipodal_populations
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] ================================================================================
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Step Number: 027
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Status: SUCCESS
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Duration: 1.27s
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Log Records Emitted: 56
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Output Files: 2
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_027_antipodal_populations.log
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] 
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Generated 2 output file(s):
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027]   • step_b12_antipodal_populations.json: 1.97 KB [sha256 4e8ec2ad43c6e4fe]
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027]   • step_b12_antipodal_populations.png: 202.92 KB [sha256 cb91c2fc90e6e8f5]
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] ================================================================================
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] STEP 027 COMPLETE: SUCCESS
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_027_antipodal_populations_provenance.json
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] 
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] ================================================================================
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] EXECUTIVE SUMMARY
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] ================================================================================
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Step: step_027_antipodal_populations (Step 027)
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Status: SUCCESS
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Duration: 1.27s
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Log Records: 66
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Output Files: 2
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] Key Outputs:
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027]   - step_b12_antipodal_populations.json (1.97 KB)
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027]   - step_b12_antipodal_populations.png (202.92 KB)
-[2026-09-20 10:43:54 UTC] [INFO    ] [STEP 027] ================================================================================
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] LOGGER INITIALIZED: step_027_antipodal_populations (Step 027)
+[2026-09-21 14:33:19 UTC] [DEBUG   ] [STEP 027] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_027_antipodal_populations.log
+[2026-09-21 14:33:19 UTC] [DEBUG   ] [STEP 027] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:33:19 UTC] [DEBUG   ] [STEP 027] Start time (UTC): 2026-09-21T14:33:19.927703+00:00
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] 
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] STEP PURPOSE
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] --------------------------------------------------------------------------------
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   TEP / Planet-9 -- step b12: the antipodal-population test
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   Step_03 found the outer-comet perihelion anisotropy near
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   lam ~ 219 deg and the detached-TNO cluster near lam ~ 49 deg --
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   the two ends of ONE axis.  A directed field structure predicts
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   exactly this bipolar pattern on different dynamical
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   populations; a point mass does not.  But comet perihelion
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   statistics are discovery-biased, so the JFC sample gets the
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   full bias machinery developed for the TNOs:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   B1  Reconstruct the JFC discovery footprint (provisional
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   designation -> lam_opp) and measure the realized coupling
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   Delta = varpi - lam_opp.
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   B2  The pairing test: if JFC varpi clustering were pure
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   footprint smear, the observed (lam_opp, Delta) pairing is
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   a typical shuffle of the marginals.  Under intrinsic
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   clustering the pairing compensates -- same machinery as
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   b8/D2.
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   B3  Ceiling: R(varpi) vs R(lam_opp) -- can the realized
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   footprint reach the observed concentration at all?
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   B4  Era and quality stability: designation-era splits,
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   and cross-checks in the CTc and HYP classes.
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   Outputs: results/step_b12_antipodal_populations.json,
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027]   figures/supplementary/step_b12_antipodal_populations.png
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] --------------------------------------------------------------------------------
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] SCRIPT: scripts/steps/step_027_antipodal_populations.py
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] SCRIPT SHA256: 1b7a631a87992c8a2ab7a94b406413365f623720ee25ba53c332987d1ed6cef1
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] SCRIPT SIZE: 9018 bytes
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] ================================================================================
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] JFC bipolar population
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 027] ================================================================================
+[2026-09-21 14:33:20 UTC] [INFO    ] [STEP 027] JFc_all: N=60 R(varpi)=0.481@220 R(lo)=0.352@189 R(D)=0.77 p_pair=0.0001 sep_to_229=8.7
+[2026-09-21 14:33:20 UTC] [INFO    ] [STEP 027] JFc_pre2000: N=22 R(varpi)=0.957@219 R(lo)=0.911@183 R(D)=0.97 p_pair=0.0086 sep_to_229=10.5
+[2026-09-21 14:33:20 UTC] [INFO    ] [STEP 027] JFc_post2000: N=38 R(varpi)=0.207@225 R(lo)=0.062@250 R(D)=0.65 p_pair=0.0786 sep_to_229=3.9
+[2026-09-21 14:33:20 UTC] [INFO    ] [STEP 027] CTc: N=18 R(varpi)=0.282@78 R(lo)=0.319@360 R(D)=0.74 p_pair=0.4281 sep_to_229=151.1
+[2026-09-21 14:33:20 UTC] [INFO    ] [STEP 027] HYP: N=115 R(varpi)=0.147@136 R(lo)=0.098@243 R(D)=0.32 p_pair=0.0831 sep_to_229=93.2
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] COM: N=61 R(varpi)=0.233@332 R(lo)=0.184@273 R(D)=0.18 p_pair=0.0393 sep_to_229=103.4
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Saving data: step_b12_antipodal_populations.json
+[2026-09-21 14:33:21 UTC] [DEBUG   ] [STEP 027]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b12_antipodal_populations.json
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]   Output: step_b12_antipodal_populations.json
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Saving data: step_b12_antipodal_populations.png
+[2026-09-21 14:33:21 UTC] [DEBUG   ] [STEP 027]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b12_antipodal_populations.png
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]   Output: step_b12_antipodal_populations.png
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] 
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] ================================================================================
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] STEP SUMMARY: step_027_antipodal_populations
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] ================================================================================
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Step Number: 027
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Status: SUCCESS
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Duration: 1.52s
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Log Records Emitted: 56
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Output Files: 2
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_027_antipodal_populations.log
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] 
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Generated 2 output file(s):
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]   • step_b12_antipodal_populations.json: 1.97 KB [sha256 4e8ec2ad43c6e4fe]
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]   • step_b12_antipodal_populations.png: 204.49 KB [sha256 7d57c95371b8acc5]
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] 
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]   RESULT SNAPSHOT [step_b12_antipodal_populations.json]:
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]     JFc_all:
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       N = 60
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_varpi = 0.481
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       mu_varpi = 220.3
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_lam_opp = 0.352
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       mu_lam_opp = 189.2
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_Delta = 0.766
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_indep_conv = 0.269
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       ceiling_R_lam_opp = 0.352
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       shuffle_null_R = 0.277
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       p_pairing = 9.9995e-05
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       sep_to_anti_axis_deg = 8.7
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]     JFc_pre2000:
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       N = 22
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_varpi = 0.957
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       mu_varpi = 218.5
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_lam_opp = 0.911
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       mu_lam_opp = 183.3
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_Delta = 0.967
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_indep_conv = 0.881
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       ceiling_R_lam_opp = 0.911
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       shuffle_null_R = 0.882
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       p_pairing = 0.0086495675
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       sep_to_anti_axis_deg = 10.5
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]     JFc_post2000:
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       N = 38
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_varpi = 0.207
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       mu_varpi = 225.1
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_lam_opp = 0.062
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       mu_lam_opp = 249.8
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_Delta = 0.65
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_indep_conv = 0.04
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       ceiling_R_lam_opp = 0.062
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       shuffle_null_R = 0.114
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       p_pairing = 0.078646068
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       sep_to_anti_axis_deg = 3.9
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]     CTc:
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       N = 18
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_varpi = 0.282
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       mu_varpi = 77.9
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_lam_opp = 0.319
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       mu_lam_opp = 359.9
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_Delta = 0.736
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_indep_conv = 0.235
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       ceiling_R_lam_opp = 0.319
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       shuffle_null_R = 0.264
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       p_pairing = 0.42812859
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       sep_to_anti_axis_deg = 151.1
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]     HYP:
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       N = 115
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_varpi = 0.147
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       mu_varpi = 135.8
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       R_lam_opp = 0.098
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] ================================================================================
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] STEP 027 COMPLETE: SUCCESS
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_027_antipodal_populations_provenance.json
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] 
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] ================================================================================
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] EXECUTIVE SUMMARY
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] ================================================================================
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Step: step_027_antipodal_populations (Step 027)
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Status: SUCCESS
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Duration: 1.52s
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Log Records: 122
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Output Files: 2
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] Key Outputs:
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]   - step_b12_antipodal_populations.json (1.97 KB)
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027]   - step_b12_antipodal_populations.png (204.49 KB)
+[2026-09-21 14:33:21 UTC] [INFO    ] [STEP 027] ================================================================================

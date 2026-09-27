@@ -1,12 +1,12 @@
 {
-  "timestamp_utc": "2026-09-20T13:15:41.132736+00:00",
+  "timestamp_utc": "2026-09-23T16:50:29.370885+00:00",
   "scope": "Repository syntax/inventory and exact publication bindings. Not a complete numerical rerun or a proof of TEP.",
   "summary": {
-    "registered_steps": 141,
-    "python_sources": 167,
-    "bound_claim_occurrences": 249,
-    "unique_bound_claims": 154,
-    "result_files": 135,
+    "registered_steps": 152,
+    "python_sources": 179,
+    "bound_claim_occurrences": 554,
+    "unique_bound_claims": 348,
+    "result_files": 146,
     "hard_errors": 0,
     "legacy_files_with_nonfinite_values": 0,
     "results_with_newer_inputs": 0,
@@ -29,7 +29,11 @@
     "detach_n_sig",
     "detach_sig_frac",
     "detach_within30",
-    "dipole_mirror_p",
+    "df_adm_slip_sust",
+    "df_conf_ratio_inst",
+    "df_deficit_sust",
+    "df_pred_mid",
+    "df_pred_pole",
     "direct_p",
     "disp_axis_p",
     "disp_temporal_p",
@@ -41,11 +45,11 @@
     "epoch_boundary_year",
     "era_fisher",
     "gaia_p",
+    "gen_model_sep",
     "geo_incap_p",
     "geo_incap_r",
     "geo_outcap_r",
     "geo_perm_p",
-    "harmonic_axis_rank",
     "harmonic_b_held",
     "holdout_p",
     "inbound_share_in",
@@ -62,7 +66,7 @@
     "p9_shortfall",
     "post2017_dpar_bound_p",
     "proxy_p",
-    "refit_n",
+    "rad_disrupt250_n",
     "refit_total_p",
     "resident_union_p",
     "rtg_exc_pct",
@@ -78,7 +82,10 @@
     "slipmap_c2w_rho",
     "slipmap_oob_p",
     "slipmap_w2c_rho",
+    "strata_peri_gap",
     "strict_strata_p",
+    "tg_lobe_A",
+    "tg_req_shift_fcap10",
     "union_all_p",
     "warsaw_slip_coupling_p",
     "warsaw_slip_coupling_rho",
@@ -139,6 +146,42 @@
       "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
     },
     {
+      "claim": "leg_din_p",
+      "component": "1_abstract.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T1_leg_decomposition",
+        "overlap",
+        "d_in",
+        "mwu_greater_p"
+      ],
+      "value": 0.04246558334341919,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "leg_dout_p",
+      "component": "1_abstract.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T1_leg_decomposition",
+        "overlap",
+        "d_out",
+        "mwu_greater_p"
+      ],
+      "value": 0.5472244353451756,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "refit_n",
+      "component": "1_abstract.html",
+      "result": "step_b91_nonwarsaw_refit.json",
+      "path": [
+        "n_fitted"
+      ],
+      "value": 586,
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
+    },
+    {
       "claim": "refit_rho",
       "component": "1_abstract.html",
       "result": "step_b91_nonwarsaw_refit.json",
@@ -177,6 +220,40 @@
       ],
       "value": 0.00695413813540966,
       "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
+    },
+    {
+      "claim": "holdout_in",
+      "component": "1_abstract.html",
+      "result": "step_b81_prospective_lpc.json",
+      "path": [
+        "primary_q_lt_3p1",
+        "med_drot_in"
+      ],
+      "value": 0.11391980437707536,
+      "source_sha256": "9c27d35e4fc981762863e7eaa083ae1f4e8b8b5003ba6822cc7768abdc3b58fd"
+    },
+    {
+      "claim": "holdout_out",
+      "component": "1_abstract.html",
+      "result": "step_b81_prospective_lpc.json",
+      "path": [
+        "primary_q_lt_3p1",
+        "med_drot_out"
+      ],
+      "value": 0.17115256549905628,
+      "source_sha256": "9c27d35e4fc981762863e7eaa083ae1f4e8b8b5003ba6822cc7768abdc3b58fd"
+    },
+    {
+      "claim": "holdout_perm_p",
+      "component": "1_abstract.html",
+      "result": "step_b81_prospective_lpc.json",
+      "path": [
+        "primary_q_lt_3p1",
+        "drot_perm_contrast",
+        "p_perm"
+      ],
+      "value": 0.92000399980001,
+      "source_sha256": "9c27d35e4fc981762863e7eaa083ae1f4e8b8b5003ba6822cc7768abdc3b58fd"
     },
     {
       "claim": "bipolar_joint_p",
@@ -284,7 +361,7 @@
         "d_par"
       ],
       "value": 0.1045,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_p_sci",
@@ -298,7 +375,7 @@
         "p_tide_null"
       ],
       "value": 0.0006999650017499125,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "pre2018_dipole",
@@ -329,6 +406,68 @@
       "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
+      "claim": "strata_bound_gap",
+      "component": "1_abstract.html",
+      "result": "step_b83_dipole_mechanism.json",
+      "path": [
+        "T6_sample_splits",
+        "bound_e_lt_1",
+        "gap"
+      ],
+      "value": 0.2329068410091022,
+      "source_sha256": "b8b56ca4acb30d43d61398762d75301c67a5b30bc4286959254e58e2fed75571"
+    },
+    {
+      "claim": "strata_nobs_p",
+      "component": "1_abstract.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T4c_robustness",
+        "quality_strata",
+        "n_obs>=med",
+        "p"
+      ],
+      "value": 0.005239843233858882,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "disp_ngclean_p",
+      "component": "1_abstract.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T4c_robustness",
+        "quality_strata",
+        "ng_clean",
+        "p"
+      ],
+      "value": 0.00017748148734752513,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "dissoc_n_target",
+      "component": "1_abstract.html",
+      "result": "step_b114_channel_dissociation.json",
+      "path": [
+        "results",
+        "T4_matched_scale",
+        "n_objects_at_target"
+      ],
+      "value": 1,
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
+    },
+    {
+      "claim": "dissoc_saph_target",
+      "component": "1_abstract.html",
+      "result": "step_b114_channel_dissociation.json",
+      "path": [
+        "results",
+        "T4_matched_scale",
+        "med_saph_at_target_deg"
+      ],
+      "value": 0.6076261029797314,
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
+    },
+    {
       "claim": "global_score",
       "component": "1_abstract.html",
       "result": "step_b90_global_synthesis.json",
@@ -336,8 +475,8 @@
         "eval_at_tno_axis",
         "S_stat"
       ],
-      "value": 187.2391056573336,
-      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
+      "value": 187.23906418436496,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
     },
     {
       "claim": "global_rank",
@@ -348,7 +487,51 @@
         "p_global"
       ],
       "value": 0.011799410029498525,
-      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "pred_frac_in",
+      "component": "1_abstract.html",
+      "result": "step_b19_prospective_predictions.json",
+      "path": [
+        "P1_next_detached",
+        "predicted_frac_in_cap"
+      ],
+      "value": 0.59,
+      "source_sha256": "1c13ef18c4cc098d781537461284732c52e932dbaf5a4c7d3d21a8f2fb091e5c"
+    },
+    {
+      "claim": "pred_frac_base",
+      "component": "1_abstract.html",
+      "result": "step_b19_prospective_predictions.json",
+      "path": [
+        "P1_next_detached",
+        "footprint_only_baseline"
+      ],
+      "value": 0.42,
+      "source_sha256": "1c13ef18c4cc098d781537461284732c52e932dbaf5a4c7d3d21a8f2fb091e5c"
+    },
+    {
+      "claim": "pred_n_1pct",
+      "component": "1_abstract.html",
+      "result": "step_b32_detection_power.json",
+      "path": [
+        "N_exact_C1_binomial",
+        "C1_95pct_at_1pct"
+      ],
+      "value": 123,
+      "source_sha256": "e34a6f7f26f0a93280bb682be5bf7b667769eb553ca4caf2f2aa39075e45e8f7"
+    },
+    {
+      "claim": "pred_n_5pct",
+      "component": "1_abstract.html",
+      "result": "step_b32_detection_power.json",
+      "path": [
+        "N_exact_C1_binomial",
+        "C1_95pct_at_5pct"
+      ],
+      "value": 83,
+      "source_sha256": "e34a6f7f26f0a93280bb682be5bf7b667769eb553ca4caf2f2aa39075e45e8f7"
     },
     {
       "claim": "resident_r",
@@ -454,7 +637,7 @@
         "n_broad"
       ],
       "value": 268,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_dpar_2",
@@ -468,7 +651,7 @@
         "d_par"
       ],
       "value": 0.1045,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_p_sci",
@@ -482,7 +665,7 @@
         "p_tide_null"
       ],
       "value": 0.0006999650017499125,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_spike_d",
@@ -496,7 +679,7 @@
         "d_par"
       ],
       "value": 0.1779,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_spike_p",
@@ -510,7 +693,7 @@
         "p_tide_null"
       ],
       "value": 0.0004999750012499375,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_ebin985_d",
@@ -523,7 +706,7 @@
         "d_par"
       ],
       "value": 0.1758,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_ebin985_p",
@@ -536,7 +719,7 @@
         "p_tide_null"
       ],
       "value": 4.999750012499375e-05,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_ebin10_d",
@@ -549,7 +732,7 @@
         "d_par"
       ],
       "value": 0.0885,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_ebin10_p",
@@ -562,7 +745,7 @@
         "p_tide_null"
       ],
       "value": 0.044547772611369434,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_n_shared",
@@ -572,7 +755,7 @@
         "n_shared"
       ],
       "value": 62,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_n",
@@ -582,7 +765,7 @@
         "n_broad"
       ],
       "value": 268,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_n_new",
@@ -592,7 +775,7 @@
         "n_new"
       ],
       "value": 206,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_new_d",
@@ -606,7 +789,7 @@
         "d_par"
       ],
       "value": 0.0712,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_new_p",
@@ -620,7 +803,7 @@
         "p_tide_null"
       ],
       "value": 0.03094845257737113,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_free_lam",
@@ -632,7 +815,7 @@
         "lam"
       ],
       "value": 35.28,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_free_bet",
@@ -644,7 +827,7 @@
         "bet"
       ],
       "value": -34.41,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_free_sep_cap",
@@ -656,7 +839,7 @@
         "sep_from_cap"
       ],
       "value": 21.44,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_free_sep_anti",
@@ -668,7 +851,7 @@
         "sep_from_anti"
       ],
       "value": 158.56,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_footprint_p",
@@ -679,7 +862,7 @@
         "p_ecliptic_footprint_null"
       ],
       "value": 0.0016999150042497876,
-      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+      "source_sha256": "e9b8982cfb97c33e6aeb0006146585fd60b02b63c5d1a51f12441f1ce2451037"
     },
     {
       "claim": "census_chi2_lo",
@@ -690,7 +873,7 @@
         "q"
       ],
       "value": 0.5447727577769262,
-      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+      "source_sha256": "e9b8982cfb97c33e6aeb0006146585fd60b02b63c5d1a51f12441f1ce2451037"
     },
     {
       "claim": "census_chi2_hi",
@@ -700,8 +883,8 @@
         "T5_summary",
         "H"
       ],
-      "value": 0.8909099812324028,
-      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+      "value": 0.9214146040710046,
+      "source_sha256": "e9b8982cfb97c33e6aeb0006146585fd60b02b63c5d1a51f12441f1ce2451037"
     },
     {
       "claim": "dir_mom_p_lo",
@@ -714,7 +897,7 @@
         "cos"
       ],
       "value": 0.0002999850007499625,
-      "source_sha256": "a85e2d456e53df50f829a5cf31330dc46f117d57914cce9c498407f00f612e8e"
+      "source_sha256": "ad02d5d6090600a952ac05979f895fe467ebbd55257d8f9cff6cdbbff6eb203b"
     },
     {
       "claim": "dir_mom_p_hi",
@@ -727,7 +910,7 @@
         "cos"
       ],
       "value": 0.005949702514874256,
-      "source_sha256": "a85e2d456e53df50f829a5cf31330dc46f117d57914cce9c498407f00f612e8e"
+      "source_sha256": "ad02d5d6090600a952ac05979f895fe467ebbd55257d8f9cff6cdbbff6eb203b"
     },
     {
       "claim": "axis_mom_p_lo",
@@ -740,7 +923,7 @@
         "cos2"
       ],
       "value": 0.3167341632918354,
-      "source_sha256": "a85e2d456e53df50f829a5cf31330dc46f117d57914cce9c498407f00f612e8e"
+      "source_sha256": "ad02d5d6090600a952ac05979f895fe467ebbd55257d8f9cff6cdbbff6eb203b"
     },
     {
       "claim": "axis_mom_p_hi",
@@ -753,7 +936,33 @@
         "abs_cos"
       ],
       "value": 0.912454377281136,
-      "source_sha256": "a85e2d456e53df50f829a5cf31330dc46f117d57914cce9c498407f00f612e8e"
+      "source_sha256": "ad02d5d6090600a952ac05979f895fe467ebbd55257d8f9cff6cdbbff6eb203b"
+    },
+    {
+      "claim": "dtau_warsaw_all_in",
+      "component": "5_transit.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "all",
+        "dtau_inbound_unexplained",
+        "med_in"
+      ],
+      "value": 5.044200459549487,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_warsaw_all_p",
+      "component": "5_transit.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "all",
+        "dtau_inbound_unexplained",
+        "p_in_gt_out"
+      ],
+      "value": 0.007913541051802047,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
     },
     {
       "claim": "dtau_warsaw_in",
@@ -818,6 +1027,32 @@
         "p_in_gt_out"
       ],
       "value": 0.005324961824809417,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_warsaw_all_in",
+      "component": "5_transit.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "all",
+        "dtau_inbound_unexplained",
+        "med_in"
+      ],
+      "value": 5.044200459549487,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_warsaw_all_p",
+      "component": "5_transit.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "all",
+        "dtau_inbound_unexplained",
+        "p_in_gt_out"
+      ],
+      "value": 0.007913541051802047,
       "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
     },
     {
@@ -958,6 +1193,54 @@
       "source_sha256": "9c27d35e4fc981762863e7eaa083ae1f4e8b8b5003ba6822cc7768abdc3b58fd"
     },
     {
+      "claim": "loc_overlap_gap",
+      "component": "5_transit.html",
+      "result": "step_b86_pre2018_localization.json",
+      "path": [
+        "T1_membership_decomposition",
+        "overlap",
+        "med_gap"
+      ],
+      "value": 0.007570038877020124,
+      "source_sha256": "20a9f88ec5dc0ae04a67ec8b8a02fec883b1c2f996e86e344aa52d36729d313d"
+    },
+    {
+      "claim": "loc_nonoverlap_gap",
+      "component": "5_transit.html",
+      "result": "step_b86_pre2018_localization.json",
+      "path": [
+        "T1_membership_decomposition",
+        "non_overlap",
+        "med_gap"
+      ],
+      "value": -0.013100236397687759,
+      "source_sha256": "20a9f88ec5dc0ae04a67ec8b8a02fec883b1c2f996e86e344aa52d36729d313d"
+    },
+    {
+      "claim": "loc_overlap_p",
+      "component": "5_transit.html",
+      "result": "step_b86_pre2018_localization.json",
+      "path": [
+        "T1_membership_decomposition",
+        "overlap",
+        "mwu_greater_p"
+      ],
+      "value": 0.24790637305991492,
+      "source_sha256": "20a9f88ec5dc0ae04a67ec8b8a02fec883b1c2f996e86e344aa52d36729d313d"
+    },
+    {
+      "claim": "loc_nonoverlap_p",
+      "component": "5_transit.html",
+      "result": "step_b86_pre2018_localization.json",
+      "path": [
+        "T1_membership_decomposition",
+        "non_overlap",
+        "mwu_greater_p"
+      ],
+      "value": 0.5742954557617512,
+      "source_sha256": "20a9f88ec5dc0ae04a67ec8b8a02fec883b1c2f996e86e344aa52d36729d313d"
+    },
+    {
       "claim": "signflip_gap",
       "component": "5_transit.html",
       "result": "step_b82_axis_audit.json",
@@ -980,6 +1263,58 @@
       "source_sha256": "478d67b39f0a86a854ece33c623a1d19dc5ad29e0e448fa3f9c6a44ac76b7de1"
     },
     {
+      "claim": "disp_daa_p",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T8_signature_morphology",
+        "daa_energy",
+        "mw_p_greater"
+      ],
+      "value": 0.0017939638696411813,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "disp_share_in",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T8_signature_morphology",
+        "inbound_share",
+        "med_in"
+      ],
+      "value": 0.5139944559864251,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "disp_bound_in",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T8_signature_morphology",
+        "bound_fraction",
+        "in_cap"
+      ],
+      "value": 0.7894736842105263,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "disp_bound_out",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T8_signature_morphology",
+        "bound_fraction",
+        "out_cap"
+      ],
+      "value": 0.6024096385542169,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
       "claim": "disp_energy_p",
       "component": "5_transit.html",
       "result": "step_b92_post2017_refit.json",
@@ -1006,6 +1341,29 @@
       "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
+      "claim": "code_p_approx",
+      "component": "5_transit.html",
+      "result": "step_11_code_confirm.json",
+      "path": [
+        "code_only",
+        "d_of",
+        "p"
+      ],
+      "value": 0.0029505468290258216,
+      "source_sha256": "36bb6d258509c4a911af7687d879f25ec9524581eee53a5fecbebd8ce7841f6c"
+    },
+    {
+      "claim": "carrier_warsaw_p",
+      "component": "5_transit.html",
+      "result": "step_b33_wall_vs_field.json",
+      "path": [
+        "warsaw_inbound_share",
+        "p_share_in_gt_out"
+      ],
+      "value": 0.0314534827325841,
+      "source_sha256": "69faff23d5d661d67beb92f69380b3acefb1befaade49f8480bde1250851e908"
+    },
+    {
       "claim": "harmonic_axis_p",
       "component": "5_transit.html",
       "result": "step_b70_harmonic_axis_transfer.json",
@@ -1018,13 +1376,62 @@
       "source_sha256": "b9468900dab61786a53428a3b50b8257ff1a1eee909884b75a4690ec963346ff"
     },
     {
-      "claim": "post2017_refit_n",
+      "claim": "harmonic_axis_rank",
+      "component": "5_transit.html",
+      "result": "step_b70_harmonic_axis_transfer.json",
+      "path": [
+        "T1_axis_recovery",
+        "predeclared",
+        "rank_frac"
+      ],
+      "value": 0.04582210242587601,
+      "source_sha256": "b9468900dab61786a53428a3b50b8257ff1a1eee909884b75a4690ec963346ff"
+    },
+    {
+      "claim": "carrier_lpc_ngrid",
+      "component": "5_transit.html",
+      "result": "step_b70_harmonic_axis_transfer.json",
+      "path": [
+        "T1_axis_recovery",
+        "n_grid"
+      ],
+      "value": 370,
+      "source_sha256": "b9468900dab61786a53428a3b50b8257ff1a1eee909884b75a4690ec963346ff"
+    },
+    {
+      "claim": "carrier_sbdbrefit_p",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T9_carrier_audit",
+        "in_code_under_sbdb",
+        "mw_p_greater"
+      ],
+      "value": 0.41322742514763844,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "carrier_sbdbrefit_share",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T9_carrier_audit",
+        "in_code_under_sbdb",
+        "inbound_share_in"
+      ],
+      "value": 0.5234036872482488,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "post2017_refit_fitted",
       "component": "5_transit.html",
       "result": "step_b92_post2017_refit.json",
       "path": [
-        "n_full_arc"
+        "n_fitted"
       ],
-      "value": 248,
+      "value": 249,
       "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
@@ -1040,6 +1447,155 @@
       "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
+      "claim": "refit_pdir_deg",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T1_validity",
+        "element_diffs_vs_sbdb",
+        "med_pdir_deg"
+      ],
+      "value": 0.00391444819413966,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "post2017_refit_n",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "n_full_arc"
+      ],
+      "value": 248,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "post2017_dual_n",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "n_dual_joint"
+      ],
+      "value": 159,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "mask_leg_in",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T2_masking",
+        "declared_axis",
+        "leg_fit",
+        "med_in"
+      ],
+      "value": 0.08565478495859052,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "mask_leg_out",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T2_masking",
+        "declared_axis",
+        "leg_fit",
+        "med_out"
+      ],
+      "value": 0.10952583315964712,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "mask_leg_p",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T2_masking",
+        "declared_axis",
+        "leg_fit",
+        "p_perm"
+      ],
+      "value": 0.997000599880024,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "mask_single_p",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T2_masking",
+        "declared_axis",
+        "single_fit",
+        "p"
+      ],
+      "value": 0.9991205349854301,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "mask_cat_p",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T2_masking",
+        "declared_axis",
+        "catalogue",
+        "p"
+      ],
+      "value": 0.9987439167945599,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "mask_disp_p_lo",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T3_displaced",
+        "displaced_axis",
+        "leg_fit",
+        "p"
+      ],
+      "value": 0.2257142173975013,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "mask_disp_p_hi",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T3_displaced",
+        "displaced_axis",
+        "catalogue",
+        "p"
+      ],
+      "value": 0.32190070217020555,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "disp_dout_in",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T4_signature_class",
+        "at_displaced",
+        "our_d_out_leg",
+        "med_in"
+      ],
+      "value": 0.10787343365879667,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "disp_dout_out",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T4_signature_class",
+        "at_displaced",
+        "our_d_out_leg",
+        "med_out"
+      ],
+      "value": 0.08514679689225604,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
       "claim": "disp_dout_p",
       "component": "5_transit.html",
       "result": "step_b92_post2017_refit.json",
@@ -1050,6 +1606,32 @@
         "p"
       ],
       "value": 0.02066622298256279,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "disp_ddirf_p",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T4_signature_class",
+        "at_displaced",
+        "our_ddirf",
+        "p"
+      ],
+      "value": 0.0069630911378131335,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "disp_drot_p",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T4_signature_class",
+        "at_displaced",
+        "our_drot",
+        "p"
+      ],
+      "value": 0.006605410778953648,
       "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
@@ -1064,6 +1646,135 @@
       ],
       "value": 0.9793337770174372,
       "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "disp_fitrms_p",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "T4_signature_class",
+        "at_displaced",
+        "ctl_fit_all_rms",
+        "p"
+      ],
+      "value": 0.8517833743534305,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
+    },
+    {
+      "claim": "cmb_code_b",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T10_cmb_dipole_ladder",
+        "CODE",
+        "b_cos_cmb"
+      ],
+      "value": -0.23481377427938424,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "cmb_code_p",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T10_cmb_dipole_ladder",
+        "CODE",
+        "p_2sided_perm"
+      ],
+      "value": 0.0006499675016249188,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "cmb_post_b",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T10_cmb_dipole_ladder",
+        "post2017",
+        "b_cos_cmb"
+      ],
+      "value": 0.22650469139869306,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "cmb_post_p",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T10_cmb_dipole_ladder",
+        "post2017",
+        "p_2sided_perm"
+      ],
+      "value": 9.99950002499875e-05,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "cmb_code_sep",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T10_cmb_dipole_ladder",
+        "CODE",
+        "pole_sep_to_cmb_apex"
+      ],
+      "value": 25.72708373774591,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "cmb_decl_antapex",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T5_named_directions",
+        "cmb_cone_coherence",
+        "declared_axis_angle_deg"
+      ],
+      "value": 48.45789695284382,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "cmb_warsaw_p",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T10_cmb_dipole_ladder",
+        "warsaw",
+        "p_2sided_perm"
+      ],
+      "value": 0.2136893155342233,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "cmb_pre_p",
+      "component": "5_transit.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T10_cmb_dipole_ladder",
+        "pre2018",
+        "p_2sided_perm"
+      ],
+      "value": 0.08019599020048998,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "gnss_cmb_sep",
+      "component": "5_transit.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T1_ledger",
+        "3",
+        "cone_deg"
+      ],
+      "value": 22.024166883940797,
+      "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
     },
     {
       "claim": "rev_a_post",
@@ -1167,6 +1878,369 @@
       ],
       "value": 0.0009995002498750624,
       "source_sha256": "a3c3a1a979860b5a24d8ec27444cdb6029aa6853803ff3d8530a557ea6247906"
+    },
+    {
+      "claim": "xf_concord_rho",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T4_cross_fitter_concordance",
+        "rho_all"
+      ],
+      "value": 0.9308062723793061,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "xf_concord_n",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T4_cross_fitter_concordance",
+        "n_pairs"
+      ],
+      "value": 90,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "xf_concord_p",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T4_cross_fitter_concordance",
+        "rho_all_p"
+      ],
+      "value": 3.121069959706389e-40,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "xf_concord_rho_in",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T4_cross_fitter_concordance",
+        "rho_in"
+      ],
+      "value": 0.9493284493284493,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "twist_in",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T2_twist_coherence",
+        "overlap",
+        "med_in"
+      ],
+      "value": 0.23595309686058127,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "twist_out",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T2_twist_coherence",
+        "overlap",
+        "med_out"
+      ],
+      "value": 0.3897659441157869,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "twist_p",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T2_twist_coherence",
+        "overlap",
+        "mwu_less_p"
+      ],
+      "value": 0.382492454497444,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "leg_din_gap",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T1_leg_decomposition",
+        "overlap",
+        "d_in",
+        "med_gap"
+      ],
+      "value": 0.10633703342674128,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "leg_din_p",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T1_leg_decomposition",
+        "overlap",
+        "d_in",
+        "mwu_greater_p"
+      ],
+      "value": 0.04246558334341919,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "leg_dout_p",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T1_leg_decomposition",
+        "overlap",
+        "d_out",
+        "mwu_greater_p"
+      ],
+      "value": 0.5472244353451756,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "drot_overlap_gap",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T1_leg_decomposition",
+        "overlap",
+        "drot",
+        "med_gap"
+      ],
+      "value": 0.007570038877020124,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "drot_overlap_p",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T1_leg_decomposition",
+        "overlap",
+        "drot",
+        "mwu_greater_p"
+      ],
+      "value": 0.24790637305991492,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "gap45_jpl",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T4_cross_fitter_concordance",
+        "matched_gap_45deg",
+        "jpl"
+      ],
+      "value": 0.15341696268548277,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "gap60_jpl",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T4_cross_fitter_concordance",
+        "matched_gap_60deg",
+        "jpl"
+      ],
+      "value": 0.1238500962070157,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "gap45_code",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T4_cross_fitter_concordance",
+        "matched_gap_45deg",
+        "code"
+      ],
+      "value": 0.10054179092263782,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "gap60_code",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T4_cross_fitter_concordance",
+        "matched_gap_60deg",
+        "code"
+      ],
+      "value": 0.04882692339507999,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "cls1a_gap",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T5_class_constraint_gradient",
+        "1a+",
+        "med_gap"
+      ],
+      "value": 0.17543705251112968,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "cls1a_p",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T5_class_constraint_gradient",
+        "1a+",
+        "mwu_greater_p"
+      ],
+      "value": 0.046568450534664727,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "leg_din_gap",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T1_leg_decomposition",
+        "overlap",
+        "d_in",
+        "med_gap"
+      ],
+      "value": 0.10633703342674128,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "leg_din_p",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T1_leg_decomposition",
+        "overlap",
+        "d_in",
+        "mwu_greater_p"
+      ],
+      "value": 0.04246558334341919,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "nf_arc_in",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T3_noise_floor_audit",
+        "med_arc_in"
+      ],
+      "value": 727.0,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "nf_arc_out",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T3_noise_floor_audit",
+        "med_arc_out"
+      ],
+      "value": 614.0,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "nf_nobs_in",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T3_noise_floor_audit",
+        "med_nobs_in"
+      ],
+      "value": 221.0,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "nf_nobs_out",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T3_noise_floor_audit",
+        "med_nobs_out"
+      ],
+      "value": 216.0,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "nf_levene_p",
+      "component": "5_transit.html",
+      "result": "step_b87_leg_coherence.json",
+      "path": [
+        "T3_noise_floor_audit",
+        "levene_p"
+      ],
+      "value": 0.835879188774157,
+      "source_sha256": "77528ebab1ce5f1007209d80d6d04677a740e6876d36c824cb795112fe03de66"
+    },
+    {
+      "claim": "refit_n",
+      "component": "5_transit.html",
+      "result": "step_b91_nonwarsaw_refit.json",
+      "path": [
+        "n_fitted"
+      ],
+      "value": 586,
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
+    },
+    {
+      "claim": "refit_dual_n",
+      "component": "5_transit.html",
+      "result": "step_b91_nonwarsaw_refit.json",
+      "path": [
+        "n_dual_leg"
+      ],
+      "value": 373,
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
+    },
+    {
+      "claim": "refit_rms_as",
+      "component": "5_transit.html",
+      "result": "step_b91_nonwarsaw_refit.json",
+      "path": [
+        "T5_audit",
+        "rms_all_median"
+      ],
+      "value": 0.761992926576097,
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
+    },
+    {
+      "claim": "refit_rho",
+      "component": "5_transit.html",
+      "result": "step_b91_nonwarsaw_refit.json",
+      "path": [
+        "T1_validity",
+        "drot_concordance",
+        "rho"
+      ],
+      "value": 0.9978499173108192,
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
+    },
+    {
+      "claim": "refit_n",
+      "component": "5_transit.html",
+      "result": "step_b91_nonwarsaw_refit.json",
+      "path": [
+        "n_fitted"
+      ],
+      "value": 586,
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
+    },
+    {
+      "claim": "refit_pdir_deg_pre",
+      "component": "5_transit.html",
+      "result": "step_b91_nonwarsaw_refit.json",
+      "path": [
+        "T1_validity",
+        "element_diffs_vs_sbdb",
+        "med_pdir_deg"
+      ],
+      "value": 0.003295825456023843,
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "refit_in_p",
@@ -1347,7 +2421,7 @@
         "d_par"
       ],
       "value": 0.1045,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_p_sci",
@@ -1361,7 +2435,7 @@
         "p_tide_null"
       ],
       "value": 0.0006999650017499125,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_dpar_2",
@@ -1375,7 +2449,7 @@
         "d_par"
       ],
       "value": 0.1045,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "dissoc_sdrot",
@@ -1412,6 +2486,40 @@
       ],
       "value": 1,
       "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
+    },
+    {
+      "claim": "dissoc_ratio",
+      "component": "5_transit.html",
+      "result": "step_b114_channel_dissociation.json",
+      "path": [
+        "results",
+        "T1_sensitivity",
+        "med_ratio"
+      ],
+      "value": 0.006119264509524055,
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
+    },
+    {
+      "claim": "dissoc_saph_target",
+      "component": "5_transit.html",
+      "result": "step_b114_channel_dissociation.json",
+      "path": [
+        "results",
+        "T4_matched_scale",
+        "med_saph_at_target_deg"
+      ],
+      "value": 0.6076261029797314,
+      "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
+    },
+    {
+      "claim": "post2017_refit_fitted",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "n_fitted"
+      ],
+      "value": 249,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "post2017_refit_n",
@@ -1677,6 +2785,29 @@
       "source_sha256": "52e7e270fbd1ed714bfc0e1ce37a500330fa5cb14af205d3edd7a9d70da2506b"
     },
     {
+      "claim": "meridian_pre_p",
+      "component": "5_transit.html",
+      "result": "step_b96_bipolar_meridian.json",
+      "path": [
+        "T3_meridian_resident",
+        "pre2018",
+        "p_perm"
+      ],
+      "value": 0.4993750312484376,
+      "source_sha256": "52e7e270fbd1ed714bfc0e1ce37a500330fa5cb14af205d3edd7a9d70da2506b"
+    },
+    {
+      "claim": "dipole_mirror_p",
+      "component": "5_transit.html",
+      "result": "step_b97_harmonic_bipolar.json",
+      "path": [
+        "T2_dipole_mirror",
+        "p_perm"
+      ],
+      "value": 0.03144842757862107,
+      "source_sha256": "fc93b0822a4491d14ce6bf172aa048e164866490a4e40953a3355372cdb1d505"
+    },
+    {
       "claim": "gnss_meridian_p",
       "component": "5_transit.html",
       "result": "step_b99_cross_channel.json",
@@ -1710,7 +2841,7 @@
         "T_switch"
       ],
       "value": 2018.0,
-      "source_sha256": "3749d0e50984eb76f179363d2736bc7d88847d320fe5c3c8551fea03bdacf483"
+      "source_sha256": "f4c7be8b2fc0257d878728a3337fd6b4f8426c435d5110661953514b845a633a"
     },
     {
       "claim": "epoch_switch_p",
@@ -1720,8 +2851,44 @@
         "T3_drift_vs_switch",
         "perm_p_switch_vs_fixed"
       ],
-      "value": 0.041916167664670656,
-      "source_sha256": "3749d0e50984eb76f179363d2736bc7d88847d320fe5c3c8551fea03bdacf483"
+      "value": 0.031936127744510975,
+      "source_sha256": "f4c7be8b2fc0257d878728a3337fd6b4f8426c435d5110661953514b845a633a"
+    },
+    {
+      "claim": "gs_dirf_in",
+      "component": "5_transit.html",
+      "result": "step_b106_gaia_sink.json",
+      "path": [
+        "T7_pre2018_declared_axis_misfit",
+        "ddirf",
+        "median_in"
+      ],
+      "value": 0.14843100229007286,
+      "source_sha256": "43b5f771b9e54c8c5d254fa22ae041c08690204894ee38e8f12c773ec0fddedc"
+    },
+    {
+      "claim": "gs_dirf_out",
+      "component": "5_transit.html",
+      "result": "step_b106_gaia_sink.json",
+      "path": [
+        "T7_pre2018_declared_axis_misfit",
+        "ddirf",
+        "median_out"
+      ],
+      "value": 0.12269719452102743,
+      "source_sha256": "43b5f771b9e54c8c5d254fa22ae041c08690204894ee38e8f12c773ec0fddedc"
+    },
+    {
+      "claim": "gs_dirf_p",
+      "component": "5_transit.html",
+      "result": "step_b106_gaia_sink.json",
+      "path": [
+        "T7_pre2018_declared_axis_misfit",
+        "ddirf",
+        "p"
+      ],
+      "value": 0.09639338766847294,
+      "source_sha256": "43b5f771b9e54c8c5d254fa22ae041c08690204894ee38e8f12c773ec0fddedc"
     },
     {
       "claim": "zonal_wshare",
@@ -1732,7 +2899,7 @@
         "wshare_median"
       ],
       "value": 0.7799484132063237,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
     },
     {
       "claim": "zonal_dd1a",
@@ -1743,7 +2910,7 @@
         "warp_dd1a_median"
       ],
       "value": 1.2569519390646602e-05,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
     },
     {
       "claim": "zonal_org_p",
@@ -1754,7 +2921,7 @@
         "mwu_p"
       ],
       "value": 0.8396292416320106,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
     },
     {
       "claim": "zonal_obs_excess",
@@ -1766,7 +2933,7 @@
         "d_in_leg"
       ],
       "value": 0.026037788726810132,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
     },
     {
       "claim": "zonal_req_arcsec",
@@ -1777,7 +2944,7 @@
         "required_warp_arcsec"
       ],
       "value": 23.161455554583426,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
     },
     {
       "claim": "zonal_req_level",
@@ -1788,7 +2955,7 @@
         "required_warp_arcsec_for_incap_level"
       ],
       "value": 96.14017211127768,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
     },
     {
       "claim": "code_in",
@@ -1827,6 +2994,117 @@
       "source_sha256": "36bb6d258509c4a911af7687d879f25ec9524581eee53a5fecbebd8ce7841f6c"
     },
     {
+      "claim": "dtau_warsaw_all_in",
+      "component": "5_transit.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "all",
+        "dtau_inbound_unexplained",
+        "med_in"
+      ],
+      "value": 5.044200459549487,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_warsaw_in",
+      "component": "5_transit.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "matched",
+        "dtau_inbound_unexplained",
+        "med_in"
+      ],
+      "value": 2.391830117483204,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_warsaw_all_p",
+      "component": "5_transit.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "all",
+        "dtau_inbound_unexplained",
+        "p_in_gt_out"
+      ],
+      "value": 0.007913541051802047,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_warsaw_p",
+      "component": "5_transit.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "matched",
+        "dtau_inbound_unexplained",
+        "p_in_gt_out"
+      ],
+      "value": 0.03901903257114656,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_warsaw_all_in",
+      "component": "5_transit.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "all",
+        "dtau_inbound_unexplained",
+        "med_in"
+      ],
+      "value": 5.044200459549487,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "xf_pooled_floor",
+      "component": "5_transit.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "groups",
+        "pooled",
+        "median_dperi_deg"
+      ],
+      "value": 0.15464791634615002,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_pooled_mwu_p",
+      "component": "5_transit.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "groups",
+        "pooled",
+        "p_mwu_in_vs_out"
+      ],
+      "value": 0.40216140785069765,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_disp_r",
+      "component": "5_transit.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "disp_dir",
+        "R_in"
+      ],
+      "value": 0.1931203287234776,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_disp_dir_p",
+      "component": "5_transit.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "disp_dir",
+        "p_in"
+      ],
+      "value": 0.4621742922661394,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
       "claim": "census_n",
       "component": "5_transit.html",
       "result": "step_b72_cometels_dipole.json",
@@ -1834,7 +3112,7 @@
         "n_broad"
       ],
       "value": 268,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_dpar_2",
@@ -1848,7 +3126,7 @@
         "d_par"
       ],
       "value": 0.1045,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_p_sci",
@@ -1862,7 +3140,7 @@
         "p_tide_null"
       ],
       "value": 0.0006999650017499125,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_n_new",
@@ -1872,7 +3150,7 @@
         "n_new"
       ],
       "value": 206,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_new_d",
@@ -1886,7 +3164,7 @@
         "d_par"
       ],
       "value": 0.0712,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_new_p",
@@ -1900,7 +3178,7 @@
         "p_tide_null"
       ],
       "value": 0.03094845257737113,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_free_lam",
@@ -1912,7 +3190,7 @@
         "lam"
       ],
       "value": 35.28,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_free_bet",
@@ -1924,7 +3202,7 @@
         "bet"
       ],
       "value": -34.41,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_free_sep_cap",
@@ -1936,7 +3214,7 @@
         "sep_from_cap"
       ],
       "value": 21.44,
-      "source_sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457"
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
     },
     {
       "claim": "census_footprint_p",
@@ -1947,7 +3225,7 @@
         "p_ecliptic_footprint_null"
       ],
       "value": 0.0016999150042497876,
-      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+      "source_sha256": "e9b8982cfb97c33e6aeb0006146585fd60b02b63c5d1a51f12441f1ce2451037"
     },
     {
       "claim": "census_chi2_lo",
@@ -1958,7 +3236,7 @@
         "q"
       ],
       "value": 0.5447727577769262,
-      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+      "source_sha256": "e9b8982cfb97c33e6aeb0006146585fd60b02b63c5d1a51f12441f1ce2451037"
     },
     {
       "claim": "census_chi2_hi",
@@ -1968,8 +3246,18 @@
         "T5_summary",
         "H"
       ],
-      "value": 0.8909099812324028,
-      "source_sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36"
+      "value": 0.9214146040710046,
+      "source_sha256": "e9b8982cfb97c33e6aeb0006146585fd60b02b63c5d1a51f12441f1ce2451037"
+    },
+    {
+      "claim": "post2017_refit_fitted",
+      "component": "5_transit.html",
+      "result": "step_b92_post2017_refit.json",
+      "path": [
+        "n_fitted"
+      ],
+      "value": 249,
+      "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
       "claim": "post2017_refit_n",
@@ -2058,6 +3346,18 @@
       "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
+      "claim": "meridian_pre_p",
+      "component": "5_transit.html",
+      "result": "step_b96_bipolar_meridian.json",
+      "path": [
+        "T3_meridian_resident",
+        "pre2018",
+        "p_perm"
+      ],
+      "value": 0.4993750312484376,
+      "source_sha256": "52e7e270fbd1ed714bfc0e1ce37a500330fa5cb14af205d3edd7a9d70da2506b"
+    },
+    {
       "claim": "lpc_refit_p",
       "component": "5_transit.html",
       "result": "step_b98_lpc_signature_refit.json",
@@ -2078,6 +3378,42 @@
       ],
       "value": 0.06898620275944811,
       "source_sha256": "7e1147d46624f54cf036854e8c893e4e6768e43d554def9f13a062494ce2d37b"
+    },
+    {
+      "claim": "gs_dirf_in",
+      "component": "5_transit.html",
+      "result": "step_b106_gaia_sink.json",
+      "path": [
+        "T7_pre2018_declared_axis_misfit",
+        "ddirf",
+        "median_in"
+      ],
+      "value": 0.14843100229007286,
+      "source_sha256": "43b5f771b9e54c8c5d254fa22ae041c08690204894ee38e8f12c773ec0fddedc"
+    },
+    {
+      "claim": "gs_dirf_out",
+      "component": "5_transit.html",
+      "result": "step_b106_gaia_sink.json",
+      "path": [
+        "T7_pre2018_declared_axis_misfit",
+        "ddirf",
+        "median_out"
+      ],
+      "value": 0.12269719452102743,
+      "source_sha256": "43b5f771b9e54c8c5d254fa22ae041c08690204894ee38e8f12c773ec0fddedc"
+    },
+    {
+      "claim": "gs_dirf_p",
+      "component": "5_transit.html",
+      "result": "step_b106_gaia_sink.json",
+      "path": [
+        "T7_pre2018_declared_axis_misfit",
+        "ddirf",
+        "p"
+      ],
+      "value": 0.09639338766847294,
+      "source_sha256": "43b5f771b9e54c8c5d254fa22ae041c08690204894ee38e8f12c773ec0fddedc"
     },
     {
       "claim": "dissoc_sdrot",
@@ -2240,7 +3576,7 @@
         "wshare_median"
       ],
       "value": 0.7799484132063237,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
     },
     {
       "claim": "zonal_dd1a",
@@ -2251,7 +3587,7 @@
         "warp_dd1a_median"
       ],
       "value": 1.2569519390646602e-05,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
     },
     {
       "claim": "zonal_org_p",
@@ -2262,7 +3598,7 @@
         "mwu_p"
       ],
       "value": 0.8396292416320106,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
     },
     {
       "claim": "zonal_req_arcsec",
@@ -2273,7 +3609,7 @@
         "required_warp_arcsec"
       ],
       "value": 23.161455554583426,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
     },
     {
       "claim": "zonal_req_level",
@@ -2284,7 +3620,808 @@
         "required_warp_arcsec_for_incap_level"
       ],
       "value": 96.14017211127768,
-      "source_sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323"
+      "source_sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd"
+    },
+    {
+      "claim": "gen_fcap_med",
+      "component": "5_transit.html",
+      "result": "step_b123_generative_population.json",
+      "path": [
+        "results",
+        "models",
+        "M1_tide_flux_sel|all_c1",
+        "f_cap_med"
+      ],
+      "value": 0.2824427480916031,
+      "source_sha256": "f265eaff179ba59b9408223e1e91f3b054e041fe0ff7a2bed88e7f82543a92f5"
+    },
+    {
+      "claim": "gen_pcap",
+      "component": "5_transit.html",
+      "result": "step_b123_generative_population.json",
+      "path": [
+        "results",
+        "models",
+        "M1_tide_flux_sel|all_c1",
+        "p_cap"
+      ],
+      "value": 0.02048975512243878,
+      "source_sha256": "f265eaff179ba59b9408223e1e91f3b054e041fe0ff7a2bed88e7f82543a92f5"
+    },
+    {
+      "claim": "gen_pcap_matched",
+      "component": "5_transit.html",
+      "result": "step_b123_generative_population.json",
+      "path": [
+        "results",
+        "models",
+        "M1_tide_flux_sel|matched",
+        "p_cap"
+      ],
+      "value": 0.01649175412293853,
+      "source_sha256": "f265eaff179ba59b9408223e1e91f3b054e041fe0ff7a2bed88e7f82543a92f5"
+    },
+    {
+      "claim": "gen_obs_sep_matched",
+      "component": "5_transit.html",
+      "result": "step_b123_generative_population.json",
+      "path": [
+        "results",
+        "models",
+        "M1_tide_flux_sel|matched",
+        "obs_sep"
+      ],
+      "value": 3.7357145909990095,
+      "source_sha256": "f265eaff179ba59b9408223e1e91f3b054e041fe0ff7a2bed88e7f82543a92f5"
+    },
+    {
+      "claim": "gen_pdir_matched",
+      "component": "5_transit.html",
+      "result": "step_b123_generative_population.json",
+      "path": [
+        "results",
+        "models",
+        "M1_tide_flux_sel|matched",
+        "p_dir"
+      ],
+      "value": 0.0004997501249375312,
+      "source_sha256": "f265eaff179ba59b9408223e1e91f3b054e041fe0ff7a2bed88e7f82543a92f5"
+    },
+    {
+      "claim": "fp_dir_lam",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T1",
+        "fp_dir",
+        "0"
+      ],
+      "value": 192.68356241256586,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_dir_bet",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T1",
+        "fp_dir",
+        "1"
+      ],
+      "value": -43.9282700127666,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_obs_sep",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T1",
+        "sep_obs_fp"
+      ],
+      "value": 102.50531106660456,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_nullcap",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T2",
+        "null_cap_med"
+      ],
+      "value": 0.22900763358778625,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_pcap",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T2",
+        "p_cap"
+      ],
+      "value": 0.004624421947256593,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_pdir",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T2",
+        "p_dir_tno"
+      ],
+      "value": 0.0003749531308586427,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_pdir_matched",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_matched_q3p1",
+        "T2",
+        "p_dir_tno"
+      ],
+      "value": 0.000999875015623047,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_pdir_pre",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "sbdb_pre2018",
+        "T2",
+        "p_dir_tno"
+      ],
+      "value": 0.007249093863267091,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_pdir_all",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "sbdb_all",
+        "T2",
+        "p_dir_tno"
+      ],
+      "value": 0.0028746406699162604,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_resid_sep",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T3",
+        "resid_sep_tno"
+      ],
+      "value": 9.549376771066322,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_resid_sep_max",
+      "component": "5_transit.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T4",
+        "resid_sep_tno_max"
+      ],
+      "value": 21.963295567471135,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "tg_slip_disp_med",
+      "component": "5_transit.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "slip_displacement_deg",
+        "median"
+      ],
+      "value": 0.13249147013581375,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_slip_disp_max",
+      "component": "5_transit.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "slip_displacement_deg",
+        "max"
+      ],
+      "value": 1.4266062576554057,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_enh_factor",
+      "component": "5_transit.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "required_modulation",
+        "all_c1",
+        "enhancement_factor"
+      ],
+      "value": 1.2773045141256456,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_enh_factor_matched",
+      "component": "5_transit.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "required_modulation",
+        "matched",
+        "enhancement_factor"
+      ],
+      "value": 1.5338922392787526,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_dip_m",
+      "component": "5_transit.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "required_modulation",
+        "all_c1",
+        "dip_m_on_iso"
+      ],
+      "value": 0.3895009424102494,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_fanti_obs",
+      "component": "5_transit.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "models",
+        "M_lobe|all_c1",
+        "f_anti_obs"
+      ],
+      "value": 0.1297709923664122,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_fanti_iso_med",
+      "component": "5_transit.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "models",
+        "M_iso|all_c1",
+        "f_anti_med"
+      ],
+      "value": 0.2366412213740458,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_rho_drot_lobe",
+      "component": "5_transit.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "joint",
+        "all_c1",
+        "rho_drot_lobe"
+      ],
+      "value": 0.2790957134468585,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_rho_drot_lobe_p",
+      "component": "5_transit.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "joint",
+        "all_c1",
+        "p_drot_lobe"
+      ],
+      "value": 0.0012458159770577335,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "df_adm_signed_transport",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "branch_comparison",
+        "admissible_signed_transport_contrast_yr"
+      ],
+      "value": -5.944325318611946,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_excluded_signed_transport",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "branch_comparison",
+        "excluded_signed_transport_contrast_yr"
+      ],
+      "value": 5.944325318611946,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_adm_amplitude_contrast",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "branch_comparison",
+        "observable_amplitude_contrast_yr"
+      ],
+      "value": 5.944325318611946,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_ub_req",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "headline",
+        "u_b_required"
+      ],
+      "value": 0.00012515028803863725,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_rho_pred",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "headline",
+        "rho_pred_vs_resid"
+      ],
+      "value": 0.16936836109639966,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_rho_pred_p",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "headline",
+        "p_pred_vs_resid"
+      ],
+      "value": 0.0105,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_gal_ratio",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "sourceable_budget",
+        "ratio_vs_galactic"
+      ],
+      "value": 178.7861257694818,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_dlna_ppm",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "conformal_correlate",
+        "delta_lnA_ppm"
+      ],
+      "value": 125.15028803863724,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_conf_ratio",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "conformal_correlate",
+        "ratio_vs_sustained_bound"
+      ],
+      "value": 31.28757200965931,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_shear_imp",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "shear_impulse",
+        "delta_v_m_s"
+      ],
+      "value": 2696608128.9788594,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_shear_ratio",
+      "component": "5_transit.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "shear_impulse",
+        "ratio"
+      ],
+      "value": 8988693763.262865,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "met_w_pcap",
+      "component": "5_transit.html",
+      "result": "step_b124_metric_winding.json",
+      "path": [
+        "results",
+        "T2_cap_partition",
+        "p_greater"
+      ],
+      "value": 0.8182798632934667,
+      "source_sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be"
+    },
+    {
+      "claim": "met_thread_in",
+      "component": "5_transit.html",
+      "result": "step_b124_metric_winding.json",
+      "path": [
+        "results",
+        "T8_threading",
+        "resident",
+        "med_in"
+      ],
+      "value": 1.818707525801793,
+      "source_sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be"
+    },
+    {
+      "claim": "met_thread_out",
+      "component": "5_transit.html",
+      "result": "step_b124_metric_winding.json",
+      "path": [
+        "results",
+        "T8_threading",
+        "resident",
+        "med_out"
+      ],
+      "value": 2.2410725200243977,
+      "source_sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be"
+    },
+    {
+      "claim": "met_thread_p",
+      "component": "5_transit.html",
+      "result": "step_b124_metric_winding.json",
+      "path": [
+        "results",
+        "T8_threading",
+        "resident",
+        "p_cap_thread"
+      ],
+      "value": 0.01392050252151213,
+      "source_sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be"
+    },
+    {
+      "claim": "rad_ddirf_250",
+      "component": "5_transit.html",
+      "result": "step_b122_boundary_radius.json",
+      "path": [
+        "aggregate",
+        "250.0",
+        "ddirf_med"
+      ],
+      "value": 0.14217646806030013,
+      "source_sha256": "ecc86da014212364bee238baa0d81088cb7bfb721143a3a911a42824c0433499"
+    },
+    {
+      "claim": "tps_med_dtp",
+      "component": "5_transit.html",
+      "result": "step_b125_tp_slip.json",
+      "path": [
+        "T1_validity",
+        "med_abs_dtp_io_d"
+      ],
+      "value": 0.07368561299517751,
+      "source_sha256": "7f91101037be0cc517f3b28755a43d18747178b02cfc1aa9ee7a6d5cd4914411"
+    },
+    {
+      "claim": "tps_arc_frac",
+      "component": "5_transit.html",
+      "result": "step_b125_tp_slip.json",
+      "path": [
+        "T1_validity",
+        "med_abs_dtp_io_frac_of_arc"
+      ],
+      "value": 0.0001182605114380446,
+      "source_sha256": "7f91101037be0cc517f3b28755a43d18747178b02cfc1aa9ee7a6d5cd4914411"
+    },
+    {
+      "claim": "tps_med_in",
+      "component": "5_transit.html",
+      "result": "step_b125_tp_slip.json",
+      "path": [
+        "T2_cap_contrast",
+        "full",
+        "med_in_d"
+      ],
+      "value": 0.08377978065982461,
+      "source_sha256": "7f91101037be0cc517f3b28755a43d18747178b02cfc1aa9ee7a6d5cd4914411"
+    },
+    {
+      "claim": "tps_med_out",
+      "component": "5_transit.html",
+      "result": "step_b125_tp_slip.json",
+      "path": [
+        "T2_cap_contrast",
+        "full",
+        "med_out_d"
+      ],
+      "value": 0.07343049114570022,
+      "source_sha256": "7f91101037be0cc517f3b28755a43d18747178b02cfc1aa9ee7a6d5cd4914411"
+    },
+    {
+      "claim": "tps_p_cap",
+      "component": "5_transit.html",
+      "result": "step_b125_tp_slip.json",
+      "path": [
+        "T2_cap_contrast",
+        "full",
+        "p_mwu"
+      ],
+      "value": 0.3919758017794813,
+      "source_sha256": "7f91101037be0cc517f3b28755a43d18747178b02cfc1aa9ee7a6d5cd4914411"
+    },
+    {
+      "claim": "tps_p_code",
+      "component": "5_transit.html",
+      "result": "step_b125_tp_slip.json",
+      "path": [
+        "T2_cap_contrast",
+        "code_overlap",
+        "p_perm"
+      ],
+      "value": 0.5062987402519497,
+      "source_sha256": "7f91101037be0cc517f3b28755a43d18747178b02cfc1aa9ee7a6d5cd4914411"
+    },
+    {
+      "claim": "tps_p_sign",
+      "component": "5_transit.html",
+      "result": "step_b125_tp_slip.json",
+      "path": [
+        "T3_signed_polarity",
+        "declared_cap",
+        "p_signed_shift"
+      ],
+      "value": 0.37443883334981176,
+      "source_sha256": "7f91101037be0cc517f3b28755a43d18747178b02cfc1aa9ee7a6d5cd4914411"
+    },
+    {
+      "claim": "iso_leg_drot1",
+      "component": "5_transit.html",
+      "result": "step_b126_iso_legrefit.json",
+      "path": [
+        "ledger",
+        "0",
+        "drot"
+      ],
+      "value": 0.14173972355055367,
+      "source_sha256": "6c3b7cce5643b04d4bdc57a75e30d11a783978ce9ee2ebce214f62ae0dbbfcaf"
+    },
+    {
+      "claim": "iso_leg_drot2",
+      "component": "5_transit.html",
+      "result": "step_b126_iso_legrefit.json",
+      "path": [
+        "ledger",
+        "1",
+        "drot"
+      ],
+      "value": 0.06120022470484975,
+      "source_sha256": "6c3b7cce5643b04d4bdc57a75e30d11a783978ce9ee2ebce214f62ae0dbbfcaf"
+    },
+    {
+      "claim": "iso_leg_drot3",
+      "component": "5_transit.html",
+      "result": "step_b126_iso_legrefit.json",
+      "path": [
+        "ledger",
+        "2",
+        "drot"
+      ],
+      "value": 0.15206196957807913,
+      "source_sha256": "6c3b7cce5643b04d4bdc57a75e30d11a783978ce9ee2ebce214f62ae0dbbfcaf"
+    },
+    {
+      "claim": "iso_leg_dtau1",
+      "component": "5_transit.html",
+      "result": "step_b126_iso_legrefit.json",
+      "path": [
+        "ledger",
+        "0",
+        "dtau"
+      ],
+      "value": 32.796792708797646,
+      "source_sha256": "6c3b7cce5643b04d4bdc57a75e30d11a783978ce9ee2ebce214f62ae0dbbfcaf"
+    },
+    {
+      "claim": "iso_leg_dtau2",
+      "component": "5_transit.html",
+      "result": "step_b126_iso_legrefit.json",
+      "path": [
+        "ledger",
+        "1",
+        "dtau"
+      ],
+      "value": 3.5946551431597364,
+      "source_sha256": "6c3b7cce5643b04d4bdc57a75e30d11a783978ce9ee2ebce214f62ae0dbbfcaf"
+    },
+    {
+      "claim": "iso_leg_dtau3",
+      "component": "5_transit.html",
+      "result": "step_b126_iso_legrefit.json",
+      "path": [
+        "ledger",
+        "2",
+        "dtau"
+      ],
+      "value": 8.487940521893233,
+      "source_sha256": "6c3b7cce5643b04d4bdc57a75e30d11a783978ce9ee2ebce214f62ae0dbbfcaf"
+    },
+    {
+      "claim": "iso_leg_din1",
+      "component": "5_transit.html",
+      "result": "step_b126_iso_legrefit.json",
+      "path": [
+        "ledger",
+        "0",
+        "d_in"
+      ],
+      "value": 0.2696548782235519,
+      "source_sha256": "6c3b7cce5643b04d4bdc57a75e30d11a783978ce9ee2ebce214f62ae0dbbfcaf"
+    },
+    {
+      "claim": "iso_leg_dout1",
+      "component": "5_transit.html",
+      "result": "step_b126_iso_legrefit.json",
+      "path": [
+        "ledger",
+        "0",
+        "d_out"
+      ],
+      "value": 0.135098128349967,
+      "source_sha256": "6c3b7cce5643b04d4bdc57a75e30d11a783978ce9ee2ebce214f62ae0dbbfcaf"
+    },
+    {
+      "claim": "iso_leg_pct1",
+      "component": "5_transit.html",
+      "result": "step_b126_iso_legrefit.json",
+      "path": [
+        "cohort_context",
+        "1I/'Oumuamua",
+        "fit_all_rms",
+        "iso_percentile"
+      ],
+      "value": 20.481927710843372,
+      "source_sha256": "6c3b7cce5643b04d4bdc57a75e30d11a783978ce9ee2ebce214f62ae0dbbfcaf"
+    },
+    {
+      "claim": "apdb_rho_at",
+      "component": "5_transit.html",
+      "result": "step_b127_apdb_planet.json",
+      "path": [
+        "T2_direction",
+        "along_track",
+        "rho_vs_sep_axis"
+      ],
+      "value": -0.1722620272401904,
+      "source_sha256": "5f8ddf5f1fccfdd4b6471750716ec0b29865d39d7800db246a5337f2ed50e6bc"
+    },
+    {
+      "claim": "apdb_p_at",
+      "component": "5_transit.html",
+      "result": "step_b127_apdb_planet.json",
+      "path": [
+        "T2_direction",
+        "along_track",
+        "p"
+      ],
+      "value": 1.7324455678917367e-09,
+      "source_sha256": "5f8ddf5f1fccfdd4b6471750716ec0b29865d39d7800db246a5337f2ed50e6bc"
+    },
+    {
+      "claim": "apdb_med_in",
+      "component": "5_transit.html",
+      "result": "step_b127_apdb_planet.json",
+      "path": [
+        "T2_direction",
+        "along_track",
+        "cap_mwu",
+        "med_in"
+      ],
+      "value": 120.05416650392445,
+      "source_sha256": "5f8ddf5f1fccfdd4b6471750716ec0b29865d39d7800db246a5337f2ed50e6bc"
+    },
+    {
+      "claim": "apdb_med_out",
+      "component": "5_transit.html",
+      "result": "step_b127_apdb_planet.json",
+      "path": [
+        "T2_direction",
+        "along_track",
+        "cap_mwu",
+        "med_out"
+      ],
+      "value": 17.07525646630291,
+      "source_sha256": "5f8ddf5f1fccfdd4b6471750716ec0b29865d39d7800db246a5337f2ed50e6bc"
+    },
+    {
+      "claim": "apdb_p_cap",
+      "component": "5_transit.html",
+      "result": "step_b127_apdb_planet.json",
+      "path": [
+        "T2_direction",
+        "along_track",
+        "cap_mwu",
+        "p"
+      ],
+      "value": 7.465226148323126e-06,
+      "source_sha256": "5f8ddf5f1fccfdd4b6471750716ec0b29865d39d7800db246a5337f2ed50e6bc"
+    },
+    {
+      "claim": "nima_n_oc",
+      "component": "5_transit.html",
+      "result": "step_b128_nima_pilot.json",
+      "path": [
+        "T1_coverage",
+        "n_with_oc"
+      ],
+      "value": 8,
+      "source_sha256": "4f159336144a24d42142090e33c81c6f8f72fb37b7d0d74e7405a2259fac6a83"
+    },
+    {
+      "claim": "nima_in_amp",
+      "component": "5_transit.html",
+      "result": "step_b128_nima_pilot.json",
+      "path": [
+        "T3_contrast",
+        "in_med_amp"
+      ],
+      "value": 0.15431461369552785,
+      "source_sha256": "4f159336144a24d42142090e33c81c6f8f72fb37b7d0d74e7405a2259fac6a83"
+    },
+    {
+      "claim": "nima_out_amp",
+      "component": "5_transit.html",
+      "result": "step_b128_nima_pilot.json",
+      "path": [
+        "T3_contrast",
+        "out_med_amp"
+      ],
+      "value": 0.030491386483042518,
+      "source_sha256": "4f159336144a24d42142090e33c81c6f8f72fb37b7d0d74e7405a2259fac6a83"
     },
     {
       "claim": "inj_full_din",
@@ -2418,6 +4555,180 @@
       "source_sha256": "946acb95504fb9223cce76deba35334c095d4fe84f31d036871e584d9b823479"
     },
     {
+      "claim": "met_w_in",
+      "component": "5_transit.html",
+      "result": "step_b124_metric_winding.json",
+      "path": [
+        "results",
+        "T2_cap_partition",
+        "med_in"
+      ],
+      "value": 2.439391191287344,
+      "source_sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be"
+    },
+    {
+      "claim": "met_w_out",
+      "component": "5_transit.html",
+      "result": "step_b124_metric_winding.json",
+      "path": [
+        "results",
+        "T2_cap_partition",
+        "med_out"
+      ],
+      "value": 2.4582502059722096,
+      "source_sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be"
+    },
+    {
+      "claim": "met_w_pcap",
+      "component": "5_transit.html",
+      "result": "step_b124_metric_winding.json",
+      "path": [
+        "results",
+        "T2_cap_partition",
+        "p_greater"
+      ],
+      "value": 0.8182798632934667,
+      "source_sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be"
+    },
+    {
+      "claim": "met_thread_in",
+      "component": "5_transit.html",
+      "result": "step_b124_metric_winding.json",
+      "path": [
+        "results",
+        "T8_threading",
+        "resident",
+        "med_in"
+      ],
+      "value": 1.818707525801793,
+      "source_sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be"
+    },
+    {
+      "claim": "met_thread_out",
+      "component": "5_transit.html",
+      "result": "step_b124_metric_winding.json",
+      "path": [
+        "results",
+        "T8_threading",
+        "resident",
+        "med_out"
+      ],
+      "value": 2.2410725200243977,
+      "source_sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be"
+    },
+    {
+      "claim": "met_thread_p",
+      "component": "5_transit.html",
+      "result": "step_b124_metric_winding.json",
+      "path": [
+        "results",
+        "T8_threading",
+        "resident",
+        "p_cap_thread"
+      ],
+      "value": 0.01392050252151213,
+      "source_sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be"
+    },
+    {
+      "claim": "rad_disrupt25_n",
+      "component": "5_transit.html",
+      "result": "step_b122_boundary_radius.json",
+      "path": [
+        "aggregate",
+        "25.0",
+        "n_disrupted"
+      ],
+      "value": 16,
+      "source_sha256": "ecc86da014212364bee238baa0d81088cb7bfb721143a3a911a42824c0433499"
+    },
+    {
+      "claim": "rad_d8_100",
+      "component": "5_transit.html",
+      "result": "step_b122_boundary_radius.json",
+      "path": [
+        "radial_transfer",
+        "100.0",
+        "med_at_8AU"
+      ],
+      "value": 0.532195,
+      "source_sha256": "ecc86da014212364bee238baa0d81088cb7bfb721143a3a911a42824c0433499"
+    },
+    {
+      "claim": "rad_d8_250",
+      "component": "5_transit.html",
+      "result": "step_b122_boundary_radius.json",
+      "path": [
+        "radial_transfer",
+        "250.0",
+        "med_at_8AU"
+      ],
+      "value": 0.065125,
+      "source_sha256": "ecc86da014212364bee238baa0d81088cb7bfb721143a3a911a42824c0433499"
+    },
+    {
+      "claim": "rad_ddirf_250",
+      "component": "5_transit.html",
+      "result": "step_b122_boundary_radius.json",
+      "path": [
+        "aggregate",
+        "250.0",
+        "ddirf_med"
+      ],
+      "value": 0.14217646806030013,
+      "source_sha256": "ecc86da014212364bee238baa0d81088cb7bfb721143a3a911a42824c0433499"
+    },
+    {
+      "claim": "cmb_decl_antapex",
+      "component": "6_synthesis.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T5_named_directions",
+        "cmb_cone_coherence",
+        "declared_axis_angle_deg"
+      ],
+      "value": 48.45789695284382,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "cmb_post_sep",
+      "component": "6_synthesis.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T10_cmb_dipole_ladder",
+        "post2017",
+        "pole_sep_to_cmb_apex"
+      ],
+      "value": 20.37641322597326,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "cmb_code_sep",
+      "component": "6_synthesis.html",
+      "result": "step_b89_displaced_temporal.json",
+      "path": [
+        "results",
+        "T10_cmb_dipole_ladder",
+        "CODE",
+        "pole_sep_to_cmb_apex"
+      ],
+      "value": 25.72708373774591,
+      "source_sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852"
+    },
+    {
+      "claim": "gnss_cmb_sep",
+      "component": "6_synthesis.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T1_ledger",
+        "3",
+        "cone_deg"
+      ],
+      "value": 22.024166883940797,
+      "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
+    },
+    {
       "claim": "fisher_two_pop",
       "component": "6_synthesis.html",
       "result": "step_b15_evidence_summary.json",
@@ -2427,6 +4738,370 @@
       ],
       "value": 0.00025456249546467613,
       "source_sha256": "dc8461a6010b0b18f56d63acb5094e037ea47094198b6c9f711582e6b3565cdd"
+    },
+    {
+      "claim": "jfc_n_all",
+      "component": "6_synthesis.html",
+      "result": "step_b17_injection_chain.json",
+      "path": [
+        "n_jfc"
+      ],
+      "value": 579,
+      "source_sha256": "971e873b2bda3c4379f875bb38d512872bbbed75561d6946400f70ebc9a43271"
+    },
+    {
+      "claim": "jfc_deep_n",
+      "component": "6_synthesis.html",
+      "result": "step_b17_injection_chain.json",
+      "path": [
+        "I4_chain",
+        "JFC_q<3",
+        "N"
+      ],
+      "value": 380,
+      "source_sha256": "971e873b2bda3c4379f875bb38d512872bbbed75561d6946400f70ebc9a43271"
+    },
+    {
+      "claim": "jfc_deep_mu",
+      "component": "6_synthesis.html",
+      "result": "step_b17_injection_chain.json",
+      "path": [
+        "I4_chain",
+        "JFC_q<3",
+        "mu"
+      ],
+      "value": 40.6,
+      "source_sha256": "971e873b2bda3c4379f875bb38d512872bbbed75561d6946400f70ebc9a43271"
+    },
+    {
+      "claim": "jfc_shallow_fp_mu",
+      "component": "6_synthesis.html",
+      "result": "step_b17_injection_chain.json",
+      "path": [
+        "I2_footprints",
+        "rows",
+        "2",
+        "mu_opp"
+      ],
+      "value": 292.5,
+      "source_sha256": "971e873b2bda3c4379f875bb38d512872bbbed75561d6946400f70ebc9a43271"
+    },
+    {
+      "claim": "jfc_shallow_obs_mu",
+      "component": "6_synthesis.html",
+      "result": "step_b17_injection_chain.json",
+      "path": [
+        "I2_footprints",
+        "rows",
+        "2",
+        "mu_varpi"
+      ],
+      "value": 204.3,
+      "source_sha256": "971e873b2bda3c4379f875bb38d512872bbbed75561d6946400f70ebc9a43271"
+    },
+    {
+      "claim": "jfc_pairing_p",
+      "component": "6_synthesis.html",
+      "result": "step_b17_injection_chain.json",
+      "path": [
+        "I3_pairing_test_q<3",
+        "p"
+      ],
+      "value": 0.0271986400679966,
+      "source_sha256": "971e873b2bda3c4379f875bb38d512872bbbed75561d6946400f70ebc9a43271"
+    },
+    {
+      "claim": "syn_c1_p",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "per_channel",
+        "C1_sbdb_tno_varpi",
+        "p_at_tno_axis"
+      ],
+      "value": 5.6996649005101004e-09,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "syn_c2_p",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "per_channel",
+        "C2_des_tno_cluster",
+        "p_at_tno_axis"
+      ],
+      "value": 4.959891828051937e-05,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "syn_c3_p",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "per_channel",
+        "C3_mpcorb_tno_cluster",
+        "p_at_tno_axis"
+      ],
+      "value": 2.778857139016634e-10,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "syn_c4_p",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "per_channel",
+        "C4_mean_plane_lean",
+        "p_at_tno_axis"
+      ],
+      "value": 0.06483790523690773,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "syn_c5_p",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "per_channel",
+        "C5_code_comet_slip",
+        "p_at_tno_axis"
+      ],
+      "value": 0.008736431325865402,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "syn_c6_p",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "per_channel",
+        "C6_warsaw_inbound_slip",
+        "p_at_tno_axis"
+      ],
+      "value": 0.00533951023764481,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "syn_c7_p",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "per_channel",
+        "C7_pooled_comet_dipole",
+        "p_at_tno_axis"
+      ],
+      "value": 3.4737254580784554e-07,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "census_dpar_2",
+      "component": "6_synthesis.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "d_par"
+      ],
+      "value": 0.1045,
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
+    },
+    {
+      "claim": "syn_c8_p",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "per_channel",
+        "C8_cometels_census_dipole",
+        "p_at_tno_axis"
+      ],
+      "value": 0.0015046483778562824,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "post2017_dipole",
+      "component": "6_synthesis.html",
+      "result": "step_b88_lineage_aphelion.json",
+      "path": [
+        "results",
+        "post2017_near_parabolic",
+        "T1_tide_aware",
+        "cap_34_-13",
+        "d_par"
+      ],
+      "value": 0.0949,
+      "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
+    },
+    {
+      "claim": "syn_c9_p",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "per_channel",
+        "C9_post2017_sbdb_dipole",
+        "p_at_tno_axis"
+      ],
+      "value": 0.0037884739536970065,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "jfc_deep_mu",
+      "component": "6_synthesis.html",
+      "result": "step_b17_injection_chain.json",
+      "path": [
+        "I4_chain",
+        "JFC_q<3",
+        "mu"
+      ],
+      "value": 40.6,
+      "source_sha256": "971e873b2bda3c4379f875bb38d512872bbbed75561d6946400f70ebc9a43271"
+    },
+    {
+      "claim": "syn_c10_p",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "per_channel",
+        "C10_jfc_injection_chain",
+        "p_at_tno_axis"
+      ],
+      "value": 0.0466666666666667,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_score",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_tno_axis",
+        "S_stat"
+      ],
+      "value": 187.23906418436496,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_rank",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_tno_axis",
+        "p_global"
+      ],
+      "value": 0.011799410029498525,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_score_comet",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_comet_axis",
+        "S_stat"
+      ],
+      "value": 188.331005789186,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_rank_comet",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_comet_axis",
+        "p_global"
+      ],
+      "value": 0.0103994800259987,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "best_axis_sep",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "best_random_axis",
+        "sep_to_tno_deg"
+      ],
+      "value": 8.038002023550387,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "synth_pairwise_mean_deg",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "pairwise_concordance",
+        "mean_pairwise_deg"
+      ],
+      "value": 26.549352534242253,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_score",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_tno_axis",
+        "S_stat"
+      ],
+      "value": 187.23906418436496,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_rank",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_tno_axis",
+        "p_global"
+      ],
+      "value": 0.011799410029498525,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_score_comet",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_comet_axis",
+        "S_stat"
+      ],
+      "value": 188.331005789186,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_rank_comet",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_comet_axis",
+        "p_global"
+      ],
+      "value": 0.0103994800259987,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "jfc_deep_mu",
+      "component": "6_synthesis.html",
+      "result": "step_b17_injection_chain.json",
+      "path": [
+        "I4_chain",
+        "JFC_q<3",
+        "mu"
+      ],
+      "value": 40.6,
+      "source_sha256": "971e873b2bda3c4379f875bb38d512872bbbed75561d6946400f70ebc9a43271"
+    },
+    {
+      "claim": "jfc_pairing_p",
+      "component": "6_synthesis.html",
+      "result": "step_b17_injection_chain.json",
+      "path": [
+        "I3_pairing_test_q<3",
+        "p"
+      ],
+      "value": 0.0271986400679966,
+      "source_sha256": "971e873b2bda3c4379f875bb38d512872bbbed75561d6946400f70ebc9a43271"
     },
     {
       "claim": "post2017_dipole",
@@ -2485,6 +5160,73 @@
       "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
+      "claim": "global_score",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_tno_axis",
+        "S_stat"
+      ],
+      "value": 187.23906418436496,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_score_comet",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_comet_axis",
+        "S_stat"
+      ],
+      "value": 188.331005789186,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_rank",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_tno_axis",
+        "p_global"
+      ],
+      "value": 0.011799410029498525,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_rank_comet",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_comet_axis",
+        "p_global"
+      ],
+      "value": 0.0103994800259987,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "best_axis_sep",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "best_random_axis",
+        "sep_to_tno_deg"
+      ],
+      "value": 8.038002023550387,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "axis_loc_r68",
+      "component": "6_synthesis.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "axis_localization",
+        "bootstrap",
+        "r68_deg"
+      ],
+      "value": 18.821858827456765,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
       "claim": "gnss_meridian_p",
       "component": "6_synthesis.html",
       "result": "step_b99_cross_channel.json",
@@ -2518,6 +5260,124 @@
       ],
       "value": 0.001999000499750125,
       "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
+    },
+    {
+      "claim": "xf_pooled_n",
+      "component": "7_discussion.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "groups",
+        "pooled",
+        "n"
+      ],
+      "value": 70,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_pooled_floor",
+      "component": "7_discussion.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "groups",
+        "pooled",
+        "median_dperi_deg"
+      ],
+      "value": 0.15464791634615002,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_pooled_in",
+      "component": "7_discussion.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "groups",
+        "pooled",
+        "median_in"
+      ],
+      "value": 0.15943752544342815,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_pooled_out",
+      "component": "7_discussion.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "groups",
+        "pooled",
+        "median_out"
+      ],
+      "value": 0.14668224000361357,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_pooled_mwu_p",
+      "component": "7_discussion.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "groups",
+        "pooled",
+        "p_mwu_in_vs_out"
+      ],
+      "value": 0.40216140785069765,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_floor_rho",
+      "component": "7_discussion.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "floor_vs_anomaly",
+        "all",
+        "rho"
+      ],
+      "value": 0.2217773412908262,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_floor_p",
+      "component": "7_discussion.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "floor_vs_anomaly",
+        "all",
+        "p_2sided"
+      ],
+      "value": 0.0832053388725603,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_disp_r",
+      "component": "7_discussion.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "disp_dir",
+        "R_in"
+      ],
+      "value": 0.1931203287234776,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "xf_disp_dir_p",
+      "component": "7_discussion.html",
+      "result": "step_b44_cross_fitter.json",
+      "path": [
+        "disp_dir",
+        "p_in"
+      ],
+      "value": 0.4621742922661394,
+      "source_sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1"
+    },
+    {
+      "claim": "refit_rho",
+      "component": "7_discussion.html",
+      "result": "step_b91_nonwarsaw_refit.json",
+      "path": [
+        "T1_validity",
+        "drot_concordance",
+        "rho"
+      ],
+      "value": 0.9978499173108192,
+      "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
     },
     {
       "claim": "post2017_dipole",
@@ -2699,6 +5559,17 @@
       "source_sha256": "d8b32ec87103fcd0a8cd8995309705398f05c9503a37b71739c3912209d56734"
     },
     {
+      "claim": "dipole_mirror_p",
+      "component": "7_discussion.html",
+      "result": "step_b97_harmonic_bipolar.json",
+      "path": [
+        "T2_dipole_mirror",
+        "p_perm"
+      ],
+      "value": 0.03144842757862107,
+      "source_sha256": "fc93b0822a4491d14ce6bf172aa048e164866490a4e40953a3355372cdb1d505"
+    },
+    {
       "claim": "p9_mass_req",
       "component": "7_discussion.html",
       "result": "step_b48_mass_ladder.json",
@@ -2753,6 +5624,76 @@
       ],
       "value": 3068.78769547509,
       "source_sha256": "18784792b3fd5963b8baa4cb48d5eadf31dab54120cb45453b90cb790df0bb38"
+    },
+    {
+      "claim": "dtau_warsaw_all_p",
+      "component": "7_discussion.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "all",
+        "dtau_inbound_unexplained",
+        "p_in_gt_out"
+      ],
+      "value": 0.007913541051802047,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "dtau_warsaw_p",
+      "component": "7_discussion.html",
+      "result": "step_b30_proper_time_slip.json",
+      "path": [
+        "warsaw",
+        "matched",
+        "dtau_inbound_unexplained",
+        "p_in_gt_out"
+      ],
+      "value": 0.03901903257114656,
+      "source_sha256": "1c522e480fc629dde96e503f53b395c41779cc951acb111fb4e6e6b80a1780e2"
+    },
+    {
+      "claim": "tide_leg_offset_p",
+      "component": "7_discussion.html",
+      "result": "step_b35_galactic_tide.json",
+      "path": [
+        "cap_contrast",
+        "leg_offset_in_gt_out_p"
+      ],
+      "value": 0.20307076615719089,
+      "source_sha256": "fca84472b30a740b107905579a0d293dceb8b7b7ded0b791e33529583942d8a7"
+    },
+    {
+      "claim": "tide_ddrot_p",
+      "component": "7_discussion.html",
+      "result": "step_b35_galactic_tide.json",
+      "path": [
+        "cap_contrast",
+        "abs_ddrot_in_gt_out_p"
+      ],
+      "value": 0.32867139242999655,
+      "source_sha256": "fca84472b30a740b107905579a0d293dceb8b7b7ded0b791e33529583942d8a7"
+    },
+    {
+      "claim": "global_score",
+      "component": "7_discussion.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_tno_axis",
+        "S_stat"
+      ],
+      "value": 187.23906418436496,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
+    },
+    {
+      "claim": "global_rank",
+      "component": "7_discussion.html",
+      "result": "step_b90_global_synthesis.json",
+      "path": [
+        "eval_at_tno_axis",
+        "p_global"
+      ],
+      "value": 0.011799410029498525,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
     },
     {
       "claim": "arr_tno_frac",
@@ -2859,6 +5800,542 @@
       "source_sha256": "e547cb984e35e4f0ac1f34bab2191350d095453678c83193f42ece0b281b93a0"
     },
     {
+      "claim": "gen_fcap_med",
+      "component": "7_discussion.html",
+      "result": "step_b123_generative_population.json",
+      "path": [
+        "results",
+        "models",
+        "M1_tide_flux_sel|all_c1",
+        "f_cap_med"
+      ],
+      "value": 0.2824427480916031,
+      "source_sha256": "f265eaff179ba59b9408223e1e91f3b054e041fe0ff7a2bed88e7f82543a92f5"
+    },
+    {
+      "claim": "gen_pcap",
+      "component": "7_discussion.html",
+      "result": "step_b123_generative_population.json",
+      "path": [
+        "results",
+        "models",
+        "M1_tide_flux_sel|all_c1",
+        "p_cap"
+      ],
+      "value": 0.02048975512243878,
+      "source_sha256": "f265eaff179ba59b9408223e1e91f3b054e041fe0ff7a2bed88e7f82543a92f5"
+    },
+    {
+      "claim": "gen_pcap_matched",
+      "component": "7_discussion.html",
+      "result": "step_b123_generative_population.json",
+      "path": [
+        "results",
+        "models",
+        "M1_tide_flux_sel|matched",
+        "p_cap"
+      ],
+      "value": 0.01649175412293853,
+      "source_sha256": "f265eaff179ba59b9408223e1e91f3b054e041fe0ff7a2bed88e7f82543a92f5"
+    },
+    {
+      "claim": "gen_pdir_matched",
+      "component": "7_discussion.html",
+      "result": "step_b123_generative_population.json",
+      "path": [
+        "results",
+        "models",
+        "M1_tide_flux_sel|matched",
+        "p_dir"
+      ],
+      "value": 0.0004997501249375312,
+      "source_sha256": "f265eaff179ba59b9408223e1e91f3b054e041fe0ff7a2bed88e7f82543a92f5"
+    },
+    {
+      "claim": "fp_dir_lam",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T1",
+        "fp_dir",
+        "0"
+      ],
+      "value": 192.68356241256586,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_dir_bet",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T1",
+        "fp_dir",
+        "1"
+      ],
+      "value": -43.9282700127666,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_obs_sep",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T1",
+        "sep_obs_fp"
+      ],
+      "value": 102.50531106660456,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_lon_dir",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T5",
+        "fp_lon_dipole_dir"
+      ],
+      "value": 201.22778927283554,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_obs_londir",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T5",
+        "obs_lon_dipole_dir"
+      ],
+      "value": 45.94337565013462,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_pdir",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T2",
+        "p_dir_tno"
+      ],
+      "value": 0.0003749531308586427,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_pdir_matched",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_matched_q3p1",
+        "T2",
+        "p_dir_tno"
+      ],
+      "value": 0.000999875015623047,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_pdir_pre",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "sbdb_pre2018",
+        "T2",
+        "p_dir_tno"
+      ],
+      "value": 0.007249093863267091,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_pdir_all",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "sbdb_all",
+        "T2",
+        "p_dir_tno"
+      ],
+      "value": 0.0028746406699162604,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_nullcap",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T2",
+        "null_cap_med"
+      ],
+      "value": 0.22900763358778625,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_pcap",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T2",
+        "p_cap"
+      ],
+      "value": 0.004624421947256593,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_resid_sep",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T3",
+        "resid_sep_tno"
+      ],
+      "value": 9.549376771066322,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "fp_resid_sep_max",
+      "component": "7_discussion.html",
+      "result": "step_b129_footprint_forward.json",
+      "path": [
+        "results",
+        "class1_all",
+        "T4",
+        "resid_sep_tno_max"
+      ],
+      "value": 21.963295567471135,
+      "source_sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11"
+    },
+    {
+      "claim": "tg_slip_disp_med",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "slip_displacement_deg",
+        "median"
+      ],
+      "value": 0.13249147013581375,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_slip_disp_max",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "slip_displacement_deg",
+        "max"
+      ],
+      "value": 1.4266062576554057,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_enh_factor",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "required_modulation",
+        "all_c1",
+        "enhancement_factor"
+      ],
+      "value": 1.2773045141256456,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_enh_factor_matched",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "required_modulation",
+        "matched",
+        "enhancement_factor"
+      ],
+      "value": 1.5338922392787526,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_dip_m",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "required_modulation",
+        "all_c1",
+        "dip_m_on_iso"
+      ],
+      "value": 0.3895009424102494,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_fanti_obs",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "models",
+        "M_lobe|all_c1",
+        "f_anti_obs"
+      ],
+      "value": 0.1297709923664122,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_fanti_iso_med",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "models",
+        "M_iso|all_c1",
+        "f_anti_med"
+      ],
+      "value": 0.2366412213740458,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_fanti_lobe_med",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "models",
+        "M_lobe|all_c1",
+        "f_anti_med"
+      ],
+      "value": 0.21374045801526717,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_fanti_dip_med",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "models",
+        "M_dip|all_c1",
+        "f_anti_med"
+      ],
+      "value": 0.16793893129770993,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_rho_drot_lobe",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "joint",
+        "all_c1",
+        "rho_drot_lobe"
+      ],
+      "value": 0.2790957134468585,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "tg_rho_drot_lobe_p",
+      "component": "7_discussion.html",
+      "result": "step_b130_tep_generative.json",
+      "path": [
+        "results",
+        "joint",
+        "all_c1",
+        "p_drot_lobe"
+      ],
+      "value": 0.0012458159770577335,
+      "source_sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097"
+    },
+    {
+      "claim": "df_adm_signed_transport",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "branch_comparison",
+        "admissible_signed_transport_contrast_yr"
+      ],
+      "value": -5.944325318611946,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_excluded_signed_transport",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "branch_comparison",
+        "excluded_signed_transport_contrast_yr"
+      ],
+      "value": 5.944325318611946,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_adm_amplitude_contrast",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "branch_comparison",
+        "observable_amplitude_contrast_yr"
+      ],
+      "value": 5.944325318611946,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_contrast",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "headline",
+        "measured_contrast_yr"
+      ],
+      "value": 5.944325318617941,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_ub_req",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "headline",
+        "u_b_required"
+      ],
+      "value": 0.00012515028803863725,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_rho_pred",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "headline",
+        "rho_pred_vs_resid"
+      ],
+      "value": 0.16936836109639966,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_rho_pred_p",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "headline",
+        "p_pred_vs_resid"
+      ],
+      "value": 0.0105,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_track_contrast_s",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "tracking_baseline",
+        "pred_contrast_s"
+      ],
+      "value": 1.8578868527262127e-18,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_gal_ratio",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "sourceable_budget",
+        "ratio_vs_galactic"
+      ],
+      "value": 178.7861257694818,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_dlna_ppm",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "conformal_correlate",
+        "delta_lnA_ppm"
+      ],
+      "value": 125.15028803863724,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_conf_ratio",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "conformal_correlate",
+        "ratio_vs_sustained_bound"
+      ],
+      "value": 31.28757200965931,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_shear_imp",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "shear_impulse",
+        "delta_v_m_s"
+      ],
+      "value": 2696608128.9788594,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_shear_ratio",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "shear_impulse",
+        "ratio"
+      ],
+      "value": 8988693763.262865,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_adm_slip_inst",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "admissible_sector",
+        "max_slip_contrast_instantaneous_yr"
+      ],
+      "value": 0.003876994187200417,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
+      "claim": "df_deficit_inst",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "admissible_sector",
+        "deficit_vs_measured_instantaneous"
+      ],
+      "value": 1533.230392308209,
+      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+    },
+    {
       "claim": "dissoc_sdrot",
       "component": "7_discussion.html",
       "result": "step_b114_channel_dissociation.json",
@@ -2907,6 +6384,201 @@
       "source_sha256": "db9e402f1c3bbf893df2587bd89905185b6e6bb87d8845eaa38caf53b2f6fec8"
     },
     {
+      "claim": "iso_a1_refit",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "T3_real_record",
+        "A1_refit"
+      ],
+      "value": 2.8691478270792335e-07,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "iso_a1_offsig",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "T3_real_record",
+        "A1_offset_sigma"
+      ],
+      "value": 0.22091343800941737,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "iso_inj_grav_real",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "T3_real_record",
+        "grav_rms"
+      ],
+      "value": 0.3805082701596056,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "iso_inj_ng_real",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "T3_real_record",
+        "ng_rms"
+      ],
+      "value": 0.26088954100137035,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "iso_inj_floor",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "realizations",
+        "ctrl",
+        "grav_rms"
+      ],
+      "value": 0.4097910455774795,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "iso_inj_a1sig",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "T1_controls",
+        "max_abs_A1_over_sigma"
+      ],
+      "value": 0.16010404040262738,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "iso_inj_mid_rms",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "realizations",
+        "mid",
+        "grav_rms"
+      ],
+      "value": 201.74155741590835,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "iso_inj_slope",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "T2_lapse_transfer",
+        "slope_A1_per_f"
+      ],
+      "value": -0.0005849153003931252,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "iso_inj_freq",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "T2_lapse_transfer",
+        "f_required_for_observed_A1"
+      ],
+      "value": -0.0003855648055171794,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "iso_inj_morph",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "T4_morphology",
+        "A2_over_A1"
+      ],
+      "value": 0.1287349989938657,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "iso_inj_pred",
+      "component": "7_discussion.html",
+      "result": "step_b119_iso_injection.json",
+      "path": [
+        "T2_lapse_transfer",
+        "predicted_f_dwell_scaled"
+      ],
+      "value": 0.001231939163498099,
+      "source_sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa"
+    },
+    {
+      "claim": "loc_overlap_gap",
+      "component": "8_falsification.html",
+      "result": "step_b86_pre2018_localization.json",
+      "path": [
+        "T1_membership_decomposition",
+        "overlap",
+        "med_gap"
+      ],
+      "value": 0.007570038877020124,
+      "source_sha256": "20a9f88ec5dc0ae04a67ec8b8a02fec883b1c2f996e86e344aa52d36729d313d"
+    },
+    {
+      "claim": "loc_nonoverlap_gap",
+      "component": "8_falsification.html",
+      "result": "step_b86_pre2018_localization.json",
+      "path": [
+        "T1_membership_decomposition",
+        "non_overlap",
+        "med_gap"
+      ],
+      "value": -0.013100236397687759,
+      "source_sha256": "20a9f88ec5dc0ae04a67ec8b8a02fec883b1c2f996e86e344aa52d36729d313d"
+    },
+    {
+      "claim": "loc_overlap_p",
+      "component": "8_falsification.html",
+      "result": "step_b86_pre2018_localization.json",
+      "path": [
+        "T1_membership_decomposition",
+        "overlap",
+        "mwu_greater_p"
+      ],
+      "value": 0.24790637305991492,
+      "source_sha256": "20a9f88ec5dc0ae04a67ec8b8a02fec883b1c2f996e86e344aa52d36729d313d"
+    },
+    {
+      "claim": "loc_nonoverlap_p",
+      "component": "8_falsification.html",
+      "result": "step_b86_pre2018_localization.json",
+      "path": [
+        "T1_membership_decomposition",
+        "non_overlap",
+        "mwu_greater_p"
+      ],
+      "value": 0.5742954557617512,
+      "source_sha256": "20a9f88ec5dc0ae04a67ec8b8a02fec883b1c2f996e86e344aa52d36729d313d"
+    },
+    {
+      "claim": "harmonic_axis_p",
+      "component": "8_falsification.html",
+      "result": "step_b70_harmonic_axis_transfer.json",
+      "path": [
+        "T1_axis_recovery",
+        "predeclared",
+        "p"
+      ],
+      "value": 0.005632778346332447,
+      "source_sha256": "b9468900dab61786a53428a3b50b8257ff1a1eee909884b75a4690ec963346ff"
+    },
+    {
+      "claim": "harmonic_axis_rank",
+      "component": "8_falsification.html",
+      "result": "step_b70_harmonic_axis_transfer.json",
+      "path": [
+        "T1_axis_recovery",
+        "predeclared",
+        "rank_frac"
+      ],
+      "value": 0.04582210242587601,
+      "source_sha256": "b9468900dab61786a53428a3b50b8257ff1a1eee909884b75a4690ec963346ff"
+    },
+    {
       "claim": "post2017_dipole",
       "component": "8_falsification.html",
       "result": "step_b88_lineage_aphelion.json",
@@ -2942,8 +6614,8 @@
         "eval_at_tno_axis",
         "S_stat"
       ],
-      "value": 187.2391056573336,
-      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
+      "value": 187.23906418436496,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
     },
     {
       "claim": "global_rank",
@@ -2954,7 +6626,7 @@
         "p_global"
       ],
       "value": 0.011799410029498525,
-      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
     },
     {
       "claim": "global_score_comet",
@@ -2964,8 +6636,8 @@
         "eval_at_comet_axis",
         "S_stat"
       ],
-      "value": 188.331003898701,
-      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
+      "value": 188.331005789186,
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
     },
     {
       "claim": "global_rank_comet",
@@ -2976,7 +6648,7 @@
         "p_global"
       ],
       "value": 0.0103994800259987,
-      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
     },
     {
       "claim": "best_axis_sep",
@@ -2987,7 +6659,7 @@
         "sep_to_tno_deg"
       ],
       "value": 8.038002023550387,
-      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
     },
     {
       "claim": "axis_loc_r68",
@@ -2999,7 +6671,7 @@
         "r68_deg"
       ],
       "value": 18.821858827456765,
-      "source_sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09"
+      "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
     },
     {
       "claim": "cross_nominal_p",
@@ -3125,6 +6797,34 @@
       "source_sha256": "fef19313f56a4bf9bd59f3dcbe7aa1f4906a683453b9d7c4ce971058667ce4c1"
     },
     {
+      "claim": "census_dpar_2",
+      "component": "9_conclusions.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "d_par"
+      ],
+      "value": 0.1045,
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
+    },
+    {
+      "claim": "census_p_sci",
+      "component": "9_conclusions.html",
+      "result": "step_b72_cometels_dipole.json",
+      "path": [
+        "samples",
+        "broad_census",
+        "T2_dipole_tide_null",
+        "tno_extreme_34_-13",
+        "p_tide_null"
+      ],
+      "value": 0.0006999650017499125,
+      "source_sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1"
+    },
+    {
       "claim": "post2017_dipole",
       "component": "9_conclusions.html",
       "result": "step_b88_lineage_aphelion.json",
@@ -3184,31 +6884,35 @@
   "script_inventory": [
     {
       "file": "core/__init__.py",
-      "sha256": "f024684805f66e406059e82c0759dcddacb69686c126b9ebec44b26fbb84cdcf"
+      "sha256": "ea1700bc5f8f86bd0e695e1d22277ce87b9641751bd8e515eafe322609f3bfc7"
     },
     {
       "file": "core/conformal_scaling.py",
-      "sha256": "88f5a33905391b97c7cde96bf93e4a42807c0c8ae6b0f3bb90eef16a6233a36a"
+      "sha256": "0eb67821fe16cf526d69869ab64417ad11f71202a04d4e24267919bfd98712cb"
     },
     {
       "file": "core/constants.py",
-      "sha256": "15770ff987e146b993c145e7306c97f725f126772a8f2e5e547c718c0b2a6665"
+      "sha256": "d607f3084ed9151324655ce41c29844f22b2e20cebb7e892f62814e325a014f9"
     },
     {
       "file": "core/cosmology.py",
-      "sha256": "5f42aa02abbe26251350f7ec048e123e60dab7e7da0ef164aa1909c525ed44bb"
+      "sha256": "029ac888c4202466990e744fccfc87a90d8843e3c8ef226279c64ba44fd33eb8"
     },
     {
       "file": "core/evidence.py",
-      "sha256": "6bf4b5f3ad021813a65e2b0645a2e6ce358e7d311abdfd609430142ca8302b5e"
+      "sha256": "2acdb1d3a3a0782a2fa3f5700fef20413515a092f914b253a65c8d62a9b592cd"
     },
     {
       "file": "core/scalar_field.py",
-      "sha256": "dbd36c92ce32da269480370ba57e34a015967c97295ca0fbcc1b7f6747296b00"
+      "sha256": "a7c79a930af0874102117711d037c45976ffd0c9249e26b69ea5fc2b2bda2f7f"
     },
     {
       "file": "core/screening.py",
-      "sha256": "cf2e8b249167dec1bc9fc1fac417f2350aae8410cae26b9f66ff00d4795b15bf"
+      "sha256": "f9e04cb999c484e90f24b4f87177fadd64c8353ce05dd273680f790b9f303ce5"
+    },
+    {
+      "file": "core/stability_proof.py",
+      "sha256": "ddd1adb07628e5aba2acdfe58d4864a1bf3d8f4ceaec6ba658ed8a130c493c99"
     },
     {
       "file": "scripts/audits/audit_ephemeris_de430_vs_de440.py",
@@ -3232,7 +6936,7 @@
     },
     {
       "file": "scripts/audits/audit_tep9_observables.py",
-      "sha256": "2db29adfde5730aff5807f33b448faae3a4ddafe07d7f4d979c2166f6932ef2a"
+      "sha256": "0f31178b3c59ff8e3631893b8037cbc88a2f078bf930c373472a033837a6f267"
     },
     {
       "file": "scripts/experimental/conformal_boundary_response.py",
@@ -3248,23 +6952,23 @@
     },
     {
       "file": "scripts/run_all.py",
-      "sha256": "f56d44af47cfb4604b04084d57d0652c6459daecc480cb6d90fd367692c8c73a"
+      "sha256": "7e9477a9879e5a434a07e650e0c5851a97e15ec9c3f307ff6b987b2659d59c51"
     },
     {
       "file": "scripts/steps/step_001_download_sbdb.py",
-      "sha256": "e6718dd493da24e9131dfdfd6c32dc226d4d045a68d3f70e3f90b86dc09229cd"
+      "sha256": "d8a0dd6be312f5ca43fdbb74a293a2abbca76530f94104f32a9447bbc8c03d6a"
     },
     {
       "file": "scripts/steps/step_002_download_cds.py",
-      "sha256": "35916c331f6743d68c6336504dc948d046d640ec56e009f7ae79811871f0a2a3"
+      "sha256": "77f95a824afb4d42167a7193b27b057c208860ea23479e9abd074bddc26f99d5"
     },
     {
       "file": "scripts/steps/step_003_download_code.py",
-      "sha256": "b4a27669cf45a404a48f71f85324560ba4418cca7dd952ee1f05970a1cfa3f4b"
+      "sha256": "3a08752e416425143d861a9f8c188f99455c8e05a258cd5860dc60511da9f9f7"
     },
     {
       "file": "scripts/steps/step_004_download_mpc.py",
-      "sha256": "40a1c46ff13a83a01e3db4252fbe5a7db144c1ab74804e2093690b19637e2466"
+      "sha256": "2181cd62857347822b4df6442bcecc0f9b285d06894fee45c2aeeefd9cf8718a"
     },
     {
       "file": "scripts/steps/step_010_tno_clustering.py",
@@ -3324,7 +7028,7 @@
     },
     {
       "file": "scripts/steps/step_024_population_selectivity.py",
-      "sha256": "74bcaf9cf08745bfc9d13ce552f649a04a893c4d5aa50c20835cf5bf20db84a4"
+      "sha256": "1fdf33077605756d6bc976ca2c10432c4fea9339c31a8c2f9f47253a53001ff7"
     },
     {
       "file": "scripts/steps/step_025_patch_scale.py",
@@ -3392,7 +7096,7 @@
     },
     {
       "file": "scripts/steps/step_042_nbody_planetary_baseline.py",
-      "sha256": "aae9741da8c7c3a8d60557e660b6245163daa4600819bd47533cbc2e5b903ecf"
+      "sha256": "dc19a2cb20163cb89c4a9aec9ff4c9cb6e5b5c068e6ab2cc214ee93a07665499"
     },
     {
       "file": "scripts/steps/step_050_one_map.py",
@@ -3404,7 +7108,7 @@
     },
     {
       "file": "scripts/steps/step_052_injection_chain.py",
-      "sha256": "da4e5c5a0a251e1e2ba33bf34227b5668c7be0aad6cd32d147557af97a4cae0c"
+      "sha256": "0e3d111440d29ec6ccfaf57f9bc5974bb887cace90aafc598968ca93efdc7054"
     },
     {
       "file": "scripts/steps/step_053_catalog_concordance.py",
@@ -3444,15 +7148,15 @@
     },
     {
       "file": "scripts/steps/step_062_planet_nine_insertion.py",
-      "sha256": "2dc932a7eb2fd6eb715837e3daad6a02ed0bb9b88eec1648be52ce7cb1c8e7bd"
+      "sha256": "6543d4e82539a873d9af3bf01cc9a9b91b2f3c106a98574c1f152a6cddefe870"
     },
     {
       "file": "scripts/steps/step_063_bidirectional_rotation.py",
-      "sha256": "dd99aeb22270224e8edc43e28cc089a18aad3bcb5a13735b0770ca8b7cdbc13c"
+      "sha256": "26847d0fd66c80d4c18c1411ad5dbd326825fda13bc8f3856d227ec0276e0b36"
     },
     {
       "file": "scripts/steps/step_064_warsaw_bidirectional.py",
-      "sha256": "d78f44cc05135e21a90b1bd35b6a8e3e1361b6c2c75dc636a5c95523591c9493"
+      "sha256": "77bd7827bc7c09dd4e8067e266f28837c079913d925273f0ce80843ac1850698"
     },
     {
       "file": "scripts/steps/step_065_proper_time_slip.py",
@@ -3480,7 +7184,7 @@
     },
     {
       "file": "scripts/steps/step_071_radial_slip_profile.py",
-      "sha256": "8d30114a1517dd4d4ca738a4c3b7cb47f27c437924c8e37373ba4e8ca5997e5b"
+      "sha256": "5b0fd08d77346c711a9e92fd4fb6a47eb975e847ead95054ea9ac5b66ef7f05e"
     },
     {
       "file": "scripts/steps/step_072_epoch_stability.py",
@@ -3500,7 +7204,7 @@
     },
     {
       "file": "scripts/steps/step_076_inner_slip_profile.py",
-      "sha256": "dbb26ed048964f95cca6e587095ef40c6f1c208dbe7da99055da9f12f18b2aed"
+      "sha256": "cf62db7b405ed74a459486f82593bcb9d08a316b977ac1f6a9ea3e7b2be65170"
     },
     {
       "file": "scripts/steps/step_077_dipole_era.py",
@@ -3516,7 +7220,7 @@
     },
     {
       "file": "scripts/steps/step_080_signed_residual.py",
-      "sha256": "ce2a25268ea18fd3435dbee3160ddcd1d53140c1d73c06b488d5a6853d502ddb"
+      "sha256": "967540c8fc491ad8cddd4557e7bea71678a78e99f8cf3803d92a5271a710ba0c"
     },
     {
       "file": "scripts/steps/step_081_geocentric_null.py",
@@ -3528,7 +7232,7 @@
     },
     {
       "file": "scripts/steps/step_083_mass_ladder.py",
-      "sha256": "d3dc78f0375278db94d61e7cd0d4a7c61ed5da30ae047984867643b131554193"
+      "sha256": "8033461214c1008123be4f6abd3ed788003a10e4010312a9f982c445cf0e3434"
     },
     {
       "file": "scripts/steps/step_084_newest_cohort.py",
@@ -3544,7 +7248,7 @@
     },
     {
       "file": "scripts/steps/step_087_distance_ladder.py",
-      "sha256": "44bb8e6c824877bcf1a3147a15c6972a9945f8ea720f6693e7f95f16f4de405f"
+      "sha256": "4b8c4ad82e4077380e22404a345ca1a746f928c9807837666a3b807726ddd911"
     },
     {
       "file": "scripts/steps/step_088_tide_resident.py",
@@ -3560,7 +7264,7 @@
     },
     {
       "file": "scripts/steps/step_091_inner_perturber.py",
-      "sha256": "d4bda3d6423f7cd3442edbb999879dee1e4abaa169d52f11dd2cac1d41cc3f1a"
+      "sha256": "8f5f429336c21fc08dcaff8e2dbfa8e528b90f1d8146566f22aad796457b0dfa"
     },
     {
       "file": "scripts/steps/step_092_mpcorb_clustering.py",
@@ -3568,7 +7272,7 @@
     },
     {
       "file": "scripts/steps/step_093_perturber_zoo.py",
-      "sha256": "f42e79d5bf74edca37df379d92b0c56ba6a411c99401db6291b23d3df6fa64f1"
+      "sha256": "82edb46a78c0d266828d5dd6eac23d6d09a7a7ed55af551e305940c2481b4ce0"
     },
     {
       "file": "scripts/steps/step_094_joint_axis_mp.py",
@@ -3576,7 +7280,7 @@
     },
     {
       "file": "scripts/steps/step_095_download_spacecraft.py",
-      "sha256": "6157437a5547c0a924c6bb7ff1a6982928ebb244b3b684c812bd3da0141251f1"
+      "sha256": "e1b9b133647f163dcc34a60a5244a8f14477bfc1037a3d45027ae1887dcafba5"
     },
     {
       "file": "scripts/steps/step_096_sclk_clock_audit.py",
@@ -3584,7 +7288,7 @@
     },
     {
       "file": "scripts/steps/step_097_pws_plasma_channel.py",
-      "sha256": "db9bae6497e9d5ffdc57b14aee53bb71bf1e79f252d869179ed62437e4cab7ea"
+      "sha256": "f51a1ba6c310cce397e55fc0fd45ead1f203923596905ce77a6c8bbf1e564889"
     },
     {
       "file": "scripts/steps/step_098_rtg_nuclear_channel.py",
@@ -3608,7 +7312,7 @@
     },
     {
       "file": "scripts/steps/step_103_rtg_midlife_control.py",
-      "sha256": "f18877a0236bd777ae0cc2d85960834c089b9d1bde49045bf01bb50ddead0208"
+      "sha256": "be12d7daa466297e872474d0d9df620d99e43e45d4629dacdfa1b012ed7af5f3"
     },
     {
       "file": "scripts/steps/step_104_spatial_holdout.py",
@@ -3616,7 +7320,7 @@
     },
     {
       "file": "scripts/steps/step_105_lpc_bidirectional.py",
-      "sha256": "a3daa9ef5ab5cd357cce2b0aad65114f2d3e1bd24a320455a9a4d0c93d012278"
+      "sha256": "19d16b75582171eb1950382084673003d49478de8b1a0570268b005be8fc1ad5"
     },
     {
       "file": "scripts/steps/step_106_harmonic_axis_transfer.py",
@@ -3632,15 +7336,15 @@
     },
     {
       "file": "scripts/steps/step_109_census_bias_audit.py",
-      "sha256": "b8cad3bbd6829dee4329e0a54e670989ad694c583f17c5564a7a012f7c8e0cc6"
+      "sha256": "11c3fe4848148141f4d7715b4a203bc7090d0f678f6a46a74a1872f809c9b2ae"
     },
     {
       "file": "scripts/steps/step_110_aphelion_direction_vs_axis.py",
-      "sha256": "30f77d314720d77cf3528c223e6c7364c29ef79a4d910ce16543bbd02a6f92d9"
+      "sha256": "e8e626fdbb2efe9b9c5a8c303627c621926cd6ec9c58a71d45179c0427742078"
     },
     {
       "file": "scripts/steps/step_111_detachment_coherence.py",
-      "sha256": "6ca4eec1ced481234ffefd8a2f8dd45cfaf0b40487705f119021460958b3776d"
+      "sha256": "18b64840f604375b90131c319f7a348d62dfa6596555a3adb43857108e037c4a"
     },
     {
       "file": "scripts/steps/step_112_ossos_ensemble.py",
@@ -3664,11 +7368,11 @@
     },
     {
       "file": "scripts/steps/step_117_prospective_lpc.py",
-      "sha256": "673d4d332489e33d6758543f30dbfbd8064df261907a18576ce2b19b3b7d5b21"
+      "sha256": "f666d82177fb38962d850fd9e531054c42e582ff60be2c169e129e9cfca71a84"
     },
     {
       "file": "scripts/steps/step_118_prospective_axis_audit.py",
-      "sha256": "4213b100a93de4194ea5e5994d730b49711e7839c762670d692b2e7edc2a1f9f"
+      "sha256": "4615c7e6aa3dc8ad7aff4d8412aa5790f6977fb1a50a3c7cbf5b35d9677f6414"
     },
     {
       "file": "scripts/steps/step_119_dipole_mechanism.py",
@@ -3696,11 +7400,11 @@
     },
     {
       "file": "scripts/steps/step_125_displaced_temporal.py",
-      "sha256": "95f2691912f962106b2ebaa7bfc32ca6cfb48734670771c808cc9e7ca1fa7039"
+      "sha256": "66654dabaeaacf68a8e361be5e8ba421872f64fbaf65b64e444434329bff8c3c"
     },
     {
       "file": "scripts/steps/step_126_global_cross_survey_synthesis.py",
-      "sha256": "118adb35104c3d08452ff7af2210daac81a8fc7440af8840ed291173c024fbda"
+      "sha256": "1512d9b8d37790ec26b7dfbcc8e010d40393d6d7e3a898fdedcfdb691fca1d4c"
     },
     {
       "file": "scripts/steps/step_127_nonwarsaw_refit.py",
@@ -3708,7 +7412,7 @@
     },
     {
       "file": "scripts/steps/step_128_post2017_refit.py",
-      "sha256": "1bc67755396d3d600c7f8e2b68b1a205b9f10075a316aea1e00c151ffade1b82"
+      "sha256": "b095b9f5a6f45e19c7746f16704a3a55b7cf5ec884a685b5cf17eb3b49d9def9"
     },
     {
       "file": "scripts/steps/step_129_bipolar_unification.py",
@@ -3716,7 +7420,7 @@
     },
     {
       "file": "scripts/steps/step_130_epoch_axis_trajectory.py",
-      "sha256": "30efb3e24d794af2530c39a7193b73b2a955b04eba2d41aadc4ad930f818704e"
+      "sha256": "323edc5182452dda3ea71af7ae7b43d083c32ec74ded05c66781b22b59df2699"
     },
     {
       "file": "scripts/steps/step_131_cone_shell_coherence.py",
@@ -3756,7 +7460,7 @@
     },
     {
       "file": "scripts/steps/step_140_astcat_stratification.py",
-      "sha256": "8e8d637ad0c4ebb8edeb87f895647100844431b9af9ab4b795f3f84334da7c0d"
+      "sha256": "2fa372811373d20cd445394604aa31f309489687e8f4b2a257d2855716be9140"
     },
     {
       "file": "scripts/steps/step_141_sclk_signed_drift.py",
@@ -3764,11 +7468,11 @@
     },
     {
       "file": "scripts/steps/step_142_gaia_sink.py",
-      "sha256": "d9314790a810ab1b205bac808608da23e927a39f5b34f9f23c8baf706854049f"
+      "sha256": "b6dca020ebeb4468734b009385e4363b5694f79456305787327ac00058668cf6"
     },
     {
       "file": "scripts/steps/step_143_comet_ng_channel.py",
-      "sha256": "cf49bae86992208ffc0647d580722be87a8c7e279745311f2329570be2098b97"
+      "sha256": "dfcc29aadf350d4ebc28e7b6569bc8080de8da20579570ef3d079999268796c2"
     },
     {
       "file": "scripts/steps/step_144_giant_planet_apsidal.py",
@@ -3776,7 +7480,7 @@
     },
     {
       "file": "scripts/steps/step_145_transfer_function.py",
-      "sha256": "6eab62875c5fbd75d62d8056467b2c233cbce7dafe4dd428ab19710f2e3abc16"
+      "sha256": "200bf3614b8b38113fc514e4e8b7f64da8089d65a7a9e67bf40b19db037df65a"
     },
     {
       "file": "scripts/steps/step_146_sclk_radial_gradient.py",
@@ -3784,7 +7488,7 @@
     },
     {
       "file": "scripts/steps/step_147_ephemeris_audit.py",
-      "sha256": "b9b7297f4f986f133f7e0cf5fe44b746c391af3b6b096643ebce02bd4456d6f4"
+      "sha256": "c132c908a14813d8e0faa19d4c943ef15e11f957ff1359edbb870d817807166d"
     },
     {
       "file": "scripts/steps/step_148_pws_anchored_sclk.py",
@@ -3796,23 +7500,67 @@
     },
     {
       "file": "scripts/steps/step_150_channel_dissociation.py",
-      "sha256": "29e70b666a45f945647cffd182b50d4f47cb6e476aa106889fe50857b97c8539"
+      "sha256": "ebca7c37c6372be3e5ce884b329a89b15056b6a14e500974e1b18aa2872c80c8"
     },
     {
       "file": "scripts/steps/step_151_injection_transfer.py",
-      "sha256": "74492e6017545a8e3bef52f248c98c1ad5daf6b3b95b8384eb5483cc71330794"
+      "sha256": "6ddc25a25f72f11259ed0618f7a15fdaf791614328874ac1f099fb132458a6dd"
     },
     {
       "file": "scripts/steps/step_152_arrival_latitude_null.py",
-      "sha256": "89b66a8343d4faae4c01c23ae09af43d256e202944c7ea19cf899320f0416237"
+      "sha256": "16348c75f6bd1ca656f99d66816ded1488bb042ee8738d5e5621da40d31da99f"
     },
     {
       "file": "scripts/steps/step_153_zonal_distortion.py",
-      "sha256": "b85a489888e81145d3998fff35bbf09e3f298e33c6e4a1743c1ad7587237d200"
+      "sha256": "3bf8eb9cb8289744056ccb76587af62348acd684a96fb258dc28208b049f507a"
     },
     {
       "file": "scripts/steps/step_154_sclk_plasma_geometry.py",
       "sha256": "d5c8abe40d3ac64a579183c1b321083d0860e186d4e1f28fbd125caf2441f602"
+    },
+    {
+      "file": "scripts/steps/step_155_iso_injection.py",
+      "sha256": "4bbb17924c692e7d2469a161bac5975b380dfaeb9eedbd1cbb8677f2267f6d22"
+    },
+    {
+      "file": "scripts/steps/step_156_boundary_radius_scan.py",
+      "sha256": "697411162fc26603826d73bdf6b9242fc4a90f405f6964e4d1bf5197a1147dfd"
+    },
+    {
+      "file": "scripts/steps/step_157_generative_population.py",
+      "sha256": "aa01d063219778d7525ffe15facbbc6ebd8c5a9380569666f5ac4aff2698fd7a"
+    },
+    {
+      "file": "scripts/steps/step_158_metric_winding.py",
+      "sha256": "c4411c0278adc32da60a4158a9c8de4fa380c4605906140e5a23bbc7a1b3341f"
+    },
+    {
+      "file": "scripts/steps/step_159_tp_slip.py",
+      "sha256": "43184d52f2703154576013b2322c7800de0c97eb74c873b75f3be13cd783e905"
+    },
+    {
+      "file": "scripts/steps/step_160_iso_legrefit.py",
+      "sha256": "601d2677f5b415e2e9ddec87991e97b9f17f78ee6feb00769f3f2fa169908ee6"
+    },
+    {
+      "file": "scripts/steps/step_161_apdb_planet.py",
+      "sha256": "158b6733e9a5a3e30145b53c48cd973fed4e29efe98c23785d034ca849b1c015"
+    },
+    {
+      "file": "scripts/steps/step_162_nima_pilot.py",
+      "sha256": "b20630e1bf5ff139a3d524465933afa32f163d381c747b69c6b5d5a633383b46"
+    },
+    {
+      "file": "scripts/steps/step_163_footprint_forward.py",
+      "sha256": "e1378563541f5094f367a1a83e213cc829d1e5fdc47551512e05977df77afa80"
+    },
+    {
+      "file": "scripts/steps/step_164_tep_generative.py",
+      "sha256": "87fae08e8778f4b9c85804115913bc7abcd41543af7f8b6915e0c0a3db2febc9"
+    },
+    {
+      "file": "scripts/steps/step_165_disformal_slip.py",
+      "sha256": "e74b87ab893b7e5f857c8a60f328debeae591eaf248eadd3aba66449baa106b7"
     },
     {
       "file": "scripts/utils/coordinates.py",
@@ -3824,11 +7572,11 @@
     },
     {
       "file": "scripts/utils/lpc_boundary.py",
-      "sha256": "b921108b9f116ec21dd8ae8a4d60b6d8b2a43d85cda955dec9d8da27456796e4"
+      "sha256": "90cf1d42788ea2281bdd9c968895f72baa129bfb3f1182ca57e404af79893989"
     },
     {
       "file": "scripts/utils/mpc_refit.py",
-      "sha256": "4f7c1e4ff16df4f2fa2b3df89802da9fb0e7cdf42c15f680df30a2c95d8cc76b"
+      "sha256": "e475dce62f0ad29a23743cae8d77905aa00a19e237b836e2ad6ede4cf1c016be"
     },
     {
       "file": "scripts/utils/parallel.py",
@@ -3840,11 +7588,11 @@
     },
     {
       "file": "scripts/utils/step_logger.py",
-      "sha256": "2914de1dfc44e7be10ef827215ae2e4f8e08af89354ee680ab14dcbd5718a0b9"
+      "sha256": "d131b805a69ef4e05ec661d7a9e54f6fbbf67a0fc82622ae83d762232aa9eee3"
     },
     {
       "file": "scripts/utils/tep9_common.py",
-      "sha256": "5925f4d3374a9b0dcd7291689d95e76400a8a97e2187d21b8b2c66df36d05333"
+      "sha256": "14aea30aad0d17f28b1fa9613e30e1969234bda490fbb53143a892f3f3169b0d"
     },
     {
       "file": "scripts/utils/tep9_style.py",
@@ -4061,7 +7809,7 @@
     },
     {
       "file": "step_b104_astcat_stratification.json",
-      "sha256": "6d29ad5b268b88bf38c4e8c00517bad7112779db6feec2e7d2dd1495288f95af",
+      "sha256": "319e1d8a776495bd0ead71c09f63f7a3cb301508d3714e1b4f0ce7fb5a867446",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_140_astcat_stratification",
@@ -4079,7 +7827,7 @@
     },
     {
       "file": "step_b106_gaia_sink.json",
-      "sha256": "00f48b201ef5b63f5041d60178270fc00772620d20dba188deafa41a233ba457",
+      "sha256": "43b5f771b9e54c8c5d254fa22ae041c08690204894ee38e8f12c773ec0fddedc",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_142_gaia_sink",
@@ -4105,7 +7853,7 @@
     },
     {
       "file": "step_b107_comet_ng_channel.json",
-      "sha256": "66ec6a996cc6cb346ccef4f3819556c562afeda0550e6f113afec95809e08cf8",
+      "sha256": "6c7fd99693bf0d45c258fd3dbc83b6dc51f62fd05f7f8c80d8f25062d600bf71",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
@@ -4123,7 +7871,7 @@
     },
     {
       "file": "step_b109_transfer_function.json",
-      "sha256": "4e184d8dd8501b5395122f3e190a98da912161ce53a67dc6acaa8946c32584f6",
+      "sha256": "f40da723dccbdcf74232047beee0b8a9fb0e867ee59eb3d58cd1d403a5bdbb86",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_145_transfer_function",
@@ -4215,8 +7963,9 @@
         {
           "input": "data/raw/sbdb/sbdb_comets_all.json",
           "sha256": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
-          "retrieved_utc": null,
-          "url": null
+          "retrieved_utc": "2026-09-19T01:11:48.781649+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name,a,e,i,om,w,q,ad,ma,epoch,tp,class,condition_code,data_arc,n_obs_used,first_obs,last_obs,per,A1,A2,A3,DT&sb-kind=c",
+          "matches_download_hash": true
         }
       ],
       "older_than_declared_producer": false
@@ -4241,12 +7990,12 @@
     },
     {
       "file": "step_b117_zonal_distortion.json",
-      "sha256": "14148af005dcebb90dbc6e299c48cdfdc4838c1f88e4271b3a86e0819ccd9323",
+      "sha256": "bba7b5b4ff994097785aba343800a5693cdb92ad7651cf02f7faa87a93dddccd",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
-      "declared_producer": null,
+      "declared_producer": "step_153_zonal_distortion",
       "inputs": [],
-      "older_than_declared_producer": null
+      "older_than_declared_producer": false
     },
     {
       "file": "step_b118_sclk_plasma_geometry.json",
@@ -4275,13 +8024,94 @@
       "older_than_declared_producer": false
     },
     {
+      "file": "step_b119_iso_injection.json",
+      "sha256": "adb8932b947764ff7b1cf1003e5737de4172e7cab5b7d8841075b5f2f89550aa",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_155_iso_injection",
+      "inputs": [],
+      "older_than_declared_producer": false
+    },
+    {
       "file": "step_b11_population_selectivity.json",
-      "sha256": "cb02673d18465eed1498ac38b079f10e2b9ca2cd0502c1a4d036b20ef7481146",
+      "sha256": "a1934ec57f141e7c1ac5b8553eac4739796a54732589770108d5a7d69b0c0e06",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
       "inputs": [],
       "older_than_declared_producer": null
+    },
+    {
+      "file": "step_b122_boundary_radius.json",
+      "sha256": "ecc86da014212364bee238baa0d81088cb7bfb721143a3a911a42824c0433499",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_156_boundary_radius_scan",
+      "inputs": [],
+      "older_than_declared_producer": false
+    },
+    {
+      "file": "step_b123_generative_population.json",
+      "sha256": "f265eaff179ba59b9408223e1e91f3b054e041fe0ff7a2bed88e7f82543a92f5",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_157_generative_population",
+      "inputs": [],
+      "older_than_declared_producer": false
+    },
+    {
+      "file": "step_b124_metric_winding.json",
+      "sha256": "3fb51eb4f9c7f71daacb24ab37b99e1e197ab6d966a1a11492052ffebb2ed7be",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_158_metric_winding",
+      "inputs": [],
+      "older_than_declared_producer": false
+    },
+    {
+      "file": "step_b125_tp_slip.json",
+      "sha256": "7f91101037be0cc517f3b28755a43d18747178b02cfc1aa9ee7a6d5cd4914411",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_159_tp_slip",
+      "inputs": [],
+      "older_than_declared_producer": false
+    },
+    {
+      "file": "step_b126_iso_legrefit.json",
+      "sha256": "6c3b7cce5643b04d4bdc57a75e30d11a783978ce9ee2ebce214f62ae0dbbfcaf",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_160_iso_legrefit",
+      "inputs": [],
+      "older_than_declared_producer": false
+    },
+    {
+      "file": "step_b127_apdb_planet.json",
+      "sha256": "5f8ddf5f1fccfdd4b6471750716ec0b29865d39d7800db246a5337f2ed50e6bc",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_161_apdb_planet",
+      "inputs": [],
+      "older_than_declared_producer": false
+    },
+    {
+      "file": "step_b128_nima_pilot.json",
+      "sha256": "4f159336144a24d42142090e33c81c6f8f72fb37b7d0d74e7405a2259fac6a83",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_162_nima_pilot",
+      "inputs": [],
+      "older_than_declared_producer": false
+    },
+    {
+      "file": "step_b129_footprint_forward.json",
+      "sha256": "4cb19a5ae0cf37c22d11b8bdfcef65127c0afef03ee6f3c663568d196b38fa11",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_163_footprint_forward",
+      "inputs": [],
+      "older_than_declared_producer": false
     },
     {
       "file": "step_b12_antipodal_populations.json",
@@ -4291,6 +8121,24 @@
       "declared_producer": null,
       "inputs": [],
       "older_than_declared_producer": null
+    },
+    {
+      "file": "step_b130_tep_generative.json",
+      "sha256": "6ae2b4f66d6b22292f41b334d496d99d3c8f5fe46e8896289a470f26e5bc1097",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_164_tep_generative",
+      "inputs": [],
+      "older_than_declared_producer": false
+    },
+    {
+      "file": "step_b131_disformal_slip.json",
+      "sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465",
+      "nonfinite_count": 0,
+      "nonfinite_paths": [],
+      "declared_producer": "step_165_disformal_slip",
+      "inputs": [],
+      "older_than_declared_producer": false
     },
     {
       "file": "step_b13_patch_scale.json",
@@ -4330,29 +8178,29 @@
     },
     {
       "file": "step_b17_injection_chain.json",
-      "sha256": "cdc1028e5dd4ee5e7ea18124f52d2211463bafb77e6aa38abc5e13732fd41e79",
+      "sha256": "971e873b2bda3c4379f875bb38d512872bbbed75561d6946400f70ebc9a43271",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
       "inputs": [
         {
           "input": "data/raw/mpc/CometEls.txt",
-          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
-          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "sha256": "05f42bfb9d26eb1014ddf5669df28b58e3fce9475e45f12c06c0dae3dce163d2",
+          "retrieved_utc": "2026-09-21T14:30:20.527017+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/sbdb/sbdb_outer_ss.json",
-          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
-          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "sha256": "2693cb4491bacc758a2323fc87b70845d7a79970cfbe799c401df530f824d4e9",
+          "retrieved_utc": "2026-09-21T14:28:39.600498+00:00",
           "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/sbdb/sbdb_centaurs.json",
           "sha256": "eb1cbcf1cf985fd5a6e5d1d0464967cfaa4d5210c4ba88d434cb3c5d0d12d395",
-          "retrieved_utc": "2026-09-20T10:40:12.463596+00:00",
+          "retrieved_utc": "2026-09-21T14:28:47.801768+00:00",
           "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-class=CEN",
           "matches_download_hash": true
         }
@@ -4413,15 +8261,15 @@
       "inputs": [
         {
           "input": "data/raw/sbdb/sbdb_outer_ss.json",
-          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
-          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "sha256": "2693cb4491bacc758a2323fc87b70845d7a79970cfbe799c401df530f824d4e9",
+          "retrieved_utc": "2026-09-21T14:28:39.600498+00:00",
           "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/mpc/CometEls.txt",
-          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
-          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "sha256": "05f42bfb9d26eb1014ddf5669df28b58e3fce9475e45f12c06c0dae3dce163d2",
+          "retrieved_utc": "2026-09-21T14:30:20.527017+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
           "matches_download_hash": true
         }
@@ -4633,7 +8481,7 @@
     },
     {
       "file": "step_b3_robustness.json",
-      "sha256": "653e9f6f45808e077422a9b725e652fe18d0780c7b46d2b62d497d4f3151bafe",
+      "sha256": "632f224c672d8a7c75f581adf7b3c662a04df1481521ff64c82962c25f310637",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
@@ -4678,7 +8526,7 @@
     },
     {
       "file": "step_b44_cross_fitter.json",
-      "sha256": "dffd654e778f5486729155cd92f6ee084a5d1e061104a8448f2a3086f6f9003a",
+      "sha256": "3c536670624446c501a3fa52b87aa59145c6c1b904454e3bd8754cae6bfde1d1",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
@@ -4699,22 +8547,22 @@
         },
         {
           "input": "data/raw/mpc/CometEls.txt",
-          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
-          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "sha256": "05f42bfb9d26eb1014ddf5669df28b58e3fce9475e45f12c06c0dae3dce163d2",
+          "retrieved_utc": "2026-09-21T14:30:20.527017+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/warsaw/warsaw_tableb.dat",
           "sha256": "f8c10f5ce1d2999c8466340d86fa0a3f1f718e6e6e0ea242b0a00de81e86d7e6",
-          "retrieved_utc": "2026-09-20T10:40:34.101229+00:00",
+          "retrieved_utc": "2026-09-21T14:28:54.147009+00:00",
           "url": "https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tableb.dat",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/warsaw/warsaw_tablec.dat",
           "sha256": "1f5ab8eb276008460a1a6af7442e3dcd8274b3b3e8f65001046336190b60850e",
-          "retrieved_utc": "2026-09-20T10:40:34.988890+00:00",
+          "retrieved_utc": "2026-09-21T14:28:54.725386+00:00",
           "url": "https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablec.dat",
           "matches_download_hash": true
         },
@@ -4844,7 +8692,7 @@
     },
     {
       "file": "step_b57_mpcorb_clustering.json",
-      "sha256": "155578d636ee8802c7ae6c08b693cb53c8a23c6c2b60ff61faa4370d41a48f8b",
+      "sha256": "c7c3c7494fef42f0b489acf0154a8efa6e530d1de2caff74f1af0dc1097e196e",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": null,
@@ -4906,7 +8754,7 @@
     },
     {
       "file": "step_b61_pws_channel.json",
-      "sha256": "7ff38cb551542964e1291c7712e4042cf34e3a08511ba4319caa053f3bc4399c",
+      "sha256": "7d8ad5d58764a3110851262d5aae4be2a80dfebc9c4bb63bc83b2f137c063dc5",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_097_pws_plasma_channel",
@@ -4950,7 +8798,7 @@
     },
     {
       "file": "step_b63_heliospheric_geometry.json",
-      "sha256": "2dff389bc8b754bccd4739fb040fb271003325013bfff024e44814c094d62bd7",
+      "sha256": "1a5f5dc5d549374a741b5449c917e6ceaf591034b40e7228cd97207bb3120cdb",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_099_heliospheric_geometry",
@@ -4974,7 +8822,7 @@
         },
         {
           "input": "results/step_b61_pws_channel.json",
-          "sha256": "7ff38cb551542964e1291c7712e4042cf34e3a08511ba4319caa053f3bc4399c"
+          "sha256": "7d8ad5d58764a3110851262d5aae4be2a80dfebc9c4bb63bc83b2f137c063dc5"
         },
         {
           "input": "results/step_b62_rtg_nuclear.json",
@@ -4982,7 +8830,7 @@
         },
         {
           "input": "results/step_b63_heliospheric_geometry.json",
-          "sha256": "2dff389bc8b754bccd4739fb040fb271003325013bfff024e44814c094d62bd7"
+          "sha256": "1a5f5dc5d549374a741b5449c917e6ceaf591034b40e7228cd97207bb3120cdb"
         },
         {
           "input": "results/step_b54_bipolar_morphology.json",
@@ -4993,7 +8841,7 @@
     },
     {
       "file": "step_b65_iso_ng_channel.json",
-      "sha256": "01a17f95fb722f93d56020305915c4198f2fe5c473d207867f04cda539fa9578",
+      "sha256": "f97a9e47567b8fe22d8de700dbb6dc23df72590186d2d3be09dabdbbcaf7d52b",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_101_iso_ng_channel",
@@ -5066,7 +8914,7 @@
         {
           "input": "data/raw/warsaw/warsaw_tablec.dat",
           "sha256": "1f5ab8eb276008460a1a6af7442e3dcd8274b3b3e8f65001046336190b60850e",
-          "retrieved_utc": "2026-09-20T10:40:34.988890+00:00",
+          "retrieved_utc": "2026-09-21T14:28:54.725386+00:00",
           "url": "https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablec.dat",
           "matches_download_hash": true
         }
@@ -5091,7 +8939,7 @@
         {
           "input": "data/raw/spice/de440s.bsp",
           "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
-          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "retrieved_utc": "2026-09-21T14:30:21.073421+00:00",
           "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
           "matches_download_hash": true
         },
@@ -5128,8 +8976,8 @@
         },
         {
           "input": "data/raw/lpc/lpc_orig_2006_2010.vot",
-          "sha256": "b62a6e1b0d466f57352bd71fc56cd26a239743f4c6e03912dd826e9fd0ba8aa1",
-          "retrieved_utc": "2026-09-20T10:40:36.064756+00:00",
+          "sha256": "8a039ab9396e1e2f6b3808b03baffcdda25050ff2ad29d9dc84d32d66219424f",
+          "retrieved_utc": "2026-09-21T14:28:55.812045+00:00",
           "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tabled1&-out.max=unlimited&-out.all",
           "matches_download_hash": true
         }
@@ -5156,15 +9004,15 @@
     },
     {
       "file": "step_b72_cometels_dipole.json",
-      "sha256": "4c6ede55ea3ac357858b388a0195a3aa32192d88f638e53d293c3d0f351af457",
+      "sha256": "3cbe2a580f5b7f4bbfe4cfd1a7e0ed4c7f42f2a84d00a8fcc56f46c56ec248a1",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_108_cometels_dipole",
       "inputs": [
         {
           "input": "data/raw/mpc/CometEls.txt",
-          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
-          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "sha256": "05f42bfb9d26eb1014ddf5669df28b58e3fce9475e45f12c06c0dae3dce163d2",
+          "retrieved_utc": "2026-09-21T14:30:20.527017+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
           "matches_download_hash": true
         },
@@ -5177,15 +9025,15 @@
     },
     {
       "file": "step_b73_census_bias_audit.json",
-      "sha256": "d7633fc2f2209f27979b95b06fe911e05a707ca40439444cf4456b7a08cedb36",
+      "sha256": "e9b8982cfb97c33e6aeb0006146585fd60b02b63c5d1a51f12441f1ce2451037",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_109_census_bias_audit",
       "inputs": [
         {
           "input": "data/raw/mpc/CometEls.txt",
-          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
-          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "sha256": "05f42bfb9d26eb1014ddf5669df28b58e3fce9475e45f12c06c0dae3dce163d2",
+          "retrieved_utc": "2026-09-21T14:30:20.527017+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
           "matches_download_hash": true
         }
@@ -5194,7 +9042,7 @@
     },
     {
       "file": "step_b74_direction_vs_axis.json",
-      "sha256": "a85e2d456e53df50f829a5cf31330dc46f117d57914cce9c498407f00f612e8e",
+      "sha256": "ad02d5d6090600a952ac05979f895fe467ebbd55257d8f9cff6cdbbff6eb203b",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_110_aphelion_direction_vs_axis",
@@ -5202,7 +9050,7 @@
         {
           "input": "data/raw/warsaw/warsaw_tablec.dat",
           "sha256": "1f5ab8eb276008460a1a6af7442e3dcd8274b3b3e8f65001046336190b60850e",
-          "retrieved_utc": "2026-09-20T10:40:34.988890+00:00",
+          "retrieved_utc": "2026-09-21T14:28:54.725386+00:00",
           "url": "https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablec.dat",
           "matches_download_hash": true
         },
@@ -5215,15 +9063,15 @@
         },
         {
           "input": "data/raw/lpc/lpc_orig_2006_2010.vot",
-          "sha256": "b62a6e1b0d466f57352bd71fc56cd26a239743f4c6e03912dd826e9fd0ba8aa1",
-          "retrieved_utc": "2026-09-20T10:40:36.064756+00:00",
+          "sha256": "8a039ab9396e1e2f6b3808b03baffcdda25050ff2ad29d9dc84d32d66219424f",
+          "retrieved_utc": "2026-09-21T14:28:55.812045+00:00",
           "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/A%2BA/571/A63/tabled1&-out.max=unlimited&-out.all",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/mpc/CometEls.txt",
-          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
-          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "sha256": "05f42bfb9d26eb1014ddf5669df28b58e3fce9475e45f12c06c0dae3dce163d2",
+          "retrieved_utc": "2026-09-21T14:30:20.527017+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
           "matches_download_hash": true
         }
@@ -5239,8 +9087,8 @@
       "inputs": [
         {
           "input": "data/raw/sbdb/sbdb_outer_ss.json",
-          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
-          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "sha256": "2693cb4491bacc758a2323fc87b70845d7a79970cfbe799c401df530f824d4e9",
+          "retrieved_utc": "2026-09-21T14:28:39.600498+00:00",
           "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
           "matches_download_hash": true
         }
@@ -5256,22 +9104,22 @@
       "inputs": [
         {
           "input": "data/raw/ossos/ossos_t3char.vot",
-          "sha256": "a022b8599bf5814e23b432e389426477abbcf97e0f3b2fcbd41e6d8b11d5addf",
-          "retrieved_utc": "2026-09-20T10:40:31.762765+00:00",
+          "sha256": "77ddfeca032e67c2dd74920a8f7a82501b11c33a6801758b19f1cec5a7c312f6",
+          "retrieved_utc": "2026-09-21T14:28:51.995105+00:00",
           "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/ApJS/236/18/t3char&-out.max=unlimited",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/sbdb/sbdb_outer_ss.json",
-          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
-          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "sha256": "2693cb4491bacc758a2323fc87b70845d7a79970cfbe799c401df530f824d4e9",
+          "retrieved_utc": "2026-09-21T14:28:39.600498+00:00",
           "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/spice/de440s.bsp",
           "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
-          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "retrieved_utc": "2026-09-21T14:30:21.073421+00:00",
           "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
           "matches_download_hash": true
         }
@@ -5287,22 +9135,22 @@
       "inputs": [
         {
           "input": "data/raw/sbdb/sbdb_outer_ss.json",
-          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
-          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "sha256": "2693cb4491bacc758a2323fc87b70845d7a79970cfbe799c401df530f824d4e9",
+          "retrieved_utc": "2026-09-21T14:28:39.600498+00:00",
           "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/des/y6_des_tnos_color.fits",
           "sha256": "4f2153f8726485bb661cbf9027a840c69e11c6d87c925d386055b3fdff4ea6e8",
-          "retrieved_utc": "2026-09-20T12:42:03.536690+00:00",
+          "retrieved_utc": "2026-09-21T14:54:53.990368+00:00",
           "url": "https://raw.githubusercontent.com/bernardinelli/des_tno_catalog/main/y6_des_tnos_color.fits",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/ossos/ossos_t3char.vot",
-          "sha256": "a022b8599bf5814e23b432e389426477abbcf97e0f3b2fcbd41e6d8b11d5addf",
-          "retrieved_utc": "2026-09-20T10:40:31.762765+00:00",
+          "sha256": "77ddfeca032e67c2dd74920a8f7a82501b11c33a6801758b19f1cec5a7c312f6",
+          "retrieved_utc": "2026-09-21T14:28:51.995105+00:00",
           "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/ApJS/236/18/t3char&-out.max=unlimited",
           "matches_download_hash": true
         }
@@ -5318,22 +9166,22 @@
       "inputs": [
         {
           "input": "data/raw/sbdb/sbdb_outer_ss.json",
-          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
-          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "sha256": "2693cb4491bacc758a2323fc87b70845d7a79970cfbe799c401df530f824d4e9",
+          "retrieved_utc": "2026-09-21T14:28:39.600498+00:00",
           "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/des/y6_des_tnos_color.fits",
           "sha256": "4f2153f8726485bb661cbf9027a840c69e11c6d87c925d386055b3fdff4ea6e8",
-          "retrieved_utc": "2026-09-20T12:42:03.536690+00:00",
+          "retrieved_utc": "2026-09-21T14:54:53.990368+00:00",
           "url": "https://raw.githubusercontent.com/bernardinelli/des_tno_catalog/main/y6_des_tnos_color.fits",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/ossos/ossos_t3char.vot",
-          "sha256": "a022b8599bf5814e23b432e389426477abbcf97e0f3b2fcbd41e6d8b11d5addf",
-          "retrieved_utc": "2026-09-20T10:40:31.762765+00:00",
+          "sha256": "77ddfeca032e67c2dd74920a8f7a82501b11c33a6801758b19f1cec5a7c312f6",
+          "retrieved_utc": "2026-09-21T14:28:51.995105+00:00",
           "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/ApJS/236/18/t3char&-out.max=unlimited",
           "matches_download_hash": true
         },
@@ -5362,29 +9210,29 @@
       "inputs": [
         {
           "input": "data/raw/sbdb/sbdb_outer_ss.json",
-          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
-          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "sha256": "2693cb4491bacc758a2323fc87b70845d7a79970cfbe799c401df530f824d4e9",
+          "retrieved_utc": "2026-09-21T14:28:39.600498+00:00",
           "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/des/y6_des_tnos_color.fits",
           "sha256": "4f2153f8726485bb661cbf9027a840c69e11c6d87c925d386055b3fdff4ea6e8",
-          "retrieved_utc": "2026-09-20T12:42:03.536690+00:00",
+          "retrieved_utc": "2026-09-21T14:54:53.990368+00:00",
           "url": "https://raw.githubusercontent.com/bernardinelli/des_tno_catalog/main/y6_des_tnos_color.fits",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/ossos/ossos_t3char.vot",
-          "sha256": "a022b8599bf5814e23b432e389426477abbcf97e0f3b2fcbd41e6d8b11d5addf",
-          "retrieved_utc": "2026-09-20T10:40:31.762765+00:00",
+          "sha256": "77ddfeca032e67c2dd74920a8f7a82501b11c33a6801758b19f1cec5a7c312f6",
+          "retrieved_utc": "2026-09-21T14:28:51.995105+00:00",
           "url": "https://vizier.cds.unistra.fr/viz-bin/votable?-source=J/ApJS/236/18/t3char&-out.max=unlimited",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/mpc/MPCORB.DAT.gz",
-          "sha256": "11be812eda4c0982741f51f6a4932e8251bf0a0a0472506c0939145cce89fbc9",
-          "retrieved_utc": "2026-09-20T10:40:39.240131+00:00",
+          "sha256": "cce3f402af54412474f93a46ed4dba4a4c117a689b665d0faade56b62e47022a",
+          "retrieved_utc": "2026-09-21T14:29:00.343281+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/MPCORB.DAT.gz",
           "matches_download_hash": true
         },
@@ -5409,7 +9257,7 @@
         {
           "input": "data/raw/spice/de440s.bsp",
           "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
-          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "retrieved_utc": "2026-09-21T14:30:21.073421+00:00",
           "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
           "matches_download_hash": true
         },
@@ -5449,8 +9297,9 @@
         {
           "input": "data/raw/sbdb/sbdb_comets_all.json",
           "sha256": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
-          "retrieved_utc": null,
-          "url": null
+          "retrieved_utc": "2026-09-19T01:11:48.781649+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name,a,e,i,om,w,q,ad,ma,epoch,tp,class,condition_code,data_arc,n_obs_used,first_obs,last_obs,per,A1,A2,A3,DT&sb-kind=c",
+          "matches_download_hash": true
         },
         {
           "input": "results/step_b71_named_directions.json",
@@ -5473,13 +9322,14 @@
         {
           "input": "data/raw/sbdb/sbdb_comets_all.json",
           "sha256": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
-          "retrieved_utc": null,
-          "url": null
+          "retrieved_utc": "2026-09-19T01:11:48.781649+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name,a,e,i,om,w,q,ad,ma,epoch,tp,class,condition_code,data_arc,n_obs_used,first_obs,last_obs,per,A1,A2,A3,DT&sb-kind=c",
+          "matches_download_hash": true
         },
         {
           "input": "data/raw/spice/de440s.bsp",
           "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
-          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "retrieved_utc": "2026-09-21T14:30:21.073421+00:00",
           "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
           "matches_download_hash": true
         }
@@ -5496,13 +9346,14 @@
         {
           "input": "data/raw/sbdb/sbdb_comets_all.json",
           "sha256": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
-          "retrieved_utc": null,
-          "url": null
+          "retrieved_utc": "2026-09-19T01:11:48.781649+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name,a,e,i,om,w,q,ad,ma,epoch,tp,class,condition_code,data_arc,n_obs_used,first_obs,last_obs,per,A1,A2,A3,DT&sb-kind=c",
+          "matches_download_hash": true
         },
         {
           "input": "data/raw/spice/de440s.bsp",
           "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
-          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "retrieved_utc": "2026-09-21T14:30:21.073421+00:00",
           "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
           "matches_download_hash": true
         },
@@ -5591,13 +9442,14 @@
         {
           "input": "data/raw/sbdb/sbdb_comets_all.json",
           "sha256": "c45927f158ba7606d590371306900bc18249a34e595150ed3b75d2f488ed5d4b",
-          "retrieved_utc": null,
-          "url": null
+          "retrieved_utc": "2026-09-19T01:11:48.781649+00:00",
+          "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name,a,e,i,om,w,q,ad,ma,epoch,tp,class,condition_code,data_arc,n_obs_used,first_obs,last_obs,per,A1,A2,A3,DT&sb-kind=c",
+          "matches_download_hash": true
         },
         {
           "input": "data/raw/mpc/CometEls.txt",
-          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
-          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "sha256": "05f42bfb9d26eb1014ddf5669df28b58e3fce9475e45f12c06c0dae3dce163d2",
+          "retrieved_utc": "2026-09-21T14:30:20.527017+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
           "matches_download_hash": true
         },
@@ -5614,15 +9466,15 @@
     },
     {
       "file": "step_b89_displaced_temporal.json",
-      "sha256": "46b8ba28b7992975f9d22977a19363d574abf13961bc6dc2ef009bbfb346cb61",
+      "sha256": "2f745d2888ad84e935a5c20b1e627bfa189834d4e516dd3367d1213bd88c7852",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_125_displaced_temporal",
       "inputs": [
         {
           "input": "data/raw/mpc/CometEls.txt",
-          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
-          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "sha256": "05f42bfb9d26eb1014ddf5669df28b58e3fce9475e45f12c06c0dae3dce163d2",
+          "retrieved_utc": "2026-09-21T14:30:20.527017+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
           "matches_download_hash": true
         },
@@ -5648,36 +9500,36 @@
     },
     {
       "file": "step_b90_global_synthesis.json",
-      "sha256": "b11edf4a2c8442e4a4887e6bd47719d33f63ff411f8b7ebf072087f75016ce09",
+      "sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_126_global_cross_survey_synthesis",
       "inputs": [
         {
           "input": "data/raw/sbdb/sbdb_outer_ss.json",
-          "sha256": "b4fd31550a4247004fcf19554ce137725d00703b58a36699779f8927a3699b4d",
-          "retrieved_utc": "2026-09-20T10:40:03.390831+00:00",
+          "sha256": "2693cb4491bacc758a2323fc87b70845d7a79970cfbe799c401df530f824d4e9",
+          "retrieved_utc": "2026-09-21T14:28:39.600498+00:00",
           "url": "https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Ccondition_code%2Cdata_arc%2Cn_obs_used%2Cfirst_obs%2Clast_obs%2Cper&sb-kind=a&sb-cdata=%7B%22AND%22%3A+%5B%22a%7CGE%7C30%22%5D%7D",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/des/y6_des_tnos_color.fits",
           "sha256": "4f2153f8726485bb661cbf9027a840c69e11c6d87c925d386055b3fdff4ea6e8",
-          "retrieved_utc": "2026-09-20T12:42:03.536690+00:00",
+          "retrieved_utc": "2026-09-21T14:54:53.990368+00:00",
           "url": "https://raw.githubusercontent.com/bernardinelli/des_tno_catalog/main/y6_des_tnos_color.fits",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/mpc/MPCORB.DAT.gz",
-          "sha256": "11be812eda4c0982741f51f6a4932e8251bf0a0a0472506c0939145cce89fbc9",
-          "retrieved_utc": "2026-09-20T10:40:39.240131+00:00",
+          "sha256": "cce3f402af54412474f93a46ed4dba4a4c117a689b665d0faade56b62e47022a",
+          "retrieved_utc": "2026-09-21T14:29:00.343281+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/MPCORB.DAT.gz",
           "matches_download_hash": true
         },
         {
           "input": "data/raw/mpc/CometEls.txt",
-          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
-          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "sha256": "05f42bfb9d26eb1014ddf5669df28b58e3fce9475e45f12c06c0dae3dce163d2",
+          "retrieved_utc": "2026-09-21T14:30:20.527017+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
           "matches_download_hash": true
         },
@@ -5691,7 +9543,7 @@
         {
           "input": "data/raw/warsaw/warsaw_tablec.dat",
           "sha256": "1f5ab8eb276008460a1a6af7442e3dcd8274b3b3e8f65001046336190b60850e",
-          "retrieved_utc": "2026-09-20T10:40:34.988890+00:00",
+          "retrieved_utc": "2026-09-21T14:28:54.725386+00:00",
           "url": "https://cdsarc.cds.unistra.fr/ftp/J/A+A/567/A126/tablec.dat",
           "matches_download_hash": true
         }
@@ -5711,8 +9563,8 @@
         },
         {
           "input": "data/raw/mpc/CometEls.txt",
-          "sha256": "f450102b3bc5e16361cd99734663fc81bd68c05a19a2710f564ba7463c6fc106",
-          "retrieved_utc": "2026-09-20T10:41:32.940187+00:00",
+          "sha256": "05f42bfb9d26eb1014ddf5669df28b58e3fce9475e45f12c06c0dae3dce163d2",
+          "retrieved_utc": "2026-09-21T14:30:20.527017+00:00",
           "url": "https://minorplanetcenter.net/iau/MPCORB/CometEls.txt",
           "matches_download_hash": true
         },
@@ -5727,13 +9579,14 @@
         {
           "input": "data/raw/mpc/obscodes.json",
           "sha256": "39f7bc78960e19633469c0b785edface70cef26eb00b7d4049a72b282ed02e6c",
-          "retrieved_utc": null,
-          "url": null
+          "retrieved_utc": "2026-09-19T12:05:06.384701+00:00",
+          "url": "https://www.minorplanetcenter.net/iau/lists/ObsCodesF.html",
+          "matches_download_hash": true
         },
         {
           "input": "data/raw/spice/de440s.bsp",
           "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
-          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "retrieved_utc": "2026-09-21T14:30:21.073421+00:00",
           "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
           "matches_download_hash": true
         },
@@ -5766,13 +9619,14 @@
         {
           "input": "data/raw/mpc/obscodes.json",
           "sha256": "39f7bc78960e19633469c0b785edface70cef26eb00b7d4049a72b282ed02e6c",
-          "retrieved_utc": null,
-          "url": null
+          "retrieved_utc": "2026-09-19T12:05:06.384701+00:00",
+          "url": "https://www.minorplanetcenter.net/iau/lists/ObsCodesF.html",
+          "matches_download_hash": true
         },
         {
           "input": "data/raw/spice/de440s.bsp",
           "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
-          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "retrieved_utc": "2026-09-21T14:30:21.073421+00:00",
           "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
           "matches_download_hash": true
         },
@@ -5794,7 +9648,7 @@
     },
     {
       "file": "step_b94_epoch_trajectory.json",
-      "sha256": "3749d0e50984eb76f179363d2736bc7d88847d320fe5c3c8551fea03bdacf483",
+      "sha256": "f4c7be8b2fc0257d878728a3337fd6b4f8426c435d5110661953514b845a633a",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_130_epoch_axis_trajectory",
@@ -5850,8 +9704,9 @@
         {
           "input": "data/raw/mpc/obscodes.json",
           "sha256": "39f7bc78960e19633469c0b785edface70cef26eb00b7d4049a72b282ed02e6c",
-          "retrieved_utc": null,
-          "url": null
+          "retrieved_utc": "2026-09-19T12:05:06.384701+00:00",
+          "url": "https://www.minorplanetcenter.net/iau/lists/ObsCodesF.html",
+          "matches_download_hash": true
         },
         {
           "input": "data/raw/code/code_osculating.html (CODE membership)",
@@ -5860,7 +9715,7 @@
         {
           "input": "data/raw/spice/de440s.bsp",
           "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
-          "retrieved_utc": "2026-09-20T10:41:33.531108+00:00",
+          "retrieved_utc": "2026-09-21T14:30:21.073421+00:00",
           "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
           "matches_download_hash": true
         },

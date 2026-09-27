@@ -49,6 +49,47 @@ FIELDS = ["full_name", "a", "e", "i", "om", "w", "q", "ad", "H",
           "n_obs_used", "first_obs", "last_obs", "per"]
 
 
+def retain_snapshot(label, outname, provenance, exc):
+    """Live download exhausted its retries: keep the existing
+    snapshot if one is present and valid, and say so explicitly in
+    the log and provenance.  Raises when no usable snapshot exists --
+    a first-time acquisition failure must abort the step rather than
+    proceed silently on missing data."""
+    out = OUT / outname
+    if not out.exists():
+        raise RuntimeError(
+            f"{label}: live SBDB download failed ({exc}) and no "
+            f"existing snapshot at {out}")
+    try:
+        d = json.loads(out.read_text())
+        rows = len(d.get("data", []))
+    except Exception as jexc:
+        raise RuntimeError(
+            f"{label}: live SBDB download failed ({exc}) and existing "
+            f"snapshot {out} is unreadable ({jexc})")
+    if rows == 0:
+        raise RuntimeError(
+            f"{label}: live SBDB download failed ({exc}) and existing "
+            f"snapshot {out} contains no data rows")
+    sha = hashlib.sha256(out.read_bytes()).hexdigest()
+    logger.warning(
+        f"{label}: live SBDB download failed ({exc}); retaining "
+        f"existing snapshot {outname} ({rows} rows, "
+        f"sha256={sha[:12]}...)")
+    logger.progress("NOTE: catalogue content is UNCHANGED from the "
+                    "previously downloaded snapshot; downstream "
+                    "results remain fully traceable via the retained "
+                    "sha256.")
+    provenance[outname] = {
+        "retained_existing_snapshot": True,
+        "live_download_error": str(exc),
+        "sha256": sha, "rows": rows,
+        "bytes": out.stat().st_size,
+        "api": "JPL SBDB sbdb_query.api",
+    }
+    return d
+
+
 def sbdb_query(params, label, outname, provenance):
     url = API + "?" + urllib.parse.urlencode(params)
     logger.subsection(f"{label}")
@@ -56,6 +97,7 @@ def sbdb_query(params, label, outname, provenance):
     req = urllib.request.Request(url, headers={"User-Agent": "tep9/1.0"})
     t0 = datetime.now(timezone.utc)
     body = status = None
+    last_exc = None
     for attempt in range(1, 6):
         try:
             with urllib.request.urlopen(req, timeout=180) as r:
@@ -65,14 +107,15 @@ def sbdb_query(params, label, outname, provenance):
                 break
             raise RuntimeError(f"SBDB query failed: HTTP {status}")
         except Exception as exc:
+            last_exc = exc
             if attempt == 5:
-                raise
+                break
             wait = 5 * 2 ** (attempt - 1)
             logger.progress(f"attempt {attempt} failed ({exc}); "
                             f"retrying in {wait}s")
             time.sleep(wait)
-    if status != 200:
-        raise RuntimeError(f"SBDB query failed: HTTP {status}")
+    if status != 200 or body is None:
+        return retain_snapshot(label, outname, provenance, last_exc)
     d = json.loads(body.decode())
     n = d.get("count", len(d.get("data", [])))
     text = json.dumps(d, indent=1)
@@ -127,8 +170,15 @@ def main():
                "outer-reaching comets (q>=5 AU)",
                "sbdb_comets_ext.json", prov_files)
 
-    provenance["files"] = prov_files
     prov_path = OUT / "provenance.json"
+    if prov_path.exists():
+        try:
+            prior = json.loads(prov_path.read_text())
+            for k, v in prior.get("files", {}).items():
+                prov_files.setdefault(k, v)
+        except json.JSONDecodeError:
+            pass
+    provenance["files"] = prov_files
     prov_path.write_text(json.dumps(provenance, indent=2))
     logger.data_save(prov_path)
     logger.progress("SBDB download complete -> data/raw/sbdb/")

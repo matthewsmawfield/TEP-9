@@ -13,7 +13,8 @@ venv/
 *.h5
 *.hdf5
 
-# IDE
+# IDE / OS
+.DS_Store
 .idea/
 .vscode/
 *.swp
@@ -24,6 +25,10 @@ venv/
 # Build artifacts
 site/node_modules/
 site/dist/
+
+# Runtime locks (single pipeline run at a time)
+logs/pipeline.lock
+*.lock
 
 # Env / secrets
 .env*

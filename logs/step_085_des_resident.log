@@ -1,96 +1,132 @@
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] LOGGER INITIALIZED: step_085_des_resident (Step 085)
-[2026-09-20 12:41:56 UTC] [DEBUG   ] [STEP 085] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_085_des_resident.log
-[2026-09-20 12:41:56 UTC] [DEBUG   ] [STEP 085] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:41:56 UTC] [DEBUG   ] [STEP 085] Start time (UTC): 2026-09-20T12:41:56.688225+00:00
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] 
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] STEP PURPOSE
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] --------------------------------------------------------------------------------
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   Step 085 -- DES independent resident-cohort audit.
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   Every resident-signature test so far runs on the JPL SBDB catalogue:
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   one database, one orbit-determination pipeline, discoveries drawn
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   overwhelmingly from northern surveys.  The Dark Energy Survey TNO
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   release (Bernardinelli et al. 2022, ApJS 258, 41; data release
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   bernardinelli/des_tno_catalog) is the largest single-survey TNO
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   catalogue with uniform selection -- 814 objects discovered in a
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   contiguous 5000 deg^2 of southern sky with orbits fitted
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   independently of SBDB.  Its detached subset is therefore the only
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   public independent resident cohort on which the registered axis can
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   be scored.
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   This step:
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   1. downloads the DES orbit table to data/raw/des/ with the same
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   provenance record used by steps 001-004;
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   2. selects the detached cohort (a > 150, q > 30) -- the 16 objects
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   Bernardinelli et al. themselves reported as "consistent with the
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   null hypothesis of azimuthal isotropy" (their null is the 2-D
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   azimuthal distribution; the pre-declared directional cap is a
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   different, more powerful statistic);
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   3. scores the cohort against the registered P1 axis: in-cap fraction
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   versus uniform (1/3), versus the step_054 footprint baseline
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   (~0.42), versus the registered mixture prediction (0.59), and
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   versus the cohort's own designation-derived footprint baseline
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   (the same half-month opposition-longitude model as steps 014/054/
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   084) -- the honest comparison, since DES opposition fields sit in
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   the axis sector;
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   4. cross-matches the cohort against the SBDB secure sample to (a)
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   measure the sample overlap -- how independent the DES cohort
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   actually is in membership -- and (b) measure the resident-side
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   inter-catalogue floor: the per-object |Delta varpi| between the
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   DES and SBDB orbit determinations of the same bodies, the
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   resident analogue of the step_079 comet cross-fitter audit.
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   Outputs
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   results/step_b50_des_resident.json
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   results/step_b50_des_resident.csv   (per-object scoring)
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085]   results/figures/step_b50_des_resident.png
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] --------------------------------------------------------------------------------
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] SCRIPT: scripts/steps/step_085_des_resident.py
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] SCRIPT SHA256: 409936d38d096097f3dd2eb5b35ee630b3e267fe32b397f09dde2dd5535afa52
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] SCRIPT SIZE: 15360 bytes
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] ================================================================================
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] DES independent resident-cohort audit
-[2026-09-20 12:41:56 UTC] [INFO    ] [STEP 085] ================================================================================
-[2026-09-20 12:42:03 UTC] [INFO    ] [STEP 085] DES catalogue: 527040 bytes, sha256 4f2153f8726485bb...
-[2026-09-20 12:42:03 UTC] [INFO    ] [STEP 085] DES objects: 814
-[2026-09-20 12:42:03 UTC] [INFO    ] [STEP 085] DES detached n=16: varpi-cap 13/16 (0.81) vs uniform 0.33, baseline 0.55, registered 0.59
-[2026-09-20 12:42:03 UTC] [INFO    ] [STEP 085] SBDB overlap 14/16; dvarpi floor 0.25 deg
-[2026-09-20 12:42:03 UTC] [INFO    ] [STEP 085] Saving data: step_b50_des_resident.json
-[2026-09-20 12:42:03 UTC] [DEBUG   ] [STEP 085]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b50_des_resident.json
-[2026-09-20 12:42:03 UTC] [INFO    ] [STEP 085]   Output: step_b50_des_resident.json
-[2026-09-20 12:42:03 UTC] [INFO    ] [STEP 085] Saving data: step_b50_des_resident.csv
-[2026-09-20 12:42:03 UTC] [DEBUG   ] [STEP 085]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b50_des_resident.csv
-[2026-09-20 12:42:03 UTC] [INFO    ] [STEP 085]   Output: step_b50_des_resident.csv
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Saving data: step_b50_des_resident.png
-[2026-09-20 12:42:05 UTC] [DEBUG   ] [STEP 085]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b50_des_resident.png
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085]   Output: step_b50_des_resident.png
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] 
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] ================================================================================
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] STEP SUMMARY: step_085_des_resident
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] ================================================================================
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Step Number: 085
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Status: SUCCESS
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Duration: 9.01s
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Log Records Emitted: 71
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Output Files: 3
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_085_des_resident.log
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] 
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Generated 3 output file(s):
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085]   • step_b50_des_resident.json: 2.50 KB [sha256 97800ca1053f7180]
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085]   • step_b50_des_resident.csv: 2.81 KB [sha256 c46460841707d20d]
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085]   • step_b50_des_resident.png: 199.84 KB [sha256 2d5bc99eb82f56ba]
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] ================================================================================
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] STEP 085 COMPLETE: SUCCESS
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_085_des_resident_provenance.json
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] 
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] ================================================================================
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] EXECUTIVE SUMMARY
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] ================================================================================
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Step: step_085_des_resident (Step 085)
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Status: SUCCESS
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Duration: 9.01s
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Log Records: 82
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Output Files: 3
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] Key Outputs:
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085]   - step_b50_des_resident.json (2.50 KB)
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085]   - step_b50_des_resident.csv (2.81 KB)
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085]   - step_b50_des_resident.png (199.84 KB)
-[2026-09-20 12:42:05 UTC] [INFO    ] [STEP 085] ================================================================================
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] LOGGER INITIALIZED: step_085_des_resident (Step 085)
+[2026-09-21 14:54:52 UTC] [DEBUG   ] [STEP 085] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_085_des_resident.log
+[2026-09-21 14:54:52 UTC] [DEBUG   ] [STEP 085] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:54:52 UTC] [DEBUG   ] [STEP 085] Start time (UTC): 2026-09-21T14:54:52.635747+00:00
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] 
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] STEP PURPOSE
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] --------------------------------------------------------------------------------
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   Step 085 -- DES independent resident-cohort audit.
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   Every resident-signature test so far runs on the JPL SBDB catalogue:
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   one database, one orbit-determination pipeline, discoveries drawn
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   overwhelmingly from northern surveys.  The Dark Energy Survey TNO
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   release (Bernardinelli et al. 2022, ApJS 258, 41; data release
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   bernardinelli/des_tno_catalog) is the largest single-survey TNO
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   catalogue with uniform selection -- 814 objects discovered in a
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   contiguous 5000 deg^2 of southern sky with orbits fitted
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   independently of SBDB.  Its detached subset is therefore the only
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   public independent resident cohort on which the registered axis can
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   be scored.
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   This step:
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   1. downloads the DES orbit table to data/raw/des/ with the same
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   provenance record used by steps 001-004;
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   2. selects the detached cohort (a > 150, q > 30) -- the 16 objects
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   Bernardinelli et al. themselves reported as "consistent with the
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   null hypothesis of azimuthal isotropy" (their null is the 2-D
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   azimuthal distribution; the pre-declared directional cap is a
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   different, more powerful statistic);
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   3. scores the cohort against the registered P1 axis: in-cap fraction
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   versus uniform (1/3), versus the step_054 footprint baseline
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   (~0.42), versus the registered mixture prediction (0.59), and
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   versus the cohort's own designation-derived footprint baseline
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   (the same half-month opposition-longitude model as steps 014/054/
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   084) -- the honest comparison, since DES opposition fields sit in
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   the axis sector;
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   4. cross-matches the cohort against the SBDB secure sample to (a)
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   measure the sample overlap -- how independent the DES cohort
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   actually is in membership -- and (b) measure the resident-side
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   inter-catalogue floor: the per-object |Delta varpi| between the
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   DES and SBDB orbit determinations of the same bodies, the
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   resident analogue of the step_079 comet cross-fitter audit.
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   Outputs
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   results/step_b50_des_resident.json
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   results/step_b50_des_resident.csv   (per-object scoring)
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085]   results/figures/step_b50_des_resident.png
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] --------------------------------------------------------------------------------
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] SCRIPT: scripts/steps/step_085_des_resident.py
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] SCRIPT SHA256: 409936d38d096097f3dd2eb5b35ee630b3e267fe32b397f09dde2dd5535afa52
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] SCRIPT SIZE: 15360 bytes
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] ================================================================================
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] DES independent resident-cohort audit
+[2026-09-21 14:54:52 UTC] [INFO    ] [STEP 085] ================================================================================
+[2026-09-21 14:54:53 UTC] [INFO    ] [STEP 085] DES catalogue: 527040 bytes, sha256 4f2153f8726485bb...
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] DES objects: 814
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] DES detached n=16: varpi-cap 13/16 (0.81) vs uniform 0.33, baseline 0.55, registered 0.59
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] SBDB overlap 14/16; dvarpi floor 0.25 deg
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Saving data: step_b50_des_resident.json
+[2026-09-21 14:54:54 UTC] [DEBUG   ] [STEP 085]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b50_des_resident.json
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]   Output: step_b50_des_resident.json
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Saving data: step_b50_des_resident.csv
+[2026-09-21 14:54:54 UTC] [DEBUG   ] [STEP 085]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b50_des_resident.csv
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]   Output: step_b50_des_resident.csv
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Saving data: step_b50_des_resident.png
+[2026-09-21 14:54:54 UTC] [DEBUG   ] [STEP 085]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/step_b50_des_resident.png
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]   Output: step_b50_des_resident.png
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] 
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] ================================================================================
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] STEP SUMMARY: step_085_des_resident
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] ================================================================================
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Step Number: 085
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Status: SUCCESS
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Duration: 1.83s
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Log Records Emitted: 71
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Output Files: 3
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_085_des_resident.log
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] 
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Generated 3 output file(s):
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]   • step_b50_des_resident.json: 2.50 KB [sha256 97800ca1053f7180]
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]   • step_b50_des_resident.csv: 2.81 KB [sha256 c46460841707d20d]
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]   • step_b50_des_resident.png: 199.84 KB [sha256 2d5bc99eb82f56ba]
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] 
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]   RESULT SNAPSHOT [step_b50_des_resident.json]:
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]     catalogue:
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       n_total = 814
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       detached_n = 16
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       file = data/raw/des/y6_des_tnos_color.fits
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       sha256 = 4f2153f8726485bb661cbf9027a840c69e11c6d87c925d386055b3fdff4ea6e8
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       survey_area_deg2 = 5000
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]     detached:
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       n = 16
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       R_varpi = 0.7453429
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       mean_varpi_deg = 23.291436
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       p_rayleigh = 0.00013795587
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       note = Bernardinelli et al. report azimuthal isotropy for this cohort; the pre-declared direct...
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]     detached.varpi_cap:
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       n_in = 13
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       frac = 0.8125
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       p_vs_uniform_1_3 = 0.00011599025
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       p_vs_baseline_0p42 = 0.0016188537
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       p_vs_prediction_0p59 = 0.079020385
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       p_vs_own_footprint = 0.02940624
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]     detached.peri_cap_3d:
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       n_in = 13
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       frac = 0.8125
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]     detached.footprint:
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       baseline_frac = 0.55247326
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]     detached.footprint.lam_opp [n=16]: median=226.24306 min=0.15748001 max=359.93443
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]     sbdb_overlap:
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       n_matched = 14
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       n_des_only = 2
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       dvarpi_median_deg = 0.24941185
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       dvarpi_max_deg = 0.35834544
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]       note = per-object |dvarpi| between DES and SBDB orbit determinations -- the resident-side inte...
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]     sbdb_overlap.matched_names [n=14]
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]     sbdb_overlap.des_only_names [n=2]
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]     sbdb_overlap.cap_membership_agreement [n=12]
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] ================================================================================
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] STEP 085 COMPLETE: SUCCESS
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_085_des_resident_provenance.json
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] 
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] ================================================================================
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] EXECUTIVE SUMMARY
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] ================================================================================
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Step: step_085_des_resident (Step 085)
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Status: SUCCESS
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Duration: 1.83s
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Log Records: 118
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Output Files: 3
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] Key Outputs:
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]   - step_b50_des_resident.json (2.50 KB)
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]   - step_b50_des_resident.csv (2.81 KB)
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085]   - step_b50_des_resident.png (199.84 KB)
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 085] ================================================================================

@@ -25,7 +25,7 @@ members:
     single-solution lineage can express.  Predicted flat under the
     masking hypothesis.
   * the leg-fit construction -- the independently fitted inbound and
-    outbound legs, whose boundary asymptotes carry whatever slip the
+    outbound legs, whose boundary asymptotes carry any slip the
     transit actually imparted.  This is the construction the
     three-leg catalogue records realize, and the registered carrier
     d_in on the pre-2018 record lives here.

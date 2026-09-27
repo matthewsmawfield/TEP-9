@@ -1,199 +1,263 @@
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] LOGGER INITIALIZED: step_035_consolidation (Step 035)
-[2026-09-20 10:45:32 UTC] [DEBUG   ] [STEP 035] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_035_consolidation.log
-[2026-09-20 10:45:32 UTC] [DEBUG   ] [STEP 035] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:45:32 UTC] [DEBUG   ] [STEP 035] Start time (UTC): 2026-09-20T10:45:32.190598+00:00
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] 
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] STEP PURPOSE
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] --------------------------------------------------------------------------------
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   step_12: consolidate the CODE confirmation into its strongest form.
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   The step_11 result (CODE-only, matched regime): d_of excess at p=0.003,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   axis-unique among 8, energy channel flat, rotation-per-kick doubled.
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   This step stress-tests and extends it on the SAME independent data:
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   S1  cap-radius sensitivity -- a real boundary should peak at a
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   characteristic radius and dilute beyond it, not grow with cap
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   S2  NG-model mix -- do in-cap comets need non-gravitational solutions
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   at a different rate than out-cap?  (unexplained momentum)
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   S3  element decomposition of the d_of excess -- dOm, dw, di, de
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   separately: a domain wall rotates the PLANE (Om, i) not the
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   in-plane elements
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   S4  era split -- pre-2006 vs post-2006 comets (survey-generation
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   control)
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   S5  anti-cap deficit -- repulsion signature: underpopulation of
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   aphelia opposite the axis
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   S6  shallow-plunger control -- q>3.1 comets (do NOT cross the inner
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   planetary zone deeply) should show a weaker/null effect if the
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   anomaly requires deep traversal
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   S7  combined significance -- Fisher combination of the independent
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   statistics (Warsaw d_so discovery, CODE d_of confirmation,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   CODE ratio_of), reported with the testing context
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] --------------------------------------------------------------------------------
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] SCRIPT: scripts/steps/step_035_consolidation.py
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] SCRIPT SHA256: 931a1fb31865c5c4a1ef7ed5b270ba81322883a6501ccfae51759caac79b7b42
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] SCRIPT SIZE: 10119 bytes
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] ================================================================================
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Confirmation consolidation
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] ================================================================================
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] RESULT PAYLOAD:
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  "n_co": 54,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  "n_shallow_control": 77,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  "S1_cap_sensitivity": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "30": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n_in": 6,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.2346522313585619,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.14914055410230004,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.04278200878803384
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "40": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n_in": 10,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.1942168968818031,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.14914055410230004,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.07234315222154672
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "50": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n_in": 15,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.20976384763320013,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.13216591174484943,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.013847185797260134
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "60": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n_in": 19,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.21202382273464052,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.13074542444885423,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.0029505468290258216
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "75": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n_in": 30,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.1692245531108859,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.11625007921602537,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.0072267365731937885
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "90": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n_in": 38,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.1526196107893638,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.1299466404110496,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.20495924949272976
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   }
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  "S2_ng_need_60": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "in_cap_ng/tot": [
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    7,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    12
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   ],
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "out_cap_ng/tot": [
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    24,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    11
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   ],
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "odds_ratio": 0.2673611111111111,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "p_2sided": 0.042573870527447245
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  "S3_elements": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "dOm": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.07200000000000273,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.10699999999999932,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.9250949281391838
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "dw": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.16899999999998272,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.10200000000000387,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.022180849722165587
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "di": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.03300000000000125,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.03900000000000148,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.9171246028081381
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "de": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.0006592999999999183,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.0005479999999999929,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.6811606187827668
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   }
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  "S4_era": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "pre2006": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n": 30,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n_in": 13,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.21202382273464052,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.13216591174484943,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.009546810013844718
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "post2006": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n": 24,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n_in": 6,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.2346522313585619,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.12047743304811682,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.09967606763945436
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   }
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  "S5_anticap": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "n_in_anticap": 6,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "n": 54,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "frac": 0.1111111111111111,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "expect_iso": 0.24999999999999994
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  "S6_shallow_control": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "n": 77,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "n_in": 24,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "med_in": 0.07495453998271223,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "med_out": 0.0764981426097584,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "p": 0.15713932436348765
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  "S8_all_class": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "code_only": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n": 72,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n_in": 22,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.21456327673585165,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.13456884637667485,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.011307450343765539
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "all_matched": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n": 113,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "n_in": 35,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.17497852084903143,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.13611289218469458,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "p": 0.03661121712978318
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   }
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  "S7_combined": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "inputs": {
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "warsaw_d_so_fullarc": 0.008864300328535015,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]    "code_only_d_of": 0.0029505468290258216
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   },
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "fisher_chi2": 21.10297605551786,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "dof": 4,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "p_combined": 0.000302123777430509,
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   "note": "conservative: Warsaw discovery + CODE-only confirmation are independent samples; CODE-internal secondary stats not added"
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]  }
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] }
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Saving data: step_12_consolidate.json
-[2026-09-20 10:45:32 UTC] [DEBUG   ] [STEP 035]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_12_consolidate.json
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   Output: step_12_consolidate.json
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] 
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] ================================================================================
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] STEP SUMMARY: step_035_consolidation
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] ================================================================================
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Step Number: 035
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Status: SUCCESS
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Duration: 0.38s
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Log Records Emitted: 178
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Output Files: 1
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_035_consolidation.log
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] 
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Generated 1 output file(s):
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   • step_12_consolidate.json: 2.65 KB [sha256 3a3b79b511a8a9ac]
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] ================================================================================
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] STEP 035 COMPLETE: SUCCESS
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_035_consolidation_provenance.json
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] 
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] ================================================================================
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] EXECUTIVE SUMMARY
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] ================================================================================
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Step: step_035_consolidation (Step 035)
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Status: SUCCESS
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Duration: 0.38s
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Log Records: 187
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Output Files: 1
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] Key Outputs:
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035]   - step_12_consolidate.json (2.65 KB)
-[2026-09-20 10:45:32 UTC] [INFO    ] [STEP 035] ================================================================================
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] LOGGER INITIALIZED: step_035_consolidation (Step 035)
+[2026-09-21 14:35:31 UTC] [DEBUG   ] [STEP 035] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_035_consolidation.log
+[2026-09-21 14:35:31 UTC] [DEBUG   ] [STEP 035] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:35:31 UTC] [DEBUG   ] [STEP 035] Start time (UTC): 2026-09-21T14:35:31.565966+00:00
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] 
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] STEP PURPOSE
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] --------------------------------------------------------------------------------
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   step_12: consolidate the CODE confirmation into its strongest form.
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   The step_11 result (CODE-only, matched regime): d_of excess at p=0.003,
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   axis-unique among 8, energy channel flat, rotation-per-kick doubled.
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   This step stress-tests and extends it on the SAME independent data:
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   S1  cap-radius sensitivity -- a real boundary should peak at a
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   characteristic radius and dilute beyond it, not grow with cap
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   S2  NG-model mix -- do in-cap comets need non-gravitational solutions
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   at a different rate than out-cap?  (unexplained momentum)
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   S3  element decomposition of the d_of excess -- dOm, dw, di, de
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   separately: a domain wall rotates the PLANE (Om, i) not the
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   in-plane elements
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   S4  era split -- pre-2006 vs post-2006 comets (survey-generation
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   control)
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   S5  anti-cap deficit -- repulsion signature: underpopulation of
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   aphelia opposite the axis
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   S6  shallow-plunger control -- q>3.1 comets (do NOT cross the inner
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   planetary zone deeply) should show a weaker/null effect if the
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   anomaly requires deep traversal
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   S7  combined significance -- Fisher combination of the independent
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   statistics (Warsaw d_so discovery, CODE d_of confirmation,
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035]   CODE ratio_of), reported with the testing context
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] --------------------------------------------------------------------------------
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] SCRIPT: scripts/steps/step_035_consolidation.py
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] SCRIPT SHA256: 931a1fb31865c5c4a1ef7ed5b270ba81322883a6501ccfae51759caac79b7b42
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] SCRIPT SIZE: 10119 bytes
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] ================================================================================
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] Confirmation consolidation
+[2026-09-21 14:35:31 UTC] [INFO    ] [STEP 035] ================================================================================
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] RESULT PAYLOAD:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  "n_co": 54,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  "n_shallow_control": 77,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  "S1_cap_sensitivity": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "30": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n_in": 6,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.2346522313585619,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.14914055410230004,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.04278200878803384
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "40": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n_in": 10,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.1942168968818031,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.14914055410230004,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.07234315222154672
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "50": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n_in": 15,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.20976384763320013,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.13216591174484943,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.013847185797260134
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "60": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n_in": 19,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.21202382273464052,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.13074542444885423,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.0029505468290258216
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "75": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n_in": 30,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.1692245531108859,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.11625007921602537,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.0072267365731937885
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "90": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n_in": 38,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.1526196107893638,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.1299466404110496,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.20495924949272976
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   }
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  "S2_ng_need_60": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "in_cap_ng/tot": [
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    7,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    12
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   ],
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "out_cap_ng/tot": [
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    24,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    11
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   ],
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "odds_ratio": 0.2673611111111111,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "p_2sided": 0.042573870527447245
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  "S3_elements": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "dOm": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.07200000000000273,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.10699999999999932,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.9250949281391838
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "dw": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.16899999999998272,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.10200000000000387,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.022180849722165587
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "di": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.03300000000000125,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.03900000000000148,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.9171246028081381
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "de": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.0006592999999999183,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.0005479999999999929,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.6811606187827668
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   }
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  "S4_era": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "pre2006": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n": 30,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n_in": 13,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.21202382273464052,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.13216591174484943,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.009546810013844718
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "post2006": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n": 24,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n_in": 6,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.2346522313585619,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.12047743304811682,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.09967606763945436
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   }
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  "S5_anticap": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "n_in_anticap": 6,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "n": 54,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "frac": 0.1111111111111111,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "expect_iso": 0.24999999999999994
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  "S6_shallow_control": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "n": 77,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "n_in": 24,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "med_in": 0.07495453998271223,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "med_out": 0.0764981426097584,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "p": 0.15713932436348765
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  "S8_all_class": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "code_only": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n": 72,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n_in": 22,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.21456327673585165,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.13456884637667485,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.011307450343765539
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "all_matched": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n": 113,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "n_in": 35,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_in": 0.17497852084903143,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "med_out": 0.13611289218469458,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "p": 0.03661121712978318
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   }
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  "S7_combined": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "inputs": {
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "warsaw_d_so_fullarc": 0.008864300328535015,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]    "code_only_d_of": 0.0029505468290258216
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   },
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "fisher_chi2": 21.10297605551786,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "dof": 4,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "p_combined": 0.000302123777430509,
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   "note": "conservative: Warsaw discovery + CODE-only confirmation are independent samples; CODE-internal secondary stats not added"
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]  }
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] }
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Saving data: step_12_consolidate.json
+[2026-09-21 14:35:32 UTC] [DEBUG   ] [STEP 035]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_12_consolidate.json
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   Output: step_12_consolidate.json
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] 
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] ================================================================================
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] STEP SUMMARY: step_035_consolidation
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] ================================================================================
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Step Number: 035
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Status: SUCCESS
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Duration: 0.52s
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Log Records Emitted: 178
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Output Files: 1
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_035_consolidation.log
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] 
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Generated 1 output file(s):
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   • step_12_consolidate.json: 2.65 KB [sha256 3a3b79b511a8a9ac]
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] 
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   RESULT SNAPSHOT [step_12_consolidate.json]:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S1_cap_sensitivity.30:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       n_in = 6
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.23465223
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.14914055
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.042782009
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S1_cap_sensitivity.40:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       n_in = 10
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.1942169
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.14914055
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.072343152
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S1_cap_sensitivity.50:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       n_in = 15
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.20976385
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.13216591
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.013847186
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S1_cap_sensitivity.60:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       n_in = 19
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.21202382
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.13074542
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.0029505468
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S1_cap_sensitivity.75:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       n_in = 30
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.16922455
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.11625008
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.0072267366
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S1_cap_sensitivity.90:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       n_in = 38
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.15261961
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.12994664
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.20495925
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S2_ng_need_60:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       odds_ratio = 0.26736111
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p_2sided = 0.042573871
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S2_ng_need_60.in_cap_ng/tot [n=2]: median=9.5 min=7 max=12
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S2_ng_need_60.out_cap_ng/tot [n=2]: median=17.5 min=11 max=24
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S3_elements.dOm:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.072
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.107
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.92509493
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S3_elements.dw:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.169
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.102
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.02218085
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S3_elements.di:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.033
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.039
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.9171246
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S3_elements.de:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.0006593
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.000548
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.68116062
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S4_era.pre2006:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       n = 30
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       n_in = 13
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.21202382
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_out = 0.13216591
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       p = 0.00954681
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]     S4_era.post2006:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       n = 24
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       n_in = 6
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       med_in = 0.23465223
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] ================================================================================
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] STEP 035 COMPLETE: SUCCESS
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_035_consolidation_provenance.json
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] 
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] ================================================================================
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] EXECUTIVE SUMMARY
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] ================================================================================
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Step: step_035_consolidation (Step 035)
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Status: SUCCESS
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Duration: 0.52s
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Log Records: 251
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Output Files: 1
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] Key Outputs:
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035]   - step_12_consolidate.json (2.65 KB)
+[2026-09-21 14:35:32 UTC] [INFO    ] [STEP 035] ================================================================================

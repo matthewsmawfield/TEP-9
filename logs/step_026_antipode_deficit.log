@@ -1,86 +1,148 @@
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] LOGGER INITIALIZED: step_026_antipode_deficit (Step 026)
-[2026-09-20 10:43:52 UTC] [DEBUG   ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_026_antipode_deficit.log
-[2026-09-20 10:43:52 UTC] [DEBUG   ] [STEP 026] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:43:52 UTC] [DEBUG   ] [STEP 026] Start time (UTC): 2026-09-20T10:43:52.120078+00:00
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] 
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] STEP PURPOSE
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] --------------------------------------------------------------------------------
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   TEP / Planet-9 -- step b6: the anti-cluster side of the sky
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   Every published discussion asks only whether the cluster side is
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   excess.  The discriminating question is what the OPPOSITE side
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   looks like, because the two candidate mechanisms predict
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   different tails:
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   * point-mass shepherding: confined orbits pile onto the
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   perturber-facing direction; the rest of the circle should be
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   ~uniform background -- a bump, not a dip.
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   * fixed field boundary (TEP): perihelia are phase-locked by a
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   directed structure; objects pointing into the far side are
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   systematically disfavoured -- a bump AND a compensating
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   deficit, i.e. the whole distribution is repelled from the
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   anti-axis, not just attracted to the axis.
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   Inspection of the detached sample suggests the anti-sector is
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   sparse: of 44 objects, only ~4-5 sit at varpi in 200-290 deg.
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   C1  anti-sector deficit: count within +-60 deg of the anti-axis
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   (varpi ~ 229 deg) vs the conditioned-null distribution of
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   the same count -- lower-tail p.
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   C2  shape discrimination: fit the varpi distribution with
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   (a) uniform + von-Mises bump at the cluster axis,
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   (b) uniform + VM bump + VM dip (negative component) at the
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   anti-axis,
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   (c) a single wrapped "repulsion" model p(th) ~ 1 - a*cos(
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   th - mu_anti).
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   Compare log-likelihoods / AIC -- is a dip component
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   required?
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   C3  who lives on the far side: compare a, q, i, discovery year,
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   and orbit quality of the anti-sector objects vs the
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   clustered population -- is the anti-cluster a different
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   population (e.g. low-q plungers or recent discoveries)?
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   Outputs: results/step_b6_antipode_deficit.json,
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   figures/supplementary/step_b6_antipode_deficit.png
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] --------------------------------------------------------------------------------
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] SCRIPT: scripts/steps/step_026_antipode_deficit.py
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] SCRIPT SHA256: e4cc9c436a2ccac4d9d021cf78f36feff76dfce80e4c00bb75bfc0a0f7d79a5b
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] SCRIPT SIZE: 12968 bytes
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Anti-axis deficit
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] C1 anti-cap N=9 (null median 15) p_low=0.0448 | cluster-cap N=26 p_high=0.0002
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] C2 AIC: uniform_plus_bump=153.8, uniform_plus_bump_plus_dip=157.8, repulsion_fixed_axis=155.2, repulsion_free_axis=157.0 | bump+dip params [0.43 2.76 0.   2.73]
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] C3 anti-cap objects: [('82158 (2001 FP185)', 186), ('506479 (2003 HB57)', 208), ('(2002 GB32)', 214), ('(2013 FT28)', 258), ('(2015 DM319)', 209), ('(2015 KG163)', 251), ('(2016 EC366)', 172), ('(2023 KQ14)', 271), ('(2024 FX26)', 193)]
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Saving data: step_b6_antipode_deficit.json
-[2026-09-20 10:43:52 UTC] [DEBUG   ] [STEP 026]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b6_antipode_deficit.json
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   Output: step_b6_antipode_deficit.json
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Saving data: step_b6_antipode_deficit.png
-[2026-09-20 10:43:52 UTC] [DEBUG   ] [STEP 026]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b6_antipode_deficit.png
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   Output: step_b6_antipode_deficit.png
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] 
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] STEP SUMMARY: step_026_antipode_deficit
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Step Number: 026
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Status: SUCCESS
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Duration: 0.80s
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Log Records Emitted: 63
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Output Files: 2
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_026_antipode_deficit.log
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] 
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Generated 2 output file(s):
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   • step_b6_antipode_deficit.json: 3.43 KB [sha256 b09216b2435b1b89]
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   • step_b6_antipode_deficit.png: 305.42 KB [sha256 b0e3163cf6aa6051]
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] STEP 026 COMPLETE: SUCCESS
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_026_antipode_deficit_provenance.json
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] 
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] EXECUTIVE SUMMARY
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] ================================================================================
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Step: step_026_antipode_deficit (Step 026)
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Status: SUCCESS
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Duration: 0.80s
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Log Records: 73
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Output Files: 2
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] Key Outputs:
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   - step_b6_antipode_deficit.json (3.43 KB)
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026]   - step_b6_antipode_deficit.png (305.42 KB)
-[2026-09-20 10:43:52 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] LOGGER INITIALIZED: step_026_antipode_deficit (Step 026)
+[2026-09-21 14:33:18 UTC] [DEBUG   ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_026_antipode_deficit.log
+[2026-09-21 14:33:18 UTC] [DEBUG   ] [STEP 026] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:33:18 UTC] [DEBUG   ] [STEP 026] Start time (UTC): 2026-09-21T14:33:18.421291+00:00
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] 
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] STEP PURPOSE
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] --------------------------------------------------------------------------------
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   TEP / Planet-9 -- step b6: the anti-cluster side of the sky
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   Every published discussion asks only whether the cluster side is
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   excess.  The discriminating question is what the OPPOSITE side
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   looks like, because the two candidate mechanisms predict
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   different tails:
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   * point-mass shepherding: confined orbits pile onto the
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   perturber-facing direction; the rest of the circle should be
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   ~uniform background -- a bump, not a dip.
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   * fixed field boundary (TEP): perihelia are phase-locked by a
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   directed structure; objects pointing into the far side are
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   systematically disfavoured -- a bump AND a compensating
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   deficit, i.e. the whole distribution is repelled from the
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   anti-axis, not just attracted to the axis.
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   Inspection of the detached sample suggests the anti-sector is
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   sparse: of 44 objects, only ~4-5 sit at varpi in 200-290 deg.
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   C1  anti-sector deficit: count within +-60 deg of the anti-axis
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   (varpi ~ 229 deg) vs the conditioned-null distribution of
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   the same count -- lower-tail p.
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   C2  shape discrimination: fit the varpi distribution with
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   (a) uniform + von-Mises bump at the cluster axis,
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   (b) uniform + VM bump + VM dip (negative component) at the
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   anti-axis,
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   (c) a single wrapped "repulsion" model p(th) ~ 1 - a*cos(
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   th - mu_anti).
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   Compare log-likelihoods / AIC -- is a dip component
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   required?
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   C3  who lives on the far side: compare a, q, i, discovery year,
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   and orbit quality of the anti-sector objects vs the
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   clustered population -- is the anti-cluster a different
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   population (e.g. low-q plungers or recent discoveries)?
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   Outputs: results/step_b6_antipode_deficit.json,
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026]   figures/supplementary/step_b6_antipode_deficit.png
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] --------------------------------------------------------------------------------
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] SCRIPT: scripts/steps/step_026_antipode_deficit.py
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] SCRIPT SHA256: e4cc9c436a2ccac4d9d021cf78f36feff76dfce80e4c00bb75bfc0a0f7d79a5b
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] SCRIPT SIZE: 12968 bytes
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] Anti-axis deficit
+[2026-09-21 14:33:18 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] C1 anti-cap N=9 (null median 15) p_low=0.0448 | cluster-cap N=26 p_high=0.0002
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] C2 AIC: uniform_plus_bump=153.8, uniform_plus_bump_plus_dip=157.8, repulsion_fixed_axis=155.2, repulsion_free_axis=157.0 | bump+dip params [0.43 2.76 0.   2.73]
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] C3 anti-cap objects: [('82158 (2001 FP185)', 186), ('506479 (2003 HB57)', 208), ('(2002 GB32)', 214), ('(2013 FT28)', 258), ('(2015 DM319)', 209), ('(2015 KG163)', 251), ('(2016 EC366)', 172), ('(2023 KQ14)', 271), ('(2024 FX26)', 193)]
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Saving data: step_b6_antipode_deficit.json
+[2026-09-21 14:33:19 UTC] [DEBUG   ] [STEP 026]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b6_antipode_deficit.json
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]   Output: step_b6_antipode_deficit.json
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Saving data: step_b6_antipode_deficit.png
+[2026-09-21 14:33:19 UTC] [DEBUG   ] [STEP 026]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b6_antipode_deficit.png
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]   Output: step_b6_antipode_deficit.png
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] 
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] STEP SUMMARY: step_026_antipode_deficit
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Step Number: 026
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Status: SUCCESS
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Duration: 1.23s
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Log Records Emitted: 63
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Output Files: 2
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_026_antipode_deficit.log
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] 
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Generated 2 output file(s):
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]   • step_b6_antipode_deficit.json: 3.43 KB [sha256 b09216b2435b1b89]
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]   • step_b6_antipode_deficit.png: 319.90 KB [sha256 ea5739109687091f]
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] 
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]   RESULT SNAPSHOT [step_b6_antipode_deficit.json]:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C1_anti_deficit:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       n_in_anti_cap = 9
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       null_median = 15
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       null_p10 = 11
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       p_lower = 0.04479776
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       n_in_cluster_cap = 26
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       p_upper_cluster = 0.00019999
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       note = lower-tail test of the count within +-60 deg of the anti-axis vs conditioned null
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C2_shape:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       best_AIC = uniform_plus_bump
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       note = AIC prefers the model that needs a dip/repulsion component opposite the axis, if any
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C2_shape.models.uniform_plus_bump:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       f = 0.431
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       kappa = 2.76
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       loglik = -74.91
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C2_shape.models.uniform_plus_bump_plus_dip:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       f_bump = 0.431
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       k_bump = 2.76
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       f_dip = 0
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       k_dip = 2.73
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       loglik = -74.91
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C2_shape.models.repulsion_fixed_axis:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       a = 0.559
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       loglik = -76.62
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C2_shape.models.repulsion_free_axis:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       a = 0.579
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       mu_deg = 239.1
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       loglik = -76.52
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C2_shape.AIC:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       uniform_plus_bump = 153.82
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       uniform_plus_bump_plus_dip = 157.82
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       repulsion_fixed_axis = 155.25
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       repulsion_free_axis = 157.04
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C3_far_side:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       note = are anti-axis objects a different population?
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C3_far_side.anti_cap_objects[0]:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       name = 82158 (2001 FP185)
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       a = 215.4
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       q = 34.194
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       i = 30.79
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       varpi = 186
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       first_year = 1999
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       cc = 1
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       arc = 9597
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C3_far_side.anti_cap_objects[1]:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       name = 506479 (2003 HB57)
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       a = 158.6
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       q = 38.053
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       i = 15.5
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       varpi = 208.5
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       first_year = 2003
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       cc = 3
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       arc = 7355
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]     C3_far_side.anti_cap_objects[2]:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       name = (2002 GB32)
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       a = 205.1
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       q = 35.31
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       i = 14.19
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       varpi = 213.9
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] STEP 026 COMPLETE: SUCCESS
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_026_antipode_deficit_provenance.json
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] 
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] EXECUTIVE SUMMARY
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] ================================================================================
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Step: step_026_antipode_deficit (Step 026)
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Status: SUCCESS
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Duration: 1.23s
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Log Records: 135
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Output Files: 2
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] Key Outputs:
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]   - step_b6_antipode_deficit.json (3.43 KB)
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026]   - step_b6_antipode_deficit.png (319.90 KB)
+[2026-09-21 14:33:19 UTC] [INFO    ] [STEP 026] ================================================================================

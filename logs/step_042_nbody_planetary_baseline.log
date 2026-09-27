@@ -1,199 +1,266 @@
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] LOGGER INITIALIZED: step_042_nbody_planetary_baseline (Step 042)
-[2026-09-20 12:08:12 UTC] [DEBUG   ] [STEP 042] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_042_nbody_planetary_baseline.log
-[2026-09-20 12:08:12 UTC] [DEBUG   ] [STEP 042] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:08:12 UTC] [DEBUG   ] [STEP 042] Start time (UTC): 2026-09-20T12:08:12.295689+00:00
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] 
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] STEP PURPOSE
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] --------------------------------------------------------------------------------
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   step_19: N-body planetary baseline -- REBOUND integration of the CODE comets.
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   step_040 built the planetary baseline from an analytic Jupiter
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   encounter proxy.  This step replaces the proxy with a genuine
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   symplectic-family N-body integration:
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   For each class-1 CODE comet the osculating elements at the
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   perihelion epoch T (TT) are converted to a heliocentric state
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   vector and integrated BACKWARD through the full planetary system
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   (Sun + planetary-system barycentres 1-9, states from JPL DE440s
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   rotated ICRF-equatorial -> ecliptic J2000) with REBOUND/IAS15.
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   The integration stops when the comet reaches 255 AU, matching
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   the 250 AU asymptote at which the catalogue's original orbit is
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   defined.  A MERCURIUS (hybrid-symplectic, close-encounter
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   switching) re-integration of the full sample provides an
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   integrator-independence check.
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   Kick metrics per comet:
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   kick_e  = 1/a_osc - 1/a_out   [10^-6 AU^-1]  (energy kick;
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   sign convention matches catalogue delta(1/a))
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   denc    = minimum comet-planet distance over the integration
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   [AU] and the dominant perturber
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   Validation: the catalogue's own original-vs-osculating energy
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   change cat_kick = 1/a_osc - 1/a_orig is an independent N-body
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   measurement of the same planetary perturbation.  The simulated
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   and catalogue kicks are compared statistically across the
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   sample (deep-encounter comets are chaos-limited, so the
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   comparison is reported both full-sample and trimmed).
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   Baseline regression mirrors step_040:
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   log(d_of) ~ 1 + |kick_e| + q  -> residuals -> cap contrast
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   (Mann-Whitney, greater) and continuous Spearman test.
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   Outputs
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   results/step_19_nbody_planetary_baseline.json
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042]   results/step_19_nbody_kicks.csv   (per-comet kick table)
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] --------------------------------------------------------------------------------
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] SCRIPT: scripts/steps/step_042_nbody_planetary_baseline.py
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] SCRIPT SHA256: aae9741da8c7c3a8d60557e660b6245163daa4600819bd47533cbc2e5b903ecf
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] SCRIPT SIZE: 18279 bytes
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] ================================================================================
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] N-body planetary baseline (REBOUND/IAS15 + DE440s)
-[2026-09-20 12:08:12 UTC] [INFO    ] [STEP 042] ================================================================================
-[2026-09-20 12:08:13 UTC] [INFO    ] [STEP 042] sample: 131 class-1 CODE comets (skipped 0 w/o osculating, 0 w/o epoch)
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042] integrated 131 comets; 0 failed
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042] RESULT PAYLOAD:
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042] {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  "method": "REBOUND N-body: osculating elements at CODE perihelion epoch, backward integration to 255 AU under Sun + planetary-system barycentres (DE440s), IAS15 primary + MERCURIUS cross-check",
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  "n_all_c1": 131,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  "n_failed": 0,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  "failed": [],
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  "ephemeris": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "file": "data/raw/spice/de440s.bsp",
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "frame": "SSB barycentric ICRF -> ecliptic J2000",
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "planets": "system barycentres 1-9 + Sun"
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  "integrator": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "primary": "ias15",
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "crosscheck": "mercurius",
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "boundary_AU": 255.0,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "G": "4*pi^2 (AU, yr, Msun)"
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  "validation": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "spearman_nb_vs_catalogue": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "rho": 0.9789569209416538,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p": 6.540169301679544e-91
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "spearman_nb_vs_catalogue_trimmed": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "rho": 0.9107271130976137,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p": 1.1761005917710936e-26,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "n": 67,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "trim": "|cat_kick| < 400e-6 AU^-1"
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "median_signed_diff": -0.4092382647834256,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "median_abs_diff": 4.70466652307465,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "abs_diff_iqr": [
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    1.1606683020075934,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    18.699030575368056
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   ],
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "frac_within_50e-6": 0.8778625954198473,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "mercurius_crosscheck": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "n": 131,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "spearman_aa_out": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]     "rho": 0.9252495596007047,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]     "p": 3.7712902662916167e-56
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "median_abs_aa_out_diff": 0.3567778913360229
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   }
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  "matched": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "n": 54,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "n_in": 19,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "kick_e_p_2s": 0.9278369065565704,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "denc_p_2s": 0.01121692901124405,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "q_p_2s": 0.6120331415229909,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "i_p_2s": 0.7171527174670546,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "spearman_dof_kick_e": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "rho": 0.39797979797979793,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p": 0.002879777575014324
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "spearman_dof_denc": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "rho": -0.18947970268724984,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p": 0.169978353477405
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "residual_cap": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "med_in": 0.24825913176655923,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "med_out": -0.15528242238782042,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p": 0.0021055011257245623
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "residual_continuous": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "rho": -0.38189441585667994,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p_2sided": 0.004378169209876641
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "residual_cap_2cov": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p": 0.004549386467684184
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "residual_continuous_2cov": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "rho": -0.36260720411663805,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p_2sided": 0.007046465882846374
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   }
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  "all_c1": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "n": 131,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "n_in": 43,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "kick_e_p_2s": 0.5679836799770813,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "denc_p_2s": 0.008184708277729656,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "q_p_2s": 0.8695737761661341,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "i_p_2s": 0.0686215392059113,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "spearman_dof_kick_e": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "rho": 0.32416591042545245,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p": 0.00015859448366713973
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "spearman_dof_denc": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "rho": -0.3254257193188491,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p": 0.00014899290588284034
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "residual_cap": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "med_in": 0.2038717314318388,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "med_out": -0.021094093547617376,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p": 0.0007525080551056618
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "residual_continuous": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "rho": -0.27200661933486364,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p_2sided": 0.0016728351190204071
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "residual_cap_2cov": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p": 0.0023951482945060096
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   },
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   "residual_continuous_2cov": {
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "rho": -0.24155234078898202,
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]    "p_2sided": 0.005444624785886096
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   }
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]  }
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042] }
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042] Saving data: step_19_nbody_planetary_baseline.json
-[2026-09-20 12:08:45 UTC] [DEBUG   ] [STEP 042]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_19_nbody_planetary_baseline.json
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   Output: step_19_nbody_planetary_baseline.json
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042] Saving data: step_19_nbody_kicks.csv
-[2026-09-20 12:08:45 UTC] [DEBUG   ] [STEP 042]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_19_nbody_kicks.csv
-[2026-09-20 12:08:45 UTC] [INFO    ] [STEP 042]   Output: step_19_nbody_kicks.csv
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Saving data: step_19_rotation_vs_energy.png
-[2026-09-20 12:08:46 UTC] [DEBUG   ] [STEP 042]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_19_rotation_vs_energy.png
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042]   Output: step_19_rotation_vs_energy.png
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] 
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] ================================================================================
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] STEP SUMMARY: step_042_nbody_planetary_baseline
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] ================================================================================
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Step Number: 042
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Status: SUCCESS
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Duration: 33.88s
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Log Records Emitted: 174
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Output Files: 3
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_042_nbody_planetary_baseline.log
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] 
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Generated 3 output file(s):
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042]   • step_19_nbody_planetary_baseline.json: 2.71 KB [sha256 c81982044ad7945e]
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042]   • step_19_nbody_kicks.csv: 24.58 KB [sha256 f09c6dcb9d882071]
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042]   • step_19_rotation_vs_energy.png: 197.53 KB [sha256 5d7916970e2efece]
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] ================================================================================
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] STEP 042 COMPLETE: SUCCESS
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_042_nbody_planetary_baseline_provenance.json
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] 
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] ================================================================================
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] EXECUTIVE SUMMARY
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] ================================================================================
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Step: step_042_nbody_planetary_baseline (Step 042)
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Status: SUCCESS
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Duration: 33.88s
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Log Records: 185
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Output Files: 3
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] Key Outputs:
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042]   - step_19_nbody_planetary_baseline.json (2.71 KB)
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042]   - step_19_nbody_kicks.csv (24.58 KB)
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042]   - step_19_rotation_vs_energy.png (197.53 KB)
-[2026-09-20 12:08:46 UTC] [INFO    ] [STEP 042] ================================================================================
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] LOGGER INITIALIZED: step_042_nbody_planetary_baseline (Step 042)
+[2026-09-21 14:36:13 UTC] [DEBUG   ] [STEP 042] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_042_nbody_planetary_baseline.log
+[2026-09-21 14:36:13 UTC] [DEBUG   ] [STEP 042] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:36:13 UTC] [DEBUG   ] [STEP 042] Start time (UTC): 2026-09-21T14:36:13.513367+00:00
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] 
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] STEP PURPOSE
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] --------------------------------------------------------------------------------
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   step_19: N-body planetary baseline -- REBOUND integration of the CODE comets.
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   step_040 built the planetary baseline from an analytic Jupiter
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   encounter proxy.  This step replaces the proxy with a genuine
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   symplectic-family N-body integration:
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   For each class-1 CODE comet the osculating elements at the
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   perihelion epoch T (TT) are converted to a heliocentric state
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   vector and integrated BACKWARD through the full planetary system
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   (Sun + planetary-system barycentres 1-9, states from JPL DE440s
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   rotated ICRF-equatorial -> ecliptic J2000) with REBOUND/IAS15.
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   The integration stops when the comet reaches 255 AU, matching
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   the 250 AU asymptote at which the catalogue's original orbit is
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   defined.  A MERCURIUS (hybrid-symplectic, close-encounter
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   switching) re-integration of the full sample provides an
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   integrator-independence check.
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   Kick metrics per comet:
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   kick_e  = 1/a_osc - 1/a_out   [10^-6 AU^-1]  (energy kick;
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   sign convention matches catalogue delta(1/a))
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   denc    = minimum comet-planet distance over the integration
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   [AU] and the dominant perturber
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   Validation: the catalogue's own original-vs-osculating energy
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   change cat_kick = 1/a_osc - 1/a_orig is an independent N-body
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   measurement of the same planetary perturbation.  The simulated
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   and catalogue kicks are compared statistically across the
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   sample (deep-encounter comets are chaos-limited, so the
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   comparison is reported both full-sample and trimmed).
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   Baseline regression mirrors step_040:
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   log(d_of) ~ 1 + |kick_e| + q  -> residuals -> cap contrast
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   (Mann-Whitney, greater) and continuous Spearman test.
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   Outputs
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   results/step_19_nbody_planetary_baseline.json
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042]   results/step_19_nbody_kicks.csv   (per-comet kick table)
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] --------------------------------------------------------------------------------
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] SCRIPT: scripts/steps/step_042_nbody_planetary_baseline.py
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] SCRIPT SHA256: dc19a2cb20163cb89c4a9aec9ff4c9cb6e5b5c068e6ab2cc214ee93a07665499
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] SCRIPT SIZE: 18647 bytes
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] ================================================================================
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] N-body planetary baseline (REBOUND/IAS15 + DE440s)
+[2026-09-21 14:36:13 UTC] [INFO    ] [STEP 042] ================================================================================
+[2026-09-21 14:36:14 UTC] [INFO    ] [STEP 042] sample: 131 class-1 CODE comets (skipped 0 w/o osculating, 0 w/o epoch)
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042] integrated 131 comets; 0 failed
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042] RESULT PAYLOAD:
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042] {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  "method": "REBOUND N-body: osculating elements at CODE perihelion epoch, backward integration to 255 AU under Sun + planetary-system barycentres (DE440s), IAS15 primary + MERCURIUS cross-check",
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  "n_all_c1": 131,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  "n_failed": 0,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  "failed": [],
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  "ephemeris": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "file": "data/raw/spice/de440s.bsp",
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "frame": "SSB barycentric ICRF -> ecliptic J2000",
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "planets": "system barycentres 1-9 + Sun"
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  "integrator": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "primary": "ias15",
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "crosscheck": "mercurius",
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "boundary_AU": 255.0,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "G": "4*pi^2 (AU, yr, Msun)"
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  "validation": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "spearman_nb_vs_catalogue": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "rho": 0.9789569209416538,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p": 6.540169301679544e-91
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "spearman_nb_vs_catalogue_trimmed": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "rho": 0.9107271130976137,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p": 1.1761005917710936e-26,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "n": 67,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "trim": "|cat_kick| < 400e-6 AU^-1"
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "median_signed_diff": -0.4092382647834256,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "median_abs_diff": 4.70466652307465,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "abs_diff_iqr": [
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    1.1606683020075934,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    18.699030575368056
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   ],
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "frac_within_50e-6": 0.8778625954198473,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "mercurius_crosscheck": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "n": 131,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "spearman_aa_out": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]     "rho": 0.9252495596007047,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]     "p": 3.7712902662916167e-56
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "median_abs_aa_out_diff": 0.3567778913360229
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   }
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  "matched": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "n": 54,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "n_in": 19,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "kick_e_p_2s": 0.9278369065565704,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "denc_p_2s": 0.01121692901124405,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "q_p_2s": 0.6120331415229909,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "i_p_2s": 0.7171527174670546,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "spearman_dof_kick_e": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "rho": 0.39797979797979793,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p": 0.002879777575014324
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "spearman_dof_denc": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "rho": -0.18947970268724984,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p": 0.169978353477405
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "residual_cap": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "med_in": 0.24825913176655923,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "med_out": -0.15528242238782042,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p": 0.0021055011257245623
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "residual_continuous": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "rho": -0.38189441585667994,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p_2sided": 0.004378169209876641
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "residual_cap_2cov": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p": 0.004549386467684184
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "residual_continuous_2cov": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "rho": -0.36260720411663805,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p_2sided": 0.007046465882846374
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   }
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  "all_c1": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "n": 131,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "n_in": 43,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "kick_e_p_2s": 0.5679836799770813,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "denc_p_2s": 0.008184708277729656,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "q_p_2s": 0.8695737761661341,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "i_p_2s": 0.0686215392059113,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "spearman_dof_kick_e": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "rho": 0.32416591042545245,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p": 0.00015859448366713973
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "spearman_dof_denc": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "rho": -0.3254257193188491,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p": 0.00014899290588284034
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "residual_cap": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "med_in": 0.2038717314318388,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "med_out": -0.021094093547617376,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p": 0.0007525080551056618
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "residual_continuous": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "rho": -0.27200661933486364,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p_2sided": 0.0016728351190204071
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "residual_cap_2cov": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p": 0.0023951482945060096
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   },
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   "residual_continuous_2cov": {
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "rho": -0.24155234078898202,
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]    "p_2sided": 0.005444624785886096
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   }
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]  }
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042] }
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042] Saving data: step_19_nbody_planetary_baseline.json
+[2026-09-21 14:36:33 UTC] [DEBUG   ] [STEP 042]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_19_nbody_planetary_baseline.json
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   Output: step_19_nbody_planetary_baseline.json
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042] Saving data: step_19_nbody_kicks.csv
+[2026-09-21 14:36:33 UTC] [DEBUG   ] [STEP 042]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_19_nbody_kicks.csv
+[2026-09-21 14:36:33 UTC] [INFO    ] [STEP 042]   Output: step_19_nbody_kicks.csv
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Saving data: step_19_rotation_vs_energy.png
+[2026-09-21 14:36:34 UTC] [DEBUG   ] [STEP 042]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_19_rotation_vs_energy.png
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]   Output: step_19_rotation_vs_energy.png
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] 
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] ================================================================================
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] STEP SUMMARY: step_042_nbody_planetary_baseline
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] ================================================================================
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Step Number: 042
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Status: SUCCESS
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Duration: 20.74s
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Log Records Emitted: 174
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Output Files: 3
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_042_nbody_planetary_baseline.log
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] 
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Generated 3 output file(s):
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]   • step_19_nbody_planetary_baseline.json: 2.71 KB [sha256 c81982044ad7945e]
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]   • step_19_nbody_kicks.csv: 24.58 KB [sha256 f09c6dcb9d882071]
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]   • step_19_rotation_vs_energy.png: 197.53 KB [sha256 5d7916970e2efece]
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] 
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]   RESULT SNAPSHOT [step_19_nbody_planetary_baseline.json]:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     failed [n=0]
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     ephemeris:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       file = data/raw/spice/de440s.bsp
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       sha256 = c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       frame = SSB barycentric ICRF -> ecliptic J2000
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       planets = system barycentres 1-9 + Sun
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     integrator:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       primary = ias15
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       crosscheck = mercurius
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       boundary_AU = 255
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       G = 4*pi^2 (AU, yr, Msun)
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     validation:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       median_signed_diff = -0.40923826
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       median_abs_diff = 4.7046665
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       frac_within_50e-6 = 0.8778626
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     validation.spearman_nb_vs_catalogue:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       rho = 0.97895692
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       p = 6.5401693e-91
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     validation.spearman_nb_vs_catalogue_trimmed:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       rho = 0.91072711
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       p = 1.1761006e-26
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       n = 67
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       trim = |cat_kick| < 400e-6 AU^-1
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     validation.abs_diff_iqr [n=2]: median=9.9298494 min=1.1606683 max=18.699031
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     validation.mercurius_crosscheck:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       n = 131
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       median_abs_aa_out_diff = 0.35677789
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     validation.mercurius_crosscheck.spearman_aa_out:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       rho = 0.92524956
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       p = 3.7712903e-56
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     matched:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       n = 54
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       n_in = 19
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       kick_e_p_2s = 0.92783691
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       denc_p_2s = 0.011216929
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       q_p_2s = 0.61203314
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       i_p_2s = 0.71715272
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     matched.spearman_dof_kick_e:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       rho = 0.3979798
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       p = 0.0028797776
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     matched.spearman_dof_denc:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       rho = -0.1894797
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       p = 0.16997835
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     matched.residual_cap:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       med_in = 0.24825913
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       med_out = -0.15528242
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       p = 0.0021055011
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     matched.residual_continuous:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       rho = -0.38189442
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       p_2sided = 0.0043781692
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     matched.residual_cap_2cov:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       p = 0.0045493865
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     matched.residual_continuous_2cov:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       rho = -0.3626072
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       p_2sided = 0.0070464659
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     all_c1:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       n = 131
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       n_in = 43
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       kick_e_p_2s = 0.56798368
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       denc_p_2s = 0.0081847083
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       q_p_2s = 0.86957378
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       i_p_2s = 0.068621539
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]     all_c1.spearman_dof_kick_e:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       rho = 0.32416591
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] ================================================================================
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] STEP 042 COMPLETE: SUCCESS
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_042_nbody_planetary_baseline_provenance.json
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] 
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] ================================================================================
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] EXECUTIVE SUMMARY
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] ================================================================================
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Step: step_042_nbody_planetary_baseline (Step 042)
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Status: SUCCESS
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Duration: 20.74s
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Log Records: 252
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Output Files: 3
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] Key Outputs:
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]   - step_19_nbody_planetary_baseline.json (2.71 KB)
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]   - step_19_nbody_kicks.csv (24.58 KB)
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042]   - step_19_rotation_vs_energy.png (197.53 KB)
+[2026-09-21 14:36:34 UTC] [INFO    ] [STEP 042] ================================================================================

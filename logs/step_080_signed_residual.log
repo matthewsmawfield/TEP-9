@@ -1,87 +1,119 @@
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] LOGGER INITIALIZED: step_080_signed_residual (Step 080)
-[2026-09-20 12:04:47 UTC] [DEBUG   ] [STEP 080] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_080_signed_residual.log
-[2026-09-20 12:04:47 UTC] [DEBUG   ] [STEP 080] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:04:47 UTC] [DEBUG   ] [STEP 080] Start time (UTC): 2026-09-20T12:04:47.164505+00:00
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] 
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] STEP PURPOSE
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] --------------------------------------------------------------------------------
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   Step 080 -- signed residual coherence: precession vs anomaly.
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   Step 075 found the catalogue signed rotation directionally coherent
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   on both catalogues, but with a population-wide sign bias (70-84% one
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   sign).  The mundane source of a global bias is secular omega
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   precession by the giant planets across the ~600 yr leg separation --
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   a real, directed torque.  This step measures the SIGNED rotation the
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   N-body planets themselves produce on the same bidirectional legs
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   (shell 250 AU, step-063 convention), subtracts it from the catalogue
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   signed rotation, and asks whether the residual sign remains coherent
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   in-cap.  If the in-cap sign coherence survives subtraction it is a
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   directed phase structure beyond the planets; if it collapses to
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   50/50 the sign was planetary.
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   Inputs : data/raw/code/code_*.html, data/raw/warsaw/warsaw_tablec.dat,
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   data/raw/spice/de440s.bsp, results/step_b40_signed_slip.csv
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   Outputs: results/step_b45_signed_residual.json
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   results/step_b45_signed_residual.csv
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080]   results/figures/supplementary/step_b45_signed_residual.png
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] --------------------------------------------------------------------------------
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] SCRIPT: scripts/steps/step_080_signed_residual.py
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] SCRIPT SHA256: ce2a25268ea18fd3435dbee3160ddcd1d53140c1d73c06b488d5a6853d502ddb
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] SCRIPT SIZE: 13860 bytes
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] ================================================================================
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] Signed residual coherence: secular precession vs anomaly
-[2026-09-20 12:04:47 UTC] [INFO    ] [STEP 080] ================================================================================
-[2026-09-20 12:04:48 UTC] [INFO    ] [STEP 080] sample: 131 class-1 CODE comets
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080]   25/131
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080]   50/131
-[2026-09-20 12:08:05 UTC] [WARNING ] [STEP 080] ⚠ C/2013 V5: shell not reached
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080]   75/131
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080]   100/131
-[2026-09-20 12:08:05 UTC] [WARNING ] [STEP 080] ⚠ C/2020 K8: shell not reached
-[2026-09-20 12:08:05 UTC] [WARNING ] [STEP 080] ⚠ C/2020 N1: shell not reached
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080]   125/131
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080] integrated 128, failed 3
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080] in_cap: n=43 resid pos=33 (0.77) p=0.0006 med_resid=+0.0010 (sim med=-0.1297, cat med=-0.1373)
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080] out_cap: n=85 resid pos=52 (0.61) p=0.0503 med_resid=+0.0004 (sim med=-0.0764, cat med=-0.0752)
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080] all: n=128 resid pos=85 (0.66) p=0.0003 med_resid=+0.0006 (sim med=-0.0912, cat med=-0.0941)
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080] srot_sim vs srot_cat: rho=+0.999 p=0.0000
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080] Saving data: step_b45_signed_residual.json
-[2026-09-20 12:08:05 UTC] [DEBUG   ] [STEP 080]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b45_signed_residual.json
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080]   Output: step_b45_signed_residual.json
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080] Saving data: step_b45_signed_residual.csv
-[2026-09-20 12:08:05 UTC] [DEBUG   ] [STEP 080]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b45_signed_residual.csv
-[2026-09-20 12:08:05 UTC] [INFO    ] [STEP 080]   Output: step_b45_signed_residual.csv
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Saving data: step_b45_signed_residual.png
-[2026-09-20 12:08:06 UTC] [DEBUG   ] [STEP 080]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b45_signed_residual.png
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080]   Output: step_b45_signed_residual.png
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] 
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] ================================================================================
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] STEP SUMMARY: step_080_signed_residual
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] ================================================================================
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Step Number: 080
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Status: SUCCESS
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Duration: 3.32m
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Log Records Emitted: 62
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Output Files: 3
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_080_signed_residual.log
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] 
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Generated 3 output file(s):
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080]   • step_b45_signed_residual.json: 1.15 KB [sha256 bc7f67216a452f79]
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080]   • step_b45_signed_residual.csv: 11.65 KB [sha256 3200b348909974e1]
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080]   • step_b45_signed_residual.png: 220.63 KB [sha256 3052f752b7b923a1]
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] ================================================================================
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] STEP 080 COMPLETE: SUCCESS
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_080_signed_residual_provenance.json
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] 
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] ================================================================================
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] EXECUTIVE SUMMARY
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] ================================================================================
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Step: step_080_signed_residual (Step 080)
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Status: SUCCESS
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Duration: 3.32m
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Log Records: 73
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Output Files: 3
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] Key Outputs:
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080]   - step_b45_signed_residual.json (1.15 KB)
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080]   - step_b45_signed_residual.csv (11.65 KB)
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080]   - step_b45_signed_residual.png (220.63 KB)
-[2026-09-20 12:08:06 UTC] [INFO    ] [STEP 080] ================================================================================
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] LOGGER INITIALIZED: step_080_signed_residual (Step 080)
+[2026-09-21 14:51:27 UTC] [DEBUG   ] [STEP 080] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_080_signed_residual.log
+[2026-09-21 14:51:27 UTC] [DEBUG   ] [STEP 080] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:51:27 UTC] [DEBUG   ] [STEP 080] Start time (UTC): 2026-09-21T14:51:27.955064+00:00
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] 
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] STEP PURPOSE
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] --------------------------------------------------------------------------------
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   Step 080 -- signed residual coherence: precession vs anomaly.
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   Step 075 found the catalogue signed rotation directionally coherent
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   on both catalogues, but with a population-wide sign bias (70-84% one
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   sign).  The mundane source of a global bias is secular omega
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   precession by the giant planets across the ~600 yr leg separation --
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   a real, directed torque.  This step measures the SIGNED rotation the
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   N-body planets themselves produce on the same bidirectional legs
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   (shell 250 AU, step-063 convention), subtracts it from the catalogue
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   signed rotation, and asks whether the residual sign remains coherent
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   in-cap.  If the in-cap sign coherence survives subtraction it is a
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   directed phase structure beyond the planets; if it collapses to
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   50/50 the sign was planetary.
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   Inputs : data/raw/code/code_*.html, data/raw/warsaw/warsaw_tablec.dat,
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   data/raw/spice/de440s.bsp, results/step_b40_signed_slip.csv
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   Outputs: results/step_b45_signed_residual.json
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   results/step_b45_signed_residual.csv
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080]   results/figures/supplementary/step_b45_signed_residual.png
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] --------------------------------------------------------------------------------
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] SCRIPT: scripts/steps/step_080_signed_residual.py
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] SCRIPT SHA256: 967540c8fc491ad8cddd4557e7bea71678a78e99f8cf3803d92a5271a710ba0c
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] SCRIPT SIZE: 13944 bytes
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] ================================================================================
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] Signed residual coherence: secular precession vs anomaly
+[2026-09-21 14:51:27 UTC] [INFO    ] [STEP 080] ================================================================================
+[2026-09-21 14:51:28 UTC] [INFO    ] [STEP 080] sample: 131 class-1 CODE comets
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   25/131
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   50/131
+[2026-09-21 14:53:24 UTC] [WARNING ] [STEP 080] ⚠ C/2013 V5: shell not reached
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   75/131
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   100/131
+[2026-09-21 14:53:24 UTC] [WARNING ] [STEP 080] ⚠ C/2020 K8: shell not reached
+[2026-09-21 14:53:24 UTC] [WARNING ] [STEP 080] ⚠ C/2020 N1: shell not reached
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   125/131
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] integrated 128, failed 3
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] in_cap: n=43 resid pos=33 (0.77) p=0.0006 med_resid=+0.0010 (sim med=-0.1297, cat med=-0.1373)
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] out_cap: n=85 resid pos=52 (0.61) p=0.0503 med_resid=+0.0004 (sim med=-0.0764, cat med=-0.0752)
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] all: n=128 resid pos=85 (0.66) p=0.0003 med_resid=+0.0006 (sim med=-0.0912, cat med=-0.0941)
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] srot_sim vs srot_cat: rho=+0.999 p=0.0000
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Saving data: step_b45_signed_residual.json
+[2026-09-21 14:53:24 UTC] [DEBUG   ] [STEP 080]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b45_signed_residual.json
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   Output: step_b45_signed_residual.json
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Saving data: step_b45_signed_residual.csv
+[2026-09-21 14:53:24 UTC] [DEBUG   ] [STEP 080]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b45_signed_residual.csv
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   Output: step_b45_signed_residual.csv
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Saving data: step_b45_signed_residual.png
+[2026-09-21 14:53:24 UTC] [DEBUG   ] [STEP 080]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b45_signed_residual.png
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   Output: step_b45_signed_residual.png
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] 
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] ================================================================================
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] STEP SUMMARY: step_080_signed_residual
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] ================================================================================
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Step Number: 080
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Status: SUCCESS
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Duration: 1.95m
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Log Records Emitted: 62
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Output Files: 3
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_080_signed_residual.log
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] 
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Generated 3 output file(s):
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   • step_b45_signed_residual.json: 1.15 KB [sha256 bc7f67216a452f79]
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   • step_b45_signed_residual.csv: 11.65 KB [sha256 3200b348909974e1]
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   • step_b45_signed_residual.png: 220.63 KB [sha256 3052f752b7b923a1]
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] 
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   RESULT SNAPSHOT [step_b45_signed_residual.json]:
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]     in_cap:
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       n = 43
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       n_pos = 33
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       frac_pos = 0.76744186
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       median_resid = 0.0010351462
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       p_binom = 0.00030305332
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       p_binom_2sided = 0.00060610663
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       median_srot_sim = -0.12966201
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       median_srot_cat = -0.13734065
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]     out_cap:
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       n = 85
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       n_pos = 52
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       frac_pos = 0.61176471
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       median_resid = 0.00042119423
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       p_binom = 0.025125448
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       p_binom_2sided = 0.050250895
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       median_srot_sim = -0.076391726
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       median_srot_cat = -0.075216731
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]     all:
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       n = 128
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       n_pos = 85
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       frac_pos = 0.6640625
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       median_resid = 0.00063783898
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       p_binom = 0.0001292633
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       p_binom_2sided = 0.0002585266
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       median_srot_sim = -0.091242819
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       median_srot_cat = -0.094059019
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]     sim_vs_cat_sign:
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       rho = 0.99898714
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]       p_2sided = 1.4193069e-171
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] ================================================================================
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] STEP 080 COMPLETE: SUCCESS
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_080_signed_residual_provenance.json
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] 
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] ================================================================================
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] EXECUTIVE SUMMARY
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] ================================================================================
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Step: step_080_signed_residual (Step 080)
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Status: SUCCESS
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Duration: 1.95m
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Log Records: 105
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Output Files: 3
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] Key Outputs:
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   - step_b45_signed_residual.json (1.15 KB)
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   - step_b45_signed_residual.csv (11.65 KB)
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080]   - step_b45_signed_residual.png (220.63 KB)
+[2026-09-21 14:53:24 UTC] [INFO    ] [STEP 080] ================================================================================

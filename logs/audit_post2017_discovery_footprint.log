@@ -1,0 +1,73 @@
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] LOGGER INITIALIZED: audit_post2017_discovery_footprint (Step AUDIT)
+[2026-09-21 12:43:29 UTC] [DEBUG   ] [STEP AUDIT] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/audit_post2017_discovery_footprint.log
+[2026-09-21 12:43:29 UTC] [DEBUG   ] [STEP AUDIT] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 12:43:29 UTC] [DEBUG   ] [STEP AUDIT] Start time (UTC): 2026-09-21T12:43:29.077008+00:00
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] 
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] STEP PURPOSE
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] --------------------------------------------------------------------------------
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   Audit: Post-2017 cometary discovery footprint vs OSSOS TNO footprint.
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   This audit evaluates the sky-coverage geometry and discovery locations of
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   post-2017 long-period comets (Pan-STARRS, ATLAS, ZTF, Catalina, etc.) in
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   contrast to the OSSOS characterized survey footprint.
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   Specifically:
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   1. Extract first-observation coordinates (RA, Dec, obstime, observatory)
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   for all post-2017 C/ comets.
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   2. Compute their ecliptic coordinates (lambda_disc, beta_disc) and solar
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   elongation at discovery.
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   3. Test whether cometary discoveries cluster in ecliptic longitude, and
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   measure their angular distance to:
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   - Declared transit axis (34 deg, -13 deg)
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   - Displaced systematic axis (120 deg, -40 deg)
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   4. Compare this cometary discovery footprint against the OSSOS survey blocks
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   (which are targeted TNO pointings, not all-sky comet searches).
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   Outputs
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   results/audits/audit_post2017_discovery_footprint.json
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT]   results/figures/supplementary/audit_post2017_discovery_footprint.png
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] --------------------------------------------------------------------------------
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] SCRIPT: scripts/audits/audit_post2017_discovery_footprint.py
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] SCRIPT SHA256: 99e14e3fca86c66b9731af4e8788f8f19df4954f9a5d5debd502c55cca3e09d3
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] SCRIPT SIZE: 10427 bytes
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] ================================================================================
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] Post-2017 Cometary Discovery Footprint Audit
+[2026-09-21 12:43:29 UTC] [INFO    ] [STEP AUDIT] ================================================================================
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT] Analyzed discovery coordinates for 266 post-2017 comets
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT] Top discovery observatories:
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT]   F51 (Pan-STARRS 1, Haleakala): 59 (22.2%)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT]   F52 (Pan-STARRS 2, Haleakala): 44 (16.5%)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT]   G96 (Mount Lemmon Survey): 34 (12.8%)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT]   I41 (Zwicky Transient Facility, Palomar): 28 (10.5%)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT]   W84 (Other): 18 (6.8%)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT]   T05 (ATLAS-HKO, Haleakala): 13 (4.9%)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT]   W68 (ATLAS-El Sauce, Chile): 13 (4.9%)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT]   703 (Catalina Sky Survey, Tucson): 11 (4.1%)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT]   T08 (ATLAS-MLO, Mauna Loa): 9 (3.4%)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT]   C51 (WISE/NEOWISE): 4 (1.5%)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT] Discovery longitude resultant R = 0.025, mean direction = 322.4 deg (Rayleigh p = 8.445e-01)
+[2026-09-21 12:43:30 UTC] [INFO    ] [STEP AUDIT] Separation between mean discovery direction and Displaced Axis (120 deg): 157.6 deg
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Saved figure to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/audit_post2017_discovery_footprint.png
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Wrote audit results to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/audits/audit_post2017_discovery_footprint.json
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] 
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] ================================================================================
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] STEP SUMMARY: audit_post2017_discovery_footprint
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] ================================================================================
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Step Number: AUDIT
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Status: SUCCESS
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Duration: 2.25s
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Log Records Emitted: 56
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Output Files: 0
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/audit_post2017_discovery_footprint.log
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] No output files generated
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] ================================================================================
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] STEP AUDIT COMPLETE: SUCCESS
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/audit_post2017_discovery_footprint_provenance.json
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] 
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] ================================================================================
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] EXECUTIVE SUMMARY
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] ================================================================================
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Step: audit_post2017_discovery_footprint (Step AUDIT)
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Status: SUCCESS
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Duration: 2.25s
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Log Records: 63
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] Output Files: 0
+[2026-09-21 12:43:31 UTC] [INFO    ] [STEP AUDIT] ================================================================================

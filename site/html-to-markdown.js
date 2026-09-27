@@ -105,7 +105,7 @@ class HTMLToMarkdownConverter {
         html = html.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, '\n> $1\n\n');
         html = html.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (match, content) => {
             // Strip leading whitespace from each line in paragraph content
-            const stripped = content.split('\n').map(line => line.trim()).join(' ').trim();
+            const stripped = content.split('\n').map(line => line.trim()).filter(line => line.length > 0).join(' ').replace(/ {2,}/g, ' ').trim();
             return `${stripped}\n\n`;
         });
 
@@ -208,6 +208,24 @@ First published: ${dateReleased}${doi ? `\nDOI: ${doi}` : ''}
             const outputPath = path.join(__dirname, '..', filename);
             fs.writeFileSync(outputPath, finalMarkdown, 'utf8');
             console.log(`✅ Markdown saved to: ${outputPath} (${(finalMarkdown.length / 1024).toFixed(1)} KB)`);
+
+            // Keep the shared collection archive (../manuscripts/) in sync
+            try {
+                const sharedArchiveDir = path.join(__dirname, '..', '..', 'manuscripts');
+                if (fs.existsSync(sharedArchiveDir)) {
+                    const archiveName = path.basename(outputPath);
+                    const paperPrefix = archiveName.split('-')[0];
+                    for (const staleFile of fs.readdirSync(sharedArchiveDir)) {
+                        if (staleFile !== archiveName && staleFile.endsWith('.md') && staleFile.startsWith(`${paperPrefix}-TEP`)) {
+                            fs.rmSync(path.join(sharedArchiveDir, staleFile));
+                        }
+                    }
+                    fs.copyFileSync(outputPath, path.join(sharedArchiveDir, archiveName));
+                    console.log(`📄 Copied to shared archive: manuscripts/${archiveName}`);
+                }
+            } catch (archiveError) {
+                console.warn(`⚠️  Could not update shared manuscripts archive: ${archiveError.message}`);
+            }
         } catch (error) {
             console.error('❌ Markdown conversion failed:', error.message);
         }

@@ -1,6 +1,6 @@
 # Analysis and publication tools
 
-`run_all.py` defines 141 registered steps, from source acquisition through orbital, spatial and spacecraft diagnostics. It stops on a failed step and records execution status and source hashes. The exact publication-claims audit runs last because it depends on later result files.
+`run_all.py` defines 151 registered steps, from source acquisition through orbital, spatial and spacecraft diagnostics. It stops on a failed step and records execution status and source hashes. The exact publication-claims audit runs last because it depends on later result files.
 
 The step names and historical output names use different numbering schemes. Resolve headline manuscript numbers through `../site/claims.json`, not by matching any nearby number in a result file.
 

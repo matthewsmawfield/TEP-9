@@ -1,87 +1,119 @@
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] LOGGER INITIALIZED: step_054_prospective_predictions (Step 054)
-[2026-09-20 10:47:28 UTC] [DEBUG   ] [STEP 054] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_054_prospective_predictions.log
-[2026-09-20 10:47:28 UTC] [DEBUG   ] [STEP 054] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 10:47:28 UTC] [DEBUG   ] [STEP 054] Start time (UTC): 2026-09-20T10:47:28.706682+00:00
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] 
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] STEP PURPOSE
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] --------------------------------------------------------------------------------
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   TEP / Planet-9 -- step b19: prospective predictions
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   Everything so far is retrospective.  A rigorous program
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   should also freeze what the structure predicts BEFORE the
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   next discoveries arrive.  This step computes dated,
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   quantitative predictions from the current catalogs for
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   three future data releases:
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   P1  The next detached-class discoveries (a>150, q>30).
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   From the b13 mixture fit (cluster fraction f, von Mises
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   width sigma): predicted fraction of NEW detached
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   objects within a 60 deg cap of the axis -- compared with
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   the footprint-only baseline (what pure pointing would
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   predict given the measured detached discovery
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   footprint).
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   P2  The axis direction on new data: predicted mean varpi
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   of future discoveries = 49 deg with the bootstrap CI
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   from b13; the footprint-only baseline predicts the
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   footprint mean (~10 deg).
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   P3  The perturber cross-check: under the conventional
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   anti-aligned-confinement reading, the cluster's
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   existence would place a shepherding perturber's own
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   perihelion near ~229 deg.  That is where the shallow
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   JFCs cluster (b17) -- recorded as the discriminator
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   between the two hypotheses: future surveys covering
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   that region either find the mass or they do not.
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   P4  The comet channel: fresh long-period comets'
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   reconstruction discrepancies (the numbered-pipeline
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   observable) should concentrate in the ~60 deg patch
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   around the axis -- the pre-declared cap and expected
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   excess are frozen here.
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   Each prediction is written to the JSON with the sample it
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   applies to, the numerical value, and the competing-model
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   baseline -- a dated, falsifiable record.
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   Outputs: results/step_b19_prospective_predictions.json,
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054]   figures/supplementary/step_b19_prospective_predictions.png
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] --------------------------------------------------------------------------------
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] SCRIPT: scripts/steps/step_054_prospective_predictions.py
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] SCRIPT SHA256: 12c27184460e32489ce383e3231f902823659abdf06300a093d6959e62718304
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] SCRIPT SIZE: 12217 bytes
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] ================================================================================
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] Dated falsifiable predictions
-[2026-09-20 10:47:28 UTC] [INFO    ] [STEP 054] ================================================================================
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] P1: predicted 0.59 vs baseline 0.42 (observed 0.59)
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] P2: direction 49 CI [16.73230607 88.036881  ]
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Saving data: step_b19_prospective_predictions.json
-[2026-09-20 10:47:29 UTC] [DEBUG   ] [STEP 054]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b19_prospective_predictions.json
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054]   Output: step_b19_prospective_predictions.json
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Saving data: step_b19_prospective_predictions.png
-[2026-09-20 10:47:29 UTC] [DEBUG   ] [STEP 054]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b19_prospective_predictions.png
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054]   Output: step_b19_prospective_predictions.png
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] 
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] ================================================================================
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] STEP SUMMARY: step_054_prospective_predictions
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] ================================================================================
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Step Number: 054
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Status: SUCCESS
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Duration: 1.24s
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Log Records Emitted: 64
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Output Files: 2
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_054_prospective_predictions.log
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] 
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Generated 2 output file(s):
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054]   • step_b19_prospective_predictions.json: 2.13 KB [sha256 1c13ef18c4cc098d]
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054]   • step_b19_prospective_predictions.png: 146.76 KB [sha256 fad3541406e9c893]
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] ================================================================================
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] STEP 054 COMPLETE: SUCCESS
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_054_prospective_predictions_provenance.json
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] 
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] ================================================================================
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] EXECUTIVE SUMMARY
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] ================================================================================
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Step: step_054_prospective_predictions (Step 054)
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Status: SUCCESS
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Duration: 1.24s
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Log Records: 74
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Output Files: 2
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] Key Outputs:
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054]   - step_b19_prospective_predictions.json (2.13 KB)
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054]   - step_b19_prospective_predictions.png (146.76 KB)
-[2026-09-20 10:47:29 UTC] [INFO    ] [STEP 054] ================================================================================
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] LOGGER INITIALIZED: step_054_prospective_predictions (Step 054)
+[2026-09-21 14:36:41 UTC] [DEBUG   ] [STEP 054] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_054_prospective_predictions.log
+[2026-09-21 14:36:41 UTC] [DEBUG   ] [STEP 054] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:36:41 UTC] [DEBUG   ] [STEP 054] Start time (UTC): 2026-09-21T14:36:41.895619+00:00
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] 
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] STEP PURPOSE
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] --------------------------------------------------------------------------------
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   TEP / Planet-9 -- step b19: prospective predictions
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   Everything so far is retrospective.  A rigorous program
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   should also freeze what the structure predicts BEFORE the
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   next discoveries arrive.  This step computes dated,
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   quantitative predictions from the current catalogs for
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   three future data releases:
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   P1  The next detached-class discoveries (a>150, q>30).
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   From the b13 mixture fit (cluster fraction f, von Mises
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   width sigma): predicted fraction of NEW detached
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   objects within a 60 deg cap of the axis -- compared with
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   the footprint-only baseline (what pure pointing would
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   predict given the measured detached discovery
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   footprint).
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   P2  The axis direction on new data: predicted mean varpi
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   of future discoveries = 49 deg with the bootstrap CI
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   from b13; the footprint-only baseline predicts the
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   footprint mean (~10 deg).
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   P3  The perturber cross-check: under the conventional
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   anti-aligned-confinement reading, the cluster's
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   existence would place a shepherding perturber's own
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   perihelion near ~229 deg.  That is where the shallow
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   JFCs cluster (b17) -- recorded as the discriminator
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   between the two hypotheses: future surveys covering
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   that region either find the mass or they do not.
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   P4  The comet channel: fresh long-period comets'
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   reconstruction discrepancies (the numbered-pipeline
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   observable) should concentrate in the ~60 deg patch
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   around the axis -- the pre-declared cap and expected
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   excess are frozen here.
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   Each prediction is written to the JSON with the sample it
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   applies to, the numerical value, and the competing-model
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   baseline -- a dated, falsifiable record.
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   Outputs: results/step_b19_prospective_predictions.json,
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054]   figures/supplementary/step_b19_prospective_predictions.png
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] --------------------------------------------------------------------------------
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] SCRIPT: scripts/steps/step_054_prospective_predictions.py
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] SCRIPT SHA256: 12c27184460e32489ce383e3231f902823659abdf06300a093d6959e62718304
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] SCRIPT SIZE: 12217 bytes
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] ================================================================================
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] Dated falsifiable predictions
+[2026-09-21 14:36:41 UTC] [INFO    ] [STEP 054] ================================================================================
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] P1: predicted 0.59 vs baseline 0.42 (observed 0.59)
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] P2: direction 49 CI [16.73230607 88.036881  ]
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Saving data: step_b19_prospective_predictions.json
+[2026-09-21 14:36:43 UTC] [DEBUG   ] [STEP 054]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b19_prospective_predictions.json
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]   Output: step_b19_prospective_predictions.json
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Saving data: step_b19_prospective_predictions.png
+[2026-09-21 14:36:43 UTC] [DEBUG   ] [STEP 054]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b19_prospective_predictions.png
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]   Output: step_b19_prospective_predictions.png
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] 
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] ================================================================================
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] STEP SUMMARY: step_054_prospective_predictions
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] ================================================================================
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Step Number: 054
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Status: SUCCESS
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Duration: 1.80s
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Log Records Emitted: 64
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Output Files: 2
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_054_prospective_predictions.log
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] 
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Generated 2 output file(s):
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]   • step_b19_prospective_predictions.json: 2.13 KB [sha256 1c13ef18c4cc098d]
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]   • step_b19_prospective_predictions.png: 160.51 KB [sha256 5b51db5becf67794]
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] 
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]   RESULT SNAPSHOT [step_b19_prospective_predictions.json]:
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]     P1_next_detached:
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       sample = next a>150, q>30 discoveries (any cc)
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       predicted_frac_in_cap = 0.59
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       observed_current = 0.59
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       footprint_only_baseline = 0.42
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       falsifier = if the next ~20 detached discoveries land in-cap at the baseline rate (~42%) or below, ...
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       note = mixture prediction = f*P_vm(cap) + (1-f)*uniform; baseline = each object's footprint po...
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]     P2_direction:
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       predicted_mean_varpi_deg = 49
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       footprint_only_baseline_deg = 10.5
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       falsifier = a future detached subsample whose mean varpi lands outside the CI while its footprint s...
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]     P2_direction.ci_95_deg [n=2]: median=52.5 min=17 max=88
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]     P3_perturber_crosscheck:
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       if_point_mass = anti-aligned confinement places the perturber's perihelion near ~229 deg -- coincident ...
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       discriminator = deep surveys covering lam ~ 229 deg, beta ~ +17 deg either find the mass or they do not...
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       note = the two hypotheses make different predictions for that sky region: a detectable moving ...
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]     P4_comet_channel:
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       sample = fresh long-period comets entering catalog
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       predeclared_cap_deg = 60
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       predeclared_axis = lam ~ 34, beta ~ -13 (comet-side)
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       n_code_only_class1 = 54
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       n_in = 19
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       n_out = 35
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       frac_cap_of_sample = 0.35185185
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       rate_gt_0p2_in = 0.57894737
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       rate_gt_0p2_out = 0.22857143
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       med_in_deg = 0.21202382
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       med_out_deg = 0.13074542
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       expected = reconstruction discrepancies concentrated in the cap: the CODE-measured rate of d(orig-...
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]       falsifier = a fresh comet cohort with flat rotation-channel vs the cap would undercut the clock-cha...
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] ================================================================================
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] STEP 054 COMPLETE: SUCCESS
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_054_prospective_predictions_provenance.json
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] 
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] ================================================================================
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] EXECUTIVE SUMMARY
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] ================================================================================
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Step: step_054_prospective_predictions (Step 054)
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Status: SUCCESS
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Duration: 1.80s
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Log Records: 106
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Output Files: 2
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] Key Outputs:
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]   - step_b19_prospective_predictions.json (2.13 KB)
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054]   - step_b19_prospective_predictions.png (160.51 KB)
+[2026-09-21 14:36:43 UTC] [INFO    ] [STEP 054] ================================================================================

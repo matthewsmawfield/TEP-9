@@ -303,12 +303,11 @@ fig.suptitle("Aphelion asymmetry decomposed: directional, unsigned-axis, "
 fig.tight_layout(rect=[0, 0, 1, 0.93])
 fig.savefig(RESULTS / "figures" / "supplementary" / "step_b74_direction_vs_axis.png",
             dpi=300)
-logger.info("Saving data: supplementary/step_b74_direction_vs_axis.png")
+logger.data_save(RESULTS / "figures" / "supplementary" / "step_b74_direction_vs_axis.png")
 
 # --------------------------------------------------------------- outputs
 with open(RESULTS / "step_b74_direction_vs_axis.json", "w") as f:
     json.dump(out, f, indent=1)
-logger.info("Saving data: step_b74_direction_vs_axis.json")
 
 with open(RESULTS / "step_b74_direction_vs_axis.csv", "w",
           newline="") as f:
@@ -321,7 +320,7 @@ with open(RESULTS / "step_b74_direction_vs_axis.csv", "w",
                       r["p_tide_null"]["cos"], r["moments"]["abs_cos"],
                       r["p_tide_null"]["abs_cos"],
                       r["moments"]["cos2"], r["p_tide_null"]["cos2"]])
-logger.info("Saving data: step_b74_direction_vs_axis.csv")
+logger.data_save(RESULTS / "step_b74_direction_vs_axis.csv")
 
 sig_cos = sum(1 for n_ in names
               if results[n_]["p_tide_null"]["cos"] < 0.05)
@@ -347,4 +346,5 @@ out["verdict"] = verdict
 logger.info(f"verdict: {verdict}")
 with open(RESULTS / "step_b74_direction_vs_axis.json", "w") as f:
     json.dump(out, f, indent=1)
+logger.data_save(RESULTS / "step_b74_direction_vs_axis.json")
 logger.info("Direction-vs-axis decomposition complete")

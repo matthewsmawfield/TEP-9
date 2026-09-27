@@ -59,7 +59,8 @@ from scipy import stats as _st
 
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.tep9_common import tee_stdout
-from scripts.utils.tep9_common import DATA_RAW, RESULTS, lv, sep
+from scripts.utils.tep9_common import (DATA_RAW, RESULTS, lv, sep,
+                                       load_jsonl_dedup)
 
 logger = StepLogger("step_140_astcat_stratification")
 tee_stdout(logger)
@@ -177,8 +178,7 @@ cohorts = {}
 for tag, jf in (("pre2018", "step_b91_refit.jsonl"),
                 ("post2017", "step_b92_refit.jsonl")):
     recs = []
-    for line in open(RESULTS / jf):
-        r = json.loads(line)
+    for r in load_jsonl_dedup(RESULTS / jf):
         if r.get("our_drot") is None or r.get("our_aph") is None:
             continue
         tp = r.get("tp_jd")

@@ -581,7 +581,7 @@ T9 = {
         "Warsaw (three-leg)": "inbound-weighted signature present "
                               "(leg share p = 0.031)",
         "LPC 1902-1950 (three-leg)": "declared-axis replication "
-                                     "p = 0.0056, top 4.3% of "
+                                     "p = 0.0056, top 4.6% of "
                                      "370 trial axes (step_106)",
         "SBDB pre-2018 (single solution)": "flat at the declared "
                                            "axis",
@@ -835,7 +835,7 @@ verdict = (
     f" and outbound-leg solutions after the gravitational leg "
     f"prediction is removed -- exists only in three-leg records "
     f"(CODE, Warsaw, LPC; signature present in all three, LPC "
-    f"p=0.0056, top 4.3% of its free-axis scan).  A single joint "
+    f"p=0.0056, top 4.6% of its free-axis scan).  A single joint "
     f"solution expresses no fit-vs-fit disagreement for the slip "
     f"to appear in: the same comets re-fitted under SBDB single "
     f"solutions are flat (n_in={T9['in_code_under_sbdb']['n_in']}, "

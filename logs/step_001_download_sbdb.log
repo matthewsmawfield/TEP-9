@@ -1,37 +1,94 @@
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] LOGGER INITIALIZED: step_001_download_sbdb (Step 001)
-[2026-09-20 12:19:23 UTC] [DEBUG   ] [STEP 001] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_001_download_sbdb.log
-[2026-09-20 12:19:23 UTC] [DEBUG   ] [STEP 001] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 12:19:23 UTC] [DEBUG   ] [STEP 001] Start time (UTC): 2026-09-20T12:19:23.190617+00:00
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] 
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] STEP PURPOSE
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] --------------------------------------------------------------------------------
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   TEP-9 step 001 -- JPL SBDB download
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   Downloads the JPL Small-Body Database (SBDB) orbital-element catalog
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   for the outer solar system via the public sbdb_query API
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   (https://ssd-api.jpl.nasa.gov/doc/sbdb_query.html).
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   Three real-data samples are fetched:
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   1. Outer solar system asteroids: all bodies with heliocentric
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   semimajor axis a >= 30 AU (classical Kuiper belt, resonant,
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   scattered, detached and extreme trans-Neptunian objects).
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   2. Centaurs (orbit class CEN): the Neptune-crossing population,
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   used for the cross-population coherence test.
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   3. Comets reaching the outer system (q >= 5 AU): the Jupiter-family
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   and Halley-type population used for anti-axis directionality.
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   Outputs
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   data/raw/sbdb/sbdb_outer_ss.json
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   data/raw/sbdb/sbdb_centaurs.json
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   data/raw/sbdb/sbdb_comets_ext.json
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   data/raw/sbdb/provenance.json  -- URL, timestamp, sha256, row counts
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] --------------------------------------------------------------------------------
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] SCRIPT: scripts/steps/step_001_download_sbdb.py
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] SCRIPT SHA256: e6718dd493da24e9131dfdfd6c32dc226d4d045a68d3f70e3f90b86dc09229cd
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] SCRIPT SIZE: 4925 bytes
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] ================================================================================
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] JPL SBDB catalogue download
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001] ================================================================================
-[2026-09-20 12:19:23 UTC] [DEBUG   ] [STEP 001] 
-[2026-09-20 12:19:23 UTC] [DEBUG   ] [STEP 001] --- outer solar system asteroids (a>=30 AU) ---
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   → GET https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Cconditi...
-[2026-09-20 12:19:23 UTC] [INFO    ] [STEP 001]   → attempt 1 failed (HTTP Error 502: Bad Gateway); retrying in 5s
-[2026-09-20 12:19:29 UTC] [INFO    ] [STEP 001]   → attempt 2 failed (HTTP Error 502: Bad Gateway); retrying in 10s
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] LOGGER INITIALIZED: step_001_download_sbdb (Step 001)
+[2026-09-21 14:28:39 UTC] [DEBUG   ] [STEP 001] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_001_download_sbdb.log
+[2026-09-21 14:28:39 UTC] [DEBUG   ] [STEP 001] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:28:39 UTC] [DEBUG   ] [STEP 001] Start time (UTC): 2026-09-21T14:28:39.556185+00:00
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] 
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] STEP PURPOSE
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] --------------------------------------------------------------------------------
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   TEP-9 step 001 -- JPL SBDB download
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   Downloads the JPL Small-Body Database (SBDB) orbital-element catalog
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   for the outer solar system via the public sbdb_query API
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   (https://ssd-api.jpl.nasa.gov/doc/sbdb_query.html).
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   Three real-data samples are fetched:
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   1. Outer solar system asteroids: all bodies with heliocentric
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   semimajor axis a >= 30 AU (classical Kuiper belt, resonant,
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   scattered, detached and extreme trans-Neptunian objects).
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   2. Centaurs (orbit class CEN): the Neptune-crossing population,
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   used for the cross-population coherence test.
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   3. Comets reaching the outer system (q >= 5 AU): the Jupiter-family
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   and Halley-type population used for anti-axis directionality.
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   Outputs
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   data/raw/sbdb/sbdb_outer_ss.json
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   data/raw/sbdb/sbdb_centaurs.json
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   data/raw/sbdb/sbdb_comets_ext.json
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   data/raw/sbdb/provenance.json  -- URL, timestamp, sha256, row counts
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] --------------------------------------------------------------------------------
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] SCRIPT: scripts/steps/step_001_download_sbdb.py
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] SCRIPT SHA256: d8a0dd6be312f5ca43fdbb74a293a2abbca76530f94104f32a9447bbc8c03d6a
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] SCRIPT SIZE: 6948 bytes
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] ================================================================================
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] JPL SBDB catalogue download
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001] ================================================================================
+[2026-09-21 14:28:39 UTC] [DEBUG   ] [STEP 001] 
+[2026-09-21 14:28:39 UTC] [DEBUG   ] [STEP 001] --- outer solar system asteroids (a>=30 AU) ---
+[2026-09-21 14:28:39 UTC] [INFO    ] [STEP 001]   → GET https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Cconditi...
+[2026-09-21 14:28:46 UTC] [INFO    ] [STEP 001] METRIC: rows = 7300 objects returned
+[2026-09-21 14:28:46 UTC] [INFO    ] [STEP 001] METRIC: count = 7300 catalogue count field
+[2026-09-21 14:28:46 UTC] [INFO    ] [STEP 001] Saving data: sbdb_outer_ss.json
+[2026-09-21 14:28:46 UTC] [DEBUG   ] [STEP 001]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/sbdb/sbdb_outer_ss.json
+[2026-09-21 14:28:46 UTC] [INFO    ] [STEP 001]   Output: sbdb_outer_ss.json
+[2026-09-21 14:28:47 UTC] [DEBUG   ] [STEP 001] 
+[2026-09-21 14:28:47 UTC] [DEBUG   ] [STEP 001] --- Centaurs (class CEN) ---
+[2026-09-21 14:28:47 UTC] [INFO    ] [STEP 001]   → GET https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Cconditi...
+[2026-09-21 14:28:48 UTC] [INFO    ] [STEP 001] METRIC: rows = 1050 objects returned
+[2026-09-21 14:28:48 UTC] [INFO    ] [STEP 001] METRIC: count = 1050 catalogue count field
+[2026-09-21 14:28:48 UTC] [INFO    ] [STEP 001] Saving data: sbdb_centaurs.json
+[2026-09-21 14:28:48 UTC] [DEBUG   ] [STEP 001]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/sbdb/sbdb_centaurs.json
+[2026-09-21 14:28:48 UTC] [INFO    ] [STEP 001]   Output: sbdb_centaurs.json
+[2026-09-21 14:28:49 UTC] [DEBUG   ] [STEP 001] 
+[2026-09-21 14:28:49 UTC] [DEBUG   ] [STEP 001] --- outer-reaching comets (q>=5 AU) ---
+[2026-09-21 14:28:49 UTC] [INFO    ] [STEP 001]   → GET https://ssd-api.jpl.nasa.gov/sbdb_query.api?fields=full_name%2Ca%2Ce%2Ci%2Com%2Cw%2Cq%2Cad%2CH%2Cepoch%2Cclass%2Cconditi...
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] METRIC: rows = 268 objects returned
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] METRIC: count = 268 catalogue count field
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Saving data: sbdb_comets_ext.json
+[2026-09-21 14:28:51 UTC] [DEBUG   ] [STEP 001]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/sbdb/sbdb_comets_ext.json
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   Output: sbdb_comets_ext.json
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Saving data: provenance.json
+[2026-09-21 14:28:51 UTC] [DEBUG   ] [STEP 001]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/data/raw/sbdb/provenance.json
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   Output: provenance.json
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   → SBDB download complete -> data/raw/sbdb/
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] 
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] ================================================================================
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] STEP SUMMARY: step_001_download_sbdb
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] ================================================================================
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Step Number: 001
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Status: SUCCESS
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Duration: 11.90s
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Log Records Emitted: 67
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Output Files: 4
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_001_download_sbdb.log
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] 
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Generated 4 output file(s):
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   • sbdb_outer_ss.json: 1650.17 KB [sha256 2693cb4491bacc75]
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   • sbdb_centaurs.json: 237.24 KB [sha256 eb1cbcf1cf985fd5]
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   • sbdb_comets_ext.json: 61.38 KB [sha256 bb078707f3fbeaf1]
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   • provenance.json: 2.86 KB [sha256 78fb1ab98fe0be86]
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] ================================================================================
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] STEP 001 COMPLETE: SUCCESS
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_001_download_sbdb_provenance.json
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] 
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] ================================================================================
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] EXECUTIVE SUMMARY
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] ================================================================================
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Step: step_001_download_sbdb (Step 001)
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Status: SUCCESS
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Duration: 11.90s
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Log Records: 79
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Output Files: 4
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] Key Outputs:
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   - sbdb_outer_ss.json (1650.17 KB)
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   - sbdb_centaurs.json (237.24 KB)
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   - sbdb_comets_ext.json (61.38 KB)
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001]   - provenance.json (2.86 KB)
+[2026-09-21 14:28:51 UTC] [INFO    ] [STEP 001] ================================================================================

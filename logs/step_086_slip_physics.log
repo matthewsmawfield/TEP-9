@@ -1,106 +1,168 @@
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] LOGGER INITIALIZED: step_086_slip_physics (Step 086)
-[2026-09-20 11:49:27 UTC] [DEBUG   ] [STEP 086] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_086_slip_physics.log
-[2026-09-20 11:49:27 UTC] [DEBUG   ] [STEP 086] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-20 11:49:27 UTC] [DEBUG   ] [STEP 086] Start time (UTC): 2026-09-20T11:49:27.722578+00:00
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] 
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] STEP PURPOSE
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] --------------------------------------------------------------------------------
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   Step 086 -- slip-physics discriminator: where in the orbit does
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   the anomaly act?
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   The inner-shell profile (step 076) shows the in-cap rotation excess
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   is already fully developed at the innermost probed shell of 8 AU --
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   inside the region where the comet is observed and the reconstruction
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   residual is generated.  That leaves a discriminating question the
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   radial profile alone cannot answer: is the slip a temporal offset
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   imprinted during the observed arc, a temporal offset imprinted at a
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   distant boundary crossing, or a fixed angular displacement?
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   For near-parabolic comets the three readings predict different
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   power-law scalings of the measured rotation with perihelion
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   distance q (h ~ q^{1/2}):
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   angular systematic   d_theta ~ q^0      (a fixed apsidal error:
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   zonal catalogue error or
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   directional fit bias)
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   boundary time slip   d_theta = dtau*h/r_b^2 ~ q^{+0.5}
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   (fixed proper-time offset at a ~250 AU
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   crossing; more angular
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   momentum h sweeps more
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   angle per unit time slip)
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   arc-epoch time slip  d_theta = omega_dot_arc * dtau ~ q^{-1.5}
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   (fixed time offset absorbed by the fit at
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   the observed-arc epoch;
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   the perihelion sweep rate
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   dominates and scales as
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   q^{-3/2})
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   Equivalently, on the boundary-normalized time slip
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   dtau = d_theta * r_b^2 / h the predictions are
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   angular    slope(dtau ~ q) = -0.5
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   boundary   slope            =  0
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   arc-epoch  slope            = -2.0
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   One dataset, one slope measurement on each of two normalizations,
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   three separated model points: (0, -0.5), (+0.5, 0), (-1.5, -2).
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   The out-of-cap cohort supplies the control -- a sky- or
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   catalogue-wide systematic would carry its scaling into both caps;
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   a boundary mechanism acts only on the crossing population.
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   Data: per-comet catalogue rotations drot_cat and boundary-
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   normalized slips dtau_cat from step_b30_proper_time_slip.csv
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   (CODE n=131, Warsaw n=98; theta vs the transit axis).
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   Outputs
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   results/step_b51_slip_physics.json
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   results/step_b51_slip_physics.csv   (per-comet inputs used)
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086]   results/figures/supplementary/step_b51_slip_physics.png
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] --------------------------------------------------------------------------------
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] SCRIPT: scripts/steps/step_086_slip_physics.py
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] SCRIPT SHA256: bef33b6dea7bc86d5f37582ecd6e0314a3b05a9c6b0ce46e901d3735cbef3190
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] SCRIPT SIZE: 13533 bytes
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] ================================================================================
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] Slip-physics discriminator: angular vs boundary vs arc-epoch
-[2026-09-20 11:49:27 UTC] [INFO    ] [STEP 086] ================================================================================
-[2026-09-20 11:49:28 UTC] [INFO    ] [STEP 086] loaded 229 comets (code 131, warsaw 98)
-[2026-09-20 11:49:32 UTC] [INFO    ] [STEP 086] pooled_in: n=75 s_theta=-0.60 s_tau=-1.10 | resid s_theta=-2.03 s_tau=-0.23 (pos 0.73)
-[2026-09-20 11:49:36 UTC] [INFO    ] [STEP 086] pooled_out: n=154 s_theta=-0.44 s_tau=-0.94 | resid s_theta=-1.50 s_tau=-0.10 (pos 0.66)
-[2026-09-20 11:49:40 UTC] [INFO    ] [STEP 086] code_in: n=43 s_theta=-0.69 s_tau=-1.19 | resid s_theta=-0.59 s_tau=-0.23 (pos 0.72)
-[2026-09-20 11:49:43 UTC] [INFO    ] [STEP 086] code_out: n=88 s_theta=-0.58 s_tau=-1.08 | resid s_theta=-0.94 s_tau=-0.01 (pos 0.60)
-[2026-09-20 11:49:46 UTC] [INFO    ] [STEP 086] warsaw_in: n=32 s_theta=-0.65 s_tau=-1.15 | resid s_theta=-4.11 s_tau=-0.21 (pos 0.75)
-[2026-09-20 11:49:49 UTC] [INFO    ] [STEP 086] warsaw_out: n=66 s_theta=-0.25 s_tau=-0.75 | resid s_theta=-3.49 s_tau=-0.16 (pos 0.74)
-[2026-09-20 11:49:49 UTC] [INFO    ] [STEP 086] Saving data: step_b51_slip_physics.json
-[2026-09-20 11:49:49 UTC] [DEBUG   ] [STEP 086]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b51_slip_physics.json
-[2026-09-20 11:49:49 UTC] [INFO    ] [STEP 086]   Output: step_b51_slip_physics.json
-[2026-09-20 11:49:49 UTC] [INFO    ] [STEP 086] Saving data: step_b51_slip_physics.csv
-[2026-09-20 11:49:49 UTC] [DEBUG   ] [STEP 086]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b51_slip_physics.csv
-[2026-09-20 11:49:49 UTC] [INFO    ] [STEP 086]   Output: step_b51_slip_physics.csv
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Saving data: step_b51_slip_physics.png
-[2026-09-20 11:49:51 UTC] [DEBUG   ] [STEP 086]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b51_slip_physics.png
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086]   Output: step_b51_slip_physics.png
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] 
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] ================================================================================
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] STEP SUMMARY: step_086_slip_physics
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] ================================================================================
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Step Number: 086
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Status: SUCCESS
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Duration: 23.92s
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Log Records Emitted: 81
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Output Files: 3
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_086_slip_physics.log
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] 
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Generated 3 output file(s):
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086]   • step_b51_slip_physics.json: 8.90 KB [sha256 aa8782d50f50c744]
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086]   • step_b51_slip_physics.csv: 32.13 KB [sha256 b3acb99f7692f27b]
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086]   • step_b51_slip_physics.png: 508.69 KB [sha256 1a15878a2a4e976f]
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] ================================================================================
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] STEP 086 COMPLETE: SUCCESS
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_086_slip_physics_provenance.json
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] 
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] ================================================================================
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] EXECUTIVE SUMMARY
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] ================================================================================
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Step: step_086_slip_physics (Step 086)
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Status: SUCCESS
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Duration: 23.92s
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Log Records: 92
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Output Files: 3
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] Key Outputs:
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086]   - step_b51_slip_physics.json (8.90 KB)
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086]   - step_b51_slip_physics.csv (32.13 KB)
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086]   - step_b51_slip_physics.png (508.69 KB)
-[2026-09-20 11:49:51 UTC] [INFO    ] [STEP 086] ================================================================================
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] LOGGER INITIALIZED: step_086_slip_physics (Step 086)
+[2026-09-21 14:54:54 UTC] [DEBUG   ] [STEP 086] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_086_slip_physics.log
+[2026-09-21 14:54:54 UTC] [DEBUG   ] [STEP 086] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-21 14:54:54 UTC] [DEBUG   ] [STEP 086] Start time (UTC): 2026-09-21T14:54:54.742494+00:00
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] 
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] STEP PURPOSE
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] --------------------------------------------------------------------------------
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   Step 086 -- slip-physics discriminator: where in the orbit does
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   the anomaly act?
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   The inner-shell profile (step 076) shows the in-cap rotation excess
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   is already fully developed at the innermost probed shell of 8 AU --
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   inside the region where the comet is observed and the reconstruction
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   residual is generated.  That leaves a discriminating question the
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   radial profile alone cannot answer: is the slip a temporal offset
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   imprinted during the observed arc, a temporal offset imprinted at a
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   distant boundary crossing, or a fixed angular displacement?
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   For near-parabolic comets the three readings predict different
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   power-law scalings of the measured rotation with perihelion
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   distance q (h ~ q^{1/2}):
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   angular systematic   d_theta ~ q^0      (a fixed apsidal error:
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   zonal catalogue error or
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   directional fit bias)
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   boundary time slip   d_theta = dtau*h/r_b^2 ~ q^{+0.5}
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   (fixed proper-time offset at a ~250 AU
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   crossing; more angular
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   momentum h sweeps more
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   angle per unit time slip)
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   arc-epoch time slip  d_theta = omega_dot_arc * dtau ~ q^{-1.5}
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   (fixed time offset absorbed by the fit at
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   the observed-arc epoch;
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   the perihelion sweep rate
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   dominates and scales as
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   q^{-3/2})
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   Equivalently, on the boundary-normalized time slip
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   dtau = d_theta * r_b^2 / h the predictions are
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   angular    slope(dtau ~ q) = -0.5
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   boundary   slope            =  0
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   arc-epoch  slope            = -2.0
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   One dataset, one slope measurement on each of two normalizations,
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   three separated model points: (0, -0.5), (+0.5, 0), (-1.5, -2).
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   The out-of-cap cohort supplies the control -- a sky- or
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   catalogue-wide systematic would carry its scaling into both caps;
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   a boundary mechanism acts only on the crossing population.
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   Data: per-comet catalogue rotations drot_cat and boundary-
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   normalized slips dtau_cat from step_b30_proper_time_slip.csv
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   (CODE n=131, Warsaw n=98; theta vs the transit axis).
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   Outputs
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   results/step_b51_slip_physics.json
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   results/step_b51_slip_physics.csv   (per-comet inputs used)
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086]   results/figures/supplementary/step_b51_slip_physics.png
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] --------------------------------------------------------------------------------
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] SCRIPT: scripts/steps/step_086_slip_physics.py
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] SCRIPT SHA256: bef33b6dea7bc86d5f37582ecd6e0314a3b05a9c6b0ce46e901d3735cbef3190
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] SCRIPT SIZE: 13533 bytes
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] ================================================================================
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] Slip-physics discriminator: angular vs boundary vs arc-epoch
+[2026-09-21 14:54:54 UTC] [INFO    ] [STEP 086] ================================================================================
+[2026-09-21 14:54:55 UTC] [INFO    ] [STEP 086] loaded 229 comets (code 131, warsaw 98)
+[2026-09-21 14:54:56 UTC] [INFO    ] [STEP 086] pooled_in: n=75 s_theta=-0.60 s_tau=-1.10 | resid s_theta=-2.03 s_tau=-0.23 (pos 0.73)
+[2026-09-21 14:54:57 UTC] [INFO    ] [STEP 086] pooled_out: n=154 s_theta=-0.44 s_tau=-0.94 | resid s_theta=-1.50 s_tau=-0.10 (pos 0.66)
+[2026-09-21 14:54:58 UTC] [INFO    ] [STEP 086] code_in: n=43 s_theta=-0.69 s_tau=-1.19 | resid s_theta=-0.59 s_tau=-0.23 (pos 0.72)
+[2026-09-21 14:54:59 UTC] [INFO    ] [STEP 086] code_out: n=88 s_theta=-0.58 s_tau=-1.08 | resid s_theta=-0.94 s_tau=-0.01 (pos 0.60)
+[2026-09-21 14:55:00 UTC] [INFO    ] [STEP 086] warsaw_in: n=32 s_theta=-0.65 s_tau=-1.15 | resid s_theta=-4.11 s_tau=-0.21 (pos 0.75)
+[2026-09-21 14:55:02 UTC] [INFO    ] [STEP 086] warsaw_out: n=66 s_theta=-0.25 s_tau=-0.75 | resid s_theta=-3.49 s_tau=-0.16 (pos 0.74)
+[2026-09-21 14:55:02 UTC] [INFO    ] [STEP 086] Saving data: step_b51_slip_physics.json
+[2026-09-21 14:55:02 UTC] [DEBUG   ] [STEP 086]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b51_slip_physics.json
+[2026-09-21 14:55:02 UTC] [INFO    ] [STEP 086]   Output: step_b51_slip_physics.json
+[2026-09-21 14:55:02 UTC] [INFO    ] [STEP 086] Saving data: step_b51_slip_physics.csv
+[2026-09-21 14:55:02 UTC] [DEBUG   ] [STEP 086]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b51_slip_physics.csv
+[2026-09-21 14:55:02 UTC] [INFO    ] [STEP 086]   Output: step_b51_slip_physics.csv
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Saving data: step_b51_slip_physics.png
+[2026-09-21 14:55:03 UTC] [DEBUG   ] [STEP 086]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b51_slip_physics.png
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]   Output: step_b51_slip_physics.png
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] 
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] ================================================================================
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] STEP SUMMARY: step_086_slip_physics
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] ================================================================================
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Step Number: 086
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Status: SUCCESS
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Duration: 8.29s
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Log Records Emitted: 81
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Output Files: 3
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_086_slip_physics.log
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] 
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Generated 3 output file(s):
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]   • step_b51_slip_physics.json: 8.90 KB [sha256 aa8782d50f50c744]
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]   • step_b51_slip_physics.csv: 32.13 KB [sha256 b3acb99f7692f27b]
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]   • step_b51_slip_physics.png: 508.69 KB [sha256 1a15878a2a4e976f]
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] 
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]   RESULT SNAPSHOT [step_b51_slip_physics.json]:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     models.angular:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       s_theta = 0
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       s_tau = -0.5
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       note = fixed angular displacement (zonal/fit systematic): d_theta ~ q^0
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     models.boundary:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       s_theta = 0.5
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       s_tau = 0
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       note = fixed proper-time slip at the ~250 AU boundary: d_theta = dtau*h/r^2 ~ q^+0.5
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     models.arc_epoch:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       s_theta = -1.5
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       s_tau = -2
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       note = fixed time slip absorbed at the observed-arc epoch: d_theta ~ perihelion sweep rate ~ q...
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_in:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_raw_angular = 0.8457071
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_raw_boundary = 1.5528139
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_raw_arc_epoch = 1.2756133
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_resid_angular = 2.0492555
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_resid_boundary = 2.5425634
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_resid_arc_epoch = 1.8449679
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_in.s_theta:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       n = 75
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       slope = -0.59809319
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       spearman_rho = -0.49963016
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       p_2sided = 5.0317878e-06
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_in.s_theta.ci68 [n=2]: median=-0.50503028 min=-0.61515183 max=-0.39490873
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_in.s_tau:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       n = 75
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       slope = -1.0979173
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       spearman_rho = -0.72642959
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       p_2sided = 1.6274741e-13
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_in.s_tau.ci68 [n=2]: median=-1.0061582 min=-1.1161691 max=-0.89614731
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_in.s_theta_resid:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       n = 55
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       slope = -2.0318329
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       spearman_rho = -0.55194805
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       p_2sided = 1.2525635e-05
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       n_pos_frac = 0.73333333
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_in.s_theta_resid.ci68 [n=2]: median=-1.9677982 min=-2.3656787 max=-1.5699176
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_in.s_tau_resid:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       n = 42
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       slope = -0.23334769
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       spearman_rho = -0.18807228
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       p_2sided = 0.23296971
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       n_pos_frac = 0.56
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_in.s_tau_resid.ci68 [n=2]: median=-0.23588687 min=-0.40469546 max=-0.067078284
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_in.spearman_q_vs_dtau_resid:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       rho = -0.13604552
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       p_2sided = 0.24449684
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_out:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_raw_angular = 0.6192811
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_raw_boundary = 1.3263879
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_raw_arc_epoch = 1.5020392
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_resid_angular = 1.5566916
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_resid_boundary = 2.0056679
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       dist_resid_arc_epoch = 1.9039548
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]     cohorts.pooled_out.s_theta:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       n = 154
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       slope = -0.43793197
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       spearman_rho = -0.35727675
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]       ... (snapshot truncated; full values in JSON)
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] ================================================================================
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] STEP 086 COMPLETE: SUCCESS
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_086_slip_physics_provenance.json
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] 
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] ================================================================================
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] EXECUTIVE SUMMARY
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] ================================================================================
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Step: step_086_slip_physics (Step 086)
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Status: SUCCESS
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Duration: 8.29s
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Log Records: 154
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Output Files: 3
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] Key Outputs:
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]   - step_b51_slip_physics.json (8.90 KB)
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]   - step_b51_slip_physics.csv (32.13 KB)
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086]   - step_b51_slip_physics.png (508.69 KB)
+[2026-09-21 14:55:03 UTC] [INFO    ] [STEP 086] ================================================================================

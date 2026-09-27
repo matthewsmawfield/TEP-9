@@ -4,7 +4,7 @@ Published NG parameters are used throughout this work only as an
 exclusion control (the NG-clean subsets).  They are never read as an
 observable.  Under the boundary-slip picture they should carry the
 anomaly in a specific way: a proper-time slip absorbed by a
-pure-gravity fit must leak into whatever free parameter soaks up a
+pure-gravity fit must leak into whichever free parameter absorbs a
 timing error, and in the Marsden formulation that parameter is the
 transverse NG term A2 (the component that changes the fitted orbital
 period).  The Warsaw catalogue publishes A1/A2/A3 with uncertainties
@@ -44,7 +44,8 @@ import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
-from scripts.utils.tep9_common import DATA_RAW, RESULTS, tee_stdout
+from scripts.utils.tep9_common import (DATA_RAW, RESULTS, tee_stdout,
+                                       load_jsonl_dedup)
 logger = StepLogger("step_143_comet_ng_channel")
 tee_stdout(logger)
 logger.header("Comet non-gravitational acceleration channel")
@@ -292,9 +293,9 @@ t7 = {}
 for tag, jf in (("pre2018", "step_b84_legs.jsonl"),
                 ("post2017", "step_b81_legs.jsonl")):
     vals = []
-    for line in open(RESULTS / jf):
-        r = json.loads(line)
-        if r.get("failed") or r.get("theta") is None:
+    for r in load_jsonl_dedup(RESULTS / jf,
+                              keep=lambda r: not r.get("failed")):
+        if r.get("theta") is None:
             continue
         ng = sbdb_ng(r["desig"])
         if "A2" in ng:

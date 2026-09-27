@@ -6,10 +6,10 @@ TEP / Planet-9 -- step b17: the injection chain
 The injected population is not one sample -- it is a chain:
 detached TNOs (boundary-resident) -> centaurs (transit) ->
 Jupiter-family comets (injected).  The full JFC population
-(N ~ 575, T_J in 2-3) shows a systematic rotation of mean
+(N ~ 580, T_J in 2-3) shows a systematic rotation of mean
 longitude of perihelion with perihelion depth: ~+40 deg at
 q < 3 -- aligned with the detached-TNO axis at 49 deg --
-progressing to ~190 deg pooled at q > 5 and ~220 deg on the
+progressing to ~198 deg pooled at q > 5 and ~220 deg on the
 dated JFc subset of step_b12, the anti-axis sector.
 
 The injected chain therefore touches BOTH ends of the

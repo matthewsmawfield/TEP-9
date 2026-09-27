@@ -289,7 +289,7 @@ def main():
                        statement="Residual amplitudes are now expressed in true dex. The earlier natural-log labels were a unit error; rank p-values are unchanged by this unit correction.",
                        published_0p3532556112920151_in_dex=0.3532556112920151/np.log(10)),
         eras=era_audit(corrected))
-    output = ROOT / "results/audits/TEP9_OBSERVABLE_AUDIT_20260919.json"
+    output = ROOT / "results/audits/audit_tep9_observables.json"
     output.write_text(json.dumps(result, indent=2, allow_nan=False)+"\n")
     print(json.dumps({"output": str(output), "twist": result["twist"],
                       "residual_definition": result["residual_definition"],
