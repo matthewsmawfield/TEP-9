@@ -2,9 +2,11 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22858191.svg)](https://doi.org/10.5281/zenodo.22858191)
 
+![Temporal Equivalence Principle: A Proper-Time Domain Boundary in the Outer Solar System](./site/public/image.webp)
+
 **Author:** Matthew Lukin Smawfield  
 **Version:** v0.1 (Addis Ababa)  
-**First published:** 20 September 2026 · **Last updated:** 30 September 2026  
+**First published:** 30 September 2026 · **Last updated:** 30 September 2026  
 **Status:** Preprint  
 **DOI:** [10.5281/zenodo.22858191](https://doi.org/10.5281/zenodo.22858191)  
 **Website:** [https://mlsmawfield.com/tep/9/](https://mlsmawfield.com/tep/9/)  
