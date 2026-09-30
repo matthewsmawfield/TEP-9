@@ -154,17 +154,20 @@ add_channel("clock-MGEX", "TEP-GNSS-MGEX step_2_4", mgex_axis,
             note=f"identifiable={mgex_ident}, cmb_p={mgex_cmb_p}")
 
 # LLR -- its own best axis is far from CMB; the registered finding is
-# that the Planck-dipole direction itself is anomalous (top 8.5%,
-# LEE p = 0.001).  Ledger the best axis; the evidence enters T3.
+# that the Planck-dipole direction is itself anomalous (rank 226/2664,
+# top 8.5%).  The channel statistic is that rank percentile: step_076's
+# look-elsewhere p = 0.001 is the global any-axis structure statistic
+# (scrambled skies carry essentially no signal), not the extremeness of
+# the named direction, and pooling it here would inflate T3.
 l = json.load(open(LLR / "step_076_sky_scan_directional.json"))
 la = l["max_delta_aic"]
 llr_axis = eqv(la["best_ra_deg"], la["best_dec_deg"])
 llr_planck = l["planck_dipole"]
-llr_p = l["look_elsewhere_correction"]["p_planck_axis_exceeds_observed"]
+llr_p = llr_planck["rank_by_delta_aic"] / l["n_directions"]
 add_channel("lunar-LLR-best", "TEP-LLR step_076", llr_axis,
             "free-recovery",
             note=f"Planck rank {llr_planck['rank_by_delta_aic']}"
-                 f"/2664, LEE p={llr_p}")
+                 f"/2664, channel p={llr_p:.4f} (rank percentile)")
 
 
 # ------------------------------------------------------------------
@@ -221,7 +224,7 @@ gnss2_pole_diagnostic = 1 - math.cos(math.radians(bip_dist(gnss2_axis)))
 if np.isfinite(mgex_cmb_p):
     chan_p["clock-MGEX-cmb-proj"] = mgex_cmb_p
 
-# LLR Planck-axis LEE p
+# LLR Planck-axis rank statistic
 if np.isfinite(llr_p):
     chan_p["lunar-LLR-Planck"] = llr_p
 

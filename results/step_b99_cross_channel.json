@@ -1,7 +1,7 @@
 {
  "step": "step_135_cross_channel",
  "result": "b99",
- "verdict": "CONVERGENT CROSS-CHANNEL GEOMETRY: 4 of 4 independent measurement classes resolve the frame-anchored bipolar structure at p<0.05 (nominal Fisher p=1.7e-08; GNSS-II direction epoch coincides with the comet era boundary at p=0.002 block-permutation).  No calibrated joint significance is claimed: GNSS overlap, directional sensitivity and the retrospective choice of geometric relation remain uncalibrated.",
+ "verdict": "CONVERGENT CROSS-CHANNEL GEOMETRY: 3 of 4 independent measurement classes resolve the frame-anchored bipolar structure at p<0.05 (nominal Fisher p=1.2e-06; GNSS-II direction epoch coincides with the comet era boundary at p=0.002 block-permutation).  No calibrated joint significance is claimed: GNSS overlap, directional sensitivity and the retrospective choice of geometric relation remain uncalibrated.",
  "T1_ledger": [
   {
    "channel": "comet-declared",
@@ -41,11 +41,11 @@
    "source": "TEP-GNSS-II step_2_5",
    "kind": "free-recovery",
    "recovered": true,
-   "cone_deg": 22.024166883940797,
-   "meridian_dist_deg": 0.5814620897602811,
-   "azimuth_deg": 27.203366246251214,
-   "bipolar_dist_deg": 22.024166883940804,
-   "note": "r=0.744, 2701-dir search"
+   "cone_deg": 161.78484085637825,
+   "meridian_dist_deg": 0.9268955911220488,
+   "azimuth_deg": 211.72054756811093,
+   "bipolar_dist_deg": 18.21515914362174,
+   "note": "r=0.746, 2701-dir search"
   },
   {
    "channel": "clock-MGEX",
@@ -68,15 +68,15 @@
    "meridian_dist_deg": 65.03171284335272,
    "azimuth_deg": 273.8731355105335,
    "bipolar_dist_deg": 87.84390652664146,
-   "note": "Planck rank 226/2664, LEE p=0.000999000999000999"
+   "note": "Planck rank 226/2664, channel p=0.0848 (rank percentile)"
   }
  ],
  "T2_meridian": {
   "hits": [
    {
     "channel": "clock-GNSS-II",
-    "meridian_dist_deg": 0.5814620897602811,
-    "p_plane": 0.010148253743977724
+    "meridian_dist_deg": 0.9268955911220488,
+    "p_plane": 0.016176674272600767
    },
    {
     "channel": "lunar-LLR-best",
@@ -84,21 +84,21 @@
     "p_plane": 0.9065415646729491
    }
   ],
-  "joint_p_nominal": 0.052333803633273265,
-  "product_statistic": 0.00919981382776368,
+  "joint_p_nominal": 0.07658417807261494,
+  "product_statistic": 0.01466482760628814,
   "interpretation": "Isotropic independent-direction reference only; product alone is not a p-value."
  },
  "T3_fisher": {
   "channel_p": {
    "comet-bipolar-J": 9.99950002499875e-05,
-   "clock-GNSS-II-meridian": 0.010148253743977724,
+   "clock-GNSS-II-meridian": 0.016176674272600767,
    "clock-MGEX-cmb-proj": 0.004975124378109453,
-   "lunar-LLR-Planck": 0.000999000999000999
+   "lunar-LLR-Planck": 0.08483483483483484
   },
-  "chi2": 52.025807382649184,
+  "chi2": 42.209858490454415,
   "df": 8,
-  "fisher_p_nominal": 1.6639020795634774e-08,
-  "excluded_duplicate_GNSS_pole_p": 0.07297423385523527,
+  "fisher_p_nominal": 1.236801501623986e-06,
+  "excluded_duplicate_GNSS_pole_p": 0.05011061834960151,
   "interpretation": "One term per channel; GNSS overlap, sky sensitivity, and retrospective choice of geometry are not calibrated."
  },
  "T4_epoch": {

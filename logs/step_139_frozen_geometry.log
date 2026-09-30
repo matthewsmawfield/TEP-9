@@ -1,169 +1,169 @@
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] LOGGER INITIALIZED: step_139_frozen_geometry (Step 139)
-[2026-09-21 15:17:20 UTC] [DEBUG   ] [STEP 139] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_139_frozen_geometry.log
-[2026-09-21 15:17:20 UTC] [DEBUG   ] [STEP 139] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-21 15:17:20 UTC] [DEBUG   ] [STEP 139] Start time (UTC): 2026-09-21T15:17:20.851578+00:00
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] 
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] STEP PURPOSE
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] --------------------------------------------------------------------------------
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   Step 139: Retrospective geometry audit (step_b103).
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   The input directions were already inspected in steps 131-135. Freezing them
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   now does not turn those data into a prospective test. This audit reports
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   geometric tail areas, retains each ISO's three orbit directions as one
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   rotation block, and excludes the resident direction that motivated the
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   transit sector. None of these tail areas is a discovery significance or
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   posterior probability for TEP. Future data require a timestamped protocol.
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] --------------------------------------------------------------------------------
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] SCRIPT: scripts/steps/step_139_frozen_geometry.py
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] SCRIPT SHA256: 0a623dda658b70aa6caefe1e623353470871ad0a10a785daf6950b55cedbc580
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] SCRIPT SIZE: 15299 bytes
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   loaded 9 ISO leg axes from step_b97
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   comet-displaced            [post2017-recovered] cone=  53.8 merid=  10.6 az= 221.9
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   comet-detached-resident    [  training-related] cone= 115.9 merid=   3.1 az= 205.3
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-1I-arrival             [     retrospective] cone= 111.8 merid=  26.2 az=  57.2
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-1I-periapsis           [     retrospective] cone=  38.1 merid=  27.2 az= 256.6
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-1I-departure           [     retrospective] cone= 159.9 merid=  18.7 az= 140.3
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-2I-arrival             [     retrospective] cone= 117.5 merid=  57.3 az= 137.2
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-2I-periapsis           [     retrospective] cone=  22.6 merid=   1.4 az= 205.1
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-2I-departure           [     retrospective] cone=  95.1 merid=  58.9 az= 329.5
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-3I-arrival             [     retrospective] cone= 121.8 merid=  27.5 az= 355.8
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-3I-periapsis           [     retrospective] cone=  26.9 merid=   1.8 az=  32.7
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-3I-departure           [     retrospective] cone=  76.4 merid=  26.9 az= 181.0
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   clock-GNSS-II              [     retrospective] cone=  22.0 merid=   0.6 az=  27.2
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   clock-MGEX                 [  non-identifiable] cone=  82.7 merid=  57.4 az=  86.9
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   lunar-LLR                  [     retrospective] cone=  87.8 merid=  65.0 az= 273.9
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] T1 mirror prediction: equatorial reflection of the declared axis about the CMB axis
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   predicted mirror at cone 48.5 az 208.8; recovered displaced 11.52 deg away; p=0.0733
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] T2 frozen meridian {CMB x declared} on recovered directions
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   comet-displaced            meridian  10.56  p=0.1832
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-1I-arrival             meridian  26.22  p=0.4419
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-1I-periapsis           meridian  27.23  p=0.4576
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-1I-departure           meridian  18.66  p=0.3200
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-2I-arrival             meridian  57.30  p=0.8415
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-2I-periapsis           meridian   1.41  p=0.0246
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-2I-departure           meridian  58.89  p=0.8561
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-3I-arrival             meridian  27.54  p=0.4624
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-3I-periapsis           meridian   1.80  p=0.0315
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-3I-departure           meridian  26.89  p=0.4522
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   clock-GNSS-II              meridian   0.58  p=0.0101
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   lunar-LLR                  meridian  65.03  p=0.9065
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   joint meridian chi2=36.4 on 12 directions, shuffle p=0.0775
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] T3 frozen cone band on held-out directions
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-1I-arrival             folded cone   68.2 (lobe 53.8, delta  14.4) p=0.458
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-1I-periapsis           folded cone   38.1 (lobe 48.5, delta  10.3) p=0.350
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-1I-departure           folded cone   20.1 (lobe 48.5, delta  28.3) p=0.802
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-2I-arrival             folded cone   62.5 (lobe 53.8, delta   8.7) p=0.307
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-2I-periapsis           folded cone   22.6 (lobe 48.5, delta  25.9) p=0.744
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-2I-departure           folded cone   84.9 (lobe 53.8, delta  31.1) p=0.866
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-3I-arrival             folded cone   58.2 (lobe 53.8, delta   4.4) p=0.192
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-3I-periapsis           folded cone   26.9 (lobe 48.5, delta  21.6) p=0.640
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   ISO-3I-departure           folded cone   76.4 (lobe 53.8, delta  22.5) p=0.664
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   clock-GNSS-II              folded cone   22.0 (lobe 48.5, delta  26.4) p=0.758
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   lunar-LLR                  folded cone   87.8 (lobe 53.8, delta  34.0) p=0.931
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] verdict: RETROSPECTIVE GEOMETRY ONLY; prospective confirmation not established
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139] Saving data: step_b103_frozen_geometry.json
-[2026-09-21 15:17:20 UTC] [DEBUG   ] [STEP 139]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b103_frozen_geometry.json
-[2026-09-21 15:17:20 UTC] [INFO    ] [STEP 139]   Output: step_b103_frozen_geometry.json
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Saving data: step_b103_frozen_geometry.png
-[2026-09-21 15:17:21 UTC] [DEBUG   ] [STEP 139]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b103_frozen_geometry.png
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]   Output: step_b103_frozen_geometry.png
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] {
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]  "predicted_mirror_cone_deg": 48.45789695284382,
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]  "predicted_mirror_az_deg": 208.75410429045937,
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]  "recovered_displaced_cone_deg": 53.80733307048544,
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]  "recovered_displaced_az_deg": 221.87714758861333,
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]  "sep_deg": 11.515729265349892,
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]  "p_azimuth_shuffle": 0.07334633268336584,
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]  "p_fixed_target": 0.010065032139573993,
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]  "note": "Retrospective mirror comparison: parameter-free after choosing the mirror rule, but the rule was examined on these directions. Neither target-selection history nor survey sensitivity is calibrated."
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] }
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] 
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] ================================================================================
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] STEP SUMMARY: step_139_frozen_geometry
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] ================================================================================
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Step Number: 139
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Status: SUCCESS
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Duration: 0.33s
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Log Records Emitted: 86
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Output Files: 2
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_139_frozen_geometry.log
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] 
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Generated 2 output file(s):
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]   • step_b103_frozen_geometry.json: 9.73 KB [sha256 0006703d8b8a869b]
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]   • step_b103_frozen_geometry.png: 280.07 KB [sha256 a608a91f352c6691]
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] 
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]   RESULT SNAPSHOT [step_b103_frozen_geometry.json]:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     frozen_inputs:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       hypothesis = one frame-anchored bipolar lapse field
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     frozen_inputs.cmb_apex_gal_lb [n=2]: median=156.135 min=48.25 max=264.02
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     frozen_inputs.declared_axis_ecl_lb [n=2]: median=10.5 min=-13 max=34
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     direction_ledger[0]:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       channel = comet-displaced
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       tier = post2017-recovered
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       note = free-scan axis, independent-refit confirmed
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       cone_deg = 53.8073
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 10.5581
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       azimuth_deg = 221.8771
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     direction_ledger[1]:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       channel = comet-detached-resident
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       tier = training-related
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       note = resident population motivated the transit sector; exclude from combined score
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       cone_deg = 115.9374
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 3.1097
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       azimuth_deg = 205.2957
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     direction_ledger[2]:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       channel = ISO-1I-arrival
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       tier = retrospective
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       note = ISO 1I arrival axis
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       cone_deg = 111.7712
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 26.2244
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       azimuth_deg = 57.1673
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     direction_ledger[3]:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       channel = ISO-1I-periapsis
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       tier = retrospective
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       note = ISO 1I periapsis axis
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       cone_deg = 38.1267
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 27.2309
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       azimuth_deg = 256.5821
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     direction_ledger[4]:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       channel = ISO-1I-departure
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       tier = retrospective
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       note = ISO 1I departure axis
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       cone_deg = 159.8747
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 18.6609
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       azimuth_deg = 140.3296
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     direction_ledger[5]:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       channel = ISO-2I-arrival
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       tier = retrospective
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       note = ISO 2I arrival axis
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       cone_deg = 117.4942
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 57.2953
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       azimuth_deg = 137.2034
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     direction_ledger[6]:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       channel = ISO-2I-periapsis
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       tier = retrospective
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       note = ISO 2I periapsis axis
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       cone_deg = 22.5893
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 1.4078
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       azimuth_deg = 205.087
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]     direction_ledger[7]:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       channel = ISO-2I-departure
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       tier = retrospective
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       note = ISO 2I departure axis
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]       ... (snapshot truncated; full values in JSON)
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] ================================================================================
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] STEP 139 COMPLETE: SUCCESS
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_139_frozen_geometry_provenance.json
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] 
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] ================================================================================
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] EXECUTIVE SUMMARY
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] ================================================================================
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Step: step_139_frozen_geometry (Step 139)
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Status: SUCCESS
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Duration: 0.33s
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Log Records: 156
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Output Files: 2
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] Key Outputs:
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]   - step_b103_frozen_geometry.json (9.73 KB)
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139]   - step_b103_frozen_geometry.png (280.07 KB)
-[2026-09-21 15:17:21 UTC] [INFO    ] [STEP 139] ================================================================================
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] LOGGER INITIALIZED: step_139_frozen_geometry (Step 139)
+[2026-09-30 11:57:57 UTC] [DEBUG   ] [STEP 139] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_139_frozen_geometry.log
+[2026-09-30 11:57:57 UTC] [DEBUG   ] [STEP 139] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-09-30 11:57:57 UTC] [DEBUG   ] [STEP 139] Start time (UTC): 2026-09-30T11:57:57.290384+00:00
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] 
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] STEP PURPOSE
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] --------------------------------------------------------------------------------
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   Step 139: Retrospective geometry audit (step_b103).
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   The input directions were already inspected in steps 131-135. Freezing them
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   now does not turn those data into a prospective test. This audit reports
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   geometric tail areas, retains each ISO's three orbit directions as one
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   rotation block, and excludes the resident direction that motivated the
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   transit sector. None of these tail areas is a discovery significance or
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   posterior probability for TEP. Future data require a timestamped protocol.
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] --------------------------------------------------------------------------------
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] SCRIPT: scripts/steps/step_139_frozen_geometry.py
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] SCRIPT SHA256: 0a623dda658b70aa6caefe1e623353470871ad0a10a785daf6950b55cedbc580
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] SCRIPT SIZE: 15299 bytes
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   loaded 9 ISO leg axes from step_b97
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   comet-displaced            [post2017-recovered] cone=  53.8 merid=  10.6 az= 221.9
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   comet-detached-resident    [  training-related] cone= 115.9 merid=   3.1 az= 205.3
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-1I-arrival             [     retrospective] cone= 111.8 merid=  26.2 az=  57.2
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-1I-periapsis           [     retrospective] cone=  38.1 merid=  27.2 az= 256.6
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-1I-departure           [     retrospective] cone= 159.9 merid=  18.7 az= 140.3
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-2I-arrival             [     retrospective] cone= 117.5 merid=  57.3 az= 137.2
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-2I-periapsis           [     retrospective] cone=  22.6 merid=   1.4 az= 205.1
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-2I-departure           [     retrospective] cone=  95.1 merid=  58.9 az= 329.5
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-3I-arrival             [     retrospective] cone= 121.8 merid=  27.5 az= 355.8
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-3I-periapsis           [     retrospective] cone=  26.9 merid=   1.8 az=  32.7
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-3I-departure           [     retrospective] cone=  76.4 merid=  26.9 az= 181.0
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   clock-GNSS-II              [     retrospective] cone= 161.8 merid=   0.9 az= 211.7
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   clock-MGEX                 [  non-identifiable] cone=  82.7 merid=  57.4 az=  86.9
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   lunar-LLR                  [     retrospective] cone=  87.8 merid=  65.0 az= 273.9
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] T1 mirror prediction: equatorial reflection of the declared axis about the CMB axis
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   predicted mirror at cone 48.5 az 208.8; recovered displaced 11.52 deg away; p=0.0733
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] T2 frozen meridian {CMB x declared} on recovered directions
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   comet-displaced            meridian  10.56  p=0.1832
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-1I-arrival             meridian  26.22  p=0.4419
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-1I-periapsis           meridian  27.23  p=0.4576
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-1I-departure           meridian  18.66  p=0.3200
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-2I-arrival             meridian  57.30  p=0.8415
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-2I-periapsis           meridian   1.41  p=0.0246
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-2I-departure           meridian  58.89  p=0.8561
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-3I-arrival             meridian  27.54  p=0.4624
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-3I-periapsis           meridian   1.80  p=0.0315
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-3I-departure           meridian  26.89  p=0.4522
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   clock-GNSS-II              meridian   0.93  p=0.0162
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   lunar-LLR                  meridian  65.03  p=0.9065
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   joint meridian chi2=35.4 on 12 directions, shuffle p=0.1032
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] T3 frozen cone band on held-out directions
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-1I-arrival             folded cone   68.2 (lobe 53.8, delta  14.4) p=0.458
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-1I-periapsis           folded cone   38.1 (lobe 48.5, delta  10.3) p=0.350
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-1I-departure           folded cone   20.1 (lobe 48.5, delta  28.3) p=0.802
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-2I-arrival             folded cone   62.5 (lobe 53.8, delta   8.7) p=0.307
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-2I-periapsis           folded cone   22.6 (lobe 48.5, delta  25.9) p=0.744
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-2I-departure           folded cone   84.9 (lobe 53.8, delta  31.1) p=0.866
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-3I-arrival             folded cone   58.2 (lobe 53.8, delta   4.4) p=0.192
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-3I-periapsis           folded cone   26.9 (lobe 48.5, delta  21.6) p=0.640
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   ISO-3I-departure           folded cone   76.4 (lobe 53.8, delta  22.5) p=0.664
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   clock-GNSS-II              folded cone   18.2 (lobe 48.5, delta  30.2) p=0.846
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   lunar-LLR                  folded cone   87.8 (lobe 53.8, delta  34.0) p=0.931
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] verdict: RETROSPECTIVE GEOMETRY ONLY; prospective confirmation not established
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Saving data: step_b103_frozen_geometry.json
+[2026-09-30 11:57:57 UTC] [DEBUG   ] [STEP 139]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b103_frozen_geometry.json
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   Output: step_b103_frozen_geometry.json
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Saving data: step_b103_frozen_geometry.png
+[2026-09-30 11:57:57 UTC] [DEBUG   ] [STEP 139]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b103_frozen_geometry.png
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   Output: step_b103_frozen_geometry.png
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] {
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]  "predicted_mirror_cone_deg": 48.45789695284382,
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]  "predicted_mirror_az_deg": 208.75410429045937,
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]  "recovered_displaced_cone_deg": 53.80733307048544,
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]  "recovered_displaced_az_deg": 221.87714758861333,
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]  "sep_deg": 11.515729265349892,
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]  "p_azimuth_shuffle": 0.07334633268336584,
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]  "p_fixed_target": 0.010065032139573993,
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]  "note": "Retrospective mirror comparison: parameter-free after choosing the mirror rule, but the rule was examined on these directions. Neither target-selection history nor survey sensitivity is calibrated."
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] }
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] 
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] ================================================================================
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] STEP SUMMARY: step_139_frozen_geometry
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] ================================================================================
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Step Number: 139
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Status: SUCCESS
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Duration: 0.27s
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Log Records Emitted: 86
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Output Files: 2
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_139_frozen_geometry.log
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] 
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Generated 2 output file(s):
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   • step_b103_frozen_geometry.json: 9.74 KB [sha256 84e861bd1917082d]
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   • step_b103_frozen_geometry.png: 277.81 KB [sha256 f3db2d45ac7cd1dc]
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] 
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   RESULT SNAPSHOT [step_b103_frozen_geometry.json]:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     frozen_inputs:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       hypothesis = one frame-anchored bipolar lapse field
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     frozen_inputs.cmb_apex_gal_lb [n=2]: median=156.135 min=48.25 max=264.02
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     frozen_inputs.declared_axis_ecl_lb [n=2]: median=10.5 min=-13 max=34
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     direction_ledger[0]:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       channel = comet-displaced
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       tier = post2017-recovered
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       note = free-scan axis, independent-refit confirmed
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       cone_deg = 53.8073
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 10.5581
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       azimuth_deg = 221.8771
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     direction_ledger[1]:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       channel = comet-detached-resident
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       tier = training-related
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       note = resident population motivated the transit sector; exclude from combined score
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       cone_deg = 115.9374
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 3.1097
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       azimuth_deg = 205.2957
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     direction_ledger[2]:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       channel = ISO-1I-arrival
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       tier = retrospective
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       note = ISO 1I arrival axis
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       cone_deg = 111.7712
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 26.2244
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       azimuth_deg = 57.1673
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     direction_ledger[3]:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       channel = ISO-1I-periapsis
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       tier = retrospective
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       note = ISO 1I periapsis axis
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       cone_deg = 38.1267
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 27.2309
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       azimuth_deg = 256.5821
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     direction_ledger[4]:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       channel = ISO-1I-departure
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       tier = retrospective
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       note = ISO 1I departure axis
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       cone_deg = 159.8747
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 18.6609
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       azimuth_deg = 140.3296
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     direction_ledger[5]:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       channel = ISO-2I-arrival
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       tier = retrospective
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       note = ISO 2I arrival axis
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       cone_deg = 117.4942
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 57.2953
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       azimuth_deg = 137.2034
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     direction_ledger[6]:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       channel = ISO-2I-periapsis
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       tier = retrospective
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       note = ISO 2I periapsis axis
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       cone_deg = 22.5893
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       meridian_dist_deg = 1.4078
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       azimuth_deg = 205.087
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]     direction_ledger[7]:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       channel = ISO-2I-departure
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       tier = retrospective
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       note = ISO 2I departure axis
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]       ... (snapshot truncated; full values in JSON)
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] ================================================================================
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] STEP 139 COMPLETE: SUCCESS
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_139_frozen_geometry_provenance.json
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] 
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] ================================================================================
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] EXECUTIVE SUMMARY
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] ================================================================================
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Step: step_139_frozen_geometry (Step 139)
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Status: SUCCESS
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Duration: 0.27s
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Log Records: 156
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Output Files: 2
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] Key Outputs:
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   - step_b103_frozen_geometry.json (9.74 KB)
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139]   - step_b103_frozen_geometry.png (277.81 KB)
+[2026-09-30 11:57:57 UTC] [INFO    ] [STEP 139] ================================================================================

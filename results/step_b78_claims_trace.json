@@ -1,11 +1,11 @@
 {
-  "timestamp_utc": "2026-09-23T16:50:29.370885+00:00",
+  "timestamp_utc": "2026-09-30T16:21:26.209044+00:00",
   "scope": "Repository syntax/inventory and exact publication bindings. Not a complete numerical rerun or a proof of TEP.",
   "summary": {
     "registered_steps": 152,
     "python_sources": 179,
-    "bound_claim_occurrences": 554,
-    "unique_bound_claims": 348,
+    "bound_claim_occurrences": 575,
+    "unique_bound_claims": 355,
     "result_files": 146,
     "hard_errors": 0,
     "legacy_files_with_nonfinite_values": 0,
@@ -21,7 +21,6 @@
     "audit_steps",
     "audit_unique",
     "bh_primary_q",
-    "block_geometry_p",
     "census_dpar",
     "census_p",
     "cone_post_gap",
@@ -30,6 +29,7 @@
     "detach_sig_frac",
     "detach_within30",
     "df_adm_slip_sust",
+    "df_b0_req_sclk",
     "df_conf_ratio_inst",
     "df_deficit_sust",
     "df_pred_mid",
@@ -1771,10 +1771,10 @@
       "path": [
         "T1_ledger",
         "3",
-        "cone_deg"
+        "bipolar_dist_deg"
       ],
-      "value": 22.024166883940797,
-      "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
+      "value": 18.21515914362174,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
     },
     {
       "claim": "rev_a_post",
@@ -2808,6 +2808,31 @@
       "source_sha256": "fc93b0822a4491d14ce6bf172aa048e164866490a4e40953a3355372cdb1d505"
     },
     {
+      "claim": "gnss_cmb_sep",
+      "component": "5_transit.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T1_ledger",
+        "3",
+        "bipolar_dist_deg"
+      ],
+      "value": 18.21515914362174,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "gnss_meridian_deg",
+      "component": "5_transit.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T2_meridian",
+        "hits",
+        "0",
+        "meridian_dist_deg"
+      ],
+      "value": 0.9268955911220488,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
       "claim": "gnss_meridian_p",
       "component": "5_transit.html",
       "result": "step_b99_cross_channel.json",
@@ -2817,8 +2842,19 @@
         "0",
         "p_plane"
       ],
-      "value": 0.010148253743977724,
-      "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
+      "value": 0.016176674272600767,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "cross_fisher_chi2",
+      "component": "5_transit.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T3_fisher",
+        "chi2"
+      ],
+      "value": 42.209858490454415,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
     },
     {
       "claim": "cross_nominal_p",
@@ -2828,8 +2864,45 @@
         "T3_fisher",
         "fisher_p_nominal"
       ],
-      "value": 1.6639020795634774e-08,
-      "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
+      "value": 1.236801501623986e-06,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "gnss_frozen_meridian_deg",
+      "component": "5_transit.html",
+      "result": "step_b103_frozen_geometry.json",
+      "path": [
+        "T2_frozen_meridian",
+        "per_direction",
+        "10",
+        "meridian_dist_deg"
+      ],
+      "value": 0.9268955911220489,
+      "source_sha256": "84e861bd1917082d7a1deb48810b8702f1cd0020c937a25f58810dbabb056a58"
+    },
+    {
+      "claim": "block_geometry_p",
+      "component": "5_transit.html",
+      "result": "step_b103_frozen_geometry.json",
+      "path": [
+        "T2_frozen_meridian",
+        "joint_p_azimuth_shuffle"
+      ],
+      "value": 0.1031948402579871,
+      "source_sha256": "84e861bd1917082d7a1deb48810b8702f1cd0020c937a25f58810dbabb056a58"
+    },
+    {
+      "claim": "gnss_folded_cone_deg",
+      "component": "5_transit.html",
+      "result": "step_b103_frozen_geometry.json",
+      "path": [
+        "T3_frozen_cone",
+        "per_direction",
+        "9",
+        "folded_cone_deg"
+      ],
+      "value": 18.21515914362172,
+      "source_sha256": "84e861bd1917082d7a1deb48810b8702f1cd0020c937a25f58810dbabb056a58"
     },
     {
       "claim": "epoch_year",
@@ -3378,6 +3451,90 @@
       ],
       "value": 0.06898620275944811,
       "source_sha256": "7e1147d46624f54cf036854e8c893e4e6768e43d554def9f13a062494ce2d37b"
+    },
+    {
+      "claim": "gnss_meridian_deg",
+      "component": "5_transit.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T2_meridian",
+        "hits",
+        "0",
+        "meridian_dist_deg"
+      ],
+      "value": 0.9268955911220488,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "gnss_meridian_p",
+      "component": "5_transit.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T2_meridian",
+        "hits",
+        "0",
+        "p_plane"
+      ],
+      "value": 0.016176674272600767,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "gnss_cmb_sep",
+      "component": "5_transit.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T1_ledger",
+        "3",
+        "bipolar_dist_deg"
+      ],
+      "value": 18.21515914362174,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "cross_fisher_chi2",
+      "component": "5_transit.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T3_fisher",
+        "chi2"
+      ],
+      "value": 42.209858490454415,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "cross_nominal_p",
+      "component": "5_transit.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T3_fisher",
+        "fisher_p_nominal"
+      ],
+      "value": 1.236801501623986e-06,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "gnss_frozen_meridian_deg",
+      "component": "5_transit.html",
+      "result": "step_b103_frozen_geometry.json",
+      "path": [
+        "T2_frozen_meridian",
+        "per_direction",
+        "10",
+        "meridian_dist_deg"
+      ],
+      "value": 0.9268955911220489,
+      "source_sha256": "84e861bd1917082d7a1deb48810b8702f1cd0020c937a25f58810dbabb056a58"
+    },
+    {
+      "claim": "block_geometry_p",
+      "component": "5_transit.html",
+      "result": "step_b103_frozen_geometry.json",
+      "path": [
+        "T2_frozen_meridian",
+        "joint_p_azimuth_shuffle"
+      ],
+      "value": 0.1031948402579871,
+      "source_sha256": "84e861bd1917082d7a1deb48810b8702f1cd0020c937a25f58810dbabb056a58"
     },
     {
       "claim": "gs_dirf_in",
@@ -3956,7 +4113,7 @@
         "admissible_signed_transport_contrast_yr"
       ],
       "value": -5.944325318611946,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_excluded_signed_transport",
@@ -3967,7 +4124,7 @@
         "excluded_signed_transport_contrast_yr"
       ],
       "value": 5.944325318611946,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_adm_amplitude_contrast",
@@ -3978,7 +4135,7 @@
         "observable_amplitude_contrast_yr"
       ],
       "value": 5.944325318611946,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_ub_req",
@@ -3989,7 +4146,7 @@
         "u_b_required"
       ],
       "value": 0.00012515028803863725,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_rho_pred",
@@ -4000,7 +4157,7 @@
         "rho_pred_vs_resid"
       ],
       "value": 0.16936836109639966,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_rho_pred_p",
@@ -4011,7 +4168,7 @@
         "p_pred_vs_resid"
       ],
       "value": 0.0105,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_gal_ratio",
@@ -4023,7 +4180,7 @@
         "ratio_vs_galactic"
       ],
       "value": 178.7861257694818,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_dlna_ppm",
@@ -4035,7 +4192,7 @@
         "delta_lnA_ppm"
       ],
       "value": 125.15028803863724,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_conf_ratio",
@@ -4047,7 +4204,7 @@
         "ratio_vs_sustained_bound"
       ],
       "value": 31.28757200965931,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_shear_imp",
@@ -4059,7 +4216,7 @@
         "delta_v_m_s"
       ],
       "value": 2696608128.9788594,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_shear_ratio",
@@ -4070,8 +4227,8 @@
         "shear_impulse",
         "ratio"
       ],
-      "value": 8988693763.262865,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "value": 121625527.95774804,
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "met_w_pcap",
@@ -4723,10 +4880,10 @@
       "path": [
         "T1_ledger",
         "3",
-        "cone_deg"
+        "bipolar_dist_deg"
       ],
-      "value": 22.024166883940797,
-      "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
+      "value": 18.21515914362174,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
     },
     {
       "claim": "fisher_two_pop",
@@ -5227,6 +5384,19 @@
       "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
     },
     {
+      "claim": "gnss_meridian_deg",
+      "component": "6_synthesis.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T2_meridian",
+        "hits",
+        "0",
+        "meridian_dist_deg"
+      ],
+      "value": 0.9268955911220488,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
       "claim": "gnss_meridian_p",
       "component": "6_synthesis.html",
       "result": "step_b99_cross_channel.json",
@@ -5236,8 +5406,31 @@
         "0",
         "p_plane"
       ],
-      "value": 0.010148253743977724,
-      "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
+      "value": 0.016176674272600767,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "gnss_cmb_sep",
+      "component": "6_synthesis.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T1_ledger",
+        "3",
+        "bipolar_dist_deg"
+      ],
+      "value": 18.21515914362174,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "cross_fisher_chi2",
+      "component": "6_synthesis.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T3_fisher",
+        "chi2"
+      ],
+      "value": 42.209858490454415,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
     },
     {
       "claim": "cross_nominal_p",
@@ -5247,8 +5440,8 @@
         "T3_fisher",
         "fisher_p_nominal"
       ],
-      "value": 1.6639020795634774e-08,
-      "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
+      "value": 1.236801501623986e-06,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
     },
     {
       "claim": "epoch_boundary_p",
@@ -5259,7 +5452,7 @@
         "p_at_boundary_blockperm"
       ],
       "value": 0.001999000499750125,
-      "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
     },
     {
       "claim": "xf_pooled_n",
@@ -6172,7 +6365,7 @@
         "admissible_signed_transport_contrast_yr"
       ],
       "value": -5.944325318611946,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_excluded_signed_transport",
@@ -6183,7 +6376,7 @@
         "excluded_signed_transport_contrast_yr"
       ],
       "value": 5.944325318611946,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_adm_amplitude_contrast",
@@ -6194,7 +6387,7 @@
         "observable_amplitude_contrast_yr"
       ],
       "value": 5.944325318611946,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_contrast",
@@ -6205,7 +6398,7 @@
         "measured_contrast_yr"
       ],
       "value": 5.944325318617941,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_ub_req",
@@ -6216,7 +6409,7 @@
         "u_b_required"
       ],
       "value": 0.00012515028803863725,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_rho_pred",
@@ -6227,7 +6420,7 @@
         "rho_pred_vs_resid"
       ],
       "value": 0.16936836109639966,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_rho_pred_p",
@@ -6238,7 +6431,7 @@
         "p_pred_vs_resid"
       ],
       "value": 0.0105,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_track_contrast_s",
@@ -6249,7 +6442,7 @@
         "pred_contrast_s"
       ],
       "value": 1.8578868527262127e-18,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_gal_ratio",
@@ -6261,7 +6454,7 @@
         "ratio_vs_galactic"
       ],
       "value": 178.7861257694818,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_dlna_ppm",
@@ -6273,7 +6466,7 @@
         "delta_lnA_ppm"
       ],
       "value": 125.15028803863724,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_conf_ratio",
@@ -6285,7 +6478,7 @@
         "ratio_vs_sustained_bound"
       ],
       "value": 31.28757200965931,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_shear_imp",
@@ -6297,7 +6490,7 @@
         "delta_v_m_s"
       ],
       "value": 2696608128.9788594,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_shear_ratio",
@@ -6308,8 +6501,8 @@
         "shear_impulse",
         "ratio"
       ],
-      "value": 8988693763.262865,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "value": 121625527.95774804,
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_adm_slip_inst",
@@ -6321,7 +6514,7 @@
         "max_slip_contrast_instantaneous_yr"
       ],
       "value": 0.003876994187200417,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "df_deficit_inst",
@@ -6333,7 +6526,35 @@
         "deficit_vs_measured_instantaneous"
       ],
       "value": 1533.230392308209,
-      "source_sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465"
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
+    },
+    {
+      "claim": "df_ub_energy",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "b0_requirement_plane",
+        "entries",
+        "energy_channel_bound",
+        "u_b"
+      ],
+      "value": 1.0289804298495105e-12,
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
+    },
+    {
+      "claim": "df_b0_req_energy",
+      "component": "7_discussion.html",
+      "result": "step_b131_disformal_slip.json",
+      "path": [
+        "admissibility_ledger",
+        "b0_requirement_plane",
+        "entries",
+        "energy_channel_bound",
+        "B0_required_for_measured"
+      ],
+      "value": 7.002432321605256e+29,
+      "source_sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f"
     },
     {
       "claim": "dissoc_sdrot",
@@ -6674,6 +6895,17 @@
       "source_sha256": "c5cf6a6b041a8ea2f4f780e2956c2cac34067c1b865def5b7aa85d79fff02745"
     },
     {
+      "claim": "cross_fisher_chi2",
+      "component": "9_conclusions.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T3_fisher",
+        "chi2"
+      ],
+      "value": 42.209858490454415,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
       "claim": "cross_nominal_p",
       "component": "9_conclusions.html",
       "result": "step_b99_cross_channel.json",
@@ -6681,8 +6913,8 @@
         "T3_fisher",
         "fisher_p_nominal"
       ],
-      "value": 1.6639020795634774e-08,
-      "source_sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6"
+      "value": 1.236801501623986e-06,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
     },
     {
       "claim": "post2017_dpar_bound",
@@ -6877,6 +7109,32 @@
       ],
       "value": 0.03407361372998079,
       "source_sha256": "48657286fc96cf526019652b2d0ac5ca5c81c771d9e82cce656855acc0300fc3"
+    },
+    {
+      "claim": "gnss_meridian_deg",
+      "component": "9_conclusions.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T2_meridian",
+        "hits",
+        "0",
+        "meridian_dist_deg"
+      ],
+      "value": 0.9268955911220488,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
+    },
+    {
+      "claim": "gnss_meridian_p",
+      "component": "9_conclusions.html",
+      "result": "step_b99_cross_channel.json",
+      "path": [
+        "T2_meridian",
+        "hits",
+        "0",
+        "p_plane"
+      ],
+      "value": 0.016176674272600767,
+      "source_sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec"
     }
   ],
   "stale_inputs": [],
@@ -6884,19 +7142,19 @@
   "script_inventory": [
     {
       "file": "core/__init__.py",
-      "sha256": "ea1700bc5f8f86bd0e695e1d22277ce87b9641751bd8e515eafe322609f3bfc7"
+      "sha256": "3b12a646b5e67ad609af70d640373de1ad957341a033111135ea971d1c13e299"
     },
     {
       "file": "core/conformal_scaling.py",
-      "sha256": "0eb67821fe16cf526d69869ab64417ad11f71202a04d4e24267919bfd98712cb"
+      "sha256": "942401b7fb3fcf8bc0a25c29abbc17b5e9dc5e70942b13db59e92558296839e2"
     },
     {
       "file": "core/constants.py",
-      "sha256": "d607f3084ed9151324655ce41c29844f22b2e20cebb7e892f62814e325a014f9"
+      "sha256": "0f005b232d010219ca92efc961a8d726972ac2156175694e78e4a919bb8972fc"
     },
     {
       "file": "core/cosmology.py",
-      "sha256": "029ac888c4202466990e744fccfc87a90d8843e3c8ef226279c64ba44fd33eb8"
+      "sha256": "c6f678643e7fa0c196534a33b6f764871df0c8490d0939b6bd38a41194beb238"
     },
     {
       "file": "core/evidence.py",
@@ -6904,11 +7162,11 @@
     },
     {
       "file": "core/scalar_field.py",
-      "sha256": "a7c79a930af0874102117711d037c45976ffd0c9249e26b69ea5fc2b2bda2f7f"
+      "sha256": "0aef59fa514d24b0a5d760275e41efe5b4f39bf90b2dc5fc39042d3e6659d333"
     },
     {
       "file": "core/screening.py",
-      "sha256": "f9e04cb999c484e90f24b4f87177fadd64c8353ce05dd273680f790b9f303ce5"
+      "sha256": "61bbcbb908256c6ecefa59f1bad321407385a40a07e89336cc4d43398f130baf"
     },
     {
       "file": "core/stability_proof.py",
@@ -7440,7 +7698,7 @@
     },
     {
       "file": "scripts/steps/step_135_cross_channel.py",
-      "sha256": "8a827c2e4295c7720bf024825c916295b14d5e6f06c600be163058ff96d59a3f"
+      "sha256": "4b448cf1cd78ebe4bbf22934bae3858dfaf4f80909e78ee4f9fb74c55644c816"
     },
     {
       "file": "scripts/steps/step_136_solar_wind_screening.py",
@@ -7480,7 +7738,7 @@
     },
     {
       "file": "scripts/steps/step_145_transfer_function.py",
-      "sha256": "200bf3614b8b38113fc514e4e8b7f64da8089d65a7a9e67bf40b19db037df65a"
+      "sha256": "78375261c25791c60c4b7a1d51d8bc83eddb0aa403f4e55b19c7465028da7bf4"
     },
     {
       "file": "scripts/steps/step_146_sclk_radial_gradient.py",
@@ -7560,7 +7818,7 @@
     },
     {
       "file": "scripts/steps/step_165_disformal_slip.py",
-      "sha256": "e74b87ab893b7e5f857c8a60f328debeae591eaf248eadd3aba66449baa106b7"
+      "sha256": "6f3f967464eb46238e72f522536e06a3d990717a6b1471f652eb5527e8bee15d"
     },
     {
       "file": "scripts/utils/coordinates.py",
@@ -7800,7 +8058,7 @@
     },
     {
       "file": "step_b103_frozen_geometry.json",
-      "sha256": "0006703d8b8a869b0540c95720718bcbdcf740b0c319e04830c7fdbbe737ce82",
+      "sha256": "84e861bd1917082d7a1deb48810b8702f1cd0020c937a25f58810dbabb056a58",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_139_frozen_geometry",
@@ -7871,7 +8129,7 @@
     },
     {
       "file": "step_b109_transfer_function.json",
-      "sha256": "f40da723dccbdcf74232047beee0b8a9fb0e867ee59eb3d58cd1d403a5bdbb86",
+      "sha256": "36e3fcef32eae423f1dd238b37aa088639f29bf0d57adb7181cf3b21a0b60b81",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_145_transfer_function",
@@ -8133,7 +8391,7 @@
     },
     {
       "file": "step_b131_disformal_slip.json",
-      "sha256": "755a7ea7177228e658f99b8510fc01817440845782861248e52885ddbc9e5465",
+      "sha256": "62db4312bb55bded620f6aa93808dd0470e35f108031ab29d5c2e2925b85b77f",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_165_disformal_slip",
@@ -9728,7 +9986,7 @@
     },
     {
       "file": "step_b99_cross_channel.json",
-      "sha256": "f0cff8cf74fb44b722e59cde748200020a0b35a1658632ffba15b899dd9c70e6",
+      "sha256": "c00bcd93bef4afa64edc0ef8ed89a8c3753131078ced67baf7c0dbbc4ffa86ec",
       "nonfinite_count": 0,
       "nonfinite_paths": [],
       "declared_producer": "step_135_cross_channel",

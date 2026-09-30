@@ -80,6 +80,10 @@ class HTMLToMarkdownConverter {
             const decodedCode = this.decodeEntities(code).replace(/\n+$/g, '');
             return `\n\n@@@CODEBLOCK_START:${language}@@@\n${decodedCode}\n@@@CODEBLOCK_END@@@\n\n`;
         });
+        html = html.replace(/<pre[^>]*>([\s\S]*?)<\/pre>/gi, (match, content) => {
+            const decoded = this.decodeEntities(content.replace(/<[^>]+>/g, '')).replace(/\n+$/g, '');
+            return `\n\n@@@CODEBLOCK_START:@@@\n${decoded}\n@@@CODEBLOCK_END@@@\n\n`;
+        });
 
         html = html.replace(/<table[^>]*>[\s\S]*?<\/table>/gi, (match) => this.tableToMarkdown(match));
 
@@ -103,7 +107,7 @@ class HTMLToMarkdownConverter {
         });
 
         html = html.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, '\n> $1\n\n');
-        html = html.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (match, content) => {
+        html = html.replace(/<p\b[^>]*>([\s\S]*?)<\/p>/gi, (match, content) => {
             // Strip leading whitespace from each line in paragraph content
             const stripped = content.split('\n').map(line => line.trim()).filter(line => line.length > 0).join(' ').replace(/ {2,}/g, ' ').trim();
             return `${stripped}\n\n`;
@@ -130,7 +134,11 @@ class HTMLToMarkdownConverter {
         });
 
         // Final cleanup: strip leading spaces from all lines
-        html = html.split('\n').map(line => line.replace(/^\s+/, '')).join('\n');
+        let inFence = false;
+        html = html.split('\n').map((line) => {
+            if (line.trimStart().startsWith('```')) inFence = !inFence;
+            return inFence ? line : line.replace(/^\s+/, '');
+        }).join('\n');
         return html.replace(/\n{3,}/g, '\n\n').trim();
     }
 
@@ -146,7 +154,7 @@ class HTMLToMarkdownConverter {
             const citationPath = path.join(__dirname, '..', 'CITATION.cff');
             let author = 'Matthew Lukin Smawfield';
             let version = 'v0.1 (Addis Ababa)';
-            let dateReleased = '2026-09-17';
+            let dateReleased = '2026-09-20';
             let doi = '';
             
             if (fs.existsSync(citationPath)) {
@@ -184,7 +192,7 @@ class HTMLToMarkdownConverter {
             const header = `# ${title}
 **${author}**
 Version: ${version}
-First published: ${dateReleased}${doi ? `\nDOI: ${doi}` : ''}
+First published: ${dateReleased}\nLast updated: ${manifest.last_updated}${doi ? `\nDOI: ${doi}` : ''}
 
 ---
 
