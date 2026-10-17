@@ -13,37 +13,37 @@
  "results": {
   "T1_sensitivity": {
    "n": 60,
-   "med_sigma_drot_deg": 1.7531073881385408e-06,
-   "med_sigma_aph_deg": 0.00020667963333915698,
-   "med_ratio": 0.006119264509524055,
-   "ratio_q10": 0.0016347217851999168,
-   "ratio_q90": 0.027631248186827717,
+   "med_sigma_drot_deg": 1.445706365261859e-06,
+   "med_sigma_aph_deg": 0.0002086839451816545,
+   "med_ratio": 0.005716775553624351,
+   "ratio_q10": 0.0016016898289054318,
+   "ratio_q90": 0.026003770197072645,
    "frac_ratio_gt_1": 0.0
   },
   "T2_group_attribution": {
-   "med_sdrot_weakgroup": 1.0582411845707672e-06,
-   "med_sdrot_anggroup": 4.844894470454214e-07,
-   "med_saph_weakgroup": 9.834791439399995e-07,
-   "med_saph_anggroup": 0.00019250874457790197
+   "med_sdrot_weakgroup": 1.0592260538345218e-06,
+   "med_sdrot_anggroup": 3.769765744050111e-07,
+   "med_saph_weakgroup": 1.0794197681021707e-06,
+   "med_saph_anggroup": 0.0001807491766109616
   },
   "T3_noise_gradient": {
    "sigma_drot": {
-    "rho_vs_nobs": -0.712707873198444,
-    "p_vs_nobs": 1.6861193871684516e-10,
-    "rho_vs_arc": -0.6308228789561121,
-    "p_vs_arc": 6.572014261088978e-08
+    "rho_vs_nobs": -0.6598405070762525,
+    "p_vs_nobs": 9.78798561371658e-09,
+    "rho_vs_arc": -0.5536892705351031,
+    "p_vs_arc": 4.456913782611685e-06
    },
    "sigma_aph": {
-    "rho_vs_nobs": -0.8024562720456555,
-    "p_vs_nobs": 1.2715312622576704e-14,
-    "rho_vs_arc": -0.6535517304288735,
-    "p_vs_arc": 1.5047698675366993e-08
+    "rho_vs_nobs": -0.7576481705667317,
+    "p_vs_nobs": 2.4301653030637256e-12,
+    "rho_vs_arc": -0.6400755776607937,
+    "p_vs_arc": 3.659469894077637e-08
    }
   },
   "T3b_stratified_noise": {
    "low": {
     "n": 55,
-    "med_sdrot": 2.4241299173155806e-06,
+    "med_sdrot": 1.7843003939378896e-06,
     "med_saph": 0.00030952135551748475
    },
    "mid": {
@@ -58,14 +58,14 @@
    }
   },
   "T4_matched_scale": {
-   "med_base_drot_deg": 0.10662016031501081,
-   "target_added_rot_deg": 0.09191586871650358,
+   "med_base_drot_deg": 0.10303025969519411,
+   "target_added_rot_deg": 0.08882106157026154,
    "n_objects_at_target": 1,
    "med_saph_at_target_deg": 0.6076261029797314,
    "med_sdrot_at_target_deg": 0.5818567125018597
   }
  },
- "verdict": "DISSOCIATION IS NOT AN ORBIT-ERROR ARTEFACT -- REVERSED SENSITIVITY ORDERING: the leg-rotation observable cancels common-mode element error (differential construction: inbound and outbound asymptotes move together), median sigma_drot 1.75e-06 deg versus sigma_aph 2.07e-04 deg -- the aphelion direction is ~163x MORE exposed to orbit-solution error, not less.  Nominal SBDB element covariances reach the observed rotation-residual scale for only 1 of 60 objects, so neither channel's post-2017 structure is producible by orbit-solution noise.  The residual field's quality gradient (b82 T12) is therefore an absorption/expressibility feature of the fit, not error noise, and the aphelion lean (+0.095, p=0.0021) replicates on the channel that is the MORE error-exposed of the two -- its quality-flatness is probative, not protected.",
+ "verdict": "DISSOCIATION IS NOT AN ORBIT-ERROR ARTEFACT -- REVERSED SENSITIVITY ORDERING: the leg-rotation observable cancels common-mode element error (differential construction: inbound and outbound asymptotes move together), median sigma_drot 1.45e-06 deg versus sigma_aph 2.09e-04 deg -- the aphelion direction is ~175x MORE exposed to orbit-solution error, not less.  Nominal SBDB element covariances reach the observed rotation-residual scale for only 1 of 60 objects, so neither channel's post-2017 structure is producible by orbit-solution noise.  The residual field's quality gradient (b82 T12) is therefore an absorption/expressibility feature of the fit, not error noise, and the aphelion lean (+0.095, p=0.0021) replicates on the channel that is the MORE error-exposed of the two -- its quality-flatness is probative, not protected.",
  "caveats": [
   "SBDB element sigmas are diagonal; correlated (rank-deficient) short-arc errors can move the observables along coupled directions this independent-draw construction does not sample, so sensitivities are conservative.",
   "Perturbed states reuse the fitted (our_*) elements as the base orbit; the audit measures the channels' differential response to orbit-error scale, not an absolute covariance."

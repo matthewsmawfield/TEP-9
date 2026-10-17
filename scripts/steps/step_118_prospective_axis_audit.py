@@ -643,7 +643,8 @@ res = {
                    "longitude-systematic vs look-elsewhere readings of "
                    "the step_117 rotated-axis signal",
     "inputs": [
-        "results/step_b81_prospective_lpc.csv / step_b81_legs.jsonl",
+        "results/step_b81_prospective_lpc.csv",
+        "results/step_b81_legs.jsonl",
         "results/step_b28_bidirectional_rotation.csv",
         "data/raw/code/code_osculating.html",
         "data/raw/sbdb/sbdb_comets_all.json",

@@ -50,7 +50,7 @@ def load_citation_metadata():
             version_match = re.search(r'version:\s*"?([^"\n]+)"?', content)
             version_str = version_match.group(1).strip() if version_match else 'v0.1'
         
-        # Parse version string like 'v0.1 (Addis Ababa)'
+        # Parse version string like 'v0.2 (Addis Ababa)'
         pattern = r'^(v?[\d.]+)(?:\s*\(([^)]+)\))?$'
         match = re.match(pattern, version_str.strip())
         
@@ -121,7 +121,7 @@ def copy_pdf_to_docs(source_pdf: Path, docs_dir: Path):
     version_str = f"v{metadata['version']}-{metadata['codename'].replace(' ', '-')}"
     
     # Primary PDF name (corpus convention: {paper}-TEP-9-{version}-{codename}.pdf)
-    prefix = f"{metadata['paper']}-" if metadata.get('paper') else ''
+    prefix = f"G{metadata['paper']}-" if metadata.get('paper') else ''
     target_name = f"{prefix}TEP-9-{version_str}.pdf"
     target_path = docs_dir / target_name
     
@@ -142,7 +142,7 @@ def copy_pdf_to_root(source_pdf: Path, base_dir: Path):
     version_str = f"v{metadata['version']}-{metadata['codename'].replace(' ', '-')}"
     
     # Primary PDF name (corpus convention: {paper}-TEP-9-{version}-{codename}.pdf)
-    prefix = f"{metadata['paper']}-" if metadata.get('paper') else ''
+    prefix = f"G{metadata['paper']}-" if metadata.get('paper') else ''
     target_name = f"{prefix}TEP-9-{version_str}.pdf"
     target_path = base_dir / target_name
     
@@ -154,6 +154,29 @@ def copy_pdf_to_root(source_pdf: Path, base_dir: Path):
     print(f"   Size: {target_path.stat().st_size / (1024*1024):.2f} MB")
     
     return target_path
+
+
+def sync_pdf_archive_and_dist(processed_pdf: Path, base_dir: Path):
+    """Keep root, site/public/docs, site/dist/public/docs, and ../manuscripts/pdfs in sync."""
+    import shutil
+    if not processed_pdf.exists():
+        return
+    target_name = processed_pdf.name
+    for dest in [
+        base_dir / target_name,
+        base_dir / "site" / "public" / "docs" / target_name,
+        base_dir / "site" / "dist" / "public" / "docs" / target_name,
+    ]:
+        if dest.parent.exists() and dest.resolve() != processed_pdf.resolve():
+            shutil.copy2(processed_pdf, dest)
+    shared_pdfs_dir = base_dir.parent / "manuscripts" / "pdfs"
+    if shared_pdfs_dir.exists():
+        prefix = target_name.split("-")[0]
+        for stale in shared_pdfs_dir.glob(f"{prefix}-TEP*.pdf"):
+            if stale.name != target_name:
+                stale.unlink(missing_ok=True)
+        shutil.copy2(processed_pdf, shared_pdfs_dir / target_name)
+        print(f"📄 Copied to shared archive: manuscripts/pdfs/{target_name}")
 
 
 def process_pdf_with_metadata(pdf_path: Path):
@@ -176,6 +199,7 @@ def process_pdf_with_metadata(pdf_path: Path):
         writer.write(stream)
     temporary.replace(pdf_path)
     print('PDF bibliographic metadata embedded')
+    sync_pdf_archive_and_dist(pdf_path, Path(__file__).resolve().parent.parent)
 
 
 async def generate_pdf(quality: str = 'high', wait_time: float = 5.0, skip_build: bool = False):

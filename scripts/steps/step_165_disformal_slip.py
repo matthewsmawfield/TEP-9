@@ -1,99 +1,38 @@
-"""step_165: canonical disformal transport -- amplitude closure for
-the comet boundary slip (b131).
+"""step_165: canonical disformal transport benchmark and geometry controls.
 
-Step 158 (b124) established that a single-valued scalar winding
-realisation cannot produce the slip: d(phi) is exact, the physical
-endpoint term is leg-symmetric, and the tested open-path statistic
-was cap-blind.  The canonical theory paper (0-TEP, Jakarta revision,
-Sec. 3.3 / 6 / A3.2) supplies the structure that step was missing:
-the invariant observable is the synchronisation connection
+Fits the step-065 unsigned equivalent-time amplitude using the positive-B
+benchmark envelope b(u)=B0*u^2/(1+u^2)*exp(-u^4/(2*sigma_B^4)). The leading
+connection term is integrated in a radial boundary layer. This is a scale
+requirement, not a derived admissible normalization or field solution.
 
-    dsigma_mu = -(B/A^2)(u . grad phi) P_mu^nu grad_nu phi ,
+Per-comet radial speeds are computed from the residual cohort's inverse
+semimajor axes and angular momenta at 250 AU. Spatial entry and exit directions
+come from the published original/future conic planes. Near-parabolic orbits
+cross near the same aphelion-side region; they are not antipodal. The previous
+antipodal construction imposed generic odd-mode cancellation artificially.
 
-whose scalar (conformal) part is exact and whose leading NON-exact
-part is the projected disformal term.  A comet is a transported
-clock: along its worldline u.grad phi = du/dt, so the open-path
-desynchronisation relative to the barycentric network is
+The exploratory signed-dipole excursion G(theta)=cos(theta) has an even
+quartic amplitude in the coincident-aphelion limit because the envelope is
+even and the traversal gradient is squared. Offset dipoles and quadrupolar
+profiles are retained as comparison cases. Shape correlations are conditional
+on this model exploration, not calibrated discovery probabilities.
 
-    dt_slip = (1/c) int dsigma_i dx^i
-            = -(1/c^2) int b(u) R_H^2 / (A^2 N^2) (du/dt)^2 dt
-
-with the corpus field-space envelope (excursion convention: u is the
-field measured from the contemporary ambient; the absolute-u convention
-is macroscopically excluded in the Paper-0 triangle calculation)
-
-    b(u) = B0 * u^2/(1+u^2) * exp(-u^4 / 2 sigma_B^4),
-    B0 = +3.2e-3   (admissible-branch benchmark).  The magnitude is
-    mirrored from the Paper-0 volume-balance reconstruction only to
-    set an instrumental scale; that reconstruction found B0 < 0 and
-    is excluded by the Paper-0 null-cone condition.  It is therefore
-    not a calibration of the admissible normalization.
-
-The primary step-065 datum is an equivalent-time amplitude obtained
-from an angular separation, delta t_eq = |delta theta| r_b^2/h.  It is
-unsigned.  Consequently the fit below must use |delta t_slip|.  The
-sign of the open-path synchronization transport is retained separately
-and is never inferred from that amplitude statistic.
-
-Properties that follow from the form alone (all measured
-independently in this pipeline):
-  * sign-definite in B: one sign of slip, no tuned sign;
-  * quadratic in the traversal rate -> the slip concentrates where
-    |grad u| is concentrated: a boundary transition gives a discrete
-    crossing offset (step 071 shell flatness, step 068 transit-time
-    independence);
-  * the comet crosses the boundary twice, at antipodal points, so an
-    axis-anchored field G(th) contributes G(th)^4 + G(180-th)^4 --
-    every odd harmonic cancels identically and the open-path slip is
-    automatically bipolar (cos 2th dominated) for ANY axis-anchored
-    field -- the morphology the residual slip field actually carries
-    (step 086: cos2th rho=+0.17, p=0.010; cos th flat at p=0.30),
-    while the resident-cloud source response is linear and stays
-    dipolar (step 164);
-  * the theta-uniform part of the lag is absorbed into the fitted
-    elements (parameter absorption, step 151) -- the observable is
-    the theta-dependent contrast, which is what the harmonic map
-    measures.
-
-The open question tested quantitatively: at a positive-B admissible
-benchmark of the same magnitude as the excluded reconstruction scale,
-what boundary field excursion u_b does the measured amplitude contrast
-require?  The answer is a scale relation, not a normalization
-prediction, and is compared against the corpus anchors
-(Newtonian-tracking 4e-11, Galactic ambient ~7e-7, solar surface ~2e-6,
-cosmological u ~ 0.75).
-
-Channels:
-  M (motion/quadratic): u.grad phi = du/dt along the comet
-      worldline -> per-crossing lag ~ (|B0| R_H^2/c^2) v_r *
-      int env_b(u) (du/dr)^2 dr; bipolar response via the
-      antipodal sum (exact for every axis-anchored G).
-  R (network roll): u.grad phi = -Pi W (partitioned roll of the
-      static clock congruence, Pi = H0) -> net transport
-      ~ (|B0| R_H^2/c^2) Pi * [U(G_in) - U(G_out)], signed by the
-      antipodal field difference; dipolar response, subdominant.
-
-Inputs
-  results/step_b30_proper_time_slip.csv   (per-comet residual slip,
-      dtau_unexplained, and axis separation theta; 229 pooled)
-  results/step_b124_metric_winding.csv    (per-comet boundary
-      crossing speed v_cross)
-
-Outputs
-  results/step_b131_disformal_slip.json
-  results/step_b131_disformal_slip.csv
-  results/figures/supplementary/step_b131_disformal_slip.png
+The signed transport and unsigned fitted statistic are stored separately.
+Clock and one-crossing impulse comparisons are conditional diagnostics; the
+full metric, trajectory and observation response remains to be validated.
 """
 
 import sys as _sys
 from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
-from scripts.utils.tep9_common import RESULTS, tee_stdout
+from scripts.utils.tep9_common import RESULTS, DATA_RAW, tee_stdout, parse_code, perih_dir, lv, sep
+from scripts.utils.statistics import monte_carlo_tail
+from scripts.utils.boundary_transport import (radial_crossing_speed, angular_harmonics,
+                                                conic_boundary_direction)
 logger = StepLogger("step_165_disformal_slip")
 tee_stdout(logger)
-logger.header("Canonical disformal transport -- comet-slip "
-              "amplitude closure")
+logger.header("Disformal transport: amplitude and spatial crossing geometry")
 
 import csv
 import json
@@ -136,18 +75,55 @@ def env_b(u):
 # ------------------------------------------------------------------
 slip_rows = {r["desig"]: r for r in csv.DictReader(
     open(RESULTS / "step_b30_proper_time_slip.csv"))}
-wind_rows = {r["desig"]: r for r in csv.DictReader(
-    open(RESULTS / "step_b124_metric_winding.csv"))}
+logger.data_load(RESULTS / "step_b30_proper_time_slip.csv",
+                 "Residual slip, inverse semimajor axis and angular momentum")
+
+# Use the published orbital planes to sample the field at the spatial
+# entry/exit locations, rather than imposing antipodal positions.
+code_in = parse_code(str(DATA_RAW / "code/code_original.html"))
+code_out = parse_code(str(DATA_RAW / "code/code_future.html"))
+
+def _warsaw(path, preference):
+    rows = {}
+    for line in path.read_text().splitlines():
+        if len(line) < 115:
+            continue
+        try:
+            name, model = line[5:17].strip(), line[3].strip()
+            record = dict(q=float(line[42:56]), e=float(line[56:70]),
+                          w=float(line[70:82]), Om=float(line[82:94]),
+                          i=float(line[94:106]), model=model)
+        except ValueError:
+            continue
+        if name not in rows or preference.get(model, 9) < preference.get(rows[name]["model"], 9):
+            rows[name] = record
+    return rows
+
+warsaw_in = _warsaw(DATA_RAW / "warsaw/warsaw_tablec.dat", {"a":0,"h":0,"e":1,"b":2})
+warsaw_out = _warsaw(DATA_RAW / "warsaw/warsaw_tabled.dat", {"i":0,"l":0,"j":2,"k":2})
+FIELD_AXIS = lv(34.0, -13.0)
+
+def _crossing(record, outbound):
+    w, node, inc = map(math.radians, (record["w"], record["Om"], record["i"]))
+    peri = perih_dir(w, node, inc)
+    normal = np.array([math.sin(inc)*math.sin(node),
+                       -math.sin(inc)*math.cos(node), math.cos(inc)])
+    return conic_boundary_direction(record["q"], record["e"], peri, normal,
+                                    R_B / AU_M, outbound)
 
 comets = []
 for d, r in slip_rows.items():
     if r.get("dtau_unexplained") in ("", None) or r.get("theta") in (
             "", None):
         continue
-    wr = wind_rows.get(d, {})
-    vc = float(wr["v_cross"]) if wr.get("v_cross") not in (
-        "", None) else 0.88
+    vc = float(radial_crossing_speed(
+        float(r["aa_back"]), float(r["h"]), R_B / AU_M))
+    incoming, outgoing = ((code_in, code_out) if r["cohort"] == "code"
+                          else (warsaw_in, warsaw_out))
+    entry, exit_ = _crossing(incoming[d], False), _crossing(outgoing[d], True)
     comets.append(dict(desig=d, theta=float(r["theta"]),
+                       theta_entry=sep(entry, FIELD_AXIS), theta_exit=sep(exit_, FIELD_AXIS),
+                       crossing_separation=sep(entry, exit_),
                        dtau=float(r["dtau_unexplained"]),
                        daa=abs(float(r["daa_sim"]))
                        if r.get("daa_sim") not in ("", None) else np.nan,
@@ -156,6 +132,8 @@ logger.info(f"cohort: {len(comets)} comets with residual slip, "
             f"theta, crossing speed")
 
 TH = np.array([c["theta"] for c in comets])
+TH_ENTRY = np.array([c["theta_entry"] for c in comets])
+TH_EXIT = np.array([c["theta_exit"] for c in comets])
 DT_OBS = np.array([c["dtau"] for c in comets])          # yr
 VR = np.array([c["v_cross"] for c in comets]) * AU_M / YR_S  # m/s
 
@@ -174,8 +152,8 @@ logger.info(f"measured residual: pole {meas_pole:.2f} yr "
 # ------------------------------------------------------------------
 # Excursion convention: u(r,th) = u_b G(th) sigma(r) is the field
 # measured from ambient; sigma logistic, 1 inside, 0 outside.
-# Inbound crossing at theta_in = theta; outbound at the antipode
-# theta_out = 180 - theta.  Crossing layer s = r - r_b.
+# Entry/exit use published conic spatial directions. The radial-layer
+# approximation freezes each direction across the layer.
 N_S = 8001
 
 
@@ -192,13 +170,13 @@ def K_matrix(Gvals, u_b, ell_m):
     u = u_b * np.outer(sig, Gvals)                  # (N_S, n_G)
     integrand = env_b(u) * (u_b * Gvals[None, :]
                             * dsig[:, None]) ** 2
-    return np.trapz(integrand, s, axis=0)
+    return np.trapezoid(integrand, s, axis=0)
 
 
 def U_matrix(Gvals, u_b, n=2001):
     """int_0^{u_b G} env_b(u) du  (roll channel)."""
     uu = np.linspace(0.0, 1.0, n)[None, :] * (u_b * Gvals)[:, None]
-    return np.trapz(env_b(uu), uu, axis=1)
+    return np.trapezoid(env_b(uu), uu, axis=1)
 
 
 def slip_profiles(Gfun, u_b, ell_m):
@@ -208,8 +186,8 @@ def slip_profiles(Gfun, u_b, ell_m):
     transport orientation reverses with B0.  Observable amplitude
     comparisons must be made outside this function.
     """
-    Gin = Gfun(TH)
-    Gout = Gfun(180.0 - TH)
+    Gin = Gfun(TH_ENTRY)
+    Gout = Gfun(TH_EXIT)
     Kin = K_matrix(Gin, u_b, ell_m)
     Kout = K_matrix(Gout, u_b, ell_m)
     dtM = (-B0 * R_H**2 / C**2) * VR * (Kin + Kout)
@@ -226,10 +204,7 @@ def slip_amplitude(Gfun, u_b, ell_m):
 
 def harmonics_uniform(y, th_deg):
     """cos th / cos 2th content on a uniform theta grid."""
-    c1 = np.cos(np.radians(th_deg))
-    c2 = np.cos(2 * np.radians(th_deg))
-    return dict(cos1=float(np.dot(y, c1) / np.dot(c1, c1)),
-                cos2=float(np.dot(y, c2) / np.dot(c2, c2)))
+    return angular_harmonics(y, th_deg)
 
 
 def P2(x):
@@ -237,6 +212,7 @@ def P2(x):
 
 
 MORPHS = {
+    "signed_dip": lambda t: np.cos(np.radians(t)),
     "iso":     lambda t: np.ones_like(np.asarray(t, dtype=float)),
     "dip_a1":  lambda t: 1.0 + np.cos(np.radians(t)),
     "dip_a2":  lambda t: 1.0 + 2.0 * np.cos(np.radians(t)),
@@ -267,7 +243,7 @@ for mname, Gf in MORPHS.items():
         ub_req_out = None if np.isnan(ub_req) else ub_req
         # morphology harmonics on the uniform grid
         Gin = Gf(TH_GRID)
-        Gout = Gf(180.0 - TH_GRID)
+        Gout = Gf(TH_GRID)
         prof = K_matrix(Gin, 1e-4, ell_m) + K_matrix(Gout, 1e-4,
                                                    ell_m)
         h = harmonics_uniform(prof, TH_GRID)
@@ -282,9 +258,9 @@ for mname, Gf in MORPHS.items():
                     f"{ub_req:.2e}")
 
 # ------------------------------------------------------------------
-# headline: dipolar field, ell = 8 AU (the step_158 envelope width)
+# headline: exploratory signed-dipole excursion, ell = 8 AU
 # ------------------------------------------------------------------
-Gf = MORPHS["dip_a1"]
+Gf = MORPHS["signed_dip"]
 ell_m = 8.0 * AU_M
 grid = np.logspace(-7, -1, 120)
 gc = np.empty(len(grid))
@@ -309,14 +285,14 @@ rho_in = spearmanr(prof_M[TH < CAP], DT_OBS[TH < CAP])
 null_rho = np.array([spearmanr(prof_M[rng.permutation(len(prof_M))],
                                DT_OBS).statistic
                      for _ in range(2000)])
-p_rho = float((np.abs(null_rho) >= abs(rho_pred.statistic)).mean())
+p_rho = monte_carlo_tail(null_rho, rho_pred.statistic, "two-sided")
 # uniform-grid morphology for the headline
 prof_grid = K_matrix(Gf(TH_GRID), ub_head, ell_m) + K_matrix(
-    Gf(180.0 - TH_GRID), ub_head, ell_m)
+    Gf(TH_GRID), ub_head, ell_m)
 h_head = harmonics_uniform(prof_grid, TH_GRID)
 
 headline = dict(
-    morph="dip_a1: field 1 + cos th; antipodal double crossing",
+    morph="signed_dip: excursion cos(theta); published conic spatial crossings",
     ell_au=8.0, u_b_required=ub_head,
     harmonics_uniform=dict(cos1=h_head["cos1"], cos2=h_head["cos2"]),
     rho_pred_vs_resid=float(rho_pred.statistic),
@@ -335,7 +311,7 @@ headline = dict(
     roll_mid_med=float(np.median(prof_R[midband])),
     roll_cos1_uniform=float(harmonics_uniform(
         U_matrix(Gf(TH_GRID), ub_head)
-        - U_matrix(Gf(180.0 - TH_GRID), ub_head), TH_GRID)["cos1"]),
+        - U_matrix(Gf(TH_GRID), ub_head), TH_GRID)["cos1"]),
     measured_contrast_yr=meas_contrast)
 logger.info("headline: " + json.dumps(
     {k: (round(v, 4) if isinstance(v, float) else v)
@@ -354,32 +330,22 @@ track_pred = dict(
 anchors = {"Newtonian_tracking_250AU": U_TRACK,
            "Galactic_ambient": U_GAL,
            "solar_surface": U_SUN_SURF,
-           "required_u_b_dip_ell8": ub_head,
+           "required_u_b_signed_dip_ell8": ub_head,
            "cosmological_ambient": U_COSMO}
 
 verdict = {
     "required_u_b": ub_head,
     "statement": (
-        "On the admissible B0 = +3.2e-3 benchmark, whose magnitude "
-        "is mirrored from the sign-excluded Paper-0 reconstruction "
-        "only as an instrumental scale, the canonical "
-        "synchronisation connection "
-        "integrated along comet trajectories reproduces the "
-        "measured bipolar slip contrast (+%.1f yr pole-versus-"
-        "midband) for a boundary field excursion u_b ~ %.1e.  The "
-        "morphology is not tuned: an axis-anchored field crossed "
-        "at antipodal points gives a bipolar (cos 2th) open-path "
-        "slip identically -- every odd harmonic cancels in the "
-        "double crossing -- matching the measured harmonic "
-        "structure (cos 2th dominated, cos th flat), while the "
-        "resident-cloud source response stays linear/dipolar "
-        "(step 164).  The required excursion sits ~10^3 above "
-        "Galactic ambient tracking and ~10^3 below the "
-        "cosmological value: the 250 AU boundary would have to be "
-        "a genuine temporal-structure boundary -- the edge of the "
-        "Solar System's screening domain -- rather than a "
-        "kinematic marker.  Potential-tracking amplitudes "
-        "(u ~ 4e-11) under-produce the slip by ~24 orders."
+        "At the positive-B benchmark, the exploratory signed-dipole excursion "
+        "cos(theta) evaluated at published conic spatial entry/exit directions "
+        "fits the %.3g-year amplitude contrast with u_b = %.3g. The observed "
+        "contrast is fitted, not predicted. A signed dipole gives an even "
+        "quartic amplitude in the coincident-aphelion limit because env_b is "
+        "even and the traversal term is squared. Offset dipoles do not share "
+        "that symmetry. Nearly parabolic entry and exit are nearby, rather "
+        "than antipodal, so the previous generic odd-mode cancellation claim "
+        "does not apply to these comet trajectories. Source-profile, metric "
+        "and observation-transfer closure remain required."
         % (meas_contrast, ub_head)),
     "sign_check": (
         "The fitted step-065 equivalent time is constructed from an "
@@ -389,10 +355,7 @@ verdict = {
         "signed open-path transport.  A signed transfer function is "
         "required before the independent signed-rotation statistic "
         "can be mapped to the synchronization-connection orientation."),
-    "morphology_check": (
-        "any axis-anchored field -> bipolar slip via the antipodal "
-        "double crossing (odd harmonics cancel identically); the "
-        "network-roll channel is dipolar and subdominant"),
+    "morphology_check": "Even response is specific to the tested signed-dipole excursion in the symmetric limit; actual crossing locations are retained per comet. Profile choice is exploratory.",
     "absorption_note": (
         "the theta-uniform part of the lag is absorbed into the "
         "fitted elements (parameter absorption, step 151); the "
@@ -401,15 +364,8 @@ verdict = {
         "u_b is measured, not derived: closure requires solving "
         "the screening-domain field profile at the 250 AU "
         "boundary and checking whether the solved depth reaches "
-        "~1e-4"),
-    "admissibility": (
-        "see admissibility_ledger: the required excursion is "
-        "unsourceable by the local field hierarchy, carries a "
-        "mandatory ~120 ppm conformal clock step and a ~10^10x "
-        "over-bound shear impulse, and the admissible B >= 0 "
-        "branch predicts the wrong sign; the result is a "
-        "falsification condition on the solved field profile, "
-        "not mechanism closure")}
+        "~%.3g" % ub_head),
+    "admissibility": "See the computed admissibility_ledger below."}
 
 # ------------------------------------------------------------------
 # admissibility ledger -- does the corpus's own architecture admit
@@ -425,7 +381,10 @@ SCLK_INST = 2.0e-5                     # instantaneous onboard-vs-ground
 DALPHA_HOL = 6.04e-13                  # step_145 equivalent conformal
                                        # step, pre-2018 record
 G_SUN_RB = 1.32712440018e20 / R_B**2   # solar g at r_b ~ 9.5e-8 m/s^2
-V_CROSS_MED = float(np.median(VR))     # m/s
+V_CROSS_MED = float(np.median(VR))     # radial m/s
+V_TOTAL_MED = float(np.median([
+    math.hypot(c["v_cross"], float(slip_rows[c["desig"]]["h"]) / 250.0)
+    for c in comets])) * AU_M / YR_S
 
 ledger = {}
 ledger["required_u_b"] = ub_head
@@ -472,10 +431,11 @@ GM_SI = 1.32712440018e20          # m^3 s^-2
 DAA = np.array([c["daa"] for c in comets])
 DAA_MED = float(np.nanmedian(DAA))          # 1e-6 AU^-1
 DV_ENERGY = (GM_SI * DAA_MED * 1e-6 / AU_M
-             / (2.0 * V_CROSS_MED))          # m/s
+             / (2.0 * V_TOTAL_MED))          # m/s, along-track
 U_B_ENERGY = GM_SI * DAA_MED * 1e-6 / AU_M / (2.0 * C**2)
 ledger["shear_impulse"] = {
     "delta_v_m_s": C * C * ub_head / V_CROSS_MED,
+    "along_track_delta_v_m_s": C * C * ub_head / V_TOTAL_MED,
     "energy_channel_bound_m_s": DV_ENERGY,
     "energy_channel_bound_source": (
         "median measured |D(1/a)| = %.1f x1e-6 AU^-1 over the slip "
@@ -485,19 +445,24 @@ ledger["shear_impulse"] = {
         "distance (AU) for the energy residual (1e-6 AU^-1) -- a "
         "wrong-variable defect corrected in step_145 T2."
         % DAA_MED),
-    "ratio": C * C * ub_head / V_CROSS_MED / DV_ENERGY,
+    "ratio": C * C * ub_head / V_TOTAL_MED / DV_ENERGY,
     "u_b_bound_from_energy_channel": U_B_ENERGY,
-    "note": ("the wall-normal impulse c^2 du/dr integrated across the "
-             "layer is c^2 u_b / v -- independent of W; exceeds the "
-             "along-track energy-channel bound by ~10^8")}
+    "note": ("One-crossing, weak-impulse diagnostic only. The radial kick is "
+             "c^2 u_b/v_r; its along-track projection is c^2 u_b/v. "
+             "A static conservative field can cancel the energy change on "
+             "the return crossing, so an inter-leg net-energy floor is not "
+             "a direct bound on each crossing without a transfer model. "
+             "The fitted benchmark violates the small-impulse approximation."),
+    "bound_status": "conditional on an uncancelled along-track impulse"}
 
 # internal realization consistency
 ledger["realization_consistency"] = {
     "holonomy_equiv_conformal_step": DALPHA_HOL,
     "disformal_required_u_b": ub_head,
     "ratio": ub_head / DALPHA_HOL,
-    "note": ("the two quoted realizations differ by ~8 orders; they "
-             "cannot describe the same field")}
+    "note": ("The equivalent impulse scale and fitted disformal excursion "
+             "use different transfer models. Their ratio is diagnostic; "
+             "equality is not required without deriving their relation.")}
 
 
 def _contrast_at(ub):
@@ -548,44 +513,45 @@ ledger["b0_requirement_plane"] = {
     "scaling": "slip proportional to B0 exactly; contrast ~ B0 u_b^4 "
                "in the small-u regime (env_b ~ u^2)",
     "entries": b0_plane,
-    "note": ("the energy-channel bound (u_b <= %.1e, from the "
-             "wall-normal impulse c^2 u_b / v <= %.1f m/s, the "
-             "measured |D(1/a)| floor) is the binding constraint: "
-             "closure at that excursion requires an admissible "
-             "B0 ~ %.1e.  The verdict 'unsourceable excursion' is "
-             "equivalently 'underived normalization': the "
-             "falsification condition is the (B0, u_b) plane, and it "
-             "stays closed unless either a sourceable ~1e-4 wall or "
-             "an admissible B0 many orders above the mirrored "
-             "benchmark is derived."
-             % (u_b_energy, DV_ENERGY,
-                b0_plane["energy_channel_bound"]
-                ["B0_required_for_measured"]))}
+    "note": ("Conditional scale map, not a calibrated exclusion. The energy "
+             "row assumes the one-crossing impulse survives in the measured "
+             "net-energy channel; clock rows apply only where a trajectory "
+             "samples the assumed boundary. None supplies an independently "
+             "derived admissible B0 or validates the leading-order transport.")}
+
+# Track where the approximations used to obtain this benchmark fail.
+_s, _sig, _dsig = _layer(ell_m)
+_u = ub_head * _sig
+_grad = ub_head * _dsig
+ledger["approximation_diagnostics"] = {
+    "max_disformal_spatial_term": float(np.max(B0 * env_b(_u) * R_H**2 * _grad**2)),
+    "formal_radial_kick_over_crossing_speed": C**2 * ub_head / V_CROSS_MED**2,
+    "status": "leading-order benchmark requires full metric/trajectory validation",
+    "note": "The leading connection uses A^2 N^2 approximately one and the impulse uses fixed unperturbed speed. Large diagnostics invalidate treating the benchmark as a closed physical prediction."}
+
 
 ledger["verdict"] = (
-    "falsification condition, not mechanism closure: u_b ~ %.1e is a "
-    "required input the solved admissible field profile must supply. "
-    "It exceeds the entire ambient field hierarchy by ~10^2-10^6, "
-    "carries a mandatory %.0f ppm clock step (~%.0fx the sustained "
-    "spacecraft bound) and a %.1e x over-floor shear impulse "
-    "that violates the flat energy channel. The branch-sign audit "
-    "does not add an exclusion: the fitted equivalent-time datum is "
-    "unsigned, and the admissible B >= 0 branch has now been evaluated "
-    "explicitly. The channel is thereby converted to a bound: the "
-    "admissible boundary-localised "
-    "disformal slip is <= %.1e yr (sustained clock bound) to "
-    "%.1e yr (instantaneous bound), versus the measured %.1f yr."
-    % (ub_head, dlnA_ppm, dlnA_ppm / SCLK_SUST_PPM,
-       ledger["shear_impulse"]["ratio"],
-       slip_sust, slip_inst, meas_contrast))
+    "The fitted leading-order benchmark requires u_b = %.3g and implies "
+    "a %.1f ppm conformal step. This is an amplitude requirement, not a "
+    "derived field profile. The formal one-crossing along-track impulse "
+    "is %.3g times the measured energy floor, but the small-impulse "
+    "approximation fails and the net two-crossing energy response is not "
+    "computed here. Spacecraft clock limits do not directly exclude a "
+    "250-AU wall that no spacecraft has crossed. The unsigned equivalent "
+    "time cannot exclude either transport sign. A sourceable profile, "
+    "admissible normalization and full trajectory/observation response "
+    "remain required."
+    % (ub_head, dlnA_ppm, ledger["shear_impulse"]["ratio"]))
 
+# One source of truth for the human-readable summary.
+verdict["admissibility"] = ledger["verdict"]
 logger.info("admissibility ledger: " + json.dumps(
     {k: (round(v, 4) if isinstance(v, float) else v)
      for k, v in ledger["sourceable_budget"].items()
      if isinstance(v, float)}))
 logger.info("  conformal step %.0f ppm = %.0fx sustained bound; "
-            "shear impulse %.2e m/s = %.1e x bound; "
-            "admissible slip <= %.1e-%.1e yr vs measured %.1f yr"
+            "formal shear impulse %.2e m/s = %.1e x conditional floor; "
+            "clock-threshold benchmark %.1e-%.1e yr vs measured %.1f yr"
             % (dlnA_ppm, dlnA_ppm / SCLK_SUST_PPM,
                ledger["shear_impulse"]["delta_v_m_s"],
                ledger["shear_impulse"]["ratio"],
@@ -624,6 +590,23 @@ json.dump(dict(step="step_165_disformal_slip", seed=SEED,
                constants=dict(B0=B0, B0_excluded_reference=B0_EXCLUDED,
                               R_H_m=R_H, H0=H0,
                               r_b_AU=250.0, cap_deg=CAP),
+               inputs=["results/step_b30_proper_time_slip.csv",
+                       "data/raw/code/code_original.html", "data/raw/code/code_future.html",
+                       "data/raw/warsaw/warsaw_tablec.dat", "data/raw/warsaw/warsaw_tabled.dat"],
+               crossing_geometry=dict(
+                   approximation="Published original/future two-body conics at 250 AU; not full metric trajectories",
+                   median_separation_deg=float(np.median([c["crossing_separation"] for c in comets])),
+                   min_separation_deg=float(min(c["crossing_separation"] for c in comets)),
+                   max_separation_deg=float(max(c["crossing_separation"] for c in comets)),
+                   field_axis_ecliptic_deg=[34.0,-13.0],
+                   profile_selection="Exploratory signed-dipole excursion; not an independently calibrated profile",
+                   note="Spatial entry and exit are not generally antipodal. Uniform-grid harmonics use the coincident-aphelion limit; cos(theta)^4 is even because the chosen excursion is odd, not because all odd modes cancel on real crossings."),
+               velocity_provenance=dict(
+                   source="step_b30 aa_back and h; two-body radial vis-viva",
+                   radius_AU=R_B / AU_M, n_comets=len(comets),
+                   n_imputed=0,
+                   median_AU_yr=float(np.median(VR) * YR_S / AU_M),
+                   note="Replaces failed exact-name join to a 100-AU total-speed table; no fallback speeds."),
                anchors=anchors,
                headline=headline,
                tracking_baseline=track_pred,
@@ -665,12 +648,12 @@ for nm, uu, c in (("tracking", U_TRACK, "gray"),
 ax.set_xlabel("boundary field excursion $u_b$")
 ax.set_ylabel("pole-midband slip contrast (yr)")
 ax.legend(fontsize=8)
-ax.set_title("Amplitude closure")
+ax.set_title("Required amplitude (benchmark)")
 
 ax = axes[1]
 for mname, Gfm in MORPHS.items():
     prof = K_matrix(Gfm(TH_GRID), ub_head, ell_m) + K_matrix(
-        Gfm(180.0 - TH_GRID), ub_head, ell_m)
+        Gfm(TH_GRID), ub_head, ell_m)
     prof = (abs(B0) * R_H**2 / C**2) * np.median(VR) * prof / YR_S
     ax.plot(TH_GRID, prof - prof.mean(), label=mname)
 ax.scatter(TH, DT_OBS - np.median(DT_OBS), s=6, alpha=0.25,
@@ -678,7 +661,7 @@ ax.scatter(TH, DT_OBS - np.median(DT_OBS), s=6, alpha=0.25,
 ax.set_xlabel(r"axis separation $\theta_A$ (deg)")
 ax.set_ylabel("slip pattern (yr)")
 ax.legend(fontsize=8)
-ax.set_title("Predicted theta-structure")
+ax.set_title("Profiles at shared fitted amplitude")
 
 ax = axes[2]
 ax.scatter(prof_M, DT_OBS, s=8, alpha=0.4)
@@ -688,4 +671,6 @@ ax.set_title(f"per-comet: rho = {rho_pred.statistic:.3f}, "
              f"p = {p_rho:.3f}")
 fig.tight_layout()
 fig.savefig(out_fig, dpi=140)
+for output in (out_json, out_csv, out_fig):
+    logger.data_save(output)
 logger.info(f"outputs: {out_json}, {out_csv}, {out_fig}")

@@ -54,6 +54,8 @@ DOWNLOADS = [
 SPICE_DOWNLOADS = [
     ("https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
      "de440s.bsp", "JPL DE440s ephemeris, coverage 1849-2150"),
+    ("https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de430.bsp",
+     "de430.bsp", "JPL DE430 ephemeris for comparison and extended epoch coverage"),
 ]
 
 

@@ -19,4 +19,4 @@ python3 scripts/generate_site_pdf.py
 
 The nine-object refit replay is a stratified regression check on cached real astrometry, not a full refit of every catalogue member. The observable audit separates direct catalogue-minus-dynamics residuals from reduced-regression population diagnostics. Mathematical and simulated controls are not counted as empirical TEP evidence.
 
-See `../reviews/FULL_REVIEW_20260919.md` for corrected issues, rerun coverage and unresolved physical/statistical requirements. Historical result verdict strings may express stronger interpretations than the revised main paper; they are not independent evidence or a replacement for the audited values.
+A full review (2026-09-19) documented corrected issues, rerun coverage and unresolved physical/statistical requirements. Historical result verdict strings may express stronger interpretations than the revised main paper; they are not independent evidence or a replacement for the audited values.

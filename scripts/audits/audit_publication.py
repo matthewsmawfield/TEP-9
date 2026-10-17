@@ -30,7 +30,8 @@ def digest(path):
 
 def input_record(root, rel, result_mtime):
     """Fingerprint one declared input and cross-check sibling provenance.json."""
-    if '*' in rel or '(' in rel:
+    if (any(char in rel for char in ('*', '(', '{', ',', '\n'))
+            or ('/' not in rel and not Path(rel).suffix)):
         return dict(input=rel, annotated=True)  # descriptive entry, not a literal path
     ip = (root / rel).resolve()
     if not ip.is_relative_to(root) or not ip.exists():
@@ -51,6 +52,18 @@ def input_record(root, rel, result_mtime):
     return rec
 
 
+def declared_input_strings(inputs):
+    """Inputs can be a path list or a named mapping; names are not paths."""
+    if isinstance(inputs, str):
+        yield inputs
+    elif isinstance(inputs, dict):
+        for value in inputs.values():
+            yield from declared_input_strings(value)
+    elif isinstance(inputs, list):
+        for value in inputs:
+            yield from declared_input_strings(value)
+
+
 def nonfinite_leaves(value, path=''):
     if isinstance(value, dict):
         for key, item in value.items():
@@ -60,6 +73,28 @@ def nonfinite_leaves(value, path=''):
             yield from nonfinite_leaves(item, f'{path}/{key}')
     elif isinstance(value, float) and not math.isfinite(value):
         yield path
+
+
+def literal_raw_dependencies(source):
+    """Inventory literal DATA_RAW / ... paths without executing a step.
+
+    Dynamic paths cannot be resolved here. Parent directories are omitted
+    where a deeper literal path is known; output/provenance paths may also
+    appear, so this is an availability inventory, not a run certification.
+    """
+    def parts(node):
+        if isinstance(node, ast.Name) and node.id == 'DATA_RAW':
+            return []
+        if isinstance(node, ast.BinOp) and isinstance(node.op, ast.Div):
+            left = parts(node.left)
+            if (left is not None and isinstance(node.right, ast.Constant)
+                    and isinstance(node.right.value, str)):
+                return left + [node.right.value]
+        return None
+    paths = {tuple(p) for node in ast.walk(ast.parse(source))
+             if (p := parts(node))}
+    return sorted('/'.join(p) for p in paths
+                  if not any(len(q) > len(p) and q[:len(p)] == p for q in paths))
 
 
 def registered_steps():
@@ -73,6 +108,14 @@ def registered_steps():
 def audit():
     errors = []
     registered = registered_steps()
+    raw_availability = []
+    for name, _ in registered:
+        script = ROOT/'scripts/steps'/name
+        if script.exists():
+            for rel in literal_raw_dependencies(script.read_text()):
+                path = ROOT/'data/raw'/rel
+                raw_availability.append(dict(step=name,
+                    path=str(path.relative_to(ROOT)), exists=path.exists()))
     script_inventory = []
     for path in sorted([*(ROOT/'scripts').rglob('*.py'), *(ROOT/'core').rglob('*.py')]):
         try:
@@ -89,6 +132,12 @@ def audit():
     used, bindings = set(), []
     for comp in sorted((ROOT/'site/components').glob('*.html')):
         source = comp.read_text()
+        # An unmatched inline delimiter can turn following table cells into
+        # one enormous formula and silently shrink the whole printed paper.
+        for block in re.finditer(r'<(p|td|th|li|figcaption|caption|h[1-6])\b[^>]*>(.*?)</\1>', source, re.S):
+            if len(re.findall(r'(?<!\\)\$', block.group(2))) % 2:
+                line = source[:block.start()].count('\n') + 1
+                errors.append(f'{comp.name}:{line}: Unpaired inline-math delimiter')
         for ident in re.findall(r'\{\{claim:([a-z0-9_]+)\}\}', source):
             used.add(ident)
             try:
@@ -173,6 +222,7 @@ for (const f of fs.readdirSync('site/components').filter(f=>f.endsWith('.html'))
     result_inventory = []
     stale_inputs = []
     provenance_mismatches = []
+    missing_declared_inputs = []
     for path in sorted((ROOT/'results').glob('step_*.json')):
         if path.name == 'step_b78_claims_trace.json':
             continue  # never hash the audit's own superseded report
@@ -182,9 +232,11 @@ for (const f of fs.readdirSync('site/components').filter(f=>f.endsWith('.html'))
             producer = result.get('step') if isinstance(result, dict) else None
             source = ROOT/'scripts/steps'/f'{producer}.py' if producer else None
             inputs = [input_record(ROOT, rel, path.stat().st_mtime)
-                      for rel in (result.get('inputs') or [])
-                      if isinstance(rel, str)] if isinstance(result, dict) else []
+                      for rel in declared_input_strings(result.get('inputs') or [])
+                      ] if isinstance(result, dict) else []
             for rec in inputs:
+                if rec.get('missing'):
+                    missing_declared_inputs.append(dict(result=path.name, input=rec['input']))
                 if rec.get('newer_than_result'):
                     stale_inputs.append(dict(result=path.name, input=rec['input']))
                 if rec.get('matches_download_hash') is False:
@@ -210,9 +262,15 @@ for (const f of fs.readdirSync('site/components').filter(f=>f.endsWith('.html'))
             result_files=len(result_inventory), hard_errors=len(errors),
             legacy_files_with_nonfinite_values=sum(x.get('nonfinite_count',0)>0 for x in result_inventory),
             results_with_newer_inputs=len(stale_inputs),
-            provenance_hash_mismatches=len(provenance_mismatches)),
+            results_with_newer_producers=sum(x.get('older_than_declared_producer') is True
+                                            for x in result_inventory),
+            provenance_hash_mismatches=len(provenance_mismatches),
+            missing_declared_inputs=len(missing_declared_inputs),
+            missing_literal_raw_paths=len({x['path'] for x in raw_availability if not x['exists']})),
         errors=errors, unused_claims=sorted(set(registry)-used), bindings=bindings,
         stale_inputs=stale_inputs, provenance_mismatches=provenance_mismatches,
+        missing_declared_inputs=missing_declared_inputs,
+        raw_input_availability=raw_availability,
         script_inventory=script_inventory, result_inventory=result_inventory,
         runtime=dict(python=sys.version, executable=sys.executable, packages=packages),
         provenance_limit='mtimes are hints only; the producer field is self-reported. Utilities, data and external dependencies require hashes captured when each result is produced.')
@@ -232,6 +290,9 @@ def main():
     print(json.dumps(report['summary'], indent=2))
     for warning in report['stale_inputs']:
         print('STALE-INPUT WARNING:', warning['result'], '<-', warning['input'])
+    for item in report['result_inventory']:
+        if item.get('older_than_declared_producer'):
+            print('NEWER-PRODUCER WARNING:', item['file'], '<-', item['declared_producer'])
     for mismatch in report['provenance_mismatches']:
         print('PROVENANCE MISMATCH:', mismatch['result'], '<-', mismatch['input'])
     for error in report['errors']:

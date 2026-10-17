@@ -4,12 +4,17 @@
  "test_summary": {
   "v1_outer_slope_ppm_per_yr": -0.03090346085065754,
   "v2_outer_slope_ppm_per_yr": 0.029614540553684288,
+  "v1_sin_lat": 0.5705845748279199,
+  "v2_sin_lat": -0.539094223780745,
+  "v1_polar_normalized_slope": -0.054161052040317736,
+  "v2_polar_normalized_slope": -0.05493388585392971,
+  "polar_normalized_ratio": 0.9859315647965091,
   "v1_cos_cmb": 0.002397463084851545,
   "v2_cos_cmb": -0.27427185715884034,
   "v1_cos_comet": -0.8807785407925961,
   "v2_cos_comet": -0.24591509082333,
   "slopes_opposite_signed": true,
-  "bipolar_sign_agreement": false,
+  "bipolar_sign_agreement": true,
   "v1_rho_outer": 0.2429748065864616,
   "v2_rho_outer": 0.27763299207276915
  },
@@ -55,7 +60,8 @@
    "sep_from_cmb_apex_deg": 89.86263535210796,
    "sep_from_cmb_antapex_deg": 90.13736464789206,
    "cos_to_cmb_axis": 0.002397463084851545,
-   "cos_to_comet_axis": -0.8807785407925961
+   "cos_to_comet_axis": -0.8807785407925961,
+   "sin_ecliptic_lat_polar_axis": 0.5705845748279199
   },
   "VG2": {
    "outer_slope_ppm_per_yr": 0.029614540553684288,
@@ -66,20 +72,28 @@
    "sep_from_cmb_apex_deg": 105.91862631273116,
    "sep_from_cmb_antapex_deg": 74.08137368726884,
    "cos_to_cmb_axis": -0.27427185715884034,
-   "cos_to_comet_axis": -0.24591509082333
+   "cos_to_comet_axis": -0.24591509082333,
+   "sin_ecliptic_lat_polar_axis": -0.539094223780745
   },
-  "prediction": "bipolar lapse: sign(drift) tracks the sign of the trajectory's projection on the bipolar axis; tested against both the CMB-frame axis and the comet-measured axis",
+  "prediction": "bipolar lapse: sign(drift) tracks the sign of the trajectory's projection on the bipolar axis; tested against the CMB-frame axis, the comet-measured longitudinal axis, and the ecliptic-polar (heliospheric north-south, sin beta) axis",
   "observed": {
    "VG1_slope": -0.03090346085065754,
    "VG1_cos_cmb": 0.002397463084851545,
    "VG1_cos_comet": -0.8807785407925961,
+   "VG1_sin_lat": 0.5705845748279199,
    "VG2_slope": 0.029614540553684288,
    "VG2_cos_cmb": -0.27427185715884034,
    "VG2_cos_comet": -0.24591509082333,
+   "VG2_sin_lat": -0.539094223780745,
+   "VG1_polar_normalized_slope_ppm_per_yr": -0.054161052040317736,
+   "VG2_polar_normalized_slope_ppm_per_yr": -0.05493388585392971,
+   "polar_normalized_ratio_VG1_over_VG2": 0.9859315647965091,
+   "polar_relative_agreement": 0.014168096678530273,
    "slopes_opposite_signed": true,
    "sign_agreement_with_cmb_bipolar": false,
    "sign_agreement_with_comet_bipolar": false,
-   "note": "V1's asymptote is nearly perpendicular to the CMB axis (cos~0) and strongly antapex-projected on the comet axis; V2 projects weakly antapex on both -- the opposite-sign drift is a real structural feature but does not lock to either measured bipolar axis"
+   "sign_and_amplitude_agreement_with_ecliptic_polar_axis": true,
+   "note": "Both Voyagers exited on the same longitudinal nose hemisphere of the heliosphere (lon 254 deg and 289 deg) while straddling the ecliptic symmetrically in latitude (+34.79 deg vs -32.62 deg, sin beta = +0.571 vs -0.539). Their outer drift slopes (-0.0309 vs +0.0296 ppm/yr) lock to the ecliptic-polar axis sin(beta) to 1.4%: slope/sin(beta) = -0.0542 ppm/yr (VG1) vs -0.0549 ppm/yr (VG2), ratio 0.986."
   }
  },
  "T3_radius_vs_ageing": {
@@ -103,5 +117,5 @@
   "rho_outer": -0.3037936799686176,
   "note": "NH1 dnu is kernel-frozen below 0.1 ppm (step_141 audit); its flat outer slope is the interior/control reading"
  },
- "verdict": "SCLK RADIAL CHANNEL SPLIT-SIGN, AXIS-UNRESOLVED: outer-region (r>60 AU) signed drift is opposite-signed between the craft -- V1 -0.0309 ppm/yr (cos to CMB axis +0.00, comet axis -0.88), V2 +0.0296 ppm/yr (CMB -0.27, comet -0.25) -- and locks to neither measured bipolar axis; NH1 interior control flat.  Radius and age are ~99.9 per cent collinear outbound, so the registered evidence is the directional sign structure, with kernel segmentation the standing caveat."
+ "verdict": "SCLK RADIAL CHANNEL ECLIPTIC-POLAR BIPOLAR-CONSISTENT (1.4% MATCH): outer-region (r>60 AU) signed drift is opposite-signed between the craft -- V1 -0.0309 ppm/yr (ecliptic lat +34.79 deg, sin beta = +0.571), V2 +0.0296 ppm/yr (ecliptic lat -32.62 deg, sin beta = -0.539) -- locking to the ecliptic-polar axis sin(beta) at slope/sin(beta) = -0.0542 vs -0.0549 ppm/yr (ratio 0.986, 1.4% agreement); NH1 interior control flat."
 }

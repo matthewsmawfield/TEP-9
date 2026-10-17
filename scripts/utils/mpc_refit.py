@@ -165,12 +165,16 @@ def _prov_add(key, url, data: bytes, note):
     with open(lock_path, "w") as lf:
         fcntl.flock(lf, fcntl.LOCK_EX)
         p = _prov()
+        stored = PROV_PATH.parent / key
+        stored_data = stored.read_bytes() if stored.exists() else data
         p["files"][key] = {
             "url": url,
             "retrieved_utc": _dt.datetime.now(
                 _dt.timezone.utc).isoformat(),
-            "bytes": len(data),
-            "sha256": hashlib.sha256(data).hexdigest(),
+            "bytes": len(stored_data),
+            "sha256": hashlib.sha256(stored_data).hexdigest(),
+            "wire_bytes": len(data),
+            "wire_sha256": hashlib.sha256(data).hexdigest(),
             "note": note}
         _prov_write(p)
 

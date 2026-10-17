@@ -311,6 +311,9 @@ _ctx = mp.get_context("fork") if _sys.platform != "win32" \
 
 runs = {}
 for kern in KERNELS:
+    # Validate in the parent before starting workers. A Pool otherwise
+    # keeps respawning children when a required kernel cannot be loaded.
+    _init_kern(kern)
     if N_WORK > 1 and len(sample) > 1:
         with _ctx.Pool(min(N_WORK, len(sample)),
                        initializer=_init_kern, initargs=(kern,)) as pool:

@@ -6,50 +6,50 @@
  ],
  "seed": 20261009,
  "n_mc": 20000,
- "n_broad": 268,
+ "n_broad": 270,
  "T1_footprint_null": {
-  "d_par": 0.1045,
-  "p_galactic_tide_null": 0.0019499025048747563,
-  "p_ecliptic_footprint_null": 0.0016999150042497876
+  "d_par": 0.1007,
+  "p_galactic_tide_null": 0.0029498525073746312,
+  "p_ecliptic_footprint_null": 0.0021498925053747312
  },
  "T2_magnitude": {
   "label": "H-tercile",
   "bins": [
    {
-    "bin": "H < 6.5",
-    "n": 85,
-    "d_par": 0.1239,
-    "p_ecliptic_null": 0.02439878006099695
+    "bin": "H < 6.7",
+    "n": 90,
+    "d_par": 0.1064,
+    "p_ecliptic_null": 0.03799810009499525
    },
    {
-    "bin": "6.5 < H < 9",
+    "bin": "6.7 < H < 9.5",
+    "n": 86,
+    "d_par": 0.1201,
+    "p_ecliptic_null": 0.02689865506724664
+   },
+   {
+    "bin": "H >= 9.5",
     "n": 94,
-    "d_par": 0.1019,
-    "p_ecliptic_null": 0.044547772611369434
-   },
-   {
-    "bin": "H >= 9",
-    "n": 89,
-    "d_par": 0.0888,
-    "p_ecliptic_null": 0.07569621518924054
+    "d_par": 0.0773,
+    "p_ecliptic_null": 0.09939503024848757
    }
   ],
-  "weighted_d": 0.1045,
-  "chi2_common_d": 0.16,
-  "p_common_d": 0.9214146040710046,
-  "n_with_H": 268,
+  "weighted_d": 0.1006,
+  "chi2_common_d": 0.26,
+  "p_common_d": 0.8779718830000129,
+  "n_with_H": 270,
   "median_split": [
    {
     "bin": "H < 8.0",
-    "n": 131,
-    "d_par": 0.0885,
-    "p_ecliptic_null": 0.04429778511074446
+    "n": 123,
+    "d_par": 0.0908,
+    "p_ecliptic_null": 0.042897855107244635
    },
    {
     "bin": "H >= 8.0",
-    "n": 137,
-    "d_par": 0.1199,
-    "p_ecliptic_null": 0.0066996650167491624
+    "n": 147,
+    "d_par": 0.1089,
+    "p_ecliptic_null": 0.0111994400279986
    }
   ]
  },
@@ -60,55 +60,55 @@
     "bin": "year < 2021",
     "n": 79,
     "d_par": 0.1257,
-    "p_ecliptic_null": 0.029798510074496274
+    "p_ecliptic_null": 0.03129843507824609
    },
    {
     "bin": "2021 < year < 2025",
     "n": 99,
     "d_par": 0.0897,
-    "p_ecliptic_null": 0.05944702764861757
+    "p_ecliptic_null": 0.05799710014499275
    },
    {
     "bin": "year >= 2025",
-    "n": 90,
-    "d_par": 0.1022,
-    "p_ecliptic_null": 0.04514774261286936
+    "n": 92,
+    "d_par": 0.0909,
+    "p_ecliptic_null": 0.06419679016049197
    }
   ],
-  "weighted_d": 0.1045,
-  "chi2_common_d": 0.17,
-  "p_common_d": 0.9171353725441227
+  "weighted_d": 0.1006,
+  "chi2_common_d": 0.21,
+  "p_common_d": 0.9000696155843102
  },
  "T4_perihelion": {
   "label": "q-tercile",
   "bins": [
    {
-    "bin": "q < 2.90216",
+    "bin": "q < 2.93255",
     "n": 90,
     "d_par": 0.0853,
-    "p_ecliptic_null": 0.08369581520923954
+    "p_ecliptic_null": 0.08389580520973951
    },
    {
-    "bin": "2.90216 < q < 5.34125",
-    "n": 88,
-    "d_par": 0.0691,
-    "p_ecliptic_null": 0.13154342282885856
-   },
-   {
-    "bin": "q >= 5.34125",
+    "bin": "2.93255 < q < 5.34443",
     "n": 90,
-    "d_par": 0.1584,
-    "p_ecliptic_null": 0.004149792510374482
+    "d_par": 0.0568,
+    "p_ecliptic_null": 0.1831908404579771
+   },
+   {
+    "bin": "q >= 5.34443",
+    "n": 90,
+    "d_par": 0.1598,
+    "p_ecliptic_null": 0.004499775011249437
    }
   ],
-  "weighted_d": 0.1045,
-  "chi2_common_d": 1.21,
-  "p_common_d": 0.5447727577769262
+  "weighted_d": 0.1006,
+  "chi2_common_d": 1.53,
+  "p_common_d": 0.4659311045965203
  },
  "T5_summary": {
-  "H": 0.9214146040710046,
-  "year": 0.9171353725441227,
-  "q": 0.5447727577769262
+  "H": 0.8779718830000129,
+  "year": 0.9000696155843102,
+  "q": 0.4659311045965203
  },
- "verdict": "The CometEls census dipole (n=268, d_par=+0.105) survives the discovery-footprint null -- preserving each aphelion's ecliptic latitude while isotropizing ecliptic longitude (p=0.0017) as it did the galactic-tide null (p=0.00195).  Under magnitude terciles, era terciles, and perihelion-distance terciles the lean stays positive in 9/9 bins, and a single common amplitude is consistent with every variable's partition (H p=0.921, era p=0.917, q p=0.545) -- the dipole is a population property, not a brightness, epoch, or perihelion-selection artefact."
+ "verdict": "The CometEls census dipole (n=270, d_par=+0.101) survives the discovery-footprint null -- preserving each aphelion's ecliptic latitude while isotropizing ecliptic longitude (p=0.00215) as it did the galactic-tide null (p=0.00295).  Under magnitude terciles, era terciles, and perihelion-distance terciles the lean stays positive in 9/9 bins, and a single common amplitude is consistent with every variable's partition (H p=0.878, era p=0.900, q p=0.466) -- the dipole is a population property, not a brightness, epoch, or perihelion-selection artefact."
 }

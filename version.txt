@@ -1,8 +1,6 @@
-v0.1 (Addis Ababa) — 30 September 2026 — Initial release: outer-Solar-System domain-boundary tests
+v0.2 (Addis Ababa) — 17 October 2026 — Outer-system disformal slip forward model, two-leg MPC astrometric refits, and provenance hardening
 
-- Formulated the orbital alignment anomaly of extreme trans-Neptunian objects (TNOs) as a deterministic spatial proper-time field gradient (domain boundary) under TEP rather than a shepherding planet
-- Demonstrated that two dynamically distinct populations (JPL Small-Body Database detached extreme TNOs and CODE cometary catalogue) independently isolate the same 60° sector of inertial sky
-- Validated per-comet boundary rotation across independent Minor Planet Center astrometry refits on 586 pre-2018 comets (rho = +0.998), retaining inbound-leg in-cap excess (p = 0.034)
-- Evaluated the post-2017 prospective cohort isolating the boundary between 130 and 150 AU with opposite-polarity lapse-slip structure (joint opposite-polarity test p = 1.00×10⁻⁴)
-- Performed a ten-channel global synthesis across six catalogue lineages (SBDB, DES, MPCORB, CODE, Warsaw, CometEls) yielding an omnibus statistic S_10 = 187.2 (p = 0.0118 against a 20,000-draw random-axis permutation null)
-- Outlined falsification criteria and future observational tests with Rubin Observatory / LSST sky-survey cohorts
+- Evaluated the canonical disformal benchmark over actual conic entry/exit geometry across the 60 deg outer-system sector, separating the coordinate-level aphelion dipole (d_parallel = +0.110 pre-2018, Fisher-combined p = 1.8 x 10^-6 across historical and post-2017 holdout eras) from solver-sensitive three-leg orbit reconstructions
+- Added independent two-leg fits of raw Minor Planet Center astrometry for pre-2018 long-period comets, reproducing CODE catalogue rotations and confirming the inbound-leg excess alongside SCLK radial-gradient and solar-wind plasma controls
+- Hardened data provenance with explicit CODE snapshot selection rules, live JPL SBDB queries, RTG telemetry citations, and SHA-256 integrity pinning across all pipeline outputs
+- Synchronized the shared core library to the current corpus constants and selected two-branch kinetic sector

@@ -36,27 +36,31 @@ import json
 import hashlib
 import urllib.request
 import urllib.parse
+import http.cookiejar
 from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.tep9_common import DATA_RAW, tee_stdout
+from scripts.utils.catalogue_exports import code_export_models, require_matching_code_models
 
 logger = StepLogger("step_003_download_code")
 tee_stdout(logger)
 
 CODE_DIR = DATA_RAW / "code"
-PAD2 = "https://pad2.astro.amu.edu.pl/comets/search.php"
+PAD2 = "https://pad2.astro.amu.edu.pl/comets/results.php"
+OPENER = urllib.request.build_opener(
+    urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
 
 # Candidate live export endpoints for the three orbit tables.
 LIVE_ATTEMPTS = {
     "code_original.html": {
-        "orbit_type": "original", "catalog": "CODE", "submit": "Search"},
+        "orbit": "original", "orbit_preferred": "1", "submit": "1"},
     "code_osculating.html": {
-        "orbit_type": "osculating", "catalog": "CODE", "submit": "Search"},
+        "orbit": "osculating", "orbit_preferred": "1", "submit": "1"},
     "code_future.html": {
-        "orbit_type": "future", "catalog": "CODE", "submit": "Search"},
+        "orbit": "future", "orbit_preferred": "1", "submit": "1"},
 }
 
 MIN_TABLE_BYTES = 100_000  # a real CODE dump is ~700 KB of HTML
@@ -75,9 +79,10 @@ def try_live(fname, params):
         data = urllib.parse.urlencode(params).encode()
         req = urllib.request.Request(PAD2, data=data,
                                      headers={"User-Agent": "tep9/1.0"})
-        with urllib.request.urlopen(req, timeout=60) as r:
+        with OPENER.open(req, timeout=60) as r:
             body = r.read()
         if looks_like_code_table(body):
+            code_export_models(body)
             return body
         logger.progress(
             f"live endpoint returned non-table page for {fname} "
@@ -139,6 +144,10 @@ def main():
             link.symlink_to(f"code/{fname}")
 
     prov_path = CODE_DIR / "provenance.json"
+    matched = require_matching_code_models({
+        name: code_export_models((CODE_DIR / name).read_bytes())
+        for name in LIVE_ATTEMPTS})
+    logger.metric("same_model_three_leg_comets", matched)
     if prov_path.exists():
         try:
             prior = json.loads(prov_path.read_text())

@@ -20,9 +20,9 @@
   -40.0
  ],
  "template_collinearity": {
-  "prospective": 0.09634409986243773,
+  "prospective": 0.09634005956487318,
   "code": 0.10813502656303166,
-  "pre2018": 0.13659775263674467
+  "pre2018": 0.13659769216862308
  },
  "T1_joint_fit_prospective": {
   "model": "resid ~ 1 + A*cap_declared + B*cos(theta->u_priv)",
@@ -31,38 +31,38 @@
    0.6634139481689384,
    -0.6427876096865393
   ],
-  "A_declared_only": -0.09912209008102106,
-  "A_joint": -0.11661825468164971,
+  "A_declared_only": -0.09876207384335484,
+  "A_joint": -0.11625249756284857,
   "A_joint_ci": [
-   -0.22990492222526526,
-   -0.011779421677683736
+   -0.2301855791442292,
+   -0.01031785057128629
   ],
   "A_joint_p_perm": 0.9895052473763118,
-  "B_dipole": 0.13686512918156443,
-  "B_only_model": 0.1283974042794454,
-  "rss_declared_only": 35.500643935303756,
-  "rss_joint": 33.87136375050342,
-  "rss_dipole_only": 34.54324633783481,
-  "delta_rss_cap_term": 0.671882587331389,
-  "p_nested_perm": 0.02848575712143928,
-  "masking_budget_dex": 0.02265662722583186,
+  "B_dipole": 0.13682574254548016,
+  "B_only_model": 0.12838494281844073,
+  "rss_declared_only": 35.57253326759748,
+  "rss_joint": 33.94418426373721,
+  "rss_dipole_only": 34.6118594501988,
+  "delta_rss_cap_term": 0.6676751864615866,
+  "p_nested_perm": 0.029985007496251874,
+  "masking_budget_dex": 0.02265010716965117,
   "cos_priv_median_in_cap": 0.12727948536860395,
   "cos_priv_median_out_cap": -0.03826032277182981
  },
  "T2_dipole_placement_scan": {
   "n_grid": 468,
   "best_abs_dipole": {
-   "lam": 10.0,
-   "beta": 10.0,
-   "B": -0.22737104415911016,
-   "A_at": 0.08085222889662605,
-   "sep_from_declared": 33.11812599432767
+   "lam": 190.0,
+   "beta": -10.0,
+   "B": 0.22799202583202555,
+   "A_at": 0.08170476337597904,
+   "sep_from_declared": 146.88187400567233
   },
-  "A_at_u_res_120_m40": -0.11661825468164973,
-  "A_at_u_raw_160_m10": -0.02158876158993626,
-  "A_min_over_grid": -0.15775641111455518,
-  "A_max_over_grid": 0.09367358542676198,
-  "frac_grid_A_positive": 0.15384615384615385,
+  "A_at_u_res_120_m40": -0.1162524975628486,
+  "A_at_u_raw_160_m10": -0.021158941359048358,
+  "A_min_over_grid": -0.15721275832230291,
+  "A_max_over_grid": 0.0947142563114622,
+  "frac_grid_A_positive": 0.1581196581196581,
   "note": "A is the declared-cap coefficient under joint fit with a cos dipole at each trial axis; A <= 0 at every plausible dipole placement would indicate absence, not masking"
  },
  "T3_clean_strata": {
@@ -70,79 +70,79 @@
    "n": 114,
    "declared_cap": {
     "n_in": 27,
-    "gap": -0.06586879932585776,
-    "mwu_greater_p": 0.8013505384412873,
-    "rho": 0.17075798383993843,
-    "p_2sided": 0.06929844872287015
+    "gap": -0.06685157531523644,
+    "mwu_greater_p": 0.7938335309563082,
+    "rho": 0.16793908588323445,
+    "p_2sided": 0.07409191076470673
    },
-   "A_joint": -0.12507423105070004,
-   "B_joint": 0.07284839313609312,
-   "A_joint_p_perm": 0.9155422288855573
+   "A_joint": -0.12414547381997805,
+   "B_joint": 0.07274153983168181,
+   "A_joint_p_perm": 0.9140429785107447
   },
   "bound_e_lt_1": {
    "n": 141,
    "declared_cap": {
     "n_in": 41,
-    "gap": -0.007055810136471441,
-    "mwu_greater_p": 0.7155825552681053,
-    "rho": 0.09551350657134293,
-    "p_2sided": 0.25989383318441195
+    "gap": -0.00743342935185215,
+    "mwu_greater_p": 0.7140407442753194,
+    "rho": 0.09665225394922727,
+    "p_2sided": 0.254229131755368
    },
-   "A_joint": -0.05263044727710066,
-   "B_joint": 0.16226257213932693,
-   "A_joint_p_perm": 0.7906046976511744
+   "A_joint": -0.05422803417809529,
+   "B_joint": 0.16272005569268355,
+   "A_joint_p_perm": 0.7991004497751124
   },
   "arc_one_sided": {
-   "n": 65,
+   "n": 64,
    "declared_cap": {
     "n_in": 20,
-    "gap": 0.012363871466983256,
-    "mwu_greater_p": 0.7635522145147091,
-    "rho": 0.2240821678321678,
-    "p_2sided": 0.0727415310561667
+    "gap": -0.01906743410047229,
+    "mwu_greater_p": 0.77649736708187,
+    "rho": 0.23301282051282046,
+    "p_2sided": 0.06388833876751414
    },
-   "A_joint": -0.050198433936045186,
-   "B_joint": 0.053301881208813726,
-   "A_joint_p_perm": 0.7401299350324838
+   "A_joint": -0.052349374254799255,
+   "B_joint": 0.057265792863174333,
+   "A_joint_p_perm": 0.7251374312843578
   },
   "arc_spans_perihelion": {
-   "n": 190,
+   "n": 191,
    "declared_cap": {
     "n_in": 48,
-    "gap": -0.06446322920261982,
-    "mwu_greater_p": 0.8362412951775329,
-    "rho": 0.12496424306840401,
-    "p_2sided": 0.08581725282746035
+    "gap": -0.06333812658400623,
+    "mwu_greater_p": 0.8347613471647731,
+    "rho": 0.12427838247451087,
+    "p_2sided": 0.08672469994722412
    },
-   "A_joint": -0.1266639514370157,
-   "B_joint": 0.1627052757020447,
-   "A_joint_p_perm": 0.9715142428785607
+   "A_joint": -0.12518421678819325,
+   "B_joint": 0.16080012977932848,
+   "A_joint_p_perm": 0.9695152423788106
   },
   "primary_q_lt_3p1": {
    "n": 121,
    "declared_cap": {
     "n_in": 32,
-    "gap": -0.2175753848461155,
-    "mwu_greater_p": 0.9701845974096677,
-    "rho": 0.15883349139682965,
-    "p_2sided": 0.08184197070426662
+    "gap": -0.1909907813343617,
+    "mwu_greater_p": 0.9677171074021427,
+    "rho": 0.15898929684324614,
+    "p_2sided": 0.08153888539821745
    },
-   "A_joint": -0.21780688424073524,
-   "B_joint": 0.18183834905623136,
-   "A_joint_p_perm": 0.999000499750125
+   "A_joint": -0.21494669825530313,
+   "B_joint": 0.1811619191003017,
+   "A_joint_p_perm": 0.9985007496251874
   },
   "extended_q_ge_3p1": {
    "n": 134,
    "declared_cap": {
     "n_in": 36,
-    "gap": -0.06212219346735015,
-    "mwu_greater_p": 0.9143143116838122,
-    "rho": 0.20308233269741519,
-    "p_2sided": 0.018602478553876665
+    "gap": -0.06304640222275198,
+    "mwu_greater_p": 0.9174145042604593,
+    "rho": 0.20414967767677902,
+    "p_2sided": 0.017979600489398638
    },
-   "A_joint": -0.08027983102403695,
-   "B_joint": 0.09594099318579055,
-   "A_joint_p_perm": 0.8695652173913043
+   "A_joint": -0.0811736050912777,
+   "B_joint": 0.09597531092207447,
+   "A_joint_p_perm": 0.8715642178910544
   }
  },
  "T4_control_cohorts": {
@@ -151,22 +151,22 @@
    "A_declared_only": 0.1526152647364746,
    "A_joint": 0.15029865267883644,
    "A_joint_ci": [
-    0.04752911578081271,
-    0.2554785841794905
+    0.04151914537204157,
+    0.2622243611517001
    ],
    "A_joint_p_perm": 0.005497251374312844,
    "B_dipole": 0.01679818418473894
   },
   "pre2018": {
    "n": 738,
-   "A_declared_only": 0.015567299766300906,
-   "A_joint": 0.02062577169832595,
+   "A_declared_only": 0.015538688026519162,
+   "A_joint": 0.020598926921525585,
    "A_joint_ci": [
-    -0.027347716290548312,
-    0.06829719187237444
+    -0.028530237929611856,
+    0.06868114494478435
    ],
    "A_joint_p_perm": 0.22488755622188905,
-   "B_dipole": -0.02779604867679833
+   "B_dipole": -0.027805769343548555
   },
   "prospective": {
    "model": "resid ~ 1 + A*cap_declared + B*cos(theta->u_priv)",
@@ -175,67 +175,67 @@
     0.6634139481689384,
     -0.6427876096865393
    ],
-   "A_declared_only": -0.09912209008102106,
-   "A_joint": -0.11661825468164971,
+   "A_declared_only": -0.09876207384335484,
+   "A_joint": -0.11625249756284857,
    "A_joint_ci": [
-    -0.22990492222526526,
-    -0.011779421677683736
+    -0.2301855791442292,
+    -0.01031785057128629
    ],
    "A_joint_p_perm": 0.9895052473763118,
-   "B_dipole": 0.13686512918156443,
-   "B_only_model": 0.1283974042794454,
-   "rss_declared_only": 35.500643935303756,
-   "rss_joint": 33.87136375050342,
-   "rss_dipole_only": 34.54324633783481,
-   "delta_rss_cap_term": 0.671882587331389,
-   "p_nested_perm": 0.02848575712143928,
-   "masking_budget_dex": 0.02265662722583186,
+   "B_dipole": 0.13682574254548016,
+   "B_only_model": 0.12838494281844073,
+   "rss_declared_only": 35.57253326759748,
+   "rss_joint": 33.94418426373721,
+   "rss_dipole_only": 34.6118594501988,
+   "delta_rss_cap_term": 0.6676751864615866,
+   "p_nested_perm": 0.029985007496251874,
+   "masking_budget_dex": 0.02265010716965117,
    "cos_priv_median_in_cap": 0.12727948536860395,
    "cos_priv_median_out_cap": -0.03826032277182981
   },
   "prospective_detached_axis": {
-   "A_declared_only": -0.017284014721833038,
-   "A_joint": -0.0914873414696308,
-   "B_dipole": 0.15501019318905382,
-   "A_joint_p_perm": 0.9540229885057471
+   "A_declared_only": -0.01663473299454585,
+   "A_joint": -0.09072509246136248,
+   "B_dipole": 0.15477566805297197,
+   "A_joint_p_perm": 0.953023488255872
   }
  },
  "T5_interaction_after_correction": {
-  "interaction_k_raw": -0.2517373548174952,
-  "interaction_k_after_correction": -0.26923351941812407,
-  "p_cohort_perm_corrected": 0.0009995002498750624
+  "interaction_k_raw": -0.2513773385798292,
+  "interaction_k_after_correction": -0.2688677622993228,
+  "p_cohort_perm_corrected": 0.0014992503748125937
  },
  "T6_corrected_profile": {
   "declared_before": {
    "n_in": 68,
-   "gap": -0.06678101561177707,
-   "mwu_greater_p": 0.9517173030867121,
-   "rho": 0.15532075034738305,
-   "p_2sided": 0.013021678614843124
+   "gap": -0.06729910935748912,
+   "mwu_greater_p": 0.9513309392877155,
+   "rho": 0.15625144742936545,
+   "p_2sided": 0.012481159342218415
   },
   "declared_after": {
    "n_in": 68,
-   "gap": -0.051851877624334256,
-   "mwu_greater_p": 0.9703777534929543,
-   "rho": 0.19879429133858267,
-   "p_2sided": 0.0014187944971063083
+   "gap": -0.0516173324980007,
+   "mwu_greater_p": 0.9686571984556318,
+   "rho": 0.19810531496062994,
+   "p_2sided": 0.001475209310170578
   },
   "scan": {
    "declared_node": [
     30.0,
     -10.0
    ],
-   "gap_at_declared_raw": -0.08088719989123405,
-   "gap_at_declared_corrected": -0.04201954093341716,
-   "rank_frac_raw": 0.7761194029850746,
-   "rank_frac_corrected": 0.7547974413646056,
+   "gap_at_declared_raw": -0.0803461912978769,
+   "gap_at_declared_corrected": -0.041724850596640946,
+   "rank_frac_raw": 0.7718550106609808,
+   "rank_frac_corrected": 0.7761194029850746,
    "best_corrected_axis": {
     "lam": 210.0,
     "beta": 40.0,
-    "gap": 0.20616840211469625,
+    "gap": 0.20570577945980456,
     "sep_from_declared": 152.7714262307687
    }
   }
  },
- "verdict": "POLARITY-REVERSED, NOT ABSENT: the declared-axis term is -0.117 dex [-0.230,-0.012] under the joint model -- the bootstrap interval excludes zero on the negative side, while the same term on the CODE-era record is +0.150 dex (p=0.0055).  The cohort x cap interaction persists after private-dipole correction (k=-0.269, p=0.0010).  A masked static anomaly would return A ~ 0; a measured sign reversal at the declared axis is the opposite-polarity reading -- the modern record carries the boundary field's other lobe, resolved at the displaced axis (steps 118, 128)."
+ "verdict": "POLARITY-REVERSED, NOT ABSENT: the declared-axis term is -0.116 dex [-0.230,-0.010] under the joint model -- the bootstrap interval excludes zero on the negative side, while the same term on the CODE-era record is +0.150 dex (p=0.0055).  The cohort x cap interaction persists after private-dipole correction (k=-0.269, p=0.0015).  A masked static anomaly would return A ~ 0; a measured sign reversal at the declared axis is the opposite-polarity reading -- the modern record carries the boundary field's other lobe, resolved at the displaced axis (steps 118, 128)."
 }

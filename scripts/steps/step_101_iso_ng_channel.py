@@ -235,8 +235,14 @@ def ng_ledger(d, el):
 
 
 def main():
-    lit = json.loads((DATA_RAW / "literature" /
-                      "iso_literature.json").read_text())
+    literature_path = DATA_RAW / "literature" / "iso_literature.json"
+    if not literature_path.exists():
+        # Versioned, cited interpretation inputs; these are not orbit data.
+        source = RESULTS.parent / "config" / "iso_literature_anchors.json"
+        literature_path.parent.mkdir(parents=True, exist_ok=True)
+        literature_path.write_bytes(source.read_bytes())
+        logger.info("Restored the versioned literature classification ledger")
+    lit = json.loads(literature_path.read_text())
 
     comet = json.loads((RESULTS /
                         "step_b64_clock_consistency.json").read_text())

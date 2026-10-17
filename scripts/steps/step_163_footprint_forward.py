@@ -14,11 +14,11 @@ This step builds that footprint as a forward model.  For each real comet
 the orbit shape (q, e) and perihelion epoch are kept fixed while the
 spatial orientation is redrawn isotropically (Haar-random rotations of
 the perifocal frame).  Each orientation is propagated over its bright
-window (r < r_vis, Barker parabolic time law) and scored by whether the
+window (r < r_vis, Barker Kepler conic time law) and scored by whether the
 geocentric position is in the night sky (solar elongation > el_min), in
 the declination reach of the historical northern-observatory record
 (dec > dec_min), and within geocentric distance dmax.  Discovery weight
-is the observable brightness integral sum 1/(r^2 Delta^2).  The pooled
+is the observable brightness integral sum dt/(r^2 Delta^2).  The pooled
 weight map on the (randomised) aphelion directions is the predicted
 discovered-population marginal under an isotropic source.
 
@@ -64,6 +64,8 @@ from pathlib import Path as _Path
 _sys.path.insert(0, str(_Path(__file__).resolve().parent.parent.parent))
 from scripts.utils.step_logger import StepLogger
 from scripts.utils.statistics import monte_carlo_tail
+from scripts.utils.discovery_geometry import (haar_rotations, conic_window,
+                                               visibility_eligible, orientation_cdf)
 from scripts.utils.tep9_common import (
     DATA_RAW, RESULTS, lv, lb, sep, perih_dir, parse_code, tee_stdout)
 
@@ -82,7 +84,7 @@ logger.header("Forward-modelled discovery footprint -- physically "
               "propagated observability null for the arrival dipole")
 
 SEED = 20261101
-NOR = 150          # isotropic orientations per comet
+NOR = 1000         # isotropic orientations per comet; refined finite-orientation quadrature
 NU = 180           # true-anomaly grid over the bright window
 N_MC = 8000        # null resamples of the discovered population
 CAP = 60.0
@@ -110,21 +112,14 @@ WEIGHT_SCHEMES = ("bright_sum", "obs_frac", "binary")
 # ------------------------------------------------------------------
 def haar_rots(n):
     """Uniform random rotations on SO(3) via QR with sign correction."""
-    A = rng.normal(size=(n, 3, 3))
-    Q, R = np.linalg.qr(A)
-    T = np.sign(np.einsum("nii->ni", R)); T[T == 0] = 1
-    return Q * T[:, None, :]
+    return haar_rotations(rng, n)
 
 
-def orientation_geometry(q, e, Ls, n_or=NOR):
+def orientation_geometry(q, e, Ls, n_or=NOR, outer_radius=4.0):
     """Propagate n_or isotropic orientations of a (q, e, T_p->Ls) orbit
     through the bright window; return aphelion dirs and per-orientation
     geometry arrays for scenario cuts."""
-    p = q * (1.0 + e)
-    nu = np.linspace(-math.pi * 0.995, math.pi * 0.995, NU)
-    rr = p / (1 + e * np.cos(nu))
-    D = np.tan(nu / 2)
-    dt = np.sqrt(2 * q ** 3 / MU) * (D + D ** 3 / 3)   # Barker parabolic
+    rr, nu, dt, dt_weights = conic_window(q, e, MU, NU, outer_radius)
     lE = np.radians(Ls + 180.0 + dt * 0.9856474)       # Earth longitude
     E = np.stack([np.cos(lE), np.sin(lE), np.zeros_like(lE)], axis=1)
     orb = np.stack([np.cos(nu), np.sin(nu), np.zeros_like(nu)], axis=1)
@@ -138,7 +133,7 @@ def orientation_geometry(q, e, Ls, n_or=NOR):
     dec = np.degrees(np.arcsin(np.clip(
         math.sin(EPS) * geod[:, :, 1] + math.cos(EPS) * geod[:, :, 2],
         -1, 1)))
-    return dict(dirs=-Rs[:, :, 0], rr=rr, el=el, dec=dec, gd=gd)
+    return dict(dirs=-Rs[:, :, 0], rr=rr, el=el, dec=dec, gd=gd, dt_weights=dt_weights)
 
 
 def weights(geom, r_vis, dmax, el_min, dec_min, scheme="bright_sum"):
@@ -147,10 +142,11 @@ def weights(geom, r_vis, dmax, el_min, dec_min, scheme="bright_sum"):
           & (geom["gd"] < dmax))
     if scheme == "bright_sum":
         gd_c = np.clip(geom["gd"], 0.05, None)   # 0.05 AU Earth-graze floor
-        w = np.where(ok, 1.0 / (geom["rr"][None, :] ** 2 * gd_c ** 2),
+        w = np.where(ok, geom["dt_weights"][None, :] / (geom["rr"][None, :] ** 2 * gd_c ** 2),
                      0.0).sum(1)
     elif scheme == "obs_frac":
-        w = ok.sum(1) / max(1, (geom["rr"] < r_vis).sum())
+        w = (ok * geom["dt_weights"][None, :]).sum(1) / max(
+            1e-30, geom["dt_weights"][geom["rr"] < r_vis].sum())
     elif scheme == "binary":
         w = (ok.sum(1) > 3).astype(float)
     else:
@@ -206,7 +202,7 @@ for k, r in orig.items():
     doy = (date(y, mth, 1) - date(y, 1, 1)).days + dd
     u = -perih_dir(math.radians(r["w"]), math.radians(r["Om"]),
                    math.radians(r["i"]))
-    c1.append(dict(q=r["q"], e=min(r["e"], 0.9999),
+    c1.append(dict(q=r["q"], e=r["e"],
                    Ls=(280.46 + 0.9856474 * (doy - 1)), u=u))
 logger.info(f"class-1 cohort with epochs: {len(c1)}")
 
@@ -254,7 +250,7 @@ for r in srows:
         continue
     aph = -perih_dir(math.radians(w), math.radians(Om),
                      math.radians(inc))
-    recs.append(dict(yr=yr, q=q, e=min(e, 0.9999), Ls=_lsun_jd(tpjd),
+    recs.append(dict(yr=yr, q=q, e=e, Ls=_lsun_jd(tpjd),
                      u=aph))
 
 pre18 = [r for r in recs if r["yr"] < 2018]
@@ -284,8 +280,10 @@ def footprint_pool(cohort, n_or=NOR, scheme="bright_sum", **scn):
     """Weighted isotropic-orientation pool: (dirs, weights)."""
     Ds, Ws = [], []
     for r in cohort:
-        g = orientation_geometry(r["q"], r["e"], r["Ls"], n_or)
+        g = orientation_geometry(r["q"], r["e"], r["Ls"], n_or, scn["r_vis"])
         w = weights(g, scheme=scheme, **scn)
+        orientation_cdf(w[None, :])  # validate visibility and finite weights
+        w = w / w.sum()
         Ds.append(g["dirs"]); Ws.append(w)
     return np.concatenate(Ds), np.concatenate(Ws)
 
@@ -293,33 +291,42 @@ def footprint_pool(cohort, n_or=NOR, scheme="bright_sum", **scn):
 def null_draws(D, W, n, ax, n_mc=N_MC):
     """Resample n directions from the weighted footprint pool; return
     dipole amplitude, axis separation and cap fraction per draw."""
-    c = np.cumsum(W); c /= c[-1]
+    directions = D.reshape(n, -1, 3)
+    c = orientation_cdf(W.reshape(n, -1))
     cosc = math.cos(math.radians(CAP))
     Rv = np.empty(n_mc); sepv = np.empty(n_mc); capv = np.empty(n_mc)
+    resident_sepv = np.empty(n_mc)
     for i in range(n_mc):
-        idx = np.searchsorted(c, rng.random(n))
-        Di = D[idx]
+        idx = (c <= rng.random((n, 1))).sum(axis=1)
+        Di = directions[np.arange(n), idx]
         S = Di.mean(0)
         R = np.linalg.norm(S)
         Rv[i] = R
         sepv[i] = sep(S / R, ax) if R > 0 else 180.0
         capv[i] = (Di @ ax >= cosc).mean()
-    return Rv, sepv, capv
+        resident_sepv[i] = sep(S / R, TNO) if R > 0 else 180.0
+    return Rv, sepv, capv, resident_sepv
 
 
 out = {"step": "step_163_footprint_forward", "seed": SEED,
        "model": dict(
-           propagation="parabolic Barker, true-anomaly grid",
+           propagation="Kepler conic at supplied eccentricity, true-anomaly grid with dt measure",
            n_orientations=NOR, nu_grid=NU, n_mc=N_MC,
            cuts_reference=REF,
-           weight="sum over observable timesteps of 1/(r^2 Delta^2)",
+           cohort_scope="Only objects whose perihelion is inside the stated visibility limits; excluded objects remain outside this test",
+           null_design="One independently weighted orientation per fixed comet in each realization",
+           weight="time integral dt/(r^2 Delta^2) over observable intervals",
            observability="elongation>el_min, dec>dec_min, "
                          "r<r_vis, Delta<dmax"),
        "results": {}}
 csvs = []
 
-for ctag, cohort in cohorts.items():
+for ctag, source_cohort in cohorts.items():
+    # Identical conditioned cohorts receive identical Monte Carlo choices.
+    rng = np.random.default_rng(SEED)
+    cohort = [r for r in source_cohort if visibility_eligible(r["q"], REF["r_vis"], REF["dmax"])]
     n = len(cohort)
+    logger.info(f"{ctag}: {n}/{len(source_cohort)} objects eligible for the stated visibility model")
     Uo = np.array([r["u"] for r in cohort])
     So, Ro, do = dipole(Uo)
 
@@ -334,12 +341,14 @@ for ctag, cohort in cohorts.items():
               sep_obs_fp=sep(do, fd))
 
     # T2: selection-only null
-    Rv, sepv, capv = null_draws(D, W, n, CAX)
+    Rv, sepv, capv, resident_sepv = null_draws(D, W, n, CAX)
+    if ctag == "class1_all":
+        primary_plot = (sepv.copy(), capv.copy(), Uo.copy(), do.copy())
     f_obs = float((Uo @ CAX >= math.cos(math.radians(CAP))).mean())
     joint_null = np.where((Rv >= Ro) & (sepv <= sep(do, CAX)), 1.0, 0.0)
     t2 = dict(
         p_dir_tno=monte_carlo_tail(sepv, sep(do, CAX), "less"),
-        p_dir_resident=monte_carlo_tail(sepv, sep(do, TNO), "less"),
+        p_dir_resident=monte_carlo_tail(resident_sepv, sep(do, TNO), "less"),
         p_joint=monte_carlo_tail(joint_null, 1.0),
         null_R_med=float(np.median(Rv)),
         null_dir_med_sep_tno=float(np.median(sepv)),
@@ -369,23 +378,25 @@ for ctag, cohort in cohorts.items():
     # class-1 cohorts; a reduced grid for the large SBDB cohorts.
     grid = GRID if n <= 300 else [(2.5, 4.0, 60, -40), (3.0, 4.0, 60, -40),
                                 (4.0, 6.0, 90, -40), (3.0, 4.0, 90, -30)]
-    fp_dirs, resid_seps = [], []
+    fp_dirs, resid_seps, scenario_counts = [], [], []
     for (rv, dm, el, dc) in grid:
-        Ds_, Ws_ = [], []
-        for r in cohort:
-            g = orientation_geometry(r["q"], r["e"], r["Ls"], 80)
-            w = weights(g, r_vis=rv, dmax=dm, el_min=el, dec_min=dc)
-            Ds_.append(g["dirs"]); Ws_.append(w)
-        Dg, Wg = np.concatenate(Ds_), np.concatenate(Ws_)
+        scenario_cohort = [r for r in cohort if visibility_eligible(r["q"], rv, dm)]
+        if len(scenario_cohort) < 3:
+            continue
+        Dg, Wg = footprint_pool(scenario_cohort, n_or=80,
+                               r_vis=rv, dmax=dm, el_min=el, dec_min=dc)
+        scenario_observed = np.array([r["u"] for r in scenario_cohort]).mean(0)
+        scenario_counts.append(len(scenario_cohort))
         Fg = (Dg * Wg[:, None]).sum(0) / Wg.sum()
         if np.linalg.norm(Fg) < 1e-9:
             continue
         fgd = Fg / np.linalg.norm(Fg)
         fp_dirs.append(fgd)
-        rr_ = So - Fg
+        rr_ = scenario_observed - Fg
         resid_seps.append(sep(rr_ / np.linalg.norm(rr_), CAX))
     fp_dirs = np.array(fp_dirs)
     t4 = dict(n_scen=len(fp_dirs),
+              modelled_n_min=min(scenario_counts), modelled_n_max=max(scenario_counts),
               fp_dir_med=lb(fp_dirs.mean(0) /
                             np.linalg.norm(fp_dirs.mean(0)))
               if len(fp_dirs) else None,
@@ -412,7 +423,9 @@ for ctag, cohort in cohorts.items():
     t5 = dict(obs_lon_dipole_R=Ro_lon, obs_lon_dipole_dir=do_lon,
               fp_lon_dipole_R=Rf_lon, fp_lon_dipole_dir=df_lon)
 
-    out["results"][ctag] = dict(n=n, T1=t1, T2=t2, T3=t3, T4=t4, T5=t5)
+    out["results"][ctag] = dict(n=n, n_source=len(source_cohort),
+                                n_outside_model=len(source_cohort)-n,
+                                T1=t1, T2=t2, T3=t3, T4=t4, T5=t5)
     logger.info(
         f"{ctag}: obs R={Ro:.3f} dir=({lb(do)[0]:.0f},{lb(do)[1]:.0f}) | "
         f"fp dir=({lb(fd)[0]:.0f},{lb(fd)[1]:.0f}) R={fR:.3f} "
@@ -448,13 +461,18 @@ else:
 
 out["caveats"] = [
     "forward model is first-principles: circular Earth orbit, "
-    "parabolic time law, sharp observability cuts and a 1/(r^2 D^2) "
+    "Kepler conic time law, sharp observability cuts and a 1/(r^2 D^2) "
     "brightness proxy; it is not a survey-realistic pipeline",
     "the footprint dipole direction is stable across the scenario "
     "grid for the class-1 cohort but its amplitude is "
     "weighting-scheme dependent",
     "the resampled null holds each comet's real perihelion epoch "
     "fixed; epoch marginals are near-uniform (Ls dipole R~0.06)",
+    "The full-cohort keys are retained for compatibility, but their n is the visibility-model-eligible subset; conclusions do not extend to excluded objects",
+    "Orientation weights are normalized per object; the null holds the observed q/e/epoch cohort fixed, rather than reweighting its brightness distribution a second time",
+    "Robustness scenarios use only objects eligible under each scenario; the object count can change",
+    "The matched-q subset coincides with the reference eligible class-1 subset and is not an independent replication",
+    "Finite orientation quadrature is approximate; null resampling error does not include quadrature or survey-model uncertainty",
     "results are for the dipole (l=1) mode; higher multipoles are "
     "not tested here",
 ]
@@ -477,19 +495,16 @@ FIG = RESULTS / "figures"; FIG.mkdir(exist_ok=True)
 (FIG / "supplementary").mkdir(exist_ok=True)
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.2))
-D, W = footprint_pool(c1, **REF)
-Rv, sepv, capv = null_draws(D, W, len(c1), CAX)
-Uo = np.array([r["u"] for r in c1])
-So, Ro, do = dipole(Uo)
+sepv, capv, Uo, do = primary_plot
 axes[0].hist(sepv, bins=60, color="0.7")
 axes[0].axvline(sep(do, CAX), color="r", lw=1.5)
 axes[0].set_xlabel("dipole separation from transit axis (deg)")
-axes[0].set_title("class-1: footprint-null dipole directions")
+axes[0].set_title(f"Eligible class-1 subset (n={len(Uo)}): directions")
 axes[1].hist(capv, bins=60, color="0.7")
 axes[1].axvline((Uo @ CAX >= math.cos(math.radians(CAP))).mean(),
                 color="r", lw=1.5)
 axes[1].set_xlabel("in-cap fraction (60 deg, transit axis)")
-axes[1].set_title("class-1: footprint-null cap fraction")
+axes[1].set_title(f"Eligible class-1 subset (n={len(Uo)}): cap fraction")
 fig.tight_layout()
 fig.savefig(FIG / "supplementary" / "step_b129_footprint_forward.png",
             dpi=300)

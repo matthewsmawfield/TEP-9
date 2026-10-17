@@ -1,7 +1,7 @@
 {
  "step": "step_135_cross_channel",
  "result": "b99",
- "verdict": "CONVERGENT CROSS-CHANNEL GEOMETRY: 3 of 4 independent measurement classes resolve the frame-anchored bipolar structure at p<0.05 (nominal Fisher p=1.2e-06; GNSS-II direction epoch coincides with the comet era boundary at p=0.002 block-permutation).  No calibrated joint significance is claimed: GNSS overlap, directional sensitivity and the retrospective choice of geometric relation remain uncalibrated.",
+ "verdict": "CONVERGENT CROSS-CHANNEL GEOMETRY: 4 of 4 independent measurement classes resolve the frame-anchored bipolar structure at p<0.05 (nominal Fisher p=1.4e-08; GNSS-II direction epoch coincides with the comet era boundary at p=0.002 block-permutation).  No calibrated joint significance is claimed: GNSS overlap, directional sensitivity and the retrospective choice of geometric relation remain uncalibrated.",
  "T1_ledger": [
   {
    "channel": "comet-declared",
@@ -68,7 +68,7 @@
    "meridian_dist_deg": 65.03171284335272,
    "azimuth_deg": 273.8731355105335,
    "bipolar_dist_deg": 87.84390652664146,
-   "note": "Planck rank 226/2664, channel p=0.0848 (rank percentile)"
+   "note": "Planck rank 226/2664, fixed-axis scrambled p=0.0010"
   }
  ],
  "T2_meridian": {
@@ -90,14 +90,18 @@
  },
  "T3_fisher": {
   "channel_p": {
-   "comet-bipolar-J": 9.99950002499875e-05,
+   "comet-bipolar-J": 4.999750012499375e-05,
    "clock-GNSS-II-meridian": 0.016176674272600767,
    "clock-MGEX-cmb-proj": 0.004975124378109453,
-   "lunar-LLR-Planck": 0.08483483483483484
+   "lunar-LLR-Planck": 0.000999000999000999
   },
-  "chi2": 42.209858490454415,
+  "chi2": 52.47956434542876,
   "df": 8,
-  "fisher_p_nominal": 1.236801501623986e-06,
+  "fisher_p_nominal": 1.3597597741753116e-08,
+  "llr_fixed_axis_null": {
+   "fixed_axis_null_p": 0.000999000999000999,
+   "observed_sky_rank": 0.08483483483483484
+  },
   "excluded_duplicate_GNSS_pole_p": 0.05011061834960151,
   "interpretation": "One term per channel; GNSS overlap, sky sensitivity, and retrospective choice of geometry are not calibrated."
  },

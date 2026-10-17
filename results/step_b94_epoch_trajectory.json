@@ -2,8 +2,8 @@
  "step": "step_130_epoch_axis_trajectory",
  "description": "epoch-resolved axis trajectory on the pooled independent dual-leg record (steps 127+128 refits); drift-vs-switch discrimination on the boundary anomaly's sky position",
  "n_dual_leg": 532,
- "n_pre2018": 373,
- "n_post2017": 159,
+ "n_pre2018": 372,
+ "n_post2017": 160,
  "cap_deg": 60.0,
  "epoch_proxy": "perihelion year",
  "T1_per_bin": [
@@ -63,38 +63,38 @@
   },
   {
    "bin": "2014-2018",
-   "n": 74,
+   "n": 73,
    "declared": {
     "n_in": 25,
-    "n_out": 49,
+    "n_out": 48,
     "med_in": 0.21154244453856144,
-    "med_out": 0.0784286362248069,
-    "p": 0.018762766434937753
+    "med_out": 0.08049797831661755,
+    "p": 0.022467000621299422
    },
    "displaced": {
-    "n_in": 22,
+    "n_in": 21,
     "n_out": 52,
-    "med_in": 0.1192805272447291,
+    "med_in": 0.14171083305306884,
     "med_out": 0.12372862003207757,
-    "p": 0.4180208070271729
+    "p": 0.36418191792814814
    }
   },
   {
    "bin": "2018-2031",
-   "n": 179,
+   "n": 180,
    "declared": {
     "n_in": 45,
-    "n_out": 134,
+    "n_out": 135,
     "med_in": 0.09067667067259916,
-    "med_out": 0.11920485980640919,
-    "p": 0.9271239881300195
+    "med_out": 0.11862577047425359,
+    "p": 0.9173526438536161
    },
    "displaced": {
-    "n_in": 54,
+    "n_in": 55,
     "n_out": 125,
-    "med_in": 0.15027972976790055,
+    "med_in": 0.14827011592596645,
     "med_out": 0.09819413522072516,
-    "p": 0.0016578213019512672
+    "p": 0.0028296484282531588
    }
   }
  ],
@@ -122,25 +122,25 @@
   ],
   "spearman_epoch_s": 0.3,
   "spearman_p_nominal": 0.6238376647810728,
-  "perm_p": 0.38323353293413176,
+  "perm_p": 0.36127744510978044,
   "note": "s=0 declared axis, s=1 displaced axis; trajectory statistic is Spearman(bin epoch midpoint, argmax s); null re-derives the whole per-bin scan under epoch permutation"
  },
  "T3_drift_vs_switch": {
   "contrast_fixed_declared": 0.0062200664530890765,
   "contrast_fixed_displaced": 0.019844779401620674,
   "best_switch": {
-   "contrast": 0.03377049544882128,
+   "contrast": 0.03330808509130938,
    "T_switch": 2018.0
   },
   "best_drift": {
-   "contrast": 0.03338852827336257,
+   "contrast": 0.03287393361962017,
    "T_center": 2020.0,
    "width_yr": 10.0
   },
-  "advantage_over_fixed": 0.01392571604720061,
-  "perm_p_advantage": 0.1217564870259481,
-  "perm_p_switch_vs_fixed": 0.031936127744510975,
-  "perm_p_drift_vs_fixed": 0.13972055888223553,
+  "advantage_over_fixed": 0.013463305689688704,
+  "perm_p_advantage": 0.1996007984031936,
+  "perm_p_switch_vs_fixed": 0.04790419161676647,
+  "perm_p_drift_vs_fixed": 0.20758483033932135,
   "note": "contrast = in-cap minus out-of-cap median ddirf on the pooled cohort; switch/drift hyperparameters scanned per realization inside the permutation null, so the null prices the scan too"
  },
  "T4_epoch_in_cap": {
@@ -152,14 +152,14 @@
   },
   "displaced": {
    "n_cap": 171,
-   "rho": 0.01547747618019056,
-   "p_nominal": 0.8407597151422659,
-   "perm_p_two_sided": 0.844311377245509
+   "rho": -0.00016559867521059833,
+   "p_nominal": 0.9982848682098432,
+   "perm_p_two_sided": 1.0
   }
  },
  "T5_audit": {
-  "median_ddirf_pre2018": 0.13064816017074377,
-  "median_ddirf_post2017": 0.11305974597472607,
+  "median_ddirf_pre2018": 0.13066202168554053,
+  "median_ddirf_post2017": 0.11305488806080573,
   "n_in_both_caps": 57,
   "cap_axis_sep_deg": 78.65812771798022,
   "channels": [
@@ -243,38 +243,38 @@
    },
    {
     "bin": "2014-2018",
-    "n": 74,
+    "n": 73,
     "declared": {
      "n_in": 25,
-     "n_out": 49,
+     "n_out": 48,
      "med_in": 0.20706946968334844,
-     "med_out": 0.07722831607406268,
-     "p": 0.008457010039029746
+     "med_out": 0.07791333805289366,
+     "p": 0.009882873169615662
     },
     "displaced": {
-     "n_in": 22,
+     "n_in": 21,
      "n_out": 52,
-     "med_in": 0.08390237039429549,
+     "med_in": 0.08920638075686634,
      "med_out": 0.11776018186940518,
-     "p": 0.4412392165869996
+     "p": 0.40136547799072336
     }
    },
    {
     "bin": "2018-2031",
-    "n": 179,
+    "n": 180,
     "declared": {
      "n_in": 45,
-     "n_out": 134,
+     "n_out": 135,
      "med_in": 0.0911582362423686,
-     "med_out": 0.12628676680855044,
-     "p": 0.8774022465977387
+     "med_out": 0.12552101420057793,
+     "p": 0.8636294212475599
     },
     "displaced": {
-     "n_in": 54,
+     "n_in": 55,
      "n_out": 125,
-     "med_in": 0.14925690720398208,
+     "med_in": 0.14705631315699894,
      "med_out": 0.09403856559241436,
-     "p": 0.0015918500292372952
+     "p": 0.0029393321976059145
     }
    }
   ],
@@ -335,38 +335,38 @@
    },
    {
     "bin": "2014-2018",
-    "n": 74,
+    "n": 73,
     "declared": {
      "n_in": 25,
-     "n_out": 49,
+     "n_out": 48,
      "med_in": 0.14026890643601284,
-     "med_out": 0.07203799852129673,
-     "p": 0.0001018892297807551
+     "med_out": 0.07510116293051194,
+     "p": 0.0001340271890286732
     },
     "displaced": {
-     "n_in": 22,
+     "n_in": 21,
      "n_out": 52,
-     "med_in": 0.09260721581812803,
+     "med_in": 0.09356388882964015,
      "med_out": 0.10391804492517089,
-     "p": 0.39508472551126594
+     "p": 0.2854753320714548
     }
    },
    {
     "bin": "2018-2031",
-    "n": 179,
+    "n": 180,
     "declared": {
      "n_in": 45,
-     "n_out": 134,
+     "n_out": 135,
      "med_in": 0.0913424954761336,
-     "med_out": 0.10694706729684561,
-     "p": 0.9937685814579217
+     "med_out": 0.106834372290417,
+     "p": 0.9921298047590275
     },
     "displaced": {
-     "n_in": 54,
+     "n_in": 55,
      "n_out": 125,
-     "med_in": 0.10317772059942393,
+     "med_in": 0.101187881184591,
      "med_out": 0.10109929688399012,
-     "p": 0.2874085240198104
+     "p": 0.3628286367455039
     }
    }
   ]

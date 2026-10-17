@@ -2,20 +2,20 @@
  "step": "step_159_tp_slip",
  "description": "perihelion-epoch disagreement between independently fitted inbound and outbound legs on raw MPC astrometry; boundary products joined from the step_b91 checkpoint",
  "cap_deg": 60.0,
- "n_dual_leg": 373,
+ "n_dual_leg": 372,
  "n_with_dtp": 369,
  "n_conditioned": 175,
  "conditioning": "both leg osculating tp within one total arc of the SBDB seed tp; near-parabolic fits outside that window carry an unbounded M/n inversion and are excluded from tests",
  "T1_validity": {
   "catalogue_dtau": {
    "n": 175,
-   "rho": -0.4192073443797582,
-   "p": 7.739236598751071e-09
+   "rho": -0.41902821316614425,
+   "p": 7.865308682134997e-09
   },
   "our_ddirf": {
    "n": 175,
-   "rho": -0.09799373040752352,
-   "p": 0.19699770040277748
+   "rho": -0.09784818629646215,
+   "p": 0.1976669218338223
   },
   "med_abs_dtp_io_d": 0.07368561299517751,
   "med_abs_dtp_io_frac_of_arc": 0.0001182605114380446,
@@ -59,13 +59,13 @@
  },
  "T4_dissociation": {
   "resid_cap": {
-   "med_diff_dex": 0.10369995249377306,
-   "p_mwu": 0.3546939079658899,
-   "p_perm": 0.3163367326534693
+   "med_diff_dex": 0.10306667189212626,
+   "p_mwu": 0.3559167039066276,
+   "p_perm": 0.3205358928214357
   },
   "vs_xarc_rms": {
-   "rho": -0.2490998656515898,
-   "p": 0.0008866477545613218
+   "rho": -0.24879310344827588,
+   "p": 0.0009001840088383564
   }
  },
  "reading": "T1 certifies the channel: the perihelion-epoch disagreement is a projection of the same inter-leg non-closure the angular record carries, so it must concord with |dtau| and ddirf.  T2/T3 test whether the timing slip carries the same cap localization and bipolar polarity; T4 checks whether it survives residualization against astrometric-noise covariates."

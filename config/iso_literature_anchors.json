@@ -1,0 +1,57 @@
+{
+  "1I": {
+    "volatile_accounting": {
+      "status": "unexplained",
+      "note": "required mass loss ~25 kg/s for outgassing recoil; detected limits are ~3 orders of magnitude below (CO < 0.04 kg/s).  No coma, CN, CO, CO2 or dust detected to deep limits.  Alternative published accounts (H2-ice, N2-ice, radiation-pressure on a low-column-density body) remain unconfirmed models, not detected volatiles.",
+      "citations": [
+        "Micheli et al. 2018, Nature 558, 223",
+        "Meech et al. 2017, Nature 552, 378 (no detected coma)",
+        "Ye et al. 2017, ApJL 851, L5 (dust production limits)",
+        "Trilling et al. 2018, AJ 156, 261 (Spitzer CO/CO2 limits)",
+        "Seligman et al. 2021 (CO production upper limit)",
+        "Jewitt & Seligman 2023, ARAA 61 (review synthesis)"
+      ]
+    }
+  },
+  "2I": {
+    "volatile_accounting": {
+      "status": "explained",
+      "note": "measured H2O and CO production rates are sufficient to account for the measured non-gravitational acceleration within uncertainties; the object is a normal outgassing comet dynamically",
+      "citations": [
+        "Hui et al. 2020, ApJ 889, 114",
+        "Bodewits et al. 2020, Nat. Astron. 4, 867 (CO production)",
+        "Cordiner et al. 2020, Nat. Astron. 4, 861 (HCN/ALMA)",
+        "Xing et al. 2020, ApJ 893, L48 (H2O production)",
+        "Jewitt & Seligman 2023, ARAA 61 (review synthesis)"
+      ]
+    }
+  },
+  "3I": {
+    "volatile_accounting": {
+      "status": "explained",
+      "note": "CO2-dominated coma with measured gas and dust production; fitted NG (g(r) ~ 1/r^2 appropriate to CO2) is consistent with the observed outgassing and mass estimates.  Post-perihelion work converges on the same verdict: systematic-uncertainty NG solutions (gravity-only vs symmetric/asymmetric NG families) and the NG-inferred nucleus mass/size are consistent with volatile-driven recoil and with the HST nucleus measurement",
+      "citations": [
+        "Cordiner et al. 2025 (JWST, CO2-dominated coma)",
+        "Lisse et al. 2025 (multi-wavelength activity)",
+        "Eubanks et al. 2026, Res. Notes AAS (NG solution, interplanetary astrometry)",
+        "Forbes & Butler 2026, Res. Notes AAS 10, 12 (mass-loss consistency)",
+        "Spada et al. 2026, A&A (systematic/statistical NG uncertainties; arc to 2026-02-19)",
+        "Hui et al. 2026, ApJL 999, L37 (HST nucleus radius 1.3+/-0.2 km consistent with NG-inferred size)",
+        "Thoss, Loeb & Burkert 2026, arXiv:2603.15735 (NG-inferred nucleus mass ~1.6e11-3.2e12 kg, radius ~0.4-1.2 km)"
+      ],
+      "verification_sources": [
+        "https://arxiv.org/abs/2603.00782v2",
+        "https://arxiv.org/abs/2603.15735",
+        "https://arxiv.org/abs/2601.21569"
+      ],
+      "verification_note": "Primary sources checked during the completion run: outgassing models account for the measured NGA under explicit nucleus assumptions; mass and systematic uncertainties remain. This remains a conditional literature classification rather than an independent detection of zero unexplained acceleration."
+    }
+  },
+  "_recovery": {
+    "recovered_utc": "2026-10-14T09:02:12.150116+00:00",
+    "source": "results/step_b65_iso_ng_channel.json",
+    "source_sha256": "f97a9e47567b8fe22d8de700dbb6dc23df72590186d2d3be09dabdbbcaf7d52b",
+    "method": "Recover the literal previously published literature-classification inputs retained in the output ledger; no orbit measurements inferred or synthesized.",
+    "scope": "Only volatile-accounting fields used by step_101 are recovered; classifications remain explicit literature assumptions with the saved sensitivity audit."
+  }
+}

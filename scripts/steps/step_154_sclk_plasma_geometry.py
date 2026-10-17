@@ -53,6 +53,7 @@ import math
 import time
 import numpy as np
 import requests
+from scripts.utils.nasa_archive import fetch_daily_ascii
 from scipy import stats as _st
 import spiceypy as sp
 
@@ -85,33 +86,21 @@ def fetch_omni2():
     if OMNI2.exists():
         logger.info(f"OMNI2 daily cache present: {OMNI2.name}")
         return
-    r = None
-    for attempt in range(1, 6):
-        try:
-            r = requests.get(OMNI2_URL, timeout=180,
-                             headers={"User-Agent": "tep9/1.0"})
-            r.raise_for_status()
-            break
-        except Exception as exc:
-            if attempt == 5:
-                raise
-            wait = 5 * 2 ** (attempt - 1)
-            logger.info(f"OMNI2 fetch attempt {attempt} failed ({exc}); "
-                        f"retrying in {wait}s")
-            time.sleep(wait)
-    OMNI2.write_bytes(r.content)
+    body, retrieved_url, transport = fetch_daily_ascii(OMNI2_URL, 55)
+    OMNI2.write_bytes(body)
     prov = json.loads(PROV.read_text()) if PROV.exists() else \
         {"step": "step_136_solar_wind_screening", "files": {}}
     prov["files"]["omni_01_av.dat"] = {
-        "url": OMNI2_URL,
+        "url": retrieved_url, "canonical_https_url": OMNI2_URL,
+        "transport": transport,
         "retrieved_utc": datetime.datetime.now(
             datetime.timezone.utc).isoformat(),
-        "bytes": len(r.content),
-        "sha256": hashlib.sha256(r.content).hexdigest(),
+        "bytes": len(body),
+        "sha256": hashlib.sha256(body).hexdigest(),
         "note": "OMNI2 daily averages: Kp, SSN, DST, AE, proton fluxes, "
                 "ap, F10.7, PC(N), AL, AU (55-word omni2 format)"}
     PROV.write_text(json.dumps(prov, indent=1))
-    logger.info(f"downloaded OMNI2 daily ({len(r.content)} bytes)")
+    logger.info(f"downloaded OMNI2 daily ({len(body)} bytes)")
 
 
 fetch_omni2()
@@ -265,7 +254,7 @@ def rank_partial(x, y, Z):
 
 res = {"step": "step_154_sclk_plasma_geometry", "result": "b118",
        "covariates": list(COV),
-       "inputs": {"residuals": "step_b60_sclk_journey.csv",
+       "inputs": {"residuals": "results/step_b60_sclk_journey.csv",
                   "omni_m": "data/raw/omni/omni_m_daily.dat",
                   "omni2": "data/raw/omni/omni_01_av.dat",
                   "sep": "NAIF craft SPKs + DE440s, ECLIPJ2000"}}

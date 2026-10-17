@@ -14,7 +14,7 @@ TEP-9 analysis.
 Data
 ----
 The channel uses the published historical RTG performance dataset
-(Whiting & Woerner 2023, doi:10.5061/dryad.1zcrjdfw2), which collates
+(Whiting 2024 dataset, doi:10.5061/dryad.1zcrjdfw2; Whiting & Woerner 2023 book chapter), which collates
 the JPL MHW-RTG telemetry record: normalized electrical power versus
 time for the Voyager 1 and Voyager 2 total missions and for each
 individual RTG unit, through August 2021.  This is real telemetry --
@@ -783,11 +783,11 @@ out = dict(
                  "channel; decay-rate bounds mapped to effective-"
                  "alpha bounds via the Gamow amplification."),
     inputs={
-        "rtg_telemetry": str(XLSX.relative_to(XLSX.parents[2])),
+        "rtg_telemetry": "data/raw/rtg/" + XLSX.name,
         "literature_anchors":
             "data/raw/literature/literature_anchors.json",
         "dataset_citation": (
-            "Whiting & Woerner 2023, doi:10.5061/dryad.1zcrjdfw2; "
+            "Whiting 2024 dataset, doi:10.5061/dryad.1zcrjdfw2; Whiting & Woerner 2023 book chapter; "
             "Voyager telemetry courtesy E. Medina (JPL), through "
             "2021-08")},
     physics=dict(

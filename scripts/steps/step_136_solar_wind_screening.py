@@ -46,6 +46,7 @@ import requests
 from scipy import stats as _st
 from scripts.utils.tep9_common import lv, sep
 from scripts.utils.coordinates import GAL2ECL
+from scripts.utils.nasa_archive import fetch_daily_ascii
 
 OMNI_URL = ("https://spdf.gsfc.nasa.gov/pub/data/omni/"
             "low_res_omni/omni_m_daily.dat")
@@ -60,32 +61,20 @@ def fetch_omni():
         logger.info(f"OMNI cache present: {OMNI_FILE.name}")
         return
     OMNI_DIR.mkdir(parents=True, exist_ok=True)
-    r = None
-    for attempt in range(1, 6):
-        try:
-            r = requests.get(OMNI_URL, timeout=180,
-                             headers={"User-Agent": "tep9/1.0"})
-            r.raise_for_status()
-            break
-        except Exception as exc:
-            if attempt == 5:
-                raise
-            wait = 5 * 2 ** (attempt - 1)
-            logger.info(f"OMNI fetch attempt {attempt} failed ({exc}); "
-                        f"retrying in {wait}s")
-            time.sleep(wait)
-    OMNI_FILE.write_bytes(r.content)
+    body, retrieved_url, transport = fetch_daily_ascii(OMNI_URL, 14)
+    OMNI_FILE.write_bytes(body)
     prov = {"step": "step_136_solar_wind_screening",
             "files": {"omni_m_daily.dat": {
-                "url": OMNI_URL,
+                "url": retrieved_url, "canonical_https_url": OMNI_URL,
+                "transport": transport,
                 "retrieved_utc": datetime.datetime.now(
                     datetime.timezone.utc).isoformat(),
-                "bytes": len(r.content),
-                "sha256": hashlib.sha256(r.content).hexdigest(),
+                "bytes": len(body),
+                "sha256": hashlib.sha256(body).hexdigest(),
                 "note": "COHO daily merged OMNI: IMF + solar-wind "
                         "plasma, 1963-present"}}}
     PROV.write_text(json.dumps(prov, indent=1))
-    logger.info(f"downloaded OMNI daily ({len(r.content)} bytes)")
+    logger.info(f"downloaded OMNI daily ({len(body)} bytes)")
 
 
 fetch_omni()

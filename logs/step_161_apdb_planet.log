@@ -1,91 +1,91 @@
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] LOGGER INITIALIZED: step_161_apdb_planet (Step 161)
-[2026-09-21 15:44:07 UTC] [DEBUG   ] [STEP 161] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_161_apdb_planet.log
-[2026-09-21 15:44:07 UTC] [DEBUG   ] [STEP 161] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
-[2026-09-21 15:44:07 UTC] [DEBUG   ] [STEP 161] Start time (UTC): 2026-09-21T15:44:07.201067+00:00
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] 
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] STEP PURPOSE
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] --------------------------------------------------------------------------------
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   Step 161 -- Planetary astrometric O-C channel (APDB lineage).
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   The transit and resident channels all descend from small-body
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   catalogues; this step opens an independent lineage: the raw
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   ground-based astrometry of the outer planets archived in the JPL
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   APDB mirror at IMCCE (data used to build the DE ephemerides).
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   Pluto is the case of interest -- it is the only major-body object
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   spending the entire observational record at boundary-adjacent radii
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   (30-50 AU), and between 1914 and 1997 its heliocentric longitude
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   sweeps from inside the declared cap region toward the mirror cap.
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   Uranus and Neptune contribute the astrographic and normal-point
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   records.
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   If a lapse-type boundary field exists, the orbit-reconstruction
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   residuals of a resident body should carry direction-dependent
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   structure as the body moves through the cap geometry -- the same
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   non-closure observable class as the comet legs, expressed on a
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   resident.  This step computes the observed-minus-computed positions
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   of every APDB optical observation against DE440s and tests whether
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   the residual field is organised by the planet's direction relative
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   to the declared axis.
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   Parsing (O'Handley 1968 card format, opticalformat.txt):
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   col 1      'P'
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   col 2-4    planet field (00p or pss)
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   col 5+     UT Julian date, 7-digit integer part + variable decimals
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   col 22-24  observatory/telescope number (JPL/MPC numeric codes)
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   col 26-28  catalogue code
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   col 29     type (1,3 = geocentric; 4,6 = topocentric)
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   col 34-42  RA hhmmss.sss (8-9 digits, trailing decimals implied)
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   col 43     RA equinox flag (0 true-of-date, 3 B1950, 9 J2000)
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   col 51-59  Dec [sign]ddmmss.ss
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   col 60     Dec equinox flag
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   tail       source code + year
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   Observed positions are rotated to J2000 with an IAU-1976 precession
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   matrix; blank equinox flags are recorded as unknown-frame and kept
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   out of the precision tests.  Computed positions are DE440s system
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   barycentres (bodies 7, 8, 9) with one-way light-time correction and
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   topocentric parallax where the observation is marked topocentric and
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   the station resolves in the MPC observatory table.
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   Registered tests
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   T1  sanity: per-source median |O-C| must sit at the historical
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   plate/CCD floor (sub-arcsec to ~arcsec), certifying the parse.
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   T2  direction organisation: Spearman of the along-track residual
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   against the planet's angular separation from the declared axis,
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   plus the in-cap vs out MWU contrast on the same component.
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   T3  source-coded robustness: the T2 tests repeated within each
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   source series with n >= 30 -- catalogue-zonal and plate
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   systematics are source-coded, so a direction dependence that
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   survives within sources cannot be a single catalogue's bias.
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   T4  ancillary normal points: the published Uranus/Neptune
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   occultation and VLA O-C normal points (nptsobs.txt, vs DE405)
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   tabulated with their cap geometry at epoch.
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   Outputs
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   results/step_b127_apdb_planet.json
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   results/step_b127_apdb_planet.csv
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   results/figures/supplementary/step_b127_apdb_planet.png
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161]   data/raw/apdb/                       (downloaded observation files)
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] --------------------------------------------------------------------------------
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] SCRIPT: scripts/steps/step_161_apdb_planet.py
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] SCRIPT SHA256: 158b6733e9a5a3e30145b53c48cd973fed4e29efe98c23785d034ca849b1c015
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] SCRIPT SIZE: 19262 bytes
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] ================================================================================
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] APDB planetary astrometric O-C channel
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] ================================================================================
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] plutopre69.txt: 581 observations parsed
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] plutopost69.txt: 335 observations parsed
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] plutofk5.txt: 54 observations parsed
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] astgrnofs.txt: 482 observations parsed
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] astgrbord.txt: 63 observations parsed
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] astgrmcd.txt: 12 observations parsed
-[2026-09-21 15:44:07 UTC] [INFO    ] [STEP 161] total optical observations: 1527
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] computed O-C for 1527 observations (topo-corrected 158, geocentric-fallback 12)
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Saving data: step_b127_apdb_planet.json
-[2026-09-21 15:44:09 UTC] [DEBUG   ] [STEP 161]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b127_apdb_planet.json
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]   Output: step_b127_apdb_planet.json
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Saving data: step_b127_apdb_planet.csv
-[2026-09-21 15:44:09 UTC] [DEBUG   ] [STEP 161]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b127_apdb_planet.csv
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]   Output: step_b127_apdb_planet.csv
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Saving data: step_b127_apdb_planet.png
-[2026-09-21 15:44:09 UTC] [DEBUG   ] [STEP 161]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b127_apdb_planet.png
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]   Output: step_b127_apdb_planet.png
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] {
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] LOGGER INITIALIZED: step_161_apdb_planet (Step 161)
+[2026-10-16 14:35:39 UTC] [DEBUG   ] [STEP 161] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_161_apdb_planet.log
+[2026-10-16 14:35:39 UTC] [DEBUG   ] [STEP 161] Project root: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9
+[2026-10-16 14:35:39 UTC] [DEBUG   ] [STEP 161] Start time (UTC): 2026-10-16T14:35:39.298794+00:00
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] 
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] STEP PURPOSE
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] --------------------------------------------------------------------------------
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   Step 161 -- Planetary astrometric O-C channel (APDB lineage).
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   The transit and resident channels all descend from small-body
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   catalogues; this step opens an independent lineage: the raw
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   ground-based astrometry of the outer planets archived in the JPL
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   APDB mirror at IMCCE (data used to build the DE ephemerides).
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   Pluto is the case of interest -- it is the only major-body object
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   spending the entire observational record at boundary-adjacent radii
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   (30-50 AU), and between 1914 and 1997 its heliocentric longitude
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   sweeps from inside the declared cap region toward the mirror cap.
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   Uranus and Neptune contribute the astrographic and normal-point
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   records.
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   If a lapse-type boundary field exists, the orbit-reconstruction
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   residuals of a resident body should carry direction-dependent
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   structure as the body moves through the cap geometry -- the same
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   non-closure observable class as the comet legs, expressed on a
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   resident.  This step computes the observed-minus-computed positions
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   of every APDB optical observation against DE440s and tests whether
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   the residual field is organised by the planet's direction relative
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   to the declared axis.
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   Parsing (O'Handley 1968 card format, opticalformat.txt):
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   col 1      'P'
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   col 2-4    planet field (00p or pss)
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   col 5+     UT Julian date, 7-digit integer part + variable decimals
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   col 22-24  observatory/telescope number (JPL/MPC numeric codes)
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   col 26-28  catalogue code
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   col 29     type (1,3 = geocentric; 4,6 = topocentric)
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   col 34-42  RA hhmmss.sss (8-9 digits, trailing decimals implied)
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   col 43     RA equinox flag (0 true-of-date, 3 B1950, 9 J2000)
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   col 51-59  Dec [sign]ddmmss.ss
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   col 60     Dec equinox flag
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   tail       source code + year
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   Observed positions are rotated to J2000 with an IAU-1976 precession
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   matrix; blank equinox flags are recorded as unknown-frame and kept
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   out of the precision tests.  Computed positions are DE440s system
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   barycentres (bodies 7, 8, 9) with one-way light-time correction and
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   topocentric parallax where the observation is marked topocentric and
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   the station resolves in the MPC observatory table.
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   Registered tests
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   T1  sanity: per-source median |O-C| must sit at the historical
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   plate/CCD floor (sub-arcsec to ~arcsec), certifying the parse.
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   T2  direction organisation: Spearman of the along-track residual
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   against the planet's angular separation from the declared axis,
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   plus the in-cap vs out MWU contrast on the same component.
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   T3  source-coded robustness: the T2 tests repeated within each
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   source series with n >= 30 -- catalogue-zonal and plate
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   systematics are source-coded, so a direction dependence that
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   survives within sources cannot be a single catalogue's bias.
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   T4  ancillary normal points: the published Uranus/Neptune
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   occultation and VLA O-C normal points (nptsobs.txt, vs DE405)
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   tabulated with their cap geometry at epoch.
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   Outputs
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   results/step_b127_apdb_planet.json
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   results/step_b127_apdb_planet.csv
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   results/figures/supplementary/step_b127_apdb_planet.png
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161]   data/raw/apdb/                       (downloaded observation files)
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] --------------------------------------------------------------------------------
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] EXECUTION ENVIRONMENT: python 3.13.5 | macOS-26.5.1 | numpy 2.1.3 | scipy 1.14.1 | pandas 2.2.3 | astropy 7.1.1 | rebound 5.1.1 | matplotlib 3.9.2 | cpus 15
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] SCRIPT: scripts/steps/step_161_apdb_planet.py
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] SCRIPT SHA256: 158b6733e9a5a3e30145b53c48cd973fed4e29efe98c23785d034ca849b1c015
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] SCRIPT SIZE: 19262 bytes
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] ================================================================================
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] APDB planetary astrometric O-C channel
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] ================================================================================
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] plutopre69.txt: 581 observations parsed
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] plutopost69.txt: 335 observations parsed
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] plutofk5.txt: 54 observations parsed
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] astgrnofs.txt: 482 observations parsed
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] astgrbord.txt: 63 observations parsed
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] astgrmcd.txt: 12 observations parsed
+[2026-10-16 14:35:39 UTC] [INFO    ] [STEP 161] total optical observations: 1527
+[2026-10-16 14:35:40 UTC] [INFO    ] [STEP 161] computed O-C for 1527 observations (topo-corrected 158, geocentric-fallback 12)
+[2026-10-16 14:35:40 UTC] [INFO    ] [STEP 161] Saving data: step_b127_apdb_planet.json
+[2026-10-16 14:35:40 UTC] [DEBUG   ] [STEP 161]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b127_apdb_planet.json
+[2026-10-16 14:35:40 UTC] [INFO    ] [STEP 161]   Output: step_b127_apdb_planet.json
+[2026-10-16 14:35:40 UTC] [INFO    ] [STEP 161] Saving data: step_b127_apdb_planet.csv
+[2026-10-16 14:35:40 UTC] [DEBUG   ] [STEP 161]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/step_b127_apdb_planet.csv
+[2026-10-16 14:35:40 UTC] [INFO    ] [STEP 161]   Output: step_b127_apdb_planet.csv
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Saving data: step_b127_apdb_planet.png
+[2026-10-16 14:35:41 UTC] [DEBUG   ] [STEP 161]   Full path: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/figures/supplementary/step_b127_apdb_planet.png
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]   Output: step_b127_apdb_planet.png
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] {
  "step": "step_161_apdb_planet",
  "description": "outer-planet astrometric O-C vs DE440s on the APDB optical record; direction organisation of residuals against the declared cap geometry",
  "cap_deg": 60.0,
@@ -1733,97 +1733,97 @@
   "A residual tail at 100-1000 arcsec persists for several historical plate sources; these may reflect genuine plate reduction errors but are excluded from interpretation."
  ]
 }
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] done
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] 
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] ================================================================================
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] STEP SUMMARY: step_161_apdb_planet
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] ================================================================================
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Step Number: 161
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Status: SUCCESS
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Duration: 1.96s
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Log Records Emitted: 96
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Output Files: 3
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_161_apdb_planet.log
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] 
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Generated 3 output file(s):
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]   • step_b127_apdb_planet.json: 30.78 KB [sha256 5f8ddf5f1fccfdd4]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]   • step_b127_apdb_planet.csv: 352.67 KB [sha256 3493ce42c56f481f]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]   • step_b127_apdb_planet.png: 60.42 KB [sha256 3f2fa372cf70bdc3]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] 
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]   RESULT SNAPSHOT [step_b127_apdb_planet.json]:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1993GEMM:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       n = 29
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       med_amp_as = 18.830939
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       p90_as = 60.069073
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       planet = Pluto
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1993GEMM.frames [n=1]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1994NOFS:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       n = 3
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       med_amp_as = 26.830936
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       p90_as = 26.847717
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       planet = Pluto
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1994NOFS.frames [n=1]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1994TOKY:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       n = 12
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       med_amp_as = 11.157573
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       p90_as = 40.330049
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       planet = Pluto
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1994TOKY.frames [n=1]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1995BORD:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       n = 13
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       med_amp_as = 6.4849846
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       p90_as = 13.067605
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       planet = Pluto
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1995BORD.frames [n=1]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1995NOFS:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       n = 118
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       med_amp_as = 14.417891
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       p90_as = 26.658403
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       planet = Pluto
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1995NOFS.frames [n=1]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1996BORD:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       n = 6
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       med_amp_as = 6.7386245
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       p90_as = 9.3058908
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       planet = Pluto
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1996BORD.frames [n=1]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1996NOFS:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       n = 121
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       med_amp_as = 13.590045
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       p90_as = 26.357449
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       planet = Uranus
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1996NOFS.frames [n=1]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1997BORD:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       n = 44
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       med_amp_as = 4.7653084
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       p90_as = 10.161577
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       planet = Uranus
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1997BORD.frames [n=1]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1997McD:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       n = 12
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       med_amp_as = 1118.3074
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       p90_as = 1649.3715
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       planet = Pluto
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1997McD.frames [n=1]
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]     T1_sanity.1997NOFS:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       n = 195
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       med_amp_as = 12.429757
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       p90_as = 24.236412
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]       ... (snapshot truncated; full values in JSON)
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] ================================================================================
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] STEP 161 COMPLETE: SUCCESS
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_161_apdb_planet_provenance.json
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] 
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] ================================================================================
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] EXECUTIVE SUMMARY
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] ================================================================================
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Step: step_161_apdb_planet (Step 161)
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Status: SUCCESS
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Duration: 1.96s
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Log Records: 168
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Output Files: 3
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] Key Outputs:
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]   - step_b127_apdb_planet.json (30.78 KB)
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]   - step_b127_apdb_planet.csv (352.67 KB)
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161]   - step_b127_apdb_planet.png (60.42 KB)
-[2026-09-21 15:44:09 UTC] [INFO    ] [STEP 161] ================================================================================
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] done
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] 
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] ================================================================================
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] STEP SUMMARY: step_161_apdb_planet
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] ================================================================================
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Step Number: 161
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Status: SUCCESS
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Duration: 1.78s
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Log Records Emitted: 96
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Output Files: 3
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Log file: /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/logs/step_161_apdb_planet.log
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] 
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Generated 3 output file(s):
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]   • step_b127_apdb_planet.json: 30.78 KB [sha256 5f8ddf5f1fccfdd4]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]   • step_b127_apdb_planet.csv: 352.67 KB [sha256 3493ce42c56f481f]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]   • step_b127_apdb_planet.png: 60.42 KB [sha256 3f2fa372cf70bdc3]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] 
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]   RESULT SNAPSHOT [step_b127_apdb_planet.json]:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1993GEMM:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       n = 29
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       med_amp_as = 18.830939
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       p90_as = 60.069073
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       planet = Pluto
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1993GEMM.frames [n=1]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1994NOFS:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       n = 3
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       med_amp_as = 26.830936
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       p90_as = 26.847717
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       planet = Pluto
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1994NOFS.frames [n=1]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1994TOKY:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       n = 12
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       med_amp_as = 11.157573
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       p90_as = 40.330049
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       planet = Pluto
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1994TOKY.frames [n=1]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1995BORD:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       n = 13
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       med_amp_as = 6.4849846
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       p90_as = 13.067605
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       planet = Pluto
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1995BORD.frames [n=1]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1995NOFS:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       n = 118
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       med_amp_as = 14.417891
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       p90_as = 26.658403
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       planet = Pluto
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1995NOFS.frames [n=1]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1996BORD:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       n = 6
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       med_amp_as = 6.7386245
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       p90_as = 9.3058908
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       planet = Pluto
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1996BORD.frames [n=1]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1996NOFS:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       n = 121
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       med_amp_as = 13.590045
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       p90_as = 26.357449
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       planet = Uranus
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1996NOFS.frames [n=1]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1997BORD:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       n = 44
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       med_amp_as = 4.7653084
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       p90_as = 10.161577
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       planet = Uranus
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1997BORD.frames [n=1]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1997McD:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       n = 12
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       med_amp_as = 1118.3074
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       p90_as = 1649.3715
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       planet = Pluto
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1997McD.frames [n=1]
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]     T1_sanity.1997NOFS:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       n = 195
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       med_amp_as = 12.429757
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       p90_as = 24.236412
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]       ... (snapshot truncated; full values in JSON)
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] ================================================================================
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] STEP 161 COMPLETE: SUCCESS
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Provenance data saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-9/results/provenance/step_161_apdb_planet_provenance.json
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] 
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] ================================================================================
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] EXECUTIVE SUMMARY
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] ================================================================================
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Step: step_161_apdb_planet (Step 161)
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Status: SUCCESS
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Duration: 1.78s
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Log Records: 168
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Output Files: 3
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] Key Outputs:
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]   - step_b127_apdb_planet.json (30.78 KB)
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]   - step_b127_apdb_planet.csv (352.67 KB)
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161]   - step_b127_apdb_planet.png (60.42 KB)
+[2026-10-16 14:35:41 UTC] [INFO    ] [STEP 161] ================================================================================

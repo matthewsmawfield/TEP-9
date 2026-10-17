@@ -403,7 +403,7 @@ logger.info(f"verdict: {verdict}")
 
 out = dict(step="step_137_rtg_ensemble_regression", result="b101",
            verdict=verdict,
-           inputs=dict(xlsx=str(XLSX.name),
+           inputs=dict(xlsx="data/raw/rtg/" + XLSX.name,
                        telemetry_note=("per-sensor thermal "
                                        "telemetry is not publicly "
                                        "archived; the ensemble "

@@ -153,21 +153,21 @@ add_channel("clock-MGEX", "TEP-GNSS-MGEX step_2_4", mgex_axis,
             "free-recovery",
             note=f"identifiable={mgex_ident}, cmb_p={mgex_cmb_p}")
 
-# LLR -- its own best axis is far from CMB; the registered finding is
-# that the Planck-dipole direction is itself anomalous (rank 226/2664,
-# top 8.5%).  The channel statistic is that rank percentile: step_076's
-# look-elsewhere p = 0.001 is the global any-axis structure statistic
-# (scrambled skies carry essentially no signal), not the extremeness of
-# the named direction, and pooling it here would inflate T3.
+# LLR -- distinguish observed-sky rank from the fixed-Planck-axis
+# scrambled-data test. The producer computes planck_nulls separately
+# from max_delta_aic_scrambled; replacing its p-value by the rank
+# changed the null question and discarded the measured fixed-axis evidence.
 l = json.load(open(LLR / "step_076_sky_scan_directional.json"))
 la = l["max_delta_aic"]
 llr_axis = eqv(la["best_ra_deg"], la["best_dec_deg"])
 llr_planck = l["planck_dipole"]
-llr_p = llr_planck["rank_by_delta_aic"] / l["n_directions"]
+from scripts.utils.boundary_transport import llr_planck_statistics
+llr_statistics = llr_planck_statistics(l)
+llr_p = llr_statistics["fixed_axis_null_p"]
 add_channel("lunar-LLR-best", "TEP-LLR step_076", llr_axis,
             "free-recovery",
             note=f"Planck rank {llr_planck['rank_by_delta_aic']}"
-                 f"/2664, channel p={llr_p:.4f} (rank percentile)")
+                 f"/{l['n_directions']}, fixed-axis scrambled p={llr_p:.4f}")
 
 
 # ------------------------------------------------------------------
@@ -224,7 +224,7 @@ gnss2_pole_diagnostic = 1 - math.cos(math.radians(bip_dist(gnss2_axis)))
 if np.isfinite(mgex_cmb_p):
     chan_p["clock-MGEX-cmb-proj"] = mgex_cmb_p
 
-# LLR Planck-axis rank statistic
+# LLR fixed Planck-axis statistic against scrambled data (not sky rank)
 if np.isfinite(llr_p):
     chan_p["lunar-LLR-Planck"] = llr_p
 
@@ -333,6 +333,7 @@ out = dict(step="step_135_cross_channel", result="b99", verdict=verdict,
                             interpretation="Isotropic independent-direction reference only; product alone is not a p-value."),
            T3_fisher=dict(channel_p=chan_p, chi2=chi2, df=df,
                           fisher_p_nominal=fisher_p,
+                          llr_fixed_axis_null=llr_statistics,
                           excluded_duplicate_GNSS_pole_p=gnss2_pole_diagnostic,
                           interpretation="One term per channel; GNSS overlap, sky sensitivity, and retrospective choice of geometry are not calibrated."),
            T4_epoch=epoch_res,

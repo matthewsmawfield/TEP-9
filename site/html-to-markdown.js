@@ -153,7 +153,7 @@ class HTMLToMarkdownConverter {
             // Load citation metadata for header
             const citationPath = path.join(__dirname, '..', 'CITATION.cff');
             let author = 'Matthew Lukin Smawfield';
-            let version = 'v0.1 (Addis Ababa)';
+            let version = 'v0.2 (Addis Ababa)';
             let dateReleased = '2026-09-30';
             let doi = '';
             
@@ -204,7 +204,7 @@ First published: ${dateReleased}\nLast updated: ${manifest.last_updated}${doi ? 
             const paperMatch = (manifest.paper_series || '').match(/Paper\s+(\d+)/);
             const paperNumber = paperMatch ? paperMatch[1] : 'XX';
             
-            // Extract version and release name from version field (e.g., "v0.1 (Addis Ababa)")
+            // Extract version and release name from version field (e.g., "v0.2 (Addis Ababa)")
             const versionMatch = (manifest.version || '').match(/(v[\d.]+)\s*\(([^)]+)\)/);
             const versionClean = versionMatch ? versionMatch[1] : (manifest.version || 'v0.0');
             const releaseName = (versionMatch ? versionMatch[2] : 'Unknown').replace(/\s+/g, '-');
@@ -212,7 +212,7 @@ First published: ${dateReleased}\nLast updated: ${manifest.last_updated}${doi ? 
             // Series code from repository context (TEP-9)
             const seriesCode = 'TEP-9';
             
-            const filename = `${paperNumber}-${seriesCode}-${versionClean}-${releaseName}.md`;
+            const filename = `G${paperNumber}-${seriesCode}-${versionClean}-${releaseName}.md`;
             const outputPath = path.join(__dirname, '..', filename);
             fs.writeFileSync(outputPath, finalMarkdown, 'utf8');
             console.log(`✅ Markdown saved to: ${outputPath} (${(finalMarkdown.length / 1024).toFixed(1)} KB)`);
